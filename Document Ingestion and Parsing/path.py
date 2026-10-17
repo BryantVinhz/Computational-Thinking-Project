@@ -36,6 +36,6 @@ def to_actual_path(rel_posix_path: str | Path) -> Path:
     Resolve a relative path read from JSON into an actual path
     """
     p = Path(rel_posix_path)
-    if p.is_actual():
+    if p.is_absolute():
         return p
     return (PROJECT_ROOT / p).resolve()

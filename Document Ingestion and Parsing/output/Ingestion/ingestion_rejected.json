@@ -1,0 +1,17 @@
+[
+  {
+    "version_id": "ver_failed_84e87fb6",
+    "document_id": "doc_owasp_test",
+    "version_tag": "v1.0",
+    "file_name": "OWASP_test_v1.0.csv",
+    "file_path": "Data/OWASP_test_v1.0.csv",
+    "file_format": "CSV",
+    "file_size_bytes": 0,
+    "sha256_hash": null,
+    "status": "failed",
+    "current_stage": "INGESTION",
+    "is_duplicate": false,
+    "error_message": "File is empty (0 bytes).",
+    "updated_at": "2026-10-17T07:51:56.926592+00:00"
+  }
+]
