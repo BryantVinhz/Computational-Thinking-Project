@@ -1,0 +1,72 @@
+[
+  {
+    "doc_id": "cs_sqli_prevention",
+    "file_name": "SQL_Injection_Prevention_Cheat_Sheet.md",
+    "title": "SQL Injection Prevention Cheat Sheet",
+    "owasp_2025_category": "A05:2025",
+    "cwe_ids": ["CWE-89"],
+    "target_languages": ["java", "csharp", "php", "vbnet", "sql"],
+    "primary_topics": ["Parameterized Queries", "Stored Procedures", "Allow-list Input Validation"],
+    "source_url": "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html"
+  },
+  {
+    "doc_id": "cs_query_parameterization",
+    "file_name": "Query_Parameterization_Cheat_Sheet.md",
+    "title": "Query Parameterization Cheat Sheet",
+    "owasp_2025_category": "A05:2025",
+    "cwe_ids": ["CWE-89"],
+    "target_languages": ["java", "python", "php", "csharp", "ruby", "go", "rust"],
+    "primary_topics": ["Prepared Statements Syntax", "ORM Parameterization"],
+    "source_url": "https://cheatsheetseries.owasp.org/cheatsheets/Query_Parameterization_Cheat_Sheet.html"
+  },
+  {
+    "doc_id": "cs_xss_prevention",
+    "file_name": "Cross_Site_Scripting_Prevention_Cheat_Sheet.md",
+    "title": "Cross Site Scripting Prevention Cheat Sheet",
+    "owasp_2025_category": "A05:2025",
+    "cwe_ids": ["CWE-79"],
+    "target_languages": ["javascript", "html", "react", "angular"],
+    "primary_topics": ["Contextual Output Encoding", "HTML Sanitization", "DOM XSS"],
+    "source_url": "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+  },
+  {
+    "doc_id": "cs_access_control",
+    "file_name": "Access_Control_Cheat_Sheet.md",
+    "title": "Access Control Cheat Sheet",
+    "owasp_2025_category": "A01:2025",
+    "cwe_ids": ["CWE-284", "CWE-285", "CWE-639"],
+    "target_languages": ["java", "javascript", "python"],
+    "primary_topics": ["Principle of Least Privilege", "Role-Based Access Control", "IDOR Prevention"],
+    "source_url": "https://cheatsheetseries.owasp.org/cheatsheets/Access_Control_Cheat_Sheet.html"
+  },
+  {
+    "doc_id": "cs_auth_general",
+    "file_name": "Authentication_Cheat_Sheet.md",
+    "title": "Authentication Cheat Sheet",
+    "owasp_2025_category": "A07:2025",
+    "cwe_ids": ["CWE-287", "CWE-384"],
+    "target_languages": ["general"],
+    "primary_topics": ["Multi-Factor Authentication", "Account Lockout", "Credential Transmission"],
+    "source_url": "https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html"
+  },
+  {
+    "doc_id": "cs_password_storage",
+    "file_name": "Password_Storage_Cheat_Sheet.md",
+    "title": "Password Storage Cheat Sheet",
+    "owasp_2025_category": "A07:2025",
+    "cwe_ids": ["CWE-256", "CWE-916"],
+    "target_languages": ["python", "java", "csharp", "php"],
+    "primary_topics": ["Argon2id", "bcrypt", "scrypt", "Salt & Work Factors"],
+    "source_url": "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+  },
+  {
+    "doc_id": "cs_session_mgmt",
+    "file_name": "Session_Management_Cheat_Sheet.md",
+    "title": "Session Management Cheat Sheet",
+    "owasp_2025_category": "A07:2025",
+    "cwe_ids": ["CWE-384", "CWE-613"],
+    "target_languages": ["javascript", "java", "php"],
+    "primary_topics": ["Session ID Entropy", "Cookie Attributes", "Session Invalidation"],
+    "source_url": "https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html"
+  }
+]
