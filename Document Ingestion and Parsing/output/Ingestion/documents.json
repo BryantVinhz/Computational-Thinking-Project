@@ -1,0 +1,44 @@
+[
+  {
+    "document_id": "doc_first_cvss_specification",
+    "canonical_title": "First - CVSS-Specification",
+    "publisher": "First",
+    "created_at": "2026-10-17T07:51:56.844441+00:00"
+  },
+  {
+    "document_id": "doc_first_cvss",
+    "canonical_title": "First - CVSS",
+    "publisher": "First",
+    "created_at": "2026-10-17T07:51:56.885497+00:00"
+  },
+  {
+    "document_id": "doc_owasp_application_security_verification_standard",
+    "canonical_title": "OWASP - Application-Security-Verification-Standard",
+    "publisher": "OWASP",
+    "created_at": "2026-10-17T07:51:56.926592+00:00"
+  },
+  {
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "canonical_title": "OWASP - Top10-A01-Broken-Access-Control",
+    "publisher": "OWASP",
+    "created_at": "2026-10-17T07:51:56.989300+00:00"
+  },
+  {
+    "document_id": "doc_owasp_top10_a02_security_misconfiguration",
+    "canonical_title": "OWASP - Top10-A02-Security-Misconfiguration",
+    "publisher": "OWASP",
+    "created_at": "2026-10-17T07:51:57.044637+00:00"
+  },
+  {
+    "document_id": "doc_owasp_top10_a05_injection",
+    "canonical_title": "OWASP - Top10-A05-Injection",
+    "publisher": "OWASP",
+    "created_at": "2026-10-17T07:51:57.107589+00:00"
+  },
+  {
+    "document_id": "doc_owasp_top10_a07_authentication_failures",
+    "canonical_title": "OWASP - Top10-A07-Authentication-Failures",
+    "publisher": "OWASP",
+    "created_at": "2026-10-17T07:51:57.163634+00:00"
+  }
+]
