@@ -1,6 +1,14 @@
 import sys
 from pathlib import Path
 
+# Fix Windows console UTF-8 encoding
+if sys.platform.startswith("win") and hasattr(sys.stdout, "reconfigure"):
+    try:
+        sys.stdout.reconfigure(encoding="utf-8")
+        sys.stderr.reconfigure(encoding="utf-8")
+    except Exception:
+        pass
+
 # Đảm bảo import được path.py ở thư mục cha khi bấm nút Run trực tiếp trên VS Code
 CURRENT_DIR = Path(__file__).resolve().parent
 PARENT_DIR = CURRENT_DIR.parent

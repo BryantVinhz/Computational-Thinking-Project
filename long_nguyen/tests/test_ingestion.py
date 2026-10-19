@@ -91,3 +91,67 @@ def test_status_lifecycle_updates(test_pipeline, sample_files):
     with sqlite3.connect(test_pipeline.db_path) as conn:
         status = conn.execute("SELECT status FROM document_versions WHERE version_id = ?", (result.version_id,)).fetchone()[0]
         assert status == "success"
+
+
+def test_ingestion_service_json_manifests(tmp_path):
+    import json
+    from src.pipeline.ingestion import IngestionService
+
+    raw_dir = tmp_path / "raw_data"
+    raw_dir.mkdir()
+    manifest_dir = tmp_path / "manifest_out"
+    manifest_dir.mkdir()
+
+    # 1. Valid file with canonical naming convention: Publisher_Topic_Version.ext
+    f1 = raw_dir / "OWASP_Top10-A01-Broken-Access-Control_2025.md"
+    f1.write_text("# Access Control\nRules for access control.", encoding="utf-8")
+
+    # 2. Empty file (should be rejected)
+    f2 = raw_dir / "OWASP_test_v1.0.csv"
+    f2.write_text("", encoding="utf-8")
+
+    # Run IngestionService
+    service = IngestionService(raw_dir=raw_dir, manifest_dir=manifest_dir, project_root=tmp_path)
+    stats = service.run()
+
+    assert stats["total_scanned"] == 2
+    assert stats["new_ingested"] == 1
+    assert stats["failed"] == 1
+
+    # Check documents.json
+    docs_file = manifest_dir / "documents.json"
+    assert docs_file.exists()
+    docs_data = json.loads(docs_file.read_text(encoding="utf-8"))
+    assert len(docs_data) == 1
+    doc = docs_data[0]
+    assert doc["document_id"] == "doc_owasp_top10_a01_broken_access_control"
+    assert doc["publisher"] == "OWASP"
+    assert "canonical_title" in doc
+    assert "created_at" in doc
+
+    # Check ducuments_version.json
+    versions_file = manifest_dir / "ducuments_version.json"
+    assert versions_file.exists()
+    versions_data = json.loads(versions_file.read_text(encoding="utf-8"))
+    assert len(versions_data) == 1
+    ver = versions_data[0]
+    assert ver["document_id"] == "doc_owasp_top10_a01_broken_access_control"
+    assert ver["version_tag"] == "2025"
+    assert ver["file_format"] == "MARKDOWN"
+    assert ver["status"] == "pending"
+    assert ver["current_stage"] == "INGESTED"
+    assert ver["is_duplicate"] is False
+    assert len(ver["sha256_hash"]) == 64
+
+    # Check ingestion_rejected.json
+    rejected_file = manifest_dir / "ingestion_rejected.json"
+    assert rejected_file.exists()
+    rejected_data = json.loads(rejected_file.read_text(encoding="utf-8"))
+    assert len(rejected_data) == 1
+    rej = rejected_data[0]
+    assert rej["document_id"] == "doc_owasp_test"
+    assert rej["status"] == "failed"
+    assert rej["current_stage"] == "INGESTION"
+    assert rej["sha256_hash"] is None
+    assert "0 bytes" in rej["error_message"]
+
