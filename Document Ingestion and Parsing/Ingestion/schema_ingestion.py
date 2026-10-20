@@ -45,7 +45,7 @@ class DocumentVersionSchema:
     status: str
     current_stage: str = "INGESTION"
     is_duplicate: bool = False
-    error_message: str | None
+    error_message: str | None = None
     updated_at: str = field(
         default_factory=lambda: datetime.now(timezone.utc).isoformat()
     )
