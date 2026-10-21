@@ -95,9 +95,6 @@ class SecurityMetadataExtractor:
             r"|\b(CRITICAL|HIGH|MEDIUM|LOW)\s+(?:severity|risk|vulnerability)\b",
             re.IGNORECASE,
         ),
-        # FIX: Previously used [\s:=-\[] -> "=-\[" formed a character range (including A-Z),
-        # causing "CVSS v3.1" to be mistakenly captured as score 3.1.
-        # Now: Escaped "-", requiring "Score" or ":" / "=" after CVSS, and excluding the vector "CVSS:3.1/AV:N/...".
         "cvss_score": re.compile(
             r"(?:CVSS(?:\s*v?[34]\.\d)?(?:\s*Base)?\s*Score|Base\s*Score|CVSS(?:\s*v?[34]\.\d)?\s*[:=])"
             r"[\s:=\-\[]*\b(10\.0|[0-9]\.[0-9])\b(?!\s*/)",

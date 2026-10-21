@@ -53,7 +53,7 @@ class ChunkMetadataSchema:
     chunk_idx: Optional[int] = None
     chunk_type: Optional[str] = None
     chunk_strategy: Optional[str] = None
-    chunking_version: Optional[str] = None       # not in Kiet's ChunkSchema -> optional
+    chunking_version: Optional[str] = None       
     heading_path: List[str] = field(default_factory=list)   # same type as ChunkSchema.heading_path
     page_number: Optional[int] = None            # first page the chunk touches (PDF)
     page_range: Optional[List[int]] = None       # [start_page, end_page]
