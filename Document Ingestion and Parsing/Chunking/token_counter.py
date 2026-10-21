@@ -1,8 +1,7 @@
-"""Token-counting abstractions. Approximate counter is dependency-free."""
 from abc import ABC, abstractmethod
 import re
 
-
+"""Token-counting abstractions. Approximate counter is dependency-free."""
 class TokenCounter(ABC):
     @abstractmethod
     def count(self, text: str) -> int:

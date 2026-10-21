@@ -1,7 +1,6 @@
 from dataclasses import dataclass, asdict, field
 
 
-
 @dataclass
 class ChunkSchema:
     """Schema for detailed chunk information"""

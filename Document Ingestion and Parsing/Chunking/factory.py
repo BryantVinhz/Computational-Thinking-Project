@@ -1,9 +1,9 @@
-"""Factory for the supported chunking strategies."""
 from fixed_size import FixedSizeChunker
 from structure_aware import StructureAwareChunker
 
 
 class ChunkingStrategyFactory:
+    """Factory for the supported chunking strategies."""
     @staticmethod
     def create(name: str, **kwargs):
         normalized = name.strip().lower().replace("-", "_")

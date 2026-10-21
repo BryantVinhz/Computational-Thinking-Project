@@ -1,8 +1,8 @@
-"""Fixed-size baseline chunking with character-offset provenance."""
 from strategy import ChunkDraft, ChunkingStrategy, TextPiece
 
 
 class FixedSizeChunker(ChunkingStrategy):
+    """Fixed-size baseline chunking with character-offset provenance"""
     name = "fixed_size"
 
     def __init__(self, max_tokens: int = 350, overlap_tokens: int = 50, token_counter=None):
@@ -41,7 +41,7 @@ class FixedSizeChunker(ChunkingStrategy):
                 mid = (lower + upper) // 2
                 if self.counter.count(stream[start:mid]) <= self.max_tokens:
                     best = mid
-                    left = mid + 1
+                    lower = mid + 1
                 else:
                     upper = mid - 1
             if best == start:  # tokenizer edge case: force progress

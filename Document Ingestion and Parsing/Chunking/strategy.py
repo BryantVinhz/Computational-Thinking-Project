@@ -1,4 +1,3 @@
-"""Shared strategy contract and internal piece representation."""
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 from typing import Any
@@ -21,6 +20,7 @@ class ChunkDraft:
 
 
 class ChunkingStrategy(ABC):
+    """Shared strategy contract and internal piece representation."""
     name = "strategy_base"
 
     @abstractmethod
