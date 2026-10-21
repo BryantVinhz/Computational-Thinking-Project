@@ -1,0 +1,85 @@
+[
+  {
+    "document_id": "doc_01",
+    "version_id": "v1.0",
+    "parser_type": "markdown",
+    "block_id": "blk_001",
+    "block_idx": 0,
+    "block_type": "paragraph",
+    "text_content": "An  attacker   can   inject  `' OR '1'='1`   into  the   login  form.",
+    "structured_content": null,
+    "source_locator": {
+      "page_number": null,
+      "bbox": null,
+      "start_line": 1,
+      "end_line": 1,
+      "table_idx": null,
+      "start_row": null,
+      "end_row": null
+    },
+    "metadata": {
+      "heading_path": "SQLi > Basics",
+      "heading_level": null,
+      "code_language": null,
+      "is_scanned_ocr": false
+    },
+    "normalized_id": "nrm_blk_001",
+    "normalized_text": "An attacker can inject `' OR '1'='1` into the login form.",
+    "is_code_or_payload": true,
+    "has_modified": true,
+    "char_count_delta": 12
+  },
+  {
+    "document_id": "doc_01",
+    "version_id": "v1.0",
+    "parser_type": "markdown",
+    "block_id": "blk_004",
+    "block_idx": 3,
+    "block_type": "table",
+    "text_content": "|  Attack   |   Payload   |\n|---|---|\n|  Traversal  |  `../../etc/passwd`  |",
+    "structured_content": {
+      "header_cols": [
+        " Attack  ",
+        "  Payload  "
+      ],
+      "rows": [
+        [
+          "  Traversal  ",
+          "`../../etc/passwd`"
+        ]
+      ]
+    },
+    "source_locator": {
+      "page_number": null,
+      "bbox": null,
+      "start_line": 9,
+      "end_line": 11,
+      "table_idx": 0,
+      "start_row": 0,
+      "end_row": 1
+    },
+    "metadata": {
+      "heading_path": "Path Traversal > Table",
+      "heading_level": null,
+      "code_language": null,
+      "is_scanned_ocr": false
+    },
+    "normalized_id": "nrm_blk_004",
+    "normalized_text": "| Attack | Payload |\n|---|---|\n| Traversal | `../../etc/passwd` |",
+    "is_code_or_payload": true,
+    "has_modified": true,
+    "char_count_delta": 11,
+    "normalized_structured_content": {
+      "header_cols": [
+        " Attack",
+        "  Payload"
+      ],
+      "rows": [
+        [
+          "  Traversal",
+          "`../../etc/passwd`"
+        ]
+      ]
+    }
+  }
+]
