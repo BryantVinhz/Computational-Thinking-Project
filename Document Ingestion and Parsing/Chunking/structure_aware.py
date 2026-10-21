@@ -48,7 +48,7 @@ class StructureAwareChunker(ChunkingStrategy):
                 flush()
                 if self.counter.count(text) <= self.max_tokens:
                     drafts.append(ChunkDraft(text, [TextPiece(text, block, 0, len(text))], btype,
-                                             structural_context=context))
+                                             heading_path=context))
                 else:
                     for piece_text, a, b in split_oversize_text(text, max(1, self.max_tokens * 4)):
                         drafts.append(ChunkDraft(piece_text, [TextPiece(piece_text, block, a, b)], btype,

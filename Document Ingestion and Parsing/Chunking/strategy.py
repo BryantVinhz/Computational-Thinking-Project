@@ -21,7 +21,7 @@ class ChunkDraft:
 
 class ChunkingStrategy(ABC):
     """Shared strategy contract and internal piece representation."""
-    name = "strategy_base"
+    name = "strategy_base"  
 
     @abstractmethod
     def chunk(self, blocks: list[dict]) -> list[ChunkDraft]:
