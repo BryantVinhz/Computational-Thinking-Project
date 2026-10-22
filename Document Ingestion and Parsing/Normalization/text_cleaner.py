@@ -6,9 +6,28 @@ import copy
 import json
 import logging
 import re
+import sys
 import unicodedata
 from pathlib import Path
 from typing import Any
+
+# Resolve paths
+CURRENT_DIR = Path(__file__).resolve().parent
+PARENT_DIR = CURRENT_DIR.parent
+if str(CURRENT_DIR) not in sys.path:
+    sys.path.insert(0, str(CURRENT_DIR))
+if str(PARENT_DIR) not in sys.path:
+    sys.path.insert(0, str(PARENT_DIR))
+
+try:
+    from path import NORMALIZATION_IN_DIR, NORMALIZATION_OUT_DIR, PARSING_OUT_DIR
+except ImportError:
+    PARSING_OUT_DIR = PARENT_DIR / "output" / "Parsing"
+    NORMALIZATION_IN_DIR = PARSING_OUT_DIR
+    NORMALIZATION_OUT_DIR = PARENT_DIR / "output" / "Normalization"
+
+LOCAL_INPUT_DIR = CURRENT_DIR / "input"
+LOCAL_OUTPUT_DIR = CURRENT_DIR / "output"
 
 logger = logging.getLogger(__name__)
 
@@ -282,6 +301,77 @@ class TextNormalizer:
             with path.open("w", encoding="utf-8") as f:
                 json.dump(blocks, f, ensure_ascii=False, indent=2)
 
+    def normalize_file(self, input_path: Path | str, output_path: Path | str) -> dict[str, Any]:
+        """Normalize blocks in a single JSON or JSONL file and write to output path."""
+        in_p = Path(input_path)
+        out_p = Path(output_path)
+        blocks = self.load_blocks(in_p)
+        results = self.normalize_document(blocks)
+        self.save_blocks(results, out_p)
+
+        total = len(results)
+        protected = sum(1 for b in results if b.get("is_code_or_payload"))
+        modified = sum(1 for b in results if b.get("has_modified"))
+        total_delta = sum(b.get("char_count_delta", 0) for b in results)
+        stats = {
+            "file": in_p.name,
+            "input_path": str(in_p),
+            "output_path": str(out_p),
+            "total": total,
+            "protected": protected,
+            "modified": modified,
+            "delta": total_delta,
+        }
+        logger.info(
+            "Normalized %s -> %s (Total: %d | Protected: %d | Modified: %d | Delta: %d)",
+            in_p.name,
+            out_p.name,
+            total,
+            protected,
+            modified,
+            total_delta,
+        )
+        return stats
+
+    def normalize_directory(
+        self,
+        input_dir: Path | str,
+        output_dir: Path | str,
+    ) -> list[dict[str, Any]]:
+        """Normalize all JSON and JSONL block files from input_dir to output_dir."""
+        in_dir = Path(input_dir)
+        out_dir = Path(output_dir)
+        out_dir.mkdir(parents=True, exist_ok=True)
+
+        if not in_dir.exists():
+            logger.warning("Input directory does not exist: %s", in_dir)
+            return []
+
+        input_files = sorted(
+            [p for p in in_dir.glob("*.json")] + [p for p in in_dir.glob("*.jsonl")]
+        )
+        if not input_files:
+            logger.warning("No JSON or JSONL files found in input directory: %s", in_dir)
+            return []
+
+        stats_list: list[dict[str, Any]] = []
+        for in_file in input_files:
+            name = in_file.name
+            if name.endswith("_parsing.json"):
+                out_name = name.replace("_parsing.json", "_normalization.json")
+            elif name.endswith("_parsing.jsonl"):
+                out_name = name.replace("_parsing.jsonl", "_normalization.jsonl")
+            elif name == "sample_input.json":
+                out_name = "sample_out.json"
+            else:
+                out_name = f"{in_file.stem}_normalized{in_file.suffix}"
+
+            out_file = out_dir / out_name
+            stat = self.normalize_file(in_file, out_file)
+            stats_list.append(stat)
+
+        return stats_list
+
 
 # 4. MODULE-LEVEL CONSTANTS & FUNCTIONS (For backwards compatibility)
 
@@ -310,13 +400,42 @@ normalize_block = _default_normalizer.normalize_block
 normalize_document = _default_normalizer.normalize_document
 load_blocks = TextNormalizer.load_blocks
 save_blocks = TextNormalizer.save_blocks
+normalize_file = _default_normalizer.normalize_file
+normalize_directory = _default_normalizer.normalize_directory
 
 
 def main() -> None:
     """Command-line entry point for text normalization."""
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8")
+
     parser = argparse.ArgumentParser(description="Step 3: Text Cleaning & Normalization.")
-    parser.add_argument("--input", required=True, type=Path, help="Input JSON or JSONL file")
-    parser.add_argument("--output", required=True, type=Path, help="Output JSON or JSONL file")
+    parser.add_argument(
+        "--input",
+        "-i",
+        type=Path,
+        default=None,
+        help="Input JSON/JSONL file or input directory (defaults to input dir)",
+    )
+    parser.add_argument(
+        "--output",
+        "-o",
+        type=Path,
+        default=None,
+        help="Output JSON/JSONL file or output directory (defaults to output dir)",
+    )
+    parser.add_argument(
+        "--input-dir",
+        type=Path,
+        default=None,
+        help="Input directory containing JSON/JSONL files",
+    )
+    parser.add_argument(
+        "--output-dir",
+        type=Path,
+        default=None,
+        help="Output directory to save normalized files",
+    )
     parser.add_argument(
         "--log-level",
         default="INFO",
@@ -331,17 +450,63 @@ def main() -> None:
     )
 
     normalizer = TextNormalizer()
-    blocks = normalizer.load_blocks(args.input)
-    results = normalizer.normalize_document(blocks)
-    normalizer.save_blocks(results, args.output)
 
-    total = len(results)
-    protected = sum(1 for b in results if b.get("is_code_or_payload"))
-    modified = sum(1 for b in results if b.get("has_modified"))
-    total_delta = sum(b.get("char_count_delta", 0) for b in results)
-    print(
-        f"Total: {total} | Protected: {protected} | Modified: {modified} | Delta: {total_delta}"
-    )
+    input_target = args.input_dir or args.input
+    output_target = args.output_dir or args.output
+
+    if input_target is not None and input_target.is_file():
+        # Single file mode
+        if output_target is None:
+            out_file = NORMALIZATION_OUT_DIR / f"{input_target.stem}_normalized{input_target.suffix}"
+        elif output_target.is_dir() or (not output_target.suffix):
+            output_target.mkdir(parents=True, exist_ok=True)
+            out_file = output_target / f"{input_target.stem}_normalized{input_target.suffix}"
+        else:
+            out_file = output_target
+
+        stat = normalizer.normalize_file(input_target, out_file)
+        print(
+            f"File: {stat['file']} | Total: {stat['total']} | Protected: {stat['protected']} | "
+            f"Modified: {stat['modified']} | Delta: {stat['delta']}"
+        )
+        print(f"=> Saved to: {out_file}")
+    else:
+        # Directory mode
+        if input_target is None:
+            if NORMALIZATION_IN_DIR.exists() and any(NORMALIZATION_IN_DIR.glob("*.json")):
+                in_dir = NORMALIZATION_IN_DIR
+                out_dir = NORMALIZATION_OUT_DIR
+            elif LOCAL_INPUT_DIR.exists() and any(LOCAL_INPUT_DIR.glob("*.json")):
+                in_dir = LOCAL_INPUT_DIR
+                out_dir = LOCAL_OUTPUT_DIR
+            else:
+                in_dir = NORMALIZATION_IN_DIR
+                out_dir = NORMALIZATION_OUT_DIR
+        else:
+            in_dir = input_target
+            out_dir = output_target or (LOCAL_OUTPUT_DIR if in_dir == LOCAL_INPUT_DIR else NORMALIZATION_OUT_DIR)
+
+        if output_target is not None and output_target.suffix:
+            out_dir = output_target.parent
+        elif output_target is not None:
+            out_dir = output_target
+
+        results = normalizer.normalize_directory(in_dir, out_dir)
+
+        total_files = len(results)
+        total_blocks = sum(r.get("total", 0) for r in results)
+        total_protected = sum(r.get("protected", 0) for r in results)
+        total_modified = sum(r.get("modified", 0) for r in results)
+        total_delta = sum(r.get("delta", 0) for r in results)
+        print(f"=== STEP 3: TEXT NORMALIZATION ===")
+        print(f"- Input directory   : {in_dir}")
+        print(f"- Output directory  : {out_dir}")
+        print(f"- Files processed   : {total_files}")
+        print(f"- Total blocks      : {total_blocks}")
+        print(f"- Protected blocks  : {total_protected}")
+        print(f"- Modified blocks   : {total_modified}")
+        print(f"- Total char delta  : {total_delta}")
+        print(f"=> Output saved to  : {out_dir}")
 
 
 if __name__ == "__main__":

@@ -51,7 +51,7 @@ coverage.xml
 .hypothesis/
 .pytest_cache/
 cover/
-
+long_nguyen/
 # Translations
 *.mo
 *.pot
@@ -204,6 +204,7 @@ cython_debug/
 # .vscode/
 # Temporary file for partial code execution
 tempCodeRunnerFile.py
+
 
 # Ruff stuff:
 .ruff_cache/
