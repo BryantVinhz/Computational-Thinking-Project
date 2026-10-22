@@ -1,7 +1,7 @@
 import sys
 from pathlib import Path
 
-# Đảm bảo import được path.py ở thư mục cha khi bấm nút Run trực tiếp trên VS Code
+
 CURRENT_DIR = Path(__file__).resolve().parent
 PARENT_DIR = CURRENT_DIR.parent
 if str(CURRENT_DIR) not in sys.path:
@@ -19,7 +19,6 @@ if __name__ == "__main__":
     input_dir = NORMALIZATION_IN_DIR
     output_dir = NORMALIZATION_OUT_DIR
 
-    # Nếu thư mục Parsing chưa có file, fallback sang thư mục input nội bộ của Normalization
     if not (input_dir.exists() and any(input_dir.glob("*.json"))) and LOCAL_INPUT_DIR.exists():
         input_dir = LOCAL_INPUT_DIR
         output_dir = LOCAL_OUTPUT_DIR
