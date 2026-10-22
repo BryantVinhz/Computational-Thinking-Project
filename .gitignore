@@ -52,6 +52,7 @@ coverage.xml
 .pytest_cache/
 cover/
 long_nguyen/
+exp/
 
 # Translations
 *.mo
