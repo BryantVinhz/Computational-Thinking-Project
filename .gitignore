@@ -221,6 +221,7 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
+*bin
 #Generated SQLite metadata
 *.db
 *.db-journal
