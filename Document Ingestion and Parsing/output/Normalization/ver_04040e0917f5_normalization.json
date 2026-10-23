@@ -1,0 +1,2454 @@
+[
+  {
+    "block_id": "ver_04040e0917f5_b00000",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 0,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "license: Copyright (c) 2025, FIRST.ORG, INC., All rights reserved., , Redistribution and use in source and binary forms, with or without modification, are permitted provided that the , following conditions are met:, 1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following ,    disclaimer., 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the ,    following disclaimer in the documentation and/or other materials provided with the distribution., 3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote ,    products derived from this software without specific prior written permission., , THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 'AS IS' AND ANY EXPRESS OR IMPLIED WARRANTIES, , INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE , DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, , SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR , SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, , WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE , OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n$schema: https://www.first.org/cvss/meta.json\n$id: https://www.first.org/cvss/cvss-v4.0.json?20260226\ntitle: JSON Schema for Common Vulnerability Scoring System version 4.0, Revision 2\ntype: object\nrequired: version, vectorString, baseScore, baseSeverity\nunevaluatedProperties: false",
+    "text_hash": "8c783796266d55dd1fb891deb62337c030807fd3998021c788ee22de0bb28f7f",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "license": [
+        "Copyright (c) 2025, FIRST.ORG, INC.",
+        "All rights reserved.",
+        "",
+        "Redistribution and use in source and binary forms, with or without modification, are permitted provided that the ",
+        "following conditions are met:",
+        "1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following ",
+        "   disclaimer.",
+        "2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the ",
+        "   following disclaimer in the documentation and/or other materials provided with the distribution.",
+        "3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote ",
+        "   products derived from this software without specific prior written permission.",
+        "",
+        "THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 'AS IS' AND ANY EXPRESS OR IMPLIED WARRANTIES, ",
+        "INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE ",
+        "DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, ",
+        "SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR ",
+        "SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, ",
+        "WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE ",
+        "OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."
+      ],
+      "$schema": "https://www.first.org/cvss/meta.json",
+      "$id": "https://www.first.org/cvss/cvss-v4.0.json?20260226",
+      "title": "JSON Schema for Common Vulnerability Scoring System version 4.0, Revision 2",
+      "type": "object",
+      "required": [
+        "version",
+        "vectorString",
+        "baseScore",
+        "baseSeverity"
+      ],
+      "unevaluatedProperties": false
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00000",
+    "normalized_text": "license: Copyright (c) 2025, FIRST.ORG, INC., All rights reserved., , Redistribution and use in source and binary forms, with or without modification, are permitted provided that the , following conditions are met:, 1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following , disclaimer., 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the , following disclaimer in the documentation and/or other materials provided with the distribution., 3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote , products derived from this software without specific prior written permission., , THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 'AS IS' AND ANY EXPRESS OR IMPLIED WARRANTIES, , INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE , DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, , SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR , SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, , WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE , OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n$schema: https://www.first.org/cvss/meta.json\n$id: https://www.first.org/cvss/cvss-v4.0.json?20260226\ntitle: JSON Schema for Common Vulnerability Scoring System version 4.0, Revision 2\ntype: object\nrequired: version, vectorString, baseScore, baseSeverity\nunevaluatedProperties: false",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 9
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00001",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 1,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "attackComplexityType\ntype: string\nenum: HIGH, LOW",
+    "text_hash": "cef397e721d2cebc5473c7624dc28721a968205a50f1de9848b35e94c3049470",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$['$defs'].attackComplexityType"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "type": "string",
+      "enum": [
+        "HIGH",
+        "LOW"
+      ]
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00001",
+    "normalized_text": "attackComplexityType\ntype: string\nenum: HIGH, LOW",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00002",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 2,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "attackRequirementsType\ntype: string\nenum: NONE, PRESENT",
+    "text_hash": "d1d4ae200bb4bf8cb0e1cf92875b670f29e2e9a264bd73433c86e70df1313670",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$['$defs'].attackRequirementsType"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "type": "string",
+      "enum": [
+        "NONE",
+        "PRESENT"
+      ]
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00002",
+    "normalized_text": "attackRequirementsType\ntype: string\nenum: NONE, PRESENT",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00003",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 3,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "attackVectorType\ntype: string\nenum: NETWORK, ADJACENT, LOCAL, PHYSICAL",
+    "text_hash": "1809a1b2a35d8a8a6a4eb34c60225858432c99e2ac02476361efb2be0ce8f306",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$['$defs'].attackVectorType"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "type": "string",
+      "enum": [
+        "NETWORK",
+        "ADJACENT",
+        "LOCAL",
+        "PHYSICAL"
+      ]
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00003",
+    "normalized_text": "attackVectorType\ntype: string\nenum: NETWORK, ADJACENT, LOCAL, PHYSICAL",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00004",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 4,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "automatableType\ntype: string\nenum: NO, YES, NOT_DEFINED\ndefault: NOT_DEFINED",
+    "text_hash": "43f91729bc0345e1c8e6df40c220cceaf06bd7ace50b72f6e3033402e5529bc1",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$['$defs'].automatableType"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "type": "string",
+      "enum": [
+        "NO",
+        "YES",
+        "NOT_DEFINED"
+      ],
+      "default": "NOT_DEFINED"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00004",
+    "normalized_text": "automatableType\ntype: string\nenum: NO, YES, NOT_DEFINED\ndefault: NOT_DEFINED",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00005",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 5,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "ciaRequirementType\ntype: string\nenum: LOW, MEDIUM, HIGH, NOT_DEFINED\ndefault: NOT_DEFINED",
+    "text_hash": "0706d74e534f5fa411e585c693646aa7dff2f3394f718d3aafd63881617e0240",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$['$defs'].ciaRequirementType"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "type": "string",
+      "enum": [
+        "LOW",
+        "MEDIUM",
+        "HIGH",
+        "NOT_DEFINED"
+      ],
+      "default": "NOT_DEFINED"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00005",
+    "normalized_text": "ciaRequirementType\ntype: string\nenum: LOW, MEDIUM, HIGH, NOT_DEFINED\ndefault: NOT_DEFINED",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00006",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 6,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "criticalScoreType\ntype: number\nmaximum: 10\nminimum: 9\nmultipleOf: 0.1",
+    "text_hash": "ec07adbd5a76ddabe7bdcf1d2633c6c25e74103714992faecab28e130afac10d",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$['$defs'].criticalScoreType"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "type": "number",
+      "maximum": 10,
+      "minimum": 9,
+      "multipleOf": 0.1
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00006",
+    "normalized_text": "criticalScoreType\ntype: number\nmaximum: 10\nminimum: 9\nmultipleOf: 0.1",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00007",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 7,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "criticalSeverityType\nconst: CRITICAL",
+    "text_hash": "c9ea60b0d87ce973659ecfe8b1a22d2bdb0ee531f84bf5f245b8d186723cf5c7",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$['$defs'].criticalSeverityType"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "const": "CRITICAL"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00007",
+    "normalized_text": "criticalSeverityType\nconst: CRITICAL",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00008",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 8,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "exploitMaturityType\ntype: string\nenum: UNREPORTED, PROOF_OF_CONCEPT, ATTACKED, NOT_DEFINED\ndefault: NOT_DEFINED",
+    "text_hash": "db89974efb1ed0d4e41baaae65c02d486472b1fe6bf613e9c339abbce07a5809",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$['$defs'].exploitMaturityType"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "type": "string",
+      "enum": [
+        "UNREPORTED",
+        "PROOF_OF_CONCEPT",
+        "ATTACKED",
+        "NOT_DEFINED"
+      ],
+      "default": "NOT_DEFINED"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00008",
+    "normalized_text": "exploitMaturityType\ntype: string\nenum: UNREPORTED, PROOF_OF_CONCEPT, ATTACKED, NOT_DEFINED\ndefault: NOT_DEFINED",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00009",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 9,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "highScoreType\ntype: number\nmaximum: 8.9\nminimum: 7",
+    "text_hash": "cc319c9f2d3f5c8b73cdc6f96a21038d1714bfb3f844186f995a6332a327fcd5",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$['$defs'].highScoreType"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "type": "number",
+      "maximum": 8.9,
+      "minimum": 7
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00009",
+    "normalized_text": "highScoreType\ntype: number\nmaximum: 8.9\nminimum: 7",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00010",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 10,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "highSeverityType\nconst: HIGH",
+    "text_hash": "8f48fbbc2960002470d134b0f92458e9e66e71c2c3b7116d968dbf4be9783bc4",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$['$defs'].highSeverityType"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "const": "HIGH"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00010",
+    "normalized_text": "highSeverityType\nconst: HIGH",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00011",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 11,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "lowScoreType\ntype: number\nmaximum: 3.9\nminimum: 0.1\nmultipleOf: 0.1",
+    "text_hash": "b1f76db63bbd15133742e9342e45fb0efc6a08a10e8e3e98d07dbf420f51af00",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$['$defs'].lowScoreType"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "type": "number",
+      "maximum": 3.9,
+      "minimum": 0.1,
+      "multipleOf": 0.1
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00011",
+    "normalized_text": "lowScoreType\ntype: number\nmaximum: 3.9\nminimum: 0.1\nmultipleOf: 0.1",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00012",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 12,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "lowSeverityType\nconst: LOW",
+    "text_hash": "39ea66989e9917429943b28a86a654723bb9cd04077ffb8dfc36c6c21978bcff",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$['$defs'].lowSeverityType"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "const": "LOW"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00012",
+    "normalized_text": "lowSeverityType\nconst: LOW",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00013",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 13,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "mediumScoreType\ntype: number\nmaximum: 6.9\nminimum: 4\nmultipleOf: 0.1",
+    "text_hash": "d5546d0076e564925602341c386a283dd91fbd6bf362b1282bd62cc506195aea",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$['$defs'].mediumScoreType"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "type": "number",
+      "maximum": 6.9,
+      "minimum": 4,
+      "multipleOf": 0.1
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00013",
+    "normalized_text": "mediumScoreType\ntype: number\nmaximum: 6.9\nminimum: 4\nmultipleOf: 0.1",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00014",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 14,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "mediumSeverityType\nconst: MEDIUM",
+    "text_hash": "8eedaf26f88cd3981e0e528b44201c1620267a0172c2082c7a9592589f566762",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$['$defs'].mediumSeverityType"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "const": "MEDIUM"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00014",
+    "normalized_text": "mediumSeverityType\nconst: MEDIUM",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00015",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 15,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "modifiedAttackComplexityType\ntype: string\nenum: HIGH, LOW, NOT_DEFINED\ndefault: NOT_DEFINED",
+    "text_hash": "f99ff1a011bdc35e5ab8a0ffc99d427219a774eed0151972c8568e2f6064d1e9",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$['$defs'].modifiedAttackComplexityType"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "type": "string",
+      "enum": [
+        "HIGH",
+        "LOW",
+        "NOT_DEFINED"
+      ],
+      "default": "NOT_DEFINED"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00015",
+    "normalized_text": "modifiedAttackComplexityType\ntype: string\nenum: HIGH, LOW, NOT_DEFINED\ndefault: NOT_DEFINED",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00016",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 16,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "modifiedAttackRequirementsType\ntype: string\nenum: NONE, PRESENT, NOT_DEFINED\ndefault: NOT_DEFINED",
+    "text_hash": "31cda7f2133073e5a00b5cbc18ddeeac04a8e7cbe5176a73e21db5fa3b598703",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$['$defs'].modifiedAttackRequirementsType"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "type": "string",
+      "enum": [
+        "NONE",
+        "PRESENT",
+        "NOT_DEFINED"
+      ],
+      "default": "NOT_DEFINED"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00016",
+    "normalized_text": "modifiedAttackRequirementsType\ntype: string\nenum: NONE, PRESENT, NOT_DEFINED\ndefault: NOT_DEFINED",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00017",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 17,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "modifiedAttackVectorType\ntype: string\nenum: NETWORK, ADJACENT, LOCAL, PHYSICAL, NOT_DEFINED\ndefault: NOT_DEFINED",
+    "text_hash": "f5dbf15cd7db3fd25f38598294e5edde0972ef98aea7796b0d02206785292069",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$['$defs'].modifiedAttackVectorType"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "type": "string",
+      "enum": [
+        "NETWORK",
+        "ADJACENT",
+        "LOCAL",
+        "PHYSICAL",
+        "NOT_DEFINED"
+      ],
+      "default": "NOT_DEFINED"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00017",
+    "normalized_text": "modifiedAttackVectorType\ntype: string\nenum: NETWORK, ADJACENT, LOCAL, PHYSICAL, NOT_DEFINED\ndefault: NOT_DEFINED",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00018",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 18,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "modifiedPrivilegesRequiredType\ntype: string\nenum: HIGH, LOW, NONE, NOT_DEFINED\ndefault: NOT_DEFINED",
+    "text_hash": "dff7813a1a8ad657df1abf4d74eee7c10008f4b5bd91998b265eba20dd8728ea",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$['$defs'].modifiedPrivilegesRequiredType"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "type": "string",
+      "enum": [
+        "HIGH",
+        "LOW",
+        "NONE",
+        "NOT_DEFINED"
+      ],
+      "default": "NOT_DEFINED"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00018",
+    "normalized_text": "modifiedPrivilegesRequiredType\ntype: string\nenum: HIGH, LOW, NONE, NOT_DEFINED\ndefault: NOT_DEFINED",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00019",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 19,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "modifiedSubCType\ntype: string\nenum: NEGLIGIBLE, LOW, HIGH, NOT_DEFINED\ndefault: NOT_DEFINED",
+    "text_hash": "8e55a3fce8ac78dec0bd148e5d592abab9972a3f6acf107b65f79e30d491fae8",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$['$defs'].modifiedSubCType"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "type": "string",
+      "enum": [
+        "NEGLIGIBLE",
+        "LOW",
+        "HIGH",
+        "NOT_DEFINED"
+      ],
+      "default": "NOT_DEFINED"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00019",
+    "normalized_text": "modifiedSubCType\ntype: string\nenum: NEGLIGIBLE, LOW, HIGH, NOT_DEFINED\ndefault: NOT_DEFINED",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00020",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 20,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "modifiedSubIaType\ntype: string\nenum: NEGLIGIBLE, LOW, HIGH, SAFETY, NOT_DEFINED\ndefault: NOT_DEFINED",
+    "text_hash": "650308a7bac058823bdb6781b1456319a9dc795d2a1201c776de46ce9f6b387c",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$['$defs'].modifiedSubIaType"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "type": "string",
+      "enum": [
+        "NEGLIGIBLE",
+        "LOW",
+        "HIGH",
+        "SAFETY",
+        "NOT_DEFINED"
+      ],
+      "default": "NOT_DEFINED"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00020",
+    "normalized_text": "modifiedSubIaType\ntype: string\nenum: NEGLIGIBLE, LOW, HIGH, SAFETY, NOT_DEFINED\ndefault: NOT_DEFINED",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00021",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 21,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "modifiedUserInteractionType\ntype: string\nenum: NONE, PASSIVE, ACTIVE, NOT_DEFINED\ndefault: NOT_DEFINED",
+    "text_hash": "3c0d6b62e25d2fd46b800d509112fef426f291c5d3969d9c72514ac3ee2a9067",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$['$defs'].modifiedUserInteractionType"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "type": "string",
+      "enum": [
+        "NONE",
+        "PASSIVE",
+        "ACTIVE",
+        "NOT_DEFINED"
+      ],
+      "default": "NOT_DEFINED"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00021",
+    "normalized_text": "modifiedUserInteractionType\ntype: string\nenum: NONE, PASSIVE, ACTIVE, NOT_DEFINED\ndefault: NOT_DEFINED",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00022",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 22,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "modifiedVulnCiaType\ntype: string\nenum: NONE, LOW, HIGH, NOT_DEFINED\ndefault: NOT_DEFINED",
+    "text_hash": "27f0b4e972907e95d5329050a8da31c16a8d34f6141e9b30f4c95d8be874ab1f",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$['$defs'].modifiedVulnCiaType"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "type": "string",
+      "enum": [
+        "NONE",
+        "LOW",
+        "HIGH",
+        "NOT_DEFINED"
+      ],
+      "default": "NOT_DEFINED"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00022",
+    "normalized_text": "modifiedVulnCiaType\ntype: string\nenum: NONE, LOW, HIGH, NOT_DEFINED\ndefault: NOT_DEFINED",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00023",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 23,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "noneScoreType\ntype: number\nmaximum: 0\nminimum: 0",
+    "text_hash": "f430d136c40ec1632349f5044a0738b1a9351e40a0d5fcee38d8232499e6e350",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$['$defs'].noneScoreType"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "type": "number",
+      "maximum": 0,
+      "minimum": 0
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00023",
+    "normalized_text": "noneScoreType\ntype: number\nmaximum: 0\nminimum: 0",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00024",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 24,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "noneSeverityType\nconst: NONE",
+    "text_hash": "edcff4ec29154e3e66d7c3d68ac74482c9a5edab72444f8df3f0c434192ae714",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$['$defs'].noneSeverityType"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "const": "NONE"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00024",
+    "normalized_text": "noneSeverityType\nconst: NONE",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00025",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 25,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "privilegesRequiredType\ntype: string\nenum: HIGH, LOW, NONE",
+    "text_hash": "e8a6ca2a695389eb93dbf6279a7f67080218af94a25c9e88ab52e04f5b2fea12",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$['$defs'].privilegesRequiredType"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "type": "string",
+      "enum": [
+        "HIGH",
+        "LOW",
+        "NONE"
+      ]
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00025",
+    "normalized_text": "privilegesRequiredType\ntype: string\nenum: HIGH, LOW, NONE",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00026",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 26,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "providerUrgencyType\ntype: string\nenum: CLEAR, GREEN, AMBER, RED, NOT_DEFINED\ndefault: NOT_DEFINED",
+    "text_hash": "dcd5fb4ee1b07d03eb05ad6d9d06e385ce0cd41458fb5991cdfe2371469b7b7c",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$['$defs'].providerUrgencyType"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "type": "string",
+      "enum": [
+        "CLEAR",
+        "GREEN",
+        "AMBER",
+        "RED",
+        "NOT_DEFINED"
+      ],
+      "default": "NOT_DEFINED"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00026",
+    "normalized_text": "providerUrgencyType\ntype: string\nenum: CLEAR, GREEN, AMBER, RED, NOT_DEFINED\ndefault: NOT_DEFINED",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00027",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 27,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "recoveryType\ntype: string\nenum: AUTOMATIC, USER, IRRECOVERABLE, NOT_DEFINED\ndefault: NOT_DEFINED",
+    "text_hash": "767456ad8946e8ddba20cbfe24965927f4cb3370a33785be4149e27ef3846888",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$['$defs'].recoveryType"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "type": "string",
+      "enum": [
+        "AUTOMATIC",
+        "USER",
+        "IRRECOVERABLE",
+        "NOT_DEFINED"
+      ],
+      "default": "NOT_DEFINED"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00027",
+    "normalized_text": "recoveryType\ntype: string\nenum: AUTOMATIC, USER, IRRECOVERABLE, NOT_DEFINED\ndefault: NOT_DEFINED",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00028",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 28,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "safetyType\ntype: string\nenum: NEGLIGIBLE, PRESENT, NOT_DEFINED\ndefault: NOT_DEFINED",
+    "text_hash": "1ed8a95d300f16b7095c3115b4c88fb7d7e39d9d1e5562d58183e5cccbe5d7f8",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$['$defs'].safetyType"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "type": "string",
+      "enum": [
+        "NEGLIGIBLE",
+        "PRESENT",
+        "NOT_DEFINED"
+      ],
+      "default": "NOT_DEFINED"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00028",
+    "normalized_text": "safetyType\ntype: string\nenum: NEGLIGIBLE, PRESENT, NOT_DEFINED\ndefault: NOT_DEFINED",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00029",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 29,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "subCiaType\ntype: string\nenum: NONE, LOW, HIGH",
+    "text_hash": "9f321163a1395efe47cecb9c57d7b0e263d900dd7809b1505ac15449c9ee3a2e",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$['$defs'].subCiaType"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "type": "string",
+      "enum": [
+        "NONE",
+        "LOW",
+        "HIGH"
+      ]
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00029",
+    "normalized_text": "subCiaType\ntype: string\nenum: NONE, LOW, HIGH",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00030",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 30,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "userInteractionType\ntype: string\nenum: NONE, PASSIVE, ACTIVE",
+    "text_hash": "1e4da593f18e86ac96e5d87fda64559e21f12799df1aa9e62e2691ace9e412bf",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$['$defs'].userInteractionType"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "type": "string",
+      "enum": [
+        "NONE",
+        "PASSIVE",
+        "ACTIVE"
+      ]
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00030",
+    "normalized_text": "userInteractionType\ntype: string\nenum: NONE, PASSIVE, ACTIVE",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00031",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 31,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "valueDensityType\ntype: string\nenum: DIFFUSE, CONCENTRATED, NOT_DEFINED\ndefault: NOT_DEFINED",
+    "text_hash": "d44f27a95fa15505418c7228c04c70c6e0a5f2db6fa4ee59b282197e664bc579",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$['$defs'].valueDensityType"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "type": "string",
+      "enum": [
+        "DIFFUSE",
+        "CONCENTRATED",
+        "NOT_DEFINED"
+      ],
+      "default": "NOT_DEFINED"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00031",
+    "normalized_text": "valueDensityType\ntype: string\nenum: DIFFUSE, CONCENTRATED, NOT_DEFINED\ndefault: NOT_DEFINED",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00032",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 32,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "vulnCiaType\ntype: string\nenum: NONE, LOW, HIGH",
+    "text_hash": "6ec1025cf440bf584a497ac1bedf99fe5bb2cf69e91637eb5a9d4d2ba56e9aee",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$['$defs'].vulnCiaType"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "type": "string",
+      "enum": [
+        "NONE",
+        "LOW",
+        "HIGH"
+      ]
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00032",
+    "normalized_text": "vulnCiaType\ntype: string\nenum: NONE, LOW, HIGH",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00033",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 33,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "vulnerabilityResponseEffortType\ntype: string\nenum: LOW, MODERATE, HIGH, NOT_DEFINED\ndefault: NOT_DEFINED",
+    "text_hash": "17aba7b95631557ac1b8634d194094435e2845c8dfa0fa2913b6ea90717b5760",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$['$defs'].vulnerabilityResponseEffortType"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "type": "string",
+      "enum": [
+        "LOW",
+        "MODERATE",
+        "HIGH",
+        "NOT_DEFINED"
+      ],
+      "default": "NOT_DEFINED"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00033",
+    "normalized_text": "vulnerabilityResponseEffortType\ntype: string\nenum: LOW, MODERATE, HIGH, NOT_DEFINED\ndefault: NOT_DEFINED",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00034",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 34,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "Automatable\n$ref: #/$defs/automatableType",
+    "text_hash": "a2619ef19c0513e72f345baedcb3c8489ce7d11e91e16428737349a6e98592f6",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$.properties.Automatable"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "$ref": "#/$defs/automatableType"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00034",
+    "normalized_text": "Automatable\n$ref: #/$defs/automatableType",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00035",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 35,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "Recovery\n$ref: #/$defs/recoveryType",
+    "text_hash": "1759c274d8825cb4a49a28ec7a5fc457803d81ae73d96f149a6e7237f8a85f43",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$.properties.Recovery"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "$ref": "#/$defs/recoveryType"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00035",
+    "normalized_text": "Recovery\n$ref: #/$defs/recoveryType",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00036",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 36,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "Safety\n$ref: #/$defs/safetyType",
+    "text_hash": "118f98011e6b8d2b1d2d5bbc06709529b88a8311929d27f964ce514bbba72a67",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$.properties.Safety"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "$ref": "#/$defs/safetyType"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00036",
+    "normalized_text": "Safety\n$ref: #/$defs/safetyType",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00037",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 37,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "attackComplexity\n$ref: #/$defs/attackComplexityType",
+    "text_hash": "45c4f2bcf3c4027932eb395960c049d4a266d6dc10d3218bd888b056358093ad",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$.properties.attackComplexity"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "$ref": "#/$defs/attackComplexityType"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00037",
+    "normalized_text": "attackComplexity\n$ref: #/$defs/attackComplexityType",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00038",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 38,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "attackRequirements\n$ref: #/$defs/attackRequirementsType",
+    "text_hash": "84ce66e5e05634e8640c0c2e64c9fb127613ec4efce234bfcbbf9b99906f46b1",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$.properties.attackRequirements"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "$ref": "#/$defs/attackRequirementsType"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00038",
+    "normalized_text": "attackRequirements\n$ref: #/$defs/attackRequirementsType",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00039",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 39,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "attackVector\n$ref: #/$defs/attackVectorType",
+    "text_hash": "e9a8d3ad84d8103a454e1dba8ef3435bff178f250945a68d99892bad018faba1",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$.properties.attackVector"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "$ref": "#/$defs/attackVectorType"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00039",
+    "normalized_text": "attackVector\n$ref: #/$defs/attackVectorType",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00040",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 40,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "availabilityRequirement\n$ref: #/$defs/ciaRequirementType",
+    "text_hash": "e2f749cbd969b9eb06a2f63f978ca4e5f220c02d66f1930871b9b48a2d412e12",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$.properties.availabilityRequirement"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "$ref": "#/$defs/ciaRequirementType"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00040",
+    "normalized_text": "availabilityRequirement\n$ref: #/$defs/ciaRequirementType",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00041",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 41,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "confidentialityRequirement\n$ref: #/$defs/ciaRequirementType",
+    "text_hash": "df8870750a644b8d174ed01bf3574731d253ebd755a94891628b9387a4ba2e0c",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$.properties.confidentialityRequirement"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "$ref": "#/$defs/ciaRequirementType"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00041",
+    "normalized_text": "confidentialityRequirement\n$ref: #/$defs/ciaRequirementType",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00042",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 42,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "exploitMaturity\n$ref: #/$defs/exploitMaturityType",
+    "text_hash": "f21673001ce40495dbd5ba6eaf09e877f8c11c6f4b5fda5141fe73247bee5eec",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$.properties.exploitMaturity"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "$ref": "#/$defs/exploitMaturityType"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00042",
+    "normalized_text": "exploitMaturity\n$ref: #/$defs/exploitMaturityType",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00043",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 43,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "integrityRequirement\n$ref: #/$defs/ciaRequirementType",
+    "text_hash": "d830359be38d6ee7dab8979f84b5b3b42efa0cb2797461f1f985a703b08cc422",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$.properties.integrityRequirement"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "$ref": "#/$defs/ciaRequirementType"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00043",
+    "normalized_text": "integrityRequirement\n$ref: #/$defs/ciaRequirementType",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00044",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 44,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "modifiedAttackComplexity\n$ref: #/$defs/modifiedAttackComplexityType",
+    "text_hash": "564f002c7e261b756ea7e1e9cf0a25b26243a8e4c66118b5682ee71c8ecce05c",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$.properties.modifiedAttackComplexity"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "$ref": "#/$defs/modifiedAttackComplexityType"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00044",
+    "normalized_text": "modifiedAttackComplexity\n$ref: #/$defs/modifiedAttackComplexityType",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00045",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 45,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "modifiedAttackRequirements\n$ref: #/$defs/modifiedAttackRequirementsType",
+    "text_hash": "720598733527634525c3957aef242ffe50b791599eab5468e41d322f7a1c90da",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$.properties.modifiedAttackRequirements"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "$ref": "#/$defs/modifiedAttackRequirementsType"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00045",
+    "normalized_text": "modifiedAttackRequirements\n$ref: #/$defs/modifiedAttackRequirementsType",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00046",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 46,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "modifiedAttackVector\n$ref: #/$defs/modifiedAttackVectorType",
+    "text_hash": "3d89414987b328b982ad4e7ac910dc18a2469f46edc3cb58b1ac5e9c9d4632f6",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$.properties.modifiedAttackVector"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "$ref": "#/$defs/modifiedAttackVectorType"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00046",
+    "normalized_text": "modifiedAttackVector\n$ref: #/$defs/modifiedAttackVectorType",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00047",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 47,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "modifiedPrivilegesRequired\n$ref: #/$defs/modifiedPrivilegesRequiredType",
+    "text_hash": "e1c6b4c0c0eb25d1b0d6eb401c7d08deab1de94f0c43d783f67a741180a90f0c",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$.properties.modifiedPrivilegesRequired"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "$ref": "#/$defs/modifiedPrivilegesRequiredType"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00047",
+    "normalized_text": "modifiedPrivilegesRequired\n$ref: #/$defs/modifiedPrivilegesRequiredType",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00048",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 48,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "modifiedSubAvailabilityImpact\n$ref: #/$defs/modifiedSubIaType",
+    "text_hash": "616da168e30ed19928fc54808abc5a72eca7cfd7f0a1cf5906da72a3c829d94a",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$.properties.modifiedSubAvailabilityImpact"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "$ref": "#/$defs/modifiedSubIaType"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00048",
+    "normalized_text": "modifiedSubAvailabilityImpact\n$ref: #/$defs/modifiedSubIaType",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00049",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 49,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "modifiedSubConfidentialityImpact\n$ref: #/$defs/modifiedSubCType",
+    "text_hash": "8903a10624a1fc5d503b1ddf0054e02e71dc5c731fd9805566b9154fa38d2c01",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$.properties.modifiedSubConfidentialityImpact"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "$ref": "#/$defs/modifiedSubCType"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00049",
+    "normalized_text": "modifiedSubConfidentialityImpact\n$ref: #/$defs/modifiedSubCType",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00050",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 50,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "modifiedSubIntegrityImpact\n$ref: #/$defs/modifiedSubIaType",
+    "text_hash": "774a150cf473cbb8912173532078185a780778a4f3c0584368d76b77d5e4db93",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$.properties.modifiedSubIntegrityImpact"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "$ref": "#/$defs/modifiedSubIaType"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00050",
+    "normalized_text": "modifiedSubIntegrityImpact\n$ref: #/$defs/modifiedSubIaType",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00051",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 51,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "modifiedUserInteraction\n$ref: #/$defs/modifiedUserInteractionType",
+    "text_hash": "24cff3bcf1702710baf47f8f871b1ba854f8343b3812bcf21b74b59ba7cb169c",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$.properties.modifiedUserInteraction"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "$ref": "#/$defs/modifiedUserInteractionType"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00051",
+    "normalized_text": "modifiedUserInteraction\n$ref: #/$defs/modifiedUserInteractionType",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00052",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 52,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "modifiedVulnAvailabilityImpact\n$ref: #/$defs/modifiedVulnCiaType",
+    "text_hash": "8bd638b8673fe39b8b174a46ba7be17a4887ccaa51749773186fbe4fccc3ad3c",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$.properties.modifiedVulnAvailabilityImpact"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "$ref": "#/$defs/modifiedVulnCiaType"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00052",
+    "normalized_text": "modifiedVulnAvailabilityImpact\n$ref: #/$defs/modifiedVulnCiaType",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00053",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 53,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "modifiedVulnConfidentialityImpact\n$ref: #/$defs/modifiedVulnCiaType",
+    "text_hash": "4ed702440fd21bc8ec3e99c050f5f3caccf9ced2fbac2ebdc31a3fe21ba81b3e",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$.properties.modifiedVulnConfidentialityImpact"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "$ref": "#/$defs/modifiedVulnCiaType"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00053",
+    "normalized_text": "modifiedVulnConfidentialityImpact\n$ref: #/$defs/modifiedVulnCiaType",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00054",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 54,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "modifiedVulnIntegrityImpact\n$ref: #/$defs/modifiedVulnCiaType",
+    "text_hash": "458ad9e68b92e8b42b6986ae1e1f0bfb00958bd32bd9564e35b42183c49419cf",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$.properties.modifiedVulnIntegrityImpact"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "$ref": "#/$defs/modifiedVulnCiaType"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00054",
+    "normalized_text": "modifiedVulnIntegrityImpact\n$ref: #/$defs/modifiedVulnCiaType",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00055",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 55,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "privilegesRequired\n$ref: #/$defs/privilegesRequiredType",
+    "text_hash": "390e4ce07163d9cba8ddee138111952df7549a790fc03778184ef6a72af27c3d",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$.properties.privilegesRequired"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "$ref": "#/$defs/privilegesRequiredType"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00055",
+    "normalized_text": "privilegesRequired\n$ref: #/$defs/privilegesRequiredType",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00056",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 56,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "providerUrgency\n$ref: #/$defs/providerUrgencyType",
+    "text_hash": "20fc7aeb3a48448e9d186ae165441ad0bb3876227ccde1fe0673aa8fbefa6725",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$.properties.providerUrgency"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "$ref": "#/$defs/providerUrgencyType"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00056",
+    "normalized_text": "providerUrgency\n$ref: #/$defs/providerUrgencyType",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00057",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 57,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "subAvailabilityImpact\n$ref: #/$defs/subCiaType",
+    "text_hash": "9d025670da57bf7b09e305217e4ca95ed8b0f419a9fc61784904751e90e5e4d7",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$.properties.subAvailabilityImpact"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "$ref": "#/$defs/subCiaType"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00057",
+    "normalized_text": "subAvailabilityImpact\n$ref: #/$defs/subCiaType",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00058",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 58,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "subConfidentialityImpact\n$ref: #/$defs/subCiaType",
+    "text_hash": "5f78bc094595d9f699d276f7e9a7b6ec75c808a38e8bd53efefa87454baeaeca",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$.properties.subConfidentialityImpact"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "$ref": "#/$defs/subCiaType"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00058",
+    "normalized_text": "subConfidentialityImpact\n$ref: #/$defs/subCiaType",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00059",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 59,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "subIntegrityImpact\n$ref: #/$defs/subCiaType",
+    "text_hash": "b4c1116e77a79bc5667e404bd49f4abd0d6569a03a4119b692bd504ec2f2e35e",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$.properties.subIntegrityImpact"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "$ref": "#/$defs/subCiaType"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00059",
+    "normalized_text": "subIntegrityImpact\n$ref: #/$defs/subCiaType",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00060",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 60,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "userInteraction\n$ref: #/$defs/userInteractionType",
+    "text_hash": "9cac70b588e3e8c72a947b45ce4f2d1ea9818970c3c013411214050201d4c299",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$.properties.userInteraction"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "$ref": "#/$defs/userInteractionType"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00060",
+    "normalized_text": "userInteraction\n$ref: #/$defs/userInteractionType",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00061",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 61,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "valueDensity\n$ref: #/$defs/valueDensityType",
+    "text_hash": "3df847df39c68f55c3ac813b8cad9bd49218b76b31561d0818e1245c44663b73",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$.properties.valueDensity"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "$ref": "#/$defs/valueDensityType"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00061",
+    "normalized_text": "valueDensity\n$ref: #/$defs/valueDensityType",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00062",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 62,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "vectorString\ntype: string\npattern: ^CVSS:4[.]0/AV:[NALP]/AC:[LH]/AT:[NP]/PR:[NLH]/UI:[NPA]/VC:[HLN]/VI:[HLN]/VA:[HLN]/SC:[HLN]/SI:[HLN]/SA:[HLN](/E:[XAPU])?(/CR:[XHML])?(/IR:[XHML])?(/AR:[XHML])?(/MAV:[XNALP])?(/MAC:[XLH])?(/MAT:[XNP])?(/MPR:[XNLH])?(/MUI:[XNPA])?(/MVC:[XNLH])?(/MVI:[XNLH])?(/MVA:[XNLH])?(/MSC:[XNLH])?(/MSI:[XNLHS])?(/MSA:[XNLHS])?(/S:[XNP])?(/AU:[XNY])?(/R:[XAUI])?(/V:[XDC])?(/RE:[XLMH])?(/U:(X|Clear|Green|Amber|Red))?$",
+    "text_hash": "591de3d5636d88a48feef22ff676fed8658f987e5b80668e93f8871a7023dbc2",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$.properties.vectorString"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "type": "string",
+      "pattern": "^CVSS:4[.]0/AV:[NALP]/AC:[LH]/AT:[NP]/PR:[NLH]/UI:[NPA]/VC:[HLN]/VI:[HLN]/VA:[HLN]/SC:[HLN]/SI:[HLN]/SA:[HLN](/E:[XAPU])?(/CR:[XHML])?(/IR:[XHML])?(/AR:[XHML])?(/MAV:[XNALP])?(/MAC:[XLH])?(/MAT:[XNP])?(/MPR:[XNLH])?(/MUI:[XNPA])?(/MVC:[XNLH])?(/MVI:[XNLH])?(/MVA:[XNLH])?(/MSC:[XNLH])?(/MSI:[XNLHS])?(/MSA:[XNLHS])?(/S:[XNP])?(/AU:[XNY])?(/R:[XAUI])?(/V:[XDC])?(/RE:[XLMH])?(/U:(X|Clear|Green|Amber|Red))?$"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00062",
+    "normalized_text": "vectorString\ntype: string\npattern: ^CVSS:4[.]0/AV:[NALP]/AC:[LH]/AT:[NP]/PR:[NLH]/UI:[NPA]/VC:[HLN]/VI:[HLN]/VA:[HLN]/SC:[HLN]/SI:[HLN]/SA:[HLN](/E:[XAPU])?(/CR:[XHML])?(/IR:[XHML])?(/AR:[XHML])?(/MAV:[XNALP])?(/MAC:[XLH])?(/MAT:[XNP])?(/MPR:[XNLH])?(/MUI:[XNPA])?(/MVC:[XNLH])?(/MVI:[XNLH])?(/MVA:[XNLH])?(/MSC:[XNLH])?(/MSI:[XNLHS])?(/MSA:[XNLHS])?(/S:[XNP])?(/AU:[XNY])?(/R:[XAUI])?(/V:[XDC])?(/RE:[XLMH])?(/U:(X|Clear|Green|Amber|Red))?$",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00063",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 63,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "version\ndescription: CVSS Version\ntype: string\nenum: 4.0",
+    "text_hash": "2748ae78a71d3c35f26fe51cde3cc72e0e7695bd18936be9344d16e6d35b11ed",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$.properties.version"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "description": "CVSS Version",
+      "type": "string",
+      "enum": [
+        "4.0"
+      ]
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00063",
+    "normalized_text": "version\ndescription: CVSS Version\ntype: string\nenum: 4.0",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00064",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 64,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "vulnAvailabilityImpact\n$ref: #/$defs/vulnCiaType",
+    "text_hash": "74f53c20ce31a5cc4b2afedb070207f7bf90467590e537d33325e7029b60538b",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$.properties.vulnAvailabilityImpact"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "$ref": "#/$defs/vulnCiaType"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00064",
+    "normalized_text": "vulnAvailabilityImpact\n$ref: #/$defs/vulnCiaType",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00065",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 65,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "vulnConfidentialityImpact\n$ref: #/$defs/vulnCiaType",
+    "text_hash": "a1b6dda789eb107e61f47e1ad7fee730b7b994219a833ccd04f2b4d8d215e011",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$.properties.vulnConfidentialityImpact"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "$ref": "#/$defs/vulnCiaType"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00065",
+    "normalized_text": "vulnConfidentialityImpact\n$ref: #/$defs/vulnCiaType",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00066",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 66,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "vulnIntegrityImpact\n$ref: #/$defs/vulnCiaType",
+    "text_hash": "10ae57d7565616c8f7a5d1af1a01980f6798221bd1656c3e08ff36aec777f8e7",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$.properties.vulnIntegrityImpact"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "$ref": "#/$defs/vulnCiaType"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00066",
+    "normalized_text": "vulnIntegrityImpact\n$ref: #/$defs/vulnCiaType",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00067",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 67,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "vulnerabilityResponseEffort\n$ref: #/$defs/vulnerabilityResponseEffortType",
+    "text_hash": "9374f26f5c85d7b9f47696e7764da7493d11b1eac646644f7adcbe6d8de08d75",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$.properties.vulnerabilityResponseEffort"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "$ref": "#/$defs/vulnerabilityResponseEffortType"
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00067",
+    "normalized_text": "vulnerabilityResponseEffort\n$ref: #/$defs/vulnerabilityResponseEffortType",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_04040e0917f5_b00068",
+    "document_id": "doc_first_cvss",
+    "version_id": "ver_04040e0917f5",
+    "block_idx": 68,
+    "file_format": "JSON",
+    "block_type": "record",
+    "text_content": "allOf[0]\nanyOf[0].properties.baseScore.$ref: #/$defs/noneScoreType\nanyOf[0].properties.baseSeverity.$ref: #/$defs/noneSeverityType\nanyOf[1].properties.baseScore.$ref: #/$defs/lowScoreType\nanyOf[1].properties.baseSeverity.$ref: #/$defs/lowSeverityType\nanyOf[2].properties.baseScore.$ref: #/$defs/mediumScoreType\nanyOf[2].properties.baseSeverity.$ref: #/$defs/mediumSeverityType\nanyOf[3].properties.baseScore.$ref: #/$defs/highScoreType\nanyOf[3].properties.baseSeverity.$ref: #/$defs/highSeverityType\nanyOf[4].properties.baseScore.$ref: #/$defs/criticalScoreType\nanyOf[4].properties.baseSeverity.$ref: #/$defs/criticalSeverityType",
+    "text_hash": "0b1bcb3e8e06c35c2115fb148245380683c6b304d2807129939cc4d57341db22",
+    "parser_name": "python-json",
+    "parser_version": "3.12.9",
+    "locator": {
+      "json_path": "$.allOf[0]"
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": {
+      "anyOf": [
+        {
+          "properties": {
+            "baseScore": {
+              "$ref": "#/$defs/noneScoreType"
+            },
+            "baseSeverity": {
+              "$ref": "#/$defs/noneSeverityType"
+            }
+          }
+        },
+        {
+          "properties": {
+            "baseScore": {
+              "$ref": "#/$defs/lowScoreType"
+            },
+            "baseSeverity": {
+              "$ref": "#/$defs/lowSeverityType"
+            }
+          }
+        },
+        {
+          "properties": {
+            "baseScore": {
+              "$ref": "#/$defs/mediumScoreType"
+            },
+            "baseSeverity": {
+              "$ref": "#/$defs/mediumSeverityType"
+            }
+          }
+        },
+        {
+          "properties": {
+            "baseScore": {
+              "$ref": "#/$defs/highScoreType"
+            },
+            "baseSeverity": {
+              "$ref": "#/$defs/highSeverityType"
+            }
+          }
+        },
+        {
+          "properties": {
+            "baseScore": {
+              "$ref": "#/$defs/criticalScoreType"
+            },
+            "baseSeverity": {
+              "$ref": "#/$defs/criticalSeverityType"
+            }
+          }
+        }
+      ]
+    },
+    "normalized_id": "nrm_ver_04040e0917f5_b00068",
+    "normalized_text": "allOf[0]\nanyOf[0].properties.baseScore.$ref: #/$defs/noneScoreType\nanyOf[0].properties.baseSeverity.$ref: #/$defs/noneSeverityType\nanyOf[1].properties.baseScore.$ref: #/$defs/lowScoreType\nanyOf[1].properties.baseSeverity.$ref: #/$defs/lowSeverityType\nanyOf[2].properties.baseScore.$ref: #/$defs/mediumScoreType\nanyOf[2].properties.baseSeverity.$ref: #/$defs/mediumSeverityType\nanyOf[3].properties.baseScore.$ref: #/$defs/highScoreType\nanyOf[3].properties.baseSeverity.$ref: #/$defs/highSeverityType\nanyOf[4].properties.baseScore.$ref: #/$defs/criticalScoreType\nanyOf[4].properties.baseSeverity.$ref: #/$defs/criticalSeverityType",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  }
+]
