@@ -224,3 +224,6 @@ __marimo__/
 *.db-journal
 *.db-wal
 *.db-shm
+
+*.sqlite3
+**/chroma_security_db/
