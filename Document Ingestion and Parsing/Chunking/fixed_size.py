@@ -5,7 +5,7 @@ class FixedSizeChunker(ChunkingStrategy):
     """Fixed-size baseline chunking with character-offset provenance"""
     name = "fixed_size"
 
-    def __init__(self, max_tokens: int = 350, overlap_tokens: int = 50, token_counter=None):
+    def __init__(self, max_tokens=450, overlap_tokens=50, token_counter=None):
         if max_tokens < 1 or overlap_tokens < 0 or overlap_tokens >= max_tokens:
             raise ValueError("Require max_tokens >= 1 and 0 <= overlap_tokens < max_tokens")
         from token_counter import ApproximateTokenCounter
@@ -22,7 +22,7 @@ class FixedSizeChunker(ChunkingStrategy):
             if idx:
                 stream_parts.append("\n\n")
                 cursor += 2
-            text = block["normalized_content"]
+            text = block["normalized_text"]
             start = cursor
             stream_parts.append(text)
             cursor += len(text)

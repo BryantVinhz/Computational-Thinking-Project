@@ -1,0 +1,480 @@
+{
+  "document_id": "doc_owasp_top10_a05_injection",
+  "version_id": "ver_d617676bd8d0",
+  "chunking_strategy": "fixed_size",
+  "chunks": [
+    {
+      "chunk_id": "ver_d617676bd8d0_c00000",
+      "document_id": "doc_owasp_top10_a05_injection",
+      "version_id": "ver_d617676bd8d0",
+      "chunk_idx": 0,
+      "chunk_type": "text",
+      "text_content": "# A05:2025 Injection ![icon](../assets/TOP_10_Icons_Final_Injection.png){: style=\"height:80px;width:80px\" align=\"right\"}\n\n## Background.\n\nInjection falls two spots from #3 to #5 in the ranking, maintaining its position relative to A04:2025-Cryptographic Failures and A06:2025-Insecure Design. Injection is one of the most tested categories with 100% of applications tested for some form of injection. It had the greatest number of CVEs for any category, with 37 CWEs in this category. Injection includes Cross-site Scripting (high frequency/low impact) with more than 30k CVEs and SQL Injection (low frequency/high impact) with more than 14k CVEs. The massive number of reported CVEs for CWE-79 Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') brings down the average weighted impact of this category.\n\n## Score table.\n\n<table>\n  <tr>\n   <td>CWEs Mapped\n   </td>\n   <td>Max Incidence Rate\n   </td>\n   <td>Avg Incidence Rate\n   </td>\n   <td>Max Coverage\n   </td>\n   <td>Avg Coverage\n   </td>\n   <td>Avg Weighted Exploit\n   </td>\n   <td>Avg Weighted Impact\n   </td>\n   <td>Total Occurrences\n   </td>\n   <td>Total CVEs\n   </td>\n  </tr>\n  <tr>\n   <td>37\n   </td>\n   <td>13.77%\n   </td>\n   <td>3.08%\n   </td>\n   <td>100.00%\n   </td>\n   <td>42.93%\n   </td>\n   <td>7.15\n   </td>\n   <td>4.32\n   </td>\n   <td>1,404,249\n   </td>\n   <td>62,445\n   </td>\n  </tr>\n</table>\n\n## Description.\n\nAn injection vulnerability is an application flaw that allows untrusted user input to be sent to an interpreter (e.g. a browser, database, the command line) and causes the interpreter to execute parts of that input as commands.\n\nAn application is vulnerable to attack when:\n\n* User-supplied data",
+      "token_count": 450,
+      "chunk_strategy": "fixed_size",
+      "heading_path": [
+        "A05:2025 Injection"
+      ]
+    },
+    {
+      "chunk_id": "ver_d617676bd8d0_c00001",
+      "document_id": "doc_owasp_top10_a05_injection",
+      "version_id": "ver_d617676bd8d0",
+      "chunk_idx": 1,
+      "chunk_type": "text",
+      "text_content": "allows untrusted user input to be sent to an interpreter (e.g. a browser, database, the command line) and causes the interpreter to execute parts of that input as commands.\n\nAn application is vulnerable to attack when:\n\n* User-supplied data is not validated, filtered, or sanitized by the application.\n* Dynamic queries or non-parameterized calls without context-aware escaping are used directly in the interpreter.\n* Unsanitized data is used within object-relational mapping (ORM) search parameters to extract additional, sensitive records.\n* Potentially hostile data is directly used or concatenated. The SQL or command contains the structure and malicious data in dynamic queries, commands, or stored procedures.\n\nSome of the more common injections are SQL, NoSQL, OS command, Object Relational Mapping (ORM), LDAP, and Expression Language (EL) or Object Graph Navigation Library (OGNL) injection. The concept is identical among all interpreters. Detection is best achieved by a combination of source code review along with automated testing (including fuzzing) of all parameters, headers, URL, cookies, JSON, SOAP, and XML data inputs. The addition of static (SAST), dynamic (DAST), and interactive (IAST) application security testing tools into the CI/CD pipeline can also be helpful to identify injection flaws before production deployment.\n\nA related class of injection vulnerabilities has become common in LLMs. These are discussed separately in the [OWASP LLM Top 10](https://genai.owasp.org/llm-top-10/), specifically [LLM01:2025 Prompt Injection](https://genai.owasp.org/llmrisk/llm01-prompt-injection/).\n\n## How to prevent.\n\nThe best means to prevent injection requires keeping data separate from commands and queries:\n\n* The preferred option is to use a safe API, which avoids using the interpreter entirely, provides a parameterized interface, or migrates to Object Relational Mapping Tools (ORMs).\n**Note:** Even when parameterized, stored procedures can still introduce SQL injection if PL/SQL or T-SQL concatenates queries and data or executes hostile data with EXECUTE IMMEDIATE or exec().\n\nWhen it is not possible to separate the data from commands, you can reduce threats using the following techniques.\n\n* Use",
+      "token_count": 450,
+      "chunk_strategy": "fixed_size",
+      "heading_path": [
+        "A05:2025 Injection",
+        "Description."
+      ]
+    },
+    {
+      "chunk_id": "ver_d617676bd8d0_c00002",
+      "document_id": "doc_owasp_top10_a05_injection",
+      "version_id": "ver_d617676bd8d0",
+      "chunk_idx": 2,
+      "chunk_type": "text",
+      "text_content": "introduce SQL injection if PL/SQL or T-SQL concatenates queries and data or executes hostile data with EXECUTE IMMEDIATE or exec().\n\nWhen it is not possible to separate the data from commands, you can reduce threats using the following techniques.\n\n* Use positive server-side input validation. This is not a complete defense as many applications require special characters, such as text areas or APIs for mobile applications.\n* For any residual dynamic queries, escape special characters using the specific escape syntax for that interpreter.\n**Note:** SQL structures such as table names, column names, and so on cannot be escaped, and thus user-supplied structure names are dangerous. This is a common issue in report-writing software.\n\n**Warning** these techniques involve parsing and escaping complex strings, making them error-prone and not robust in the face of minor changes to the underlying system.\n\n## Example attack scenarios.\n\n**Scenario #1:** An application uses untrusted data in the construction of the following vulnerable SQL call:\n\n```\nString query = \"SELECT * FROM accounts WHERE custID='\" + request.getParameter(\"id\") + \"'\";\n```\n\nAn attacker modifies the 'id' parameter value in their browser to send: `' OR '1'='1`. For example:\n\n```\nhttp://example.com/app/accountView?id=' OR '1'='1\n```\n\nThis changes the meaning of the query to return all records from the accounts table. More dangerous attacks could modify or delete data or even invoke stored procedures.\n\n**Scenario #2:** An application's blind trust in frameworks may result in queries that are still vulnerable. For example, Hibernate Query Language (HQL):\n\n```\nQuery HQLQuery = session.createQuery(\"FROM accounts WHERE custID='\" + request.getParameter(\"id\") + \"'\");\n```\n\nAn attacker supplies: `' OR custID IS NOT NULL OR custID='`. This bypasses the filter and returns all accounts. While HQL has fewer dangerous functions than raw SQL, it still allows unauthorized data access when user input is concatenated into queries.\n\n**Scenario",
+      "token_count": 449,
+      "chunk_strategy": "fixed_size",
+      "heading_path": [
+        "A05:2025 Injection",
+        "How to prevent."
+      ]
+    },
+    {
+      "chunk_id": "ver_d617676bd8d0_c00003",
+      "document_id": "doc_owasp_top10_a05_injection",
+      "version_id": "ver_d617676bd8d0",
+      "chunk_idx": 3,
+      "chunk_type": "text",
+      "text_content": "`' OR custID IS NOT NULL OR custID='`. This bypasses the filter and returns all accounts. While HQL has fewer dangerous functions than raw SQL, it still allows unauthorized data access when user input is concatenated into queries.\n\n**Scenario #3:** An application passes user input directly to an OS command:\n\n```\nString cmd = \"nslookup \" + request.getParameter(\"domain\");\nRuntime.getRuntime().exec(cmd);\n```\n\nAn attacker supplies `example.com; cat /etc/passwd` to execute arbitrary commands on the server.\n\n## References.\n\n* [OWASP Proactive Controls: Secure Database Access](https://owasp.org/www-project-proactive-controls/v3/en/c3-secure-database)\n* [OWASP ASVS: V5 Input Validation and Encoding](https://owasp.org/www-project-application-security-verification-standard)\n* [OWASP Testing Guide: SQL Injection,](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/05-Testing_for_SQL_Injection) [Command Injection](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/12-Testing_for_Command_Injection), and [ORM Injection](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/05.7-Testing_for_ORM_Injection)\n* [OWASP Cheat Sheet: Injection Prevention](https://cheatsheetseries.owasp.org/cheatsheets/Injection_Prevention_Cheat_Sheet.html)\n* [OWASP Cheat Sheet: SQL Injection Prevention](https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html)\n* [OWASP Cheat Sheet: Injection Prevention in Java](https://cheatsheetseries.owasp.org/cheatsheets/Injection_Prevention_Cheat_Sheet_in_Java.html)\n* [OWASP Cheat Sheet: Query Parameterization](https://cheatsheetseries.owasp.org/cheatsheets/Query_Parameterization_Cheat_Sheet.html)\n* [OWASP Automated Threats to Web Applications –",
+      "token_count": 436,
+      "chunk_strategy": "fixed_size",
+      "heading_path": [
+        "A05:2025 Injection",
+        "Example attack scenarios."
+      ]
+    },
+    {
+      "chunk_id": "ver_d617676bd8d0_c00004",
+      "document_id": "doc_owasp_top10_a05_injection",
+      "version_id": "ver_d617676bd8d0",
+      "chunk_idx": 4,
+      "chunk_type": "text",
+      "text_content": "[OWASP Cheat Sheet: Query Parameterization](https://cheatsheetseries.owasp.org/cheatsheets/Query_Parameterization_Cheat_Sheet.html)\n* [OWASP Automated Threats to Web Applications – OAT-014](https://owasp.org/www-project-automated-threats-to-web-applications/)\n* [PortSwigger: Server-side template injection](https://portswigger.net/kb/issues/00101080_serversidetemplateinjection)\n* [Awesome Fuzzing: a list of fuzzing resources](https://github.com/secfigo/Awesome-Fuzzing)\n\n## List of Mapped CWEs\n\n* [CWE-20 Improper Input Validation](https://cwe.mitre.org/data/definitions/20.html)\n\n* [CWE-74 Improper Neutralization of Special Elements in Output Used by a Downstream Component ('Injection')](https://cwe.mitre.org/data/definitions/74.html)\n\n* [CWE-76 Improper Neutralization of Equivalent Special Elements](https://cwe.mitre.org/data/definitions/76.html)\n\n* [CWE-77 Improper Neutralization of Special Elements used in a Command ('Command Injection')](https://cwe.mitre.org/data/definitions/77.html)\n\n* [CWE-78 Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')](https://cwe.mitre.org/data/definitions/78.html)\n\n* [CWE-79 Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')](https://cwe.mitre.org/data/definitions/79.html)\n\n* [CWE-80 Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS)](https://cwe.mitre.org/data/definitions/80.html)\n\n* [CWE-83 Improper Neutralization of Script in Attributes in a Web Page](https://cwe.mitre.org/data/definitions/83.html)\n\n* [CWE-86 Improper Neutralization of Invalid Characters in Identifiers in Web",
+      "token_count": 433,
+      "chunk_strategy": "fixed_size",
+      "heading_path": [
+        "A05:2025 Injection",
+        "References."
+      ]
+    },
+    {
+      "chunk_id": "ver_d617676bd8d0_c00005",
+      "document_id": "doc_owasp_top10_a05_injection",
+      "version_id": "ver_d617676bd8d0",
+      "chunk_idx": 5,
+      "chunk_type": "text",
+      "text_content": "[CWE-86 Improper Neutralization of Invalid Characters in Identifiers in Web Pages](https://cwe.mitre.org/data/definitions/86.html)\n\n* [CWE-88 Improper Neutralization of Argument Delimiters in a Command ('Argument Injection')](https://cwe.mitre.org/data/definitions/88.html)\n\n* [CWE-89 Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')](https://cwe.mitre.org/data/definitions/89.html)\n\n* [CWE-90 Improper Neutralization of Special Elements used in an LDAP Query ('LDAP Injection')](https://cwe.mitre.org/data/definitions/90.html)\n\n* [CWE-91 XML Injection (aka Blind XPath Injection)](https://cwe.mitre.org/data/definitions/91.html)\n\n* [CWE-93 Improper Neutralization of CRLF Sequences ('CRLF Injection')](https://cwe.mitre.org/data/definitions/93.html)\n\n* [CWE-94 Improper Control of Generation of Code ('Code Injection')](https://cwe.mitre.org/data/definitions/94.html)\n\n* [CWE-95 Improper Neutralization of Directives in Dynamically Evaluated Code ('Eval Injection')](https://cwe.mitre.org/data/definitions/95.html)\n\n* [CWE-96 Improper Neutralization of Directives in Statically Saved Code ('Static Code Injection')](https://cwe.mitre.org/data/definitions/96.html)\n\n* [CWE-97 Improper Neutralization of Server-Side Includes (SSI) Within a Web Page](https://cwe.mitre.org/data/definitions/97.html)\n\n* [CWE-98 Improper Control of Filename for Include/Require Statement in PHP Program ('PHP Remote File Inclusion')](https://cwe.mitre.org/data/definitions/98.html)\n\n* [CWE-99 Improper Control of Resource Identifiers ('Resource",
+      "token_count": 437,
+      "chunk_strategy": "fixed_size",
+      "heading_path": [
+        "A05:2025 Injection",
+        "List of Mapped CWEs"
+      ]
+    },
+    {
+      "chunk_id": "ver_d617676bd8d0_c00006",
+      "document_id": "doc_owasp_top10_a05_injection",
+      "version_id": "ver_d617676bd8d0",
+      "chunk_idx": 6,
+      "chunk_type": "text",
+      "text_content": "File Inclusion')](https://cwe.mitre.org/data/definitions/98.html)\n\n* [CWE-99 Improper Control of Resource Identifiers ('Resource Injection')](https://cwe.mitre.org/data/definitions/99.html)\n\n* [CWE-103 Struts: Incomplete validate() Method Definition](https://cwe.mitre.org/data/definitions/103.html)\n\n* [CWE-104 Struts: Form Bean Does Not Extend Validation Class](https://cwe.mitre.org/data/definitions/104.html)\n\n* [CWE-112 Missing XML Validation](https://cwe.mitre.org/data/definitions/112.html)\n\n* [CWE-113 Improper Neutralization of CRLF Sequences in HTTP Headers ('HTTP Response Splitting')](https://cwe.mitre.org/data/definitions/113.html)\n\n* [CWE-114 Process Control](https://cwe.mitre.org/data/definitions/114.html)\n\n* [CWE-115 Misinterpretation of Output](https://cwe.mitre.org/data/definitions/115.html)\n\n* [CWE-116 Improper Encoding or Escaping of Output](https://cwe.mitre.org/data/definitions/116.html)\n\n* [CWE-129 Improper Validation of Array Index](https://cwe.mitre.org/data/definitions/129.html)\n\n* [CWE-159 Improper Handling of Invalid Use of Special Elements](https://cwe.mitre.org/data/definitions/159.html)\n\n* [CWE-470 Use of Externally-Controlled Input to Select Classes or Code ('Unsafe Reflection')](https://cwe.mitre.org/data/definitions/470.html)\n\n* [CWE-493 Critical Public Variable Without Final Modifier](https://cwe.mitre.org/data/definitions/493.html)\n\n* [CWE-500 Public Static Field Not Marked Final](https://cwe.mitre.org/data/definitions/500.html)\n\n*",
+      "token_count": 449,
+      "chunk_strategy": "fixed_size",
+      "heading_path": [
+        "A05:2025 Injection",
+        "List of Mapped CWEs"
+      ]
+    },
+    {
+      "chunk_id": "ver_d617676bd8d0_c00007",
+      "document_id": "doc_owasp_top10_a05_injection",
+      "version_id": "ver_d617676bd8d0",
+      "chunk_idx": 7,
+      "chunk_type": "text",
+      "text_content": "[CWE-500 Public Static Field Not Marked Final](https://cwe.mitre.org/data/definitions/500.html)\n\n* [CWE-564 SQL Injection: Hibernate](https://cwe.mitre.org/data/definitions/564.html)\n\n* [CWE-610 Externally Controlled Reference to a Resource in Another Sphere](https://cwe.mitre.org/data/definitions/610.html)\n\n* [CWE-643 Improper Neutralization of Data within XPath Expressions ('XPath Injection')](https://cwe.mitre.org/data/definitions/643.html)\n\n* [CWE-644 Improper Neutralization of HTTP Headers for Scripting Syntax](https://cwe.mitre.org/data/definitions/644.html)\n\n* [CWE-917 Improper Neutralization of Special Elements used in an Expression Language Statement ('Expression Language",
+      "token_count": 184,
+      "chunk_strategy": "fixed_size",
+      "heading_path": [
+        "A05:2025 Injection",
+        "List of Mapped CWEs"
+      ]
+    }
+  ],
+  "chunk_sources": [
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00000_s000",
+      "chunk_id": "ver_d617676bd8d0_c00000",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00000",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 120
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00000_s001",
+      "chunk_id": "ver_d617676bd8d0_c00000",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00001",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 14
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00000_s002",
+      "chunk_id": "ver_d617676bd8d0_c00000",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00002",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 699
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00000_s003",
+      "chunk_id": "ver_d617676bd8d0_c00000",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00003",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 15
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00000_s004",
+      "chunk_id": "ver_d617676bd8d0_c00000",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00004",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 538
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00000_s005",
+      "chunk_id": "ver_d617676bd8d0_c00000",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00005",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 15
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00000_s006",
+      "chunk_id": "ver_d617676bd8d0_c00000",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00006",
+      "source_order": 6,
+      "start_offset": 0,
+      "end_offset": 227
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00000_s007",
+      "chunk_id": "ver_d617676bd8d0_c00000",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00007",
+      "source_order": 7,
+      "start_offset": 0,
+      "end_offset": 44
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00000_s008",
+      "chunk_id": "ver_d617676bd8d0_c00000",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00008",
+      "source_order": 8,
+      "start_offset": 0,
+      "end_offset": 20
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00001_s000",
+      "chunk_id": "ver_d617676bd8d0_c00001",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00006",
+      "source_order": 0,
+      "start_offset": 55,
+      "end_offset": 227
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00001_s001",
+      "chunk_id": "ver_d617676bd8d0_c00001",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00007",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 44
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00001_s002",
+      "chunk_id": "ver_d617676bd8d0_c00001",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00008",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 495
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00001_s003",
+      "chunk_id": "ver_d617676bd8d0_c00001",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00009",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 629
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00001_s004",
+      "chunk_id": "ver_d617676bd8d0_c00001",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00010",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 267
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00001_s005",
+      "chunk_id": "ver_d617676bd8d0_c00001",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00011",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 18
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00001_s006",
+      "chunk_id": "ver_d617676bd8d0_c00001",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00012",
+      "source_order": 6,
+      "start_offset": 0,
+      "end_offset": 93
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00001_s007",
+      "chunk_id": "ver_d617676bd8d0_c00001",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00013",
+      "source_order": 7,
+      "start_offset": 0,
+      "end_offset": 375
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00001_s008",
+      "chunk_id": "ver_d617676bd8d0_c00001",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00014",
+      "source_order": 8,
+      "start_offset": 0,
+      "end_offset": 114
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00001_s009",
+      "chunk_id": "ver_d617676bd8d0_c00001",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00015",
+      "source_order": 9,
+      "start_offset": 0,
+      "end_offset": 5
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00002_s000",
+      "chunk_id": "ver_d617676bd8d0_c00002",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00013",
+      "source_order": 0,
+      "start_offset": 244,
+      "end_offset": 375
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00002_s001",
+      "chunk_id": "ver_d617676bd8d0_c00002",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00014",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 114
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00002_s002",
+      "chunk_id": "ver_d617676bd8d0_c00002",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00015",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 487
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00002_s003",
+      "chunk_id": "ver_d617676bd8d0_c00002",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00016",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 168
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00002_s004",
+      "chunk_id": "ver_d617676bd8d0_c00002",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00017",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 28
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00002_s005",
+      "chunk_id": "ver_d617676bd8d0_c00002",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00018",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 109
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00002_s006",
+      "chunk_id": "ver_d617676bd8d0_c00002",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00019",
+      "source_order": 6,
+      "start_offset": 0,
+      "end_offset": 98
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00002_s007",
+      "chunk_id": "ver_d617676bd8d0_c00002",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00020",
+      "source_order": 7,
+      "start_offset": 0,
+      "end_offset": 99
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00002_s008",
+      "chunk_id": "ver_d617676bd8d0_c00002",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00021",
+      "source_order": 8,
+      "start_offset": 0,
+      "end_offset": 57
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00002_s009",
+      "chunk_id": "ver_d617676bd8d0_c00002",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00022",
+      "source_order": 9,
+      "start_offset": 0,
+      "end_offset": 169
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00002_s010",
+      "chunk_id": "ver_d617676bd8d0_c00002",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00023",
+      "source_order": 10,
+      "start_offset": 0,
+      "end_offset": 153
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00002_s011",
+      "chunk_id": "ver_d617676bd8d0_c00002",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00024",
+      "source_order": 11,
+      "start_offset": 0,
+      "end_offset": 112
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00002_s012",
+      "chunk_id": "ver_d617676bd8d0_c00002",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00025",
+      "source_order": 12,
+      "start_offset": 0,
+      "end_offset": 252
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00002_s013",
+      "chunk_id": "ver_d617676bd8d0_c00002",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00026",
+      "source_order": 13,
+      "start_offset": 0,
+      "end_offset": 10
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00003_s000",
+      "chunk_id": "ver_d617676bd8d0_c00003",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00025",
+      "source_order": 0,
+      "start_offset": 22,
+      "end_offset": 252
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00003_s001",
+      "chunk_id": "ver_d617676bd8d0_c00003",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00026",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 76
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00003_s002",
+      "chunk_id": "ver_d617676bd8d0_c00003",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00027",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 98
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00003_s003",
+      "chunk_id": "ver_d617676bd8d0_c00003",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00028",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 96
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00003_s004",
+      "chunk_id": "ver_d617676bd8d0_c00003",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00029",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 14
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00003_s005",
+      "chunk_id": "ver_d617676bd8d0_c00003",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00030",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 1405
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00004_s000",
+      "chunk_id": "ver_d617676bd8d0_c00004",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00030",
+      "source_order": 0,
+      "start_offset": 1225,
+      "end_offset": 1697
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00004_s001",
+      "chunk_id": "ver_d617676bd8d0_c00004",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00031",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 22
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00004_s002",
+      "chunk_id": "ver_d617676bd8d0_c00004",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00032",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 1137
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00005_s000",
+      "chunk_id": "ver_d617676bd8d0_c00005",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00032",
+      "source_order": 0,
+      "start_offset": 1062,
+      "end_offset": 2621
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00006_s000",
+      "chunk_id": "ver_d617676bd8d0_c00006",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00032",
+      "source_order": 0,
+      "start_offset": 2493,
+      "end_offset": 3977
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00007_s000",
+      "chunk_id": "ver_d617676bd8d0_c00007",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00032",
+      "source_order": 0,
+      "start_offset": 3879,
+      "end_offset": 4568
+    }
+  ]
+}
