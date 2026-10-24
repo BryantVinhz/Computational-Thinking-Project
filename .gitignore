@@ -51,7 +51,6 @@ coverage.xml
 .hypothesis/
 .pytest_cache/
 cover/
-long_nguyen/
 
 # Translations
 *.mo
