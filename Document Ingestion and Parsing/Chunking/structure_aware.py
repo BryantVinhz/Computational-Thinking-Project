@@ -6,7 +6,7 @@ class StructureAwareChunker(ChunkingStrategy):
     """Structure-aware chunking: respect headings and sentences"""
     name = "structure_aware"
 
-    def __init__(self, max_tokens: int = 350, token_counter=None):
+    def __init__(self, max_tokens=450, token_counter=None):
         if max_tokens < 1:
             raise ValueError("max_tokens must be positive")
         self.max_tokens = max_tokens
@@ -25,12 +25,12 @@ class StructureAwareChunker(ChunkingStrategy):
                 types = {p.block.get("block_type", "paragraph") for p in current}
                 drafts.append(ChunkDraft(text=text, pieces=current.copy(),
                     chunk_type=next(iter(types)) if len(types) == 1 else "mixed",
-                    structural_context=current_context.copy()))
+                    heading_path=current_context.copy()))
             current, current_tokens, current_context = [], 0, []
 
         
         for block in blocks:
-            text = block["text_content"]
+            text = block.get("normalized_text")
             btype = block.get("block_type", "paragraph")
             context = list(block.get("heading_path") or [])
             # Immediately flush the previous chunk upon encountering a heading and create a separate chunk for it.
@@ -38,9 +38,9 @@ class StructureAwareChunker(ChunkingStrategy):
                 flush()
                 if self.counter.count(text) > self.max_tokens:
                     for piece_text, a, b in split_oversize_text(text, max(1, self.max_tokens * 4)):
-                        drafts.append(ChunkDraft(piece_text, [TextPiece(piece_text, block, a, b)], "heading", structural_context=context))
+                        drafts.append(ChunkDraft(piece_text, [TextPiece(piece_text, block, a, b)], "heading", heading_path=context))
                 else:
-                    drafts.append(ChunkDraft(text, [TextPiece(text, block, 0, len(text))], "heading", structural_context=context))
+                    drafts.append(ChunkDraft(text, [TextPiece(text, block, 0, len(text))], "heading", heading_path=context))
                 continue
             
             # Specially handle non-prose text structures

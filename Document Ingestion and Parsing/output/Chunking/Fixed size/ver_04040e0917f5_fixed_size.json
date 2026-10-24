@@ -1,0 +1,693 @@
+{
+  "document_id": "doc_first_cvss",
+  "version_id": "ver_04040e0917f5",
+  "chunking_strategy": "fixed_size",
+  "chunks": [
+    {
+      "chunk_id": "ver_04040e0917f5_c00000",
+      "document_id": "doc_first_cvss",
+      "version_id": "ver_04040e0917f5",
+      "chunk_idx": 0,
+      "chunk_type": "text",
+      "text_content": "license: Copyright (c) 2025, FIRST.ORG, INC., All rights reserved., , Redistribution and use in source and binary forms, with or without modification, are permitted provided that the , following conditions are met:, 1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following , disclaimer., 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the , following disclaimer in the documentation and/or other materials provided with the distribution., 3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote , products derived from this software without specific prior written permission., , THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 'AS IS' AND ANY EXPRESS OR IMPLIED WARRANTIES, , INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE , DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, , SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR , SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, , WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE , OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n$schema: https://www.first.org/cvss/meta.json\n$id: https://www.first.org/cvss/cvss-v4.0.json?20260226\ntitle: JSON Schema for Common Vulnerability Scoring System version 4.0, Revision 2\ntype: object\nrequired: version, vectorString, baseScore, baseSeverity\nunevaluatedProperties: false\n\nattackComplexityType\ntype: string\nenum: HIGH, LOW\n\nattackRequirementsType\ntype: string\nenum: NONE, PRESENT\n\nattackVectorType\ntype: string\nenum: NETWORK, ADJACENT, LOCAL, PHYSICAL\n\nautomatableType\ntype: string\nenum: NO, YES, NOT_DEFINED\ndefault: NOT_DEFINED\n\nciaRequirementType\ntype: string\nenum: LOW, MEDIUM, HIGH, NOT_DEFINED\ndefault: NOT_DEFINED\n\ncriticalScoreType\ntype: number\nmaximum: 10\nminimum: 9\nmultipleOf: 0.1\n\ncriticalSeverityType\nconst: CRITICAL\n\nexploitMaturityType\ntype: string\nenum:",
+      "token_count": 450,
+      "chunk_strategy": "fixed_size",
+      "heading_path": []
+    },
+    {
+      "chunk_id": "ver_04040e0917f5_c00001",
+      "document_id": "doc_first_cvss",
+      "version_id": "ver_04040e0917f5",
+      "chunk_idx": 1,
+      "chunk_type": "text",
+      "text_content": "NO, YES, NOT_DEFINED\ndefault: NOT_DEFINED\n\nciaRequirementType\ntype: string\nenum: LOW, MEDIUM, HIGH, NOT_DEFINED\ndefault: NOT_DEFINED\n\ncriticalScoreType\ntype: number\nmaximum: 10\nminimum: 9\nmultipleOf: 0.1\n\ncriticalSeverityType\nconst: CRITICAL\n\nexploitMaturityType\ntype: string\nenum: UNREPORTED, PROOF_OF_CONCEPT, ATTACKED, NOT_DEFINED\ndefault: NOT_DEFINED\n\nhighScoreType\ntype: number\nmaximum: 8.9\nminimum: 7\n\nhighSeverityType\nconst: HIGH\n\nlowScoreType\ntype: number\nmaximum: 3.9\nminimum: 0.1\nmultipleOf: 0.1\n\nlowSeverityType\nconst: LOW\n\nmediumScoreType\ntype: number\nmaximum: 6.9\nminimum: 4\nmultipleOf: 0.1\n\nmediumSeverityType\nconst: MEDIUM\n\nmodifiedAttackComplexityType\ntype: string\nenum: HIGH, LOW, NOT_DEFINED\ndefault: NOT_DEFINED\n\nmodifiedAttackRequirementsType\ntype: string\nenum: NONE, PRESENT, NOT_DEFINED\ndefault: NOT_DEFINED\n\nmodifiedAttackVectorType\ntype: string\nenum: NETWORK, ADJACENT, LOCAL, PHYSICAL, NOT_DEFINED\ndefault: NOT_DEFINED\n\nmodifiedPrivilegesRequiredType\ntype: string\nenum: HIGH, LOW, NONE, NOT_DEFINED\ndefault: NOT_DEFINED\n\nmodifiedSubCType\ntype: string\nenum: NEGLIGIBLE, LOW, HIGH, NOT_DEFINED\ndefault: NOT_DEFINED\n\nmodifiedSubIaType\ntype: string\nenum: NEGLIGIBLE, LOW, HIGH, SAFETY, NOT_DEFINED\ndefault: NOT_DEFINED\n\nmodifiedUserInteractionType\ntype: string\nenum: NONE, PASSIVE, ACTIVE, NOT_DEFINED\ndefault: NOT_DEFINED\n\nmodifiedVulnCiaType\ntype: string\nenum: NONE, LOW, HIGH, NOT_DEFINED\ndefault: NOT_DEFINED\n\nnoneScoreType\ntype: number\nmaximum: 0\nminimum: 0\n\nnoneSeverityType\nconst: NONE\n\nprivilegesRequiredType\ntype: string\nenum: HIGH, LOW, NONE\n\nproviderUrgencyType\ntype: string\nenum: CLEAR, GREEN, AMBER, RED, NOT_DEFINED\ndefault: NOT_DEFINED\n\nrecoveryType\ntype: string\nenum: AUTOMATIC, USER, IRRECOVERABLE, NOT_DEFINED\ndefault: NOT_DEFINED\n\nsafetyType\ntype: string\nenum: NEGLIGIBLE, PRESENT, NOT_DEFINED\ndefault: NOT_DEFINED\n\nsubCiaType\ntype: string\nenum: NONE, LOW, HIGH\n\nuserInteractionType\ntype: string\nenum: NONE, PASSIVE, ACTIVE\n\nvalueDensityType\ntype: string\nenum: DIFFUSE, CONCENTRATED, NOT_DEFINED\ndefault: NOT_DEFINED\n\nvulnCiaType\ntype: string\nenum: NONE, LOW, HIGH\n\nvulnerabilityResponseEffortType\ntype: string\nenum: LOW, MODERATE, HIGH, NOT_DEFINED\ndefault: NOT_DEFINED\n\nAutomatable\n$ref: #/$defs/automatableType\n\nRecovery\n$ref: #/$defs/recoveryType\n\nSafety\n$ref: #/$defs/safetyType\n\nattackComplexity\n$ref: #/$defs/attackComplexityType\n\nattackRequirements\n$ref: #/$defs/attackRequirementsType\n\nattackVector\n$ref: #/$defs/attackVectorType\n\navailabilityRequirement\n$ref:",
+      "token_count": 447,
+      "chunk_strategy": "fixed_size",
+      "heading_path": []
+    },
+    {
+      "chunk_id": "ver_04040e0917f5_c00002",
+      "document_id": "doc_first_cvss",
+      "version_id": "ver_04040e0917f5",
+      "chunk_idx": 2,
+      "chunk_type": "text",
+      "text_content": "#/$defs/safetyType\n\nattackComplexity\n$ref: #/$defs/attackComplexityType\n\nattackRequirements\n$ref: #/$defs/attackRequirementsType\n\nattackVector\n$ref: #/$defs/attackVectorType\n\navailabilityRequirement\n$ref: #/$defs/ciaRequirementType\n\nconfidentialityRequirement\n$ref: #/$defs/ciaRequirementType\n\nexploitMaturity\n$ref: #/$defs/exploitMaturityType\n\nintegrityRequirement\n$ref: #/$defs/ciaRequirementType\n\nmodifiedAttackComplexity\n$ref: #/$defs/modifiedAttackComplexityType\n\nmodifiedAttackRequirements\n$ref: #/$defs/modifiedAttackRequirementsType\n\nmodifiedAttackVector\n$ref: #/$defs/modifiedAttackVectorType\n\nmodifiedPrivilegesRequired\n$ref: #/$defs/modifiedPrivilegesRequiredType\n\nmodifiedSubAvailabilityImpact\n$ref: #/$defs/modifiedSubIaType\n\nmodifiedSubConfidentialityImpact\n$ref: #/$defs/modifiedSubCType\n\nmodifiedSubIntegrityImpact\n$ref: #/$defs/modifiedSubIaType\n\nmodifiedUserInteraction\n$ref: #/$defs/modifiedUserInteractionType\n\nmodifiedVulnAvailabilityImpact\n$ref: #/$defs/modifiedVulnCiaType\n\nmodifiedVulnConfidentialityImpact\n$ref: #/$defs/modifiedVulnCiaType\n\nmodifiedVulnIntegrityImpact\n$ref: #/$defs/modifiedVulnCiaType\n\nprivilegesRequired\n$ref: #/$defs/privilegesRequiredType\n\nproviderUrgency\n$ref: #/$defs/providerUrgencyType\n\nsubAvailabilityImpact\n$ref: #/$defs/subCiaType\n\nsubConfidentialityImpact\n$ref: #/$defs/subCiaType\n\nsubIntegrityImpact\n$ref: #/$defs/subCiaType\n\nuserInteraction\n$ref: #/$defs/userInteractionType\n\nvalueDensity\n$ref: #/$defs/valueDensityType\n\nvectorString\ntype: string\npattern:",
+      "token_count": 262,
+      "chunk_strategy": "fixed_size",
+      "heading_path": []
+    },
+    {
+      "chunk_id": "ver_04040e0917f5_c00003",
+      "document_id": "doc_first_cvss",
+      "version_id": "ver_04040e0917f5",
+      "chunk_idx": 3,
+      "chunk_type": "text",
+      "text_content": "/MPR:[XNLH])?(/MUI:[XNPA])?(/MVC:[XNLH])?(/MVI:[XNLH])?(/MVA:[XNLH])?(/MSC:[XNLH])?(/MSI:[XNLHS])?(/MSA:[XNLHS])?(/S:[XNP])?(/AU:[XNY])?(/R:[XAUI])?(/V:[XDC])?(/RE:[XLMH])?(/U:(X|Clear|Green|Amber|Red))?$\n\nversion\ndescription: CVSS Version\ntype: string\nenum: 4.0\n\nvulnAvailabilityImpact\n$ref: #/$defs/vulnCiaType\n\nvulnConfidentialityImpact\n$ref: #/$defs/vulnCiaType\n\nvulnIntegrityImpact\n$ref: #/$defs/vulnCiaType\n\nvulnerabilityResponseEffort\n$ref: #/$defs/vulnerabilityResponseEffortType\n\nallOf[0]\nanyOf[0].properties.baseScore.$ref: #/$defs/noneScoreType\nanyOf[0].properties.baseSeverity.$ref: #/$defs/noneSeverityType\nanyOf[1].properties.baseScore.$ref: #/$defs/lowScoreType\nanyOf[1].properties.baseSeverity.$ref: #/$defs/lowSeverityType\nanyOf[2].properties.baseScore.$ref: #/$defs/mediumScoreType\nanyOf[2].properties.baseSeverity.$ref: #/$defs/mediumSeverityType\nanyOf[3].properties.baseScore.$ref: #/$defs/highScoreType\nanyOf[3].properties.baseSeverity.$ref: #/$defs/highSeverityType\nanyOf[4].properties.baseScore.$ref: #/$defs/criticalScoreType\nanyOf[4].properties.baseSeverity.$ref:",
+      "token_count": 365,
+      "chunk_strategy": "fixed_size",
+      "heading_path": []
+    }
+  ],
+  "chunk_sources": [
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00000_s000",
+      "chunk_id": "ver_04040e0917f5_c00000",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00000",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 1803
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00000_s001",
+      "chunk_id": "ver_04040e0917f5_c00000",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00001",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 49
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00000_s002",
+      "chunk_id": "ver_04040e0917f5_c00000",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00002",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 55
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00000_s003",
+      "chunk_id": "ver_04040e0917f5_c00000",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00003",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 70
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00000_s004",
+      "chunk_id": "ver_04040e0917f5_c00000",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00004",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 76
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00000_s005",
+      "chunk_id": "ver_04040e0917f5_c00000",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00005",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 89
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00000_s006",
+      "chunk_id": "ver_04040e0917f5_c00000",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00006",
+      "source_order": 6,
+      "start_offset": 0,
+      "end_offset": 69
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00000_s007",
+      "chunk_id": "ver_04040e0917f5_c00000",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00007",
+      "source_order": 7,
+      "start_offset": 0,
+      "end_offset": 36
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00000_s008",
+      "chunk_id": "ver_04040e0917f5_c00000",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00008",
+      "source_order": 8,
+      "start_offset": 0,
+      "end_offset": 38
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00001_s000",
+      "chunk_id": "ver_04040e0917f5_c00001",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00004",
+      "source_order": 0,
+      "start_offset": 35,
+      "end_offset": 76
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00001_s001",
+      "chunk_id": "ver_04040e0917f5_c00001",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00005",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 89
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00001_s002",
+      "chunk_id": "ver_04040e0917f5_c00001",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00006",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 69
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00001_s003",
+      "chunk_id": "ver_04040e0917f5_c00001",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00007",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 36
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00001_s004",
+      "chunk_id": "ver_04040e0917f5_c00001",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00008",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 111
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00001_s005",
+      "chunk_id": "ver_04040e0917f5_c00001",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00009",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 50
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00001_s006",
+      "chunk_id": "ver_04040e0917f5_c00001",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00010",
+      "source_order": 6,
+      "start_offset": 0,
+      "end_offset": 28
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00001_s007",
+      "chunk_id": "ver_04040e0917f5_c00001",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00011",
+      "source_order": 7,
+      "start_offset": 0,
+      "end_offset": 67
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00001_s008",
+      "chunk_id": "ver_04040e0917f5_c00001",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00012",
+      "source_order": 8,
+      "start_offset": 0,
+      "end_offset": 26
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00001_s009",
+      "chunk_id": "ver_04040e0917f5_c00001",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00013",
+      "source_order": 9,
+      "start_offset": 0,
+      "end_offset": 68
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00001_s010",
+      "chunk_id": "ver_04040e0917f5_c00001",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00014",
+      "source_order": 10,
+      "start_offset": 0,
+      "end_offset": 32
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00001_s011",
+      "chunk_id": "ver_04040e0917f5_c00001",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00015",
+      "source_order": 11,
+      "start_offset": 0,
+      "end_offset": 91
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00001_s012",
+      "chunk_id": "ver_04040e0917f5_c00001",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00016",
+      "source_order": 12,
+      "start_offset": 0,
+      "end_offset": 97
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00001_s013",
+      "chunk_id": "ver_04040e0917f5_c00001",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00017",
+      "source_order": 13,
+      "start_offset": 0,
+      "end_offset": 112
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00001_s014",
+      "chunk_id": "ver_04040e0917f5_c00001",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00018",
+      "source_order": 14,
+      "start_offset": 0,
+      "end_offset": 99
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00001_s015",
+      "chunk_id": "ver_04040e0917f5_c00001",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00019",
+      "source_order": 15,
+      "start_offset": 0,
+      "end_offset": 91
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00001_s016",
+      "chunk_id": "ver_04040e0917f5_c00001",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00020",
+      "source_order": 16,
+      "start_offset": 0,
+      "end_offset": 100
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00001_s017",
+      "chunk_id": "ver_04040e0917f5_c00001",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00021",
+      "source_order": 17,
+      "start_offset": 0,
+      "end_offset": 102
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00001_s018",
+      "chunk_id": "ver_04040e0917f5_c00001",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00022",
+      "source_order": 18,
+      "start_offset": 0,
+      "end_offset": 88
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00001_s019",
+      "chunk_id": "ver_04040e0917f5_c00001",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00023",
+      "source_order": 19,
+      "start_offset": 0,
+      "end_offset": 48
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00001_s020",
+      "chunk_id": "ver_04040e0917f5_c00001",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00024",
+      "source_order": 20,
+      "start_offset": 0,
+      "end_offset": 28
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00001_s021",
+      "chunk_id": "ver_04040e0917f5_c00001",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00025",
+      "source_order": 21,
+      "start_offset": 0,
+      "end_offset": 57
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00001_s022",
+      "chunk_id": "ver_04040e0917f5_c00001",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00026",
+      "source_order": 22,
+      "start_offset": 0,
+      "end_offset": 97
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00001_s023",
+      "chunk_id": "ver_04040e0917f5_c00001",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00027",
+      "source_order": 23,
+      "start_offset": 0,
+      "end_offset": 96
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00001_s024",
+      "chunk_id": "ver_04040e0917f5_c00001",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00028",
+      "source_order": 24,
+      "start_offset": 0,
+      "end_offset": 83
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00001_s025",
+      "chunk_id": "ver_04040e0917f5_c00001",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00029",
+      "source_order": 25,
+      "start_offset": 0,
+      "end_offset": 45
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00001_s026",
+      "chunk_id": "ver_04040e0917f5_c00001",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00030",
+      "source_order": 26,
+      "start_offset": 0,
+      "end_offset": 60
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00001_s027",
+      "chunk_id": "ver_04040e0917f5_c00001",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00031",
+      "source_order": 27,
+      "start_offset": 0,
+      "end_offset": 91
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00001_s028",
+      "chunk_id": "ver_04040e0917f5_c00001",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00032",
+      "source_order": 28,
+      "start_offset": 0,
+      "end_offset": 46
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00001_s029",
+      "chunk_id": "ver_04040e0917f5_c00001",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00033",
+      "source_order": 29,
+      "start_offset": 0,
+      "end_offset": 104
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00001_s030",
+      "chunk_id": "ver_04040e0917f5_c00001",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00034",
+      "source_order": 30,
+      "start_offset": 0,
+      "end_offset": 41
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00001_s031",
+      "chunk_id": "ver_04040e0917f5_c00001",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00035",
+      "source_order": 31,
+      "start_offset": 0,
+      "end_offset": 35
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00001_s032",
+      "chunk_id": "ver_04040e0917f5_c00001",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00036",
+      "source_order": 32,
+      "start_offset": 0,
+      "end_offset": 31
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00001_s033",
+      "chunk_id": "ver_04040e0917f5_c00001",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00037",
+      "source_order": 33,
+      "start_offset": 0,
+      "end_offset": 51
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00001_s034",
+      "chunk_id": "ver_04040e0917f5_c00001",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00038",
+      "source_order": 34,
+      "start_offset": 0,
+      "end_offset": 55
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00001_s035",
+      "chunk_id": "ver_04040e0917f5_c00001",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00039",
+      "source_order": 35,
+      "start_offset": 0,
+      "end_offset": 43
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00001_s036",
+      "chunk_id": "ver_04040e0917f5_c00001",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00040",
+      "source_order": 36,
+      "start_offset": 0,
+      "end_offset": 29
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00002_s000",
+      "chunk_id": "ver_04040e0917f5_c00002",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00036",
+      "source_order": 0,
+      "start_offset": 13,
+      "end_offset": 31
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00002_s001",
+      "chunk_id": "ver_04040e0917f5_c00002",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00037",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 51
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00002_s002",
+      "chunk_id": "ver_04040e0917f5_c00002",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00038",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 55
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00002_s003",
+      "chunk_id": "ver_04040e0917f5_c00002",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00039",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 43
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00002_s004",
+      "chunk_id": "ver_04040e0917f5_c00002",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00040",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 56
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00002_s005",
+      "chunk_id": "ver_04040e0917f5_c00002",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00041",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 59
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00002_s006",
+      "chunk_id": "ver_04040e0917f5_c00002",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00042",
+      "source_order": 6,
+      "start_offset": 0,
+      "end_offset": 49
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00002_s007",
+      "chunk_id": "ver_04040e0917f5_c00002",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00043",
+      "source_order": 7,
+      "start_offset": 0,
+      "end_offset": 53
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00002_s008",
+      "chunk_id": "ver_04040e0917f5_c00002",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00044",
+      "source_order": 8,
+      "start_offset": 0,
+      "end_offset": 67
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00002_s009",
+      "chunk_id": "ver_04040e0917f5_c00002",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00045",
+      "source_order": 9,
+      "start_offset": 0,
+      "end_offset": 71
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00002_s010",
+      "chunk_id": "ver_04040e0917f5_c00002",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00046",
+      "source_order": 10,
+      "start_offset": 0,
+      "end_offset": 59
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00002_s011",
+      "chunk_id": "ver_04040e0917f5_c00002",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00047",
+      "source_order": 11,
+      "start_offset": 0,
+      "end_offset": 71
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00002_s012",
+      "chunk_id": "ver_04040e0917f5_c00002",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00048",
+      "source_order": 12,
+      "start_offset": 0,
+      "end_offset": 61
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00002_s013",
+      "chunk_id": "ver_04040e0917f5_c00002",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00049",
+      "source_order": 13,
+      "start_offset": 0,
+      "end_offset": 63
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00002_s014",
+      "chunk_id": "ver_04040e0917f5_c00002",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00050",
+      "source_order": 14,
+      "start_offset": 0,
+      "end_offset": 58
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00002_s015",
+      "chunk_id": "ver_04040e0917f5_c00002",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00051",
+      "source_order": 15,
+      "start_offset": 0,
+      "end_offset": 65
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00002_s016",
+      "chunk_id": "ver_04040e0917f5_c00002",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00052",
+      "source_order": 16,
+      "start_offset": 0,
+      "end_offset": 64
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00002_s017",
+      "chunk_id": "ver_04040e0917f5_c00002",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00053",
+      "source_order": 17,
+      "start_offset": 0,
+      "end_offset": 67
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00002_s018",
+      "chunk_id": "ver_04040e0917f5_c00002",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00054",
+      "source_order": 18,
+      "start_offset": 0,
+      "end_offset": 61
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00002_s019",
+      "chunk_id": "ver_04040e0917f5_c00002",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00055",
+      "source_order": 19,
+      "start_offset": 0,
+      "end_offset": 55
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00002_s020",
+      "chunk_id": "ver_04040e0917f5_c00002",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00056",
+      "source_order": 20,
+      "start_offset": 0,
+      "end_offset": 49
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00002_s021",
+      "chunk_id": "ver_04040e0917f5_c00002",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00057",
+      "source_order": 21,
+      "start_offset": 0,
+      "end_offset": 46
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00002_s022",
+      "chunk_id": "ver_04040e0917f5_c00002",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00058",
+      "source_order": 22,
+      "start_offset": 0,
+      "end_offset": 49
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00002_s023",
+      "chunk_id": "ver_04040e0917f5_c00002",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00059",
+      "source_order": 23,
+      "start_offset": 0,
+      "end_offset": 43
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00002_s024",
+      "chunk_id": "ver_04040e0917f5_c00002",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00060",
+      "source_order": 24,
+      "start_offset": 0,
+      "end_offset": 49
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00002_s025",
+      "chunk_id": "ver_04040e0917f5_c00002",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00061",
+      "source_order": 25,
+      "start_offset": 0,
+      "end_offset": 43
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00002_s026",
+      "chunk_id": "ver_04040e0917f5_c00002",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00062",
+      "source_order": 26,
+      "start_offset": 0,
+      "end_offset": 34
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00003_s000",
+      "chunk_id": "ver_04040e0917f5_c00003",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00062",
+      "source_order": 0,
+      "start_offset": 237,
+      "end_offset": 441
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00003_s001",
+      "chunk_id": "ver_04040e0917f5_c00003",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00063",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 56
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00003_s002",
+      "chunk_id": "ver_04040e0917f5_c00003",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00064",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 48
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00003_s003",
+      "chunk_id": "ver_04040e0917f5_c00003",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00065",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 51
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00003_s004",
+      "chunk_id": "ver_04040e0917f5_c00003",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00066",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 45
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00003_s005",
+      "chunk_id": "ver_04040e0917f5_c00003",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00067",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 73
+    },
+    {
+      "chunk_source_id": "ver_04040e0917f5_c00003_s006",
+      "chunk_id": "ver_04040e0917f5_c00003",
+      "normalized_block_id": "nrm_ver_04040e0917f5_b00068",
+      "source_order": 6,
+      "start_offset": 0,
+      "end_offset": 599
+    }
+  ]
+}
