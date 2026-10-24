@@ -26,9 +26,10 @@ from schema_metadata import (
 # 1. Chọn mô hình LLM Embedding phù hợp
 # - "BAAI/bge-base-en-v1.5": Chuẩn tốt cho tài liệu bảo mật Tiếng Anh (OWASP, CVSS)
 # - "all-MiniLM-L6-v2": Siêu nhẹ, chạy CPU rất nhanh theo slide bài giảng
-# - "BAAI/bge-m3" hoặc "sentence-transformers/paraphrase-multilingual-mpnet-base-v2": Hỗ trợ đa ngôn ngữ (hỏi Tiếng Việt trên tài liệu Tiếng Anh)
+# - "BAAI/bge-m3": Hỗ trợ đa ngôn ngữ (hỏi Tiếng Việt trên tài liệu Tiếng Anh)
 MODEL_NAME = "BAAI/bge-base-en-v1.5"
 CHROMA_DB_DIR = FINAL_OUT_DIR / "chroma_security_db"
+VECTOR_JSON_OUT_PATH = FINAL_OUT_DIR / "vector_db_records.json"
 COLLECTION_NAME = "owasp_security_knowledge"
 
 
@@ -57,16 +58,88 @@ def get_chroma_collection(
     return collection
 
 
+def export_records_from_chroma(
+    collection=None,
+    json_out_path: Path | str | None = VECTOR_JSON_OUT_PATH,
+) -> list[dict]:
+    """
+    Đọc toàn bộ bản ghi từ ChromaDB và chuyển về đúng cấu trúc JSON chuẩn:
+    {
+      "id": "...",
+      "text": "...",
+      "metadata": {
+        "document_id": "...",
+        "version_id": "...",
+        "title": "...",
+        "file_format": "...",
+        "chunk_idx": 0,
+        "chunk_type": "text",
+        "token_count": 32,
+        "chunk_strategy": "structure_aware",
+        "heading_path": ["A05: Injection", "SQL Injection"]
+      }
+    }
+    """
+    if collection is None:
+        collection = get_chroma_collection()
+
+    raw = collection.get(include=["documents", "metadatas"])
+    ids = raw.get("ids") or []
+    docs = raw.get("documents") or []
+    metas = raw.get("metadatas") or []
+
+    formatted_records: list[dict] = []
+    for c_id, text, meta in zip(ids, docs, metas):
+        meta_copy = dict(meta or {})
+        # Khôi phục heading_path từ JSON string trong ChromaDB về lại dạng list[str]
+        hp = meta_copy.get("heading_path", [])
+        if isinstance(hp, str):
+            try:
+                parsed = json.loads(hp)
+                meta_copy["heading_path"] = parsed if isinstance(parsed, list) else [hp]
+            except json.JSONDecodeError:
+                meta_copy["heading_path"] = [hp] if hp else []
+
+        # Sắp xếp thứ tự key trong metadata giống hệt hình mẫu
+        ordered_meta = {
+            "document_id": meta_copy.get("document_id", ""),
+            "version_id": meta_copy.get("version_id", ""),
+            "title": meta_copy.get("title", ""),
+            "file_format": meta_copy.get("file_format", ""),
+            "chunk_idx": meta_copy.get("chunk_idx", 0),
+            "chunk_type": meta_copy.get("chunk_type", "text"),
+            "token_count": meta_copy.get("token_count", 0),
+            "chunk_strategy": meta_copy.get("chunk_strategy", "structure_aware"),
+            "heading_path": meta_copy.get("heading_path", []),
+        }
+
+        formatted_records.append(
+            {
+                "id": c_id,
+                "text": text,
+                "metadata": ordered_meta,
+            }
+        )
+
+    if json_out_path is not None:
+        out_file = Path(json_out_path)
+        out_file.parent.mkdir(parents=True, exist_ok=True)
+        out_file.write_text(
+            json.dumps(formatted_records, indent=2, ensure_ascii=False),
+            encoding="utf-8",
+        )
+
+    return formatted_records
+
+
 def prepare_and_ingest_to_chroma(
     chunks_from_chunking: list[dict],
     doc_meta_from_diep: dict | DocumentMetadataSchema,
     chunk_meta_records_from_diep: list[dict | ChunkMetadataSchema] | None = None,
     collection=None,
-) -> list[VectorDBRecordSchema]:
-    """
-    Gộp Document Metadata (của Diệp) + toàn bộ thuộc tính ChunkSchema (của Vĩnh, bỏ ChunkSource),
-    tách riêng `id` (chunk_id) và `text` (text_content) ra ngoài `metadata` rồi đẩy vào ChromaDB.
-    """
+    json_out_path: Path | str | None = VECTOR_JSON_OUT_PATH,
+) -> list[dict]:
+    
     if collection is None:
         collection = get_chroma_collection()
 
@@ -85,7 +158,6 @@ def prepare_and_ingest_to_chroma(
     ids: list[str] = []
     documents: list[str] = []
     metadatas: list[dict] = []
-    vector_records: list[VectorDBRecordSchema] = []
 
     for idx, chunk in enumerate(chunks_from_chunking):
         chunk_dict = chunk.to_dict() if hasattr(chunk, "to_dict") else chunk
@@ -93,7 +165,6 @@ def prepare_and_ingest_to_chroma(
         text_content = chunk_dict.get("text_content") or chunk_dict.get("text") or ""
         c_meta = meta_by_id.get(c_id, chunk_dict)
 
-        # Lấy heading_path (dạng list[str] từ ChunkSchema)
         raw_heading_path = c_meta.get("heading_path")
         if raw_heading_path is None:
             raw_heading_path = chunk_dict.get("heading_path") or []
@@ -108,7 +179,6 @@ def prepare_and_ingest_to_chroma(
 
         file_format = doc_meta.get("file_format") or doc_meta.get("document_format") or "PDF"
 
-        # Cấu trúc metadata chuẩn (gộp Document Metadata + ChunkSchema trừ chunk_id & text_content)
         combined_meta = {
             # --- Thuộc tính từ Document Metadata ---
             "document_id": doc_meta["document_id"],
@@ -133,11 +203,9 @@ def prepare_and_ingest_to_chroma(
             text=text_content,
             metadata=combined_meta,
         )
-        vector_records.append(record)
 
         ids.append(record.id)
         documents.append(record.text)
-        # Chuyển list (như heading_path) sang JSON string vì ChromaDB chỉ nhận str, int, float, bool
         metadatas.append(record.to_chroma_metadata())
 
     if ids:
@@ -146,13 +214,17 @@ def prepare_and_ingest_to_chroma(
             documents=documents,
             metadatas=metadatas,
         )
-        print(
-            f"Đã nhúng và lưu thành công {len(ids)} chunks vào ChromaDB tại '{CHROMA_DB_DIR}'!"
-        )
-    else:
-        print("Không có chunk nào để lưu vào ChromaDB.")
 
-    return vector_records
+    # Xuất ra danh sách bản ghi và lưu file JSON đúng chuẩn { "id", "text", "metadata": {...} }
+    exported_records = export_records_from_chroma(
+        collection=collection,
+        json_out_path=json_out_path,
+    )
+    print(
+        f"Đã lưu {len(ids)} chunks vào ChromaDB ('{CHROMA_DB_DIR}') "
+        f"và xuất file JSON chuẩn tại '{json_out_path}'!"
+    )
+    return exported_records
 
 
 if __name__ == "__main__":
@@ -160,6 +232,7 @@ if __name__ == "__main__":
     documents_data = json.loads((INGESTION_OUT_DIR / "documents.json").read_text(encoding="utf-8"))
     versions_data = json.loads((INGESTION_OUT_DIR / "ducuments_version.json").read_text(encoding="utf-8"))
 
+    # Lấy thử tài liệu OWASP Top 10 A05 Injection (hoặc tài liệu đầu tiên)
     doc = next(
         (d for d in documents_data if "injection" in d["document_id"]),
         documents_data[0],
@@ -207,14 +280,11 @@ if __name__ == "__main__":
             "chunk_sources": [],
         }
 
-    # Bước 5.1: Trích xuất & lưu Metadata vào SQLite
     extractor = MetadataExtractor(MetadataStore())
     meta_output = extractor.run(doc, ver, chunking_output)
 
-    # Bước 5.2: Gộp Metadata và nhúng vào ChromaDB
     prepare_and_ingest_to_chroma(
         chunks_from_chunking=chunking_output["chunks"],
         doc_meta_from_diep=meta_output.document,
         chunk_meta_records_from_diep=meta_output.chunks,
     )
-
