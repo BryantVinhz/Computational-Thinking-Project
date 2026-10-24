@@ -52,8 +52,7 @@ coverage.xml
 .pytest_cache/
 cover/
 long_nguyen/
-
-# Translations
+/Document Ingestion and Parsing/output/Normalization/
 *.mo
 *.pot
 
