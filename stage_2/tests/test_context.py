@@ -3,31 +3,12 @@ Tests for Conversation Context and Co-reference Resolution (Contract v1.0 Sectio
 Author: Long (Query Understanding Lead)
 """
 
-import sys
-from pathlib import Path
-
 import pytest
-
-TESTS_DIR = Path(__file__).resolve().parent
-AGY_DIR = TESTS_DIR.parent
-PROJECT_ROOT = AGY_DIR.parent
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
-if str(AGY_DIR) not in sys.path:
-    sys.path.insert(0, str(AGY_DIR))
-
-try:
-    from agy.config import HISTORY_MAX_CHARS, HISTORY_MAX_MESSAGES, HISTORY_MAX_TURNS
-    from agy.understanding_module import (
-        truncate_conversation_history,
-        understand_query,
-    )
-except ImportError:
-    from config import HISTORY_MAX_CHARS, HISTORY_MAX_MESSAGES, HISTORY_MAX_TURNS
-    from understanding_module import (
-        truncate_conversation_history,
-        understand_query,
-    )
+from config import HISTORY_MAX_CHARS, HISTORY_MAX_MESSAGES, HISTORY_MAX_TURNS
+from understanding_module import (
+    truncate_conversation_history,
+    understand_query,
+)
 
 
 class TestHistoryTruncation:

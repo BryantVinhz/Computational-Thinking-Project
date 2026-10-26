@@ -33,7 +33,7 @@ if str(AGY_DIR) not in sys.path:
     sys.path.insert(0, str(AGY_DIR))
 
 try:
-    from agy.config import (
+    from stage_2.config import (
         CLARIFY_THRESHOLD,
         HISTORY_MAX_CHARS,
         HISTORY_MAX_MESSAGES,
@@ -45,7 +45,7 @@ try:
         VALID_LLM_ERROR_CODES,
         VALID_TASK_INTENTS,
     )
-    from agy.ontology_loader import DEFAULT_ONTOLOGY_PATH, load_ontology
+    from stage_2.ontology_loader import DEFAULT_ONTOLOGY_PATH, load_ontology
 except ImportError:
     from config import (
         CLARIFY_THRESHOLD,

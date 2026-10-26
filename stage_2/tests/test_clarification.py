@@ -3,25 +3,9 @@ Tests for Clarification Logic and Confidence Threshold (Contract v1.0 Section 2.
 Author: Long (Query Understanding Lead)
 """
 
-import sys
-from pathlib import Path
-
 import pytest
-
-TESTS_DIR = Path(__file__).resolve().parent
-AGY_DIR = TESTS_DIR.parent
-PROJECT_ROOT = AGY_DIR.parent
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
-if str(AGY_DIR) not in sys.path:
-    sys.path.insert(0, str(AGY_DIR))
-
-try:
-    from agy.config import CLARIFY_THRESHOLD
-    from agy.understanding_module import understand_query
-except ImportError:
-    from config import CLARIFY_THRESHOLD
-    from understanding_module import understand_query
+from config import CLARIFY_THRESHOLD
+from understanding_module import understand_query
 
 
 class TestClarificationLogic:

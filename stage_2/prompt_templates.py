@@ -252,7 +252,7 @@ def build_understanding_prompt(
     History is safely truncated and wrapped as untrusted data.
     """
     try:
-        from agy.understanding_module import truncate_conversation_history
+        from stage_2.understanding_module import truncate_conversation_history
     except ImportError:
         from understanding_module import truncate_conversation_history
 

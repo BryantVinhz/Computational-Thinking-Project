@@ -26,9 +26,9 @@ if str(AGY_DIR) not in sys.path:
     sys.path.insert(0, str(AGY_DIR))
 
 try:
-    from agy.config import CLARIFY_THRESHOLD, STANDARD_VULNERABILITY_SLUGS
-    from agy.ontology_loader import DEFAULT_ONTOLOGY_PATH, load_ontology
-    from agy.understanding_module import (
+    from stage_2.config import CLARIFY_THRESHOLD, STANDARD_VULNERABILITY_SLUGS
+    from stage_2.ontology_loader import DEFAULT_ONTOLOGY_PATH, load_ontology
+    from stage_2.understanding_module import (
         understand_query,
         validate_understanding_schema,
         truncate_conversation_history,

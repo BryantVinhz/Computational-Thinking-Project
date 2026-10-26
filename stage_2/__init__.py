@@ -17,8 +17,8 @@ if str(PROJECT_ROOT) not in sys.path:
 if str(AGY_DIR) not in sys.path:
     sys.path.insert(0, str(AGY_DIR))
 
-from agy.paths import DATA_DIR, DEFAULT_ONTOLOGY_PATH, ONTOLOGY_PATH
-from agy.config import (
+from stage_2.paths import DATA_DIR, DEFAULT_ONTOLOGY_PATH, ONTOLOGY_PATH
+from stage_2.config import (
     CLARIFY_THRESHOLD,
     HISTORY_MAX_CHARS,
     HISTORY_MAX_MESSAGES,
@@ -30,8 +30,8 @@ from agy.config import (
     VALID_LLM_ERROR_CODES,
     VALID_TASK_INTENTS,
 )
-from agy.ontology_loader import load_ontology
-from agy.understanding_module import (
+from stage_2.ontology_loader import load_ontology
+from stage_2.understanding_module import (
     QueryUnderstandingEngine,
     get_engine,
     truncate_conversation_history,
