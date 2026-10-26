@@ -14,7 +14,7 @@ for _dir in (CURRENT_DIR, PARENT_DIR):
     if str(_dir) not in sys.path:
         sys.path.insert(0, str(_dir))
 
-from path import FINAL_OUT_DIR, INGESTION_OUT_DIR
+from path import VECTOR_DB_DIR, INGESTION_OUT_DIR
 from schema_metadata import (
     ChunkMetadataSchema,
     DocumentMetadataSchema,
@@ -25,7 +25,7 @@ from schema_metadata import (
 
 class MetadataStore:
 
-    def __init__(self, db_path: Path | str = FINAL_OUT_DIR / "metadata.db"):
+    def __init__(self, db_path: Path | str = VECTOR_DB_DIR / "metadata.db"):
         self.db_path = Path(db_path)
         self.db_path.parent.mkdir(parents=True, exist_ok=True)
         self.create_tables()
@@ -228,7 +228,7 @@ if __name__ == "__main__":
     }
 
     # Xoá bảng cũ nếu lệch schema và chạy thử
-    db_file = FINAL_OUT_DIR / "metadata.db"
+    db_file = VECTOR_DB_DIR / "metadata.db"
     if db_file.exists():
         db_file.unlink()
 

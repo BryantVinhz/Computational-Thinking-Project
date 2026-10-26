@@ -1,0 +1,965 @@
+[
+  {
+    "block_id": "ver_d6ebc4e65422_b00000",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_d6ebc4e65422",
+    "block_idx": 0,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#  A01:2025 Broken Access Control ![icon](../assets/TOP_10_Icons_Final_Broken_Access_Control.png){: style=\"height:80px;width:80px\" align=\"right\"}",
+    "text_hash": "c833ccd788e28e00d93ea107d5b81679bccd45c06bd2b25e08c74f9cf6202a3d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 1,
+      "end_line": 1
+    },
+    "heading_path": [
+      "A01:2025 Broken Access Control"
+    ],
+    "heading_level": 1,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d6ebc4e65422_b00000",
+    "normalized_text": "# A01:2025 Broken Access Control ![icon](../assets/TOP_10_Icons_Final_Broken_Access_Control.png){: style=\"height:80px;width:80px\" align=\"right\"}",
+    "normalization_flags": {
+      "is_code_or_payload": true,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_d6ebc4e65422_b00001",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_d6ebc4e65422",
+    "block_idx": 1,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Background. ",
+    "text_hash": "81d3ecde8678ab070a8831c4dcdd4683dd34fe1f649889a203348da5e7f0480f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 5,
+      "end_line": 5
+    },
+    "heading_path": [
+      "A01:2025 Broken Access Control",
+      "Background."
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d6ebc4e65422_b00001",
+    "normalized_text": "## Background.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_d6ebc4e65422_b00002",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_d6ebc4e65422",
+    "block_idx": 2,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Maintaining its position at #1 in the Top Ten, 100% of the applications tested were found to have some form of broken access control. Notable CWEs included are *CWE-200: Exposure of Sensitive Information to an Unauthorized Actor*, *CWE-201: Exposure of Sensitive Information Through Sent Data*, *CWE-918 Server-Side Request Forgery (SSRF)*, and *CWE-352: Cross-Site Request Forgery (CSRF)*. This category has the highest number of occurrences in the contributed data, and second highest number of related CVEs.",
+    "text_hash": "c8d88dda6b77c384feb40d6876a60db940226b3b20c24b379037af001ad0b129",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 7,
+      "end_line": 7
+    },
+    "heading_path": [
+      "A01:2025 Broken Access Control",
+      "Background."
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d6ebc4e65422_b00002",
+    "normalized_text": "Maintaining its position at #1 in the Top Ten, 100% of the applications tested were found to have some form of broken access control. Notable CWEs included are *CWE-200: Exposure of Sensitive Information to an Unauthorized Actor*, *CWE-201: Exposure of Sensitive Information Through Sent Data*, *CWE-918 Server-Side Request Forgery (SSRF)*, and *CWE-352: Cross-Site Request Forgery (CSRF)*. This category has the highest number of occurrences in the contributed data, and second highest number of related CVEs.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d6ebc4e65422_b00003",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_d6ebc4e65422",
+    "block_idx": 3,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Score table.",
+    "text_hash": "dea73a8bfeb4b787d7b039ca3103edc939a8d7a5555b02471db47ad4a684834b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 10,
+      "end_line": 10
+    },
+    "heading_path": [
+      "A01:2025 Broken Access Control",
+      "Score table."
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d6ebc4e65422_b00003",
+    "normalized_text": "## Score table.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d6ebc4e65422_b00004",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_d6ebc4e65422",
+    "block_idx": 4,
+    "file_format": "MARKDOWN",
+    "block_type": "table",
+    "text_content": "<table>\n  <tr>\n   <td>CWEs Mapped \n   </td>\n   <td>Max Incidence Rate\n   </td>\n   <td>Avg Incidence Rate\n   </td>\n   <td>Max Coverage\n   </td>\n   <td>Avg Coverage\n   </td>\n   <td>Avg Weighted Exploit\n   </td>\n   <td>Avg Weighted Impact\n   </td>\n   <td>Total Occurrences\n   </td>\n   <td>Total CVEs\n   </td>\n  </tr>\n  <tr>\n   <td>40\n   </td>\n   <td>20.15%\n   </td>\n   <td>3.74%\n   </td>\n   <td>100.00%\n   </td>\n   <td>42.93%\n   </td>\n   <td>7.04\n   </td>\n   <td>3.84\n   </td>\n   <td>1,839,701\n   </td>\n   <td>32,654\n   </td>\n  </tr>\n</table>",
+    "text_hash": "8c6df5629962b7e2b646611c932e87fe736cc1bfb7ef749efa5dcac77cc5826f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 13,
+      "end_line": 54
+    },
+    "heading_path": [
+      "A01:2025 Broken Access Control",
+      "Score table."
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": [
+      "CWEs Mapped",
+      "Max Incidence Rate",
+      "Avg Incidence Rate",
+      "Max Coverage",
+      "Avg Coverage",
+      "Avg Weighted Exploit",
+      "Avg Weighted Impact",
+      "Total Occurrences",
+      "Total CVEs"
+    ],
+    "table_rows": [
+      [
+        "40",
+        "20.15%",
+        "3.74%",
+        "100.00%",
+        "42.93%",
+        "7.04",
+        "3.84",
+        "1,839,701",
+        "32,654"
+      ]
+    ],
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d6ebc4e65422_b00004",
+    "normalized_text": "<table>\n  <tr>\n   <td>CWEs Mapped\n   </td>\n   <td>Max Incidence Rate\n   </td>\n   <td>Avg Incidence Rate\n   </td>\n   <td>Max Coverage\n   </td>\n   <td>Avg Coverage\n   </td>\n   <td>Avg Weighted Exploit\n   </td>\n   <td>Avg Weighted Impact\n   </td>\n   <td>Total Occurrences\n   </td>\n   <td>Total CVEs\n   </td>\n  </tr>\n  <tr>\n   <td>40\n   </td>\n   <td>20.15%\n   </td>\n   <td>3.74%\n   </td>\n   <td>100.00%\n   </td>\n   <td>42.93%\n   </td>\n   <td>7.04\n   </td>\n   <td>3.84\n   </td>\n   <td>1,839,701\n   </td>\n   <td>32,654\n   </td>\n  </tr>\n</table>",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    },
+    "normalized_table_header_cols": [
+      "CWEs Mapped",
+      "Max Incidence Rate",
+      "Avg Incidence Rate",
+      "Max Coverage",
+      "Avg Coverage",
+      "Avg Weighted Exploit",
+      "Avg Weighted Impact",
+      "Total Occurrences",
+      "Total CVEs"
+    ],
+    "normalized_table_rows": [
+      [
+        "40",
+        "20.15%",
+        "3.74%",
+        "100.00%",
+        "42.93%",
+        "7.04",
+        "3.84",
+        "1,839,701",
+        "32,654"
+      ]
+    ]
+  },
+  {
+    "block_id": "ver_d6ebc4e65422_b00005",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_d6ebc4e65422",
+    "block_idx": 5,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Description. ",
+    "text_hash": "afec1694e41f70787233ca2570f0abc7b5fc9dc7bc3b46ac99953d26d5ea66f9",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 58,
+      "end_line": 58
+    },
+    "heading_path": [
+      "A01:2025 Broken Access Control",
+      "Description."
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d6ebc4e65422_b00005",
+    "normalized_text": "## Description.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_d6ebc4e65422_b00006",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_d6ebc4e65422",
+    "block_idx": 6,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Access control enforces policy such that users cannot act outside of their intended permissions. Failures typically lead to unauthorized information disclosure, modification or destruction of all data, or performing a business function outside the user's limits. Common access control vulnerabilities include:",
+    "text_hash": "df817e2edb433f07df7a5b5d977cc40b9db157ef3b36321ea48ec476460e4af4",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 60,
+      "end_line": 60
+    },
+    "heading_path": [
+      "A01:2025 Broken Access Control",
+      "Description."
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d6ebc4e65422_b00006",
+    "normalized_text": "Access control enforces policy such that users cannot act outside of their intended permissions. Failures typically lead to unauthorized information disclosure, modification or destruction of all data, or performing a business function outside the user's limits. Common access control vulnerabilities include:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d6ebc4e65422_b00007",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_d6ebc4e65422",
+    "block_idx": 7,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "* Violation of the principle of least privilege, commonly known as deny by default, where access should only be granted for particular capabilities, roles, or users, but is available to anyone.\n* Bypassing access control checks by modifying the URL (parameter tampering or force browsing), internal application state, or the HTML page, or by using an attack tool that modifies API requests.\n* Permitting viewing or editing someone else's account by providing its unique identifier (insecure direct object references)\n* An accessible API with missing access controls for POST, PUT, and DELETE.\n* Elevation of privilege. Acting as a user without being logged in or or gaining privileges beyond those expected of the logged in user (e.g. admin access).\n* Metadata manipulation, such as replaying or tampering with a JSON Web Token (JWT) access control token, a cookie or hidden field manipulated to elevate privileges, or abusing JWT invalidation.\n* CORS misconfiguration allows API access from unauthorized or untrusted origins.\n* Force browsing (guessing URLs) to authenticated pages as an unauthenticated user or to privileged pages as a standard user.\n\n",
+    "text_hash": "a51c97a366d11f134d1002f9a27f6bcb84c197403ac3e0a27dbad7b0b2126ca5",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 64,
+      "end_line": 73
+    },
+    "heading_path": [
+      "A01:2025 Broken Access Control",
+      "Description."
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d6ebc4e65422_b00007",
+    "normalized_text": "* Violation of the principle of least privilege, commonly known as deny by default, where access should only be granted for particular capabilities, roles, or users, but is available to anyone.\n* Bypassing access control checks by modifying the URL (parameter tampering or force browsing), internal application state, or the HTML page, or by using an attack tool that modifies API requests.\n* Permitting viewing or editing someone else's account by providing its unique identifier (insecure direct object references)\n* An accessible API with missing access controls for POST, PUT, and DELETE.\n* Elevation of privilege. Acting as a user without being logged in or or gaining privileges beyond those expected of the logged in user (e.g. admin access).\n* Metadata manipulation, such as replaying or tampering with a JSON Web Token (JWT) access control token, a cookie or hidden field manipulated to elevate privileges, or abusing JWT invalidation.\n* CORS misconfiguration allows API access from unauthorized or untrusted origins.\n* Force browsing (guessing URLs) to authenticated pages as an unauthenticated user or to privileged pages as a standard user.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 2
+    }
+  },
+  {
+    "block_id": "ver_d6ebc4e65422_b00008",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_d6ebc4e65422",
+    "block_idx": 8,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## How to prevent. ",
+    "text_hash": "ab7502cee23cbabfefc2637a926d977e33760c6c50538c432661631220c96c18",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 74,
+      "end_line": 74
+    },
+    "heading_path": [
+      "A01:2025 Broken Access Control",
+      "How to prevent."
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d6ebc4e65422_b00008",
+    "normalized_text": "## How to prevent.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_d6ebc4e65422_b00009",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_d6ebc4e65422",
+    "block_idx": 9,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Access control is only effective when implemented in trusted server-side code or serverless APIs, where the attacker cannot modify the access control check or metadata.",
+    "text_hash": "106fe3a407877201d327f29d212c42ea05d825080842cafb4f41097d7f0c3a46",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 76,
+      "end_line": 76
+    },
+    "heading_path": [
+      "A01:2025 Broken Access Control",
+      "How to prevent."
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d6ebc4e65422_b00009",
+    "normalized_text": "Access control is only effective when implemented in trusted server-side code or serverless APIs, where the attacker cannot modify the access control check or metadata.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d6ebc4e65422_b00010",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_d6ebc4e65422",
+    "block_idx": 10,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "* Except for public resources, deny by default.\n* Implement access control mechanisms once and reuse them throughout the application, including minimizing Cross-Origin Resource Sharing (CORS) usage.\n* Model access controls should enforce record ownership rather than allowing users to create, read, update, or delete any record.\n* Unique application business limit requirements should be enforced by domain models.\n* Disable web server directory listing and ensure file metadata (e.g., .git) and backup files are not present within web roots.\n* Log access control failures, alert admins when appropriate (e.g., repeated failures).\n* Implement rate limits on API and controller access to minimize the harm from automated attack tooling.\n* Stateful session identifiers should be invalidated on the server after logout. Stateless JWT tokens should be short-lived to minimize the window of opportunity for an attacker. For longer-lived JWTs, consider using refresh tokens and following OAuth standards to revoke access.\n* Use well-established toolkits or patterns that provide simple, declarative access controls.\n",
+    "text_hash": "4f4c6bb89c0bcda6b71f4b76404a99ae4afb0ad9ef15914dddbc0b16210f4ca5",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 80,
+      "end_line": 89
+    },
+    "heading_path": [
+      "A01:2025 Broken Access Control",
+      "How to prevent."
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d6ebc4e65422_b00010",
+    "normalized_text": "* Except for public resources, deny by default.\n* Implement access control mechanisms once and reuse them throughout the application, including minimizing Cross-Origin Resource Sharing (CORS) usage.\n* Model access controls should enforce record ownership rather than allowing users to create, read, update, or delete any record.\n* Unique application business limit requirements should be enforced by domain models.\n* Disable web server directory listing and ensure file metadata (e.g., .git) and backup files are not present within web roots.\n* Log access control failures, alert admins when appropriate (e.g., repeated failures).\n* Implement rate limits on API and controller access to minimize the harm from automated attack tooling.\n* Stateful session identifiers should be invalidated on the server after logout. Stateless JWT tokens should be short-lived to minimize the window of opportunity for an attacker. For longer-lived JWTs, consider using refresh tokens and following OAuth standards to revoke access.\n* Use well-established toolkits or patterns that provide simple, declarative access controls.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_d6ebc4e65422_b00011",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_d6ebc4e65422",
+    "block_idx": 11,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Developers and QA staff should include functional access control in their unit and integration tests.",
+    "text_hash": "0efb2d63a8d109257fb1589f1cc394f05b9598e58e1a7f9f84a01099d608d0c4",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 90,
+      "end_line": 90
+    },
+    "heading_path": [
+      "A01:2025 Broken Access Control",
+      "How to prevent."
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d6ebc4e65422_b00011",
+    "normalized_text": "Developers and QA staff should include functional access control in their unit and integration tests.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d6ebc4e65422_b00012",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_d6ebc4e65422",
+    "block_idx": 12,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Example attack scenarios. ",
+    "text_hash": "f38e9243ed1723225409398cc4ac851719cb997e3f7cbabd97d8ce9e02d4b867",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 93,
+      "end_line": 93
+    },
+    "heading_path": [
+      "A01:2025 Broken Access Control",
+      "Example attack scenarios."
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d6ebc4e65422_b00012",
+    "normalized_text": "## Example attack scenarios.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_d6ebc4e65422_b00013",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_d6ebc4e65422",
+    "block_idx": 13,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**Scenario #1:** The application uses unverified data in an SQL call that is accessing account information:",
+    "text_hash": "1a1b6432a36c29d98e58a5092f829d93b5727e50cd872b7c9fda98ae11356309",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 95,
+      "end_line": 95
+    },
+    "heading_path": [
+      "A01:2025 Broken Access Control",
+      "Example attack scenarios."
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d6ebc4e65422_b00013",
+    "normalized_text": "**Scenario #1:** The application uses unverified data in an SQL call that is accessing account information:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d6ebc4e65422_b00014",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_d6ebc4e65422",
+    "block_idx": 14,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```\npstmt.setString(1, request.getParameter(\"acct\"));\nResultSet results = pstmt.executeQuery( );\n```",
+    "text_hash": "3cd2c76195e0bc902b5fa2cfa8a4aadea4c8af72e078646dec93036f5e49ddbc",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 98,
+      "end_line": 101
+    },
+    "heading_path": [
+      "A01:2025 Broken Access Control",
+      "Example attack scenarios."
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d6ebc4e65422_b00014",
+    "normalized_text": "```\npstmt.setString(1, request.getParameter(\"acct\"));\nResultSet results = pstmt.executeQuery( );\n```",
+    "normalization_flags": {
+      "is_code_or_payload": true,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d6ebc4e65422_b00015",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_d6ebc4e65422",
+    "block_idx": 15,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "An attacker can simply modify the browser's 'acct' parameter to send any desired account number. If not correctly verified, the attacker can access any user's account.",
+    "text_hash": "e7be0a9156b988fa6da5b7a123f11685f265fb40ed41ee63c87b9692a62f0e69",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 104,
+      "end_line": 104
+    },
+    "heading_path": [
+      "A01:2025 Broken Access Control",
+      "Example attack scenarios."
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d6ebc4e65422_b00015",
+    "normalized_text": "An attacker can simply modify the browser's 'acct' parameter to send any desired account number. If not correctly verified, the attacker can access any user's account.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d6ebc4e65422_b00016",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_d6ebc4e65422",
+    "block_idx": 16,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```\nhttps://example.com/app/accountInfo?acct=notmyacct\n```",
+    "text_hash": "b0bbf5e1fdc9994ef3c4eec749e173874a24b3bc0730ab8b0dc207451576517f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 107,
+      "end_line": 109
+    },
+    "heading_path": [
+      "A01:2025 Broken Access Control",
+      "Example attack scenarios."
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d6ebc4e65422_b00016",
+    "normalized_text": "```\nhttps://example.com/app/accountInfo?acct=notmyacct\n```",
+    "normalization_flags": {
+      "is_code_or_payload": true,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d6ebc4e65422_b00017",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_d6ebc4e65422",
+    "block_idx": 17,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**Scenario #2:** An attacker simply forces browsers to target URLs. Admin rights are required for access to the admin page.",
+    "text_hash": "93d3e18e721c7792d71053746886e0ea8ca2c9c376be67c715ccdba017cb30bd",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 112,
+      "end_line": 112
+    },
+    "heading_path": [
+      "A01:2025 Broken Access Control",
+      "Example attack scenarios."
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d6ebc4e65422_b00017",
+    "normalized_text": "**Scenario #2:** An attacker simply forces browsers to target URLs. Admin rights are required for access to the admin page.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d6ebc4e65422_b00018",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_d6ebc4e65422",
+    "block_idx": 18,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```\nhttps://example.com/app/getappInfo\nhttps://example.com/app/admin_getappInfo\n```",
+    "text_hash": "56b277cac45c3950a7ad30b61b0ac823d58caaa931fc8858b6854a7e45f33c3d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 115,
+      "end_line": 118
+    },
+    "heading_path": [
+      "A01:2025 Broken Access Control",
+      "Example attack scenarios."
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d6ebc4e65422_b00018",
+    "normalized_text": "```\nhttps://example.com/app/getappInfo\nhttps://example.com/app/admin_getappInfo\n```",
+    "normalization_flags": {
+      "is_code_or_payload": true,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d6ebc4e65422_b00019",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_d6ebc4e65422",
+    "block_idx": 19,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "If an unauthenticated user can access either page, it's a flaw. If a non-admin can access the admin page, this is a flaw.",
+    "text_hash": "71ced9fd678d0eeb2a02c4cb8a9ce3b3080df431e0c53a38baecd440958159b6",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 121,
+      "end_line": 121
+    },
+    "heading_path": [
+      "A01:2025 Broken Access Control",
+      "Example attack scenarios."
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d6ebc4e65422_b00019",
+    "normalized_text": "If an unauthenticated user can access either page, it's a flaw. If a non-admin can access the admin page, this is a flaw.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d6ebc4e65422_b00020",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_d6ebc4e65422",
+    "block_idx": 20,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**Scenario #3:** An application puts all of their access control in their front-end. While the attacker cannot get to `https://example.com/app/admin_getappInfo` due to JavaScript code running in the browser, they can simply execute:",
+    "text_hash": "2e703a89ca4100f752cdea8151b069dd833df62e7a22bcd9696eeaf8bb0c51e6",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 123,
+      "end_line": 123
+    },
+    "heading_path": [
+      "A01:2025 Broken Access Control",
+      "Example attack scenarios."
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d6ebc4e65422_b00020",
+    "normalized_text": "**Scenario #3:** An application puts all of their access control in their front-end. While the attacker cannot get to `https://example.com/app/admin_getappInfo` due to JavaScript code running in the browser, they can simply execute:",
+    "normalization_flags": {
+      "is_code_or_payload": true,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d6ebc4e65422_b00021",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_d6ebc4e65422",
+    "block_idx": 21,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```\n$ curl https://example.com/app/admin_getappInfo\n```",
+    "text_hash": "9bca8cfcd1bc5496e15cdf327b3fc46c8b93dab808a28eca676412a373994362",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 126,
+      "end_line": 128
+    },
+    "heading_path": [
+      "A01:2025 Broken Access Control",
+      "Example attack scenarios."
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d6ebc4e65422_b00021",
+    "normalized_text": "```\n$ curl https://example.com/app/admin_getappInfo\n```",
+    "normalization_flags": {
+      "is_code_or_payload": true,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d6ebc4e65422_b00022",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_d6ebc4e65422",
+    "block_idx": 22,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "from the command line.",
+    "text_hash": "9a8a3f5ae7fc4e6a102126fa18e15fda3a158ff252414fda00897757abfb155e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 131,
+      "end_line": 131
+    },
+    "heading_path": [
+      "A01:2025 Broken Access Control",
+      "Example attack scenarios."
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d6ebc4e65422_b00022",
+    "normalized_text": "from the command line.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d6ebc4e65422_b00023",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_d6ebc4e65422",
+    "block_idx": 23,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## References.",
+    "text_hash": "5546ce5ee6a63e3e42f0a5ac997bd80c4d0401da94781586497894c4464f6300",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 134,
+      "end_line": 134
+    },
+    "heading_path": [
+      "A01:2025 Broken Access Control",
+      "References."
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d6ebc4e65422_b00023",
+    "normalized_text": "## References.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d6ebc4e65422_b00024",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_d6ebc4e65422",
+    "block_idx": 24,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "* [OWASP Proactive Controls: C1: Implement Access Control](https://top10proactive.owasp.org/archive/2024/the-top-10/c1-accesscontrol/)\n* [OWASP Application Security Verification Standard: V8 Authorization](https://github.com/OWASP/ASVS/blob/master/5.0/en/0x17-V8-Authorization.md)\n* [OWASP Testing Guide: Authorization Testing](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/05-Authorization_Testing/README)\n* [OWASP Cheat Sheet: Authorization](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html)\n* [PortSwigger: Exploiting CORS misconfiguration](https://portswigger.net/blog/exploiting-cors-misconfigurations-for-bitcoins-and-bounties)\n* [OAuth: Revoking Access](https://www.oauth.com/oauth2-servers/listing-authorizations/revoking-access/)\n\n",
+    "text_hash": "cb31ec96ba08d512c1770294506eac34007edb765863aca6641f926a974e00a8",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 136,
+      "end_line": 143
+    },
+    "heading_path": [
+      "A01:2025 Broken Access Control",
+      "References."
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d6ebc4e65422_b00024",
+    "normalized_text": "* [OWASP Proactive Controls: C1: Implement Access Control](https://top10proactive.owasp.org/archive/2024/the-top-10/c1-accesscontrol/)\n* [OWASP Application Security Verification Standard: V8 Authorization](https://github.com/OWASP/ASVS/blob/master/5.0/en/0x17-V8-Authorization.md)\n* [OWASP Testing Guide: Authorization Testing](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/05-Authorization_Testing/README)\n* [OWASP Cheat Sheet: Authorization](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html)\n* [PortSwigger: Exploiting CORS misconfiguration](https://portswigger.net/blog/exploiting-cors-misconfigurations-for-bitcoins-and-bounties)\n* [OAuth: Revoking Access](https://www.oauth.com/oauth2-servers/listing-authorizations/revoking-access/)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 2
+    }
+  },
+  {
+    "block_id": "ver_d6ebc4e65422_b00025",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_d6ebc4e65422",
+    "block_idx": 25,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## List of Mapped CWEs",
+    "text_hash": "25ada4e89aaab165926a55b7c068b5ff4c988e4d4cd1593dfb340087f3d969b2",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 144,
+      "end_line": 144
+    },
+    "heading_path": [
+      "A01:2025 Broken Access Control",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d6ebc4e65422_b00025",
+    "normalized_text": "## List of Mapped CWEs",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d6ebc4e65422_b00026",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_d6ebc4e65422",
+    "block_idx": 26,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "* [CWE-22 Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')](https://cwe.mitre.org/data/definitions/22.html)\n\n* [CWE-23 Relative Path Traversal](https://cwe.mitre.org/data/definitions/23.html)\n\n* [CWE-36 Absolute Path Traversal](https://cwe.mitre.org/data/definitions/36.html)\n\n* [CWE-59 Improper Link Resolution Before File Access ('Link Following')](https://cwe.mitre.org/data/definitions/59.html)\n\n* [CWE-61 UNIX Symbolic Link (Symlink) Following](https://cwe.mitre.org/data/definitions/61.html)\n\n* [CWE-65 Windows Hard Link](https://cwe.mitre.org/data/definitions/65.html)\n\n* [CWE-200 Exposure of Sensitive Information to an Unauthorized Actor](https://cwe.mitre.org/data/definitions/200.html)\n\n* [CWE-201 Exposure of Sensitive Information Through Sent Data](https://cwe.mitre.org/data/definitions/201.html)\n\n* [CWE-219 Storage of File with Sensitive Data Under Web Root](https://cwe.mitre.org/data/definitions/219.html)\n\n* [CWE-276 Incorrect Default Permissions](https://cwe.mitre.org/data/definitions/276.html)\n\n* [CWE-281 Improper Preservation of Permissions](https://cwe.mitre.org/data/definitions/281.html)\n\n* [CWE-282 Improper Ownership Management](https://cwe.mitre.org/data/definitions/282.html)\n\n* [CWE-283 Unverified Ownership](https://cwe.mitre.org/data/definitions/283.html)\n\n* [CWE-284 Improper Access Control](https://cwe.mitre.org/data/definitions/284.html)\n\n* [CWE-285 Improper Authorization](https://cwe.mitre.org/data/definitions/285.html)\n\n* [CWE-352 Cross-Site Request Forgery (CSRF)](https://cwe.mitre.org/data/definitions/352.html)\n\n* [CWE-359 Exposure of Private Personal Information to an Unauthorized Actor](https://cwe.mitre.org/data/definitions/359.html)\n\n* [CWE-377 Insecure Temporary File](https://cwe.mitre.org/data/definitions/377.html)\n\n* [CWE-379 Creation of Temporary File in Directory with Insecure Permissions](https://cwe.mitre.org/data/definitions/379.html)\n\n* [CWE-402 Transmission of Private Resources into a New Sphere ('Resource Leak')](https://cwe.mitre.org/data/definitions/402.html)\n\n* [CWE-424 Improper Protection of Alternate Path](https://cwe.mitre.org/data/definitions/424.html)\n\n* [CWE-425 Direct Request ('Forced Browsing')](https://cwe.mitre.org/data/definitions/425.html)\n\n* [CWE-441 Unintended Proxy or Intermediary ('Confused Deputy')](https://cwe.mitre.org/data/definitions/441.html)\n\n* [CWE-497 Exposure of Sensitive System Information to an Unauthorized Control Sphere](https://cwe.mitre.org/data/definitions/497.html)\n\n* [CWE-538 Insertion of Sensitive Information into Externally-Accessible File or Directory](https://cwe.mitre.org/data/definitions/538.html)\n\n* [CWE-540 Inclusion of Sensitive Information in Source Code](https://cwe.mitre.org/data/definitions/540.html)\n\n* [CWE-548 Exposure of Information Through Directory Listing](https://cwe.mitre.org/data/definitions/548.html)\n\n* [CWE-552 Files or Directories Accessible to External Parties](https://cwe.mitre.org/data/definitions/552.html)\n\n* [CWE-566 Authorization Bypass Through User-Controlled SQL Primary Key](https://cwe.mitre.org/data/definitions/566.html)\n\n* [CWE-601 URL Redirection to Untrusted Site ('Open Redirect')](https://cwe.mitre.org/data/definitions/601.html)\n\n* [CWE-615 Inclusion of Sensitive Information in Source Code Comments](https://cwe.mitre.org/data/definitions/615.html)\n\n* [CWE-639 Authorization Bypass Through User-Controlled Key](https://cwe.mitre.org/data/definitions/639.html)\n\n* [CWE-668 Exposure of Resource to Wrong Sphere](https://cwe.mitre.org/data/definitions/668.html)\n\n* [CWE-732 Incorrect Permission Assignment for Critical Resource](https://cwe.mitre.org/data/definitions/732.html)\n\n* [CWE-749 Exposed Dangerous Method or Function](https://cwe.mitre.org/data/definitions/749.html)\n\n* [CWE-862 Missing Authorization](https://cwe.mitre.org/data/definitions/862.html)\n\n* [CWE-863 Incorrect Authorization](https://cwe.mitre.org/data/definitions/863.html)\n\n* [CWE-918 Server-Side Request Forgery (SSRF)](https://cwe.mitre.org/data/definitions/918.html)\n\n* [CWE-922 Insecure Storage of Sensitive Information](https://cwe.mitre.org/data/definitions/922.html)\n\n* [CWE-1275 Sensitive Cookie with Improper SameSite Attribute](https://cwe.mitre.org/data/definitions/1275.html)",
+    "text_hash": "9d7d40e3a81d7be087690ec576625aed855045aabb94b13e2b6a43551de06b32",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 146,
+      "end_line": 224
+    },
+    "heading_path": [
+      "A01:2025 Broken Access Control",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d6ebc4e65422_b00026",
+    "normalized_text": "* [CWE-22 Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')](https://cwe.mitre.org/data/definitions/22.html)\n\n* [CWE-23 Relative Path Traversal](https://cwe.mitre.org/data/definitions/23.html)\n\n* [CWE-36 Absolute Path Traversal](https://cwe.mitre.org/data/definitions/36.html)\n\n* [CWE-59 Improper Link Resolution Before File Access ('Link Following')](https://cwe.mitre.org/data/definitions/59.html)\n\n* [CWE-61 UNIX Symbolic Link (Symlink) Following](https://cwe.mitre.org/data/definitions/61.html)\n\n* [CWE-65 Windows Hard Link](https://cwe.mitre.org/data/definitions/65.html)\n\n* [CWE-200 Exposure of Sensitive Information to an Unauthorized Actor](https://cwe.mitre.org/data/definitions/200.html)\n\n* [CWE-201 Exposure of Sensitive Information Through Sent Data](https://cwe.mitre.org/data/definitions/201.html)\n\n* [CWE-219 Storage of File with Sensitive Data Under Web Root](https://cwe.mitre.org/data/definitions/219.html)\n\n* [CWE-276 Incorrect Default Permissions](https://cwe.mitre.org/data/definitions/276.html)\n\n* [CWE-281 Improper Preservation of Permissions](https://cwe.mitre.org/data/definitions/281.html)\n\n* [CWE-282 Improper Ownership Management](https://cwe.mitre.org/data/definitions/282.html)\n\n* [CWE-283 Unverified Ownership](https://cwe.mitre.org/data/definitions/283.html)\n\n* [CWE-284 Improper Access Control](https://cwe.mitre.org/data/definitions/284.html)\n\n* [CWE-285 Improper Authorization](https://cwe.mitre.org/data/definitions/285.html)\n\n* [CWE-352 Cross-Site Request Forgery (CSRF)](https://cwe.mitre.org/data/definitions/352.html)\n\n* [CWE-359 Exposure of Private Personal Information to an Unauthorized Actor](https://cwe.mitre.org/data/definitions/359.html)\n\n* [CWE-377 Insecure Temporary File](https://cwe.mitre.org/data/definitions/377.html)\n\n* [CWE-379 Creation of Temporary File in Directory with Insecure Permissions](https://cwe.mitre.org/data/definitions/379.html)\n\n* [CWE-402 Transmission of Private Resources into a New Sphere ('Resource Leak')](https://cwe.mitre.org/data/definitions/402.html)\n\n* [CWE-424 Improper Protection of Alternate Path](https://cwe.mitre.org/data/definitions/424.html)\n\n* [CWE-425 Direct Request ('Forced Browsing')](https://cwe.mitre.org/data/definitions/425.html)\n\n* [CWE-441 Unintended Proxy or Intermediary ('Confused Deputy')](https://cwe.mitre.org/data/definitions/441.html)\n\n* [CWE-497 Exposure of Sensitive System Information to an Unauthorized Control Sphere](https://cwe.mitre.org/data/definitions/497.html)\n\n* [CWE-538 Insertion of Sensitive Information into Externally-Accessible File or Directory](https://cwe.mitre.org/data/definitions/538.html)\n\n* [CWE-540 Inclusion of Sensitive Information in Source Code](https://cwe.mitre.org/data/definitions/540.html)\n\n* [CWE-548 Exposure of Information Through Directory Listing](https://cwe.mitre.org/data/definitions/548.html)\n\n* [CWE-552 Files or Directories Accessible to External Parties](https://cwe.mitre.org/data/definitions/552.html)\n\n* [CWE-566 Authorization Bypass Through User-Controlled SQL Primary Key](https://cwe.mitre.org/data/definitions/566.html)\n\n* [CWE-601 URL Redirection to Untrusted Site ('Open Redirect')](https://cwe.mitre.org/data/definitions/601.html)\n\n* [CWE-615 Inclusion of Sensitive Information in Source Code Comments](https://cwe.mitre.org/data/definitions/615.html)\n\n* [CWE-639 Authorization Bypass Through User-Controlled Key](https://cwe.mitre.org/data/definitions/639.html)\n\n* [CWE-668 Exposure of Resource to Wrong Sphere](https://cwe.mitre.org/data/definitions/668.html)\n\n* [CWE-732 Incorrect Permission Assignment for Critical Resource](https://cwe.mitre.org/data/definitions/732.html)\n\n* [CWE-749 Exposed Dangerous Method or Function](https://cwe.mitre.org/data/definitions/749.html)\n\n* [CWE-862 Missing Authorization](https://cwe.mitre.org/data/definitions/862.html)\n\n* [CWE-863 Incorrect Authorization](https://cwe.mitre.org/data/definitions/863.html)\n\n* [CWE-918 Server-Side Request Forgery (SSRF)](https://cwe.mitre.org/data/definitions/918.html)\n\n* [CWE-922 Insecure Storage of Sensitive Information](https://cwe.mitre.org/data/definitions/922.html)\n\n* [CWE-1275 Sensitive Cookie with Improper SameSite Attribute](https://cwe.mitre.org/data/definitions/1275.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  }
+]

@@ -51,6 +51,7 @@ coverage.xml
 .hypothesis/
 .pytest_cache/
 cover/
+long_nguyen/
 
 # Translations
 *.mo
@@ -205,6 +206,7 @@ cython_debug/
 # Temporary file for partial code execution
 tempCodeRunnerFile.py
 
+
 # Ruff stuff:
 .ruff_cache/
 
@@ -219,6 +221,7 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
+*bin
 #Generated SQLite metadata
 *.db
 *.db-journal

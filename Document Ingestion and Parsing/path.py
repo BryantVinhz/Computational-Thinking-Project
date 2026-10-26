@@ -14,9 +14,11 @@ DATA_DIR = PROJECT_ROOT / "Data"
 OUTPUT_DIR = PIPELINE_DIR / "output"
 INGESTION_OUT_DIR = OUTPUT_DIR / "Ingestion"
 PARSING_OUT_DIR = OUTPUT_DIR / "Parsing"
+NORMALIZATION_IN_DIR = PARSING_OUT_DIR
 NORMALIZATION_OUT_DIR = OUTPUT_DIR / "Normalization"
 CHUNKING_OUT_DIR = OUTPUT_DIR / "Chunking"
 FINAL_OUT_DIR = OUTPUT_DIR / "Final"
+VECTOR_DB_DIR = OUTPUT_DIR / "Vector DB"
 
 
 def to_relative_posix(path: Path | str) -> str:

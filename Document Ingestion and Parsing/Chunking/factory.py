@@ -1,0 +1,20 @@
+import inspect
+from fixed_size import FixedSizeChunker
+from structure_aware import StructureAwareChunker
+
+
+class ChunkingStrategyFactory:
+    """Factory for the supported chunking strategies."""
+    @staticmethod
+    def create(name: str, **kwargs):
+        normalized = name.strip().lower().replace("-", "_")
+        strategies = {
+            "fixed_size": FixedSizeChunker,
+            "structure_aware": StructureAwareChunker,
+        }
+        if normalized not in strategies:
+            raise ValueError(f"Unknown strategy {name!r}; choose from {', '.join(strategies)}")
+        target_cls = strategies[normalized]
+        valid_params = inspect.signature(target_cls.__init__).parameters
+        filtered_kwargs = {k: v for k, v in kwargs.items() if k in valid_params}
+        return target_cls(**filtered_kwargs)
