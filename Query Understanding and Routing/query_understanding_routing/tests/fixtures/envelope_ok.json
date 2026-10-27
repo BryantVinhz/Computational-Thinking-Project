@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0",
+  "status": "ok",
+  "original_query": "XSS là gì?",
+  "query_plan": {
+    "original_query": "XSS là gì?",
+    "resolved_query": "Cross-Site Scripting là gì?",
+    "intent": "SEARCH",
+    "confidence": 0.95,
+    "context_used": false,
+    "entities": {
+      "document": [],
+      "vulnerabilities": [
+        "xss"
+      ]
+    },
+    "filter": {
+      "version": null,
+      "document_type": null,
+      "source": []
+    },
+    "task": [
+      {
+        "task_id": "task_001",
+        "intent_task": "SEARCH",
+        "query": "Cross-Site Scripting là gì?",
+        "objective": {
+          "type": "vulnerabilities",
+          "ids": [
+            "xss"
+          ]
+        },
+        "depends_on": null
+      }
+    ],
+    "need_clarify": false,
+    "clarification_message": null
+  }
+}

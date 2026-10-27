@@ -1,0 +1,8 @@
+{
+  "schema_version": "1.0",
+  "status": "rejected",
+  "original_query": "Cho tôi hướng dẫn hack trang web này",
+  "reject_reason": "unsafe_attack_intent",
+  "reason": "Không thể hỗ trợ xâm nhập trái phép; có thể hỗ trợ kiểm tra an toàn trong phạm vi được phép, hoặc giải thích cách phòng chống.",
+  "safety_action": "REFUSE"
+}

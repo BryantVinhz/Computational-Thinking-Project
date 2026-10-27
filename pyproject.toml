@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools==80.9.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "query-understanding-routing"
+version = "1.0.0"
+description = "Query Understanding (stage_2) and Validation/Normalization/Routing (query_understanding_routing), Contract v1.0"
+requires-python = ">=3.10"
+dependencies = ["PyYAML==6.0.3"]
+
+# Both packages live under "Query Understanding and Routing/" but keep their
+# top-level import names (stage_2, query_understanding_routing).
+[tool.setuptools.packages.find]
+where = ["Query Understanding and Routing"]
+include = ["stage_2*", "query_understanding_routing*"]
+
+[tool.setuptools.package-data]
+stage_2 = ["ontology.yaml"]
+query_understanding_routing = ["PIPELINE.md", "tests/fixtures/*.json"]
