@@ -3,13 +3,24 @@
 import logging
 import time
 
-from stage_2.ontology_loader import load_ontology
-from stage_2.understanding_module import understand_query
-
-from .config import ERROR_MSG, MESSAGES
-from .normalization_module import normalize_query
-from .routing_module import SCHEMA_VERSION, route
-from .validation_module import validate_query
+try:
+    from .ontology_loader import load_ontology
+    from .understanding_module import understand_query, get_default_llm_client
+    from .config import ERROR_MSG, MESSAGES
+    from .normalization_module import normalize_query
+    from .routing_module import SCHEMA_VERSION, route
+    from .validation_module import validate_query
+except ImportError:
+    try:
+        from stage_2.ontology_loader import load_ontology
+        from stage_2.understanding_module import understand_query, get_default_llm_client
+    except ImportError:
+        from ontology_loader import load_ontology
+        from understanding_module import understand_query, get_default_llm_client
+    from config import ERROR_MSG, MESSAGES
+    from normalization_module import normalize_query
+    from routing_module import SCHEMA_VERSION, route
+    from validation_module import validate_query
 
 logger = logging.getLogger(__name__)
 
@@ -48,7 +59,8 @@ def _empty_query_validation() -> dict:
 
 def _understand(normalized_query: str, history, llm_client) -> dict:
     try:
-        result = understand_query(normalized_query, history, llm_client=llm_client)
+        client = llm_client if llm_client is not None else get_default_llm_client()
+        result = understand_query(normalized_query, history, llm_client=client)
     except Exception:
         logger.exception("Understanding failed unexpectedly")
         return dict(INTERNAL_ERROR)
