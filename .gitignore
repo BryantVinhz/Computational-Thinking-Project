@@ -230,5 +230,8 @@ __marimo__/
 *.db-wal
 *.db-shm
 
+output/Vector DB/
+*.sqlite
+*.sqlite3
 
 
