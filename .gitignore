@@ -230,9 +230,6 @@ __marimo__/
 *.db-wal
 *.db-shm
 
-output/Vector DB/
-**/chroma_security_db/
-*.sqlite
-*.sqlite3
+
 
 
