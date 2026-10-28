@@ -124,7 +124,8 @@ class TestRAGProcessor:
         assert result["generation"] is None
 
     def test_end_to_end_rag_pipeline_clarification(self):
-        rag = EndToEndRAGPipeline(llm_client=MockLLMClient())
+        # Without an explicit mock forcing SEARCH, the semantic engine properly identifies vague query
+        rag = EndToEndRAGPipeline(llm_client=None)
         result = rag.process("Các lỗ hổng nguy hiểm")
         assert result["status"] == "clarification"
         assert result["generation"] is None
