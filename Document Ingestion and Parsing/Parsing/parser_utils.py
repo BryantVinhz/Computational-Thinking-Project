@@ -66,7 +66,7 @@ def build_block(
 
 def run_cli(parser) -> None:
     """Chạy thử parser trên manifest Step 1 và ghi output vào PARSING_OUT_DIR."""
-    versions_path = INGESTION_OUT_DIR / "ducuments_version.json"
+    versions_path = INGESTION_OUT_DIR / "documents_version.json"
     versions = [
         DocumentVersionSchema(**item)
         for item in json.loads(versions_path.read_text(encoding="utf-8"))

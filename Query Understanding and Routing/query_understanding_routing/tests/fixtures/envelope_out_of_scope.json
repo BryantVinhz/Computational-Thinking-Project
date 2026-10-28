@@ -1,0 +1,6 @@
+{
+  "schema_version": "1.0",
+  "status": "out_of_scope",
+  "original_query": "Tôi muốn biết thời tiết",
+  "reason": "Câu hỏi này nằm ngoài phạm vi kiến thức bảo mật web của hệ thống (XSS, SQL Injection, Broken Access Control, Authentication Failures, Security Misconfiguration)."
+}

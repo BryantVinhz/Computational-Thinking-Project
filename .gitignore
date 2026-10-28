@@ -51,8 +51,13 @@ coverage.xml
 .hypothesis/
 .pytest_cache/
 cover/
+<<<<<<< HEAD
 
 # Translations
+=======
+long_nguyen/
+/Document Ingestion and Parsing/output/Normalization/
+>>>>>>> main
 *.mo
 *.pot
 
@@ -220,12 +225,15 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
-*bin
+
 #Generated SQLite metadata
 *.db
+!workspace_data.db
+!metadata.db
 *.db-journal
 *.db-wal
 *.db-shm
 
-*.sqlite3
-**/chroma_security_db/
+
+
+

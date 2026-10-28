@@ -1,0 +1,7 @@
+{
+  "schema_version": "1.0",
+  "status": "clarification",
+  "original_query": "Các lỗ hổng nguy hiểm",
+  "source": "understanding",
+  "clarification_message": "Bạn đang quan tâm đến nhóm lỗ hổng bảo mật cụ thể nào (ví dụ: XSS, SQL Injection, Broken Access Control, Authentication Failures, hay Security Misconfiguration) hoặc tiêu chuẩn nào (OWASP Top 10, ASVS, CVSS v4.0)?"
+}
