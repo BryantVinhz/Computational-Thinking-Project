@@ -231,6 +231,7 @@ __marimo__/
 *.db-shm
 
 output/Vector DB/
+**/chroma_security_db/
 *.sqlite
 *.sqlite3
 
