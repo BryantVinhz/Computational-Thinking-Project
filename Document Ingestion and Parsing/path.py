@@ -17,7 +17,8 @@ PARSING_OUT_DIR = OUTPUT_DIR / "Parsing"
 NORMALIZATION_IN_DIR = PARSING_OUT_DIR
 NORMALIZATION_OUT_DIR = OUTPUT_DIR / "Normalization"
 CHUNKING_OUT_DIR = OUTPUT_DIR / "Chunking"
-FINAL_OUT_DIR = OUTPUT_DIR / "Final"
+PROVENANCE_OUT_DIR = OUTPUT_DIR / "Provenance"
+VECTOR_DB_DIR = OUTPUT_DIR / "Vector DB"
 
 
 def to_relative_posix(path: Path | str) -> str:

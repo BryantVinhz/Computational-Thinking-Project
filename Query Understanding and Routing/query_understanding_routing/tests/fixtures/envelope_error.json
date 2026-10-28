@@ -1,0 +1,7 @@
+{
+  "schema_version": "1.0",
+  "status": "error",
+  "original_query": "XSS là gì?",
+  "error_code": "llm_unavailable",
+  "reason": "Hệ thống tạm thời không xử lý được yêu cầu. Vui lòng thử lại sau."
+}

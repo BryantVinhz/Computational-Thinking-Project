@@ -1,0 +1,306 @@
+{
+  "document_id": "doc_owasp_top10_a07_authentication_failures",
+  "version_id": "ver_9f98e0c8f055",
+  "chunking_strategy": "fixed_size",
+  "chunks": [
+    {
+      "chunk_id": "ver_9f98e0c8f055_c00000",
+      "document_id": "doc_owasp_top10_a07_authentication_failures",
+      "version_id": "ver_9f98e0c8f055",
+      "chunk_idx": 0,
+      "chunk_type": "text",
+      "text_content": "# A07:2025 Authentication Failures ![icon](../assets/TOP_10_Icons_Final_Identification_and_Authentication_Failures.png){: style=\"height:80px;width:80px\" align=\"right\"}\n\n## Background.\n\nAuthentication Failures maintains its position at #7 with a slight name change to more accurately reflect the 36 CWEs in this category. Despite benefits from standardized frameworks, this category has kept its #7 rank from 2021. Notable CWEs included are *CWE-259 Use of Hard-coded Password*, *CWE-297: Improper Validation of Certificate with Host Mismatch*, *CWE-287: Improper Authentication*, *CWE-384: Session Fixation*, and *CWE-798 Use of Hard-coded Credentials*.\n\n## Score table.\n\n<table>\n  <tr>\n   <td>CWEs Mapped\n   </td>\n   <td>Max Incidence Rate\n   </td>\n   <td>Avg Incidence Rate\n   </td>\n   <td>Max Coverage\n   </td>\n   <td>Avg Coverage\n   </td>\n   <td>Avg Weighted Exploit\n   </td>\n   <td>Avg Weighted Impact\n   </td>\n   <td>Total Occurrences\n   </td>\n   <td>Total CVEs\n   </td>\n  </tr>\n  <tr>\n   <td>36\n   </td>\n   <td>15.80%\n   </td>\n   <td>2.92%\n   </td>\n   <td>100.00%\n   </td>\n   <td>37.14%\n   </td>\n   <td>7.69\n   </td>\n   <td>4.44\n   </td>\n   <td>1,120,673\n   </td>\n   <td>7,147\n   </td>\n  </tr>\n</table>\n\n## Description.\n\nWhen an attacker is able to trick a system into recognizing an invalid or incorrect user as legitimate, this vulnerability is present. There may be authentication weaknesses if the application:\n\n* Permits automated attacks such as credential stuffing, where the attacker has a breached list of valid usernames and passwords. More recently this type of attack has been expanded to include hybrid password attacks credential stuffing (also known as password spray attacks), where the attacker uses variations or increments of spilled credentials to gain access, for instance",
+      "token_count": 450,
+      "chunk_strategy": "fixed_size",
+      "heading_path": [
+        "A07:2025 Authentication Failures"
+      ]
+    },
+    {
+      "chunk_id": "ver_9f98e0c8f055_c00001",
+      "document_id": "doc_owasp_top10_a07_authentication_failures",
+      "version_id": "ver_9f98e0c8f055",
+      "chunk_idx": 1,
+      "chunk_type": "text",
+      "text_content": "a breached list of valid usernames and passwords. More recently this type of attack has been expanded to include hybrid password attacks credential stuffing (also known as password spray attacks), where the attacker uses variations or increments of spilled credentials to gain access, for instance trying Password1!, Password2!, Password3! and so on.\n\n* Permits brute force or other automated, scripted attacks that are not quickly blocked.\n\n* Permits default, weak, or well-known passwords, such as \"Password1\" or \"admin\" username with an \"admin\" password.\n\n* Allows users to create new accounts with already known-breached credentials.\n\n* Allows use of weak or ineffective credential recovery and forgot-password processes, such as \"knowledge-based answers,\" which cannot be made safe.\n\n* Uses plain text, encrypted, or weakly hashed passwords data stores (see[ A04:2025-Cryptographic Failures](https://owasp.org/Top10/2025/A04_2025-Cryptographic_Failures/)).\n\n* Has missing or ineffective multi-factor authentication.\n\n* Allows use of weak or ineffective fallbacks if multi-factor authentication is not available.\n\n* Exposes session identifier in the URL, a hidden field, or another insecure location that is accessible to the client.\n\n* Reuses the same session identifier after successful login.\n\n* Does not correctly invalidate user sessions or authentication tokens (mainly single sign-on (SSO) tokens) during logout or a period of inactivity.\n\n* Does not correctly assert the scope and intended audience of the provided credentials.\n\n## How to prevent.\n\n* Where possible, implement and enforce use of multi-factor authentication to prevent automated credential stuffing, brute force, and stolen credential reuse attacks.\n\n* Where possible, encourage and enable the use of password managers, to help users make better choices.\n\n* Do not ship or deploy with any default credentials, particularly for admin users.\n\n* Implement weak password checks, such as testing new or changed passwords against the top 10,000 worst passwords list.\n\n* During new account creation and password changes validate against lists of known breached credentials (eg: using [haveibeenpwned.com](https://haveibeenpwned.com)).\n\n* Align password length, complexity, and rotation policies with [National Institute of Standards and Technology (NIST)",
+      "token_count": 448,
+      "chunk_strategy": "fixed_size",
+      "heading_path": [
+        "A07:2025 Authentication Failures",
+        "Description."
+      ]
+    },
+    {
+      "chunk_id": "ver_9f98e0c8f055_c00002",
+      "document_id": "doc_owasp_top10_a07_authentication_failures",
+      "version_id": "ver_9f98e0c8f055",
+      "chunk_idx": 2,
+      "chunk_type": "text",
+      "text_content": "validate against lists of known breached credentials (eg: using [haveibeenpwned.com](https://haveibeenpwned.com)).\n\n* Align password length, complexity, and rotation policies with [National Institute of Standards and Technology (NIST) 800-63b's guidelines in section 5.1.1](https://pages.nist.gov/800-63-3/sp800-63b.html#:~:text=5.1.1%20Memorized%20Secrets) for Memorized Secrets or other modern, evidence-based password policies.\n\n* Do not force human beings to rotate passwords unless you suspect breach. If you suspect breach, force password resets immediately.\n\n* Ensure registration, credential recovery, and API pathways are hardened against account enumeration attacks by using the same messages for all outcomes (“Invalid username or password.”).\n\n* Limit or increasingly delay failed login attempts but be careful not to create a denial of service scenario. Log all failures and alert administrators when credential stuffing, brute force, or other attacks are detected or suspected.\n\n* Use a server-side, secure, built-in session manager that generates a new random session ID with high entropy after login. Session identifiers should not be in the URL, be securely stored in a secure cookie, and invalidated after logout, idle, and absolute timeouts.\n\n* Ideally, use a premade, well-trusted system to handle authentication, identity, and session management. Transfer this risk whenever possible by buying and utilizing a hardened and well tested system.\n\n* Verify the intended use of provided credentials, e.g. for JWTs validate `aud`, `iss` claims and scopes\n\n## Example attack scenarios.\n\n**Scenario #1:** Credential stuffing, the use of lists of known username and password combinations, is now a very common attack. More recently attackers have been found to ‘increment’ or otherwise adjust passwords, based on common human behavior. For instance, changing ‘Winter2025’ to ‘Winter2026’, or ‘ILoveMyDog6’ to ‘ILoveMyDog7’ or ‘ILoveMyDog5’. This adjusting of password attempts is called a hybrid credential stuffing attack or a password spray attack, and they can be even more effective than the traditional version. If an application does not implement defences against automated",
+      "token_count": 450,
+      "chunk_strategy": "fixed_size",
+      "heading_path": [
+        "A07:2025 Authentication Failures",
+        "How to prevent."
+      ]
+    },
+    {
+      "chunk_id": "ver_9f98e0c8f055_c00003",
+      "document_id": "doc_owasp_top10_a07_authentication_failures",
+      "version_id": "ver_9f98e0c8f055",
+      "chunk_idx": 3,
+      "chunk_type": "text",
+      "text_content": "to ‘ILoveMyDog7’ or ‘ILoveMyDog5’. This adjusting of password attempts is called a hybrid credential stuffing attack or a password spray attack, and they can be even more effective than the traditional version. If an application does not implement defences against automated threats (brute force, scripts, or bots) or credential stuffing, the application can be used as a password oracle to determine if the credentials are valid and gain unauthorized access.\n\n**Scenario #2:** Most successful authentication attacks occur due to the continued use of passwords as the sole authentication factor. Once considered best practices, password rotation and complexity requirements encourage users to both reuse passwords and use weak passwords. Organizations are recommended to stop these practices per NIST 800-63 and to enforce use of multi-factor authentication on all important systems.\n\n**Scenario #3:** Application session timeouts aren't implemented correctly. A user uses a public computer to access an application and instead of selecting \"logout,\" the user simply closes the browser tab and walks away. Another Example for this is, if a Single Sign on (SSO) session can not be closed by a Single Logout (SLO). That is, a single login logs you into, for example, your mail reader, your document system, and your chat system. But logging out happens only to the current system. If an attacker uses the same browser after the victim thinks they have successfully logged out, but with the user still authenticated to some of the applications, then can access the victim's account. The same issue can happen in offices and enterprises when a sensitive application has not been properly exited and a colleague has (temporary) access to the unlocked computer.\n\n## References.\n\n* [OWASP Authentication Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html)\n\n* [OWASP Secure Coding Practices](https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/stable-en/01-introduction/05-introduction)\n\n## List of Mapped CWEs\n\n* [CWE-258 Empty Password in Configuration File](https://cwe.mitre.org/data/definitions/258.html)\n\n* [CWE-259 Use of",
+      "token_count": 449,
+      "chunk_strategy": "fixed_size",
+      "heading_path": [
+        "A07:2025 Authentication Failures",
+        "Example attack scenarios."
+      ]
+    },
+    {
+      "chunk_id": "ver_9f98e0c8f055_c00004",
+      "document_id": "doc_owasp_top10_a07_authentication_failures",
+      "version_id": "ver_9f98e0c8f055",
+      "chunk_idx": 4,
+      "chunk_type": "text",
+      "text_content": "List of Mapped CWEs\n\n* [CWE-258 Empty Password in Configuration File](https://cwe.mitre.org/data/definitions/258.html)\n\n* [CWE-259 Use of Hard-coded Password](https://cwe.mitre.org/data/definitions/259.html)\n\n* [CWE-287 Improper Authentication](https://cwe.mitre.org/data/definitions/287.html)\n\n* [CWE-288 Authentication Bypass Using an Alternate Path or Channel](https://cwe.mitre.org/data/definitions/288.html)\n\n* [CWE-289 Authentication Bypass by Alternate Name](https://cwe.mitre.org/data/definitions/289.html)\n\n* [CWE-290 Authentication Bypass by Spoofing](https://cwe.mitre.org/data/definitions/290.html)\n\n* [CWE-291 Reliance on IP Address for Authentication](https://cwe.mitre.org/data/definitions/291.html)\n\n* [CWE-293 Using Referer Field for Authentication](https://cwe.mitre.org/data/definitions/293.html)\n\n* [CWE-294 Authentication Bypass by Capture-replay](https://cwe.mitre.org/data/definitions/294.html)\n\n* [CWE-295 Improper Certificate Validation](https://cwe.mitre.org/data/definitions/295.html)\n\n* [CWE-297 Improper Validation of Certificate with Host Mismatch](https://cwe.mitre.org/data/definitions/297.html)\n\n* [CWE-298 Improper Validation of Certificate with Host Mismatch](https://cwe.mitre.org/data/definitions/298.html)\n\n* [CWE-299 Improper Validation of Certificate with Host Mismatch](https://cwe.mitre.org/data/definitions/299.html)\n\n* [CWE-300 Channel Accessible by Non-Endpoint](https://cwe.mitre.org/data/definitions/300.html)\n\n* [CWE-302 Authentication Bypass by Assumed-Immutable",
+      "token_count": 442,
+      "chunk_strategy": "fixed_size",
+      "heading_path": [
+        "A07:2025 Authentication Failures",
+        "List of Mapped CWEs"
+      ]
+    },
+    {
+      "chunk_id": "ver_9f98e0c8f055_c00005",
+      "document_id": "doc_owasp_top10_a07_authentication_failures",
+      "version_id": "ver_9f98e0c8f055",
+      "chunk_idx": 5,
+      "chunk_type": "text",
+      "text_content": "[CWE-300 Channel Accessible by Non-Endpoint](https://cwe.mitre.org/data/definitions/300.html)\n\n* [CWE-302 Authentication Bypass by Assumed-Immutable Data](https://cwe.mitre.org/data/definitions/302.html)\n\n* [CWE-303 Incorrect Implementation of Authentication Algorithm](https://cwe.mitre.org/data/definitions/303.html)\n\n* [CWE-304 Missing Critical Step in Authentication](https://cwe.mitre.org/data/definitions/304.html)\n\n* [CWE-305 Authentication Bypass by Primary Weakness](https://cwe.mitre.org/data/definitions/305.html)\n\n* [CWE-306 Missing Authentication for Critical Function](https://cwe.mitre.org/data/definitions/306.html)\n\n* [CWE-307 Improper Restriction of Excessive Authentication Attempts](https://cwe.mitre.org/data/definitions/307.html)\n\n* [CWE-308 Use of Single-factor Authentication](https://cwe.mitre.org/data/definitions/308.html)\n\n* [CWE-309 Use of Password System for Primary Authentication](https://cwe.mitre.org/data/definitions/309.html)\n\n* [CWE-346 Origin Validation Error](https://cwe.mitre.org/data/definitions/346.html)\n\n* [CWE-350 Reliance on Reverse DNS Resolution for a Security-Critical Action](https://cwe.mitre.org/data/definitions/350.html)\n\n* [CWE-384 Session Fixation](https://cwe.mitre.org/data/definitions/384.html)\n\n* [CWE-521 Weak Password Requirements](https://cwe.mitre.org/data/definitions/521.html)\n\n* [CWE-613 Insufficient Session Expiration](https://cwe.mitre.org/data/definitions/613.html)\n\n* [CWE-620 Unverified Password",
+      "token_count": 430,
+      "chunk_strategy": "fixed_size",
+      "heading_path": [
+        "A07:2025 Authentication Failures",
+        "List of Mapped CWEs"
+      ]
+    },
+    {
+      "chunk_id": "ver_9f98e0c8f055_c00006",
+      "document_id": "doc_owasp_top10_a07_authentication_failures",
+      "version_id": "ver_9f98e0c8f055",
+      "chunk_idx": 6,
+      "chunk_type": "text",
+      "text_content": "Insufficient Session Expiration](https://cwe.mitre.org/data/definitions/613.html)\n\n* [CWE-620 Unverified Password Change](https://cwe.mitre.org/data/definitions/620.html)\n\n* [CWE-640 Weak Password Recovery Mechanism for Forgotten Password](https://cwe.mitre.org/data/definitions/640.html)\n\n* [CWE-798 Use of Hard-coded Credentials](https://cwe.mitre.org/data/definitions/798.html)\n\n* [CWE-940 Improper Verification of Source of a Communication Channel](https://cwe.mitre.org/data/definitions/940.html)\n\n* [CWE-941 Incorrectly Specified Destination in a Communication Channel](https://cwe.mitre.org/data/definitions/941.html)\n\n* [CWE-1390 Weak Authentication](https://cwe.mitre.org/data/definitions/1390.html)\n\n* [CWE-1391 Use of Weak Credentials](https://cwe.mitre.org/data/definitions/1391.html)\n\n* [CWE-1392 Use of Default Credentials](https://cwe.mitre.org/data/definitions/1392.html)\n\n* [CWE-1393 Use of Default",
+      "token_count": 272,
+      "chunk_strategy": "fixed_size",
+      "heading_path": [
+        "A07:2025 Authentication Failures",
+        "List of Mapped CWEs"
+      ]
+    }
+  ],
+  "chunk_sources": [
+    {
+      "chunk_source_id": "ver_9f98e0c8f055_c00000_s000",
+      "chunk_id": "ver_9f98e0c8f055_c00000",
+      "normalized_block_id": "nrm_ver_9f98e0c8f055_b00000",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 167
+    },
+    {
+      "chunk_source_id": "ver_9f98e0c8f055_c00000_s001",
+      "chunk_id": "ver_9f98e0c8f055_c00000",
+      "normalized_block_id": "nrm_ver_9f98e0c8f055_b00001",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 14
+    },
+    {
+      "chunk_source_id": "ver_9f98e0c8f055_c00000_s002",
+      "chunk_id": "ver_9f98e0c8f055_c00000",
+      "normalized_block_id": "nrm_ver_9f98e0c8f055_b00002",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 468
+    },
+    {
+      "chunk_source_id": "ver_9f98e0c8f055_c00000_s003",
+      "chunk_id": "ver_9f98e0c8f055_c00000",
+      "normalized_block_id": "nrm_ver_9f98e0c8f055_b00003",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 15
+    },
+    {
+      "chunk_source_id": "ver_9f98e0c8f055_c00000_s004",
+      "chunk_id": "ver_9f98e0c8f055_c00000",
+      "normalized_block_id": "nrm_ver_9f98e0c8f055_b00004",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 537
+    },
+    {
+      "chunk_source_id": "ver_9f98e0c8f055_c00000_s005",
+      "chunk_id": "ver_9f98e0c8f055_c00000",
+      "normalized_block_id": "nrm_ver_9f98e0c8f055_b00005",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 15
+    },
+    {
+      "chunk_source_id": "ver_9f98e0c8f055_c00000_s006",
+      "chunk_id": "ver_9f98e0c8f055_c00000",
+      "normalized_block_id": "nrm_ver_9f98e0c8f055_b00006",
+      "source_order": 6,
+      "start_offset": 0,
+      "end_offset": 193
+    },
+    {
+      "chunk_source_id": "ver_9f98e0c8f055_c00000_s007",
+      "chunk_id": "ver_9f98e0c8f055_c00000",
+      "normalized_block_id": "nrm_ver_9f98e0c8f055_b00007",
+      "source_order": 7,
+      "start_offset": 0,
+      "end_offset": 377
+    },
+    {
+      "chunk_source_id": "ver_9f98e0c8f055_c00001_s000",
+      "chunk_id": "ver_9f98e0c8f055_c00001",
+      "normalized_block_id": "nrm_ver_9f98e0c8f055_b00007",
+      "source_order": 0,
+      "start_offset": 80,
+      "end_offset": 1619
+    },
+    {
+      "chunk_source_id": "ver_9f98e0c8f055_c00001_s001",
+      "chunk_id": "ver_9f98e0c8f055_c00001",
+      "normalized_block_id": "nrm_ver_9f98e0c8f055_b00008",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 18
+    },
+    {
+      "chunk_source_id": "ver_9f98e0c8f055_c00001_s002",
+      "chunk_id": "ver_9f98e0c8f055_c00001",
+      "normalized_block_id": "nrm_ver_9f98e0c8f055_b00009",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 764
+    },
+    {
+      "chunk_source_id": "ver_9f98e0c8f055_c00002_s000",
+      "chunk_id": "ver_9f98e0c8f055_c00002",
+      "normalized_block_id": "nrm_ver_9f98e0c8f055_b00009",
+      "source_order": 0,
+      "start_offset": 530,
+      "end_offset": 2099
+    },
+    {
+      "chunk_source_id": "ver_9f98e0c8f055_c00002_s001",
+      "chunk_id": "ver_9f98e0c8f055_c00002",
+      "normalized_block_id": "nrm_ver_9f98e0c8f055_b00010",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 28
+    },
+    {
+      "chunk_source_id": "ver_9f98e0c8f055_c00002_s002",
+      "chunk_id": "ver_9f98e0c8f055_c00002",
+      "normalized_block_id": "nrm_ver_9f98e0c8f055_b00011",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 591
+    },
+    {
+      "chunk_source_id": "ver_9f98e0c8f055_c00003_s000",
+      "chunk_id": "ver_9f98e0c8f055_c00003",
+      "normalized_block_id": "nrm_ver_9f98e0c8f055_b00011",
+      "source_order": 0,
+      "start_offset": 317,
+      "end_offset": 776
+    },
+    {
+      "chunk_source_id": "ver_9f98e0c8f055_c00003_s001",
+      "chunk_id": "ver_9f98e0c8f055_c00003",
+      "normalized_block_id": "nrm_ver_9f98e0c8f055_b00012",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 422
+    },
+    {
+      "chunk_source_id": "ver_9f98e0c8f055_c00003_s002",
+      "chunk_id": "ver_9f98e0c8f055_c00003",
+      "normalized_block_id": "nrm_ver_9f98e0c8f055_b00013",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 870
+    },
+    {
+      "chunk_source_id": "ver_9f98e0c8f055_c00003_s003",
+      "chunk_id": "ver_9f98e0c8f055_c00003",
+      "normalized_block_id": "nrm_ver_9f98e0c8f055_b00014",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 14
+    },
+    {
+      "chunk_source_id": "ver_9f98e0c8f055_c00003_s004",
+      "chunk_id": "ver_9f98e0c8f055_c00003",
+      "normalized_block_id": "nrm_ver_9f98e0c8f055_b00015",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 270
+    },
+    {
+      "chunk_source_id": "ver_9f98e0c8f055_c00003_s005",
+      "chunk_id": "ver_9f98e0c8f055_c00003",
+      "normalized_block_id": "nrm_ver_9f98e0c8f055_b00016",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 22
+    },
+    {
+      "chunk_source_id": "ver_9f98e0c8f055_c00003_s006",
+      "chunk_id": "ver_9f98e0c8f055_c00003",
+      "normalized_block_id": "nrm_ver_9f98e0c8f055_b00017",
+      "source_order": 6,
+      "start_offset": 0,
+      "end_offset": 116
+    },
+    {
+      "chunk_source_id": "ver_9f98e0c8f055_c00004_s000",
+      "chunk_id": "ver_9f98e0c8f055_c00004",
+      "normalized_block_id": "nrm_ver_9f98e0c8f055_b00016",
+      "source_order": 0,
+      "start_offset": 3,
+      "end_offset": 22
+    },
+    {
+      "chunk_source_id": "ver_9f98e0c8f055_c00004_s001",
+      "chunk_id": "ver_9f98e0c8f055_c00004",
+      "normalized_block_id": "nrm_ver_9f98e0c8f055_b00017",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 1490
+    },
+    {
+      "chunk_source_id": "ver_9f98e0c8f055_c00005_s000",
+      "chunk_id": "ver_9f98e0c8f055_c00005",
+      "normalized_block_id": "nrm_ver_9f98e0c8f055_b00017",
+      "source_order": 0,
+      "start_offset": 1342,
+      "end_offset": 2811
+    },
+    {
+      "chunk_source_id": "ver_9f98e0c8f055_c00006_s000",
+      "chunk_id": "ver_9f98e0c8f055_c00006",
+      "normalized_block_id": "nrm_ver_9f98e0c8f055_b00017",
+      "source_order": 0,
+      "start_offset": 2698,
+      "end_offset": 3613
+    }
+  ]
+}
