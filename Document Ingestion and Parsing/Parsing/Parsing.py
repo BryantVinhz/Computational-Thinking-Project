@@ -43,7 +43,7 @@ PARSER_REGISTRY = {
 
 
 def run_all_parsers() -> dict:
-    versions_path = INGESTION_OUT_DIR / "ducuments_version.json"
+    versions_path = INGESTION_OUT_DIR / "documents_version.json"
     if not versions_path.exists():
         raise FileNotFoundError(f"Không tìm thấy manifest Bước 1 tại {versions_path}")
 

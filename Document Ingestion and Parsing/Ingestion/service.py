@@ -38,7 +38,7 @@ class IngestionService:
         self.manifest_dir.mkdir(parents=True, exist_ok=True)
 
         self.docs_path = self.manifest_dir / "documents.json"
-        self.versions_path = self.manifest_dir / "ducuments_version.json"
+        self.versions_path = self.manifest_dir / "documents_version.json"
         self.rejected_path = self.manifest_dir / "ingestion_rejected.json"
 
         self.documents: dict[str, DocumentSchema] = self._load_json_map(
