@@ -216,7 +216,7 @@ def prepare_and_ingest_to_chroma(
 def main() -> None:
     # 1. Đọc dữ liệu Document & Version từ Step 1 (Ingestion)
     documents_data = json.loads((INGESTION_OUT_DIR / "documents.json").read_text(encoding="utf-8"))
-    versions_data = json.loads((INGESTION_OUT_DIR / "ducuments_version.json").read_text(encoding="utf-8"))
+    versions_data = json.loads((INGESTION_OUT_DIR / "documents_version.json").read_text(encoding="utf-8"))
 
     doc_by_id = {d["document_id"]: d for d in documents_data}
     ver_by_id = {v["version_id"]: v for v in versions_data}

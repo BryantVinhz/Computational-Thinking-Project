@@ -225,6 +225,7 @@ __marimo__/
 #Generated SQLite metadata
 *.db
 !workspace_data.db
+!metadata.db
 *.db-journal
 *.db-wal
 *.db-shm
