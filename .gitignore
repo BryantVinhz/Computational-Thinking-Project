@@ -221,7 +221,7 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
-*bin
+
 #Generated SQLite metadata
 *.db
 !workspace_data.db
@@ -229,5 +229,5 @@ __marimo__/
 *.db-wal
 *.db-shm
 
-*.sqlite3
-**/chroma_security_db/
+
+
