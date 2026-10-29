@@ -1,6 +1,5 @@
 """
 Unified configuration constants for Query Understanding & Routing (Contract v1.0).
-Maintainers: Long (Query Understanding Lead) & Tri (Validation & Routing)
 """
 
 from __future__ import annotations
@@ -72,7 +71,7 @@ VALID_TASK_INTENTS: set[str] = {
 }
 
 # ==============================================================================
-# 7. Error codes permitted from Long's module (Section 7.3)
+# 7. Permitted LLM error codes (Section 7.3)
 # ==============================================================================
 VALID_LLM_ERROR_CODES: set[str] = {
     "llm_unavailable",
