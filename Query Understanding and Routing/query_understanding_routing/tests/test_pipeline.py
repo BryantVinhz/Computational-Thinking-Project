@@ -348,8 +348,18 @@ def test_unexpected_exception_returns_minimal_error(stubs, monkeypatch):
 
 def test_package_import_is_lazy():
     project_root = Path(__file__).resolve().parents[3]
+    stage_dir = project_root / "Query Understanding and Routing"
+    env = os.environ.copy()
+    current_pp = env.get("PYTHONPATH", "")
+    env["PYTHONPATH"] = f"{stage_dir}{os.pathsep}{current_pp}" if current_pp else str(stage_dir)
     code = "import sys, query_understanding_routing; assert 'query_understanding_routing.pipeline' not in sys.modules"
-    completed = subprocess.run([sys.executable, "-c", code], cwd=project_root, capture_output=True)
+    completed = subprocess.run(
+        [sys.executable, "-c", code],
+        cwd=project_root,
+        stdin=subprocess.DEVNULL,
+        capture_output=True,
+        env=env,
+    )
     assert completed.returncode == 0, completed.stderr
     from query_understanding_routing import process_query
 
