@@ -439,7 +439,8 @@ def test_cache_does_not_hold_caller_dict() -> None:
     assert _normalized("xss", ontology) == "XSS Attack"
 
 
-# Integration: real stage_2/ontology.yaml (run from the repository root)
+# Integration: real ontology loaded via the stage_2 shim (resolves to
+# query_understanding_routing/ontology.yaml); run from the repository root.
 
 
 def _load_real_ontology() -> dict:
