@@ -18,6 +18,14 @@ import os
 import sys
 from pathlib import Path
 
+# Fix Windows console UTF-8 output encoding
+if sys.stdout.encoding and sys.stdout.encoding.lower() != "utf-8":
+    try:
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+        sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+    except Exception:
+        pass
+
 # Ensure paths are configured regardless of current working directory
 SCRIPT_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = SCRIPT_DIR.parent
@@ -97,7 +105,7 @@ def print_separator(title: str = "", char: str = "=") -> None:
 def run_single_test(
     query: str,
     history: list[dict] | None = None,
-    llm_provider: str = "mock",
+    llm_provider: str = "engine",
     llm_model: str | None = None,
     show_stages: bool = True,
     run_rag: bool = True,
@@ -110,7 +118,7 @@ def run_single_test(
             print(f"    - {turn['role']}: {turn['content']}")
 
     ontology = load_ontology(DEFAULT_ONTOLOGY_PATH)
-    client = create_llm_client(provider=llm_provider, model_name=llm_model)
+    client = None if llm_provider == "engine" else create_llm_client(provider=llm_provider, model_name=llm_model)
 
     # Stage 2.1: Validation
     val_res = validate_query(query)
@@ -125,10 +133,14 @@ def run_single_test(
             print(f"  - Clarify Msg:   {val_res.get('clarification_message')}")
 
     # Stage 2.2: Normalization
-    norm_query = normalize_query(query, ontology)
+    norm_res = normalize_query(query, ontology)
     if show_stages:
         print("\n[Stage 2.2 - Normalization]:")
-        print(f"  - Normalized:    \"{norm_query}\"")
+        if isinstance(norm_res, dict):
+            print(f"  - Normalized:    \"{norm_res.get('normalized_query')}\"")
+            print(f"  - Payload-like:  {norm_res.get('payload_like')}")
+        else:
+            print(f"  - Normalized:    \"{norm_res}\"")
 
     # Full Stage 2 Pipeline Envelope
     envelope = process_query(raw_query=query, conversation_history=history, llm_client=client)
@@ -173,9 +185,9 @@ def run_single_test(
     return envelope
 
 
-def run_samples(llm_provider: str = "mock", llm_model: str | None = None) -> None:
+def run_samples(llm_provider: str = "engine", llm_model: str | None = None) -> None:
     """Run all sample scenarios."""
-    print_separator(f"RUNNING STANDARD TEST MATRIX ({llm_provider.upper()} CLIENT)")
+    print_separator(f"RUNNING STANDARD TEST MATRIX ({llm_provider.upper()} BACKEND)")
     for item in TEST_SUITE_SAMPLES:
         print_separator(item["category"], char="-")
         run_single_test(
@@ -189,7 +201,7 @@ def run_samples(llm_provider: str = "mock", llm_model: str | None = None) -> Non
     print_separator("TEST MATRIX RUN COMPLETED")
 
 
-def run_interactive(llm_provider: str = "mock", llm_model: str | None = None) -> None:
+def run_interactive(llm_provider: str = "engine", llm_model: str | None = None) -> None:
     """Interactive loop for manual querying."""
     print_separator(f"INTERACTIVE TEST MODE ({llm_provider.upper()})")
     print("Type your security question below. Type 'exit' or 'quit' to terminate.")
@@ -239,7 +251,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Manual Test Runner for Stage 2 Query Understanding & Routing")
     parser.add_argument("--interactive", "-i", action="store_true", help="Launch interactive CLI query mode")
     parser.add_argument("--query", "-q", type=str, help="Run a single test query")
-    parser.add_argument("--provider", "-p", type=str, default="mock", choices=["mock", "ollama", "gemini", "openai"], help="LLM backend provider (default: mock)")
+    parser.add_argument("--provider", "-p", type=str, default="engine", choices=["engine", "mock", "ollama", "gemini", "openai"], help="Understanding backend provider: engine (built-in deterministic), mock, ollama, gemini, openai (default: engine)")
     parser.add_argument("--model", "-m", type=str, default=None, help="LLM model name override (e.g. qwen2.5:7b, gemini-1.5-flash)")
     parser.add_argument("--no-rag", action="store_true", help="Skip Stage 3/4 RAG generation demo")
 
