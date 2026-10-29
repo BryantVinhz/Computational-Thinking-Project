@@ -1,6 +1,5 @@
 """
 Unit and Integration Test Suite for Query Understanding Module (Contract v1.0).
-Author: Long (Query Understanding Lead) & Tri (Validation & Routing)
 
 Tests coverage:
 - 2.1: Ontology YAML validation (5 slugs, canonical, aliases, cwe, subtypes, related_terms, owasp, NO 'bac' alias)
@@ -19,38 +18,21 @@ import yaml
 
 TESTS_DIR = Path(__file__).resolve().parent
 PACKAGE_DIR = TESTS_DIR.parent
-PROJECT_ROOT = PACKAGE_DIR.parents[1] if len(PACKAGE_DIR.parents) > 1 else PACKAGE_DIR.parent
+STAGE_DIR = PACKAGE_DIR.parent
+PROJECT_ROOT = STAGE_DIR.parent
 
-for p in [PROJECT_ROOT, PACKAGE_DIR]:
+for p in [PROJECT_ROOT, STAGE_DIR, PACKAGE_DIR]:
     p_str = str(p)
     if p_str not in sys.path:
         sys.path.insert(0, p_str)
 
-try:
-    from query_understanding_routing.config import CLARIFY_THRESHOLD, STANDARD_VULNERABILITY_SLUGS
-    from query_understanding_routing.ontology_loader import DEFAULT_ONTOLOGY_PATH, load_ontology
-    from query_understanding_routing.understanding_module import (
-        truncate_conversation_history,
-        understand_query,
-        validate_understanding_schema,
-    )
-except ImportError:
-    try:
-        from stage_2.config import CLARIFY_THRESHOLD, STANDARD_VULNERABILITY_SLUGS
-        from stage_2.ontology_loader import DEFAULT_ONTOLOGY_PATH, load_ontology
-        from stage_2.understanding_module import (
-            truncate_conversation_history,
-            understand_query,
-            validate_understanding_schema,
-        )
-    except ImportError:
-        from config import CLARIFY_THRESHOLD, STANDARD_VULNERABILITY_SLUGS
-        from ontology_loader import DEFAULT_ONTOLOGY_PATH, load_ontology
-        from understanding_module import (
-            truncate_conversation_history,
-            understand_query,
-            validate_understanding_schema,
-        )
+from query_understanding_routing.config import CLARIFY_THRESHOLD, STANDARD_VULNERABILITY_SLUGS
+from query_understanding_routing.ontology_loader import DEFAULT_ONTOLOGY_PATH, load_ontology
+from query_understanding_routing.understanding_module import (
+    truncate_conversation_history,
+    understand_query,
+    validate_understanding_schema,
+)
 
 
 class TestOntologyYAMLAndLoader:
@@ -96,7 +78,7 @@ class TestContractOutputSchemaV1:
     """Verify Contract v1.0 Section 4 & 7.2 output schema compliance."""
 
     def test_understanding_result_has_no_original_query(self):
-        """Contract v1.0 Section 4: Long returns understanding_result WITHOUT original_query."""
+        """Contract v1.0 Section 4: understanding_module returns understanding_result WITHOUT original_query."""
         result = understand_query("XSS là gì?")
         assert "original_query" not in result, "understanding_result must NOT contain original_query"
         expected_keys = {

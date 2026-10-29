@@ -1,8 +1,6 @@
 """
 Query Understanding Module (Contract v1.0).
 Part of Stage 2: Query Understanding & Routing.
-Author: Long (Query Understanding Lead)
-Collaborator: Tri (Validation, Normalization, Routing)
 
 Responsibilities:
 - 2.1: Utilize ontology.yaml (5 standard slugs: xss, sqli, bac, auth_failures, misconfig).
@@ -12,7 +10,7 @@ Responsibilities:
        History truncation algorithm (Section 7.1).
 - 2.4: Clarification logic with confidence thresholding (CLARIFY_THRESHOLD = 0.6)
        and two-way equivalence: intent == CLARIFICATION <=> need_clarify == true.
-- Contract v1.0: Output adheres strictly to Section 4 & 7.2 (no original_query; Long returns understanding_result or error_code).
+- Contract v1.0: Output adheres strictly to Section 4 & 7.2 (returns understanding_result or error_code; routing attaches original_query).
 """
 
 from __future__ import annotations
@@ -26,12 +24,13 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional, Set, Tuple
 
 MODULE_DIR = Path(__file__).resolve().parent
-PROJECT_ROOT = MODULE_DIR.parents[1] if len(MODULE_DIR.parents) > 1 else MODULE_DIR.parent
+STAGE_DIR = MODULE_DIR.parent
+PROJECT_ROOT = STAGE_DIR.parent
 
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
-if str(MODULE_DIR) not in sys.path:
-    sys.path.insert(0, str(MODULE_DIR))
+for p in [PROJECT_ROOT, STAGE_DIR, MODULE_DIR]:
+    p_str = str(p)
+    if p_str not in sys.path:
+        sys.path.insert(0, p_str)
 
 try:
     from query_understanding_routing.config import (

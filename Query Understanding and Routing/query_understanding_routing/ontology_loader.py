@@ -1,7 +1,4 @@
-"""
-Ontology Loader and Validator (Contract v1.0).
-Maintainer: Long (Query Understanding Lead) & Tri (Validation & Routing)
-"""
+"""Ontology Loader and Validator (Contract v1.0)."""
 
 from __future__ import annotations
 
@@ -13,12 +10,13 @@ from typing import Any, Dict, Set
 import yaml
 
 MODULE_DIR = Path(__file__).resolve().parent
-PROJECT_ROOT = MODULE_DIR.parents[1] if len(MODULE_DIR.parents) > 1 else MODULE_DIR.parent
+STAGE_DIR = MODULE_DIR.parent
+PROJECT_ROOT = STAGE_DIR.parent
 
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
-if str(MODULE_DIR) not in sys.path:
-    sys.path.insert(0, str(MODULE_DIR))
+for p in [PROJECT_ROOT, STAGE_DIR, MODULE_DIR]:
+    p_str = str(p)
+    if p_str not in sys.path:
+        sys.path.insert(0, p_str)
 
 try:
     from query_understanding_routing.config import STANDARD_VULNERABILITY_SLUGS
@@ -28,7 +26,7 @@ except ImportError:
     except ImportError:
         from config import STANDARD_VULNERABILITY_SLUGS
 
-DEFAULT_ONTOLOGY_PATH = (MODULE_DIR / "ontology.yaml").resolve()
+DEFAULT_ONTOLOGY_PATH = Path(os.getenv("ONTOLOGY_PATH", str((MODULE_DIR / "ontology.yaml").resolve()))).resolve()
 REQUIRED_FIELDS = ["canonical", "aliases", "cwe", "subtypes", "related_terms"]
 
 
@@ -47,9 +45,15 @@ def load_ontology(path: str | Path = DEFAULT_ONTOLOGY_PATH) -> Dict[str, Dict[st
         FileNotFoundError: If the specified file does not exist.
         ValueError: If ontology schema or alias consistency checks fail.
     """
-    file_path = Path(path)
+    file_path = Path(path).resolve()
     if not file_path.is_file():
-        raise FileNotFoundError(f"Ontology file not found at: {file_path}")
+        # Fallback check relative to module or stage directory
+        for candidate in [MODULE_DIR / path, STAGE_DIR / path]:
+            if candidate.is_file():
+                file_path = candidate.resolve()
+                break
+        else:
+            raise FileNotFoundError(f"Ontology file not found at: {path}")
 
     with open(file_path, "r", encoding="utf-8") as f:
         data = yaml.safe_load(f)

@@ -1,6 +1,5 @@
 """
 LLM Client Architecture for Stage 2 (Query Understanding) & End-to-End RAG.
-Author: Long (Query Understanding Lead) & Tri (Validation & Routing)
 
 Provides pluggable, robust LLM connectors:
 - BaseLLMClient: Interface contract supporting call(...) and generate(...)

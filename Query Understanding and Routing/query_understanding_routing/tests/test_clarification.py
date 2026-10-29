@@ -1,20 +1,22 @@
-"""
-Tests for Clarification Logic and Confidence Threshold (Contract v1.0 Section 2.4).
-Author: Long (Query Understanding Lead)
-"""
+"""Tests for Clarification Logic and Confidence Threshold (Contract v1.0 Section 2.4)."""
+
+import sys
+from pathlib import Path
 
 import pytest
 
-try:
-    from query_understanding_routing.config import CLARIFY_THRESHOLD
-    from query_understanding_routing.understanding_module import understand_query
-except ImportError:
-    try:
-        from stage_2.config import CLARIFY_THRESHOLD
-        from stage_2.understanding_module import understand_query
-    except ImportError:
-        from config import CLARIFY_THRESHOLD
-        from understanding_module import understand_query
+TESTS_DIR = Path(__file__).resolve().parent
+PACKAGE_DIR = TESTS_DIR.parent
+STAGE_DIR = PACKAGE_DIR.parent
+PROJECT_ROOT = STAGE_DIR.parent
+
+for p in [PROJECT_ROOT, STAGE_DIR, PACKAGE_DIR]:
+    p_str = str(p)
+    if p_str not in sys.path:
+        sys.path.insert(0, p_str)
+
+from query_understanding_routing.config import CLARIFY_THRESHOLD
+from query_understanding_routing.understanding_module import understand_query
 
 
 class TestClarificationLogic:

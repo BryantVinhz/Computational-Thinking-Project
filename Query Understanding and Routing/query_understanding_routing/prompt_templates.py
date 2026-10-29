@@ -1,6 +1,5 @@
 """
 Prompt templates and instruction design for Query Understanding module (Contract v1.0).
-Maintainer: Long (Query Understanding Lead) & Tri (Validation & Routing)
 
 This module defines system instructions, few-shot examples, and prompt builders
 for LLM-based query understanding adhering to Contract v1.0 schema (Section 4 & 7.2).

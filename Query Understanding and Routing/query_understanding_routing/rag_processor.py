@@ -1,6 +1,5 @@
 """
 End-to-End RAG Processor & Generator Module.
-Author: Long (Query Understanding Lead) & Tri (Validation & Routing)
 
 Demonstrates the complete standard RAG process:
 1. Stage 2: Query Validation, Normalization, Query Understanding (calling LLM) & Routing.
