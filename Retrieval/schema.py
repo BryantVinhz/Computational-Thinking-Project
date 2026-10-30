@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-
+from typing import Any
 
 @dataclass
 class RetrievalScope:
@@ -16,7 +16,7 @@ class RetrievalScope:
         candidate_doc_ids: Candidate document IDs identified from coarse filtering or routing
         ontology_keywords: Ontology terms or synonyms 
     """
-    chroma_filter: dict[str, any] | None = None
+    chroma_filter: dict[str, Any] | None = None
     document_ids: list[str] = field(default_factory=list)
     file_formats: list[str] = field(default_factory=list)
     version_ids: str | None = None

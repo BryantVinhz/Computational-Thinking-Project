@@ -1,4 +1,5 @@
 import logging
+from typing import Any
 
 logger = logging.getLogger(__name__)
 
@@ -7,13 +8,13 @@ BGE_QUERY_INSTRUCTION = "Represent this sentence for searching relevant passages
 
 class QueryVectorizer:
     def __init__(self, model_name: str = "BAAI/bge-base-en-v1.5", device: str = "cpu", 
-                 use_bge_instruction: bool = True, model: any | None = None):
+                 use_bge_instruction: bool = True, model: Any | None = None):
         self.model_name = model_name
         self.device = device
         self.use_bge_instruction = use_bge_instruction
         self._model = model
 
-    def _get_model(self) -> any:
+    def _get_model(self) -> Any:
         if self._model is None:
             try:
                 from sentence_transformers import SentenceTransformer
