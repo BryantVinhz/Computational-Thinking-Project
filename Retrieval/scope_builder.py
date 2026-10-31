@@ -6,6 +6,12 @@ from schema import RetrievalScope
 
 logger = logging.getLogger(__name__)
 
+CURRENT_DIR = Path(__file__).resolve().parent
+PROJECT_ROOT = CURRENT_DIR.parent
+INGESTION_OUTPUT_DIR = PROJECT_ROOT / "Document Ingestion and Parsing" / "output" / "Ingestion"
+DOCUMENTS_CATALOG_PATH = INGESTION_OUTPUT_DIR / "documents.json"
+VERSIONS_CATALOG_PATH = INGESTION_OUTPUT_DIR / "documents_version.json"
+
 FORMAT_MAPPING = {
     "MD": "MD",
     "MARKDOWN": "MD",
@@ -22,17 +28,22 @@ class ScopeBuilder:
         versions_catalog: list[dict[str, Any]] | None = None,
         ontology_dict: dict[str, list[str]] | None = None,
     ):
-        root = Path(__file__).resolve().parents[1]
-        self.doc_catalog = (
-            documents_catalog
-            if documents_catalog is not None
-            else json.loads(next(root.glob("**/output/Ingestion/documents.json")).read_text(encoding="utf-8"))
-        )
-        self.ver_catalog = (
-            versions_catalog
-            if versions_catalog is not None
-            else json.loads(next(root.glob("**/output/Ingestion/documents_version.json")).read_text(encoding="utf-8"))
-        )
+        if documents_catalog is not None:
+            self.doc_catalog = documents_catalog
+        elif DOCUMENTS_CATALOG_PATH.exists():
+            self.doc_catalog = json.loads(DOCUMENTS_CATALOG_PATH.read_text(encoding="utf-8"))
+        else:
+            logger.warning("Not found file: %s", DOCUMENTS_CATALOG_PATH)
+            self.doc_catalog = []
+
+        if versions_catalog is not None:
+            self.ver_catalog = versions_catalog
+        elif VERSIONS_CATALOG_PATH.exists():
+            self.ver_catalog = json.loads(VERSIONS_CATALOG_PATH.read_text(encoding="utf-8"))
+        else:
+            logger.warning("Not found file: %s", VERSIONS_CATALOG_PATH)
+            self.ver_catalog = []
+
         self.ontology_dict = {
             k.lower().strip(): [term.lower().strip() for term in v]
             for k, v in (ontology_dict or {}).items()

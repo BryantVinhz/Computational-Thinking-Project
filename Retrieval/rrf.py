@@ -190,38 +190,3 @@ class HybridRRFusion:
         }
 
 
-if __name__ == "__main__":
-    # Minh họa hoạt động của Hướng 2 (Dense Retrieval) + Hướng 3 (RRF)
-    sample_query = "How to prevent SQL Injection in web applications?"
-    print(f"Câu truy vấn: '{sample_query}'\n")
-
-    # 1. Chạy Hướng 2: Dense Retrieval từ ChromaDB
-    dense_retriever = DenseRetriever()
-    dense_hits = dense_retriever.retrieve(query_text=sample_query, top_k=5)
-
-    # 2. Giả lập kết quả từ Hướng 1 (BM25 của Kiệt) để test hàm RRF
-    # (Lấy một số chunk trùng và khác thứ hạng với Dense Retrieval)
-    mock_bm25_hits = []
-    if len(dense_hits) >= 3:
-        mock_bm25_hits = [
-            {**dense_hits[2], "rank": 1, "score": 14.52},  # Rank 3 ở Dense nhưng Rank 1 ở BM25
-            {**dense_hits[0], "rank": 2, "score": 12.10},  # Rank 1 ở Dense và Rank 2 ở BM25
-            {**dense_hits[1], "rank": 3, "score": 9.85},   # Rank 2 ở Dense và Rank 3 ở BM25
-        ]
-
-    # 3. Chạy Hướng 3: Gộp kết quả bằng RRF (k = 60)
-    final_results = reciprocal_rank_fusion(
-        bm25_results=mock_bm25_hits,
-        dense_results=dense_hits,
-        k=60,
-        top_k=5,
-    )
-
-    print("Kết quả cuối cùng sau khi gộp bằng Reciprocal Rank Fusion (RRF, k=60):")
-    for item in final_results:
-        print(
-            f"  [Final Rank {item['rank']}] ID: {item['id']} | "
-            f"RRF Score: {item['rrf_score']:.6f} | "
-            f"(BM25 Rank: {item['bm25_rank']}, Dense Rank: {item['dense_rank']}) | "
-            f"Source: {item['source']}"
-        )

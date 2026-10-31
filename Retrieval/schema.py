@@ -19,7 +19,7 @@ class RetrievalScope:
     chroma_filter: dict[str, Any] | None = None
     document_ids: list[str] = field(default_factory=list)
     file_formats: list[str] = field(default_factory=list)
-    version_ids: str | None = None
+    version_ids: list[str] = field(default_factory=list)
     is_relaxed: bool = False
 
 

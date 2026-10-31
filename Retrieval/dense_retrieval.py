@@ -204,20 +204,3 @@ def dense_search(
         top_k=top_k,
     )
 
-
-if __name__ == "__main__":
-    # Chạy thử nghiệm Dense Retrieval trực tiếp trên dữ liệu ChromaDB đã tạo ở Phase 1
-    sample_query = "How to prevent SQL Injection and Broken Access Control in web applications?"
-    print(f"Câu truy vấn thử nghiệm: '{sample_query}'\n")
-
-    retriever = DenseRetriever()
-    dense_results = retriever.retrieve(query_text=sample_query, top_k=5)
-
-    print(f"Tìm thấy {len(dense_results)} kết quả từ ChromaDB (Dense Retrieval):")
-    for item in dense_results:
-        print(
-            f"  [Rank {item['rank']}] ID: {item['id']} | "
-            f"Score (Cosine): {item['score']:.4f} | "
-            f"Doc: {item['metadata']['document_id']} | "
-            f"Heading: {item['metadata']['heading_path']}"
-        )
