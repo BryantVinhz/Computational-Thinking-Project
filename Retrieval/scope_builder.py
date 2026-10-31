@@ -201,7 +201,7 @@ class ScopeBuilder:
         expansions = []
         for key in target_keys:
             expansions.append(key)
-            if self.ontology_loader:
+            if self.ontology_dict:
                 try:
                     synonyms = self.ontology_dict.get_synonyms(key) or []
                     expansions.extend(synonyms)
