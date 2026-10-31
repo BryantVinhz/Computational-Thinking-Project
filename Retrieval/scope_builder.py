@@ -1,5 +1,6 @@
-import logging
+import logging, json
 import re
+from pathlib import Path
 from typing import Any
 from schema import RetrievalScope
 
@@ -14,7 +15,6 @@ FORMAT_MAPPING = {
     "TXT": "TXT",
 }
 
-
 class ScopeBuilder:
     def __init__(
         self,
@@ -22,12 +22,27 @@ class ScopeBuilder:
         versions_catalog: list[dict[str, Any]] | None = None,
         ontology_dict: dict[str, list[str]] | None = None,
     ):
-        self.doc_catalog = documents_catalog or [] # Document catalog loaded from documents.json
-        self.ver_catalog = versions_catalog or [] # Version catalog loaded from documents_version.json
-        self.ontology_dict = ontology_dict
-
-        self.valid_doc_ids: set[str] = {d["document_id"] for d in self.doc_catalog}
-
+        root = Path(__file__).resolve().parents[1]
+        self.doc_catalog = (
+            documents_catalog
+            if documents_catalog is not None
+            else json.loads(next(root.glob("**/output/Ingestion/documents.json")).read_text(encoding="utf-8"))
+        )
+        self.ver_catalog = (
+            versions_catalog
+            if versions_catalog is not None
+            else json.loads(next(root.glob("**/output/Ingestion/documents_version.json")).read_text(encoding="utf-8"))
+        )
+        self.ontology_dict = {
+            k.lower().strip(): [term.lower().strip() for term in v]
+            for k, v in (ontology_dict or {}).items()
+        }
+        self.valid_doc_ids: set[str] = {
+            d.get("document_id")
+            for d in self.doc_catalog
+            if isinstance(d, dict) and "document_id" in d
+        }
+        
     def _resolve_canonical_doc_ids(self, raw_sources: list[str]) -> list[str]:
         """
         Resolve Any alias, publisher name, or document group into an exact list of document_ids
@@ -203,7 +218,7 @@ class ScopeBuilder:
             expansions.append(key)
             if self.ontology_dict:
                 try:
-                    synonyms = self.ontology_dict.get_synonyms(key) or []
+                    synonyms = self.ontology_dict.get(key) or []
                     expansions.extend(synonyms)
                 except Exception:
                     pass
@@ -269,7 +284,7 @@ class ScopeBuilder:
             for doc in self.doc_catalog:
                 title = doc.get("canonical_title", "").lower()
                 doc_id = doc.get("document_id", "").lower()
-                if Any(k in title or k in doc_id for k in ontology_expansions):
+                if any(k in title or k in doc_id for k in ontology_expansions):
                     candidate_docs.append(doc["document_id"])
                     
         scope = RetrievalScope(
@@ -277,7 +292,7 @@ class ScopeBuilder:
             document_ids=doc_ids,
             file_formats=[file_format] if file_format else [],
             version_ids=version_ids,
-            is_relaxed=False,
+            is_relaxed=is_relaxed,
             preferred_chunk_types=pref_types,
             preferred_headings=pref_headings,
             candidate_doc_ids=sorted(set(candidate_docs)),

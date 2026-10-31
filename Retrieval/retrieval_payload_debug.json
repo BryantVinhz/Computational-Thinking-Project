@@ -793,7 +793,9 @@
         "Introduction",
         "About"
       ],
-      "candidate_doc_ids": [],
+      "candidate_doc_ids": [
+        "doc_owasp_top10_a01_broken_access_control"
+      ],
       "ontology_keywords": [
         "abac",
         "broken-access-control"
