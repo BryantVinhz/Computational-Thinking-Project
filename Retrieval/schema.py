@@ -1,4 +1,4 @@
-from dataclasses import dataclass, field
+from dataclasses import asdict, dataclass, field
 from typing import Any
 
 @dataclass
@@ -48,3 +48,27 @@ class ScopedRetrievalPayload:
     query_bm25: str   
     query_vector: list[float]      
     scope: RetrievalScope
+
+
+@dataclass
+class RetrievedChunk:
+    """
+    Standardized chunk representation returned by BM25, Dense Retrieval, and RRF.
+    """
+    id: str
+    text: str
+    metadata: dict[str, Any] = field(default_factory=dict)
+    score: float = 0.0
+    rank: int = 0
+    source: str = "dense"
+    bm25_rank: int | None = None
+    dense_rank: int | None = None
+    bm25_score: float | None = None
+    dense_score: float | None = None
+
+    @property
+    def chunk_id(self) -> str:
+        return self.id
+
+    def to_dict(self) -> dict[str, Any]:
+        return asdict(self)
