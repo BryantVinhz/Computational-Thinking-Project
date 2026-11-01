@@ -8,7 +8,7 @@ from typing import Any
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
 
-# Định vị thư mục gốc và thư mục Provenance từ giai đoạn trước
+
 CURRENT_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = CURRENT_DIR.parent
 INGESTION_DIR = PROJECT_ROOT / "Document Ingestion and Parsing"
@@ -18,7 +18,7 @@ for _dir in (CURRENT_DIR, PROVENANCE_DIR, INGESTION_DIR):
     if _dir.exists() and str(_dir) not in sys.path:
         sys.path.insert(0, str(_dir))
 
-# Nạp các thành phần SQLite Database và Provenance Resolver đã có
+
 from database import SQLiteDatabase
 from provenance_repo import ProvenanceRepository
 from provenance_resolver import ProvenanceResolver

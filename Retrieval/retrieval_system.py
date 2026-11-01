@@ -1,4 +1,3 @@
-import json
 import logging
 import sys
 from pathlib import Path
@@ -19,6 +18,7 @@ from bm25_retrieval import BM25Retriever
 from dense_retrieval import DenseRetriever
 from rrf import reciprocal_rank_fusion
 from MMR import LangChainMMRSelector
+from reranker import CrossEncoderReranker
 from evidence_package import EvidenceAssembler
 
 logger = logging.getLogger(__name__)
@@ -41,17 +41,17 @@ class RetrievalSystem:
         query_vectorizer: QueryVectorizer | None = None,
         bm25_retriever: BM25Retriever | None = None,
         dense_retriever: DenseRetriever | None = None,
+        reranker: CrossEncoderReranker | None = None,
         mmr_selector: LangChainMMRSelector | None = None,
         evidence_assembler: EvidenceAssembler | None = None,
-        reranker: Any | None = None,
     ):
         self.scope_builder = scope_builder or ScopeBuilder()
         self.vectorizer = query_vectorizer or QueryVectorizer()
         self.dense = dense_retriever or DenseRetriever()
         self.bm25 = bm25_retriever or BM25Retriever()
+        self.reranker = reranker or CrossEncoderReranker(threshold=0.35, top_k=None)
         self.mmr = mmr_selector or LangChainMMRSelector(vectorizer=self.vectorizer)
         self.assembler = evidence_assembler or EvidenceAssembler()
-        self.reranker = reranker
 
     @staticmethod
     def _get_intent_params(intent: str, task_intent: str | None = None) -> tuple[int, float]:
@@ -91,22 +91,37 @@ class RetrievalSystem:
             return []
 
         # Rescore with Cross-Encoder Reranker
-        ranked = fused
+        candidate_chunks_for_mmr = fused
+        insufficient_evidence = False
+        abstention_message = None
         if self.reranker and hasattr(self.reranker, "rerank"):
             try:
-                ranked = self.reranker.rerank(query=payload.original_query, candidates=fused)
+                rerank_result = self.reranker.rerank(
+                    query=payload.original_query,
+                    candidate_chunks=fused,
+                    top_k=candidate_pool_size,
+                )
+
+                if rerank_result.insufficient_evidence:
+                    logger.warning(
+                        "Task '%s' triggered Abstention Policy: 0 chunks met confidence threshold",
+                        payload.task_id,
+                    )
+                    return [], True, rerank_result.abstention_message
+
+                candidate_chunks_for_mmr = rerank_result.chunks
             except Exception:
                 logger.warning("Reranker failed, falling back to original RRF ranking")
 
         # Diversify and deduplicate through MMR
         selected = self.mmr.select(
-            candidates=ranked,
+            candidates=candidate_chunks_for_mmr,
             query_vector=payload.query_vector,
             original_query=payload.original_query,
             top_k=target_k,
             lambda_param=lambda_val,
         )
-        return selected
+        return selected, insufficient_evidence, abstention_message
 
     @staticmethod
     def _extract_context_summary(chunks: list[dict[str, Any]], max_chars: int = 300) -> str:
@@ -144,6 +159,7 @@ class RetrievalSystem:
 
         task_results: dict[str, list[dict[str, Any]]] = {}
         all_selected_chunks: list[dict[str, Any]] = []
+        last_abstention_msg: str | None = None
 
         # Iterate and execute each task sequentially
         for task in raw_tasks:
@@ -159,9 +175,12 @@ class RetrievalSystem:
                 parent_context = ""
                 if isinstance(depends_on, str) and depends_on in task_results:
                     parent_context = self._extract_context_summary(task_results[depends_on])
-
+                elif task_results:
+                    last_task_id = list(task_results.keys())[-1]
+                    parent_context = self._extract_context_summary(task_results[last_task_id])
+                    
                 if parent_context:
-                    logger.info("Multi-hop Task '%s' kế thừa ngữ cảnh từ task trước.", task_id)
+                    logger.info("Multi-hop Task '%s' inheriting context from preceding task", task_id)
                     enriched_query = f"{base_query} Context: {parent_context}"
 
             # Build dynamic Scope and Vector for the current task
@@ -190,14 +209,17 @@ class RetrievalSystem:
                 task_id, task_intent, target_k, lambda_val
             )
 
-            selected_chunks = self._execute_search_pipeline(
+            selected_chunks, is_insufficient, abstention_msg = self._execute_search_pipeline(
                 payload=payload, target_k=target_k, lambda_val=lambda_val
             )
 
+            if is_insufficient:
+                last_abstention_msg = abstention_msg
+                
             task_results[task_id] = selected_chunks
             all_selected_chunks.extend(selected_chunks)
 
-        # Khử trùng lặp giữa các task khác nhau
+        # Deduplicate chunks across different tasks
         seen_ids = set()
         unique_chunks: list[dict[str, Any]] = []
         for ch in all_selected_chunks:
@@ -224,10 +246,5 @@ class RetrievalSystem:
             "evidence_list": evidence_dict_list,
             "llm_context": llm_context,
         }
-
-        if output_json_path:
-            out_p = Path(output_json_path)
-            out_p.parent.mkdir(parents=True, exist_ok=True)
-            out_p.write_text(json.dumps(response, ensure_ascii=False, indent=2), encoding="utf-8")
 
         return response

@@ -2,7 +2,10 @@ import logging
 import math
 import sys
 from pathlib import Path
-from typing import Any, Callable
+from typing import Any
+from collections.abc import Callable
+from schema_reranking import RerankResult
+from schema import ScopedRetrievalPayload
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
@@ -15,8 +18,6 @@ for _dir in (PROJECT_ROOT, CURRENT_DIR, RETRIEVAL_DIR):
     if str(_dir) not in sys.path:
         sys.path.insert(0, str(_dir))
 
-from rerank.schema import RerankResult
-from schema import ScopedRetrievalPayload
 
 logger = logging.getLogger(__name__)
 
