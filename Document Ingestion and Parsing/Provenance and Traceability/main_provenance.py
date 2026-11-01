@@ -13,7 +13,7 @@ if str(PIPELINE_DIR) not in sys.path:
     sys.path.insert(0, str(PIPELINE_DIR))
 
 from path import INGESTION_OUT_DIR, NORMALIZATION_OUT_DIR, CHUNKING_OUT_DIR, PROVENANCE_OUT_DIR
-CHUNKING_STRATEGY = "Fixed size"
+CHUNKING_STRATEGY = "Structure aware"
 
 def load_json_file(file_path: Path):
     with open(file_path, "r", encoding="utf-8") as f:
