@@ -32,6 +32,8 @@ from .synthesizer import (
     DefaultDeterministicLLM,
     ResponseSynthesizer,
 )
+from .traceable_formatter import TraceableFormatter
+from .verifier import EvidenceVerifier
 
 __all__ = [
     # Schemas
@@ -54,4 +56,7 @@ __all__ = [
     # Orchestrator
     "RAGOrchestrator",
     "DefaultTraceableFormatter",
+    # Verification & Traceability
+    "EvidenceVerifier",
+    "TraceableFormatter",
 ]
