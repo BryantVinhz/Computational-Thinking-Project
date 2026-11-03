@@ -137,13 +137,21 @@ class RetrievalSystem:
         summary = f"{headings} {text}".strip()
         return summary[:max_chars]
 
-    def retrieve(self, plan: dict[str, Any], output_json_path: Path | str | None = None) -> dict[str, Any]:
+    def retrieve(self, plan: dict[str, Any]) -> dict[str, Any]:
         """
         Accept Query Plan, resolve dependency order, and execute retrieval
         """
         plan = plan.get("query_plan", plan)
         if plan.get("need_clarify") is True:
-            return {"status": "clarification_needed", "evidence_list": []}
+            return {
+                "status": "clarification_needed",
+                "evidence_status": "NONE",
+                "intent": plan.get("intent", "UNKNOWN"),
+                "total_evidence": 0,
+                "evidence_by_task": {},
+                "evidence_list": [],
+                "llm_context": plan.get("clarify_question") or "Please clarify your question",
+            }
 
         global_intent = plan.get("intent", "SEARCH").upper()
         raw_tasks = plan.get("task") or []
@@ -159,6 +167,7 @@ class RetrievalSystem:
 
         task_results: dict[str, list[dict[str, Any]]] = {}
         all_selected_chunks: list[dict[str, Any]] = []
+        task_insufficient_flags: list[bool] = []
         last_abstention_msg: str | None = None
 
         # Iterate and execute each task sequentially
@@ -213,6 +222,7 @@ class RetrievalSystem:
                 payload=payload, target_k=target_k, lambda_val=lambda_val
             )
 
+            task_insufficient_flags.append(is_insufficient)
             if is_insufficient:
                 last_abstention_msg = abstention_msg
                 
@@ -232,13 +242,24 @@ class RetrievalSystem:
         assembled_evidence = self.assembler.assemble(unique_chunks)
         llm_context = self.assembler.format_llm_context(assembled_evidence)
 
+        # Determine evidence state for the generation layer to route hybrid mode
+        total_found = len(assembled_evidence)
+        if total_found == 0:
+            evidence_status = "NONE"
+            llm_context = last_abstention_msg or "No relevant data was found in the knowledge base for this question"
+        elif any(task_insufficient_flags) or total_found < 2:
+            evidence_status = "PARTIAL"  # Partial evidence -> Enable Hybrid Mode
+        else:
+            evidence_status = "FULL"
+            
         evidence_dict_list = [ev.to_dict() for ev in assembled_evidence]
         ev_by_id = {ev["chunk_id"]: ev for ev in evidence_dict_list}
 
         response = {
             "status": "ok",
+            "evidence_status": evidence_status,
             "intent": global_intent,
-            "total_evidence": len(assembled_evidence),
+            "total_evidence": total_found,
             "evidence_by_task": {
                 t_id: [ev_by_id[c["chunk_id"]] for c in c_list if c["chunk_id"] in ev_by_id]
                 for t_id, c_list in task_results.items()
