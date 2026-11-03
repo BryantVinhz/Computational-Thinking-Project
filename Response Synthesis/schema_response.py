@@ -47,6 +47,8 @@ class SynthesizedDraftSchema:
     cited_evidence_ids: list[str] = field(default_factory=list) # Danh sách các tag được LLM trích dẫn, VD: ["[1]", "[2]"]
     is_abstained: bool = False                  # True nếu kích hoạt Abstention Policy (thiếu bằng chứng)
     abstention_reason: str | None = None        # Lý do từ chối nếu có
+    evidence_status: str = "FULL"               # "FULL" | "PARTIAL" | "NONE" (nhận từ Retrieval)
+    generation_mode: str = "STRICT_RAG"         # "STRICT_RAG" | "HYBRID" | "ABSTENTION"
     generation_metadata: dict[str, Any] = field(default_factory=dict) # model_name, latency, temperature...
 
     def to_dict(self) -> dict[str, Any]:
@@ -60,6 +62,8 @@ class SynthesizedDraftSchema:
             cited_evidence_ids=data.get("cited_evidence_ids", []),
             is_abstained=data.get("is_abstained", False),
             abstention_reason=data.get("abstention_reason"),
+            evidence_status=data.get("evidence_status", "FULL"),
+            generation_mode=data.get("generation_mode", "STRICT_RAG"),
             generation_metadata=data.get("generation_metadata", {}),
         )
 
