@@ -1,0 +1,190 @@
+[
+  {
+    "test_id": "TEST_01",
+    "query": "Làm thế nào để phòng chống lỗ hổng SQL Injection theo OWASP?",
+    "ground_truth": {
+      "expected_intent": "SEARCH",
+      "target_documents": [
+        "Data/OWASP_A03-SQL-Injection-Prevention-Cheat-Sheet_2021-2025.md",
+        "Data/OWASP_A03-Query-Parameterization-Cheat-Sheet_2021-2025.md",
+        "Data/OWASP_A03-Injection-Prevention-Cheat-Sheet_2021-2025.md",
+        "Data/OWASP_Top10-A03-Injection_2021.md", 
+        "Data/OWASP_Top10-A05-Injection_2025.md",
+        "Data/OWASP_Application-Security-Verification-Standard_5.0.0.pdf"
+      ],
+      "key_headings": [
+        "Primary Defenses", "Defense Option 1: Prepared Statements (with Parameterized Queries)",
+        "Stored Procedures", "Allow-List Input Validation", "Escaping All Dynamic Inputs (STRONGLY DISCOURAGED)",
+        "Hardening", "Least Privilege", "Minimizing Application and OS Privileges",
+        "Details Of Least Privilege When Developing", "Enhancing Least Privilege with SQL Views",
+        "Forms of Injection", "Injection Prevention Rules",
+        "How to Prevent", "V1.2 Injection Prevention", "Prepared Statement Examples", "Stored Procedure Examples"
+      ],
+      "expected_evidence_status": "FULL",
+      "ideal_answer_points": [
+        "Truy vấn tham số hóa (Prepared Statements / Parameterized Queries)",
+        "Bắt buộc liên kết tham số khi gọi thủ tục (Stored Procedures)",
+        "Sử dụng công cụ ORM / Entity Framework an toàn",
+        "Xử lý các thành phần cấu trúc truy vấn (Allow-List Input Validation)",
+        "Gia cố bảo mật và áp dụng nguyên tắc quyền tối thiểu (Least Privilege)",
+        "Cấp quyền tối thiểu cho tài khoản CSDL ứng dụng dùng để kết nối",
+        "Sử dụng SQL Views",
+        "Giới hạn quyền hạn của tài khoản OS chạy DBMS (không chạy DBMS dưới quyền root hoặc system)"
+      ]
+    }
+  },
+  {
+    "test_id": "TEST_02",
+    "query": "Compare the ranking, factors, and scope of Injection vulnerability between version 2021 and version 2025",
+    "ground_truth": {
+      "expected_intent": "COMPARE",
+      "target_documents": [
+        "Data/OWASP_Top10-What-are-Application-Security-Risks_2025.md",
+        "Data/OWASP_Top10-A03-Injection_2021.md", 
+        "Data/OWASP_Top10-A05-Injection_2025.md"
+      ],
+      "key_headings": [
+        "A03:2021 – Injection", "Factors", "Overview", "Description", "List of Mapped CWEs",
+        "A05:2025 Injection", "Background", "Score table", "What's changed in the Top 10 for 2025"
+      ],
+      "expected_evidence_status": "FULL",
+      "ideal_answer_points": [
+        "OWASP 2021: Ranked 3",
+        "OWASP 2025: Dropped two spots to 5",
+        "Mapped Weaknesses (CWEs): Increased from 33 CWEs in 2021 to 37 CWEs in 2025",
+        "Incidence Rate: Max incidence rate dropped from 19.09% to 13.77%; average incidence rate decreased slightly from 3.37% to 3.08%",
+        "Testing Coverage: Expanded so that 100% of tested applications in 2025 were evaluated for some form of Injection (up from 94.04% max coverage in 2021)",
+        "Core Vulnerability Types: Both versions cover SQL Injection, NoSQL, OS Command Injection, Object-Relational Mapping (ORM), LDAP, Expression Language (EL/OGNL), and Cross-Site Scripting (XSS / CWE-79)",
+        "Emerging Scope Expansion (2025): The 2025 documentation explicitly expands the scope context by linking a related class of injection vulnerabilities occurring in Large Language Models (LLMs), specifically referencing LLM01:2025 Prompt Injection from the OWASP LLM Top 10"
+      ]
+    }
+  },
+    {
+    "test_id": "TEST_03",
+    "query": "Tổng hợp các giải pháp toàn diện để bảo vệ hệ thống xác thực người dùng",
+    "ground_truth": {
+      "expected_intent": "SYNTHESIS",
+      "target_documents": [
+        "Data/OWASP_A07-Authentication-Cheat-Sheet_2021-2025.md",
+        "Data/OWASP_A07-Password-Storage-Cheat-Sheet_2021-2025.md",
+        "Data/OWASP_A07-Multifactor-Authentication-Cheat-Sheet_2021-2025.md", 
+        "Data/OWASP_A07-Credential-Stuffing-Prevention-Cheat-Sheet_2021-2025.md",
+        "Data/OWASP_A07-Session-Management-Cheat-Sheet_2021-2025.md",
+        "Data/OWASP_Top10-A07-Authentication-Failures_2025.md",
+        "Data/OWASP_Application-Security-Verification-Standard_5.0.0.pdf"
+      ],
+      "key_headings": [
+        "Authentication General Guidelines", "Implement Proper Password Strength Controls",
+        "Implement Secure Password Recovery Mechanism", "Store Passwords in a Secure Fashion",
+        "Transmit Passwords Only Over TLS or Other Strong Transport", "Protect Against Automated Attacks",
+        "Multi-Factor Authentication", "Login Throttling", "Logging and Monitoring", "Background",
+        "Hashing vs Encryption", "Methods for Enhancing Password Storage", "Salting", "Peppering",
+        "Quick Recommendations", "Implementing MFA", "One-Time Password (OTP) Handling and Storage",
+        "Passkeys", "Adaptive or Risk-Based Authentication", "Multi-Factor Authentication",
+        "Alternative Defenses", "Device Fingerprinting", "IP Mitigation and Intelligence",
+        "Identifying Leaked Passwords", "Session ID Properties", "Session ID Entropy", 
+        "Cookies", "Secure Attribute", "HttpOnly Attribute", "SameSite Attribute",
+        "Session ID Life Cycle", "Renew the Session ID After Any Privilege Level Change",
+        "Session Expiration", "V6 Authentication", "V7 Session Management"
+      ],
+      "expected_evidence_status": "FULL",
+      "ideal_answer_points": [
+        "Đặt độ dài tối thiểu từ 8–15 ký tự (khuyến nghị ≥15) và cho phép độ dài tối đa ít nhất 64–128 ký tự để hỗ trợ chuỗi mật khẩu (passphrase)",
+        "Chống mật khẩu bị rò rỉ (Breached Password Checks)",
+        "Trả về thông báo lỗi chung (Invalid username or password) cùng phản hồi thời gian nhất quán (constant time) cho mọi trường hợp đăng nhập sai, khôi phục mật khẩu hoặc đăng ký",
+        "Thuật toán Băm thích ứng (Adaptive One-Way Hashing)",
+        "Tạo giá trị Salt ngẫu nhiên duy nhất (tối thiểu 32-bit) cho mỗi mật khẩu. Có thể đính kèm Pepper (chuỗi bí mật lưu tách biệt trong HSM/Vault) để tăng cường bảo vệ khi CSDL bị lộ",
+        "Triển khai MFA toàn diện", 
+        "Áp dụng giới hạn tốc độ truy cập (Rate Limiting/Throttling), khóa tài khoản tạm thời khi đăng nhập sai nhiều lần (Account Lockout), CAPTCHA khi phát hiện hành vi bất thường, và nhận diện dấu vết thiết bị/IP (Device Fingerprinting, IP Intelligence)",
+        "Xác thực dựa trên rủi ro (Adaptive/Risk-Based Auth)",
+        "Tạo và Bảo vệ Session ID", "Thuộc tính Cookie phiên", "Đổi Session ID mới ngay sau khi đăng nhập thành công để chống Session Fixation",
+        "Bắt buộc sử dụng TLS (HTTPS) cho toàn bộ trang đăng nhập và các luồng dữ liệu sau xác thực",
+        "Khôi phục mật khẩu an toàn"
+      ]
+    }
+  },
+    {
+    "test_id": "TEST_04",
+    "query": "Lỗ hổng Cross-Site Scripting được xếp vào danh mục CWE nào trong MITRE CWE List và OWASP khuyến nghị thiết lập Content Security Policy (CSP) ra sao để ngăn chặn nó?",
+    "ground_truth": {
+      "expected_intent": "SEARCH",
+      "target_documents": [
+        "Data/OWASP_A03-Content-Security-Policy-Cheat-Sheet_2021-(2025.md",
+        "Data/OWASP_A03-Cross-Site-Scripting-Prevention-Cheat-Sheet_2021-2025.md",
+        "Data/OWASP_Top10-A03-Injection_2021.md", 
+        "Data/OWASP_Top10-A05-Injection_2025.md",
+        "Data/OWASP_A03-DOM-based-XSS-Prevention-Cheat-Sheet_2021-2025.md",
+        "Data/OWASP_Application-Security-Verification-Standard_5.0.0.pdf"
+      ],
+      "key_headings": [
+        "List of Mapped CWEs", "Context", "Defense against XSS",
+        "Policy Delivery", "1. Content-Security-Policy Header", "2. Content-Security-Policy-Report-Only Header",
+        "3. Content-Security-Policy Meta Tag", "Strict CSP", "Nonce based", "Hash based", "strict-dynamic",
+        "Detailed CSP Directives", "Fetch Directives", "Document Directives", "Reporting Directives",
+        "CSP Sample Policies", "Strict Policy", "Refactoring inline code", "Other Controls",
+        "Content Security Policy", "Trusted Types", "Common Anti-patterns: Ineffective Approaches to Avoid", 
+        "Sole Reliance on Content-Security-Policy (CSP) Headers"
+      ],
+      "expected_evidence_status": "FULL",
+      "ideal_answer_points": [
+        "Lỗ hổng XSS được xếp chính thức vào CWE-79, CWE-80, CWE-83, CWE-87",
+        "Khuyến nghị chiến lược — Triển khai Strict CSP (Thay vì Allow-list)",
+        "Hạn chế thực thi Script", "Chặn plugin legacy", "Chống Base Injection", "Báo cáo vi phạm",
+        "Ưu tiên HTTP Header", "Tái cấu trúc mã nguồn (Refactoring Code)",
+        "Dùng Content-Security-Policy-Report-Only trong giai đoạn phát triển/kiểm thử để ghi nhận lỗi mà không làm gián đoạn tính năng ứng dụng trước khi bật chế độ chặn",
+        "OWASP nhấn mạnh CSP là lớp bảo vệ thứ hai (Secondary layer)[24][27]. Không được coi CSP là giải pháp duy nhất** để thay thế cho việc Output Encoding (Mã hóa đầu ra theo ngữ cảnh) và HTML Sanitization (như DOMPurify)"
+      ]
+    }
+  },
+    {
+    "test_id": "TEST_05",
+    "query": "Đặc điểm của kỹ thuật DOM-based XSS theo OWASP là gì và cách viết exploit payload bypass WAF Cloudflare mới nhất?",
+    "ground_truth": {
+      "expected_intent": "SEARCH",
+      "target_documents": [
+        "Data/OWASP_A03-DOM-based-XSS-Prevention-Cheat-Sheet_2021-2025.md",
+        "Data/OWASP_A03-Cross-Site-Scripting-Prevention-Cheat-Sheet_2021-2025.md",
+        "Data/OWASP_A03-XSS-Filter-Evasion-Cheat-Sheet_2021-2025.md", 
+        "Data/OWASP_WSTG-testing-methods_v4.2.md"
+      ],
+      "key_headings": [
+        "Introduction",
+        "RULE 1 - HTML Escape then JavaScript Escape Before Inserting Untrusted Data into HTML Subcontext within the Execution Context",
+        "RULE 6 - Populate the DOM using safe JavaScript functions or properties",
+        "RULE 7 - Fixing DOM Cross-site Scripting Vulnerabilities",
+        "Safe Sinks", "Other Controls: Web Application Firewalls (WAFs)",
+        "Common Anti-patterns: Ineffective Approaches to Avoid",
+        "Methods to Bypass WAF – Cross-Site Scripting",
+        "2. Cross-Site Scripting (XSS) DOM-based (CLNT-01)"
+      ],
+      "expected_evidence_status": "FULL",
+      "ideal_answer_points": [
+        "Xử lý hoàn toàn ở phía Client (Client-Side Processing)",
+        "Mô hình luồng dữ liệu Source &amp; Sink",
+        "Vô hiệu hóa bộ lọc và WAF phía Server",
+        "Công cụ quét tự động dựa trên quan sát phản hồi HTTP của máy chủ thường không phát hiện được DOM XSS, do đó bắt buộc phải rà soát thủ công mã nguồn JavaScript hoặc phân tích luồng thực thi động",
+        "Bộ tài liệu nguồn không chứa danh sách hay mã payload khai thác cụ thể dành riêng cho WAF Cloudflare"
+      ]
+    }
+  },
+    {
+    "test_id": "TEST_06",
+    "query": "Chỉ số Attack Vector - Satellite trong chuẩn CVSS v4.0 được tính bao nhiêu điểm?",
+    "ground_truth": {
+      "expected_intent": "UNKNOWN",
+      "target_documents": [
+        "Data/First_CVSS-Specification_v4.0.pdf"
+      ],
+      "key_headings": [
+        "2.1.1. Attack Vector (AV)",
+        "7. Vector String",
+        "8.2. CVSS v4.0 Scoring using MacroVectors and Interpolation"
+      ],
+      "expected_evidence_status": "FULL",
+      "ideal_answer_points": [
+        "Trong tài liệu quy chuẩn CVSS v4.0 của FIRST, chỉ số Attack Vector (AV) chỉ định nghĩa duy nhất 4 giá trị hợp lệ: Network (N), Adjacent (A), Local (L), Physical (P)",
+        "Khái niệm Satellite không phải là một giá trị hợp lệ trong tiêu chuẩn CVSS v4.0"
+      ]
+    }
+  }
+]
