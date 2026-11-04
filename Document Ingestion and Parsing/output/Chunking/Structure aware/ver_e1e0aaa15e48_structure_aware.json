@@ -1,0 +1,1118 @@
+{
+  "document_id": "doc_owasp_avss_authentication",
+  "version_id": "ver_e1e0aaa15e48",
+  "chunking_strategy": "structure_aware",
+  "chunks": [
+    {
+      "chunk_id": "ver_e1e0aaa15e48_c00000",
+      "document_id": "doc_owasp_avss_authentication",
+      "version_id": "ver_e1e0aaa15e48",
+      "chunk_idx": 0,
+      "chunk_type": "heading",
+      "text_content": "# V6 Authentication",
+      "token_count": 3,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V6 Authentication"
+      ]
+    },
+    {
+      "chunk_id": "ver_e1e0aaa15e48_c00001",
+      "document_id": "doc_owasp_avss_authentication",
+      "version_id": "ver_e1e0aaa15e48",
+      "chunk_idx": 1,
+      "chunk_type": "heading",
+      "text_content": "## Control Objective",
+      "token_count": 4,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V6 Authentication",
+        "Control Objective"
+      ]
+    },
+    {
+      "chunk_id": "ver_e1e0aaa15e48_c00002",
+      "document_id": "doc_owasp_avss_authentication",
+      "version_id": "ver_e1e0aaa15e48",
+      "chunk_idx": 2,
+      "chunk_type": "paragraph",
+      "text_content": "Authentication is the process of establishing or confirming the authenticity of an individual or device.\n\nIt involves verifying claims made by a person or about a device, ensuring resistance to impersonation, and preventing the recovery or interception of passwords.\n\n[NIST SP 800-63](https://pages.nist.gov/800-63-3/) is a modern, evidence-based standard that is valuable for organizations worldwide, but is particularly relevant to US agencies and those interacting with US agencies.\n\nWhile many of the requirements in this chapter are based on the second section of the standard (known as NIST SP 800-63B \"Digital Identity Guidelines - Authentication and Lifecycle Management\"), the chapter focuses on common threats and frequently exploited authentication weaknesses.\n\nIt does not attempt to comprehensively cover every point in the standard.\n\nFor cases where full NIST SP 800-63 compliance is necessary, please refer to NIST SP 800-63.\n\nAdditionally, NIST SP 800-63 terminology may sometimes differ, and this chapter often uses more commonly understood terminology to improve clarity.\n\nA common feature of more advanced applications is the ability to adapt authentication stages required based on various risk factors.\n\nThis feature is covered in the \"Authorization\" chapter, since these mechanisms also need to be considered for authorization decisions.",
+      "token_count": 250,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V6 Authentication",
+        "Control Objective"
+      ]
+    },
+    {
+      "chunk_id": "ver_e1e0aaa15e48_c00003",
+      "document_id": "doc_owasp_avss_authentication",
+      "version_id": "ver_e1e0aaa15e48",
+      "chunk_idx": 3,
+      "chunk_type": "heading",
+      "text_content": "## V6.1 Authentication Documentation",
+      "token_count": 7,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V6 Authentication",
+        "V6.1 Authentication Documentation"
+      ]
+    },
+    {
+      "chunk_id": "ver_e1e0aaa15e48_c00004",
+      "document_id": "doc_owasp_avss_authentication",
+      "version_id": "ver_e1e0aaa15e48",
+      "chunk_idx": 4,
+      "chunk_type": "paragraph",
+      "text_content": "This section contains requirements detailing the authentication documentation that should be maintained for an application.\n\nThis is crucial for implementing and assessing how the relevant authentication controls should be configured.",
+      "token_count": 32,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V6 Authentication",
+        "V6.1 Authentication Documentation"
+      ]
+    },
+    {
+      "chunk_id": "ver_e1e0aaa15e48_c00005",
+      "document_id": "doc_owasp_avss_authentication",
+      "version_id": "ver_e1e0aaa15e48",
+      "chunk_idx": 5,
+      "chunk_type": "table",
+      "text_content": "| # | Description | Level |\n| :---: | :--- | :---: |\n| **6.1.1** | Verify that application documentation defines how controls such as rate limiting, anti-automation, and adaptive response, are used to defend against attacks such as credential stuffing and password brute force. The documentation must make clear how these controls are configured and prevent malicious account lockout. | 1 |\n| **6.1.2** | Verify that a list of context-specific words is documented in order to prevent their use in passwords. The list could include permutations of organization names, product names, system identifiers, project codenames, department or role names, and similar. | 2 |\n| **6.1.3** | Verify that, if the application includes multiple authentication pathways, these are all documented together with the security controls and authentication strength which must be consistently enforced across them. | 2 |",
+      "token_count": 195,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V6 Authentication",
+        "V6.1 Authentication Documentation"
+      ]
+    },
+    {
+      "chunk_id": "ver_e1e0aaa15e48_c00006",
+      "document_id": "doc_owasp_avss_authentication",
+      "version_id": "ver_e1e0aaa15e48",
+      "chunk_idx": 6,
+      "chunk_type": "heading",
+      "text_content": "## V6.2 Password Security",
+      "token_count": 7,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V6 Authentication",
+        "V6.2 Password Security"
+      ]
+    },
+    {
+      "chunk_id": "ver_e1e0aaa15e48_c00007",
+      "document_id": "doc_owasp_avss_authentication",
+      "version_id": "ver_e1e0aaa15e48",
+      "chunk_idx": 7,
+      "chunk_type": "paragraph",
+      "text_content": "Passwords, called \"Memorized Secrets\" by NIST SP 800-63, include passwords, passphrases, PINs, unlock patterns, and picking the correct kitten or another image element.\n\nThey are generally considered \"something you know\" and are often used as a single-factor authentication mechanism.\n\nAs such, this section contains requirements for making sure that passwords are created and handled securely.\n\nMost of the requirements are L1 as they are most important at that level.\n\nFrom L2 onwards, multi-factor authentication mechanisms are required, where passwords may be one of those factors.\n\nThe requirements in this section mostly relate to [&sect; 5.1.1.2](https://pages.nist.gov/800-63-3/sp800-63b.html#memsecretver) of [NIST's Guidance](https://pages.nist.gov/800-63-3/sp800-63b.html).",
+      "token_count": 185,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V6 Authentication",
+        "V6.2 Password Security"
+      ]
+    },
+    {
+      "chunk_id": "ver_e1e0aaa15e48_c00008",
+      "document_id": "doc_owasp_avss_authentication",
+      "version_id": "ver_e1e0aaa15e48",
+      "chunk_idx": 8,
+      "chunk_type": "table",
+      "text_content": "| # | Description | Level |\n| :---: | :--- | :---: |\n| **6.2.1** | Verify that user set passwords are at least 8 characters in length although a minimum of 15 characters is strongly recommended. | 1 |\n| **6.2.2** | Verify that users can change their password. | 1 |\n| **6.2.3** | Verify that password change functionality requires the user's current and new password. | 1 |\n| **6.2.4** | Verify that passwords submitted during account registration or password change are checked against an available set of, at least, the top 3000 passwords which match the application's password policy, e.g. minimum length. | 1 |\n| **6.2.5** | Verify that passwords of any composition can be used, without rules limiting the type of characters permitted. There must be no requirement for a minimum number of upper or lower case characters, numbers, or special characters. | 1 |\n| **6.2.6** | Verify that password input fields use type=password to mask the entry. Applications may allow the user to temporarily view the entire masked password, or the last typed character of the password. | 1 |\n| **6.2.7** | Verify that \"paste\" functionality, browser password helpers, and external password managers are permitted. | 1 |\n| **6.2.8** | Verify that the application verifies the user's password exactly as received from the user, without any modifications such as truncation or case transformation. | 1 |\n| **6.2.9** | Verify that passwords of at least 64 characters are permitted. | 2 |\n| **6.2.10** | Verify that a user's password stays valid until it is discovered to be compromised or the user rotates it. The application must not require periodic credential rotation. | 2 |\n| **6.2.11** | Verify that the documented list of context specific words is used to prevent easy to guess passwords being created. | 2 |\n| ",
+      "token_count": 450,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V6 Authentication",
+        "V6.2 Password Security"
+      ]
+    },
+    {
+      "chunk_id": "ver_e1e0aaa15e48_c00009",
+      "document_id": "doc_owasp_avss_authentication",
+      "version_id": "ver_e1e0aaa15e48",
+      "chunk_idx": 9,
+      "chunk_type": "table",
+      "text_content": "**6.2.12** | Verify that passwords submitted during account registration or password changes are checked against a set of breached passwords. | 2 |",
+      "token_count": 32,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V6 Authentication",
+        "V6.2 Password Security"
+      ]
+    },
+    {
+      "chunk_id": "ver_e1e0aaa15e48_c00010",
+      "document_id": "doc_owasp_avss_authentication",
+      "version_id": "ver_e1e0aaa15e48",
+      "chunk_idx": 10,
+      "chunk_type": "heading",
+      "text_content": "## V6.3 General Authentication Security",
+      "token_count": 8,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V6 Authentication",
+        "V6.3 General Authentication Security"
+      ]
+    },
+    {
+      "chunk_id": "ver_e1e0aaa15e48_c00011",
+      "document_id": "doc_owasp_avss_authentication",
+      "version_id": "ver_e1e0aaa15e48",
+      "chunk_idx": 11,
+      "chunk_type": "paragraph",
+      "text_content": "This section contains general requirements for the security of authentication mechanisms as well as setting out the different expectations for levels.\n\nL2 applications must force the use of multi-factor authentication (MFA).\n\nL3 applications must use hardware-based authentication, performed in an attested and trusted execution environment (TEE).\n\nThis could include device-bound passkeys, eIDAS Level of Assurance (LoA) High enforced authenticators, authenticators with NIST Authenticator Assurance Level 3 (AAL3) assurance, or an equivalent mechanism.\n\nWhile this is a relatively aggressive stance on MFA, it is critical to raise the bar around this to protect users, and any attempt to relax these requirements should be accompanied by a clear plan on how the risks around authentication will be mitigated, taking into account NIST's guidance and research on the topic.\n\nNote that at the time of release, NIST SP 800-63 considers email as [not acceptable](https://pages.nist.gov/800-63-FAQ/#q-b11) as an authentication mechanism ([archived copy](https://web.archive.org/web/20250330115328/https://pages.nist.gov/800-63-FAQ/#q-b11)).",
+      "token_count": 243,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V6 Authentication",
+        "V6.3 General Authentication Security"
+      ]
+    },
+    {
+      "chunk_id": "ver_e1e0aaa15e48_c00012",
+      "document_id": "doc_owasp_avss_authentication",
+      "version_id": "ver_e1e0aaa15e48",
+      "chunk_idx": 12,
+      "chunk_type": "paragraph",
+      "text_content": "The requirements in this section relate to a variety of sections of [NIST's Guidance](https://pages.nist.gov/800-63-3/sp800-63b.html), including: [&sect; 4.2.1](https://pages.nist.gov/800-63-3/sp800-63b.html#421-permitted-authenticator-types), [&sect; 4.3.1](https://pages.nist.gov/800-63-3/sp800-63b.html#431-permitted-authenticator-types), [&sect; 5.2.2](https://pages.nist.gov/800-63-3/sp800-63b.html#522-rate-limiting-throttling), and [&sect; 6.1.2](https://pages.nist.gov/800-63-3/sp800-63b.html#-612-post-enrollment-binding).",
+      "token_count": 214,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V6 Authentication",
+        "V6.3 General Authentication Security"
+      ]
+    },
+    {
+      "chunk_id": "ver_e1e0aaa15e48_c00013",
+      "document_id": "doc_owasp_avss_authentication",
+      "version_id": "ver_e1e0aaa15e48",
+      "chunk_idx": 13,
+      "chunk_type": "table",
+      "text_content": "| # | Description | Level |\n| :---: | :--- | :---: |\n| **6.3.1** | Verify that controls to prevent attacks such as credential stuffing and password brute force are implemented according to the application's security documentation. | 1 |\n| **6.3.2** | Verify that default user accounts (e.g., \"root\", \"admin\", or \"sa\") are not present in the application or are disabled. | 1 |\n| **6.3.3** | Verify that either a multi-factor authentication mechanism or a combination of single-factor authentication mechanisms, must be used in order to access the application. For L3, one of the factors must be a hardware-based authentication mechanism which provides compromise and impersonation resistance against phishing attacks while verifying the intent to authenticate by requiring a user-initiated action (such as a button press on a FIDO hardware key or a mobile phone). Relaxing any of the considerations in this requirement requires a fully documented rationale and a comprehensive set of mitigating controls. | 2 |\n| **6.3.4** | Verify that, if the application includes multiple authentication pathways, there are no undocumented pathways and that security controls and authentication strength are enforced consistently. | 2 |\n| **6.3.5** | Verify that users are notified of suspicious authentication attempts (successful or unsuccessful). This may include authentication attempts from an unusual location or client, partially successful authentication (only one of multiple factors), an authentication attempt after a long period of inactivity or a successful authentication after several unsuccessful attempts. | 3 |\n| **6.3.6** | Verify that email is not used as either a single-factor or multi-factor authentication mechanism. | 3 |\n| **6.3.7** | Verify that users are notified after updates to authen",
+      "token_count": 394,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V6 Authentication",
+        "V6.3 General Authentication Security"
+      ]
+    },
+    {
+      "chunk_id": "ver_e1e0aaa15e48_c00014",
+      "document_id": "doc_owasp_avss_authentication",
+      "version_id": "ver_e1e0aaa15e48",
+      "chunk_idx": 14,
+      "chunk_type": "table",
+      "text_content": "tication details, such as credential resets or modification of the username or email address. | 3 |\n| **6.3.8** | Verify that valid users cannot be deduced from failed authentication challenges, such as by basing on error messages, HTTP response codes, or different response times. Registration and forgot password functionality must also have this protection. | 3 |",
+      "token_count": 73,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V6 Authentication",
+        "V6.3 General Authentication Security"
+      ]
+    },
+    {
+      "chunk_id": "ver_e1e0aaa15e48_c00015",
+      "document_id": "doc_owasp_avss_authentication",
+      "version_id": "ver_e1e0aaa15e48",
+      "chunk_idx": 15,
+      "chunk_type": "heading",
+      "text_content": "## V6.4 Authentication Factor Lifecycle and Recovery",
+      "token_count": 10,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V6 Authentication",
+        "V6.4 Authentication Factor Lifecycle and Recovery"
+      ]
+    },
+    {
+      "chunk_id": "ver_e1e0aaa15e48_c00016",
+      "document_id": "doc_owasp_avss_authentication",
+      "version_id": "ver_e1e0aaa15e48",
+      "chunk_idx": 16,
+      "chunk_type": "paragraph",
+      "text_content": "Authentication factors may include passwords, soft tokens, hardware tokens, and biometric devices.\n\nSecurely handling the lifecycle of these mechanisms is critical to the security of an application, and this section includes requirements related to this.\n\nThe requirements in this section mostly relate to [&sect; 5.1.1.2](https://pages.nist.gov/800-63-3/sp800-63b.html#memsecretver) or [&sect; 6.1.2.3](https://pages.nist.gov/800-63-3/sp800-63b.html#replacement) of [NIST's Guidance](https://pages.nist.gov/800-63-3/sp800-63b.html).",
+      "token_count": 155,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V6 Authentication",
+        "V6.4 Authentication Factor Lifecycle and Recovery"
+      ]
+    },
+    {
+      "chunk_id": "ver_e1e0aaa15e48_c00017",
+      "document_id": "doc_owasp_avss_authentication",
+      "version_id": "ver_e1e0aaa15e48",
+      "chunk_idx": 17,
+      "chunk_type": "table",
+      "text_content": "| # | Description | Level |\n| :---: | :--- | :---: |\n| **6.4.1** | Verify that system generated initial passwords or activation codes are securely randomly generated, follow the existing password policy, and expire after a short period of time or after they are initially used. These initial secrets must not be permitted to become the long term password. | 1 |\n| **6.4.2** | Verify that password hints or knowledge-based authentication (so-called \"secret questions\") are not present. | 1 |\n| **6.4.3** | Verify that a secure process for resetting a forgotten password is implemented, that does not bypass any enabled multi-factor authentication mechanisms. | 2 |\n| **6.4.4** | Verify that if a multi-factor authentication factor is lost, evidence of identity proofing is performed at the same level as during enrollment. | 2 |\n| **6.4.5** | Verify that renewal instructions for authentication mechanisms which expire are sent with enough time to be carried out before the old authentication mechanism expires, configuring automated reminders if necessary. | 3 |\n| **6.4.6** | Verify that administrative users can initiate the password reset process for the user, but that this does not allow them to change or choose the user's password. This prevents a situation where they know the user's password. | 3 |",
+      "token_count": 306,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V6 Authentication",
+        "V6.4 Authentication Factor Lifecycle and Recovery"
+      ]
+    },
+    {
+      "chunk_id": "ver_e1e0aaa15e48_c00018",
+      "document_id": "doc_owasp_avss_authentication",
+      "version_id": "ver_e1e0aaa15e48",
+      "chunk_idx": 18,
+      "chunk_type": "heading",
+      "text_content": "## V6.5 General Multi-factor authentication requirements",
+      "token_count": 11,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V6 Authentication",
+        "V6.5 General Multi-factor authentication requirements"
+      ]
+    },
+    {
+      "chunk_id": "ver_e1e0aaa15e48_c00019",
+      "document_id": "doc_owasp_avss_authentication",
+      "version_id": "ver_e1e0aaa15e48",
+      "chunk_idx": 19,
+      "chunk_type": "mixed",
+      "text_content": "This section provides general guidance that will be relevant to various different multi-factor authentication methods.\n\nThe mechanisms include:\n\n* Lookup Secrets\n* Time based One-time Passwords (TOTPs)\n* Out-of-Band mechanisms\n\nLookup secrets are pre-generated lists of secret codes, similar to Transaction Authorization Numbers (TAN), social media recovery codes, or a grid containing a set of random values.\n\nThis type of authentication mechanism is considered \"something you have\" because the codes are deliberately not memorable so will need to be stored somewhere.\n\nTime based One-time Passwords (TOTPs) are physical or soft tokens that display a continually changing pseudo-random one-time challenge.\n\nThis type of authentication mechanism is considered \"something you have\".\n\nMulti-factor TOTPs are similar to single-factor TOTPs, but require a valid PIN code, biometric unlocking, USB insertion or NFC pairing, or some additional value (such as transaction signing calculators) to be entered to create the final One-time Password (OTP).\n\nDetails on out-of-band mechanisms will be provided in the next section.",
+      "token_count": 214,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V6 Authentication",
+        "V6.5 General Multi-factor authentication requirements"
+      ]
+    },
+    {
+      "chunk_id": "ver_e1e0aaa15e48_c00020",
+      "document_id": "doc_owasp_avss_authentication",
+      "version_id": "ver_e1e0aaa15e48",
+      "chunk_idx": 20,
+      "chunk_type": "paragraph",
+      "text_content": "The requirements in these sections mostly relate to [&sect; 5.1.2](https://pages.nist.gov/800-63-3/sp800-63b.html#-512-look-up-secrets), [&sect; 5.1.3](https://pages.nist.gov/800-63-3/sp800-63b.html#-513-out-of-band-devices), [&sect; 5.1.4.2](https://pages.nist.gov/800-63-3/sp800-63b.html#5142-single-factor-otp-verifiers), [&sect; 5.1.5.2](https://pages.nist.gov/800-63-3/sp800-63b.html#5152-multi-factor-otp-verifiers), [&sect; 5.2.1](https://pages.nist.gov/800-63-3/sp800-63b.html#521-physical-authenticators), and [&sect; 5.2.3](https://pages.nist.gov/800-63-3/sp800-63b.html#523-use-of-biometrics) of [NIST's Guidance](https://pages.nist.gov/800-63-3/sp800-63b.html).",
+      "token_count": 301,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V6 Authentication",
+        "V6.5 General Multi-factor authentication requirements"
+      ]
+    },
+    {
+      "chunk_id": "ver_e1e0aaa15e48_c00021",
+      "document_id": "doc_owasp_avss_authentication",
+      "version_id": "ver_e1e0aaa15e48",
+      "chunk_idx": 21,
+      "chunk_type": "table",
+      "text_content": "| # | Description | Level |\n| :---: | :--- | :---: |\n| **6.5.1** | Verify that lookup secrets, out-of-band authentication requests or codes, and time-based one-time passwords (TOTPs) are only successfully usable once. | 2 |\n| **6.5.2** | Verify that, when being stored in the application's backend, lookup secrets with less than 112 bits of entropy (19 random alphanumeric characters or 34 random digits) are hashed with an approved password storage hashing algorithm that incorporates a 32-bit random salt. A standard hash function can be used if the secret has 112 bits of entropy or more. | 2 |\n| **6.5.3** | Verify that lookup secrets, out-of-band authentication code, and time-based one-time password seeds, are generated using a Cryptographically Secure Pseudorandom Number Generator (CSPRNG) to avoid predictable values. | 2 |\n| **6.5.4** | Verify that lookup secrets and out-of-band authentication codes have a minimum of 20 bits of entropy (typically 4 random alphanumeric characters or 6 random digits is sufficient). | 2 |\n| **6.5.5** | Verify that out-of-band authentication requests, codes, or tokens, as well as time-based one-time passwords (TOTPs) have a defined lifetime. Out of band requests must have a maximum lifetime of 10 minutes and for TOTP a maximum lifetime of 30 seconds. | 2 |\n| **6.5.6** | Verify that any authentication factor (including physical devices) can be revoked in case of theft or other loss. | 3 |\n| **6.5.7** | Verify that biometric authentication mechanisms are only used as secondary factors together with either something you have or something you know. | 3 |\n| **6.5.8** | Verify that time-based one-time passwords (TOTPs) are checked based on a time source from a trusted service and not from an untrusted or client provided time. | 3 |",
+      "token_count": 442,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V6 Authentication",
+        "V6.5 General Multi-factor authentication requirements"
+      ]
+    },
+    {
+      "chunk_id": "ver_e1e0aaa15e48_c00022",
+      "document_id": "doc_owasp_avss_authentication",
+      "version_id": "ver_e1e0aaa15e48",
+      "chunk_idx": 22,
+      "chunk_type": "heading",
+      "text_content": "## V6.6 Out-of-Band authentication mechanisms",
+      "token_count": 12,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V6 Authentication",
+        "V6.6 Out-of-Band authentication mechanisms"
+      ]
+    },
+    {
+      "chunk_id": "ver_e1e0aaa15e48_c00023",
+      "document_id": "doc_owasp_avss_authentication",
+      "version_id": "ver_e1e0aaa15e48",
+      "chunk_idx": 23,
+      "chunk_type": "paragraph",
+      "text_content": "This usually involves the authentication server communicating with a physical device over a secure secondary channel.\n\nFor example, sending push notifications to mobile devices.\n\nThis type of authentication mechanism is considered \"something you have\".\n\nUnsafe out-of-band authentication mechanisms such as e-mail and VOIP are not permitted.\n\nPSTN and SMS authentication are currently considered to be [\"restricted\" authentication mechanisms](https://pages.nist.gov/800-63-FAQ/#q-b01) by NIST and should be deprecated in favor of Time based One-time Passwords (TOTPs), a cryptographic mechanism, or similar.\n\nNIST SP 800-63B [&sect; 5.1.3.3](https://pages.nist.gov/800-63-3/sp800-63b.html#-5133-authentication-using-the-public-switched-telephone-network) recommends addressing the risks of device swap, SIM change, number porting, or other abnormal behavior, if telephone or SMS out-of-band authentication absolutely has to be supported.\n\nWhile this ASVS section does not mandate this as a requirement, not taking these precautions for a sensitive L2 app or an L3 app should be seen as a significant red flag.\n\nNote that NIST has also recently provided guidance which [discourages the use of push notifications](https://pages.nist.gov/800-63-4/sp800-63b/authenticators/#fig-3).\n\nWhile this ASVS section does not do so, it is important to be aware of the risks of \"push bombing\".",
+      "token_count": 319,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V6 Authentication",
+        "V6.6 Out-of-Band authentication mechanisms"
+      ]
+    },
+    {
+      "chunk_id": "ver_e1e0aaa15e48_c00024",
+      "document_id": "doc_owasp_avss_authentication",
+      "version_id": "ver_e1e0aaa15e48",
+      "chunk_idx": 24,
+      "chunk_type": "table",
+      "text_content": "| # | Description | Level |\n| :---: | :--- | :---: |\n| **6.6.1** | Verify that authentication mechanisms using the Public Switched Telephone Network (PSTN) to deliver One-time Passwords (OTPs) via phone or SMS are offered only when the phone number has previously been validated, alternate stronger methods (such as Time based One-time Passwords) are also offered, and the service provides information on their security risks to users. For L3 applications, phone and SMS must not be available as options. | 2 |\n| **6.6.2** | Verify that out-of-band authentication requests, codes, or tokens are bound to the original authentication request for which they were generated and are not usable for a previous or subsequent one. | 2 |\n| **6.6.3** | Verify that a code based out-of-band authentication mechanism is protected against brute force attacks by using rate limiting. Consider also using a code with at least 64 bits of entropy. | 2 |\n| **6.6.4** | Verify that, where push notifications are used for multi-factor authentication, rate limiting is used to prevent push bombing attacks. Number matching may also mitigate this risk. | 3 |",
+      "token_count": 267,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V6 Authentication",
+        "V6.6 Out-of-Band authentication mechanisms"
+      ]
+    },
+    {
+      "chunk_id": "ver_e1e0aaa15e48_c00025",
+      "document_id": "doc_owasp_avss_authentication",
+      "version_id": "ver_e1e0aaa15e48",
+      "chunk_idx": 25,
+      "chunk_type": "heading",
+      "text_content": "## V6.7 Cryptographic authentication mechanism",
+      "token_count": 8,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V6 Authentication",
+        "V6.7 Cryptographic authentication mechanism"
+      ]
+    },
+    {
+      "chunk_id": "ver_e1e0aaa15e48_c00026",
+      "document_id": "doc_owasp_avss_authentication",
+      "version_id": "ver_e1e0aaa15e48",
+      "chunk_idx": 26,
+      "chunk_type": "paragraph",
+      "text_content": "Cryptographic authentication mechanisms include smart cards or FIDO keys, where the user has to plug in or pair the cryptographic device to the computer to complete authentication.\n\nThe authentication server will send a challenge nonce to the cryptographic device or software, and the device or software calculates a response based upon a securely stored cryptographic key.\n\nThe requirements in this section provide implementation-specific guidance for these mechanisms, with guidance on cryptographic algorithms being covered in the \"Cryptography\" chapter.\n\nWhere shared or secret keys are used for cryptographic authentication, these should be stored using the same mechanisms as other system secrets, as documented in the \"Secret Management\" section in the \"Configuration\" chapter.\n\nThe requirements in this section mostly relate to [&sect; 5.1.7.2](https://pages.nist.gov/800-63-3/sp800-63b.html#sfcdv) of [NIST's Guidance](https://pages.nist.gov/800-63-3/sp800-63b.html).",
+      "token_count": 204,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V6 Authentication",
+        "V6.7 Cryptographic authentication mechanism"
+      ]
+    },
+    {
+      "chunk_id": "ver_e1e0aaa15e48_c00027",
+      "document_id": "doc_owasp_avss_authentication",
+      "version_id": "ver_e1e0aaa15e48",
+      "chunk_idx": 27,
+      "chunk_type": "table",
+      "text_content": "| # | Description | Level |\n| :---: | :--- | :---: |\n| **6.7.1** | Verify that the certificates used to verify cryptographic authentication assertions are stored in a way protects them from modification. | 3 |\n| **6.7.2** | Verify that the challenge nonce is at least 64 bits in length, and statistically unique or unique over the lifetime of the cryptographic device. | 3 |",
+      "token_count": 99,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V6 Authentication",
+        "V6.7 Cryptographic authentication mechanism"
+      ]
+    },
+    {
+      "chunk_id": "ver_e1e0aaa15e48_c00028",
+      "document_id": "doc_owasp_avss_authentication",
+      "version_id": "ver_e1e0aaa15e48",
+      "chunk_idx": 28,
+      "chunk_type": "heading",
+      "text_content": "## V6.8 Authentication with an Identity Provider",
+      "token_count": 10,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V6 Authentication",
+        "V6.8 Authentication with an Identity Provider"
+      ]
+    },
+    {
+      "chunk_id": "ver_e1e0aaa15e48_c00029",
+      "document_id": "doc_owasp_avss_authentication",
+      "version_id": "ver_e1e0aaa15e48",
+      "chunk_idx": 29,
+      "chunk_type": "paragraph",
+      "text_content": "Identity Providers (IdPs) provide federated identity for users.\n\nUsers will often have more than one identity with multiple IdPs, such as an enterprise identity using Azure AD, Okta, Ping Identity, or Google, or consumer identity using Facebook, Twitter, Google, or WeChat, to name just a few common alternatives.\n\nThis list is not an endorsement of these companies or services, but simply an encouragement for developers to consider the reality that many users have many established identities.\n\nOrganizations should consider integrating with existing user identities, as per the risk profile of the IdP's strength of identity proofing.\n\nFor example, it is unlikely a government organization would accept a social media identity as a login for sensitive systems, as it is easy to create fake or throwaway identities, whereas a mobile game company may well need to integrate with major social media platforms to grow their active player base.\n\nSecure use of external identity providers requires careful configuration and verification to prevent identity spoofing or forged assertions.\n\nThis section provides requirements to address these risks.",
+      "token_count": 198,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V6 Authentication",
+        "V6.8 Authentication with an Identity Provider"
+      ]
+    },
+    {
+      "chunk_id": "ver_e1e0aaa15e48_c00030",
+      "document_id": "doc_owasp_avss_authentication",
+      "version_id": "ver_e1e0aaa15e48",
+      "chunk_idx": 30,
+      "chunk_type": "table",
+      "text_content": "| # | Description | Level |\n| :---: | :--- | :---: |\n| **6.8.1** | Verify that, if the application supports multiple identity providers (IdPs), the user's identity cannot be spoofed via another supported identity provider (eg. by using the same user identifier). The standard mitigation would be for the application to register and identify the user using a combination of the IdP ID (serving as a namespace) and the user's ID in the IdP. | 2 |\n| **6.8.2** | Verify that the presence and integrity of digital signatures on authentication assertions (for example on JWTs or SAML assertions) are always validated, rejecting any assertions that are unsigned or have invalid signatures. | 2 |\n| **6.8.3** | Verify that SAML assertions are uniquely processed and used only once within the validity period to prevent replay attacks. | 2 |\n| **6.8.4** | Verify that, if an application uses a separate Identity Provider (IdP) and expects specific authentication strength, methods, or recentness for specific functions, the application verifies this using the information returned by the IdP. For example, if OIDC is used, this might be achieved by validating ID Token claims such as 'acr', 'amr', and 'auth_time' (if present). If the IdP does not provide this information, the application must have a documented fallback approach that assumes that the minimum strength authentication mechanism was used (for example, single-factor authentication using username and password). | 2 |",
+      "token_count": 329,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V6 Authentication",
+        "V6.8 Authentication with an Identity Provider"
+      ]
+    },
+    {
+      "chunk_id": "ver_e1e0aaa15e48_c00031",
+      "document_id": "doc_owasp_avss_authentication",
+      "version_id": "ver_e1e0aaa15e48",
+      "chunk_idx": 31,
+      "chunk_type": "heading",
+      "text_content": "## References",
+      "token_count": 3,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V6 Authentication",
+        "References"
+      ]
+    },
+    {
+      "chunk_id": "ver_e1e0aaa15e48_c00032",
+      "document_id": "doc_owasp_avss_authentication",
+      "version_id": "ver_e1e0aaa15e48",
+      "chunk_idx": 32,
+      "chunk_type": "mixed",
+      "text_content": "For more information, see also:\n\n* [NIST SP 800-63 - Digital Identity Guidelines](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-63-3.pdf)\n* [NIST SP 800-63B - Authentication and Lifecycle Management](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-63b.pdf)\n* [NIST SP 800-63 FAQ](https://pages.nist.gov/800-63-FAQ/)\n* [OWASP Web Security Testing Guide: Testing for Authentication](https://owasp.org/www-project-web-security-testing-guide/stable/4-Web_Application_Security_Testing/04-Authentication_Testing)\n* [OWASP Password Storage Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html)\n* [OWASP Forgot Password Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Forgot_Password_Cheat_Sheet.html)\n* [OWASP Choosing and Using Security Questions Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Choosing_and_Using_Security_Questions_Cheat_Sheet.html)\n* [CISA Guidance on \"Number Matching\"](https://www.cisa.gov/sites/default/files/publications/fact-sheet-implement-number-matching-in-mfa-applications-508c.pdf)\n* [Details on the FIDO Alliance](https://fidoalliance.org/)",
+      "token_count": 299,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V6 Authentication",
+        "References"
+      ]
+    }
+  ],
+  "chunk_sources": [
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00000_s000",
+      "chunk_id": "ver_e1e0aaa15e48_c00000",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00000",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 19
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00001_s000",
+      "chunk_id": "ver_e1e0aaa15e48_c00001",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00001",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 20
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00002_s000",
+      "chunk_id": "ver_e1e0aaa15e48_c00002",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00002",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 104
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00002_s001",
+      "chunk_id": "ver_e1e0aaa15e48_c00002",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00002",
+      "source_order": 1,
+      "start_offset": 105,
+      "end_offset": 265
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00002_s002",
+      "chunk_id": "ver_e1e0aaa15e48_c00002",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00003",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 217
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00002_s003",
+      "chunk_id": "ver_e1e0aaa15e48_c00002",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00004",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 284
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00002_s004",
+      "chunk_id": "ver_e1e0aaa15e48_c00002",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00004",
+      "source_order": 4,
+      "start_offset": 285,
+      "end_offset": 358
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00002_s005",
+      "chunk_id": "ver_e1e0aaa15e48_c00002",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00004",
+      "source_order": 5,
+      "start_offset": 359,
+      "end_offset": 451
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00002_s006",
+      "chunk_id": "ver_e1e0aaa15e48_c00002",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00005",
+      "source_order": 6,
+      "start_offset": 0,
+      "end_offset": 147
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00002_s007",
+      "chunk_id": "ver_e1e0aaa15e48_c00002",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00006",
+      "source_order": 7,
+      "start_offset": 0,
+      "end_offset": 132
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00002_s008",
+      "chunk_id": "ver_e1e0aaa15e48_c00002",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00006",
+      "source_order": 8,
+      "start_offset": 133,
+      "end_offset": 267
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00003_s000",
+      "chunk_id": "ver_e1e0aaa15e48_c00003",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00007",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 36
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00004_s000",
+      "chunk_id": "ver_e1e0aaa15e48_c00004",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00008",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 123
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00004_s001",
+      "chunk_id": "ver_e1e0aaa15e48_c00004",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00008",
+      "source_order": 1,
+      "start_offset": 124,
+      "end_offset": 233
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00005_s000",
+      "chunk_id": "ver_e1e0aaa15e48_c00005",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00009",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 898
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00006_s000",
+      "chunk_id": "ver_e1e0aaa15e48_c00006",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00010",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 25
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00007_s000",
+      "chunk_id": "ver_e1e0aaa15e48_c00007",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00011",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 168
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00007_s001",
+      "chunk_id": "ver_e1e0aaa15e48_c00007",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00011",
+      "source_order": 1,
+      "start_offset": 169,
+      "end_offset": 283
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00007_s002",
+      "chunk_id": "ver_e1e0aaa15e48_c00007",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00012",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 108
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00007_s003",
+      "chunk_id": "ver_e1e0aaa15e48_c00007",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00012",
+      "source_order": 3,
+      "start_offset": 109,
+      "end_offset": 182
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00007_s004",
+      "chunk_id": "ver_e1e0aaa15e48_c00007",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00012",
+      "source_order": 4,
+      "start_offset": 183,
+      "end_offset": 297
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00007_s005",
+      "chunk_id": "ver_e1e0aaa15e48_c00007",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00013",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 197
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00008_s000",
+      "chunk_id": "ver_e1e0aaa15e48_c00008",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00014",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 1800
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00009_s000",
+      "chunk_id": "ver_e1e0aaa15e48_c00009",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00014",
+      "source_order": 0,
+      "start_offset": 1800,
+      "end_offset": 1947
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00010_s000",
+      "chunk_id": "ver_e1e0aaa15e48_c00010",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00015",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 39
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00011_s000",
+      "chunk_id": "ver_e1e0aaa15e48_c00011",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00016",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 150
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00011_s001",
+      "chunk_id": "ver_e1e0aaa15e48_c00011",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00016",
+      "source_order": 1,
+      "start_offset": 151,
+      "end_offset": 223
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00011_s002",
+      "chunk_id": "ver_e1e0aaa15e48_c00011",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00016",
+      "source_order": 2,
+      "start_offset": 224,
+      "end_offset": 345
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00011_s003",
+      "chunk_id": "ver_e1e0aaa15e48_c00011",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00016",
+      "source_order": 3,
+      "start_offset": 346,
+      "end_offset": 551
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00011_s004",
+      "chunk_id": "ver_e1e0aaa15e48_c00011",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00017",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 317
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00011_s005",
+      "chunk_id": "ver_e1e0aaa15e48_c00011",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00018",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 261
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00012_s000",
+      "chunk_id": "ver_e1e0aaa15e48_c00012",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00019",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 531
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00013_s000",
+      "chunk_id": "ver_e1e0aaa15e48_c00013",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00020",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 1800
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00014_s000",
+      "chunk_id": "ver_e1e0aaa15e48_c00014",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00020",
+      "source_order": 0,
+      "start_offset": 1800,
+      "end_offset": 2166
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00015_s000",
+      "chunk_id": "ver_e1e0aaa15e48_c00015",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00021",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 52
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00016_s000",
+      "chunk_id": "ver_e1e0aaa15e48_c00016",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00022",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 98
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00016_s001",
+      "chunk_id": "ver_e1e0aaa15e48_c00016",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00022",
+      "source_order": 1,
+      "start_offset": 99,
+      "end_offset": 253
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00016_s002",
+      "chunk_id": "ver_e1e0aaa15e48_c00016",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00023",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 277
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00017_s000",
+      "chunk_id": "ver_e1e0aaa15e48_c00017",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00024",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 1307
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00018_s000",
+      "chunk_id": "ver_e1e0aaa15e48_c00018",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00025",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 56
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00019_s000",
+      "chunk_id": "ver_e1e0aaa15e48_c00019",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00026",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 118
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00019_s001",
+      "chunk_id": "ver_e1e0aaa15e48_c00019",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00027",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 23
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00019_s002",
+      "chunk_id": "ver_e1e0aaa15e48_c00019",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00028",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 81
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00019_s003",
+      "chunk_id": "ver_e1e0aaa15e48_c00019",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00029",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 181
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00019_s004",
+      "chunk_id": "ver_e1e0aaa15e48_c00019",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00029",
+      "source_order": 4,
+      "start_offset": 182,
+      "end_offset": 340
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00019_s005",
+      "chunk_id": "ver_e1e0aaa15e48_c00019",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00030",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 135
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00019_s006",
+      "chunk_id": "ver_e1e0aaa15e48_c00019",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00030",
+      "source_order": 6,
+      "start_offset": 136,
+      "end_offset": 209
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00019_s007",
+      "chunk_id": "ver_e1e0aaa15e48_c00019",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00030",
+      "source_order": 7,
+      "start_offset": 210,
+      "end_offset": 471
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00019_s008",
+      "chunk_id": "ver_e1e0aaa15e48_c00019",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00031",
+      "source_order": 8,
+      "start_offset": 0,
+      "end_offset": 71
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00020_s000",
+      "chunk_id": "ver_e1e0aaa15e48_c00020",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00032",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 673
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00021_s000",
+      "chunk_id": "ver_e1e0aaa15e48_c00021",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00033",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 1784
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00022_s000",
+      "chunk_id": "ver_e1e0aaa15e48_c00022",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00034",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 45
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00023_s000",
+      "chunk_id": "ver_e1e0aaa15e48_c00023",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00035",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 117
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00023_s001",
+      "chunk_id": "ver_e1e0aaa15e48_c00023",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00035",
+      "source_order": 1,
+      "start_offset": 118,
+      "end_offset": 176
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00023_s002",
+      "chunk_id": "ver_e1e0aaa15e48_c00023",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00035",
+      "source_order": 2,
+      "start_offset": 177,
+      "end_offset": 250
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00023_s003",
+      "chunk_id": "ver_e1e0aaa15e48_c00023",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00036",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 87
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00023_s004",
+      "chunk_id": "ver_e1e0aaa15e48_c00023",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00036",
+      "source_order": 4,
+      "start_offset": 88,
+      "end_offset": 352
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00023_s005",
+      "chunk_id": "ver_e1e0aaa15e48_c00023",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00036",
+      "source_order": 5,
+      "start_offset": 353,
+      "end_offset": 681
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00023_s006",
+      "chunk_id": "ver_e1e0aaa15e48_c00023",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00036",
+      "source_order": 6,
+      "start_offset": 682,
+      "end_offset": 852
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00023_s007",
+      "chunk_id": "ver_e1e0aaa15e48_c00023",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00037",
+      "source_order": 7,
+      "start_offset": 0,
+      "end_offset": 166
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00023_s008",
+      "chunk_id": "ver_e1e0aaa15e48_c00023",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00037",
+      "source_order": 8,
+      "start_offset": 167,
+      "end_offset": 266
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00024_s000",
+      "chunk_id": "ver_e1e0aaa15e48_c00024",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00038",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 1136
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00025_s000",
+      "chunk_id": "ver_e1e0aaa15e48_c00025",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00039",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 46
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00026_s000",
+      "chunk_id": "ver_e1e0aaa15e48_c00026",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00040",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 180
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00026_s001",
+      "chunk_id": "ver_e1e0aaa15e48_c00026",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00040",
+      "source_order": 1,
+      "start_offset": 181,
+      "end_offset": 372
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00026_s002",
+      "chunk_id": "ver_e1e0aaa15e48_c00026",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00040",
+      "source_order": 2,
+      "start_offset": 373,
+      "end_offset": 555
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00026_s003",
+      "chunk_id": "ver_e1e0aaa15e48_c00026",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00041",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 225
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00026_s004",
+      "chunk_id": "ver_e1e0aaa15e48_c00026",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00042",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 190
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00027_s000",
+      "chunk_id": "ver_e1e0aaa15e48_c00027",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00043",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 374
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00028_s000",
+      "chunk_id": "ver_e1e0aaa15e48_c00028",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00044",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 48
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00029_s000",
+      "chunk_id": "ver_e1e0aaa15e48_c00029",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00045",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 63
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00029_s001",
+      "chunk_id": "ver_e1e0aaa15e48_c00029",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00045",
+      "source_order": 1,
+      "start_offset": 64,
+      "end_offset": 312
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00029_s002",
+      "chunk_id": "ver_e1e0aaa15e48_c00029",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00045",
+      "source_order": 2,
+      "start_offset": 313,
+      "end_offset": 493
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00029_s003",
+      "chunk_id": "ver_e1e0aaa15e48_c00029",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00045",
+      "source_order": 3,
+      "start_offset": 494,
+      "end_offset": 634
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00029_s004",
+      "chunk_id": "ver_e1e0aaa15e48_c00029",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00045",
+      "source_order": 4,
+      "start_offset": 635,
+      "end_offset": 938
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00029_s005",
+      "chunk_id": "ver_e1e0aaa15e48_c00029",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00046",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 140
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00029_s006",
+      "chunk_id": "ver_e1e0aaa15e48_c00029",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00046",
+      "source_order": 6,
+      "start_offset": 141,
+      "end_offset": 199
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00030_s000",
+      "chunk_id": "ver_e1e0aaa15e48_c00030",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00047",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 1473
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00031_s000",
+      "chunk_id": "ver_e1e0aaa15e48_c00031",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00048",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 13
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00032_s000",
+      "chunk_id": "ver_e1e0aaa15e48_c00032",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00049",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 31
+    },
+    {
+      "chunk_source_id": "ver_e1e0aaa15e48_c00032_s001",
+      "chunk_id": "ver_e1e0aaa15e48_c00032",
+      "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00050",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 1134
+    }
+  ]
+}

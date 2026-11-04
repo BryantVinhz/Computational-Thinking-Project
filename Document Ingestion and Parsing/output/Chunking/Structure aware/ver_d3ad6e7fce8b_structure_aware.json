@@ -1,0 +1,1481 @@
+{
+  "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+  "version_id": "ver_d3ad6e7fce8b",
+  "chunking_strategy": "structure_aware",
+  "chunks": [
+    {
+      "chunk_id": "ver_d3ad6e7fce8b_c00000",
+      "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+      "version_id": "ver_d3ad6e7fce8b",
+      "chunk_idx": 0,
+      "chunk_type": "heading",
+      "text_content": "# Credential Stuffing Prevention Cheat Sheet",
+      "token_count": 6,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Credential Stuffing Prevention Cheat Sheet"
+      ]
+    },
+    {
+      "chunk_id": "ver_d3ad6e7fce8b_c00001",
+      "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+      "version_id": "ver_d3ad6e7fce8b",
+      "chunk_idx": 1,
+      "chunk_type": "heading",
+      "text_content": "## Introduction",
+      "token_count": 3,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Credential Stuffing Prevention Cheat Sheet",
+        "Introduction"
+      ]
+    },
+    {
+      "chunk_id": "ver_d3ad6e7fce8b_c00002",
+      "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+      "version_id": "ver_d3ad6e7fce8b",
+      "chunk_idx": 2,
+      "chunk_type": "paragraph",
+      "text_content": "This cheatsheet covers defenses against two common types of authentication-related attacks: credential stuffing and password spraying.\n\nAlthough these are separate, distinct attacks, in many cases the defenses that would be implemented to protect against them are the same, and they would also be effective at protecting against brute-force attacks.\n\nA summary of these different attacks is listed below:",
+      "token_count": 69,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Credential Stuffing Prevention Cheat Sheet",
+        "Introduction"
+      ]
+    },
+    {
+      "chunk_id": "ver_d3ad6e7fce8b_c00003",
+      "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+      "version_id": "ver_d3ad6e7fce8b",
+      "chunk_idx": 3,
+      "chunk_type": "table",
+      "text_content": "| Attack Type | Description |\n|-------------|-------------|\n| Brute Force | Testing multiple passwords from dictionary or other source against a single account. |\n| Credential Stuffing | Testing username/password pairs obtained from the breach of another site. |\n| Password Spraying | Testing a single weak password against a large number of different accounts.|",
+      "token_count": 89,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Credential Stuffing Prevention Cheat Sheet",
+        "Introduction"
+      ]
+    },
+    {
+      "chunk_id": "ver_d3ad6e7fce8b_c00004",
+      "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+      "version_id": "ver_d3ad6e7fce8b",
+      "chunk_idx": 4,
+      "chunk_type": "heading",
+      "text_content": "## Multi-Factor Authentication",
+      "token_count": 6,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Credential Stuffing Prevention Cheat Sheet",
+        "Multi-Factor Authentication"
+      ]
+    },
+    {
+      "chunk_id": "ver_d3ad6e7fce8b_c00005",
+      "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+      "version_id": "ver_d3ad6e7fce8b",
+      "chunk_idx": 5,
+      "chunk_type": "mixed",
+      "text_content": "[Multi-factor authentication (MFA)](Multifactor_Authentication_Cheat_Sheet.md) is by far the best defense against the majority of password-related attacks, including credential stuffing and password spraying, with analysis by Microsoft suggesting that it would have stopped [99.9% of account compromises](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Your-Pa-word-doesn-t-matter/ba-p/731984).\n\nAs such, it should be implemented wherever possible.\n\nHistorically, depending on the audience of the application, it may not have been practical or feasible to enforce the use of MFA, however with modern browsers and mobile devices now supporting FIDO2 Passkeys and other forms of MFA, it is attainable for most use cases.\n\nIn order to balance security and usability, multi-factor authentication can be combined with other techniques to require the 2nd factor only in specific circumstances where there is reason to suspect that the login attempt may not be legitimate, such as a login from:\n\n- A new browser/device or IP address.\n\n- An unusual country or location.\n\n- Specific countries that are considered untrusted or typically do not contain users of a service.\n\n- An IP address that appears on known denylists or is associated with anonymization services, such as proxy or VPN services.\n\n- An IP address that has tried to login to multiple accounts.\n\n- A login attempt that appears to be scripted or from a bot rather than a human (i.e.\n\nlarge login volume sourced from a single IP or subnet).\n\nOr an organization may choose to require MFA in the form of a \"step-up\" authentication for the above scenarios during a session combined with a request for a high risk activity such as:\n\n- Large currency transactions\n- Privileged or Administrative configuration changes\n\nAdditionally, for enterprise applications, known trusted IP ranges could be added to an allowlist so that MFA is not required when users connect from these ranges.",
+      "token_count": 384,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Credential Stuffing Prevention Cheat Sheet",
+        "Multi-Factor Authentication"
+      ]
+    },
+    {
+      "chunk_id": "ver_d3ad6e7fce8b_c00006",
+      "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+      "version_id": "ver_d3ad6e7fce8b",
+      "chunk_idx": 6,
+      "chunk_type": "heading",
+      "text_content": "## Alternative Defenses",
+      "token_count": 4,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Credential Stuffing Prevention Cheat Sheet",
+        "Alternative Defenses"
+      ]
+    },
+    {
+      "chunk_id": "ver_d3ad6e7fce8b_c00007",
+      "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+      "version_id": "ver_d3ad6e7fce8b",
+      "chunk_idx": 7,
+      "chunk_type": "paragraph",
+      "text_content": "Where it is not possible to implement MFA, there are many alternative defenses that can be used to protect against credential stuffing and password spraying.\n\nIn isolation none of these are as effective as MFA, however multiple, layered defenses can provide a reasonable degree of protection.\n\nIn many cases, these mechanisms will also protect against brute-force or password spraying attacks.\n\nWhere an application has multiple user roles, it may be appropriate to implement different defenses for different roles.\n\nFor example, it may not be feasible to enforce MFA for all users, but it should be possible to require that all administrators use it.",
+      "token_count": 117,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Credential Stuffing Prevention Cheat Sheet",
+        "Alternative Defenses"
+      ]
+    },
+    {
+      "chunk_id": "ver_d3ad6e7fce8b_c00008",
+      "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+      "version_id": "ver_d3ad6e7fce8b",
+      "chunk_idx": 8,
+      "chunk_type": "heading",
+      "text_content": "## Defense in Depth & Metrics",
+      "token_count": 7,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Credential Stuffing Prevention Cheat Sheet",
+        "Defense in Depth & Metrics"
+      ]
+    },
+    {
+      "chunk_id": "ver_d3ad6e7fce8b_c00009",
+      "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+      "version_id": "ver_d3ad6e7fce8b",
+      "chunk_idx": 9,
+      "chunk_type": "paragraph",
+      "text_content": "While not a specific technique, it is important to implement defenses that consider the impact of individual defenses being defeated or otherwise failing.\n\nAs an example, client-side defenses, such as device fingerprinting or JavaScript challenges, may be spoofed or bypassed and other layers of defense should be implemented to account for this.\n\nAdditionally, each defense should generate volume metrics for use as a detective mechanism.\n\nIdeally the metrics will include both detected and mitigated attack volume and allow for filtering on fields such as IP address.\n\nMonitoring and reporting on these metrics may identify defense failures or the presence of unidentified attacks, as well as the impact of new or improved defenses.\n\nFinally, when administration of different defenses is performed by multiple teams, care should be taken to ensure there is communication and coordination when separate teams are performing maintenance, deployment or otherwise modifying individual defenses.",
+      "token_count": 163,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Credential Stuffing Prevention Cheat Sheet",
+        "Defense in Depth & Metrics"
+      ]
+    },
+    {
+      "chunk_id": "ver_d3ad6e7fce8b_c00010",
+      "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+      "version_id": "ver_d3ad6e7fce8b",
+      "chunk_idx": 10,
+      "chunk_type": "heading",
+      "text_content": "### Secondary Passwords, PINs and Security Questions",
+      "token_count": 10,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Credential Stuffing Prevention Cheat Sheet",
+        "Defense in Depth & Metrics",
+        "Secondary Passwords, PINs and Security Questions"
+      ]
+    },
+    {
+      "chunk_id": "ver_d3ad6e7fce8b_c00011",
+      "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+      "version_id": "ver_d3ad6e7fce8b",
+      "chunk_idx": 11,
+      "chunk_type": "paragraph",
+      "text_content": "Do not use security questions as an additional authentication challenge.\n\n[OWASP ASVS 5.0 requirement 6.4.2](https://github.com/OWASP/ASVS/blob/v5.0.0_release/5.0/en/0x15-V6-Authentication.md#v64-authentication-factor-lifecycle-and-recovery) excludes knowledge-based security questions.\n\nThe [Security Questions Cheat Sheet](Choosing_and_Using_Security_Questions_Cheat_Sheet.md) discusses limitations in legacy systems.\n\nIf a secondary password, PIN, or memorable word is used, request and verify the entire secret rather than selected characters, as required by [NIST SP 800-63B-4](https://pages.nist.gov/800-63-4/sp800-63b.html#passwordver).\n\nAdding another knowledge factor does not constitute [MFA](Multifactor_Authentication_Cheat_Sheet.md); prefer an independent factor instead.",
+      "token_count": 180,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Credential Stuffing Prevention Cheat Sheet",
+        "Defense in Depth & Metrics",
+        "Secondary Passwords, PINs and Security Questions"
+      ]
+    },
+    {
+      "chunk_id": "ver_d3ad6e7fce8b_c00012",
+      "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+      "version_id": "ver_d3ad6e7fce8b",
+      "chunk_idx": 12,
+      "chunk_type": "heading",
+      "text_content": "### CAPTCHA",
+      "token_count": 4,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Credential Stuffing Prevention Cheat Sheet",
+        "Defense in Depth & Metrics",
+        "CAPTCHA"
+      ]
+    },
+    {
+      "chunk_id": "ver_d3ad6e7fce8b_c00013",
+      "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+      "version_id": "ver_d3ad6e7fce8b",
+      "chunk_idx": 13,
+      "chunk_type": "paragraph",
+      "text_content": "Requiring a user to solve a \"Completely Automated Public Turing test to tell Computers and Humans Apart\" (CAPTCHA) or similar puzzle for each login attempt can help to identify automated/bot attacks and help prevent automated login attempts, and may slow down credential stuffing or password spraying attacks.\n\nHowever, CAPTCHAs are not perfect, and in many cases tools or services exist that can be used to break them with a reasonably high success rate.\n\nMonitoring CAPTCHA solve rates may help identify impact to good users, as well as automated CAPTCHA breaking technology, possibly indicated by abnormally high solve rates.\n\nTo improve usability, it may be desirable to only require the user solve a CAPTCHA when the login request is considered suspicious or high risk, using the same criteria discussed in the MFA section.",
+      "token_count": 149,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Credential Stuffing Prevention Cheat Sheet",
+        "Defense in Depth & Metrics",
+        "CAPTCHA"
+      ]
+    },
+    {
+      "chunk_id": "ver_d3ad6e7fce8b_c00014",
+      "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+      "version_id": "ver_d3ad6e7fce8b",
+      "chunk_idx": 14,
+      "chunk_type": "heading",
+      "text_content": "### IP Mitigation and Intelligence",
+      "token_count": 7,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Credential Stuffing Prevention Cheat Sheet",
+        "Defense in Depth & Metrics",
+        "IP Mitigation and Intelligence"
+      ]
+    },
+    {
+      "chunk_id": "ver_d3ad6e7fce8b_c00015",
+      "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+      "version_id": "ver_d3ad6e7fce8b",
+      "chunk_idx": 15,
+      "chunk_type": "paragraph",
+      "text_content": "Blocking IP addresses may be sufficient to stop less sophisticated attacks, but should not be used as the sole or primary defense due to the ease in circumvention.\n\nIt is more effective to have a graduated response to abuse that leverages multiple defensive measures depending on different factors of the attack.\n\nAny process or decision to mitigate (including blocking and CAPTCHA) credential stuffing traffic from an IP address should consider a multitude of abuse scenarios, and not rely on a single predictable volume limit.\n\nShort (i.e.\n\nburst) and long time periods should be considered, as well as high request volume and instances where one IP address, likely in concert with _many_ other IP addresses, generates low but consistent volumes of traffic.\n\nAdditionally, mitigation decisions should consider factors such as IP address classification (ex: residential vs hosting) and geolocation.\n\nThese factors may be leveraged to raise or lower mitigation thresholds in order to reduce potential impact on legitimate users or more aggressively mitigate abuse originating from abnormal sources.\n\nMitigations, especially blocking an IP address, should be temporary and processes should be in place to remove an IP address from a mitigated state as abuse declines or stops.\n\nMany credential stuffing toolkits, such as [Sentry MBA](https://federalnewsnetwork.com/wp-content/uploads/2020/06/Shape-Threat-Research-Automating-Cybercrime-with-SentryMBA.pdf), offer built-in use of proxy networks to distribute requests across a large volume of unique IP addresses.\n\nThis may defeat both IP block-lists and rate limiting, as per IP request volume may remain relatively low, even on high volume attacks.\n\nCorrelating authentication traffic with proxy and similar IP address intelligence, as well as hosting provider IP address ranges can help identify highly distributed credential stuffing attacks, as well as serve as a mitigation trigger.\n\nFor example, every request originating from a hosting provider could be required to solve CAPTCHA.\n\nThere are both public and commercial sources of IP address intelligence and classification that may be leveraged as data sources for this purpose.\n\nAdditionally, some hosting providers publish their own IP address space, such as [AWS](https://docs.aws.amazon.com/vpc/latest/userguide/aws-ip-ranges.html).",
+      "token_count": 439,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Credential Stuffing Prevention Cheat Sheet",
+        "Defense in Depth & Metrics",
+        "IP Mitigation and Intelligence"
+      ]
+    },
+    {
+      "chunk_id": "ver_d3ad6e7fce8b_c00016",
+      "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+      "version_id": "ver_d3ad6e7fce8b",
+      "chunk_idx": 16,
+      "chunk_type": "paragraph",
+      "text_content": "Separate from blocking network connections, consider storing an account's IP address authentication history.\n\nIn case a recent IP address is added to a block or mitigation list, it may be appropriate to lock the account and notify the user.",
+      "token_count": 45,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Credential Stuffing Prevention Cheat Sheet",
+        "Defense in Depth & Metrics",
+        "IP Mitigation and Intelligence"
+      ]
+    },
+    {
+      "chunk_id": "ver_d3ad6e7fce8b_c00017",
+      "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+      "version_id": "ver_d3ad6e7fce8b",
+      "chunk_idx": 17,
+      "chunk_type": "heading",
+      "text_content": "### Device Fingerprinting",
+      "token_count": 5,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Credential Stuffing Prevention Cheat Sheet",
+        "Defense in Depth & Metrics",
+        "Device Fingerprinting"
+      ]
+    },
+    {
+      "chunk_id": "ver_d3ad6e7fce8b_c00018",
+      "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+      "version_id": "ver_d3ad6e7fce8b",
+      "chunk_idx": 18,
+      "chunk_type": "mixed",
+      "text_content": "Aside from the IP address, there are a number of different factors that can be used to attempt to fingerprint a device.\n\nSome of these can be obtained passively by the server from the HTTP headers (particularly the \"User-Agent\" header), including:\n\n- Operating system & version\n- Browser & version\n- Language\n\nUsing JavaScript it is possible to access far more information, such as:\n\n- Screen resolution\n- Installed fonts\n- Installed browser plugins\n\nUsing these various attributes, it is possible to create a fingerprint of the device.\n\nThis fingerprint can then be matched against any browser attempting to login to the account, and if it doesn't match then the user can be prompted for additional authentication.\n\nMany users will have multiple devices or browsers that they use, so it is not practical to simply block attempts that do not match the existing fingerprints, however it is common to define a process for users or customers to view their device history and manage their remembered devices.\n\nAlso these attributes can be used to detect anomalous activity such as a device appearing to be running an older version of OS or Browser.\n\nThe [fingerprintjs2](https://github.com/Valve/fingerprintjs2) JavaScript library can be used to carry out client-side fingerprinting.\n\nIt should be noted that as all this information is provided by the client, it can potentially be spoofed by an attacker.\n\nIn some cases spoofing these attributes is trivial (such as the \"User-Agent\") header, but in other cases it may be more difficult to modify these attributes.",
+      "token_count": 301,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Credential Stuffing Prevention Cheat Sheet",
+        "Defense in Depth & Metrics",
+        "Device Fingerprinting"
+      ]
+    },
+    {
+      "chunk_id": "ver_d3ad6e7fce8b_c00019",
+      "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+      "version_id": "ver_d3ad6e7fce8b",
+      "chunk_idx": 19,
+      "chunk_type": "heading",
+      "text_content": "### Connection Fingerprinting",
+      "token_count": 5,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Credential Stuffing Prevention Cheat Sheet",
+        "Defense in Depth & Metrics",
+        "Connection Fingerprinting"
+      ]
+    },
+    {
+      "chunk_id": "ver_d3ad6e7fce8b_c00020",
+      "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+      "version_id": "ver_d3ad6e7fce8b",
+      "chunk_idx": 20,
+      "chunk_type": "paragraph",
+      "text_content": "Similar to device fingerprinting, there are numerous fingerprinting techniques available for network connections.\n\nSome examples include [JA3](https://github.com/salesforce/ja3), HTTP/2 fingerprinting and HTTP header order.\n\nAs these techniques typically focus on how a connection is made, connection fingerprinting may provide more accurate results than other defenses that rely on an indicator, such as an IP address, or request data, such as user agent string.\n\nConnection fingerprinting may also be used in conjunction with other defenses to ascertain the truthfulness of an authentication request.\n\nFor example, if the user agent header and device fingerprint indicates a mobile device, but the connection fingerprint indicates a Python script, the request is likely suspect.",
+      "token_count": 139,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Credential Stuffing Prevention Cheat Sheet",
+        "Defense in Depth & Metrics",
+        "Connection Fingerprinting"
+      ]
+    },
+    {
+      "chunk_id": "ver_d3ad6e7fce8b_c00021",
+      "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+      "version_id": "ver_d3ad6e7fce8b",
+      "chunk_idx": 21,
+      "chunk_type": "heading",
+      "text_content": "### Require Unpredictable Usernames",
+      "token_count": 6,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Credential Stuffing Prevention Cheat Sheet",
+        "Defense in Depth & Metrics",
+        "Require Unpredictable Usernames"
+      ]
+    },
+    {
+      "chunk_id": "ver_d3ad6e7fce8b_c00022",
+      "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+      "version_id": "ver_d3ad6e7fce8b",
+      "chunk_idx": 22,
+      "chunk_type": "paragraph",
+      "text_content": "Credential stuffing attacks rely on not just the re-use of passwords between multiple sites, but also the re-use of usernames.\n\nA significant number of websites use the email address as the username, and as most users will have a single email address they use for all their accounts, this makes the combination of an email address and password very effective for credential stuffing attacks.\n\nRequiring users to create their own username when registering on the website makes it harder for an attacker to obtain valid username and password pairs for credential stuffing, as many of the available credential lists only include email addresses.\n\nProviding the user with a generated username can provide a higher degree of protection (as users are likely to choose the same username on most websites), but is user unfriendly.\n\nAdditionally, care needs to be taken to ensure that the generated username is not predictable (such as being based on the user's full name, or sequential numeric IDs), as this could make enumerating valid usernames for a password spraying attack easier.",
+      "token_count": 197,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Credential Stuffing Prevention Cheat Sheet",
+        "Defense in Depth & Metrics",
+        "Require Unpredictable Usernames"
+      ]
+    },
+    {
+      "chunk_id": "ver_d3ad6e7fce8b_c00023",
+      "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+      "version_id": "ver_d3ad6e7fce8b",
+      "chunk_idx": 23,
+      "chunk_type": "heading",
+      "text_content": "### Multi-Step Login Processes",
+      "token_count": 8,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Credential Stuffing Prevention Cheat Sheet",
+        "Defense in Depth & Metrics",
+        "Multi-Step Login Processes"
+      ]
+    },
+    {
+      "chunk_id": "ver_d3ad6e7fce8b_c00024",
+      "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+      "version_id": "ver_d3ad6e7fce8b",
+      "chunk_idx": 24,
+      "chunk_type": "paragraph",
+      "text_content": "The majority of off-the-shelf tools are designed for a single step login process, where the credentials are POSTed to the server, and the response indicates whether or not the login attempt was successful.\n\nBy adding additional steps to this process, such as requiring the username and password to be entered sequentially, or requiring that the user first obtains a random [CSRF Token](Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.md) before they can login, this makes the attack slightly more difficult to perform, and doubles the number of requests that the attacker must make.\n\nMulti-step login processes, however, should be mindful that they do not facilitate [user enumeration](Authentication_Cheat_Sheet.md).\n\nEnumerating users prior to a credential stuffing attack may result in a harder to identify, lower request volume attack.",
+      "token_count": 154,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Credential Stuffing Prevention Cheat Sheet",
+        "Defense in Depth & Metrics",
+        "Multi-Step Login Processes"
+      ]
+    },
+    {
+      "chunk_id": "ver_d3ad6e7fce8b_c00025",
+      "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+      "version_id": "ver_d3ad6e7fce8b",
+      "chunk_idx": 25,
+      "chunk_type": "heading",
+      "text_content": "### Require JavaScript and Block Headless Browsers",
+      "token_count": 9,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Credential Stuffing Prevention Cheat Sheet",
+        "Defense in Depth & Metrics",
+        "Require JavaScript and Block Headless Browsers"
+      ]
+    },
+    {
+      "chunk_id": "ver_d3ad6e7fce8b_c00026",
+      "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+      "version_id": "ver_d3ad6e7fce8b",
+      "chunk_idx": 26,
+      "chunk_type": "paragraph",
+      "text_content": "Most tools used for these types of attacks will make direct POST requests to the server and read the responses, but will not download or execute JavaScript that was contained in them.\n\nBy requiring the attacker to evaluate JavaScript in the response (for example to generate a valid token that must be submitted with the request), this forces the attacker to either use a real browser with an automation framework like Selenium or Headless Chrome, or to implement JavaScript parsing with another tool such as PhantomJS.\n\nAdditionally, there are a number of techniques that can be used to identify [Headless Chrome](https://antoinevastel.com/bot%20detection/2018/01/17/detect-chrome-headless-v2.html) or [PhantomJS](https://blog.shapesecurity.com/2015/01/22/detecting-phantomjs-based-visitors/).\n\nPlease note that blocking visitors who have JavaScript disabled will reduce the accessibility of the website, especially to visitors who use screen readers.\n\nIn certain jurisdictions this may be in breach of equalities legislation.",
+      "token_count": 208,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Credential Stuffing Prevention Cheat Sheet",
+        "Defense in Depth & Metrics",
+        "Require JavaScript and Block Headless Browsers"
+      ]
+    },
+    {
+      "chunk_id": "ver_d3ad6e7fce8b_c00027",
+      "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+      "version_id": "ver_d3ad6e7fce8b",
+      "chunk_idx": 27,
+      "chunk_type": "heading",
+      "text_content": "### Degradation",
+      "token_count": 4,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Credential Stuffing Prevention Cheat Sheet",
+        "Defense in Depth & Metrics",
+        "Degradation"
+      ]
+    },
+    {
+      "chunk_id": "ver_d3ad6e7fce8b_c00028",
+      "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+      "version_id": "ver_d3ad6e7fce8b",
+      "chunk_idx": 28,
+      "chunk_type": "paragraph",
+      "text_content": "A more aggressive defense against credential stuffing is to implement measures that increase the amount of time the attack takes to complete.\n\nThis may include incrementally increasing the complexity of the JavaScript that must be evaluated, requiring users to solve a cryptographic or Proof-of-Work computational puzzle, introducing long wait periods before responding to requests, returning overly large HTML assets or returning randomized error messages.\n\nThese techniques provide some level of security without resorting to user tracking or profiling.\n\nThey typically do not require a human in the loop, but rather constrain the minimum latency and/or the maximum request rate of a particular client implementation and the attacker's budget and sophistication, and requires a context-dependent risk assessment to gauge their efficacy, resistance to countermeasures and user experience impact.",
+      "token_count": 147,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Credential Stuffing Prevention Cheat Sheet",
+        "Defense in Depth & Metrics",
+        "Degradation"
+      ]
+    },
+    {
+      "chunk_id": "ver_d3ad6e7fce8b_c00029",
+      "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+      "version_id": "ver_d3ad6e7fce8b",
+      "chunk_idx": 29,
+      "chunk_type": "heading",
+      "text_content": "### Identifying Leaked Passwords",
+      "token_count": 6,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Credential Stuffing Prevention Cheat Sheet",
+        "Defense in Depth & Metrics",
+        "Identifying Leaked Passwords"
+      ]
+    },
+    {
+      "chunk_id": "ver_d3ad6e7fce8b_c00030",
+      "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+      "version_id": "ver_d3ad6e7fce8b",
+      "chunk_idx": 30,
+      "chunk_type": "paragraph",
+      "text_content": "[ASVS v4.0 Password Security Requirements](https://github.com/OWASP/ASVS/blob/master/4.0/en/0x11-V2-Authentication.md#v21-password-security-requirements) provision (2.1.7) on verifying new passwords presence in breached password datasets should be implemented.\n\nThere are both commercial and free services that may be of use for validating passwords presence in prior breaches.\n\nA well known free service for this is [Pwned Passwords](https://haveibeenpwned.com/Passwords).\n\nYou can host a copy of the application yourself, or use the [API](https://haveibeenpwned.com/API/v3#PwnedPasswords).",
+      "token_count": 145,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Credential Stuffing Prevention Cheat Sheet",
+        "Defense in Depth & Metrics",
+        "Identifying Leaked Passwords"
+      ]
+    },
+    {
+      "chunk_id": "ver_d3ad6e7fce8b_c00031",
+      "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+      "version_id": "ver_d3ad6e7fce8b",
+      "chunk_idx": 31,
+      "chunk_type": "heading",
+      "text_content": "### Notify users about unusual security events",
+      "token_count": 9,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Credential Stuffing Prevention Cheat Sheet",
+        "Defense in Depth & Metrics",
+        "Notify users about unusual security events"
+      ]
+    },
+    {
+      "chunk_id": "ver_d3ad6e7fce8b_c00032",
+      "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+      "version_id": "ver_d3ad6e7fce8b",
+      "chunk_idx": 32,
+      "chunk_type": "paragraph",
+      "text_content": "When suspicious or unusual activity is detected, it may be appropriate to notify or warn the user.\n\nHowever, care should be taken that the user does not get overwhelmed with a large number of notifications that are not important to them, or they will just start to ignore or delete them.\n\nAdditionally, due to frequent reuse of passwords across multiple sites, the possibility that the users email account has also been compromised should be considered.\n\nFor example, it would generally not be appropriate to notify a user that there had been an attempt to login to their account with an incorrect password.\n\nHowever, if there had been a login with the correct password, but which had then failed the subsequent MFA check, the user should be notified so that they can change their password.\n\nSubsequently, should the user request multiple password resets from different devices or IP addresses, it may be appropriate to prevent further access to the account pending further user verification processes.\n\nDetails related to current or recent logins should also be made visible to the user.\n\nFor example, when they login to the application, the date, time and location of their previous login attempt could be displayed to them.\n\nAdditionally, if the application supports concurrent sessions, the user should be able to view a list of all active sessions, and to terminate any other sessions that are not legitimate.",
+      "token_count": 258,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Credential Stuffing Prevention Cheat Sheet",
+        "Defense in Depth & Metrics",
+        "Notify users about unusual security events"
+      ]
+    },
+    {
+      "chunk_id": "ver_d3ad6e7fce8b_c00033",
+      "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+      "version_id": "ver_d3ad6e7fce8b",
+      "chunk_idx": 33,
+      "chunk_type": "heading",
+      "text_content": "## References",
+      "token_count": 3,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Credential Stuffing Prevention Cheat Sheet",
+        "References"
+      ]
+    },
+    {
+      "chunk_id": "ver_d3ad6e7fce8b_c00034",
+      "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+      "version_id": "ver_d3ad6e7fce8b",
+      "chunk_idx": 34,
+      "chunk_type": "list",
+      "text_content": "- [OWASP: Credential Stuffing](https://community.owasp.org/attacks/Credential_stuffing)\n- [NIST SP 800-63B-4: Password Verifiers](https://pages.nist.gov/800-63-4/sp800-63b.html#passwordver)",
+      "token_count": 60,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Credential Stuffing Prevention Cheat Sheet",
+        "References"
+      ]
+    }
+  ],
+  "chunk_sources": [
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00000_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00000",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00000",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 44
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00001_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00001",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00001",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 15
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00002_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00002",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00002",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 134
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00002_s001",
+      "chunk_id": "ver_d3ad6e7fce8b_c00002",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00002",
+      "source_order": 1,
+      "start_offset": 135,
+      "end_offset": 348
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00002_s002",
+      "chunk_id": "ver_d3ad6e7fce8b_c00002",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00002",
+      "source_order": 2,
+      "start_offset": 349,
+      "end_offset": 402
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00003_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00003",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00003",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 362
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00004_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00004",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00004",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 30
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00005_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00005",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00005",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 417
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00005_s001",
+      "chunk_id": "ver_d3ad6e7fce8b_c00005",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00005",
+      "source_order": 1,
+      "start_offset": 418,
+      "end_offset": 470
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00005_s002",
+      "chunk_id": "ver_d3ad6e7fce8b_c00005",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00005",
+      "source_order": 2,
+      "start_offset": 471,
+      "end_offset": 739
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00005_s003",
+      "chunk_id": "ver_d3ad6e7fce8b_c00005",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00006",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 267
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00005_s004",
+      "chunk_id": "ver_d3ad6e7fce8b_c00005",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00007",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 37
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00005_s005",
+      "chunk_id": "ver_d3ad6e7fce8b_c00005",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00007",
+      "source_order": 5,
+      "start_offset": 38,
+      "end_offset": 71
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00005_s006",
+      "chunk_id": "ver_d3ad6e7fce8b_c00005",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00007",
+      "source_order": 6,
+      "start_offset": 72,
+      "end_offset": 170
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00005_s007",
+      "chunk_id": "ver_d3ad6e7fce8b_c00005",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00007",
+      "source_order": 7,
+      "start_offset": 171,
+      "end_offset": 295
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00005_s008",
+      "chunk_id": "ver_d3ad6e7fce8b_c00005",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00007",
+      "source_order": 8,
+      "start_offset": 296,
+      "end_offset": 357
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00005_s009",
+      "chunk_id": "ver_d3ad6e7fce8b_c00005",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00007",
+      "source_order": 9,
+      "start_offset": 358,
+      "end_offset": 443
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00005_s010",
+      "chunk_id": "ver_d3ad6e7fce8b_c00005",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00007",
+      "source_order": 10,
+      "start_offset": 444,
+      "end_offset": 499
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00005_s011",
+      "chunk_id": "ver_d3ad6e7fce8b_c00005",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00008",
+      "source_order": 11,
+      "start_offset": 0,
+      "end_offset": 185
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00005_s012",
+      "chunk_id": "ver_d3ad6e7fce8b_c00005",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00009",
+      "source_order": 12,
+      "start_offset": 0,
+      "end_offset": 82
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00005_s013",
+      "chunk_id": "ver_d3ad6e7fce8b_c00005",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00010",
+      "source_order": 13,
+      "start_offset": 0,
+      "end_offset": 163
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00006_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00006",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00011",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 23
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00007_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00007",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00012",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 157
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00007_s001",
+      "chunk_id": "ver_d3ad6e7fce8b_c00007",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00012",
+      "source_order": 1,
+      "start_offset": 158,
+      "end_offset": 291
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00007_s002",
+      "chunk_id": "ver_d3ad6e7fce8b_c00007",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00012",
+      "source_order": 2,
+      "start_offset": 292,
+      "end_offset": 391
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00007_s003",
+      "chunk_id": "ver_d3ad6e7fce8b_c00007",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00013",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 120
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00007_s004",
+      "chunk_id": "ver_d3ad6e7fce8b_c00007",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00013",
+      "source_order": 4,
+      "start_offset": 121,
+      "end_offset": 255
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00008_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00008",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00014",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 29
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00009_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00009",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00015",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 154
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00009_s001",
+      "chunk_id": "ver_d3ad6e7fce8b_c00009",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00015",
+      "source_order": 1,
+      "start_offset": 155,
+      "end_offset": 345
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00009_s002",
+      "chunk_id": "ver_d3ad6e7fce8b_c00009",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00016",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 91
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00009_s003",
+      "chunk_id": "ver_d3ad6e7fce8b_c00009",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00016",
+      "source_order": 3,
+      "start_offset": 92,
+      "end_offset": 220
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00009_s004",
+      "chunk_id": "ver_d3ad6e7fce8b_c00009",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00016",
+      "source_order": 4,
+      "start_offset": 221,
+      "end_offset": 384
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00009_s005",
+      "chunk_id": "ver_d3ad6e7fce8b_c00009",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00017",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 256
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00010_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00010",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00018",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 52
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00011_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00011",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00019",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 72
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00011_s001",
+      "chunk_id": "ver_d3ad6e7fce8b_c00011",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00019",
+      "source_order": 1,
+      "start_offset": 73,
+      "end_offset": 285
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00011_s002",
+      "chunk_id": "ver_d3ad6e7fce8b_c00011",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00019",
+      "source_order": 2,
+      "start_offset": 286,
+      "end_offset": 417
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00011_s003",
+      "chunk_id": "ver_d3ad6e7fce8b_c00011",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00020",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 222
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00011_s004",
+      "chunk_id": "ver_d3ad6e7fce8b_c00011",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00020",
+      "source_order": 4,
+      "start_offset": 223,
+      "end_offset": 362
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00012_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00012",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00021",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 11
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00013_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00013",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00022",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 309
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00013_s001",
+      "chunk_id": "ver_d3ad6e7fce8b_c00013",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00022",
+      "source_order": 1,
+      "start_offset": 310,
+      "end_offset": 454
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00013_s002",
+      "chunk_id": "ver_d3ad6e7fce8b_c00013",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00022",
+      "source_order": 2,
+      "start_offset": 455,
+      "end_offset": 626
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00013_s003",
+      "chunk_id": "ver_d3ad6e7fce8b_c00013",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00023",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 198
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00014_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00014",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00024",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 34
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00015_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00015",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00025",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 163
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00015_s001",
+      "chunk_id": "ver_d3ad6e7fce8b_c00015",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00025",
+      "source_order": 1,
+      "start_offset": 164,
+      "end_offset": 311
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00015_s002",
+      "chunk_id": "ver_d3ad6e7fce8b_c00015",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00026",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 214
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00015_s003",
+      "chunk_id": "ver_d3ad6e7fce8b_c00015",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00026",
+      "source_order": 3,
+      "start_offset": 215,
+      "end_offset": 226
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00015_s004",
+      "chunk_id": "ver_d3ad6e7fce8b_c00015",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00026",
+      "source_order": 4,
+      "start_offset": 227,
+      "end_offset": 443
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00015_s005",
+      "chunk_id": "ver_d3ad6e7fce8b_c00015",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00026",
+      "source_order": 5,
+      "start_offset": 444,
+      "end_offset": 582
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00015_s006",
+      "chunk_id": "ver_d3ad6e7fce8b_c00015",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00026",
+      "source_order": 6,
+      "start_offset": 583,
+      "end_offset": 780
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00015_s007",
+      "chunk_id": "ver_d3ad6e7fce8b_c00015",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00026",
+      "source_order": 7,
+      "start_offset": 781,
+      "end_offset": 956
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00015_s008",
+      "chunk_id": "ver_d3ad6e7fce8b_c00015",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00027",
+      "source_order": 8,
+      "start_offset": 0,
+      "end_offset": 284
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00015_s009",
+      "chunk_id": "ver_d3ad6e7fce8b_c00015",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00027",
+      "source_order": 9,
+      "start_offset": 285,
+      "end_offset": 420
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00015_s010",
+      "chunk_id": "ver_d3ad6e7fce8b_c00015",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00027",
+      "source_order": 10,
+      "start_offset": 421,
+      "end_offset": 657
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00015_s011",
+      "chunk_id": "ver_d3ad6e7fce8b_c00015",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00027",
+      "source_order": 11,
+      "start_offset": 658,
+      "end_offset": 756
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00015_s012",
+      "chunk_id": "ver_d3ad6e7fce8b_c00015",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00028",
+      "source_order": 12,
+      "start_offset": 0,
+      "end_offset": 146
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00015_s013",
+      "chunk_id": "ver_d3ad6e7fce8b_c00015",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00028",
+      "source_order": 13,
+      "start_offset": 147,
+      "end_offset": 303
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00016_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00016",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00029",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 108
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00016_s001",
+      "chunk_id": "ver_d3ad6e7fce8b_c00016",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00029",
+      "source_order": 1,
+      "start_offset": 109,
+      "end_offset": 239
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00017_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00017",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00030",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 25
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00018_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00018",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00031",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 119
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00018_s001",
+      "chunk_id": "ver_d3ad6e7fce8b_c00018",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00031",
+      "source_order": 1,
+      "start_offset": 120,
+      "end_offset": 246
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00018_s002",
+      "chunk_id": "ver_d3ad6e7fce8b_c00018",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00032",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 59
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00018_s003",
+      "chunk_id": "ver_d3ad6e7fce8b_c00018",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00033",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 72
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00018_s004",
+      "chunk_id": "ver_d3ad6e7fce8b_c00018",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00034",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 65
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00018_s005",
+      "chunk_id": "ver_d3ad6e7fce8b_c00018",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00035",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 85
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00018_s006",
+      "chunk_id": "ver_d3ad6e7fce8b_c00018",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00035",
+      "source_order": 6,
+      "start_offset": 86,
+      "end_offset": 263
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00018_s007",
+      "chunk_id": "ver_d3ad6e7fce8b_c00018",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00035",
+      "source_order": 7,
+      "start_offset": 264,
+      "end_offset": 551
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00018_s008",
+      "chunk_id": "ver_d3ad6e7fce8b_c00018",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00035",
+      "source_order": 8,
+      "start_offset": 552,
+      "end_offset": 690
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00018_s009",
+      "chunk_id": "ver_d3ad6e7fce8b_c00018",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00036",
+      "source_order": 9,
+      "start_offset": 0,
+      "end_offset": 133
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00018_s010",
+      "chunk_id": "ver_d3ad6e7fce8b_c00018",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00037",
+      "source_order": 10,
+      "start_offset": 0,
+      "end_offset": 120
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00018_s011",
+      "chunk_id": "ver_d3ad6e7fce8b_c00018",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00037",
+      "source_order": 11,
+      "start_offset": 121,
+      "end_offset": 278
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00019_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00019",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00038",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 29
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00020_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00020",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00039",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 113
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00020_s001",
+      "chunk_id": "ver_d3ad6e7fce8b_c00020",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00039",
+      "source_order": 1,
+      "start_offset": 114,
+      "end_offset": 222
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00020_s002",
+      "chunk_id": "ver_d3ad6e7fce8b_c00020",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00039",
+      "source_order": 2,
+      "start_offset": 223,
+      "end_offset": 461
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00020_s003",
+      "chunk_id": "ver_d3ad6e7fce8b_c00020",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00040",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 137
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00020_s004",
+      "chunk_id": "ver_d3ad6e7fce8b_c00020",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00040",
+      "source_order": 4,
+      "start_offset": 138,
+      "end_offset": 314
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00021_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00021",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00041",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 35
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00022_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00022",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00042",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 126
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00022_s001",
+      "chunk_id": "ver_d3ad6e7fce8b_c00022",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00042",
+      "source_order": 1,
+      "start_offset": 127,
+      "end_offset": 390
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00022_s002",
+      "chunk_id": "ver_d3ad6e7fce8b_c00022",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00043",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 249
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00022_s003",
+      "chunk_id": "ver_d3ad6e7fce8b_c00022",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00043",
+      "source_order": 3,
+      "start_offset": 250,
+      "end_offset": 428
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00022_s004",
+      "chunk_id": "ver_d3ad6e7fce8b_c00022",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00043",
+      "source_order": 4,
+      "start_offset": 429,
+      "end_offset": 682
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00023_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00023",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00044",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 30
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00024_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00024",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00045",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 205
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00024_s001",
+      "chunk_id": "ver_d3ad6e7fce8b_c00024",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00045",
+      "source_order": 1,
+      "start_offset": 206,
+      "end_offset": 583
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00024_s002",
+      "chunk_id": "ver_d3ad6e7fce8b_c00024",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00046",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 133
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00024_s003",
+      "chunk_id": "ver_d3ad6e7fce8b_c00024",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00046",
+      "source_order": 3,
+      "start_offset": 134,
+      "end_offset": 254
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00025_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00025",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00047",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 50
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00026_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00026",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00048",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 183
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00026_s001",
+      "chunk_id": "ver_d3ad6e7fce8b_c00026",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00048",
+      "source_order": 1,
+      "start_offset": 184,
+      "end_offset": 518
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00026_s002",
+      "chunk_id": "ver_d3ad6e7fce8b_c00026",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00048",
+      "source_order": 2,
+      "start_offset": 519,
+      "end_offset": 792
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00026_s003",
+      "chunk_id": "ver_d3ad6e7fce8b_c00026",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00049",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 156
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00026_s004",
+      "chunk_id": "ver_d3ad6e7fce8b_c00026",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00049",
+      "source_order": 4,
+      "start_offset": 157,
+      "end_offset": 230
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00027_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00027",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00050",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 15
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00028_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00028",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00051",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 141
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00028_s001",
+      "chunk_id": "ver_d3ad6e7fce8b_c00028",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00051",
+      "source_order": 1,
+      "start_offset": 142,
+      "end_offset": 456
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00028_s002",
+      "chunk_id": "ver_d3ad6e7fce8b_c00028",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00052",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 96
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00028_s003",
+      "chunk_id": "ver_d3ad6e7fce8b_c00028",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00052",
+      "source_order": 3,
+      "start_offset": 97,
+      "end_offset": 436
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00029_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00029",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00053",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 32
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00030_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00030",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00054",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 260
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00030_s001",
+      "chunk_id": "ver_d3ad6e7fce8b_c00030",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00055",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 115
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00030_s002",
+      "chunk_id": "ver_d3ad6e7fce8b_c00030",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00055",
+      "source_order": 2,
+      "start_offset": 116,
+      "end_offset": 210
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00030_s003",
+      "chunk_id": "ver_d3ad6e7fce8b_c00030",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00055",
+      "source_order": 3,
+      "start_offset": 211,
+      "end_offset": 327
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00031_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00031",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00056",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 46
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00032_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00032",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00057",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 98
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00032_s001",
+      "chunk_id": "ver_d3ad6e7fce8b_c00032",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00057",
+      "source_order": 1,
+      "start_offset": 99,
+      "end_offset": 286
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00032_s002",
+      "chunk_id": "ver_d3ad6e7fce8b_c00032",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00057",
+      "source_order": 2,
+      "start_offset": 287,
+      "end_offset": 451
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00032_s003",
+      "chunk_id": "ver_d3ad6e7fce8b_c00032",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00058",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 152
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00032_s004",
+      "chunk_id": "ver_d3ad6e7fce8b_c00032",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00058",
+      "source_order": 4,
+      "start_offset": 153,
+      "end_offset": 334
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00032_s005",
+      "chunk_id": "ver_d3ad6e7fce8b_c00032",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00058",
+      "source_order": 5,
+      "start_offset": 335,
+      "end_offset": 545
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00032_s006",
+      "chunk_id": "ver_d3ad6e7fce8b_c00032",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00059",
+      "source_order": 6,
+      "start_offset": 0,
+      "end_offset": 84
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00032_s007",
+      "chunk_id": "ver_d3ad6e7fce8b_c00032",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00059",
+      "source_order": 7,
+      "start_offset": 85,
+      "end_offset": 221
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00032_s008",
+      "chunk_id": "ver_d3ad6e7fce8b_c00032",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00059",
+      "source_order": 8,
+      "start_offset": 222,
+      "end_offset": 408
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00033_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00033",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00060",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 13
+    },
+    {
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00034_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00034",
+      "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00061",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 189
+    }
+  ]
+}

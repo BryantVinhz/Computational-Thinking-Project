@@ -1,0 +1,1599 @@
+{
+  "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+  "version_id": "ver_e191eadd3a0c",
+  "chunking_strategy": "structure_aware",
+  "chunks": [
+    {
+      "chunk_id": "ver_e191eadd3a0c_c00000",
+      "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+      "version_id": "ver_e191eadd3a0c",
+      "chunk_idx": 0,
+      "chunk_type": "heading",
+      "text_content": "# Choosing and Using Security Questions Cheat Sheet",
+      "token_count": 8,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Choosing and Using Security Questions Cheat Sheet"
+      ]
+    },
+    {
+      "chunk_id": "ver_e191eadd3a0c_c00001",
+      "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+      "version_id": "ver_e191eadd3a0c",
+      "chunk_idx": 1,
+      "chunk_type": "heading",
+      "text_content": "## Introduction",
+      "token_count": 3,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Choosing and Using Security Questions Cheat Sheet",
+        "Introduction"
+      ]
+    },
+    {
+      "chunk_id": "ver_e191eadd3a0c_c00002",
+      "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+      "version_id": "ver_e191eadd3a0c",
+      "chunk_idx": 2,
+      "chunk_type": "paragraph",
+      "text_content": "**WARNING: Security questions are no longer recognized as an acceptable authentication factor per [NIST SP 800-63](https://pages.nist.gov/800-63-3/sp800-63b.html).\n\nAccount recovery is just an alternate way to authenticate so it should be no weaker than regular authentication.\n\nSee [SP 800-63B sec 5.1.1.2 paragraph 4](https://pages.nist.gov/800-63-3/sp800-63b.html#sec5): *Verifiers SHALL NOT prompt subscribers to use specific types of information (e.g., “What was the name of your first pet?”) when choosing memorized secrets*.**\n\nIf you are curious, please have a look at this [study](https://www.microsoft.com/en-us/research/publication/its-no-secret-measuring-the-security-and-reliability-of-authentication-via-secret-questions/) by Microsoft Research in 2009 and this [study](https://research.google/pubs/pub43783/) performed at Google in 2015.\n\nThe accompanying [Security blog](https://security.googleblog.com/2015/05/new-research-some-tough-questions-for.html) update includes an infographic on the issues identified with security questions.\n\n**Please Note:** While there are no acceptable uses of security questions in secure software, this cheat sheet provides guidance on how to choose strong security questions for legacy purposes.",
+      "token_count": 320,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Choosing and Using Security Questions Cheat Sheet",
+        "Introduction"
+      ]
+    },
+    {
+      "chunk_id": "ver_e191eadd3a0c_c00003",
+      "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+      "version_id": "ver_e191eadd3a0c",
+      "chunk_idx": 3,
+      "chunk_type": "heading",
+      "text_content": "## Choosing Security Questions",
+      "token_count": 5,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Choosing and Using Security Questions Cheat Sheet",
+        "Choosing Security Questions"
+      ]
+    },
+    {
+      "chunk_id": "ver_e191eadd3a0c_c00004",
+      "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+      "version_id": "ver_e191eadd3a0c",
+      "chunk_idx": 4,
+      "chunk_type": "heading",
+      "text_content": "### Desired Characteristics",
+      "token_count": 5,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Choosing and Using Security Questions Cheat Sheet",
+        "Choosing Security Questions",
+        "Desired Characteristics"
+      ]
+    },
+    {
+      "chunk_id": "ver_e191eadd3a0c_c00005",
+      "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+      "version_id": "ver_e191eadd3a0c",
+      "chunk_idx": 5,
+      "chunk_type": "paragraph",
+      "text_content": "Any security questions presented to users to reset forgotten passwords must meet the following characteristics:",
+      "token_count": 16,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Choosing and Using Security Questions Cheat Sheet",
+        "Choosing Security Questions",
+        "Desired Characteristics"
+      ]
+    },
+    {
+      "chunk_id": "ver_e191eadd3a0c_c00006",
+      "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+      "version_id": "ver_e191eadd3a0c",
+      "chunk_idx": 6,
+      "chunk_type": "table",
+      "text_content": "| Characteristic | Explanation |\n|----------------|-------------|\n| Memorable | The user must be able to recall the answer to the question, potentially years after creating their account. |\n| Consistent | The answer to the question must not change over time. |\n| Applicable | The user must be able to answer the question. |\n| Confidential | The answer to the question must be hard for an attacker to obtain. |\n| Specific | The answer should be clear to the user. |",
+      "token_count": 121,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Choosing and Using Security Questions Cheat Sheet",
+        "Choosing Security Questions",
+        "Desired Characteristics"
+      ]
+    },
+    {
+      "chunk_id": "ver_e191eadd3a0c_c00007",
+      "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+      "version_id": "ver_e191eadd3a0c",
+      "chunk_idx": 7,
+      "chunk_type": "heading",
+      "text_content": "### Types of Security Questions",
+      "token_count": 7,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Choosing and Using Security Questions Cheat Sheet",
+        "Choosing Security Questions",
+        "Types of Security Questions"
+      ]
+    },
+    {
+      "chunk_id": "ver_e191eadd3a0c_c00008",
+      "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+      "version_id": "ver_e191eadd3a0c",
+      "chunk_idx": 8,
+      "chunk_type": "paragraph",
+      "text_content": "<!-- textlint-disable terminology -->\n\nSecurity questions fall into two main types.\n\nWith *user defined* security questions, the user must choose a question from a list, and provide an answer to the question.\n\nCommon examples are \"What is your favourite colour?\" or \"What was your first car?\"\n\n<!-- textlint-enable terminology -->\n\nThese are easy for applications to implement, as the additional information required is provided by the user when they first create their account.\n\nHowever, users will often choose weak or easily discovered answers to these questions.\n\n*System defined* security questions are based on information that is already known about the user.\n\nThis approach avoids having to ask the user to provide specific security questions and answers, and also prevents them from being able to choose weak details.\n\nHowever it relies on sufficient information already being stored about the user, and on this information being hard for an attacker to obtain.",
+      "token_count": 187,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Choosing and Using Security Questions Cheat Sheet",
+        "Choosing Security Questions",
+        "Types of Security Questions"
+      ]
+    },
+    {
+      "chunk_id": "ver_e191eadd3a0c_c00009",
+      "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+      "version_id": "ver_e191eadd3a0c",
+      "chunk_idx": 9,
+      "chunk_type": "heading",
+      "text_content": "### User Defined Security Questions",
+      "token_count": 7,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Choosing and Using Security Questions Cheat Sheet",
+        "Choosing Security Questions",
+        "User Defined Security Questions"
+      ]
+    },
+    {
+      "chunk_id": "ver_e191eadd3a0c_c00010",
+      "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+      "version_id": "ver_e191eadd3a0c",
+      "chunk_idx": 10,
+      "chunk_type": "heading",
+      "text_content": "#### Bad Questions",
+      "token_count": 6,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Choosing and Using Security Questions Cheat Sheet",
+        "Choosing Security Questions",
+        "User Defined Security Questions",
+        "Bad Questions"
+      ]
+    },
+    {
+      "chunk_id": "ver_e191eadd3a0c_c00011",
+      "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+      "version_id": "ver_e191eadd3a0c",
+      "chunk_idx": 11,
+      "chunk_type": "paragraph",
+      "text_content": "Any questions that do not have all of the characteristics discussed above should be avoided.\n\nThe table below gives some examples of bad security questions:",
+      "token_count": 27,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Choosing and Using Security Questions Cheat Sheet",
+        "Choosing Security Questions",
+        "User Defined Security Questions",
+        "Bad Questions"
+      ]
+    },
+    {
+      "chunk_id": "ver_e191eadd3a0c_c00012",
+      "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+      "version_id": "ver_e191eadd3a0c",
+      "chunk_idx": 12,
+      "chunk_type": "table",
+      "text_content": "| Question | Problem |\n|----------|---------|\n| When is your date of birth? | Easy for an attacker to discover. |\n| What is your memorable date? | Most users will just enter their birthday. |\n| What is your favourite movie? | Likely to change over time. |\n| What is your favourite cricket team? | Not applicable to most users. |\n| What is the make and model of your first car? | Fairly small range of likely answers. |\n| What is your nickname? | This could be guessed by glancing through social media posts. |",
+      "token_count": 132,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Choosing and Using Security Questions Cheat Sheet",
+        "Choosing Security Questions",
+        "User Defined Security Questions",
+        "Bad Questions"
+      ]
+    },
+    {
+      "chunk_id": "ver_e191eadd3a0c_c00013",
+      "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+      "version_id": "ver_e191eadd3a0c",
+      "chunk_idx": 13,
+      "chunk_type": "paragraph",
+      "text_content": "Additionally, the context of the application must be considered when deciding whether questions are good or bad.\n\nFor example, a question such as \"What was your maths teacher's surname in your 8th year of school?\" would be very easy to guess if it was used in a virtual learning environment for your school (as other students probably know this information), but would be much stronger for an online gaming website.",
+      "token_count": 82,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Choosing and Using Security Questions Cheat Sheet",
+        "Choosing Security Questions",
+        "User Defined Security Questions",
+        "Bad Questions"
+      ]
+    },
+    {
+      "chunk_id": "ver_e191eadd3a0c_c00014",
+      "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+      "version_id": "ver_e191eadd3a0c",
+      "chunk_idx": 14,
+      "chunk_type": "heading",
+      "text_content": "#### Good Questions",
+      "token_count": 6,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Choosing and Using Security Questions Cheat Sheet",
+        "Choosing Security Questions",
+        "User Defined Security Questions",
+        "Good Questions"
+      ]
+    },
+    {
+      "chunk_id": "ver_e191eadd3a0c_c00015",
+      "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+      "version_id": "ver_e191eadd3a0c",
+      "chunk_idx": 15,
+      "chunk_type": "mixed",
+      "text_content": "Many good security questions are not applicable to all users, so the best approach is to give the user a list of security questions that they can choose from.\n\nThis allows you to have more specific questions (with more secure answers), while still providing every user with questions that they can answer.\n\nThe following list provides some examples of good questions:\n\n- What is the name of a college you applied to but didn’t attend?\n\n- What was the name of the first school you remember attending?\n\n- Where was the destination of your most memorable school field trip?\n\n- What was your maths teacher's surname in your 8th year of school?\n\n- What was the name of your first stuffed toy?\n\n- What was your driving instructor's first name?\n\nMuch like passwords, there is a risk that users will re-use recovery questions between different sites, which could expose the users if the other site is compromised.\n\nAs such, there are benefits to having unique security questions that are unlikely to be shared between sites.\n\nAn easy way to achieve this is to create more targeted questions based on the type of application.\n\nFor example, on a share dealing platform, finance-related questions such as \"What is the first company you owned shares in?\" could be used.",
+      "token_count": 251,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Choosing and Using Security Questions Cheat Sheet",
+        "Choosing Security Questions",
+        "User Defined Security Questions",
+        "Good Questions"
+      ]
+    },
+    {
+      "chunk_id": "ver_e191eadd3a0c_c00016",
+      "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+      "version_id": "ver_e191eadd3a0c",
+      "chunk_idx": 16,
+      "chunk_type": "heading",
+      "text_content": "#### Allowing Users to Write Their Own Questions",
+      "token_count": 11,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Choosing and Using Security Questions Cheat Sheet",
+        "Choosing Security Questions",
+        "User Defined Security Questions",
+        "Allowing Users to Write Their Own Questions"
+      ]
+    },
+    {
+      "chunk_id": "ver_e191eadd3a0c_c00017",
+      "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+      "version_id": "ver_e191eadd3a0c",
+      "chunk_idx": 17,
+      "chunk_type": "paragraph",
+      "text_content": "Allowing users to write their own security questions can result in them choosing very strong and unique questions that would be very hard for an attacker to guess.\n\nHowever, there is also a significant risk that users will choose weak questions.\n\nIn some cases, users might even set a recovery question to a reminder of what their password is - allowing anyone guessing their email address to compromise their account.\n\nAs such, it is generally best not to allow users to write their own questions.",
+      "token_count": 92,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Choosing and Using Security Questions Cheat Sheet",
+        "Choosing Security Questions",
+        "User Defined Security Questions",
+        "Allowing Users to Write Their Own Questions"
+      ]
+    },
+    {
+      "chunk_id": "ver_e191eadd3a0c_c00018",
+      "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+      "version_id": "ver_e191eadd3a0c",
+      "chunk_idx": 18,
+      "chunk_type": "heading",
+      "text_content": "#### Restricting Answers",
+      "token_count": 6,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Choosing and Using Security Questions Cheat Sheet",
+        "Choosing Security Questions",
+        "User Defined Security Questions",
+        "Restricting Answers"
+      ]
+    },
+    {
+      "chunk_id": "ver_e191eadd3a0c_c00019",
+      "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+      "version_id": "ver_e191eadd3a0c",
+      "chunk_idx": 19,
+      "chunk_type": "mixed",
+      "text_content": "Enforcing a minimum length for answers can prevent users from entering strings such as \"a\" or \"123\" for their answers.\n\nHowever, depending on the questions asked, it could also prevent users from being able to correctly answer the question.\n\nFor example, asking for a first name or surname could result in a two letter answer such as \"Li\", and a color-based question could be four letters such as \"blue\".\n\nAnswers should also be checked against a denylist, including:\n\n- The username or email address.\n\n- The user's current password.\n\n- Common strings such as \"123\" or \"password\".",
+      "token_count": 125,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Choosing and Using Security Questions Cheat Sheet",
+        "Choosing Security Questions",
+        "User Defined Security Questions",
+        "Restricting Answers"
+      ]
+    },
+    {
+      "chunk_id": "ver_e191eadd3a0c_c00020",
+      "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+      "version_id": "ver_e191eadd3a0c",
+      "chunk_idx": 20,
+      "chunk_type": "heading",
+      "text_content": "#### Renewing Security Questions",
+      "token_count": 7,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Choosing and Using Security Questions Cheat Sheet",
+        "Choosing Security Questions",
+        "User Defined Security Questions",
+        "Renewing Security Questions"
+      ]
+    },
+    {
+      "chunk_id": "ver_e191eadd3a0c_c00021",
+      "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+      "version_id": "ver_e191eadd3a0c",
+      "chunk_idx": 21,
+      "chunk_type": "paragraph",
+      "text_content": "If the security questions are not used as part of the main authentication process, then consider periodically (such as when they are changing their passwords after expiration) prompting the user to review their security questions and verify that they still know the answers.\n\nThis should give them a chance to update any answers that may have changed (although ideally this shouldn't happen with good questions), and increases the likelihood that they will remember them if they ever need to recover their account.",
+      "token_count": 92,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Choosing and Using Security Questions Cheat Sheet",
+        "Choosing Security Questions",
+        "User Defined Security Questions",
+        "Renewing Security Questions"
+      ]
+    },
+    {
+      "chunk_id": "ver_e191eadd3a0c_c00022",
+      "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+      "version_id": "ver_e191eadd3a0c",
+      "chunk_idx": 22,
+      "chunk_type": "heading",
+      "text_content": "### System Defined Security Questions",
+      "token_count": 7,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Choosing and Using Security Questions Cheat Sheet",
+        "Choosing Security Questions",
+        "System Defined Security Questions"
+      ]
+    },
+    {
+      "chunk_id": "ver_e191eadd3a0c_c00023",
+      "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+      "version_id": "ver_e191eadd3a0c",
+      "chunk_idx": 23,
+      "chunk_type": "mixed",
+      "text_content": "System defined security questions are based on information that is already known about the user.\n\nThe users' personal details are often used, including the full name, address and date of birth.\n\nHowever these can easily be obtained by an attacker from social media, and as such provide a very weak form of authentication.\n\nThe questions that can be used will vary hugely depending on the application, and how much information is already held about the user.\n\nWhen deciding which bits of information may be usable for security questions, the following areas should be considered:\n\n- Will the user be able to remember the answer to the question?\n\n- Could an attacker easily obtain this information from social media or other sources?\n\n- Is the answer likely to be the same for a large number of users, or easily guessable?",
+      "token_count": 154,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Choosing and Using Security Questions Cheat Sheet",
+        "Choosing Security Questions",
+        "System Defined Security Questions"
+      ]
+    },
+    {
+      "chunk_id": "ver_e191eadd3a0c_c00024",
+      "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+      "version_id": "ver_e191eadd3a0c",
+      "chunk_idx": 24,
+      "chunk_type": "heading",
+      "text_content": "## Using Security Questions",
+      "token_count": 5,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Choosing and Using Security Questions Cheat Sheet",
+        "Using Security Questions"
+      ]
+    },
+    {
+      "chunk_id": "ver_e191eadd3a0c_c00025",
+      "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+      "version_id": "ver_e191eadd3a0c",
+      "chunk_idx": 25,
+      "chunk_type": "heading",
+      "text_content": "### When to Use Security Questions",
+      "token_count": 8,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Choosing and Using Security Questions Cheat Sheet",
+        "Using Security Questions",
+        "When to Use Security Questions"
+      ]
+    },
+    {
+      "chunk_id": "ver_e191eadd3a0c_c00026",
+      "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+      "version_id": "ver_e191eadd3a0c",
+      "chunk_idx": 26,
+      "chunk_type": "mixed",
+      "text_content": "Applications should generally use a password along with a second authentication factor (such as an OTP code) to authenticate users.\n\nThe combination of a password and security questions **does not constitute MFA**, as both factors are the same (i.e.\n\nsomething you know)..\n\n**Security questions should never be relied upon as the sole mechanism to authenticate a user**.\n\nHowever, they can provide a useful additional layer of security when other stronger factors are not available.\n\nCommon cases where they would be used include:\n\n- Logging in.\n\n- Resetting a forgotten password.\n\n- Resetting a lost MFA token.",
+      "token_count": 122,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Choosing and Using Security Questions Cheat Sheet",
+        "Using Security Questions",
+        "When to Use Security Questions"
+      ]
+    },
+    {
+      "chunk_id": "ver_e191eadd3a0c_c00027",
+      "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+      "version_id": "ver_e191eadd3a0c",
+      "chunk_idx": 27,
+      "chunk_type": "heading",
+      "text_content": "#### Authentication Flow",
+      "token_count": 6,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Choosing and Using Security Questions Cheat Sheet",
+        "Using Security Questions",
+        "When to Use Security Questions",
+        "Authentication Flow"
+      ]
+    },
+    {
+      "chunk_id": "ver_e191eadd3a0c_c00028",
+      "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+      "version_id": "ver_e191eadd3a0c",
+      "chunk_idx": 28,
+      "chunk_type": "mixed",
+      "text_content": "Security questions may be used as part of the main authentication flow to supplement passwords where MFA is not available.\n\nA typical authentication flow would be:\n\n- The user enters their username and password.\n\n- If the username and password are correct, the user is presented with the security question(s).\n\n- If the answers are correct, the user is logged in.\n\nIf the answers to the security questions are incorrect, then this should be counted as a failed login attempt, and the account lockout counter should be incremented for the user.",
+      "token_count": 104,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Choosing and Using Security Questions Cheat Sheet",
+        "Using Security Questions",
+        "When to Use Security Questions",
+        "Authentication Flow"
+      ]
+    },
+    {
+      "chunk_id": "ver_e191eadd3a0c_c00029",
+      "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+      "version_id": "ver_e191eadd3a0c",
+      "chunk_idx": 29,
+      "chunk_type": "heading",
+      "text_content": "#### Forgotten Password or Lost MFA Token Flow",
+      "token_count": 11,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Choosing and Using Security Questions Cheat Sheet",
+        "Using Security Questions",
+        "When to Use Security Questions",
+        "Forgotten Password or Lost MFA Token Flow"
+      ]
+    },
+    {
+      "chunk_id": "ver_e191eadd3a0c_c00030",
+      "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+      "version_id": "ver_e191eadd3a0c",
+      "chunk_idx": 30,
+      "chunk_type": "mixed",
+      "text_content": "Forgotten password functionality often provides a mechanism for attackers to enumerate user accounts if it is not correctly implemented.\n\nThe following flow avoids this issue by only displaying the security questions once the user has proved ownership of the email address:\n\n- The user enters email address (and solves a CAPTCHA).\n\n- The application displays a generic message such as \"If the email address was correct, an email will be sent to it\".\n\n- An email with a randomly generated, single-use link is sent to the user.\n\n- The user clicks the link.\n\n- The user is presented with the security question(s).\n\n- If the answer is correct, the user can enter a new password.",
+      "token_count": 135,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Choosing and Using Security Questions Cheat Sheet",
+        "Using Security Questions",
+        "When to Use Security Questions",
+        "Forgotten Password or Lost MFA Token Flow"
+      ]
+    },
+    {
+      "chunk_id": "ver_e191eadd3a0c_c00031",
+      "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+      "version_id": "ver_e191eadd3a0c",
+      "chunk_idx": 31,
+      "chunk_type": "heading",
+      "text_content": "### How to Use Security Questions",
+      "token_count": 8,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Choosing and Using Security Questions Cheat Sheet",
+        "Using Security Questions",
+        "How to Use Security Questions"
+      ]
+    },
+    {
+      "chunk_id": "ver_e191eadd3a0c_c00032",
+      "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+      "version_id": "ver_e191eadd3a0c",
+      "chunk_idx": 32,
+      "chunk_type": "heading",
+      "text_content": "#### Storing Answers",
+      "token_count": 6,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Choosing and Using Security Questions Cheat Sheet",
+        "Using Security Questions",
+        "How to Use Security Questions",
+        "Storing Answers"
+      ]
+    },
+    {
+      "chunk_id": "ver_e191eadd3a0c_c00033",
+      "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+      "version_id": "ver_e191eadd3a0c",
+      "chunk_idx": 33,
+      "chunk_type": "paragraph",
+      "text_content": "The answers to security questions may contain personal information about the user, and may also be re-used by the user between different applications.\n\nAs such, they should be treated in the same way as passwords, and stored using a secure hashing algorithm such as Bcrypt.\n\nThe [password storage cheat sheet](Password_Storage_Cheat_Sheet.md) contains further guidance on this.",
+      "token_count": 70,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Choosing and Using Security Questions Cheat Sheet",
+        "Using Security Questions",
+        "How to Use Security Questions",
+        "Storing Answers"
+      ]
+    },
+    {
+      "chunk_id": "ver_e191eadd3a0c_c00034",
+      "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+      "version_id": "ver_e191eadd3a0c",
+      "chunk_idx": 34,
+      "chunk_type": "heading",
+      "text_content": "#### Comparing Answers",
+      "token_count": 6,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Choosing and Using Security Questions Cheat Sheet",
+        "Using Security Questions",
+        "How to Use Security Questions",
+        "Comparing Answers"
+      ]
+    },
+    {
+      "chunk_id": "ver_e191eadd3a0c_c00035",
+      "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+      "version_id": "ver_e191eadd3a0c",
+      "chunk_idx": 35,
+      "chunk_type": "paragraph",
+      "text_content": "Comparing the answers provided by the user with the stored answer in a case-insensitive manner makes it much easier for the user.\n\nThe simplest way to do this is to convert the answer to lowercase before hashing the answer to store it, and then lowercase the user-provided answer before comparing them.\n\nIt is also beneficial to give the user some indication of the format that they should use to enter answers.\n\nThis could be done through input validation, or simply by recommending that the user enters their details in a specific format.\n\nFor example, when asking for a date, indicating that the format should be \"DD/MM/YYYY\" will mean that the user doesn't have to try and guess what format they entered when registering.",
+      "token_count": 144,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Choosing and Using Security Questions Cheat Sheet",
+        "Using Security Questions",
+        "How to Use Security Questions",
+        "Comparing Answers"
+      ]
+    },
+    {
+      "chunk_id": "ver_e191eadd3a0c_c00036",
+      "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+      "version_id": "ver_e191eadd3a0c",
+      "chunk_idx": 36,
+      "chunk_type": "heading",
+      "text_content": "#### Updating Answers",
+      "token_count": 6,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Choosing and Using Security Questions Cheat Sheet",
+        "Using Security Questions",
+        "How to Use Security Questions",
+        "Updating Answers"
+      ]
+    },
+    {
+      "chunk_id": "ver_e191eadd3a0c_c00037",
+      "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+      "version_id": "ver_e191eadd3a0c",
+      "chunk_idx": 37,
+      "chunk_type": "paragraph",
+      "text_content": "When the user updates the answers to their security questions, this should be treated as a sensitive operation within the application.\n\nAs such, the user should be required to re-authenticate themselves by entering their password (or ideally using MFA), in order to prevent an attacker updating the questions if they gain temporary access to the user's account.",
+      "token_count": 68,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Choosing and Using Security Questions Cheat Sheet",
+        "Using Security Questions",
+        "How to Use Security Questions",
+        "Updating Answers"
+      ]
+    },
+    {
+      "chunk_id": "ver_e191eadd3a0c_c00038",
+      "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+      "version_id": "ver_e191eadd3a0c",
+      "chunk_idx": 38,
+      "chunk_type": "heading",
+      "text_content": "#### Multiple Security Questions",
+      "token_count": 7,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Choosing and Using Security Questions Cheat Sheet",
+        "Using Security Questions",
+        "How to Use Security Questions",
+        "Multiple Security Questions"
+      ]
+    },
+    {
+      "chunk_id": "ver_e191eadd3a0c_c00039",
+      "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+      "version_id": "ver_e191eadd3a0c",
+      "chunk_idx": 39,
+      "chunk_type": "paragraph",
+      "text_content": "When security questions are used, the user can either be asked a single question, or can be asked multiple questions at the same time.\n\nThis provides a greater level of assurance, especially if the questions are diverse, as an attacker would need to obtain more information about the target user.\n\nA mixture of user-defined and system-defined questions can be very effective for this.\n\nIf the user is asked a single question out of a bank of possible questions, then this question **should not** be changed until the user has answered it correctly.\n\nIf the attacker is allowed to try answering all of the different security questions, this greatly increases the chance that they will be able to guess or obtain the answer to one of them.",
+      "token_count": 145,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Choosing and Using Security Questions Cheat Sheet",
+        "Using Security Questions",
+        "How to Use Security Questions",
+        "Multiple Security Questions"
+      ]
+    },
+    {
+      "chunk_id": "ver_e191eadd3a0c_c00040",
+      "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+      "version_id": "ver_e191eadd3a0c",
+      "chunk_idx": 40,
+      "chunk_type": "heading",
+      "text_content": "## References",
+      "token_count": 3,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Choosing and Using Security Questions Cheat Sheet",
+        "References"
+      ]
+    },
+    {
+      "chunk_id": "ver_e191eadd3a0c_c00041",
+      "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+      "version_id": "ver_e191eadd3a0c",
+      "chunk_idx": 41,
+      "chunk_type": "list",
+      "text_content": "- [Google Research: Secrets, Lies, and Account Recovery](https://research.google/pubs/pub43783/)\n- [NIST SP 800-63B-4: Authentication and Authenticator Management](https://pages.nist.gov/800-63-4/sp800-63b.html)",
+      "token_count": 65,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Choosing and Using Security Questions Cheat Sheet",
+        "References"
+      ]
+    }
+  ],
+  "chunk_sources": [
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00000_s000",
+      "chunk_id": "ver_e191eadd3a0c_c00000",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00000",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 51
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00001_s000",
+      "chunk_id": "ver_e191eadd3a0c_c00001",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00001",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 15
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00002_s000",
+      "chunk_id": "ver_e191eadd3a0c_c00002",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00002",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 163
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00002_s001",
+      "chunk_id": "ver_e191eadd3a0c_c00002",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00002",
+      "source_order": 1,
+      "start_offset": 164,
+      "end_offset": 276
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00002_s002",
+      "chunk_id": "ver_e191eadd3a0c_c00002",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00002",
+      "source_order": 2,
+      "start_offset": 277,
+      "end_offset": 531
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00002_s003",
+      "chunk_id": "ver_e191eadd3a0c_c00002",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00003",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 317
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00002_s004",
+      "chunk_id": "ver_e191eadd3a0c_c00002",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00003",
+      "source_order": 4,
+      "start_offset": 318,
+      "end_offset": 515
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00002_s005",
+      "chunk_id": "ver_e191eadd3a0c_c00002",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00004",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 192
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00003_s000",
+      "chunk_id": "ver_e191eadd3a0c_c00003",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00005",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 30
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00004_s000",
+      "chunk_id": "ver_e191eadd3a0c_c00004",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00006",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 27
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00005_s000",
+      "chunk_id": "ver_e191eadd3a0c_c00005",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00007",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 111
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00006_s000",
+      "chunk_id": "ver_e191eadd3a0c_c00006",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00008",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 464
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00007_s000",
+      "chunk_id": "ver_e191eadd3a0c_c00007",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00009",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 31
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00008_s000",
+      "chunk_id": "ver_e191eadd3a0c_c00008",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00010",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 37
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00008_s001",
+      "chunk_id": "ver_e191eadd3a0c_c00008",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00011",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 44
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00008_s002",
+      "chunk_id": "ver_e191eadd3a0c_c00008",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00011",
+      "source_order": 2,
+      "start_offset": 45,
+      "end_offset": 168
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00008_s003",
+      "chunk_id": "ver_e191eadd3a0c_c00008",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00011",
+      "source_order": 3,
+      "start_offset": 169,
+      "end_offset": 251
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00008_s004",
+      "chunk_id": "ver_e191eadd3a0c_c00008",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00012",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 36
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00008_s005",
+      "chunk_id": "ver_e191eadd3a0c_c00008",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00013",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 146
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00008_s006",
+      "chunk_id": "ver_e191eadd3a0c_c00008",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00013",
+      "source_order": 6,
+      "start_offset": 147,
+      "end_offset": 233
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00008_s007",
+      "chunk_id": "ver_e191eadd3a0c_c00008",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00014",
+      "source_order": 7,
+      "start_offset": 0,
+      "end_offset": 98
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00008_s008",
+      "chunk_id": "ver_e191eadd3a0c_c00008",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00014",
+      "source_order": 8,
+      "start_offset": 99,
+      "end_offset": 257
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00008_s009",
+      "chunk_id": "ver_e191eadd3a0c_c00008",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00014",
+      "source_order": 9,
+      "start_offset": 258,
+      "end_offset": 400
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00009_s000",
+      "chunk_id": "ver_e191eadd3a0c_c00009",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00015",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 35
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00010_s000",
+      "chunk_id": "ver_e191eadd3a0c_c00010",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00016",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 18
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00011_s000",
+      "chunk_id": "ver_e191eadd3a0c_c00011",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00017",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 92
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00011_s001",
+      "chunk_id": "ver_e191eadd3a0c_c00011",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00017",
+      "source_order": 1,
+      "start_offset": 93,
+      "end_offset": 155
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00012_s000",
+      "chunk_id": "ver_e191eadd3a0c_c00012",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00018",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 509
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00013_s000",
+      "chunk_id": "ver_e191eadd3a0c_c00013",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00019",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 112
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00013_s001",
+      "chunk_id": "ver_e191eadd3a0c_c00013",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00019",
+      "source_order": 1,
+      "start_offset": 113,
+      "end_offset": 414
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00014_s000",
+      "chunk_id": "ver_e191eadd3a0c_c00014",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00020",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 19
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00015_s000",
+      "chunk_id": "ver_e191eadd3a0c_c00015",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00021",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 158
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00015_s001",
+      "chunk_id": "ver_e191eadd3a0c_c00015",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00021",
+      "source_order": 1,
+      "start_offset": 159,
+      "end_offset": 304
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00015_s002",
+      "chunk_id": "ver_e191eadd3a0c_c00015",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00022",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 60
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00015_s003",
+      "chunk_id": "ver_e191eadd3a0c_c00015",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00023",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 65
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00015_s004",
+      "chunk_id": "ver_e191eadd3a0c_c00015",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00023",
+      "source_order": 4,
+      "start_offset": 66,
+      "end_offset": 129
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00015_s005",
+      "chunk_id": "ver_e191eadd3a0c_c00015",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00023",
+      "source_order": 5,
+      "start_offset": 130,
+      "end_offset": 199
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00015_s006",
+      "chunk_id": "ver_e191eadd3a0c_c00015",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00023",
+      "source_order": 6,
+      "start_offset": 200,
+      "end_offset": 267
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00015_s007",
+      "chunk_id": "ver_e191eadd3a0c_c00015",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00023",
+      "source_order": 7,
+      "start_offset": 268,
+      "end_offset": 314
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00015_s008",
+      "chunk_id": "ver_e191eadd3a0c_c00015",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00023",
+      "source_order": 8,
+      "start_offset": 315,
+      "end_offset": 363
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00015_s009",
+      "chunk_id": "ver_e191eadd3a0c_c00015",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00024",
+      "source_order": 9,
+      "start_offset": 0,
+      "end_offset": 166
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00015_s010",
+      "chunk_id": "ver_e191eadd3a0c_c00015",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00024",
+      "source_order": 10,
+      "start_offset": 167,
+      "end_offset": 276
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00015_s011",
+      "chunk_id": "ver_e191eadd3a0c_c00015",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00024",
+      "source_order": 11,
+      "start_offset": 277,
+      "end_offset": 375
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00015_s012",
+      "chunk_id": "ver_e191eadd3a0c_c00015",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00024",
+      "source_order": 12,
+      "start_offset": 376,
+      "end_offset": 515
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00016_s000",
+      "chunk_id": "ver_e191eadd3a0c_c00016",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00025",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 48
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00017_s000",
+      "chunk_id": "ver_e191eadd3a0c_c00017",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00026",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 163
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00017_s001",
+      "chunk_id": "ver_e191eadd3a0c_c00017",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00026",
+      "source_order": 1,
+      "start_offset": 164,
+      "end_offset": 244
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00017_s002",
+      "chunk_id": "ver_e191eadd3a0c_c00017",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00026",
+      "source_order": 2,
+      "start_offset": 245,
+      "end_offset": 416
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00017_s003",
+      "chunk_id": "ver_e191eadd3a0c_c00017",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00027",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 78
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00018_s000",
+      "chunk_id": "ver_e191eadd3a0c_c00018",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00028",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 24
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00019_s000",
+      "chunk_id": "ver_e191eadd3a0c_c00019",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00029",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 118
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00019_s001",
+      "chunk_id": "ver_e191eadd3a0c_c00019",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00029",
+      "source_order": 1,
+      "start_offset": 119,
+      "end_offset": 239
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00019_s002",
+      "chunk_id": "ver_e191eadd3a0c_c00019",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00029",
+      "source_order": 2,
+      "start_offset": 240,
+      "end_offset": 402
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00019_s003",
+      "chunk_id": "ver_e191eadd3a0c_c00019",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00030",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 61
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00019_s004",
+      "chunk_id": "ver_e191eadd3a0c_c00019",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00031",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 32
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00019_s005",
+      "chunk_id": "ver_e191eadd3a0c_c00019",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00031",
+      "source_order": 5,
+      "start_offset": 33,
+      "end_offset": 63
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00019_s006",
+      "chunk_id": "ver_e191eadd3a0c_c00019",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00031",
+      "source_order": 6,
+      "start_offset": 64,
+      "end_offset": 109
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00020_s000",
+      "chunk_id": "ver_e191eadd3a0c_c00020",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00032",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 32
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00021_s000",
+      "chunk_id": "ver_e191eadd3a0c_c00021",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00033",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 274
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00021_s001",
+      "chunk_id": "ver_e191eadd3a0c_c00021",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00033",
+      "source_order": 1,
+      "start_offset": 275,
+      "end_offset": 513
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00022_s000",
+      "chunk_id": "ver_e191eadd3a0c_c00022",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00034",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 37
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00023_s000",
+      "chunk_id": "ver_e191eadd3a0c_c00023",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00035",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 96
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00023_s001",
+      "chunk_id": "ver_e191eadd3a0c_c00023",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00035",
+      "source_order": 1,
+      "start_offset": 97,
+      "end_offset": 192
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00023_s002",
+      "chunk_id": "ver_e191eadd3a0c_c00023",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00035",
+      "source_order": 2,
+      "start_offset": 193,
+      "end_offset": 319
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00023_s003",
+      "chunk_id": "ver_e191eadd3a0c_c00023",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00036",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 134
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00023_s004",
+      "chunk_id": "ver_e191eadd3a0c_c00023",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00036",
+      "source_order": 4,
+      "start_offset": 135,
+      "end_offset": 254
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00023_s005",
+      "chunk_id": "ver_e191eadd3a0c_c00023",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00037",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 63
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00023_s006",
+      "chunk_id": "ver_e191eadd3a0c_c00023",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00037",
+      "source_order": 6,
+      "start_offset": 64,
+      "end_offset": 150
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00023_s007",
+      "chunk_id": "ver_e191eadd3a0c_c00023",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00037",
+      "source_order": 7,
+      "start_offset": 151,
+      "end_offset": 238
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00024_s000",
+      "chunk_id": "ver_e191eadd3a0c_c00024",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00038",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 27
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00025_s000",
+      "chunk_id": "ver_e191eadd3a0c_c00025",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00039",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 34
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00026_s000",
+      "chunk_id": "ver_e191eadd3a0c_c00026",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00040",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 131
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00026_s001",
+      "chunk_id": "ver_e191eadd3a0c_c00026",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00040",
+      "source_order": 1,
+      "start_offset": 132,
+      "end_offset": 248
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00026_s002",
+      "chunk_id": "ver_e191eadd3a0c_c00026",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00040",
+      "source_order": 2,
+      "start_offset": 249,
+      "end_offset": 270
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00026_s003",
+      "chunk_id": "ver_e191eadd3a0c_c00026",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00041",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 96
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00026_s004",
+      "chunk_id": "ver_e191eadd3a0c_c00026",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00041",
+      "source_order": 4,
+      "start_offset": 97,
+      "end_offset": 207
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00026_s005",
+      "chunk_id": "ver_e191eadd3a0c_c00026",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00041",
+      "source_order": 5,
+      "start_offset": 208,
+      "end_offset": 254
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00026_s006",
+      "chunk_id": "ver_e191eadd3a0c_c00026",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00042",
+      "source_order": 6,
+      "start_offset": 0,
+      "end_offset": 13
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00026_s007",
+      "chunk_id": "ver_e191eadd3a0c_c00026",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00042",
+      "source_order": 7,
+      "start_offset": 14,
+      "end_offset": 47
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00026_s008",
+      "chunk_id": "ver_e191eadd3a0c_c00026",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00042",
+      "source_order": 8,
+      "start_offset": 48,
+      "end_offset": 77
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00027_s000",
+      "chunk_id": "ver_e191eadd3a0c_c00027",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00043",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 24
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00028_s000",
+      "chunk_id": "ver_e191eadd3a0c_c00028",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00044",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 122
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00028_s001",
+      "chunk_id": "ver_e191eadd3a0c_c00028",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00044",
+      "source_order": 1,
+      "start_offset": 123,
+      "end_offset": 162
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00028_s002",
+      "chunk_id": "ver_e191eadd3a0c_c00028",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00045",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 46
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00028_s003",
+      "chunk_id": "ver_e191eadd3a0c_c00028",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00045",
+      "source_order": 3,
+      "start_offset": 47,
+      "end_offset": 143
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00028_s004",
+      "chunk_id": "ver_e191eadd3a0c_c00028",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00045",
+      "source_order": 4,
+      "start_offset": 144,
+      "end_offset": 196
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00028_s005",
+      "chunk_id": "ver_e191eadd3a0c_c00028",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00046",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 178
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00029_s000",
+      "chunk_id": "ver_e191eadd3a0c_c00029",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00047",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 46
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00030_s000",
+      "chunk_id": "ver_e191eadd3a0c_c00030",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00048",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 136
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00030_s001",
+      "chunk_id": "ver_e191eadd3a0c_c00030",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00048",
+      "source_order": 1,
+      "start_offset": 137,
+      "end_offset": 272
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00030_s002",
+      "chunk_id": "ver_e191eadd3a0c_c00030",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00049",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 55
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00030_s003",
+      "chunk_id": "ver_e191eadd3a0c_c00030",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00049",
+      "source_order": 3,
+      "start_offset": 56,
+      "end_offset": 173
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00030_s004",
+      "chunk_id": "ver_e191eadd3a0c_c00030",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00049",
+      "source_order": 4,
+      "start_offset": 174,
+      "end_offset": 248
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00030_s005",
+      "chunk_id": "ver_e191eadd3a0c_c00030",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00049",
+      "source_order": 5,
+      "start_offset": 249,
+      "end_offset": 276
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00030_s006",
+      "chunk_id": "ver_e191eadd3a0c_c00030",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00049",
+      "source_order": 6,
+      "start_offset": 277,
+      "end_offset": 331
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00030_s007",
+      "chunk_id": "ver_e191eadd3a0c_c00030",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00049",
+      "source_order": 7,
+      "start_offset": 332,
+      "end_offset": 394
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00031_s000",
+      "chunk_id": "ver_e191eadd3a0c_c00031",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00050",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 33
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00032_s000",
+      "chunk_id": "ver_e191eadd3a0c_c00032",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00051",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 20
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00033_s000",
+      "chunk_id": "ver_e191eadd3a0c_c00033",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00052",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 150
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00033_s001",
+      "chunk_id": "ver_e191eadd3a0c_c00033",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00052",
+      "source_order": 1,
+      "start_offset": 151,
+      "end_offset": 272
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00033_s002",
+      "chunk_id": "ver_e191eadd3a0c_c00033",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00052",
+      "source_order": 2,
+      "start_offset": 273,
+      "end_offset": 375
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00034_s000",
+      "chunk_id": "ver_e191eadd3a0c_c00034",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00053",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 22
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00035_s000",
+      "chunk_id": "ver_e191eadd3a0c_c00035",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00054",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 129
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00035_s001",
+      "chunk_id": "ver_e191eadd3a0c_c00035",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00054",
+      "source_order": 1,
+      "start_offset": 130,
+      "end_offset": 301
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00035_s002",
+      "chunk_id": "ver_e191eadd3a0c_c00035",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00055",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 107
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00035_s003",
+      "chunk_id": "ver_e191eadd3a0c_c00035",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00055",
+      "source_order": 3,
+      "start_offset": 108,
+      "end_offset": 235
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00035_s004",
+      "chunk_id": "ver_e191eadd3a0c_c00035",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00055",
+      "source_order": 4,
+      "start_offset": 236,
+      "end_offset": 419
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00036_s000",
+      "chunk_id": "ver_e191eadd3a0c_c00036",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00056",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 21
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00037_s000",
+      "chunk_id": "ver_e191eadd3a0c_c00037",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00057",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 134
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00037_s001",
+      "chunk_id": "ver_e191eadd3a0c_c00037",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00057",
+      "source_order": 1,
+      "start_offset": 135,
+      "end_offset": 360
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00038_s000",
+      "chunk_id": "ver_e191eadd3a0c_c00038",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00058",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 32
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00039_s000",
+      "chunk_id": "ver_e191eadd3a0c_c00039",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00059",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 134
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00039_s001",
+      "chunk_id": "ver_e191eadd3a0c_c00039",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00059",
+      "source_order": 1,
+      "start_offset": 135,
+      "end_offset": 295
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00039_s002",
+      "chunk_id": "ver_e191eadd3a0c_c00039",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00059",
+      "source_order": 2,
+      "start_offset": 296,
+      "end_offset": 382
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00039_s003",
+      "chunk_id": "ver_e191eadd3a0c_c00039",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00060",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 162
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00039_s004",
+      "chunk_id": "ver_e191eadd3a0c_c00039",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00060",
+      "source_order": 4,
+      "start_offset": 163,
+      "end_offset": 350
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00040_s000",
+      "chunk_id": "ver_e191eadd3a0c_c00040",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00061",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 13
+    },
+    {
+      "chunk_source_id": "ver_e191eadd3a0c_c00041_s000",
+      "chunk_id": "ver_e191eadd3a0c_c00041",
+      "normalized_block_id": "nrm_ver_e191eadd3a0c_b00062",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 211
+    }
+  ]
+}

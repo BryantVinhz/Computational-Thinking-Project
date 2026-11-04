@@ -1,0 +1,1306 @@
+{
+  "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+  "version_id": "ver_c3cc207d452c",
+  "chunking_strategy": "structure_aware",
+  "chunks": [
+    {
+      "chunk_id": "ver_c3cc207d452c_c00000",
+      "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+      "version_id": "ver_c3cc207d452c",
+      "chunk_idx": 0,
+      "chunk_type": "heading",
+      "text_content": "# Forgot Password Cheat Sheet",
+      "token_count": 5,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Forgot Password Cheat Sheet"
+      ]
+    },
+    {
+      "chunk_id": "ver_c3cc207d452c_c00001",
+      "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+      "version_id": "ver_c3cc207d452c",
+      "chunk_idx": 1,
+      "chunk_type": "heading",
+      "text_content": "## Introduction",
+      "token_count": 3,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Forgot Password Cheat Sheet",
+        "Introduction"
+      ]
+    },
+    {
+      "chunk_id": "ver_c3cc207d452c_c00002",
+      "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+      "version_id": "ver_c3cc207d452c",
+      "chunk_idx": 2,
+      "chunk_type": "mixed",
+      "text_content": "In order to implement a proper user management system, systems integrate a **Forgot Password** service that allows the user to request a password reset.\n\nEven though this functionality looks straightforward and easy to implement, it is a common source of vulnerabilities, such as the renowned [user enumeration attack](https://owasp.org/www-project-web-security-testing-guide/stable/4-Web_Application_Security_Testing/03-Identity_Management_Testing/04-Testing_for_Account_Enumeration_and_Guessable_User_Account.html).\n\nThe following short guidelines can be used as a quick reference to protect the forgot password service:\n\n- **Return a consistent message for both existent and non-existent accounts.**\n- **Ensure that the time taken for the user response message is uniform.**\n- **Use a side-channel to communicate the method to reset their password.**\n- **Use [URL tokens](#url-tokens) for the simplest and fastest implementation.**\n- **Ensure that generated tokens or codes are:**\n    - **Randomly generated using a cryptographically safe algorithm.**\n    - **Sufficiently long to protect against brute-force attacks.**\n    - **Stored securely.**\n    - **Single use and expire after an appropriate period.**\n- **Do not make a change to the account until a valid token is presented, such as locking out the account.**\n\nThis cheat sheet is focused on resetting users passwords.\n\nFor guidance on resetting multifactor authentication (MFA), see the relevant section in the [Multifactor Authentication Cheat Sheet](Multifactor_Authentication_Cheat_Sheet.md#resetting-mfa).",
+      "token_count": 324,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Forgot Password Cheat Sheet",
+        "Introduction"
+      ]
+    },
+    {
+      "chunk_id": "ver_c3cc207d452c_c00003",
+      "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+      "version_id": "ver_c3cc207d452c",
+      "chunk_idx": 3,
+      "chunk_type": "heading",
+      "text_content": "## Forgot Password Service",
+      "token_count": 5,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Forgot Password Cheat Sheet",
+        "Forgot Password Service"
+      ]
+    },
+    {
+      "chunk_id": "ver_c3cc207d452c_c00004",
+      "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+      "version_id": "ver_c3cc207d452c",
+      "chunk_idx": 4,
+      "chunk_type": "paragraph",
+      "text_content": "The password reset process can be broken into two main steps, detailed in the following sections.",
+      "token_count": 18,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Forgot Password Cheat Sheet",
+        "Forgot Password Service"
+      ]
+    },
+    {
+      "chunk_id": "ver_c3cc207d452c_c00005",
+      "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+      "version_id": "ver_c3cc207d452c",
+      "chunk_idx": 5,
+      "chunk_type": "heading",
+      "text_content": "### Forgot Password Request",
+      "token_count": 6,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Forgot Password Cheat Sheet",
+        "Forgot Password Service",
+        "Forgot Password Request"
+      ]
+    },
+    {
+      "chunk_id": "ver_c3cc207d452c_c00006",
+      "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+      "version_id": "ver_c3cc207d452c",
+      "chunk_idx": 6,
+      "chunk_type": "mixed",
+      "text_content": "When a user uses the forgot password service and inputs their username or email, the below should be followed to implement a secure process:\n\n- Return a consistent message for both existent and non-existent accounts.\n\n- Ensure that responses return in a consistent amount of time to prevent an attacker enumerating which accounts exist.\n\nThis could be achieved by using asynchronous calls or by making sure that the same logic is followed, instead of using a quick exit method.\n\n- Implement protections against excessive automated submissions such as rate-limiting on a per-account basis, requiring a CAPTCHA, or other controls.\n\nOtherwise an attacker could make thousands of password reset requests per hour for a given account, flooding the user's intake system (e.g., email inbox or SMS) with useless requests.\n\n- Employ normal security measures, such as [SQL Injection Prevention methods](SQL_Injection_Prevention_Cheat_Sheet.md) and [Input Validation](Input_Validation_Cheat_Sheet.md).",
+      "token_count": 183,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Forgot Password Cheat Sheet",
+        "Forgot Password Service",
+        "Forgot Password Request"
+      ]
+    },
+    {
+      "chunk_id": "ver_c3cc207d452c_c00007",
+      "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+      "version_id": "ver_c3cc207d452c",
+      "chunk_idx": 7,
+      "chunk_type": "heading",
+      "text_content": "### User Resets Password",
+      "token_count": 6,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Forgot Password Cheat Sheet",
+        "Forgot Password Service",
+        "User Resets Password"
+      ]
+    },
+    {
+      "chunk_id": "ver_c3cc207d452c_c00008",
+      "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+      "version_id": "ver_c3cc207d452c",
+      "chunk_idx": 8,
+      "chunk_type": "mixed",
+      "text_content": "Once the user has proved their identity by providing the token (sent via an email) or code (sent via SMS or other mechanisms), they should reset their password to a new secure one.\n\nIn order to secure this step, the measures that should be taken are:\n\n- The user should confirm the password they set by writing it twice.\n\n- Ensure that a secure password policy is in place, and is consistent with the rest of the application.\n\n- Update and store the password following [secure practices](Password_Storage_Cheat_Sheet.md).\n\n- Send the user an email informing them that their password has been reset (do not send the password in the email!).\n\n- Once they have set their new password, the user should then login through the usual mechanism.\n\nDon't automatically log the user in, as this introduces additional complexity to the authentication and session handling code, and increases the likelihood of introducing vulnerabilities.\n\n- Ask the user if they want to invalidate all of their existing sessions, or invalidate the sessions automatically.",
+      "token_count": 202,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Forgot Password Cheat Sheet",
+        "Forgot Password Service",
+        "User Resets Password"
+      ]
+    },
+    {
+      "chunk_id": "ver_c3cc207d452c_c00009",
+      "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+      "version_id": "ver_c3cc207d452c",
+      "chunk_idx": 9,
+      "chunk_type": "heading",
+      "text_content": "### Account Recovery After Suspected Compromise",
+      "token_count": 8,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Forgot Password Cheat Sheet",
+        "Forgot Password Service",
+        "Account Recovery After Suspected Compromise"
+      ]
+    },
+    {
+      "chunk_id": "ver_c3cc207d452c_c00010",
+      "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+      "version_id": "ver_c3cc207d452c",
+      "chunk_idx": 10,
+      "chunk_type": "mixed",
+      "text_content": "A password reset alone may not restore control of a compromised account.\n\nAn attacker may still have an active session or may have changed recovery information or MFA methods.\n\nWhen recovering a potentially compromised account:\n\n- Do not rely solely on recently added or changed recovery information.\n\nUse independent, previously established recovery evidence, such as saved recovery codes, in a combination that meets the account's assurance requirements.\n\nSee [NIST account recovery guidance](https://pages.nist.gov/800-63-4/sp800-63b/events/#recovery).\n\n- Do not automatically restore superseded recovery addresses or phone numbers; they may have been replaced because they were lost or compromised.\n\n- Promptly suspend or invalidate authenticators identified as compromised, following [NIST guidance for compromised authenticators](https://pages.nist.gov/800-63-4/sp800-63b/events/#loss-theft-damage-and-compromise).\n\n- Review recovery addresses, phone numbers, and MFA methods with the verified account owner, and remove unauthorized changes.\n\n[Google's compromised-account guidance](https://support.google.com/accounts/answer/6294825) identifies these settings for review and correction.\n\n- After successful recovery, invalidate existing sessions and outstanding password reset and recovery links or codes so they cannot restore an attacker's access.\n\nSee [session invalidation guidance](Session_Management_Cheat_Sheet.md#session-expiration).\n\n- Notify the user through all applicable registered notification addresses, including established channels that remain safe to use.\n\nInclude instructions and contact information for reporting unauthorized recovery, as described in [NIST account notification guidance](https://pages.nist.gov/800-63-4/sp800-63b/events/#notification).\n\nSee [reauthentication after risk events](Authentication_Cheat_Sheet.md#re-authentication-after-risk-events) and [MFA recovery](Multifactor_Authentication_Cheat_Sheet.md#resetting-mfa) for related controls.",
+      "token_count": 393,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Forgot Password Cheat Sheet",
+        "Forgot Password Service",
+        "Account Recovery After Suspected Compromise"
+      ]
+    },
+    {
+      "chunk_id": "ver_c3cc207d452c_c00011",
+      "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+      "version_id": "ver_c3cc207d452c",
+      "chunk_idx": 11,
+      "chunk_type": "heading",
+      "text_content": "## Methods",
+      "token_count": 3,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Forgot Password Cheat Sheet",
+        "Methods"
+      ]
+    },
+    {
+      "chunk_id": "ver_c3cc207d452c_c00012",
+      "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+      "version_id": "ver_c3cc207d452c",
+      "chunk_idx": 12,
+      "chunk_type": "mixed",
+      "text_content": "In order to allow a user to request a password reset, you will need to have some way to identify the user, or a means to reach out to them through a side-channel.\n\nThis can be done through any of the following methods:\n\n- [URL tokens](#url-tokens).\n\n- [PINs](#pins)\n- [Offline methods](#offline-methods)\n- [Security questions](#security-questions).\n\nThese methods can be used together to provide a greater degree of assurance that the user is who they claim to be.\n\nNo matter what, you must ensure that a user always has a way to recover their account, even if that involves contacting the support team and proving their identity to staff.",
+      "token_count": 149,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Forgot Password Cheat Sheet",
+        "Methods"
+      ]
+    },
+    {
+      "chunk_id": "ver_c3cc207d452c_c00013",
+      "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+      "version_id": "ver_c3cc207d452c",
+      "chunk_idx": 13,
+      "chunk_type": "heading",
+      "text_content": "### General Security Practices",
+      "token_count": 6,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Forgot Password Cheat Sheet",
+        "Methods",
+        "General Security Practices"
+      ]
+    },
+    {
+      "chunk_id": "ver_c3cc207d452c_c00014",
+      "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+      "version_id": "ver_c3cc207d452c",
+      "chunk_idx": 14,
+      "chunk_type": "mixed",
+      "text_content": "It is essential to employ good security practices for the reset identifiers (tokens, codes, PINs, etc.).\n\nSome points don't apply to the [offline methods](#offline-methods), such as the lifetime restriction.\n\nAll tokens and codes should be:\n\n- Generated using a [cryptographically secure random number generator](Cryptographic_Storage_Cheat_Sheet.md#secure-random-number-generation).\n\n- It is also possible to use JSON Web Tokens (JWTs) in place of random tokens, although this can introduce additional vulnerability, such as those discussed in the [JSON Web Token Cheat Sheet](JSON_Web_Token_Cheat_Sheet.md).\n\n- Long enough to protect against brute-force attacks.\n\n- Linked to an individual user in the database.\n\n- Invalidated after they have been used.\n\n- Stored in a secure manner, as discussed in the [Password Storage Cheat Sheet](Password_Storage_Cheat_Sheet.md).",
+      "token_count": 177,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Forgot Password Cheat Sheet",
+        "Methods",
+        "General Security Practices"
+      ]
+    },
+    {
+      "chunk_id": "ver_c3cc207d452c_c00015",
+      "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+      "version_id": "ver_c3cc207d452c",
+      "chunk_idx": 15,
+      "chunk_type": "heading",
+      "text_content": "### URL Tokens",
+      "token_count": 5,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Forgot Password Cheat Sheet",
+        "Methods",
+        "URL Tokens"
+      ]
+    },
+    {
+      "chunk_id": "ver_c3cc207d452c_c00016",
+      "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+      "version_id": "ver_c3cc207d452c",
+      "chunk_idx": 16,
+      "chunk_type": "mixed",
+      "text_content": "URL tokens are passed in the query string of the URL, and are typically sent to the user via email.\n\nThe basic overview of the process is as follows:\n\n1.\n\nGenerate a token for the user and attach it in the URL query string.\n\n2.\n\nSend this token to the user via email.\n\n- Don't rely on the [Host](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Host) header while creating the reset URLs to avoid [Host Header Injection](https://owasp.org/www-project-web-security-testing-guide/stable/4-Web_Application_Security_Testing/07-Input_Validation_Testing/17-Testing_for_Host_Header_Injection) attacks.\n\nThe URL should either be hard-coded, or validated against a list of trusted domains.\n\n- Ensure that the URL is using HTTPS.\n\n3.\n\nThe user receives the email, and browses to the URL with the attached token.\n\n- Ensure that the reset password page adds the [Referrer Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy) tag with the `no-referrer` value in order to avoid [referrer leakage](https://portswigger.net/kb/issues/00500400_cross-domain-referer-leakage).\n\n- Implement appropriate protection to prevent users from brute-forcing tokens in the URL, such as rate limiting.\n\n4.\n\nIf required, perform any additional validation steps such as requiring the user to answer [security questions](#security-questions).\n\n5.\n\nLet the user create a new password and confirm it.\n\nEnsure that the same password policy used elsewhere in the application is applied.\n\n*Note:* URL tokens can follow on the same behavior of the [PINs](#pins) by creating a restricted session from the token.\n\nDecision should be made based on the needs and the expertise of the developer.",
+      "token_count": 390,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Forgot Password Cheat Sheet",
+        "Methods",
+        "URL Tokens"
+      ]
+    },
+    {
+      "chunk_id": "ver_c3cc207d452c_c00017",
+      "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+      "version_id": "ver_c3cc207d452c",
+      "chunk_idx": 17,
+      "chunk_type": "heading",
+      "text_content": "### PINs",
+      "token_count": 4,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Forgot Password Cheat Sheet",
+        "Methods",
+        "PINs"
+      ]
+    },
+    {
+      "chunk_id": "ver_c3cc207d452c_c00018",
+      "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+      "version_id": "ver_c3cc207d452c",
+      "chunk_idx": 18,
+      "chunk_type": "mixed",
+      "text_content": "PINs are numbers (between 6 and 12 digits) that are sent to the user through a side-channel such as SMS.\n\n1.\n\nGenerate a PIN.\n\n2.\n\nSend it to the user via SMS or another mechanism.\n\n- Breaking the PIN up with spaces makes it easier for the user to read and enter.\n\n3.\n\nThe user then enters the PIN along with their username on the password reset page.\n\n4.\n\nCreate a limited session from that PIN that only permits the user to reset their password.\n\n5.\n\nLet the user create a new password and confirm it.\n\nEnsure that the same password policy used elsewhere in the application is applied.",
+      "token_count": 126,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Forgot Password Cheat Sheet",
+        "Methods",
+        "PINs"
+      ]
+    },
+    {
+      "chunk_id": "ver_c3cc207d452c_c00019",
+      "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+      "version_id": "ver_c3cc207d452c",
+      "chunk_idx": 19,
+      "chunk_type": "heading",
+      "text_content": "### Offline Methods",
+      "token_count": 5,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Forgot Password Cheat Sheet",
+        "Methods",
+        "Offline Methods"
+      ]
+    },
+    {
+      "chunk_id": "ver_c3cc207d452c_c00020",
+      "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+      "version_id": "ver_c3cc207d452c",
+      "chunk_idx": 20,
+      "chunk_type": "paragraph",
+      "text_content": "Offline methods differ from other methods by allowing the user to reset their password without requesting a special identifier (such as a token or PIN) from the backend.\n\nHowever, authentication still needs to be conducted by the backend to ensure that the request is legitimate.\n\nOffline methods provide a certain identifier either on registration, or when the user wishes to configure it.\n\nThese identifiers should be stored offline and in a secure fashion (*e.g.* password managers), and the backend should properly follow the [general security practices](#general-security-practices).\n\nSome implementations are built on [hardware OTP tokens](Multifactor_Authentication_Cheat_Sheet.md#hardware-otp-tokens), [certificates](Multifactor_Authentication_Cheat_Sheet.md#certificates), or any other implementation that could be used inside of an enterprise.\n\nThese are out of scope for this cheat sheet.\n\nIf account has MFA enabled, and you are looking for MFA recovery, different methods can be found in the corresponding [Multifactor Authentication cheat sheet](Multifactor_Authentication_Cheat_Sheet.md#resetting-mfa).",
+      "token_count": 206,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Forgot Password Cheat Sheet",
+        "Methods",
+        "Offline Methods"
+      ]
+    },
+    {
+      "chunk_id": "ver_c3cc207d452c_c00021",
+      "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+      "version_id": "ver_c3cc207d452c",
+      "chunk_idx": 21,
+      "chunk_type": "heading",
+      "text_content": "### Security Questions",
+      "token_count": 5,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Forgot Password Cheat Sheet",
+        "Methods",
+        "Security Questions"
+      ]
+    },
+    {
+      "chunk_id": "ver_c3cc207d452c_c00022",
+      "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+      "version_id": "ver_c3cc207d452c",
+      "chunk_idx": 22,
+      "chunk_type": "paragraph",
+      "text_content": "Security questions should not be used as the sole mechanism for resetting passwords due to their answers frequently being easily guessable or obtainable by attackers.\n\nHowever, they can provide an additional layer of security when combined with the other methods discussed in this cheat sheet.\n\nIf they are used, then ensure that secure questions are chosen as discussed in the [Security Questions cheat sheet](Choosing_and_Using_Security_Questions_Cheat_Sheet.md).",
+      "token_count": 76,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Forgot Password Cheat Sheet",
+        "Methods",
+        "Security Questions"
+      ]
+    },
+    {
+      "chunk_id": "ver_c3cc207d452c_c00023",
+      "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+      "version_id": "ver_c3cc207d452c",
+      "chunk_idx": 23,
+      "chunk_type": "heading",
+      "text_content": "## Account Lockout",
+      "token_count": 4,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Forgot Password Cheat Sheet",
+        "Account Lockout"
+      ]
+    },
+    {
+      "chunk_id": "ver_c3cc207d452c_c00024",
+      "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+      "version_id": "ver_c3cc207d452c",
+      "chunk_idx": 24,
+      "chunk_type": "paragraph",
+      "text_content": "Accounts should not be locked out in response to a forgotten password attack, as this can be used to deny access to users with known usernames.\n\nFor more details on account lockouts, see the [Authentication Cheat Sheet](Authentication_Cheat_Sheet.md).",
+      "token_count": 48,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Forgot Password Cheat Sheet",
+        "Account Lockout"
+      ]
+    },
+    {
+      "chunk_id": "ver_c3cc207d452c_c00025",
+      "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+      "version_id": "ver_c3cc207d452c",
+      "chunk_idx": 25,
+      "chunk_type": "heading",
+      "text_content": "## References",
+      "token_count": 3,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Forgot Password Cheat Sheet",
+        "References"
+      ]
+    },
+    {
+      "chunk_id": "ver_c3cc207d452c_c00026",
+      "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+      "version_id": "ver_c3cc207d452c",
+      "chunk_idx": 26,
+      "chunk_type": "list",
+      "text_content": "- [NIST SP 800-63B-4: Account Recovery](https://pages.nist.gov/800-63-4/sp800-63b/events/#recovery)\n- [OWASP Application Security Verification Standard (ASVS): V6.4 Authentication Factor Lifecycle and Recovery](https://github.com/OWASP/ASVS/blob/master/5.0/en/0x15-V6-Authentication.md#v64-authentication-factor-lifecycle-and-recovery)",
+      "token_count": 102,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Forgot Password Cheat Sheet",
+        "References"
+      ]
+    }
+  ],
+  "chunk_sources": [
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00000_s000",
+      "chunk_id": "ver_c3cc207d452c_c00000",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00000",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 29
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00001_s000",
+      "chunk_id": "ver_c3cc207d452c_c00001",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00001",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 15
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00002_s000",
+      "chunk_id": "ver_c3cc207d452c_c00002",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00002",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 152
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00002_s001",
+      "chunk_id": "ver_c3cc207d452c_c00002",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00003",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 363
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00002_s002",
+      "chunk_id": "ver_c3cc207d452c_c00002",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00004",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 103
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00002_s003",
+      "chunk_id": "ver_c3cc207d452c_c00002",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00005",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 695
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00002_s004",
+      "chunk_id": "ver_c3cc207d452c_c00002",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00006",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 57
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00002_s005",
+      "chunk_id": "ver_c3cc207d452c_c00002",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00006",
+      "source_order": 5,
+      "start_offset": 58,
+      "end_offset": 248
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00003_s000",
+      "chunk_id": "ver_c3cc207d452c_c00003",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00007",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 26
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00004_s000",
+      "chunk_id": "ver_c3cc207d452c_c00004",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00008",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 97
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00005_s000",
+      "chunk_id": "ver_c3cc207d452c_c00005",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00009",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 27
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00006_s000",
+      "chunk_id": "ver_c3cc207d452c_c00006",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00010",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 140
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00006_s001",
+      "chunk_id": "ver_c3cc207d452c_c00006",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00011",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 74
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00006_s002",
+      "chunk_id": "ver_c3cc207d452c_c00006",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00011",
+      "source_order": 2,
+      "start_offset": 75,
+      "end_offset": 193
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00006_s003",
+      "chunk_id": "ver_c3cc207d452c_c00006",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00011",
+      "source_order": 3,
+      "start_offset": 194,
+      "end_offset": 333
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00006_s004",
+      "chunk_id": "ver_c3cc207d452c_c00006",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00011",
+      "source_order": 4,
+      "start_offset": 334,
+      "end_offset": 483
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00006_s005",
+      "chunk_id": "ver_c3cc207d452c_c00006",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00011",
+      "source_order": 5,
+      "start_offset": 484,
+      "end_offset": 667
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00006_s006",
+      "chunk_id": "ver_c3cc207d452c_c00006",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00011",
+      "source_order": 6,
+      "start_offset": 668,
+      "end_offset": 843
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00007_s000",
+      "chunk_id": "ver_c3cc207d452c_c00007",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00012",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 24
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00008_s000",
+      "chunk_id": "ver_c3cc207d452c_c00008",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00013",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 180
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00008_s001",
+      "chunk_id": "ver_c3cc207d452c_c00008",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00013",
+      "source_order": 1,
+      "start_offset": 181,
+      "end_offset": 249
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00008_s002",
+      "chunk_id": "ver_c3cc207d452c_c00008",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00014",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 68
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00008_s003",
+      "chunk_id": "ver_c3cc207d452c_c00008",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00014",
+      "source_order": 3,
+      "start_offset": 69,
+      "end_offset": 172
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00008_s004",
+      "chunk_id": "ver_c3cc207d452c_c00008",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00014",
+      "source_order": 4,
+      "start_offset": 173,
+      "end_offset": 267
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00008_s005",
+      "chunk_id": "ver_c3cc207d452c_c00008",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00014",
+      "source_order": 5,
+      "start_offset": 268,
+      "end_offset": 384
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00008_s006",
+      "chunk_id": "ver_c3cc207d452c_c00008",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00014",
+      "source_order": 6,
+      "start_offset": 385,
+      "end_offset": 481
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00008_s007",
+      "chunk_id": "ver_c3cc207d452c_c00008",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00014",
+      "source_order": 7,
+      "start_offset": 482,
+      "end_offset": 669
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00008_s008",
+      "chunk_id": "ver_c3cc207d452c_c00008",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00014",
+      "source_order": 8,
+      "start_offset": 670,
+      "end_offset": 785
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00009_s000",
+      "chunk_id": "ver_c3cc207d452c_c00009",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00015",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 47
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00010_s000",
+      "chunk_id": "ver_c3cc207d452c_c00010",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00016",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 72
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00010_s001",
+      "chunk_id": "ver_c3cc207d452c_c00010",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00016",
+      "source_order": 1,
+      "start_offset": 73,
+      "end_offset": 174
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00010_s002",
+      "chunk_id": "ver_c3cc207d452c_c00010",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00017",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 50
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00010_s003",
+      "chunk_id": "ver_c3cc207d452c_c00010",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00018",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 71
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00010_s004",
+      "chunk_id": "ver_c3cc207d452c_c00010",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00018",
+      "source_order": 4,
+      "start_offset": 72,
+      "end_offset": 226
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00010_s005",
+      "chunk_id": "ver_c3cc207d452c_c00010",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00018",
+      "source_order": 5,
+      "start_offset": 227,
+      "end_offset": 324
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00010_s006",
+      "chunk_id": "ver_c3cc207d452c_c00010",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00018",
+      "source_order": 6,
+      "start_offset": 325,
+      "end_offset": 470
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00010_s007",
+      "chunk_id": "ver_c3cc207d452c_c00010",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00018",
+      "source_order": 7,
+      "start_offset": 471,
+      "end_offset": 687
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00010_s008",
+      "chunk_id": "ver_c3cc207d452c_c00010",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00018",
+      "source_order": 8,
+      "start_offset": 688,
+      "end_offset": 813
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00010_s009",
+      "chunk_id": "ver_c3cc207d452c_c00010",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00018",
+      "source_order": 9,
+      "start_offset": 814,
+      "end_offset": 958
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00010_s010",
+      "chunk_id": "ver_c3cc207d452c_c00010",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00018",
+      "source_order": 10,
+      "start_offset": 959,
+      "end_offset": 1120
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00010_s011",
+      "chunk_id": "ver_c3cc207d452c_c00010",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00018",
+      "source_order": 11,
+      "start_offset": 1121,
+      "end_offset": 1211
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00010_s012",
+      "chunk_id": "ver_c3cc207d452c_c00010",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00018",
+      "source_order": 12,
+      "start_offset": 1212,
+      "end_offset": 1343
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00010_s013",
+      "chunk_id": "ver_c3cc207d452c_c00010",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00018",
+      "source_order": 13,
+      "start_offset": 1344,
+      "end_offset": 1543
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00010_s014",
+      "chunk_id": "ver_c3cc207d452c_c00010",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00019",
+      "source_order": 14,
+      "start_offset": 0,
+      "end_offset": 205
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00011_s000",
+      "chunk_id": "ver_c3cc207d452c_c00011",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00020",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 10
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00012_s000",
+      "chunk_id": "ver_c3cc207d452c_c00012",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00021",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 162
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00012_s001",
+      "chunk_id": "ver_c3cc207d452c_c00012",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00022",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 54
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00012_s002",
+      "chunk_id": "ver_c3cc207d452c_c00012",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00023",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 28
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00012_s003",
+      "chunk_id": "ver_c3cc207d452c_c00012",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00023",
+      "source_order": 3,
+      "start_offset": 29,
+      "end_offset": 127
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00012_s004",
+      "chunk_id": "ver_c3cc207d452c_c00012",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00024",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 114
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00012_s005",
+      "chunk_id": "ver_c3cc207d452c_c00012",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00024",
+      "source_order": 5,
+      "start_offset": 115,
+      "end_offset": 288
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00013_s000",
+      "chunk_id": "ver_c3cc207d452c_c00013",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00025",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 30
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00014_s000",
+      "chunk_id": "ver_c3cc207d452c_c00014",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00026",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 104
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00014_s001",
+      "chunk_id": "ver_c3cc207d452c_c00014",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00026",
+      "source_order": 1,
+      "start_offset": 105,
+      "end_offset": 206
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00014_s002",
+      "chunk_id": "ver_c3cc207d452c_c00014",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00026",
+      "source_order": 2,
+      "start_offset": 207,
+      "end_offset": 238
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00014_s003",
+      "chunk_id": "ver_c3cc207d452c_c00014",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00027",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 141
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00014_s004",
+      "chunk_id": "ver_c3cc207d452c_c00014",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00027",
+      "source_order": 4,
+      "start_offset": 146,
+      "end_offset": 370
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00014_s005",
+      "chunk_id": "ver_c3cc207d452c_c00014",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00027",
+      "source_order": 5,
+      "start_offset": 371,
+      "end_offset": 424
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00014_s006",
+      "chunk_id": "ver_c3cc207d452c_c00014",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00027",
+      "source_order": 6,
+      "start_offset": 425,
+      "end_offset": 472
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00014_s007",
+      "chunk_id": "ver_c3cc207d452c_c00014",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00027",
+      "source_order": 7,
+      "start_offset": 473,
+      "end_offset": 513
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00014_s008",
+      "chunk_id": "ver_c3cc207d452c_c00014",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00027",
+      "source_order": 8,
+      "start_offset": 514,
+      "end_offset": 627
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00015_s000",
+      "chunk_id": "ver_c3cc207d452c_c00015",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00028",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 14
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00016_s000",
+      "chunk_id": "ver_c3cc207d452c_c00016",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00029",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 99
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00016_s001",
+      "chunk_id": "ver_c3cc207d452c_c00016",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00029",
+      "source_order": 1,
+      "start_offset": 100,
+      "end_offset": 148
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00016_s002",
+      "chunk_id": "ver_c3cc207d452c_c00016",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00030",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 2
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00016_s003",
+      "chunk_id": "ver_c3cc207d452c_c00016",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00030",
+      "source_order": 3,
+      "start_offset": 3,
+      "end_offset": 71
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00016_s004",
+      "chunk_id": "ver_c3cc207d452c_c00016",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00030",
+      "source_order": 4,
+      "start_offset": 72,
+      "end_offset": 74
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00016_s005",
+      "chunk_id": "ver_c3cc207d452c_c00016",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00030",
+      "source_order": 5,
+      "start_offset": 75,
+      "end_offset": 113
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00016_s006",
+      "chunk_id": "ver_c3cc207d452c_c00016",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00030",
+      "source_order": 6,
+      "start_offset": 117,
+      "end_offset": 451
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00016_s007",
+      "chunk_id": "ver_c3cc207d452c_c00016",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00030",
+      "source_order": 7,
+      "start_offset": 452,
+      "end_offset": 536
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00016_s008",
+      "chunk_id": "ver_c3cc207d452c_c00016",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00030",
+      "source_order": 8,
+      "start_offset": 540,
+      "end_offset": 577
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00016_s009",
+      "chunk_id": "ver_c3cc207d452c_c00016",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00030",
+      "source_order": 9,
+      "start_offset": 578,
+      "end_offset": 580
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00016_s010",
+      "chunk_id": "ver_c3cc207d452c_c00016",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00030",
+      "source_order": 10,
+      "start_offset": 581,
+      "end_offset": 657
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00016_s011",
+      "chunk_id": "ver_c3cc207d452c_c00016",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00030",
+      "source_order": 11,
+      "start_offset": 661,
+      "end_offset": 944
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00016_s012",
+      "chunk_id": "ver_c3cc207d452c_c00016",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00030",
+      "source_order": 12,
+      "start_offset": 948,
+      "end_offset": 1060
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00016_s013",
+      "chunk_id": "ver_c3cc207d452c_c00016",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00030",
+      "source_order": 13,
+      "start_offset": 1061,
+      "end_offset": 1063
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00016_s014",
+      "chunk_id": "ver_c3cc207d452c_c00016",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00030",
+      "source_order": 14,
+      "start_offset": 1064,
+      "end_offset": 1196
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00016_s015",
+      "chunk_id": "ver_c3cc207d452c_c00016",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00030",
+      "source_order": 15,
+      "start_offset": 1197,
+      "end_offset": 1199
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00016_s016",
+      "chunk_id": "ver_c3cc207d452c_c00016",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00030",
+      "source_order": 16,
+      "start_offset": 1200,
+      "end_offset": 1250
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00016_s017",
+      "chunk_id": "ver_c3cc207d452c_c00016",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00030",
+      "source_order": 17,
+      "start_offset": 1251,
+      "end_offset": 1333
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00016_s018",
+      "chunk_id": "ver_c3cc207d452c_c00016",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00031",
+      "source_order": 18,
+      "start_offset": 0,
+      "end_offset": 120
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00016_s019",
+      "chunk_id": "ver_c3cc207d452c_c00016",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00031",
+      "source_order": 19,
+      "start_offset": 121,
+      "end_offset": 199
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00017_s000",
+      "chunk_id": "ver_c3cc207d452c_c00017",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00032",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 8
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00018_s000",
+      "chunk_id": "ver_c3cc207d452c_c00018",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00033",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 104
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00018_s001",
+      "chunk_id": "ver_c3cc207d452c_c00018",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00034",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 2
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00018_s002",
+      "chunk_id": "ver_c3cc207d452c_c00018",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00034",
+      "source_order": 2,
+      "start_offset": 3,
+      "end_offset": 18
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00018_s003",
+      "chunk_id": "ver_c3cc207d452c_c00018",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00034",
+      "source_order": 3,
+      "start_offset": 19,
+      "end_offset": 21
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00018_s004",
+      "chunk_id": "ver_c3cc207d452c_c00018",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00034",
+      "source_order": 4,
+      "start_offset": 22,
+      "end_offset": 71
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00018_s005",
+      "chunk_id": "ver_c3cc207d452c_c00018",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00034",
+      "source_order": 5,
+      "start_offset": 75,
+      "end_offset": 156
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00018_s006",
+      "chunk_id": "ver_c3cc207d452c_c00018",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00034",
+      "source_order": 6,
+      "start_offset": 157,
+      "end_offset": 159
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00018_s007",
+      "chunk_id": "ver_c3cc207d452c_c00018",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00034",
+      "source_order": 7,
+      "start_offset": 160,
+      "end_offset": 242
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00018_s008",
+      "chunk_id": "ver_c3cc207d452c_c00018",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00034",
+      "source_order": 8,
+      "start_offset": 243,
+      "end_offset": 245
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00018_s009",
+      "chunk_id": "ver_c3cc207d452c_c00018",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00034",
+      "source_order": 9,
+      "start_offset": 246,
+      "end_offset": 336
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00018_s010",
+      "chunk_id": "ver_c3cc207d452c_c00018",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00034",
+      "source_order": 10,
+      "start_offset": 337,
+      "end_offset": 339
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00018_s011",
+      "chunk_id": "ver_c3cc207d452c_c00018",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00034",
+      "source_order": 11,
+      "start_offset": 340,
+      "end_offset": 390
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00018_s012",
+      "chunk_id": "ver_c3cc207d452c_c00018",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00034",
+      "source_order": 12,
+      "start_offset": 391,
+      "end_offset": 473
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00019_s000",
+      "chunk_id": "ver_c3cc207d452c_c00019",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00035",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 19
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00020_s000",
+      "chunk_id": "ver_c3cc207d452c_c00020",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00036",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 169
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00020_s001",
+      "chunk_id": "ver_c3cc207d452c_c00020",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00036",
+      "source_order": 1,
+      "start_offset": 170,
+      "end_offset": 278
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00020_s002",
+      "chunk_id": "ver_c3cc207d452c_c00020",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00036",
+      "source_order": 2,
+      "start_offset": 279,
+      "end_offset": 388
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00020_s003",
+      "chunk_id": "ver_c3cc207d452c_c00020",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00037",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 196
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00020_s004",
+      "chunk_id": "ver_c3cc207d452c_c00020",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00037",
+      "source_order": 4,
+      "start_offset": 197,
+      "end_offset": 460
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00020_s005",
+      "chunk_id": "ver_c3cc207d452c_c00020",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00037",
+      "source_order": 5,
+      "start_offset": 461,
+      "end_offset": 505
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00020_s006",
+      "chunk_id": "ver_c3cc207d452c_c00020",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00038",
+      "source_order": 6,
+      "start_offset": 0,
+      "end_offset": 216
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00021_s000",
+      "chunk_id": "ver_c3cc207d452c_c00021",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00039",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 22
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00022_s000",
+      "chunk_id": "ver_c3cc207d452c_c00022",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00040",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 166
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00022_s001",
+      "chunk_id": "ver_c3cc207d452c_c00022",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00040",
+      "source_order": 1,
+      "start_offset": 167,
+      "end_offset": 292
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00022_s002",
+      "chunk_id": "ver_c3cc207d452c_c00022",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00040",
+      "source_order": 2,
+      "start_offset": 293,
+      "end_offset": 463
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00023_s000",
+      "chunk_id": "ver_c3cc207d452c_c00023",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00041",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 18
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00024_s000",
+      "chunk_id": "ver_c3cc207d452c_c00024",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00042",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 143
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00024_s001",
+      "chunk_id": "ver_c3cc207d452c_c00024",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00042",
+      "source_order": 1,
+      "start_offset": 144,
+      "end_offset": 250
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00025_s000",
+      "chunk_id": "ver_c3cc207d452c_c00025",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00043",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 13
+    },
+    {
+      "chunk_source_id": "ver_c3cc207d452c_c00026_s000",
+      "chunk_id": "ver_c3cc207d452c_c00026",
+      "normalized_block_id": "nrm_ver_c3cc207d452c_b00044",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 335
+    }
+  ]
+}

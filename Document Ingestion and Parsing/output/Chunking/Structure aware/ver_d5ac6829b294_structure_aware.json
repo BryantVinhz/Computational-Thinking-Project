@@ -1,0 +1,797 @@
+{
+  "document_id": "doc_owasp_avss_session_management",
+  "version_id": "ver_d5ac6829b294",
+  "chunking_strategy": "structure_aware",
+  "chunks": [
+    {
+      "chunk_id": "ver_d5ac6829b294_c00000",
+      "document_id": "doc_owasp_avss_session_management",
+      "version_id": "ver_d5ac6829b294",
+      "chunk_idx": 0,
+      "chunk_type": "heading",
+      "text_content": "# V3 Session Management",
+      "token_count": 4,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V3 Session Management"
+      ]
+    },
+    {
+      "chunk_id": "ver_d5ac6829b294_c00001",
+      "document_id": "doc_owasp_avss_session_management",
+      "version_id": "ver_d5ac6829b294",
+      "chunk_idx": 1,
+      "chunk_type": "heading",
+      "text_content": "## Control Objective",
+      "token_count": 4,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V3 Session Management",
+        "Control Objective"
+      ]
+    },
+    {
+      "chunk_id": "ver_d5ac6829b294_c00002",
+      "document_id": "doc_owasp_avss_session_management",
+      "version_id": "ver_d5ac6829b294",
+      "chunk_idx": 2,
+      "chunk_type": "mixed",
+      "text_content": "One of the core components of any web-based application or stateful API is the mechanism by which it controls and maintains the state for a user or device interacting with it.\n\nSession management changes a stateless protocol to stateful, which is critical for differentiating different users or devices.\n\nEnsure that a verified application satisfies the following high-level session management requirements:\n\n* Sessions are unique to each individual and cannot be guessed or shared.\n\n* Sessions are invalidated when no longer required and timed out during periods of inactivity.\n\nAs previously noted, these requirements have been adapted to be a compliant subset of selected NIST 800-63b controls, focused around common threats and commonly exploited authentication weaknesses.\n\nPrevious verification requirements have been retired, de-duped, or in most cases adapted to be strongly aligned with the intent of mandatory [NIST 800-63b](https://pages.nist.gov/800-63-3/sp800-63b.html) requirements.",
+      "token_count": 186,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V3 Session Management",
+        "Control Objective"
+      ]
+    },
+    {
+      "chunk_id": "ver_d5ac6829b294_c00003",
+      "document_id": "doc_owasp_avss_session_management",
+      "version_id": "ver_d5ac6829b294",
+      "chunk_idx": 3,
+      "chunk_type": "heading",
+      "text_content": "## Security Verification Requirements",
+      "token_count": 5,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V3 Session Management",
+        "Security Verification Requirements"
+      ]
+    },
+    {
+      "chunk_id": "ver_d5ac6829b294_c00004",
+      "document_id": "doc_owasp_avss_session_management",
+      "version_id": "ver_d5ac6829b294",
+      "chunk_idx": 4,
+      "chunk_type": "heading",
+      "text_content": "## V3.1 Fundamental Session Management Security",
+      "token_count": 9,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V3 Session Management",
+        "V3.1 Fundamental Session Management Security"
+      ]
+    },
+    {
+      "chunk_id": "ver_d5ac6829b294_c00005",
+      "document_id": "doc_owasp_avss_session_management",
+      "version_id": "ver_d5ac6829b294",
+      "chunk_idx": 5,
+      "chunk_type": "table",
+      "text_content": "| # | Description | L1 | L2 | L3 | CWE | [NIST &sect;](https://pages.nist.gov/800-63-3/sp800-63b.html) |\n| :---: | :--- | :---: | :---:| :---: | :---: | :---: |\n| **3.1.1** | Verify the application never reveals session tokens in URL parameters. | ✓ | ✓ | ✓ | 598 | |",
+      "token_count": 117,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V3 Session Management",
+        "V3.1 Fundamental Session Management Security"
+      ]
+    },
+    {
+      "chunk_id": "ver_d5ac6829b294_c00006",
+      "document_id": "doc_owasp_avss_session_management",
+      "version_id": "ver_d5ac6829b294",
+      "chunk_idx": 6,
+      "chunk_type": "heading",
+      "text_content": "## V3.2 Session Binding",
+      "token_count": 7,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V3 Session Management",
+        "V3.2 Session Binding"
+      ]
+    },
+    {
+      "chunk_id": "ver_d5ac6829b294_c00007",
+      "document_id": "doc_owasp_avss_session_management",
+      "version_id": "ver_d5ac6829b294",
+      "chunk_idx": 7,
+      "chunk_type": "table",
+      "text_content": "| # | Description | L1 | L2 | L3 | CWE | [NIST &sect;](https://pages.nist.gov/800-63-3/sp800-63b.html) |\n| :---: | :--- | :---: | :---:| :---: | :---: | :---: |\n| **3.2.1** | Verify the application generates a new session token on user authentication. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering)) | ✓ | ✓ | ✓ | 384 | 7.1 |\n| **3.2.2** | Verify that session tokens possess at least 64 bits of entropy. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering)) | ✓ | ✓ | ✓ | 331 | 7.1 |\n| **3.2.3** | Verify the application only stores session tokens in the browser using secure methods such as appropriately secured cookies (see section 3.4) or HTML 5 session storage. | ✓ | ✓ | ✓ | 539 | 7.1 |\n| **3.2.4** | Verify that session tokens are generated using approved cryptographic algorithms. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering)) | | ✓ | ✓ | 331 | 7.1 |",
+      "token_count": 327,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V3 Session Management",
+        "V3.2 Session Binding"
+      ]
+    },
+    {
+      "chunk_id": "ver_d5ac6829b294_c00008",
+      "document_id": "doc_owasp_avss_session_management",
+      "version_id": "ver_d5ac6829b294",
+      "chunk_idx": 8,
+      "chunk_type": "paragraph",
+      "text_content": "TLS or another secure transport channel is mandatory for session management.\n\nThis is covered off in the Communications Security chapter.",
+      "token_count": 22,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V3 Session Management",
+        "V3.2 Session Binding"
+      ]
+    },
+    {
+      "chunk_id": "ver_d5ac6829b294_c00009",
+      "document_id": "doc_owasp_avss_session_management",
+      "version_id": "ver_d5ac6829b294",
+      "chunk_idx": 9,
+      "chunk_type": "heading",
+      "text_content": "## V3.3 Session Termination",
+      "token_count": 7,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V3 Session Management",
+        "V3.3 Session Termination"
+      ]
+    },
+    {
+      "chunk_id": "ver_d5ac6829b294_c00010",
+      "document_id": "doc_owasp_avss_session_management",
+      "version_id": "ver_d5ac6829b294",
+      "chunk_idx": 10,
+      "chunk_type": "paragraph",
+      "text_content": "Session timeouts have been aligned with NIST 800-63, which permits much longer session timeouts than traditionally permitted by security standards.\n\nOrganizations should review the table below, and if a longer time out is desirable based around the application's risk, the NIST value should be the upper bounds of session idle timeouts.\n\nL1 in this context is IAL1/AAL1, L2 is IAL2/AAL3, L3 is IAL3/AAL3.\n\nFor IAL2/AAL2 and IAL3/AAL3, the shorter idle timeout is, the lower bound of idle times for being logged out or re-authenticated to resume the session.",
+      "token_count": 115,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V3 Session Management",
+        "V3.3 Session Termination"
+      ]
+    },
+    {
+      "chunk_id": "ver_d5ac6829b294_c00011",
+      "document_id": "doc_owasp_avss_session_management",
+      "version_id": "ver_d5ac6829b294",
+      "chunk_idx": 11,
+      "chunk_type": "table",
+      "text_content": "| # | Description | L1 | L2 | L3 | CWE | [NIST &sect;](https://pages.nist.gov/800-63-3/sp800-63b.html) |\n| :---: | :--- | :---: | :---:| :---: | :---: | :---: |\n| **3.3.1** | Verify that logout and expiration invalidate the session token, such that the back button or a downstream relying party does not resume an authenticated session, including across relying parties. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering)) | ✓ | ✓ | ✓ | 613 | 7.1 |\n| **3.3.2** | If authenticators permit users to remain logged in, verify that re-authentication occurs periodically both when actively used or after an idle period. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering)) | 30 days | 12 hours or 30 minutes of inactivity, 2FA optional | 12 hours or 15 minutes of inactivity, with 2FA | 613 | 7.2 |\n| **3.3.3** | Verify that the application gives the option to terminate all other active sessions after a successful password change (including change via password reset/recovery), and that this is effective across the application, federated login (if present), and any relying parties. | | ✓ | ✓ | 613 | |\n| **3.3.4** | Verify that users are able to view and (having re-entered login credentials) log out of any or all currently active sessions and devices. | | ✓ | ✓ | 613 | 7.1 |",
+      "token_count": 384,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V3 Session Management",
+        "V3.3 Session Termination"
+      ]
+    },
+    {
+      "chunk_id": "ver_d5ac6829b294_c00012",
+      "document_id": "doc_owasp_avss_session_management",
+      "version_id": "ver_d5ac6829b294",
+      "chunk_idx": 12,
+      "chunk_type": "heading",
+      "text_content": "## V3.4 Cookie-based Session Management",
+      "token_count": 10,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V3 Session Management",
+        "V3.4 Cookie-based Session Management"
+      ]
+    },
+    {
+      "chunk_id": "ver_d5ac6829b294_c00013",
+      "document_id": "doc_owasp_avss_session_management",
+      "version_id": "ver_d5ac6829b294",
+      "chunk_idx": 13,
+      "chunk_type": "table",
+      "text_content": "| # | Description | L1 | L2 | L3 | CWE | [NIST &sect;](https://pages.nist.gov/800-63-3/sp800-63b.html) |\n| :---: | :--- | :---: | :---:| :---: | :---: | :---: |\n| **3.4.1** | Verify that cookie-based session tokens have the 'Secure' attribute set. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering)) | ✓ | ✓ | ✓ | 614 | 7.1.1 |\n| **3.4.2** | Verify that cookie-based session tokens have the 'HttpOnly' attribute set. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering)) | ✓ | ✓ | ✓ | 1004 | 7.1.1 |\n| **3.4.3** | Verify that cookie-based session tokens utilize the 'SameSite' attribute to limit exposure to cross-site request forgery attacks. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering)) | ✓ | ✓ | ✓ | 1275 | 7.1.1 |\n| **3.4.4** | Verify that cookie-based session tokens use the \"__Host-\" prefix so cookies are only sent to the host that initially set the cookie. | ✓ | ✓ | ✓ | 16 | 7.1.1 |\n| **3.4.5** | Verify that if the application is published under a domain name with other applications that set or use session cookies that might disclose the session cookies, set the path attribute in cookie-based session tokens using the most precise path possible. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering)) | ✓ | ✓ | ✓ | 16 | 7.1.1 |",
+      "token_count": 449,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V3 Session Management",
+        "V3.4 Cookie-based Session Management"
+      ]
+    },
+    {
+      "chunk_id": "ver_d5ac6829b294_c00014",
+      "document_id": "doc_owasp_avss_session_management",
+      "version_id": "ver_d5ac6829b294",
+      "chunk_idx": 14,
+      "chunk_type": "heading",
+      "text_content": "## V3.5 Token-based Session Management",
+      "token_count": 10,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V3 Session Management",
+        "V3.5 Token-based Session Management"
+      ]
+    },
+    {
+      "chunk_id": "ver_d5ac6829b294_c00015",
+      "document_id": "doc_owasp_avss_session_management",
+      "version_id": "ver_d5ac6829b294",
+      "chunk_idx": 15,
+      "chunk_type": "paragraph",
+      "text_content": "Token-based session management includes JWT, OAuth, SAML, and API keys.\n\nOf these, API keys are known to be weak and should not be used in new code.",
+      "token_count": 35,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V3 Session Management",
+        "V3.5 Token-based Session Management"
+      ]
+    },
+    {
+      "chunk_id": "ver_d5ac6829b294_c00016",
+      "document_id": "doc_owasp_avss_session_management",
+      "version_id": "ver_d5ac6829b294",
+      "chunk_idx": 16,
+      "chunk_type": "table",
+      "text_content": "| # | Description | L1 | L2 | L3 | CWE | [NIST &sect;](https://pages.nist.gov/800-63-3/sp800-63b.html) |\n| :---: | :--- | :---: | :---:| :---: | :---: | :---: |\n| **3.5.1** | Verify the application allows users to revoke OAuth tokens that form trust relationships with linked applications. | | ✓ | ✓ | 290 | 7.1.2 |\n| **3.5.2** | Verify the application uses session tokens rather than static API secrets and keys, except with legacy implementations. | | ✓ | ✓ | 798 | |\n| **3.5.3** | Verify that stateless session tokens use digital signatures, encryption, and other countermeasures to protect against tampering, enveloping, replay, null cipher, and key substitution attacks. | | ✓ | ✓ | 345 | |",
+      "token_count": 217,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V3 Session Management",
+        "V3.5 Token-based Session Management"
+      ]
+    },
+    {
+      "chunk_id": "ver_d5ac6829b294_c00017",
+      "document_id": "doc_owasp_avss_session_management",
+      "version_id": "ver_d5ac6829b294",
+      "chunk_idx": 17,
+      "chunk_type": "heading",
+      "text_content": "## V3.6 Federated Re-authentication",
+      "token_count": 9,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V3 Session Management",
+        "V3.6 Federated Re-authentication"
+      ]
+    },
+    {
+      "chunk_id": "ver_d5ac6829b294_c00018",
+      "document_id": "doc_owasp_avss_session_management",
+      "version_id": "ver_d5ac6829b294",
+      "chunk_idx": 18,
+      "chunk_type": "paragraph",
+      "text_content": "This section relates to those writing Relying Party (RP) or Credential Service Provider (CSP) code.\n\nIf relying on code implementing these features, ensure that these issues are handled correctly.",
+      "token_count": 36,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V3 Session Management",
+        "V3.6 Federated Re-authentication"
+      ]
+    },
+    {
+      "chunk_id": "ver_d5ac6829b294_c00019",
+      "document_id": "doc_owasp_avss_session_management",
+      "version_id": "ver_d5ac6829b294",
+      "chunk_idx": 19,
+      "chunk_type": "table",
+      "text_content": "| # | Description | L1 | L2 | L3 | CWE | [NIST &sect;](https://pages.nist.gov/800-63-3/sp800-63b.html) |\n| :---: | :--- | :---: | :---:| :---: | :---: | :---: |\n| **3.6.1** | Verify that Relying Parties (RPs) specify the maximum authentication time to Credential Service Providers (CSPs) and that CSPs re-authenticate the user if they haven't used a session within that period. | | | ✓ | 613 | 7.2.1 |\n| **3.6.2** | Verify that Credential Service Providers (CSPs) inform Relying Parties (RPs) of the last authentication event, to allow RPs to determine if they need to re-authenticate the user. | | | ✓ | 613 | 7.2.1 |",
+      "token_count": 207,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V3 Session Management",
+        "V3.6 Federated Re-authentication"
+      ]
+    },
+    {
+      "chunk_id": "ver_d5ac6829b294_c00020",
+      "document_id": "doc_owasp_avss_session_management",
+      "version_id": "ver_d5ac6829b294",
+      "chunk_idx": 20,
+      "chunk_type": "heading",
+      "text_content": "## V3.7 Defenses Against Session Management Exploits",
+      "token_count": 10,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V3 Session Management",
+        "V3.7 Defenses Against Session Management Exploits"
+      ]
+    },
+    {
+      "chunk_id": "ver_d5ac6829b294_c00021",
+      "document_id": "doc_owasp_avss_session_management",
+      "version_id": "ver_d5ac6829b294",
+      "chunk_idx": 21,
+      "chunk_type": "paragraph",
+      "text_content": "There are a small number of session management attacks, some related to the user experience (UX) of sessions.\n\nPreviously, based on ISO 27002 requirements, the ASVS has required blocking multiple simultaneous sessions.\n\nBlocking simultaneous sessions is no longer appropriate, not only as modern users have many devices or the app is an API without a browser session, but in most of these implementations, the last authenticator wins, which is often the attacker.\n\nThis section provides leading guidance on deterring, delaying and detecting session management attacks using code.",
+      "token_count": 101,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V3 Session Management",
+        "V3.7 Defenses Against Session Management Exploits"
+      ]
+    },
+    {
+      "chunk_id": "ver_d5ac6829b294_c00022",
+      "document_id": "doc_owasp_avss_session_management",
+      "version_id": "ver_d5ac6829b294",
+      "chunk_idx": 22,
+      "chunk_type": "heading",
+      "text_content": "### Description of the half-open Attack",
+      "token_count": 10,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V3 Session Management",
+        "V3.7 Defenses Against Session Management Exploits",
+        "Description of the half-open Attack"
+      ]
+    },
+    {
+      "chunk_id": "ver_d5ac6829b294_c00023",
+      "document_id": "doc_owasp_avss_session_management",
+      "version_id": "ver_d5ac6829b294",
+      "chunk_idx": 23,
+      "chunk_type": "paragraph",
+      "text_content": "In early 2018, several financial institutions were compromised using what the attackers called \"half-open attacks\".\n\nThis term has stuck in the industry.\n\nThe attackers struck multiple institutions with different proprietary code bases, and indeed it seems different code bases within the same institutions.\n\nThe half-open attack is exploiting a design pattern flaw commonly found in many existing authentication, session management and access control systems.\n\nAttackers start a half-open attack by attempting to lock, reset, or recover a credential.\n\nA popular session management design pattern re-uses user profile session objects/models between unauthenticated, half-authenticated (password resets, forgot username), and fully authenticated code.\n\nThis design pattern populates a valid session object or token containing the victim's profile, including password hashes and roles.\n\nIf access control checks in controllers or routers does not correctly verify that the user is fully logged in, the attacker will be able to act as the user.\n\nAttacks could include changing the user's password to a known value, update the email address to perform a valid password reset, disable multi-factor authentication or enroll a new MFA device, reveal or change API keys, and so on.",
+      "token_count": 231,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V3 Session Management",
+        "V3.7 Defenses Against Session Management Exploits",
+        "Description of the half-open Attack"
+      ]
+    },
+    {
+      "chunk_id": "ver_d5ac6829b294_c00024",
+      "document_id": "doc_owasp_avss_session_management",
+      "version_id": "ver_d5ac6829b294",
+      "chunk_idx": 24,
+      "chunk_type": "table",
+      "text_content": "| # | Description | L1 | L2 | L3 | CWE | [NIST &sect;](https://pages.nist.gov/800-63-3/sp800-63b.html) |\n| :---: | :--- | :---: | :---:| :---: | :---: | :---: |\n| **3.7.1** | Verify the application ensures a full, valid login session or requires re-authentication or secondary verification before allowing any sensitive transactions or account modifications. | ✓ | ✓ | ✓ | 306 | |",
+      "token_count": 133,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V3 Session Management",
+        "V3.7 Defenses Against Session Management Exploits",
+        "Description of the half-open Attack"
+      ]
+    },
+    {
+      "chunk_id": "ver_d5ac6829b294_c00025",
+      "document_id": "doc_owasp_avss_session_management",
+      "version_id": "ver_d5ac6829b294",
+      "chunk_idx": 25,
+      "chunk_type": "heading",
+      "text_content": "## References",
+      "token_count": 3,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V3 Session Management",
+        "References"
+      ]
+    },
+    {
+      "chunk_id": "ver_d5ac6829b294_c00026",
+      "document_id": "doc_owasp_avss_session_management",
+      "version_id": "ver_d5ac6829b294",
+      "chunk_idx": 26,
+      "chunk_type": "mixed",
+      "text_content": "For more information, see also:\n\n* [OWASP Testing Guide 4.0: Session Management Testing](https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/06-Session_Management_Testing/README.html)\n* [OWASP Session Management Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html)\n* [Set-Cookie __Host- prefix details](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#Directives)",
+      "token_count": 119,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V3 Session Management",
+        "References"
+      ]
+    }
+  ],
+  "chunk_sources": [
+    {
+      "chunk_source_id": "ver_d5ac6829b294_c00000_s000",
+      "chunk_id": "ver_d5ac6829b294_c00000",
+      "normalized_block_id": "nrm_ver_d5ac6829b294_b00000",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 23
+    },
+    {
+      "chunk_source_id": "ver_d5ac6829b294_c00001_s000",
+      "chunk_id": "ver_d5ac6829b294_c00001",
+      "normalized_block_id": "nrm_ver_d5ac6829b294_b00001",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 20
+    },
+    {
+      "chunk_source_id": "ver_d5ac6829b294_c00002_s000",
+      "chunk_id": "ver_d5ac6829b294_c00002",
+      "normalized_block_id": "nrm_ver_d5ac6829b294_b00002",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 175
+    },
+    {
+      "chunk_source_id": "ver_d5ac6829b294_c00002_s001",
+      "chunk_id": "ver_d5ac6829b294_c00002",
+      "normalized_block_id": "nrm_ver_d5ac6829b294_b00002",
+      "source_order": 1,
+      "start_offset": 176,
+      "end_offset": 302
+    },
+    {
+      "chunk_source_id": "ver_d5ac6829b294_c00002_s002",
+      "chunk_id": "ver_d5ac6829b294_c00002",
+      "normalized_block_id": "nrm_ver_d5ac6829b294_b00003",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 102
+    },
+    {
+      "chunk_source_id": "ver_d5ac6829b294_c00002_s003",
+      "chunk_id": "ver_d5ac6829b294_c00002",
+      "normalized_block_id": "nrm_ver_d5ac6829b294_b00004",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 73
+    },
+    {
+      "chunk_source_id": "ver_d5ac6829b294_c00002_s004",
+      "chunk_id": "ver_d5ac6829b294_c00002",
+      "normalized_block_id": "nrm_ver_d5ac6829b294_b00004",
+      "source_order": 4,
+      "start_offset": 74,
+      "end_offset": 168
+    },
+    {
+      "chunk_source_id": "ver_d5ac6829b294_c00002_s005",
+      "chunk_id": "ver_d5ac6829b294_c00002",
+      "normalized_block_id": "nrm_ver_d5ac6829b294_b00005",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 197
+    },
+    {
+      "chunk_source_id": "ver_d5ac6829b294_c00002_s006",
+      "chunk_id": "ver_d5ac6829b294_c00002",
+      "normalized_block_id": "nrm_ver_d5ac6829b294_b00005",
+      "source_order": 6,
+      "start_offset": 198,
+      "end_offset": 415
+    },
+    {
+      "chunk_source_id": "ver_d5ac6829b294_c00003_s000",
+      "chunk_id": "ver_d5ac6829b294_c00003",
+      "normalized_block_id": "nrm_ver_d5ac6829b294_b00006",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 37
+    },
+    {
+      "chunk_source_id": "ver_d5ac6829b294_c00004_s000",
+      "chunk_id": "ver_d5ac6829b294_c00004",
+      "normalized_block_id": "nrm_ver_d5ac6829b294_b00007",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 47
+    },
+    {
+      "chunk_source_id": "ver_d5ac6829b294_c00005_s000",
+      "chunk_id": "ver_d5ac6829b294_c00005",
+      "normalized_block_id": "nrm_ver_d5ac6829b294_b00008",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 267
+    },
+    {
+      "chunk_source_id": "ver_d5ac6829b294_c00006_s000",
+      "chunk_id": "ver_d5ac6829b294_c00006",
+      "normalized_block_id": "nrm_ver_d5ac6829b294_b00009",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 23
+    },
+    {
+      "chunk_source_id": "ver_d5ac6829b294_c00007_s000",
+      "chunk_id": "ver_d5ac6829b294_c00007",
+      "normalized_block_id": "nrm_ver_d5ac6829b294_b00010",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 926
+    },
+    {
+      "chunk_source_id": "ver_d5ac6829b294_c00008_s000",
+      "chunk_id": "ver_d5ac6829b294_c00008",
+      "normalized_block_id": "nrm_ver_d5ac6829b294_b00011",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 76
+    },
+    {
+      "chunk_source_id": "ver_d5ac6829b294_c00008_s001",
+      "chunk_id": "ver_d5ac6829b294_c00008",
+      "normalized_block_id": "nrm_ver_d5ac6829b294_b00011",
+      "source_order": 1,
+      "start_offset": 77,
+      "end_offset": 136
+    },
+    {
+      "chunk_source_id": "ver_d5ac6829b294_c00009_s000",
+      "chunk_id": "ver_d5ac6829b294_c00009",
+      "normalized_block_id": "nrm_ver_d5ac6829b294_b00012",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 27
+    },
+    {
+      "chunk_source_id": "ver_d5ac6829b294_c00010_s000",
+      "chunk_id": "ver_d5ac6829b294_c00010",
+      "normalized_block_id": "nrm_ver_d5ac6829b294_b00013",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 147
+    },
+    {
+      "chunk_source_id": "ver_d5ac6829b294_c00010_s001",
+      "chunk_id": "ver_d5ac6829b294_c00010",
+      "normalized_block_id": "nrm_ver_d5ac6829b294_b00013",
+      "source_order": 1,
+      "start_offset": 148,
+      "end_offset": 335
+    },
+    {
+      "chunk_source_id": "ver_d5ac6829b294_c00010_s002",
+      "chunk_id": "ver_d5ac6829b294_c00010",
+      "normalized_block_id": "nrm_ver_d5ac6829b294_b00014",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 66
+    },
+    {
+      "chunk_source_id": "ver_d5ac6829b294_c00010_s003",
+      "chunk_id": "ver_d5ac6829b294_c00010",
+      "normalized_block_id": "nrm_ver_d5ac6829b294_b00014",
+      "source_order": 3,
+      "start_offset": 67,
+      "end_offset": 218
+    },
+    {
+      "chunk_source_id": "ver_d5ac6829b294_c00011_s000",
+      "chunk_id": "ver_d5ac6829b294_c00011",
+      "normalized_block_id": "nrm_ver_d5ac6829b294_b00015",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 1314
+    },
+    {
+      "chunk_source_id": "ver_d5ac6829b294_c00012_s000",
+      "chunk_id": "ver_d5ac6829b294_c00012",
+      "normalized_block_id": "nrm_ver_d5ac6829b294_b00016",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 39
+    },
+    {
+      "chunk_source_id": "ver_d5ac6829b294_c00013_s000",
+      "chunk_id": "ver_d5ac6829b294_c00013",
+      "normalized_block_id": "nrm_ver_d5ac6829b294_b00017",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 1322
+    },
+    {
+      "chunk_source_id": "ver_d5ac6829b294_c00014_s000",
+      "chunk_id": "ver_d5ac6829b294_c00014",
+      "normalized_block_id": "nrm_ver_d5ac6829b294_b00018",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 38
+    },
+    {
+      "chunk_source_id": "ver_d5ac6829b294_c00015_s000",
+      "chunk_id": "ver_d5ac6829b294_c00015",
+      "normalized_block_id": "nrm_ver_d5ac6829b294_b00019",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 71
+    },
+    {
+      "chunk_source_id": "ver_d5ac6829b294_c00015_s001",
+      "chunk_id": "ver_d5ac6829b294_c00015",
+      "normalized_block_id": "nrm_ver_d5ac6829b294_b00019",
+      "source_order": 1,
+      "start_offset": 72,
+      "end_offset": 147
+    },
+    {
+      "chunk_source_id": "ver_d5ac6829b294_c00016_s000",
+      "chunk_id": "ver_d5ac6829b294_c00016",
+      "normalized_block_id": "nrm_ver_d5ac6829b294_b00020",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 695
+    },
+    {
+      "chunk_source_id": "ver_d5ac6829b294_c00017_s000",
+      "chunk_id": "ver_d5ac6829b294_c00017",
+      "normalized_block_id": "nrm_ver_d5ac6829b294_b00021",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 35
+    },
+    {
+      "chunk_source_id": "ver_d5ac6829b294_c00018_s000",
+      "chunk_id": "ver_d5ac6829b294_c00018",
+      "normalized_block_id": "nrm_ver_d5ac6829b294_b00022",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 99
+    },
+    {
+      "chunk_source_id": "ver_d5ac6829b294_c00018_s001",
+      "chunk_id": "ver_d5ac6829b294_c00018",
+      "normalized_block_id": "nrm_ver_d5ac6829b294_b00022",
+      "source_order": 1,
+      "start_offset": 100,
+      "end_offset": 195
+    },
+    {
+      "chunk_source_id": "ver_d5ac6829b294_c00019_s000",
+      "chunk_id": "ver_d5ac6829b294_c00019",
+      "normalized_block_id": "nrm_ver_d5ac6829b294_b00023",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 618
+    },
+    {
+      "chunk_source_id": "ver_d5ac6829b294_c00020_s000",
+      "chunk_id": "ver_d5ac6829b294_c00020",
+      "normalized_block_id": "nrm_ver_d5ac6829b294_b00024",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 52
+    },
+    {
+      "chunk_source_id": "ver_d5ac6829b294_c00021_s000",
+      "chunk_id": "ver_d5ac6829b294_c00021",
+      "normalized_block_id": "nrm_ver_d5ac6829b294_b00025",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 109
+    },
+    {
+      "chunk_source_id": "ver_d5ac6829b294_c00021_s001",
+      "chunk_id": "ver_d5ac6829b294_c00021",
+      "normalized_block_id": "nrm_ver_d5ac6829b294_b00025",
+      "source_order": 1,
+      "start_offset": 110,
+      "end_offset": 217
+    },
+    {
+      "chunk_source_id": "ver_d5ac6829b294_c00021_s002",
+      "chunk_id": "ver_d5ac6829b294_c00021",
+      "normalized_block_id": "nrm_ver_d5ac6829b294_b00025",
+      "source_order": 2,
+      "start_offset": 218,
+      "end_offset": 461
+    },
+    {
+      "chunk_source_id": "ver_d5ac6829b294_c00021_s003",
+      "chunk_id": "ver_d5ac6829b294_c00021",
+      "normalized_block_id": "nrm_ver_d5ac6829b294_b00025",
+      "source_order": 3,
+      "start_offset": 462,
+      "end_offset": 576
+    },
+    {
+      "chunk_source_id": "ver_d5ac6829b294_c00022_s000",
+      "chunk_id": "ver_d5ac6829b294_c00022",
+      "normalized_block_id": "nrm_ver_d5ac6829b294_b00026",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 39
+    },
+    {
+      "chunk_source_id": "ver_d5ac6829b294_c00023_s000",
+      "chunk_id": "ver_d5ac6829b294_c00023",
+      "normalized_block_id": "nrm_ver_d5ac6829b294_b00027",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 115
+    },
+    {
+      "chunk_source_id": "ver_d5ac6829b294_c00023_s001",
+      "chunk_id": "ver_d5ac6829b294_c00023",
+      "normalized_block_id": "nrm_ver_d5ac6829b294_b00027",
+      "source_order": 1,
+      "start_offset": 116,
+      "end_offset": 152
+    },
+    {
+      "chunk_source_id": "ver_d5ac6829b294_c00023_s002",
+      "chunk_id": "ver_d5ac6829b294_c00023",
+      "normalized_block_id": "nrm_ver_d5ac6829b294_b00027",
+      "source_order": 2,
+      "start_offset": 153,
+      "end_offset": 305
+    },
+    {
+      "chunk_source_id": "ver_d5ac6829b294_c00023_s003",
+      "chunk_id": "ver_d5ac6829b294_c00023",
+      "normalized_block_id": "nrm_ver_d5ac6829b294_b00027",
+      "source_order": 3,
+      "start_offset": 306,
+      "end_offset": 457
+    },
+    {
+      "chunk_source_id": "ver_d5ac6829b294_c00023_s004",
+      "chunk_id": "ver_d5ac6829b294_c00023",
+      "normalized_block_id": "nrm_ver_d5ac6829b294_b00028",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 89
+    },
+    {
+      "chunk_source_id": "ver_d5ac6829b294_c00023_s005",
+      "chunk_id": "ver_d5ac6829b294_c00023",
+      "normalized_block_id": "nrm_ver_d5ac6829b294_b00028",
+      "source_order": 5,
+      "start_offset": 90,
+      "end_offset": 287
+    },
+    {
+      "chunk_source_id": "ver_d5ac6829b294_c00023_s006",
+      "chunk_id": "ver_d5ac6829b294_c00023",
+      "normalized_block_id": "nrm_ver_d5ac6829b294_b00028",
+      "source_order": 6,
+      "start_offset": 288,
+      "end_offset": 419
+    },
+    {
+      "chunk_source_id": "ver_d5ac6829b294_c00023_s007",
+      "chunk_id": "ver_d5ac6829b294_c00023",
+      "normalized_block_id": "nrm_ver_d5ac6829b294_b00028",
+      "source_order": 7,
+      "start_offset": 420,
+      "end_offset": 576
+    },
+    {
+      "chunk_source_id": "ver_d5ac6829b294_c00023_s008",
+      "chunk_id": "ver_d5ac6829b294_c00023",
+      "normalized_block_id": "nrm_ver_d5ac6829b294_b00028",
+      "source_order": 8,
+      "start_offset": 577,
+      "end_offset": 807
+    },
+    {
+      "chunk_source_id": "ver_d5ac6829b294_c00024_s000",
+      "chunk_id": "ver_d5ac6829b294_c00024",
+      "normalized_block_id": "nrm_ver_d5ac6829b294_b00029",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 380
+    },
+    {
+      "chunk_source_id": "ver_d5ac6829b294_c00025_s000",
+      "chunk_id": "ver_d5ac6829b294_c00025",
+      "normalized_block_id": "nrm_ver_d5ac6829b294_b00030",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 13
+    },
+    {
+      "chunk_source_id": "ver_d5ac6829b294_c00026_s000",
+      "chunk_id": "ver_d5ac6829b294_c00026",
+      "normalized_block_id": "nrm_ver_d5ac6829b294_b00031",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 31
+    },
+    {
+      "chunk_source_id": "ver_d5ac6829b294_c00026_s001",
+      "chunk_id": "ver_d5ac6829b294_c00026",
+      "normalized_block_id": "nrm_ver_d5ac6829b294_b00032",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 438
+    }
+  ]
+}

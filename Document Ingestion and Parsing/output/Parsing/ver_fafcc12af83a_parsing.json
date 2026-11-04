@@ -1,0 +1,1993 @@
+[
+  {
+    "block_id": "ver_fafcc12af83a_b00000",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 0,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "# Injection Prevention Cheat Sheet",
+    "text_hash": "277a43bbf477cb2598587979af5121822cfe2aa4e10d91b89cdcf7551a4bfe2d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 1,
+      "end_line": 1
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet"
+    ],
+    "heading_level": 1,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00001",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 1,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Introduction",
+    "text_hash": "d753efbab681fa4da82470d9a83b1c202de58f92fd498e77a269c1163bc4714b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 3,
+      "end_line": 3
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00002",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 2,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "This article is focused on providing clear, simple, actionable guidance for preventing injection flaws in your applications. Injection attacks, for example [SQL Injection](https://owasp.org/www-community/attacks/SQL_Injection), are unfortunately very common.",
+    "text_hash": "c6cff68170759f9994e8323bbc11d830ca5a73abbb368ff042c30cd05055bbe8",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 5,
+      "end_line": 5
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00003",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 3,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Application accessibility is a very important factor in protection and prevention of injection flaws. Only the minority of all applications within a company/enterprise are developed in house, where as most applications are from external sources. Open source applications give at least the opportunity to fix problems, but closed source applications need a different approach to injection flaws.",
+    "text_hash": "0bb65c755265bb86821631388491c0dbf71fb233fb1b807674e67fc4546f0ded",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 7,
+      "end_line": 7
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00004",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 4,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Injection flaws occur when an application sends untrusted data to an interpreter. Injection flaws are very prevalent, particularly in legacy code, often found in SQL queries, LDAP queries, XPath queries, OS commands, program arguments, etc. Injection flaws are easy to discover when examining code, but more difficult via testing. Scanners and fuzzers can help attackers find them.",
+    "text_hash": "5c1d5bdf60319fa707ad1ca97ded7f2e918bba29079c35d858acc29910a6600c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 9,
+      "end_line": 9
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00005",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 5,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Depending on the accessibility different actions must be taken in order to fix them. It is always the best way to fix the problem in source code itself, or even redesign some parts of the applications. But if the source code is not available or it is simply uneconomical to fix legacy software only virtual patching makes sense.",
+    "text_hash": "5a27ceebdcb2294073086b6ac37eb7fd81b31d21c8072fe90abf26c22f8cc078",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 11,
+      "end_line": 11
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00006",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 6,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Application Types",
+    "text_hash": "de31bd014bd1d77772c4b90e7ee02cd284af85c668304ddf33ee6f8a4ef8bec2",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 13,
+      "end_line": 13
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Application Types"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00007",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 7,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Three classes of applications can usually be seen within a company. Those 3 types are needed to identify the actions which need to take place in order to prevent/fix injection flaws.",
+    "text_hash": "6147fca999681a09899b826e1957ace84360263e4bb90af50fb48999f5127d22",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 15,
+      "end_line": 15
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Application Types"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00008",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 8,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### A1: New Application",
+    "text_hash": "841f5c3113dd97082368951a7877ee0cc698e0bd28587a744337aa790e6306cf",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 17,
+      "end_line": 17
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Application Types",
+      "A1: New Application"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00009",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 9,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "A new web application in the design phase, or in early stage development.",
+    "text_hash": "561bb3d53bce29d6ee2a07cb166d99a03edc2135ca8addecf524db23300fe01c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 19,
+      "end_line": 19
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Application Types",
+      "A1: New Application"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00010",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 10,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### A2: Productive Open Source Application",
+    "text_hash": "9e2d44b5002a328de2a99554092f36a55264f0fae1730fc5b29edb57e36d4d6d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 21,
+      "end_line": 21
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Application Types",
+      "A2: Productive Open Source Application"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00011",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 11,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "An already productive application, which can be easily adapted. A Model-View-Controller (MVC) type application is just one example of having a easily accessible application architecture.",
+    "text_hash": "94cf74d664f807ae7ed2d1eda1d78a4775fb32287505e4219c9555c6c957d2e8",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 23,
+      "end_line": 23
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Application Types",
+      "A2: Productive Open Source Application"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00012",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 12,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### A3: Productive Closed Source Application",
+    "text_hash": "737c97cc7cfcab32b8b964d2f2c449c8877a4b59fbc6ad2b9a8c628cea24fa70",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 25,
+      "end_line": 25
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Application Types",
+      "A3: Productive Closed Source Application"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00013",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 13,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "A productive application which cannot or only with difficulty be modified.",
+    "text_hash": "d2118d61dc40bb6d5039c941d73a9afbd99cd0f363d86d5f35ea91a11750d383",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 27,
+      "end_line": 27
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Application Types",
+      "A3: Productive Closed Source Application"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00014",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 14,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Forms of Injection",
+    "text_hash": "e43e025aa1d41b3070ce9e28c9ab63d9f8f104f3358dbe1814906d3477172b34",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 29,
+      "end_line": 29
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Forms of Injection"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00015",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 15,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Use the guidance for the query language or interpreter your application uses:",
+    "text_hash": "6e6a5dd591d592b1414df31eccc2bd57c0ad77d63c7da0dfce92942ab3894d1c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 31,
+      "end_line": 31
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Forms of Injection"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00016",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 16,
+    "file_format": "MARKDOWN",
+    "block_type": "table",
+    "text_content": "| Type | When | Reference |\n|------|------|-----------|\n| SQL injection | Builds SQL queries | [SQL Injection Prevention](SQL_Injection_Prevention_Cheat_Sheet.md) and [Query Parameterization](Query_Parameterization_Cheat_Sheet.md) |\n| Object-relational mapper query injection | Builds query strings with tools such as Hibernate | [SQL Injection Prevention](SQL_Injection_Prevention_Cheat_Sheet.md) and [Query Parameterization](Query_Parameterization_Cheat_Sheet.md) |\n| NoSQL injection | Builds queries for a NoSQL database | [NoSQL Security](NoSQL_Security_Cheat_Sheet.md) |\n| Cross-site scripting (XSS) | Places untrusted data into browser content | [Cross Site Scripting Prevention](Cross_Site_Scripting_Prevention_Cheat_Sheet.md) and [DOM based XSS Prevention](DOM_based_XSS_Prevention_Cheat_Sheet.md) |\n| LDAP injection | Builds LDAP queries | [LDAP Injection Prevention](LDAP_Injection_Prevention_Cheat_Sheet.md) |\n| XPath injection | Builds XPath queries | [XPath Injection Prevention](XPath_Injection_Prevention_Cheat_Sheet.md) |\n| OS command injection | Invokes operating system commands | [OS Command Injection Defense](OS_Command_Injection_Defense_Cheat_Sheet.md) |\n| Argument injection | Passes untrusted input as command arguments | [Argument Injection](OS_Command_Injection_Defense_Cheat_Sheet.md#argument-injection) |",
+    "text_hash": "62c3c36ea8b6cfeacad53039c04f5d8b0d6e8cd52d37810c1119ee29c8497b0a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 33,
+      "end_line": 42
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Forms of Injection"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": [
+      "Type",
+      "When",
+      "Reference"
+    ],
+    "table_rows": [
+      [
+        "SQL injection",
+        "Builds SQL queries",
+        "[SQL Injection Prevention](SQL_Injection_Prevention_Cheat_Sheet.md) and [Query Parameterization](Query_Parameterization_Cheat_Sheet.md)"
+      ],
+      [
+        "Object-relational mapper query injection",
+        "Builds query strings with tools such as Hibernate",
+        "[SQL Injection Prevention](SQL_Injection_Prevention_Cheat_Sheet.md) and [Query Parameterization](Query_Parameterization_Cheat_Sheet.md)"
+      ],
+      [
+        "NoSQL injection",
+        "Builds queries for a NoSQL database",
+        "[NoSQL Security](NoSQL_Security_Cheat_Sheet.md)"
+      ],
+      [
+        "Cross-site scripting (XSS)",
+        "Places untrusted data into browser content",
+        "[Cross Site Scripting Prevention](Cross_Site_Scripting_Prevention_Cheat_Sheet.md) and [DOM based XSS Prevention](DOM_based_XSS_Prevention_Cheat_Sheet.md)"
+      ],
+      [
+        "LDAP injection",
+        "Builds LDAP queries",
+        "[LDAP Injection Prevention](LDAP_Injection_Prevention_Cheat_Sheet.md)"
+      ],
+      [
+        "XPath injection",
+        "Builds XPath queries",
+        "[XPath Injection Prevention](XPath_Injection_Prevention_Cheat_Sheet.md)"
+      ],
+      [
+        "OS command injection",
+        "Invokes operating system commands",
+        "[OS Command Injection Defense](OS_Command_Injection_Defense_Cheat_Sheet.md)"
+      ],
+      [
+        "Argument injection",
+        "Passes untrusted input as command arguments",
+        "[Argument Injection](OS_Command_Injection_Defense_Cheat_Sheet.md#argument-injection)"
+      ]
+    ],
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00017",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 17,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "For Java-specific guidance, see [Injection Prevention in Java](Injection_Prevention_in_Java_Cheat_Sheet.md).",
+    "text_hash": "6229cfff1fb28e36b650cb41d81b46ddd6745fdbac1bc5e249a5ec6fb24fd776",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 44,
+      "end_line": 44
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Forms of Injection"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00018",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 18,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Query languages",
+    "text_hash": "70aa5f1612babd0f9100619694f766d5b9f6e2e8503e0e313f824aede37a3153",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 46,
+      "end_line": 46
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Forms of Injection",
+      "Query languages"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00019",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 19,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### LDAP Injection",
+    "text_hash": "35ac6fbbe7c62dc0346a72aaa02ed92e50af1bb5cf60367619c45bbe9dfdac9f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 48,
+      "end_line": 48
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Forms of Injection",
+      "Query languages",
+      "LDAP Injection"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00020",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 20,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "LDAP Injection is an attack used to exploit web based applications that construct LDAP statements based on user input. When an application fails to properly sanitize user input, it's possible to modify LDAP statements through techniques similar to [SQL Injection](https://owasp.org/www-community/attacks/SQL_Injection). LDAP injection attacks could result in the granting of permissions to unauthorized queries, and content modification inside the LDAP tree. For more information on LDAP Injection attacks, visit [LDAP injection](https://owasp.org/www-community/attacks/LDAP_Injection).",
+    "text_hash": "de3fe2a0d5907cccf35fa32d0c443fa59b79cb3b7fddfcfb9d06e95e81fffa4b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 50,
+      "end_line": 50
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Forms of Injection",
+      "Query languages",
+      "LDAP Injection"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00021",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 21,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[LDAP injection](https://owasp.org/www-community/attacks/LDAP_Injection) attacks are common due to two factors:",
+    "text_hash": "9a822e6976d1b54881b59ae789a7c908f10c31e3a7ce09d17dbbee61cc30bbca",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 52,
+      "end_line": 52
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Forms of Injection",
+      "Query languages",
+      "LDAP Injection"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00022",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 22,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "1. The lack of safer, parameterized LDAP query interfaces\n2. The widespread use of LDAP to authenticate users to systems.\n",
+    "text_hash": "afb47d04ba0770b4858df77c398cd7d654bc59cd468971bb3598d988d2c42ce8",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 54,
+      "end_line": 56
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Forms of Injection",
+      "Query languages",
+      "LDAP Injection"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00023",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 23,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "##### How to test for the issue",
+    "text_hash": "93209561e6a8355ff5e41c7436c5dfbedb68c0aa43c20c33ffd7c94ae4c0cf6d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 57,
+      "end_line": 57
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Forms of Injection",
+      "Query languages",
+      "LDAP Injection",
+      "How to test for the issue"
+    ],
+    "heading_level": 5,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00024",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 24,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "###### During code review",
+    "text_hash": "3b451993d0424d8cebfa3501e1ae581d47095565006b09f7140ce2cb97324074",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 59,
+      "end_line": 59
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Forms of Injection",
+      "Query languages",
+      "LDAP Injection",
+      "How to test for the issue",
+      "During code review"
+    ],
+    "heading_level": 6,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00025",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 25,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Please check for any queries to the LDAP escape special characters, see [here](LDAP_Injection_Prevention_Cheat_Sheet.md#defense-option-1-escape-all-variables-using-the-right-ldap-encoding-function).",
+    "text_hash": "b5d843708d85ad9c7681fd07b4c3d960d1b28d2440612d52cf1d9110acbd0ebd",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 61,
+      "end_line": 61
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Forms of Injection",
+      "Query languages",
+      "LDAP Injection",
+      "How to test for the issue",
+      "During code review"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00026",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 26,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "###### Automated Exploitation",
+    "text_hash": "11bfa71b6b9d76637b5d495ff2069a67fe5448b81aa391e3d1c76b669f889d57",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 63,
+      "end_line": 63
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Forms of Injection",
+      "Query languages",
+      "LDAP Injection",
+      "How to test for the issue",
+      "Automated Exploitation"
+    ],
+    "heading_level": 6,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00027",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 27,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Scanner module of tool like OWASP [ZAP](https://www.zaproxy.org/) have module to detect LDAP injection issue.",
+    "text_hash": "8b78fe649ad11ac5a3d82ae9771029dba4bc4e830bf6656f5a5a57f29d902eec",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 65,
+      "end_line": 65
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Forms of Injection",
+      "Query languages",
+      "LDAP Injection",
+      "How to test for the issue",
+      "Automated Exploitation"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00028",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 28,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "##### Remediation",
+    "text_hash": "0072197a1064984ff9b9aa8de87b1bd95f9ee78ded91cc24e3b19ee0b67a6f62",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 67,
+      "end_line": 67
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Forms of Injection",
+      "Query languages",
+      "LDAP Injection",
+      "Remediation"
+    ],
+    "heading_level": 5,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00029",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 29,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "###### Use the right LDAP encoding function",
+    "text_hash": "5e136b77ccc2298f49ac81a88a877cae682fbf9c199cd8e1c44e3cd8eb900a0b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 69,
+      "end_line": 69
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Forms of Injection",
+      "Query languages",
+      "LDAP Injection",
+      "Remediation",
+      "Use the right LDAP encoding function"
+    ],
+    "heading_level": 6,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00030",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 30,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "LDAP distinguished names and LDAP search filters require different escaping rules, defined by [RFC 4514](https://datatracker.ietf.org/doc/html/rfc4514) and [RFC 4515](https://datatracker.ietf.org/doc/html/rfc4515), respectively. Avoid custom escaping code and use a library encoder for the correct context. See the [LDAP Injection Prevention Cheat Sheet](LDAP_Injection_Prevention_Cheat_Sheet.md) for current defenses and examples.",
+    "text_hash": "d60e366eb43a768bf42606fb75ff59a64fd6dbc083a83991ca813bd81a7a4d42",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 71,
+      "end_line": 71
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Forms of Injection",
+      "Query languages",
+      "LDAP Injection",
+      "Remediation",
+      "Use the right LDAP encoding function"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00031",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 31,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### XPath Injection",
+    "text_hash": "4028bb9d17e2802bde72d39f42731c8c20151d30a03c883be0134c7f108190ec",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 73,
+      "end_line": 73
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Forms of Injection",
+      "Query languages",
+      "XPath Injection"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00032",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 32,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "See the [XPath Injection Prevention Cheat Sheet](XPath_Injection_Prevention_Cheat_Sheet.md) for defenses and a parameterized query example.",
+    "text_hash": "ae5c8268a0a99951328ed4afed2ed1b3db0ef29da73d71ab7785b46ecb82202a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 75,
+      "end_line": 75
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Forms of Injection",
+      "Query languages",
+      "XPath Injection"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00033",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 33,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Scripting languages",
+    "text_hash": "ff78604bdd0eba246009facce7c507c427bbe1fe0e73d4051d7aafaf362f089a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 77,
+      "end_line": 77
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Forms of Injection",
+      "Scripting languages"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00034",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 34,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "All scripting languages used in web applications have a form of an `eval` call which receives code at runtime and executes it. If code is crafted using unvalidated and unescaped user input code injection can occur which allows an attacker to subvert application logic and eventually to gain local access.",
+    "text_hash": "369285ee63548e91c73eca4ce576852db345defb5d593d84820ab2fa02ce9a37",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 79,
+      "end_line": 79
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Forms of Injection",
+      "Scripting languages"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00035",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 35,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Every time a scripting language is used, the actual implementation of the 'higher' scripting language is done using a 'lower' language like C. If the scripting language has a flaw in the data handling code '[Null Byte Injection](http://projects.webappsec.org/w/page/13246949/Null%20Byte%20Injection)' attack vectors can be deployed to gain access to other areas in memory, which results in a successful attack.",
+    "text_hash": "429748dbab634beaa3cb5b2759f0d2df90d3c99d4cf7df96ab442671ca82e45f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 81,
+      "end_line": 81
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Forms of Injection",
+      "Scripting languages"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00036",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 36,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Operating System Commands",
+    "text_hash": "37bc1eaf4eb7edf86f1e71d83b0988db805daef63c4295bec155c18731e14822",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 83,
+      "end_line": 83
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Forms of Injection",
+      "Operating System Commands"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00037",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 37,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "OS command injection is a technique used via a web interface in order to execute OS commands on a web server. The user supplies operating system commands through a web interface in order to execute OS commands.",
+    "text_hash": "eec7957ad0fae06886c13cf96258b83101e34756c5716d1f3c2d141934f114f6",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 85,
+      "end_line": 85
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Forms of Injection",
+      "Operating System Commands"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00038",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 38,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Any web interface that is not properly sanitized is subject to this exploit. With the ability to execute OS commands, the user can upload malicious programs or even obtain passwords. OS command injection is preventable when security is emphasized during the design and development of applications.",
+    "text_hash": "97266265dfa4b06220d344018462218029c02dc32bc03e6d3fcb28fca4c42244",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 87,
+      "end_line": 87
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Forms of Injection",
+      "Operating System Commands"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00039",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 39,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### How to test for the issue",
+    "text_hash": "7976ff6533700c715227dff990a2cf11f2eb665571084ba9d28ac8e074891499",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 89,
+      "end_line": 89
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Forms of Injection",
+      "Operating System Commands",
+      "How to test for the issue"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00040",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 40,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "##### During code review",
+    "text_hash": "1d4add00ef492d8e45767412442a0f4054cc0fa949bfce62baefa368d8ea4c54",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 91,
+      "end_line": 91
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Forms of Injection",
+      "Operating System Commands",
+      "How to test for the issue",
+      "During code review"
+    ],
+    "heading_level": 5,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00041",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 41,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Check if any command execute methods are called and in unvalidated user input are taken as data for that command.",
+    "text_hash": "e11d172690a3b7961787a9f3ea9c6838b2aeaa6128512b21d99342388ddcd5b2",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 93,
+      "end_line": 93
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Forms of Injection",
+      "Operating System Commands",
+      "How to test for the issue",
+      "During code review"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00042",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 42,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Out side of that, appending a semicolon to the end of a URL query parameter followed by an operating system command, will execute the command. `%3B` is URL encoded and decodes to semicolon. This is because the `;` is interpreted as a command separator.",
+    "text_hash": "d90ffe8b9145daf166000744189dcd1087d0bbec889faa101116d22c9802e96c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 95,
+      "end_line": 95
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Forms of Injection",
+      "Operating System Commands",
+      "How to test for the issue",
+      "During code review"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00043",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 43,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Example: `http://sensitive/something.php?dir=%3Bcat%20/etc/passwd`",
+    "text_hash": "521fe47e86617846d0dcb84ae26d38b209403f53e8f2b2fce20d62c2f1612972",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 97,
+      "end_line": 97
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Forms of Injection",
+      "Operating System Commands",
+      "How to test for the issue",
+      "During code review"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00044",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 44,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "If the application responds with the output of the `/etc/passwd` file then you know the attack has been successful. Many web application scanners can be used to test for this attack as they inject variations of command injections and test the response.",
+    "text_hash": "01d0029240163366e84b0f62c6a87b7f89729ae4994680f8ddee3fa5a7be8930",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 99,
+      "end_line": 99
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Forms of Injection",
+      "Operating System Commands",
+      "How to test for the issue",
+      "During code review"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00045",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 45,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Equally Static Code Analysis tools check the data flow of untrusted user input into a web application and check if the data is then entered into a dangerous method which executes the user input as a command.",
+    "text_hash": "14ed2eefc4b247685093c30c11e93037dd7989aad44a11a8ec7f35ebcda2c115",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 101,
+      "end_line": 101
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Forms of Injection",
+      "Operating System Commands",
+      "How to test for the issue",
+      "During code review"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00046",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 46,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Remediation",
+    "text_hash": "6cdf32300db72fc7623f4b9c4821a254f6e48da3bdf10e85efb4af7bc2769a73",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 103,
+      "end_line": 103
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Forms of Injection",
+      "Operating System Commands",
+      "Remediation"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00047",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 47,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "If it is considered unavoidable the call to a system command incorporated with user-supplied, the following two layers of defense should be used within software in order to prevent attacks",
+    "text_hash": "f1f8d086f7455fbf0cedc3c065370532781f0b9f120b7ff4aa59ba52b266496e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 105,
+      "end_line": 105
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Forms of Injection",
+      "Operating System Commands",
+      "Remediation"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00048",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 48,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "1. **Parameterization** - If available, use structured mechanisms that automatically enforce the separation between data and command. These mechanisms can help to provide the relevant quoting, encoding.\n2. **Input validation** - the values for commands and the relevant arguments should be both validated. There are different degrees of validation for the actual command and its arguments:\n    - When it comes to the **commands** used, these must be validated against a list of allowed commands.\n    - In regards to the **arguments** used for these commands, they should be validated using the following options:\n        - Positive or allowlist input validation - where are the arguments allowed explicitly defined\n        - Allow-list Regular Expression - where is explicitly defined a list of good characters allowed and the maximum length of the string. Ensure that metacharacters like `& | ; $ > < \\` \\ !` and whitespaces are not part of the Regular Expression. For example, the following regular expression only allows lowercase letters and numbers, and does not contain metacharacters. The length is also being limited to 3-10 characters:\n",
+    "text_hash": "59d4f9978c7a8f48e720a7dd4a86cdc7b51c4f20ae238de8a22f7261b39757b4",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 107,
+      "end_line": 113
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Forms of Injection",
+      "Operating System Commands",
+      "Remediation"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00049",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 49,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "`^[a-z0-9]{3,10}$`",
+    "text_hash": "319892d696a8d54716bffa2370946df9fe6423c287b75c3cd601858d49ae3b27",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 114,
+      "end_line": 114
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Forms of Injection",
+      "Operating System Commands",
+      "Remediation"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00050",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 50,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Example code - Java",
+    "text_hash": "ca9b3ea9deedc70b954a652cbbf7a82c3d18c66e9c9367303d12e782472655b5",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 116,
+      "end_line": 116
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Forms of Injection",
+      "Operating System Commands",
+      "Example code - Java"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00051",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 51,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "##### Incorrect Usage",
+    "text_hash": "9c247641137f3327f96822d7abe22c5143c796e13e167ec7e7fe2f430d5931e5",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 118,
+      "end_line": 118
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Forms of Injection",
+      "Operating System Commands",
+      "Example code - Java",
+      "Incorrect Usage"
+    ],
+    "heading_level": 5,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00052",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 52,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```java\nProcessBuilder b = new ProcessBuilder(\"C:\\\\DoStuff.exe -arg1 -arg2\");\n```",
+    "text_hash": "c02bac9d049739dd58536a771abac03630483ba6f38d7042b4a9f996c17eac04",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 120,
+      "end_line": 122
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Forms of Injection",
+      "Operating System Commands",
+      "Example code - Java",
+      "Incorrect Usage"
+    ],
+    "heading_level": null,
+    "code_language": "java",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00053",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 53,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "This creates a builder with one command-list element, not a program followed by two arguments. [`ProcessBuilder`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/ProcessBuilder.html) represents the executable and its arguments as a list. The snippet does not start a process or demonstrate shell-command injection.",
+    "text_hash": "cc0a323ec4b2f06bc9096031ff71263232608b98394bcb7d6b7c1ffe6428f5c1",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 124,
+      "end_line": 124
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Forms of Injection",
+      "Operating System Commands",
+      "Example code - Java",
+      "Incorrect Usage"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00054",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 54,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "##### Correct Usage",
+    "text_hash": "00cfb4b6703dd9e7e8179890024a380728beea437fe90267b9ac872c0c5fd982",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 126,
+      "end_line": 126
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Forms of Injection",
+      "Operating System Commands",
+      "Example code - Java",
+      "Correct Usage"
+    ],
+    "heading_level": 5,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00055",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 55,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "This illustrative example starts a process with a modified working directory and passes the executable and each argument separately. Keep the executable and working directory trusted, and validate any untrusted arguments for the invoked program. Argument separation does not replace [argument validation](OS_Command_Injection_Defense_Cheat_Sheet.md#layer-2).",
+    "text_hash": "3312c8c45ee2264767300c8a82c96e23395bd6993dbe95ee9f59245a2d05cf97",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 128,
+      "end_line": 128
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Forms of Injection",
+      "Operating System Commands",
+      "Example code - Java",
+      "Correct Usage"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00056",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 56,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```java\nProcessBuilder pb = new ProcessBuilder(\"TrustedCmd\", \"TrustedArg1\", \"TrustedArg2\");\nMap<String, String> env = pb.environment();\npb.directory(new File(\"TrustedDir\"));\nProcess p = pb.start();\n```",
+    "text_hash": "2ee389e6ff346718811913f7cc37c542d4d39b54b64056429fd3964f9f530920",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 130,
+      "end_line": 135
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Forms of Injection",
+      "Operating System Commands",
+      "Example code - Java",
+      "Correct Usage"
+    ],
+    "heading_level": null,
+    "code_language": "java",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00057",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 57,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Network Protocols",
+    "text_hash": "6ba60ab4160e4c80ac74b30f9ddaf40d64f9ae0f5851bd13344ea10853b6e92b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 137,
+      "end_line": 137
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Forms of Injection",
+      "Network Protocols"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00058",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 58,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Web applications often communicate with network daemons (like SMTP, IMAP, FTP) where user input becomes part of the communication stream. Here it is possible to inject command sequences to abuse an established session.",
+    "text_hash": "151053dada082f5eff0c97b13db163747e9937dcc7f7380138cb01902f4962a1",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 139,
+      "end_line": 139
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Forms of Injection",
+      "Network Protocols"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00059",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 59,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Injection Prevention Rules",
+    "text_hash": "cb4d8a7f7a6abefe3737481d6a086ecb6c8ff3cf8926e7874422d1fe500bfb10",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 141,
+      "end_line": 141
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Injection Prevention Rules"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00060",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 60,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Rule \\#1 (Perform proper input validation)",
+    "text_hash": "c309451bd93c56bc8f0c19600bf7f6594266a102fdc2c44cd39a6ef0352ef8f3",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 143,
+      "end_line": 143
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Injection Prevention Rules",
+      "Rule \\#1 (Perform proper input validation)"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00061",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 61,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Perform proper input validation. Positive or allowlist input validation with appropriate canonicalization is also recommended, but **is not a complete defense** as many applications require special characters in their input.",
+    "text_hash": "2b38fc52c176e4a2870f9da77314ab2bcfd9b37d94475c38fae606c720e57ead",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 145,
+      "end_line": 145
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Injection Prevention Rules",
+      "Rule \\#1 (Perform proper input validation)"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00062",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 62,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Rule \\#2 (Use a safe API)",
+    "text_hash": "86655a0a826b9d38d88af437c635846af8d85c7c5b46663ac163a6325c964842",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 147,
+      "end_line": 147
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Injection Prevention Rules",
+      "Rule \\#2 (Use a safe API)"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00063",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 63,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The preferred option is to use a safe API which avoids the use of the interpreter entirely or provides a parameterized interface. Be careful of APIs, such as stored procedures, that are parameterized, but can still introduce injection under the hood.",
+    "text_hash": "b9595fd11f39cd89abe5b68588428577ba03a8a01639fbfac2d824a71e4d426f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 149,
+      "end_line": 149
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Injection Prevention Rules",
+      "Rule \\#2 (Use a safe API)"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00064",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 64,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Rule \\#3 (Contextually escape user data)",
+    "text_hash": "43d23d633cf1f19871b75701473aeb2af64915176b00a04d2ff1f591225b493b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 151,
+      "end_line": 151
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Injection Prevention Rules",
+      "Rule \\#3 (Contextually escape user data)"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00065",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 65,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "If a parameterized API is not available, you should carefully escape special characters using the specific escape syntax for that interpreter.",
+    "text_hash": "beef38a22513a3e4462901921ac65d388c959cb6b648d62a9f32aad06f50a8c2",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 153,
+      "end_line": 153
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "Injection Prevention Rules",
+      "Rule \\#3 (Contextually escape user data)"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00066",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 66,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## References",
+    "text_hash": "65b72d86eeeb214ab8ca5fd24cb7cd7773e58084e95b670040df03e21e8c6fa7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 155,
+      "end_line": 155
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "References"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fafcc12af83a_b00067",
+    "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+    "version_id": "ver_fafcc12af83a",
+    "block_idx": 67,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- [RFC 4514: LDAP Distinguished Names](https://datatracker.ietf.org/doc/html/rfc4514)\n- [RFC 4515: LDAP Search Filters](https://datatracker.ietf.org/doc/html/rfc4515)\n- [Oracle JDBC: Using Prepared Statements](https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html)",
+    "text_hash": "f510cfe317cd46787ac830b4411c937149e6c581a311df2fa056c1d80d0e55b4",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 157,
+      "end_line": 159
+    },
+    "heading_path": [
+      "Injection Prevention Cheat Sheet",
+      "References"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  }
+]

@@ -1,0 +1,969 @@
+[
+  {
+    "block_id": "ver_71e4b9124e76_b00000",
+    "document_id": "doc_owasp_top10_introduction",
+    "version_id": "ver_71e4b9124e76",
+    "block_idx": 0,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "![OWASP Logo](../assets/TOP_10_logo_Final_Logo_Colour.png)",
+    "text_hash": "d8e738df0b06cffeb4a7d6534c35f43f02d49b286b8b3d1e4533c046a04c0847",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 1,
+      "end_line": 1
+    },
+    "heading_path": [],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_71e4b9124e76_b00001",
+    "document_id": "doc_owasp_top10_introduction",
+    "version_id": "ver_71e4b9124e76",
+    "block_idx": 1,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "# The Ten Most Critical Web Application Security Risks",
+    "text_hash": "877f4f80edde26a1011414b47b3e57b6e177d49befde7c0a3d15fcc9facf61a9",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 3,
+      "end_line": 3
+    },
+    "heading_path": [
+      "The Ten Most Critical Web Application Security Risks"
+    ],
+    "heading_level": 1,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_71e4b9124e76_b00002",
+    "document_id": "doc_owasp_top10_introduction",
+    "version_id": "ver_71e4b9124e76",
+    "block_idx": 2,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "# Introduction",
+    "text_hash": "1cfabb9fbf64272210f460dda2e83849fc87153cd78f2a983507fc8c332e19fd",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 5,
+      "end_line": 5
+    },
+    "heading_path": [
+      "Introduction"
+    ],
+    "heading_level": 1,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_71e4b9124e76_b00003",
+    "document_id": "doc_owasp_top10_introduction",
+    "version_id": "ver_71e4b9124e76",
+    "block_idx": 3,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Welcome to the 8th installment of the OWASP Top Ten! ",
+    "text_hash": "b1d1fd7806fe37265a38556c849158ff24508da4a5499644d86246c8ba0cebc4",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 7,
+      "end_line": 7
+    },
+    "heading_path": [
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_71e4b9124e76_b00004",
+    "document_id": "doc_owasp_top10_introduction",
+    "version_id": "ver_71e4b9124e76",
+    "block_idx": 4,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "A huge thank you to everyone who contributed data and perspectives in the survey. Without you, this installment would not have been possible. **THANK YOU!**",
+    "text_hash": "a76b449dd74417dcc15edbc5fa0adfde285e8698e3e63b5589dd126c7115f603",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 9,
+      "end_line": 9
+    },
+    "heading_path": [
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_71e4b9124e76_b00005",
+    "document_id": "doc_owasp_top10_introduction",
+    "version_id": "ver_71e4b9124e76",
+    "block_idx": 5,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Introducing the OWASP Top 10:2025",
+    "text_hash": "c5c984271c3bc12b634c8354e0a45b61b68570c04a442621e4cdd7847062fc6d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 12,
+      "end_line": 12
+    },
+    "heading_path": [
+      "Introduction",
+      "Introducing the OWASP Top 10:2025"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_71e4b9124e76_b00006",
+    "document_id": "doc_owasp_top10_introduction",
+    "version_id": "ver_71e4b9124e76",
+    "block_idx": 6,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "* [A01:2025 - Broken Access Control](A01_2025-Broken_Access_Control.md)\n* [A02:2025 - Security Misconfiguration](A02_2025-Security_Misconfiguration.md)\n* [A03:2025 - Software Supply Chain Failures](A03_2025-Software_Supply_Chain_Failures.md)\n* [A04:2025 - Cryptographic Failures](A04_2025-Cryptographic_Failures.md)\n* [A05:2025 - Injection](A05_2025-Injection.md)\n* [A06:2025 - Insecure Design](A06_2025-Insecure_Design.md)\n* [A07:2025 - Authentication Failures](A07_2025-Authentication_Failures.md)\n* [A08:2025 - Software or Data Integrity Failures](A08_2025-Software_or_Data_Integrity_Failures.md)\n* [A09:2025 - Security Logging & Alerting Failures](A09_2025-Security_Logging_and_Alerting_Failures.md)\n* [A10:2025 - Mishandling of Exceptional Conditions](A10_2025-Mishandling_of_Exceptional_Conditions.md)\n\n",
+    "text_hash": "cb8639c5d9f0f13de32e6d56dbfcf3d45a211d75710684afd667f251900cca01",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 16,
+      "end_line": 27
+    },
+    "heading_path": [
+      "Introduction",
+      "Introducing the OWASP Top 10:2025"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_71e4b9124e76_b00007",
+    "document_id": "doc_owasp_top10_introduction",
+    "version_id": "ver_71e4b9124e76",
+    "block_idx": 7,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## What's changed in the Top 10 for 2025",
+    "text_hash": "57041c2ac8aec9e68406a449afff53b9b50fb50184d7de90a827de1f0fc9f22e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 28,
+      "end_line": 28
+    },
+    "heading_path": [
+      "Introduction",
+      "What's changed in the Top 10 for 2025"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_71e4b9124e76_b00008",
+    "document_id": "doc_owasp_top10_introduction",
+    "version_id": "ver_71e4b9124e76",
+    "block_idx": 8,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "There are two new categories and one consolidation in the Top Ten for 2025. We’ve worked to maintain our focus on the root cause over the symptoms as much as possible. With the complexity of software engineering and software security, it’s basically impossible to create ten categories without some level of overlap.",
+    "text_hash": "826c9ec6a4587aac6b98927a7f1e7a0da0acb4784481e2744c9d5610989405c2",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 30,
+      "end_line": 30
+    },
+    "heading_path": [
+      "Introduction",
+      "What's changed in the Top 10 for 2025"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_71e4b9124e76_b00009",
+    "document_id": "doc_owasp_top10_introduction",
+    "version_id": "ver_71e4b9124e76",
+    "block_idx": 9,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "![Mapping](../assets/2025-mappings.png)",
+    "text_hash": "373fff4579189a7b5544b3971187fd175ccc7a2b817f66c5216084cd6c077fde",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 32,
+      "end_line": 32
+    },
+    "heading_path": [
+      "Introduction",
+      "What's changed in the Top 10 for 2025"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_71e4b9124e76_b00010",
+    "document_id": "doc_owasp_top10_introduction",
+    "version_id": "ver_71e4b9124e76",
+    "block_idx": 10,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "* **[A01:2025 - Broken Access Control](A01_2025-Broken_Access_Control.md)** maintains its position at #1 as the most serious application security risk; the contributed data indicates that on average, 3.73% of applications tested had one or more of the 40 Common Weakness Enumerations (CWEs) in this category. As indicated by the dashed line in the above figure, Server-Side Request Forgery (SSRF) has been rolled into this category.\n* **[A02:2025 - Security Misconfiguration](A02_2025-Security_Misconfiguration.md)** moved up from #5 in 2021 to #2 in 2025. Misconfigurations are more prevalent in the data for this cycle. 3.00% of the applications tested had one or more of the 16 CWEs in this category. This is not surprising, as software engineering is continuing to increase the amount of an application’s behavior that is based on configurations.\n* **[A03:2025 - Software Supply Chain Failures](A03_2025-Software_Supply_Chain_Failures.md)** is an expansion of [A06:2021-Vulnerable and Outdated Components](https://owasp.org/Top10/A06_2021-Vulnerable_and_Outdated_Components/) to include a broader scope of compromises occurring within or across the entire ecosystem of software dependencies, build systems, and distribution infrastructure. This category was overwhelmingly voted a top concern in the community survey. This category has 5 CWEs and a limited presence in the collected data, but we believe this is due to challenges in testing and hope that testing catches up in this area. This category has the fewest occurrences in the data, but also the highest average exploit and impact scores from CVEs.\n* **[A04:2025 - Cryptographic Failures](A04_2025-Cryptographic_Failures.md)** falls two spots from #2 to #4 in the ranking. The contributed data indicates that, on average, 3.80% of applications have one or more of the 32 CWEs in this category. This category often leads to sensitive data exposure or system compromise.\n* **[A05:2025 - Injection](A05_2025-Injection.md)** falls two spots from #3 to #5 in the ranking, maintaining its position relative to Cryptographic Failures and Insecure Design. Injection is one of the most tested categories, with the greatest number of CVEs associated with the 38 CWEs in this category. Injection includes a range of issues from Cross-site Scripting (high frequency/low impact) to SQL Injection (low frequency/high impact) vulnerabilities.\n* **[A06:2025 - Insecure Design](A06_2025-Insecure_Design.md)** slides two spots from #4 to #6 in the ranking as Security Misconfiguration and Software Supply Chain Failures leapfrog it. This category was introduced in 2021, and we have seen noticeable improvements in the industry related to threat modeling and a greater emphasis on secure design.\n* **[A07:2025 - Authentication Failures](A07_2025-Authentication_Failures.md)** maintains its position at #7 with a slight name change (prevously it was “[Identification and Authentication Failures](https://owasp.org/Top10/A07_2021-Identification_and_Authentication_Failures/)\") to more accurately reflect the 36 CWEs in this category. This category remains important, but the increased use of standardized frameworks for authentication appears to be having beneficial effects on the occurrences of authentication failures.\n* **[A08:2025 - Software or Data Integrity Failures](A08_2025-Software_or_Data_Integrity_Failures.md)** continues at #8 in the list. This category is focused on the failure to maintain trust boundaries and verify the integrity of software, code, and data artifacts at a lower level than Software Supply Chain Failures. \n* **[A09:2025 - Security Logging & Alerting Failures](A09_2025-Security_Logging_and_Alerting_Failures.md)** retains its position at #9. This category has a slight name change (previously [Security Logging and Monitoring Failures](https://owasp.org/Top10/A09_2021-Security_Logging_and_Monitoring_Failures/)”) to emphasize the importance of the alerting functionality needed to induce appropriate action on relevant logging events. Great logging with no alerting is of minimal value in identifying security incidents. This category will always be underrepresented in the data, and was again voted into a position in the list from the community survey participants.\n* **[A10:2025 - Mishandling of Exceptional Conditions](A10_2025-Mishandling_of_Exceptional_Conditions.md)** is a new category for 2025. This category contains 24 CWEs focusing on improper error handling, logical errors, failing open, and other related scenarios stemming from abnormal conditions that systems may encounter.\n\n",
+    "text_hash": "b0bd8ee40075ead7c745dd6e06a5f900d86869cfcbf40a2aa06c683091ccec34",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 34,
+      "end_line": 45
+    },
+    "heading_path": [
+      "Introduction",
+      "What's changed in the Top 10 for 2025"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_71e4b9124e76_b00011",
+    "document_id": "doc_owasp_top10_introduction",
+    "version_id": "ver_71e4b9124e76",
+    "block_idx": 11,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Methodology",
+    "text_hash": "b48b8df80f2542aa0869414f4ecc6ea3412c1b202befd468f2bf6c09aecbcea6",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 46,
+      "end_line": 46
+    },
+    "heading_path": [
+      "Introduction",
+      "Methodology"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_71e4b9124e76_b00012",
+    "document_id": "doc_owasp_top10_introduction",
+    "version_id": "ver_71e4b9124e76",
+    "block_idx": 12,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "This installment of the Top Ten remains data-informed, but not blindly data-driven. We ranked 12 categories based on the data contributed, and allowed two to be promoted or highlighted by responses from the community survey. We do this for a fundamental reason: examining the contributed data is essentially looking into the past. Application Security researchers dedicate time to identifying new vulnerabilities and developing new testing methods. It takes weeks to years to integrate these tests into tools and processes. By the time we can reliably test a weakness at scale, years may have passed. There are also important risks that we may never be able to reliably test and be present in the data. To balance that view, we use a community survey to ask application security and development practitioners on the front lines what they see as essential risks that may be underrepresented in the testing data.",
+    "text_hash": "d90414d5e2cf6416ef5712094addae378522e6361c86f0ed0d9a56dc57f5b3d3",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 48,
+      "end_line": 48
+    },
+    "heading_path": [
+      "Introduction",
+      "Methodology"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_71e4b9124e76_b00013",
+    "document_id": "doc_owasp_top10_introduction",
+    "version_id": "ver_71e4b9124e76",
+    "block_idx": 13,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## How the categories are structured",
+    "text_hash": "26c6d624526b802a0ea4222991bcfa54ddab4db79cc88ebb387ab88649235984",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 51,
+      "end_line": 51
+    },
+    "heading_path": [
+      "Introduction",
+      "How the categories are structured"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_71e4b9124e76_b00014",
+    "document_id": "doc_owasp_top10_introduction",
+    "version_id": "ver_71e4b9124e76",
+    "block_idx": 14,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "A few categories have changed from the previous installment of the OWASP Top Ten. Here is a high-level summary of the category changes.",
+    "text_hash": "4c700b653a92318521477448d2e2bca7fb626b51ee4773c3b83d5a5b24cb1844",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 53,
+      "end_line": 53
+    },
+    "heading_path": [
+      "Introduction",
+      "How the categories are structured"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_71e4b9124e76_b00015",
+    "document_id": "doc_owasp_top10_introduction",
+    "version_id": "ver_71e4b9124e76",
+    "block_idx": 15,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "In this iteration, we asked for data, with no restriction on CWEs like we did for the 2021 edition. We asked for the number of applications tested for a given year (starting in 2021), and the number of applications with at least one instance of a CWE found in testing. This format allows us to track how prevalent each CWE is within the population of applications. We ignore frequency for our purposes; while it may be necessary for other situations, it only hides the actual prevalence in the application population. Whether an application has four instances of a CWE or 4,000 instances is not part of the calculation for the Top Ten. Especially as manual testers tend to only list a vulnerability once no matter how many times it is repeated in an application, while automated testing frameworks list every instance of a vulnerability as unique. We went from approximately 30 CWEs in 2017, to almost 400 CWEs in 2021, to 589 CWEs in this edition to analyze in the dataset. We plan to do additional data analysis as a supplement in the future. This significant increase in the number of CWEs necessitates changes to how the categories are structured.",
+    "text_hash": "141fcd970db5989b865d6321e455c6e659f4f901603782e8d38ac9ea944e3bcb",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 55,
+      "end_line": 55
+    },
+    "heading_path": [
+      "Introduction",
+      "How the categories are structured"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_71e4b9124e76_b00016",
+    "document_id": "doc_owasp_top10_introduction",
+    "version_id": "ver_71e4b9124e76",
+    "block_idx": 16,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "We spent several months grouping and categorizing CWEs and could have continued for additional months. We had to stop at some point. There are both root cause and symptom types of CWEs, where root cause types are like \"Cryptographic Failure\" and \"Misconfiguration\" contrasted to symptom types like \"Sensitive Data Exposure\" and \"Denial of Service.\" We decided to focus on the root cause whenever possible as it's more logical for providing identification and remediation guidance. Focusing on the root cause over the symptom isn't a new concept; the Top Ten has been a mix of symptom and root cause. CWEs are also a mix of symptom and root cause; we are simply being more deliberate about calling it out. There is an average of 25 CWEs per category in this installment, with the lower bounds at 5 CWEs for A03:2025-Software Supply Chain Failures and A09:2025 Security Logging and Alerting Failures to 40 CWEs in A01:2025-Broken Access Control. We made the decision to cap the number of CWEs in a category to 40. This updated category structure offers additional training benefits as companies can focus on CWEs that make sense for a language/framework. ",
+    "text_hash": "fc99f41ef1aeb74b0240b51c12e7b5726fa14e905148990e77aca2bf311c173b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 57,
+      "end_line": 57
+    },
+    "heading_path": [
+      "Introduction",
+      "How the categories are structured"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_71e4b9124e76_b00017",
+    "document_id": "doc_owasp_top10_introduction",
+    "version_id": "ver_71e4b9124e76",
+    "block_idx": 17,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "We have been asked why not shift to a list of 10 CWEs as a Top 10, similar to the MITRE Top 25 Most Dangerous Software Weaknesses. There are two primary reasons why we use multiple CWEs in categories. First, not all CWEs exist in all programming languages or frameworks. This causes issues for tooling and training/awareness programs as part of the Top Ten may not be applicable. The second reason is that there are multiple CWEs for common vulnerabilities. For example, there are multiple CWEs for general Injection, Command Injection, Cross-site Scripting, Hardcoded Passwords, Lack of Validation, Buffer Overflows, Cleartext Storage of Sensitive Information, and many others. Depending on the organization or tester, different CWEs might be used. By using a category with multiple CWEs we can help raise the baseline and awareness of the different types of weaknesses that may occur under a common category name. In this edition of the Top Ten 2025, there are 248 CWEs within the 10 categories. There are a total of 968 CWEs in the [downloadable dictionary from MITRE](https://cwe.mitre.org) at the time of this release.",
+    "text_hash": "02a699602172fa304da5cb65dc71bc5236f2ea13fa2c40d187599d8437cc60ae",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 59,
+      "end_line": 59
+    },
+    "heading_path": [
+      "Introduction",
+      "How the categories are structured"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_71e4b9124e76_b00018",
+    "document_id": "doc_owasp_top10_introduction",
+    "version_id": "ver_71e4b9124e76",
+    "block_idx": 18,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## How the data is used for selecting categories",
+    "text_hash": "6aaa060780a0966bd1603aa1c05dc366f16dff6dcb1c2fad454087ecfc3532a6",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 62,
+      "end_line": 62
+    },
+    "heading_path": [
+      "Introduction",
+      "How the data is used for selecting categories"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_71e4b9124e76_b00019",
+    "document_id": "doc_owasp_top10_introduction",
+    "version_id": "ver_71e4b9124e76",
+    "block_idx": 19,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Similar to what we did for the 2021 edition, we leveraged CVE data for *Exploitability *and *(Technical) Impact*. We downloaded OWASP Dependency Check and extracted the CVSS Exploit and Impact scores, grouping them by relevant CWEs listed with the CVEs. It took a fair bit of research and effort, as all the CVEs have CVSSv2 scores, but there are flaws in CVSSv2 that CVSSv3 should address. After a certain point in time, all CVEs are assigned a CVSSv3 score as well. Additionally, the scoring ranges and formulas were updated between CVSSv2 and CVSSv3.",
+    "text_hash": "6acde2300b74e3183dbecf0dcdbab70ce084fad6854cbbaaf145fb159585b5d2",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 64,
+      "end_line": 64
+    },
+    "heading_path": [
+      "Introduction",
+      "How the data is used for selecting categories"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_71e4b9124e76_b00020",
+    "document_id": "doc_owasp_top10_introduction",
+    "version_id": "ver_71e4b9124e76",
+    "block_idx": 20,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "In CVSSv2, both Exploit and (Technical) Impact could be up to 10.0, but the formula would knock them down to 60% for Exploit and 40% for Impact. In CVSSv3, the theoretical max was limited to 6.0 for Exploit and 4.0 for Impact. With the weighting considered, the Impact scoring shifted higher, almost a point and a half on average in CVSSv3, and exploitability moved nearly half a point lower on average.",
+    "text_hash": "8a6c721a8fdb4ac01b3c6e855dcd813884d75874610c9757780b86eaa0818ddc",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 66,
+      "end_line": 66
+    },
+    "heading_path": [
+      "Introduction",
+      "How the data is used for selecting categories"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_71e4b9124e76_b00021",
+    "document_id": "doc_owasp_top10_introduction",
+    "version_id": "ver_71e4b9124e76",
+    "block_idx": 21,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "There are approximately 175k records (up from 125k in 2021) of CVEs mapped to CWEs in the National Vulnerability Database (NVD), extracted from OWASP Dependency Check. Additionally, there are 643 unique CWEs mapped to CVEs (up from 241 in 2021). Within the nearly 220k CVEs that were extracted, 160k had CVSS v2 scores, 156k had CVSS v3 scores, and 6k had CVSS v4 scores. Many CVEs have multiple scores, which is why they total more than 220k.",
+    "text_hash": "07b1e9932a848d50c3cc75fdf643636769bacb61f2a80a92724260b70c7291db",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 68,
+      "end_line": 68
+    },
+    "heading_path": [
+      "Introduction",
+      "How the data is used for selecting categories"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_71e4b9124e76_b00022",
+    "document_id": "doc_owasp_top10_introduction",
+    "version_id": "ver_71e4b9124e76",
+    "block_idx": 22,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "For the Top Ten 2025, we calculated average exploit and impact scores in the following manner. We grouped all the CVEs with CVSS scores by CWE and weighted both exploit and impact scores by the percentage of the population that had CVSSv3, as well as the remaining population with CVSSv2 scores, to get an overall average. We mapped these averages to the CWEs in the dataset to use as Exploit and (Technical) Impact scoring for the other half of the risk equation.",
+    "text_hash": "34bbe19bfcde1efed0a3c30d818f8a17fe07cffc0fd9685a2ff3f054be3d5724",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 70,
+      "end_line": 70
+    },
+    "heading_path": [
+      "Introduction",
+      "How the data is used for selecting categories"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_71e4b9124e76_b00023",
+    "document_id": "doc_owasp_top10_introduction",
+    "version_id": "ver_71e4b9124e76",
+    "block_idx": 23,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Why not use CVSS v4.0, you may ask? That’s because the scoring algorithm was fundamentally changed, and it no longer easily provides the *Exploit* or *Impact* scores as CVSS v2 and CVSSv3 do. We will attempt to figure out a way to use CVSS v4.0 scoring for future versions of the Top Ten, but we were unable to determine a timely way to do so for the 2025 edition.",
+    "text_hash": "40f3727042a2b9f3e328c07971aaa65ef7cfc580ce0e355665dc2dc89e6b303e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 72,
+      "end_line": 72
+    },
+    "heading_path": [
+      "Introduction",
+      "How the data is used for selecting categories"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_71e4b9124e76_b00024",
+    "document_id": "doc_owasp_top10_introduction",
+    "version_id": "ver_71e4b9124e76",
+    "block_idx": 24,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Why we use a community survey",
+    "text_hash": "3bf6a5b0bf0a2caa6e7856d79ee2abd803df2d4d6b62f96bd2c5ed166a1671f2",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 75,
+      "end_line": 75
+    },
+    "heading_path": [
+      "Introduction",
+      "Why we use a community survey"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_71e4b9124e76_b00025",
+    "document_id": "doc_owasp_top10_introduction",
+    "version_id": "ver_71e4b9124e76",
+    "block_idx": 25,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The results in the data are largely limited to what the industry can test for in an automated fashion. Talk to a seasoned AppSec professional, and they will tell you about stuff they find and trends they see that aren't yet in the data. It takes time for people to develop testing methodologies for certain vulnerability types and then more time for those tests to be automated and run against a large population of applications. Everything we find is looking back in the past and might be missing trends from the last year, which are not present in the data.",
+    "text_hash": "fa7766153036b51518bcc10e4b6ffe98eba0ee80d86bab08951a3d0b37ebaf2e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 77,
+      "end_line": 77
+    },
+    "heading_path": [
+      "Introduction",
+      "Why we use a community survey"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_71e4b9124e76_b00026",
+    "document_id": "doc_owasp_top10_introduction",
+    "version_id": "ver_71e4b9124e76",
+    "block_idx": 26,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Therefore, we only pick eight of the ten categories from the data because it's incomplete. The other two categories are from the Top 10 community survey. It allows the practitioners on the front lines to vote for what they see as the highest risks that might not be in the data (and may never be expressed in data).",
+    "text_hash": "c0aef4e2391a285be25937d5375ed0b582ce8e1332eaa05af38b7a4a15c286e9",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 79,
+      "end_line": 79
+    },
+    "heading_path": [
+      "Introduction",
+      "Why we use a community survey"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_71e4b9124e76_b00027",
+    "document_id": "doc_owasp_top10_introduction",
+    "version_id": "ver_71e4b9124e76",
+    "block_idx": 27,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Thank you to our data contributors",
+    "text_hash": "d1ce00a3e1f42b51249d4aeb6895eae6ce1e4e0ef9dea0dab48770344f0874ee",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 82,
+      "end_line": 82
+    },
+    "heading_path": [
+      "Introduction",
+      "Thank you to our data contributors"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_71e4b9124e76_b00028",
+    "document_id": "doc_owasp_top10_introduction",
+    "version_id": "ver_71e4b9124e76",
+    "block_idx": 28,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The following organizations (along with several anonymous donors) kindly donated data for over 2.8 millions applications to make this the largest and most comprehensive application security data set. Without you, this would not be possible.",
+    "text_hash": "58b532e87e813639107415c0d857cc262361e710602f2543e767ac8bf1ef02ec",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 84,
+      "end_line": 84
+    },
+    "heading_path": [
+      "Introduction",
+      "Thank you to our data contributors"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_71e4b9124e76_b00029",
+    "document_id": "doc_owasp_top10_introduction",
+    "version_id": "ver_71e4b9124e76",
+    "block_idx": 29,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "* Accenture (Prague)\n* Anonymous (multiple)\n* Bugcrowd\n* Contrast Security\n* CryptoNet Labs\n* Intuitor SoftTech Services\n* Orca Security\n* Probely\n* Semgrep\n* Sonar\n* usd AG\n* Veracode\n* Wallarm\n",
+    "text_hash": "231c9e2a9d0abe45d9b461489e770e75b5ac4a8eb6156515d45035643409fcda",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 86,
+      "end_line": 99
+    },
+    "heading_path": [
+      "Introduction",
+      "Thank you to our data contributors"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_71e4b9124e76_b00030",
+    "document_id": "doc_owasp_top10_introduction",
+    "version_id": "ver_71e4b9124e76",
+    "block_idx": 30,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Lead Authors",
+    "text_hash": "ac2e4539868262b8f970cf7c9f27fb0b4f84b950ae2c0d4ecd6532acef801ef3",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 100,
+      "end_line": 100
+    },
+    "heading_path": [
+      "Introduction",
+      "Lead Authors"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_71e4b9124e76_b00031",
+    "document_id": "doc_owasp_top10_introduction",
+    "version_id": "ver_71e4b9124e76",
+    "block_idx": 31,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "* Andrew van der Stock - X: [@vanderaj](https://x.com/vanderaj)\n* Brian Glas - X: [@infosecdad](https://x.com/infosecdad)\n* Neil Smithline - X: [@appsecneil](https://x.com/appsecneil)\n* Tanya Janca - X: [@shehackspurple](https://x.com/shehackspurple)\n* Torsten Gigler - Mastodon: [@torsten_gigler@infosec.exchange](https://infosec.exchange/@torsten_gigler)\n",
+    "text_hash": "63b6bc0a921b288b96dd9e47c614664a39c32625acafe3e037d4b41364013962",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 101,
+      "end_line": 106
+    },
+    "heading_path": [
+      "Introduction",
+      "Lead Authors"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_71e4b9124e76_b00032",
+    "document_id": "doc_owasp_top10_introduction",
+    "version_id": "ver_71e4b9124e76",
+    "block_idx": 32,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Log issues and pull requests",
+    "text_hash": "f365df9a7a952f2e16b67c81426a547eee7ad62f2e62abc910cb7a863b3fb9f7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 107,
+      "end_line": 107
+    },
+    "heading_path": [
+      "Introduction",
+      "Log issues and pull requests"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_71e4b9124e76_b00033",
+    "document_id": "doc_owasp_top10_introduction",
+    "version_id": "ver_71e4b9124e76",
+    "block_idx": 33,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Please log any corrections or issues:",
+    "text_hash": "a7fb25ef7da237d5c006bf6007de4e164d589995e4e79992f293ffc315712f26",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 109,
+      "end_line": 109
+    },
+    "heading_path": [
+      "Introduction",
+      "Log issues and pull requests"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_71e4b9124e76_b00034",
+    "document_id": "doc_owasp_top10_introduction",
+    "version_id": "ver_71e4b9124e76",
+    "block_idx": 34,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Project links:",
+    "text_hash": "0cf03422efe4708da573ac0e935ebd482a0e11b2d1cde91b4e647675f34532a1",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 111,
+      "end_line": 111
+    },
+    "heading_path": [
+      "Introduction",
+      "Log issues and pull requests",
+      "Project links:"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_71e4b9124e76_b00035",
+    "document_id": "doc_owasp_top10_introduction",
+    "version_id": "ver_71e4b9124e76",
+    "block_idx": 35,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "* [Homepage](https://owasp.org/www-project-top-ten/)\n* [GitHub repository](https://github.com/OWASP/Top10)\n\n",
+    "text_hash": "f4eb394bf569686ab59ff7937426c098e3a77f1c7dd17cf25a3efb6e135d643c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 112,
+      "end_line": 115
+    },
+    "heading_path": [
+      "Introduction",
+      "Log issues and pull requests",
+      "Project links:"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  }
+]

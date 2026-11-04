@@ -1,0 +1,1224 @@
+[
+  {
+    "block_id": "ver_3b0cef632300_b00000",
+    "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+    "version_id": "ver_3b0cef632300",
+    "block_idx": 0,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "# Insecure Direct Object Reference Prevention Cheat Sheet",
+    "text_hash": "f22fcb855d3dc37e0d9a76513397cfd7a7a95703740b918127b745e1df2dc7d2",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 1,
+      "end_line": 1
+    },
+    "heading_path": [
+      "Insecure Direct Object Reference Prevention Cheat Sheet"
+    ],
+    "heading_level": 1,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_3b0cef632300_b00001",
+    "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+    "version_id": "ver_3b0cef632300",
+    "block_idx": 1,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Introduction",
+    "text_hash": "d753efbab681fa4da82470d9a83b1c202de58f92fd498e77a269c1163bc4714b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 3,
+      "end_line": 3
+    },
+    "heading_path": [
+      "Insecure Direct Object Reference Prevention Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_3b0cef632300_b00002",
+    "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+    "version_id": "ver_3b0cef632300",
+    "block_idx": 2,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Insecure Direct Object Reference (IDOR) is a vulnerability that arises when attackers can access or modify objects by manipulating identifiers used in a web application's URLs or parameters. It occurs due to missing access control checks, which fail to verify whether a user should be allowed to access specific data.",
+    "text_hash": "59d978c39478ca89fe0c0ce5f94d28a8f2f10cf5c4bc00c829f65ee31e07cfd9",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 5,
+      "end_line": 5
+    },
+    "heading_path": [
+      "Insecure Direct Object Reference Prevention Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_3b0cef632300_b00003",
+    "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+    "version_id": "ver_3b0cef632300",
+    "block_idx": 3,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "There are three ingredients to an IDOR:",
+    "text_hash": "55fd0b1df766ab7390d3d78d71f59db16f8956e59cf52bd012b2279a7ee2ac5c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 7,
+      "end_line": 7
+    },
+    "heading_path": [
+      "Insecure Direct Object Reference Prevention Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_3b0cef632300_b00004",
+    "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+    "version_id": "ver_3b0cef632300",
+    "block_idx": 4,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "1. An **object** such as an account, document, support ticket, transaction or partner profile.\n2. A **reference** to that object in the form of an ID, UUID, account number, token or slug.\n3. A **missing object-level authorization check** that allows a user to access or manipulate an object they should not be able to access.\n",
+    "text_hash": "04c8ebbb8833b8c00d9c4540eb17f7265f926388e01ccc7f955bcfee382877ac",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 9,
+      "end_line": 12
+    },
+    "heading_path": [
+      "Insecure Direct Object Reference Prevention Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_3b0cef632300_b00005",
+    "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+    "version_id": "ver_3b0cef632300",
+    "block_idx": 5,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Examples",
+    "text_hash": "0d19ab46319785768005536313f02bd3b9b779aaed82eeac5bf7a7f796ad3ef1",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 13,
+      "end_line": 13
+    },
+    "heading_path": [
+      "Insecure Direct Object Reference Prevention Cheat Sheet",
+      "Examples"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_3b0cef632300_b00006",
+    "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+    "version_id": "ver_3b0cef632300",
+    "block_idx": 6,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "For instance, when a user accesses their profile, the application might generate a URL like this:",
+    "text_hash": "03cc42c2f1c9b52aace5afe61997db955778485954e49bb9b3f510d791571a78",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 15,
+      "end_line": 15
+    },
+    "heading_path": [
+      "Insecure Direct Object Reference Prevention Cheat Sheet",
+      "Examples"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_3b0cef632300_b00007",
+    "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+    "version_id": "ver_3b0cef632300",
+    "block_idx": 7,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```text\nhttps://example.org/users/123\n```",
+    "text_hash": "7940b582c2ce112359e9765c751a7188157e632580e04889b4d63b9c81c21caf",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 17,
+      "end_line": 19
+    },
+    "heading_path": [
+      "Insecure Direct Object Reference Prevention Cheat Sheet",
+      "Examples"
+    ],
+    "heading_level": null,
+    "code_language": "text",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_3b0cef632300_b00008",
+    "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+    "version_id": "ver_3b0cef632300",
+    "block_idx": 8,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The 123 in the URL is a direct reference to the user's record in the database, often represented by the primary key. If an attacker changes this number to 124 and gains access to another user's information, the application is vulnerable to Insecure Direct Object Reference. This happens because the app didn't properly check if the user had permission to view data for user 124 before displaying it.",
+    "text_hash": "f4e4122330972299f1526feff19ad5e110a6f54817bd6b225baf93c437c96566",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 21,
+      "end_line": 21
+    },
+    "heading_path": [
+      "Insecure Direct Object Reference Prevention Cheat Sheet",
+      "Examples"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_3b0cef632300_b00009",
+    "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+    "version_id": "ver_3b0cef632300",
+    "block_idx": 9,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "In some cases, the identifier may not be in the URL, but rather in the POST body, as shown in the following example:",
+    "text_hash": "e88d84c3127cfbd21dd1e357a323e8d91aae8e8841e2bd07e93750e03669ecf7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 23,
+      "end_line": 23
+    },
+    "heading_path": [
+      "Insecure Direct Object Reference Prevention Cheat Sheet",
+      "Examples"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_3b0cef632300_b00010",
+    "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+    "version_id": "ver_3b0cef632300",
+    "block_idx": 10,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```html\n<form action=\"/update_profile\" method=\"post\">\n  <!-- Other fields for updating name, email, etc. -->\n  <input type=\"hidden\" name=\"user_id\" value=\"12345\">\n  <button type=\"submit\">Update Profile</button>\n</form>\n```",
+    "text_hash": "8c7663d58b26afad311bfffa3b2253873917a172b096b16e4d68896101b55cf2",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 25,
+      "end_line": 31
+    },
+    "heading_path": [
+      "Insecure Direct Object Reference Prevention Cheat Sheet",
+      "Examples"
+    ],
+    "heading_level": null,
+    "code_language": "html",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_3b0cef632300_b00011",
+    "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+    "version_id": "ver_3b0cef632300",
+    "block_idx": 11,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "In this example, the application allows users to update their profiles by submitting a form with the user ID in a hidden field. If the app doesn't perform proper access control on the server-side, attackers can manipulate the \"user_id\" field to modify profiles of other users without authorization.",
+    "text_hash": "e83eb4151067e8e16c62d3742645ca5b2151821e2f73e3129eeab81dcfc7b2c2",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 33,
+      "end_line": 33
+    },
+    "heading_path": [
+      "Insecure Direct Object Reference Prevention Cheat Sheet",
+      "Examples"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_3b0cef632300_b00012",
+    "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+    "version_id": "ver_3b0cef632300",
+    "block_idx": 12,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "IDORs however are not limited to user profiles and sequential IDs. For instance:",
+    "text_hash": "c651b2b5320c9b01a7c0c053d300d19d351e999df03732e47a7f0c25daa417b4",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 35,
+      "end_line": 35
+    },
+    "heading_path": [
+      "Insecure Direct Object Reference Prevention Cheat Sheet",
+      "Examples"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_3b0cef632300_b00013",
+    "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+    "version_id": "ver_3b0cef632300",
+    "block_idx": 13,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```http\nGET /documents/annual-report.pdf\n```",
+    "text_hash": "c1f16b2471edea62bdb8437acf7c92f683ce4b4e11c23a0eb432227d09852d6f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 37,
+      "end_line": 39
+    },
+    "heading_path": [
+      "Insecure Direct Object Reference Prevention Cheat Sheet",
+      "Examples"
+    ],
+    "heading_level": null,
+    "code_language": "http",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_3b0cef632300_b00014",
+    "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+    "version_id": "ver_3b0cef632300",
+    "block_idx": 14,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "In this example, the filename acts as the object reference. If an attacker modifies the filename to another valid document, such as:",
+    "text_hash": "e581b37b2c1f4f7acaa2a5902ea8a2bbf506d73f9d37e01268e0fd26d5066e35",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 41,
+      "end_line": 41
+    },
+    "heading_path": [
+      "Insecure Direct Object Reference Prevention Cheat Sheet",
+      "Examples"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_3b0cef632300_b00015",
+    "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+    "version_id": "ver_3b0cef632300",
+    "block_idx": 15,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```http\nGET /documents/financial-statement.pdf\n```",
+    "text_hash": "37510a60758e6f8dc9788d299e49aa115c6d1b43eb914a30e541d6e80b2a78f8",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 43,
+      "end_line": 45
+    },
+    "heading_path": [
+      "Insecure Direct Object Reference Prevention Cheat Sheet",
+      "Examples"
+    ],
+    "heading_level": null,
+    "code_language": "http",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_3b0cef632300_b00016",
+    "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+    "version_id": "ver_3b0cef632300",
+    "block_idx": 16,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "and gains access to a document belonging to another user, the application is vulnerable to IDOR. Object references are not limited to numeric identifiers and may include filenames, account numbers, tokens, or other values.",
+    "text_hash": "65cbc47133fd6577457858e798a9a6a31ec676df0e9888a9cb8f540cea63d44d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 47,
+      "end_line": 47
+    },
+    "heading_path": [
+      "Insecure Direct Object Reference Prevention Cheat Sheet",
+      "Examples"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_3b0cef632300_b00017",
+    "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+    "version_id": "ver_3b0cef632300",
+    "block_idx": 17,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Identifier complexity",
+    "text_hash": "d4e8aecad5adf77f7e5ddf68b7f2557c3994c128c25e3a65becfc4dbe5bdde5c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 49,
+      "end_line": 49
+    },
+    "heading_path": [
+      "Insecure Direct Object Reference Prevention Cheat Sheet",
+      "Identifier complexity"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_3b0cef632300_b00018",
+    "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+    "version_id": "ver_3b0cef632300",
+    "block_idx": 18,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "In some cases, using more complex identifiers like GUIDs can make it practically impossible for attackers to guess valid values. However, even with complex identifiers, access control checks are essential. If attackers obtain URLs for unauthorized objects, the application should still block their access attempts.",
+    "text_hash": "e9f33558bbd21d19d9b418129776ebfe970b6631fdd6f453596aee7e173a0ba2",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 51,
+      "end_line": 51
+    },
+    "heading_path": [
+      "Insecure Direct Object Reference Prevention Cheat Sheet",
+      "Identifier complexity"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_3b0cef632300_b00019",
+    "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+    "version_id": "ver_3b0cef632300",
+    "block_idx": 19,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Verifying access controls",
+    "text_hash": "72fb542d29d6ea6938cf5d93bb9b9710c2543d2c3fa8f76bae26674f83d76097",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 53,
+      "end_line": 53
+    },
+    "heading_path": [
+      "Insecure Direct Object Reference Prevention Cheat Sheet",
+      "Verifying access controls"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_3b0cef632300_b00020",
+    "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+    "version_id": "ver_3b0cef632300",
+    "block_idx": 20,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "When testing for IDOR vulnerabilities, it is useful to create multiple user accounts with different authorization scopes. This allows developers and testers to verify that object-level authorization checks are consistently enforced.",
+    "text_hash": "5702ae7d97c4aced4fb565356a865c5791574e8ee3dd1b26c18ddef0c265a828",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 55,
+      "end_line": 55
+    },
+    "heading_path": [
+      "Insecure Direct Object Reference Prevention Cheat Sheet",
+      "Verifying access controls"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_3b0cef632300_b00021",
+    "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+    "version_id": "ver_3b0cef632300",
+    "block_idx": 21,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "For example:",
+    "text_hash": "652744a2ab28954bbafd780fd76c15c2bd557594532f907f10ead1989727af95",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 57,
+      "end_line": 57
+    },
+    "heading_path": [
+      "Insecure Direct Object Reference Prevention Cheat Sheet",
+      "Verifying access controls"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_3b0cef632300_b00022",
+    "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+    "version_id": "ver_3b0cef632300",
+    "block_idx": 22,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "1. Create User A and User B.\n2. Create objects owned by each user (documents, support tickets, invoices, etc.).\n3. Authenticate as User A and attempt to access User B's objects by modifying object references in requests.\n4. Verify that the application denies unauthorized access regardless of whether the object identifier is predictable or unguessable.\n",
+    "text_hash": "e2cd1aa63540251b9065b6c8f409ae04e783fef4420d7deebe3942ce1566c4c6",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 59,
+      "end_line": 63
+    },
+    "heading_path": [
+      "Insecure Direct Object Reference Prevention Cheat Sheet",
+      "Verifying access controls"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_3b0cef632300_b00023",
+    "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+    "version_id": "ver_3b0cef632300",
+    "block_idx": 23,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "This verification should be performed for all operations involving object references, including read, create, update, delete, export, and administrative actions.",
+    "text_hash": "ae2a6d423af90359463e0ad03804b62d0e001151e92ff47618ae0c8b7a89b017",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 64,
+      "end_line": 64
+    },
+    "heading_path": [
+      "Insecure Direct Object Reference Prevention Cheat Sheet",
+      "Verifying access controls"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_3b0cef632300_b00024",
+    "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+    "version_id": "ver_3b0cef632300",
+    "block_idx": 24,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Mitigation",
+    "text_hash": "e1118598da1ddaebe70a04fbbf6be3c9af40f7c66b8647c95b2b97e713f26b1d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 66,
+      "end_line": 66
+    },
+    "heading_path": [
+      "Insecure Direct Object Reference Prevention Cheat Sheet",
+      "Mitigation"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_3b0cef632300_b00025",
+    "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+    "version_id": "ver_3b0cef632300",
+    "block_idx": 25,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "To mitigate IDOR, implement access control checks for each object that users try to access. Web frameworks often provide ways to facilitate this. Additionally, use complex identifiers as a defense-in-depth measure, but remember that access control is crucial even with these identifiers.",
+    "text_hash": "234437af5363fbaa47f309685b0c076b7e0d2f4aa21218805f006bde61e30967",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 68,
+      "end_line": 68
+    },
+    "heading_path": [
+      "Insecure Direct Object Reference Prevention Cheat Sheet",
+      "Mitigation"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_3b0cef632300_b00026",
+    "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+    "version_id": "ver_3b0cef632300",
+    "block_idx": 26,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Avoid exposing identifiers in URLs and POST bodies if possible. Instead, determine the currently authenticated user from session information. When using multi-step flows, pass identifiers in the session to prevent tampering.",
+    "text_hash": "2e9ae31ce8b9ce2003cec971a00c4a2d94938388a9edb297d8afc214f065b134",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 70,
+      "end_line": 70
+    },
+    "heading_path": [
+      "Insecure Direct Object Reference Prevention Cheat Sheet",
+      "Mitigation"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_3b0cef632300_b00027",
+    "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+    "version_id": "ver_3b0cef632300",
+    "block_idx": 27,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "When looking up objects based on primary keys, use datasets that users have access to. For example, in Ruby on Rails:",
+    "text_hash": "a4b96f61f3892a17f6afc809893ead288134a9ae3b398c7820fd98a13646a7c8",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 72,
+      "end_line": 72
+    },
+    "heading_path": [
+      "Insecure Direct Object Reference Prevention Cheat Sheet",
+      "Mitigation"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_3b0cef632300_b00028",
+    "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+    "version_id": "ver_3b0cef632300",
+    "block_idx": 28,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```ruby\n# vulnerable, searches all projects\n@project = Project.find(params[:id])\n\n# secure, searches projects related to the current user\n@project = @current_user.projects.find(params[:id])\n```",
+    "text_hash": "6daf847e38bbeb1dd85c5e40396b601d180a576f7df8700bd3d763060813fc74",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 74,
+      "end_line": 80
+    },
+    "heading_path": [
+      "Insecure Direct Object Reference Prevention Cheat Sheet",
+      "Mitigation"
+    ],
+    "heading_level": null,
+    "code_language": "ruby",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_3b0cef632300_b00029",
+    "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+    "version_id": "ver_3b0cef632300",
+    "block_idx": 29,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Verify the user's permission every time an access attempt is made. Implement this structurally using the recommended approach for your web framework.",
+    "text_hash": "5c751312eb3364eb1f233c3425990fe6a7cca349b725b6f1fd985566a9dc997d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 82,
+      "end_line": 82
+    },
+    "heading_path": [
+      "Insecure Direct Object Reference Prevention Cheat Sheet",
+      "Mitigation"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_3b0cef632300_b00030",
+    "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+    "version_id": "ver_3b0cef632300",
+    "block_idx": 30,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "As an additional defense-in-depth measure, replace enumerable numeric identifiers with more complex, random identifiers. You can achieve this by adding a column with random strings in the database table and using those strings in the URLs instead of numeric primary keys. Another option is to use UUIDs or other long random values as primary keys. Avoid encrypting identifiers as it can be challenging to do so securely.",
+    "text_hash": "303b07c69910ebbb57b7ae24888fa3ece17bc7e296eebdc5e33b80055710f628",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 84,
+      "end_line": 84
+    },
+    "heading_path": [
+      "Insecure Direct Object Reference Prevention Cheat Sheet",
+      "Mitigation"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_3b0cef632300_b00031",
+    "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+    "version_id": "ver_3b0cef632300",
+    "block_idx": 31,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Java and Spring Boot example",
+    "text_hash": "bc8c629cd2126c97e635a226815e7d53ae1fa7b32f73784669578bf954a887ec",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 86,
+      "end_line": 86
+    },
+    "heading_path": [
+      "Insecure Direct Object Reference Prevention Cheat Sheet",
+      "Java and Spring Boot example"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_3b0cef632300_b00032",
+    "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+    "version_id": "ver_3b0cef632300",
+    "block_idx": 32,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "These illustrative examples assume authenticated requests and a policy that only owners can read documents. `currentUser()` represents an application helper that obtains the user from the trusted authentication context. Consider a Spring Boot endpoint that returns a document by its identifier:",
+    "text_hash": "d9e903d86bd4919c36191b85613c2b760fd887c5b5d2f4c3baf2eddf8a3392a0",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 88,
+      "end_line": 88
+    },
+    "heading_path": [
+      "Insecure Direct Object Reference Prevention Cheat Sheet",
+      "Java and Spring Boot example"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_3b0cef632300_b00033",
+    "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+    "version_id": "ver_3b0cef632300",
+    "block_idx": 33,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```java\n@GetMapping(\"/documents/{id}\")\npublic Document getDocument(@PathVariable Long id) {\n    return documentRepository.findById(id).orElseThrow();\n}\n```",
+    "text_hash": "6448a96618f514071e6acafc5a2c776588bf91bb533ff73abc56aa941677ee28",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 90,
+      "end_line": 95
+    },
+    "heading_path": [
+      "Insecure Direct Object Reference Prevention Cheat Sheet",
+      "Java and Spring Boot example"
+    ],
+    "heading_level": null,
+    "code_language": "java",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_3b0cef632300_b00034",
+    "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+    "version_id": "ver_3b0cef632300",
+    "block_idx": 34,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The `{id}` path variable is controlled by the requester and flows directly into `findById()`. Nothing verifies that the returned document belongs to the currently authenticated user, so any user who can guess or obtain a valid identifier can read another user's document.",
+    "text_hash": "66c359a1cee14c5b0bf4bb902cda1bc94f4d30c7edabaaf955302a50a01ac473",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 97,
+      "end_line": 97
+    },
+    "heading_path": [
+      "Insecure Direct Object Reference Prevention Cheat Sheet",
+      "Java and Spring Boot example"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_3b0cef632300_b00035",
+    "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+    "version_id": "ver_3b0cef632300",
+    "block_idx": 35,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Fixing the code",
+    "text_hash": "dc489823763bc8ad122c144b223f7afdc712c7afff20c243b81c610503903acc",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 99,
+      "end_line": 99
+    },
+    "heading_path": [
+      "Insecure Direct Object Reference Prevention Cheat Sheet",
+      "Java and Spring Boot example",
+      "Fixing the code"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_3b0cef632300_b00036",
+    "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+    "version_id": "ver_3b0cef632300",
+    "block_idx": 36,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Prefer a lookup limited to documents owned by the current user. This mirrors the scoped-query approach shown for Ruby on Rails above:",
+    "text_hash": "4433655500445ca1cc2effa834d6e9a616204eb6984d21b838f82271fa20368d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 101,
+      "end_line": 101
+    },
+    "heading_path": [
+      "Insecure Direct Object Reference Prevention Cheat Sheet",
+      "Java and Spring Boot example",
+      "Fixing the code"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_3b0cef632300_b00037",
+    "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+    "version_id": "ver_3b0cef632300",
+    "block_idx": 37,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```java\n@GetMapping(\"/documents/{id}\")\npublic Document getDocument(@PathVariable Long id) {\n    return documentRepository.findByIdAndOwnerId(id, currentUser().getId())\n        .orElseThrow();\n}\n```",
+    "text_hash": "76d5d96bfeddc06dc17b30998b9a1049734a4af49a15eb43c2c19c6aff90e812",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 103,
+      "end_line": 109
+    },
+    "heading_path": [
+      "Insecure Direct Object Reference Prevention Cheat Sheet",
+      "Java and Spring Boot example",
+      "Fixing the code"
+    ],
+    "heading_level": null,
+    "code_language": "java",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_3b0cef632300_b00038",
+    "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+    "version_id": "ver_3b0cef632300",
+    "block_idx": 38,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Alternatively, verify ownership explicitly after fetching the object:",
+    "text_hash": "5383b10a9b2ae82c8f68a85f0e3b9db6e0fe2543c19b9564298875824d2835a5",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 111,
+      "end_line": 111
+    },
+    "heading_path": [
+      "Insecure Direct Object Reference Prevention Cheat Sheet",
+      "Java and Spring Boot example",
+      "Fixing the code"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_3b0cef632300_b00039",
+    "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+    "version_id": "ver_3b0cef632300",
+    "block_idx": 39,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```java\n@GetMapping(\"/documents/{id}\")\npublic Document getDocument(@PathVariable Long id) {\n    Document document = documentRepository.findById(id).orElseThrow();\n    if (!document.getOwnerId().equals(currentUser().getId())) {\n        throw new AccessDeniedException(\"Not allowed\");\n    }\n    return document;\n}\n```",
+    "text_hash": "c3f119037d6e5c2777e8c2a4d81a6dd9d60568dfda165a1a7d578aa8fd322a2c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 113,
+      "end_line": 122
+    },
+    "heading_path": [
+      "Insecure Direct Object Reference Prevention Cheat Sheet",
+      "Java and Spring Boot example",
+      "Fixing the code"
+    ],
+    "heading_level": null,
+    "code_language": "java",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_3b0cef632300_b00040",
+    "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+    "version_id": "ver_3b0cef632300",
+    "block_idx": 40,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The post-fetch check can distinguish a missing object from one the caller cannot access. If the resource's existence is sensitive, use the scoped lookup and map both cases to the same public response, such as a [404 (Not Found) response](https://www.rfc-editor.org/rfc/rfc9110.html#section-15.5.4). For example, `GET /user/john@example.com` should not reveal whether an account exists to a caller who is not allowed to know.",
+    "text_hash": "530c3a4fc759c91f80f9ccea00acc397e9e818b0f364a484a338516122e37cd9",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 124,
+      "end_line": 124
+    },
+    "heading_path": [
+      "Insecure Direct Object Reference Prevention Cheat Sheet",
+      "Java and Spring Boot example",
+      "Fixing the code"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_3b0cef632300_b00041",
+    "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+    "version_id": "ver_3b0cef632300",
+    "block_idx": 41,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "To use Spring Security's [@PreAuthorize](https://docs.spring.io/spring-security/reference/servlet/authorization/method-security.html) alternative, first enable method security with `@EnableMethodSecurity` on a Spring `@Configuration` class; Spring Boot's security starter does not enable it by default. The following example applies to a Spring-managed component and assumes an application-provided `documentAuthorizationService` that checks ownership:",
+    "text_hash": "c1acd93fa0fa2bc9936e90a59be8301108a6f48f39e5da443bb5ff1b4a4e1660",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 126,
+      "end_line": 126
+    },
+    "heading_path": [
+      "Insecure Direct Object Reference Prevention Cheat Sheet",
+      "Java and Spring Boot example",
+      "Fixing the code"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_3b0cef632300_b00042",
+    "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+    "version_id": "ver_3b0cef632300",
+    "block_idx": 42,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```java\n@PreAuthorize(\"@documentAuthorizationService.isOwner(#id, authentication.name)\")\n@GetMapping(\"/documents/{id}\")\npublic Document getDocument(@PathVariable Long id) {\n    return documentRepository.findById(id).orElseThrow();\n}\n```",
+    "text_hash": "a9a1ebd538ff7d98e2ba8e96c3484e4f1d16285ae9a503885ac6a5bde723593f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 128,
+      "end_line": 134
+    },
+    "heading_path": [
+      "Insecure Direct Object Reference Prevention Cheat Sheet",
+      "Java and Spring Boot example",
+      "Fixing the code"
+    ],
+    "heading_level": null,
+    "code_language": "java",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_3b0cef632300_b00043",
+    "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+    "version_id": "ver_3b0cef632300",
+    "block_idx": 43,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## References",
+    "text_hash": "65b72d86eeeb214ab8ca5fd24cb7cd7773e58084e95b670040df03e21e8c6fa7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 136,
+      "end_line": 136
+    },
+    "heading_path": [
+      "Insecure Direct Object Reference Prevention Cheat Sheet",
+      "References"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_3b0cef632300_b00044",
+    "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
+    "version_id": "ver_3b0cef632300",
+    "block_idx": 44,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- [CWE-639: Authorization Bypass Through User-Controlled Key](https://cwe.mitre.org/data/definitions/639.html)\n- [OWASP WSTG: Testing for Insecure Direct Object References](https://wstg.owasp.org/v4.2/4-Web_Application_Security_Testing/05-Authorization_Testing/04-Testing_for_Insecure_Direct_Object_References/)",
+    "text_hash": "f103b8eb65eac7721ed9cc5eabfe538936f687014f3d0fce7fbad5c18ad0bc65",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 138,
+      "end_line": 139
+    },
+    "heading_path": [
+      "Insecure Direct Object Reference Prevention Cheat Sheet",
+      "References"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  }
+]

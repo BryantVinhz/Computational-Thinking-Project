@@ -1,0 +1,800 @@
+{
+  "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+  "version_id": "ver_298e416105dc",
+  "chunking_strategy": "structure_aware",
+  "chunks": [
+    {
+      "chunk_id": "ver_298e416105dc_c00000",
+      "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+      "version_id": "ver_298e416105dc",
+      "chunk_idx": 0,
+      "chunk_type": "heading",
+      "text_content": "# A05:2021 – Security Misconfiguration ![icon](assets/TOP_10_Icons_Final_Security_Misconfiguration.png){: style=\"height:80px;width:80px\" align=\"right\"}",
+      "token_count": 37,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "A05:2021 – Security Misconfiguration"
+      ]
+    },
+    {
+      "chunk_id": "ver_298e416105dc_c00001",
+      "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+      "version_id": "ver_298e416105dc",
+      "chunk_idx": 1,
+      "chunk_type": "heading",
+      "text_content": "## Factors",
+      "token_count": 3,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "A05:2021 – Security Misconfiguration",
+        "Factors"
+      ]
+    },
+    {
+      "chunk_id": "ver_298e416105dc_c00002",
+      "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+      "version_id": "ver_298e416105dc",
+      "chunk_idx": 2,
+      "chunk_type": "table",
+      "text_content": "| CWEs Mapped | Max Incidence Rate | Avg Incidence Rate | Avg Weighted Exploit | Avg Weighted Impact | Max Coverage | Avg Coverage | Total Occurrences | Total CVEs |\n|:-------------:|:--------------------:|:--------------------:|:--------------:|:--------------:|:----------------------:|:---------------------:|:-------------------:|:------------:|\n| 20 | 19.84% | 4.51% | 8.12 | 6.56 | 89.58% | 44.84% | 208,387 | 789 |",
+      "token_count": 252,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "A05:2021 – Security Misconfiguration",
+        "Factors"
+      ]
+    },
+    {
+      "chunk_id": "ver_298e416105dc_c00003",
+      "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+      "version_id": "ver_298e416105dc",
+      "chunk_idx": 3,
+      "chunk_type": "heading",
+      "text_content": "## Overview",
+      "token_count": 3,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "A05:2021 – Security Misconfiguration",
+        "Overview"
+      ]
+    },
+    {
+      "chunk_id": "ver_298e416105dc_c00004",
+      "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+      "version_id": "ver_298e416105dc",
+      "chunk_idx": 4,
+      "chunk_type": "paragraph",
+      "text_content": "Moving up from #6 in the previous edition, 90% of applications were\ntested for some form of misconfiguration, with an average incidence rate of 4.51%, and over 208k occurrences of a Common Weakness Enumeration (CWE) in this risk category.\n\nWith more shifts into highly configurable software, it's not surprising to see this category move up.\n\nNotable CWEs included are *CWE-16 Configuration* and *CWE-611 Improper\nRestriction of XML External Entity Reference*.",
+      "token_count": 94,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "A05:2021 – Security Misconfiguration",
+        "Overview"
+      ]
+    },
+    {
+      "chunk_id": "ver_298e416105dc_c00005",
+      "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+      "version_id": "ver_298e416105dc",
+      "chunk_idx": 5,
+      "chunk_type": "heading",
+      "text_content": "## Description",
+      "token_count": 3,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "A05:2021 – Security Misconfiguration",
+        "Description"
+      ]
+    },
+    {
+      "chunk_id": "ver_298e416105dc_c00006",
+      "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+      "version_id": "ver_298e416105dc",
+      "chunk_idx": 6,
+      "chunk_type": "mixed",
+      "text_content": "The application might be vulnerable if the application is:\n\n- Missing appropriate security hardening across any part of the\n    application stack or improperly configured permissions on cloud\n    services.\n\n- Unnecessary features are enabled or installed (e.g., unnecessary\n    ports, services, pages, accounts, or privileges).\n\n- Default accounts and their passwords are still enabled and\n    unchanged.\n\n- Error handling reveals stack traces or other overly informative\n    error messages to users.\n\n- For upgraded systems, the latest security features are disabled or\n    not configured securely.\n\n- The security settings in the application servers, application\n    frameworks (e.g., Struts, Spring, ASP.NET), libraries, databases,\n    etc., are not set to secure values.\n\n- The server does not send security headers or directives, or they are\n    not set to secure values.\n\n- The software is out of date or vulnerable (see [A06:2021-Vulnerable\n    and Outdated Components](A06_2021-Vulnerable_and_Outdated_Components.md)).\n\nWithout a concerted, repeatable application security configuration\nprocess, systems are at a higher risk.",
+      "token_count": 206,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "A05:2021 – Security Misconfiguration",
+        "Description"
+      ]
+    },
+    {
+      "chunk_id": "ver_298e416105dc_c00007",
+      "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+      "version_id": "ver_298e416105dc",
+      "chunk_idx": 7,
+      "chunk_type": "heading",
+      "text_content": "## How to Prevent",
+      "token_count": 5,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "A05:2021 – Security Misconfiguration",
+        "How to Prevent"
+      ]
+    },
+    {
+      "chunk_id": "ver_298e416105dc_c00008",
+      "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+      "version_id": "ver_298e416105dc",
+      "chunk_idx": 8,
+      "chunk_type": "mixed",
+      "text_content": "Secure installation processes should be implemented, including:\n\n- A repeatable hardening process makes it fast and easy to deploy\n    another environment that is appropriately locked down.\n\nDevelopment,\n    QA, and production environments should all be configured\n    identically, with different credentials used in each environment.\n\nThis process should be automated to minimize the effort required to\n    set up a new secure environment.\n\n- A minimal platform without any unnecessary features, components,\n    documentation, and samples.\n\nRemove or do not install unused features\n    and frameworks.\n\n- A task to review and update the configurations appropriate to all\n    security notes, updates, and patches as part of the patch management\n    process (see [A06:2021-Vulnerable\n    and Outdated Components](A06_2021-Vulnerable_and_Outdated_Components.md)).\n\nReview\n    cloud storage permissions (e.g., S3 bucket permissions).\n\n- A segmented application architecture provides effective and secure\n    separation between components or tenants, with segmentation,\n    containerization, or cloud security groups (ACLs).\n\n- Sending security directives to clients, e.g., Security Headers.\n\n- An automated process to verify the effectiveness of the\n    configurations and settings in all environments.",
+      "token_count": 216,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "A05:2021 – Security Misconfiguration",
+        "How to Prevent"
+      ]
+    },
+    {
+      "chunk_id": "ver_298e416105dc_c00009",
+      "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+      "version_id": "ver_298e416105dc",
+      "chunk_idx": 9,
+      "chunk_type": "heading",
+      "text_content": "## Example Attack Scenarios",
+      "token_count": 5,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "A05:2021 – Security Misconfiguration",
+        "Example Attack Scenarios"
+      ]
+    },
+    {
+      "chunk_id": "ver_298e416105dc_c00010",
+      "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+      "version_id": "ver_298e416105dc",
+      "chunk_idx": 10,
+      "chunk_type": "paragraph",
+      "text_content": "**Scenario #1:** The application server comes with sample applications\nnot removed from the production server.\n\nThese sample applications have\nknown security flaws attackers use to compromise the server.\n\nSuppose one\nof these applications is the admin console, and default accounts weren't\nchanged.\n\nIn that case, the attacker logs in with default passwords and\ntakes over.\n\n**Scenario #2:** Directory listing is not disabled on the server.\n\nAn\nattacker discovers they can simply list directories.\n\nThe attacker finds\nand downloads the compiled Java classes, which they decompile and\nreverse engineer to view the code.\n\nThe attacker then finds a severe\naccess control flaw in the application.\n\n**Scenario #3:** The application server's configuration allows detailed\nerror messages, e.g., stack traces, to be returned to users.\n\nThis\npotentially exposes sensitive information or underlying flaws such as\ncomponent versions that are known to be vulnerable.\n\n**Scenario #4:** A cloud service provider (CSP) has default sharing\npermissions open to the Internet by other CSP users.\n\nThis allows\nsensitive data stored within cloud storage to be accessed.",
+      "token_count": 221,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "A05:2021 – Security Misconfiguration",
+        "Example Attack Scenarios"
+      ]
+    },
+    {
+      "chunk_id": "ver_298e416105dc_c00011",
+      "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+      "version_id": "ver_298e416105dc",
+      "chunk_idx": 11,
+      "chunk_type": "heading",
+      "text_content": "## References",
+      "token_count": 3,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "A05:2021 – Security Misconfiguration",
+        "References"
+      ]
+    },
+    {
+      "chunk_id": "ver_298e416105dc_c00012",
+      "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+      "version_id": "ver_298e416105dc",
+      "chunk_idx": 12,
+      "chunk_type": "list",
+      "text_content": "- [OWASP Testing Guide: Configuration\n    Management](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/02-Configuration_and_Deployment_Management_Testing/README)\n\n- [OWASP Testing Guide: Testing for Error Codes](https://owasp.org/www-project-web-security-testing-guide/stable/4-Web_Application_Security_Testing/08-Testing_for_Error_Handling/01-Testing_For_Improper_Error_Handling)\n\n- [Application Security Verification Standard V14 Configuration](https://github.com/OWASP/ASVS/blob/master/4.0/en/0x22-V14-Config.md)\n\n- [NIST Guide to General Server\n    Hardening](https://csrc.nist.gov/publications/detail/sp/800-123/final)\n\n- [CIS Security Configuration\n    Guides/Benchmarks](https://www.cisecurity.org/cis-benchmarks/)\n\n- [Amazon S3 Bucket Discovery and\n    Enumeration](https://blog.websecurify.com/2017/10/aws-s3-bucket-discovery.html)",
+      "token_count": 219,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "A05:2021 – Security Misconfiguration",
+        "References"
+      ]
+    },
+    {
+      "chunk_id": "ver_298e416105dc_c00013",
+      "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+      "version_id": "ver_298e416105dc",
+      "chunk_idx": 13,
+      "chunk_type": "heading",
+      "text_content": "## List of Mapped CWEs",
+      "token_count": 6,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "A05:2021 – Security Misconfiguration",
+        "List of Mapped CWEs"
+      ]
+    },
+    {
+      "chunk_id": "ver_298e416105dc_c00014",
+      "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+      "version_id": "ver_298e416105dc",
+      "chunk_idx": 14,
+      "chunk_type": "paragraph",
+      "text_content": "[CWE-2 7PK - Environment](https://cwe.mitre.org/data/definitions/2.html)\n\n[CWE-11 ASP.NET Misconfiguration: Creating Debug Binary](https://cwe.mitre.org/data/definitions/11.html)\n\n[CWE-13 ASP.NET Misconfiguration: Password in Configuration File](https://cwe.mitre.org/data/definitions/13.html)\n\n[CWE-15 External Control of System or Configuration Setting](https://cwe.mitre.org/data/definitions/15.html)\n\n[CWE-16 Configuration](https://cwe.mitre.org/data/definitions/16.html)\n\n[CWE-260 Password in Configuration File](https://cwe.mitre.org/data/definitions/260.html)\n\n[CWE-315 Cleartext Storage of Sensitive Information in a Cookie](https://cwe.mitre.org/data/definitions/315.html)\n\n[CWE-520 .NET Misconfiguration: Use of Impersonation](https://cwe.mitre.org/data/definitions/520.html)\n\n[CWE-526 Exposure of Sensitive Information Through Environmental Variables](https://cwe.mitre.org/data/definitions/526.html)\n\n[CWE-537 Java Runtime Error Message Containing Sensitive Information](https://cwe.mitre.org/data/definitions/537.html)\n\n[CWE-541 Inclusion of Sensitive Information in an Include File](https://cwe.mitre.org/data/definitions/541.html)\n\n[CWE-547 Use of Hard-coded, Security-relevant Constants](https://cwe.mitre.org/data/definitions/547.html)\n\n[CWE-611 Improper Restriction of XML External Entity Reference](https://cwe.mitre.org/data/definitions/611.html)\n\n[CWE-614 Sensitive Cookie in HTTPS Session Without 'Secure' Attribute](https://cwe.mitre.org/data/definitions/614.html)",
+      "token_count": 432,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "A05:2021 – Security Misconfiguration",
+        "List of Mapped CWEs"
+      ]
+    },
+    {
+      "chunk_id": "ver_298e416105dc_c00015",
+      "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+      "version_id": "ver_298e416105dc",
+      "chunk_idx": 15,
+      "chunk_type": "paragraph",
+      "text_content": "[CWE-756 Missing Custom Error Page](https://cwe.mitre.org/data/definitions/756.html)\n\n[CWE-776 Improper Restriction of Recursive Entity References in DTDs ('XML Entity Expansion')](https://cwe.mitre.org/data/definitions/776.html)\n\n[CWE-942 Permissive Cross-domain Policy with Untrusted Domains](https://cwe.mitre.org/data/definitions/942.html)\n\n[CWE-1004 Sensitive Cookie Without 'HttpOnly' Flag](https://cwe.mitre.org/data/definitions/1004.html)\n\n[CWE-1032 OWASP Top Ten 2017 Category A6 - Security Misconfiguration](https://cwe.mitre.org/data/definitions/1032.html)\n\n[CWE-1174 ASP.NET Misconfiguration: Improper Model Validation](https://cwe.mitre.org/data/definitions/1174.html)",
+      "token_count": 195,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "A05:2021 – Security Misconfiguration",
+        "List of Mapped CWEs"
+      ]
+    }
+  ],
+  "chunk_sources": [
+    {
+      "chunk_source_id": "ver_298e416105dc_c00000_s000",
+      "chunk_id": "ver_298e416105dc_c00000",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00000",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 151
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00001_s000",
+      "chunk_id": "ver_298e416105dc_c00001",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00001",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 10
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00002_s000",
+      "chunk_id": "ver_298e416105dc_c00002",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00002",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 421
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00003_s000",
+      "chunk_id": "ver_298e416105dc_c00003",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00003",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 11
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00004_s000",
+      "chunk_id": "ver_298e416105dc_c00004",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00004",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 238
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00004_s001",
+      "chunk_id": "ver_298e416105dc_c00004",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00004",
+      "source_order": 1,
+      "start_offset": 239,
+      "end_offset": 340
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00004_s002",
+      "chunk_id": "ver_298e416105dc_c00004",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00004",
+      "source_order": 2,
+      "start_offset": 341,
+      "end_offset": 458
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00005_s000",
+      "chunk_id": "ver_298e416105dc_c00005",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00005",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 14
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00006_s000",
+      "chunk_id": "ver_298e416105dc_c00006",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00006",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 58
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00006_s001",
+      "chunk_id": "ver_298e416105dc_c00006",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00007",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 145
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00006_s002",
+      "chunk_id": "ver_298e416105dc_c00006",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00007",
+      "source_order": 2,
+      "start_offset": 147,
+      "end_offset": 267
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00006_s003",
+      "chunk_id": "ver_298e416105dc_c00006",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00007",
+      "source_order": 3,
+      "start_offset": 269,
+      "end_offset": 344
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00006_s004",
+      "chunk_id": "ver_298e416105dc_c00006",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00007",
+      "source_order": 4,
+      "start_offset": 346,
+      "end_offset": 440
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00006_s005",
+      "chunk_id": "ver_298e416105dc_c00006",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00007",
+      "source_order": 5,
+      "start_offset": 442,
+      "end_offset": 539
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00006_s006",
+      "chunk_id": "ver_298e416105dc_c00006",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00007",
+      "source_order": 6,
+      "start_offset": 541,
+      "end_offset": 714
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00006_s007",
+      "chunk_id": "ver_298e416105dc_c00006",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00007",
+      "source_order": 7,
+      "start_offset": 716,
+      "end_offset": 816
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00006_s008",
+      "chunk_id": "ver_298e416105dc_c00006",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00007",
+      "source_order": 8,
+      "start_offset": 818,
+      "end_offset": 966
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00006_s009",
+      "chunk_id": "ver_298e416105dc_c00006",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00008",
+      "source_order": 9,
+      "start_offset": 0,
+      "end_offset": 105
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00007_s000",
+      "chunk_id": "ver_298e416105dc_c00007",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00009",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 17
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00008_s000",
+      "chunk_id": "ver_298e416105dc_c00008",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00010",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 63
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00008_s001",
+      "chunk_id": "ver_298e416105dc_c00008",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00011",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 124
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00008_s002",
+      "chunk_id": "ver_298e416105dc_c00008",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00011",
+      "source_order": 2,
+      "start_offset": 125,
+      "end_offset": 268
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00008_s003",
+      "chunk_id": "ver_298e416105dc_c00008",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00011",
+      "source_order": 3,
+      "start_offset": 273,
+      "end_offset": 377
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00008_s004",
+      "chunk_id": "ver_298e416105dc_c00008",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00011",
+      "source_order": 4,
+      "start_offset": 379,
+      "end_offset": 477
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00008_s005",
+      "chunk_id": "ver_298e416105dc_c00008",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00011",
+      "source_order": 5,
+      "start_offset": 478,
+      "end_offset": 538
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00008_s006",
+      "chunk_id": "ver_298e416105dc_c00008",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00011",
+      "source_order": 6,
+      "start_offset": 540,
+      "end_offset": 797
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00008_s007",
+      "chunk_id": "ver_298e416105dc_c00008",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00011",
+      "source_order": 7,
+      "start_offset": 798,
+      "end_offset": 865
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00008_s008",
+      "chunk_id": "ver_298e416105dc_c00008",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00011",
+      "source_order": 8,
+      "start_offset": 867,
+      "end_offset": 1055
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00008_s009",
+      "chunk_id": "ver_298e416105dc_c00008",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00011",
+      "source_order": 9,
+      "start_offset": 1057,
+      "end_offset": 1122
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00008_s010",
+      "chunk_id": "ver_298e416105dc_c00008",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00011",
+      "source_order": 10,
+      "start_offset": 1124,
+      "end_offset": 1234
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00009_s000",
+      "chunk_id": "ver_298e416105dc_c00009",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00012",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 27
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00010_s000",
+      "chunk_id": "ver_298e416105dc_c00010",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00013",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 110
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00010_s001",
+      "chunk_id": "ver_298e416105dc_c00010",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00013",
+      "source_order": 1,
+      "start_offset": 111,
+      "end_offset": 202
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00010_s002",
+      "chunk_id": "ver_298e416105dc_c00010",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00013",
+      "source_order": 2,
+      "start_offset": 203,
+      "end_offset": 296
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00010_s003",
+      "chunk_id": "ver_298e416105dc_c00010",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00013",
+      "source_order": 3,
+      "start_offset": 297,
+      "end_offset": 370
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00010_s004",
+      "chunk_id": "ver_298e416105dc_c00010",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00014",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 65
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00010_s005",
+      "chunk_id": "ver_298e416105dc_c00010",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00014",
+      "source_order": 5,
+      "start_offset": 66,
+      "end_offset": 121
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00010_s006",
+      "chunk_id": "ver_298e416105dc_c00010",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00014",
+      "source_order": 6,
+      "start_offset": 122,
+      "end_offset": 241
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00010_s007",
+      "chunk_id": "ver_298e416105dc_c00010",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00014",
+      "source_order": 7,
+      "start_offset": 242,
+      "end_offset": 314
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00010_s008",
+      "chunk_id": "ver_298e416105dc_c00010",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00015",
+      "source_order": 8,
+      "start_offset": 0,
+      "end_offset": 132
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00010_s009",
+      "chunk_id": "ver_298e416105dc_c00010",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00015",
+      "source_order": 9,
+      "start_offset": 133,
+      "end_offset": 259
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00010_s010",
+      "chunk_id": "ver_298e416105dc_c00010",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00016",
+      "source_order": 10,
+      "start_offset": 0,
+      "end_offset": 120
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00010_s011",
+      "chunk_id": "ver_298e416105dc_c00010",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00016",
+      "source_order": 11,
+      "start_offset": 121,
+      "end_offset": 191
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00011_s000",
+      "chunk_id": "ver_298e416105dc_c00011",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00017",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 13
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00012_s000",
+      "chunk_id": "ver_298e416105dc_c00012",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00018",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 211
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00012_s001",
+      "chunk_id": "ver_298e416105dc_c00012",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00018",
+      "source_order": 1,
+      "start_offset": 213,
+      "end_offset": 430
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00012_s002",
+      "chunk_id": "ver_298e416105dc_c00012",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00018",
+      "source_order": 2,
+      "start_offset": 432,
+      "end_offset": 565
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00012_s003",
+      "chunk_id": "ver_298e416105dc_c00012",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00018",
+      "source_order": 3,
+      "start_offset": 567,
+      "end_offset": 673
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00012_s004",
+      "chunk_id": "ver_298e416105dc_c00012",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00018",
+      "source_order": 4,
+      "start_offset": 675,
+      "end_offset": 771
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00012_s005",
+      "chunk_id": "ver_298e416105dc_c00012",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00018",
+      "source_order": 5,
+      "start_offset": 773,
+      "end_offset": 890
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00013_s000",
+      "chunk_id": "ver_298e416105dc_c00013",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00019",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 22
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00014_s000",
+      "chunk_id": "ver_298e416105dc_c00014",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00020",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 72
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00014_s001",
+      "chunk_id": "ver_298e416105dc_c00014",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00021",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 104
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00014_s002",
+      "chunk_id": "ver_298e416105dc_c00014",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00022",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 113
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00014_s003",
+      "chunk_id": "ver_298e416105dc_c00014",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00023",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 108
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00014_s004",
+      "chunk_id": "ver_298e416105dc_c00014",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00024",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 70
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00014_s005",
+      "chunk_id": "ver_298e416105dc_c00014",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00025",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 89
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00014_s006",
+      "chunk_id": "ver_298e416105dc_c00014",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00026",
+      "source_order": 6,
+      "start_offset": 0,
+      "end_offset": 113
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00014_s007",
+      "chunk_id": "ver_298e416105dc_c00014",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00027",
+      "source_order": 7,
+      "start_offset": 0,
+      "end_offset": 102
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00014_s008",
+      "chunk_id": "ver_298e416105dc_c00014",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00028",
+      "source_order": 8,
+      "start_offset": 0,
+      "end_offset": 124
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00014_s009",
+      "chunk_id": "ver_298e416105dc_c00014",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00029",
+      "source_order": 9,
+      "start_offset": 0,
+      "end_offset": 118
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00014_s010",
+      "chunk_id": "ver_298e416105dc_c00014",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00030",
+      "source_order": 10,
+      "start_offset": 0,
+      "end_offset": 112
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00014_s011",
+      "chunk_id": "ver_298e416105dc_c00014",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00031",
+      "source_order": 11,
+      "start_offset": 0,
+      "end_offset": 105
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00014_s012",
+      "chunk_id": "ver_298e416105dc_c00014",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00032",
+      "source_order": 12,
+      "start_offset": 0,
+      "end_offset": 112
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00014_s013",
+      "chunk_id": "ver_298e416105dc_c00014",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00033",
+      "source_order": 13,
+      "start_offset": 0,
+      "end_offset": 119
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00015_s000",
+      "chunk_id": "ver_298e416105dc_c00015",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00034",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 84
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00015_s001",
+      "chunk_id": "ver_298e416105dc_c00015",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00035",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 143
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00015_s002",
+      "chunk_id": "ver_298e416105dc_c00015",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00036",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 112
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00015_s003",
+      "chunk_id": "ver_298e416105dc_c00015",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00037",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 101
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00015_s004",
+      "chunk_id": "ver_298e416105dc_c00015",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00038",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 119
+    },
+    {
+      "chunk_source_id": "ver_298e416105dc_c00015_s005",
+      "chunk_id": "ver_298e416105dc_c00015",
+      "normalized_block_id": "nrm_ver_298e416105dc_b00039",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 112
+    }
+  ]
+}
