@@ -1,0 +1,1558 @@
+[
+  {
+    "block_id": "ver_c3cc207d452c_b00000",
+    "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+    "version_id": "ver_c3cc207d452c",
+    "block_idx": 0,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "# Forgot Password Cheat Sheet",
+    "text_hash": "68ee79b7ece53e15a1d7c3a91e05e5b290798faff04e2b6c239766ab955bb965",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 1,
+      "end_line": 1
+    },
+    "heading_path": [
+      "Forgot Password Cheat Sheet"
+    ],
+    "heading_level": 1,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c3cc207d452c_b00000",
+    "normalized_text": "# Forgot Password Cheat Sheet",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c3cc207d452c_b00001",
+    "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+    "version_id": "ver_c3cc207d452c",
+    "block_idx": 1,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Introduction",
+    "text_hash": "d753efbab681fa4da82470d9a83b1c202de58f92fd498e77a269c1163bc4714b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 3,
+      "end_line": 3
+    },
+    "heading_path": [
+      "Forgot Password Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c3cc207d452c_b00001",
+    "normalized_text": "## Introduction",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c3cc207d452c_b00002",
+    "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+    "version_id": "ver_c3cc207d452c",
+    "block_idx": 2,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "In order to implement a proper user management system, systems integrate a **Forgot Password** service that allows the user to request a password reset.",
+    "text_hash": "a97c65b5adb6aa0108196bccc03745c6b8c42d0c47edd55660357f58e06382b0",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 5,
+      "end_line": 5
+    },
+    "heading_path": [
+      "Forgot Password Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c3cc207d452c_b00002",
+    "normalized_text": "In order to implement a proper user management system, systems integrate a **Forgot Password** service that allows the user to request a password reset.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c3cc207d452c_b00003",
+    "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+    "version_id": "ver_c3cc207d452c",
+    "block_idx": 3,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Even though this functionality looks straightforward and easy to implement, it is a common source of vulnerabilities, such as the renowned [user enumeration attack](https://owasp.org/www-project-web-security-testing-guide/stable/4-Web_Application_Security_Testing/03-Identity_Management_Testing/04-Testing_for_Account_Enumeration_and_Guessable_User_Account.html).",
+    "text_hash": "4110aa9a195d16faaff4417cfee238b5c90c099274771dbb6f24806f3d2c5ea1",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 7,
+      "end_line": 7
+    },
+    "heading_path": [
+      "Forgot Password Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c3cc207d452c_b00003",
+    "normalized_text": "Even though this functionality looks straightforward and easy to implement, it is a common source of vulnerabilities, such as the renowned [user enumeration attack](https://owasp.org/www-project-web-security-testing-guide/stable/4-Web_Application_Security_Testing/03-Identity_Management_Testing/04-Testing_for_Account_Enumeration_and_Guessable_User_Account.html).",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c3cc207d452c_b00004",
+    "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+    "version_id": "ver_c3cc207d452c",
+    "block_idx": 4,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The following short guidelines can be used as a quick reference to protect the forgot password service:",
+    "text_hash": "959f91e6840916e185cf3c275b759280788b3afb1213c4e11cfe448ffd79421e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 9,
+      "end_line": 9
+    },
+    "heading_path": [
+      "Forgot Password Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c3cc207d452c_b00004",
+    "normalized_text": "The following short guidelines can be used as a quick reference to protect the forgot password service:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c3cc207d452c_b00005",
+    "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+    "version_id": "ver_c3cc207d452c",
+    "block_idx": 5,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- **Return a consistent message for both existent and non-existent accounts.**\n- **Ensure that the time taken for the user response message is uniform.**\n- **Use a side-channel to communicate the method to reset their password.**\n- **Use [URL tokens](#url-tokens) for the simplest and fastest implementation.**\n- **Ensure that generated tokens or codes are:**\n    - **Randomly generated using a cryptographically safe algorithm.**\n    - **Sufficiently long to protect against brute-force attacks.**\n    - **Stored securely.**\n    - **Single use and expire after an appropriate period.**\n- **Do not make a change to the account until a valid token is presented, such as locking out the account.**\n",
+    "text_hash": "a54a7d3ea11bb2e6913d0af7fe1eee00b93d843a7aeba4850ba6578d24fc4fae",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 11,
+      "end_line": 21
+    },
+    "heading_path": [
+      "Forgot Password Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c3cc207d452c_b00005",
+    "normalized_text": "- **Return a consistent message for both existent and non-existent accounts.**\n- **Ensure that the time taken for the user response message is uniform.**\n- **Use a side-channel to communicate the method to reset their password.**\n- **Use [URL tokens](#url-tokens) for the simplest and fastest implementation.**\n- **Ensure that generated tokens or codes are:**\n    - **Randomly generated using a cryptographically safe algorithm.**\n    - **Sufficiently long to protect against brute-force attacks.**\n    - **Stored securely.**\n    - **Single use and expire after an appropriate period.**\n- **Do not make a change to the account until a valid token is presented, such as locking out the account.**",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_c3cc207d452c_b00006",
+    "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+    "version_id": "ver_c3cc207d452c",
+    "block_idx": 6,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "This cheat sheet is focused on resetting users passwords. For guidance on resetting multifactor authentication (MFA), see the relevant section in the [Multifactor Authentication Cheat Sheet](Multifactor_Authentication_Cheat_Sheet.md#resetting-mfa).",
+    "text_hash": "d9cf787ba29615da11fb479102883d7712c52aba481c0a9b01914e83a22635bc",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 22,
+      "end_line": 22
+    },
+    "heading_path": [
+      "Forgot Password Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c3cc207d452c_b00006",
+    "normalized_text": "This cheat sheet is focused on resetting users passwords. For guidance on resetting multifactor authentication (MFA), see the relevant section in the [Multifactor Authentication Cheat Sheet](Multifactor_Authentication_Cheat_Sheet.md#resetting-mfa).",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c3cc207d452c_b00007",
+    "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+    "version_id": "ver_c3cc207d452c",
+    "block_idx": 7,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Forgot Password Service",
+    "text_hash": "da9ad93ded0abe84fb1d8bef8c796e6d2ef0dfd6461c1064cc16db08e9706409",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 24,
+      "end_line": 24
+    },
+    "heading_path": [
+      "Forgot Password Cheat Sheet",
+      "Forgot Password Service"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c3cc207d452c_b00007",
+    "normalized_text": "## Forgot Password Service",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c3cc207d452c_b00008",
+    "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+    "version_id": "ver_c3cc207d452c",
+    "block_idx": 8,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The password reset process can be broken into two main steps, detailed in the following sections.",
+    "text_hash": "7382ccc33a947d5c197d2cd1eca3c1a6e6a4ea896e87f7a8c980fd9b002d43e6",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 26,
+      "end_line": 26
+    },
+    "heading_path": [
+      "Forgot Password Cheat Sheet",
+      "Forgot Password Service"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c3cc207d452c_b00008",
+    "normalized_text": "The password reset process can be broken into two main steps, detailed in the following sections.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c3cc207d452c_b00009",
+    "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+    "version_id": "ver_c3cc207d452c",
+    "block_idx": 9,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Forgot Password Request",
+    "text_hash": "a95869223cb0e9453da12a7d7c75cf930b35838c223d9cbe6c199fa122957787",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 28,
+      "end_line": 28
+    },
+    "heading_path": [
+      "Forgot Password Cheat Sheet",
+      "Forgot Password Service",
+      "Forgot Password Request"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c3cc207d452c_b00009",
+    "normalized_text": "### Forgot Password Request",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c3cc207d452c_b00010",
+    "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+    "version_id": "ver_c3cc207d452c",
+    "block_idx": 10,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "When a user uses the forgot password service and inputs their username or email, the below should be followed to implement a secure process:",
+    "text_hash": "491fcf4c5a7b6b20e3ec99f463b919f78a7ce1c3e3b64fe1fae79acebf449650",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 30,
+      "end_line": 30
+    },
+    "heading_path": [
+      "Forgot Password Cheat Sheet",
+      "Forgot Password Service",
+      "Forgot Password Request"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c3cc207d452c_b00010",
+    "normalized_text": "When a user uses the forgot password service and inputs their username or email, the below should be followed to implement a secure process:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c3cc207d452c_b00011",
+    "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+    "version_id": "ver_c3cc207d452c",
+    "block_idx": 11,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- Return a consistent message for both existent and non-existent accounts.\n- Ensure that responses return in a consistent amount of time to prevent an attacker enumerating which accounts exist. This could be achieved by using asynchronous calls or by making sure that the same logic is followed, instead of using a quick exit method.\n- Implement protections against excessive automated submissions such as rate-limiting on a per-account basis, requiring a CAPTCHA, or other controls. Otherwise an attacker could make thousands of password reset requests per hour for a given account, flooding the user's intake system (e.g., email inbox or SMS) with useless requests.\n- Employ normal security measures, such as [SQL Injection Prevention methods](SQL_Injection_Prevention_Cheat_Sheet.md) and [Input Validation](Input_Validation_Cheat_Sheet.md).\n",
+    "text_hash": "d4a78c8f8c957948674137a34c390a1bd136604d8a508dfc625ba88d4ca65db8",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 32,
+      "end_line": 36
+    },
+    "heading_path": [
+      "Forgot Password Cheat Sheet",
+      "Forgot Password Service",
+      "Forgot Password Request"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c3cc207d452c_b00011",
+    "normalized_text": "- Return a consistent message for both existent and non-existent accounts.\n- Ensure that responses return in a consistent amount of time to prevent an attacker enumerating which accounts exist. This could be achieved by using asynchronous calls or by making sure that the same logic is followed, instead of using a quick exit method.\n- Implement protections against excessive automated submissions such as rate-limiting on a per-account basis, requiring a CAPTCHA, or other controls. Otherwise an attacker could make thousands of password reset requests per hour for a given account, flooding the user's intake system (e.g., email inbox or SMS) with useless requests.\n- Employ normal security measures, such as [SQL Injection Prevention methods](SQL_Injection_Prevention_Cheat_Sheet.md) and [Input Validation](Input_Validation_Cheat_Sheet.md).",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_c3cc207d452c_b00012",
+    "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+    "version_id": "ver_c3cc207d452c",
+    "block_idx": 12,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### User Resets Password",
+    "text_hash": "1174f454c60f6df9b09449bf7f3c6c56f29c08191ed3737722f60407e98a5ed4",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 37,
+      "end_line": 37
+    },
+    "heading_path": [
+      "Forgot Password Cheat Sheet",
+      "Forgot Password Service",
+      "User Resets Password"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c3cc207d452c_b00012",
+    "normalized_text": "### User Resets Password",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c3cc207d452c_b00013",
+    "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+    "version_id": "ver_c3cc207d452c",
+    "block_idx": 13,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Once the user has proved their identity by providing the token (sent via an email) or code (sent via SMS or other mechanisms), they should reset their password to a new secure one. In order to secure this step, the measures that should be taken are:",
+    "text_hash": "ce5f1f174016aacc4e1f3e6a27050e01474f6738c525c1bd363666949736c616",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 39,
+      "end_line": 39
+    },
+    "heading_path": [
+      "Forgot Password Cheat Sheet",
+      "Forgot Password Service",
+      "User Resets Password"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c3cc207d452c_b00013",
+    "normalized_text": "Once the user has proved their identity by providing the token (sent via an email) or code (sent via SMS or other mechanisms), they should reset their password to a new secure one. In order to secure this step, the measures that should be taken are:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c3cc207d452c_b00014",
+    "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+    "version_id": "ver_c3cc207d452c",
+    "block_idx": 14,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- The user should confirm the password they set by writing it twice.\n- Ensure that a secure password policy is in place, and is consistent with the rest of the application.\n- Update and store the password following [secure practices](Password_Storage_Cheat_Sheet.md).\n- Send the user an email informing them that their password has been reset (do not send the password in the email!).\n- Once they have set their new password, the user should then login through the usual mechanism. Don't automatically log the user in, as this introduces additional complexity to the authentication and session handling code, and increases the likelihood of introducing vulnerabilities.\n- Ask the user if they want to invalidate all of their existing sessions, or invalidate the sessions automatically.\n",
+    "text_hash": "d6d299544941873cd23f1846f2515834f9981296983269f6f807ea365547e3e0",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 41,
+      "end_line": 47
+    },
+    "heading_path": [
+      "Forgot Password Cheat Sheet",
+      "Forgot Password Service",
+      "User Resets Password"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c3cc207d452c_b00014",
+    "normalized_text": "- The user should confirm the password they set by writing it twice.\n- Ensure that a secure password policy is in place, and is consistent with the rest of the application.\n- Update and store the password following [secure practices](Password_Storage_Cheat_Sheet.md).\n- Send the user an email informing them that their password has been reset (do not send the password in the email!).\n- Once they have set their new password, the user should then login through the usual mechanism. Don't automatically log the user in, as this introduces additional complexity to the authentication and session handling code, and increases the likelihood of introducing vulnerabilities.\n- Ask the user if they want to invalidate all of their existing sessions, or invalidate the sessions automatically.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_c3cc207d452c_b00015",
+    "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+    "version_id": "ver_c3cc207d452c",
+    "block_idx": 15,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Account Recovery After Suspected Compromise",
+    "text_hash": "b3102917cf8cf52e1dd8257a7262048e6236173f1f4339cd8f26a6fb0707a002",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 48,
+      "end_line": 48
+    },
+    "heading_path": [
+      "Forgot Password Cheat Sheet",
+      "Forgot Password Service",
+      "Account Recovery After Suspected Compromise"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c3cc207d452c_b00015",
+    "normalized_text": "### Account Recovery After Suspected Compromise",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c3cc207d452c_b00016",
+    "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+    "version_id": "ver_c3cc207d452c",
+    "block_idx": 16,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "A password reset alone may not restore control of a compromised account. An attacker may still have an active session or may have changed recovery information or MFA methods.",
+    "text_hash": "43d08149eb0900be1be30eb7b0a37519b2e9df5fafd7bfdbd960502d9656fe7c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 50,
+      "end_line": 50
+    },
+    "heading_path": [
+      "Forgot Password Cheat Sheet",
+      "Forgot Password Service",
+      "Account Recovery After Suspected Compromise"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c3cc207d452c_b00016",
+    "normalized_text": "A password reset alone may not restore control of a compromised account. An attacker may still have an active session or may have changed recovery information or MFA methods.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c3cc207d452c_b00017",
+    "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+    "version_id": "ver_c3cc207d452c",
+    "block_idx": 17,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "When recovering a potentially compromised account:",
+    "text_hash": "a894ad31d44efb4aa55fef7ca8f404071143117d4e7337589f8c21f5a8484c51",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 52,
+      "end_line": 52
+    },
+    "heading_path": [
+      "Forgot Password Cheat Sheet",
+      "Forgot Password Service",
+      "Account Recovery After Suspected Compromise"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c3cc207d452c_b00017",
+    "normalized_text": "When recovering a potentially compromised account:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c3cc207d452c_b00018",
+    "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+    "version_id": "ver_c3cc207d452c",
+    "block_idx": 18,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- Do not rely solely on recently added or changed recovery information. Use independent, previously established recovery evidence, such as saved recovery codes, in a combination that meets the account's assurance requirements. See [NIST account recovery guidance](https://pages.nist.gov/800-63-4/sp800-63b/events/#recovery).\n- Do not automatically restore superseded recovery addresses or phone numbers; they may have been replaced because they were lost or compromised.\n- Promptly suspend or invalidate authenticators identified as compromised, following [NIST guidance for compromised authenticators](https://pages.nist.gov/800-63-4/sp800-63b/events/#loss-theft-damage-and-compromise).\n- Review recovery addresses, phone numbers, and MFA methods with the verified account owner, and remove unauthorized changes. [Google's compromised-account guidance](https://support.google.com/accounts/answer/6294825) identifies these settings for review and correction.\n- After successful recovery, invalidate existing sessions and outstanding password reset and recovery links or codes so they cannot restore an attacker's access. See [session invalidation guidance](Session_Management_Cheat_Sheet.md#session-expiration).\n- Notify the user through all applicable registered notification addresses, including established channels that remain safe to use. Include instructions and contact information for reporting unauthorized recovery, as described in [NIST account notification guidance](https://pages.nist.gov/800-63-4/sp800-63b/events/#notification).\n",
+    "text_hash": "5cf0f9f1d36e8e5c8944fb824b020970c93366b03e58d37f3eb371499b57a622",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 54,
+      "end_line": 60
+    },
+    "heading_path": [
+      "Forgot Password Cheat Sheet",
+      "Forgot Password Service",
+      "Account Recovery After Suspected Compromise"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c3cc207d452c_b00018",
+    "normalized_text": "- Do not rely solely on recently added or changed recovery information. Use independent, previously established recovery evidence, such as saved recovery codes, in a combination that meets the account's assurance requirements. See [NIST account recovery guidance](https://pages.nist.gov/800-63-4/sp800-63b/events/#recovery).\n- Do not automatically restore superseded recovery addresses or phone numbers; they may have been replaced because they were lost or compromised.\n- Promptly suspend or invalidate authenticators identified as compromised, following [NIST guidance for compromised authenticators](https://pages.nist.gov/800-63-4/sp800-63b/events/#loss-theft-damage-and-compromise).\n- Review recovery addresses, phone numbers, and MFA methods with the verified account owner, and remove unauthorized changes. [Google's compromised-account guidance](https://support.google.com/accounts/answer/6294825) identifies these settings for review and correction.\n- After successful recovery, invalidate existing sessions and outstanding password reset and recovery links or codes so they cannot restore an attacker's access. See [session invalidation guidance](Session_Management_Cheat_Sheet.md#session-expiration).\n- Notify the user through all applicable registered notification addresses, including established channels that remain safe to use. Include instructions and contact information for reporting unauthorized recovery, as described in [NIST account notification guidance](https://pages.nist.gov/800-63-4/sp800-63b/events/#notification).",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_c3cc207d452c_b00019",
+    "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+    "version_id": "ver_c3cc207d452c",
+    "block_idx": 19,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "See [reauthentication after risk events](Authentication_Cheat_Sheet.md#re-authentication-after-risk-events) and [MFA recovery](Multifactor_Authentication_Cheat_Sheet.md#resetting-mfa) for related controls.",
+    "text_hash": "9adaabf608bbea8596b217ef584ba162d2e6d41e66ff7c19a8e7ad3cab1315f4",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 61,
+      "end_line": 61
+    },
+    "heading_path": [
+      "Forgot Password Cheat Sheet",
+      "Forgot Password Service",
+      "Account Recovery After Suspected Compromise"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c3cc207d452c_b00019",
+    "normalized_text": "See [reauthentication after risk events](Authentication_Cheat_Sheet.md#re-authentication-after-risk-events) and [MFA recovery](Multifactor_Authentication_Cheat_Sheet.md#resetting-mfa) for related controls.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c3cc207d452c_b00020",
+    "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+    "version_id": "ver_c3cc207d452c",
+    "block_idx": 20,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Methods",
+    "text_hash": "f10f482f08112298a7b6d3090f1ea9c2254688471ce31e5da64ed9631f177b5d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 63,
+      "end_line": 63
+    },
+    "heading_path": [
+      "Forgot Password Cheat Sheet",
+      "Methods"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c3cc207d452c_b00020",
+    "normalized_text": "## Methods",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c3cc207d452c_b00021",
+    "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+    "version_id": "ver_c3cc207d452c",
+    "block_idx": 21,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "In order to allow a user to request a password reset, you will need to have some way to identify the user, or a means to reach out to them through a side-channel.",
+    "text_hash": "cd478d03cd5ebebbf11bb1f91a461074e0215332fb0da252a0622050d278720a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 65,
+      "end_line": 65
+    },
+    "heading_path": [
+      "Forgot Password Cheat Sheet",
+      "Methods"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c3cc207d452c_b00021",
+    "normalized_text": "In order to allow a user to request a password reset, you will need to have some way to identify the user, or a means to reach out to them through a side-channel.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c3cc207d452c_b00022",
+    "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+    "version_id": "ver_c3cc207d452c",
+    "block_idx": 22,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "This can be done through any of the following methods:",
+    "text_hash": "dc59ada0d47a8fedd01e058745d1b415a1ddfe2456707574f488cb19e5641a38",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 67,
+      "end_line": 67
+    },
+    "heading_path": [
+      "Forgot Password Cheat Sheet",
+      "Methods"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c3cc207d452c_b00022",
+    "normalized_text": "This can be done through any of the following methods:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c3cc207d452c_b00023",
+    "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+    "version_id": "ver_c3cc207d452c",
+    "block_idx": 23,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- [URL tokens](#url-tokens).\n- [PINs](#pins)\n- [Offline methods](#offline-methods)\n- [Security questions](#security-questions).\n",
+    "text_hash": "4e25fb133b469f436347fa79632de664b5317f851cce300c9e94ee5d104e311b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 69,
+      "end_line": 73
+    },
+    "heading_path": [
+      "Forgot Password Cheat Sheet",
+      "Methods"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c3cc207d452c_b00023",
+    "normalized_text": "- [URL tokens](#url-tokens).\n- [PINs](#pins)\n- [Offline methods](#offline-methods)\n- [Security questions](#security-questions).",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_c3cc207d452c_b00024",
+    "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+    "version_id": "ver_c3cc207d452c",
+    "block_idx": 24,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "These methods can be used together to provide a greater degree of assurance that the user is who they claim to be. No matter what, you must ensure that a user always has a way to recover their account, even if that involves contacting the support team and proving their identity to staff.",
+    "text_hash": "cf8b509ecb75d7e9d5e8ee81f8ceb5dc48614a68ccea81ab7f6fdbb0d53d8913",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 74,
+      "end_line": 74
+    },
+    "heading_path": [
+      "Forgot Password Cheat Sheet",
+      "Methods"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c3cc207d452c_b00024",
+    "normalized_text": "These methods can be used together to provide a greater degree of assurance that the user is who they claim to be. No matter what, you must ensure that a user always has a way to recover their account, even if that involves contacting the support team and proving their identity to staff.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c3cc207d452c_b00025",
+    "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+    "version_id": "ver_c3cc207d452c",
+    "block_idx": 25,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### General Security Practices",
+    "text_hash": "3d4f52053476e1a71a9b60dac218150b65f391f4e5fe31764357adcbb882df72",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 76,
+      "end_line": 76
+    },
+    "heading_path": [
+      "Forgot Password Cheat Sheet",
+      "Methods",
+      "General Security Practices"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c3cc207d452c_b00025",
+    "normalized_text": "### General Security Practices",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c3cc207d452c_b00026",
+    "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+    "version_id": "ver_c3cc207d452c",
+    "block_idx": 26,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "It is essential to employ good security practices for the reset identifiers (tokens, codes, PINs, etc.). Some points don't apply to the [offline methods](#offline-methods), such as the lifetime restriction. All tokens and codes should be:",
+    "text_hash": "ef04453cfeade8d0ca2d8c6cb68862a65500e58b3f50fb57ddcf58253dd1f204",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 78,
+      "end_line": 78
+    },
+    "heading_path": [
+      "Forgot Password Cheat Sheet",
+      "Methods",
+      "General Security Practices"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c3cc207d452c_b00026",
+    "normalized_text": "It is essential to employ good security practices for the reset identifiers (tokens, codes, PINs, etc.). Some points don't apply to the [offline methods](#offline-methods), such as the lifetime restriction. All tokens and codes should be:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c3cc207d452c_b00027",
+    "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+    "version_id": "ver_c3cc207d452c",
+    "block_idx": 27,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- Generated using a [cryptographically secure random number generator](Cryptographic_Storage_Cheat_Sheet.md#secure-random-number-generation).\n    - It is also possible to use JSON Web Tokens (JWTs) in place of random tokens, although this can introduce additional vulnerability, such as those discussed in the [JSON Web Token Cheat Sheet](JSON_Web_Token_Cheat_Sheet.md).\n- Long enough to protect against brute-force attacks.\n- Linked to an individual user in the database.\n- Invalidated after they have been used.\n- Stored in a secure manner, as discussed in the [Password Storage Cheat Sheet](Password_Storage_Cheat_Sheet.md).\n",
+    "text_hash": "6c4a44a8a2f43deed492db647b3bf5c2ef1d7c4d76ef4a28c40f9e8dfda6ef1f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 80,
+      "end_line": 86
+    },
+    "heading_path": [
+      "Forgot Password Cheat Sheet",
+      "Methods",
+      "General Security Practices"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c3cc207d452c_b00027",
+    "normalized_text": "- Generated using a [cryptographically secure random number generator](Cryptographic_Storage_Cheat_Sheet.md#secure-random-number-generation).\n    - It is also possible to use JSON Web Tokens (JWTs) in place of random tokens, although this can introduce additional vulnerability, such as those discussed in the [JSON Web Token Cheat Sheet](JSON_Web_Token_Cheat_Sheet.md).\n- Long enough to protect against brute-force attacks.\n- Linked to an individual user in the database.\n- Invalidated after they have been used.\n- Stored in a secure manner, as discussed in the [Password Storage Cheat Sheet](Password_Storage_Cheat_Sheet.md).",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_c3cc207d452c_b00028",
+    "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+    "version_id": "ver_c3cc207d452c",
+    "block_idx": 28,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### URL Tokens",
+    "text_hash": "80f27ea10c125802c28ed70509ad45e3ed990373deba4551917da38ce7cfae49",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 87,
+      "end_line": 87
+    },
+    "heading_path": [
+      "Forgot Password Cheat Sheet",
+      "Methods",
+      "URL Tokens"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c3cc207d452c_b00028",
+    "normalized_text": "### URL Tokens",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c3cc207d452c_b00029",
+    "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+    "version_id": "ver_c3cc207d452c",
+    "block_idx": 29,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "URL tokens are passed in the query string of the URL, and are typically sent to the user via email. The basic overview of the process is as follows:",
+    "text_hash": "1eebbf2457654ba53dd6aa9dacc0780e7a333153096ebd5552f8d60914217671",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 89,
+      "end_line": 89
+    },
+    "heading_path": [
+      "Forgot Password Cheat Sheet",
+      "Methods",
+      "URL Tokens"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c3cc207d452c_b00029",
+    "normalized_text": "URL tokens are passed in the query string of the URL, and are typically sent to the user via email. The basic overview of the process is as follows:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c3cc207d452c_b00030",
+    "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+    "version_id": "ver_c3cc207d452c",
+    "block_idx": 30,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "1. Generate a token for the user and attach it in the URL query string.\n2. Send this token to the user via email.\n   - Don't rely on the [Host](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Host) header while creating the reset URLs to avoid [Host Header Injection](https://owasp.org/www-project-web-security-testing-guide/stable/4-Web_Application_Security_Testing/07-Input_Validation_Testing/17-Testing_for_Host_Header_Injection) attacks. The URL should either be hard-coded, or validated against a list of trusted domains.\n   - Ensure that the URL is using HTTPS.\n3. The user receives the email, and browses to the URL with the attached token.\n   - Ensure that the reset password page adds the [Referrer Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy) tag with the `no-referrer` value in order to avoid [referrer leakage](https://portswigger.net/kb/issues/00500400_cross-domain-referer-leakage).\n   - Implement appropriate protection to prevent users from brute-forcing tokens in the URL, such as rate limiting.\n4. If required, perform any additional validation steps such as requiring the user to answer [security questions](#security-questions).\n5. Let the user create a new password and confirm it. Ensure that the same password policy used elsewhere in the application is applied.\n",
+    "text_hash": "b8b638f082133f70c96bae7a06b177f4f5dad6ba7797669f4dff11b7fcc49ea9",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 91,
+      "end_line": 100
+    },
+    "heading_path": [
+      "Forgot Password Cheat Sheet",
+      "Methods",
+      "URL Tokens"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c3cc207d452c_b00030",
+    "normalized_text": "1. Generate a token for the user and attach it in the URL query string.\n2. Send this token to the user via email.\n   - Don't rely on the [Host](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Host) header while creating the reset URLs to avoid [Host Header Injection](https://owasp.org/www-project-web-security-testing-guide/stable/4-Web_Application_Security_Testing/07-Input_Validation_Testing/17-Testing_for_Host_Header_Injection) attacks. The URL should either be hard-coded, or validated against a list of trusted domains.\n   - Ensure that the URL is using HTTPS.\n3. The user receives the email, and browses to the URL with the attached token.\n   - Ensure that the reset password page adds the [Referrer Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy) tag with the `no-referrer` value in order to avoid [referrer leakage](https://portswigger.net/kb/issues/00500400_cross-domain-referer-leakage).\n   - Implement appropriate protection to prevent users from brute-forcing tokens in the URL, such as rate limiting.\n4. If required, perform any additional validation steps such as requiring the user to answer [security questions](#security-questions).\n5. Let the user create a new password and confirm it. Ensure that the same password policy used elsewhere in the application is applied.",
+    "normalization_flags": {
+      "is_code_or_payload": true,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_c3cc207d452c_b00031",
+    "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+    "version_id": "ver_c3cc207d452c",
+    "block_idx": 31,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "*Note:* URL tokens can follow on the same behavior of the [PINs](#pins) by creating a restricted session from the token. Decision should be made based on the needs and the expertise of the developer.",
+    "text_hash": "72375b16300772ef8bdb4f119c2e17a43d0ba61aa495805e453b6acc0789ad11",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 101,
+      "end_line": 101
+    },
+    "heading_path": [
+      "Forgot Password Cheat Sheet",
+      "Methods",
+      "URL Tokens"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c3cc207d452c_b00031",
+    "normalized_text": "*Note:* URL tokens can follow on the same behavior of the [PINs](#pins) by creating a restricted session from the token. Decision should be made based on the needs and the expertise of the developer.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c3cc207d452c_b00032",
+    "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+    "version_id": "ver_c3cc207d452c",
+    "block_idx": 32,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### PINs",
+    "text_hash": "f88af1bc49b562dcac763f67b11df0f4e6ca080f990a97f2510720355de06674",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 103,
+      "end_line": 103
+    },
+    "heading_path": [
+      "Forgot Password Cheat Sheet",
+      "Methods",
+      "PINs"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c3cc207d452c_b00032",
+    "normalized_text": "### PINs",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c3cc207d452c_b00033",
+    "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+    "version_id": "ver_c3cc207d452c",
+    "block_idx": 33,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "PINs are numbers (between 6 and 12 digits) that are sent to the user through a side-channel such as SMS.",
+    "text_hash": "ed28ffbd3319162c506142eff23e3ff232c9b855f459e575bc34e9ca8318a327",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 105,
+      "end_line": 105
+    },
+    "heading_path": [
+      "Forgot Password Cheat Sheet",
+      "Methods",
+      "PINs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c3cc207d452c_b00033",
+    "normalized_text": "PINs are numbers (between 6 and 12 digits) that are sent to the user through a side-channel such as SMS.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c3cc207d452c_b00034",
+    "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+    "version_id": "ver_c3cc207d452c",
+    "block_idx": 34,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "1. Generate a PIN.\n2. Send it to the user via SMS or another mechanism.\n   - Breaking the PIN up with spaces makes it easier for the user to read and enter.\n3. The user then enters the PIN along with their username on the password reset page.\n4. Create a limited session from that PIN that only permits the user to reset their password.\n5. Let the user create a new password and confirm it. Ensure that the same password policy used elsewhere in the application is applied.\n",
+    "text_hash": "7c67135f39cf0a17ab4ead33f17e795e10535b3ff02e6446157ab70950bdef84",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 107,
+      "end_line": 113
+    },
+    "heading_path": [
+      "Forgot Password Cheat Sheet",
+      "Methods",
+      "PINs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c3cc207d452c_b00034",
+    "normalized_text": "1. Generate a PIN.\n2. Send it to the user via SMS or another mechanism.\n   - Breaking the PIN up with spaces makes it easier for the user to read and enter.\n3. The user then enters the PIN along with their username on the password reset page.\n4. Create a limited session from that PIN that only permits the user to reset their password.\n5. Let the user create a new password and confirm it. Ensure that the same password policy used elsewhere in the application is applied.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_c3cc207d452c_b00035",
+    "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+    "version_id": "ver_c3cc207d452c",
+    "block_idx": 35,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Offline Methods",
+    "text_hash": "478ffc302e1ba666b87b09936e070be9e0beff4affd4349eab0f853f1d7c0c5a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 114,
+      "end_line": 114
+    },
+    "heading_path": [
+      "Forgot Password Cheat Sheet",
+      "Methods",
+      "Offline Methods"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c3cc207d452c_b00035",
+    "normalized_text": "### Offline Methods",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c3cc207d452c_b00036",
+    "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+    "version_id": "ver_c3cc207d452c",
+    "block_idx": 36,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Offline methods differ from other methods by allowing the user to reset their password without requesting a special identifier (such as a token or PIN) from the backend. However, authentication still needs to be conducted by the backend to ensure that the request is legitimate. Offline methods provide a certain identifier either on registration, or when the user wishes to configure it.",
+    "text_hash": "b164a9618cd21fd9fe5edbb176242eb9f5fbcb16c42a3ed81e60b3878fdef698",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 116,
+      "end_line": 116
+    },
+    "heading_path": [
+      "Forgot Password Cheat Sheet",
+      "Methods",
+      "Offline Methods"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c3cc207d452c_b00036",
+    "normalized_text": "Offline methods differ from other methods by allowing the user to reset their password without requesting a special identifier (such as a token or PIN) from the backend. However, authentication still needs to be conducted by the backend to ensure that the request is legitimate. Offline methods provide a certain identifier either on registration, or when the user wishes to configure it.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c3cc207d452c_b00037",
+    "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+    "version_id": "ver_c3cc207d452c",
+    "block_idx": 37,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "These identifiers should be stored offline and in a secure fashion (*e.g.* password managers), and the backend should properly follow the [general security practices](#general-security-practices). Some implementations are built on [hardware OTP tokens](Multifactor_Authentication_Cheat_Sheet.md#hardware-otp-tokens), [certificates](Multifactor_Authentication_Cheat_Sheet.md#certificates), or any other implementation that could be used inside of an enterprise. These are out of scope for this cheat sheet.",
+    "text_hash": "6d661c670f89c78c9107cfc0fa73a58fbba5d10fab458ba0cfed31bc14d33131",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 118,
+      "end_line": 118
+    },
+    "heading_path": [
+      "Forgot Password Cheat Sheet",
+      "Methods",
+      "Offline Methods"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c3cc207d452c_b00037",
+    "normalized_text": "These identifiers should be stored offline and in a secure fashion (*e.g.* password managers), and the backend should properly follow the [general security practices](#general-security-practices). Some implementations are built on [hardware OTP tokens](Multifactor_Authentication_Cheat_Sheet.md#hardware-otp-tokens), [certificates](Multifactor_Authentication_Cheat_Sheet.md#certificates), or any other implementation that could be used inside of an enterprise. These are out of scope for this cheat sheet.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c3cc207d452c_b00038",
+    "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+    "version_id": "ver_c3cc207d452c",
+    "block_idx": 38,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "If account has MFA enabled, and you are looking for MFA recovery, different methods can be found in the corresponding [Multifactor Authentication cheat sheet](Multifactor_Authentication_Cheat_Sheet.md#resetting-mfa).",
+    "text_hash": "8861e90918e8c73e4a876576c470d05c0810701f10c93ed5ba81d752042b02e3",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 120,
+      "end_line": 120
+    },
+    "heading_path": [
+      "Forgot Password Cheat Sheet",
+      "Methods",
+      "Offline Methods"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c3cc207d452c_b00038",
+    "normalized_text": "If account has MFA enabled, and you are looking for MFA recovery, different methods can be found in the corresponding [Multifactor Authentication cheat sheet](Multifactor_Authentication_Cheat_Sheet.md#resetting-mfa).",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c3cc207d452c_b00039",
+    "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+    "version_id": "ver_c3cc207d452c",
+    "block_idx": 39,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Security Questions",
+    "text_hash": "bfad3959764fe4ee754f54371839515798fe1400a243ce8f1bf3cc8a95575cc4",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 122,
+      "end_line": 122
+    },
+    "heading_path": [
+      "Forgot Password Cheat Sheet",
+      "Methods",
+      "Security Questions"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c3cc207d452c_b00039",
+    "normalized_text": "### Security Questions",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c3cc207d452c_b00040",
+    "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+    "version_id": "ver_c3cc207d452c",
+    "block_idx": 40,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Security questions should not be used as the sole mechanism for resetting passwords due to their answers frequently being easily guessable or obtainable by attackers. However, they can provide an additional layer of security when combined with the other methods discussed in this cheat sheet. If they are used, then ensure that secure questions are chosen as discussed in the [Security Questions cheat sheet](Choosing_and_Using_Security_Questions_Cheat_Sheet.md).",
+    "text_hash": "c8d98f13b2b81298b794213254a4f976b50704a0badcc4458895156416e9444a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 124,
+      "end_line": 124
+    },
+    "heading_path": [
+      "Forgot Password Cheat Sheet",
+      "Methods",
+      "Security Questions"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c3cc207d452c_b00040",
+    "normalized_text": "Security questions should not be used as the sole mechanism for resetting passwords due to their answers frequently being easily guessable or obtainable by attackers. However, they can provide an additional layer of security when combined with the other methods discussed in this cheat sheet. If they are used, then ensure that secure questions are chosen as discussed in the [Security Questions cheat sheet](Choosing_and_Using_Security_Questions_Cheat_Sheet.md).",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c3cc207d452c_b00041",
+    "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+    "version_id": "ver_c3cc207d452c",
+    "block_idx": 41,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Account Lockout",
+    "text_hash": "a1e0802c35786693e6b535405a198982728de5fe7d82b5c7f7654c99407de45c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 126,
+      "end_line": 126
+    },
+    "heading_path": [
+      "Forgot Password Cheat Sheet",
+      "Account Lockout"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c3cc207d452c_b00041",
+    "normalized_text": "## Account Lockout",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c3cc207d452c_b00042",
+    "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+    "version_id": "ver_c3cc207d452c",
+    "block_idx": 42,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Accounts should not be locked out in response to a forgotten password attack, as this can be used to deny access to users with known usernames. For more details on account lockouts, see the [Authentication Cheat Sheet](Authentication_Cheat_Sheet.md).",
+    "text_hash": "58e2bcd94bb3e595a498db84df14ca562abf9ee4898cb75816e7d72112deacbb",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 128,
+      "end_line": 128
+    },
+    "heading_path": [
+      "Forgot Password Cheat Sheet",
+      "Account Lockout"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c3cc207d452c_b00042",
+    "normalized_text": "Accounts should not be locked out in response to a forgotten password attack, as this can be used to deny access to users with known usernames. For more details on account lockouts, see the [Authentication Cheat Sheet](Authentication_Cheat_Sheet.md).",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c3cc207d452c_b00043",
+    "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+    "version_id": "ver_c3cc207d452c",
+    "block_idx": 43,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## References",
+    "text_hash": "65b72d86eeeb214ab8ca5fd24cb7cd7773e58084e95b670040df03e21e8c6fa7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 130,
+      "end_line": 130
+    },
+    "heading_path": [
+      "Forgot Password Cheat Sheet",
+      "References"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c3cc207d452c_b00043",
+    "normalized_text": "## References",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c3cc207d452c_b00044",
+    "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
+    "version_id": "ver_c3cc207d452c",
+    "block_idx": 44,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- [NIST SP 800-63B-4: Account Recovery](https://pages.nist.gov/800-63-4/sp800-63b/events/#recovery)\n- [OWASP Application Security Verification Standard (ASVS): V6.4 Authentication Factor Lifecycle and Recovery](https://github.com/OWASP/ASVS/blob/master/5.0/en/0x15-V6-Authentication.md#v64-authentication-factor-lifecycle-and-recovery)",
+    "text_hash": "d1c44df21af6850284ee82e17623b24f2dc57fb4a2a2728109fab5962754383d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 132,
+      "end_line": 133
+    },
+    "heading_path": [
+      "Forgot Password Cheat Sheet",
+      "References"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c3cc207d452c_b00044",
+    "normalized_text": "- [NIST SP 800-63B-4: Account Recovery](https://pages.nist.gov/800-63-4/sp800-63b/events/#recovery)\n- [OWASP Application Security Verification Standard (ASVS): V6.4 Authentication Factor Lifecycle and Recovery](https://github.com/OWASP/ASVS/blob/master/5.0/en/0x15-V6-Authentication.md#v64-authentication-factor-lifecycle-and-recovery)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  }
+]

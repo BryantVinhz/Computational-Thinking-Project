@@ -1,0 +1,1543 @@
+[
+  {
+    "block_id": "ver_5597b04e2a6f_b00000",
+    "document_id": "doc_owasp_a03_sql_injection_prevention_cheat_sheet",
+    "version_id": "ver_5597b04e2a6f",
+    "block_idx": 0,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "# SQL Injection Prevention Cheat Sheet",
+    "text_hash": "7fad7de685d00370e614db187ada3b660f0fdc781309ec6342bd47c8731c6d96",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 1,
+      "end_line": 1
+    },
+    "heading_path": [
+      "SQL Injection Prevention Cheat Sheet"
+    ],
+    "heading_level": 1,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5597b04e2a6f_b00000",
+    "normalized_text": "# SQL Injection Prevention Cheat Sheet",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5597b04e2a6f_b00001",
+    "document_id": "doc_owasp_a03_sql_injection_prevention_cheat_sheet",
+    "version_id": "ver_5597b04e2a6f",
+    "block_idx": 1,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Introduction",
+    "text_hash": "d753efbab681fa4da82470d9a83b1c202de58f92fd498e77a269c1163bc4714b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 3,
+      "end_line": 3
+    },
+    "heading_path": [
+      "SQL Injection Prevention Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5597b04e2a6f_b00001",
+    "normalized_text": "## Introduction",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5597b04e2a6f_b00002",
+    "document_id": "doc_owasp_a03_sql_injection_prevention_cheat_sheet",
+    "version_id": "ver_5597b04e2a6f",
+    "block_idx": 2,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "SQL injection occurs when untrusted data becomes part of a query's SQL syntax. It can expose or modify database contents and, depending on database features and privileges, affect files or execute operating system commands. See the [OWASP Web Security Testing Guide](https://wstg.owasp.org/v4.2/4-Web_Application_Security_Testing/07-Input_Validation_Testing/05-Testing_for_SQL_Injection/) for the attack model and testing guidance.",
+    "text_hash": "a981f0e3b36a2769ebb5594cd54855e5e43683225dc16f5cb025cab3d1ec79fb",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 5,
+      "end_line": 5
+    },
+    "heading_path": [
+      "SQL Injection Prevention Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5597b04e2a6f_b00002",
+    "normalized_text": "SQL injection occurs when untrusted data becomes part of a query's SQL syntax. It can expose or modify database contents and, depending on database features and privileges, affect files or execute operating system commands. See the [OWASP Web Security Testing Guide](https://wstg.owasp.org/v4.2/4-Web_Application_Security_Testing/07-Input_Validation_Testing/05-Testing_for_SQL_Injection/) for the attack model and testing guidance.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5597b04e2a6f_b00003",
+    "document_id": "doc_owasp_a03_sql_injection_prevention_cheat_sheet",
+    "version_id": "ver_5597b04e2a6f",
+    "block_idx": 3,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Use parameterized queries for data values, fixed application-owned choices for dynamic query structure, and least privilege to limit damage. These controls apply regardless of whether data comes from an HTTP request, another service, or previously stored data. For other injection types, see the [Injection Prevention Cheat Sheet](Injection_Prevention_Cheat_Sheet.md).",
+    "text_hash": "eca2b6a23f09d75ff0658a647d948df2e2cdffe8f858e224166ff6e74069549f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 7,
+      "end_line": 7
+    },
+    "heading_path": [
+      "SQL Injection Prevention Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5597b04e2a6f_b00003",
+    "normalized_text": "Use parameterized queries for data values, fixed application-owned choices for dynamic query structure, and least privilege to limit damage. These controls apply regardless of whether data comes from an HTTP request, another service, or previously stored data. For other injection types, see the [Injection Prevention Cheat Sheet](Injection_Prevention_Cheat_Sheet.md).",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5597b04e2a6f_b00004",
+    "document_id": "doc_owasp_a03_sql_injection_prevention_cheat_sheet",
+    "version_id": "ver_5597b04e2a6f",
+    "block_idx": 4,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Primary Defenses",
+    "text_hash": "6481df89cf6ea2c7e844d3abc37813b1950ed7b28b9eefbdd4b213e39f152431",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 9,
+      "end_line": 9
+    },
+    "heading_path": [
+      "SQL Injection Prevention Cheat Sheet",
+      "Primary Defenses"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5597b04e2a6f_b00004",
+    "normalized_text": "## Primary Defenses",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5597b04e2a6f_b00005",
+    "document_id": "doc_owasp_a03_sql_injection_prevention_cheat_sheet",
+    "version_id": "ver_5597b04e2a6f",
+    "block_idx": 5,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Defense Option 1: Prepared Statements (with Parameterized Queries)",
+    "text_hash": "d8ef8fe748c8a4fc8349c95ad18ccc15a291c442f28c767800ba8114d3db49d2",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 11,
+      "end_line": 11
+    },
+    "heading_path": [
+      "SQL Injection Prevention Cheat Sheet",
+      "Primary Defenses",
+      "Defense Option 1: Prepared Statements (with Parameterized Queries)"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5597b04e2a6f_b00005",
+    "normalized_text": "### Defense Option 1: Prepared Statements (with Parameterized Queries)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5597b04e2a6f_b00006",
+    "document_id": "doc_owasp_a03_sql_injection_prevention_cheat_sheet",
+    "version_id": "ver_5597b04e2a6f",
+    "block_idx": 6,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Define the SQL structure separately from its data values, then bind those values through the database API. [Prepared statements treat bound values as data rather than SQL syntax](https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html). Concatenating untrusted values into the query before preparing it defeats this protection.",
+    "text_hash": "d4000df4dac57bc1bb2794fe31ebfb2e7bccd0f77c099951caa5b24224f9ec61",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 13,
+      "end_line": 13
+    },
+    "heading_path": [
+      "SQL Injection Prevention Cheat Sheet",
+      "Primary Defenses",
+      "Defense Option 1: Prepared Statements (with Parameterized Queries)"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5597b04e2a6f_b00006",
+    "normalized_text": "Define the SQL structure separately from its data values, then bind those values through the database API. [Prepared statements treat bound values as data rather than SQL syntax](https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html). Concatenating untrusted values into the query before preparing it defeats this protection.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5597b04e2a6f_b00007",
+    "document_id": "doc_owasp_a03_sql_injection_prevention_cheat_sheet",
+    "version_id": "ver_5597b04e2a6f",
+    "block_idx": 7,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "This illustrative Java example assumes an existing connection and a `customerName` value supplied by the application. It shows parameter binding; resource cleanup and error handling are omitted.",
+    "text_hash": "46648dd09257c36f18717d90afbbeb5072f33bb467d99ecc4cfabcdbd830f889",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 15,
+      "end_line": 15
+    },
+    "heading_path": [
+      "SQL Injection Prevention Cheat Sheet",
+      "Primary Defenses",
+      "Defense Option 1: Prepared Statements (with Parameterized Queries)"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5597b04e2a6f_b00007",
+    "normalized_text": "This illustrative Java example assumes an existing connection and a `customerName` value supplied by the application. It shows parameter binding; resource cleanup and error handling are omitted.",
+    "normalization_flags": {
+      "is_code_or_payload": true,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5597b04e2a6f_b00008",
+    "document_id": "doc_owasp_a03_sql_injection_prevention_cheat_sheet",
+    "version_id": "ver_5597b04e2a6f",
+    "block_idx": 8,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```java\nString query = \"SELECT account_balance FROM user_data WHERE user_name = ?\";\nPreparedStatement statement = connection.prepareStatement(query);\nstatement.setString(1, customerName);\nResultSet results = statement.executeQuery();\n```",
+    "text_hash": "2304760925b6643e54eba7e66e26c877860aaa4a4387823e09c712e4098cdf06",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 17,
+      "end_line": 22
+    },
+    "heading_path": [
+      "SQL Injection Prevention Cheat Sheet",
+      "Primary Defenses",
+      "Defense Option 1: Prepared Statements (with Parameterized Queries)"
+    ],
+    "heading_level": null,
+    "code_language": "java",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5597b04e2a6f_b00008",
+    "normalized_text": "```java\nString query = \"SELECT account_balance FROM user_data WHERE user_name = ?\";\nPreparedStatement statement = connection.prepareStatement(query);\nstatement.setString(1, customerName);\nResultSet results = statement.executeQuery();\n```",
+    "normalization_flags": {
+      "is_code_or_payload": true,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5597b04e2a6f_b00009",
+    "document_id": "doc_owasp_a03_sql_injection_prevention_cheat_sheet",
+    "version_id": "ver_5597b04e2a6f",
+    "block_idx": 9,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "An input such as `tom' or '1'='1` is treated as the literal username to match, not as a condition added to the query. Parameter binding prevents this value from changing SQL syntax; it does not decide whether the caller may access the matching account.",
+    "text_hash": "82192271c309371de89383d459937c0e1f5cbb6e2e3f8704e366046c4b95ead8",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 24,
+      "end_line": 24
+    },
+    "heading_path": [
+      "SQL Injection Prevention Cheat Sheet",
+      "Primary Defenses",
+      "Defense Option 1: Prepared Statements (with Parameterized Queries)"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5597b04e2a6f_b00009",
+    "normalized_text": "An input such as `tom' or '1'='1` is treated as the literal username to match, not as a condition added to the query. Parameter binding prevents this value from changing SQL syntax; it does not decide whether the caller may access the matching account.",
+    "normalization_flags": {
+      "is_code_or_payload": true,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5597b04e2a6f_b00010",
+    "document_id": "doc_owasp_a03_sql_injection_prevention_cheat_sheet",
+    "version_id": "ver_5597b04e2a6f",
+    "block_idx": 10,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "When using object-relational mapping (ORM) frameworks, bind untrusted values in query strings instead of concatenating them; [Hibernate queries can be vulnerable to injection](https://cwe.mitre.org/data/definitions/564.html). For language and framework examples, see the [Query Parameterization Cheat Sheet](Query_Parameterization_Cheat_Sheet.md).",
+    "text_hash": "7476412003a4f0994c4d4a147ea831c332566f01f83fa9a9dd98ba768ce41d2c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 26,
+      "end_line": 26
+    },
+    "heading_path": [
+      "SQL Injection Prevention Cheat Sheet",
+      "Primary Defenses",
+      "Defense Option 1: Prepared Statements (with Parameterized Queries)"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5597b04e2a6f_b00010",
+    "normalized_text": "When using object-relational mapping (ORM) frameworks, bind untrusted values in query strings instead of concatenating them; [Hibernate queries can be vulnerable to injection](https://cwe.mitre.org/data/definitions/564.html). For language and framework examples, see the [Query Parameterization Cheat Sheet](Query_Parameterization_Cheat_Sheet.md).",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5597b04e2a6f_b00011",
+    "document_id": "doc_owasp_a03_sql_injection_prevention_cheat_sheet",
+    "version_id": "ver_5597b04e2a6f",
+    "block_idx": 11,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Stored Procedures",
+    "text_hash": "406659a6350f7a4adf2cb96539f9ce1e5b210c2eebdb01bc1615887e247770e5",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 28,
+      "end_line": 28
+    },
+    "heading_path": [
+      "SQL Injection Prevention Cheat Sheet",
+      "Primary Defenses",
+      "Stored Procedures"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5597b04e2a6f_b00011",
+    "normalized_text": "### Stored Procedures",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5597b04e2a6f_b00012",
+    "document_id": "doc_owasp_a03_sql_injection_prevention_cheat_sheet",
+    "version_id": "ver_5597b04e2a6f",
+    "block_idx": 12,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Stored procedures keep SQL code in the database, but are not automatically safe from injection. Bind arguments when calling a procedure; see [Oracle's JDBC stored-procedure documentation](https://docs.oracle.com/javase/tutorial/jdbc/basics/storedprocedures.html) for the API.",
+    "text_hash": "b33555d4b2a627ff88a3662f2936617c15202202e02313ef825e6018e6772f05",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 30,
+      "end_line": 30
+    },
+    "heading_path": [
+      "SQL Injection Prevention Cheat Sheet",
+      "Primary Defenses",
+      "Stored Procedures"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5597b04e2a6f_b00012",
+    "normalized_text": "Stored procedures keep SQL code in the database, but are not automatically safe from injection. Bind arguments when calling a procedure; see [Oracle's JDBC stored-procedure documentation](https://docs.oracle.com/javase/tutorial/jdbc/basics/storedprocedures.html) for the API.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5597b04e2a6f_b00013",
+    "document_id": "doc_owasp_a03_sql_injection_prevention_cheat_sheet",
+    "version_id": "ver_5597b04e2a6f",
+    "block_idx": 13,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**Binding procedure arguments protects the call, not dynamic SQL constructed inside the procedure.** Use static SQL with parameters, or separately bind data values in internal dynamic queries instead of concatenating them into SQL text. [Microsoft's secure dynamic SQL guidance](https://learn.microsoft.com/en-us/sql/connect/ado-net/sql/writing-secure-dynamic-sql?view=sql-server-ver17) calls for reviewing procedures that construct SQL and parameterizing their commands.",
+    "text_hash": "f6042bcb847cc738cbc2359ca28de3e0ac53c06ccceef74b8981a401c7461c65",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 32,
+      "end_line": 32
+    },
+    "heading_path": [
+      "SQL Injection Prevention Cheat Sheet",
+      "Primary Defenses",
+      "Stored Procedures"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5597b04e2a6f_b00013",
+    "normalized_text": "**Binding procedure arguments protects the call, not dynamic SQL constructed inside the procedure.** Use static SQL with parameters, or separately bind data values in internal dynamic queries instead of concatenating them into SQL text. [Microsoft's secure dynamic SQL guidance](https://learn.microsoft.com/en-us/sql/connect/ado-net/sql/writing-secure-dynamic-sql?view=sql-server-ver17) calls for reviewing procedures that construct SQL and parameterizing their commands.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5597b04e2a6f_b00014",
+    "document_id": "doc_owasp_a03_sql_injection_prevention_cheat_sheet",
+    "version_id": "ver_5597b04e2a6f",
+    "block_idx": 14,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "For example, [PostgreSQL documents `EXECUTE ... USING` for binding values](https://www.postgresql.org/docs/current/plpgsql-statements.html#PLPGSQL-STATEMENTS-EXECUTING-DYN) and `format('%I', ...)` for quoting identifiers. Select identifiers from fixed application-owned mappings. Identifier quoting protects SQL syntax, but does not restrict which tables the application may select.",
+    "text_hash": "0c3b09d9e254fce1d0cde79eb933c6827afd55713b75ef78c92335b513fff531",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 34,
+      "end_line": 34
+    },
+    "heading_path": [
+      "SQL Injection Prevention Cheat Sheet",
+      "Primary Defenses",
+      "Stored Procedures"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5597b04e2a6f_b00014",
+    "normalized_text": "For example, [PostgreSQL documents `EXECUTE ... USING` for binding values](https://www.postgresql.org/docs/current/plpgsql-statements.html#PLPGSQL-STATEMENTS-EXECUTING-DYN) and `format('%I', ...)` for quoting identifiers. Select identifiers from fixed application-owned mappings. Identifier quoting protects SQL syntax, but does not restrict which tables the application may select.",
+    "normalization_flags": {
+      "is_code_or_payload": true,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5597b04e2a6f_b00015",
+    "document_id": "doc_owasp_a03_sql_injection_prevention_cheat_sheet",
+    "version_id": "ver_5597b04e2a6f",
+    "block_idx": 15,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Allow-List Input Validation",
+    "text_hash": "4b7eb75a811c4ad7b1fd7b8b198593dbb6bbf30247cf4280c51cbaaa2edd131e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 36,
+      "end_line": 36
+    },
+    "heading_path": [
+      "SQL Injection Prevention Cheat Sheet",
+      "Primary Defenses",
+      "Allow-List Input Validation"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5597b04e2a6f_b00015",
+    "normalized_text": "### Allow-List Input Validation",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5597b04e2a6f_b00016",
+    "document_id": "doc_owasp_a03_sql_injection_prevention_cheat_sheet",
+    "version_id": "ver_5597b04e2a6f",
+    "block_idx": 16,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Parameter markers represent data values, not table names, column names, or SQL keywords such as `ASC` and `DESC`; see the [PDO parameter-marker limitations](https://www.php.net/manual/en/pdo.prepare.php). Keep these structural choices fixed in code where possible. When users need to select among them, map their selection to a small set of application-owned tokens allowed for that query and reject unknown choices. For example, map a requested sort direction to the literal `ASC` or `DESC`, rather than appending the supplied text.",
+    "text_hash": "48071b8a3e5e016307a172459298d678a370a7fa30cc9c6973c4a0108655d016",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 38,
+      "end_line": 38
+    },
+    "heading_path": [
+      "SQL Injection Prevention Cheat Sheet",
+      "Primary Defenses",
+      "Allow-List Input Validation"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5597b04e2a6f_b00016",
+    "normalized_text": "Parameter markers represent data values, not table names, column names, or SQL keywords such as `ASC` and `DESC`; see the [PDO parameter-marker limitations](https://www.php.net/manual/en/pdo.prepare.php). Keep these structural choices fixed in code where possible. When users need to select among them, map their selection to a small set of application-owned tokens allowed for that query and reject unknown choices. For example, map a requested sort direction to the literal `ASC` or `DESC`, rather than appending the supplied text.",
+    "normalization_flags": {
+      "is_code_or_payload": true,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5597b04e2a6f_b00017",
+    "document_id": "doc_owasp_a03_sql_injection_prevention_cheat_sheet",
+    "version_id": "ver_5597b04e2a6f",
+    "block_idx": 17,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "This mapping complements parameter binding. Continue binding all data values, even when they pass type, length, or format checks. Validation of a value does not make it safe to concatenate into SQL. See the [Input Validation Cheat Sheet](Input_Validation_Cheat_Sheet.md) for validation guidance.",
+    "text_hash": "81ecfc8d557e354f4affdaffcb151086852bca8a0947d12fdb8f05c8aa9cce6d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 40,
+      "end_line": 40
+    },
+    "heading_path": [
+      "SQL Injection Prevention Cheat Sheet",
+      "Primary Defenses",
+      "Allow-List Input Validation"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5597b04e2a6f_b00017",
+    "normalized_text": "This mapping complements parameter binding. Continue binding all data values, even when they pass type, length, or format checks. Validation of a value does not make it safe to concatenate into SQL. See the [Input Validation Cheat Sheet](Input_Validation_Cheat_Sheet.md) for validation guidance.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5597b04e2a6f_b00018",
+    "document_id": "doc_owasp_a03_sql_injection_prevention_cheat_sheet",
+    "version_id": "ver_5597b04e2a6f",
+    "block_idx": 18,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Escaping All Dynamic Inputs (STRONGLY DISCOURAGED)",
+    "text_hash": "f8dda43d38cfdb17ecc6e9e83f121116c32330b9e5946820e7de27d935ca9cde",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 42,
+      "end_line": 42
+    },
+    "heading_path": [
+      "SQL Injection Prevention Cheat Sheet",
+      "Primary Defenses",
+      "Escaping All Dynamic Inputs (STRONGLY DISCOURAGED)"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5597b04e2a6f_b00018",
+    "normalized_text": "### Escaping All Dynamic Inputs (STRONGLY DISCOURAGED)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5597b04e2a6f_b00019",
+    "document_id": "doc_owasp_a03_sql_injection_prevention_cheat_sheet",
+    "version_id": "ver_5597b04e2a6f",
+    "block_idx": 19,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Do not use manual escaping as a substitute for parameter binding. Escaping depends on the SQL dialect and configuration: for example, MySQL's [NO_BACKSLASH_ESCAPES mode](https://dev.mysql.com/doc/refman/9.7/en/sql-mode.html#sqlmode_no_backslash_escapes) disables backslash escaping. Replace query construction that relies on escaping with parameterized queries.",
+    "text_hash": "1189cd2798d5348e4532870e72282a0ffbbb835d153f907bc01f5e6a3f00ea99",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 44,
+      "end_line": 44
+    },
+    "heading_path": [
+      "SQL Injection Prevention Cheat Sheet",
+      "Primary Defenses",
+      "Escaping All Dynamic Inputs (STRONGLY DISCOURAGED)"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5597b04e2a6f_b00019",
+    "normalized_text": "Do not use manual escaping as a substitute for parameter binding. Escaping depends on the SQL dialect and configuration: for example, MySQL's [NO_BACKSLASH_ESCAPES mode](https://dev.mysql.com/doc/refman/9.7/en/sql-mode.html#sqlmode_no_backslash_escapes) disables backslash escaping. Replace query construction that relies on escaping with parameterized queries.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5597b04e2a6f_b00020",
+    "document_id": "doc_owasp_a03_sql_injection_prevention_cheat_sheet",
+    "version_id": "ver_5597b04e2a6f",
+    "block_idx": 20,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Hardening",
+    "text_hash": "106d2a96602874502d5f437089b25a3af0c89d20a5df8e68b7df05a158a04662",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 46,
+      "end_line": 46
+    },
+    "heading_path": [
+      "SQL Injection Prevention Cheat Sheet",
+      "Hardening"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5597b04e2a6f_b00020",
+    "normalized_text": "## Hardening",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5597b04e2a6f_b00021",
+    "document_id": "doc_owasp_a03_sql_injection_prevention_cheat_sheet",
+    "version_id": "ver_5597b04e2a6f",
+    "block_idx": 21,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Use least privilege alongside parameterized queries and allow-list mapping. It limits the damage an attacker can cause through a database account; it does not prevent SQL injection.",
+    "text_hash": "53a5eb5e03fe1231c7bced68676a0bcebde415cca01c03777b0f03d96937c132",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 48,
+      "end_line": 48
+    },
+    "heading_path": [
+      "SQL Injection Prevention Cheat Sheet",
+      "Hardening"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5597b04e2a6f_b00021",
+    "normalized_text": "Use least privilege alongside parameterized queries and allow-list mapping. It limits the damage an attacker can cause through a database account; it does not prevent SQL injection.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5597b04e2a6f_b00022",
+    "document_id": "doc_owasp_a03_sql_injection_prevention_cheat_sheet",
+    "version_id": "ver_5597b04e2a6f",
+    "block_idx": 22,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Least Privilege",
+    "text_hash": "3d01fe3e8cd60747e8dfd3dfc8e0ba991d6c207ac5e96662d68709b98e462ba0",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 50,
+      "end_line": 50
+    },
+    "heading_path": [
+      "SQL Injection Prevention Cheat Sheet",
+      "Hardening",
+      "Least Privilege"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5597b04e2a6f_b00022",
+    "normalized_text": "### Least Privilege",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5597b04e2a6f_b00023",
+    "document_id": "doc_owasp_a03_sql_injection_prevention_cheat_sheet",
+    "version_id": "ver_5597b04e2a6f",
+    "block_idx": 23,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "To minimize the potential damage of a successful SQL injection attack, you should minimize the privileges assigned to every database account in your environment. Start from the ground up to determine what access rights your application accounts require, rather than trying to figure out what access rights you need to take away.",
+    "text_hash": "2c8adbac674b0dfa3afa81183a74e0ed47b6f8977fa36c64f6144f0789f29b47",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 52,
+      "end_line": 52
+    },
+    "heading_path": [
+      "SQL Injection Prevention Cheat Sheet",
+      "Hardening",
+      "Least Privilege"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5597b04e2a6f_b00023",
+    "normalized_text": "To minimize the potential damage of a successful SQL injection attack, you should minimize the privileges assigned to every database account in your environment. Start from the ground up to determine what access rights your application accounts require, rather than trying to figure out what access rights you need to take away.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5597b04e2a6f_b00024",
+    "document_id": "doc_owasp_a03_sql_injection_prevention_cheat_sheet",
+    "version_id": "ver_5597b04e2a6f",
+    "block_idx": 24,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Make sure that accounts that only need read access are only granted read access to the tables they need access to. DO NOT ASSIGN DBA OR ADMIN TYPE ACCESS TO YOUR APPLICATION ACCOUNTS. We understand that this is easy, and everything just \"works\" when you do it this way, but it is very dangerous.",
+    "text_hash": "ba338e26f6eda84508d929433fce915220efc391895cd19dd0545377c9775803",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 54,
+      "end_line": 54
+    },
+    "heading_path": [
+      "SQL Injection Prevention Cheat Sheet",
+      "Hardening",
+      "Least Privilege"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5597b04e2a6f_b00024",
+    "normalized_text": "Make sure that accounts that only need read access are only granted read access to the tables they need access to. DO NOT ASSIGN DBA OR ADMIN TYPE ACCESS TO YOUR APPLICATION ACCOUNTS. We understand that this is easy, and everything just \"works\" when you do it this way, but it is very dangerous.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5597b04e2a6f_b00025",
+    "document_id": "doc_owasp_a03_sql_injection_prevention_cheat_sheet",
+    "version_id": "ver_5597b04e2a6f",
+    "block_idx": 25,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Minimizing Application and OS Privileges",
+    "text_hash": "e8f05d8e261fdd58f802d0e4493e7427804609f0276d68c96bc43bdf334371d0",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 56,
+      "end_line": 56
+    },
+    "heading_path": [
+      "SQL Injection Prevention Cheat Sheet",
+      "Hardening",
+      "Least Privilege",
+      "Minimizing Application and OS Privileges"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5597b04e2a6f_b00025",
+    "normalized_text": "#### Minimizing Application and OS Privileges",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5597b04e2a6f_b00026",
+    "document_id": "doc_owasp_a03_sql_injection_prevention_cheat_sheet",
+    "version_id": "ver_5597b04e2a6f",
+    "block_idx": 26,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "SQL injection is not the only threat to your database data. Attackers can simply change the parameter values from one of the legal values they are presented with, to a value that is unauthorized for them, but the application itself might be authorized to access. As such, minimizing the privileges granted to your application will reduce the likelihood of such unauthorized access attempts, even when an attacker is not trying to use SQL injection as part of their exploit.",
+    "text_hash": "ef858dcca22debaa785e167fa48942749e0fa9a38055aa71dd36bd83366e4e1d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 58,
+      "end_line": 58
+    },
+    "heading_path": [
+      "SQL Injection Prevention Cheat Sheet",
+      "Hardening",
+      "Least Privilege",
+      "Minimizing Application and OS Privileges"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5597b04e2a6f_b00026",
+    "normalized_text": "SQL injection is not the only threat to your database data. Attackers can simply change the parameter values from one of the legal values they are presented with, to a value that is unauthorized for them, but the application itself might be authorized to access. As such, minimizing the privileges granted to your application will reduce the likelihood of such unauthorized access attempts, even when an attacker is not trying to use SQL injection as part of their exploit.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5597b04e2a6f_b00027",
+    "document_id": "doc_owasp_a03_sql_injection_prevention_cheat_sheet",
+    "version_id": "ver_5597b04e2a6f",
+    "block_idx": 27,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "While you are at it, you should minimize the privileges of the operating system account that the DBMS runs under. Don't run your DBMS as root or system! Most DBMSs run out of the box with a very powerful system account. For example, MySQL runs as system on Windows by default! Change the DBMS's OS account to something more appropriate, with restricted privileges.",
+    "text_hash": "07c0ba8e8fab62568bce4d38917722ff5e763f983bbc00265b34078a77f061db",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 60,
+      "end_line": 60
+    },
+    "heading_path": [
+      "SQL Injection Prevention Cheat Sheet",
+      "Hardening",
+      "Least Privilege",
+      "Minimizing Application and OS Privileges"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5597b04e2a6f_b00027",
+    "normalized_text": "While you are at it, you should minimize the privileges of the operating system account that the DBMS runs under. Don't run your DBMS as root or system! Most DBMSs run out of the box with a very powerful system account. For example, MySQL runs as system on Windows by default! Change the DBMS's OS account to something more appropriate, with restricted privileges.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5597b04e2a6f_b00028",
+    "document_id": "doc_owasp_a03_sql_injection_prevention_cheat_sheet",
+    "version_id": "ver_5597b04e2a6f",
+    "block_idx": 28,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Details Of Least Privilege When Developing",
+    "text_hash": "f001976e2b4d8a74193102b9b237366905b275e0c49996c43b3c3cf0fd8fa39b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 62,
+      "end_line": 62
+    },
+    "heading_path": [
+      "SQL Injection Prevention Cheat Sheet",
+      "Hardening",
+      "Least Privilege",
+      "Details Of Least Privilege When Developing"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5597b04e2a6f_b00028",
+    "normalized_text": "#### Details Of Least Privilege When Developing",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5597b04e2a6f_b00029",
+    "document_id": "doc_owasp_a03_sql_injection_prevention_cheat_sheet",
+    "version_id": "ver_5597b04e2a6f",
+    "block_idx": 29,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "If an account only needs access to portions of a table, consider creating a view that limits access to that portion of the data and assigning the account access to the view instead of the underlying table. Rarely, if ever, grant create or delete access to database accounts.",
+    "text_hash": "2ef345f9ad968188e6be5cb63377b2fa49a5d0dd36519c10f488c59baa475c45",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 64,
+      "end_line": 64
+    },
+    "heading_path": [
+      "SQL Injection Prevention Cheat Sheet",
+      "Hardening",
+      "Least Privilege",
+      "Details Of Least Privilege When Developing"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5597b04e2a6f_b00029",
+    "normalized_text": "If an account only needs access to portions of a table, consider creating a view that limits access to that portion of the data and assigning the account access to the view instead of the underlying table. Rarely, if ever, grant create or delete access to database accounts.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5597b04e2a6f_b00030",
+    "document_id": "doc_owasp_a03_sql_injection_prevention_cheat_sheet",
+    "version_id": "ver_5597b04e2a6f",
+    "block_idx": 30,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "If you adopt a policy where you use stored procedures everywhere, and don't allow application accounts to directly execute their own queries, then restrict those accounts to only be able to execute the stored procedures they need. Don't grant them any rights directly to the tables in the database.",
+    "text_hash": "94de711b97c3e2337f017bd3c1e97d8f0c88171195922ec21322f9ddc08938d0",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 66,
+      "end_line": 66
+    },
+    "heading_path": [
+      "SQL Injection Prevention Cheat Sheet",
+      "Hardening",
+      "Least Privilege",
+      "Details Of Least Privilege When Developing"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5597b04e2a6f_b00030",
+    "normalized_text": "If you adopt a policy where you use stored procedures everywhere, and don't allow application accounts to directly execute their own queries, then restrict those accounts to only be able to execute the stored procedures they need. Don't grant them any rights directly to the tables in the database.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5597b04e2a6f_b00031",
+    "document_id": "doc_owasp_a03_sql_injection_prevention_cheat_sheet",
+    "version_id": "ver_5597b04e2a6f",
+    "block_idx": 31,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Least Admin Privileges For Multiple DBs",
+    "text_hash": "7750177730736f3d3ef03c50a3160e5fb035a5df1beb21954706debb70193aec",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 68,
+      "end_line": 68
+    },
+    "heading_path": [
+      "SQL Injection Prevention Cheat Sheet",
+      "Hardening",
+      "Least Privilege",
+      "Least Admin Privileges For Multiple DBs"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5597b04e2a6f_b00031",
+    "normalized_text": "#### Least Admin Privileges For Multiple DBs",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5597b04e2a6f_b00032",
+    "document_id": "doc_owasp_a03_sql_injection_prevention_cheat_sheet",
+    "version_id": "ver_5597b04e2a6f",
+    "block_idx": 32,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The designers of web applications should avoid using the same owner/admin account in the web applications to connect to the database. Different DB users should be used for different web applications.",
+    "text_hash": "6e3b80333cb45092d3eda3a5b6124e2d757e078981301ecd7c1df818ef04470c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 70,
+      "end_line": 70
+    },
+    "heading_path": [
+      "SQL Injection Prevention Cheat Sheet",
+      "Hardening",
+      "Least Privilege",
+      "Least Admin Privileges For Multiple DBs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5597b04e2a6f_b00032",
+    "normalized_text": "The designers of web applications should avoid using the same owner/admin account in the web applications to connect to the database. Different DB users should be used for different web applications.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5597b04e2a6f_b00033",
+    "document_id": "doc_owasp_a03_sql_injection_prevention_cheat_sheet",
+    "version_id": "ver_5597b04e2a6f",
+    "block_idx": 33,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "In general, each separate web application that requires access to the database should have a designated database user account that the application will use to connect to the DB. That way, the designer of the application can have good granularity in the access control, thus reducing the privileges as much as possible. Each DB user will then have select access to only what it needs, and write-access as needed.",
+    "text_hash": "32560e6de01caf061ab8f46b6b1c75b0be3bed431e547493387dc2ed81fae741",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 72,
+      "end_line": 72
+    },
+    "heading_path": [
+      "SQL Injection Prevention Cheat Sheet",
+      "Hardening",
+      "Least Privilege",
+      "Least Admin Privileges For Multiple DBs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5597b04e2a6f_b00033",
+    "normalized_text": "In general, each separate web application that requires access to the database should have a designated database user account that the application will use to connect to the DB. That way, the designer of the application can have good granularity in the access control, thus reducing the privileges as much as possible. Each DB user will then have select access to only what it needs, and write-access as needed.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5597b04e2a6f_b00034",
+    "document_id": "doc_owasp_a03_sql_injection_prevention_cheat_sheet",
+    "version_id": "ver_5597b04e2a6f",
+    "block_idx": 34,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "As an example, a login page requires read access to the username and password fields of a table, but no write access of any form (no insert, update, or delete). However, the sign-up page certainly requires insert privilege to that table; this restriction can only be enforced if these web apps use different DB users to connect to the database.",
+    "text_hash": "01e6d3203eb43da6c24bb87be6926d3a5759a1bf1c4754ec33bbffeb974f9b90",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 74,
+      "end_line": 74
+    },
+    "heading_path": [
+      "SQL Injection Prevention Cheat Sheet",
+      "Hardening",
+      "Least Privilege",
+      "Least Admin Privileges For Multiple DBs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5597b04e2a6f_b00034",
+    "normalized_text": "As an example, a login page requires read access to the username and password fields of a table, but no write access of any form (no insert, update, or delete). However, the sign-up page certainly requires insert privilege to that table; this restriction can only be enforced if these web apps use different DB users to connect to the database.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5597b04e2a6f_b00035",
+    "document_id": "doc_owasp_a03_sql_injection_prevention_cheat_sheet",
+    "version_id": "ver_5597b04e2a6f",
+    "block_idx": 35,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Enhancing Least Privilege with SQL Views",
+    "text_hash": "357783c6231f393e1bfcf88163b437c7cd6eed0dfab18ceb38e5862807a22cb0",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 76,
+      "end_line": 76
+    },
+    "heading_path": [
+      "SQL Injection Prevention Cheat Sheet",
+      "Hardening",
+      "Least Privilege",
+      "Enhancing Least Privilege with SQL Views"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5597b04e2a6f_b00035",
+    "normalized_text": "#### Enhancing Least Privilege with SQL Views",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5597b04e2a6f_b00036",
+    "document_id": "doc_owasp_a03_sql_injection_prevention_cheat_sheet",
+    "version_id": "ver_5597b04e2a6f",
+    "block_idx": 36,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "You can use SQL views to further increase the granularity of access by limiting the read access to specific fields of a table or joins of tables. It could have additional benefits.",
+    "text_hash": "f71e092cf06fd831a459f55b316f5a98e72313647a564ac722d6fcf57b5015fe",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 78,
+      "end_line": 78
+    },
+    "heading_path": [
+      "SQL Injection Prevention Cheat Sheet",
+      "Hardening",
+      "Least Privilege",
+      "Enhancing Least Privilege with SQL Views"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5597b04e2a6f_b00036",
+    "normalized_text": "You can use SQL views to further increase the granularity of access by limiting the read access to specific fields of a table or joins of tables. It could have additional benefits.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5597b04e2a6f_b00037",
+    "document_id": "doc_owasp_a03_sql_injection_prevention_cheat_sheet",
+    "version_id": "ver_5597b04e2a6f",
+    "block_idx": 37,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "For example, a product catalog can use a view that exposes product names and retail prices while omitting supplier costs. Grant the application's database account only `SELECT` access to that view, without access to the underlying table or other objects that expose the omitted fields. Verify your database's view privilege rules; for example, [PostgreSQL normally checks underlying table access using the view owner's privileges](https://www.postgresql.org/docs/current/sql-createview.html).",
+    "text_hash": "24abbdabab434ec1ba0e2a0cd9e27177f4c1c3b03a2fadaf0c392fa034e22d57",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 80,
+      "end_line": 80
+    },
+    "heading_path": [
+      "SQL Injection Prevention Cheat Sheet",
+      "Hardening",
+      "Least Privilege",
+      "Enhancing Least Privilege with SQL Views"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5597b04e2a6f_b00037",
+    "normalized_text": "For example, a product catalog can use a view that exposes product names and retail prices while omitting supplier costs. Grant the application's database account only `SELECT` access to that view, without access to the underlying table or other objects that expose the omitted fields. Verify your database's view privilege rules; for example, [PostgreSQL normally checks underlying table access using the view owner's privileges](https://www.postgresql.org/docs/current/sql-createview.html).",
+    "normalization_flags": {
+      "is_code_or_payload": true,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5597b04e2a6f_b00038",
+    "document_id": "doc_owasp_a03_sql_injection_prevention_cheat_sheet",
+    "version_id": "ver_5597b04e2a6f",
+    "block_idx": 38,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "This limits the data exposed through a compromised application account. Queries against views still require parameterization to prevent SQL injection.",
+    "text_hash": "f7237058218a20813b55720baedad2c0e3fb61475e9b95480fefbfc732da3b4c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 82,
+      "end_line": 82
+    },
+    "heading_path": [
+      "SQL Injection Prevention Cheat Sheet",
+      "Hardening",
+      "Least Privilege",
+      "Enhancing Least Privilege with SQL Views"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5597b04e2a6f_b00038",
+    "normalized_text": "This limits the data exposed through a compromised application account. Queries against views still require parameterization to prevent SQL injection.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5597b04e2a6f_b00039",
+    "document_id": "doc_owasp_a03_sql_injection_prevention_cheat_sheet",
+    "version_id": "ver_5597b04e2a6f",
+    "block_idx": 39,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Detection",
+    "text_hash": "158d8c43ecd09895975db845f8270a2db776e83fc27f6c599e166855bc4770e2",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 84,
+      "end_line": 84
+    },
+    "heading_path": [
+      "SQL Injection Prevention Cheat Sheet",
+      "Detection"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5597b04e2a6f_b00039",
+    "normalized_text": "## Detection",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5597b04e2a6f_b00040",
+    "document_id": "doc_owasp_a03_sql_injection_prevention_cheat_sheet",
+    "version_id": "ver_5597b04e2a6f",
+    "block_idx": 40,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Review query construction in application code and stored procedures. Check that untrusted values are bound rather than concatenated into SQL, and that dynamic identifiers and sort directions come from the query's fixed mapping. Preparing the outer call is not evidence that a procedure's internal SQL is safe.",
+    "text_hash": "39abb1f6e208ad92c1ed2ecff802c2b7966e872d139de5002de82e7e16deb272",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 86,
+      "end_line": 86
+    },
+    "heading_path": [
+      "SQL Injection Prevention Cheat Sheet",
+      "Detection"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5597b04e2a6f_b00040",
+    "normalized_text": "Review query construction in application code and stored procedures. Check that untrusted values are bound rather than concatenated into SQL, and that dynamic identifiers and sort directions come from the query's fixed mapping. Preparing the outer call is not evidence that a procedure's internal SQL is safe.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5597b04e2a6f_b00041",
+    "document_id": "doc_owasp_a03_sql_injection_prevention_cheat_sheet",
+    "version_id": "ver_5597b04e2a6f",
+    "block_idx": 41,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Use the [OWASP Web Security Testing Guide's SQL injection tests](https://wstg.owasp.org/v4.2/4-Web_Application_Security_Testing/07-Input_Validation_Testing/05-Testing_for_SQL_Injection/) for manual and automated testing, including blind and out-of-band techniques.",
+    "text_hash": "30fd2d63f5323f1db635423b8694288a62f7337305d4349ebbbdfbc3b71b9330",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 88,
+      "end_line": 88
+    },
+    "heading_path": [
+      "SQL Injection Prevention Cheat Sheet",
+      "Detection"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5597b04e2a6f_b00041",
+    "normalized_text": "Use the [OWASP Web Security Testing Guide's SQL injection tests](https://wstg.owasp.org/v4.2/4-Web_Application_Security_Testing/07-Input_Validation_Testing/05-Testing_for_SQL_Injection/) for manual and automated testing, including blind and out-of-band techniques.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5597b04e2a6f_b00042",
+    "document_id": "doc_owasp_a03_sql_injection_prevention_cheat_sheet",
+    "version_id": "ver_5597b04e2a6f",
+    "block_idx": 42,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## References",
+    "text_hash": "65b72d86eeeb214ab8ca5fd24cb7cd7773e58084e95b670040df03e21e8c6fa7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 90,
+      "end_line": 90
+    },
+    "heading_path": [
+      "SQL Injection Prevention Cheat Sheet",
+      "References"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5597b04e2a6f_b00042",
+    "normalized_text": "## References",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5597b04e2a6f_b00043",
+    "document_id": "doc_owasp_a03_sql_injection_prevention_cheat_sheet",
+    "version_id": "ver_5597b04e2a6f",
+    "block_idx": 43,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- [Oracle JDBC: Using Prepared Statements](https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html)\n- [PostgreSQL: Executing Dynamic Commands](https://www.postgresql.org/docs/current/plpgsql-statements.html#PLPGSQL-STATEMENTS-EXECUTING-DYN)\n- [PHP PDO: Parameter-Marker Limitations](https://www.php.net/manual/en/pdo.prepare.php)",
+    "text_hash": "8fe6fa441f25c7a9a6acf53d1218c87a23f35a58c1ca37e3194423e13d5c0bcf",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 92,
+      "end_line": 94
+    },
+    "heading_path": [
+      "SQL Injection Prevention Cheat Sheet",
+      "References"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5597b04e2a6f_b00043",
+    "normalized_text": "- [Oracle JDBC: Using Prepared Statements](https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html)\n- [PostgreSQL: Executing Dynamic Commands](https://www.postgresql.org/docs/current/plpgsql-statements.html#PLPGSQL-STATEMENTS-EXECUTING-DYN)\n- [PHP PDO: Parameter-Marker Limitations](https://www.php.net/manual/en/pdo.prepare.php)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  }
+]
