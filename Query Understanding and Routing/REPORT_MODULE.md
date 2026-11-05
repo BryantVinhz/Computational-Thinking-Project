@@ -44,14 +44,8 @@ Query Understanding and Routing/
 │   ├── ontology_loader.py           ← loads & validates ontology.yaml
 │   ├── ontology.yaml                ← 5 vulnerability slugs + OWASP mapping (single source of truth)
 │   ├── prompt_templates.py          ← system instruction + few-shot + prompt builders
-│   ├── paths.py / path.py           ← cross-platform resolved paths
+│   ├── paths.py                     ← cross-platform resolved paths
 │   └── tests/                       ← full pytest suite + JSON fixtures
-│
-└── stage_2/                         ← BACKWARD-COMPAT subpackage (shims only)
-    ├── __init__.py                  ← re-exports query_understanding_routing
-    ├── config.py, paths.py, path.py, prompt_templates.py,
-    ├── ontology_loader.py, understanding_module.py
-    └── (each file just redirects to query_understanding_routing.*)
 ```
 
 ---
