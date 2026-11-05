@@ -74,10 +74,16 @@ if str(STAGE_4_DIR) not in sys.path:
 from schema_response import FinalResponseEnvelope, SynthesizedDraftSchema
 from synthesizer import ResponseSynthesizer
 from rag_orchestrator import RAGOrchestrator
+from verifier import EvidenceVerifier
+from traceable_formatter import TraceableFormatter
 
-# 1. Khởi tạo Synthesizer & Orchestrator
+# 1. Khởi tạo Synthesizer, Verifier, Formatter & Orchestrator
 synthesizer = ResponseSynthesizer()
-orchestrator = RAGOrchestrator(synthesizer=synthesizer)
+orchestrator = RAGOrchestrator(
+    synthesizer=synthesizer,
+    verifier=EvidenceVerifier(),
+    traceable_formatter=TraceableFormatter(),
+)
 
 # 2. Chạy từ kết quả Retrieval
 envelope: FinalResponseEnvelope = orchestrator.run_from_retrieval(
@@ -86,4 +92,29 @@ envelope: FinalResponseEnvelope = orchestrator.run_from_retrieval(
 )
 
 print(envelope.final_answer_markdown)
+print(envelope.verification.status, envelope.verification.faithfulness_score)
 ```
+
+---
+
+## 5. Evidence Verification & Traceability (Bảo)
+
+**`EvidenceVerifier.verify(draft, evidence_list) -> VerificationReportSchema`**
+1. Tách `draft_answer` thành claim theo câu / dòng (bỏ tiêu đề, ghi chú `(...)`, header bảng, code block).
+2. Claim có thẻ hợp lệ chỉ được đối chiếu với **đúng** evidence được trích; claim không thẻ được dò trên toàn bộ evidence (SUPPORTED kèm cảnh báo thiếu trích dẫn).
+3. `SUPPORTED` khi điểm hỗ trợ >= `support_threshold` (mặc định 0.5); `CONTRADICTED` khi khớp nội dung nhưng lệch phủ định; còn lại `UNVERIFIED` (kể cả thẻ trỏ tới evidence không tồn tại).
+4. `faithfulness_score = supported / claim dựa trên tài liệu`. Ở `HYBRID`, claim thuộc mục `General Knowledge Advisory` được liệt kê nhưng không tính điểm.
+5. Trạng thái: `PASSED` >= 0.8, `WARNING` >= 0.5, `FAILED` < 0.5, `SKIPPED` khi abstention.
+
+Điểm mặc định là độ phủ từ vựng (unigram + bigram), chạy offline. Khi câu trả lời và tài liệu khác ngôn ngữ, truyền hàm ngữ nghĩa:
+
+```python
+verifier = EvidenceVerifier(similarity_fn=lambda claim, passage: cosine(embed(claim), embed(passage)))
+```
+
+**`TraceableFormatter.format_citations(draft, evidence_list) -> (markdown, citations)`**
+- Ánh xạ `[n]` theo `evidence_id` của Retrieval; chỉ liệt kê thẻ thực sự xuất hiện trong câu trả lời.
+- `location_summary` sinh từ locator Provenance: `Page 3-4` (PDF), `Lines 12-25` (MD/TXT), `Rows 4-6` (CSV), `JSON $.path` (JSON); `locator["spans"]` giữ toàn bộ block + offset để audit.
+- Thẻ không có evidence tương ứng được đánh dấu ⚠️ trong mục References thay vì bị bỏ qua.
+
+Chạy test: `python -m unittest test_verification_traceability test_synthesis_orchestration`
