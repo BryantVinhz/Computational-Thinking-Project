@@ -1,0 +1,714 @@
+{
+  "document_id": "doc_owasp_a05_infrastructure_as_code_security_cheat_sheet",
+  "version_id": "ver_d1b9bedd6c92",
+  "chunking_strategy": "structure_aware",
+  "chunks": [
+    {
+      "chunk_id": "ver_d1b9bedd6c92_c00000",
+      "document_id": "doc_owasp_a05_infrastructure_as_code_security_cheat_sheet",
+      "version_id": "ver_d1b9bedd6c92",
+      "chunk_idx": 0,
+      "chunk_type": "heading",
+      "text_content": "# Infrastructure as Code Security Cheatsheet",
+      "token_count": 6,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Infrastructure as Code Security Cheatsheet"
+      ]
+    },
+    {
+      "chunk_id": "ver_d1b9bedd6c92_c00001",
+      "document_id": "doc_owasp_a05_infrastructure_as_code_security_cheat_sheet",
+      "version_id": "ver_d1b9bedd6c92",
+      "chunk_idx": 1,
+      "chunk_type": "paragraph",
+      "text_content": "<!---\nCopyright 2021 Nokia\nLicensed under the Creative Commons Attribution-ShareAlike 3.0 Unported License\nSPDX-License-Identifier: CC-BY-SA-3.0\n--->",
+      "token_count": 40,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Infrastructure as Code Security Cheatsheet"
+      ]
+    },
+    {
+      "chunk_id": "ver_d1b9bedd6c92_c00002",
+      "document_id": "doc_owasp_a05_infrastructure_as_code_security_cheat_sheet",
+      "version_id": "ver_d1b9bedd6c92",
+      "chunk_idx": 2,
+      "chunk_type": "heading",
+      "text_content": "## Introduction",
+      "token_count": 3,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Infrastructure as Code Security Cheatsheet",
+        "Introduction"
+      ]
+    },
+    {
+      "chunk_id": "ver_d1b9bedd6c92_c00003",
+      "document_id": "doc_owasp_a05_infrastructure_as_code_security_cheat_sheet",
+      "version_id": "ver_d1b9bedd6c92",
+      "chunk_idx": 3,
+      "chunk_type": "paragraph",
+      "text_content": "Infrastructure as code (IaC), also known as software-defined infrastructure, allows the configuration and deployment of infrastructure components faster with consistency by allowing them to be defined as a code and also enables repeatable deployments across environments.",
+      "token_count": 43,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Infrastructure as Code Security Cheatsheet",
+        "Introduction"
+      ]
+    },
+    {
+      "chunk_id": "ver_d1b9bedd6c92_c00004",
+      "document_id": "doc_owasp_a05_infrastructure_as_code_security_cheat_sheet",
+      "version_id": "ver_d1b9bedd6c92",
+      "chunk_idx": 4,
+      "chunk_type": "heading",
+      "text_content": "### Security best practices",
+      "token_count": 6,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Infrastructure as Code Security Cheatsheet",
+        "Introduction",
+        "Security best practices"
+      ]
+    },
+    {
+      "chunk_id": "ver_d1b9bedd6c92_c00005",
+      "document_id": "doc_owasp_a05_infrastructure_as_code_security_cheat_sheet",
+      "version_id": "ver_d1b9bedd6c92",
+      "chunk_idx": 5,
+      "chunk_type": "paragraph",
+      "text_content": "Here are some of the security best practices for IaC that can be easily integrated into the Software Development Lifecycle:",
+      "token_count": 21,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Infrastructure as Code Security Cheatsheet",
+        "Introduction",
+        "Security best practices"
+      ]
+    },
+    {
+      "chunk_id": "ver_d1b9bedd6c92_c00006",
+      "document_id": "doc_owasp_a05_infrastructure_as_code_security_cheat_sheet",
+      "version_id": "ver_d1b9bedd6c92",
+      "chunk_idx": 6,
+      "chunk_type": "heading",
+      "text_content": "### Develop and Distribute",
+      "token_count": 6,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Infrastructure as Code Security Cheatsheet",
+        "Introduction",
+        "Develop and Distribute"
+      ]
+    },
+    {
+      "chunk_id": "ver_d1b9bedd6c92_c00007",
+      "document_id": "doc_owasp_a05_infrastructure_as_code_security_cheat_sheet",
+      "version_id": "ver_d1b9bedd6c92",
+      "chunk_idx": 7,
+      "chunk_type": "list",
+      "text_content": "- IDE plugins - Leverage standard security plug-ins in the integrated development environment (IDE) which helps in the early detection of potential risks and drastically reduces the time to address any issues later in the development cycle.\n\nPlugins such as TFLint, Checkov, Docker Linter, docker-vulnerability-extension, Security Scan, Contrast Security, etc., help in the security assessment of the IaC.\n\n- Threat modeling - Build the threat modeling landscape earlier in the development cycle to ensure there is enough visibility of the high-risk, high-volume aspects of the code and flexibility to include security throughout to ensure the assets are safely managed.\n\n- Managing secrets - Secrets are confidential data and information such as application tokens required for authentication, passwords, and SSH (Secure Shell) keys.\n\nThe problem is not the secrets, but where you store them.\n\nIf you are using a simple text file or SCMs like Git, then the secrets can be easily exposed.\n\nOpen-source tools such as truffleHog, git-secrets, GitGuardian and similar can be utilized to detect such vulnerable management of secrets.\n\nSee the [Secrets Management Cheat Sheet](Secrets_Management_Cheat_Sheet.md) for more information.\n\n- Version control - Version control is the practice of tracking and managing changes to software code.\n\nEnsure all the changes to the IaC are tracked with the right set of information that helps in any revert operation.\n\nThe important part is that you’re checking in those changes alongside the features they support and not separately.\n\nA feature’s infrastructure requirements should be a part of a feature’s branch or merge request.\n\nGit is generally used as the source code version control system.\n\n- Principle of least privilege - define the access management policies based on the principle of least privilege with the following priority items:\n\n- Defining who is and is not authorized to create/update/run/delete the scripts and inventory.\n\n- Limiting the permissions of authorized IaC users to what is necessary to perform their tasks.\n\nThe IaC scripts should ensure that the permissions granted to the various resources it creates are limited to what is required for them to perform their work.\n\n- Static analysis - Analyzes code in isolation, identifying risks, misconfigurations, and compliance faults only relevant to the IaC itself.",
+      "token_count": 435,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Infrastructure as Code Security Cheatsheet",
+        "Introduction",
+        "Develop and Distribute"
+      ]
+    },
+    {
+      "chunk_id": "ver_d1b9bedd6c92_c00008",
+      "document_id": "doc_owasp_a05_infrastructure_as_code_security_cheat_sheet",
+      "version_id": "ver_d1b9bedd6c92",
+      "chunk_idx": 8,
+      "chunk_type": "list",
+      "text_content": "Tools such as kubescan, Snyk, Coverity etc, can be leveraged for static analysis of IaC.\n\n- Open Source dependency check - Analyzes the open source dependencies such as OS packages, libraries, etc., to identify potential risks.\n\nTools such as BlackDuck, Snyk, WhiteSource Bolt for GitHub, and similar can be leveraged for open source dependency analysis of IaC.\n\n- Container image scan - Image scanning refers to the process of analyzing the contents and the build process of a container image in order to detect security issues, vulnerabilities or potential risks.\n\nOpen-source tools such as Dagda, Clair, Trivy, Anchore, etc., can be leveraged for container image analysis.\n\nCI/CD pipeline and Consolidated reporting - enabling the security checks to be made available in the CI/CD pipeline enables the analysis of each of the code changes, excludes the need for manual intervention, and enables maintaining the history of compliance.\n\nAlong with consolidated reporting, these integrations enhance the speed of development of a secure IaC codebase.\n\nOpen-source tools such as Jenkins, etc., can be leveraged to build the CI/CD pipelines, and DefectDojo and OWASP Glue can help in tying the checks together and visualizing the check results in a single dashboard.\n\n- Artifact signing - Digital signing of artifacts at build time and validation of the signed data before use protects artifacts from tampering between build and runtime, thus ensuring the integrity and provenance of an artifact.\n\nOpen-source tools such as TUF helps in the digital signing of artifacts.",
+      "token_count": 292,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Infrastructure as Code Security Cheatsheet",
+        "Introduction",
+        "Develop and Distribute"
+      ]
+    },
+    {
+      "chunk_id": "ver_d1b9bedd6c92_c00009",
+      "document_id": "doc_owasp_a05_infrastructure_as_code_security_cheat_sheet",
+      "version_id": "ver_d1b9bedd6c92",
+      "chunk_idx": 9,
+      "chunk_type": "heading",
+      "text_content": "### Deploy",
+      "token_count": 4,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Infrastructure as Code Security Cheatsheet",
+        "Introduction",
+        "Deploy"
+      ]
+    },
+    {
+      "chunk_id": "ver_d1b9bedd6c92_c00010",
+      "document_id": "doc_owasp_a05_infrastructure_as_code_security_cheat_sheet",
+      "version_id": "ver_d1b9bedd6c92",
+      "chunk_idx": 10,
+      "chunk_type": "list",
+      "text_content": "- Inventory management:\n    - Commissioning - whenever a resource is deployed, ensure the resource is labeled, tracked and logged as part of the inventory management.\n\n- Decommissioning - whenever a resource deletion is initiated, ensure the underlying configurations are erased, data is securely deleted and the resource is completely removed from the runtime as well as from the inventory management.\n\n- Tagging - It is essential to tag cloud assets properly.\n\nDuring IaC operations, untagged assets are most likely to result in ghost resources that make it difficult to detect, visualize, and gain observability within the cloud environment and can affect the posture causing a drift.\n\nThese ghost resources can add to billing costs, make maintenance difficult, and affect the reliability.\n\nThe only solution to this is careful tagging and monitoring for untagged resources.\n\n- Dynamic analysis - Dynamic analysis helps in evaluating any existing environments and services that it will interoperate with or run on.\n\nThis helps in uncovering potential risks due to the interoperability.\n\nOpen-source tools such as ZAP, Burp, GVM, etc., can be leveraged for dynamic analysis.",
+      "token_count": 206,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Infrastructure as Code Security Cheatsheet",
+        "Introduction",
+        "Deploy"
+      ]
+    },
+    {
+      "chunk_id": "ver_d1b9bedd6c92_c00011",
+      "document_id": "doc_owasp_a05_infrastructure_as_code_security_cheat_sheet",
+      "version_id": "ver_d1b9bedd6c92",
+      "chunk_idx": 11,
+      "chunk_type": "heading",
+      "text_content": "### Runtime",
+      "token_count": 4,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Infrastructure as Code Security Cheatsheet",
+        "Introduction",
+        "Runtime"
+      ]
+    },
+    {
+      "chunk_id": "ver_d1b9bedd6c92_c00012",
+      "document_id": "doc_owasp_a05_infrastructure_as_code_security_cheat_sheet",
+      "version_id": "ver_d1b9bedd6c92",
+      "chunk_idx": 12,
+      "chunk_type": "list",
+      "text_content": "- Immutability of infrastructure - The idea behind immutable infrastructure is to build the infrastructure components to an exact set of specifications.\n\nNo deviation, no changes.\n\nIf a change to a specification is required, then a whole new set of infrastructure is provisioned based on the updated requirements, and the previous infrastructure is taken out of service as obsolete.\n\n- Logging - Keeping a record is a critical aspect to keeping an eye on risks.\n\nYou should enable logging - both security logs and audit logs - while provisioning infrastructure, as they help assess the security risks related to sensitive assets.\n\nThey also assist in analyzing the root cause of incidents and in identifying potential threats.\n\nOpen-source tools such as ELK, etc., can be leveraged for log analysis.\n\n- Monitoring - Continuous monitoring assists in looking out for any security and compliance violations, helps in identifying attacks and also provides alerts upon such incidents.\n\nCertain solutions also incorporate new technologies like AI to identify potential threats early.\n\nOpen-source tools such as Prometheus, Grafana, etc., can be leveraged for monitoring of cloud infrastructure.\n\n- Runtime threat detection: Implementing a runtime threat detection solution helps in recognizing unexpected application behavior and alerts on threats at runtime.\n\nOpen-source tools such as Falco, etc., can be leveraged for runtime threat detection.\n\nCertain application such as Contrast (Contrast Community Edition) can also detect OWASP Top 10 attacks on the application during runtime and help block them in order to protect and secure the application.",
+      "token_count": 286,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Infrastructure as Code Security Cheatsheet",
+        "Introduction",
+        "Runtime"
+      ]
+    },
+    {
+      "chunk_id": "ver_d1b9bedd6c92_c00013",
+      "document_id": "doc_owasp_a05_infrastructure_as_code_security_cheat_sheet",
+      "version_id": "ver_d1b9bedd6c92",
+      "chunk_idx": 13,
+      "chunk_type": "heading",
+      "text_content": "## References",
+      "token_count": 3,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Infrastructure as Code Security Cheatsheet",
+        "References"
+      ]
+    },
+    {
+      "chunk_id": "ver_d1b9bedd6c92_c00014",
+      "document_id": "doc_owasp_a05_infrastructure_as_code_security_cheat_sheet",
+      "version_id": "ver_d1b9bedd6c92",
+      "chunk_idx": 14,
+      "chunk_type": "list",
+      "text_content": "- [Terraform: Manage sensitive data in your configuration](https://developer.hashicorp.com/terraform/language/manage-sensitive-data)\n- [NIST SP 800-218: Secure Software Development Framework](https://nvlpubs.nist.gov/nistpubs/specialpublications/nist.sp.800-218.pdf)",
+      "token_count": 70,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Infrastructure as Code Security Cheatsheet",
+        "References"
+      ]
+    }
+  ],
+  "chunk_sources": [
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00000_s000",
+      "chunk_id": "ver_d1b9bedd6c92_c00000",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00000",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 44
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00001_s000",
+      "chunk_id": "ver_d1b9bedd6c92_c00001",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00001",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 149
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00002_s000",
+      "chunk_id": "ver_d1b9bedd6c92_c00002",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00002",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 15
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00003_s000",
+      "chunk_id": "ver_d1b9bedd6c92_c00003",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00003",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 271
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00004_s000",
+      "chunk_id": "ver_d1b9bedd6c92_c00004",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00004",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 27
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00005_s000",
+      "chunk_id": "ver_d1b9bedd6c92_c00005",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00005",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 123
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00006_s000",
+      "chunk_id": "ver_d1b9bedd6c92_c00006",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00006",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 26
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00007_s000",
+      "chunk_id": "ver_d1b9bedd6c92_c00007",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00007",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 240
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00007_s001",
+      "chunk_id": "ver_d1b9bedd6c92_c00007",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00007",
+      "source_order": 1,
+      "start_offset": 241,
+      "end_offset": 404
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00007_s002",
+      "chunk_id": "ver_d1b9bedd6c92_c00007",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00007",
+      "source_order": 2,
+      "start_offset": 405,
+      "end_offset": 668
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00007_s003",
+      "chunk_id": "ver_d1b9bedd6c92_c00007",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00007",
+      "source_order": 3,
+      "start_offset": 669,
+      "end_offset": 831
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00007_s004",
+      "chunk_id": "ver_d1b9bedd6c92_c00007",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00007",
+      "source_order": 4,
+      "start_offset": 832,
+      "end_offset": 889
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00007_s005",
+      "chunk_id": "ver_d1b9bedd6c92_c00007",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00007",
+      "source_order": 5,
+      "start_offset": 890,
+      "end_offset": 983
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00007_s006",
+      "chunk_id": "ver_d1b9bedd6c92_c00007",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00007",
+      "source_order": 6,
+      "start_offset": 984,
+      "end_offset": 1123
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00007_s007",
+      "chunk_id": "ver_d1b9bedd6c92_c00007",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00007",
+      "source_order": 7,
+      "start_offset": 1124,
+      "end_offset": 1221
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00007_s008",
+      "chunk_id": "ver_d1b9bedd6c92_c00007",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00007",
+      "source_order": 8,
+      "start_offset": 1222,
+      "end_offset": 1324
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00007_s009",
+      "chunk_id": "ver_d1b9bedd6c92_c00007",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00007",
+      "source_order": 9,
+      "start_offset": 1325,
+      "end_offset": 1440
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00007_s010",
+      "chunk_id": "ver_d1b9bedd6c92_c00007",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00007",
+      "source_order": 10,
+      "start_offset": 1441,
+      "end_offset": 1556
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00007_s011",
+      "chunk_id": "ver_d1b9bedd6c92_c00007",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00007",
+      "source_order": 11,
+      "start_offset": 1557,
+      "end_offset": 1653
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00007_s012",
+      "chunk_id": "ver_d1b9bedd6c92_c00007",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00007",
+      "source_order": 12,
+      "start_offset": 1654,
+      "end_offset": 1718
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00007_s013",
+      "chunk_id": "ver_d1b9bedd6c92_c00007",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00007",
+      "source_order": 13,
+      "start_offset": 1719,
+      "end_offset": 1866
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00007_s014",
+      "chunk_id": "ver_d1b9bedd6c92_c00007",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00007",
+      "source_order": 14,
+      "start_offset": 1872,
+      "end_offset": 1966
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00007_s015",
+      "chunk_id": "ver_d1b9bedd6c92_c00007",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00007",
+      "source_order": 15,
+      "start_offset": 1971,
+      "end_offset": 2066
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00007_s016",
+      "chunk_id": "ver_d1b9bedd6c92_c00007",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00007",
+      "source_order": 16,
+      "start_offset": 2067,
+      "end_offset": 2225
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00007_s017",
+      "chunk_id": "ver_d1b9bedd6c92_c00007",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00007",
+      "source_order": 17,
+      "start_offset": 2227,
+      "end_offset": 2367
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00008_s000",
+      "chunk_id": "ver_d1b9bedd6c92_c00008",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00007",
+      "source_order": 0,
+      "start_offset": 2368,
+      "end_offset": 2456
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00008_s001",
+      "chunk_id": "ver_d1b9bedd6c92_c00008",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00007",
+      "source_order": 1,
+      "start_offset": 2457,
+      "end_offset": 2594
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00008_s002",
+      "chunk_id": "ver_d1b9bedd6c92_c00008",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00007",
+      "source_order": 2,
+      "start_offset": 2595,
+      "end_offset": 2727
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00008_s003",
+      "chunk_id": "ver_d1b9bedd6c92_c00008",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00007",
+      "source_order": 3,
+      "start_offset": 2728,
+      "end_offset": 2930
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00008_s004",
+      "chunk_id": "ver_d1b9bedd6c92_c00008",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00007",
+      "source_order": 4,
+      "start_offset": 2931,
+      "end_offset": 3039
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00008_s005",
+      "chunk_id": "ver_d1b9bedd6c92_c00008",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00007",
+      "source_order": 5,
+      "start_offset": 3040,
+      "end_offset": 3299
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00008_s006",
+      "chunk_id": "ver_d1b9bedd6c92_c00008",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00007",
+      "source_order": 6,
+      "start_offset": 3300,
+      "end_offset": 3412
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00008_s007",
+      "chunk_id": "ver_d1b9bedd6c92_c00008",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00007",
+      "source_order": 7,
+      "start_offset": 3413,
+      "end_offset": 3625
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00008_s008",
+      "chunk_id": "ver_d1b9bedd6c92_c00008",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00007",
+      "source_order": 8,
+      "start_offset": 3626,
+      "end_offset": 3854
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00008_s009",
+      "chunk_id": "ver_d1b9bedd6c92_c00008",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00007",
+      "source_order": 9,
+      "start_offset": 3855,
+      "end_offset": 3927
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00009_s000",
+      "chunk_id": "ver_d1b9bedd6c92_c00009",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00008",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 10
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00010_s000",
+      "chunk_id": "ver_d1b9bedd6c92_c00010",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00009",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 166
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00010_s001",
+      "chunk_id": "ver_d1b9bedd6c92_c00010",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00009",
+      "source_order": 1,
+      "start_offset": 171,
+      "end_offset": 405
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00010_s002",
+      "chunk_id": "ver_d1b9bedd6c92_c00010",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00009",
+      "source_order": 2,
+      "start_offset": 410,
+      "end_offset": 467
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00010_s003",
+      "chunk_id": "ver_d1b9bedd6c92_c00010",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00009",
+      "source_order": 3,
+      "start_offset": 468,
+      "end_offset": 692
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00010_s004",
+      "chunk_id": "ver_d1b9bedd6c92_c00010",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00009",
+      "source_order": 4,
+      "start_offset": 693,
+      "end_offset": 796
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00010_s005",
+      "chunk_id": "ver_d1b9bedd6c92_c00010",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00009",
+      "source_order": 5,
+      "start_offset": 797,
+      "end_offset": 880
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00010_s006",
+      "chunk_id": "ver_d1b9bedd6c92_c00010",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00009",
+      "source_order": 6,
+      "start_offset": 881,
+      "end_offset": 1019
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00010_s007",
+      "chunk_id": "ver_d1b9bedd6c92_c00010",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00009",
+      "source_order": 7,
+      "start_offset": 1020,
+      "end_offset": 1089
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00010_s008",
+      "chunk_id": "ver_d1b9bedd6c92_c00010",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00009",
+      "source_order": 8,
+      "start_offset": 1090,
+      "end_offset": 1176
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00011_s000",
+      "chunk_id": "ver_d1b9bedd6c92_c00011",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00010",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 11
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00012_s000",
+      "chunk_id": "ver_d1b9bedd6c92_c00012",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00011",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 152
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00012_s001",
+      "chunk_id": "ver_d1b9bedd6c92_c00012",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00011",
+      "source_order": 1,
+      "start_offset": 153,
+      "end_offset": 178
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00012_s002",
+      "chunk_id": "ver_d1b9bedd6c92_c00012",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00011",
+      "source_order": 2,
+      "start_offset": 179,
+      "end_offset": 380
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00012_s003",
+      "chunk_id": "ver_d1b9bedd6c92_c00012",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00011",
+      "source_order": 3,
+      "start_offset": 381,
+      "end_offset": 458
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00012_s004",
+      "chunk_id": "ver_d1b9bedd6c92_c00012",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00011",
+      "source_order": 4,
+      "start_offset": 459,
+      "end_offset": 625
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00012_s005",
+      "chunk_id": "ver_d1b9bedd6c92_c00012",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00011",
+      "source_order": 5,
+      "start_offset": 626,
+      "end_offset": 721
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00012_s006",
+      "chunk_id": "ver_d1b9bedd6c92_c00012",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00011",
+      "source_order": 6,
+      "start_offset": 722,
+      "end_offset": 793
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00012_s007",
+      "chunk_id": "ver_d1b9bedd6c92_c00012",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00011",
+      "source_order": 7,
+      "start_offset": 794,
+      "end_offset": 972
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00012_s008",
+      "chunk_id": "ver_d1b9bedd6c92_c00012",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00011",
+      "source_order": 8,
+      "start_offset": 973,
+      "end_offset": 1069
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00012_s009",
+      "chunk_id": "ver_d1b9bedd6c92_c00012",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00011",
+      "source_order": 9,
+      "start_offset": 1070,
+      "end_offset": 1179
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00012_s010",
+      "chunk_id": "ver_d1b9bedd6c92_c00012",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00011",
+      "source_order": 10,
+      "start_offset": 1180,
+      "end_offset": 1343
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00012_s011",
+      "chunk_id": "ver_d1b9bedd6c92_c00012",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00011",
+      "source_order": 11,
+      "start_offset": 1344,
+      "end_offset": 1429
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00012_s012",
+      "chunk_id": "ver_d1b9bedd6c92_c00012",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00011",
+      "source_order": 12,
+      "start_offset": 1430,
+      "end_offset": 1634
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00013_s000",
+      "chunk_id": "ver_d1b9bedd6c92_c00013",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00012",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 13
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00014_s000",
+      "chunk_id": "ver_d1b9bedd6c92_c00014",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00013",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 266
+    }
+  ]
+}

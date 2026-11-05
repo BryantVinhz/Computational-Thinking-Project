@@ -1,0 +1,4069 @@
+[
+  {
+    "block_id": "ver_3653eed28e7f_b00000",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 0,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "# SAML Security Cheat Sheet",
+    "text_hash": "03e6e51883c42667e6720d396c80f1525013d7afbb8da2a3ec8b1282167a3666",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 1,
+      "end_line": 1
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet"
+    ],
+    "heading_level": 1,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00000",
+    "normalized_text": "# SAML Security Cheat Sheet",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00001",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 1,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Introduction",
+    "text_hash": "d753efbab681fa4da82470d9a83b1c202de58f92fd498e77a269c1163bc4714b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 3,
+      "end_line": 3
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00001",
+    "normalized_text": "## Introduction",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00002",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 2,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The **S**ecurity **A**ssertion **M**arkup **L**anguage ([SAML](https://en.wikipedia.org/wiki/Security_Assertion_Markup_Language)) is an open standard for exchanging authorization and authentication information. The *Web Browser SAML/SSO Profile with Redirect/POST bindings* is one of the most common SSO implementation. This cheatsheet will focus primarily on that profile.",
+    "text_hash": "96327cd0a2a054aefa0bf81795766ae72f8d855620e0ca15ced42f3b58e70804",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 5,
+      "end_line": 5
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00002",
+    "normalized_text": "The **S**ecurity **A**ssertion **M**arkup **L**anguage ([SAML](https://en.wikipedia.org/wiki/Security_Assertion_Markup_Language)) is an open standard for exchanging authorization and authentication information. The *Web Browser SAML/SSO Profile with Redirect/POST bindings* is one of the most common SSO implementation. This cheatsheet will focus primarily on that profile.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00003",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 3,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Validate Message Confidentiality and Integrity",
+    "text_hash": "a5982b709b778639e6d9263549d8f0e6e5bc0d957c6ad1557953009a065336d4",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 7,
+      "end_line": 7
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Validate Message Confidentiality and Integrity"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00003",
+    "normalized_text": "## Validate Message Confidentiality and Integrity",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00004",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 4,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[TLS 1.2](Transport_Layer_Security_Cheat_Sheet.md) is the most common solution to guarantee message confidentiality and integrity at the transport layer. Refer to [SAML Security (section 4.2.1)](https://docs.oasis-open.org/security/saml/v2.0/saml-sec-consider-2.0-os.pdf) for additional information. This step will help counter the following attacks:",
+    "text_hash": "4c427a29b78b598e4557493c7cbed1320d62bc21b21fb6f050710175e2462f45",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 9,
+      "end_line": 9
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Validate Message Confidentiality and Integrity"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00004",
+    "normalized_text": "[TLS 1.2](Transport_Layer_Security_Cheat_Sheet.md) is the most common solution to guarantee message confidentiality and integrity at the transport layer. Refer to [SAML Security (section 4.2.1)](https://docs.oasis-open.org/security/saml/v2.0/saml-sec-consider-2.0-os.pdf) for additional information. This step will help counter the following attacks:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00005",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 5,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- Eavesdropping 7.1.1.1\n- Theft of User Authentication Information 7.1.1.2\n- Theft of the Bearer Token 7.1.1.3\n- Message Deletion 7.1.1.6\n- Message Modification 7.1.1.7\n- Man-in-the-middle 7.1.1.8\n",
+    "text_hash": "7b4e3d083bd57771947a646a88044e9ac3965c9cdd18c399cbeff68d0d8be25d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 11,
+      "end_line": 17
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Validate Message Confidentiality and Integrity"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00005",
+    "normalized_text": "- Eavesdropping 7.1.1.1\n- Theft of User Authentication Information 7.1.1.2\n- Theft of the Bearer Token 7.1.1.3\n- Message Deletion 7.1.1.6\n- Message Modification 7.1.1.7\n- Man-in-the-middle 7.1.1.8",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00006",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 6,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "A digitally signed message with a certified key is the most common solution to guarantee message integrity and authentication. Refer to [SAML Security (section 4.3)](https://docs.oasis-open.org/security/saml/v2.0/saml-sec-consider-2.0-os.pdf) for additional information. This step will help counter the following attacks:",
+    "text_hash": "a60c7c528f115266cc9d7a61bf2bec489ff80bb57cae257e9e4802ffacd4d0a6",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 18,
+      "end_line": 18
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Validate Message Confidentiality and Integrity"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00006",
+    "normalized_text": "A digitally signed message with a certified key is the most common solution to guarantee message integrity and authentication. Refer to [SAML Security (section 4.3)](https://docs.oasis-open.org/security/saml/v2.0/saml-sec-consider-2.0-os.pdf) for additional information. This step will help counter the following attacks:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00007",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 7,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- Man-in-the-middle 6.4.2\n- Forged Assertion 6.4.3\n- Message Modification 7.1.1.7\n",
+    "text_hash": "44e0d3e6a9ae861c7a323c44db9d3306b8e031e1fcf947fb20ecbd9a6f6860b2",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 20,
+      "end_line": 23
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Validate Message Confidentiality and Integrity"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00007",
+    "normalized_text": "- Man-in-the-middle 6.4.2\n- Forged Assertion 6.4.3\n- Message Modification 7.1.1.7",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00008",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 8,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Assertions may be encrypted via XMLEnc to prevent disclosure of sensitive attributes post transportation. Refer to [SAML Security (section 4.2.2)](https://docs.oasis-open.org/security/saml/v2.0/saml-sec-consider-2.0-os.pdf) for additional information. This step will help counter the following attacks:",
+    "text_hash": "b4e77d07ed61444405cfcee467570085f5c117dc62d44cbd6920622b11512145",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 24,
+      "end_line": 24
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Validate Message Confidentiality and Integrity"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00008",
+    "normalized_text": "Assertions may be encrypted via XMLEnc to prevent disclosure of sensitive attributes post transportation. Refer to [SAML Security (section 4.2.2)](https://docs.oasis-open.org/security/saml/v2.0/saml-sec-consider-2.0-os.pdf) for additional information. This step will help counter the following attacks:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00009",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 9,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- Theft of User Authentication Information 7.1.1.2\n",
+    "text_hash": "c27b884eb6760f209d9662a60ab18c7ca51a0c9882548ac23a6b75117ca6aaab",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 26,
+      "end_line": 27
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Validate Message Confidentiality and Integrity"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00009",
+    "normalized_text": "- Theft of User Authentication Information 7.1.1.2",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00010",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 10,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Validate Protocol Usage",
+    "text_hash": "5bf46d702b3520fdd396d61d75826792aed9baf08d0927f634446b832c4a6091",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 28,
+      "end_line": 28
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Validate Protocol Usage"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00010",
+    "normalized_text": "## Validate Protocol Usage",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00011",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 11,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "This is a common area for security gaps - see [Google SSO vulnerability](https://www.kb.cert.org/vuls/id/612636/) for a real life example. Their SSO profile was vulnerable to a Man-in-the-middle attack from a malicious SP (Service Provider).",
+    "text_hash": "2ab7fdfe31daaf4b4bc7069e104009c2862998e1ea3e5f39745905c7bde00f23",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 30,
+      "end_line": 30
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Validate Protocol Usage"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00011",
+    "normalized_text": "This is a common area for security gaps - see [Google SSO vulnerability](https://www.kb.cert.org/vuls/id/612636/) for a real life example. Their SSO profile was vulnerable to a Man-in-the-middle attack from a malicious SP (Service Provider).",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00012",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 12,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The SSO Web Browser Profile is most susceptible to attacks from trusted partners. This particular security flaw was exposed because the SAML Response did not contain all of the required data elements necessary for a secure message exchange. Following the [SAML Profile](https://docs.oasis-open.org/security/saml/v2.0/saml-profiles-2.0-os.pdf) usage requirements for AuthnRequest (4.1.4.1) and Response (4.1.4.2) will help counter this attack.",
+    "text_hash": "1a3f608b3e1bb2f590d302e0c796828cc8ff76f6c2b18c86edacf2ab4cf189e8",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 32,
+      "end_line": 32
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Validate Protocol Usage"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00012",
+    "normalized_text": "The SSO Web Browser Profile is most susceptible to attacks from trusted partners. This particular security flaw was exposed because the SAML Response did not contain all of the required data elements necessary for a secure message exchange. Following the [SAML Profile](https://docs.oasis-open.org/security/saml/v2.0/saml-profiles-2.0-os.pdf) usage requirements for AuthnRequest (4.1.4.1) and Response (4.1.4.2) will help counter this attack.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00013",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 13,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The *AVANTSSAR* team suggested the following data elements should be required:",
+    "text_hash": "b69038655ce79e4fd98c10386abd77661f118b75aa0dc6530c83448d8012c631",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 34,
+      "end_line": 34
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Validate Protocol Usage"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00013",
+    "normalized_text": "The *AVANTSSAR* team suggested the following data elements should be required:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00014",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 14,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- **AuthnRequest(ID, SP):** An `AuthnRequest` must contain and `ID` and `SP`. Where `ID` is a string uniquely identifying the request and an `SP` identifies the `Service Provider` that initiated the request. Furthermore, the request `ID` attribute must be returned in the response (`InResponseTo=\"<requestId>\"`). `InResponseTo` helps guarantee authenticity of the response from the trusted IdP. This was one of the missing attributes that left Google's SSO vulnerable.\n- **Response(ID, SP, IdP, {AA} K -1/IdP):** A Response must contain all these elements. Where `ID` is a string uniquely identifying the response. `SP` identifies the recipient of the response. `IdP` identifies the identity provider authorizing the response. `{AA} K -1/IdP` is the assertion digitally signed with the private key of the `IdP`.\n- **AuthAssert(ID, C, IdP, SP):** An authentication assertion must exist within the Response. It must contain an `ID`, a client `(C)`, an identity provider `(IdP)`, and a service provider `(SP)` identifier.\n",
+    "text_hash": "8a3d7bec3890a1a35792cb496bd04464f0619feca1b6fdb24923c013042febf8",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 36,
+      "end_line": 39
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Validate Protocol Usage"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00014",
+    "normalized_text": "- **AuthnRequest(ID, SP):** An `AuthnRequest` must contain and `ID` and `SP`. Where `ID` is a string uniquely identifying the request and an `SP` identifies the `Service Provider` that initiated the request. Furthermore, the request `ID` attribute must be returned in the response (`InResponseTo=\"<requestId>\"`). `InResponseTo` helps guarantee authenticity of the response from the trusted IdP. This was one of the missing attributes that left Google's SSO vulnerable.\n- **Response(ID, SP, IdP, {AA} K -1/IdP):** A Response must contain all these elements. Where `ID` is a string uniquely identifying the response. `SP` identifies the recipient of the response. `IdP` identifies the identity provider authorizing the response. `{AA} K -1/IdP` is the assertion digitally signed with the private key of the `IdP`.\n- **AuthAssert(ID, C, IdP, SP):** An authentication assertion must exist within the Response. It must contain an `ID`, a client `(C)`, an identity provider `(IdP)`, and a service provider `(SP)` identifier.",
+    "normalization_flags": {
+      "is_code_or_payload": true,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00015",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 15,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Validate Signatures",
+    "text_hash": "41bd6ccdd01f0f68e8f333cf28b4795209861734141968ad8e9b5b5dea2d1314",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 40,
+      "end_line": 40
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Validate Protocol Usage",
+      "Validate Signatures"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00015",
+    "normalized_text": "### Validate Signatures",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00016",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 16,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Vulnerabilities in SAML implementations due to XML Signature Wrapping attacks were described in 2012, [On Breaking SAML: Be Whoever You Want to Be](https://www.usenix.org/system/files/conference/usenixsecurity12/sec12-final91-8-23-12.pdf).",
+    "text_hash": "ec1c40fdec43596187190d171218ba01c7005c154513bba2d6ef6cbc4ac41512",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 42,
+      "end_line": 42
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Validate Protocol Usage",
+      "Validate Signatures"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00016",
+    "normalized_text": "Vulnerabilities in SAML implementations due to XML Signature Wrapping attacks were described in 2012, [On Breaking SAML: Be Whoever You Want to Be](https://www.usenix.org/system/files/conference/usenixsecurity12/sec12-final91-8-23-12.pdf).",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00017",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 17,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The following recommendations were proposed in response ([Secure SAML validation to prevent XML signature wrapping attacks](https://arxiv.org/pdf/1401.7483v1.pdf)):",
+    "text_hash": "72dd372a89bfdf0d190802b1b1eee8babab7aa8c12f3fbd4c5348837b1090036",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 44,
+      "end_line": 44
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Validate Protocol Usage",
+      "Validate Signatures"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00017",
+    "normalized_text": "The following recommendations were proposed in response ([Secure SAML validation to prevent XML signature wrapping attacks](https://arxiv.org/pdf/1401.7483v1.pdf)):",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00018",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 18,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- Without exception, always perform schema validation on the XML document prior to using it for any security-related purposes::\n    - Always use local, trusted copies of schemas for validation.\n    - Never allow automatic download of schemas from third party locations.\n    - If possible, inspect schemas and perform schema hardening, to disable possible wildcard type or relaxed processing statements.\n- Securely validate the digital signature:\n    - If you expect only one signing key, use `StaticKeySelector`. Obtain the key directly from the identity provider, store it in a local file and ignore any `KeyInfo` elements in the document.\n    - If you expect more than one signing key, use `X509KeySelector` (the JKS variant). Obtain these keys directly from the identity providers, store them in local JKS and ignore any `KeyInfo` elements in the document.\n- Avoid signature-wrapping attacks.\n    - Never use `getElementsByTagName` to select security related elements in an XML document without prior validation.\n    - Always use absolute XPath expressions to select elements, unless a hardened schema is used for validation.\n",
+    "text_hash": "f9af59ab16024d9ae879e4bf6613abfeda9978ca8b2c737e8ee2cbe85870fd35",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 46,
+      "end_line": 56
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Validate Protocol Usage",
+      "Validate Signatures"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00018",
+    "normalized_text": "- Without exception, always perform schema validation on the XML document prior to using it for any security-related purposes::\n    - Always use local, trusted copies of schemas for validation.\n    - Never allow automatic download of schemas from third party locations.\n    - If possible, inspect schemas and perform schema hardening, to disable possible wildcard type or relaxed processing statements.\n- Securely validate the digital signature:\n    - If you expect only one signing key, use `StaticKeySelector`. Obtain the key directly from the identity provider, store it in a local file and ignore any `KeyInfo` elements in the document.\n    - If you expect more than one signing key, use `X509KeySelector` (the JKS variant). Obtain these keys directly from the identity providers, store them in local JKS and ignore any `KeyInfo` elements in the document.\n- Avoid signature-wrapping attacks.\n    - Never use `getElementsByTagName` to select security related elements in an XML document without prior validation.\n    - Always use absolute XPath expressions to select elements, unless a hardened schema is used for validation.",
+    "normalization_flags": {
+      "is_code_or_payload": true,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00019",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 19,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Validate Protocol Processing Rules",
+    "text_hash": "ccf9375fad2c54e5881d880d7cdbf3906dfbc0092ad6c5f5abf38799d2456820",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 57,
+      "end_line": 57
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Validate Protocol Processing Rules"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00019",
+    "normalized_text": "## Validate Protocol Processing Rules",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00020",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 20,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "This is another common area for security gaps simply because of the vast number of steps to assert.",
+    "text_hash": "4502d1e79590f26301cd18aff06c2b2888f8f369c6ff3c4cb54c8a8b50920c9a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 59,
+      "end_line": 59
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Validate Protocol Processing Rules"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00020",
+    "normalized_text": "This is another common area for security gaps simply because of the vast number of steps to assert.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00021",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 21,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Processing a SAML response is an expensive operation but all steps must be validated:",
+    "text_hash": "5daaf95aad1aab454fce9d77c3a0debb504838706384d26b858ca65a736d4c25",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 61,
+      "end_line": 61
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Validate Protocol Processing Rules"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00021",
+    "normalized_text": "Processing a SAML response is an expensive operation but all steps must be validated:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00022",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 22,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- Validate AuthnRequest processing rules. Refer to [SAML Core](https://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf) (3.4.1.4) for all AuthnRequest processing rules. This step will help counter the following attacks:\n    - Man-in-the-middle (6.4.2)\n- Validate Response processing rules. Refer to [SAML Profiles](https://docs.oasis-open.org/security/saml/v2.0/saml-profiles-2.0-os.pdf) (4.1.4.3) for all Response processing rules. This step will help counter the following attacks:\n    - Stolen Assertion (6.4.1)\n    - Man-in-the-middle (6.4.2)\n    - Forged Assertion (6.4.3)\n    - Browser State Exposure (6.4.4)\n",
+    "text_hash": "96fbebe4a587173e02cc30261e3ab77292a48fe5e54ab055f0efdf6232b5f5e7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 63,
+      "end_line": 70
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Validate Protocol Processing Rules"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00022",
+    "normalized_text": "- Validate AuthnRequest processing rules. Refer to [SAML Core](https://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf) (3.4.1.4) for all AuthnRequest processing rules. This step will help counter the following attacks:\n    - Man-in-the-middle (6.4.2)\n- Validate Response processing rules. Refer to [SAML Profiles](https://docs.oasis-open.org/security/saml/v2.0/saml-profiles-2.0-os.pdf) (4.1.4.3) for all Response processing rules. This step will help counter the following attacks:\n    - Stolen Assertion (6.4.1)\n    - Man-in-the-middle (6.4.2)\n    - Forged Assertion (6.4.3)\n    - Browser State Exposure (6.4.4)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00023",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 23,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Validate Binding Implementation",
+    "text_hash": "879068c7319958b5dc235a7e6891485c2114c2456afb9ae243a3da4256f84b2d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 71,
+      "end_line": 71
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Validate Binding Implementation"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00023",
+    "normalized_text": "## Validate Binding Implementation",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00024",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 24,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- For an HTTP Redirect Binding refer to [SAML Binding](https://docs.oasis-open.org/security/saml/v2.0/saml-bindings-2.0-os.pdf) (3.4). To view an encoding example, you may want to reference RequestUtil.java found within [Google's reference implementation](https://developers.google.com/google-apps/sso/saml_reference_implementation_web).\n- For an HTTP POST Binding refer to [SAML Binding](https://docs.oasis-open.org/security/saml/v2.0/saml-bindings-2.0-os.pdf) (3.5). The caching considerations are also very important. If a SAML protocol message gets cached, it can subsequently be used as a Stolen Assertion (6.4.1) or Replay (6.4.5) attack.\n",
+    "text_hash": "04786675310434eb2f19da2599dd275c28dacb909c5fc9920fa3b31d8a0fd884",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 73,
+      "end_line": 75
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Validate Binding Implementation"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00024",
+    "normalized_text": "- For an HTTP Redirect Binding refer to [SAML Binding](https://docs.oasis-open.org/security/saml/v2.0/saml-bindings-2.0-os.pdf) (3.4). To view an encoding example, you may want to reference RequestUtil.java found within [Google's reference implementation](https://developers.google.com/google-apps/sso/saml_reference_implementation_web).\n- For an HTTP POST Binding refer to [SAML Binding](https://docs.oasis-open.org/security/saml/v2.0/saml-bindings-2.0-os.pdf) (3.5). The caching considerations are also very important. If a SAML protocol message gets cached, it can subsequently be used as a Stolen Assertion (6.4.1) or Replay (6.4.5) attack.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00025",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 25,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Validate Security Countermeasures",
+    "text_hash": "3a7d252914b5f78c819efa1d8fe4c4d21339b97c7c9988afb4b2b9a61112b3de",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 76,
+      "end_line": 76
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Validate Security Countermeasures"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00025",
+    "normalized_text": "## Validate Security Countermeasures",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00026",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 26,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Revisit each security threat that exists within the [SAML Security](https://docs.oasis-open.org/security/saml/v2.0/saml-sec-consider-2.0-os.pdf) document and assert you have applied the appropriate countermeasures for threats that may exist for your particular implementation.",
+    "text_hash": "90c19b32e3c632dcbd9f0c4525c36665622834f4bea78cb5d89cc0267780e390",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 78,
+      "end_line": 78
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Validate Security Countermeasures"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00026",
+    "normalized_text": "Revisit each security threat that exists within the [SAML Security](https://docs.oasis-open.org/security/saml/v2.0/saml-sec-consider-2.0-os.pdf) document and assert you have applied the appropriate countermeasures for threats that may exist for your particular implementation.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00027",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 27,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Additional countermeasures considered should include:",
+    "text_hash": "df24010396e9d5d2af3728db33d3a48e7eaa9933fe94290cc3c5ee88cdb3dd7f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 80,
+      "end_line": 80
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Validate Security Countermeasures"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00027",
+    "normalized_text": "Additional countermeasures considered should include:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00028",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 28,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- Prefer IP Filtering when appropriate. For example, this countermeasure could have prevented Google's initial security flaw if Google provided each trusted partner with a separate endpoint and setup an IP filter for each endpoint. This step will help counter the following attacks:\n    - Stolen Assertion (6.4.1)\n    - Man-in-the-middle (6.4.2)\n- Prefer short lifetimes on the SAML Response. This step will help counter the following attacks:\n    - Stolen Assertion (6.4.1)\n    - Browser State Exposure (6.4.4)\n- Prefer OneTimeUse on the SAML Response. This step will help counter the following attacks:\n    - Browser State Exposure (6.4.4)\n    - Replay (6.4.5)\n",
+    "text_hash": "17900d2b7aa1a3c4576ad41e724bc003a08e32782639225d4eb57a77abc5db86",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 82,
+      "end_line": 91
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Validate Security Countermeasures"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00028",
+    "normalized_text": "- Prefer IP Filtering when appropriate. For example, this countermeasure could have prevented Google's initial security flaw if Google provided each trusted partner with a separate endpoint and setup an IP filter for each endpoint. This step will help counter the following attacks:\n    - Stolen Assertion (6.4.1)\n    - Man-in-the-middle (6.4.2)\n- Prefer short lifetimes on the SAML Response. This step will help counter the following attacks:\n    - Stolen Assertion (6.4.1)\n    - Browser State Exposure (6.4.4)\n- Prefer OneTimeUse on the SAML Response. This step will help counter the following attacks:\n    - Browser State Exposure (6.4.4)\n    - Replay (6.4.5)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00029",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 29,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Need an architectural diagram? The [SAML technical overview](https://www.oasis-open.org/committees/download.php/11511/sstc-saml-tech-overview-2.0-draft-03.pdf) contains the most complete diagrams. For the Web Browser SSO Profile with Redirect/POST bindings refer to the section 4.1.3. In fact, of all the SAML documentation, the technical overview is the most valuable from a high-level perspective.",
+    "text_hash": "67632c1ee698198d6987b9b5a3408c7464f348419a8895517ee11f12591608b4",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 92,
+      "end_line": 92
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Validate Security Countermeasures"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00029",
+    "normalized_text": "Need an architectural diagram? The [SAML technical overview](https://www.oasis-open.org/committees/download.php/11511/sstc-saml-tech-overview-2.0-draft-03.pdf) contains the most complete diagrams. For the Web Browser SSO Profile with Redirect/POST bindings refer to the section 4.1.3. In fact, of all the SAML documentation, the technical overview is the most valuable from a high-level perspective.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00030",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 30,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Unsolicited Response (ie. IdP Initiated SSO) Considerations for Service Providers",
+    "text_hash": "075bb42a680c8676a8e3b9a88c559c1f6399922ee4863db74a330bd5ae563033",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 94,
+      "end_line": 94
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Unsolicited Response (ie. IdP Initiated SSO) Considerations for Service Providers"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00030",
+    "normalized_text": "## Unsolicited Response (ie. IdP Initiated SSO) Considerations for Service Providers",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00031",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 31,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Unsolicited Response is inherently less secure by design due to the lack of **login [CSRF](Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.md#possible-csrf-vulnerabilities-in-login-forms)** protection. This limitation arises because the Service Provider (SP) has no opportunity to create a pre-login session or verify that the authentication request was intentionally initiated by the user.  ",
+    "text_hash": "d9054df9c828ee774f0012b9041b30d84375b5a215228026777326e107ab2941",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 96,
+      "end_line": 96
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Unsolicited Response (ie. IdP Initiated SSO) Considerations for Service Providers"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00031",
+    "normalized_text": "Unsolicited Response is inherently less secure by design due to the lack of **login [CSRF](Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.md#possible-csrf-vulnerabilities-in-login-forms)** protection. This limitation arises because the Service Provider (SP) has no opportunity to create a pre-login session or verify that the authentication request was intentionally initiated by the user.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 2
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00032",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 32,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "While this design does not make IdP-initiated SSO uniquely vulnerable to Man-in-the-Middle (MITM) attacks—those risks apply equally to SP-initiated flows if transport security is compromised—it does remove an important layer of login intent validation.  ",
+    "text_hash": "43eefc7015f829389b846d18082d851a86d6dd36bcc04b678936d85fe20a1e6b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 98,
+      "end_line": 98
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Unsolicited Response (ie. IdP Initiated SSO) Considerations for Service Providers"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00032",
+    "normalized_text": "While this design does not make IdP-initiated SSO uniquely vulnerable to Man-in-the-Middle (MITM) attacks—those risks apply equally to SP-initiated flows if transport security is compromised—it does remove an important layer of login intent validation.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 2
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00033",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 33,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Despite these concerns, IdP-initiated SSO remains supported for backward compatibility (notably with SAML 1.1). If it must be enabled, the following steps (in addition to those mentioned above) should help secure this flow:",
+    "text_hash": "8ec0be02547571d15b00d516417577719454fe115454fbcf93b5d74e31e120d3",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 100,
+      "end_line": 100
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Unsolicited Response (ie. IdP Initiated SSO) Considerations for Service Providers"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00033",
+    "normalized_text": "Despite these concerns, IdP-initiated SSO remains supported for backward compatibility (notably with SAML 1.1). If it must be enabled, the following steps (in addition to those mentioned above) should help secure this flow:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00034",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 34,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- Follow the validation process mentioned in [SAML Profiles (section 4.1.5)](https://docs.oasis-open.org/security/saml/v2.0/saml-profiles-2.0-os.pdf). This step will help counter the following attacks:\n    - Replay (6.1.2)\n    - Message Insertion (6.1.3)\n- If the contract of the `RelayState` parameter is a URL, make sure the URL is validated and explicitly on an allowlist. This step will help counter the following attack:\n    - [Open Redirect](https://cheatsheetseries.owasp.org/cheatsheets/Unvalidated_Redirects_and_Forwards_Cheat_Sheet.html)\n- Implement proper replay detection either at the response or assertion level. This will help counter the following attack:\n    - Replay (6.1.2)\n",
+    "text_hash": "86f8264abaa17c8e208826528b7a8811b36b347d5db3230d56526c9f73db5ced",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 102,
+      "end_line": 109
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Unsolicited Response (ie. IdP Initiated SSO) Considerations for Service Providers"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00034",
+    "normalized_text": "- Follow the validation process mentioned in [SAML Profiles (section 4.1.5)](https://docs.oasis-open.org/security/saml/v2.0/saml-profiles-2.0-os.pdf). This step will help counter the following attacks:\n    - Replay (6.1.2)\n    - Message Insertion (6.1.3)\n- If the contract of the `RelayState` parameter is a URL, make sure the URL is validated and explicitly on an allowlist. This step will help counter the following attack:\n    - [Open Redirect](https://cheatsheetseries.owasp.org/cheatsheets/Unvalidated_Redirects_and_Forwards_Cheat_Sheet.html)\n- Implement proper replay detection either at the response or assertion level. This will help counter the following attack:\n    - Replay (6.1.2)",
+    "normalization_flags": {
+      "is_code_or_payload": true,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00035",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 35,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Identity Provider and Service Provider Considerations",
+    "text_hash": "9b2ccc549705ab7222d6718b729fe6111881f6df3a60683746ef1cd3674bd064",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 110,
+      "end_line": 110
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00035",
+    "normalized_text": "## Identity Provider and Service Provider Considerations",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00036",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 36,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The SAML protocol is rarely the attack vector of choice, though it's important to have cheatsheets to make sure that this is robust. The various endpoints are more targeted, so how the SAML token is generated and how it is consumed are both important in practice.",
+    "text_hash": "219e155a2e5bf92053126c57691ec900020413c61734ec55ac7c0691f3216fda",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 112,
+      "end_line": 112
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00036",
+    "normalized_text": "The SAML protocol is rarely the attack vector of choice, though it's important to have cheatsheets to make sure that this is robust. The various endpoints are more targeted, so how the SAML token is generated and how it is consumed are both important in practice.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00037",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 37,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### X.509 Certificate Considerations",
+    "text_hash": "8ca921e5599a3821379baad4b66e4213daf028047351181a7f30f224ad8d3fa1",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 114,
+      "end_line": 114
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00037",
+    "normalized_text": "### X.509 Certificate Considerations",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00038",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 38,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Typically the security association between the Identity Provider (IdP) and Service Provider (SP) is created when the SP explicitly chooses to trust the IdP's X.509 signing certificate. Exactly how this occurs can have a strong bearing on overall security posture. How the certificate is generated, what the contents of the certificate are, and how the certificate's corresponding private key is protected all have strong bearing on security posture. e.g., if an attacker has access to use the IdP’s signing key, they can mint SAML responses containing any assertion they wish.",
+    "text_hash": "2b277718a8cea066bcf36ffd2296efe5d15923c0ba8a434ecff60bb9801395e7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 116,
+      "end_line": 116
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00038",
+    "normalized_text": "Typically the security association between the Identity Provider (IdP) and Service Provider (SP) is created when the SP explicitly chooses to trust the IdP's X.509 signing certificate. Exactly how this occurs can have a strong bearing on overall security posture. How the certificate is generated, what the contents of the certificate are, and how the certificate's corresponding private key is protected all have strong bearing on security posture. e.g., if an attacker has access to use the IdP’s signing key, they can mint SAML responses containing any assertion they wish.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00039",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 39,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "In many cases, the method of manually setting the association is akin to [Certificate Pinning](https://cheatsheetseries.owasp.org/cheatsheets/Pinning_Cheat_Sheet.html), which is not ideal. Depending on the IdP and SP software, or various design considerations, this may be unavoidable.",
+    "text_hash": "1ee09b4fceaffb3ee4e729a9cd08e0dfe43bfc2859e1b30228b7ed7966fd9383",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 118,
+      "end_line": 118
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00039",
+    "normalized_text": "In many cases, the method of manually setting the association is akin to [Certificate Pinning](https://cheatsheetseries.owasp.org/cheatsheets/Pinning_Cheat_Sheet.html), which is not ideal. Depending on the IdP and SP software, or various design considerations, this may be unavoidable.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00040",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 40,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Keep in mind that the certificate's signature type can be different from that of the XML document signing type. The certificate's corresponding private key is the only key that can be used to sign the XML document, but the signing algorithm is chosen at the IdP's discretion. The most commonly supported signing algorithm is rsa-sha256.",
+    "text_hash": "18d65d5b7ca3dbe0a0746913b127762d77a15eba27fe65610993895c11f85a5a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 120,
+      "end_line": 120
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00040",
+    "normalized_text": "Keep in mind that the certificate's signature type can be different from that of the XML document signing type. The certificate's corresponding private key is the only key that can be used to sign the XML document, but the signing algorithm is chosen at the IdP's discretion. The most commonly supported signing algorithm is rsa-sha256.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00041",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 41,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### SAML Parties vs Organizations",
+    "text_hash": "9e211350925a1695074a2e54bd5aa68357584ab0bedc068dd102773de7bc0ded",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 122,
+      "end_line": 122
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "SAML Parties vs Organizations"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00041",
+    "normalized_text": "#### SAML Parties vs Organizations",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00042",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 42,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The most common SAML use cases are those of business-to-business (B2B). This means that the two parties have different security polices, practices, and risk tolerances. This guidance focuses mainly on the B2B use case. However SAML based federation or SSO is commonly used inside of an organization. In this case the term third-party CA does not apply. It is likely that the CA has been built and run to company standards and it poses no more or less risk to the SAML systems. The term third-party CA is meant to indicate a private CA run by a third-party.",
+    "text_hash": "5c307d494e717176ba1d080e17900e1c6e29dd32284acfaea319a8a4bef67074",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 124,
+      "end_line": 124
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "SAML Parties vs Organizations"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00042",
+    "normalized_text": "The most common SAML use cases are those of business-to-business (B2B). This means that the two parties have different security polices, practices, and risk tolerances. This guidance focuses mainly on the B2B use case. However SAML based federation or SSO is commonly used inside of an organization. In this case the term third-party CA does not apply. It is likely that the CA has been built and run to company standards and it poses no more or less risk to the SAML systems. The term third-party CA is meant to indicate a private CA run by a third-party.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00043",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 43,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Certificate Use Cases",
+    "text_hash": "bf6bc0aae8baea3e412102ef8f2ed3398cdfd1013f94ba22184e21b738df738a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 126,
+      "end_line": 126
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Use Cases"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00043",
+    "normalized_text": "#### Certificate Use Cases",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00044",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 44,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "There are actually 5 separate use cases for certificates in a SAML system. While this document mainly talks about the IdP’s SAML signing certificate, the security considerations apply to all four SAML related certificates. The fifth certificate, the IdP’s TLS server certificate is no more or less special than any other server certificate.",
+    "text_hash": "8d20055de756d9817ad3950845cdc569b7b26ce29c0b9b57908c8716058ac7e5",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 128,
+      "end_line": 128
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Use Cases"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00044",
+    "normalized_text": "There are actually 5 separate use cases for certificates in a SAML system. While this document mainly talks about the IdP’s SAML signing certificate, the security considerations apply to all four SAML related certificates. The fifth certificate, the IdP’s TLS server certificate is no more or less special than any other server certificate.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00045",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 45,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "##### IdP SAML Signing",
+    "text_hash": "09bbb113812edaa9988f555dfce9aa740ec4e5e27af045571bb1102b3664466e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 130,
+      "end_line": 130
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Use Cases",
+      "IdP SAML Signing"
+    ],
+    "heading_level": 5,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00045",
+    "normalized_text": "##### IdP SAML Signing",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00046",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 46,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "This is the certificate that an SP uses to validate an IdD’s SAML response. The IdP signs that response with the certificate’s corresponding private key. This is often the most important certificate and private key, as this protects the identity assertions being sent to the SP.",
+    "text_hash": "c88bfca8e938fa3db4ab791efac1894527e901302f7aed38e6119576aafb2767",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 132,
+      "end_line": 132
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Use Cases",
+      "IdP SAML Signing"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00046",
+    "normalized_text": "This is the certificate that an SP uses to validate an IdD’s SAML response. The IdP signs that response with the certificate’s corresponding private key. This is often the most important certificate and private key, as this protects the identity assertions being sent to the SP.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00047",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 47,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "##### IdP SAML Encryption",
+    "text_hash": "73d2394b64baf729f359c87824a9885bdd7bdc6ce28b6c19c3d62eb79e8be1a1",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 134,
+      "end_line": 134
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Use Cases",
+      "IdP SAML Encryption"
+    ],
+    "heading_level": 5,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00047",
+    "normalized_text": "##### IdP SAML Encryption",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00048",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 48,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "This is less commonly used, as this is used when the SP wants to protect the SAML request sent to the IdP, not just from tampering, but from information disclosure. There should be no sensitive information in the SAML request, so it is less commonly used. If used, the certificate and private key must be different from that of the SAML signing certificate.",
+    "text_hash": "1ca5a318cd767eb0d08e785df90028b20e2cd15be86933fd5cb3f28b36af8bdd",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 136,
+      "end_line": 136
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Use Cases",
+      "IdP SAML Encryption"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00048",
+    "normalized_text": "This is less commonly used, as this is used when the SP wants to protect the SAML request sent to the IdP, not just from tampering, but from information disclosure. There should be no sensitive information in the SAML request, so it is less commonly used. If used, the certificate and private key must be different from that of the SAML signing certificate.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00049",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 49,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "##### SP Signing",
+    "text_hash": "69fadaf63b0cb4a3e3d8fd379a26349ae7bf25d7e8c668051aef7c5ed5372eb2",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 138,
+      "end_line": 138
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Use Cases",
+      "SP Signing"
+    ],
+    "heading_level": 5,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00049",
+    "normalized_text": "##### SP Signing",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00050",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 50,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "It is a best practice, though not required, that SPs and IdPs not allow IdP Initiated SSO. This means that the caller starts their SAML flow at the SP, which produces a signed SAML request intended for the IdP.",
+    "text_hash": "57002d7a9f88c0a3cb54c275916d770468b7c4ee51f0c505843fac381d92ce14",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 140,
+      "end_line": 140
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Use Cases",
+      "SP Signing"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00050",
+    "normalized_text": "It is a best practice, though not required, that SPs and IdPs not allow IdP Initiated SSO. This means that the caller starts their SAML flow at the SP, which produces a signed SAML request intended for the IdP.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00051",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 51,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "##### SP Encryption",
+    "text_hash": "7457055d6c21c9101c377d21eeeed909d63e948e5bb4a6b057e08b6c945f9f79",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 142,
+      "end_line": 142
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Use Cases",
+      "SP Encryption"
+    ],
+    "heading_level": 5,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00051",
+    "normalized_text": "##### SP Encryption",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00052",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 52,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "It is a best practice to avoid placing sensitive data in the IdP’s SAML response, but sometimes it is unavoidable. This could be usernames or other PII. When information disclosure is a consideration, an SP will have a SAML encryption certificate. The IdP will use this and the embedded public key, in order to encrypt the SAML response. The SP must use a separate certificate and key pair for SAML signing and encryption.",
+    "text_hash": "cb6a39eece19042b4a443dbd87b2287ce1507a7dd3f284cde07a3c244f3679e6",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 144,
+      "end_line": 144
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Use Cases",
+      "SP Encryption"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00052",
+    "normalized_text": "It is a best practice to avoid placing sensitive data in the IdP’s SAML response, but sometimes it is unavoidable. This could be usernames or other PII. When information disclosure is a consideration, an SP will have a SAML encryption certificate. The IdP will use this and the embedded public key, in order to encrypt the SAML response. The SP must use a separate certificate and key pair for SAML signing and encryption.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00053",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 53,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Certificate Contents",
+    "text_hash": "54dd5c8b42afe6d34a3764a460cb48696ff7d8fea5ff8d2501e6ff723cd24886",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 146,
+      "end_line": 146
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Contents"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00053",
+    "normalized_text": "#### Certificate Contents",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00054",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 54,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "In the context of SAML signing and encryption, X.509 certificates are most often treated simply as a wrapper to hold a public key that is used to verify a signature, or to wrap a symmetric key for SAML encryption. Nonetheless, a certificate can contain attributes that can be used to further enhance security.",
+    "text_hash": "2dad3c752138cc51a77af877d8625d17102a8e5e04e9c69b9b3ff9cf12a9de68",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 148,
+      "end_line": 148
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Contents"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00054",
+    "normalized_text": "In the context of SAML signing and encryption, X.509 certificates are most often treated simply as a wrapper to hold a public key that is used to verify a signature, or to wrap a symmetric key for SAML encryption. Nonetheless, a certificate can contain attributes that can be used to further enhance security.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00055",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 55,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "OWASP recommends that IdPs and SPs move to adopt the EKU, KU, and key lifetimes mentioned below. These legitimately enhance security and allow the verifying party to further protect themselves. They also help show compliance with PKI norms.",
+    "text_hash": "597075de184ed548aaf35d4bb20bd444cfeeee4dd883f009b92410e6d8e1e764",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 150,
+      "end_line": 150
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Contents"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00055",
+    "normalized_text": "OWASP recommends that IdPs and SPs move to adopt the EKU, KU, and key lifetimes mentioned below. These legitimately enhance security and allow the verifying party to further protect themselves. They also help show compliance with PKI norms.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00056",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 56,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "##### Keys and Signing Algorithms",
+    "text_hash": "67e50496d75e4b4a73418a4e786a386e50a1e7b429774036bac7764ea0e559f8",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 152,
+      "end_line": 152
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Contents",
+      "Keys and Signing Algorithms"
+    ],
+    "heading_level": 5,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00056",
+    "normalized_text": "##### Keys and Signing Algorithms",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00057",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 57,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The key pair size and type and signing algorithm choice has strong bearing on security and interoperability.  Not all IdP and SP software packages or libraries support all combinations of options. As one IdP often has many SPs associated with it, the only option is to pick the least secure option that is still considered secure. The most supported and currently secure combination is using RSA 2048 bit keys and SHA-256 hashing/signing. This is referring to the certificate’s signing algorithm and not the SAML XML signing.",
+    "text_hash": "4f1112a5c4ec4376a78243f4aca5458245df17d9b2012ba9328d91cbdb4921f3",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 154,
+      "end_line": 154
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Contents",
+      "Keys and Signing Algorithms"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00057",
+    "normalized_text": "The key pair size and type and signing algorithm choice has strong bearing on security and interoperability. Not all IdP and SP software packages or libraries support all combinations of options. As one IdP often has many SPs associated with it, the only option is to pick the least secure option that is still considered secure. The most supported and currently secure combination is using RSA 2048 bit keys and SHA-256 hashing/signing. This is referring to the certificate’s signing algorithm and not the SAML XML signing.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00058",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 58,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "As post-quantum algorithms become more prevalent, and ultimately required, this becomes even more complex. Those writing SAML SP and IdP software should begin looking at options to support more key and signing algorithms.",
+    "text_hash": "06dd746fdc7b1482fd5ef762786ab3c8595714a14df8fc30e4b95c7298c381d7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 156,
+      "end_line": 156
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Contents",
+      "Keys and Signing Algorithms"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00058",
+    "normalized_text": "As post-quantum algorithms become more prevalent, and ultimately required, this becomes even more complex. Those writing SAML SP and IdP software should begin looking at options to support more key and signing algorithms.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00059",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 59,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "###### Keys",
+    "text_hash": "daf422a4eb013cda41af58ea54aef0a63ae39d6baac5deaa1ddf8cbfb5df41e3",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 158,
+      "end_line": 158
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Contents",
+      "Keys and Signing Algorithms",
+      "Keys"
+    ],
+    "heading_level": 6,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00059",
+    "normalized_text": "###### Keys",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00060",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 60,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "ECC Keys can be much smaller while providing more security than RSA keys and the math involved is faster to perform. These are preferred when all parties can use them. ECC keys can be as low as 256 bit and still be secure. RSA keys are more interoperable. The minimum RSA key size should be 2048 bit.\nAt least one major vendor [Microsoft Entra](https://learn.microsoft.com/en-us/entra/identity/hybrid/connect/how-to-connect-fed-saml-idp) doesn’t support ECC keys.",
+    "text_hash": "ee9cd8f53532bbdca046d3c9c05e2fef37a2c15d17349d00427d09e943aeed7f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 160,
+      "end_line": 161
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Contents",
+      "Keys and Signing Algorithms",
+      "Keys"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00060",
+    "normalized_text": "ECC Keys can be much smaller while providing more security than RSA keys and the math involved is faster to perform. These are preferred when all parties can use them. ECC keys can be as low as 256 bit and still be secure. RSA keys are more interoperable. The minimum RSA key size should be 2048 bit.\nAt least one major vendor [Microsoft Entra](https://learn.microsoft.com/en-us/entra/identity/hybrid/connect/how-to-connect-fed-saml-idp) doesn’t support ECC keys.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00061",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 61,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "###### Signing Algorithms",
+    "text_hash": "cda35259917984b67dfc8ed3e9a8dc6388d91199073dd4b3b2042553ab3ae24c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 163,
+      "end_line": 163
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Contents",
+      "Keys and Signing Algorithms",
+      "Signing Algorithms"
+    ],
+    "heading_level": 6,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00061",
+    "normalized_text": "###### Signing Algorithms",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00062",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 62,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "When public key cryptography is used for signing data, the data is first hashed with an chosen algorithm and then the hash is signed using the private key.",
+    "text_hash": "28dcc99c7028341d18d333cf4d820de28586b72e60626b25cc1a71b33373844f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 165,
+      "end_line": 165
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Contents",
+      "Keys and Signing Algorithms",
+      "Signing Algorithms"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00062",
+    "normalized_text": "When public key cryptography is used for signing data, the data is first hashed with an chosen algorithm and then the hash is signed using the private key.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00063",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 63,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "No IdP should use SHA-1 as the certificate signing hash. SHA-256 is the minimum bar. That said, if possible moving to larger hash algorithms like SHA-384 or SHA-512 means you are better future-proofing your service. In this context we are talking about the certificate’s signing algorithm and not the one used to sign the SAML response XML.",
+    "text_hash": "6559be3d7f327799f9e65a398fc8c9a6957f268e7536a86b8e528b1dc62f54cc",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 167,
+      "end_line": 167
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Contents",
+      "Keys and Signing Algorithms",
+      "Signing Algorithms"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00063",
+    "normalized_text": "No IdP should use SHA-1 as the certificate signing hash. SHA-256 is the minimum bar. That said, if possible moving to larger hash algorithms like SHA-384 or SHA-512 means you are better future-proofing your service. In this context we are talking about the certificate’s signing algorithm and not the one used to sign the SAML response XML.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00064",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 64,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "##### Certificate Lifetime",
+    "text_hash": "10e03b880f1db87b4af01eba1284411372c8d9316655de000f1579bc01327a1a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 169,
+      "end_line": 169
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Contents",
+      "Certificate Lifetime"
+    ],
+    "heading_level": 5,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00064",
+    "normalized_text": "##### Certificate Lifetime",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00065",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 65,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "X.509 certificates contain [`notBefore` and `notAfter` validity dates](https://www.rfc-editor.org/rfc/rfc5280.html#section-4.1.2.5). Plan certificate replacement before expiry rather than ignoring the validity period. Choose the signing key's usage period based on its protection, use, and threat model; see [Cryptoperiods and Rotation](Key_Management_Cheat_Sheet.md#cryptoperiods-and-rotation). [NIST SP 800-57 Part 1 Rev. 5, Section 5.3.4](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-57pt1r5.pdf#page=50) distinguishes certificate validity from key usage periods: renewing a certificate with the same public key does not rotate the private key or restart its usage period.",
+    "text_hash": "fa74efa288071eb2bead4d75e243c5e815ae0cd184abad3ba470d2cea4afdbe7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 171,
+      "end_line": 171
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Contents",
+      "Certificate Lifetime"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00065",
+    "normalized_text": "X.509 certificates contain [`notBefore` and `notAfter` validity dates](https://www.rfc-editor.org/rfc/rfc5280.html#section-4.1.2.5). Plan certificate replacement before expiry rather than ignoring the validity period. Choose the signing key's usage period based on its protection, use, and threat model; see [Cryptoperiods and Rotation](Key_Management_Cheat_Sheet.md#cryptoperiods-and-rotation). [NIST SP 800-57 Part 1 Rev. 5, Section 5.3.4](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-57pt1r5.pdf#page=50) distinguishes certificate validity from key usage periods: renewing a certificate with the same public key does not rotate the private key or restart its usage period.",
+    "normalization_flags": {
+      "is_code_or_payload": true,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00066",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 66,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "##### Extended Key Usage (EKU) and Key Usage (KU)",
+    "text_hash": "03c4a15c675973e9e98435b294b49b92ccb31c3a7a8e9190978569288c16d54b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 173,
+      "end_line": 173
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Contents",
+      "Extended Key Usage (EKU) and Key Usage (KU)"
+    ],
+    "heading_level": 5,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00066",
+    "normalized_text": "##### Extended Key Usage (EKU) and Key Usage (KU)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00067",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 67,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[EKU](https://www.rfc-editor.org/rfc/rfc5280#section-4.2.1.12) describes a specific use case that the certificate is intended for. These are use cases like server authentication, client authentication, and code signing, which are not appropriate for SAML signing. There is no widely accepted EKU for SAML signing, but [RFC 9336](https://www.rfc-editor.org/rfc/rfc9336.txt) defines one that is ideal, id-kp-documentSigning (1.3.6.1.5.5.7.3.36). IdPs and SPs may consider standardizing on this EKU.",
+    "text_hash": "6896881c0129e59351c903d10ca76abecdd41854bde7ee1c10087747f7341163",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 175,
+      "end_line": 175
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Contents",
+      "Extended Key Usage (EKU) and Key Usage (KU)"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00067",
+    "normalized_text": "[EKU](https://www.rfc-editor.org/rfc/rfc5280#section-4.2.1.12) describes a specific use case that the certificate is intended for. These are use cases like server authentication, client authentication, and code signing, which are not appropriate for SAML signing. There is no widely accepted EKU for SAML signing, but [RFC 9336](https://www.rfc-editor.org/rfc/rfc9336.txt) defines one that is ideal, id-kp-documentSigning (1.3.6.1.5.5.7.3.36). IdPs and SPs may consider standardizing on this EKU.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00068",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 68,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[KU](https://www.rfc-editor.org/rfc/rfc5280#section-4.2.1.3) describes the underlying cryptographic operations that the private key is meant for. There are things like digitalSignature, nonRepudiation, keyEncipherment, etc. IdPs and SPs may consider requiring digitalSignature and further, disallowing certificates that have other KUs, as certificates should only be used for one use case. e.g. the IdP's TLS server certificate must never be the SAML signing certificate.",
+    "text_hash": "2e51d86ac0f1345b9011a06f955640644ae330b2ca9950fecc15ef5d1afef917",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 177,
+      "end_line": 177
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Contents",
+      "Extended Key Usage (EKU) and Key Usage (KU)"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00068",
+    "normalized_text": "[KU](https://www.rfc-editor.org/rfc/rfc5280#section-4.2.1.3) describes the underlying cryptographic operations that the private key is meant for. There are things like digitalSignature, nonRepudiation, keyEncipherment, etc. IdPs and SPs may consider requiring digitalSignature and further, disallowing certificates that have other KUs, as certificates should only be used for one use case. e.g. the IdP's TLS server certificate must never be the SAML signing certificate.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00069",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 69,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "##### CRL Distribution Point (CDP)",
+    "text_hash": "52057efb9499db6f04c4933e3c57cf0cb03a7f0a6d533be80a26da91b00a127b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 179,
+      "end_line": 179
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Contents",
+      "CRL Distribution Point (CDP)"
+    ],
+    "heading_level": 5,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00069",
+    "normalized_text": "##### CRL Distribution Point (CDP)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00070",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 70,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[Certificate Revocation List (CRL) Distribution Point](https://www.rfc-editor.org/rfc/rfc5280#section-4.2.1.13) are a list of certificates that the CA says should no longer be trusted. They are most often delivered over HTTP and the CRL URLs are generally embedded in each CA issued certificate. The [CRL](https://www.rfc-editor.org/rfc/rfc5280#appendix-C.4) is signed by the CA, so a man-in-the-middle attack against the HTTP cannot harm the integrity of the list, other than to tamper with, and thus invalidate, it. That is, it can't be altered by an attacker. Only CA signed certificates can have a CRL. If the SAML certificate has a CRL listed, it should be reachable by the validating party and the party should [validate](https://www.rfc-editor.org/rfc/rfc5280#section-6.3) it.",
+    "text_hash": "10d081bfec27010367da58f8697b514839cebe4e05be3e7f4b6c57f9f85944cb",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 181,
+      "end_line": 181
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Contents",
+      "CRL Distribution Point (CDP)"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00070",
+    "normalized_text": "[Certificate Revocation List (CRL) Distribution Point](https://www.rfc-editor.org/rfc/rfc5280#section-4.2.1.13) are a list of certificates that the CA says should no longer be trusted. They are most often delivered over HTTP and the CRL URLs are generally embedded in each CA issued certificate. The [CRL](https://www.rfc-editor.org/rfc/rfc5280#appendix-C.4) is signed by the CA, so a man-in-the-middle attack against the HTTP cannot harm the integrity of the list, other than to tamper with, and thus invalidate, it. That is, it can't be altered by an attacker. Only CA signed certificates can have a CRL. If the SAML certificate has a CRL listed, it should be reachable by the validating party and the party should [validate](https://www.rfc-editor.org/rfc/rfc5280#section-6.3) it.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00071",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 71,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Considering the level of risk, if a private key is compromised, and the smaller scale of IdP to SP relationships, parties in a SAML system should establish a plan with contact lists to notify and rotate certificates rapidly in case of an incident. Many SAML products and libraries don’t support revocation checking, and simply revoking the certificate, without coordinated replacement, means there is an outage.",
+    "text_hash": "9645fefa9029823874bd0bee1a8f5f5d37e1dd23c153fef9cb7ee404d46d00fc",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 183,
+      "end_line": 183
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Contents",
+      "CRL Distribution Point (CDP)"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00071",
+    "normalized_text": "Considering the level of risk, if a private key is compromised, and the smaller scale of IdP to SP relationships, parties in a SAML system should establish a plan with contact lists to notify and rotate certificates rapidly in case of an incident. Many SAML products and libraries don’t support revocation checking, and simply revoking the certificate, without coordinated replacement, means there is an outage.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00072",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 72,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "##### Online Certificate Status Protocol (OCSP)",
+    "text_hash": "94f3501e089cea86811a84e5332c7a58f060c4d36913bc23950c2851aa6261a3",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 185,
+      "end_line": 185
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Contents",
+      "Online Certificate Status Protocol (OCSP)"
+    ],
+    "heading_level": 5,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00072",
+    "normalized_text": "##### Online Certificate Status Protocol (OCSP)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00073",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 73,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[OCSP](https://datatracker.ietf.org/doc/html/rfc6960) is another way of checking to see if a certificate  is revoked. The OCSP URL is embedded in the certificate , like a CRL, and should be reachable  over HTTP. The response is signed, so MITM attacks are not an integrity concern. OCSP is becoming less favored, as the exchange creates privacy concerns. The caller's IP address can be seen and the certificate that is being used is disclosed. This is less of a concern for SAML, as this does not disclose a destination website, use overall has declined. If an OCSP URL is present on any certificate in the chain, it should be used to check if the certificate is revoked.",
+    "text_hash": "b50f5bb743e15191d514f0884918a85d7bd1b11b27b8319601300c03ffa36506",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 187,
+      "end_line": 187
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Contents",
+      "Online Certificate Status Protocol (OCSP)"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00073",
+    "normalized_text": "[OCSP](https://datatracker.ietf.org/doc/html/rfc6960) is another way of checking to see if a certificate is revoked. The OCSP URL is embedded in the certificate , like a CRL, and should be reachable over HTTP. The response is signed, so MITM attacks are not an integrity concern. OCSP is becoming less favored, as the exchange creates privacy concerns. The caller's IP address can be seen and the certificate that is being used is disclosed. This is less of a concern for SAML, as this does not disclose a destination website, use overall has declined. If an OCSP URL is present on any certificate in the chain, it should be used to check if the certificate is revoked.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 2
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00074",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 74,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Certificate Hierarchy",
+    "text_hash": "d1113856164e7d0cf20e5aec8b8e27615aa6f0e730faff765537c470ffa49fc5",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 189,
+      "end_line": 189
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Hierarchy"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00074",
+    "normalized_text": "#### Certificate Hierarchy",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00075",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 75,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The SAML signing certificate can be signed by one of three things. The certificate can be self-signed, public CA signed, or private CA signed. Each has pros and cons, however, given the current state of WebPKI (public) and private PKI, using self-signed SAML certificates are the clear winner when proper precautions are taken for exchanging the certificates.",
+    "text_hash": "5f774f009bcbb962cec05f2dc6754a950cd0eaed3f461dde2f69b4a31d14ccea",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 191,
+      "end_line": 191
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Hierarchy"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00075",
+    "normalized_text": "The SAML signing certificate can be signed by one of three things. The certificate can be self-signed, public CA signed, or private CA signed. Each has pros and cons, however, given the current state of WebPKI (public) and private PKI, using self-signed SAML certificates are the clear winner when proper precautions are taken for exchanging the certificates.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00076",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 76,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "##### Certificate Issuer",
+    "text_hash": "43b8c1981507bf09ec112abcbb170fbd04ee652508f014285cadbee024bc5a6d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 193,
+      "end_line": 193
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Hierarchy",
+      "Certificate Issuer"
+    ],
+    "heading_level": 5,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00076",
+    "normalized_text": "##### Certificate Issuer",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00077",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 77,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "All X.509 certificates are signed, using a private key, by an authority known as an [Issuer](https://www.rfc-editor.org/rfc/rfc5280#section-4.1.2.4). This may be a CA or in the case of a self-signed certificate the certificate's corresponding private key. In the case of a CA signed certificate, the signer may also have a certificate that has an Issuer, and so on. This is called chain, or path, and should terminate in a Root CA (which is self-signed by definition). The issuer should be inspected. If the issuer is a CA, its attributes, such as EKU, KU, and CRLs, may also be validated. This should happen for each certificate in the [path](https://datatracker.ietf.org/doc/html/rfc5280#section-3.2) all the way to the root.",
+    "text_hash": "e7ae70b48599fa459cee0e3d777fd2c4082106532c7cbeee126bddad637531a8",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 195,
+      "end_line": 195
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Hierarchy",
+      "Certificate Issuer"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00077",
+    "normalized_text": "All X.509 certificates are signed, using a private key, by an authority known as an [Issuer](https://www.rfc-editor.org/rfc/rfc5280#section-4.1.2.4). This may be a CA or in the case of a self-signed certificate the certificate's corresponding private key. In the case of a CA signed certificate, the signer may also have a certificate that has an Issuer, and so on. This is called chain, or path, and should terminate in a Root CA (which is self-signed by definition). The issuer should be inspected. If the issuer is a CA, its attributes, such as EKU, KU, and CRLs, may also be validated. This should happen for each certificate in the [path](https://datatracker.ietf.org/doc/html/rfc5280#section-3.2) all the way to the root.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00078",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 78,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "##### Public Certificate Authority (CA) Signed",
+    "text_hash": "1302bb5c25fec32c0e04d60d701172fb410aa7d075c75312c6d0d3d3d31c85ae",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 197,
+      "end_line": 197
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Hierarchy",
+      "Public Certificate Authority (CA) Signed"
+    ],
+    "heading_level": 5,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00078",
+    "normalized_text": "##### Public Certificate Authority (CA) Signed",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00079",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 79,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "With this certificate type, a Public CA issues the certificate, in accordance with their rules and the rules of the [CA Browser Forum](https://cabforum.org/) (CABF). These public root CAs get bundled into trust stores maintained by major browser vendors. Most things on the web trust these, because someone makes sure the trust stores are where they need to be.",
+    "text_hash": "c4796dd1bdc1213d9bcc1b92577c4bda72f2c8e811f857abf2606f99023d1837",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 199,
+      "end_line": 199
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Hierarchy",
+      "Public Certificate Authority (CA) Signed"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00079",
+    "normalized_text": "With this certificate type, a Public CA issues the certificate, in accordance with their rules and the rules of the [CA Browser Forum](https://cabforum.org/) (CABF). These public root CAs get bundled into trust stores maintained by major browser vendors. Most things on the web trust these, because someone makes sure the trust stores are where they need to be.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00080",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 80,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "When an IdP rotates its SAML Signing certificate, each SP must simultaneously update its explicit trust of that certificate. This can be challenging with only a few SPs. With many, it is nearly impossible. This pain has led to the use of SAML signing certificates with the longest possible lifetimes. This used to be two years with public CAs, then 398 days. The focus of WebPKI standards and the CABF is on server certificates for TLS. Recent and ongoing changes in certificate lifetimes make Public CA issued certificates less appealing. This is because the CABF has a path to making public CA issued certificates last only [47 days](https://cabforum.org/2025/04/11/ballot-sc081v3-introduce-schedule-of-reducing-validity-and-data-reuse-periods/). As the IdP must get the certificate, announce the change for a reasonable amount of time, and then execute the change, this would mean IdPs and SPs would be in a perpetual state of certificate updates.",
+    "text_hash": "ed7f0668c96f07ad511ad94230ed60359e8688998885ed05cc483f281855dded",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 201,
+      "end_line": 201
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Hierarchy",
+      "Public Certificate Authority (CA) Signed"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00080",
+    "normalized_text": "When an IdP rotates its SAML Signing certificate, each SP must simultaneously update its explicit trust of that certificate. This can be challenging with only a few SPs. With many, it is nearly impossible. This pain has led to the use of SAML signing certificates with the longest possible lifetimes. This used to be two years with public CAs, then 398 days. The focus of WebPKI standards and the CABF is on server certificates for TLS. Recent and ongoing changes in certificate lifetimes make Public CA issued certificates less appealing. This is because the CABF has a path to making public CA issued certificates last only [47 days](https://cabforum.org/2025/04/11/ballot-sc081v3-introduce-schedule-of-reducing-validity-and-data-reuse-periods/). As the IdP must get the certificate, announce the change for a reasonable amount of time, and then execute the change, this would mean IdPs and SPs would be in a perpetual state of certificate updates.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00081",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 81,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "It is worth noting that the CABF does not have governance around the use or acquisition of SAML certificates, certificates from their member CAs are what are widely considered Public CAs. That is, they are widely trusted by browsers, operating systems, and various development frameworks.",
+    "text_hash": "63f93110f67c9b7296c3df2a445c1087359b9604f7a56fcbf745a45d865ebe59",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 203,
+      "end_line": 203
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Hierarchy",
+      "Public Certificate Authority (CA) Signed"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00081",
+    "normalized_text": "It is worth noting that the CABF does not have governance around the use or acquisition of SAML certificates, certificates from their member CAs are what are widely considered Public CAs. That is, they are widely trusted by browsers, operating systems, and various development frameworks.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00082",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 82,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Using Public CA signed certificates allows for revocation checking, which can increase security, but if the certificate exchange is not secured, this could lead to a false sense of security.",
+    "text_hash": "e745e02c5d6a2d81a0037eb063129b724eb1552c0eff261efd40c98b4fa775cd",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 205,
+      "end_line": 205
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Hierarchy",
+      "Public Certificate Authority (CA) Signed"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00082",
+    "normalized_text": "Using Public CA signed certificates allows for revocation checking, which can increase security, but if the certificate exchange is not secured, this could lead to a false sense of security.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00083",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 83,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "##### Private CA Signed",
+    "text_hash": "08bfbc9ec5d462ed81075f1105575c56dc3998f5c8ee5a5a7b840f6fa1e5cb8a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 207,
+      "end_line": 207
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Hierarchy",
+      "Private CA Signed"
+    ],
+    "heading_level": 5,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00083",
+    "normalized_text": "##### Private CA Signed",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00084",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 84,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "As most IdPs and SPs treat the X.509 certificates as an explicit trust, private CAs and PKI could be used. How private CAs are designed, built, and run varies wildly and ultimately running CAs well is very costly. In order to trust a third-party's CAs, one would need to clearly understand the lifecycle of the CA. There are two audit types that would cover this, both of which are very costly, on top of building and running the CAs. If you rely on third-party CAs, they should be [WebTrust](http://www.webtrust.org/), [ETSI](http://www.etsi.org/technologies-clusters/technologies/security/certification-authorities-and-other-certification-service-providers), or [SOC 2 Type II](https://www.aicpa-cima.com/topic/audit-assurance/audit-and-assurance-greater-than-soc-2) audited.",
+    "text_hash": "d3355b06a467e778e7e4a91c6edec9efe81f2bac7931e59ce44add1296da9418",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 209,
+      "end_line": 209
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Hierarchy",
+      "Private CA Signed"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00084",
+    "normalized_text": "As most IdPs and SPs treat the X.509 certificates as an explicit trust, private CAs and PKI could be used. How private CAs are designed, built, and run varies wildly and ultimately running CAs well is very costly. In order to trust a third-party's CAs, one would need to clearly understand the lifecycle of the CA. There are two audit types that would cover this, both of which are very costly, on top of building and running the CAs. If you rely on third-party CAs, they should be [WebTrust](http://www.webtrust.org/), [ETSI](http://www.etsi.org/technologies-clusters/technologies/security/certification-authorities-and-other-certification-service-providers), or [SOC 2 Type II](https://www.aicpa-cima.com/topic/audit-assurance/audit-and-assurance-greater-than-soc-2) audited.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00085",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 85,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Trusting third-party CAs, if done improperly, could result in unintended over-trust, for things such as TLS and code signing. If you choose to trust third-party CAs, make sure they are only trusted for the process of IdP signature validation.",
+    "text_hash": "780ee8aa52eeaae2334213e620dac43aaed09d379d59d6398ed96eb64690f92f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 211,
+      "end_line": 211
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Hierarchy",
+      "Private CA Signed"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00085",
+    "normalized_text": "Trusting third-party CAs, if done improperly, could result in unintended over-trust, for things such as TLS and code signing. If you choose to trust third-party CAs, make sure they are only trusted for the process of IdP signature validation.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00086",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 86,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Private CA-issued signing certificates must not extend beyond the signing key's approved usage period. Apply the [same lifetime and rotation policy](#certificate-lifetime) to CA-issued and self-signed signing certificates.",
+    "text_hash": "d52947aeca4c8365e51c9783c000d61a04974165e0a6244b930bfd6cb3ece404",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 213,
+      "end_line": 213
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Hierarchy",
+      "Private CA Signed"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00086",
+    "normalized_text": "Private CA-issued signing certificates must not extend beyond the signing key's approved usage period. Apply the [same lifetime and rotation policy](#certificate-lifetime) to CA-issued and self-signed signing certificates.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00087",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 87,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "##### Self-Signed",
+    "text_hash": "b0a85d8ef24e6ccdae393228f5d3d4ba11ed99391712bf427ce3d353a4beec1f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 215,
+      "end_line": 215
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Hierarchy",
+      "Self-Signed"
+    ],
+    "heading_level": 5,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00087",
+    "normalized_text": "##### Self-Signed",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00088",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 88,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Due to the explicit nature of most SAML security associations, self-signed certificates are ideal for the use case. The contents of the certificate and lifetime are not constrained by the policy or process of the issuing CA, be it public or private. As rotating SAML certificates can be painful and labor intensive, setting the certificate lifetime as long as safely possible is key. Few CAs allow long enough lifetimes, due to their focus on the TLS threat model.",
+    "text_hash": "91ee389964db988a54cfde00a39f8792b10f085195e919e71cf19038446036c8",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 217,
+      "end_line": 217
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Hierarchy",
+      "Self-Signed"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00088",
+    "normalized_text": "Due to the explicit nature of most SAML security associations, self-signed certificates are ideal for the use case. The contents of the certificate and lifetime are not constrained by the policy or process of the issuing CA, be it public or private. As rotating SAML certificates can be painful and labor intensive, setting the certificate lifetime as long as safely possible is key. Few CAs allow long enough lifetimes, due to their focus on the TLS threat model.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00089",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 89,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "###### Creating a Self-Signed SAML Certificate",
+    "text_hash": "458118122afc78fce42d52d7d377a87f3d09fd8cddf0719aef8e379c9e3e8471",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 219,
+      "end_line": 219
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Hierarchy",
+      "Self-Signed",
+      "Creating a Self-Signed SAML Certificate"
+    ],
+    "heading_level": 6,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00089",
+    "normalized_text": "###### Creating a Self-Signed SAML Certificate",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00090",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 90,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "If you are using a Hardware Security Module (HSM), follow the vendor's instructions. This process uses openssl. The example uses an overly generic distinguished name. Your Common Name (CN) should be meaningful and specific.",
+    "text_hash": "f765e7824e66be5a722d5e7bb636eb98a21d0a273399b46ae16f9fc7622a5b35",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 221,
+      "end_line": 221
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Hierarchy",
+      "Self-Signed",
+      "Creating a Self-Signed SAML Certificate"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00090",
+    "normalized_text": "If you are using a Hardware Security Module (HSM), follow the vendor's instructions. This process uses openssl. The example uses an overly generic distinguished name. Your Common Name (CN) should be meaningful and specific.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00091",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 91,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "1. Generate a Private Key:\nopenssl genrsa -out private.key 2048\nor\nopenssl ecparam -genkey -name prime256v1 -out private.pem\n\n2. Create a Configuration File (e.g., cert.cnf):\n",
+    "text_hash": "2f5c495662cd576849e8102360791b06cac34389ac105e0df55bd4b0844260d6",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 223,
+      "end_line": 229
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Hierarchy",
+      "Self-Signed",
+      "Creating a Self-Signed SAML Certificate"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00091",
+    "normalized_text": "1. Generate a Private Key:\nopenssl genrsa -out private.key 2048\nor\nopenssl ecparam -genkey -name prime256v1 -out private.pem\n\n2. Create a Configuration File (e.g., cert.cnf):",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00092",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 92,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "\\[req\\]\ndistinguished_name = req_distinguished_name\nx509_extensions = v3_ca\nprompt = no",
+    "text_hash": "bc50d9ca43755c61f550368e86e6da9a15802214b64f3ec5a1b1cd328e8a8d47",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 230,
+      "end_line": 233
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Hierarchy",
+      "Self-Signed",
+      "Creating a Self-Signed SAML Certificate"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00092",
+    "normalized_text": "\\[req\\]\ndistinguished_name = req_distinguished_name\nx509_extensions = v3_ca\nprompt = no",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00093",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 93,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "\\[req_distinguished_name\\]\nC = US\nST = California\nL = San Francisco\nO = MyOrganization\nOU = MyUnit\nCN = SAML Signing",
+    "text_hash": "852b42eea7c959d0a1bec6895f100cc3bccbaf9bd1cfc939e67a19ad70b3b3a5",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 235,
+      "end_line": 241
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Hierarchy",
+      "Self-Signed",
+      "Creating a Self-Signed SAML Certificate"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00093",
+    "normalized_text": "\\[req_distinguished_name\\]\nC = US\nST = California\nL = San Francisco\nO = MyOrganization\nOU = MyUnit\nCN = SAML Signing",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00094",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 94,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "\\[v3_ca\\]\nbasicConstraints = CA:FALSE\nkeyUsage = digitalSignature\nextendedKeyUsage = 1.3.6.1.5.5.7.3.36",
+    "text_hash": "edc2dcaec2e1c8999ee28b7256f5d30290f173a41a21ffb68e0cb59908f659f0",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 243,
+      "end_line": 246
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Hierarchy",
+      "Self-Signed",
+      "Creating a Self-Signed SAML Certificate"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00094",
+    "normalized_text": "\\[v3_ca\\]\nbasicConstraints = CA:FALSE\nkeyUsage = digitalSignature\nextendedKeyUsage = 1.3.6.1.5.5.7.3.36",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00095",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 95,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "3. Generate the Self-Signed Certificate:\nopenssl req -x509 -new -nodes -key private.key -sha256 -days 365 -out certificate.crt -config cert.cnf -extensions v3_ca\n",
+    "text_hash": "81fa9f2f5b13e908cac5c28ee52ee48566768507dfddff72634355c08209fbd2",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 248,
+      "end_line": 250
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Hierarchy",
+      "Self-Signed",
+      "Creating a Self-Signed SAML Certificate"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00095",
+    "normalized_text": "3. Generate the Self-Signed Certificate:\nopenssl req -x509 -new -nodes -key private.key -sha256 -days 365 -out certificate.crt -config cert.cnf -extensions v3_ca",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00096",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 96,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Certificate Metadata URLs",
+    "text_hash": "e7f312a6702d5830dc24cd8c5209145cab80324db701c13db5fac26a2e2c81ff",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 251,
+      "end_line": 251
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Metadata URLs"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00096",
+    "normalized_text": "#### Certificate Metadata URLs",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00097",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 97,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Many IdPs publish a metadata URL that contains basic configuration information including the SAML signing certificate. Many SPs can consume the data from the IdP, updating the Signing certificate information in near real-time. Using these options is ideal. This model matches exactly the intent of the [Certificate and Public Key Pinning](https://owasp.org/www-community/controls/Certificate_and_Public_Key_Pinning) when pinning must be used.",
+    "text_hash": "030dac284560234e9e2a935ea6486cdccb67e36b5e6ec17cc2c377ec6d1f6de1",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 253,
+      "end_line": 253
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Metadata URLs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00097",
+    "normalized_text": "Many IdPs publish a metadata URL that contains basic configuration information including the SAML signing certificate. Many SPs can consume the data from the IdP, updating the Signing certificate information in near real-time. Using these options is ideal. This model matches exactly the intent of the [Certificate and Public Key Pinning](https://owasp.org/www-community/controls/Certificate_and_Public_Key_Pinning) when pinning must be used.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00098",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 98,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The metadata URL should be protected using TLS where the server certificate comes from a WebPKI CA that is widely trusted and matches the guidance in the [Transport Layer Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Security_Cheat_Sheet.html#certificates).",
+    "text_hash": "7fd22e8aaa4c08f39e1d9bf9c73f854f145e864c106d0b8512b0891fc4a1b156",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 255,
+      "end_line": 255
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Metadata URLs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00098",
+    "normalized_text": "The metadata URL should be protected using TLS where the server certificate comes from a WebPKI CA that is widely trusted and matches the guidance in the [Transport Layer Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Security_Cheat_Sheet.html#certificates).",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00099",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 99,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The ideal state of the IdP to SP relationship is that of using the metadata URLs, regardless of what type of certificate is used. If metadata URLs are not used, great care must be taken to assure that an attacker does not convince an SP to trust the wrong certificate. Avoid emailing certificates. Instead, like the metadata URL, present them over properly configured TLS.",
+    "text_hash": "6ccf17f751e2ada2f9a1ad7cb23eef3b124d9906506d409dd5a99d0a8f9593c8",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 257,
+      "end_line": 257
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Certificate Metadata URLs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00099",
+    "normalized_text": "The ideal state of the IdP to SP relationship is that of using the metadata URLs, regardless of what type of certificate is used. If metadata URLs are not used, great care must be taken to assure that an attacker does not convince an SP to trust the wrong certificate. Avoid emailing certificates. Instead, like the metadata URL, present them over properly configured TLS.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00100",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 100,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Signing Key Protection",
+    "text_hash": "25098a84eb33ca5ef2fc99c8b657118e91583770be18e4d9da1971850e3bf269",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 259,
+      "end_line": 259
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Signing Key Protection"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00100",
+    "normalized_text": "#### Signing Key Protection",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00101",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 101,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "SAML Signing keys are a top security asset and [target of attackers](https://www.microsoft.com/en-us/security/blog/2023/07/14/analysis-of-storm-0558-techniques-for-unauthorized-email-access/). Great care should be taken when creating the keys and as needed, copying them to nodes of an IdP cluster. File based keys are trivial for an attacker with access to exfiltrate. IdP operators should strongly consider protecting the private keys using a Hardware Security Module (HSM). [HSMs](https://en.wikipedia.org/wiki/Hardware_security_module) allow an application to use a key without it being exportable or copyable. They have mechanisms to safely replicate the keys into a failover HSM, without ever exposing the keys outside of the HSMs. Quality HSMs would be rated [FIPS 140-2](https://csrc.nist.gov/pubs/fips/140-2/upd2/final) or [FIPS 140-3](https://csrc.nist.gov/pubs/fips/140-3/final).",
+    "text_hash": "1b86c8ae80cfe1a25d5f4ad5b76dbb47a9f423c985413110bd9adb4142574aa9",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 261,
+      "end_line": 261
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "X.509 Certificate Considerations",
+      "Signing Key Protection"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00101",
+    "normalized_text": "SAML Signing keys are a top security asset and [target of attackers](https://www.microsoft.com/en-us/security/blog/2023/07/14/analysis-of-storm-0558-techniques-for-unauthorized-email-access/). Great care should be taken when creating the keys and as needed, copying them to nodes of an IdP cluster. File based keys are trivial for an attacker with access to exfiltrate. IdP operators should strongly consider protecting the private keys using a Hardware Security Module (HSM). [HSMs](https://en.wikipedia.org/wiki/Hardware_security_module) allow an application to use a key without it being exportable or copyable. They have mechanisms to safely replicate the keys into a failover HSM, without ever exposing the keys outside of the HSMs. Quality HSMs would be rated [FIPS 140-2](https://csrc.nist.gov/pubs/fips/140-2/upd2/final) or [FIPS 140-3](https://csrc.nist.gov/pubs/fips/140-3/final).",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00102",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 102,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Identity Provider (IdP) Considerations",
+    "text_hash": "2dfa597372d9c0715d529c093029dbe894dbc3fe33bf72f169cc8821bbe7895f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 263,
+      "end_line": 263
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "Identity Provider (IdP) Considerations"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00102",
+    "normalized_text": "### Identity Provider (IdP) Considerations",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00103",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 103,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- Validate X.509 Certificate for algorithm compatibility, strength of encryption, export restrictions, and content above\n- Validate Strong Authentication options for generating the SAML token\n- IDP validation (which IDP mints the token)\n- Synchronize to a common Internet timesource\n- Define levels of assurance for identity verification\n- Prefer asymmetric identifiers for identity assertions over personally identifiable information (e.g. SSNs, etc)\n- Sign each individual Assertion or the entire Response element\n",
+    "text_hash": "9a02aaafe267b12675cb6053f483b77a34bb37d8e3fc31604018401291e8c60a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 265,
+      "end_line": 272
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "Identity Provider (IdP) Considerations"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00103",
+    "normalized_text": "- Validate X.509 Certificate for algorithm compatibility, strength of encryption, export restrictions, and content above\n- Validate Strong Authentication options for generating the SAML token\n- IDP validation (which IDP mints the token)\n- Synchronize to a common Internet timesource\n- Define levels of assurance for identity verification\n- Prefer asymmetric identifiers for identity assertions over personally identifiable information (e.g. SSNs, etc)\n- Sign each individual Assertion or the entire Response element",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00104",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 104,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Service Provider (SP) Considerations",
+    "text_hash": "4aebc322137ee37c096d478ee38adbc1e6cb860bd07d3e4197cbf47190a63369",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 273,
+      "end_line": 273
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "Service Provider (SP) Considerations"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00104",
+    "normalized_text": "### Service Provider (SP) Considerations",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00105",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 105,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- Validating session state for user\n- Level of granularity in setting authorization context when consuming SAML token (do you use groups, roles, attributes)\n- Ensure each Assertion or the entire Response element is signed\n- [Validate Signatures](#validate-signatures)\n- Validate if signed by an authorized IdP\n- Validate IDP certificates for revocation against CRL/OCSP if they are present\n- Validate the `Destination` attribute on `<samlp:Response>` exactly matches the SP's expected Assertion Consumer Service (ACS) URL ([SAML Core 2.0 §3.2.2.1](https://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf)). Reject responses that are missing `Destination` or where it does not match — this prevents cross-SP assertion replay.\n- Validate `<saml:Audience>` matches the SP's EntityID\n- Validate NotBefore and NotOnorAfter\n- Validate Recipient attribute, `InResponseTo`, and `<saml:SubjectConfirmationData>` (`Recipient`, `NotOnOrAfter`, `InResponseTo`)\n- Explicitly verify the signature algorithm is at least RSA-SHA-256 (or stronger). Reject SHA-1-based algorithms (`http://www.w3.org/2000/09/xmldsig#rsa-sha1`, `...#hmac-sha1`) and `<ds:DigestMethod Algorithm=\"...sha1\">`. NIST SP 800-131A Rev. 2 disallows SHA-1 in digital signatures.\n- Verify that the XML signature's `<ds:Reference URI>` resolves to the signed Assertion or Response, and that the exact assertion used for authentication is protected by that validated signature. [SAML Core sections 5.3 and 5.4](https://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf) define signature inheritance and references; [approved errata E93](https://docs.oasis-open.org/security/saml/v2.0/errata05/os/saml-v2.0-errata05-os.html#__RefHeading__10669_188893729) permits Response signatures in the browser SSO profile. Reject assertions outside the validated signed content and follow the [signature-wrapping defenses](#validate-signatures).\n- Define criteria for SAML logout\n- Exchange assertions only over secure transports like TLS\n- Define criteria for session management\n- Verify user identities obtained from SAML ticket assertions whenever possible.\n",
+    "text_hash": "cca0a6165f10d97203ad35b41854915ebcd6fe0f419a841e54adc29998e57463",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 275,
+      "end_line": 291
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Identity Provider and Service Provider Considerations",
+      "Service Provider (SP) Considerations"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00105",
+    "normalized_text": "- Validating session state for user\n- Level of granularity in setting authorization context when consuming SAML token (do you use groups, roles, attributes)\n- Ensure each Assertion or the entire Response element is signed\n- [Validate Signatures](#validate-signatures)\n- Validate if signed by an authorized IdP\n- Validate IDP certificates for revocation against CRL/OCSP if they are present\n- Validate the `Destination` attribute on `<samlp:Response>` exactly matches the SP's expected Assertion Consumer Service (ACS) URL ([SAML Core 2.0 §3.2.2.1](https://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf)). Reject responses that are missing `Destination` or where it does not match — this prevents cross-SP assertion replay.\n- Validate `<saml:Audience>` matches the SP's EntityID\n- Validate NotBefore and NotOnorAfter\n- Validate Recipient attribute, `InResponseTo`, and `<saml:SubjectConfirmationData>` (`Recipient`, `NotOnOrAfter`, `InResponseTo`)\n- Explicitly verify the signature algorithm is at least RSA-SHA-256 (or stronger). Reject SHA-1-based algorithms (`http://www.w3.org/2000/09/xmldsig#rsa-sha1`, `...#hmac-sha1`) and `<ds:DigestMethod Algorithm=\"...sha1\">`. NIST SP 800-131A Rev. 2 disallows SHA-1 in digital signatures.\n- Verify that the XML signature's `<ds:Reference URI>` resolves to the signed Assertion or Response, and that the exact assertion used for authentication is protected by that validated signature. [SAML Core sections 5.3 and 5.4](https://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf) define signature inheritance and references; [approved errata E93](https://docs.oasis-open.org/security/saml/v2.0/errata05/os/saml-v2.0-errata05-os.html#__RefHeading__10669_188893729) permits Response signatures in the browser SSO profile. Reject assertions outside the validated signed content and follow the [signature-wrapping defenses](#validate-signatures).\n- Define criteria for SAML logout\n- Exchange assertions only over secure transports like TLS\n- Define criteria for session management\n- Verify user identities obtained from SAML ticket assertions whenever possible.",
+    "normalization_flags": {
+      "is_code_or_payload": true,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00106",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 106,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Input Validation",
+    "text_hash": "90c2d8040f4f4b14e17965db29d1deea9865065e4ff48bc690c4a2059f0e4709",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 292,
+      "end_line": 292
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Input Validation"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00106",
+    "normalized_text": "## Input Validation",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00107",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 107,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Just because SAML is a security protocol does not mean that input validation goes away.",
+    "text_hash": "25de3f3bb18daf3d702a18abe43d2619dcffeec8a876ba182cea481841c61407",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 294,
+      "end_line": 294
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Input Validation"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00107",
+    "normalized_text": "Just because SAML is a security protocol does not mean that input validation goes away.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00108",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 108,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- Ensure that all SAML providers/consumers do proper [input validation](Input_Validation_Cheat_Sheet.md).\n",
+    "text_hash": "740db9f1c515808a45c05768eb4b4a83627acb61d2d592bdf0448d8399620df8",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 296,
+      "end_line": 297
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Input Validation"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00108",
+    "normalized_text": "- Ensure that all SAML providers/consumers do proper [input validation](Input_Validation_Cheat_Sheet.md).",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00109",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 109,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Cryptography",
+    "text_hash": "a0d6d4aa7772fde6338161bb8199523d8691bdecc1a7b1dcb4a835d2c4fe403c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 298,
+      "end_line": 298
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Cryptography"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00109",
+    "normalized_text": "## Cryptography",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00110",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 110,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Solutions relying cryptographic algorithms need to follow the latest developments in cryptoanalysis.",
+    "text_hash": "f4c8326b49f68ee5d945befba43a8e5d01c4f476f479ae7602f84c6f334ac5b1",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 300,
+      "end_line": 300
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Cryptography"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00110",
+    "normalized_text": "Solutions relying cryptographic algorithms need to follow the latest developments in cryptoanalysis.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00111",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 111,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- Ensure all SAML elements in the chain use [strong encryption](Cryptographic_Storage_Cheat_Sheet.md#algorithms)\n- Consider deprecating support for [insecure XMLEnc algorithms](https://www.w3.org/TR/xmlenc-core1/#sec-RSA-1_5)\n",
+    "text_hash": "dad62fead8e721abd73e646398de33ebaf1bcd820fec1bffe245bfda5df6a4a2",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 302,
+      "end_line": 304
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "Cryptography"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00111",
+    "normalized_text": "- Ensure all SAML elements in the chain use [strong encryption](Cryptographic_Storage_Cheat_Sheet.md#algorithms)\n- Consider deprecating support for [insecure XMLEnc algorithms](https://www.w3.org/TR/xmlenc-core1/#sec-RSA-1_5)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00112",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 112,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## References",
+    "text_hash": "65b72d86eeeb214ab8ca5fd24cb7cd7773e58084e95b670040df03e21e8c6fa7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 305,
+      "end_line": 305
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "References"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00112",
+    "normalized_text": "## References",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_3653eed28e7f_b00113",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "block_idx": 113,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- [OASIS: Security and Privacy Considerations for SAML 2.0](https://docs.oasis-open.org/security/saml/v2.0/saml-sec-consider-2.0-os.pdf)\n- [OASIS: Assertions and Protocols for SAML 2.0](https://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf)\n- [OASIS: Profiles for SAML 2.0](https://docs.oasis-open.org/security/saml/v2.0/saml-profiles-2.0-os.pdf)",
+    "text_hash": "dc1b4552957e71acd087385a5161e81db2fff89ff334da2eb6cd639e5c9864cf",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 307,
+      "end_line": 309
+    },
+    "heading_path": [
+      "SAML Security Cheat Sheet",
+      "References"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_3653eed28e7f_b00113",
+    "normalized_text": "- [OASIS: Security and Privacy Considerations for SAML 2.0](https://docs.oasis-open.org/security/saml/v2.0/saml-sec-consider-2.0-os.pdf)\n- [OASIS: Assertions and Protocols for SAML 2.0](https://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf)\n- [OASIS: Profiles for SAML 2.0](https://docs.oasis-open.org/security/saml/v2.0/saml-profiles-2.0-os.pdf)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  }
+]

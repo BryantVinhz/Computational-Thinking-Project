@@ -42,7 +42,7 @@ PARSER_REGISTRY = {
 }
 
 
-def run_all_parsers() -> dict:
+def run_all_parsers(force_reparse: bool = False) -> dict:
     versions_path = INGESTION_OUT_DIR / "documents_version.json"
     if not versions_path.exists():
         raise FileNotFoundError(f"Không tìm thấy manifest Bước 1 tại {versions_path}")
@@ -76,6 +76,12 @@ def run_all_parsers() -> dict:
             summary["skipped"] += 1
             continue
 
+        out_path = PARSING_OUT_DIR / f"{v.version_id}_parsing.json"
+        if out_path.exists() and not force_reparse:
+            print(f"- [BỎ QUA] {v.file_name}: Đã parse trước đó ({out_path.name})")
+            summary["skipped"] += 1
+            continue
+        
         summary["total_targets"] += 1
         summary["files_by_format"][v.file_format] = summary["files_by_format"].get(v.file_format, 0) + 1
 

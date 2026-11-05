@@ -1,0 +1,862 @@
+[
+  {
+    "block_id": "ver_6bc3550cc066_b00000",
+    "document_id": "doc_owasp_top10_what_are_application_security_risks",
+    "version_id": "ver_6bc3550cc066",
+    "block_idx": 0,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "# What are Application Security Risks?",
+    "text_hash": "370e63d9bc0a8f7e5e72983e1eb121a8602caf55b3b79b86f691394428ffc145",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 1,
+      "end_line": 1
+    },
+    "heading_path": [
+      "What are Application Security Risks?"
+    ],
+    "heading_level": 1,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_6bc3550cc066_b00001",
+    "document_id": "doc_owasp_top10_what_are_application_security_risks",
+    "version_id": "ver_6bc3550cc066",
+    "block_idx": 1,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Attackers can potentially use many different paths through your application to do harm to your business or organization. Each of these ways poses a potential risk that needs to be investigated.",
+    "text_hash": "64a65d3a808851f9ae2331a77e3568dc62ee8a9726649513f4a59b93d146f090",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 2,
+      "end_line": 2
+    },
+    "heading_path": [
+      "What are Application Security Risks?"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_6bc3550cc066_b00002",
+    "document_id": "doc_owasp_top10_what_are_application_security_risks",
+    "version_id": "ver_6bc3550cc066",
+    "block_idx": 2,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "![Calculation diagram](../assets/2025-algorithm-diagram.png)",
+    "text_hash": "76ba2f76825781c2e80a7ecc773b4bf7d95d9398c830500e7b15ccb771689626",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 4,
+      "end_line": 4
+    },
+    "heading_path": [
+      "What are Application Security Risks?"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_6bc3550cc066_b00003",
+    "document_id": "doc_owasp_top10_what_are_application_security_risks",
+    "version_id": "ver_6bc3550cc066",
+    "block_idx": 3,
+    "file_format": "MARKDOWN",
+    "block_type": "table",
+    "text_content": "<table>\n  <tr>\n   <td>\n    <strong>Threat Agents</strong>\n   </td>\n   <td>\n    <strong>Attack \\\nVectors</strong>\n   </td>\n   <td>\n    <strong>Exploitability</strong>\n   </td>\n   <td>\n    <strong>Likelihood of Missing Security</strong>\n<p style=\"text-align: center\">",
+    "text_hash": "0b759873e34e866b436e9c062c91140a017231db88aa2c64d89a07daf9c747f6",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 6,
+      "end_line": 20
+    },
+    "heading_path": [
+      "What are Application Security Risks?"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": [
+      "Threat Agents",
+      "Attack \\\nVectors",
+      "Exploitability",
+      "Likelihood of Missing Security"
+    ],
+    "table_rows": [],
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_6bc3550cc066_b00004",
+    "document_id": "doc_owasp_top10_what_are_application_security_risks",
+    "version_id": "ver_6bc3550cc066",
+    "block_idx": 4,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "   </td>\n   <td>\n    <strong>Technical</strong>\n<p style=\"text-align: center\">",
+    "text_hash": "e18d54b9035e276eb360291e9601cfad4f0a16f6f9ad15d378bc9af78fcab0d1",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 23,
+      "end_line": 26
+    },
+    "heading_path": [
+      "What are Application Security Risks?"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_6bc3550cc066_b00005",
+    "document_id": "doc_owasp_top10_what_are_application_security_risks",
+    "version_id": "ver_6bc3550cc066",
+    "block_idx": 5,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "   </td>\n   <td>\n    <strong>Business</strong>\n<p style=\"text-align: center\">",
+    "text_hash": "4938723f1709cecbb27631f259193c30dce0d660d356d27d4555a0d19c81ef35",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 29,
+      "end_line": 32
+    },
+    "heading_path": [
+      "What are Application Security Risks?"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_6bc3550cc066_b00006",
+    "document_id": "doc_owasp_top10_what_are_application_security_risks",
+    "version_id": "ver_6bc3550cc066",
+    "block_idx": 6,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "   </td>\n  </tr>\n  <tr>\n   <td>\n    <strong>By environment, \\\ndynamic by situation picture</strong>\n   </td>\n   <td>\n    <strong>By Application  exposure (by environment)</strong>\n   </td>\n   <td>\n    <strong>Avg Weighted Exploit</strong>\n   </td>\n   <td>\n    <strong>Missing Controls \\\nby average Incidence rate \\\nWeighed by coverage</strong>\n   </td>\n   <td>\n    <strong>Avg Weighted Impact</strong>\n   </td>\n   <td>\n    <strong>By Business</strong>\n   </td>\n  </tr>\n</table>",
+    "text_hash": "73a166da79c8e0f405032088bf4915f634566ae291f2d888b273d2e26cb09ef5",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 35,
+      "end_line": 60
+    },
+    "heading_path": [
+      "What are Application Security Risks?"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_6bc3550cc066_b00007",
+    "document_id": "doc_owasp_top10_what_are_application_security_risks",
+    "version_id": "ver_6bc3550cc066",
+    "block_idx": 7,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "In our Risk Rating we have taken into account the universal parameters of exploitability, average likelihood of missing security controls for a weakness and its technical impacts. ",
+    "text_hash": "6b04a9f11e6ea667f4f8eaa9c56e733e42c81515b9db0b0483f65daa99a24cbe",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 63,
+      "end_line": 63
+    },
+    "heading_path": [
+      "What are Application Security Risks?"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_6bc3550cc066_b00008",
+    "document_id": "doc_owasp_top10_what_are_application_security_risks",
+    "version_id": "ver_6bc3550cc066",
+    "block_idx": 8,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Each organization is unique, and so are the threat actors for that organization, their goals, and the impact of any breach. If a public interest organization uses a content management system (CMS) for public information and a health system uses that same exact CMS for sensitive health records, the threat actors and business impacts can be very different for the same software. It is critical to understand the risk to your organization based on the exposure of the application, the applicable threat agents by situation picture (for targeted and undirected attacks by business and location) and the individual business impacts. ",
+    "text_hash": "73bed64efe77fc366f4ad3d02c88823beead4db6afa1b021aea724b0134e837e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 65,
+      "end_line": 65
+    },
+    "heading_path": [
+      "What are Application Security Risks?"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_6bc3550cc066_b00009",
+    "document_id": "doc_owasp_top10_what_are_application_security_risks",
+    "version_id": "ver_6bc3550cc066",
+    "block_idx": 9,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## How the data is used for selecting categories and ranking them",
+    "text_hash": "4de1567871f6601787c18edebc97557dca12b90d3884cbd17319a95d72f7f648",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 68,
+      "end_line": 68
+    },
+    "heading_path": [
+      "What are Application Security Risks?",
+      "How the data is used for selecting categories and ranking them"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_6bc3550cc066_b00010",
+    "document_id": "doc_owasp_top10_what_are_application_security_risks",
+    "version_id": "ver_6bc3550cc066",
+    "block_idx": 10,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "In 2017, we selected categories by incidence rate to determine likelihood, then ranked them by team discussion based on decades of experience for Exploitability, Detectability (also likelihood), and Technical Impact. For 2021, we used data for Exploitability and (Technical) Impact from the CVSSv2 and CVSSv3 scores in the National Vulnerability Database (NVD). For 2025, we continued the same methodology that we created in 2021.",
+    "text_hash": "2efe578b0929cd6eeb55073619748cbf1b11cfe3c2702377d2ba993ea82cc874",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 70,
+      "end_line": 70
+    },
+    "heading_path": [
+      "What are Application Security Risks?",
+      "How the data is used for selecting categories and ranking them"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_6bc3550cc066_b00011",
+    "document_id": "doc_owasp_top10_what_are_application_security_risks",
+    "version_id": "ver_6bc3550cc066",
+    "block_idx": 11,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "We downloaded OWASP Dependency Check and extracted the CVSS Exploit, and Impact scores grouped by related CWEs. It took a fair bit of research and effort as all the CVEs have CVSSv2 scores, but there are flaws in CVSSv2 that CVSSv3 should address. After a certain point in time, all CVEs are assigned a CVSSv3 score as well. Additionally, the scoring ranges and formulas were updated between CVSSv2 and CVSSv3. ",
+    "text_hash": "3dd0e594b045977c2abd18d11aeb8c77f10b37dde51bfb8f36d65c5fb5b265a6",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 72,
+      "end_line": 72
+    },
+    "heading_path": [
+      "What are Application Security Risks?",
+      "How the data is used for selecting categories and ranking them"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_6bc3550cc066_b00012",
+    "document_id": "doc_owasp_top10_what_are_application_security_risks",
+    "version_id": "ver_6bc3550cc066",
+    "block_idx": 12,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "In CVSSv2, both Exploit and (Technical) Impact could be up to 10.0, but the formula would knock them down to 60% for Exploit and 40% for Impact. In CVSSv3, the theoretical max was limited to 6.0 for Exploit and 4.0 for Impact. With the weighting considered, the Impact scoring shifted higher, almost a point and a half on average in CVSSv3, and exploitability moved nearly half a point lower on average when we conducted analysis for the 2021 Top Ten.",
+    "text_hash": "051cb0d7861e7f2f5c3255f1ae5a604384e09dbed0d19de31a33620f04e7a95c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 74,
+      "end_line": 74
+    },
+    "heading_path": [
+      "What are Application Security Risks?",
+      "How the data is used for selecting categories and ranking them"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_6bc3550cc066_b00013",
+    "document_id": "doc_owasp_top10_what_are_application_security_risks",
+    "version_id": "ver_6bc3550cc066",
+    "block_idx": 13,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "There are approximately 175k records (up from 125k in 2021) of CVEs mapped to CWEs in the National Vulnerability Database (NVD), extracted from OWASP Dependency Check. Additionally, there are 643 unique CWEs mapped to CVEs (up from 241 in 2021). Within the nearly 220k CVEs that were extracted, 160k had CVSS v2 scores, 156k had CVSS v3 scores, and 6k had CVSS v4 scores. Many CVEs have multiple scores, which is why they total more than 220k.",
+    "text_hash": "07b1e9932a848d50c3cc75fdf643636769bacb61f2a80a92724260b70c7291db",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 76,
+      "end_line": 76
+    },
+    "heading_path": [
+      "What are Application Security Risks?",
+      "How the data is used for selecting categories and ranking them"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_6bc3550cc066_b00014",
+    "document_id": "doc_owasp_top10_what_are_application_security_risks",
+    "version_id": "ver_6bc3550cc066",
+    "block_idx": 14,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "For the Top Ten 2025, we calculated average exploit and impact scores in the following manner. We grouped all the CVEs with CVSS scores by CWE and weighted both exploit and impact scores by the percentage of the population that had CVSSv3, as well as the remaining population with CVSSv2 scores, to get an overall average. We mapped these averages to the CWEs in the dataset to use as Exploit and (Technical) Impact scoring for the other half of the risk equation.",
+    "text_hash": "34bbe19bfcde1efed0a3c30d818f8a17fe07cffc0fd9685a2ff3f054be3d5724",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 78,
+      "end_line": 78
+    },
+    "heading_path": [
+      "What are Application Security Risks?",
+      "How the data is used for selecting categories and ranking them"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_6bc3550cc066_b00015",
+    "document_id": "doc_owasp_top10_what_are_application_security_risks",
+    "version_id": "ver_6bc3550cc066",
+    "block_idx": 15,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Why not use CVSS v4.0, you may ask? That’s because the scoring algorithm was fundamentally changed, and it no longer easily provides the *Exploit* or *Impact* scores as CVSSv2 and CVSSv3 do. We will attempt to figure out a way to use CVSS v4.0 scoring for future versions of the Top Ten, but we were unable to determine a timely way to do so for the 2025 edition.",
+    "text_hash": "a21ec03847176470d64448b839d22857d723281ffaf74f11b02f4cd94647b931",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 80,
+      "end_line": 80
+    },
+    "heading_path": [
+      "What are Application Security Risks?",
+      "How the data is used for selecting categories and ranking them"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_6bc3550cc066_b00016",
+    "document_id": "doc_owasp_top10_what_are_application_security_risks",
+    "version_id": "ver_6bc3550cc066",
+    "block_idx": 16,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "For the incidence rate, we calculated the percentage of applications vulnerable to each CWE from the population tested by an org for a period of time. As a reminder, we are not using frequency (or how many times an issue appears in an application), we are interested in what percentage of the population of applications were found to have each CWE. ",
+    "text_hash": "8d6bd78338451a0df2d71843c370fadd192978516b3393f4186b4d99ee613b8a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 82,
+      "end_line": 82
+    },
+    "heading_path": [
+      "What are Application Security Risks?",
+      "How the data is used for selecting categories and ranking them"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_6bc3550cc066_b00017",
+    "document_id": "doc_owasp_top10_what_are_application_security_risks",
+    "version_id": "ver_6bc3550cc066",
+    "block_idx": 17,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "For coverage we look at the percentage of applications tested by all organizations for a given CWE. The higher the calculated coverage, the stronger the assurance that the incidence rate is accurate as the sample size is more representative of the population.",
+    "text_hash": "32f0ee116e3945f629e92c6f561f1192302b51caf17556cebe9ca45ad130ac4c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 84,
+      "end_line": 84
+    },
+    "heading_path": [
+      "What are Application Security Risks?",
+      "How the data is used for selecting categories and ranking them"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_6bc3550cc066_b00018",
+    "document_id": "doc_owasp_top10_what_are_application_security_risks",
+    "version_id": "ver_6bc3550cc066",
+    "block_idx": 18,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The formula that we used for this iteration is similar to 2021, with some weighting changes:\n(Max Incidence Rate % * 1000) + (Max Coverage % * 100) + (Avg Exploit * 10) + (Avg Impact * 20) + (Sum Occurrences / 10000) = Risk Score",
+    "text_hash": "f365e2bc0cdaa5ad3703ad3617f309c14f4e1a4f356743be58708f59cfce0ceb",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 86,
+      "end_line": 87
+    },
+    "heading_path": [
+      "What are Application Security Risks?",
+      "How the data is used for selecting categories and ranking them"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_6bc3550cc066_b00019",
+    "document_id": "doc_owasp_top10_what_are_application_security_risks",
+    "version_id": "ver_6bc3550cc066",
+    "block_idx": 19,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The calculated scores ranged from 621.60 for the category of Broken Access Control to 271.08 for Memory Management Errors.",
+    "text_hash": "2c720dc174f7218fe194a37f457a0dc2f1e2d0277a2d57a0038cc6fcd3df6673",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 89,
+      "end_line": 89
+    },
+    "heading_path": [
+      "What are Application Security Risks?",
+      "How the data is used for selecting categories and ranking them"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_6bc3550cc066_b00020",
+    "document_id": "doc_owasp_top10_what_are_application_security_risks",
+    "version_id": "ver_6bc3550cc066",
+    "block_idx": 20,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "This is not a perfect system, but it is valuable for ranking risk categories.",
+    "text_hash": "b299b804862e3b3a9fdc3a9bdd10ba6574067c1fc47993f9cd2a6210ca8f7adb",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 91,
+      "end_line": 91
+    },
+    "heading_path": [
+      "What are Application Security Risks?",
+      "How the data is used for selecting categories and ranking them"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_6bc3550cc066_b00021",
+    "document_id": "doc_owasp_top10_what_are_application_security_risks",
+    "version_id": "ver_6bc3550cc066",
+    "block_idx": 21,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "One additional challenge that is growing is the definition of an \"application\". As the industry shifts to different architectures that consist of micro-services and other implementations that are smaller than a traditional application, calculations are more difficult. For instance, if an organization is testing code repositories, what does it consider an application? Similar to the growth of CVSSv4, the next edition of the Top Ten may need to adjust the analysis and scoring to account for a constantly changing industry.",
+    "text_hash": "b2be41f5176c6f11ab71d57f64704585adcfe662c4cca05bacc80053f4e2862e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 93,
+      "end_line": 93
+    },
+    "heading_path": [
+      "What are Application Security Risks?",
+      "How the data is used for selecting categories and ranking them"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_6bc3550cc066_b00022",
+    "document_id": "doc_owasp_top10_what_are_application_security_risks",
+    "version_id": "ver_6bc3550cc066",
+    "block_idx": 22,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Data Factors",
+    "text_hash": "599f9db9c1a73474f39385927a676fbf3b315fb2e337545773f61426ffc78c54",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 95,
+      "end_line": 95
+    },
+    "heading_path": [
+      "What are Application Security Risks?",
+      "Data Factors"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_6bc3550cc066_b00023",
+    "document_id": "doc_owasp_top10_what_are_application_security_risks",
+    "version_id": "ver_6bc3550cc066",
+    "block_idx": 23,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "There are data factors that are listed for each of the Top Ten Categories, here is what they mean:",
+    "text_hash": "893b9dd71cb19bed64769bb1462fb37b4957ab89004b469c7e10e101de6f0b21",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 97,
+      "end_line": 97
+    },
+    "heading_path": [
+      "What are Application Security Risks?",
+      "Data Factors"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_6bc3550cc066_b00024",
+    "document_id": "doc_owasp_top10_what_are_application_security_risks",
+    "version_id": "ver_6bc3550cc066",
+    "block_idx": 24,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**CWEs Mapped:** The number of CWEs mapped to a category by the Top Ten team.",
+    "text_hash": "856481109a93109a312cc4b81e3a03e5fc0920e36f9b934b4639b6370baf4c9d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 99,
+      "end_line": 99
+    },
+    "heading_path": [
+      "What are Application Security Risks?",
+      "Data Factors"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_6bc3550cc066_b00025",
+    "document_id": "doc_owasp_top10_what_are_application_security_risks",
+    "version_id": "ver_6bc3550cc066",
+    "block_idx": 25,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**Incidence Rate:** Incidence rate is the percentage of applications vulnerable to that CWE from the population tested by that org for that year.",
+    "text_hash": "690f849bccc67a31796da806508385b18cc7cce1657796cafb531e47d1a15806",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 101,
+      "end_line": 101
+    },
+    "heading_path": [
+      "What are Application Security Risks?",
+      "Data Factors"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_6bc3550cc066_b00026",
+    "document_id": "doc_owasp_top10_what_are_application_security_risks",
+    "version_id": "ver_6bc3550cc066",
+    "block_idx": 26,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**Weighted Exploit:** The Exploit sub-score from CVSSv2 and CVSSv3 scores assigned to CVEs mapped to CWEs, normalized, and placed on a 10pt scale.",
+    "text_hash": "e843f5ca6d748d09ae05b5cc3287197cc2b098e2302453810fe57efa059c21c3",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 103,
+      "end_line": 103
+    },
+    "heading_path": [
+      "What are Application Security Risks?",
+      "Data Factors"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_6bc3550cc066_b00027",
+    "document_id": "doc_owasp_top10_what_are_application_security_risks",
+    "version_id": "ver_6bc3550cc066",
+    "block_idx": 27,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**Weighted Impact:** The Impact sub-score from CVSSv2 and CVSSv3 scores assigned to CVEs mapped to CWEs, normalized, and placed on a 10pt scale.",
+    "text_hash": "351f4a66ffcd3d52d4e1e1c4a28ae92a8c03e70f4c7f74d301c976056bb4995d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 105,
+      "end_line": 105
+    },
+    "heading_path": [
+      "What are Application Security Risks?",
+      "Data Factors"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_6bc3550cc066_b00028",
+    "document_id": "doc_owasp_top10_what_are_application_security_risks",
+    "version_id": "ver_6bc3550cc066",
+    "block_idx": 28,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**(Testing) Coverage:** The percentage of applications tested by all organizations for a given CWE.",
+    "text_hash": "1c64fa6c686b581cabc46b63baa27f79f3994ead68d5cf08db537b3183aecb84",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 107,
+      "end_line": 107
+    },
+    "heading_path": [
+      "What are Application Security Risks?",
+      "Data Factors"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_6bc3550cc066_b00029",
+    "document_id": "doc_owasp_top10_what_are_application_security_risks",
+    "version_id": "ver_6bc3550cc066",
+    "block_idx": 29,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**Total Occurrences:** Total number of applications found to have the CWEs mapped to a category.",
+    "text_hash": "f6bf9f54d1c261492b4107a4f0332b31d818a627ed861ce4fea0d059c2606b85",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 109,
+      "end_line": 109
+    },
+    "heading_path": [
+      "What are Application Security Risks?",
+      "Data Factors"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_6bc3550cc066_b00030",
+    "document_id": "doc_owasp_top10_what_are_application_security_risks",
+    "version_id": "ver_6bc3550cc066",
+    "block_idx": 30,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**Total CVEs:** Total number of CVEs in the NVD DB that were mapped to the CWEs mapped to a category.",
+    "text_hash": "6b38b8901b389708a2b50acb9d8162ddb3648c1c24336ded3094e118dbdd965a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 111,
+      "end_line": 111
+    },
+    "heading_path": [
+      "What are Application Security Risks?",
+      "Data Factors"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_6bc3550cc066_b00031",
+    "document_id": "doc_owasp_top10_what_are_application_security_risks",
+    "version_id": "ver_6bc3550cc066",
+    "block_idx": 31,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**Formula:** (Max Incidence Rate % * 1000) + (Max Coverage % * 100) + (Avg Exploit * 10) + (Avg Impact * 20) + (Sum Occurrences / 10000) = Risk Score",
+    "text_hash": "7bdd9ffd307639002423f7989be86335538e803e659f1b54d15c691d259e2e78",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 113,
+      "end_line": 113
+    },
+    "heading_path": [
+      "What are Application Security Risks?",
+      "Data Factors"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  }
+]

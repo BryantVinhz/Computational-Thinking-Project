@@ -1,0 +1,1951 @@
+[
+  {
+    "block_id": "ver_c660dd06c1d6_b00000",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 0,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "# A03:2021 – Injection    ![icon](assets/TOP_10_Icons_Final_Injection.png){: style=\"height:80px;width:80px\" align=\"right\"} ",
+    "text_hash": "420b620ce16b99771862259f562e83f450d75cf2332ac298bb7cab5e208eb466",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 1,
+      "end_line": 1
+    },
+    "heading_path": [
+      "A03:2021 – Injection"
+    ],
+    "heading_level": 1,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00000",
+    "normalized_text": "# A03:2021 – Injection ![icon](assets/TOP_10_Icons_Final_Injection.png){: style=\"height:80px;width:80px\" align=\"right\"}",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 4
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00001",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 1,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Factors",
+    "text_hash": "5f5d0998dc56b8b8839e5d7224b890cb67dc8e3c6d51d965af0e30db66f2ef0c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 3,
+      "end_line": 3
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "Factors"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00001",
+    "normalized_text": "## Factors",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00002",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 2,
+    "file_format": "MARKDOWN",
+    "block_type": "table",
+    "text_content": "| CWEs Mapped | Max Incidence Rate | Avg Incidence Rate | Avg Weighted Exploit | Avg Weighted Impact | Max Coverage | Avg Coverage | Total Occurrences | Total CVEs |\n|:-------------:|:--------------------:|:--------------------:|:--------------:|:--------------:|:----------------------:|:---------------------:|:-------------------:|:------------:|\n| 33          | 19.09%             | 3.37%              | 7.25                 | 7.15                | 94.04%       | 47.90%       | 274,228           | 32,078     |",
+    "text_hash": "b221cfead9e2678e14106b8c6ef8a3ff89296a6aa7cb1c2277880f1bf883ed5e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 5,
+      "end_line": 7
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "Factors"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": [
+      "CWEs Mapped",
+      "Max Incidence Rate",
+      "Avg Incidence Rate",
+      "Avg Weighted Exploit",
+      "Avg Weighted Impact",
+      "Max Coverage",
+      "Avg Coverage",
+      "Total Occurrences",
+      "Total CVEs"
+    ],
+    "table_rows": [
+      [
+        "33",
+        "19.09%",
+        "3.37%",
+        "7.25",
+        "7.15",
+        "94.04%",
+        "47.90%",
+        "274,228",
+        "32,078"
+      ]
+    ],
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00002",
+    "normalized_text": "| CWEs Mapped | Max Incidence Rate | Avg Incidence Rate | Avg Weighted Exploit | Avg Weighted Impact | Max Coverage | Avg Coverage | Total Occurrences | Total CVEs |\n|:-------------:|:--------------------:|:--------------------:|:--------------:|:--------------:|:----------------------:|:---------------------:|:-------------------:|:------------:|\n| 33 | 19.09% | 3.37% | 7.25 | 7.15 | 94.04% | 47.90% | 274,228 | 32,078 |",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 91
+    },
+    "normalized_table_header_cols": [
+      "CWEs Mapped",
+      "Max Incidence Rate",
+      "Avg Incidence Rate",
+      "Avg Weighted Exploit",
+      "Avg Weighted Impact",
+      "Max Coverage",
+      "Avg Coverage",
+      "Total Occurrences",
+      "Total CVEs"
+    ],
+    "normalized_table_rows": [
+      [
+        "33",
+        "19.09%",
+        "3.37%",
+        "7.25",
+        "7.15",
+        "94.04%",
+        "47.90%",
+        "274,228",
+        "32,078"
+      ]
+    ]
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00003",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 3,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Overview",
+    "text_hash": "7337f3d0aa29e9a82b8f1650b743a98eef90794631fa763a319686e69c546821",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 9,
+      "end_line": 9
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "Overview"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00003",
+    "normalized_text": "## Overview",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00004",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 4,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Injection slides down to the third position. 94% of the applications\nwere tested for some form of injection with a max incidence rate of 19%, an average incidence rate of 3%, and 274k occurrences. Notable Common Weakness Enumerations (CWEs) included are\n*CWE-79: Cross-site Scripting*, *CWE-89: SQL Injection*, and *CWE-73:\nExternal Control of File Name or Path*.",
+    "text_hash": "b24fe1242df76e75d670904dbb76039fbe5c646ae9a2d54378be51767103c5c9",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 11,
+      "end_line": 14
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "Overview"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00004",
+    "normalized_text": "Injection slides down to the third position. 94% of the applications\nwere tested for some form of injection with a max incidence rate of 19%, an average incidence rate of 3%, and 274k occurrences. Notable Common Weakness Enumerations (CWEs) included are\n*CWE-79: Cross-site Scripting*, *CWE-89: SQL Injection*, and *CWE-73:\nExternal Control of File Name or Path*.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00005",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 5,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Description ",
+    "text_hash": "9416a3944fca599f6f9dcff2ff92354dcd7d50d51829259e33dd97612f7d0769",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 16,
+      "end_line": 16
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "Description"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00005",
+    "normalized_text": "## Description",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00006",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 6,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "An application is vulnerable to attack when:",
+    "text_hash": "baf3ca0b9abe9a5366a9e268ef61422cb6070534ff229a4004a617d7686d144c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 18,
+      "end_line": 18
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "Description"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00006",
+    "normalized_text": "An application is vulnerable to attack when:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00007",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 7,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "-   User-supplied data is not validated, filtered, or sanitized by the\n    application.\n\n-   Dynamic queries or non-parameterized calls without context-aware\n    escaping are used directly in the interpreter.\n\n-   Hostile data is used within object-relational mapping (ORM) search\n    parameters to extract additional, sensitive records.\n\n-   Hostile data is directly used or concatenated. The SQL or command\n    contains the structure and malicious data in dynamic queries,\n    commands, or stored procedures.\n",
+    "text_hash": "674dad7ab3c12ceb4824381ca35c85bfccd21311a5d8bed18b1f99267511949d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 20,
+      "end_line": 32
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "Description"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00007",
+    "normalized_text": "- User-supplied data is not validated, filtered, or sanitized by the\n    application.\n\n- Dynamic queries or non-parameterized calls without context-aware\n    escaping are used directly in the interpreter.\n\n- Hostile data is used within object-relational mapping (ORM) search\n    parameters to extract additional, sensitive records.\n\n- Hostile data is directly used or concatenated. The SQL or command\n    contains the structure and malicious data in dynamic queries,\n    commands, or stored procedures.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 9
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00008",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 8,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Some of the more common injections are SQL, NoSQL, OS command, Object\nRelational Mapping (ORM), LDAP, and Expression Language (EL) or Object\nGraph Navigation Library (OGNL) injection. The concept is identical\namong all interpreters. Source code review is the best method of\ndetecting if applications are vulnerable to injections. Automated\ntesting of all parameters, headers, URL, cookies, JSON, SOAP, and XML\ndata inputs is strongly encouraged. Organizations can include\nstatic (SAST), dynamic (DAST), and interactive (IAST) application security testing tools into the CI/CD\npipeline to identify introduced injection flaws before production\ndeployment.",
+    "text_hash": "178c585b3c66b269ae13bd4739530801440c14c2d7fab98113f48d78b275349b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 33,
+      "end_line": 42
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "Description"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00008",
+    "normalized_text": "Some of the more common injections are SQL, NoSQL, OS command, Object\nRelational Mapping (ORM), LDAP, and Expression Language (EL) or Object\nGraph Navigation Library (OGNL) injection. The concept is identical\namong all interpreters. Source code review is the best method of\ndetecting if applications are vulnerable to injections. Automated\ntesting of all parameters, headers, URL, cookies, JSON, SOAP, and XML\ndata inputs is strongly encouraged. Organizations can include\nstatic (SAST), dynamic (DAST), and interactive (IAST) application security testing tools into the CI/CD\npipeline to identify introduced injection flaws before production\ndeployment.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00009",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 9,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## How to Prevent",
+    "text_hash": "43bbb04bfc567ef1014682cdf1f43165a9bff6d1f500aaffec83d4f93706b025",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 44,
+      "end_line": 44
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "How to Prevent"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00009",
+    "normalized_text": "## How to Prevent",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00010",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 10,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Preventing injection requires keeping data separate from commands and queries:",
+    "text_hash": "f0e128f0f8cb8738f692a8b289fe936fd3ebefd2311c45e7b57a8e29c8f55959",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 46,
+      "end_line": 46
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "How to Prevent"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00010",
+    "normalized_text": "Preventing injection requires keeping data separate from commands and queries:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00011",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 11,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "-   The preferred option is to use a safe API, which avoids using the\n    interpreter entirely, provides a parameterized interface, or\n    migrates to Object Relational Mapping Tools (ORMs).<br/>\n    **Note:** Even when parameterized, stored procedures can still introduce\n    SQL injection if PL/SQL or T-SQL concatenates queries and data or\n    executes hostile data with EXECUTE IMMEDIATE or exec().\n\n-   Use positive server-side input validation. This is\n    not a complete defense as many applications require special\n    characters, such as text areas or APIs for mobile applications.\n\n-   For any residual dynamic queries, escape special characters using\n    the specific escape syntax for that interpreter.<br/>\n    **Note:** SQL structures such as table names, column names, and so on\n    cannot be escaped, and thus user-supplied structure names are\n    dangerous. This is a common issue in report-writing software.\n",
+    "text_hash": "5fd665353f49e4e1b9acdc731a7bac2e958847769d6699c05029dd0bd9500b2a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 48,
+      "end_line": 64
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "How to Prevent"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00011",
+    "normalized_text": "- The preferred option is to use a safe API, which avoids using the\n    interpreter entirely, provides a parameterized interface, or\n    migrates to Object Relational Mapping Tools (ORMs).<br/>\n    **Note:** Even when parameterized, stored procedures can still introduce\n    SQL injection if PL/SQL or T-SQL concatenates queries and data or\n    executes hostile data with EXECUTE IMMEDIATE or exec().\n\n- Use positive server-side input validation. This is\n    not a complete defense as many applications require special\n    characters, such as text areas or APIs for mobile applications.\n\n- For any residual dynamic queries, escape special characters using\n    the specific escape syntax for that interpreter.<br/>\n    **Note:** SQL structures such as table names, column names, and so on\n    cannot be escaped, and thus user-supplied structure names are\n    dangerous. This is a common issue in report-writing software.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 7
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00012",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 12,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Example Attack Scenarios",
+    "text_hash": "bb9afd051258ccbc75211089f3528f89d12f1e068ab3f1a85f3233d2888d0b39",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 65,
+      "end_line": 65
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "Example Attack Scenarios"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00012",
+    "normalized_text": "## Example Attack Scenarios",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00013",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 13,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**Scenario #1:** An application uses untrusted data in the construction\nof the following vulnerable SQL call:",
+    "text_hash": "2f0e6d9153079878ab5f2286d2f06ccfb759518cab025209f6141dcdfaae327a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 67,
+      "end_line": 68
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "Example Attack Scenarios"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00013",
+    "normalized_text": "**Scenario #1:** An application uses untrusted data in the construction\nof the following vulnerable SQL call:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00014",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 14,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```\nString query = \"SELECT \\* FROM accounts WHERE custID='\" + request.getParameter(\"id\") + \"'\";\n```",
+    "text_hash": "536cb971c4f712a7d3578a7f06be38d0c21a227954ba066ef32e85b03673ddfc",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 69,
+      "end_line": 71
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "Example Attack Scenarios"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00014",
+    "normalized_text": "```\nString query = \"SELECT \\* FROM accounts WHERE custID='\" + request.getParameter(\"id\") + \"'\";\n```",
+    "normalization_flags": {
+      "is_code_or_payload": true,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00015",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 15,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**Scenario #2:** Similarly, an application’s blind trust in frameworks\nmay result in queries that are still vulnerable, (e.g., Hibernate Query\nLanguage (HQL)):",
+    "text_hash": "3dd652431e96cdaa37c03476566655c215cfd0c6b3aedf63cb73d24e3fa46ae3",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 73,
+      "end_line": 75
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "Example Attack Scenarios"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00015",
+    "normalized_text": "**Scenario #2:** Similarly, an application’s blind trust in frameworks\nmay result in queries that are still vulnerable, (e.g., Hibernate Query\nLanguage (HQL)):",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00016",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 16,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```\n Query HQLQuery = session.createQuery(\"FROM accounts WHERE custID='\" + request.getParameter(\"id\") + \"'\");\n```",
+    "text_hash": "7fc29a5d85ce4dfb4b670475dd524453685ddf959645d1818b518b7702f5f971",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 76,
+      "end_line": 78
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "Example Attack Scenarios"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00016",
+    "normalized_text": "```\n Query HQLQuery = session.createQuery(\"FROM accounts WHERE custID='\" + request.getParameter(\"id\") + \"'\");\n```",
+    "normalization_flags": {
+      "is_code_or_payload": true,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00017",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 17,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "In both cases, the attacker modifies the ‘id’ parameter value in their\nbrowser to send: ' UNION SLEEP(10);--. For example:",
+    "text_hash": "e57776e29950374a315eed0bdc97dd44c31fa4a887878b19f35bc7129683e8f8",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 80,
+      "end_line": 81
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "Example Attack Scenarios"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00017",
+    "normalized_text": "In both cases, the attacker modifies the ‘id’ parameter value in their\nbrowser to send: ' UNION SLEEP(10);--. For example:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00018",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 18,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```\n http://example.com/app/accountView?id=' UNION SELECT SLEEP(10);--\n```",
+    "text_hash": "75bdbecd20ce7a92283220a6de7aaa063e22692a156ba9ab39be54ce182777c1",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 82,
+      "end_line": 84
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "Example Attack Scenarios"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00018",
+    "normalized_text": "```\n http://example.com/app/accountView?id=' UNION SELECT SLEEP(10);--\n```",
+    "normalization_flags": {
+      "is_code_or_payload": true,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00019",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 19,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "This changes the meaning of both queries to return all the records from\nthe accounts table. More dangerous attacks could modify or delete data\nor even invoke stored procedures.",
+    "text_hash": "83d00e46c14cbe01356c8d69d6795d6d79e8041ba156a49ae429b37c471b8c61",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 86,
+      "end_line": 88
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "Example Attack Scenarios"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00019",
+    "normalized_text": "This changes the meaning of both queries to return all the records from\nthe accounts table. More dangerous attacks could modify or delete data\nor even invoke stored procedures.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00020",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 20,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## References",
+    "text_hash": "65b72d86eeeb214ab8ca5fd24cb7cd7773e58084e95b670040df03e21e8c6fa7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 90,
+      "end_line": 90
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "References"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00020",
+    "normalized_text": "## References",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00021",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 21,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "-   [OWASP Proactive Controls: Secure Database Access](https://owasp.org/www-project-proactive-controls/v3/en/c3-secure-database)\n\n-   [OWASP ASVS: V5 Input Validation and Encoding](https://owasp.org/www-project-application-security-verification-standard)\n\n-   [OWASP Testing Guide: SQL Injection,](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/05-Testing_for_SQL_Injection) [Command Injection](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/12-Testing_for_Command_Injection),\n    and [ORM Injection](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/05.7-Testing_for_ORM_Injection)\n\n-   [OWASP Cheat Sheet: Injection Prevention](https://cheatsheetseries.owasp.org/cheatsheets/Injection_Prevention_Cheat_Sheet.html)\n\n-   [OWASP Cheat Sheet: SQL Injection Prevention](https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html)\n\n-   [OWASP Cheat Sheet: Injection Prevention in Java](https://cheatsheetseries.owasp.org/cheatsheets/Injection_Prevention_Cheat_Sheet_in_Java.html)\n\n-   [OWASP Cheat Sheet: Query Parameterization](https://cheatsheetseries.owasp.org/cheatsheets/Query_Parameterization_Cheat_Sheet.html)\n\n-   [OWASP Automated Threats to Web Applications – OAT-014](https://owasp.org/www-project-automated-threats-to-web-applications/)\n\n-   [PortSwigger: Server-side template injection](https://portswigger.net/kb/issues/00101080_serversidetemplateinjection)\n",
+    "text_hash": "5b5d7a44a8cfbf454ad789afd6fba43ecd6128ac657366e326b8266b5c321710",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 92,
+      "end_line": 110
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "References"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00021",
+    "normalized_text": "- [OWASP Proactive Controls: Secure Database Access](https://owasp.org/www-project-proactive-controls/v3/en/c3-secure-database)\n\n- [OWASP ASVS: V5 Input Validation and Encoding](https://owasp.org/www-project-application-security-verification-standard)\n\n- [OWASP Testing Guide: SQL Injection,](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/05-Testing_for_SQL_Injection) [Command Injection](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/12-Testing_for_Command_Injection),\n    and [ORM Injection](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/05.7-Testing_for_ORM_Injection)\n\n- [OWASP Cheat Sheet: Injection Prevention](https://cheatsheetseries.owasp.org/cheatsheets/Injection_Prevention_Cheat_Sheet.html)\n\n- [OWASP Cheat Sheet: SQL Injection Prevention](https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html)\n\n- [OWASP Cheat Sheet: Injection Prevention in Java](https://cheatsheetseries.owasp.org/cheatsheets/Injection_Prevention_Cheat_Sheet_in_Java.html)\n\n- [OWASP Cheat Sheet: Query Parameterization](https://cheatsheetseries.owasp.org/cheatsheets/Query_Parameterization_Cheat_Sheet.html)\n\n- [OWASP Automated Threats to Web Applications – OAT-014](https://owasp.org/www-project-automated-threats-to-web-applications/)\n\n- [PortSwigger: Server-side template injection](https://portswigger.net/kb/issues/00101080_serversidetemplateinjection)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 19
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00022",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 22,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## List of Mapped CWEs",
+    "text_hash": "25ada4e89aaab165926a55b7c068b5ff4c988e4d4cd1593dfb340087f3d969b2",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 111,
+      "end_line": 111
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00022",
+    "normalized_text": "## List of Mapped CWEs",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00023",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 23,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-20 Improper Input Validation](https://cwe.mitre.org/data/definitions/20.html)",
+    "text_hash": "a5d03dd18a24dcba168365f1b85ff9c9398353466a1911e3bea2223a4b5fd1ad",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 113,
+      "end_line": 113
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00023",
+    "normalized_text": "[CWE-20 Improper Input Validation](https://cwe.mitre.org/data/definitions/20.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00024",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 24,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-74 Improper Neutralization of Special Elements in Output Used by a\nDownstream Component ('Injection')](https://cwe.mitre.org/data/definitions/74.html)",
+    "text_hash": "cba10dc862b01530906a8d7c32848bbcb971f85a96d424901fc38f51fea14a43",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 115,
+      "end_line": 116
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00024",
+    "normalized_text": "[CWE-74 Improper Neutralization of Special Elements in Output Used by a\nDownstream Component ('Injection')](https://cwe.mitre.org/data/definitions/74.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00025",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 25,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-75 Failure to Sanitize Special Elements into a Different Plane\n(Special Element Injection)](https://cwe.mitre.org/data/definitions/75.html)",
+    "text_hash": "6b0895f845d08aae4b28f5f0cf427af6296e8b22dec933dd737b3a00e9bb6350",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 118,
+      "end_line": 119
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00025",
+    "normalized_text": "[CWE-75 Failure to Sanitize Special Elements into a Different Plane\n(Special Element Injection)](https://cwe.mitre.org/data/definitions/75.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00026",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 26,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-77 Improper Neutralization of Special Elements used in a Command\n('Command Injection')](https://cwe.mitre.org/data/definitions/77.html)",
+    "text_hash": "8e3789c2c908f3c6c8580e79e1440abed1ef8cd2a6a9b5a8d40e6dc9ce969b9a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 121,
+      "end_line": 122
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00026",
+    "normalized_text": "[CWE-77 Improper Neutralization of Special Elements used in a Command\n('Command Injection')](https://cwe.mitre.org/data/definitions/77.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00027",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 27,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-78 Improper Neutralization of Special Elements used in an OS Command\n('OS Command Injection')](https://cwe.mitre.org/data/definitions/78.html)",
+    "text_hash": "9fc91f73a5e1c40511947f54062210b5c53e0593906d89bafcee57be484ea0f0",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 124,
+      "end_line": 125
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00027",
+    "normalized_text": "[CWE-78 Improper Neutralization of Special Elements used in an OS Command\n('OS Command Injection')](https://cwe.mitre.org/data/definitions/78.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00028",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 28,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-79 Improper Neutralization of Input During Web Page Generation\n('Cross-site Scripting')](https://cwe.mitre.org/data/definitions/79.html)",
+    "text_hash": "3bc62f06d0f77504fe526ecd3d9ea4542a8f11f6f0cec96faf5cb58fc779d5f1",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 127,
+      "end_line": 128
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00028",
+    "normalized_text": "[CWE-79 Improper Neutralization of Input During Web Page Generation\n('Cross-site Scripting')](https://cwe.mitre.org/data/definitions/79.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00029",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 29,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-80 Improper Neutralization of Script-Related HTML Tags in a Web Page\n(Basic XSS)](https://cwe.mitre.org/data/definitions/80.html)",
+    "text_hash": "bc04223a1270807bb2fa6631bed9c698678bf4d641e733add16e94e6d1d2f927",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 130,
+      "end_line": 131
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00029",
+    "normalized_text": "[CWE-80 Improper Neutralization of Script-Related HTML Tags in a Web Page\n(Basic XSS)](https://cwe.mitre.org/data/definitions/80.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00030",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 30,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-83 Improper Neutralization of Script in Attributes in a Web Page](https://cwe.mitre.org/data/definitions/83.html)",
+    "text_hash": "b2e420a426e4ae7cc0c00180ae8dae1c3637c0d2011dd0e2bf64f5a825b69e16",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 133,
+      "end_line": 133
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00030",
+    "normalized_text": "[CWE-83 Improper Neutralization of Script in Attributes in a Web Page](https://cwe.mitre.org/data/definitions/83.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00031",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 31,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-87 Improper Neutralization of Alternate XSS Syntax](https://cwe.mitre.org/data/definitions/87.html)",
+    "text_hash": "a10f64274d5606c98e477721f559d6724e5149f8e6b0f07f37cc6015aaec39a7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 135,
+      "end_line": 135
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00031",
+    "normalized_text": "[CWE-87 Improper Neutralization of Alternate XSS Syntax](https://cwe.mitre.org/data/definitions/87.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00032",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 32,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-88 Improper Neutralization of Argument Delimiters in a Command ('Argument Injection')](https://cwe.mitre.org/data/definitions/88.html)",
+    "text_hash": "d6f69e9c93dbda6cd776ac2a1879f7a4624ba11e0d7bd2a0740f5bc2808fdedf",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 137,
+      "end_line": 137
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00032",
+    "normalized_text": "[CWE-88 Improper Neutralization of Argument Delimiters in a Command ('Argument Injection')](https://cwe.mitre.org/data/definitions/88.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00033",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 33,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-89 Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')](https://cwe.mitre.org/data/definitions/89.html)",
+    "text_hash": "bbab967c2df1be677bf8d5df1101630547eacd9ed7a1a388a2c4365f5cf487e4",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 139,
+      "end_line": 139
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00033",
+    "normalized_text": "[CWE-89 Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')](https://cwe.mitre.org/data/definitions/89.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00034",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 34,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-90 Improper Neutralization of Special Elements used in an LDAP Query ('LDAP Injection')](https://cwe.mitre.org/data/definitions/90.html)",
+    "text_hash": "bfe2fed952bb70ae6f6bb31e5c40d87090130daf8530dd52c4d86f3797606bc9",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 141,
+      "end_line": 141
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00034",
+    "normalized_text": "[CWE-90 Improper Neutralization of Special Elements used in an LDAP Query ('LDAP Injection')](https://cwe.mitre.org/data/definitions/90.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00035",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 35,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-91 XML Injection (aka Blind XPath Injection)](https://cwe.mitre.org/data/definitions/91.html)",
+    "text_hash": "9284e55febd211de79ef41251ea0805eaade73ac467a7a10e4ac86d64736d138",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 143,
+      "end_line": 143
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00035",
+    "normalized_text": "[CWE-91 XML Injection (aka Blind XPath Injection)](https://cwe.mitre.org/data/definitions/91.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00036",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 36,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-93 Improper Neutralization of CRLF Sequences ('CRLF Injection')](https://cwe.mitre.org/data/definitions/93.html)",
+    "text_hash": "35ff6a19c7773fbaa0179422645f6bb3840c2f5a8d94d5989bf522762d9dccce",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 145,
+      "end_line": 145
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00036",
+    "normalized_text": "[CWE-93 Improper Neutralization of CRLF Sequences ('CRLF Injection')](https://cwe.mitre.org/data/definitions/93.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00037",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 37,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-94 Improper Control of Generation of Code ('Code Injection')](https://cwe.mitre.org/data/definitions/94.html)",
+    "text_hash": "a80b1790848c09ea77fa85def245e383326b67688d83dcab59a049dc44f15cc7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 147,
+      "end_line": 147
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00037",
+    "normalized_text": "[CWE-94 Improper Control of Generation of Code ('Code Injection')](https://cwe.mitre.org/data/definitions/94.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00038",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 38,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-95 Improper Neutralization of Directives in Dynamically Evaluated Code ('Eval Injection')](https://cwe.mitre.org/data/definitions/95.html)",
+    "text_hash": "5ca4adb0690131423e39c492204d745865e3d155355d70950378aa9ae53d52cf",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 149,
+      "end_line": 149
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00038",
+    "normalized_text": "[CWE-95 Improper Neutralization of Directives in Dynamically Evaluated Code ('Eval Injection')](https://cwe.mitre.org/data/definitions/95.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00039",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 39,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-96 Improper Neutralization of Directives in Statically Saved Code ('Static Code Injection')](https://cwe.mitre.org/data/definitions/96.html)",
+    "text_hash": "4bffcd3cce24994196cc40cd3097202fbb7d2a063e0f04575ca336d8a656fe70",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 151,
+      "end_line": 151
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00039",
+    "normalized_text": "[CWE-96 Improper Neutralization of Directives in Statically Saved Code ('Static Code Injection')](https://cwe.mitre.org/data/definitions/96.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00040",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 40,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-97 Improper Neutralization of Server-Side Includes (SSI) Within a Web Page](https://cwe.mitre.org/data/definitions/97.html)",
+    "text_hash": "b1360cebacdb397be868c06743a717e518158dd1c59e22dba09a8303b51b4ce5",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 153,
+      "end_line": 153
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00040",
+    "normalized_text": "[CWE-97 Improper Neutralization of Server-Side Includes (SSI) Within a Web Page](https://cwe.mitre.org/data/definitions/97.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00041",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 41,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-98 Improper Control of Filename for Include/Require Statement in PHP Program ('PHP Remote File Inclusion')](https://cwe.mitre.org/data/definitions/98.html)",
+    "text_hash": "d344908acd09435c34a93c2b96e954dbd4a87d84b85372a681a5ed1fb770c722",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 155,
+      "end_line": 155
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00041",
+    "normalized_text": "[CWE-98 Improper Control of Filename for Include/Require Statement in PHP Program ('PHP Remote File Inclusion')](https://cwe.mitre.org/data/definitions/98.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00042",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 42,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-99 Improper Control of Resource Identifiers ('Resource Injection')](https://cwe.mitre.org/data/definitions/99.html)",
+    "text_hash": "7124af0ee212ed0041cae93b0db5fb6d1aaf2d601c8afccc73e5005dc72a39c5",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 157,
+      "end_line": 157
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00042",
+    "normalized_text": "[CWE-99 Improper Control of Resource Identifiers ('Resource Injection')](https://cwe.mitre.org/data/definitions/99.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00043",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 43,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-100 Deprecated: Was catch-all for input validation issues](https://cwe.mitre.org/data/definitions/100.html)",
+    "text_hash": "a5e4863e47e6174a8dcf788154885f4af21d0a00f76966dfdf77dfb624fc4150",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 159,
+      "end_line": 159
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00043",
+    "normalized_text": "[CWE-100 Deprecated: Was catch-all for input validation issues](https://cwe.mitre.org/data/definitions/100.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00044",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 44,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-113 Improper Neutralization of CRLF Sequences in HTTP Headers ('HTTP Response Splitting')](https://cwe.mitre.org/data/definitions/113.html)",
+    "text_hash": "46cca7c16a0321d9d27d940cc323b9500fcd28d57aad48edd3ef6eb8d6fee6af",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 161,
+      "end_line": 161
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00044",
+    "normalized_text": "[CWE-113 Improper Neutralization of CRLF Sequences in HTTP Headers ('HTTP Response Splitting')](https://cwe.mitre.org/data/definitions/113.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00045",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 45,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-116 Improper Encoding or Escaping of Output](https://cwe.mitre.org/data/definitions/116.html)",
+    "text_hash": "76ef92e2b2c16e71ef898b91e5a410f8e7ad3f36b1fefbdc80268dc48dae9df0",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 163,
+      "end_line": 163
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00045",
+    "normalized_text": "[CWE-116 Improper Encoding or Escaping of Output](https://cwe.mitre.org/data/definitions/116.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00046",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 46,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-138 Improper Neutralization of Special Elements](https://cwe.mitre.org/data/definitions/138.html)",
+    "text_hash": "bc3475eb615eaaf069d8202f6208f79c92d8a24f505e1032bdc72948f16df099",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 165,
+      "end_line": 165
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00046",
+    "normalized_text": "[CWE-138 Improper Neutralization of Special Elements](https://cwe.mitre.org/data/definitions/138.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00047",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 47,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-184 Incomplete List of Disallowed Inputs](https://cwe.mitre.org/data/definitions/184.html)",
+    "text_hash": "ab3bd86ad9440b7eef980dd3a3f54819ab1092576ab8bbfe44b6eafacee40d89",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 167,
+      "end_line": 167
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00047",
+    "normalized_text": "[CWE-184 Incomplete List of Disallowed Inputs](https://cwe.mitre.org/data/definitions/184.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00048",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 48,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-470 Use of Externally-Controlled Input to Select Classes or Code ('Unsafe Reflection')](https://cwe.mitre.org/data/definitions/470.html)",
+    "text_hash": "9b21fb1547f4b5cc0563c5061d34ebf8a65e97b8a8d172064183dde004a0af4d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 169,
+      "end_line": 169
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00048",
+    "normalized_text": "[CWE-470 Use of Externally-Controlled Input to Select Classes or Code ('Unsafe Reflection')](https://cwe.mitre.org/data/definitions/470.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00049",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 49,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-471 Modification of Assumed-Immutable Data (MAID)](https://cwe.mitre.org/data/definitions/471.html)",
+    "text_hash": "bf3ebbe00fc5d846dbfb806bf89cdf0782333bebf3a496a4c8f32cc48c5396e8",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 171,
+      "end_line": 171
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00049",
+    "normalized_text": "[CWE-471 Modification of Assumed-Immutable Data (MAID)](https://cwe.mitre.org/data/definitions/471.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00050",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 50,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-564 SQL Injection: Hibernate](https://cwe.mitre.org/data/definitions/564.html)",
+    "text_hash": "707346bbf87cd4e55d948a20e71896a1c94756763291b2ed70627581c57cd136",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 173,
+      "end_line": 173
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00050",
+    "normalized_text": "[CWE-564 SQL Injection: Hibernate](https://cwe.mitre.org/data/definitions/564.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00051",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 51,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-610 Externally Controlled Reference to a Resource in Another Sphere](https://cwe.mitre.org/data/definitions/610.html)",
+    "text_hash": "17f54dc2d07152ca0131904682aca79cba8b90272e318b58b2ba0a4c17b5f0b8",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 175,
+      "end_line": 175
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00051",
+    "normalized_text": "[CWE-610 Externally Controlled Reference to a Resource in Another Sphere](https://cwe.mitre.org/data/definitions/610.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00052",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 52,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-643 Improper Neutralization of Data within XPath Expressions ('XPath Injection')](https://cwe.mitre.org/data/definitions/643.html)",
+    "text_hash": "1aa315a44fb25fed45421a5056c73d05ff4e37196af38e3c9d46fe5332f1cb17",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 177,
+      "end_line": 177
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00052",
+    "normalized_text": "[CWE-643 Improper Neutralization of Data within XPath Expressions ('XPath Injection')](https://cwe.mitre.org/data/definitions/643.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00053",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 53,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-644 Improper Neutralization of HTTP Headers for Scripting Syntax](https://cwe.mitre.org/data/definitions/644.html)",
+    "text_hash": "6203f98cca644b5a179c19970c0fbbb767d6cca0d395f98cdb36794584527e2f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 179,
+      "end_line": 179
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00053",
+    "normalized_text": "[CWE-644 Improper Neutralization of HTTP Headers for Scripting Syntax](https://cwe.mitre.org/data/definitions/644.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00054",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 54,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-652 Improper Neutralization of Data within XQuery Expressions ('XQuery Injection')](https://cwe.mitre.org/data/definitions/652.html)",
+    "text_hash": "30ec273f0e9465172d8994a2c2e793e1261f645a6fc746a407e3ceeae1677ac6",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 181,
+      "end_line": 181
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00054",
+    "normalized_text": "[CWE-652 Improper Neutralization of Data within XQuery Expressions ('XQuery Injection')](https://cwe.mitre.org/data/definitions/652.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c660dd06c1d6_b00055",
+    "document_id": "doc_owasp_top10_a03_injection",
+    "version_id": "ver_c660dd06c1d6",
+    "block_idx": 55,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-917 Improper Neutralization of Special Elements used in an Expression Language Statement ('Expression Language Injection')](https://cwe.mitre.org/data/definitions/917.html)",
+    "text_hash": "f07932c79fa8c16b5ca5ed8f975649af63a760761ebf337671e0bcfc7cd3f94f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 183,
+      "end_line": 183
+    },
+    "heading_path": [
+      "A03:2021 – Injection",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c660dd06c1d6_b00055",
+    "normalized_text": "[CWE-917 Improper Neutralization of Special Elements used in an Expression Language Statement ('Expression Language Injection')](https://cwe.mitre.org/data/definitions/917.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  }
+]

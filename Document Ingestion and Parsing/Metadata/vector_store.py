@@ -203,7 +203,6 @@ def prepare_and_ingest_to_chroma(
             documents=documents,
             metadatas=metadatas,
         )
-
     exported_records = export_records_from_chroma(
         collection=collection,
     )

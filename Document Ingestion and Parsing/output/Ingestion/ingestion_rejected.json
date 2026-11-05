@@ -1,5 +1,20 @@
 [
   {
+    "version_id": "ver_dup_fb8b6e5c60ed_1c63bf",
+    "document_id": "doc_owasp_css_authorization_cheat_sheet",
+    "version_tag": "NaN",
+    "file_name": "OWASP_CSS-Authorization-Cheat-Sheet.md",
+    "file_path": "Data/OWASP_CSS-Authorization-Cheat-Sheet.md",
+    "file_format": "MARKDOWN",
+    "file_size_bytes": 31021,
+    "sha256_hash": "fb8b6e5c60ed783025beefb5049142fd9da02d01f5c95de18a19d26479737975",
+    "status": "failed",
+    "current_stage": "INGESTION",
+    "is_duplicate": true,
+    "error_message": "Duplicate content with 'OWASP_A01-Authorization-Cheat-Sheet_2021-2025.md' (version_id: 'ver_fb8b6e5c60ed').",
+    "updated_at": "2026-11-04T02:42:19.693919+00:00"
+  },
+  {
     "version_id": "ver_failed_84e87fb6",
     "document_id": "doc_owasp_test",
     "version_tag": "v1.0",
@@ -12,6 +27,6 @@
     "current_stage": "INGESTION",
     "is_duplicate": false,
     "error_message": "File is empty (0 bytes).",
-    "updated_at": "2026-10-17T07:51:56.926592+00:00"
+    "updated_at": "2026-11-04T02:42:19.693919+00:00"
   }
 ]

@@ -1,0 +1,1129 @@
+[
+  {
+    "block_id": "ver_e880e38449f2_b00000",
+    "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+    "version_id": "ver_e880e38449f2",
+    "block_idx": 0,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "# PHP Configuration Cheat Sheet",
+    "text_hash": "968c8169ae3c5d1baf0bb8afbde58e129687128982f9eced292762d16b38d41e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 1,
+      "end_line": 1
+    },
+    "heading_path": [
+      "PHP Configuration Cheat Sheet"
+    ],
+    "heading_level": 1,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_e880e38449f2_b00000",
+    "normalized_text": "# PHP Configuration Cheat Sheet",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_e880e38449f2_b00001",
+    "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+    "version_id": "ver_e880e38449f2",
+    "block_idx": 1,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Introduction",
+    "text_hash": "d753efbab681fa4da82470d9a83b1c202de58f92fd498e77a269c1163bc4714b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 3,
+      "end_line": 3
+    },
+    "heading_path": [
+      "PHP Configuration Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_e880e38449f2_b00001",
+    "normalized_text": "## Introduction",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_e880e38449f2_b00002",
+    "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+    "version_id": "ver_e880e38449f2",
+    "block_idx": 2,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "This page is meant to help those configuring PHP and the web server it is running on to be very secure.",
+    "text_hash": "fa57caf0b61019decedd42b19dcde8e0a575174f607db5cc1b541b9965f6978d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 5,
+      "end_line": 5
+    },
+    "heading_path": [
+      "PHP Configuration Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_e880e38449f2_b00002",
+    "normalized_text": "This page is meant to help those configuring PHP and the web server it is running on to be very secure.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_e880e38449f2_b00003",
+    "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+    "version_id": "ver_e880e38449f2",
+    "block_idx": 3,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Below you will find information on the proper settings for the `php.ini` file and instructions on configuring Apache, Nginx, and Caddy web servers.",
+    "text_hash": "76e1ed5da25aea5f8e8ac5f6e58797a2a41f46ad369ce2e64bc0f64afb89a435",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 7,
+      "end_line": 7
+    },
+    "heading_path": [
+      "PHP Configuration Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_e880e38449f2_b00003",
+    "normalized_text": "Below you will find information on the proper settings for the `php.ini` file and instructions on configuring Apache, Nginx, and Caddy web servers.",
+    "normalization_flags": {
+      "is_code_or_payload": true,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_e880e38449f2_b00004",
+    "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+    "version_id": "ver_e880e38449f2",
+    "block_idx": 4,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "For general PHP codebase security please refer to the two following great guides:",
+    "text_hash": "bdc3723b4cef4ace555cea8a6bb62deecb243ccaaee49c052565f3d9d13e90e3",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 9,
+      "end_line": 9
+    },
+    "heading_path": [
+      "PHP Configuration Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_e880e38449f2_b00004",
+    "normalized_text": "For general PHP codebase security please refer to the two following great guides:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_e880e38449f2_b00005",
+    "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+    "version_id": "ver_e880e38449f2",
+    "block_idx": 5,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- [Paragonie's 2018 PHP Security Guide](https://paragonie.com/blog/2017/12/2018-guide-building-secure-php-software)\n- [Awesome PHP Security](https://github.com/guardrailsio/awesome-php-security)\n",
+    "text_hash": "5028f6a905fe333425219449a0b05e965ce1e58973853f21996a8a41d244310b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 11,
+      "end_line": 13
+    },
+    "heading_path": [
+      "PHP Configuration Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_e880e38449f2_b00005",
+    "normalized_text": "- [Paragonie's 2018 PHP Security Guide](https://paragonie.com/blog/2017/12/2018-guide-building-secure-php-software)\n- [Awesome PHP Security](https://github.com/guardrailsio/awesome-php-security)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_e880e38449f2_b00006",
+    "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+    "version_id": "ver_e880e38449f2",
+    "block_idx": 6,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## PHP Configuration and Deployment",
+    "text_hash": "cadbabda532bc08d2f70df0955ccbacba77a0a01f3a6dbe5bf29af20d6605410",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 14,
+      "end_line": 14
+    },
+    "heading_path": [
+      "PHP Configuration Cheat Sheet",
+      "PHP Configuration and Deployment"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_e880e38449f2_b00006",
+    "normalized_text": "## PHP Configuration and Deployment",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_e880e38449f2_b00007",
+    "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+    "version_id": "ver_e880e38449f2",
+    "block_idx": 7,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### php.ini",
+    "text_hash": "f11e8d719de4f203609759f297335fff6b503323137d5166979cf2e1fbd52a10",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 16,
+      "end_line": 16
+    },
+    "heading_path": [
+      "PHP Configuration Cheat Sheet",
+      "PHP Configuration and Deployment",
+      "php.ini"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_e880e38449f2_b00007",
+    "normalized_text": "### php.ini",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_e880e38449f2_b00008",
+    "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+    "version_id": "ver_e880e38449f2",
+    "block_idx": 8,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Some of following settings need to be adapted to your system, in particular `session.save_path`, `session.cookie_path` (e.g. `/var/www/mysite`), and `session.cookie_domain` (e.g. `ExampleSite.com`).",
+    "text_hash": "36f6b729c6356ce1a0a0851c89b8aca403899a7218e1d90d2208a3f2016f0fd2",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 18,
+      "end_line": 18
+    },
+    "heading_path": [
+      "PHP Configuration Cheat Sheet",
+      "PHP Configuration and Deployment",
+      "php.ini"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_e880e38449f2_b00008",
+    "normalized_text": "Some of following settings need to be adapted to your system, in particular `session.save_path`, `session.cookie_path` (e.g. `/var/www/mysite`), and `session.cookie_domain` (e.g. `ExampleSite.com`).",
+    "normalization_flags": {
+      "is_code_or_payload": true,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_e880e38449f2_b00009",
+    "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+    "version_id": "ver_e880e38449f2",
+    "block_idx": 9,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Run a PHP branch that is listed on the official [Supported Versions](https://www.php.net/supported-versions.php) page and plan upgrades before its security-support end date. Distribution vendors may provide separate extended support, but that does not make the upstream PHP branch supported. Review the [core `php.ini` directives](https://www.php.net/manual/ini.core.php) in the PHP Manual for a complete reference on every value in the `php.ini` configuration file.",
+    "text_hash": "9d184f45affa1203d9f1331a4a7ecd1fb1fb3e0f672e8b68eea0471669714cb4",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 20,
+      "end_line": 20
+    },
+    "heading_path": [
+      "PHP Configuration Cheat Sheet",
+      "PHP Configuration and Deployment",
+      "php.ini"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_e880e38449f2_b00009",
+    "normalized_text": "Run a PHP branch that is listed on the official [Supported Versions](https://www.php.net/supported-versions.php) page and plan upgrades before its security-support end date. Distribution vendors may provide separate extended support, but that does not make the upstream PHP branch supported. Review the [core `php.ini` directives](https://www.php.net/manual/ini.core.php) in the PHP Manual for a complete reference on every value in the `php.ini` configuration file.",
+    "normalization_flags": {
+      "is_code_or_payload": true,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_e880e38449f2_b00010",
+    "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+    "version_id": "ver_e880e38449f2",
+    "block_idx": 10,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "You can find a copy of the following values in a [ready-to-go `php.ini` file here](https://github.com/danehrlich1/very-secure-php-ini).",
+    "text_hash": "d535a27c34ad0ae7e27ac4b4628c9b59c4d77eb7a7cb313c1de71e692c11401c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 22,
+      "end_line": 22
+    },
+    "heading_path": [
+      "PHP Configuration Cheat Sheet",
+      "PHP Configuration and Deployment",
+      "php.ini"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_e880e38449f2_b00010",
+    "normalized_text": "You can find a copy of the following values in a [ready-to-go `php.ini` file here](https://github.com/danehrlich1/very-secure-php-ini).",
+    "normalization_flags": {
+      "is_code_or_payload": true,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_e880e38449f2_b00011",
+    "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+    "version_id": "ver_e880e38449f2",
+    "block_idx": 11,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### PHP error handling",
+    "text_hash": "44a49b87c4a8a3cdd37ed35534b04b1d06ecd08721923745d7325caca607e31b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 24,
+      "end_line": 24
+    },
+    "heading_path": [
+      "PHP Configuration Cheat Sheet",
+      "PHP Configuration and Deployment",
+      "php.ini",
+      "PHP error handling"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_e880e38449f2_b00011",
+    "normalized_text": "#### PHP error handling",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_e880e38449f2_b00012",
+    "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+    "version_id": "ver_e880e38449f2",
+    "block_idx": 12,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```text\nexpose_php              = Off\nerror_reporting         = E_ALL\ndisplay_errors          = Off\ndisplay_startup_errors  = Off\nlog_errors              = On\nerror_log               = /valid_path/PHP-logs/php_error.log\nignore_repeated_errors  = Off\n```",
+    "text_hash": "6af7bb719bd2f6ba7c1d5464294c2e3d9ff17c6190c5e02ae705f9a675746116",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 26,
+      "end_line": 34
+    },
+    "heading_path": [
+      "PHP Configuration Cheat Sheet",
+      "PHP Configuration and Deployment",
+      "php.ini",
+      "PHP error handling"
+    ],
+    "heading_level": null,
+    "code_language": "text",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_e880e38449f2_b00012",
+    "normalized_text": "```text\nexpose_php              = Off\nerror_reporting         = E_ALL\ndisplay_errors          = Off\ndisplay_startup_errors  = Off\nlog_errors              = On\nerror_log               = /valid_path/PHP-logs/php_error.log\nignore_repeated_errors  = Off\n```",
+    "normalization_flags": {
+      "is_code_or_payload": true,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_e880e38449f2_b00013",
+    "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+    "version_id": "ver_e880e38449f2",
+    "block_idx": 13,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Keep in mind that you need to have `display_errors` to `Off` on a production server and it's a good idea to frequently notice the logs.",
+    "text_hash": "b58c07cb6fd8f646f51a9cd709e2979f9dcc6fa2e649d32bb93a84699459a321",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 36,
+      "end_line": 36
+    },
+    "heading_path": [
+      "PHP Configuration Cheat Sheet",
+      "PHP Configuration and Deployment",
+      "php.ini",
+      "PHP error handling"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_e880e38449f2_b00013",
+    "normalized_text": "Keep in mind that you need to have `display_errors` to `Off` on a production server and it's a good idea to frequently notice the logs.",
+    "normalization_flags": {
+      "is_code_or_payload": true,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_e880e38449f2_b00014",
+    "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+    "version_id": "ver_e880e38449f2",
+    "block_idx": 14,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### PHP general settings",
+    "text_hash": "f9b17cb4444e20fcb109dbe715b4786113e338f548fccd9522b18afee1af4309",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 38,
+      "end_line": 38
+    },
+    "heading_path": [
+      "PHP Configuration Cheat Sheet",
+      "PHP Configuration and Deployment",
+      "php.ini",
+      "PHP general settings"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_e880e38449f2_b00014",
+    "normalized_text": "#### PHP general settings",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_e880e38449f2_b00015",
+    "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+    "version_id": "ver_e880e38449f2",
+    "block_idx": 15,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```text\ndoc_root                = /path/DocumentRoot/PHP-scripts/\nopen_basedir            = /path/DocumentRoot/PHP-scripts/\ninclude_path            = /path/PHP-pear/\nextension_dir           = /path/PHP-extensions/\nmime_magic.magicfile    = /path/PHP-magic.mime\nallow_url_fopen         = Off\nallow_url_include       = Off\nvariables_order         = \"GPCS\"\nallow_webdav_methods    = Off\nsession.gc_maxlifetime  = 600\n```",
+    "text_hash": "652357b41e5f7e91f976a0d5708bd585c8451374930be18407a7b64a5c12f943",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 40,
+      "end_line": 51
+    },
+    "heading_path": [
+      "PHP Configuration Cheat Sheet",
+      "PHP Configuration and Deployment",
+      "php.ini",
+      "PHP general settings"
+    ],
+    "heading_level": null,
+    "code_language": "text",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_e880e38449f2_b00015",
+    "normalized_text": "```text\ndoc_root                = /path/DocumentRoot/PHP-scripts/\nopen_basedir            = /path/DocumentRoot/PHP-scripts/\ninclude_path            = /path/PHP-pear/\nextension_dir           = /path/PHP-extensions/\nmime_magic.magicfile    = /path/PHP-magic.mime\nallow_url_fopen         = Off\nallow_url_include       = Off\nvariables_order         = \"GPCS\"\nallow_webdav_methods    = Off\nsession.gc_maxlifetime  = 600\n```",
+    "normalization_flags": {
+      "is_code_or_payload": true,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_e880e38449f2_b00016",
+    "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+    "version_id": "ver_e880e38449f2",
+    "block_idx": 16,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "`allow_url_*` prevents [LFI](https://www.acunetix.com/blog/articles/local-file-inclusion-lfi/)s to be easily escalated to [RFI](https://www.acunetix.com/blog/articles/remote-file-inclusion-rfi/)s.",
+    "text_hash": "6791f293389f4287c934e6693840db49022a1c3fdf8a8853dc403474d26fa817",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 53,
+      "end_line": 53
+    },
+    "heading_path": [
+      "PHP Configuration Cheat Sheet",
+      "PHP Configuration and Deployment",
+      "php.ini",
+      "PHP general settings"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_e880e38449f2_b00016",
+    "normalized_text": "`allow_url_*` prevents [LFI](https://www.acunetix.com/blog/articles/local-file-inclusion-lfi/)s to be easily escalated to [RFI](https://www.acunetix.com/blog/articles/remote-file-inclusion-rfi/)s.",
+    "normalization_flags": {
+      "is_code_or_payload": true,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_e880e38449f2_b00017",
+    "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+    "version_id": "ver_e880e38449f2",
+    "block_idx": 17,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### PHP file upload handling",
+    "text_hash": "0ccf474ffd82606830aad0f0da77abd3dfcac5edcfe0103adb024e87ff4c05e3",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 55,
+      "end_line": 55
+    },
+    "heading_path": [
+      "PHP Configuration Cheat Sheet",
+      "PHP Configuration and Deployment",
+      "php.ini",
+      "PHP file upload handling"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_e880e38449f2_b00017",
+    "normalized_text": "#### PHP file upload handling",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_e880e38449f2_b00018",
+    "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+    "version_id": "ver_e880e38449f2",
+    "block_idx": 18,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```text\nfile_uploads            = On\nupload_tmp_dir          = /path/PHP-uploads/\nupload_max_filesize     = 2M\nmax_file_uploads        = 2\n```",
+    "text_hash": "22f8d344a98d274dd436203135c5a27943b0e6d521e77b140c6ba5071d5276b8",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 57,
+      "end_line": 62
+    },
+    "heading_path": [
+      "PHP Configuration Cheat Sheet",
+      "PHP Configuration and Deployment",
+      "php.ini",
+      "PHP file upload handling"
+    ],
+    "heading_level": null,
+    "code_language": "text",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_e880e38449f2_b00018",
+    "normalized_text": "```text\nfile_uploads            = On\nupload_tmp_dir          = /path/PHP-uploads/\nupload_max_filesize     = 2M\nmax_file_uploads        = 2\n```",
+    "normalization_flags": {
+      "is_code_or_payload": true,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_e880e38449f2_b00019",
+    "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+    "version_id": "ver_e880e38449f2",
+    "block_idx": 19,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "If your application is not using file uploads, and say the only data the user will enter / upload is forms that do not require any document attachments, `file_uploads` should be turned `Off`.",
+    "text_hash": "f3a12b79688c2d4d04b27e907d2d945a46a004608601ec4659a4441fb551ee68",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 64,
+      "end_line": 64
+    },
+    "heading_path": [
+      "PHP Configuration Cheat Sheet",
+      "PHP Configuration and Deployment",
+      "php.ini",
+      "PHP file upload handling"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_e880e38449f2_b00019",
+    "normalized_text": "If your application is not using file uploads, and say the only data the user will enter / upload is forms that do not require any document attachments, `file_uploads` should be turned `Off`.",
+    "normalization_flags": {
+      "is_code_or_payload": true,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_e880e38449f2_b00020",
+    "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+    "version_id": "ver_e880e38449f2",
+    "block_idx": 20,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### PHP executable handling",
+    "text_hash": "eba5b657ba42f5fcc80ef3d402f271bf343136ff30677b900880bfda3e6f7bb9",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 66,
+      "end_line": 66
+    },
+    "heading_path": [
+      "PHP Configuration Cheat Sheet",
+      "PHP Configuration and Deployment",
+      "php.ini",
+      "PHP executable handling"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_e880e38449f2_b00020",
+    "normalized_text": "#### PHP executable handling",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_e880e38449f2_b00021",
+    "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+    "version_id": "ver_e880e38449f2",
+    "block_idx": 21,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```text\nenable_dl               = Off\ndisable_functions       = system, exec, shell_exec, passthru, phpinfo, show_source, highlight_file, popen, proc_open, fopen_with_path, dbmopen, dbase_open, putenv, move_uploaded_file, chdir, mkdir, rmdir, chmod, rename, filepro, filepro_rowcount, filepro_retrieve, posix_mkfifo\ndisable_classes         =\n```",
+    "text_hash": "9bc824a872b24c99910e9ae5b3d7893571bcd12b5a873144e8fd5146226f64a0",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 68,
+      "end_line": 72
+    },
+    "heading_path": [
+      "PHP Configuration Cheat Sheet",
+      "PHP Configuration and Deployment",
+      "php.ini",
+      "PHP executable handling"
+    ],
+    "heading_level": null,
+    "code_language": "text",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_e880e38449f2_b00021",
+    "normalized_text": "```text\nenable_dl               = Off\ndisable_functions       = system, exec, shell_exec, passthru, phpinfo, show_source, highlight_file, popen, proc_open, fopen_with_path, dbmopen, dbase_open, putenv, move_uploaded_file, chdir, mkdir, rmdir, chmod, rename, filepro, filepro_rowcount, filepro_retrieve, posix_mkfifo\ndisable_classes         =\n```",
+    "normalization_flags": {
+      "is_code_or_payload": true,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_e880e38449f2_b00022",
+    "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+    "version_id": "ver_e880e38449f2",
+    "block_idx": 22,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "These are dangerous PHP functions. You should disable all that you don't use.",
+    "text_hash": "afe6bf8f03f6582edc572201c102bb0fd6ad03fc0275a84e24ea536fa5da59ae",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 74,
+      "end_line": 74
+    },
+    "heading_path": [
+      "PHP Configuration Cheat Sheet",
+      "PHP Configuration and Deployment",
+      "php.ini",
+      "PHP executable handling"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_e880e38449f2_b00022",
+    "normalized_text": "These are dangerous PHP functions. You should disable all that you don't use.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_e880e38449f2_b00023",
+    "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+    "version_id": "ver_e880e38449f2",
+    "block_idx": 23,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### PHP session handling",
+    "text_hash": "2a0d54bd9923356a4cb02781b17cef2ed34e8e1af0482a25af85e2bd5c02560b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 76,
+      "end_line": 76
+    },
+    "heading_path": [
+      "PHP Configuration Cheat Sheet",
+      "PHP Configuration and Deployment",
+      "php.ini",
+      "PHP session handling"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_e880e38449f2_b00023",
+    "normalized_text": "#### PHP session handling",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_e880e38449f2_b00024",
+    "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+    "version_id": "ver_e880e38449f2",
+    "block_idx": 24,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Session settings are some of the MOST important values to concentrate on in configuring. It is a good practice to change `session.name` to something new.",
+    "text_hash": "728e1b90db64f28418525960170ac06753e6f2c4395391a80bfdd3ce0b801f28",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 78,
+      "end_line": 78
+    },
+    "heading_path": [
+      "PHP Configuration Cheat Sheet",
+      "PHP Configuration and Deployment",
+      "php.ini",
+      "PHP session handling"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_e880e38449f2_b00024",
+    "normalized_text": "Session settings are some of the MOST important values to concentrate on in configuring. It is a good practice to change `session.name` to something new.",
+    "normalization_flags": {
+      "is_code_or_payload": true,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_e880e38449f2_b00025",
+    "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+    "version_id": "ver_e880e38449f2",
+    "block_idx": 25,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```text\n session.save_path                = /path/PHP-session/\n session.name                     = myPHPSESSID\n session.auto_start               = Off\n session.use_trans_sid            = 0\n session.cookie_domain            = full.qualified.domain.name\n #session.cookie_path             = /application/path/\n session.use_strict_mode          = 1\n session.use_cookies              = 1\n session.use_only_cookies         = 1\n session.cookie_lifetime          = 14400 # 4 hours\n session.cookie_secure            = 1\n session.cookie_httponly          = 1\n session.cookie_samesite          = Strict\n session.cache_expire             = 30\n session.sid_length               = 256\n session.sid_bits_per_character   = 6\n```",
+    "text_hash": "64f61a6638fccb53fcd2c84dbd927c9ef9f4fa3760556cbf28e7571e5e326aff",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 80,
+      "end_line": 97
+    },
+    "heading_path": [
+      "PHP Configuration Cheat Sheet",
+      "PHP Configuration and Deployment",
+      "php.ini",
+      "PHP session handling"
+    ],
+    "heading_level": null,
+    "code_language": "text",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_e880e38449f2_b00025",
+    "normalized_text": "```text\n session.save_path                = /path/PHP-session/\n session.name                     = myPHPSESSID\n session.auto_start               = Off\n session.use_trans_sid            = 0\n session.cookie_domain            = full.qualified.domain.name\n #session.cookie_path             = /application/path/\n session.use_strict_mode          = 1\n session.use_cookies              = 1\n session.use_only_cookies         = 1\n session.cookie_lifetime          = 14400 # 4 hours\n session.cookie_secure            = 1\n session.cookie_httponly          = 1\n session.cookie_samesite          = Strict\n session.cache_expire             = 30\n session.sid_length               = 256\n session.sid_bits_per_character   = 6\n```",
+    "normalization_flags": {
+      "is_code_or_payload": true,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_e880e38449f2_b00026",
+    "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+    "version_id": "ver_e880e38449f2",
+    "block_idx": 26,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Some more security paranoid checks",
+    "text_hash": "7e8a510e5dcfdeb3401336e896250cea05cc3d79e233a03857720705de1b7a0a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 99,
+      "end_line": 99
+    },
+    "heading_path": [
+      "PHP Configuration Cheat Sheet",
+      "PHP Configuration and Deployment",
+      "php.ini",
+      "Some more security paranoid checks"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_e880e38449f2_b00026",
+    "normalized_text": "#### Some more security paranoid checks",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_e880e38449f2_b00027",
+    "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+    "version_id": "ver_e880e38449f2",
+    "block_idx": 27,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```text\nsession.referer_check   = /application/path\nmemory_limit            = 50M\npost_max_size           = 20M\nmax_execution_time      = 60\nreport_memleaks         = On\nhtml_errors             = Off\nzend.exception_ignore_args = On\n```",
+    "text_hash": "dd8876efb78b4f66e1d4b68755d1f331d3d2df785ab3d5eff76d90c107430376",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 101,
+      "end_line": 109
+    },
+    "heading_path": [
+      "PHP Configuration Cheat Sheet",
+      "PHP Configuration and Deployment",
+      "php.ini",
+      "Some more security paranoid checks"
+    ],
+    "heading_level": null,
+    "code_language": "text",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_e880e38449f2_b00027",
+    "normalized_text": "```text\nsession.referer_check   = /application/path\nmemory_limit            = 50M\npost_max_size           = 20M\nmax_execution_time      = 60\nreport_memleaks         = On\nhtml_errors             = Off\nzend.exception_ignore_args = On\n```",
+    "normalization_flags": {
+      "is_code_or_payload": true,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_e880e38449f2_b00028",
+    "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+    "version_id": "ver_e880e38449f2",
+    "block_idx": 28,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Snuffleupagus",
+    "text_hash": "bebca1edef77272025d3f338ff04953859e884a2772080e1eead781d8e63742d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 111,
+      "end_line": 111
+    },
+    "heading_path": [
+      "PHP Configuration Cheat Sheet",
+      "PHP Configuration and Deployment",
+      "Snuffleupagus"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_e880e38449f2_b00028",
+    "normalized_text": "### Snuffleupagus",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_e880e38449f2_b00029",
+    "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+    "version_id": "ver_e880e38449f2",
+    "block_idx": 29,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[Snuffleupagus](https://snuffleupagus.readthedocs.io) is the spiritual\ndescendent of Suhosin for PHP 7 and onwards, with [modern\nfeatures](https://snuffleupagus.readthedocs.io/features.html). It's considered\nstable, and is usable in production.",
+    "text_hash": "bda5b2809c99f35b82fee1e97f0dce2734609d94e4793022a8fde27cb1a6a81f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 113,
+      "end_line": 116
+    },
+    "heading_path": [
+      "PHP Configuration Cheat Sheet",
+      "PHP Configuration and Deployment",
+      "Snuffleupagus"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_e880e38449f2_b00029",
+    "normalized_text": "[Snuffleupagus](https://snuffleupagus.readthedocs.io) is the spiritual\ndescendent of Suhosin for PHP 7 and onwards, with [modern\nfeatures](https://snuffleupagus.readthedocs.io/features.html). It's considered\nstable, and is usable in production.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_e880e38449f2_b00030",
+    "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+    "version_id": "ver_e880e38449f2",
+    "block_idx": 30,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## References",
+    "text_hash": "65b72d86eeeb214ab8ca5fd24cb7cd7773e58084e95b670040df03e21e8c6fa7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 118,
+      "end_line": 118
+    },
+    "heading_path": [
+      "PHP Configuration Cheat Sheet",
+      "References"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_e880e38449f2_b00030",
+    "normalized_text": "## References",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_e880e38449f2_b00031",
+    "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+    "version_id": "ver_e880e38449f2",
+    "block_idx": 31,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- [PHP Manual: Core php.ini Directives](https://www.php.net/manual/ini.core.php)\n- [Snuffleupagus: Security Features](https://snuffleupagus.readthedocs.io/features.html)",
+    "text_hash": "120fec3b77861ee6fbf36f488ec0b9875548904817c5da65f0f71e483f17a025",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 120,
+      "end_line": 121
+    },
+    "heading_path": [
+      "PHP Configuration Cheat Sheet",
+      "References"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_e880e38449f2_b00031",
+    "normalized_text": "- [PHP Manual: Core php.ini Directives](https://www.php.net/manual/ini.core.php)\n- [Snuffleupagus: Security Features](https://snuffleupagus.readthedocs.io/features.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  }
+]

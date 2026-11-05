@@ -1,0 +1,1438 @@
+[
+  {
+    "block_id": "ver_d449b1cc14cf_b00000",
+    "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+    "version_id": "ver_d449b1cc14cf",
+    "block_idx": 0,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "# Query Parameterization Cheat Sheet",
+    "text_hash": "edcbd47e9365e3e7c21f6a2d0a701c6f0b58f85d0223ca67037b6d01a436d5ab",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 1,
+      "end_line": 1
+    },
+    "heading_path": [
+      "Query Parameterization Cheat Sheet"
+    ],
+    "heading_level": 1,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_d449b1cc14cf_b00001",
+    "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+    "version_id": "ver_d449b1cc14cf",
+    "block_idx": 1,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Introduction",
+    "text_hash": "d753efbab681fa4da82470d9a83b1c202de58f92fd498e77a269c1163bc4714b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 3,
+      "end_line": 3
+    },
+    "heading_path": [
+      "Query Parameterization Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_d449b1cc14cf_b00002",
+    "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+    "version_id": "ver_d449b1cc14cf",
+    "block_idx": 2,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[SQL Injection](https://owasp.org/www-community/attacks/SQL_Injection) is one of the most dangerous web vulnerabilities. As of the [OWASP Top 10:2025](https://owasp.org/Top10/2025/A05_2025-Injection/), it is categorized under A05:2025-Injection.",
+    "text_hash": "8b9dab4499befb3c0f13ccaa4badde5267f2750f2df438fc988e787a0fd1f459",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 5,
+      "end_line": 5
+    },
+    "heading_path": [
+      "Query Parameterization Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_d449b1cc14cf_b00003",
+    "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+    "version_id": "ver_d449b1cc14cf",
+    "block_idx": 3,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "It represents a serious threat because SQL Injection allows evil attacker code to change the structure of a web application's SQL statement in a way that can steal data, modify data, or potentially facilitate command injection to the underlying OS.",
+    "text_hash": "a510741e3a1a3e007ccc03897937594ba4c8d6ff2f3601794300e5970e16d5ac",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 7,
+      "end_line": 7
+    },
+    "heading_path": [
+      "Query Parameterization Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_d449b1cc14cf_b00004",
+    "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+    "version_id": "ver_d449b1cc14cf",
+    "block_idx": 4,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "This cheat sheet is a derivative work of the [SQL Injection Prevention Cheat Sheet](SQL_Injection_Prevention_Cheat_Sheet.md).",
+    "text_hash": "9723fad6e9d818aeab021521cebbca58bf97eb694ef8902e6934911a4fbf75bd",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 9,
+      "end_line": 9
+    },
+    "heading_path": [
+      "Query Parameterization Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_d449b1cc14cf_b00005",
+    "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+    "version_id": "ver_d449b1cc14cf",
+    "block_idx": 5,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Parameterized Query Examples",
+    "text_hash": "9c3aabf504a4e51de7a247ca4e381004f03853d25545502717fb8241fde7c2e7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 11,
+      "end_line": 11
+    },
+    "heading_path": [
+      "Query Parameterization Cheat Sheet",
+      "Parameterized Query Examples"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_d449b1cc14cf_b00006",
+    "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+    "version_id": "ver_d449b1cc14cf",
+    "block_idx": 6,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "SQL Injection is best prevented through the use of [*parameterized queries*](SQL_Injection_Prevention_Cheat_Sheet.md). The following chart demonstrates, with real-world code samples, how to build parameterized queries in most of the common web languages. The purpose of these code samples is to demonstrate to the web developer how to avoid SQL Injection when building database queries within a web application.",
+    "text_hash": "077ef19117c678678b137b65e7c6bcdc83664fd3a8ef04fd2c99bc64f6b45b5c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 13,
+      "end_line": 13
+    },
+    "heading_path": [
+      "Query Parameterization Cheat Sheet",
+      "Parameterized Query Examples"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_d449b1cc14cf_b00007",
+    "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+    "version_id": "ver_d449b1cc14cf",
+    "block_idx": 7,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Please note, many client side frameworks and libraries offer client side query parameterization. These libraries often just build queries with string concatenation before sending raw queries to a server. Please ensure that query parameterization is done server-side!",
+    "text_hash": "35a03d2664190f2529fdae79bfdaa6be7acaa0b8694f8f93cc6d8b41b71babb0",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 15,
+      "end_line": 15
+    },
+    "heading_path": [
+      "Query Parameterization Cheat Sheet",
+      "Parameterized Query Examples"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_d449b1cc14cf_b00008",
+    "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+    "version_id": "ver_d449b1cc14cf",
+    "block_idx": 8,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Prepared Statement Examples",
+    "text_hash": "28d5eb145da85d8a110e665413190a20c0d2d951d18c5886e2298a4abe729693",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 17,
+      "end_line": 17
+    },
+    "heading_path": [
+      "Query Parameterization Cheat Sheet",
+      "Parameterized Query Examples",
+      "Prepared Statement Examples"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_d449b1cc14cf_b00009",
+    "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+    "version_id": "ver_d449b1cc14cf",
+    "block_idx": 9,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Using Java built-in feature",
+    "text_hash": "9729fd33f45a069951201cfebf313c39a53c2f1ae08ad8df7722e789fe3b5269",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 19,
+      "end_line": 19
+    },
+    "heading_path": [
+      "Query Parameterization Cheat Sheet",
+      "Parameterized Query Examples",
+      "Prepared Statement Examples",
+      "Using Java built-in feature"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_d449b1cc14cf_b00010",
+    "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+    "version_id": "ver_d449b1cc14cf",
+    "block_idx": 10,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```java\nString custname = request.getParameter(\"customerName\");\nString query = \"SELECT account_balance FROM user_data WHERE user_name = ? \";  \nPreparedStatement pstmt = connection.prepareStatement( query );\npstmt.setString( 1, custname);\nResultSet results = pstmt.executeQuery( );\n```",
+    "text_hash": "77f2c8095c82a1602edecf996ab755e96fa8fb3998b5bc576d5b93616977e711",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 21,
+      "end_line": 27
+    },
+    "heading_path": [
+      "Query Parameterization Cheat Sheet",
+      "Parameterized Query Examples",
+      "Prepared Statement Examples",
+      "Using Java built-in feature"
+    ],
+    "heading_level": null,
+    "code_language": "java",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_d449b1cc14cf_b00011",
+    "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+    "version_id": "ver_d449b1cc14cf",
+    "block_idx": 11,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Using Java with JPA/Hibernate",
+    "text_hash": "cf7105793a6c9050d463a8c9314e97585f9a2e064f0fb3a1557ea67d36dd5a8a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 29,
+      "end_line": 29
+    },
+    "heading_path": [
+      "Query Parameterization Cheat Sheet",
+      "Parameterized Query Examples",
+      "Prepared Statement Examples",
+      "Using Java with JPA/Hibernate"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_d449b1cc14cf_b00012",
+    "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+    "version_id": "ver_d449b1cc14cf",
+    "block_idx": 12,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```java\n// HQL\n@Entity // declare as entity;\n@NamedQuery(\n name=\"findByDescription\",\n query=\"FROM Inventory i WHERE i.productDescription = :productDescription\"\n)\npublic class Inventory implements Serializable {\n @Id\n private long id;\n private String productDescription;\n}\n\n// Use case\n// This should REALLY be validated too\nString userSuppliedParameter = request.getParameter(\"Product-Description\");\n// Perform input validation to detect attacks\nList<Inventory> list =\n session.getNamedQuery(\"findByDescription\")\n .setParameter(\"productDescription\", userSuppliedParameter).list();\n\n// Criteria API\n// This should REALLY be validated too\nString userSuppliedParameter = request.getParameter(\"Product-Description\");\n// Perform input validation to detect attacks\nInventory inv = (Inventory) session.createCriteria(Inventory.class).add\n(Restrictions.eq(\"productDescription\", userSuppliedParameter)).uniqueResult();\n```",
+    "text_hash": "af59942a50918382b9b3685ff67058a7cd84aaf21e9e71ebf16ee3cacdbcccf8",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 31,
+      "end_line": 58
+    },
+    "heading_path": [
+      "Query Parameterization Cheat Sheet",
+      "Parameterized Query Examples",
+      "Prepared Statement Examples",
+      "Using Java with JPA/Hibernate"
+    ],
+    "heading_level": null,
+    "code_language": "java",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_d449b1cc14cf_b00013",
+    "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+    "version_id": "ver_d449b1cc14cf",
+    "block_idx": 13,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Using .NET built-in feature",
+    "text_hash": "efed26a3937ba94421382f84d2b87bdb8e3de3dcb4b937626bda9674c9bf2ca9",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 60,
+      "end_line": 60
+    },
+    "heading_path": [
+      "Query Parameterization Cheat Sheet",
+      "Parameterized Query Examples",
+      "Prepared Statement Examples",
+      "Using .NET built-in feature"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_d449b1cc14cf_b00014",
+    "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+    "version_id": "ver_d449b1cc14cf",
+    "block_idx": 14,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```csharp\nString query = \"SELECT account_balance FROM user_data WHERE user_name = ?\";\ntry {\n   OleDbCommand command = new OleDbCommand(query, connection);\n   command.Parameters.Add(new OleDbParameter(\"customerName\", CustomerName.Text));\n   OleDbDataReader reader = command.ExecuteReader();\n   // …\n} catch (OleDbException se) {\n   // error handling\n}\n```",
+    "text_hash": "0bb421048b7a3ffd6e88a3bb57d59d504745e801de162fc31315863ef1a53880",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 62,
+      "end_line": 72
+    },
+    "heading_path": [
+      "Query Parameterization Cheat Sheet",
+      "Parameterized Query Examples",
+      "Prepared Statement Examples",
+      "Using .NET built-in feature"
+    ],
+    "heading_level": null,
+    "code_language": "csharp",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_d449b1cc14cf_b00015",
+    "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+    "version_id": "ver_d449b1cc14cf",
+    "block_idx": 15,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Using ASP .NET built-in feature",
+    "text_hash": "1cdee5a21100dbce2dfd743493208de3d259abdd20bdd907f947861ad9c1ef19",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 74,
+      "end_line": 74
+    },
+    "heading_path": [
+      "Query Parameterization Cheat Sheet",
+      "Parameterized Query Examples",
+      "Prepared Statement Examples",
+      "Using ASP .NET built-in feature"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_d449b1cc14cf_b00016",
+    "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+    "version_id": "ver_d449b1cc14cf",
+    "block_idx": 16,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```csharp\nstring sql = \"SELECT * FROM Customers WHERE CustomerId = @CustomerId\";\nSqlCommand command = new SqlCommand(sql);\ncommand.Parameters.Add(new SqlParameter(\"@CustomerId\", System.Data.SqlDbType.Int));\ncommand.Parameters[\"@CustomerId\"].Value = 1;\n```",
+    "text_hash": "3bb621a33470fa7d0c5d6b80a2269b8408a8db6ee870371c71ecb87de87b3d9d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 76,
+      "end_line": 81
+    },
+    "heading_path": [
+      "Query Parameterization Cheat Sheet",
+      "Parameterized Query Examples",
+      "Prepared Statement Examples",
+      "Using ASP .NET built-in feature"
+    ],
+    "heading_level": null,
+    "code_language": "csharp",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_d449b1cc14cf_b00017",
+    "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+    "version_id": "ver_d449b1cc14cf",
+    "block_idx": 17,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Using Ruby with ActiveRecord",
+    "text_hash": "cec0a74b87d6b346bf994f2dff753b751e53d840c4943de8d7e5ef74e99c8b8a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 83,
+      "end_line": 83
+    },
+    "heading_path": [
+      "Query Parameterization Cheat Sheet",
+      "Parameterized Query Examples",
+      "Prepared Statement Examples",
+      "Using Ruby with ActiveRecord"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_d449b1cc14cf_b00018",
+    "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+    "version_id": "ver_d449b1cc14cf",
+    "block_idx": 18,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```ruby\n## Create\nProject.create!(:name => 'owasp')\n## Read\nProject.all(:conditions => \"name = ?\", name)\nProject.all(:conditions => { :name => name })\nProject.where(\"name = :name\", :name => name)\n## Update\nproject.update_attributes(:name => 'owasp')\n## Delete\nProject.delete(:name => 'name')\n```",
+    "text_hash": "a5d6b6fbb52b003eee6634f38d69f25806de7cc3f76f591ff9b0747ba67b30de",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 85,
+      "end_line": 96
+    },
+    "heading_path": [
+      "Query Parameterization Cheat Sheet",
+      "Parameterized Query Examples",
+      "Prepared Statement Examples",
+      "Using Ruby with ActiveRecord"
+    ],
+    "heading_level": null,
+    "code_language": "ruby",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_d449b1cc14cf_b00019",
+    "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+    "version_id": "ver_d449b1cc14cf",
+    "block_idx": 19,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Using Ruby built-in feature",
+    "text_hash": "57b52cde0535986151e079a5e6d5c73a9543968c96f568c2a87d1eb700c313ec",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 98,
+      "end_line": 98
+    },
+    "heading_path": [
+      "Query Parameterization Cheat Sheet",
+      "Parameterized Query Examples",
+      "Prepared Statement Examples",
+      "Using Ruby built-in feature"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_d449b1cc14cf_b00020",
+    "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+    "version_id": "ver_d449b1cc14cf",
+    "block_idx": 20,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```ruby\ninsert_new_user = db.prepare \"INSERT INTO users (name, age, gender) VALUES (?, ? ,?)\"\ninsert_new_user.execute 'aizatto', '20', 'male'\n```",
+    "text_hash": "e4fd8a8416505f2af3d53e5c566b109f3753ade0038318876ec0d391ca099389",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 100,
+      "end_line": 103
+    },
+    "heading_path": [
+      "Query Parameterization Cheat Sheet",
+      "Parameterized Query Examples",
+      "Prepared Statement Examples",
+      "Using Ruby built-in feature"
+    ],
+    "heading_level": null,
+    "code_language": "ruby",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_d449b1cc14cf_b00021",
+    "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+    "version_id": "ver_d449b1cc14cf",
+    "block_idx": 21,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Using PHP with PHP Data Objects",
+    "text_hash": "121a7ac1cafd4155ded205797e4ce4b7312560cb336adf5abbf16891b044da0e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 105,
+      "end_line": 105
+    },
+    "heading_path": [
+      "Query Parameterization Cheat Sheet",
+      "Parameterized Query Examples",
+      "Prepared Statement Examples",
+      "Using PHP with PHP Data Objects"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_d449b1cc14cf_b00022",
+    "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+    "version_id": "ver_d449b1cc14cf",
+    "block_idx": 22,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```php\n$stmt = $dbh->prepare(\"INSERT INTO REGISTRY (name, value) VALUES (:name, :value)\");\n$stmt->bindParam(':name', $name);\n$stmt->bindParam(':value', $value);\n```",
+    "text_hash": "76fba92243073be1693d192fb5fbfb0168282829fd75c0a1205b77e949d8b8b4",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 107,
+      "end_line": 111
+    },
+    "heading_path": [
+      "Query Parameterization Cheat Sheet",
+      "Parameterized Query Examples",
+      "Prepared Statement Examples",
+      "Using PHP with PHP Data Objects"
+    ],
+    "heading_level": null,
+    "code_language": "php",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_d449b1cc14cf_b00023",
+    "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+    "version_id": "ver_d449b1cc14cf",
+    "block_idx": 23,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Using Cold Fusion built-in feature",
+    "text_hash": "3e9b0b92d60098f6c9302912ed9b0e28396736b382f8a03ad74f777059ec4969",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 113,
+      "end_line": 113
+    },
+    "heading_path": [
+      "Query Parameterization Cheat Sheet",
+      "Parameterized Query Examples",
+      "Prepared Statement Examples",
+      "Using Cold Fusion built-in feature"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_d449b1cc14cf_b00024",
+    "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+    "version_id": "ver_d449b1cc14cf",
+    "block_idx": 24,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```coldfusion\n<cfquery name = \"getFirst\" dataSource = \"cfsnippets\">\n    SELECT * FROM #strDatabasePrefix#_courses WHERE intCourseID =\n    <cfqueryparam value = #intCourseID# CFSQLType = \"CF_SQL_INTEGER\">\n</cfquery>\n```",
+    "text_hash": "5e311ceaedeec53d493eddcc04e56ffd402edc3b8786e30e24c345da50fc996f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 115,
+      "end_line": 120
+    },
+    "heading_path": [
+      "Query Parameterization Cheat Sheet",
+      "Parameterized Query Examples",
+      "Prepared Statement Examples",
+      "Using Cold Fusion built-in feature"
+    ],
+    "heading_level": null,
+    "code_language": "coldfusion",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_d449b1cc14cf_b00025",
+    "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+    "version_id": "ver_d449b1cc14cf",
+    "block_idx": 25,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Using PERL with Database Independent Interface",
+    "text_hash": "b8279387f9f9733f4eb01afa290fd69c956c3dee12246b075c3eaac75d871c11",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 122,
+      "end_line": 122
+    },
+    "heading_path": [
+      "Query Parameterization Cheat Sheet",
+      "Parameterized Query Examples",
+      "Prepared Statement Examples",
+      "Using PERL with Database Independent Interface"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_d449b1cc14cf_b00026",
+    "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+    "version_id": "ver_d449b1cc14cf",
+    "block_idx": 26,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```perl\nmy $sql = \"INSERT INTO foo (bar, baz) VALUES ( ?, ? )\";\nmy $sth = $dbh->prepare( $sql );\n$sth->execute( $bar, $baz );\n```",
+    "text_hash": "c1d69fa923848d930114a712fc288baadcc7d49211b289ea5020aad2712497d5",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 124,
+      "end_line": 128
+    },
+    "heading_path": [
+      "Query Parameterization Cheat Sheet",
+      "Parameterized Query Examples",
+      "Prepared Statement Examples",
+      "Using PERL with Database Independent Interface"
+    ],
+    "heading_level": null,
+    "code_language": "perl",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_d449b1cc14cf_b00027",
+    "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+    "version_id": "ver_d449b1cc14cf",
+    "block_idx": 27,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Using Rust with SQLx",
+    "text_hash": "9e050de055f332ee71508253629b5e32d1ad52d0132e244329196a4ee4c0ada7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 130,
+      "end_line": 130
+    },
+    "heading_path": [
+      "Query Parameterization Cheat Sheet",
+      "Parameterized Query Examples",
+      "Prepared Statement Examples",
+      "Using Rust with SQLx"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_d449b1cc14cf_b00028",
+    "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+    "version_id": "ver_d449b1cc14cf",
+    "block_idx": 28,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "<!-- contributed by GeekMasher -->",
+    "text_hash": "e4c219221853427395a9108ccb0093587a251290427b30eee9a70174c466a34d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 131,
+      "end_line": 131
+    },
+    "heading_path": [
+      "Query Parameterization Cheat Sheet",
+      "Parameterized Query Examples",
+      "Prepared Statement Examples",
+      "Using Rust with SQLx"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_d449b1cc14cf_b00029",
+    "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+    "version_id": "ver_d449b1cc14cf",
+    "block_idx": 29,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```rust\n// Input from CLI args but could be anything\nlet username = std::env::args().last().unwrap();\n\n// Using build-in macros (compile time checks)\nlet users = sqlx::query_as!(\n        User,\n        \"SELECT * FROM users WHERE name = ?\",\n        username\n    )\n    .fetch_all(&pool)\n    .await \n    .unwrap();\n\n// Using built-in functions\nlet users: Vec<User> = sqlx::query_as::<_, User>(\n        \"SELECT * FROM users WHERE name = ?\"\n    )\n    .bind(&username)\n    .fetch_all(&pool)\n    .await\n    .unwrap();\n```",
+    "text_hash": "b153862d9642279de9d6783d792b5509f78cf07b690896c9641990fc5abbf78a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 133,
+      "end_line": 155
+    },
+    "heading_path": [
+      "Query Parameterization Cheat Sheet",
+      "Parameterized Query Examples",
+      "Prepared Statement Examples",
+      "Using Rust with SQLx"
+    ],
+    "heading_level": null,
+    "code_language": "rust",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_d449b1cc14cf_b00030",
+    "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+    "version_id": "ver_d449b1cc14cf",
+    "block_idx": 30,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Stored Procedure Examples",
+    "text_hash": "963d579d2309f7f50e47d7f24e4a5028cc8a7603ff4ecba3d1acc203734a1541",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 157,
+      "end_line": 157
+    },
+    "heading_path": [
+      "Query Parameterization Cheat Sheet",
+      "Parameterized Query Examples",
+      "Stored Procedure Examples"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_d449b1cc14cf_b00031",
+    "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+    "version_id": "ver_d449b1cc14cf",
+    "block_idx": 31,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The SQL you write in your web application isn't the only place that SQL injection vulnerabilities can be introduced. If you are using Stored Procedures, and you are dynamically constructing SQL inside them, you can also introduce SQL injection vulnerabilities.",
+    "text_hash": "52bd3e24b7f092242423bdac2067452612bce7364c077051a797ff29a3df86aa",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 159,
+      "end_line": 159
+    },
+    "heading_path": [
+      "Query Parameterization Cheat Sheet",
+      "Parameterized Query Examples",
+      "Stored Procedure Examples"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_d449b1cc14cf_b00032",
+    "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+    "version_id": "ver_d449b1cc14cf",
+    "block_idx": 32,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Dynamic SQL can be parameterized using bind variables, to ensure the dynamically constructed SQL is secure.",
+    "text_hash": "b12b73f7f02f84eef16ce142d6f6e3d3f8f0e03e3675173d283d32b4232329db",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 161,
+      "end_line": 161
+    },
+    "heading_path": [
+      "Query Parameterization Cheat Sheet",
+      "Parameterized Query Examples",
+      "Stored Procedure Examples"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_d449b1cc14cf_b00033",
+    "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+    "version_id": "ver_d449b1cc14cf",
+    "block_idx": 33,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Here are some examples of using bind variables in stored procedures in different databases.",
+    "text_hash": "acff78f32c603e214a3021680397003fc14280442b1db76d8a39579a5b61026c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 163,
+      "end_line": 163
+    },
+    "heading_path": [
+      "Query Parameterization Cheat Sheet",
+      "Parameterized Query Examples",
+      "Stored Procedure Examples"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_d449b1cc14cf_b00034",
+    "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+    "version_id": "ver_d449b1cc14cf",
+    "block_idx": 34,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Oracle using PL/SQL",
+    "text_hash": "954eae8c0ee54f1eac92b674041fe44050536f9efddadfe29b3b610df7c90ebc",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 165,
+      "end_line": 165
+    },
+    "heading_path": [
+      "Query Parameterization Cheat Sheet",
+      "Parameterized Query Examples",
+      "Stored Procedure Examples",
+      "Oracle using PL/SQL"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_d449b1cc14cf_b00035",
+    "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+    "version_id": "ver_d449b1cc14cf",
+    "block_idx": 35,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "##### Normal Stored Procedure",
+    "text_hash": "15e103a0771dd6d16fb7c97647240a1d99bf9495dd2f4280f130acb96df5407c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 167,
+      "end_line": 167
+    },
+    "heading_path": [
+      "Query Parameterization Cheat Sheet",
+      "Parameterized Query Examples",
+      "Stored Procedure Examples",
+      "Oracle using PL/SQL",
+      "Normal Stored Procedure"
+    ],
+    "heading_level": 5,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_d449b1cc14cf_b00036",
+    "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+    "version_id": "ver_d449b1cc14cf",
+    "block_idx": 36,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "No dynamic SQL being created. Parameters passed in to stored procedures are naturally bound to their location within the query without anything special being required:",
+    "text_hash": "5f5f255e5569f356a4c6190c1c09d219a9f1320ccf234cf139803660f53e1341",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 169,
+      "end_line": 169
+    },
+    "heading_path": [
+      "Query Parameterization Cheat Sheet",
+      "Parameterized Query Examples",
+      "Stored Procedure Examples",
+      "Oracle using PL/SQL",
+      "Normal Stored Procedure"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_d449b1cc14cf_b00037",
+    "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+    "version_id": "ver_d449b1cc14cf",
+    "block_idx": 37,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```sql\nPROCEDURE SafeGetBalanceQuery(UserID varchar, Dept varchar) AS BEGIN\n   SELECT balance FROM accounts_table WHERE user_ID = UserID AND department = Dept;\nEND;\n```",
+    "text_hash": "34046739c6afc1c5587cd67bb1eb45ab1124f43102a7a0d6f3684320caa79d81",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 171,
+      "end_line": 175
+    },
+    "heading_path": [
+      "Query Parameterization Cheat Sheet",
+      "Parameterized Query Examples",
+      "Stored Procedure Examples",
+      "Oracle using PL/SQL",
+      "Normal Stored Procedure"
+    ],
+    "heading_level": null,
+    "code_language": "sql",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_d449b1cc14cf_b00038",
+    "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+    "version_id": "ver_d449b1cc14cf",
+    "block_idx": 38,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "##### Stored Procedure Using Bind Variables in SQL Run with EXECUTE",
+    "text_hash": "58f661b8b03c2d1eb1c6bbc5d5a6823893cfe429572e14c26151979f400368cd",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 177,
+      "end_line": 177
+    },
+    "heading_path": [
+      "Query Parameterization Cheat Sheet",
+      "Parameterized Query Examples",
+      "Stored Procedure Examples",
+      "Oracle using PL/SQL",
+      "Stored Procedure Using Bind Variables in SQL Run with EXECUTE"
+    ],
+    "heading_level": 5,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_d449b1cc14cf_b00039",
+    "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+    "version_id": "ver_d449b1cc14cf",
+    "block_idx": 39,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Bind variables are used to tell the database that the inputs to this dynamic SQL are 'data' and not possibly code:",
+    "text_hash": "738a5dddf8ec879a89cfa833423e2222080101b34b11be41273b7413778f8fac",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 179,
+      "end_line": 179
+    },
+    "heading_path": [
+      "Query Parameterization Cheat Sheet",
+      "Parameterized Query Examples",
+      "Stored Procedure Examples",
+      "Oracle using PL/SQL",
+      "Stored Procedure Using Bind Variables in SQL Run with EXECUTE"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_d449b1cc14cf_b00040",
+    "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+    "version_id": "ver_d449b1cc14cf",
+    "block_idx": 40,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```sql\nPROCEDURE AnotherSafeGetBalanceQuery(UserID varchar, Dept varchar)\n          AS stmt VARCHAR(400); result NUMBER;\nBEGIN\n   stmt := 'SELECT balance FROM accounts_table WHERE user_ID = :1\n            AND department = :2';\n   EXECUTE IMMEDIATE stmt INTO result USING UserID, Dept;\n   RETURN result;\nEND;\n```",
+    "text_hash": "91e5ded19c5b6d702f9573b2dc6961c9b0327be8e9f63d9795a42d2389420e16",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 181,
+      "end_line": 190
+    },
+    "heading_path": [
+      "Query Parameterization Cheat Sheet",
+      "Parameterized Query Examples",
+      "Stored Procedure Examples",
+      "Oracle using PL/SQL",
+      "Stored Procedure Using Bind Variables in SQL Run with EXECUTE"
+    ],
+    "heading_level": null,
+    "code_language": "sql",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_d449b1cc14cf_b00041",
+    "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+    "version_id": "ver_d449b1cc14cf",
+    "block_idx": 41,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### SQL Server using Transact-SQL",
+    "text_hash": "e2e34ae31a431fa1dd717042ce9e1ea62d3bbd1f28546fa88ff664288a9fc861",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 192,
+      "end_line": 192
+    },
+    "heading_path": [
+      "Query Parameterization Cheat Sheet",
+      "Parameterized Query Examples",
+      "Stored Procedure Examples",
+      "SQL Server using Transact-SQL"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_d449b1cc14cf_b00042",
+    "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+    "version_id": "ver_d449b1cc14cf",
+    "block_idx": 42,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "##### Normal Stored Procedure",
+    "text_hash": "15e103a0771dd6d16fb7c97647240a1d99bf9495dd2f4280f130acb96df5407c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 194,
+      "end_line": 194
+    },
+    "heading_path": [
+      "Query Parameterization Cheat Sheet",
+      "Parameterized Query Examples",
+      "Stored Procedure Examples",
+      "SQL Server using Transact-SQL",
+      "Normal Stored Procedure"
+    ],
+    "heading_level": 5,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_d449b1cc14cf_b00043",
+    "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+    "version_id": "ver_d449b1cc14cf",
+    "block_idx": 43,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "No dynamic SQL being created. Parameters passed in to stored procedures are naturally bound to their location within the query without anything special being required:",
+    "text_hash": "5f5f255e5569f356a4c6190c1c09d219a9f1320ccf234cf139803660f53e1341",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 196,
+      "end_line": 196
+    },
+    "heading_path": [
+      "Query Parameterization Cheat Sheet",
+      "Parameterized Query Examples",
+      "Stored Procedure Examples",
+      "SQL Server using Transact-SQL",
+      "Normal Stored Procedure"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_d449b1cc14cf_b00044",
+    "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+    "version_id": "ver_d449b1cc14cf",
+    "block_idx": 44,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```sql\nPROCEDURE SafeGetBalanceQuery(@UserID varchar(20), @Dept varchar(10)) AS BEGIN\n   SELECT balance FROM accounts_table WHERE user_ID = @UserID AND department = @Dept\nEND\n```",
+    "text_hash": "6b8e608bb6bfc93734f8d79544a79f7da1fc5643a5156b95f0982564fdcf352f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 198,
+      "end_line": 202
+    },
+    "heading_path": [
+      "Query Parameterization Cheat Sheet",
+      "Parameterized Query Examples",
+      "Stored Procedure Examples",
+      "SQL Server using Transact-SQL",
+      "Normal Stored Procedure"
+    ],
+    "heading_level": null,
+    "code_language": "sql",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_d449b1cc14cf_b00045",
+    "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+    "version_id": "ver_d449b1cc14cf",
+    "block_idx": 45,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "##### Stored Procedure Using Bind Variables in SQL Run with EXEC",
+    "text_hash": "f4471b60833edd4eb471d94ebdc0f1b54ed6f8691f01eaceb7083c632a9bc729",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 204,
+      "end_line": 204
+    },
+    "heading_path": [
+      "Query Parameterization Cheat Sheet",
+      "Parameterized Query Examples",
+      "Stored Procedure Examples",
+      "SQL Server using Transact-SQL",
+      "Stored Procedure Using Bind Variables in SQL Run with EXEC"
+    ],
+    "heading_level": 5,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_d449b1cc14cf_b00046",
+    "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+    "version_id": "ver_d449b1cc14cf",
+    "block_idx": 46,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Bind variables are used to tell the database that the inputs to this dynamic SQL are 'data' and not possibly code:",
+    "text_hash": "738a5dddf8ec879a89cfa833423e2222080101b34b11be41273b7413778f8fac",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 206,
+      "end_line": 206
+    },
+    "heading_path": [
+      "Query Parameterization Cheat Sheet",
+      "Parameterized Query Examples",
+      "Stored Procedure Examples",
+      "SQL Server using Transact-SQL",
+      "Stored Procedure Using Bind Variables in SQL Run with EXEC"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_d449b1cc14cf_b00047",
+    "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+    "version_id": "ver_d449b1cc14cf",
+    "block_idx": 47,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```sql\nPROCEDURE SafeGetBalanceQuery(@UserID varchar(20), @Dept varchar(10)) AS BEGIN\n   DECLARE @sql VARCHAR(200)\n   SELECT @sql = 'SELECT balance FROM accounts_table WHERE '\n                 + 'user_ID = @UID AND department = @DPT'\n   EXEC sp_executesql @sql,\n                      '@UID VARCHAR(20), @DPT VARCHAR(10)',\n                      @UID=@UserID, @DPT=@Dept\nEND\n```",
+    "text_hash": "c69fc7a8b2d3689e6e22089fd507be948bacea9dd0011a379c09f925d8cdfe50",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 208,
+      "end_line": 217
+    },
+    "heading_path": [
+      "Query Parameterization Cheat Sheet",
+      "Parameterized Query Examples",
+      "Stored Procedure Examples",
+      "SQL Server using Transact-SQL",
+      "Stored Procedure Using Bind Variables in SQL Run with EXEC"
+    ],
+    "heading_level": null,
+    "code_language": "sql",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_d449b1cc14cf_b00048",
+    "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+    "version_id": "ver_d449b1cc14cf",
+    "block_idx": 48,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## References",
+    "text_hash": "65b72d86eeeb214ab8ca5fd24cb7cd7773e58084e95b670040df03e21e8c6fa7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 219,
+      "end_line": 219
+    },
+    "heading_path": [
+      "Query Parameterization Cheat Sheet",
+      "References"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_d449b1cc14cf_b00049",
+    "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+    "version_id": "ver_d449b1cc14cf",
+    "block_idx": 49,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- [Oracle JDBC: Using Prepared Statements](https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html)\n- [PHP PDO: Prepared Statements and Stored Procedures](https://www.php.net/pdo.prepared-statements)",
+    "text_hash": "86f807ac5cff0b2e0cd0cee66276deb0e18998a8b11c2609207527be077bcae2",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 221,
+      "end_line": 222
+    },
+    "heading_path": [
+      "Query Parameterization Cheat Sheet",
+      "References"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  }
+]

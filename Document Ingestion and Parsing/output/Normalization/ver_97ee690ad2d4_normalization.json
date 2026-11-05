@@ -1,0 +1,691 @@
+[
+  {
+    "block_id": "ver_97ee690ad2d4_b00000",
+    "document_id": "doc_owasp_avss_access_control",
+    "version_id": "ver_97ee690ad2d4",
+    "block_idx": 0,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "# V4 Access Control",
+    "text_hash": "7ef7476aff1e3b91bb96cd8ff6f1e36da4b5e1b258beac11c92d7c426291dee4",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 1,
+      "end_line": 1
+    },
+    "heading_path": [
+      "V4 Access Control"
+    ],
+    "heading_level": 1,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_97ee690ad2d4_b00000",
+    "normalized_text": "# V4 Access Control",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_97ee690ad2d4_b00001",
+    "document_id": "doc_owasp_avss_access_control",
+    "version_id": "ver_97ee690ad2d4",
+    "block_idx": 1,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Control Objective",
+    "text_hash": "001a812a758511a84268bd8558a292f3c03b8b1e6a533217a4f03165f8774203",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 3,
+      "end_line": 3
+    },
+    "heading_path": [
+      "V4 Access Control",
+      "Control Objective"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_97ee690ad2d4_b00001",
+    "normalized_text": "## Control Objective",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_97ee690ad2d4_b00002",
+    "document_id": "doc_owasp_avss_access_control",
+    "version_id": "ver_97ee690ad2d4",
+    "block_idx": 2,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Authorization is the concept of allowing access to resources only to those permitted to use them. Ensure that a verified application satisfies the following high level requirements:",
+    "text_hash": "5bcac8645f9384dce9ff86457d839155ad25ffb23ab85925ada1572d150ce5a1",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 5,
+      "end_line": 5
+    },
+    "heading_path": [
+      "V4 Access Control",
+      "Control Objective"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_97ee690ad2d4_b00002",
+    "normalized_text": "Authorization is the concept of allowing access to resources only to those permitted to use them. Ensure that a verified application satisfies the following high level requirements:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_97ee690ad2d4_b00003",
+    "document_id": "doc_owasp_avss_access_control",
+    "version_id": "ver_97ee690ad2d4",
+    "block_idx": 3,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "* Persons accessing resources hold valid credentials to do so.\n* Users are associated with a well-defined set of roles and privileges.\n* Role and permission metadata is protected from replay or tampering.\n",
+    "text_hash": "118730aecf8b0a79a27b53d66177ccfc6aecb5cd7ae46f0cd690899423d7faee",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 7,
+      "end_line": 10
+    },
+    "heading_path": [
+      "V4 Access Control",
+      "Control Objective"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_97ee690ad2d4_b00003",
+    "normalized_text": "* Persons accessing resources hold valid credentials to do so.\n* Users are associated with a well-defined set of roles and privileges.\n* Role and permission metadata is protected from replay or tampering.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_97ee690ad2d4_b00004",
+    "document_id": "doc_owasp_avss_access_control",
+    "version_id": "ver_97ee690ad2d4",
+    "block_idx": 4,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Security Verification Requirements",
+    "text_hash": "68fe37e41fa1dd923ab4afd9047af7dc0ad8afdfe998c239c06f2704f694e5ba",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 11,
+      "end_line": 11
+    },
+    "heading_path": [
+      "V4 Access Control",
+      "Security Verification Requirements"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_97ee690ad2d4_b00004",
+    "normalized_text": "## Security Verification Requirements",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_97ee690ad2d4_b00005",
+    "document_id": "doc_owasp_avss_access_control",
+    "version_id": "ver_97ee690ad2d4",
+    "block_idx": 5,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## V4.1 General Access Control Design",
+    "text_hash": "2c4aa281f34cda71f95336a14fcfc8f74b4d520e39edbe7169057c358e440910",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 13,
+      "end_line": 13
+    },
+    "heading_path": [
+      "V4 Access Control",
+      "V4.1 General Access Control Design"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_97ee690ad2d4_b00005",
+    "normalized_text": "## V4.1 General Access Control Design",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_97ee690ad2d4_b00006",
+    "document_id": "doc_owasp_avss_access_control",
+    "version_id": "ver_97ee690ad2d4",
+    "block_idx": 6,
+    "file_format": "MARKDOWN",
+    "block_type": "table",
+    "text_content": "| # | Description | L1 | L2 | L3 | CWE |\n| :---: | :--- | :---: | :---:| :---: | :---: |\n| **4.1.1** | Verify that the application enforces access control rules on a trusted service layer, especially if client-side access control is present and could be bypassed. | ✓ | ✓ | ✓ | 602 |\n| **4.1.2** | Verify that all user and data attributes and policy information used by access controls cannot be manipulated by end users unless specifically authorized. | ✓ | ✓ | ✓ | 639 |\n| **4.1.3** | Verify that the principle of least privilege exists - users should only be able to access functions, data files, URLs, controllers, services, and other resources, for which they possess specific authorization. This implies protection against spoofing and elevation of privilege. ([C7](https://owasp.org/www-project-proactive-controls/#div-numbering)) | ✓ | ✓ | ✓ | 285 |\n| **4.1.4** | [DELETED, DUPLICATE OF 4.1.3] | | | | |\n| **4.1.5** | Verify that access controls fail securely including when an exception occurs. ([C10](https://owasp.org/www-project-proactive-controls/#div-numbering)) | ✓ | ✓ | ✓ | 285 |",
+    "text_hash": "c35415958057261cfaf9def100295af174fde37ae31d624f2cf19ed934f33239",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 15,
+      "end_line": 21
+    },
+    "heading_path": [
+      "V4 Access Control",
+      "V4.1 General Access Control Design"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": [
+      "#",
+      "Description",
+      "L1",
+      "L2",
+      "L3",
+      "CWE"
+    ],
+    "table_rows": [
+      [
+        "**4.1.1**",
+        "Verify that the application enforces access control rules on a trusted service layer, especially if client-side access control is present and could be bypassed.",
+        "✓",
+        "✓",
+        "✓",
+        "602"
+      ],
+      [
+        "**4.1.2**",
+        "Verify that all user and data attributes and policy information used by access controls cannot be manipulated by end users unless specifically authorized.",
+        "✓",
+        "✓",
+        "✓",
+        "639"
+      ],
+      [
+        "**4.1.3**",
+        "Verify that the principle of least privilege exists - users should only be able to access functions, data files, URLs, controllers, services, and other resources, for which they possess specific authorization. This implies protection against spoofing and elevation of privilege. ([C7](https://owasp.org/www-project-proactive-controls/#div-numbering))",
+        "✓",
+        "✓",
+        "✓",
+        "285"
+      ],
+      [
+        "**4.1.4**",
+        "[DELETED, DUPLICATE OF 4.1.3]",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "**4.1.5**",
+        "Verify that access controls fail securely including when an exception occurs. ([C10](https://owasp.org/www-project-proactive-controls/#div-numbering))",
+        "✓",
+        "✓",
+        "✓",
+        "285"
+      ]
+    ],
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_97ee690ad2d4_b00006",
+    "normalized_text": "| # | Description | L1 | L2 | L3 | CWE |\n| :---: | :--- | :---: | :---:| :---: | :---: |\n| **4.1.1** | Verify that the application enforces access control rules on a trusted service layer, especially if client-side access control is present and could be bypassed. | ✓ | ✓ | ✓ | 602 |\n| **4.1.2** | Verify that all user and data attributes and policy information used by access controls cannot be manipulated by end users unless specifically authorized. | ✓ | ✓ | ✓ | 639 |\n| **4.1.3** | Verify that the principle of least privilege exists - users should only be able to access functions, data files, URLs, controllers, services, and other resources, for which they possess specific authorization. This implies protection against spoofing and elevation of privilege. ([C7](https://owasp.org/www-project-proactive-controls/#div-numbering)) | ✓ | ✓ | ✓ | 285 |\n| **4.1.4** | [DELETED, DUPLICATE OF 4.1.3] | | | | |\n| **4.1.5** | Verify that access controls fail securely including when an exception occurs. ([C10](https://owasp.org/www-project-proactive-controls/#div-numbering)) | ✓ | ✓ | ✓ | 285 |",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    },
+    "normalized_table_header_cols": [
+      "#",
+      "Description",
+      "L1",
+      "L2",
+      "L3",
+      "CWE"
+    ],
+    "normalized_table_rows": [
+      [
+        "**4.1.1**",
+        "Verify that the application enforces access control rules on a trusted service layer, especially if client-side access control is present and could be bypassed.",
+        "✓",
+        "✓",
+        "✓",
+        "602"
+      ],
+      [
+        "**4.1.2**",
+        "Verify that all user and data attributes and policy information used by access controls cannot be manipulated by end users unless specifically authorized.",
+        "✓",
+        "✓",
+        "✓",
+        "639"
+      ],
+      [
+        "**4.1.3**",
+        "Verify that the principle of least privilege exists - users should only be able to access functions, data files, URLs, controllers, services, and other resources, for which they possess specific authorization. This implies protection against spoofing and elevation of privilege. ([C7](https://owasp.org/www-project-proactive-controls/#div-numbering))",
+        "✓",
+        "✓",
+        "✓",
+        "285"
+      ],
+      [
+        "**4.1.4**",
+        "[DELETED, DUPLICATE OF 4.1.3]",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "**4.1.5**",
+        "Verify that access controls fail securely including when an exception occurs. ([C10](https://owasp.org/www-project-proactive-controls/#div-numbering))",
+        "✓",
+        "✓",
+        "✓",
+        "285"
+      ]
+    ]
+  },
+  {
+    "block_id": "ver_97ee690ad2d4_b00007",
+    "document_id": "doc_owasp_avss_access_control",
+    "version_id": "ver_97ee690ad2d4",
+    "block_idx": 7,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## V4.2 Operation Level Access Control",
+    "text_hash": "4b96b50cd19809328caf06bacab55f236a564ac138316aa68fc0a266970a6d32",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 23,
+      "end_line": 23
+    },
+    "heading_path": [
+      "V4 Access Control",
+      "V4.2 Operation Level Access Control"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_97ee690ad2d4_b00007",
+    "normalized_text": "## V4.2 Operation Level Access Control",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_97ee690ad2d4_b00008",
+    "document_id": "doc_owasp_avss_access_control",
+    "version_id": "ver_97ee690ad2d4",
+    "block_idx": 8,
+    "file_format": "MARKDOWN",
+    "block_type": "table",
+    "text_content": "| # | Description | L1 | L2 | L3 | CWE |\n| :---: | :--- | :---: | :---:| :---: | :---: |\n| **4.2.1** | Verify that sensitive data and APIs are protected against Insecure Direct Object Reference (IDOR) attacks targeting creation, reading, updating and deletion of records, such as creating or updating someone else's record, viewing everyone's records, or deleting all records. | ✓ | ✓ | ✓ | 639 |\n| **4.2.2** | Verify that the application or framework enforces a strong anti-CSRF mechanism to protect authenticated functionality, and effective anti-automation or anti-CSRF protects unauthenticated functionality. | ✓ | ✓ | ✓ | 352 |",
+    "text_hash": "17629e378f55a94b290b3997b32f37c656265518cbeac9100fb7b33256ab7b38",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 25,
+      "end_line": 28
+    },
+    "heading_path": [
+      "V4 Access Control",
+      "V4.2 Operation Level Access Control"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": [
+      "#",
+      "Description",
+      "L1",
+      "L2",
+      "L3",
+      "CWE"
+    ],
+    "table_rows": [
+      [
+        "**4.2.1**",
+        "Verify that sensitive data and APIs are protected against Insecure Direct Object Reference (IDOR) attacks targeting creation, reading, updating and deletion of records, such as creating or updating someone else's record, viewing everyone's records, or deleting all records.",
+        "✓",
+        "✓",
+        "✓",
+        "639"
+      ],
+      [
+        "**4.2.2**",
+        "Verify that the application or framework enforces a strong anti-CSRF mechanism to protect authenticated functionality, and effective anti-automation or anti-CSRF protects unauthenticated functionality.",
+        "✓",
+        "✓",
+        "✓",
+        "352"
+      ]
+    ],
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_97ee690ad2d4_b00008",
+    "normalized_text": "| # | Description | L1 | L2 | L3 | CWE |\n| :---: | :--- | :---: | :---:| :---: | :---: |\n| **4.2.1** | Verify that sensitive data and APIs are protected against Insecure Direct Object Reference (IDOR) attacks targeting creation, reading, updating and deletion of records, such as creating or updating someone else's record, viewing everyone's records, or deleting all records. | ✓ | ✓ | ✓ | 639 |\n| **4.2.2** | Verify that the application or framework enforces a strong anti-CSRF mechanism to protect authenticated functionality, and effective anti-automation or anti-CSRF protects unauthenticated functionality. | ✓ | ✓ | ✓ | 352 |",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    },
+    "normalized_table_header_cols": [
+      "#",
+      "Description",
+      "L1",
+      "L2",
+      "L3",
+      "CWE"
+    ],
+    "normalized_table_rows": [
+      [
+        "**4.2.1**",
+        "Verify that sensitive data and APIs are protected against Insecure Direct Object Reference (IDOR) attacks targeting creation, reading, updating and deletion of records, such as creating or updating someone else's record, viewing everyone's records, or deleting all records.",
+        "✓",
+        "✓",
+        "✓",
+        "639"
+      ],
+      [
+        "**4.2.2**",
+        "Verify that the application or framework enforces a strong anti-CSRF mechanism to protect authenticated functionality, and effective anti-automation or anti-CSRF protects unauthenticated functionality.",
+        "✓",
+        "✓",
+        "✓",
+        "352"
+      ]
+    ]
+  },
+  {
+    "block_id": "ver_97ee690ad2d4_b00009",
+    "document_id": "doc_owasp_avss_access_control",
+    "version_id": "ver_97ee690ad2d4",
+    "block_idx": 9,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## V4.3 Other Access Control Considerations",
+    "text_hash": "0b920f694146ffe400d90bd5eb5b98330a9ef9204c449232d8bc4fe20030b7b5",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 30,
+      "end_line": 30
+    },
+    "heading_path": [
+      "V4 Access Control",
+      "V4.3 Other Access Control Considerations"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_97ee690ad2d4_b00009",
+    "normalized_text": "## V4.3 Other Access Control Considerations",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_97ee690ad2d4_b00010",
+    "document_id": "doc_owasp_avss_access_control",
+    "version_id": "ver_97ee690ad2d4",
+    "block_idx": 10,
+    "file_format": "MARKDOWN",
+    "block_type": "table",
+    "text_content": "| # | Description | L1 | L2 | L3 | CWE |\n| :---: | :--- | :---: | :---:| :---: | :---: |\n| **4.3.1** | Verify administrative interfaces use appropriate multi-factor authentication to prevent unauthorized use. | ✓ | ✓ | ✓ | 419 |\n| **4.3.2** | Verify that directory browsing is disabled unless deliberately desired. Additionally, applications should not allow discovery or disclosure of file or directory metadata, such as Thumbs.db, .DS_Store, .git or .svn folders. | ✓ | ✓ | ✓ | 548 |\n| **4.3.3** | Verify the application has additional authorization (such as step up or adaptive authentication) for lower value systems, and / or segregation of duties for high value applications to enforce anti-fraud controls as per the risk of application and past fraud. | | ✓ | ✓ | 732 |",
+    "text_hash": "36a1aacea4455f5a4e33be5360e44b409c3fa9710cc4b24e4949c11388155f42",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 32,
+      "end_line": 36
+    },
+    "heading_path": [
+      "V4 Access Control",
+      "V4.3 Other Access Control Considerations"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": [
+      "#",
+      "Description",
+      "L1",
+      "L2",
+      "L3",
+      "CWE"
+    ],
+    "table_rows": [
+      [
+        "**4.3.1**",
+        "Verify administrative interfaces use appropriate multi-factor authentication to prevent unauthorized use.",
+        "✓",
+        "✓",
+        "✓",
+        "419"
+      ],
+      [
+        "**4.3.2**",
+        "Verify that directory browsing is disabled unless deliberately desired. Additionally, applications should not allow discovery or disclosure of file or directory metadata, such as Thumbs.db, .DS_Store, .git or .svn folders.",
+        "✓",
+        "✓",
+        "✓",
+        "548"
+      ],
+      [
+        "**4.3.3**",
+        "Verify the application has additional authorization (such as step up or adaptive authentication) for lower value systems, and / or segregation of duties for high value applications to enforce anti-fraud controls as per the risk of application and past fraud.",
+        "",
+        "✓",
+        "✓",
+        "732"
+      ]
+    ],
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_97ee690ad2d4_b00010",
+    "normalized_text": "| # | Description | L1 | L2 | L3 | CWE |\n| :---: | :--- | :---: | :---:| :---: | :---: |\n| **4.3.1** | Verify administrative interfaces use appropriate multi-factor authentication to prevent unauthorized use. | ✓ | ✓ | ✓ | 419 |\n| **4.3.2** | Verify that directory browsing is disabled unless deliberately desired. Additionally, applications should not allow discovery or disclosure of file or directory metadata, such as Thumbs.db, .DS_Store, .git or .svn folders. | ✓ | ✓ | ✓ | 548 |\n| **4.3.3** | Verify the application has additional authorization (such as step up or adaptive authentication) for lower value systems, and / or segregation of duties for high value applications to enforce anti-fraud controls as per the risk of application and past fraud. | | ✓ | ✓ | 732 |",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    },
+    "normalized_table_header_cols": [
+      "#",
+      "Description",
+      "L1",
+      "L2",
+      "L3",
+      "CWE"
+    ],
+    "normalized_table_rows": [
+      [
+        "**4.3.1**",
+        "Verify administrative interfaces use appropriate multi-factor authentication to prevent unauthorized use.",
+        "✓",
+        "✓",
+        "✓",
+        "419"
+      ],
+      [
+        "**4.3.2**",
+        "Verify that directory browsing is disabled unless deliberately desired. Additionally, applications should not allow discovery or disclosure of file or directory metadata, such as Thumbs.db, .DS_Store, .git or .svn folders.",
+        "✓",
+        "✓",
+        "✓",
+        "548"
+      ],
+      [
+        "**4.3.3**",
+        "Verify the application has additional authorization (such as step up or adaptive authentication) for lower value systems, and / or segregation of duties for high value applications to enforce anti-fraud controls as per the risk of application and past fraud.",
+        "",
+        "✓",
+        "✓",
+        "732"
+      ]
+    ]
+  },
+  {
+    "block_id": "ver_97ee690ad2d4_b00011",
+    "document_id": "doc_owasp_avss_access_control",
+    "version_id": "ver_97ee690ad2d4",
+    "block_idx": 11,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## References",
+    "text_hash": "65b72d86eeeb214ab8ca5fd24cb7cd7773e58084e95b670040df03e21e8c6fa7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 38,
+      "end_line": 38
+    },
+    "heading_path": [
+      "V4 Access Control",
+      "References"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_97ee690ad2d4_b00011",
+    "normalized_text": "## References",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_97ee690ad2d4_b00012",
+    "document_id": "doc_owasp_avss_access_control",
+    "version_id": "ver_97ee690ad2d4",
+    "block_idx": 12,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "For more information, see also:",
+    "text_hash": "d186cf1c20554a76e4cb9cb4b90fc215c970386abed4aec1b45288abe5fb2d72",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 40,
+      "end_line": 40
+    },
+    "heading_path": [
+      "V4 Access Control",
+      "References"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_97ee690ad2d4_b00012",
+    "normalized_text": "For more information, see also:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_97ee690ad2d4_b00013",
+    "document_id": "doc_owasp_avss_access_control",
+    "version_id": "ver_97ee690ad2d4",
+    "block_idx": 13,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "* [OWASP Testing Guide 4.0: Authorization](https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/05-Authorization_Testing/README.html)\n* [OWASP Cheat Sheet: Access Control](https://cheatsheetseries.owasp.org/cheatsheets/Access_Control_Cheat_Sheet.html)\n* [OWASP CSRF Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html)\n* [OWASP REST Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html)",
+    "text_hash": "71bdb425515a53e9132a20762f6fe6e187f66b4c0dce126d6aec5cda4e95c708",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 42,
+      "end_line": 45
+    },
+    "heading_path": [
+      "V4 Access Control",
+      "References"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_97ee690ad2d4_b00013",
+    "normalized_text": "* [OWASP Testing Guide 4.0: Authorization](https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/05-Authorization_Testing/README.html)\n* [OWASP Cheat Sheet: Access Control](https://cheatsheetseries.owasp.org/cheatsheets/Access_Control_Cheat_Sheet.html)\n* [OWASP CSRF Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html)\n* [OWASP REST Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  }
+]

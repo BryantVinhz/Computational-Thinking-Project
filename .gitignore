@@ -54,10 +54,8 @@ cover/
 
 
 # Translations
-=======
 long_nguyen/
 /Document Ingestion and Parsing/output/Normalization/
->>>>>>> main
 *.mo
 *.pot
 

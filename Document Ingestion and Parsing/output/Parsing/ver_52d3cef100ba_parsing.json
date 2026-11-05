@@ -1,0 +1,1562 @@
+[
+  {
+    "block_id": "ver_52d3cef100ba_b00000",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 0,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "# A01:2021 – Broken Access Control    ![icon](assets/TOP_10_Icons_Final_Broken_Access_Control.png){: style=\"height:80px;width:80px\" align=\"right\"}",
+    "text_hash": "a195995ae59e91a26dc9f5134c339e4f8bf33593b47b4a9a674169229c3d95f3",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 1,
+      "end_line": 1
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control"
+    ],
+    "heading_level": 1,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00001",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 1,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Factors",
+    "text_hash": "5f5d0998dc56b8b8839e5d7224b890cb67dc8e3c6d51d965af0e30db66f2ef0c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 3,
+      "end_line": 3
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "Factors"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00002",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 2,
+    "file_format": "MARKDOWN",
+    "block_type": "table",
+    "text_content": "| CWEs Mapped | Max Incidence Rate | Avg Incidence Rate | Avg Weighted Exploit | Avg Weighted Impact | Max Coverage | Avg Coverage | Total Occurrences | Total CVEs |\n|:-------------:|:--------------------:|:--------------------:|:--------------:|:--------------:|:----------------------:|:---------------------:|:-------------------:|:------------:|\n| 34          | 55.97%             | 3.81%              | 6.92                 | 5.93                | 94.55%       | 47.72%       | 318,487           | 19,013     |",
+    "text_hash": "b140c1be597924d7054afae4099d3c2c9fc57c2e82f1c4a9759945c9eddb5650",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 5,
+      "end_line": 7
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "Factors"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": [
+      "CWEs Mapped",
+      "Max Incidence Rate",
+      "Avg Incidence Rate",
+      "Avg Weighted Exploit",
+      "Avg Weighted Impact",
+      "Max Coverage",
+      "Avg Coverage",
+      "Total Occurrences",
+      "Total CVEs"
+    ],
+    "table_rows": [
+      [
+        "34",
+        "55.97%",
+        "3.81%",
+        "6.92",
+        "5.93",
+        "94.55%",
+        "47.72%",
+        "318,487",
+        "19,013"
+      ]
+    ],
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00003",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 3,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Overview",
+    "text_hash": "7337f3d0aa29e9a82b8f1650b743a98eef90794631fa763a319686e69c546821",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 9,
+      "end_line": 9
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "Overview"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00004",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 4,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Moving up from the fifth position, 94% of applications were tested for\nsome form of broken access control with the average incidence rate of 3.81%, and has the most occurrences in the contributed dataset with over 318k. Notable Common Weakness Enumerations (CWEs) included are *CWE-200: Exposure of Sensitive Information to an Unauthorized Actor*, *CWE-201:\nInsertion of Sensitive Information Into Sent Data*, and *CWE-352:\nCross-Site Request Forgery*.",
+    "text_hash": "21c9a914ffa04960eda8eb2a2f16f7d3c3d1d4ae82f04c7b8c09ceec6d07231a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 11,
+      "end_line": 14
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "Overview"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00005",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 5,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Description",
+    "text_hash": "2b45dd41be9c3d1d97627e3f5ebdc62e5885ec2a3ada16d94e5527649b19d819",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 16,
+      "end_line": 16
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "Description"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00006",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 6,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Access control enforces policy such that users cannot act outside of\ntheir intended permissions. Failures typically lead to unauthorized\ninformation disclosure, modification, or destruction of all data or\nperforming a business function outside the user's limits. Common access\ncontrol vulnerabilities include:",
+    "text_hash": "7483ed81e1f7704effe3e45e615afc28d3c4b8fdcd8c6b1ca38f2c5db930f231",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 18,
+      "end_line": 22
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "Description"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00007",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 7,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "-   Violation of the principle of least privilege or deny by default,\n    where access should only be granted for particular capabilities,\n    roles, or users, but is available to anyone.\n\n-   Bypassing access control checks by modifying the URL (parameter\n    tampering or force browsing), internal application state, or the\n    HTML page, or by using an attack tool modifying API requests.\n\n-   Permitting viewing or editing someone else's account, by providing\n    its unique identifier (insecure direct object references)\n\n-   Accessing API with missing access controls for POST, PUT and DELETE.\n\n-   Elevation of privilege. Acting as a user without being logged in or\n    acting as an admin when logged in as a user.\n\n-   Metadata manipulation, such as replaying or tampering with a JSON\n    Web Token (JWT) access control token, or a cookie or hidden field\n    manipulated to elevate privileges or abusing JWT invalidation.\n\n-   CORS misconfiguration allows API access from unauthorized/untrusted\n    origins.\n\n-   Force browsing to authenticated pages as an unauthenticated user or\n    to privileged pages as a standard user.\n",
+    "text_hash": "c35c152faa4be42f0a8333f1afbc96f255b2fcf47af1814222359cc394f123ad",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 24,
+      "end_line": 49
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "Description"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00008",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 8,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## How to Prevent",
+    "text_hash": "43bbb04bfc567ef1014682cdf1f43165a9bff6d1f500aaffec83d4f93706b025",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 50,
+      "end_line": 50
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "How to Prevent"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00009",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 9,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Access control is only effective in trusted server-side code or\nserver-less API, where the attacker cannot modify the access control\ncheck or metadata.",
+    "text_hash": "ee993daf28448631cc3a28cf8dbdd68501fb3c2b3886e6542c8a468aa8ec473e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 52,
+      "end_line": 54
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "How to Prevent"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00010",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 10,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "-   Except for public resources, deny by default.\n\n-   Implement access control mechanisms once and re-use them throughout\n    the application, including minimizing Cross-Origin Resource Sharing (CORS) usage.\n\n-   Model access controls should enforce record ownership rather than\n    accepting that the user can create, read, update, or delete any\n    record.\n\n-   Unique application business limit requirements should be enforced by\n    domain models.\n\n-   Disable web server directory listing and ensure file metadata (e.g.,\n    .git) and backup files are not present within web roots.\n\n-   Log access control failures, alert admins when appropriate (e.g.,\n    repeated failures).\n\n-   Rate limit API and controller access to minimize the harm from\n    automated attack tooling.\n\n-   Stateful session identifiers should be invalidated on the server after logout.\n    Stateless JWT tokens should rather be short-lived so that the window of \n    opportunity for an attacker is minimized. For longer lived JWTs it's highly recommended to\n    follow the OAuth standards to revoke access.\n",
+    "text_hash": "669b41f5ad85e6dbbd0d6b9e055aa643d828f566bb77f63d71c00e57822054b0",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 56,
+      "end_line": 81
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "How to Prevent"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00011",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 11,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Developers and QA staff should include functional access control unit\nand integration tests.",
+    "text_hash": "e800b14fdef2c198bccd0b48ff50e66f67e493b9ca3a6f0e1e9eef9b375df836",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 82,
+      "end_line": 83
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "How to Prevent"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00012",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 12,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Example Attack Scenarios",
+    "text_hash": "bb9afd051258ccbc75211089f3528f89d12f1e068ab3f1a85f3233d2888d0b39",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 85,
+      "end_line": 85
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "Example Attack Scenarios"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00013",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 13,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**Scenario #1:** The application uses unverified data in a SQL call that\nis accessing account information:",
+    "text_hash": "7dd8bc540abee520cf9a2f9e9205303943563d0f73bd8753f6cc399d7d1f9918",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 87,
+      "end_line": 88
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "Example Attack Scenarios"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00014",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 14,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```\n pstmt.setString(1, request.getParameter(\"acct\"));\n ResultSet results = pstmt.executeQuery( );\n```",
+    "text_hash": "f72aa9061d758f0c9746d8f8a7757e9e72db675de1e3c3db34aaabddfcbf9a3d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 90,
+      "end_line": 93
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "Example Attack Scenarios"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00015",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 15,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "An attacker simply modifies the browser's 'acct' parameter to send\nwhatever account number they want. If not correctly verified, the\nattacker can access any user's account.",
+    "text_hash": "6931585d80f318b46f989e0f0afc3587626f4bd49e5d53da9c38999fca3ee174",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 95,
+      "end_line": 97
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "Example Attack Scenarios"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00016",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 16,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```\n https://example.com/app/accountInfo?acct=notmyacct\n```",
+    "text_hash": "542153c253663758025c9ebe1a75792e59779eb2d0b8cc169b2746f0447a3e17",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 99,
+      "end_line": 101
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "Example Attack Scenarios"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00017",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 17,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**Scenario #2:** An attacker simply force browses to target URLs. Admin\nrights are required for access to the admin page.",
+    "text_hash": "a58107d99b28754018ef46253f7e8abeec94197a8e99e0eb884d7d2e0f212a18",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 103,
+      "end_line": 104
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "Example Attack Scenarios"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00018",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 18,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```\n https://example.com/app/getappInfo\n https://example.com/app/admin_getappInfo\n```",
+    "text_hash": "11742e95172085f23784e8ba993550bc97385e2eae3e5d19819eaddf7128c0ab",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 106,
+      "end_line": 109
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "Example Attack Scenarios"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00019",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 19,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "If an unauthenticated user can access either page, it's a flaw. If a\nnon-admin can access the admin page, this is a flaw.",
+    "text_hash": "ca414e97eae3cf4b6cb3943f94c20da21be5f4ec30f8f05dbba0c0b3573fb64b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 110,
+      "end_line": 111
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "Example Attack Scenarios"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00020",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 20,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## References",
+    "text_hash": "65b72d86eeeb214ab8ca5fd24cb7cd7773e58084e95b670040df03e21e8c6fa7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 113,
+      "end_line": 113
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "References"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00021",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 21,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "-   [OWASP Proactive Controls: Enforce Access\n    Controls](https://owasp.org/www-project-proactive-controls/v3/en/c7-enforce-access-controls)\n\n-   [OWASP Application Security Verification Standard: V4 Access\n    Control](https://owasp.org/www-project-application-security-verification-standard)\n\n-   [OWASP Testing Guide: Authorization\n    Testing](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/05-Authorization_Testing/README)\n\n-   [OWASP Cheat Sheet: Authorization](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html)\n\n-   [PortSwigger: Exploiting CORS\n    misconfiguration](https://portswigger.net/blog/exploiting-cors-misconfigurations-for-bitcoins-and-bounties)\n    \n-   [OAuth: Revoking Access](https://www.oauth.com/oauth2-servers/listing-authorizations/revoking-access/)\n",
+    "text_hash": "e5a98ae2434a00df5ae722862c3ffb9e07276c76ac74783281f0b17190e4fa47",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 115,
+      "end_line": 130
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "References"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00022",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 22,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## List of Mapped CWEs",
+    "text_hash": "25ada4e89aaab165926a55b7c068b5ff4c988e4d4cd1593dfb340087f3d969b2",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 131,
+      "end_line": 131
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00023",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 23,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-22 Improper Limitation of a Pathname to a Restricted Directory\n('Path Traversal')](https://cwe.mitre.org/data/definitions/22.html)",
+    "text_hash": "30b5595605cbb7afd46aebb61e9a4ec415d9c4530282ee0170314be503cf172e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 133,
+      "end_line": 134
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00024",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 24,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-23 Relative Path Traversal](https://cwe.mitre.org/data/definitions/23.html)",
+    "text_hash": "d582f986f1266c2b74c9e3247cf57f0ac8666c943da3f7caaa90680c9016f150",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 136,
+      "end_line": 136
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00025",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 25,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-35 Path Traversal: '.../...//'](https://cwe.mitre.org/data/definitions/35.html)",
+    "text_hash": "729f60edcd91c41c5e368a3b3dc35895f9112a5a8bd6e0ea173585ac681cc0cc",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 138,
+      "end_line": 138
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00026",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 26,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-59 Improper Link Resolution Before File Access ('Link Following')](https://cwe.mitre.org/data/definitions/59.html)",
+    "text_hash": "8c5af12759b107c2e73e57a027092891d14163df98e52764d9eb9760dc8add5e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 140,
+      "end_line": 140
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00027",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 27,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-200 Exposure of Sensitive Information to an Unauthorized Actor](https://cwe.mitre.org/data/definitions/200.html)",
+    "text_hash": "513f4fc1e6d4d73d93e9f82fa4eb3feb53016604a5202eae9098ecca27070902",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 142,
+      "end_line": 142
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00028",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 28,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-201 Exposure of Sensitive Information Through Sent Data](https://cwe.mitre.org/data/definitions/201.html)",
+    "text_hash": "77cb4dd8458cde5e89d13f16f4cc8b6f7d8982ee870121f86445303317066e8d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 144,
+      "end_line": 144
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00029",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 29,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-219 Storage of File with Sensitive Data Under Web Root](https://cwe.mitre.org/data/definitions/219.html)",
+    "text_hash": "768c532a2b0961840b85f64d9e86b17c084c1260575053ea07907d372b25f64a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 146,
+      "end_line": 146
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00030",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 30,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-264 Permissions, Privileges, and Access Controls (should no longer be used)](https://cwe.mitre.org/data/definitions/264.html)",
+    "text_hash": "c1206436f2548469c15451a7be4b6ab77c8f51f1d94037e4a7d6c402d1c05272",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 148,
+      "end_line": 148
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00031",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 31,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-275 Permission Issues](https://cwe.mitre.org/data/definitions/275.html)",
+    "text_hash": "7f64b9f4f5aa0ec8b4f089cbf22d61db7abc818b5e0557de1f42fa8156f56201",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 150,
+      "end_line": 150
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00032",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 32,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-276 Incorrect Default Permissions](https://cwe.mitre.org/data/definitions/276.html)",
+    "text_hash": "b5b77a8eff6e8ff294b380d3dc0f5d43f0b14a720d36287071e49dd74605449d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 152,
+      "end_line": 152
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00033",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 33,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-284 Improper Access Control](https://cwe.mitre.org/data/definitions/284.html)",
+    "text_hash": "e2191dcda20b5d322c3b1416dd5e51d74f6f2dc77fe8118e12599a979783eb24",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 154,
+      "end_line": 154
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00034",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 34,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-285 Improper Authorization](https://cwe.mitre.org/data/definitions/285.html)",
+    "text_hash": "7d074cb90c71c1871cc9e62e59c84bfe85e5ddd1be1914694ff7692ffa9a972c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 156,
+      "end_line": 156
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00035",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 35,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-352 Cross-Site Request Forgery (CSRF)](https://cwe.mitre.org/data/definitions/352.html)",
+    "text_hash": "eaa75703e23b2778426dd48610445761b94b5ae0b448bd64bb7f98a78960e1bf",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 158,
+      "end_line": 158
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00036",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 36,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-359 Exposure of Private Personal Information to an Unauthorized Actor](https://cwe.mitre.org/data/definitions/359.html)",
+    "text_hash": "1a9f3333c152e2943313553a73d709f1a7808e0a72ee19a6e19f8a56081efab5",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 160,
+      "end_line": 160
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00037",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 37,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-377 Insecure Temporary File](https://cwe.mitre.org/data/definitions/377.html)",
+    "text_hash": "2413ad27b6048c80a3278670c31c36b45fd560ae2fde1e560ea6b37c36503f0f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 162,
+      "end_line": 162
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00038",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 38,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-402 Transmission of Private Resources into a New Sphere ('Resource Leak')](https://cwe.mitre.org/data/definitions/402.html)",
+    "text_hash": "10325d7892f15b08e6f3fbd0b0b8d314e2f291e9dd1c89111fb86a4a42176bc4",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 164,
+      "end_line": 164
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00039",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 39,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-425 Direct Request ('Forced Browsing')](https://cwe.mitre.org/data/definitions/425.html)",
+    "text_hash": "37d0aa775806204e35bd32fda86a6a4fe6f71e1f3ee571269912f9f79229f284",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 166,
+      "end_line": 166
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00040",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 40,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-441 Unintended Proxy or Intermediary ('Confused Deputy')](https://cwe.mitre.org/data/definitions/441.html)",
+    "text_hash": "d849c800b4bc497544568348291da449563bab7ab47f10e0a7ff732ee3fc5d2f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 168,
+      "end_line": 168
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00041",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 41,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-497 Exposure of Sensitive System Information to an Unauthorized Control Sphere](https://cwe.mitre.org/data/definitions/497.html)",
+    "text_hash": "0ff7d6fdfcf22ef8774615f33763731194dcc2a26505fac199d93d5434e734c0",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 170,
+      "end_line": 170
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00042",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 42,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-538 Insertion of Sensitive Information into Externally-Accessible File or Directory](https://cwe.mitre.org/data/definitions/538.html)",
+    "text_hash": "03deab529e2e0f6cc92edd5231594a6799c5fb5ab9f29b60fa3a35bd20bce307",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 172,
+      "end_line": 172
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00043",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 43,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-540 Inclusion of Sensitive Information in Source Code](https://cwe.mitre.org/data/definitions/540.html)",
+    "text_hash": "b6a32a2a433202c9bf2910818963ff25e89340dcdae8bdbdad71474de35bc44b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 174,
+      "end_line": 174
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00044",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 44,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-548 Exposure of Information Through Directory Listing](https://cwe.mitre.org/data/definitions/548.html)",
+    "text_hash": "8a51dbf6e6e517846d2ad2cccbeeb34895984beb9dce89d6dad217adf8d6a771",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 176,
+      "end_line": 176
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00045",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 45,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-552 Files or Directories Accessible to External Parties](https://cwe.mitre.org/data/definitions/552.html)",
+    "text_hash": "24c451398e4a231bc30c53f0958c5a891c4ba6c5a37d63ce519b081d91baccc3",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 178,
+      "end_line": 178
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00046",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 46,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-566 Authorization Bypass Through User-Controlled SQL Primary Key](https://cwe.mitre.org/data/definitions/566.html)",
+    "text_hash": "2a7e412f5687d5a3f93d432a0f09631f5d01c1b1334ef71f36272ea97cbb9b51",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 180,
+      "end_line": 180
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00047",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 47,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-601 URL Redirection to Untrusted Site ('Open Redirect')](https://cwe.mitre.org/data/definitions/601.html)",
+    "text_hash": "c3485fc32a90cdbff6b445be085045cc6dbd20a4db4cf8e21c040b07159036ac",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 182,
+      "end_line": 182
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00048",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 48,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-639 Authorization Bypass Through User-Controlled Key](https://cwe.mitre.org/data/definitions/639.html)",
+    "text_hash": "75ef6cc56d0e9b5546d6dd0be9c5d893ffb9e3c617a9beb3dc4d6bc8513b5f96",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 184,
+      "end_line": 184
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00049",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 49,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-651 Exposure of WSDL File Containing Sensitive Information](https://cwe.mitre.org/data/definitions/651.html)",
+    "text_hash": "0ae76b33920bcd70cbb27a9652a4b9bffbde9949b024c7a3dd46016afd2226a7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 186,
+      "end_line": 186
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00050",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 50,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-668 Exposure of Resource to Wrong Sphere](https://cwe.mitre.org/data/definitions/668.html)",
+    "text_hash": "e23eabe5f34b024e1b3e4d9d0ee54f61c853070038f6821be92bf3bdadc00f06",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 188,
+      "end_line": 188
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00051",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 51,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-706 Use of Incorrectly-Resolved Name or Reference](https://cwe.mitre.org/data/definitions/706.html)",
+    "text_hash": "d9e49a682c2b3f8cb659232a3f3901b0d2f97fff4be891a50a167c7fa996c3c0",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 190,
+      "end_line": 190
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00052",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 52,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-862 Missing Authorization](https://cwe.mitre.org/data/definitions/862.html)",
+    "text_hash": "c539ae53c062468e29a4234628e347a77a10c97a67a91fa71598d5e5fbbdab45",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 192,
+      "end_line": 192
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00053",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 53,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-863 Incorrect Authorization](https://cwe.mitre.org/data/definitions/863.html)",
+    "text_hash": "a6e53b48ed7d4971618635ae856fde185306bb93c3caf8e7ef137ff9b3a39d35",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 194,
+      "end_line": 194
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00054",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 54,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-913 Improper Control of Dynamically-Managed Code Resources](https://cwe.mitre.org/data/definitions/913.html)",
+    "text_hash": "6131b2523528c0afcdaca3fce062e18f41cb56fcbfeb7e39fa8dd5f47a82e4de",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 196,
+      "end_line": 196
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00055",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 55,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-922 Insecure Storage of Sensitive Information](https://cwe.mitre.org/data/definitions/922.html)",
+    "text_hash": "826149574d4b7bcaaba3f4f721e76ca6a45de80b1c36dc16c1bc5ecc1544fd7e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 198,
+      "end_line": 198
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_52d3cef100ba_b00056",
+    "document_id": "doc_owasp_top10_a01_broken_access_control",
+    "version_id": "ver_52d3cef100ba",
+    "block_idx": 56,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-1275 Sensitive Cookie with Improper SameSite Attribute](https://cwe.mitre.org/data/definitions/1275.html)",
+    "text_hash": "afae7715a03cfbea6cf24fc54184674b8a41d16d5f75bc5fac64a0479c6ae624",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 200,
+      "end_line": 200
+    },
+    "heading_path": [
+      "A01:2021 – Broken Access Control",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  }
+]

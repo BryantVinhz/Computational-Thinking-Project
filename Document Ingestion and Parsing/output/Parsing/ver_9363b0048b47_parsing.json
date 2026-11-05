@@ -1,0 +1,4994 @@
+[
+  {
+    "block_id": "ver_9363b0048b47_b00000",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 0,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "# XML External Entity Prevention Cheat Sheet",
+    "text_hash": "fecfc17ae5d52cdf236af441517abbbbc1098ecdb6fd26f80ac0835b0f44d1d7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 1,
+      "end_line": 1
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet"
+    ],
+    "heading_level": 1,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00001",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 1,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Introduction",
+    "text_hash": "d753efbab681fa4da82470d9a83b1c202de58f92fd498e77a269c1163bc4714b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 3,
+      "end_line": 3
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00002",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 2,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "XML External Entity (XXE) injection occurs when an XML processor resolves an external entity from untrusted input. This can expose local files, cause server-side request forgery (SSRF), or exhaust resources. [CWE-611](https://cwe.mitre.org/data/definitions/611.html) describes the weakness; this cheat sheet gives parser-specific controls to prevent it.",
+    "text_hash": "bc56b4de75b598b9965c98f409b285ba1e31efd831ce14a22bc2c381f07f4d89",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 5,
+      "end_line": 5
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00003",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 3,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## General Guidance",
+    "text_hash": "02c54d5db94d24824809da25962056eb234bb07c52f1f931c7a0343ca18565bb",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 7,
+      "end_line": 7
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "General Guidance"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00004",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 4,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**Disable document type definitions (DTDs) whenever possible.** Reject DOCTYPE declarations if the parser supports it. If your application needs DTDs, disable external entity resolution and external DTD loading, and limit entity expansion.",
+    "text_hash": "2d20f355baaffecc4d100fdecbc627fd11d4c5ccc9f1c869addf770e247a8bfe",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 9,
+      "end_line": 9
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "General Guidance"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00005",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 5,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- Keep XInclude disabled unless explicitly required; it can load resources independently of DTDs.\n- Restrict external access during schema validation and style sheet processing as well as XML parsing.\n- Treat an unsupported security setting as a configuration failure. Do not continue processing untrusted XML with partial hardening.\n",
+    "text_hash": "fe7855178b4f46b971f3526f3a74299fb3451c0add735eb1f0ec89fcdf6b9362",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 11,
+      "end_line": 14
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "General Guidance"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00006",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 6,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Controls and defaults vary by parser; see the language-specific guidance below and, for Java, the [JAXP Security Guide](https://docs.oracle.com/en/java/javase/25/security/java-api-xml-processing-jaxp-security-guide.html). Preventing XXE does not prevent every XML denial-of-service attack. See the [XML Security Cheat Sheet](XML_Security_Cheat_Sheet.md#xml-entity-expansion) for entity expansion and other XML resource risks.",
+    "text_hash": "136af7d3c8df38720cdc553a1e337053a7ab556907ed93794a2dcb2881a75c4e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 15,
+      "end_line": 15
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "General Guidance"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00007",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 7,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## C/C++",
+    "text_hash": "831d8e42d145649b7d408076e6127fcca037d5346bfd26ff9f69765581b2872b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 17,
+      "end_line": 17
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "C/C++"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00008",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 8,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### libxml2",
+    "text_hash": "ba85b86dc096ed2c2a9e25a66b9bdfb34b1e54c9b6d16f4ae2cf0666fff712db",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 19,
+      "end_line": 19
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "C/C++",
+      "libxml2"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00009",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 9,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The Enum [xmlParserOption](https://gnome.pages.gitlab.gnome.org/libxml2/html/parser_8h.html) should not have the following options defined:",
+    "text_hash": "ab51c64ae1dc227c9ba7dc2314453d0807fc1333368452695ccdd89076fcbd9b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 21,
+      "end_line": 21
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "C/C++",
+      "libxml2"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00010",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 10,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- `XML_PARSE_NOENT`: Expands entities and substitutes them with replacement text\n- `XML_PARSE_DTDLOAD`: Load the external DTD\n",
+    "text_hash": "89038d4ef04101a6b9b5e4bcfa2cde9f6a6908beb0712cebc9b08e0c39d56755",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 23,
+      "end_line": 25
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "C/C++",
+      "libxml2"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00011",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 11,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Note:",
+    "text_hash": "1150f05446e4d34452b320c78645f5d7f717b745ab3165abde97c15ddc650da5",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 26,
+      "end_line": 26
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "C/C++",
+      "libxml2"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00012",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 12,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Per: According to [this post](https://mail.gnome.org/archives/xml/2012-October/msg00045.html), starting with libxml2 version 2.9, XXE has been disabled by default as committed by the following [patch](https://gitlab.gnome.org/GNOME/libxml2/commit/4629ee02ac649c27f9c0cf98ba017c6b5526070f).",
+    "text_hash": "f589e471e125ef73f269bb0e9c8f823d19440cf82c206a2dd7a4a3eb57a0fe16",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 28,
+      "end_line": 28
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "C/C++",
+      "libxml2"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00013",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 13,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Search whether the following APIs are being used and make sure there is no `XML_PARSE_NOENT` and `XML_PARSE_DTDLOAD` defined in the parameters:",
+    "text_hash": "2fb7dda395bd310264b78f083413fb9d50f38bc491fd5caa1cf2368c9e3ea8ae",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 30,
+      "end_line": 30
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "C/C++",
+      "libxml2"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00014",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 14,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- `xmlCtxtReadDoc`\n- `xmlCtxtReadFd`\n- `xmlCtxtReadFile`\n- `xmlCtxtReadIO`\n- `xmlCtxtReadMemory`\n- `xmlCtxtUseOptions`\n- `xmlParseInNodeContext`\n- `xmlReadDoc`\n- `xmlReadFd`\n- `xmlReadFile`\n- `xmlReadIO`\n- `xmlReadMemory`\n",
+    "text_hash": "6d781b1ea2214b6e5047dec1114e106b7a9ca409b2969bb7935b3595dd49bfdf",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 32,
+      "end_line": 44
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "C/C++",
+      "libxml2"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00015",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 15,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### libxerces-c",
+    "text_hash": "425289e1e20fe092bbd2c56e1c8aed151e5e8faec4675597dc38b8f3d44c43bb",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 45,
+      "end_line": 45
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "C/C++",
+      "libxerces-c"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00016",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 16,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Use of `XercesDOMParser` do this to prevent XXE:",
+    "text_hash": "305459ceffa60544fa9a8805bf8d8057b882365144be9c480f1aa02ee4b6d134",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 47,
+      "end_line": 47
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "C/C++",
+      "libxerces-c"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00017",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 17,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "``` cpp\nXercesDOMParser *parser = new XercesDOMParser;\nparser->setCreateEntityReferenceNodes(true);\nparser->setDisableDefaultEntityResolution(true);\n```",
+    "text_hash": "17b84cd3bc827498ba7f10e54b1293545d40c402694729b7170292c6e0fb080a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 49,
+      "end_line": 53
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "C/C++",
+      "libxerces-c"
+    ],
+    "heading_level": null,
+    "code_language": "cpp",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00018",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 18,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Use of SAXParser, do this to prevent XXE:",
+    "text_hash": "25750f3c36e0e07ed6ba666479c9afd0ff3aa808a715f4c7369311b9feade4ff",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 55,
+      "end_line": 55
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "C/C++",
+      "libxerces-c"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00019",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 19,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "``` cpp\nSAXParser* parser = new SAXParser;\nparser->setDisableDefaultEntityResolution(true);\n```",
+    "text_hash": "7520b534d8763891f3508b3e0c01c6cf4534cd34142f2b77e140f320b0738bda",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 57,
+      "end_line": 60
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "C/C++",
+      "libxerces-c"
+    ],
+    "heading_level": null,
+    "code_language": "cpp",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00020",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 20,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "For `SAX2XMLReader`, configure the reader that will parse the document. The [Xerces-C++ feature documentation](https://xerces.apache.org/xerces-c/program-sax2-3.html) describes `fgXercesDisableDefaultEntityResolution`: it prevents fallback resolution when `resolveEntity` returns `NULL`. A custom resolver must also reject unapproved resources.",
+    "text_hash": "b4c7e682c401e517bfa38f2f0d78d82b8a876b8f8e45f4d40f8970c766a74b7b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 62,
+      "end_line": 62
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "C/C++",
+      "libxerces-c"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00021",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 21,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "``` cpp\nSAX2XMLReader* reader = XMLReaderFactory::createXMLReader();\nreader->setFeature(XMLUni::fgXercesDisableDefaultEntityResolution, true);\n```",
+    "text_hash": "bb78e4afadffa0270d3f2ce5c5fa27cadb032e2af9799c02b309ffc715dfd2e2",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 64,
+      "end_line": 67
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "C/C++",
+      "libxerces-c"
+    ],
+    "heading_level": null,
+    "code_language": "cpp",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00022",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 22,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## ColdFusion",
+    "text_hash": "2bc22204b45701d7c310d703e60fe11009dd30ba7e38cb0daf43c96eba73354b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 69,
+      "end_line": 69
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "ColdFusion"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00023",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 23,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Per [this blog post](https://www.hoyahaxa.com/2022/11/on-coldfusion-xxe-and-other-xml-attacks.html), both Adobe ColdFusion and Lucee have built-in mechanisms to disable support for external XML entities.",
+    "text_hash": "d46fa7ed1979565ba98396f88b615fd290265af5957de138d34314e0da574edb",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 71,
+      "end_line": 71
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "ColdFusion"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00024",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 24,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Adobe ColdFusion",
+    "text_hash": "554b048eb3184a022c93d401d91ab43a6eefeb24f4febc6de2bab2b02b56b580",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 73,
+      "end_line": 73
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "ColdFusion",
+      "Adobe ColdFusion"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00025",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 25,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "As of ColdFusion 2018 Update 14 and ColdFusion 2021 Update 4, all native ColdFusion functions that process XML have a XML parser argument that disables support for external XML entities. Since there is no global setting that disables external entities, developers must ensure that every XML function call uses the correct security options.",
+    "text_hash": "9e97d044898e80f96616e598f8b5329de247c9402604c08dc7d140a24de31dd5",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 75,
+      "end_line": 75
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "ColdFusion",
+      "Adobe ColdFusion"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00026",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 26,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "From the [documentation for the XmlParse() function](https://guides.adobe.com/coldfusion/en/docs/cfml-reference/xmlparse.html), you can disable XXE with the code below:",
+    "text_hash": "9c3b0a751c066c97d24f1d381d309c927429093b915c0cff6faa8d90e2f8779e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 77,
+      "end_line": 77
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "ColdFusion",
+      "Adobe ColdFusion"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00027",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 27,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```\n<cfset parseroptions = structnew()>\n<cfset parseroptions.ALLOWEXTERNALENTITIES = false>\n<cfscript>\na = XmlParse(\"xml.xml\", false, parseroptions);\nwriteDump(a);\n</cfscript>\n```",
+    "text_hash": "8b24d99fa49119c5cf7309ee109c9e918bdec4e55b6a20e37ac79cfe57d79873",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 79,
+      "end_line": 86
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "ColdFusion",
+      "Adobe ColdFusion"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00028",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 28,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "You can use the \"parseroptions\" structure shown above as an argument to secure other functions that process XML as well, such as:",
+    "text_hash": "f997a069fe2f379e3453470fb652f2694529e4271b9f4d407df34e306d7db49c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 88,
+      "end_line": 88
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "ColdFusion",
+      "Adobe ColdFusion"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00029",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 29,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```\nXxmlSearch(xmldoc, xpath,parseroptions);\n\nXmlTransform(xmldoc,xslt,parseroptions);\n\nisXML(xmldoc,parseroptions);\n```",
+    "text_hash": "39733fd06b86663ab27f661b9a169c8e50e88cbfdd7cd8ccf86a06a13783e5b1",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 90,
+      "end_line": 96
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "ColdFusion",
+      "Adobe ColdFusion"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00030",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 30,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Lucee",
+    "text_hash": "32d37c5741150ac04d68fec3bf4255175decb832334ec71297354ddb706319ff",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 98,
+      "end_line": 98
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "ColdFusion",
+      "Lucee"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00031",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 31,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "As of Lucee 5.3.4.51 and later, you can disable support for XML external entities by adding the following to your Application.cfc:",
+    "text_hash": "c2a56f70da6e4ba22707237db3e041995782cc09ce5b0f75e6e0fdd9cfeae3a3",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 100,
+      "end_line": 100
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "ColdFusion",
+      "Lucee"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00032",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 32,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```\nthis.xmlFeatures = {\n     externalGeneralEntities: false,\n     secure: true,\n     disallowDoctypeDecl: true\n};\n```",
+    "text_hash": "38ac7d52f8e9eb7e56564a29e8971679c59e7eaa0d0d316efd04d02ed7388606",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 102,
+      "end_line": 108
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "ColdFusion",
+      "Lucee"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00033",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 33,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Support for external XML entities is disabled by default as of Lucee 5.4.2.10 and Lucee 6.0.0.514.",
+    "text_hash": "0d23f510a5814ff96c2a72e0024b6cbf30e4d95a1dd260eb912aa5ebb3713c28",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 110,
+      "end_line": 110
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "ColdFusion",
+      "Lucee"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00034",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 34,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Java",
+    "text_hash": "f3d54b7b9b84e29636168e79e98e29c3d6ad1803b5672426fe8279f34490ca58",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 112,
+      "end_line": 112
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Java"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00035",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 35,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The examples below use the built-in Java API for XML Processing (JAXP) implementations on Java 9 or later. `newDefaultInstance()` (`newDefaultFactory()` for StAX) selects the built-in implementation instead of a provider selected through the [JAXP lookup mechanism](https://docs.oracle.com/en/java/javase/25/docs/api/java.xml/module-summary.html#LookupMechanism). For other providers, see [implementation differences](#other-providers-and-required-dtds).",
+    "text_hash": "128ee30c6a814fffc854b564c8ef4bc0cf0208b14e03d1318ba4907b7ef243db",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 114,
+      "end_line": 114
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Java"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00036",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 36,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "These are illustrative configuration fragments. The application opens and closes the input streams, supplies trusted schemas and style sheets, and handles exceptions. **Stop processing if any required security setting fails; do not catch the exception and continue parsing.** Pass streams rather than untrusted filenames or URLs: external-entity controls do not restrict access to the initial resource passed directly to a parsing or processing API.",
+    "text_hash": "4ac12d84ae02d5694da2e90e2ef92bd89a9b01466c1e52308eb5fcd6b2f93272",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 116,
+      "end_line": 116
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Java"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00037",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 37,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Secure configuration by API",
+    "text_hash": "e0e666fe6a0787f0117350d3996c24048a55b0e1f703ee8b0da8e8b93daad37f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 118,
+      "end_line": 118
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Java",
+      "Secure configuration by API"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00038",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 38,
+    "file_format": "MARKDOWN",
+    "block_type": "table",
+    "text_content": "| API | Recommended approach |\n| --- | --- |\n| [`DocumentBuilderFactory`](#documentbuilderfactory-dom) | Reject DOCTYPE declarations before building a document tree |\n| [`SAXParserFactory` / `XMLReader`](#saxparserfactory-and-xmlreader) | Reject DOCTYPE declarations; parse through the configured reader |\n| [`XMLInputFactory`](#xmlinputfactory-stax) | Disable DTD processing and external entities |\n| [`TransformerFactory`](#transformerfactory-xslt) | Deny external access before compiling the style sheet |\n| [`SchemaFactory` / `Validator`](#schemafactory-and-validator) | Deny external access during compilation and validation |\n| [`XPath`](#xpath) | Evaluate against a document parsed with a hardened builder |\n| [`Unmarshaller`](#jaxb-unmarshaller) | Supply a hardened StAX reader |",
+    "text_hash": "2ccdcba8d4fff0aedbe3dc2de0537a1c2ebc7adf12b19abeb79fdfe833ea9ada",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 120,
+      "end_line": 128
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Java",
+      "Secure configuration by API"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": [
+      "API",
+      "Recommended approach"
+    ],
+    "table_rows": [
+      [
+        "[`DocumentBuilderFactory`](#documentbuilderfactory-dom)",
+        "Reject DOCTYPE declarations before building a document tree"
+      ],
+      [
+        "[`SAXParserFactory` / `XMLReader`](#saxparserfactory-and-xmlreader)",
+        "Reject DOCTYPE declarations; parse through the configured reader"
+      ],
+      [
+        "[`XMLInputFactory`](#xmlinputfactory-stax)",
+        "Disable DTD processing and external entities"
+      ],
+      [
+        "[`TransformerFactory`](#transformerfactory-xslt)",
+        "Deny external access before compiling the style sheet"
+      ],
+      [
+        "[`SchemaFactory` / `Validator`](#schemafactory-and-validator)",
+        "Deny external access during compilation and validation"
+      ],
+      [
+        "[`XPath`](#xpath)",
+        "Evaluate against a document parsed with a hardened builder"
+      ],
+      [
+        "[`Unmarshaller`](#jaxb-unmarshaller)",
+        "Supply a hardened StAX reader"
+      ]
+    ],
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00039",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 39,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### DocumentBuilderFactory (DOM)",
+    "text_hash": "c52b62f73a7633f74729ade8dac89ddb096a18f5b338b459570d81e44bd08823",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 130,
+      "end_line": 130
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Java",
+      "Secure configuration by API",
+      "DocumentBuilderFactory (DOM)"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00040",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 40,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "For Document Object Model (DOM) parsing, [reject DOCTYPE declarations](https://xerces.apache.org/xerces2-j/features.html#disallow-doctype-decl) and leave XInclude disabled.",
+    "text_hash": "678d8a6e555cd5141ef2fe3fa7de425f65b0bcd44241cf7efd07afcee4c2b31b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 132,
+      "end_line": 132
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Java",
+      "Secure configuration by API",
+      "DocumentBuilderFactory (DOM)"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00041",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 41,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "``` java\nDocumentBuilderFactory dbf = DocumentBuilderFactory.newDefaultInstance();\ndbf.setFeature(\"http://apache.org/xml/features/disallow-doctype-decl\", true);\ndbf.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);\n\nDocumentBuilder builder = dbf.newDocumentBuilder();\nDocument doc = builder.parse(untrustedStream);\n```",
+    "text_hash": "06d700984358ea835ada36d305e85f9ecb65dcf77cb121168107383053e72f7a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 134,
+      "end_line": 141
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Java",
+      "Secure configuration by API",
+      "DocumentBuilderFactory (DOM)"
+    ],
+    "heading_level": null,
+    "code_language": "java",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00042",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 42,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[`setExpandEntityReferences(false)`](https://docs.oracle.com/en/java/javase/25/docs/api/java.xml/javax/xml/parsers/DocumentBuilderFactory.html#setExpandEntityReferences(boolean)) controls the representation of entity references in the tree. Do not use it as a substitute for blocking external resources.",
+    "text_hash": "33816a71f33646d7be1635552b967056ba03f75ee516ead4f619d903975528c5",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 143,
+      "end_line": 143
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Java",
+      "Secure configuration by API",
+      "DocumentBuilderFactory (DOM)"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00043",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 43,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### SAXParserFactory and XMLReader",
+    "text_hash": "addd906f7f221a1157d2448dd45edd32addc269f6b8d2570bf7f77d4f0b04da6",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 145,
+      "end_line": 145
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Java",
+      "Secure configuration by API",
+      "SAXParserFactory and XMLReader"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00044",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 44,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "For Simple API for XML (SAX) parsing, reject DOCTYPE declarations on the factory before creating the reader.",
+    "text_hash": "b24680f2cdac1e86cf1873deb30585fd33f0dfa6d6e2f64fd7eec76bf3abd758",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 147,
+      "end_line": 147
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Java",
+      "Secure configuration by API",
+      "SAXParserFactory and XMLReader"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00045",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 45,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "``` java\nSAXParserFactory spf = SAXParserFactory.newDefaultInstance();\nspf.setNamespaceAware(true);\nspf.setFeature(\"http://apache.org/xml/features/disallow-doctype-decl\", true);\nspf.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);\n\nXMLReader reader = spf.newSAXParser().getXMLReader();\nreader.setContentHandler(handler);  // application's SAX content handler\nreader.parse(new InputSource(untrustedStream));\n```",
+    "text_hash": "61cc6516ed7b70189446f376eb013c7068804c3f1f2574f16a5ecda56d9b5f35",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 149,
+      "end_line": 158
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Java",
+      "Secure configuration by API",
+      "SAXParserFactory and XMLReader"
+    ],
+    "heading_level": null,
+    "code_language": "java",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00046",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 46,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### XMLInputFactory (StAX)",
+    "text_hash": "d0691b792f0a4c43b67e536cbc280b0e9bd0bd49feb07c39a5ab1d215d7d3245",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 160,
+      "end_line": 160
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Java",
+      "Secure configuration by API",
+      "XMLInputFactory (StAX)"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00047",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 47,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "For Streaming API for XML (StAX), set both [DTD and external-entity properties](https://docs.oracle.com/en/java/javase/25/docs/api/java.xml/javax/xml/stream/XMLInputFactory.html). DTD processing defaults to enabled; the external-entity default is unspecified.",
+    "text_hash": "da8ed6506177af3c7a36853e7850593924f602c6bc4fbbcdb60842dd27e5f27e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 162,
+      "end_line": 162
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Java",
+      "Secure configuration by API",
+      "XMLInputFactory (StAX)"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00048",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 48,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "``` java\nXMLInputFactory xif = XMLInputFactory.newDefaultFactory();\nxif.setProperty(XMLInputFactory.SUPPORT_DTD, false);\nxif.setProperty(XMLInputFactory.IS_SUPPORTING_EXTERNAL_ENTITIES, false);\nxif.setXMLResolver((publicId, systemId, baseURI, namespace) -> {\n    throw new XMLStreamException(\"External references are not allowed\");\n});\nXMLStreamReader xsr = xif.createXMLStreamReader(untrustedStream);\n```",
+    "text_hash": "d923bd61a5df4c3c15caa873ef16b35c656f7c71d7540a3e26b6de513833108d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 164,
+      "end_line": 172
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Java",
+      "Secure configuration by API",
+      "XMLInputFactory (StAX)"
+    ],
+    "heading_level": null,
+    "code_language": "java",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00049",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 49,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Disabling DTD processing does not necessarily reject the DOCTYPE declaration. StAX does not support `FEATURE_SECURE_PROCESSING`; use the provider's processing limits when DTDs are required.",
+    "text_hash": "06f7a405d49df33199ec225fc680cd9f4faeb6c15bcc46a9222d2ab584695507",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 174,
+      "end_line": 174
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Java",
+      "Secure configuration by API",
+      "XMLInputFactory (StAX)"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00050",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 50,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### TransformerFactory (XSLT)",
+    "text_hash": "d9100349701c4b43228277a0b72c82f60857efee9593ec2aa1a0148af3b416e7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 176,
+      "end_line": 176
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Java",
+      "Secure configuration by API",
+      "TransformerFactory (XSLT)"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00051",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 51,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "XSL Transformations (XSLT) can load resources through style sheet imports, includes and `document()`, independently of external entities. For a trusted application-owned style sheet that needs no external resources, set [both external-access restrictions](https://docs.oracle.com/en/java/javase/25/docs/api/java.xml/javax/xml/transform/TransformerFactory.html#setAttribute(java.lang.String,java.lang.Object)) before compilation:",
+    "text_hash": "a271af5e1ab1203360a11c0a98768ab6e072743b630b18293d3fafc3023be372",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 178,
+      "end_line": 178
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Java",
+      "Secure configuration by API",
+      "TransformerFactory (XSLT)"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00052",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 52,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "``` java\nTransformerFactory factory = TransformerFactory.newDefaultInstance();\nfactory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);\nfactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, \"\");\nfactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_STYLESHEET, \"\");\n\nTransformer transformer =\n        factory.newTransformer(new StreamSource(trustedStylesheetStream));\ntransformer.transform(new StreamSource(untrustedStream), result);\n```",
+    "text_hash": "2b4189bf70eed18cdbe8bdc8a95d034728037558f9e58caa7c31e95fa050d977",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 180,
+      "end_line": 189
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Java",
+      "Secure configuration by API",
+      "TransformerFactory (XSLT)"
+    ],
+    "heading_level": null,
+    "code_language": "java",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00053",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 53,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "This configuration limits internal entity expansion but is not a sandbox for untrusted style sheets. Choose the style sheet in application code; do not trust a style sheet reference supplied by the input document. For other providers or required dependencies, apply the [resource policy](#external-resources-for-transformations-and-validation) below.",
+    "text_hash": "468f403dfb766112a0d430eb539726090133aade82049e4dada2ccd43632061d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 191,
+      "end_line": 191
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Java",
+      "Secure configuration by API",
+      "TransformerFactory (XSLT)"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00054",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 54,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### SchemaFactory and Validator",
+    "text_hash": "15cd608a754518479706b56fae480b435a221dfb0d36c84ee0e2989b1baf759b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 193,
+      "end_line": 193
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Java",
+      "Secure configuration by API",
+      "SchemaFactory and Validator"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00055",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 55,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Schema compilation and validation can each load external resources. For a trusted application-owned schema that needs no external resources, [restrict access on the factory before compiling the schema](https://docs.oracle.com/en/java/javase/25/docs/api/java.xml/javax/xml/validation/SchemaFactory.html#setProperty(java.lang.String,java.lang.Object)); these restrictions also apply during validation:",
+    "text_hash": "14b5c5a0ae443ea9b03a7c391155069bb21b5ae9b6225260f82491cbd06cdb90",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 195,
+      "end_line": 195
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Java",
+      "Secure configuration by API",
+      "SchemaFactory and Validator"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00056",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 56,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "``` java\nSchemaFactory sf = SchemaFactory.newDefaultInstance();\nsf.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);\nsf.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, \"\");\nsf.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, \"\");\nSchema schema = sf.newSchema(new StreamSource(trustedSchemaStream));\n\nValidator validator = schema.newValidator();\nvalidator.validate(new StreamSource(untrustedStream));\n```",
+    "text_hash": "27c13aa40c9a844a0962e8e7e25b6289ffb585048b4e0c13a106c55b24e040f3",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 197,
+      "end_line": 206
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Java",
+      "Secure configuration by API",
+      "SchemaFactory and Validator"
+    ],
+    "heading_level": null,
+    "code_language": "java",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00057",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 57,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "If you install a resolver, configure it on the factory **and each validator**: [validators do not inherit the factory's resolver](https://docs.oracle.com/en/java/javase/25/docs/api/java.xml/javax/xml/validation/SchemaFactory.html#setResourceResolver(org.w3c.dom.ls.LSResourceResolver)). The same applies to `ValidatorHandler`.",
+    "text_hash": "c20b88f3d2d4b6a754703a576261dd3a75f2711bdd0e06d1cbd1e29b825a5443",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 208,
+      "end_line": 208
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Java",
+      "Secure configuration by API",
+      "SchemaFactory and Validator"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00058",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 58,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### XPath",
+    "text_hash": "c7f5ed2ffc32c205be83febc2b2604f572cb02993428954d4104b96f38bca244",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 210,
+      "end_line": 210
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Java",
+      "Secure configuration by API",
+      "XPath"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00059",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 59,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Avoid the [`InputSource` overloads of `XPath.evaluate`](https://docs.oracle.com/en/java/javase/25/docs/api/java.xml/javax/xml/xpath/XPath.html#evaluate(java.lang.String,org.xml.sax.InputSource)), which parse the document internally. Use the [hardened DOM builder](#documentbuilderfactory-dom) and evaluate against the resulting document:",
+    "text_hash": "3c98e41e1d7963937272a3317f208b669ae0f69f8e7643562e7318f90b1744de",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 212,
+      "end_line": 212
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Java",
+      "Secure configuration by API",
+      "XPath"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00060",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 60,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "``` java\nDocument doc = builder.parse(untrustedStream);\nXPath xpath = XPathFactory.newDefaultInstance().newXPath();\nNodeList nodes = (NodeList) xpath.evaluate(\"//user/name\", doc, XPathConstants.NODESET);\n```",
+    "text_hash": "fb40461aa985808589500226be86831544454db618aff1e41e97746521b43a51",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 214,
+      "end_line": 218
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Java",
+      "Secure configuration by API",
+      "XPath"
+    ],
+    "heading_level": null,
+    "code_language": "java",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00061",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 61,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### JAXB Unmarshaller",
+    "text_hash": "ce8b1535af2eca3eaff314f6d3bbc626c534a307fa611ece3ba5d62160c545c1",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 220,
+      "end_line": 220
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Java",
+      "Secure configuration by API",
+      "JAXB Unmarshaller"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00062",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 62,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "For Java Architecture for XML Binding (JAXB), pass the reader from the [StAX example](#xmlinputfactory-stax) to [`Unmarshaller.unmarshal`](https://jakarta.ee/specifications/xml-binding/4.0/apidocs/jakarta.xml.bind/jakarta/xml/bind/Unmarshaller.html#unmarshal(javax.xml.stream.XMLStreamReader)). Passing raw XML instead delegates parser configuration to the JAXB provider.",
+    "text_hash": "52dd8e7342e9b0614d8ca4423bb532b4102d1c01b48f249f09e8bba1a0d94de9",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 222,
+      "end_line": 222
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Java",
+      "Secure configuration by API",
+      "JAXB Unmarshaller"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00063",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 63,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "``` java\nObject result = jaxbContext.createUnmarshaller().unmarshal(xsr);\n```",
+    "text_hash": "a566074c37d4eecab780c26d5ed24a858dec23eb194ff597c8dced06ac1fb0b4",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 224,
+      "end_line": 226
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Java",
+      "Secure configuration by API",
+      "JAXB Unmarshaller"
+    ],
+    "heading_level": null,
+    "code_language": "java",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00064",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 64,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Other providers and required DTDs",
+    "text_hash": "9fa16f422d4329972faa24e301ce8264921a233bac45344417acdb232428aff9",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 228,
+      "end_line": 228
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Java",
+      "Other providers and required DTDs"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00065",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 65,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "`newInstance()` can select a third-party provider whose settings differ. Verify the provider's documented controls and fail if a required setting is unsupported. Boolean features use `setFeature`; external-access properties use `setAttribute` on a DOM factory and `setProperty` on a SAX parser or reader.",
+    "text_hash": "75b3cb9991db73fd6e5741f40ef2344bcd9bbc312ed465d94688fdd06998feaf",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 230,
+      "end_line": 230
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Java",
+      "Other providers and required DTDs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00066",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 66,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "If internal DTDs are required, install an `EntityResolver` on the DOM builder or SAX reader that throws `SAXException` for external references. Returning `null` delegates resolution to the parser. Set these [Xerces/SAX features](https://xerces.apache.org/xerces2-j/features.html#external-general-entities) to `false` instead of rejecting DOCTYPE:",
+    "text_hash": "e9c4a64df1dba54e911c06f9749bd579466dcd969a274611cc4678a7ab8643a1",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 232,
+      "end_line": 232
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Java",
+      "Other providers and required DTDs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00067",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 67,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- `http://xml.org/sax/features/external-general-entities`\n- `http://xml.org/sax/features/external-parameter-entities`\n- `http://apache.org/xml/features/nonvalidating/load-external-dtd`\n",
+    "text_hash": "f7a50450e56c9d7cabbe5e4d5ab2a9cba99145118f3f8f3a053f6422c66210b1",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 234,
+      "end_line": 237
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Java",
+      "Other providers and required DTDs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00068",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 68,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Keep XInclude disabled. The last feature only controls non-validating parsing; DTD validation needs an explicit policy for any required external DTD. Set applicable `ACCESS_EXTERNAL_*` properties to `\"\"` when supported. A resolver does not limit internal entity expansion: enable [`FEATURE_SECURE_PROCESSING`](https://docs.oracle.com/en/java/javase/25/docs/api/java.xml/javax/xml/XMLConstants.html#FEATURE_SECURE_PROCESSING) where supported and configure the provider's processing limits. Secure processing alone is not a portable replacement for external-access restrictions.",
+    "text_hash": "22b61ecb63c730bde765807688d3091f8e5548214a4d2d3182a168dbc1c724cb",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 238,
+      "end_line": 238
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Java",
+      "Other providers and required DTDs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00069",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 69,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "When using a SAX resolver, call `reader.parse(...)` directly. [`SAXParser.parse(source, DefaultHandler)` replaces the reader's resolver](https://github.com/openjdk/jdk/blob/6c48f4ed707bf0b15f9b6098de30db8aae6fa40f/src/java.xml/share/classes/javax/xml/parsers/SAXParser.java#L389-L392) with the supplied handler.",
+    "text_hash": "004051e6f8bde017ad12d7d3322c17077b31f710f6cdf2697f67f69d8b025f28",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 240,
+      "end_line": 240
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Java",
+      "Other providers and required DTDs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00070",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 70,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### External resources for transformations and validation",
+    "text_hash": "d20b0209d3f0666b3934613a0c978e5ab8b0e341b1e329f56839970a369c597f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 242,
+      "end_line": 242
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Java",
+      "External resources for transformations and validation"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00071",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 71,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "For other transformation or validation providers, supply XML, schemas and style sheets through a [`SAXSource`](https://docs.oracle.com/en/java/javase/25/docs/api/java.xml/javax/xml/transform/sax/SAXSource.html) with a hardened, namespace-aware `XMLReader`. Separately install a rejecting `URIResolver` for transformations or `LSResourceResolver` for schemas. The input parser's settings do not control style sheet or schema dependencies.",
+    "text_hash": "b5ff1d53e39def1f9913320e0d8070f5b7c4e46c768d186e6948353242e605d2",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 244,
+      "end_line": 244
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Java",
+      "External resources for transformations and validation"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00072",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 72,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "When external dependencies are required, use a [catalog with `RESOLVE=strict`](https://docs.oracle.com/en/java/javase/25/docs/api/java.xml/javax/xml/catalog/CatalogFeatures.html) to map approved identifiers to local resources, or an allowlisting resolver. Reject unapproved identifiers; returning `null` delegates to default resolution. External-access properties restrict protocols, not individual resources: allowing `https` is not a resource allowlist. Resources returned by your resolver remain your responsibility.",
+    "text_hash": "b868f6ee144f6d172c7f340248e7e7ca69ff7d5db822fd74c56db53be0e853b5",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 246,
+      "end_line": 246
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Java",
+      "External resources for transformations and validation"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00073",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 73,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Apply the policy before compilation and during processing. Set the [`URIResolver` on the transformer factory before `newTransformer`](https://docs.oracle.com/en/java/javase/25/docs/api/java.xml/javax/xml/transform/TransformerFactory.html#setURIResolver(javax.xml.transform.URIResolver)); transformers use it by default. For validation, install the resolver on the factory and every validator as described above.",
+    "text_hash": "893fdfa70718dca63351afc44939785e34b9f129d2b8a415fb5598a7e2ed1f56",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 248,
+      "end_line": 248
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Java",
+      "External resources for transformations and validation"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00074",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 74,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Parsers that wrap a JAXP parser",
+    "text_hash": "10383b983f08ff00a4123e5d39f989454ee69b4c284d2fa6e6bde24f55430f6e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 250,
+      "end_line": 250
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Java",
+      "Parsers that wrap a JAXP parser"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00075",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 75,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Supply wrappers with a hardened parser and check whether they replace its resolver:",
+    "text_hash": "1a343afbcfe4bd268ffb69ca32116e15784c8c5cfedecb81f7992ab1589fe772",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 252,
+      "end_line": 252
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Java",
+      "Parsers that wrap a JAXP parser"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00076",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 76,
+    "file_format": "MARKDOWN",
+    "block_type": "table",
+    "text_content": "| Library | Configuration |\n| --- | --- |\n| dom4j | Supply the reader with [`SAXReader.setXMLReader`](https://javadoc.io/doc/org.dom4j/dom4j/latest/org/dom4j/io/SAXReader.html#setXMLReader(org.xml.sax.XMLReader)) and set the rejecting resolver with `SAXReader.setEntityResolver`; [dom4j replaces the reader's resolver](https://github.com/dom4j/dom4j/blob/8db3742e13860c6767971867458073e8dd0fa1d1/src/main/java/org/dom4j/io/SAXReader.java#L464-L476) |\n| JDOM | Supply the reader through [`SAXBuilder(XMLReaderJDOMFactory)`](https://www.jdom.org/docs/apidocs/org/jdom2/input/SAXBuilder.html#SAXBuilder-org.jdom2.input.sax.XMLReaderJDOMFactory-) |\n| Commons Digester | Supply a hardened reader and call `Digester.setEntityResolver` before parsing; [Digester replaces the reader's resolver](https://github.com/apache/commons-digester/blob/0e6d183e1edba72b5d78208307c82f71bfdfb7ad/commons-digester3-core/src/main/java/org/apache/commons/digester3/Digester.java#L1869-L1876) |",
+    "text_hash": "0a6b27b4574a68d487a63df75a11748d40de69dae5b5f13f25982b7e9f863595",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 254,
+      "end_line": 258
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Java",
+      "Parsers that wrap a JAXP parser"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": [
+      "Library",
+      "Configuration"
+    ],
+    "table_rows": [
+      [
+        "dom4j",
+        "Supply the reader with [`SAXReader.setXMLReader`](https://javadoc.io/doc/org.dom4j/dom4j/latest/org/dom4j/io/SAXReader.html#setXMLReader(org.xml.sax.XMLReader)) and set the rejecting resolver with `SAXReader.setEntityResolver`; [dom4j replaces the reader's resolver](https://github.com/dom4j/dom4j/blob/8db3742e13860c6767971867458073e8dd0fa1d1/src/main/java/org/dom4j/io/SAXReader.java#L464-L476)"
+      ],
+      [
+        "JDOM",
+        "Supply the reader through [`SAXBuilder(XMLReaderJDOMFactory)`](https://www.jdom.org/docs/apidocs/org/jdom2/input/SAXBuilder.html#SAXBuilder-org.jdom2.input.sax.XMLReaderJDOMFactory-)"
+      ],
+      [
+        "Commons Digester",
+        "Supply a hardened reader and call `Digester.setEntityResolver` before parsing; [Digester replaces the reader's resolver](https://github.com/apache/commons-digester/blob/0e6d183e1edba72b5d78208307c82f71bfdfb7ad/commons-digester3-core/src/main/java/org/apache/commons/digester3/Digester.java#L1869-L1876)"
+      ]
+    ],
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00077",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 77,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Oracle DOM Parser",
+    "text_hash": "96f8f1ba0533dc13488a6c75d1dc3e0ea2a201bbe1de09a78c3bdc14837012b9",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 260,
+      "end_line": 260
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Java",
+      "Oracle DOM Parser"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00078",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 78,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "For Oracle XML Developer's Kit (`oracle.xml.parser.v2`), call [`setSecureProcessing()`](https://docs.oracle.com/en/database/oracle/oracle-database/21/adxdk/security-considerations-oracle-xml-developers-kit.html) on the DOM or SAX parser. It disables entity resolution and limits expansion. On its JAXP binding, enable `FEATURE_SECURE_PROCESSING`.",
+    "text_hash": "1bf1c3eeeabf34d7fa0819d54849b74e9713a2102adcaf8980c768632d16c554",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 262,
+      "end_line": 262
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Java",
+      "Oracle DOM Parser"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00079",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 79,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### java.beans.XMLDecoder",
+    "text_hash": "39a5915bc937b909ce18b0bf841f3efbfa283e77d5126c54520a68cc99eaabdf",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 264,
+      "end_line": 264
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Java",
+      "java.beans.XMLDecoder"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00080",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 80,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Do not use `XMLDecoder` with untrusted input. Blocking external entities does not remove its [deserialization risk](Deserialization_Cheat_Sheet.md#other-deserialization-libraries-and-formats).",
+    "text_hash": "67e329e2d7e56489df3e5744bbcbb758cd7bb48a748d583657effb988b44ca6f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 266,
+      "end_line": 266
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Java",
+      "java.beans.XMLDecoder"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00081",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 81,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Secure JAXP factory sources",
+    "text_hash": "4647243e02f9ca72e62595b4b99d4d72be4f4b5fb4bd6de87e17877c26e4d243",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 268,
+      "end_line": 268
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Java",
+      "Secure JAXP factory sources"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00082",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 82,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[Apache Commons Secure XML](https://commons.apache.org/proper/commons-secure-xml/) provides preconfigured factories. Check its [threat model](https://github.com/apache/commons-secure-xml/blob/main/src/site/markdown/threat_model.md) for supported runtimes and limits. Its protections do not cover URIs passed directly to parsing APIs, parsers created outside the library, or untrusted resources your resolver chooses to supply. Do not loosen its reserved security settings.",
+    "text_hash": "6d891e5952af75b6c11519464b4a7ad8bfd173a995c59e4533e851df636f8bbf",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 270,
+      "end_line": 270
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Java",
+      "Secure JAXP factory sources"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00083",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 83,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## .NET",
+    "text_hash": "0695280c2484fcaddc6e5e9a43f2ce0beb8d54b733dc36057992258ba207de08",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 272,
+      "end_line": 272
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00084",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 84,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**Up-to-date information for XXE injection in .NET is taken directly from the [web application of unit tests by Dean Fleming](https://github.com/deanf1/dotnet-security-unit-tests), which covers all currently supported .NET XML parsers, and has test cases that demonstrate when they are safe from XXE injection and when they are not, but these tests are only with injection from file and not direct DTD (used by DoS attacks).**",
+    "text_hash": "e9c4ec60fae4a730d7832dff0cf376468d873dec0954459415367ff27527e84c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 274,
+      "end_line": 274
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00085",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 85,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "For DoS attacks using a direct DTD (such as the [Billion laughs attack](https://en.wikipedia.org/wiki/Billion_laughs_attack)), a [separate testing application from Josh Grossman at Bounce Security](https://github.com/BounceSecurity/BillionLaughsTester) has been created to verify that .NET >=4.5.2 is safe from these attacks.",
+    "text_hash": "cf1593bb362dbac924381c6eb62a6a3cc4900b494b31ccb86d1ec097578c9369",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 276,
+      "end_line": 276
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00086",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 86,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Previously, this information was based on some older articles which may not be 100% accurate including:",
+    "text_hash": "fbf664cc26042d2d5d2b5d49c78acf2a34736c74b2474ed723fd6d7df744f0d2",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 278,
+      "end_line": 278
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00087",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 87,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- [James Jardine's excellent .NET XXE article](https://www.jardinesoftware.net/2016/05/26/xxe-and-net/).\n- [Guidance from Microsoft on how to prevent XXE and XML Denial of Service in .NET](https://learn.microsoft.com/en-us/archive/msdn-magazine/2009/november/xml-denial-of-service-attacks-and-defenses).\n",
+    "text_hash": "651dc7a43ac661bec9ce2bb0557043274503a6bdce67f876ca189c9fcabe3d7e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 280,
+      "end_line": 282
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00088",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 88,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Overview of .NET Parser Safety Levels",
+    "text_hash": "7e59cc70c627f603d6f39039c82bc8163d3259996ef3410f9e21231eb07a1ec2",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 283,
+      "end_line": 283
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "Overview of .NET Parser Safety Levels"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00089",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 89,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**Below is an overview of all supported .NET XML parsers and their default safety levels. More details about each parser are included below.**",
+    "text_hash": "46f9ae2811fc63b3a213a52cb66f5afceed9555f400fb666046675166cc5daef",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 285,
+      "end_line": 285
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "Overview of .NET Parser Safety Levels"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00090",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 90,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### XDocument (LINQ to XML) default safety levels",
+    "text_hash": "c38309a4e83931e336210fe46ee21e7f7a7c01a1c3858aec94e00fac2e6c5dbf",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 287,
+      "end_line": 287
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "Overview of .NET Parser Safety Levels",
+      "XDocument (LINQ to XML) default safety levels"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00091",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 91,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "This parser is protected from external entities at .NET Framework version 4.5.2 and protected from Billion Laughs at version 4.5.2 or greater, but it is uncertain if this parser is protected from Billion Laughs before version 4.5.2.",
+    "text_hash": "813d3855dd7e220db8ef2eb01b8b46779277720f1eb34d6a5c8c40f0d0ae18d2",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 289,
+      "end_line": 289
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "Overview of .NET Parser Safety Levels",
+      "XDocument (LINQ to XML) default safety levels"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00092",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 92,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### XmlDocument, XmlTextReader, XPathNavigator default safety levels",
+    "text_hash": "e6802113015e89dd7596074306c095090c58c08e3835d3158c30e635d2b106ac",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 291,
+      "end_line": 291
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "Overview of .NET Parser Safety Levels",
+      "XmlDocument, XmlTextReader, XPathNavigator default safety levels"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00093",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 93,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "These parsers are vulnerable to external entity attacks and Billion Laughs at versions below version 4.5.2 but protected at versions equal or greater than 4.5.2.",
+    "text_hash": "f306f0c36280bff3e02f724053c11267fda40b768d559073a7c3666c815ae79f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 293,
+      "end_line": 293
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "Overview of .NET Parser Safety Levels",
+      "XmlDocument, XmlTextReader, XPathNavigator default safety levels"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00094",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 94,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### XmlDictionaryReader, XmlNodeReader, XmlReader default safety levels",
+    "text_hash": "ddb2689843c02cdc911222e7b02203ec3ba613650a08328b6977073a9201d1fa",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 295,
+      "end_line": 295
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "Overview of .NET Parser Safety Levels",
+      "XmlDictionaryReader, XmlNodeReader, XmlReader default safety levels"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00095",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 95,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "These parsers are not vulnerable to external entity attacks or Billion Laughs before or after version 4.5.2. Also, at or greater than versions ≥4.5.2, these libraries won't even process the in-line DTD by default. Even if you change the default to allow processing a DTD, if a DoS attempt is performed an exception will still be thrown as documented above.",
+    "text_hash": "8cdc61bbba2e3ba20f7dd9b85cd9828145233802aeb2991febaee19024c5fa88",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 297,
+      "end_line": 297
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "Overview of .NET Parser Safety Levels",
+      "XmlDictionaryReader, XmlNodeReader, XmlReader default safety levels"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00096",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 96,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### ASP.NET",
+    "text_hash": "dbd0727ac137e4cede982fc002b7eb29703db1b4a53cb2a5911bd340949bca57",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 299,
+      "end_line": 299
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "ASP.NET"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00097",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 97,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "ASP.NET applications ≥ .NET 4.5.2 must also ensure setting the `<httpRuntime targetFramework=\"...\" />` in their `Web.config` to ≥4.5.2 or risk being vulnerable regardless of the actual .NET version. Omitting this tag will also result in unsafe-by-default behavior.",
+    "text_hash": "ca8d4bb2ca38fbd020a78293eb68ca7f4547a53a24f518f523153a7e466e0776",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 301,
+      "end_line": 301
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "ASP.NET"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00098",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 98,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "For the purpose of understanding the version thresholds above, the effective .NET Framework version for an ASP.NET application is either the .NET version the application was built with or the httpRuntime's `targetFramework` (Web.config), **whichever is lower**.",
+    "text_hash": "d1c8875325746b9245c0767ae95a7936b8c1e82dfbb96854eddc5bc630944991",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 303,
+      "end_line": 303
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "ASP.NET"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00099",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 99,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "This configuration tag should not be confused with a similar configuration tag: `<compilation targetFramework=\"...\" />` or the assemblies / projects targetFramework, which are **not** sufficient for achieving secure-by-default behavior as described above.",
+    "text_hash": "7ac76e41b26f7729eb902df02611250b18ce3070111a7749484524a560870f80",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 305,
+      "end_line": 305
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "ASP.NET"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00100",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 100,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### LINQ to XML",
+    "text_hash": "44aa5ee0fb4d74ed6dd43b15364d985da7dd9f8355acb3dacd1ba2906f353a5a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 307,
+      "end_line": 307
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "LINQ to XML"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00101",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 101,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**Both the `XElement` and `XDocument` objects in the `System.Xml.Linq` library are safe from XXE injection from external file and DoS attack by default.** `XElement` parses only the elements within the XML file, so DTDs are ignored altogether. `XDocument` has XmlResolver [disabled by default](https://learn.microsoft.com/en-us/dotnet/standard/linq/linq-xml-security) so it's safe from SSRF. While DTDs are [enabled by default](https://github.com/microsoft/referencesource/blob/main/System.Xml.Linq/System/Xml/Linq/XLinq.cs#L1986-L1993), from Framework versions ≥4.5.2, it is **not** vulnerable to DoS as noted but it may be vulnerable in earlier Framework versions. For more information, see [Microsoft's guidance on how to prevent XXE and XML Denial of Service in .NET](https://learn.microsoft.com/en-us/archive/msdn-magazine/2009/november/xml-denial-of-service-attacks-and-defenses)",
+    "text_hash": "a73e99aa0e14fc9fa38bf2c808cce72738f1f62bdf6d8dd706ed56f9a2518a5d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 309,
+      "end_line": 309
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "LINQ to XML"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00102",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 102,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### XmlDictionaryReader",
+    "text_hash": "248f5566b649e3a1a9fdb0ddd1ea09dbd7fcd55bdbe6af3adc81db007ad01874",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 311,
+      "end_line": 311
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "XmlDictionaryReader"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00103",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 103,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**`System.Xml.XmlDictionaryReader` is safe by default, as when it attempts to parse the DTD, the compiler throws an exception saying that \"CData elements not valid at top level of an XML document\". It becomes unsafe if constructed with a different unsafe XML parser.**",
+    "text_hash": "de1feebb32856cbfe3e3282e52461f8c5472ee6040646eac3b1fa47d94f7e365",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 313,
+      "end_line": 313
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "XmlDictionaryReader"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00104",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 104,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### XmlDocument",
+    "text_hash": "d5bcf40ffcb43f1db75de3487a8920d2a074558e0f82efa0f9ae72950eb284ca",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 315,
+      "end_line": 315
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "XmlDocument"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00105",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 105,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**Prior to .NET Framework version 4.5.2, `System.Xml.XmlDocument` is unsafe by default. The `XmlDocument` object has an `XmlResolver` object within it that needs to be set to null in versions prior to 4.5.2. In versions 4.5.2 and up, this `XmlResolver` is set to null by default.**",
+    "text_hash": "e4b9552fd18c676e78f938cc28512258b8caaf6fdbcc3c404f59b78c34fc06a8",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 317,
+      "end_line": 317
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "XmlDocument"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00106",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 106,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The following example shows how it is made safe:",
+    "text_hash": "207416db6020a2ef3336bee9037c2d592e1d68b95eefe5e611ea0e3f46ab6fe4",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 319,
+      "end_line": 319
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "XmlDocument"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00107",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 107,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "``` csharp\n static void LoadXML()\n {\n   string xxePayload = \"<!DOCTYPE doc [<!ENTITY win SYSTEM 'file:///C:/Users/testdata2.txt'>]>\"\n                     + \"<doc>&win;</doc>\";\n   string xml = \"<?xml version='1.0' ?>\" + xxePayload;\n\n   XmlDocument xmlDoc = new XmlDocument();\n   // Setting this to NULL disables DTDs - Its NOT null by default.\n   xmlDoc.XmlResolver = null;\n   xmlDoc.LoadXml(xml);\n   Console.WriteLine(xmlDoc.InnerText);\n   Console.ReadLine();\n }\n```",
+    "text_hash": "0f4bfa43e27d4c0529c6962b3bd7b977a6ae6c435ff3c0910326386f7de24b56",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 321,
+      "end_line": 335
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "XmlDocument"
+    ],
+    "heading_level": null,
+    "code_language": "csharp",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00108",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 108,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**For .NET Framework version ≥4.5.2, this is safe by default**.",
+    "text_hash": "7763dbc0d6fe2039ac23ef667e67155cfd49c1a4f72d590a231f99d54bc320ed",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 337,
+      "end_line": 337
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "XmlDocument"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00109",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 109,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "`XmlDocument` can become unsafe if you create your own nonnull `XmlResolver` with default or unsafe settings. If you need to enable DTD processing, instructions on how to do so safely are described in detail in the [referenced MSDN article](https://learn.microsoft.com/en-us/archive/msdn-magazine/2009/november/xml-denial-of-service-attacks-and-defenses).",
+    "text_hash": "4af8e76b433655d024ad533ea00760df4129dab4974bbd987094773598550dc7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 339,
+      "end_line": 339
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "XmlDocument"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00110",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 110,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### XmlNodeReader",
+    "text_hash": "28d0c1f689ef512198b48e8968126428887b089fe7baf535d274170cd8b1e751",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 341,
+      "end_line": 341
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "XmlNodeReader"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00111",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 111,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "`System.Xml.XmlNodeReader` objects are safe by default and will ignore DTDs even when constructed with an unsafe parser or wrapped in another unsafe parser.",
+    "text_hash": "517acf4500d036e745667894393114da0dcf524f7d39f1bc7d15bf4c4098f390",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 343,
+      "end_line": 343
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "XmlNodeReader"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00112",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 112,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### XmlReader",
+    "text_hash": "3dd13d260ac86c0d2eae3dfb1fddfe44d1c4a4fbc4e36fe0c67a278973a7a398",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 345,
+      "end_line": 345
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "XmlReader"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00113",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 113,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "`System.Xml.XmlReader` objects are safe by default.",
+    "text_hash": "14c4a859e5dc826deebfa8cd65dd34c1670b264011524096c49a29f12cc67605",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 347,
+      "end_line": 347
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "XmlReader"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00114",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 114,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "They are set by default to have their ProhibitDtd property set to false in .NET Framework versions 4.0 and earlier, or their `DtdProcessing` property set to Prohibit in .NET versions 4.0 and later.",
+    "text_hash": "a90feb162105078b330183718456f2c9a420d95419667a0d40737fdc39a19bc6",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 349,
+      "end_line": 349
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "XmlReader"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00115",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 115,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Additionally, in .NET versions 4.5.2 and later, the `XmlReaderSettings` belonging to the `XmlReader` has its `XmlResolver` set to null by default, which provides an additional layer of safety.",
+    "text_hash": "9a2177e77199add2ac43254c298e7fd738b365ee31f61ea67ac09b6c28be730a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 351,
+      "end_line": 351
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "XmlReader"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00116",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 116,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Therefore, `XmlReader` objects will only become unsafe in version 4.5.2 and up if both the `DtdProcessing` property is set to Parse and the `XmlReaderSetting`'s `XmlResolver` is set to a nonnull XmlResolver with default or unsafe settings. If you need to enable DTD processing, instructions on how to do so safely are described in detail in the [referenced MSDN article](https://learn.microsoft.com/en-us/archive/msdn-magazine/2009/november/xml-denial-of-service-attacks-and-defenses).",
+    "text_hash": "87e78cd5b9b258cfdac5c6c13aa97dfb27b0fdd8e51abf98ae8fb760451b0d1a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 353,
+      "end_line": 353
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "XmlReader"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00117",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 117,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### XmlTextReader",
+    "text_hash": "96d16c6ee8cfdddd5a98fec8078f4281cac5e3f622de26c8450696181f6c7409",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 355,
+      "end_line": 355
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "XmlTextReader"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00118",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 118,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "`System.Xml.XmlTextReader` is **unsafe** by default in .NET Framework versions prior to 4.5.2. Here is how to make it safe in various .NET versions:",
+    "text_hash": "dc2e5c17c167d6a744d8dc5984125072751d4821b064e2101eb0bdde217dba7d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 357,
+      "end_line": 357
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "XmlTextReader"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00119",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 119,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Prior to .NET 4.0",
+    "text_hash": "bd3de5c5d4ef8f5fcc70f069640c68352330bcb9107e3d7c3ade8a8e0d1fd43d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 359,
+      "end_line": 359
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "XmlTextReader",
+      "Prior to .NET 4.0"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00120",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 120,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "In .NET Framework versions prior to 4.0, DTD parsing behavior for `XmlReader` objects like `XmlTextReader` are controlled by the Boolean `ProhibitDtd` property found in the `System.Xml.XmlReaderSettings` and `System.Xml.XmlTextReader` classes.",
+    "text_hash": "cac14dba8dc14ef714bc5747685e89447f92900c7cc30472066463809ef6b2eb",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 361,
+      "end_line": 361
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "XmlTextReader",
+      "Prior to .NET 4.0"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00121",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 121,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Set these values to true to disable inline DTDs completely.",
+    "text_hash": "97d94cdc02b29e105c81b62d809b80bccc7a683396ef798969def241d4178f36",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 363,
+      "end_line": 363
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "XmlTextReader",
+      "Prior to .NET 4.0"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00122",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 122,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "``` csharp\nXmlTextReader reader = new XmlTextReader(stream);\n// NEEDED because the default is FALSE!!\nreader.ProhibitDtd = true;  \n```",
+    "text_hash": "e6ee86ea440fce193f9b45fc5a995cd3838b4cfa00cb959dedbd3b720a9bf7cb",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 365,
+      "end_line": 369
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "XmlTextReader",
+      "Prior to .NET 4.0"
+    ],
+    "heading_level": null,
+    "code_language": "csharp",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00123",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 123,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### .NET 4.0 - .NET 4.5.2",
+    "text_hash": "913b817ad2342ba354e0ff38c046a918482ed11d85b1a2590790864a71b61e28",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 371,
+      "end_line": 371
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "XmlTextReader",
+      ".NET 4.0 - .NET 4.5.2"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00124",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 124,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**In .NET Framework version 4.0, DTD parsing behavior has been changed. The `ProhibitDtd` property has been deprecated in favor of the new `DtdProcessing` property.**",
+    "text_hash": "efb4eec69a381b002444fcfe883b9672217d25dcd71a5fc0f82f6d62c1a2f790",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 373,
+      "end_line": 373
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "XmlTextReader",
+      ".NET 4.0 - .NET 4.5.2"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00125",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 125,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**However, they didn't change the default settings so `XmlTextReader` is still vulnerable to XXE by default.**",
+    "text_hash": "2708b3240418adf57ad735ca85a8038fd922e47834d68a9f29f99f1381101a6b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 375,
+      "end_line": 375
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "XmlTextReader",
+      ".NET 4.0 - .NET 4.5.2"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00126",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 126,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**Setting `DtdProcessing` to `Prohibit` causes the runtime to throw an exception if a `<!DOCTYPE>` element is present in the XML.**",
+    "text_hash": "b3d48fc5f86d0c7ab388d0ec471f422a27299efcbf8c7fafa5251463c29a1d13",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 377,
+      "end_line": 377
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "XmlTextReader",
+      ".NET 4.0 - .NET 4.5.2"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00127",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 127,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "To set this value yourself, it looks like this:",
+    "text_hash": "fc185184012eacdfaa293546e292425e43f61913b65f9faaa03badb8f60175ef",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 379,
+      "end_line": 379
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "XmlTextReader",
+      ".NET 4.0 - .NET 4.5.2"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00128",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 128,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "``` csharp\nXmlTextReader reader = new XmlTextReader(stream);\n// NEEDED because the default is Parse!!\nreader.DtdProcessing = DtdProcessing.Prohibit;  \n```",
+    "text_hash": "eebbc65d20adcdc21e6315ffd83946c12b79182f9c7e4e0466c8af9a1e4773db",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 381,
+      "end_line": 385
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "XmlTextReader",
+      ".NET 4.0 - .NET 4.5.2"
+    ],
+    "heading_level": null,
+    "code_language": "csharp",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00129",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 129,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Alternatively, you can set the `DtdProcessing` property to `Ignore`, which will not throw an exception on encountering a `<!DOCTYPE>` element but will simply skip over it and not process it. Finally, you can set `DtdProcessing` to `Parse` if you do want to allow and process inline DTDs.",
+    "text_hash": "80b11e7c9eb15e452a44262f63d3337be605302de4d522f6ad59a1c7b8387bae",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 387,
+      "end_line": 387
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "XmlTextReader",
+      ".NET 4.0 - .NET 4.5.2"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00130",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 130,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### .NET 4.5.2 and later",
+    "text_hash": "910b38b4d85eba34fa0a034bce5607d4d9d4582fcc51e10561218716a9d957e1",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 389,
+      "end_line": 389
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "XmlTextReader",
+      ".NET 4.5.2 and later"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00131",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 131,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "In .NET Framework versions 4.5.2 and up, `XmlTextReader`'s internal `XmlResolver` is set to null by default, making the `XmlTextReader` ignore DTDs by default. The `XmlTextReader` can become unsafe if you create your own nonnull `XmlResolver` with default or unsafe settings.",
+    "text_hash": "3857517ebcbce2bd9f17da0c7869a7bb18345f94a3a3ad9ecef210cb22d6d0a9",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 391,
+      "end_line": 391
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "XmlTextReader",
+      ".NET 4.5.2 and later"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00132",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 132,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### XPathNavigator",
+    "text_hash": "08d323dcafb01cbf4b38941022c6acaa4f76e84ebf3e0e1820759f3dd68d9d10",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 393,
+      "end_line": 393
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "XPathNavigator"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00133",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 133,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "`System.Xml.XPath.XPathNavigator` is **unsafe** by default in .NET Framework versions prior to 4.5.2.",
+    "text_hash": "97cec31ce070dc2b7d9d3c16b6d5c6c553a08e80f2817eca21066bc26038086a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 395,
+      "end_line": 395
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "XPathNavigator"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00134",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 134,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "This is due to the fact that it implements `IXPathNavigable` objects like `XmlDocument`, which are also unsafe by default in versions prior to 4.5.2.",
+    "text_hash": "a6bf429ccf5fd1a35eb7abe6d74f343e54a15ed908a443bbfe45a09a1cf0b8c8",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 397,
+      "end_line": 397
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "XPathNavigator"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00135",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 135,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "You can make `XPathNavigator` safe by giving it a safe parser like `XmlReader` (which is safe by default) in the `XPathDocument`'s constructor.",
+    "text_hash": "a0d80cabaa507db2f6bdbdfb4d707a8b4392906d2fe670546a9169652c7fdf0d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 399,
+      "end_line": 399
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "XPathNavigator"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00136",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 136,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Here is an example:",
+    "text_hash": "74dadf3576f8977e37c2a6c0fb5ccaaa47db1bf109533704779cf9162a7030ee",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 401,
+      "end_line": 401
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "XPathNavigator"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00137",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 137,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "``` csharp\nXmlReader reader = XmlReader.Create(\"example.xml\");\nXPathDocument doc = new XPathDocument(reader);\nXPathNavigator nav = doc.CreateNavigator();\nstring xml = nav.InnerXml.ToString();\n```",
+    "text_hash": "abfd5127abda22b1c9858d6b41fb7315f4406e27cd665a80f02af47d4d7da08d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 403,
+      "end_line": 408
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "XPathNavigator"
+    ],
+    "heading_level": null,
+    "code_language": "csharp",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00138",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 138,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "For .NET Framework version ≥4.5.2, XPathNavigator is **safe by default**.",
+    "text_hash": "a12748e33f459bdc24b758ccc218c3ea07142c5b4a02d03e5338557a9991534e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 410,
+      "end_line": 410
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "XPathNavigator"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00139",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 139,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### XslCompiledTransform",
+    "text_hash": "a26cff618192095ac2c706ae4a812b1cc0a1ccb5927f07aab059356f4120d5db",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 412,
+      "end_line": 412
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "XslCompiledTransform"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00140",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 140,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "`System.Xml.Xsl.XslCompiledTransform` (an XML transformer) is safe by default as long as the parser it's given is safe.",
+    "text_hash": "47e22f317b2d76867b6bffb78d9f3ac34c805a2537132c2e1b392af85b12bad4",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 414,
+      "end_line": 414
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "XslCompiledTransform"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00141",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 141,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "It is safe by default because the default parser of the `Transform()` methods is an `XmlReader`, which is safe by default (per above).",
+    "text_hash": "0866f477e84c015a683a62b6849124510a93ad1c14bb500a3e86f50a97d0c281",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 416,
+      "end_line": 416
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "XslCompiledTransform"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00142",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 142,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[The source code for this method is here.](https://github.com/microsoft/referencesource/blob/main/System.Xml/System/Xml/Xslt/XslCompiledTransform.cs)",
+    "text_hash": "e4295bfda31bf7745625041b0217fae5bb12d12374224f855174c246c01d0775",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 418,
+      "end_line": 418
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "XslCompiledTransform"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00143",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 143,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Some of the `Transform()` methods accept an `XmlReader` or `IXPathNavigable` (e.g., `XmlDocument`) as an input, and if you pass in an unsafe XML Parser then the `Transform` will also be unsafe.",
+    "text_hash": "4c654e84813ef54b60293d209431c1300ab3a07fb4d8e3d28a784937c04e2304",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 420,
+      "end_line": 420
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      ".NET",
+      "XslCompiledTransform"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00144",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 144,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## iOS",
+    "text_hash": "ed38fffe0d0b2913784d94a7ab0a8b8a1f7832745f9877a145c934c2fad120c4",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 422,
+      "end_line": 422
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "iOS"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00145",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 145,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### libxml2",
+    "text_hash": "ba85b86dc096ed2c2a9e25a66b9bdfb34b1e54c9b6d16f4ae2cf0666fff712db",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 424,
+      "end_line": 424
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "iOS",
+      "libxml2"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00146",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 146,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**iOS includes the C/C++ libxml2 library described above, so that guidance applies if you are using libxml2 directly.**",
+    "text_hash": "67c614bbec93f6bb07b81a51537190401277dbeac4c01bb165e6632a39eef3c8",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 426,
+      "end_line": 426
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "iOS",
+      "libxml2"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00147",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 147,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**However, the version of libxml2 provided up through iOS6 is prior to version 2.9 of libxml2 (which protects against XXE by default).**",
+    "text_hash": "fb125b4624ee3968c6100ea3bd683766462f718c857929f991535f1c90a97149",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 428,
+      "end_line": 428
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "iOS",
+      "libxml2"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00148",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 148,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### NSXMLDocument",
+    "text_hash": "f6a7f3f0fb182a470a819eaa7455c708adaabad9a689878f633752c54ab33c8e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 430,
+      "end_line": 430
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "iOS",
+      "NSXMLDocument"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00149",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 149,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**iOS also provides an `NSXMLDocument` type, which is built on top of libxml2.**",
+    "text_hash": "9beb6919db88d5926c7c1a539707547c769c07ebc6f124db218b939531f15a1c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 432,
+      "end_line": 432
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "iOS",
+      "NSXMLDocument"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00150",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 150,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**However, `NSXMLDocument` provides some additional protections against XXE that aren't available in libxml2 directly.**",
+    "text_hash": "455fbab467c6b45fa636a828e3d1c1361116661f3b3d5f05951a0573693353d2",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 434,
+      "end_line": 434
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "iOS",
+      "NSXMLDocument"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00151",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 151,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Per the 'NSXMLDocument External Entity Restriction API' section of this [page](https://developer.apple.com/library/archive/releasenotes/Foundation/RN-Foundation-iOS/Foundation_iOS5.html):",
+    "text_hash": "ce38b115cb4869694f2743bcb4b49669ec1a3f1efaf355d999497a180998195f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 436,
+      "end_line": 436
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "iOS",
+      "NSXMLDocument"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00152",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 152,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- iOS4 and earlier: All external entities are loaded by default.\n- iOS5 and later: Only entities that don't require network access are loaded. (which is safer)\n",
+    "text_hash": "c34b055634347836ae08f4f0ccb01834af2a1b07c75197ef2abb94115175b103",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 438,
+      "end_line": 440
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "iOS",
+      "NSXMLDocument"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00153",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 153,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**However, to completely disable XXE in an `NSXMLDocument` in any version of iOS you simply specify `NSXMLNodeLoadExternalEntitiesNever` when creating the `NSXMLDocument`.**",
+    "text_hash": "07de0a7f20810a558f2599a1d7980ebe78dfe9e2d6b269af494ef569dce15b5f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 441,
+      "end_line": 441
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "iOS",
+      "NSXMLDocument"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00154",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 154,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## PHP",
+    "text_hash": "b66559a771931f6195383c966c87c46a81ecbe0d2815d5123d5e5a7de5ae7693",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 443,
+      "end_line": 443
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "PHP"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00155",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 155,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "With libxml 2.9.0 or later, entity substitution is disabled by default. Do not enable `LIBXML_NOENT`, `LIBXML_DTDLOAD`, or `LIBXML_DTDVALID` for untrusted XML without explicitly blocking external resources; these options can require [additional protection against external entity loading](https://www.php.net/manual/en/function.libxml-disable-entity-loader.php).",
+    "text_hash": "87435d99d78ea9933cb2a30b79bc592fe32b75d086560b0cf4be7320615b7f71",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 445,
+      "end_line": 445
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "PHP"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00156",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 156,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "To reject external entity resolution, install a [resolver callback that returns `null`](https://www.php.net/manual/en/function.libxml-set-external-entity-loader.php) before processing untrusted XML and keep it installed for that operation:",
+    "text_hash": "457861070648d3659c8f9a361f032953de1b7a228947259fae9841bd38e8913d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 447,
+      "end_line": 447
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "PHP"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00157",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 157,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "``` php\nlibxml_set_external_entity_loader(function () {\n    return null;\n});\n```",
+    "text_hash": "0cbc885d1bc1f9f5001672050fe284432f2a93b2c037643dc32d8ca00152e78b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 449,
+      "end_line": 453
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "PHP"
+    ],
+    "heading_level": null,
+    "code_language": "php",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00158",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 158,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Passing `null` directly to `libxml_set_external_entity_loader()` is not equivalent to returning `null` from the callback and does not block external entity loading, as the [PHP security advisory's mitigation](https://github.com/php/php-src/security/advisories/GHSA-3qrf-m4j2-pcrr) demonstrates.",
+    "text_hash": "2a96cdd6e42818c281949232f4b45660f9548b6adbb06c049def2701ca3cf633",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 455,
+      "end_line": 455
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "PHP"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00159",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 159,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "A description of how to abuse this in PHP is presented in a good [SensePost article](https://sensepost.com/blog/2014/revisting-xxe-and-abusing-protocols/) describing a cool PHP based XXE vulnerability that was fixed in Facebook.",
+    "text_hash": "83eb7010f5b7182194331240a4a2e9c6d31aa607602fda20b52caf698f3213b2",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 457,
+      "end_line": 457
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "PHP"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00160",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 160,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Python",
+    "text_hash": "a1e59f5ee37b45566c05b80113826d69f2d979eaddc49afb16f36a9593b28150",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 459,
+      "end_line": 459
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Python"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00161",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 161,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Follow Python's current [XML security guidance](https://docs.python.org/3/library/xml.html#xml-security). The built-in parsers rely on Expat, which may be bundled with Python or supplied by the operating system. Check `pyexpat.EXPAT_VERSION` in the deployed interpreter and keep both Python and Expat updated. Expat versions below 2.7.2 may be affected by entity-expansion, large-token, or dynamic-memory denial-of-service vulnerabilities; a Python version alone does not establish the linked Expat version.",
+    "text_hash": "a8623d15d33f1ac646354adb8ef374f7775f2ccd1b7f578ecbbc049f7d4d11d1",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 461,
+      "end_line": 461
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Python"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00162",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 162,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Expat itself does not access files or the network by default. Higher-level APIs and custom handlers still need an external-resource policy. Independently bound input size and decompressed data: the standard-library `xmlrpc` module is vulnerable to decompression bombs.",
+    "text_hash": "9ff9561b814f79f280fcd14afa13a99da774493d9f9e9dac979c109f84f5a485",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 463,
+      "end_line": 463
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Python"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00163",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 163,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "For untrusted XML, use the [defusedxml parsing interfaces](https://github.com/tiran/defusedxml#defusedxml) in place of the corresponding standard-library parsing functions. Keep entity and external-resource rejection enabled, and set `forbid_dtd=True` on APIs that offer it when DTDs are unnecessary. These interfaces reject prohibited constructs; they do not sanitize XML or replace application resource limits.",
+    "text_hash": "d06a447294a959f9e0d905b13f01a8a07d4e15cc09cbacef60bd554f1ccd2939",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 465,
+      "end_line": 465
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Python"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00164",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 164,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Semgrep Rules",
+    "text_hash": "a51cea286c0c4a93c52c9c7dfb205592054de84fe4d875aa42b1f7c39e0b4cbe",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 467,
+      "end_line": 467
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Semgrep Rules"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00165",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 165,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[Semgrep](https://semgrep.dev/) is a command-line tool for offline static analysis. Use pre-built or custom rules to enforce code and security standards in your codebase.",
+    "text_hash": "c46bf9f551843c02396d2de398c0e5eb552979b6d209e64531fedee3d5727d5f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 469,
+      "end_line": 469
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Semgrep Rules"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00166",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 166,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Java",
+    "text_hash": "2485230a2c62e665a7ab3fccd77b7b49cce3f306e1af987991f33725e105636b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 471,
+      "end_line": 471
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Semgrep Rules",
+      "Java"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00167",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 167,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Below are the rules for different XML parsers in Java",
+    "text_hash": "61a0b06f8edc5836f016d70701301dfd33a797dafe94f47b1deee0f46094a3c0",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 473,
+      "end_line": 473
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Semgrep Rules",
+      "Java"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00168",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 168,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### DocumentBuilderFactory",
+    "text_hash": "0a08bc75437d4a95eec911166dd5ce85de78eed60d7d721b1be4b3f68904381f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 475,
+      "end_line": 475
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Semgrep Rules",
+      "Java",
+      "DocumentBuilderFactory"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00169",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 169,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Identifying XXE vulnerability in the `javax.xml.parsers.DocumentBuilderFactory` library.\nThe official registry rule is [documentbuilderfactory-disallow-doctype-decl-missing](https://semgrep.dev/r/java.lang.security.audit.xxe.documentbuilderfactory-disallow-doctype-decl-missing.documentbuilderfactory-disallow-doctype-decl-missing).",
+    "text_hash": "7b3a7f77ad165be2bf70be27658e37166bc5dfe8e1916605894b7d6adec81d01",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 477,
+      "end_line": 478
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Semgrep Rules",
+      "Java",
+      "DocumentBuilderFactory"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00170",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 170,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### SAXParserFactory",
+    "text_hash": "eee5ea22b0cdb2924ba69678350d88636f3061c70d8ef089172b07fd601bd157",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 480,
+      "end_line": 480
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Semgrep Rules",
+      "Java",
+      "SAXParserFactory"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00171",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 171,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Identifying XXE vulnerability in the `javax.xml.parsers.SAXParserFactory` library.\nThe official registry rule is [saxparserfactory-disallow-doctype-decl-missing](https://semgrep.dev/r/java.lang.security.audit.xxe.saxparserfactory-disallow-doctype-decl-missing.saxparserfactory-disallow-doctype-decl-missing).",
+    "text_hash": "52abf8cab8ec8ad39ecceb3e67e59fbe05f54239e73485df0e754ebb796cb15b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 482,
+      "end_line": 483
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Semgrep Rules",
+      "Java",
+      "SAXParserFactory"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00172",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 172,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### XMLInputFactory",
+    "text_hash": "1a46fa10760208df5cc101f3104b1bb2c4c1384b58559f3f836e6d8be7db964b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 485,
+      "end_line": 485
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Semgrep Rules",
+      "Java",
+      "XMLInputFactory"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00173",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 173,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Identifying XXE vulnerability in the `javax.xml.stream.XMLInputFactory` library.\nThe official registry rule is [xmlinputfactory-possible-xxe](https://semgrep.dev/r/java.lang.security.xmlinputfactory-possible-xxe.xmlinputfactory-possible-xxe).",
+    "text_hash": "7def9164e69fe6ffee048cc19782e659b69b880f8ae50b2d39bc488f935a8af4",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 487,
+      "end_line": 488
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "Semgrep Rules",
+      "Java",
+      "XMLInputFactory"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00174",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 174,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## References",
+    "text_hash": "65b72d86eeeb214ab8ca5fd24cb7cd7773e58084e95b670040df03e21e8c6fa7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 490,
+      "end_line": 490
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "References"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_9363b0048b47_b00175",
+    "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+    "version_id": "ver_9363b0048b47",
+    "block_idx": 175,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- [Oracle Java 25: JAXP Security Guide](https://docs.oracle.com/en/java/javase/25/security/java-api-xml-processing-jaxp-security-guide.html)\n- [Python: XML Security](https://docs.python.org/3/library/xml.html)\n- [Morgan and Al Ibrahim: XML Schema, DTD, and Entity Attacks](https://dl.packetstormsecurity.net/papers/general/XMLDTDEntityAttacks.pdf)",
+    "text_hash": "7111e743726d71b54dc1e703c3ed49a0ee9fe8b8fff1dbaf89bc720907fd6fcc",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 492,
+      "end_line": 494
+    },
+    "heading_path": [
+      "XML External Entity Prevention Cheat Sheet",
+      "References"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  }
+]

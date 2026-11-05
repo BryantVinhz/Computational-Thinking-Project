@@ -1,0 +1,656 @@
+{
+  "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+  "version_id": "ver_e880e38449f2",
+  "chunking_strategy": "structure_aware",
+  "chunks": [
+    {
+      "chunk_id": "ver_e880e38449f2_c00000",
+      "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+      "version_id": "ver_e880e38449f2",
+      "chunk_idx": 0,
+      "chunk_type": "heading",
+      "text_content": "# PHP Configuration Cheat Sheet",
+      "token_count": 5,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "PHP Configuration Cheat Sheet"
+      ]
+    },
+    {
+      "chunk_id": "ver_e880e38449f2_c00001",
+      "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+      "version_id": "ver_e880e38449f2",
+      "chunk_idx": 1,
+      "chunk_type": "heading",
+      "text_content": "## Introduction",
+      "token_count": 3,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "PHP Configuration Cheat Sheet",
+        "Introduction"
+      ]
+    },
+    {
+      "chunk_id": "ver_e880e38449f2_c00002",
+      "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+      "version_id": "ver_e880e38449f2",
+      "chunk_idx": 2,
+      "chunk_type": "mixed",
+      "text_content": "This page is meant to help those configuring PHP and the web server it is running on to be very secure.\n\nBelow you will find information on the proper settings for the `php.ini` file and instructions on configuring Apache, Nginx, and Caddy web servers.\n\nFor general PHP codebase security please refer to the two following great guides:\n\n- [Paragonie's 2018 PHP Security Guide](https://paragonie.com/blog/2017/12/2018-guide-building-secure-php-software)\n- [Awesome PHP Security](https://github.com/guardrailsio/awesome-php-security)",
+      "token_count": 126,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "PHP Configuration Cheat Sheet",
+        "Introduction"
+      ]
+    },
+    {
+      "chunk_id": "ver_e880e38449f2_c00003",
+      "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+      "version_id": "ver_e880e38449f2",
+      "chunk_idx": 3,
+      "chunk_type": "heading",
+      "text_content": "## PHP Configuration and Deployment",
+      "token_count": 6,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "PHP Configuration Cheat Sheet",
+        "PHP Configuration and Deployment"
+      ]
+    },
+    {
+      "chunk_id": "ver_e880e38449f2_c00004",
+      "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+      "version_id": "ver_e880e38449f2",
+      "chunk_idx": 4,
+      "chunk_type": "heading",
+      "text_content": "### php.ini",
+      "token_count": 6,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "PHP Configuration Cheat Sheet",
+        "PHP Configuration and Deployment",
+        "php.ini"
+      ]
+    },
+    {
+      "chunk_id": "ver_e880e38449f2_c00005",
+      "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+      "version_id": "ver_e880e38449f2",
+      "chunk_idx": 5,
+      "chunk_type": "paragraph",
+      "text_content": "Some of following settings need to be adapted to your system, in particular `session.save_path`, `session.cookie_path` (e.g.\n\n`/var/www/mysite`), and `session.cookie_domain` (e.g.\n\n`ExampleSite.com`).\n\nRun a PHP branch that is listed on the official [Supported Versions](https://www.php.net/supported-versions.php) page and plan upgrades before its security-support end date.\n\nDistribution vendors may provide separate extended support, but that does not make the upstream PHP branch supported.\n\nReview the [core `php.ini` directives](https://www.php.net/manual/ini.core.php) in the PHP Manual for a complete reference on every value in the `php.ini` configuration file.\n\nYou can find a copy of the following values in a [ready-to-go `php.ini` file here](https://github.com/danehrlich1/very-secure-php-ini).",
+      "token_count": 216,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "PHP Configuration Cheat Sheet",
+        "PHP Configuration and Deployment",
+        "php.ini"
+      ]
+    },
+    {
+      "chunk_id": "ver_e880e38449f2_c00006",
+      "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+      "version_id": "ver_e880e38449f2",
+      "chunk_idx": 6,
+      "chunk_type": "heading",
+      "text_content": "#### PHP error handling",
+      "token_count": 7,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "PHP Configuration Cheat Sheet",
+        "PHP Configuration and Deployment",
+        "php.ini",
+        "PHP error handling"
+      ]
+    },
+    {
+      "chunk_id": "ver_e880e38449f2_c00007",
+      "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+      "version_id": "ver_e880e38449f2",
+      "chunk_idx": 7,
+      "chunk_type": "mixed",
+      "text_content": "```text\nexpose_php              = Off\nerror_reporting         = E_ALL\ndisplay_errors          = Off\ndisplay_startup_errors  = Off\nlog_errors              = On\nerror_log               = /valid_path/PHP-logs/php_error.log\nignore_repeated_errors  = Off\n```\n\nKeep in mind that you need to have `display_errors` to `Off` on a production server and it's a good idea to frequently notice the logs.",
+      "token_count": 69,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "PHP Configuration Cheat Sheet",
+        "PHP Configuration and Deployment",
+        "php.ini",
+        "PHP error handling"
+      ]
+    },
+    {
+      "chunk_id": "ver_e880e38449f2_c00008",
+      "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+      "version_id": "ver_e880e38449f2",
+      "chunk_idx": 8,
+      "chunk_type": "heading",
+      "text_content": "#### PHP general settings",
+      "token_count": 7,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "PHP Configuration Cheat Sheet",
+        "PHP Configuration and Deployment",
+        "php.ini",
+        "PHP general settings"
+      ]
+    },
+    {
+      "chunk_id": "ver_e880e38449f2_c00009",
+      "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+      "version_id": "ver_e880e38449f2",
+      "chunk_idx": 9,
+      "chunk_type": "mixed",
+      "text_content": "```text\ndoc_root                = /path/DocumentRoot/PHP-scripts/\nopen_basedir            = /path/DocumentRoot/PHP-scripts/\ninclude_path            = /path/PHP-pear/\nextension_dir           = /path/PHP-extensions/\nmime_magic.magicfile    = /path/PHP-magic.mime\nallow_url_fopen         = Off\nallow_url_include       = Off\nvariables_order         = \"GPCS\"\nallow_webdav_methods    = Off\nsession.gc_maxlifetime  = 600\n```\n\n`allow_url_*` prevents [LFI](https://www.acunetix.com/blog/articles/local-file-inclusion-lfi/)s to be easily escalated to [RFI](https://www.acunetix.com/blog/articles/remote-file-inclusion-rfi/)s.",
+      "token_count": 145,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "PHP Configuration Cheat Sheet",
+        "PHP Configuration and Deployment",
+        "php.ini",
+        "PHP general settings"
+      ]
+    },
+    {
+      "chunk_id": "ver_e880e38449f2_c00010",
+      "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+      "version_id": "ver_e880e38449f2",
+      "chunk_idx": 10,
+      "chunk_type": "heading",
+      "text_content": "#### PHP file upload handling",
+      "token_count": 8,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "PHP Configuration Cheat Sheet",
+        "PHP Configuration and Deployment",
+        "php.ini",
+        "PHP file upload handling"
+      ]
+    },
+    {
+      "chunk_id": "ver_e880e38449f2_c00011",
+      "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+      "version_id": "ver_e880e38449f2",
+      "chunk_idx": 11,
+      "chunk_type": "mixed",
+      "text_content": "```text\nfile_uploads            = On\nupload_tmp_dir          = /path/PHP-uploads/\nupload_max_filesize     = 2M\nmax_file_uploads        = 2\n```\n\nIf your application is not using file uploads, and say the only data the user will enter / upload is forms that do not require any document attachments, `file_uploads` should be turned `Off`.",
+      "token_count": 65,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "PHP Configuration Cheat Sheet",
+        "PHP Configuration and Deployment",
+        "php.ini",
+        "PHP file upload handling"
+      ]
+    },
+    {
+      "chunk_id": "ver_e880e38449f2_c00012",
+      "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+      "version_id": "ver_e880e38449f2",
+      "chunk_idx": 12,
+      "chunk_type": "heading",
+      "text_content": "#### PHP executable handling",
+      "token_count": 7,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "PHP Configuration Cheat Sheet",
+        "PHP Configuration and Deployment",
+        "php.ini",
+        "PHP executable handling"
+      ]
+    },
+    {
+      "chunk_id": "ver_e880e38449f2_c00013",
+      "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+      "version_id": "ver_e880e38449f2",
+      "chunk_idx": 13,
+      "chunk_type": "mixed",
+      "text_content": "```text\nenable_dl               = Off\ndisable_functions       = system, exec, shell_exec, passthru, phpinfo, show_source, highlight_file, popen, proc_open, fopen_with_path, dbmopen, dbase_open, putenv, move_uploaded_file, chdir, mkdir, rmdir, chmod, rename, filepro, filepro_rowcount, filepro_retrieve, posix_mkfifo\ndisable_classes         =\n```\n\nThese are dangerous PHP functions.\n\nYou should disable all that you don't use.",
+      "token_count": 76,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "PHP Configuration Cheat Sheet",
+        "PHP Configuration and Deployment",
+        "php.ini",
+        "PHP executable handling"
+      ]
+    },
+    {
+      "chunk_id": "ver_e880e38449f2_c00014",
+      "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+      "version_id": "ver_e880e38449f2",
+      "chunk_idx": 14,
+      "chunk_type": "heading",
+      "text_content": "#### PHP session handling",
+      "token_count": 7,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "PHP Configuration Cheat Sheet",
+        "PHP Configuration and Deployment",
+        "php.ini",
+        "PHP session handling"
+      ]
+    },
+    {
+      "chunk_id": "ver_e880e38449f2_c00015",
+      "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+      "version_id": "ver_e880e38449f2",
+      "chunk_idx": 15,
+      "chunk_type": "mixed",
+      "text_content": "Session settings are some of the MOST important values to concentrate on in configuring.\n\nIt is a good practice to change `session.name` to something new.\n\n```text\n session.save_path                = /path/PHP-session/\n session.name                     = myPHPSESSID\n session.auto_start               = Off\n session.use_trans_sid            = 0\n session.cookie_domain            = full.qualified.domain.name\n #session.cookie_path             = /application/path/\n session.use_strict_mode          = 1\n session.use_cookies              = 1\n session.use_only_cookies         = 1\n session.cookie_lifetime          = 14400 # 4 hours\n session.cookie_secure            = 1\n session.cookie_httponly          = 1\n session.cookie_samesite          = Strict\n session.cache_expire             = 30\n session.sid_length               = 256\n session.sid_bits_per_character   = 6\n```",
+      "token_count": 138,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "PHP Configuration Cheat Sheet",
+        "PHP Configuration and Deployment",
+        "php.ini",
+        "PHP session handling"
+      ]
+    },
+    {
+      "chunk_id": "ver_e880e38449f2_c00016",
+      "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+      "version_id": "ver_e880e38449f2",
+      "chunk_idx": 16,
+      "chunk_type": "heading",
+      "text_content": "#### Some more security paranoid checks",
+      "token_count": 9,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "PHP Configuration Cheat Sheet",
+        "PHP Configuration and Deployment",
+        "php.ini",
+        "Some more security paranoid checks"
+      ]
+    },
+    {
+      "chunk_id": "ver_e880e38449f2_c00017",
+      "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+      "version_id": "ver_e880e38449f2",
+      "chunk_idx": 17,
+      "chunk_type": "code",
+      "text_content": "```text\nsession.referer_check   = /application/path\nmemory_limit            = 50M\npost_max_size           = 20M\nmax_execution_time      = 60\nreport_memleaks         = On\nhtml_errors             = Off\nzend.exception_ignore_args = On\n```",
+      "token_count": 35,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "PHP Configuration Cheat Sheet",
+        "PHP Configuration and Deployment",
+        "php.ini",
+        "Some more security paranoid checks"
+      ]
+    },
+    {
+      "chunk_id": "ver_e880e38449f2_c00018",
+      "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+      "version_id": "ver_e880e38449f2",
+      "chunk_idx": 18,
+      "chunk_type": "heading",
+      "text_content": "### Snuffleupagus",
+      "token_count": 4,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "PHP Configuration Cheat Sheet",
+        "PHP Configuration and Deployment",
+        "Snuffleupagus"
+      ]
+    },
+    {
+      "chunk_id": "ver_e880e38449f2_c00019",
+      "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+      "version_id": "ver_e880e38449f2",
+      "chunk_idx": 19,
+      "chunk_type": "paragraph",
+      "text_content": "[Snuffleupagus](https://snuffleupagus.readthedocs.io) is the spiritual\ndescendent of Suhosin for PHP 7 and onwards, with [modern\nfeatures](https://snuffleupagus.readthedocs.io/features.html).\n\nIt's considered\nstable, and is usable in production.",
+      "token_count": 59,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "PHP Configuration Cheat Sheet",
+        "PHP Configuration and Deployment",
+        "Snuffleupagus"
+      ]
+    },
+    {
+      "chunk_id": "ver_e880e38449f2_c00020",
+      "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+      "version_id": "ver_e880e38449f2",
+      "chunk_idx": 20,
+      "chunk_type": "heading",
+      "text_content": "## References",
+      "token_count": 3,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "PHP Configuration Cheat Sheet",
+        "References"
+      ]
+    },
+    {
+      "chunk_id": "ver_e880e38449f2_c00021",
+      "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+      "version_id": "ver_e880e38449f2",
+      "chunk_idx": 21,
+      "chunk_type": "list",
+      "text_content": "- [PHP Manual: Core php.ini Directives](https://www.php.net/manual/ini.core.php)\n- [Snuffleupagus: Security Features](https://snuffleupagus.readthedocs.io/features.html)",
+      "token_count": 52,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "PHP Configuration Cheat Sheet",
+        "References"
+      ]
+    }
+  ],
+  "chunk_sources": [
+    {
+      "chunk_source_id": "ver_e880e38449f2_c00000_s000",
+      "chunk_id": "ver_e880e38449f2_c00000",
+      "normalized_block_id": "nrm_ver_e880e38449f2_b00000",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 31
+    },
+    {
+      "chunk_source_id": "ver_e880e38449f2_c00001_s000",
+      "chunk_id": "ver_e880e38449f2_c00001",
+      "normalized_block_id": "nrm_ver_e880e38449f2_b00001",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 15
+    },
+    {
+      "chunk_source_id": "ver_e880e38449f2_c00002_s000",
+      "chunk_id": "ver_e880e38449f2_c00002",
+      "normalized_block_id": "nrm_ver_e880e38449f2_b00002",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 103
+    },
+    {
+      "chunk_source_id": "ver_e880e38449f2_c00002_s001",
+      "chunk_id": "ver_e880e38449f2_c00002",
+      "normalized_block_id": "nrm_ver_e880e38449f2_b00003",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 147
+    },
+    {
+      "chunk_source_id": "ver_e880e38449f2_c00002_s002",
+      "chunk_id": "ver_e880e38449f2_c00002",
+      "normalized_block_id": "nrm_ver_e880e38449f2_b00004",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 81
+    },
+    {
+      "chunk_source_id": "ver_e880e38449f2_c00002_s003",
+      "chunk_id": "ver_e880e38449f2_c00002",
+      "normalized_block_id": "nrm_ver_e880e38449f2_b00005",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 194
+    },
+    {
+      "chunk_source_id": "ver_e880e38449f2_c00003_s000",
+      "chunk_id": "ver_e880e38449f2_c00003",
+      "normalized_block_id": "nrm_ver_e880e38449f2_b00006",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 35
+    },
+    {
+      "chunk_source_id": "ver_e880e38449f2_c00004_s000",
+      "chunk_id": "ver_e880e38449f2_c00004",
+      "normalized_block_id": "nrm_ver_e880e38449f2_b00007",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 11
+    },
+    {
+      "chunk_source_id": "ver_e880e38449f2_c00005_s000",
+      "chunk_id": "ver_e880e38449f2_c00005",
+      "normalized_block_id": "nrm_ver_e880e38449f2_b00008",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 124
+    },
+    {
+      "chunk_source_id": "ver_e880e38449f2_c00005_s001",
+      "chunk_id": "ver_e880e38449f2_c00005",
+      "normalized_block_id": "nrm_ver_e880e38449f2_b00008",
+      "source_order": 1,
+      "start_offset": 125,
+      "end_offset": 178
+    },
+    {
+      "chunk_source_id": "ver_e880e38449f2_c00005_s002",
+      "chunk_id": "ver_e880e38449f2_c00005",
+      "normalized_block_id": "nrm_ver_e880e38449f2_b00008",
+      "source_order": 2,
+      "start_offset": 179,
+      "end_offset": 198
+    },
+    {
+      "chunk_source_id": "ver_e880e38449f2_c00005_s003",
+      "chunk_id": "ver_e880e38449f2_c00005",
+      "normalized_block_id": "nrm_ver_e880e38449f2_b00009",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 173
+    },
+    {
+      "chunk_source_id": "ver_e880e38449f2_c00005_s004",
+      "chunk_id": "ver_e880e38449f2_c00005",
+      "normalized_block_id": "nrm_ver_e880e38449f2_b00009",
+      "source_order": 4,
+      "start_offset": 174,
+      "end_offset": 291
+    },
+    {
+      "chunk_source_id": "ver_e880e38449f2_c00005_s005",
+      "chunk_id": "ver_e880e38449f2_c00005",
+      "normalized_block_id": "nrm_ver_e880e38449f2_b00009",
+      "source_order": 5,
+      "start_offset": 292,
+      "end_offset": 466
+    },
+    {
+      "chunk_source_id": "ver_e880e38449f2_c00005_s006",
+      "chunk_id": "ver_e880e38449f2_c00005",
+      "normalized_block_id": "nrm_ver_e880e38449f2_b00010",
+      "source_order": 6,
+      "start_offset": 0,
+      "end_offset": 135
+    },
+    {
+      "chunk_source_id": "ver_e880e38449f2_c00006_s000",
+      "chunk_id": "ver_e880e38449f2_c00006",
+      "normalized_block_id": "nrm_ver_e880e38449f2_b00011",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 23
+    },
+    {
+      "chunk_source_id": "ver_e880e38449f2_c00007_s000",
+      "chunk_id": "ver_e880e38449f2_c00007",
+      "normalized_block_id": "nrm_ver_e880e38449f2_b00012",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 253
+    },
+    {
+      "chunk_source_id": "ver_e880e38449f2_c00007_s001",
+      "chunk_id": "ver_e880e38449f2_c00007",
+      "normalized_block_id": "nrm_ver_e880e38449f2_b00013",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 135
+    },
+    {
+      "chunk_source_id": "ver_e880e38449f2_c00008_s000",
+      "chunk_id": "ver_e880e38449f2_c00008",
+      "normalized_block_id": "nrm_ver_e880e38449f2_b00014",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 25
+    },
+    {
+      "chunk_source_id": "ver_e880e38449f2_c00009_s000",
+      "chunk_id": "ver_e880e38449f2_c00009",
+      "normalized_block_id": "nrm_ver_e880e38449f2_b00015",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 417
+    },
+    {
+      "chunk_source_id": "ver_e880e38449f2_c00009_s001",
+      "chunk_id": "ver_e880e38449f2_c00009",
+      "normalized_block_id": "nrm_ver_e880e38449f2_b00016",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 196
+    },
+    {
+      "chunk_source_id": "ver_e880e38449f2_c00010_s000",
+      "chunk_id": "ver_e880e38449f2_c00010",
+      "normalized_block_id": "nrm_ver_e880e38449f2_b00017",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 29
+    },
+    {
+      "chunk_source_id": "ver_e880e38449f2_c00011_s000",
+      "chunk_id": "ver_e880e38449f2_c00011",
+      "normalized_block_id": "nrm_ver_e880e38449f2_b00018",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 142
+    },
+    {
+      "chunk_source_id": "ver_e880e38449f2_c00011_s001",
+      "chunk_id": "ver_e880e38449f2_c00011",
+      "normalized_block_id": "nrm_ver_e880e38449f2_b00019",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 191
+    },
+    {
+      "chunk_source_id": "ver_e880e38449f2_c00012_s000",
+      "chunk_id": "ver_e880e38449f2_c00012",
+      "normalized_block_id": "nrm_ver_e880e38449f2_b00020",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 28
+    },
+    {
+      "chunk_source_id": "ver_e880e38449f2_c00013_s000",
+      "chunk_id": "ver_e880e38449f2_c00013",
+      "normalized_block_id": "nrm_ver_e880e38449f2_b00021",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 345
+    },
+    {
+      "chunk_source_id": "ver_e880e38449f2_c00013_s001",
+      "chunk_id": "ver_e880e38449f2_c00013",
+      "normalized_block_id": "nrm_ver_e880e38449f2_b00022",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 34
+    },
+    {
+      "chunk_source_id": "ver_e880e38449f2_c00013_s002",
+      "chunk_id": "ver_e880e38449f2_c00013",
+      "normalized_block_id": "nrm_ver_e880e38449f2_b00022",
+      "source_order": 2,
+      "start_offset": 35,
+      "end_offset": 77
+    },
+    {
+      "chunk_source_id": "ver_e880e38449f2_c00014_s000",
+      "chunk_id": "ver_e880e38449f2_c00014",
+      "normalized_block_id": "nrm_ver_e880e38449f2_b00023",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 25
+    },
+    {
+      "chunk_source_id": "ver_e880e38449f2_c00015_s000",
+      "chunk_id": "ver_e880e38449f2_c00015",
+      "normalized_block_id": "nrm_ver_e880e38449f2_b00024",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 88
+    },
+    {
+      "chunk_source_id": "ver_e880e38449f2_c00015_s001",
+      "chunk_id": "ver_e880e38449f2_c00015",
+      "normalized_block_id": "nrm_ver_e880e38449f2_b00024",
+      "source_order": 1,
+      "start_offset": 89,
+      "end_offset": 153
+    },
+    {
+      "chunk_source_id": "ver_e880e38449f2_c00015_s002",
+      "chunk_id": "ver_e880e38449f2_c00015",
+      "normalized_block_id": "nrm_ver_e880e38449f2_b00025",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 712
+    },
+    {
+      "chunk_source_id": "ver_e880e38449f2_c00016_s000",
+      "chunk_id": "ver_e880e38449f2_c00016",
+      "normalized_block_id": "nrm_ver_e880e38449f2_b00026",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 39
+    },
+    {
+      "chunk_source_id": "ver_e880e38449f2_c00017_s000",
+      "chunk_id": "ver_e880e38449f2_c00017",
+      "normalized_block_id": "nrm_ver_e880e38449f2_b00027",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 235
+    },
+    {
+      "chunk_source_id": "ver_e880e38449f2_c00018_s000",
+      "chunk_id": "ver_e880e38449f2_c00018",
+      "normalized_block_id": "nrm_ver_e880e38449f2_b00028",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 17
+    },
+    {
+      "chunk_source_id": "ver_e880e38449f2_c00019_s000",
+      "chunk_id": "ver_e880e38449f2_c00019",
+      "normalized_block_id": "nrm_ver_e880e38449f2_b00029",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 191
+    },
+    {
+      "chunk_source_id": "ver_e880e38449f2_c00019_s001",
+      "chunk_id": "ver_e880e38449f2_c00019",
+      "normalized_block_id": "nrm_ver_e880e38449f2_b00029",
+      "source_order": 1,
+      "start_offset": 192,
+      "end_offset": 244
+    },
+    {
+      "chunk_source_id": "ver_e880e38449f2_c00020_s000",
+      "chunk_id": "ver_e880e38449f2_c00020",
+      "normalized_block_id": "nrm_ver_e880e38449f2_b00030",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 13
+    },
+    {
+      "chunk_source_id": "ver_e880e38449f2_c00021_s000",
+      "chunk_id": "ver_e880e38449f2_c00021",
+      "normalized_block_id": "nrm_ver_e880e38449f2_b00031",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 169
+    }
+  ]
+}
