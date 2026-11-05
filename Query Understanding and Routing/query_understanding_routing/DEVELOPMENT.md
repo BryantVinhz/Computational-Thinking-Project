@@ -138,7 +138,7 @@ set_default_llm_client(create_llm_client("ollama"))
 
 ## 4. Directory & Refactoring Structure
 
-The repository structure has been unified: `stage_2` is merged into `Query Understanding and Routing`:
+The package structure is fully unified under `query_understanding_routing`:
 
 ```
 computational-thinking-project/
@@ -154,39 +154,35 @@ computational-thinking-project/
 │   ├── Parsing/
 │   └── Provenance and Traceability/
 └── Query Understanding and Routing/  (Stage 2)
+    ├── REFACTOR.md                   (Refactor record & documentation)
     ├── Phan_cong_Query_Understanding_Routing_v1.0_hoan_chinh.md
     ├── report.md
-    ├── report_stage2.md
-    ├── query_understanding_routing/  (Main Package)
-    │   ├── __init__.py
-    │   ├── config.py                 (Unified settings)
-    │   ├── validation_module.py      (Input validation & safety)
-    │   ├── normalization_module.py   (Query normalization & alias mapping)
-    │   ├── understanding_module.py   (LLM & rule-based understanding)
-    │   ├── routing_module.py         (Envelope formatting & contract check)
-    │   ├── pipeline.py               (Orchestrator: run full pipeline)
-    │   ├── llm_client.py             (Ollama, Gemini, OpenAI, Mock clients)
-    │   ├── rag_processor.py          (Full RAG retrieval + generation flow)
-    │   ├── ontology_loader.py        (YAML loader & alias validator)
-    │   ├── prompt_templates.py       (System prompts & few-shot examples)
-    │   ├── ontology.yaml             (5 vulnerability slugs & OWASP mapping)
-    │   ├── paths.py / path.py        (Cross-platform resolved paths)
-    │   └── tests/
-    │       ├── fixtures/
-    │       ├── test_validation.py
-    │       ├── test_normalization.py
-    │       ├── test_routing.py
-    │       ├── test_pipeline.py
-    │       ├── test_understanding.py
-    │       ├── test_context.py
-    │       ├── test_clarification.py
-    │       └── test_llm.py
-    └── stage_2/                      (Backward Compatibility Subpackage)
-        ├── __init__.py               (Re-exports query_understanding_routing)
-        ├── config.py
-        ├── ontology_loader.py
-        ├── understanding_module.py
-        └── ...
+    ├── REPORT_MODULE.md
+    ├── manual_test.py
+    └── query_understanding_routing/  (Main Package)
+        ├── __init__.py
+        ├── config.py                 (Unified settings)
+        ├── validation_module.py      (Input validation & safety)
+        ├── normalization_module.py   (Query normalization & alias mapping)
+        ├── understanding_module.py   (LLM & rule-based understanding)
+        ├── routing_module.py         (Envelope formatting & contract check)
+        ├── pipeline.py               (Orchestrator: run full pipeline)
+        ├── llm_client.py             (Ollama, Gemini, OpenAI, Mock clients)
+        ├── rag_processor.py          (Full RAG retrieval + generation flow)
+        ├── ontology_loader.py        (YAML loader & alias validator)
+        ├── prompt_templates.py       (System prompts & few-shot examples)
+        ├── ontology.yaml             (5 vulnerability slugs & OWASP mapping)
+        ├── paths.py                  (Cross-platform resolved paths)
+        └── tests/
+            ├── fixtures/
+            ├── test_validation.py
+            ├── test_normalization.py
+            ├── test_routing.py
+            ├── test_pipeline.py
+            ├── test_understanding.py
+            ├── test_context.py
+            ├── test_clarification.py
+            └── test_llm.py
 ```
 
 ---
