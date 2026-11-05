@@ -96,7 +96,7 @@ class CrossEncoderReranker:
             self._model = CrossEncoder(
                 self.model_name,
                 device=resolved_device,
-                default_activation_function=torch.nn.Sigmoid(),
+                dactivation_fn=torch.nn.Sigmoid(),
             )
         return self._model
 

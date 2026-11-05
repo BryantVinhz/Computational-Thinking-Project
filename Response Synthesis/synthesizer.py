@@ -117,8 +117,8 @@ class ResponseSynthesizer:
         else:
             # Thử nạp create_llm_client từ Stage 2 nếu có
             try:
-                from query_understanding_routing.llm_client import create_llm_client
-                self.llm_client = create_llm_client()
+                from llm import ColabLLMClient
+                self.llm_client = ColabLLMClient()
             except Exception:
                 self.llm_client = DefaultDeterministicLLM()
 
