@@ -48,7 +48,7 @@ try:
     from query_understanding_routing.ontology_loader import DEFAULT_ONTOLOGY_PATH, load_ontology
 except ImportError:
     try:
-        from stage_2.config import (
+        from .config import (
             CLARIFY_THRESHOLD,
             HISTORY_MAX_CHARS,
             HISTORY_MAX_MESSAGES,
@@ -60,7 +60,7 @@ except ImportError:
             VALID_LLM_ERROR_CODES,
             VALID_TASK_INTENTS,
         )
-        from stage_2.ontology_loader import DEFAULT_ONTOLOGY_PATH, load_ontology
+        from .ontology_loader import DEFAULT_ONTOLOGY_PATH, load_ontology
     except ImportError:
         from config import (
             CLARIFY_THRESHOLD,

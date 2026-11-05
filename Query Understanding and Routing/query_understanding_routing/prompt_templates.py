@@ -254,7 +254,7 @@ def build_understanding_prompt(
         from query_understanding_routing.understanding_module import truncate_conversation_history
     except ImportError:
         try:
-            from stage_2.understanding_module import truncate_conversation_history
+            from .understanding_module import truncate_conversation_history
         except ImportError:
             from understanding_module import truncate_conversation_history
 
