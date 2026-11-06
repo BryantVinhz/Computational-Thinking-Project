@@ -1,7 +1,7 @@
 import sys
 from pathlib import Path
 
-# Đảm bảo import được path.py ở thư mục cha khi bấm nút Run trực tiếp trên VS Code
+# Ensure path.py in the parent directory can be imported when running directly in VS Code
 CURRENT_DIR = Path(__file__).resolve().parent
 PARENT_DIR = CURRENT_DIR.parent
 if str(CURRENT_DIR) not in sys.path:
@@ -19,11 +19,11 @@ if __name__ == "__main__":
     )
     result = ingestion_service.run()
 
-    print("=== KẾT QUẢ CHẠY BƯỚC 1: DOCUMENT INGESTION ===")
-    print(f"- Thư mục Data quét          : {DATA_DIR}")
-    print(f"- Tổng số file quét được     : {result['total_scanned']}")
-    print(f"- File mới nạp (New)         : {result['new_ingested']}")
-    print(f"- File đã có, bỏ qua (Skip)  : {result['skipped_unchanged']}")
-    print(f"- File trùng nội dung (Dup)  : {result['duplicates']}")
-    print(f"- File lỗi (Failed)          : {result['failed']}")
-    print(f"=> Đã lưu Output tại         : {INGESTION_OUT_DIR}")
+    print("=== STEP 1 EXECUTION RESULTS: DOCUMENT INGESTION ===")
+    print(f"- Scanned Data Directory       : {DATA_DIR}")
+    print(f"- Total Files Scanned          : {result['total_scanned']}")
+    print(f"- Newly Ingested Files (New)   : {result['new_ingested']}")
+    print(f"- Unchanged Skipped (Skip)     : {result['skipped_unchanged']}")
+    print(f"- Duplicate Content (Dup)      : {result['duplicates']}")
+    print(f"- Failed Files (Failed)        : {result['failed']}")
+    print(f"=> Output Saved At             : {INGESTION_OUT_DIR}")

@@ -47,7 +47,6 @@ def load_ontology(path: str | Path = DEFAULT_ONTOLOGY_PATH) -> Dict[str, Dict[st
     """
     file_path = Path(path).resolve()
     if not file_path.is_file():
-        # Fallback check relative to module or stage directory
         for candidate in [MODULE_DIR / path, STAGE_DIR / path]:
             if candidate.is_file():
                 file_path = candidate.resolve()
@@ -70,14 +69,12 @@ def load_ontology(path: str | Path = DEFAULT_ONTOLOGY_PATH) -> Dict[str, Dict[st
             f"Missing: {missing}, Extra: {extra}"
         )
 
-    # Track aliases across all entries to prevent cross-slug collisions
     alias_to_slug: Dict[str, str] = {}
 
     for slug, entry in data.items():
         if not isinstance(entry, dict):
             raise ValueError(f"Entry for slug '{slug}' must be a dictionary.")
 
-        # Check required fields
         for field in REQUIRED_FIELDS:
             if field not in entry:
                 raise ValueError(f"Slug '{slug}' is missing required field: '{field}'")
@@ -89,13 +86,11 @@ def load_ontology(path: str | Path = DEFAULT_ONTOLOGY_PATH) -> Dict[str, Dict[st
             if not isinstance(entry[list_field], list):
                 raise ValueError(f"Slug '{slug}' field '{list_field}' must be a list.")
 
-        # Validate aliases
         for alias in entry["aliases"]:
             cleaned_alias = str(alias).strip().lower()
             if not cleaned_alias:
                 continue
 
-            # Check L7 rule: do not use overly short/ambiguous alias like "bac"
             if cleaned_alias == "bac":
                 raise ValueError("Alias 'bac' is forbidden due to ambiguity (Contract v1.0 L7).")
 

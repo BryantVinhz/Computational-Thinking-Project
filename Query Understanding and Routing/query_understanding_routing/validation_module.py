@@ -36,7 +36,6 @@ class ValidationResult(TypedDict):
     clarification_message: str | None
 
 
-# Precompile regexes
 # Match control characters except tab (\t), newline (\n), carriage return (\r)
 INVALID_CHARS_PATTERN = re.compile(r"[\x00-\x08\x0B\x0C\x0E-\x1F\x7F\x80-\x9F]")
 
@@ -102,13 +101,11 @@ def _safety_decision(query: str) -> tuple[SafetyAction, str | None]:
 
     # Unauthorized alone does not refuse: Broken Access Control questions describe it
     if has_attack_verb and _UNAUTHORIZED_RE.search(f):
-        # Explanation questions get CLARIFY instead of REFUSE
         if _EXPLAIN_RE.search(f) and not has_cue:
             return "CLARIFY", None
         return "REFUSE", "unsafe_attack_intent"
 
     if not has_attack_verb:
-        # A weak mitigation alone cannot approve unauthorized access to a specific target
         if has_target and has_cue and _UNAUTH_ACCESS_RE.search(f):
             if _STRONG_AUTH_RE.search(f):
                 return "ALLOW", None
@@ -118,7 +115,6 @@ def _safety_decision(query: str) -> tuple[SafetyAction, str | None]:
         return "ALLOW", None
 
     if has_target:
-        # A weak mitigation alone cannot approve a specific target
         if _STRONG_AUTH_RE.search(f):
             return "ALLOW", None
         if has_mitigation:
@@ -171,7 +167,6 @@ def validate_query(raw_query) -> ValidationResult:
       None for structural failures
     - clarification_message: str | None (set only when safety_action is "CLARIFY")
     """
-    # 1. Check type
     if not isinstance(raw_query, str):
         return _reject("invalid_type")
 
@@ -179,27 +174,21 @@ def validate_query(raw_query) -> ValidationResult:
     cleaned = ZERO_WIDTH_PATTERN.sub("", raw_query)
     stripped = cleaned.strip()
 
-    # 2. Check emptiness
     if not stripped:
         return _reject("empty_query")
 
-    # 3. Check maximum length
     if len(stripped) > MAX_QUERY_LEN:
         return _reject("query_too_long")
 
-    # 4. Check invalid characters (on original string)
     if INVALID_CHARS_PATTERN.search(raw_query):
         return _reject("invalid_characters")
 
-    # 5. Check minimum length
     if len(stripped) < MIN_QUERY_LEN:
         return _reject("query_too_short")
 
-    # 6. Check spam patterns
     if SPAM_CHAR_PATTERN.search(cleaned) or _has_spam_tokens(cleaned):
         return _reject("spam_detected")
 
-    # 7. Safety check on the current query
     action, reject_reason = _safety_decision(cleaned)
     if action == "REFUSE":
         return _reject(reject_reason, "REFUSE")

@@ -13,7 +13,6 @@ class ProvenanceRepository:
         f_name = version.get("file_name")
         v_tag = version.get("version_tag")
         with self.database.connect() as conn:
-            # 1. Upsert Document
             conn.execute(
                 """
                 INSERT INTO documents (document_id, canonical_title, publisher)
@@ -41,7 +40,6 @@ class ProvenanceRepository:
                 if target_vid != v_id:
                     conn.execute("DELETE FROM document_versions WHERE version_id = ?", (target_vid,))
                     
-            # 2. Upsert Document Version
             conn.execute(
                 """
                 INSERT INTO document_versions (
@@ -69,7 +67,6 @@ class ProvenanceRepository:
             """, (v_id,))
             conn.execute("DELETE FROM normalized_blocks WHERE version_id = ?", (v_id,))
             
-            # 3. Batch Insert Blocks 
             blocks_data = [
                 (
                     b["normalized_id"], b["block_id"], b["document_id"], b["version_id"],
@@ -92,7 +89,6 @@ class ProvenanceRepository:
                     locator_json = excluded.locator_json
                 """, blocks_data)
 
-            # 4. Batch Insert Chunk Sources 
             sources_data = [
                 (
                     cs["chunk_source_id"], cs["chunk_id"], cs["normalized_block_id"],

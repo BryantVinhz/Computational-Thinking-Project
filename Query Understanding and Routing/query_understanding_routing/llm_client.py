@@ -186,7 +186,7 @@ class MockLLMClient(BaseLLMClient):
         self.call_count += 1
         if self.error_to_raise is not None:
             raise self.error_to_raise
-        return "Đây là câu trả lời mẫu từ Mock LLM dựa trên tài liệu được cung cấp."
+        return "This is a sample response from the Mock LLM based on the provided documentation."
 
 
 class OllamaLLMClient(BaseLLMClient):
@@ -578,5 +578,5 @@ def create_llm_client(
     raise ValueError(f"Unsupported LLM provider: {chosen_provider}. Supported: ollama, gemini, openai, mock")
 
 
-# Default client reference
+
 LLMClient = BaseLLMClient

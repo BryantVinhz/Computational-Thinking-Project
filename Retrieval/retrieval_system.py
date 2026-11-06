@@ -63,25 +63,21 @@ class RetrievalSystem:
         - COMPARE: k = 3 (per target branch), lambda = 0.60
         - SYNTHESIS: k = 8 - 10, lambda = 0.50 (increase diversity/coverage)
         """
-
         target_intent = (task_intent or intent).upper()
         if target_intent == "COMPARE":
             return 3, 0.60
         elif target_intent == "SYNTHESIS":
             return 9, 0.50  
         else:
-            return 3, 0.65  # SEARCH 
+            return 3, 0.65
 
     def _execute_search_pipeline(self, payload: ScopedRetrievalPayload, target_k: int, lambda_val: float) -> tuple[list[dict[str, Any]], bool, str | None]:
         """Execute search pipeline (Sparse + Dense -> RRF -> Rerank -> MMR)"""
-        # Expanded initial retrieval top-K (3-5x target k to allow room for RRF and MMR selection)
         candidate_pool_size = max(15, target_k * 4)
 
-        # Run BM25 and Dense retrievals in parallel
         bm25_hits = self.bm25.retrieve_from_payload(payload=payload, top_k=candidate_pool_size)
         dense_hits = self.dense.retrieve_from_payload(payload=payload, top_k=candidate_pool_size)
 
-        # Merge rankings by Reciprocal Rank Fusion (RRF)
         fused = reciprocal_rank_fusion(
             bm25_results=bm25_hits,
             dense_results=dense_hits,
@@ -92,7 +88,6 @@ class RetrievalSystem:
         if not fused:
             return [], False, None
 
-        # Rescore with Cross-Encoder Reranker
         candidate_chunks_for_mmr = fused
         insufficient_evidence = False
         abstention_message = None
@@ -115,7 +110,6 @@ class RetrievalSystem:
             except Exception:
                 logger.warning("Reranker failed, falling back to original RRF ranking")
 
-        # Diversify and deduplicate through MMR
         selected = self.mmr.select(
             candidates=candidate_chunks_for_mmr,
             query_vector=payload.query_vector,
@@ -159,7 +153,6 @@ class RetrievalSystem:
         raw_tasks = plan.get("task") or []
 
         if not raw_tasks:
-            # Fallback when no sub-tasks exist: treat the entire query as a single task
             raw_tasks = [{
                 "task_id": "main_task",
                 "intent_task": global_intent,
@@ -167,7 +160,6 @@ class RetrievalSystem:
                 "depends_on": False,
             }]
 
-    
         if global_intent == "COMPARE" and len(raw_tasks) == 1:
             main_task = raw_tasks[0]
             query_text = main_task.get("query") or plan.get("resolved_query") or plan.get("original_query", "")
@@ -186,13 +178,11 @@ class RetrievalSystem:
                     })
                 raw_tasks = branched_tasks
 
-        
         task_results: dict[str, list[dict[str, Any]]] = {}
         all_selected_chunks: list[dict[str, Any]] = []
         task_insufficient_flags: list[bool] = []
         last_abstention_msg: str | None = None
 
-        # Iterate and execute each task sequentially
         for task in raw_tasks:
             task_id = task.get("task_id", f"task_{len(task_results)}")
             task_intent = task.get("intent_task", global_intent)
@@ -201,7 +191,6 @@ class RetrievalSystem:
 
             enriched_query = base_query
 
-            # MULTI-HOP DEPENDENCY RESOLUTION
             if depends_on:
                 parent_context = ""
                 if isinstance(depends_on, str) and depends_on in task_results:
@@ -214,12 +203,10 @@ class RetrievalSystem:
                     logger.info("Multi-hop Task '%s' inheriting context from preceding task", task_id)
                     enriched_query = f"{base_query} Context: {parent_context}"
 
-            # Build dynamic Scope and Vector for the current task
             scope, expansions = self.scope_builder.build_scope(plan, task=task)
             query_bm25 = enriched_query
             if expansions:
                 query_bm25 += " " + " ".join(expansions)
-
 
             query_vector = self.vectorizer.vectorize(enriched_query)
 
@@ -232,7 +219,6 @@ class RetrievalSystem:
                 scope=scope,
             )
 
-            # Determine exact k and lambda based on task intent
             target_k, lambda_val = self._get_intent_params(global_intent, task_intent)
 
             logger.info(
@@ -251,7 +237,6 @@ class RetrievalSystem:
             task_results[task_id] = selected_chunks
             all_selected_chunks.extend(selected_chunks)
 
-        # Deduplicate chunks across different tasks
         seen_ids = set()
         unique_chunks: list[dict[str, Any]] = []
         for ch in all_selected_chunks:
@@ -260,17 +245,15 @@ class RetrievalSystem:
                 seen_ids.add(c_id)
                 unique_chunks.append(ch)
 
-        # Package Provenance and generate Citations
         assembled_evidence = self.assembler.assemble(unique_chunks)
         llm_context = self.assembler.format_llm_context(assembled_evidence)
 
-        # Determine evidence state for the generation layer to route hybrid mode
         total_found = len(assembled_evidence)
         if total_found == 0:
             evidence_status = "NONE"
             llm_context = last_abstention_msg or "No relevant data was found in the knowledge base for this question"
         elif any(task_insufficient_flags) or total_found < 2:
-            evidence_status = "PARTIAL"  # Partial evidence -> Enable Hybrid Mode
+            evidence_status = "PARTIAL"
         else:
             evidence_status = "FULL"
             

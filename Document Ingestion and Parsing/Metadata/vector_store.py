@@ -8,7 +8,6 @@ if hasattr(sys.stdout, "reconfigure"):
 import chromadb
 from chromadb.utils.embedding_functions import SentenceTransformerEmbeddingFunction
 
-# Đảm bảo import được path.py và các module cùng thư mục khi chạy trực tiếp file này
 CURRENT_DIR = Path(__file__).resolve().parent
 PARENT_DIR = CURRENT_DIR.parent
 for _dir in (CURRENT_DIR, PARENT_DIR):
@@ -23,10 +22,6 @@ from schema_metadata import (
     VectorDBRecordSchema,
 )
 
-# 1. Chọn mô hình LLM Embedding phù hợp
-# - "BAAI/bge-base-en-v1.5": Chuẩn tốt cho tài liệu bảo mật Tiếng Anh (OWASP, CVSS)
-# - "all-MiniLM-L6-v2": Siêu nhẹ, chạy CPU rất nhanh theo slide bài giảng
-# - "BAAI/bge-m3": Hỗ trợ đa ngôn ngữ (hỏi Tiếng Việt trên tài liệu Tiếng Anh)
 MODEL_NAME = "BAAI/bge-m3"
 CHROMA_DB_DIR = VECTOR_DB_DIR / "chroma_security_db"
 COLLECTION_NAME = "owasp_security_knowledge"
@@ -38,21 +33,21 @@ def get_chroma_collection(
     model_name: str = MODEL_NAME,
     device: str = "cpu",
 ):
-    """Khởi tạo ChromaDB PersistentClient và trả về collection kèm hàm Embedding."""
+    """Initialize ChromaDB PersistentClient and return the collection with its embedding function."""
     db_path = Path(db_path)
     db_path.parent.mkdir(parents=True, exist_ok=True)
 
     embedding_fn = SentenceTransformerEmbeddingFunction(
         model_name=model_name,
-        device=device,              # Đổi thành "cuda" nếu chạy trên máy/Colab có GPU
-        normalize_embeddings=True,  # Chuẩn hóa vector để tính Cosine Similarity chính xác
+        device=device,
+        normalize_embeddings=True,
     )
 
     chroma_client = chromadb.PersistentClient(path=str(db_path))
     collection = chroma_client.get_or_create_collection(
         name=collection_name,
         embedding_function=embedding_fn,
-        metadata={"hnsw:space": "cosine"},  # Sử dụng khoảng cách Cosine
+        metadata={"hnsw:space": "cosine"},
     )
     return collection
 
@@ -61,7 +56,7 @@ def export_records_from_chroma(
     collection=None,
 ) -> list[dict]:
     """
-    Đọc toàn bộ bản ghi từ ChromaDB và chuyển về đúng cấu trúc JSON chuẩn:
+    Read all records from ChromaDB and convert them into the standard JSON structure:
     {
       "id": "...",
       "text": "...",
@@ -89,7 +84,6 @@ def export_records_from_chroma(
     formatted_records: list[dict] = []
     for c_id, text, meta in zip(ids, docs, metas):
         meta_copy = dict(meta or {})
-        # Khôi phục heading_path từ JSON string trong ChromaDB về lại dạng list[str]
         hp = meta_copy.get("heading_path", [])
         if isinstance(hp, str):
             try:
@@ -98,7 +92,6 @@ def export_records_from_chroma(
             except json.JSONDecodeError:
                 meta_copy["heading_path"] = [hp] if hp else []
 
-        # Sắp xếp thứ tự key trong metadata giống hệt hình mẫu
         ordered_meta = {
             "document_id": meta_copy.get("document_id", ""),
             "version_id": meta_copy.get("version_id", ""),
@@ -137,7 +130,6 @@ def prepare_and_ingest_to_chroma(
     else:
         doc_meta = doc_meta_from_diep
 
-    # Map chunk_id -> bản ghi metadata của chunk (nếu có truyền riêng từ Bước 5)
     meta_by_id: dict[str, dict] = {}
     if chunk_meta_records_from_diep:
         for rec in chunk_meta_records_from_diep:
@@ -169,13 +161,10 @@ def prepare_and_ingest_to_chroma(
         file_format = doc_meta.get("file_format") or doc_meta.get("document_format") or "PDF"
 
         combined_meta = {
-            # --- Thuộc tính từ Document Metadata ---
             "document_id": doc_meta["document_id"],
             "version_id": doc_meta["version_id"],
             "title": doc_meta.get("title") or doc_meta.get("canonical_title") or "",
             "file_format": file_format,
-
-            # --- Toàn bộ thuộc tính từ ChunkSchema (bỏ ChunkSource, chunk_id, text_content) ---
             "chunk_idx": int(c_meta.get("chunk_idx", chunk_dict.get("chunk_idx", idx))),
             "chunk_type": c_meta.get("chunk_type") or chunk_dict.get("chunk_type") or "text",
             "token_count": int(c_meta.get("token_count", chunk_dict.get("token_count", 0))),
@@ -209,7 +198,7 @@ def prepare_and_ingest_to_chroma(
             ]})
         else:
             collection.delete(where={"version_id": curr_ver_id})
-    except Exception as e:
+    except Exception:
         try:
             collection.delete(where={"version_id": curr_ver_id})
         except Exception:
@@ -225,26 +214,22 @@ def prepare_and_ingest_to_chroma(
         collection=collection,
     )
     print(
-        f"Đã lưu {len(ids)} chunks vào ChromaDB ('{CHROMA_DB_DIR}')!"
+        f"Saved {len(ids)} chunks to ChromaDB ('{CHROMA_DB_DIR}')!"
     )
     return exported_records
 
 
 def main() -> None:
-    # 1. Đọc dữ liệu Document & Version từ Step 1 (Ingestion)
     documents_data = json.loads((INGESTION_OUT_DIR / "documents.json").read_text(encoding="utf-8"))
     versions_data = json.loads((INGESTION_OUT_DIR / "documents_version.json").read_text(encoding="utf-8"))
 
     doc_by_id = {d["document_id"]: d for d in documents_data}
     ver_by_id = {v["version_id"]: v for v in versions_data}
 
-    # 2. Khởi tạo sẵn Store, Extractor và Chroma Collection một lần duy nhất
-    # (Tránh việc load lại model BAAI/bge-base-en 7 lần gây tốn RAM/chậm)
     meta_store = MetadataStore()
     extractor = MetadataExtractor(meta_store)
     collection = get_chroma_collection()
 
-    # 3. Xác định thư mục chứa các file chunking (ưu tiên thư mục gốc, hoặc Structure aware)
     chunk_files = sorted(CHUNKING_OUT_DIR.glob("*.json"))
     if not chunk_files and (CHUNKING_OUT_DIR / "Structure aware").exists():
         chunk_files = sorted((CHUNKING_OUT_DIR / "Structure aware").glob("*.json"))
@@ -252,10 +237,9 @@ def main() -> None:
         chunk_files = sorted((CHUNKING_OUT_DIR / "Fixed size").glob("*.json"))
 
     if not chunk_files:
-        print(f"Không tìm thấy file chunking JSON nào trong '{CHUNKING_OUT_DIR}'!")
+        print(f"No chunking JSON files found in '{CHUNKING_OUT_DIR}'!")
         return
 
-    # 4. Duyệt toàn bộ các file chunking trong folder và lưu vào Vector DB
     total_chunks = 0
     for chunk_file in chunk_files:
         chunking_output = json.loads(chunk_file.read_text(encoding="utf-8"))
@@ -266,10 +250,10 @@ def main() -> None:
         doc = doc_by_id.get(doc_id) if doc_id else (doc_by_id.get(ver["document_id"]) if ver else None)
 
         if not doc or not ver:
-            print(f"[BỎ QUA] Không tìm thấy metadata Ingestion cho file '{chunk_file.name}'")
+            print(f"[SKIPPED] Ingestion metadata not found for file '{chunk_file.name}'")
             continue
 
-        print(f"Đang xử lý: {chunk_file.name} ({len(chunking_output.get('chunks', []))} chunks)...")
+        print(f"Processing: {chunk_file.name} ({len(chunking_output.get('chunks', []))} chunks)...")
         meta_output = extractor.run(doc, ver, chunking_output)
 
         prepare_and_ingest_to_chroma(
@@ -281,8 +265,8 @@ def main() -> None:
         total_chunks += len(chunking_output.get("chunks", []))
 
     print(
-        f"\nHoàn tất xử lý {len(chunk_files)} file ({total_chunks} chunks). "
-        f"Toàn bộ output đã được lưu tại '{VECTOR_DB_DIR}'!"
+        f"\nFinished processing {len(chunk_files)} files ({total_chunks} chunks). "
+        f"All outputs have been saved to '{VECTOR_DB_DIR}'!"
     )
 
 

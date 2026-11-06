@@ -75,7 +75,7 @@ class TestClaimExtraction(unittest.TestCase):
         claims = extract_claims(answer)
         self.assertEqual(len(claims), 3)
         self.assertEqual(claims[0].tags, ["[1]"])
-        # Thẻ đứng riêng sau dấu chấm được gắn về câu trước.
+        # Standalone tag after a period is attached to the preceding sentence.
         self.assertEqual(claims[1].tags, ["[2]"])
         self.assertNotIn("[", claims[1].text)
         self.assertIn("trình duyệt", claims[2].text)
@@ -83,7 +83,7 @@ class TestClaimExtraction(unittest.TestCase):
     def test_marks_advisory_section(self):
         answer = (
             "Nội dung có tài liệu chứng minh rõ ràng [1].\n\n"
-            "### 💡 Khuyến nghị (General Knowledge Advisory)\n"
+            "### 💡 Recommendations (General Knowledge Advisory)\n"
             "- Triển khai phòng thủ theo chiều sâu kết hợp kiểm thử định kỳ.\n"
         )
         claims = extract_claims(answer)
@@ -103,7 +103,7 @@ class TestEvidenceVerifier(unittest.TestCase):
         self.assertIsInstance(self.verifier, VerifierProtocol)
 
     def test_abstention_is_skipped(self):
-        draft = make_draft("Không đủ bằng chứng.", is_abstained=True, abstention_reason="insufficient_evidence")
+        draft = make_draft("Insufficient evidence.", is_abstained=True, abstention_reason="insufficient_evidence")
         report = self.verifier.verify(draft, [])
         self.assertEqual(report.status, VerificationStatus.SKIPPED)
         self.assertEqual(report.total_claims, 0)
@@ -120,7 +120,7 @@ class TestEvidenceVerifier(unittest.TestCase):
         self.assertTrue(all(c.matched_snippet for c in report.claims_detail))
 
     def test_claim_checked_only_against_cited_source(self):
-        # Nội dung đúng với [2] nhưng lại trích [1] -> không truy vết được.
+        # Content matches [2] but cites [1] -> cannot be verified against the cited source.
         draft = make_draft("Tài khoản cơ sở dữ liệu nên được cấp quyền tối thiểu [1].")
         report = self.verifier.verify(draft, SQLI_EVIDENCE)
         self.assertEqual(report.claims_detail[0].status, ClaimStatus.UNVERIFIED)
@@ -149,12 +149,12 @@ class TestEvidenceVerifier(unittest.TestCase):
         report = self.verifier.verify(draft, SQLI_EVIDENCE)
         self.assertEqual(report.claims_detail[0].status, ClaimStatus.SUPPORTED)
         self.assertIsNone(report.claims_detail[0].cited_tag)
-        self.assertTrue(any("thiếu thẻ trích dẫn" in w for w in report.warnings))
+        self.assertTrue(any("missing citation tag" in w for w in report.warnings))
 
     def test_hybrid_advisory_excluded_from_score(self):
         answer = (
             "Truy vấn tham số hóa ngăn chặn tấn công SQL Injection hiệu quả [1].\n\n"
-            "### 💡 Khuyến nghị & Bổ sung từ kiến thức chung (General Knowledge Advisory)\n"
+            "### 💡 General Knowledge Advisory\n"
             "- Thiết lập cơ chế giám sát và ghi log tập trung để phát hiện bất thường.\n"
         )
         report = self.verifier.verify(make_draft(answer, mode="HYBRID"), SQLI_EVIDENCE)
@@ -162,7 +162,7 @@ class TestEvidenceVerifier(unittest.TestCase):
         self.assertEqual(report.faithfulness_score, 1.0)
         self.assertEqual(report.status, VerificationStatus.PASSED)
 
-        # Cùng nội dung ở STRICT_RAG thì phần advisory phải bị tính là chưa chứng thực.
+        # The same content in STRICT_RAG mode must count the advisory section as unverified.
         strict = self.verifier.verify(make_draft(answer, mode="STRICT_RAG"), SQLI_EVIDENCE)
         self.assertEqual(strict.faithfulness_score, 0.5)
         self.assertEqual(strict.status, VerificationStatus.WARNING)
@@ -216,7 +216,7 @@ class TestTraceableFormatter(unittest.TestCase):
                 title="OWASP Top 10", file_name="owasp.pdf", file_format="pdf",
             )
         ]
-        draft = make_draft("Dùng prepared statements [1].", cited_evidence_ids=["[1]"])
+        draft = make_draft("Use prepared statements [1].", cited_evidence_ids=["[1]"])
         markdown, citations = self.formatter.format_citations(draft, evidence)
 
         self.assertEqual(len(citations), 1)
@@ -226,24 +226,24 @@ class TestTraceableFormatter(unittest.TestCase):
         self.assertEqual(c.file_format, "PDF")
         self.assertEqual(c.location_summary, "Page 14")
         self.assertEqual(c.locator["spans"][0]["page_number"], 14)
-        self.assertIn("Danh mục tài liệu tham chiếu", markdown)
+        self.assertIn("References & Citations", markdown)
         self.assertIn("*OWASP Top 10* › Injection > Remediation — `owasp.pdf` · Page 14", markdown)
 
     def test_only_cited_tags_are_listed(self):
-        draft = make_draft("Chỉ trích dẫn nguồn thứ hai [2].")
+        draft = make_draft("Cite only the second source [2].")
         _, citations = self.formatter.format_citations(draft, SQLI_EVIDENCE)
         self.assertEqual([c.tag for c in citations], ["[2]"])
 
     def test_unknown_tag_is_flagged(self):
-        draft = make_draft("Trích dẫn sai [9].")
+        draft = make_draft("Invalid citation [9].")
         markdown, citations = self.formatter.format_citations(draft, SQLI_EVIDENCE)
         self.assertEqual(citations, [])
         self.assertIn("**[9]** ⚠️", markdown)
 
     def test_abstention_passthrough(self):
-        draft = make_draft("Cần làm rõ câu hỏi.", is_abstained=True)
+        draft = make_draft("Please clarify your question.", is_abstained=True)
         markdown, citations = self.formatter.format_citations(draft, SQLI_EVIDENCE)
-        self.assertEqual(markdown, "Cần làm rõ câu hỏi.")
+        self.assertEqual(markdown, "Please clarify your question.")
         self.assertEqual(citations, [])
 
 
@@ -262,7 +262,7 @@ class TestOrchestratorIntegration(unittest.TestCase):
             "evidence_list": SQLI_EVIDENCE,
             "llm_context": "--- Evidence [1] ---\nA\n\n--- Evidence [2] ---\nB",
         }
-        envelope = orchestrator.run_from_retrieval("Chống SQLi thế nào?", retrieval_output)
+        envelope = orchestrator.run_from_retrieval("How to prevent SQLi?", retrieval_output)
 
         self.assertEqual(envelope.status, "ok")
         self.assertEqual([c.tag for c in envelope.citations], ["[1]", "[2]"])

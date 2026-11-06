@@ -76,7 +76,6 @@ except ImportError:
         )
         from ontology_loader import DEFAULT_ONTOLOGY_PATH, load_ontology
 
-# Regex patterns for co-reference and pronouns requiring context (Section 2.3)
 PRONOUN_PATTERNS = [
     r"\bnó\b",
     r"\bchúng\b",
@@ -111,7 +110,6 @@ ELLIPSIS_STARTERS = [
     r"^and then\b",
 ]
 
-# Patterns for obvious out-of-scope requests
 OUT_OF_SCOPE_PATTERNS = [
     r"\bthời tiết\b",
     r"\bhôm nay ăn gì\b",
@@ -127,7 +125,6 @@ OUT_OF_SCOPE_PATTERNS = [
     r"\bmovie\b",
 ]
 
-# Ambiguity / clarification patterns when query is too generic without specifics
 VAGUE_QUERY_PATTERNS = [
     r"^các lỗ hổng nguy hiểm\??$",
     r"^lỗ hổng nguy hiểm\??$",
@@ -182,16 +179,13 @@ def truncate_conversation_history(
         if isinstance(turn, dict) and "role" in turn and "content" in turn:
             role = str(turn.get("role", "user"))
             content = str(turn.get("content", ""))
-            # Truncate head of individual message if > max_chars
             if len(content) > max_chars:
                 content = content[-max_chars:]
             valid_messages.append({"role": role, "content": content})
 
-    # Keep at most last 2 * max_turns messages
     max_msgs = max_turns * 2
     truncated = valid_messages[-max_msgs:]
 
-    # Drop oldest messages until total length <= max_chars
     while truncated and sum(len(m["content"]) for m in truncated) > max_chars:
         truncated.pop(0)
 
@@ -224,27 +218,22 @@ def validate_understanding_schema(
     if not required_keys.issubset(result.keys()):
         return False
 
-    # Check resolved_query
     if not isinstance(result["resolved_query"], str) or not result["resolved_query"].strip():
         return False
 
-    # Check intent
     intent = result["intent"]
     if intent not in VALID_INTENTS:
         return False
 
-    # Check confidence (must be finite float in [0, 1], not bool)
     confidence = result["confidence"]
     if isinstance(confidence, bool) or not isinstance(confidence, (int, float)):
         return False
     if math.isnan(confidence) or math.isinf(confidence) or not (0.0 <= confidence <= 1.0):
         return False
 
-    # Check context_used
     if not isinstance(result["context_used"], bool):
         return False
 
-    # Check entities
     entities = result["entities"]
     if not isinstance(entities, dict):
         return False
@@ -256,7 +245,6 @@ def validate_understanding_schema(
         if v not in allowed_slugs:
             return False
 
-    # Check filter
     flt = result["filter"]
     if not isinstance(flt, dict):
         return False
@@ -267,7 +255,6 @@ def validate_understanding_schema(
     if not isinstance(flt.get("source"), list):
         return False
 
-    # Check two-way equivalence: intent == CLARIFICATION <=> need_clarify == true
     need_clarify = result["need_clarify"]
     if not isinstance(need_clarify, bool):
         return False
@@ -284,7 +271,6 @@ def validate_understanding_schema(
         if clar_msg is not None:
             return False
 
-    # Check task
     tasks = result["task"]
     if not isinstance(tasks, list):
         return False
@@ -556,12 +542,10 @@ class QueryUnderstandingEngine:
     ) -> Tuple[str, float, bool, Optional[str]]:
         lowered = query.lower().strip()
 
-        # 1. Out of Scope Check
         for oos_pattern in OUT_OF_SCOPE_PATTERNS:
             if re.search(oos_pattern, lowered):
                 return "OUT_OF_SCOPE", 0.98, False, None
 
-        # 2. Unresolved pronoun / reference without history
         if has_unresolved_ref:
             msg = (
                 "Bạn đang đề cập đến lỗ hổng hoặc chủ đề bảo mật cụ thể nào? "
@@ -570,7 +554,6 @@ class QueryUnderstandingEngine:
             )
             return "CLARIFICATION", 0.40, True, msg
 
-        # 3. Vague query check
         for vague_pattern in VAGUE_QUERY_PATTERNS:
             if re.search(vague_pattern, lowered):
                 msg = (
@@ -580,22 +563,18 @@ class QueryUnderstandingEngine:
                 )
                 return "CLARIFICATION", 0.45, True, msg
 
-        # 4. Compare Intent
         if any(w in lowered for w in ["so sánh", "compare", "khác nhau giữa", "sự khác biệt", "phân biệt", "vs", "versus"]):
             return "COMPARE", 0.94, False, None
         if len(vulnerabilities) >= 2 and any(w in lowered for w in ["và", "với", "and", "or", "giữa"]):
             if any(w in lowered for w in ["điểm giống", "khác", "ưu nhược", "nguy cơ"]):
                 return "COMPARE", 0.91, False, None
 
-        # 5. Synthesis Intent
         if any(w in lowered for w in ["tổng hợp", "tóm tắt toàn bộ", "liệt kê tất cả", "overview", "synthesis", "summary of"]):
             return "SYNTHESIS", 0.90, False, None
 
-        # 6. Specific Search Intent
         if vulnerabilities or documents:
             return "SEARCH", 0.95, False, None
 
-        # 7. Fallback: Security keywords without specific slug
         security_keywords = [
             "lỗ hổng", "bảo mật", "tấn công", "vulnerability", "security",
             "exploit", "cwe", "cve", "owasp", "injection", "prompt injection", "tiêm mã"
@@ -608,7 +587,6 @@ class QueryUnderstandingEngine:
             )
             return "CLARIFICATION", 0.50, True, msg
 
-        # 8. Unrecognized query outside security domain
         return "OUT_OF_SCOPE", 0.85, False, None
 
     def execute_understanding(
@@ -691,7 +669,6 @@ class QueryUnderstandingEngine:
         return result
 
 
-# Singleton instance
 _default_engine: Optional[QueryUnderstandingEngine] = None
 _default_llm_client: Any = None
 
@@ -736,7 +713,6 @@ def understand_query(
     """
     active_client = llm_client if llm_client is not None else get_default_llm_client()
 
-    # If an LLM client is supplied or configured:
     if active_client is not None:
         for attempt in range(1 + LLM_MAX_RETRIES):
             try:
@@ -752,7 +728,6 @@ def understand_query(
             except Exception:
                 return {"error_code": "llm_unavailable"}
 
-            # Parse JSON (cleaning markdown ```json codeblock fences)
             try:
                 if isinstance(raw_response, str):
                     cleaned_text = clean_json_codeblock(raw_response)
@@ -766,7 +741,6 @@ def understand_query(
                     continue
                 return {"error_code": "llm_invalid_json"}
 
-            # Validate schema
             if validate_understanding_schema(parsed, STANDARD_VULNERABILITY_SLUGS):
                 parsed.pop("original_query", None)
                 return parsed
@@ -775,7 +749,6 @@ def understand_query(
                 continue
             return {"error_code": "llm_schema_violation"}
 
-    # Default robust deterministic engine path
     engine = get_engine()
     return engine.execute_understanding(
         normalized_query=normalized_query,

@@ -6,8 +6,6 @@ from query_vectorizer import QueryVectorizer
 
 logger = logging.getLogger(__name__)
 
-
-
 DOCUMENT_RETRIEVAL_INTENTS: set[str] = {"SEARCH", "COMPARE", "SYNTHESIS"}
 RETRIEVAL_TASK_TYPES: set[str] = {"SEARCH", "COMPARE", "SYNTHESIS"}
 
@@ -22,11 +20,9 @@ class RetrievalPreparer:
         Accepts a Response Envelope or Query Plan.
         Orchestrates data preparation for the Hybrid Search layer based on query intent
         """
-        # Check envelope status
         if "status" in input_data and input_data.get("status") != "ok":
             logger.info("Invalid envelope status ('%s')", input_data.get("status"))
             return []
-        
         
         plan = input_data.get("query_plan", input_data)
         if plan.get("need_clarify") is True:
@@ -38,7 +34,6 @@ class RetrievalPreparer:
             logger.info("Intent '%s' requires no document retrieval (CLARIFICATION/OUT_OF_SCOPE) -> Skipping", intent)
             return []
 
-        # Filter Invalid task
         raw_tasks = plan.get("task") or []
         target_tasks = []
 
@@ -70,7 +65,6 @@ class RetrievalPreparer:
         if not target_tasks:
             return []
 
-        # Batch vectorize all query
         query_texts = [item["query"] for item in target_tasks]
         vectors = self.vectorizer.vectorize_batch(query_texts)
 
@@ -80,7 +74,6 @@ class RetrievalPreparer:
                 plan, task=item["task_obj"]
             )
 
-            # Prepare BM25 keyword query: Base query + Ontology expansion terms
             expanded_bm25 = item["query"]
             if expansions:
                 expanded_bm25 += " " + " ".join(expansions)

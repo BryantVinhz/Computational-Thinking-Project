@@ -1,19 +1,19 @@
 """
 Module: verifier.py
 Stage 4: Response Synthesis, Evidence Verification, and Traceable Response
-Role: BẢO (Evidence Verification)
+Role: Evidence Verification
 
-Kiểm định độ trung thực (faithfulness) của bản thảo do Synthesizer sinh ra:
-1. Tách bản thảo Markdown thành các nhận định nguyên tử (atomic claims) theo câu / dòng.
-2. Đối chiếu từng claim với evidence mà nó trích dẫn ([1], [2]...).
-3. Gán ClaimStatus: SUPPORTED | CONTRADICTED | UNVERIFIED.
-4. Tính faithfulness_score và VerificationStatus theo ngưỡng của schema_response.py.
+Verifies the faithfulness of the draft produced by the Synthesizer:
+1. Splits the Markdown draft into atomic claims by sentence / line.
+2. Cross-checks each claim against the evidence it cites ([1], [2]...).
+3. Assigns ClaimStatus: SUPPORTED | CONTRADICTED | UNVERIFIED.
+4. Computes faithfulness_score and VerificationStatus according to schema_response.py thresholds.
 
-Mặc định dùng độ phủ từ vựng (unigram + bigram) nên chạy offline, không cần model.
-Khi câu trả lời và tài liệu khác ngôn ngữ (VD: trả lời tiếng Việt, tài liệu OWASP tiếng Anh),
-truyền `similarity_fn` dựa trên embedding đa ngôn ngữ để có kết quả đáng tin cậy.
+Defaults to lexical overlap (unigram + bigram) so it runs offline without requiring a model.
+When the response and source documents are in different languages (e.g., Vietnamese answer, English OWASP docs),
+pass a multilingual embedding-based `similarity_fn` for reliable cross-lingual evaluation.
 
-Interface tuân thủ VerifierProtocol trong rag_orchestrator.py:
+Complies with VerifierProtocol in rag_orchestrator.py:
     verify(draft, evidence_list) -> VerificationReportSchema
 """
 
@@ -45,7 +45,6 @@ except ImportError:
 
 SimilarityFn = Callable[[str, str], float]
 
-# Ngưỡng tổng thể khớp với docstring của VerificationStatus.
 PASSED_THRESHOLD = 0.8
 WARNING_THRESHOLD = 0.5
 DEFAULT_SUPPORT_THRESHOLD = 0.5
@@ -62,20 +61,16 @@ _LIST_MARKER_RE = re.compile(r"^\s*(?:[-*+•]|\d+[.)])\s+")
 _TABLE_SEPARATOR_RE = re.compile(r"^\s*\|?\s*:?-{3,}:?\s*(\|\s*:?-{3,}:?\s*)*\|?\s*$")
 _MD_EMPHASIS_RE = re.compile(r"(\*\*|__|\*|_|`)")
 
-# Từ phủ định dùng cho heuristic phát hiện mâu thuẫn (tiếng Việt + tiếng Anh).
 NEGATION_TOKENS = frozenset({
     "không", "chẳng", "chưa", "đừng", "chớ", "cấm",
     "not", "no", "never", "cannot", "without", "nor", "neither",
 })
 
-# Hư từ phổ biến: bỏ khỏi tập token để điểm phản ánh nội dung, không phản ánh ngữ pháp.
-# Lưu ý: KHÔNG chứa từ phủ định, để chúng vẫn tham gia so khớp.
+# Negation tokens are kept out of STOPWORDS so they participate in matching.
 STOPWORDS = frozenset({
-    # Tiếng Việt
     "và", "là", "của", "các", "những", "được", "bị", "cho", "với", "trong", "khi", "này",
     "đó", "để", "một", "có", "thì", "mà", "từ", "theo", "như", "cũng", "đã", "sẽ", "đang",
     "về", "ra", "vào", "tại", "nên", "do", "bởi", "hay", "hoặc", "nếu", "vì", "nhưng",
-    # Tiếng Anh
     "the", "a", "an", "and", "or", "of", "to", "in", "on", "for", "with", "is", "are", "be",
     "by", "as", "at", "it", "this", "that", "these", "those", "from", "can", "should", "was",
     "were", "has", "have", "which", "its", "into",
@@ -84,15 +79,11 @@ STOPWORDS = frozenset({
 
 @dataclass
 class ExtractedClaim:
-    """Một nhận định nguyên tử được tách ra từ bản thảo."""
-    text: str               # Nội dung đã bỏ thẻ trích dẫn và định dạng Markdown
-    tags: list[str]         # Các thẻ trích dẫn gắn với claim, VD: ["[1]", "[2]"]
-    is_advisory: bool       # Thuộc mục General Knowledge Advisory (HYBRID)
+    """An atomic claim extracted from the draft response."""
+    text: str
+    tags: list[str]
+    is_advisory: bool
 
-
-# =====================================================================
-# Tiện ích xử lý văn bản
-# =====================================================================
 
 def _tokens(text: str) -> list[str]:
     normalized = unicodedata.normalize("NFC", text.lower())
@@ -109,10 +100,10 @@ def _bigrams(tokens: list[str]) -> set[tuple[str, str]]:
 
 def lexical_support_score(claim: str, passage: str) -> float:
     """
-    Tỷ lệ nội dung của claim xuất hiện trong passage (0.0 -> 1.0).
+    Proportion of claim content appearing in the passage (0.0 -> 1.0).
 
-    Kết hợp unigram recall và bigram recall: tiếng Việt viết theo âm tiết nên unigram
-    riêng lẻ ("bảo", "mật") quá dễ trùng; bigram giữ lại được từ ghép ("bảo mật").
+    Combines unigram recall and bigram recall: in syllable-based languages like Vietnamese,
+    individual unigrams match too easily, whereas bigrams preserve compound terms.
     """
     claim_tokens = _content_tokens(claim)
     if not claim_tokens:
@@ -147,18 +138,14 @@ def _truncate(text: str, max_chars: int = SNIPPET_MAX_CHARS) -> str:
     return flat if len(flat) <= max_chars else f"{flat[:max_chars].rsplit(' ', 1)[0]}…"
 
 
-# =====================================================================
-# Tách claim
-# =====================================================================
-
 def extract_claims(draft_answer: str, min_tokens: int = MIN_CLAIM_TOKENS) -> list[ExtractedClaim]:
     """
-    Tách bản thảo Markdown thành các claim.
+    Split a Markdown draft into atomic claims.
 
-    Bỏ qua: tiêu đề (#), đường kẻ, code block, header + separator của bảng, dòng ghi chú
-    nằm trọn trong ngoặc đơn, và các mẩu quá ngắn (< min_tokens token nội dung).
-    Mỗi dòng bảng được coi là một claim. Thẻ trích dẫn đứng riêng sau dấu chấm
-    (VD: "... đầu vào. [1]") được gắn về câu đứng trước.
+    Skips: headings (#), horizontal rules, code blocks, table headers + separators, note lines
+    enclosed entirely in parentheses, and fragments shorter than `min_tokens` content tokens.
+    Each table row is treated as a single claim. Standalone citation tags after a period
+    (e.g., "... input. [1]") are attached to the preceding sentence.
     """
     lines = (draft_answer or "").splitlines()
     claims: list[ExtractedClaim] = []
@@ -180,12 +167,12 @@ def extract_claims(draft_answer: str, min_tokens: int = MIN_CLAIM_TOKENS) -> lis
         if line.startswith("|"):
             next_line = lines[idx + 1].strip() if idx + 1 < len(lines) else ""
             if _TABLE_SEPARATOR_RE.match(next_line):
-                continue  # header của bảng
-            # Nối bằng dấu phẩy (không dùng ";") để bộ tách câu giữ nguyên cả dòng là một claim.
+                continue
+            # Join with commas (not ";") so the sentence splitter keeps the whole row as one claim.
             line = ", ".join(cell.strip() for cell in line.strip("|").split("|") if cell.strip())
         line = _clean_markdown(line)
         if line.startswith("(") and line.endswith(")"):
-            continue  # dòng ghi chú, VD: "(Lưu ý: ...)"
+            continue
 
         segments: list[str] = []
         for sentence in _split_sentences(line):
@@ -203,29 +190,30 @@ def extract_claims(draft_answer: str, min_tokens: int = MIN_CLAIM_TOKENS) -> lis
 
     return claims
 
+
 class MultilingualSemanticSimilarity:
     """
-    Compute cross-lingual semantic similarity
-    Resolves the language discrepancy when cross-referencing Vietnamese claims against English evidence
+    Compute cross-lingual semantic similarity.
+    Resolves language discrepancies when cross-referencing claims against evidence across languages.
     """
     def __init__(self, model_name: str = "BAAI/bge-m3", device: str = "cpu"):
         self.model_name = model_name
         self.device = device
         self._model = None
+
     @property
     def model(self):
         if self._model is None:
             try:
                 from sentence_transformers import SentenceTransformer
                 self._model = SentenceTransformer(self.model_name, device=self.device)
-            except Exception as e:
-                # Fallback nếu môi trường chưa cài sentence-transformers
+            except Exception:
                 return None
         return self._model
+
     def __call__(self, claim: str, passage: str) -> float:
-        """Tính cosine similarity giữa claim (Tiếng Việt) và passage (Tiếng Anh)."""
+        """Compute cosine similarity between claim and passage."""
         if not self.model:
-            # Fallback sang lexical nếu không nạp được model
             return lexical_support_score(claim, passage)
         try:
             embeddings = self.model.encode(
@@ -233,18 +221,14 @@ class MultilingualSemanticSimilarity:
                 normalize_embeddings=True,
                 show_progress_bar=False,
             )
-            # Dot product của normalized embeddings chính là cosine similarity
             cos_sim = float((embeddings[0] * embeddings[1]).sum())
             return max(0.0, min(1.0, cos_sim))
         except Exception:
             return lexical_support_score(claim, passage)
-        
-# =====================================================================
-# Verifier
-# =====================================================================
+
 
 class EvidenceVerifier:
-    """Đối chiếu claim với evidence và tổng hợp VerificationReportSchema."""
+    """Cross-check claims against evidence and compile VerificationReportSchema."""
 
     def __init__(
         self,
@@ -254,16 +238,16 @@ class EvidenceVerifier:
     ):
         """
         Args:
-            similarity_fn: Hàm (claim, passage) -> điểm 0..1. Mặc định là lexical_support_score.
-            support_threshold: Điểm tối thiểu để một claim được coi là có căn cứ.
-            min_claim_tokens: Số token nội dung tối thiểu để một mẩu văn bản được coi là claim.
+            similarity_fn: Function (claim, passage) -> score in 0..1. Defaults to lexical_support_score.
+            support_threshold: Minimum score for a claim to be considered supported.
+            min_claim_tokens: Minimum number of content tokens for a text segment to be treated as a claim.
         """
         self.similarity_fn = similarity_fn or lexical_support_score
         self.support_threshold = support_threshold
         self.min_claim_tokens = min_claim_tokens
 
     def _best_match(self, claim_text: str, evidence: dict[str, Any]) -> tuple[float, str]:
-        """Điểm hỗ trợ cao nhất của evidence cho claim, kèm câu khớp nhất làm snippet."""
+        """Return the highest support score of evidence for a claim, along with the best-matching sentence as snippet."""
         text = evidence.get("text_content") or ""
         if not text.strip():
             return 0.0, ""
@@ -291,13 +275,13 @@ class EvidenceVerifier:
                 cited_tag=cited_tag,
                 status=ClaimStatus.UNVERIFIED,
                 confidence_score=0.0,
-                explanation="General Knowledge Advisory (HYBRID): không đối chiếu với evidence, không tính vào faithfulness.",
+                explanation="General Knowledge Advisory (HYBRID): not cross-checked against evidence, excluded from faithfulness.",
             )
 
         valid_tags = [t for t in claim.tags if t in evidence_by_tag]
         invalid_tags = [t for t in claim.tags if t not in evidence_by_tag]
         if invalid_tags:
-            warnings.append(f"{claim_id}: trích dẫn không tồn tại trong evidence {', '.join(invalid_tags)}")
+            warnings.append(f"{claim_id}: citation not found in evidence {', '.join(invalid_tags)}")
 
         if claim.tags and not valid_tags:
             return ClaimVerificationResult(
@@ -306,11 +290,10 @@ class EvidenceVerifier:
                 cited_tag=cited_tag,
                 status=ClaimStatus.UNVERIFIED,
                 confidence_score=0.0,
-                explanation=f"Thẻ trích dẫn {', '.join(invalid_tags)} không trỏ tới evidence nào.",
+                explanation=f"Citation tag {', '.join(invalid_tags)} does not point to any evidence.",
             )
 
-        # Có trích dẫn hợp lệ -> chỉ đối chiếu với nguồn được trích (đảm bảo truy vết đúng nguồn).
-        # Không trích dẫn -> tìm trong toàn bộ evidence để gợi ý nguồn phù hợp.
+        # Check only cited sources when present; otherwise search all evidence to suggest a citation.
         candidate_tags = valid_tags or list(evidence_by_tag)
         best_tag, best_score, best_snippet = None, 0.0, ""
         for tag in candidate_tags:
@@ -322,9 +305,9 @@ class EvidenceVerifier:
         snippet = _truncate(best_snippet) if best_snippet else None
 
         if score < self.support_threshold:
-            source_desc = f"nguồn {', '.join(valid_tags)}" if valid_tags else "bất kỳ evidence nào"
+            source_desc = f"source {', '.join(valid_tags)}" if valid_tags else "any evidence"
             if not valid_tags:
-                warnings.append(f"{claim_id}: claim không có trích dẫn và không khớp evidence")
+                warnings.append(f"{claim_id}: claim has no citation and does not match evidence")
             return ClaimVerificationResult(
                 claim_id=claim_id,
                 claim_text=claim.text,
@@ -332,7 +315,7 @@ class EvidenceVerifier:
                 status=ClaimStatus.UNVERIFIED,
                 confidence_score=score,
                 matched_snippet=snippet,
-                explanation=f"Không tìm thấy căn cứ đủ mạnh trong {source_desc} (score {score:.2f} < {self.support_threshold}).",
+                explanation=f"Insufficient support found in {source_desc} (score {score:.2f} < {self.support_threshold}).",
             )
 
         if _has_negation(claim.text) != _has_negation(best_snippet):
@@ -343,13 +326,13 @@ class EvidenceVerifier:
                 status=ClaimStatus.CONTRADICTED,
                 confidence_score=score,
                 matched_snippet=snippet,
-                explanation=f"Nội dung khớp với {best_tag} nhưng ngược chiều khẳng định/phủ định.",
+                explanation=f"Content matches {best_tag} but has opposite affirmative/negative polarity.",
             )
 
-        explanation = f"Được chứng minh bởi {best_tag} (score {score:.2f})."
+        explanation = f"Supported by {best_tag} (score {score:.2f})."
         if not valid_tags:
-            warnings.append(f"{claim_id}: claim thiếu thẻ trích dẫn, nguồn gợi ý {best_tag}")
-            explanation = f"Khớp với {best_tag} (score {score:.2f}) nhưng câu trả lời thiếu thẻ trích dẫn."
+            warnings.append(f"{claim_id}: claim is missing citation tag, suggested source {best_tag}")
+            explanation = f"Matches {best_tag} (score {score:.2f}) but the response is missing a citation tag."
         return ClaimVerificationResult(
             claim_id=claim_id,
             claim_text=claim.text,
@@ -383,10 +366,9 @@ class EvidenceVerifier:
         warnings: list[str] = []
         evidence_by_tag = index_evidence_by_tag(evidence_list)
         if not evidence_by_tag:
-            warnings.append("Không có evidence để đối chiếu.")
+            warnings.append("No evidence available for verification.")
 
         claims = extract_claims(draft.draft_answer, min_tokens=self.min_claim_tokens)
-        # Advisory chỉ được miễn kiểm định khi Synthesizer thực sự chạy HYBRID.
         if draft.generation_mode != "HYBRID":
             for claim in claims:
                 claim.is_advisory = False
@@ -404,7 +386,7 @@ class EvidenceVerifier:
 
         if advisory_count:
             warnings.append(
-                f"{advisory_count} claim thuộc General Knowledge Advisory không được đối chiếu với evidence."
+                f"{advisory_count} claim(s) in General Knowledge Advisory were not cross-checked against evidence."
             )
 
         if grounded:
@@ -413,7 +395,7 @@ class EvidenceVerifier:
         else:
             score = 0.0
             status = VerificationStatus.FAILED
-            warnings.append("Không tìm thấy claim nào dựa trên tài liệu để kiểm định.")
+            warnings.append("No document-grounded claims found to verify.")
 
         return VerificationReportSchema(
             faithfulness_score=score,

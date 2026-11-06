@@ -14,14 +14,14 @@ from schema import ScopedRetrievalPayload
 
 
 def _to_dict(item: Any) -> dict[str, Any]:
-    """Chuyển đổi phần tử kết quả (dict hoặc dataclass) về dạng dict chuẩn."""
+    """Convert a result element (dict or dataclass) into a standard dict."""
     if isinstance(item, dict):
         return dict(item)
     if hasattr(item, "to_dict"):
         return item.to_dict()
     if hasattr(item, "__dict__"):
         return dict(item.__dict__)
-    raise TypeError(f"Kiểu dữ liệu kết quả không hợp lệ: {type(item)}")
+    raise TypeError(f"Invalid result data type: {type(item)}")
 
 
 def reciprocal_rank_fusion(
@@ -31,24 +31,23 @@ def reciprocal_rank_fusion(
     top_k: int | None = None,
 ) -> list[dict[str, Any]]:
     """
-    Hướng 3: Thuật toán Reciprocal Rank Fusion (RRF) gộp kết quả từ BM25 (Hướng 1)
-    và Dense Retrieval (Hướng 2).
+    Direction 3: Reciprocal Rank Fusion (RRF) algorithm merging results from BM25 (Direction 1)
+    and Dense Retrieval (Direction 2).
 
-    Công thức chuẩn:
-        Score(d) = sum( 1 / (k + rank) )   với k mặc định = 60, rank bắt đầu từ 1.
+    Standard formula:
+        Score(d) = sum( 1 / (k + rank) )   with default k = 60, rank starting at 1.
 
     Args:
-        bm25_results: Danh sách kết quả từ thuật toán BM25 (đã xếp hạng từ cao xuống thấp).
-        dense_results: Danh sách kết quả từ thuật toán Dense Retrieval (ChromaDB).
-        k: Hằng số làm mượt thứ hạng (thường lấy bằng 60).
-        top_k: Số lượng kết quả cuối cùng cần lấy sau khi gộp (None = lấy toàn bộ).
+        bm25_results: Ranked result list from BM25 (ordered from highest to lowest).
+        dense_results: Ranked result list from Dense Retrieval (ChromaDB).
+        k: Rank smoothing constant (typically set to 60).
+        top_k: Number of final fused results to return (None = return all).
 
     Returns:
-        Danh sách kết quả đã được tính lại điểm RRF và sắp xếp giảm dần theo Score.
+        List of results with recomputed RRF scores, sorted in descending order by Score.
     """
     fused_records: dict[str, dict[str, Any]] = {}
 
-    # 1. Cộng điểm RRF từ danh sách BM25 (Hướng 1)
     for idx, raw_item in enumerate(bm25_results or [], start=1):
         item = _to_dict(raw_item)
         chunk_id = item.get("id") or item.get("chunk_id")
@@ -79,7 +78,6 @@ def reciprocal_rank_fusion(
         fused_records[chunk_id]["score"] += rrf_contrib
         fused_records[chunk_id]["rrf_score"] += rrf_contrib
 
-    # 2. Cộng điểm RRF từ danh sách Dense Retrieval - ChromaDB (Hướng 2)
     for idx, raw_item in enumerate(dense_results or [], start=1):
         item = _to_dict(raw_item)
         chunk_id = item.get("id") or item.get("chunk_id")
@@ -104,14 +102,12 @@ def reciprocal_rank_fusion(
                 "source": "dense",
             }
         else:
-            # Nếu chunk xuất hiện ở cả BM25 và Dense Retrieval -> gộp thông tin & đánh dấu hybrid
             rec = fused_records[chunk_id]
             rec["dense_rank"] = rank
             rec["dense_score"] = item.get("dense_score", item.get("score"))
             rec["source"] = "hybrid (bm25 + dense)"
             if not rec["text"]:
                 rec["text"] = item.get("text") or item.get("text_content") or ""
-            # Ưu tiên bổ sung metadata đầy đủ từ ChromaDB nếu BM25 thiếu
             dense_meta = item.get("metadata") or {}
             for mk, mv in dense_meta.items():
                 if mk not in rec["metadata"] or not rec["metadata"][mk]:
@@ -120,7 +116,6 @@ def reciprocal_rank_fusion(
         fused_records[chunk_id]["score"] += rrf_contrib
         fused_records[chunk_id]["rrf_score"] += rrf_contrib
 
-    # 3. Sắp xếp giảm dần theo điểm RRF (Score = sum(1 / (k + rank)))
     sorted_results = sorted(
         fused_records.values(),
         key=lambda x: x["score"],
@@ -130,7 +125,6 @@ def reciprocal_rank_fusion(
     if top_k is not None:
         sorted_results = sorted_results[:top_k]
 
-    # 4. Cập nhật lại thứ hạng cuối cùng (rank = 1, 2, ...) và làm tròn điểm
     for final_rank, record in enumerate(sorted_results, start=1):
         record["rank"] = final_rank
         record["score"] = round(record["score"], 6)
@@ -141,8 +135,8 @@ def reciprocal_rank_fusion(
 
 class HybridRRFusion:
     """
-    Lớp tiện ích kết hợp trực tiếp Hướng 2 (Dense Retrieval với ChromaDB)
-    và Hướng 3 (RRF gộp cùng kết quả BM25 từ Hướng 1).
+    Utility class directly combining Direction 2 (Dense Retrieval with ChromaDB)
+    and Direction 3 (RRF fusion with BM25 results from Direction 1).
     """
 
     def __init__(self, dense_retriever: DenseRetriever | None = None, k: int = 60):
@@ -160,8 +154,8 @@ class HybridRRFusion:
         final_top_k: int = 10,
     ) -> dict[str, list[dict[str, Any]]]:
         """
-        Thực thi Hướng 2 (Dense Retrieval) rồi gộp với kết quả Hướng 1 (BM25) bằng RRF (Hướng 3).
-        Trả về đầy đủ kết quả của từng hướng và kết quả cuối cùng sau RRF.
+        Execute Direction 2 (Dense Retrieval) and fuse with Direction 1 (BM25) results using RRF (Direction 3).
+        Returns complete results from each retrieval direction as well as the final RRF-fused results.
         """
         if payload is not None:
             dense_results = self.dense_retriever.retrieve_from_payload(
@@ -188,5 +182,3 @@ class HybridRRFusion:
             "dense_results": dense_results,
             "rrf_results": rrf_results,
         }
-
-

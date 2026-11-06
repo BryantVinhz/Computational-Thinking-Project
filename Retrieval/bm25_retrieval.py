@@ -7,9 +7,8 @@ from rank_bm25 import BM25Okapi
 from schema import RetrievalScope, ScopedRetrievalPayload
 import chromadb
 
-CURRENT_DIR = Path(__file__).resolve().parent               # Folder Retrieval
-PROJECT_ROOT = CURRENT_DIR.parent                           # Folder Computational-Thinking-Project
-
+CURRENT_DIR = Path(__file__).resolve().parent
+PROJECT_ROOT = CURRENT_DIR.parent
 
 METADATA_DIR = PROJECT_ROOT / "Document Ingestion and Parsing" / "Metadata"
 
@@ -21,9 +20,8 @@ from vector_store import CHROMA_DB_DIR, COLLECTION_NAME, export_records_from_chr
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
 
-
-
 logger = logging.getLogger(__name__)
+
 
 def simple_tokenize(text: str) -> list[str]:
     """
@@ -61,7 +59,6 @@ class BM25Retriever:
             if collection is not None:
                 self._collection = collection
             else:
-                # Open PersistentClient and retrieve the raw collection (without passing an embedding_function)
                 target_path = Path(db_path)
                 client = chromadb.PersistentClient(path=str(target_path))
                 self._collection = client.get_collection(name=collection_name)
@@ -88,10 +85,8 @@ class BM25Retriever:
         if not tokens:
             return []
 
-        # Compute BM25 scores across the entire corpus
         doc_scores = self.bm25.get_scores(tokens)
 
-        # Prepare Hard filter sets
         target_doc_ids = set(scope.document_ids) if scope and scope.document_ids else None
         target_ver_ids = set(scope.version_ids) if scope and scope.version_ids else None
         target_formats = set(scope.file_formats) if scope and scope.file_formats else None
@@ -104,21 +99,17 @@ class BM25Retriever:
             chunk = self.chunks[idx]
             meta = chunk.get("metadata", {})
 
-            # Hard Filter: document_id
             if target_doc_ids and meta.get("document_id") not in target_doc_ids:
                 continue
 
-            # Hard Filter: version_id
             if target_ver_ids and meta.get("version_id") not in target_ver_ids:
                 continue
 
-            # Hard Filter: file_format
             if target_formats and meta.get("file_format") not in target_formats:
                 continue
 
             candidates.append((score, chunk))
 
-        # 3. Scope Relaxation (Relax filters if hard filtering yields no results)
         if (
             not candidates
             and (target_doc_ids or target_ver_ids or target_formats)
@@ -128,11 +119,9 @@ class BM25Retriever:
                 if score > 0.0:
                     candidates.append((score, self.chunks[idx]))
 
-        # Rank in descending order by BM25 score
         candidates.sort(key=lambda x: x[0], reverse=True)
         top_candidates = candidates[:top_k]
 
-        # Package output results
         results: list[dict[str, Any]] = []
         for rank, (score, chunk) in enumerate(top_candidates, start=1):
             c_id = chunk["id"]

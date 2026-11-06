@@ -7,7 +7,6 @@ from pathlib import Path
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
 
-# Make path.py (parent folder) and schema_metadata.py importable when running this file directly
 CURRENT_DIR = Path(__file__).resolve().parent
 PARENT_DIR = CURRENT_DIR.parent
 for _dir in (CURRENT_DIR, PARENT_DIR):
@@ -133,8 +132,8 @@ class MetadataExtractor:
         chunk_meta_list: list[ChunkMetadataSchema | dict] | None = None,
     ) -> list[VectorDBRecordSchema]:
         """
-        Gộp Document Metadata + toàn bộ thuộc tính của ChunkSchema (bỏ ChunkSource),
-        đưa `chunk_id` (id) và `text_content` (text) ra ngoài `metadata`.
+        Merge Document Metadata + all attributes of ChunkSchema (excluding ChunkSource),
+        placing `chunk_id` (id) and `text_content` (text) outside `metadata`.
         """
         if isinstance(doc_meta, DocumentMetadataSchema):
             doc_dict = doc_meta.to_dict()
@@ -164,13 +163,10 @@ class MetadataExtractor:
                 heading_path = chunk.get("heading_path") or []
 
             combined_meta = {
-                # --- Thuộc tính từ Document Metadata ---
                 "document_id": doc_dict["document_id"],
                 "version_id": doc_dict["version_id"],
                 "title": doc_dict.get("title") or doc_dict.get("canonical_title") or "",
                 "file_format": doc_dict.get("file_format") or "PDF",
-
-                # --- Toàn bộ thuộc tính từ ChunkSchema (bỏ chunk_id, text_content và ChunkSource) ---
                 "chunk_idx": int(c_meta.get("chunk_idx", idx)),
                 "chunk_type": c_meta.get("chunk_type") or "text",
                 "token_count": int(c_meta.get("token_count", 0)),
@@ -205,7 +201,6 @@ if __name__ == "__main__":
     document = documents[0]
     version = next(v for v in versions if v["document_id"] == document["document_id"])
 
-    # Mock ChunkingOutputSchema.to_dict()
     chunking_output = {
         "document_id": document["document_id"],
         "version_id": version["version_id"],
@@ -227,7 +222,6 @@ if __name__ == "__main__":
         "chunk_sources": [],
     }
 
-    # Xoá bảng cũ nếu lệch schema và chạy thử
     db_file = VECTOR_DB_DIR / "metadata.db"
     if db_file.exists():
         db_file.unlink()
@@ -235,4 +229,3 @@ if __name__ == "__main__":
     extractor = MetadataExtractor(MetadataStore(db_file))
     result = extractor.run(document, version, chunking_output)
     print(json.dumps(result.to_dict(), indent=2, ensure_ascii=False))
-

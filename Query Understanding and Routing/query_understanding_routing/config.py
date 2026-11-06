@@ -5,45 +5,27 @@ Unified configuration constants for Query Understanding & Routing (Contract v1.0
 from __future__ import annotations
 import os
 
-# ==============================================================================
-# 1. Query length boundaries (Section 10)
-# ==============================================================================
 MIN_QUERY_LEN: int = 3
 MAX_QUERY_LEN: int = 500
 
-# Spam detection thresholds
 SPAM_CHAR_THRESHOLD: int = 30
 SPAM_TOKEN_THRESHOLD: int = 8
 
-# ==============================================================================
-# 2. Conversation history boundaries (Section 7.1 & Section 10)
-# ==============================================================================
-# Maximum 3 turn pairs (6 messages) and maximum 2,000 total characters
-HISTORY_MAX_TURNS: int = 3  # pairs: user + assistant = 1 pair
-HISTORY_MAX_MESSAGES: int = HISTORY_MAX_TURNS * 2  # 6 messages
+HISTORY_MAX_TURNS: int = 3
+HISTORY_MAX_MESSAGES: int = HISTORY_MAX_TURNS * 2
 HISTORY_MAX_CHARS: int = 2000
 
-# ==============================================================================
-# 3. LLM execution settings (Section 7.3 & Section 10)
-# ==============================================================================
 LLM_TEMPERATURE: float = 0.0
 LLM_TIMEOUT_S: float = 30.0
-LLM_MAX_RETRIES: int = 2  # Only for parse/schema errors (total 3 attempts)
+LLM_MAX_RETRIES: int = 2
 
-# Provider & model defaults (configurable via environment variables)
 LLM_PROVIDER: str = os.getenv("LLM_PROVIDER", "").strip().lower()
 LLM_MODEL: str = os.getenv("LLM_MODEL", "")
 OLLAMA_HOST: str = os.getenv("OLLAMA_HOST", "http://localhost:11434")
 OPENAI_BASE_URL: str = os.getenv("OPENAI_BASE_URL", "https://api.openai.com/v1")
 
-# ==============================================================================
-# 4. Clarification threshold (Section 0.2 L1 & Section 10)
-# ==============================================================================
 CLARIFY_THRESHOLD: float = 0.6
 
-# ==============================================================================
-# 5. Ontology standard slugs (Section 2.1 & Section 6.3)
-# ==============================================================================
 STANDARD_VULNERABILITY_SLUGS: set[str] = {
     "xss",
     "sqli",
@@ -52,9 +34,6 @@ STANDARD_VULNERABILITY_SLUGS: set[str] = {
     "misconfig",
 }
 
-# ==============================================================================
-# 6. Intent categories & Task intents (Section 2.2 & Section 7.2)
-# ==============================================================================
 VALID_INTENTS: set[str] = {
     "SEARCH",
     "COMPARE",
@@ -63,25 +42,18 @@ VALID_INTENTS: set[str] = {
     "OUT_OF_SCOPE",
 }
 
-# Intents allowed for task execution leading to status=ok
 VALID_TASK_INTENTS: set[str] = {
     "SEARCH",
     "COMPARE",
     "SYNTHESIS",
 }
 
-# ==============================================================================
-# 7. Permitted LLM error codes (Section 7.3)
-# ==============================================================================
 VALID_LLM_ERROR_CODES: set[str] = {
     "llm_unavailable",
     "llm_invalid_json",
     "llm_schema_violation",
 }
 
-# ==============================================================================
-# 8. User-facing messages & Reject reasons (Section 9)
-# ==============================================================================
 MESSAGES: dict[str, str] = {
     "empty_query": "Câu hỏi đang trống. Vui lòng nhập nội dung cần hỏi.",
     "query_too_short": "Câu hỏi quá ngắn. Vui lòng mô tả rõ hơn.",
@@ -99,10 +71,7 @@ SAFETY_CLARIFY_MESSAGE: str = "Bạn muốn tìm hiểu để phòng chống ho�
 OUT_OF_SCOPE_MSG: str = "Câu hỏi này nằm ngoài phạm vi kiến thức bảo mật web của hệ thống (XSS, SQL Injection, Broken Access Control, Authentication Failures, Security Misconfiguration)."
 ERROR_MSG: str = "Hệ thống tạm thời không xử lý được yêu cầu. Vui lòng thử lại sau."
 
-# ==============================================================================
-# 9. Safety and Prompt Injection Regex Patterns
-# ==============================================================================
-# Safety patterns are written against folded text: lowercase, no diacritics, "đ" -> "d".
+# Safety patterns match against folded text: lowercase, no diacritics, "đ" -> "d".
 INJECTION_PATTERNS: list[str] = [
     r"\b(bo qua|quen di|ignore|disregard|forget)\b.{0,25}\b(huong dan|chi dan|chi thi|lenh|instructions?|prompts?|rules?)\b",
     r"\b(in ra|hien thi|tiet lo|cho toi xem|reveal|print|show|display)\b.{0,20}\b(system prompt|prompt he thong|hidden prompt)\b",
@@ -124,17 +93,12 @@ TARGET_PATTERNS: list[str] = [
     r"\b\d{1,3}(\.\d{1,3}){3}\b",
 ]
 
-# Strong authorization context: own system or a known lab
 STRONG_AUTH_PATTERN: str = r"(\b(cua toi|cua minh|cua chung toi)\b|\bdvwa\b|\bwebgoat\b|\bjuice shop\b|\bmoi truong (kiem thu|lab)\b|(?<!khong )(?<!chua )\bduoc phep\b)"
 
-# Explanation framing
 EXPLAIN_PATTERN: str = r"\b(la gi|giai thich|tai sao|why|what is|khai niem|dinh nghia)\b"
 
-# Request for instructions
 REQUEST_CUE_PATTERN: str = r"\b(huong dan|cach|lam sao|lam the nao|how to|tutorial|buoc|step|giup toi|cho toi)\b"
 
-# Unauthorized access phrased as an action
 UNAUTH_ACCESS_PATTERN: str = r"(\b(truy cap|dang nhap|access)\b.{0,25}\b(trai phep|khong duoc phep|khong xin phep|unauthori[sz]ed)\b|\b(trai phep|unauthori[sz]ed)\b.{0,25}\b(truy cap|access)\b)"
 
-# Defensive, educational or authorized context
 MITIGATION_PATTERN: str = r"(\bla gi\b|\bphong (chong|tranh)\b|\bchong\b|\bngan chan\b|\bkhac phuc\b|(?<!khong )(?<!chua )\bduoc phep\b|\bcach (va|phat hien)\b|\bva (loi|lo hong)\b|\bphat hien\b|\blab\b|\bdvwa\b|\bwebgoat\b|\bjuice shop\b|\b(cua toi|cua minh|cua chung toi)\b|\bmoi truong (kiem thu|lab)\b|\bde hieu\b|\bgiai thich\b|\bdefen[cs]e\b|\bprevent\w*\b|\bmitigat\w*\b|\bremediat\w*\b|\bwhat is\b|\bdetect\w*\b)"

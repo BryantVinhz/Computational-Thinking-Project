@@ -18,7 +18,6 @@ import os
 import sys
 from pathlib import Path
 
-# Fix Windows console UTF-8 output encoding
 if sys.stdout.encoding and sys.stdout.encoding.lower() != "utf-8":
     try:
         sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -26,7 +25,6 @@ if sys.stdout.encoding and sys.stdout.encoding.lower() != "utf-8":
     except Exception:
         pass
 
-# Ensure paths are configured regardless of current working directory
 SCRIPT_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = SCRIPT_DIR.parent
 PACKAGE_DIR = SCRIPT_DIR / "query_understanding_routing"
@@ -120,7 +118,6 @@ def run_single_test(
     ontology = load_ontology(DEFAULT_ONTOLOGY_PATH)
     client = None if llm_provider == "engine" else create_llm_client(provider=llm_provider, model_name=llm_model)
 
-    # Stage 2.1: Validation
     val_res = validate_query(query)
     if show_stages:
         print("\n[Stage 2.1 - Validation]:")
@@ -132,7 +129,6 @@ def run_single_test(
         if val_res.get("clarification_message"):
             print(f"  - Clarify Msg:   {val_res.get('clarification_message')}")
 
-    # Stage 2.2: Normalization
     norm_res = normalize_query(query, ontology)
     if show_stages:
         print("\n[Stage 2.2 - Normalization]:")
@@ -142,7 +138,6 @@ def run_single_test(
         else:
             print(f"  - Normalized:    \"{norm_res}\"")
 
-    # Full Stage 2 Pipeline Envelope
     envelope = process_query(raw_query=query, conversation_history=history, llm_client=client)
     print("\n[Stage 2 Final Envelope]:")
     print(f"  - Status:         {envelope.get('status')}")
@@ -171,7 +166,6 @@ def run_single_test(
         print(f"  - Error Code:     {envelope.get('error_code')}")
         print(f"  - Reason:         {envelope.get('reason')}")
 
-    # Optional End-to-End RAG Demonstration
     if run_rag and envelope.get("status") == "ok":
         print("\n[Stage 3 & 4 - RAG Retrieval + Generation]:")
         rag = EndToEndRAGPipeline(llm_client=client)

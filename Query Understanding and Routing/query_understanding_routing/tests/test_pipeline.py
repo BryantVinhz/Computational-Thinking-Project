@@ -85,9 +85,6 @@ def assert_nothing_after_validation(state) -> None:
     assert state.understand_calls == []
 
 
-# --- Validation short-circuit ---------------------------------------------------
-
-
 @pytest.mark.parametrize(
     "raw, code",
     [
@@ -142,9 +139,6 @@ def test_zero_width_only_rejected_via_route(stubs, monkeypatch):
     assert result is stubs.route_returns[-1]
 
 
-# --- Ontology ---------------------------------------------------------------------
-
-
 def test_ontology_load_failure_returns_error(stubs):
     stubs.load_error = OSError("missing")
     result = pipeline.process_query(RAW)
@@ -193,9 +187,6 @@ def test_understanding_gets_normalized_query_and_shared_ontology(stubs):
     assert stubs.route_calls[-1][3] is TEST_ONTOLOGY
 
 
-# --- Forwarding -------------------------------------------------------------------
-
-
 def test_history_forwarded_unchanged(stubs):
     history = [{"role": "user", "content": "XSS là gì?"}, {"role": "assistant", "content": "XSS là ..."}]
     snapshot = deepcopy(history)
@@ -215,9 +206,6 @@ def test_llm_client_and_document_ids_forwarded(stubs):
     pipeline.process_query(RAW, llm_client=client, document_ids=doc_ids)
     assert stubs.understand_calls[0]["llm_client"] is client
     assert stubs.route_calls[-1][4] is doc_ids
-
-
-# --- Understanding results --------------------------------------------------------
 
 
 def test_llm_error_code_passed_through(stubs):
@@ -291,9 +279,6 @@ def test_whitespace_and_case(stubs):
 def test_payload_and_partial_alias_preserved(stubs, raw):
     pipeline.process_query(raw)
     assert stubs.understand_calls[0]["query"] == raw
-
-
-# --- Envelope shape and logging ---------------------------------------------------
 
 
 @pytest.mark.parametrize(
@@ -375,8 +360,6 @@ def test_multi_turn_attack_not_detected(stubs):
     result = pipeline.process_query("Vậy làm tiếp bước tiếp theo đi", history)
     assert result["status"] == "rejected"
 
-
-# --- Integration (real Validation, Normalization, Ontology, Understanding, Routing) ---
 
 # Fixture inputs; "error" uses a stubbed understanding because rule-based mode never fails.
 FIXTURE_CASES = {

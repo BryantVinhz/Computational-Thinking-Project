@@ -42,7 +42,6 @@ class PipelineConnector:
 
         self.formatter = TraceableFormatter()
 
-
         self.orchestrator = RAGOrchestrator(
             retrieval_system=self.retrieval_system,
             synthesizer=self.synthesizer,
@@ -78,9 +77,7 @@ if __name__ == "__main__":
                 print("Goodbye!")
                 break
 
-
             envelope = pipeline.ask(user_query)
-
 
             print("\n" + "-" * 80)
             print("[RESPONE]: ")
@@ -88,7 +85,6 @@ if __name__ == "__main__":
             print(envelope.final_answer_markdown)
             print("-" * 80)
 
-            # In thông tin metadata kiểm soát
             print(f">>> [Moderation] Status: {envelope.status} | Intent: {envelope.intent}")
             if envelope.verification:
                 v = envelope.verification

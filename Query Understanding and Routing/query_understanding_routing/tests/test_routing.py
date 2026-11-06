@@ -87,9 +87,6 @@ def assert_error(result: dict, code: str) -> None:
     assert result["reason"] == ERROR_MSG
 
 
-# --- Envelopes -----------------------------------------------------------------
-
-
 @pytest.mark.parametrize(
     "validation, understanding_result, status",
     [
@@ -112,9 +109,6 @@ def test_out_of_scope_and_safety_clarification_messages():
     result = route(RAW, clarify(), understanding())
     assert result["source"] == "safety"
     assert result["clarification_message"] == SAFETY_CLARIFY_MESSAGE
-
-
-# --- Precedence ----------------------------------------------------------------
 
 
 MALICIOUS_UNDERSTANDING = understanding(original_query="spoofed", extra="payload")
@@ -236,9 +230,6 @@ def test_contract_messages():
     assert ERROR_MSG not in MESSAGES.values() and OUT_OF_SCOPE_MSG not in MESSAGES.values()
 
 
-# --- Understanding errors ------------------------------------------------------
-
-
 @pytest.mark.parametrize("understanding_result", [None, "SEARCH", [], 42])
 def test_missing_understanding_is_internal_error(understanding_result):
     assert_error(route(RAW, allow(), understanding_result), "internal_error")
@@ -256,9 +247,6 @@ def test_unknown_understanding_error_code(code):
 
 def test_error_code_wins_over_valid_fields():
     assert_error(route(RAW, allow(), {**understanding(), "error_code": "llm_unavailable"}), "llm_unavailable")
-
-
-# --- Schema check (case 23 / 24) -------------------------------------------------
 
 
 def _without(key: str) -> dict:
@@ -309,7 +297,6 @@ def _without(key: str) -> dict:
         pytest.param(understanding(task=[task(objective={"type": "documents", "ids": "OWASP"})]), id="ids-not-list"),
         pytest.param(_without("filter"), id="missing-filter"),
         pytest.param(_without("clarification_message"), id="missing-clarification-message"),
-        # Case 24: CLARIFICATION <=> need_clarify, message only when clarifying
         pytest.param(clarification_understanding(message=None), id="case24-clarify-null-message"),
         pytest.param(clarification_understanding(message=" "), id="case24-clarify-blank-message"),
         pytest.param(understanding(clarification_message="Bạn hỏi gì?"), id="case24-message-without-clarify"),
@@ -343,7 +330,6 @@ def test_ontology_restricts_valid_slugs():
     assert_error(route(RAW, allow(), understanding(), ontology=ontology), "llm_schema_violation")
     sqli = understanding(entities={"document": [], "vulnerabilities": ["sqli"]}, task=[task(ids=["sqli"])])
     assert_status(route(RAW, allow(), sqli, ontology=ontology), "ok")
-    # A custom slug becomes valid only when the ontology declares it.
     custom = understanding(entities={"document": [], "vulnerabilities": ["rce"]}, task=[task(ids=["rce"])])
     assert_status(route(RAW, allow(), custom, ontology={"rce": {}}), "ok")
     assert_error(route(RAW, allow(), custom), "llm_schema_violation")
@@ -361,9 +347,6 @@ def test_clarification_and_out_of_scope_tasks_not_validated():
     assert result["source"] == "understanding"
     assert result["clarification_message"] == "Bạn muốn hỏi về lỗ hổng nào?"
     assert_status(route(RAW, allow(), understanding(intent="OUT_OF_SCOPE", task=garbage_tasks)), "out_of_scope")
-
-
-# --- query_plan ------------------------------------------------------------------
 
 
 def test_empty_objective_ids_accepted():
@@ -409,9 +392,6 @@ def test_mixed_objective_types_allowed():
     assert_status(route(RAW, allow(), understanding(intent="SYNTHESIS", task=tasks)), "ok")
 
 
-# --- Purity --------------------------------------------------------------------
-
-
 def test_inputs_not_mutated_and_plan_is_independent():
     validation = allow()
     source = understanding(task=[task(ids=["xss", "xss"])], original_query="spoofed")
@@ -449,8 +429,6 @@ def test_route_never_raises(args):
     assert set(result) == STATUS_KEYS[result["status"]]
 
 
-# --- Integration (real Validation, Normalization, Understanding) -----------------
-
 XSS_HISTORY = [
     {"role": "user", "content": "XSS là gì?"},
     {"role": "assistant", "content": "XSS (Cross-Site Scripting) là lỗ hổng chèn mã script vào trang web."},
@@ -479,7 +457,6 @@ def _import_real_modules() -> dict:
         "understand_query": understand_query,
         "load_ontology": load_ontology,
     }
-
 
 
 class TestRoutingRealIntegration:

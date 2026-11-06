@@ -47,7 +47,6 @@ class LangChainMMRSelector:
 
         lam = self.default_lambda if lambda_param is None else lambda_param
 
-        # Prepare query vector (1D array)
         if query_vector is not None:
             q_vec = np.array(query_vector, dtype=np.float32)
         elif original_query:
@@ -55,11 +54,9 @@ class LangChainMMRSelector:
         else:
             raise ValueError("Either 'query_vector' or 'original_query' must be provided to compute MMR")
 
-        # Vectorize text of candidate chunks (2D array)
         chunk_texts = [c.get("text") or c.get("text_content") or "" for c in candidates]
         raw_chunk_vectors = self.vectorizer.vectorize_batch(chunk_texts)
         chunk_vecs = np.array(raw_chunk_vectors, dtype=np.float32)
-
 
         selected_indices = maximal_marginal_relevance(
             query_embedding=q_vec,
@@ -67,7 +64,6 @@ class LangChainMMRSelector:
             lambda_mult=lam,
             k=top_k,
         )
-
 
         selected_chunks: list[dict[str, Any]] = []
         for rank, idx in enumerate(selected_indices, start=1):

@@ -12,7 +12,6 @@ from html.parser import HTMLParser
 from pathlib import Path
 from typing import Any
 
-# Resolve paths
 CURRENT_DIR = Path(__file__).resolve().parent
 PARENT_DIR = CURRENT_DIR.parent
 if str(CURRENT_DIR) not in sys.path:
@@ -467,7 +466,6 @@ class TextNormalizer:
         table_delta = 0
 
         if block_type == "table":
-            # 1. Direct Parser table schema: table_header_cols and table_rows
             raw_headers = block.get("table_header_cols")
             if isinstance(raw_headers, list):
                 clean_headers: list[Any] = []
@@ -515,7 +513,6 @@ class TextNormalizer:
                             table_delta += len(row_or_cell) - len(clean_c)
                 norm_table_rows = clean_rows
 
-            # 2. Backward compatibility: structured_content
             sc = block.get("structured_content")
             if isinstance(sc, dict):
                 normalized_sc = copy.deepcopy(sc)

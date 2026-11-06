@@ -8,7 +8,6 @@ import unittest
 from pathlib import Path
 import sys
 
-# Ensure Response Synthesis directory is in sys.path
 STAGE_4_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = STAGE_4_DIR.parent
 
@@ -33,48 +32,49 @@ from prompt_templates import (
 )
 from synthesizer import DefaultDeterministicLLM, ResponseSynthesizer
 from rag_orchestrator import DefaultTraceableFormatter, RAGOrchestrator
+from verifier import EvidenceVerifier
 
 
 class TestPromptTemplates(unittest.TestCase):
     def test_extract_citation_tags(self):
-        text = "SQL Injection xảy ra do [1] và [2]. Biện pháp phòng vệ là [2] và [3]. Không hợp lệ [abc]."
+        text = "SQL Injection occurs due to [1] and [2]. Defenses include [2] and [3]. Invalid [abc]."
         tags = extract_citation_tags(text)
         self.assertEqual(tags, ["[1]", "[2]", "[3]"])
 
     def test_extract_empty_tags(self):
-        self.assertEqual(extract_citation_tags("Không có tag nào"), [])
+        self.assertEqual(extract_citation_tags("No tags present"), [])
         self.assertEqual(extract_citation_tags(""), [])
 
     def test_search_prompt_strict_vs_hybrid(self):
-        strict_p = build_search_prompt("SQLi là gì?", "Context A", mode="STRICT_RAG")
+        strict_p = build_search_prompt("What is SQLi?", "Context A", mode="STRICT_RAG")
         self.assertIn("STRICT RAG MODE", strict_p)
         self.assertIn("Context A", strict_p)
 
-        hybrid_p = build_search_prompt("SQLi là gì?", "Context B", mode="HYBRID")
+        hybrid_p = build_search_prompt("What is SQLi?", "Context B", mode="HYBRID")
         self.assertIn("HYBRID MODE", hybrid_p)
         self.assertIn("Context B", hybrid_p)
 
     def test_compare_prompt(self):
-        p = build_compare_prompt("So sánh XSS và CSRF", "Context Chunks", mode="STRICT_RAG")
-        self.assertIn("Bảng so sánh tổng hợp (Markdown Table)", p)
-        self.assertIn("XSS và CSRF", p)
+        p = build_compare_prompt("Compare XSS and CSRF", "Context Chunks", mode="STRICT_RAG")
+        self.assertIn("Summary Comparison Table (Markdown Table)", p)
+        self.assertIn("XSS and CSRF", p)
 
     def test_synthesis_prompt(self):
-        p = build_synthesis_prompt("Tổng hợp bảo mật OWASP", "Context Chunks", mode="HYBRID")
-        self.assertIn("Tóm tắt điều hành", p)
+        p = build_synthesis_prompt("Synthesize OWASP security", "Context Chunks", mode="HYBRID")
+        self.assertIn("Executive Summary", p)
         self.assertIn("HYBRID MODE", p)
 
     def test_build_synthesis_messages(self):
         messages = build_synthesis_messages(
-            query="Kiểm tra phân quyền",
+            query="Access control check",
             llm_context="Context Data",
             intent="COMPARE",
             evidence_status="PARTIAL",
-            conversation_history=[{"role": "user", "content": "Câu hỏi trước"}],
+            conversation_history=[{"role": "user", "content": "Previous question"}],
         )
         self.assertEqual(messages[0]["role"], "system")
         self.assertEqual(messages[1]["role"], "user")
-        self.assertEqual(messages[1]["content"], "Câu hỏi trước")
+        self.assertEqual(messages[1]["content"], "Previous question")
         self.assertEqual(messages[2]["role"], "user")
         self.assertIn("HYBRID MODE", messages[2]["content"])
 
@@ -96,7 +96,7 @@ class TestResponseSynthesizer(unittest.TestCase):
             "llm_context": "--- Evidence [1] ---\nContent 1\n\n--- Evidence [2] ---\nContent 2",
         }
         draft = self.synthesizer.synthesize(
-            query="SQL Injection là gì?",
+            query="What is SQL Injection?",
             retrieval_output=retrieval_output,
         )
         self.assertFalse(draft.is_abstained)
@@ -116,7 +116,7 @@ class TestResponseSynthesizer(unittest.TestCase):
             "llm_context": "--- Evidence [1] ---\nContent 1",
         }
         draft = self.synthesizer.synthesize(
-            query="Tổng quan và khắc phục SSRF",
+            query="Overview and remediation of SSRF",
             retrieval_output=retrieval_output,
         )
         self.assertFalse(draft.is_abstained)
@@ -134,7 +134,7 @@ class TestResponseSynthesizer(unittest.TestCase):
             "llm_context": "No relevant data was found in the knowledge base",
         }
         draft = self.synthesizer.synthesize(
-            query="Câu hỏi không có trong sách",
+            query="Unrelated question",
             retrieval_output=retrieval_output,
         )
         self.assertTrue(draft.is_abstained)
@@ -149,21 +149,22 @@ class TestResponseSynthesizer(unittest.TestCase):
             "intent": "UNKNOWN",
             "total_evidence": 0,
             "evidence_list": [],
-            "llm_context": "Bạn muốn tìm hiểu lỗ hổng nào cụ thể?",
+            "llm_context": "Which specific vulnerability would you like to learn about?",
         }
         draft = self.synthesizer.synthesize(
-            query="các lỗi nguy hiểm",
+            query="dangerous bugs",
             retrieval_output=retrieval_output,
         )
         self.assertTrue(draft.is_abstained)
         self.assertEqual(draft.abstention_reason, "clarification_needed")
-        self.assertEqual(draft.draft_answer, "Bạn muốn tìm hiểu lỗ hổng nào cụ thể?")
+        self.assertEqual(draft.draft_answer, "Which specific vulnerability would you like to learn about?")
 
 
 class TestRAGOrchestrator(unittest.TestCase):
     def setUp(self):
         self.orchestrator = RAGOrchestrator(
             synthesizer=ResponseSynthesizer(llm_client=DefaultDeterministicLLM()),
+            verifier=EvidenceVerifier(),
             traceable_formatter=DefaultTraceableFormatter(),
         )
 
@@ -205,7 +206,7 @@ class TestRAGOrchestrator(unittest.TestCase):
         }
 
         envelope = self.orchestrator.run_from_retrieval(
-            query="Làm sao để chống SQLi?",
+            query="How to prevent SQLi?",
             retrieval_output=retrieval_output,
         )
 
@@ -214,12 +215,11 @@ class TestRAGOrchestrator(unittest.TestCase):
         self.assertIsNotNone(envelope.raw_draft)
         self.assertEqual(envelope.raw_draft.evidence_status, "FULL")
         self.assertEqual(envelope.raw_draft.generation_mode, "STRICT_RAG")
-        self.assertIn("Danh mục tài liệu tham chiếu", envelope.final_answer_markdown)
+        self.assertIn("References & Citations", envelope.final_answer_markdown)
         self.assertEqual(len(envelope.citations), 2)
         self.assertEqual(envelope.citations[0].tag, "[1]")
         self.assertEqual(envelope.citations[1].tag, "[2]")
 
-        # Test JSON serialization
         json_output = envelope.to_json()
         data = json.loads(json_output)
         self.assertEqual(data["schema_version"], "1.0")
@@ -242,7 +242,7 @@ class TestRAGOrchestrator(unittest.TestCase):
         }
 
         envelope = self.orchestrator.run_from_retrieval(
-            query="So sánh XSS và CSRF",
+            query="Compare XSS and CSRF",
             retrieval_output=retrieval_output,
         )
 

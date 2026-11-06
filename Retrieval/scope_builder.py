@@ -74,13 +74,10 @@ class ScopeBuilder:
             if not clean_src:
                 continue
 
-            # 1. Exact document_id match
             if clean_src in self.valid_doc_ids:
                 resolved_ids.add(clean_src)
                 continue
 
-            # Split source query string into an independent set of tokens
-            # Example: "first_cvss" -> {"first", "cvss"}; "owasp-top10" -> {"owasp", "top10"}
             src_tokens = set(re.findall(r"[a-z0-9]+", clean_src))
             if not src_tokens:
                 continue
@@ -91,17 +88,12 @@ class ScopeBuilder:
                 title = doc.get("canonical_title", doc.get("title", "")).lower()
                 publisher = doc.get("publisher", "").lower()
 
-                # 2. Publisher Match
                 if clean_src == publisher and publisher != "":
                     resolved_ids.add(doc["document_id"])
                     matched = True
                     continue
 
-                # 3. Token Subset Match
-                # Build a token set representing all document metadata/information
                 doc_tokens = set(re.findall(r"[a-z0-9]+", f"{d_id} {title} {publisher}"))
-
-                
                 if src_tokens.issubset(doc_tokens):
                     resolved_ids.add(doc["document_id"])
                     matched = True
@@ -121,12 +113,6 @@ class ScopeBuilder:
         if not text:
             return []
         
-        """
-        Pattern bắt:
-            1. 4-digit year 
-            2. Version with 'v' or 'ver' prefix: v4.0, ver5.0.0
-            3. Decimal/SemVer format: 4.0, 5.0.0, 3.1
-        """
         pattern = r"\b(?:v(?:er(?:sion)?)?\.?\s*)?(\d{4}|\d+(?:\.\d+)+)\b"
         
         matches = re.findall(pattern, text, flags=re.IGNORECASE)
@@ -156,7 +142,6 @@ class ScopeBuilder:
         matched_version_ids = []
 
         for ver in self.ver_catalog:
-            # Check whether this version belongs to the target document group
             if target_doc_ids and ver.get("document_id") not in target_doc_ids:
                 continue
 
@@ -179,7 +164,6 @@ class ScopeBuilder:
         q_lower = query_text.lower().strip()
 
         PREFERENCE_RULES = [
-            # GROUP 1: CONCEPTS / DEFINITIONS / OVERVIEW
             {
                 "patterns": [
                     r"\b(khái niệm|là gì|định nghĩa|tổng quan|giới thiệu|bản chất|thế nào là|ý nghĩa)\b",
@@ -195,7 +179,6 @@ class ScopeBuilder:
                     "About",
                 ],
             },
-            # GROUP 2: PREVENTION / MITIGATION / PROTECTION
             {
                 "patterns": [
                     r"\b(phòng chống|khắc phục|ngăn ngừa|giảm thiểu|cách xử lý|biện pháp|phòng ngừa|cách fix|vá lỗi|bảo vệ)\b",
@@ -211,7 +194,6 @@ class ScopeBuilder:
                     "Defense",
                 ],
             },
-            # GROUP 3: METRICS / STATISTICAL TABLES
             {
                 "patterns": [
                     r"\b(bảng|thống kê|tỷ lệ|số liệu|điểm số|tính điểm|đo lường|thước đo|chỉ số|mức độ ảnh hưởng)\b",
@@ -226,7 +208,6 @@ class ScopeBuilder:
                     "Table",
                 ],
             },
-            # GROUP 4: EXAMPLES / REAL-WORLD EXPLOITS
             {
                 "patterns": [
                     r"\b(kịch bản|tấn công|ví dụ|khai thác|mô phỏng|tình huống|trường hợp|thực tế)\b",
@@ -240,7 +221,6 @@ class ScopeBuilder:
                     "Case Studies",
                 ],
             },
-            # GROUP 5: RELATED VULNERABILITY CATALOG / CWE IDS / STANDARDS
             {
                 "patterns": [
                     r"\b(danh sách cwe|mã cwe|danh mục cwe|liệt kê cwe|tiêu chuẩn|tài liệu tham khảo)\b",
@@ -285,7 +265,6 @@ class ScopeBuilder:
         flt = query_plan.get("filter", {})
         entities = query_plan.get("entities", {})
 
-
         target_sources = []
         if task and task.get("objective", {}).get("type") == "documents":
             target_sources = task["objective"].get("ids", [])
@@ -304,7 +283,6 @@ class ScopeBuilder:
             version_ids.extend(v_ids)
         version_ids = sorted(set(version_ids))
         
-        # Filter file_format
         raw_type = (flt.get("document_type") or "").strip().lower().replace(".", "")
         file_format = FORMAT_MAPPING.get(raw_type.upper())
         
@@ -323,8 +301,6 @@ class ScopeBuilder:
             )
             is_relaxed = True
             
-            
-        # Compiles filter clauses for ChromaDB
         filters_list = []
         if doc_ids:
             if len(doc_ids) == 1:
@@ -347,7 +323,6 @@ class ScopeBuilder:
         elif len(filters_list) > 1:
             chroma_filter = {"$and": filters_list}
 
-        # SEMANTIC FILTER
         query_text = (task.get("query") if task else None) or query_plan.get("resolved_query") or ""
         pref_types, pref_headings = self._detect_semantic_preferences(query_text)
         ontology_expansions = self.expand_concepts(task, entities)

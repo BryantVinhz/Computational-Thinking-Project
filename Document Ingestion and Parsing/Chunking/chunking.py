@@ -19,7 +19,6 @@ class ChunkingService:
         chunks: list[ChunkSchema] = []
         sources: list[ChunkSourceSchema] = []
 
-        # Mapping ChunkDraft to ChunkSchema and ChunkSourceSchema
         for chunk_idx, draft in enumerate(drafts):
             chunk_id = f"{version_id}_c{chunk_idx:05d}"
             chunks.append(
@@ -67,11 +66,9 @@ class ChunkingService:
                 chunk_sources=sources
             )
         
-        # Validate output
         if self.validate_output:
             errors = self.validator.validate(output)
             if errors:
                 raise ValueError("Chunking output validation failed:\n- " + "\n- ".join(errors))
             
         return output
-

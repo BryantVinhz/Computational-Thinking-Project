@@ -22,14 +22,14 @@ except ImportError:
 
 logger = logging.getLogger(__name__)
 
-RAG_GENERATION_SYSTEM_PROMPT = """Bạn là trợ lý AI chuyên sâu về An toàn thông tin và Bảo mật ứng dụng Web (OWASP, MITRE ATT&CK, CVSS, ASVS).
-Nhiệm vụ của bạn là trả lời câu hỏi của người dùng dựa CHÍNH XÁC trên các đoạn văn bản trích dẫn (Context Chunks) được cung cấp dưới đây.
+RAG_GENERATION_SYSTEM_PROMPT = """You are an AI assistant specializing in Information Security and Web Application Security (OWASP, MITRE ATT&CK, CVSS, ASVS).
+Your task is to answer the user's question STRICTLY based on the provided document excerpts (Context Chunks) below.
 
-QUY TẮC BẮT BUỘC:
-1. Chỉ sử dụng thông tin có trong ngữ cảnh được cung cấp. Không bịa đặt hoặc suy diễn vượt quá tài liệu.
-2. Trích dẫn rõ ràng nguồn gốc thông tin bằng định dạng [Nguồn: <Tên tài liệu>, Phần: <Tên mục>].
-3. Nếu ngữ cảnh không chứa đủ thông tin để trả lời, hãy thông báo rõ ràng cho người dùng thay vì tự tạo câu trả lời.
-4. Trình bày rành mạch, có cấu trúc: định nghĩa/cơ chế, nguy cơ, và phương pháp phòng chống cụ thể.
+MANDATORY RULES:
+1. Use only information present in the provided context. Do not fabricate or extrapolate beyond the documents.
+2. Clearly cite the source of information using the format [Source: <Document Title>, Section: <Section Name>].
+3. If the context does not contain enough information to answer, clearly inform the user instead of making up an answer.
+4. Present a clear, structured response covering: definition/mechanism, risks, and specific prevention/remediation measures.
 """
 
 
@@ -48,17 +48,16 @@ class RAGGenerator:
         context_blocks = []
         for i, chunk in enumerate(retrieved_chunks, start=1):
             doc = chunk.get("document", "Unknown Doc")
-            section = chunk.get("section", "Chung")
+            section = chunk.get("section", "General")
             text = chunk.get("text", "")
-            context_blocks.append(f"--- ĐOẠN TRÍCH {i} [Tài liệu: {doc} | Mục: {section}] ---\n{text}")
+            context_blocks.append(f"--- EXCERPT {i} [Document: {doc} | Section: {section}] ---\n{text}")
 
-        context_str = "\n\n".join(context_blocks) if context_blocks else "Không tìm thấy đoạn trích phù hợp."
+        context_str = "\n\n".join(context_blocks) if context_blocks else "No matching excerpts found."
 
         messages = [
             {"role": "system", "content": RAG_GENERATION_SYSTEM_PROMPT},
         ]
 
-        # Add relevant conversation history if any
         if conversation_history:
             for turn in conversation_history[-4:]:
                 messages.append({
@@ -67,9 +66,9 @@ class RAGGenerator:
                 })
 
         user_content = (
-            f"NGỮ CẢNH TÀI LIỆU (Context Chunks):\n{context_str}\n\n"
-            f"CÂU HỎI CỦA NGƯỜI DÙNG:\n{query}\n\n"
-            f"Hãy trả lời câu hỏi trên dựa trên ngữ cảnh đã cung cấp kèm trích dẫn."
+            f"DOCUMENT CONTEXT (Context Chunks):\n{context_str}\n\n"
+            f"USER QUESTION:\n{query}\n\n"
+            f"Please answer the question above based on the provided context with citations."
         )
         messages.append({"role": "user", "content": user_content})
         return messages
@@ -125,21 +124,21 @@ class EndToEndRAGPipeline:
                 "chunk_id": "chunk_xss_001",
                 "document": "OWASP Top 10 2025",
                 "section": "A05: Injection - Cross-Site Scripting",
-                "text": "XSS xảy ra khi ứng dụng đưa dữ liệu không đáng tin cậy vào trang web mà không được xác thực hoặc mã hóa đúng cách. Phòng chống: Context-aware Output Encoding và Content Security Policy (CSP).",
+                "text": "XSS occurs when an application includes untrusted data in a web page without proper validation or escaping. Prevention: Context-aware Output Encoding and Content Security Policy (CSP).",
             })
         if "sqli" in vulns:
             chunks.append({
                 "chunk_id": "chunk_sqli_001",
                 "document": "OWASP Top 10 2025",
                 "section": "A05: Injection - SQL Injection",
-                "text": "SQL Injection xảy ra khi dữ liệu người dùng được ghép trực tiếp vào câu truy vấn SQL. Phòng chống: Sử dụng Parameterized Queries (Prepared Statements) hoặc ORM an toàn.",
+                "text": "SQL Injection occurs when user input is directly concatenated into a SQL query. Prevention: Use Parameterized Queries (Prepared Statements) or safe ORMs.",
             })
         if "bac" in vulns:
             chunks.append({
                 "chunk_id": "chunk_bac_001",
                 "document": "OWASP Top 10 2025",
                 "section": "A01: Broken Access Control",
-                "text": "Broken Access Control là lỗ hổng nghiêm trọng nhất trong OWASP Top 10. Người dùng có thể hành động vượt ngoài phạm vi quyền hạn được cấp. Phòng chống: Áp dụng nguyên tắc Least Privilege và kiểm tra quyền tại tầng server.",
+                "text": "Broken Access Control is a critical vulnerability in OWASP Top 10 where users can act outside of their intended permissions. Prevention: Enforce Least Privilege and server-side authorization checks.",
             })
 
         if not chunks:
@@ -147,7 +146,7 @@ class EndToEndRAGPipeline:
                 "chunk_id": "chunk_gen_001",
                 "document": "Cyber Security Knowledge Base",
                 "section": "General Security",
-                "text": "Các tiêu chuẩn bảo mật chính gồm OWASP ASVS v5.0, OWASP Top 10, và CVSS v4.0.",
+                "text": "Core security standards include OWASP ASVS v5.0, OWASP Top 10, and CVSS v4.0.",
             })
         return chunks
 
@@ -163,14 +162,12 @@ class EndToEndRAGPipeline:
         3. Retrieval (Stage 3)
         4. LLM Answer Generation (Stage 4)
         """
-        # Step 1: Stage 2 processing
         envelope = process_query(
             raw_query=raw_query,
             conversation_history=conversation_history,
             llm_client=self.llm_client,
         )
 
-        # Early exit if status is not 'ok'
         if envelope.get("status") != "ok":
             return {
                 "status": envelope.get("status"),
@@ -178,11 +175,9 @@ class EndToEndRAGPipeline:
                 "generation": None,
             }
 
-        # Step 2: Retrieval
         query_plan = envelope.get("query_plan", {})
         retrieved_chunks = self.retriever_func(query_plan)
 
-        # Step 3: LLM Generation
         generation = self.generator.generate_response(
             query=query_plan.get("resolved_query", raw_query),
             retrieved_chunks=retrieved_chunks,

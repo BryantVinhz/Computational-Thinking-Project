@@ -1,11 +1,11 @@
 """
-Helper dùng chung cho các parser CSV / JSON / TXT (Step 2: Document Parsing).
+Shared helper utilities for CSV / JSON / TXT / Markdown / PDF parsers (Step 2: Document Parsing).
 """
 import json
 import sys
 from pathlib import Path
 
-# Đảm bảo import được path.py và package Ingestion/ khi chạy trực tiếp file parser
+# Ensure path.py and the Ingestion/ package can be imported when running a parser file directly
 CURRENT_DIR = Path(__file__).resolve().parent
 PARENT_DIR = CURRENT_DIR.parent
 for _p in (CURRENT_DIR, PARENT_DIR):
@@ -24,12 +24,12 @@ from schema_parsing import (
 
 
 def read_text(version: DocumentVersionSchema) -> str:
-    """Đọc file của version dưới dạng text UTF-8 (tự bỏ BOM)."""
+    """Read the version's file as UTF-8 text (automatically stripping BOM)."""
     file_path = to_actual_path(version.file_path)
     try:
         return file_path.read_text(encoding="utf-8-sig")
     except UnicodeDecodeError as e:
-        raise ValueError(f"Không decode được UTF-8: {file_path.name} ({e})") from e
+        raise ValueError(f"Failed to decode UTF-8: {file_path.name} ({e})") from e
 
 
 def build_block(
@@ -42,7 +42,7 @@ def build_block(
     parser_version: str,
     **extra,
 ) -> ContentBlockSchema:
-    """Tạo ContentBlockSchema đã điền ID, hash và kiểm định theo schema."""
+    """Create a ContentBlockSchema populated with ID, hash, and schema validation."""
     block = ContentBlockSchema(
         block_id=make_block_id(version.version_id, block_idx),
         document_id=version.document_id,
@@ -59,13 +59,13 @@ def build_block(
     )
     errors = validate_block(block)
     if errors:
-        # Lỗi ở đây là bug của parser, không phải lỗi dữ liệu -> không nuốt
-        raise ValueError(f"Block {block.block_id} không hợp lệ: {'; '.join(errors)}")
+        # Errors here indicate a parser bug rather than data corruption -> do not swallow
+        raise ValueError(f"Invalid block {block.block_id}: {'; '.join(errors)}")
     return block
 
 
 def run_cli(parser) -> None:
-    """Chạy thử parser trên manifest Step 1 và ghi output vào PARSING_OUT_DIR."""
+    """Test-run a parser on the Step 1 manifest and write output to PARSING_OUT_DIR."""
     versions_path = INGESTION_OUT_DIR / "documents_version.json"
     versions = [
         DocumentVersionSchema(**item)
@@ -79,16 +79,16 @@ def run_cli(parser) -> None:
     ]
     PARSING_OUT_DIR.mkdir(parents=True, exist_ok=True)
 
-    print(f"=== PARSING {parser.file_format}: {len(targets)} file ===")
+    print(f"=== PARSING {parser.file_format}: {len(targets)} files ===")
     for version in targets:
         try:
             blocks = parser.parse(version)
         except ValueError as e:
-            print(f"- [LỖI] {version.file_name}: {e}")
+            print(f"- [ERROR] {version.file_name}: {e}")
             continue
         out_path = PARSING_OUT_DIR / f"{version.version_id}_parsing.json"
         out_path.write_text(
             json.dumps([b.to_dict() for b in blocks], ensure_ascii=False, indent=2),
             encoding="utf-8",
         )
-        print(f"- {version.file_name}: {len(blocks)} block -> {out_path.name}")
+        print(f"- {version.file_name}: {len(blocks)} blocks -> {out_path.name}")

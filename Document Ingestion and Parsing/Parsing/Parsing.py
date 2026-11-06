@@ -1,6 +1,6 @@
 """
-Điểm chạy chính (Entry Point) cho Bước 2: Document Parsing.
-Tự động nạp kết quả từ Bước 1 (Ingestion) và điều phối các bộ parser:
+Main entry point for Step 2: Document Parsing.
+Automatically loads results from Step 1 (Ingestion) and dispatches parsers:
 - PDF: PdfParser
 - Markdown: MarkdownParser
 - CSV: CsvParser
@@ -11,14 +11,14 @@ import json
 import sys
 from pathlib import Path
 
-# Đảm bảo in tiếng Việt trên console Windows không bị lỗi cp1252
+# Ensure UTF-8 output on Windows consoles to avoid cp1252 encoding errors
 if hasattr(sys.stdout, "reconfigure"):
     try:
         sys.stdout.reconfigure(encoding="utf-8")
     except Exception:
         pass
 
-# Đảm bảo import được path.py và package Ingestion/ khi chạy trực tiếp file
+# Ensure path.py and the Ingestion/ package can be imported when running this file directly
 CURRENT_DIR = Path(__file__).resolve().parent
 PARENT_DIR = CURRENT_DIR.parent
 for _p in (CURRENT_DIR, PARENT_DIR):
@@ -45,7 +45,7 @@ PARSER_REGISTRY = {
 def run_all_parsers(force_reparse: bool = False) -> dict:
     versions_path = INGESTION_OUT_DIR / "documents_version.json"
     if not versions_path.exists():
-        raise FileNotFoundError(f"Không tìm thấy manifest Bước 1 tại {versions_path}")
+        raise FileNotFoundError(f"Step 1 manifest not found at {versions_path}")
 
     versions = [
         DocumentVersionSchema(**item)
@@ -64,7 +64,7 @@ def run_all_parsers(force_reparse: bool = False) -> dict:
         "files_by_format": {},
     }
 
-    print("=== BẮT ĐẦU CHẠY BƯỚC 2: DOCUMENT PARSING ===")
+    print("=== STARTING STEP 2: DOCUMENT PARSING ===")
     for v in versions:
         if v.status == ProcessingStatus.FAILED.value or v.is_duplicate:
             summary["skipped"] += 1
@@ -72,13 +72,13 @@ def run_all_parsers(force_reparse: bool = False) -> dict:
 
         parser = PARSER_REGISTRY.get(v.file_format)
         if not parser:
-            print(f"- [BỎ QUA] {v.file_name}: Định dạng {v.file_format} chưa có parser hỗ trợ.")
+            print(f"- [SKIPPED] {v.file_name}: Format {v.file_format} has no supported parser.")
             summary["skipped"] += 1
             continue
 
         out_path = PARSING_OUT_DIR / f"{v.version_id}_parsing.json"
         if out_path.exists() and not force_reparse:
-            print(f"- [BỎ QUA] {v.file_name}: Đã parse trước đó ({out_path.name})")
+            print(f"- [SKIPPED] {v.file_name}: Already parsed previously ({out_path.name})")
             summary["skipped"] += 1
             continue
         
@@ -101,18 +101,18 @@ def run_all_parsers(force_reparse: bool = False) -> dict:
             print(f"- [OK] {v.file_name} ({v.file_format}): {len(blocks)} blocks -> {out_path.name}")
         except Exception as e:
             summary["failed"] += 1
-            print(f"- [LỖI] {v.file_name} ({v.file_format}): {e}")
+            print(f"- [ERROR] {v.file_name} ({v.file_format}): {e}")
 
-    print("\n=== KẾT QUẢ TỔNG KẾT BƯỚC 2: DOCUMENT PARSING ===")
-    print(f"- Tổng số file cần parse  : {summary['total_targets']}")
-    print(f"- Parse thành công       : {summary['success']}")
-    print(f"- Parse thất bại         : {summary['failed']}")
-    print(f"- Bỏ qua (trùng/lỗi Step 1): {summary['skipped']}")
-    print(f"- Tổng số block sinh ra   : {summary['total_blocks']}")
-    print("\n* Thống kê theo loại block (BlockType):")
+    print("\n=== STEP 2 SUMMARY: DOCUMENT PARSING ===")
+    print(f"- Total files to parse       : {summary['total_targets']}")
+    print(f"- Successfully parsed        : {summary['success']}")
+    print(f"- Failed to parse            : {summary['failed']}")
+    print(f"- Skipped (dup/Step 1 error) : {summary['skipped']}")
+    print(f"- Total blocks generated     : {summary['total_blocks']}")
+    print("\n* Breakdown by BlockType:")
     for b_type, count in sorted(summary["blocks_by_type"].items()):
         print(f"  + {b_type:<15}: {count:>5} blocks")
-    print(f"\n=> Thư mục lưu Output     : {PARSING_OUT_DIR}")
+    print(f"\n=> Output Directory          : {PARSING_OUT_DIR}")
 
     return summary
 

@@ -37,7 +37,6 @@ def print_comparison_table(
     print(f"Original Query: \"{original_query}\"")
     print("=" * 90)
 
-    # BM25 Retrieval
     print("\n--- [1] TOP BM25 RETRIEVAL ---")
     print(f"{'Rank':<5} | {'Chunk ID':<25} | {'BM25 Score':<12} | {'Document ID':<30} | {'Heading Path'}")
     print("-" * 90)
@@ -46,7 +45,6 @@ def print_comparison_table(
         hp_short = (hp[:30] + "...") if len(hp) > 30 else hp
         print(f"{hit['rank']:<5} | {hit['chunk_id']:<25} | {hit['score']:<12.4f} | {hit['metadata'].get('document_id', ''):<30} | {hp_short}")
 
-    # Dense Retrieval
     print("\n--- [2] TOP DENSE RETRIEVAL ---")
     print(f"{'Rank':<5} | {'Chunk ID':<25} | {'Cosine Sim':<12} | {'Document ID':<30} | {'Heading Path'}")
     print("-" * 90)
@@ -55,7 +53,6 @@ def print_comparison_table(
         hp_short = (hp[:30] + "...") if len(hp) > 30 else hp
         print(f"{hit['rank']:<5} | {hit['chunk_id']:<25} | {hit['score']:<12.4f} | {hit['metadata'].get('document_id', ''):<30} | {hp_short}")
 
-    # RRF
     print("\n--- [3] TOP HYBRID - RRF ---")
     print(f"{'Rank':<5} | {'Chunk ID':<25} | {'RRF Score':<12} | {'BM25/Dense Rank':<16} | {'Source':<20} | {'Document ID'}")
     print("-" * 90)
@@ -69,11 +66,9 @@ def run_test_suite():
     bm25_engine = BM25Retriever()
     preparer = RetrievalPreparer()
 
-    # Test queries
     test_cases = [
-        # TEST CASE 1
         {
-            "title": "Kiểm thử tìm kiếm ngữ nghĩa (Semantic QA)",
+            "title": "Semantic Search Test (Semantic QA)",
             "envelope": {
                 "status": "ok",
                 "query_plan": {
@@ -89,9 +84,8 @@ def run_test_suite():
                 }
             }
         },
-        # TEST CASE 
         {
-            "title": "Kiểm thử áp dụng Bộ lọc cứng (Hard Filter: OWASP A05 Injection)",
+            "title": "Hard Filter Application Test (Hard Filter: OWASP A05 Injection)",
             "envelope": {
                 "status": "ok",
                 "query_plan": {
@@ -121,13 +115,8 @@ def run_test_suite():
 
         payload: ScopedRetrievalPayload = payloads[0]
 
-        # Run BM25
         bm25_hits = bm25_engine.retrieve_from_payload(payload, top_k=10)
-
-        # Run Dense
         dense_hits = dense_engine.retrieve_from_payload(payload, top_k=10)
-
-        # Run RRF
         rrf_hits = reciprocal_rank_fusion(
             bm25_results=bm25_hits,
             dense_results=dense_hits,
@@ -135,7 +124,6 @@ def run_test_suite():
             top_k=10
         )
 
-        # Export Results
         print_comparison_table(
             query_title=tc["title"],
             original_query=payload.original_query,

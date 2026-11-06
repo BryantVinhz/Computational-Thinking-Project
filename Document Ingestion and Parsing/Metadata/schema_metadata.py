@@ -22,7 +22,7 @@ class DocumentMetadataSchema:
 class ChunkMetadataSchema:
     """
     Metadata of one chunk (one row of table `chunk_metadata`).
-    Lấy toàn bộ thuộc tính từ ChunkSchema của bước Chunking (bỏ text_content và ChunkSource).
+    Includes all attributes from ChunkSchema of the Chunking step (excluding text_content and ChunkSource).
     """
     chunk_id: str
     document_id: str
@@ -41,7 +41,7 @@ class ChunkMetadataSchema:
         return asdict(self)
 
     def to_sqlite_dict(self) -> dict:
-        """Chuyển list heading_path thành chuỗi JSON để lưu vào cột TEXT của SQLite."""
+        """Convert heading_path list to a JSON string for storage in SQLite TEXT column."""
         d = asdict(self)
         d["heading_path"] = json.dumps(self.heading_path, ensure_ascii=False)
         return d
@@ -50,9 +50,9 @@ class ChunkMetadataSchema:
 @dataclass
 class VectorDBRecordSchema:
     """
-    Cấu trúc chuẩn trước khi đưa vào Vector DB (theo yêu cầu của Vĩnh):
-    - `id` (chunk_id) và `text` (text_content) nằm bên ngoài `metadata`.
-    - `metadata` gộp chung DocumentMetadataSchema + các thuộc tính của ChunkSchema.
+    Standard record structure prior to Vector DB ingestion:
+    - `id` (chunk_id) and `text` (text_content) are placed outside `metadata`.
+    - `metadata` combines DocumentMetadataSchema + ChunkSchema attributes.
     """
     id: str
     text: str
@@ -63,9 +63,9 @@ class VectorDBRecordSchema:
 
     def to_chroma_metadata(self) -> dict:
         """
-        Chuẩn hóa metadata để đẩy vào ChromaDB:
-        ChromaDB chỉ chấp nhận các kiểu nguyên thủy (str, int, float, bool),
-        không nhận None hoặc list trực tiếp.
+        Normalize metadata for ChromaDB ingestion:
+        ChromaDB only accepts primitive types (str, int, float, bool),
+        not None or lists directly.
         """
         chroma_meta = {}
         for k, v in self.metadata.items():

@@ -67,7 +67,7 @@ class TestOntologyYAMLAndLoader:
             assert "bac" not in lower_aliases
 
     def test_owasp_field_present(self):
-        """Contract v1.0 Section 3.1 #1 & Phụ lục A: owasp field."""
+        """Contract v1.0 Section 3.1 #1 & Appendix A: owasp field."""
         data = load_ontology(DEFAULT_ONTOLOGY_PATH)
         for slug, entry in data.items():
             assert "owasp" in entry
@@ -162,13 +162,11 @@ class TestQueryUnderstandingCore:
         assert set(result["entities"]["vulnerabilities"]) == {"xss", "sqli"}
         assert len(result["task"]) >= 2
 
-        # Check task 1
         task_1 = result["task"][0]
         assert task_1["intent_task"] == "COMPARE"
         assert task_1["objective"]["type"] == "vulnerabilities"
         assert set(task_1["objective"]["ids"]) == {"xss", "sqli"}
 
-        # Check task 2
         task_2 = result["task"][1]
         assert task_2["intent_task"] == "SEARCH"
         assert task_2["objective"]["type"] == "vulnerabilities"

@@ -29,7 +29,6 @@ logger = logging.getLogger(__name__)
 DEFAULT_PROVENANCE_DB_PATH = INGESTION_DIR / "output" / "Provenance" / "workspace_data.db"
 
 
-
 @dataclass
 class AssembledEvidence:
     evidence_id: str                          # Example: "[1]", "[2]"
@@ -54,15 +53,12 @@ class EvidenceAssembler:
         resolver: ProvenanceResolver | None = None,
         db_path: Path | str = DEFAULT_PROVENANCE_DB_PATH,
     ):
-        """
-        Assembler Initialization
-        """
         if resolver is not None:
             self.resolver = resolver
         else:
             db_target = Path(db_path)
             if not db_target.exists():
-                logger.warning("Không tìm thấy DB Provenance")
+                logger.warning("Provenance DB not found")
                 self.resolver = None
             else:
                 db = SQLiteDatabase(db_target)
@@ -90,7 +86,6 @@ class EvidenceAssembler:
         trace_data: TraceResultSchema | None = None
         provenance_dict: dict[str, Any] = {}
 
-        # Deep query into SQLite Provenance
         if self.resolver and chunk_id:
             try:
                 trace_data = self.resolver.trace_chunk(chunk_id)
@@ -98,7 +93,6 @@ class EvidenceAssembler:
             except Exception as e:
                 logger.debug("No detailed trace found for chunk %s: %s", chunk_id, e)
 
-        # Fallback if no provenance data is found in DB
         if not provenance_dict:
             provenance_dict = {
                 "chunk_id": chunk_id,
