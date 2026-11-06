@@ -167,4 +167,4 @@ PY
 | integration tests `FAILED` instead of `skipped` | `REQUIRE_INTEGRATION=1` set but deps missing | install PyYAML, or unset `REQUIRE_INTEGRATION` |
 | `No module named pytest` | pytest not installed in the active interpreter | `pip install pytest` and use that interpreter (e.g. `.venv/bin/python -m pytest`) |
 
-> Note: `stage_2` remains importable as a backward-compat shim. Its `ontology.yaml` was removed in the dedup refactor; the shim resolves the ontology to `query_understanding_routing/ontology.yaml`, so `import stage_2.ontology_loader` still works. The repo-root `pyproject.toml` still lists a `stage_2` package-data entry for that removed file — harmless for editable installs and test runs.
+> Note: The legacy `stage_2` shim directory has been completely removed in the refactor. All modules and tests now directly and cleanly use `query_understanding_routing`.

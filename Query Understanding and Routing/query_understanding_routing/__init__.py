@@ -41,7 +41,7 @@ from .validation_module import validate_query
 
 
 def __getattr__(name):
-    # Lazy: pipeline imports stage_2 / submodules, which other components do not need immediately.
+    # Lazy: pipeline imports submodules, which other components do not need immediately.
     if name == "process_query":
         from .pipeline import process_query
 

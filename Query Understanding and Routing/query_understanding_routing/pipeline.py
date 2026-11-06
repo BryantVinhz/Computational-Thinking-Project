@@ -12,15 +12,19 @@ try:
     from .validation_module import validate_query
 except ImportError:
     try:
-        from stage_2.ontology_loader import load_ontology
-        from stage_2.understanding_module import understand_query, get_default_llm_client
+        from query_understanding_routing.ontology_loader import load_ontology
+        from query_understanding_routing.understanding_module import understand_query, get_default_llm_client
+        from query_understanding_routing.config import ERROR_MSG, MESSAGES
+        from query_understanding_routing.normalization_module import normalize_query
+        from query_understanding_routing.routing_module import SCHEMA_VERSION, route
+        from query_understanding_routing.validation_module import validate_query
     except ImportError:
         from ontology_loader import load_ontology
         from understanding_module import understand_query, get_default_llm_client
-    from config import ERROR_MSG, MESSAGES
-    from normalization_module import normalize_query
-    from routing_module import SCHEMA_VERSION, route
-    from validation_module import validate_query
+        from config import ERROR_MSG, MESSAGES
+        from normalization_module import normalize_query
+        from routing_module import SCHEMA_VERSION, route
+        from validation_module import validate_query
 
 logger = logging.getLogger(__name__)
 

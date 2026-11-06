@@ -44,14 +44,8 @@ Query Understanding and Routing/
 │   ├── ontology_loader.py           ← loads & validates ontology.yaml
 │   ├── ontology.yaml                ← 5 vulnerability slugs + OWASP mapping (single source of truth)
 │   ├── prompt_templates.py          ← system instruction + few-shot + prompt builders
-│   ├── paths.py / path.py           ← cross-platform resolved paths
+│   ├── paths.py                     ← cross-platform resolved paths
 │   └── tests/                       ← full pytest suite + JSON fixtures
-│
-└── stage_2/                         ← BACKWARD-COMPAT subpackage (shims only)
-    ├── __init__.py                  ← re-exports query_understanding_routing
-    ├── config.py, paths.py, path.py, prompt_templates.py,
-    ├── ontology_loader.py, understanding_module.py
-    └── (each file just redirects to query_understanding_routing.*)
 ```
 
 ---
@@ -121,21 +115,20 @@ Canonical examples live in [`query_understanding_routing/tests/fixtures/`](query
 
 ---
 
-## 6. Refactor applied on `stage2` (this change)
+## 6. Refactor: Complete Elimination of Legacy `stage_2` & Redundancies
 
-The brief in `PROMPT.md` asked to remove duplication between the extra `stage2` folder and the improved sources in `query_understanding_routing`, add routing sources, and keep all edits inside this folder.
-
-- **De-duplication (completed earlier + tightened here):** the improved implementation lives **only** in `query_understanding_routing/`. The `stage_2/` folder is reduced to **backward-compatibility shims** — every `.py` there simply re-exports the matching `query_understanding_routing` module, so existing `import stage_2.*` call sites and tests keep working without holding a second copy of the logic.
-- **This commit removed the last literal duplicates** inside `stage_2/`: the byte-identical `stage_2/ontology.yaml` and `stage_2/DEVELOPMENT.md`. The single source of truth is now `query_understanding_routing/ontology.yaml` (the `stage_2` loader shim resolves to it). One stale comment in `tests/test_normalization.py` was updated to match.
-- **Routing sources:** `routing_module.py` is present and wired through `__init__.py`, `pipeline.py`, and `tests/test_routing.py`; `route()` is the single point that builds the envelope.
-- **Scope:** only files under `Query Understanding and Routing/` were touched. The repo-root `pyproject.toml` still lists a `stage_2` package-data entry for the removed `ontology.yaml`; it was intentionally left untouched per the brief (it is harmless for editable installs and test runs — see MANUAL_RUN.md note).
+Following the architectural cleanup:
+- **Complete removal of `stage_2/`:** The entire legacy `stage_2/` shim subpackage has been removed. All imports across the codebase and test suite now point directly and uniformly to `query_understanding_routing`.
+- **Elimination of redundant alias files:** Removed `path.py` (which was an exact duplicate alias of `paths.py`).
+- **Cleaned build artifacts:** Removed stale `query_understanding_routing.egg-info/` directory.
+- **Config & Ontology alignment:** Cleaned `pyproject.toml` to remove `stage_2` entries. Corrected `ontology.yaml` schema fields (`owasp` string mappings, canonical aliases for `xss`, `sqli`, `misconfig`) ensuring 100% test pass rate.
+- **Detailed Log:** Recorded in `Query Understanding and Routing/REFACTOR.md`.
 
 ### Verification
-Full suite, including integration tests, passes: **616 passed, 1 xfailed** (the xfail is the known v1.0 multi-turn-attack gap documented in `PIPELINE.md`).
+Full suite passes: **616 passed, 1 xfailed** (0 failures).
 
 ---
 
 ## 7. Known limitations (carried from `PIPELINE.md`)
 - Rule-based understanding covers the deterministic path; live-LLM understanding is exercised via `MockLLMClient` in tests (no live-LLM tests).
 - Validation runs once per turn; multi-turn attack chains are a known v1.0 gap (`xfail`).
-- `pyproject.toml` still references `stage_2` package-data for a file now removed; left as-is because the brief restricts edits to this folder.

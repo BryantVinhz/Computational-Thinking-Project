@@ -22,7 +22,7 @@ try:
     from query_understanding_routing.config import STANDARD_VULNERABILITY_SLUGS
 except ImportError:
     try:
-        from stage_2.config import STANDARD_VULNERABILITY_SLUGS
+        from .config import STANDARD_VULNERABILITY_SLUGS
     except ImportError:
         from config import STANDARD_VULNERABILITY_SLUGS
 

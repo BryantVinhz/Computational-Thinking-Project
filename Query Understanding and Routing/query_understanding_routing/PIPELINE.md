@@ -40,7 +40,7 @@ python -m pip install -e .
 Run from the repository root:
 
 ```bash
-# Unit tests (stage functions stubbed via monkeypatch; stage_2 must still be importable)
+# Unit tests (stage functions stubbed via monkeypatch)
 python -m pytest "Query Understanding and Routing/query_understanding_routing/tests/test_pipeline.py" -k "not Integration"
 
 # Full suite including integration tests (real Understanding and Ontology)
@@ -56,13 +56,13 @@ PowerShell equivalent of the full suite:
 $env:REQUIRE_INTEGRATION="1"; python -m pytest -q -rs; Remove-Item Env:REQUIRE_INTEGRATION
 ```
 
-Do not leave `REQUIRE_INTEGRATION` set when `stage_2` cannot be imported: integration tests then fail instead of skipping.
+Do not leave `REQUIRE_INTEGRATION` set when dependencies cannot be imported: integration tests then fail instead of skipping.
 
 ## Known Limitations
 
 1. **Rule-based Understanding**: This phase uses Long's deterministic engine. LLM-dependent cases are pending.
 2. **Multi-turn attacks**: Validation runs once per turn. Multi-turn attack patterns are not detected (v1.0 known gap; test is `xfail`).
 3. **`llm_client` parameter**: Pipeline extension outside Contract v1.0, forwarded as a keyword to `understand_query`. No live-LLM tests yet.
-4. **Two config files**: `query_understanding_routing/config.py` and `stage_2/config.py` are separate. Unification is a project-level decision with Long.
+4. **Configuration**: Unified in `query_understanding_routing/config.py`. Legacy `stage_2` shims have been retired.
 5. **Ontology cache**: The default ontology is loaded once per process. A failed load is not cached; a caller-supplied ontology skips loading.
 6. **Caller ontology**: must be a non-empty dict. `None` selects the default; anything else returns `internal_error`.

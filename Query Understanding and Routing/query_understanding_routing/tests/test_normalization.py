@@ -439,8 +439,8 @@ def test_cache_does_not_hold_caller_dict() -> None:
     assert _normalized("xss", ontology) == "XSS Attack"
 
 
-# Integration: real ontology loaded via the stage_2 shim (resolves to
-# query_understanding_routing/ontology.yaml); run from the repository root.
+# Integration: real ontology loaded from query_understanding_routing/ontology.yaml;
+# run from the repository root.
 
 
 def _load_real_ontology() -> dict:
@@ -448,9 +448,9 @@ def _load_real_ontology() -> dict:
     try:
         import yaml  # noqa: F401
 
-        from stage_2.ontology_loader import load_ontology
+        from query_understanding_routing.ontology_loader import load_ontology
     except ImportError as exc:
-        message = f"stage_2.ontology_loader or PyYAML not importable: {exc}"
+        message = f"query_understanding_routing.ontology_loader or PyYAML not importable: {exc}"
         if os.environ.get("REQUIRE_INTEGRATION") == "1":
             pytest.fail(message)
         pytest.skip(message)

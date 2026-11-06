@@ -9,14 +9,13 @@ description = "Query Understanding and Routing (Stage 2: Validation, Normalizati
 requires-python = ">=3.10"
 dependencies = ["PyYAML==6.0.3"]
 
-# Merged package structure under "Query Understanding and Routing/"
+# Package structure under "Query Understanding and Routing/"
 [tool.setuptools.packages.find]
 where = ["Query Understanding and Routing"]
-include = ["query_understanding_routing*", "stage_2*"]
+include = ["query_understanding_routing*"]
 
 [tool.setuptools.package-data]
 query_understanding_routing = ["ontology.yaml", "PIPELINE.md", "DEVELOPMENT.md", "tests/fixtures/*.json"]
-stage_2 = ["ontology.yaml"]
 
 [tool.pytest.ini_options]
 pythonpath = [

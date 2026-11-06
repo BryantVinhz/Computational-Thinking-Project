@@ -12,6 +12,7 @@
 
 xss:
   canonical: "Cross-Site Scripting"
+  owasp: "A05:2025"
   owasp_mapping:
     - "A03:2021"
     - "A05:2025"
@@ -23,6 +24,7 @@ xss:
     - "CWE-87"
     - "CWE-94"
   aliases:
+    - "xss"
     - "cross-site scripting"
     - "cross site scripting"
     - "cross-site script execution"
@@ -49,6 +51,7 @@ xss:
     - "self xss"
     - "universal xss"
     - "uxss"
+    - "polyglot xss"
   related_terms:
     - "csp"
     - "content security policy"
@@ -72,13 +75,14 @@ xss:
     - "dangerouslysetinnerhtml"
     - "httponly cookies"
     - "filter evasion"
-    - "polyglot xss"
+    - "polyglot payload"
     - "waf evasion"
     - "safe sinks"
     - "html sanitization"
 
 sqli:
   canonical: "SQL Injection"
+  owasp: "A05:2025"
   owasp_mapping:
     - "A03:2021"
     - "A05:2025"
@@ -87,6 +91,7 @@ sqli:
     - "CWE-564"
     - "CWE-943"
   aliases:
+    - "sqli"
     - "sql injection"
     - "sql-injection"
     - "sql inject"
@@ -137,6 +142,7 @@ sqli:
 
 bac:
   canonical: "Broken Access Control"
+  owasp: "A01:2025"
   owasp_mapping:
     - "A01:2021"
     - "A01:2025"
@@ -219,6 +225,7 @@ bac:
 
 auth_failures:
   canonical: "Authentication Failures"
+  owasp: "A07:2025"
   owasp_mapping:
     - "A07:2021"
     - "A07:2025"
@@ -318,6 +325,7 @@ auth_failures:
 
 misconfig:
   canonical: "Security Misconfiguration"
+  owasp: "A02:2025"
   owasp_mapping:
     - "A05:2021"
     - "A02:2025"
@@ -339,6 +347,8 @@ misconfig:
     - "CWE-1004"
     - "CWE-1174"
   aliases:
+    - "misconfig"
+    - "misconfiguration"
     - "security misconfiguration"
     - "security-misconfiguration"
     - "improper configuration"

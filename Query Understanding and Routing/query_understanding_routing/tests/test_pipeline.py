@@ -390,8 +390,8 @@ FIXTURE_CASES = {
 
 def _require_real_modules() -> None:
     try:
-        import stage_2.ontology_loader  # noqa: F401
-        import stage_2.understanding_module  # noqa: F401
+        import query_understanding_routing.ontology_loader  # noqa: F401
+        import query_understanding_routing.understanding_module  # noqa: F401
     except ImportError as exc:
         message = f"Real integration dependencies unavailable: {exc}"
         if os.environ.get("REQUIRE_INTEGRATION") == "1":

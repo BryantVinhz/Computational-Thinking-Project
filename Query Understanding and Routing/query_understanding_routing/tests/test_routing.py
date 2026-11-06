@@ -462,9 +462,8 @@ def _import_real_modules() -> dict:
     try:
         from query_understanding_routing.normalization_module import normalize_query
         from query_understanding_routing.validation_module import validate_query
-
-        from stage_2.understanding_module import understand_query
-        from stage_2.ontology_loader import load_ontology
+        from query_understanding_routing.understanding_module import understand_query
+        from query_understanding_routing.ontology_loader import load_ontology
 
     except ImportError as exc:
         message = f"Real integration dependencies unavailable: {exc}"
