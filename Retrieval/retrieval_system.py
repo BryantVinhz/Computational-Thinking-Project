@@ -51,7 +51,7 @@ class RetrievalSystem:
         self.vectorizer = query_vectorizer or QueryVectorizer()
         self.dense = dense_retriever or DenseRetriever()
         self.bm25 = bm25_retriever or BM25Retriever()
-        self.reranker = reranker or CrossEncoderReranker(threshold=0.35, top_k=None)
+        self.reranker = reranker or CrossEncoderReranker(threshold=0.25, top_k=None)
         self.mmr = mmr_selector or LangChainMMRSelector(vectorizer=self.vectorizer)
         self.assembler = evidence_assembler or EvidenceAssembler()
 
@@ -96,10 +96,11 @@ class RetrievalSystem:
         candidate_chunks_for_mmr = fused
         insufficient_evidence = False
         abstention_message = None
+        rerank_query = payload.query_bm25 if payload.query_bm25 else payload.original_query
         if self.reranker and hasattr(self.reranker, "rerank"):
             try:
                 rerank_result = self.reranker.rerank(
-                    query=payload.original_query,
+                    query=rerank_query,
                     candidate_chunks=fused,
                     top_k=candidate_pool_size,
                 )

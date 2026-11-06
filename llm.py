@@ -1,28 +1,23 @@
 import requests
 from typing import Any
 
-COLAB_URL = "https://governing-reducing-floppy-postcards.trycloudflare.com"
+COLAB_URL = "https://comp-venue-penalty-oaks.trycloudflare.com"
 class ColabLLMClient:
     """client calls the LLM running on Google Colab via FastAPI"""
-    model_name: str = "Qwen3-4B-colab-remote"
+    model_name: str = "Qwen3-1.7B-colab-remote"
 
     def __init__(self, endpoint_url: str = COLAB_URL):
         self.api_url = f"{endpoint_url.rstrip('/')}/generate"
 
-    def generate(
-        self,
-        prompt: Any,
-        system_instruction: str | None = None,
-        **kwargs: Any,
-    ) -> str:
+    def generate(self, prompt: Any, system_instruction: str | None = None, **kwargs: Any) -> str:
         payload = {
             "prompt": prompt,
             "system_instruction": system_instruction,
-            "max_tokens": kwargs.get("max_tokens", 2048),
+            "max_tokens": kwargs.get("max_tokens", 798),
             "temperature": kwargs.get("temperature", 0.2),
         }
         try:
-            resp = requests.post(self.api_url, json=payload, timeout=180)
+            resp = requests.post(self.api_url, json=payload, timeout=900)
             resp.raise_for_status()
             data = resp.json()
             return data.get("response", "")

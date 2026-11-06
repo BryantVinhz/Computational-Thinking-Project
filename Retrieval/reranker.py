@@ -301,7 +301,7 @@ if __name__ == "__main__":
     # 2. Khởi tạo Cross-Encoder Reranker
     # Sử dụng cross-encoder/ms-marco-MiniLM-L-6-v2 để demo nhanh (hoặc BAAI/bge-reranker-v2-m3)
     reranker = CrossEncoderReranker(
-        model_name=FALLBACK_RERANKER_MODEL,
+        model_name=DEFAULT_RERANKER_MODEL,
         threshold=0.40,
         top_k=3,
     )
