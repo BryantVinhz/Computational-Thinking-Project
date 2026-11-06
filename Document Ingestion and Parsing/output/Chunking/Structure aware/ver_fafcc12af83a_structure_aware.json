@@ -619,9 +619,9 @@
       "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
       "version_id": "ver_fafcc12af83a",
       "chunk_idx": 39,
-      "chunk_type": "mixed",
-      "text_content": "```java\nProcessBuilder b = new ProcessBuilder(\"C:\\\\DoStuff.exe -arg1 -arg2\");\n```\n\nThis creates a builder with one command-list element, not a program followed by two arguments.\n\n[`ProcessBuilder`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/ProcessBuilder.html) represents the executable and its arguments as a list.\n\nThe snippet does not start a process or demonstrate shell-command injection.",
-      "token_count": 111,
+      "chunk_type": "code",
+      "text_content": "```java\nProcessBuilder b = new ProcessBuilder(\"C:\\\\DoStuff.exe -arg1 -arg2\");\n```",
+      "token_count": 28,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Injection Prevention Cheat Sheet",
@@ -636,16 +636,16 @@
       "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
       "version_id": "ver_fafcc12af83a",
       "chunk_idx": 40,
-      "chunk_type": "heading",
-      "text_content": "##### Correct Usage",
-      "token_count": 7,
+      "chunk_type": "paragraph",
+      "text_content": "This creates a builder with one command-list element, not a program followed by two arguments.\n\n[`ProcessBuilder`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/ProcessBuilder.html) represents the executable and its arguments as a list.\n\nThe snippet does not start a process or demonstrate shell-command injection.",
+      "token_count": 83,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Injection Prevention Cheat Sheet",
         "Forms of Injection",
         "Operating System Commands",
         "Example code - Java",
-        "Correct Usage"
+        "Incorrect Usage"
       ]
     },
     {
@@ -653,9 +653,9 @@
       "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
       "version_id": "ver_fafcc12af83a",
       "chunk_idx": 41,
-      "chunk_type": "mixed",
-      "text_content": "This illustrative example starts a process with a modified working directory and passes the executable and each argument separately.\n\nKeep the executable and working directory trusted, and validate any untrusted arguments for the invoked program.\n\nArgument separation does not replace [argument validation](OS_Command_Injection_Defense_Cheat_Sheet.md#layer-2).\n\n```java\nProcessBuilder pb = new ProcessBuilder(\"TrustedCmd\", \"TrustedArg1\", \"TrustedArg2\");\nMap<String, String> env = pb.environment();\npb.directory(new File(\"TrustedDir\"));\nProcess p = pb.start();\n```",
-      "token_count": 119,
+      "chunk_type": "heading",
+      "text_content": "##### Correct Usage",
+      "token_count": 7,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Injection Prevention Cheat Sheet",
@@ -670,6 +670,40 @@
       "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
       "version_id": "ver_fafcc12af83a",
       "chunk_idx": 42,
+      "chunk_type": "paragraph",
+      "text_content": "This illustrative example starts a process with a modified working directory and passes the executable and each argument separately.\n\nKeep the executable and working directory trusted, and validate any untrusted arguments for the invoked program.\n\nArgument separation does not replace [argument validation](OS_Command_Injection_Defense_Cheat_Sheet.md#layer-2).",
+      "token_count": 57,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Injection Prevention Cheat Sheet",
+        "Forms of Injection",
+        "Operating System Commands",
+        "Example code - Java",
+        "Correct Usage"
+      ]
+    },
+    {
+      "chunk_id": "ver_fafcc12af83a_c00043",
+      "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+      "version_id": "ver_fafcc12af83a",
+      "chunk_idx": 43,
+      "chunk_type": "code",
+      "text_content": "```java\nProcessBuilder pb = new ProcessBuilder(\"TrustedCmd\", \"TrustedArg1\", \"TrustedArg2\");\nMap<String, String> env = pb.environment();\npb.directory(new File(\"TrustedDir\"));\nProcess p = pb.start();\n```",
+      "token_count": 62,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Injection Prevention Cheat Sheet",
+        "Forms of Injection",
+        "Operating System Commands",
+        "Example code - Java",
+        "Correct Usage"
+      ]
+    },
+    {
+      "chunk_id": "ver_fafcc12af83a_c00044",
+      "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+      "version_id": "ver_fafcc12af83a",
+      "chunk_idx": 44,
       "chunk_type": "heading",
       "text_content": "### Network Protocols",
       "token_count": 5,
@@ -681,10 +715,10 @@
       ]
     },
     {
-      "chunk_id": "ver_fafcc12af83a_c00043",
+      "chunk_id": "ver_fafcc12af83a_c00045",
       "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
       "version_id": "ver_fafcc12af83a",
-      "chunk_idx": 43,
+      "chunk_idx": 45,
       "chunk_type": "paragraph",
       "text_content": "Web applications often communicate with network daemons (like SMTP, IMAP, FTP) where user input becomes part of the communication stream.\n\nHere it is possible to inject command sequences to abuse an established session.",
       "token_count": 39,
@@ -696,10 +730,10 @@
       ]
     },
     {
-      "chunk_id": "ver_fafcc12af83a_c00044",
+      "chunk_id": "ver_fafcc12af83a_c00046",
       "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
       "version_id": "ver_fafcc12af83a",
-      "chunk_idx": 44,
+      "chunk_idx": 46,
       "chunk_type": "heading",
       "text_content": "## Injection Prevention Rules",
       "token_count": 5,
@@ -710,10 +744,10 @@
       ]
     },
     {
-      "chunk_id": "ver_fafcc12af83a_c00045",
+      "chunk_id": "ver_fafcc12af83a_c00047",
       "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
       "version_id": "ver_fafcc12af83a",
-      "chunk_idx": 45,
+      "chunk_idx": 47,
       "chunk_type": "heading",
       "text_content": "### Rule \\#1 (Perform proper input validation)",
       "token_count": 13,
@@ -725,10 +759,10 @@
       ]
     },
     {
-      "chunk_id": "ver_fafcc12af83a_c00046",
+      "chunk_id": "ver_fafcc12af83a_c00048",
       "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
       "version_id": "ver_fafcc12af83a",
-      "chunk_idx": 46,
+      "chunk_idx": 48,
       "chunk_type": "paragraph",
       "text_content": "Perform proper input validation.\n\nPositive or allowlist input validation with appropriate canonicalization is also recommended, but **is not a complete defense** as many applications require special characters in their input.",
       "token_count": 37,
@@ -740,10 +774,10 @@
       ]
     },
     {
-      "chunk_id": "ver_fafcc12af83a_c00047",
+      "chunk_id": "ver_fafcc12af83a_c00049",
       "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
       "version_id": "ver_fafcc12af83a",
-      "chunk_idx": 47,
+      "chunk_idx": 49,
       "chunk_type": "heading",
       "text_content": "### Rule \\#2 (Use a safe API)",
       "token_count": 13,
@@ -755,10 +789,10 @@
       ]
     },
     {
-      "chunk_id": "ver_fafcc12af83a_c00048",
+      "chunk_id": "ver_fafcc12af83a_c00050",
       "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
       "version_id": "ver_fafcc12af83a",
-      "chunk_idx": 48,
+      "chunk_idx": 50,
       "chunk_type": "paragraph",
       "text_content": "The preferred option is to use a safe API which avoids the use of the interpreter entirely or provides a parameterized interface.\n\nBe careful of APIs, such as stored procedures, that are parameterized, but can still introduce injection under the hood.",
       "token_count": 46,
@@ -770,10 +804,10 @@
       ]
     },
     {
-      "chunk_id": "ver_fafcc12af83a_c00049",
+      "chunk_id": "ver_fafcc12af83a_c00051",
       "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
       "version_id": "ver_fafcc12af83a",
-      "chunk_idx": 49,
+      "chunk_idx": 51,
       "chunk_type": "heading",
       "text_content": "### Rule \\#3 (Contextually escape user data)",
       "token_count": 13,
@@ -785,10 +819,10 @@
       ]
     },
     {
-      "chunk_id": "ver_fafcc12af83a_c00050",
+      "chunk_id": "ver_fafcc12af83a_c00052",
       "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
       "version_id": "ver_fafcc12af83a",
-      "chunk_idx": 50,
+      "chunk_idx": 52,
       "chunk_type": "paragraph",
       "text_content": "If a parameterized API is not available, you should carefully escape special characters using the specific escape syntax for that interpreter.",
       "token_count": 23,
@@ -800,10 +834,10 @@
       ]
     },
     {
-      "chunk_id": "ver_fafcc12af83a_c00051",
+      "chunk_id": "ver_fafcc12af83a_c00053",
       "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
       "version_id": "ver_fafcc12af83a",
-      "chunk_idx": 51,
+      "chunk_idx": 53,
       "chunk_type": "heading",
       "text_content": "## References",
       "token_count": 3,
@@ -814,10 +848,10 @@
       ]
     },
     {
-      "chunk_id": "ver_fafcc12af83a_c00052",
+      "chunk_id": "ver_fafcc12af83a_c00054",
       "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
       "version_id": "ver_fafcc12af83a",
-      "chunk_idx": 52,
+      "chunk_idx": 54,
       "chunk_type": "list",
       "text_content": "- [RFC 4514: LDAP Distinguished Names](https://datatracker.ietf.org/doc/html/rfc4514)\n- [RFC 4515: LDAP Search Filters](https://datatracker.ietf.org/doc/html/rfc4515)\n- [Oracle JDBC: Using Prepared Statements](https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html)",
       "token_count": 84,
@@ -1526,176 +1560,176 @@
       "end_offset": 81
     },
     {
-      "chunk_source_id": "ver_fafcc12af83a_c00039_s001",
-      "chunk_id": "ver_fafcc12af83a_c00039",
+      "chunk_source_id": "ver_fafcc12af83a_c00040_s000",
+      "chunk_id": "ver_fafcc12af83a_c00040",
       "normalized_block_id": "nrm_ver_fafcc12af83a_b00053",
-      "source_order": 1,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 94
     },
     {
-      "chunk_source_id": "ver_fafcc12af83a_c00039_s002",
-      "chunk_id": "ver_fafcc12af83a_c00039",
+      "chunk_source_id": "ver_fafcc12af83a_c00040_s001",
+      "chunk_id": "ver_fafcc12af83a_c00040",
       "normalized_block_id": "nrm_ver_fafcc12af83a_b00053",
-      "source_order": 2,
+      "source_order": 1,
       "start_offset": 95,
       "end_offset": 260
     },
     {
-      "chunk_source_id": "ver_fafcc12af83a_c00039_s003",
-      "chunk_id": "ver_fafcc12af83a_c00039",
+      "chunk_source_id": "ver_fafcc12af83a_c00040_s002",
+      "chunk_id": "ver_fafcc12af83a_c00040",
       "normalized_block_id": "nrm_ver_fafcc12af83a_b00053",
-      "source_order": 3,
+      "source_order": 2,
       "start_offset": 261,
       "end_offset": 337
     },
     {
-      "chunk_source_id": "ver_fafcc12af83a_c00040_s000",
-      "chunk_id": "ver_fafcc12af83a_c00040",
+      "chunk_source_id": "ver_fafcc12af83a_c00041_s000",
+      "chunk_id": "ver_fafcc12af83a_c00041",
       "normalized_block_id": "nrm_ver_fafcc12af83a_b00054",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 19
     },
     {
-      "chunk_source_id": "ver_fafcc12af83a_c00041_s000",
-      "chunk_id": "ver_fafcc12af83a_c00041",
+      "chunk_source_id": "ver_fafcc12af83a_c00042_s000",
+      "chunk_id": "ver_fafcc12af83a_c00042",
       "normalized_block_id": "nrm_ver_fafcc12af83a_b00055",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 132
     },
     {
-      "chunk_source_id": "ver_fafcc12af83a_c00041_s001",
-      "chunk_id": "ver_fafcc12af83a_c00041",
+      "chunk_source_id": "ver_fafcc12af83a_c00042_s001",
+      "chunk_id": "ver_fafcc12af83a_c00042",
       "normalized_block_id": "nrm_ver_fafcc12af83a_b00055",
       "source_order": 1,
       "start_offset": 133,
       "end_offset": 245
     },
     {
-      "chunk_source_id": "ver_fafcc12af83a_c00041_s002",
-      "chunk_id": "ver_fafcc12af83a_c00041",
+      "chunk_source_id": "ver_fafcc12af83a_c00042_s002",
+      "chunk_id": "ver_fafcc12af83a_c00042",
       "normalized_block_id": "nrm_ver_fafcc12af83a_b00055",
       "source_order": 2,
       "start_offset": 246,
       "end_offset": 358
     },
     {
-      "chunk_source_id": "ver_fafcc12af83a_c00041_s003",
-      "chunk_id": "ver_fafcc12af83a_c00041",
+      "chunk_source_id": "ver_fafcc12af83a_c00043_s000",
+      "chunk_id": "ver_fafcc12af83a_c00043",
       "normalized_block_id": "nrm_ver_fafcc12af83a_b00056",
-      "source_order": 3,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 201
     },
     {
-      "chunk_source_id": "ver_fafcc12af83a_c00042_s000",
-      "chunk_id": "ver_fafcc12af83a_c00042",
+      "chunk_source_id": "ver_fafcc12af83a_c00044_s000",
+      "chunk_id": "ver_fafcc12af83a_c00044",
       "normalized_block_id": "nrm_ver_fafcc12af83a_b00057",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 21
     },
     {
-      "chunk_source_id": "ver_fafcc12af83a_c00043_s000",
-      "chunk_id": "ver_fafcc12af83a_c00043",
+      "chunk_source_id": "ver_fafcc12af83a_c00045_s000",
+      "chunk_id": "ver_fafcc12af83a_c00045",
       "normalized_block_id": "nrm_ver_fafcc12af83a_b00058",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 137
     },
     {
-      "chunk_source_id": "ver_fafcc12af83a_c00043_s001",
-      "chunk_id": "ver_fafcc12af83a_c00043",
+      "chunk_source_id": "ver_fafcc12af83a_c00045_s001",
+      "chunk_id": "ver_fafcc12af83a_c00045",
       "normalized_block_id": "nrm_ver_fafcc12af83a_b00058",
       "source_order": 1,
       "start_offset": 138,
       "end_offset": 218
     },
     {
-      "chunk_source_id": "ver_fafcc12af83a_c00044_s000",
-      "chunk_id": "ver_fafcc12af83a_c00044",
+      "chunk_source_id": "ver_fafcc12af83a_c00046_s000",
+      "chunk_id": "ver_fafcc12af83a_c00046",
       "normalized_block_id": "nrm_ver_fafcc12af83a_b00059",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 29
     },
     {
-      "chunk_source_id": "ver_fafcc12af83a_c00045_s000",
-      "chunk_id": "ver_fafcc12af83a_c00045",
+      "chunk_source_id": "ver_fafcc12af83a_c00047_s000",
+      "chunk_id": "ver_fafcc12af83a_c00047",
       "normalized_block_id": "nrm_ver_fafcc12af83a_b00060",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 46
     },
     {
-      "chunk_source_id": "ver_fafcc12af83a_c00046_s000",
-      "chunk_id": "ver_fafcc12af83a_c00046",
+      "chunk_source_id": "ver_fafcc12af83a_c00048_s000",
+      "chunk_id": "ver_fafcc12af83a_c00048",
       "normalized_block_id": "nrm_ver_fafcc12af83a_b00061",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 32
     },
     {
-      "chunk_source_id": "ver_fafcc12af83a_c00046_s001",
-      "chunk_id": "ver_fafcc12af83a_c00046",
+      "chunk_source_id": "ver_fafcc12af83a_c00048_s001",
+      "chunk_id": "ver_fafcc12af83a_c00048",
       "normalized_block_id": "nrm_ver_fafcc12af83a_b00061",
       "source_order": 1,
       "start_offset": 33,
       "end_offset": 224
     },
     {
-      "chunk_source_id": "ver_fafcc12af83a_c00047_s000",
-      "chunk_id": "ver_fafcc12af83a_c00047",
+      "chunk_source_id": "ver_fafcc12af83a_c00049_s000",
+      "chunk_id": "ver_fafcc12af83a_c00049",
       "normalized_block_id": "nrm_ver_fafcc12af83a_b00062",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 29
     },
     {
-      "chunk_source_id": "ver_fafcc12af83a_c00048_s000",
-      "chunk_id": "ver_fafcc12af83a_c00048",
+      "chunk_source_id": "ver_fafcc12af83a_c00050_s000",
+      "chunk_id": "ver_fafcc12af83a_c00050",
       "normalized_block_id": "nrm_ver_fafcc12af83a_b00063",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 129
     },
     {
-      "chunk_source_id": "ver_fafcc12af83a_c00048_s001",
-      "chunk_id": "ver_fafcc12af83a_c00048",
+      "chunk_source_id": "ver_fafcc12af83a_c00050_s001",
+      "chunk_id": "ver_fafcc12af83a_c00050",
       "normalized_block_id": "nrm_ver_fafcc12af83a_b00063",
       "source_order": 1,
       "start_offset": 130,
       "end_offset": 250
     },
     {
-      "chunk_source_id": "ver_fafcc12af83a_c00049_s000",
-      "chunk_id": "ver_fafcc12af83a_c00049",
+      "chunk_source_id": "ver_fafcc12af83a_c00051_s000",
+      "chunk_id": "ver_fafcc12af83a_c00051",
       "normalized_block_id": "nrm_ver_fafcc12af83a_b00064",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 44
     },
     {
-      "chunk_source_id": "ver_fafcc12af83a_c00050_s000",
-      "chunk_id": "ver_fafcc12af83a_c00050",
+      "chunk_source_id": "ver_fafcc12af83a_c00052_s000",
+      "chunk_id": "ver_fafcc12af83a_c00052",
       "normalized_block_id": "nrm_ver_fafcc12af83a_b00065",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 142
     },
     {
-      "chunk_source_id": "ver_fafcc12af83a_c00051_s000",
-      "chunk_id": "ver_fafcc12af83a_c00051",
+      "chunk_source_id": "ver_fafcc12af83a_c00053_s000",
+      "chunk_id": "ver_fafcc12af83a_c00053",
       "normalized_block_id": "nrm_ver_fafcc12af83a_b00066",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 13
     },
     {
-      "chunk_source_id": "ver_fafcc12af83a_c00052_s000",
-      "chunk_id": "ver_fafcc12af83a_c00052",
+      "chunk_source_id": "ver_fafcc12af83a_c00054_s000",
+      "chunk_id": "ver_fafcc12af83a_c00054",
       "normalized_block_id": "nrm_ver_fafcc12af83a_b00067",
       "source_order": 0,
       "start_offset": 0,

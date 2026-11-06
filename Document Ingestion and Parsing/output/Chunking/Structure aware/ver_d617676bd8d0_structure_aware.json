@@ -147,9 +147,9 @@
       "document_id": "doc_owasp_top10_a05_injection",
       "version_id": "ver_d617676bd8d0",
       "chunk_idx": 10,
-      "chunk_type": "mixed",
-      "text_content": "**Scenario #1:** An application uses untrusted data in the construction of the following vulnerable SQL call:\n\n```\nString query = \"SELECT * FROM accounts WHERE custID='\" + request.getParameter(\"id\") + \"'\";\n```\n\nAn attacker modifies the 'id' parameter value in their browser to send: `' OR '1'='1`.\n\nFor example:\n\n```\nhttp://example.com/app/accountView?id=' OR '1'='1\n```\n\nThis changes the meaning of the query to return all records from the accounts table.\n\nMore dangerous attacks could modify or delete data or even invoke stored procedures.\n\n**Scenario #2:** An application's blind trust in frameworks may result in queries that are still vulnerable.\n\nFor example, Hibernate Query Language (HQL):\n\n```\nQuery HQLQuery = session.createQuery(\"FROM accounts WHERE custID='\" + request.getParameter(\"id\") + \"'\");\n```\n\nAn attacker supplies: `' OR custID IS NOT NULL OR custID='`.\n\nThis bypasses the filter and returns all accounts.\n\nWhile HQL has fewer dangerous functions than raw SQL, it still allows unauthorized data access when user input is concatenated into queries.\n\n**Scenario #3:** An application passes user input directly to an OS command:\n\n```\nString cmd = \"nslookup \" + request.getParameter(\"domain\");\nRuntime.getRuntime().exec(cmd);\n```\n\nAn attacker supplies `example.com; cat /etc/passwd` to execute arbitrary commands on the server.",
-      "token_count": 338,
+      "chunk_type": "paragraph",
+      "text_content": "**Scenario #1:** An application uses untrusted data in the construction of the following vulnerable SQL call:",
+      "token_count": 23,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "A05:2025 Injection",
@@ -161,6 +161,118 @@
       "document_id": "doc_owasp_top10_a05_injection",
       "version_id": "ver_d617676bd8d0",
       "chunk_idx": 11,
+      "chunk_type": "code",
+      "text_content": "```\nString query = \"SELECT * FROM accounts WHERE custID='\" + request.getParameter(\"id\") + \"'\";\n```",
+      "token_count": 33,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "A05:2025 Injection",
+        "Example attack scenarios."
+      ]
+    },
+    {
+      "chunk_id": "ver_d617676bd8d0_c00012",
+      "document_id": "doc_owasp_top10_a05_injection",
+      "version_id": "ver_d617676bd8d0",
+      "chunk_idx": 12,
+      "chunk_type": "paragraph",
+      "text_content": "An attacker modifies the 'id' parameter value in their browser to send: `' OR '1'='1`.\n\nFor example:",
+      "token_count": 29,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "A05:2025 Injection",
+        "Example attack scenarios."
+      ]
+    },
+    {
+      "chunk_id": "ver_d617676bd8d0_c00013",
+      "document_id": "doc_owasp_top10_a05_injection",
+      "version_id": "ver_d617676bd8d0",
+      "chunk_idx": 13,
+      "chunk_type": "code",
+      "text_content": "```\nhttp://example.com/app/accountView?id=' OR '1'='1\n```",
+      "token_count": 28,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "A05:2025 Injection",
+        "Example attack scenarios."
+      ]
+    },
+    {
+      "chunk_id": "ver_d617676bd8d0_c00014",
+      "document_id": "doc_owasp_top10_a05_injection",
+      "version_id": "ver_d617676bd8d0",
+      "chunk_idx": 14,
+      "chunk_type": "paragraph",
+      "text_content": "This changes the meaning of the query to return all records from the accounts table.\n\nMore dangerous attacks could modify or delete data or even invoke stored procedures.\n\n**Scenario #2:** An application's blind trust in frameworks may result in queries that are still vulnerable.\n\nFor example, Hibernate Query Language (HQL):",
+      "token_count": 65,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "A05:2025 Injection",
+        "Example attack scenarios."
+      ]
+    },
+    {
+      "chunk_id": "ver_d617676bd8d0_c00015",
+      "document_id": "doc_owasp_top10_a05_injection",
+      "version_id": "ver_d617676bd8d0",
+      "chunk_idx": 15,
+      "chunk_type": "code",
+      "text_content": "```\nQuery HQLQuery = session.createQuery(\"FROM accounts WHERE custID='\" + request.getParameter(\"id\") + \"'\");\n```",
+      "token_count": 36,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "A05:2025 Injection",
+        "Example attack scenarios."
+      ]
+    },
+    {
+      "chunk_id": "ver_d617676bd8d0_c00016",
+      "document_id": "doc_owasp_top10_a05_injection",
+      "version_id": "ver_d617676bd8d0",
+      "chunk_idx": 16,
+      "chunk_type": "paragraph",
+      "text_content": "An attacker supplies: `' OR custID IS NOT NULL OR custID='`.\n\nThis bypasses the filter and returns all accounts.\n\nWhile HQL has fewer dangerous functions than raw SQL, it still allows unauthorized data access when user input is concatenated into queries.\n\n**Scenario #3:** An application passes user input directly to an OS command:",
+      "token_count": 69,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "A05:2025 Injection",
+        "Example attack scenarios."
+      ]
+    },
+    {
+      "chunk_id": "ver_d617676bd8d0_c00017",
+      "document_id": "doc_owasp_top10_a05_injection",
+      "version_id": "ver_d617676bd8d0",
+      "chunk_idx": 17,
+      "chunk_type": "code",
+      "text_content": "```\nString cmd = \"nslookup \" + request.getParameter(\"domain\");\nRuntime.getRuntime().exec(cmd);\n```",
+      "token_count": 33,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "A05:2025 Injection",
+        "Example attack scenarios."
+      ]
+    },
+    {
+      "chunk_id": "ver_d617676bd8d0_c00018",
+      "document_id": "doc_owasp_top10_a05_injection",
+      "version_id": "ver_d617676bd8d0",
+      "chunk_idx": 18,
+      "chunk_type": "paragraph",
+      "text_content": "An attacker supplies `example.com; cat /etc/passwd` to execute arbitrary commands on the server.",
+      "token_count": 22,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "A05:2025 Injection",
+        "Example attack scenarios."
+      ]
+    },
+    {
+      "chunk_id": "ver_d617676bd8d0_c00019",
+      "document_id": "doc_owasp_top10_a05_injection",
+      "version_id": "ver_d617676bd8d0",
+      "chunk_idx": 19,
       "chunk_type": "heading",
       "text_content": "## References.",
       "token_count": 4,
@@ -171,10 +283,10 @@
       ]
     },
     {
-      "chunk_id": "ver_d617676bd8d0_c00012",
+      "chunk_id": "ver_d617676bd8d0_c00020",
       "document_id": "doc_owasp_top10_a05_injection",
       "version_id": "ver_d617676bd8d0",
-      "chunk_idx": 12,
+      "chunk_idx": 20,
       "chunk_type": "list",
       "text_content": "* [OWASP Proactive Controls: Secure Database Access](https://owasp.org/www-project-proactive-controls/v3/en/c3-secure-database)\n* [OWASP ASVS: V5 Input Validation and Encoding](https://owasp.org/www-project-application-security-verification-standard)\n* [OWASP Testing Guide: SQL Injection,](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/05-Testing_for_SQL_Injection) [Command Injection](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/12-Testing_for_Command_Injection), and [ORM Injection](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/05.7-Testing_for_ORM_Injection)\n* [OWASP Cheat Sheet: Injection Prevention](https://cheatsheetseries.owasp.org/cheatsheets/Injection_Prevention_Cheat_Sheet.html)\n* [OWASP Cheat Sheet: SQL Injection Prevention](https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html)\n* [OWASP Cheat Sheet: Injection Prevention in Java](https://cheatsheetseries.owasp.org/cheatsheets/Injection_Prevention_Cheat_Sheet_in_Java.html)\n* [OWASP Cheat Sheet: Query Parameterization](https://cheatsheetseries.owasp.org/cheatsheets/Query_Parameterization_Cheat_Sheet.html)\n* [OWASP Automated Threats to Web Applications – OAT-014](https://owasp.org/www-project-automated-threats-to-web-applications/)\n* [PortSwigger: Server-side template injection](https://portswigger.net/kb/issues/00101080_serversidetemplateinjection)\n* [Awesome Fuzzing: a list of fuzzing resources](https://github.com/secfigo/Awesome-Fuzzing)",
       "token_count": 391,
@@ -185,10 +297,10 @@
       ]
     },
     {
-      "chunk_id": "ver_d617676bd8d0_c00013",
+      "chunk_id": "ver_d617676bd8d0_c00021",
       "document_id": "doc_owasp_top10_a05_injection",
       "version_id": "ver_d617676bd8d0",
-      "chunk_idx": 13,
+      "chunk_idx": 21,
       "chunk_type": "heading",
       "text_content": "## List of Mapped CWEs",
       "token_count": 6,
@@ -199,10 +311,10 @@
       ]
     },
     {
-      "chunk_id": "ver_d617676bd8d0_c00014",
+      "chunk_id": "ver_d617676bd8d0_c00022",
       "document_id": "doc_owasp_top10_a05_injection",
       "version_id": "ver_d617676bd8d0",
-      "chunk_idx": 14,
+      "chunk_idx": 22,
       "chunk_type": "list",
       "text_content": "* [CWE-20 Improper Input Validation](https://cwe.mitre.org/data/definitions/20.html)\n\n* [CWE-74 Improper Neutralization of Special Elements in Output Used by a Downstream Component ('Injection')](https://cwe.mitre.org/data/definitions/74.html)\n\n* [CWE-76 Improper Neutralization of Equivalent Special Elements](https://cwe.mitre.org/data/definitions/76.html)\n\n* [CWE-77 Improper Neutralization of Special Elements used in a Command ('Command Injection')](https://cwe.mitre.org/data/definitions/77.html)\n\n* [CWE-78 Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')](https://cwe.mitre.org/data/definitions/78.html)\n\n* [CWE-79 Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')](https://cwe.mitre.org/data/definitions/79.html)\n\n* [CWE-80 Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS)](https://cwe.mitre.org/data/definitions/80.html)\n\n* [CWE-83 Improper Neutralization of Script in Attributes in a Web Page](https://cwe.mitre.org/data/definitions/83.html)\n\n* [CWE-86 Improper Neutralization of Invalid Characters in Identifiers in Web Pages](https://cwe.mitre.org/data/definitions/86.html)\n\n* [CWE-88 Improper Neutralization of Argument Delimiters in a Command ('Argument Injection')](https://cwe.mitre.org/data/definitions/88.html)\n\n* [CWE-89 Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')](https://cwe.mitre.org/data/definitions/89.html)",
       "token_count": 415,
@@ -213,10 +325,10 @@
       ]
     },
     {
-      "chunk_id": "ver_d617676bd8d0_c00015",
+      "chunk_id": "ver_d617676bd8d0_c00023",
       "document_id": "doc_owasp_top10_a05_injection",
       "version_id": "ver_d617676bd8d0",
-      "chunk_idx": 15,
+      "chunk_idx": 23,
       "chunk_type": "list",
       "text_content": "* [CWE-90 Improper Neutralization of Special Elements used in an LDAP Query ('LDAP Injection')](https://cwe.mitre.org/data/definitions/90.html)\n\n* [CWE-91 XML Injection (aka Blind XPath Injection)](https://cwe.mitre.org/data/definitions/91.html)\n\n* [CWE-93 Improper Neutralization of CRLF Sequences ('CRLF Injection')](https://cwe.mitre.org/data/definitions/93.html)\n\n* [CWE-94 Improper Control of Generation of Code ('Code Injection')](https://cwe.mitre.org/data/definitions/94.html)\n\n* [CWE-95 Improper Neutralization of Directives in Dynamically Evaluated Code ('Eval Injection')](https://cwe.mitre.org/data/definitions/95.html)\n\n* [CWE-96 Improper Neutralization of Directives in Statically Saved Code ('Static Code Injection')](https://cwe.mitre.org/data/definitions/96.html)\n\n* [CWE-97 Improper Neutralization of Server-Side Includes (SSI) Within a Web Page](https://cwe.mitre.org/data/definitions/97.html)\n\n* [CWE-98 Improper Control of Filename for Include/Require Statement in PHP Program ('PHP Remote File Inclusion')](https://cwe.mitre.org/data/definitions/98.html)\n\n* [CWE-99 Improper Control of Resource Identifiers ('Resource Injection')](https://cwe.mitre.org/data/definitions/99.html)\n\n* [CWE-103 Struts: Incomplete validate() Method Definition](https://cwe.mitre.org/data/definitions/103.html)\n\n* [CWE-104 Struts: Form Bean Does Not Extend Validation Class](https://cwe.mitre.org/data/definitions/104.html)\n\n* [CWE-112 Missing XML Validation](https://cwe.mitre.org/data/definitions/112.html)",
       "token_count": 441,
@@ -227,10 +339,10 @@
       ]
     },
     {
-      "chunk_id": "ver_d617676bd8d0_c00016",
+      "chunk_id": "ver_d617676bd8d0_c00024",
       "document_id": "doc_owasp_top10_a05_injection",
       "version_id": "ver_d617676bd8d0",
-      "chunk_idx": 16,
+      "chunk_idx": 24,
       "chunk_type": "list",
       "text_content": "* [CWE-113 Improper Neutralization of CRLF Sequences in HTTP Headers ('HTTP Response Splitting')](https://cwe.mitre.org/data/definitions/113.html)\n\n* [CWE-114 Process Control](https://cwe.mitre.org/data/definitions/114.html)\n\n* [CWE-115 Misinterpretation of Output](https://cwe.mitre.org/data/definitions/115.html)\n\n* [CWE-116 Improper Encoding or Escaping of Output](https://cwe.mitre.org/data/definitions/116.html)\n\n* [CWE-129 Improper Validation of Array Index](https://cwe.mitre.org/data/definitions/129.html)\n\n* [CWE-159 Improper Handling of Invalid Use of Special Elements](https://cwe.mitre.org/data/definitions/159.html)\n\n* [CWE-470 Use of Externally-Controlled Input to Select Classes or Code ('Unsafe Reflection')](https://cwe.mitre.org/data/definitions/470.html)\n\n* [CWE-493 Critical Public Variable Without Final Modifier](https://cwe.mitre.org/data/definitions/493.html)\n\n* [CWE-500 Public Static Field Not Marked Final](https://cwe.mitre.org/data/definitions/500.html)\n\n* [CWE-564 SQL Injection: Hibernate](https://cwe.mitre.org/data/definitions/564.html)\n\n* [CWE-610 Externally Controlled Reference to a Resource in Another Sphere](https://cwe.mitre.org/data/definitions/610.html)\n\n* [CWE-643 Improper Neutralization of Data within XPath Expressions ('XPath Injection')](https://cwe.mitre.org/data/definitions/643.html)\n\n* [CWE-644 Improper Neutralization of HTTP Headers for Scripting Syntax](https://cwe.mitre.org/data/definitions/644.html)",
       "token_count": 427,
@@ -241,10 +353,10 @@
       ]
     },
     {
-      "chunk_id": "ver_d617676bd8d0_c00017",
+      "chunk_id": "ver_d617676bd8d0_c00025",
       "document_id": "doc_owasp_top10_a05_injection",
       "version_id": "ver_d617676bd8d0",
-      "chunk_idx": 17,
+      "chunk_idx": 25,
       "chunk_type": "list",
       "text_content": "* [CWE-917 Improper Neutralization of Special Elements used in an Expression Language Statement ('Expression Language Injection')](https://cwe.mitre.org/data/definitions/917.html)",
       "token_count": 43,
@@ -553,153 +665,41 @@
       "end_offset": 109
     },
     {
-      "chunk_source_id": "ver_d617676bd8d0_c00010_s001",
-      "chunk_id": "ver_d617676bd8d0_c00010",
-      "normalized_block_id": "nrm_ver_d617676bd8d0_b00019",
-      "source_order": 1,
-      "start_offset": 0,
-      "end_offset": 98
-    },
-    {
-      "chunk_source_id": "ver_d617676bd8d0_c00010_s002",
-      "chunk_id": "ver_d617676bd8d0_c00010",
-      "normalized_block_id": "nrm_ver_d617676bd8d0_b00020",
-      "source_order": 2,
-      "start_offset": 0,
-      "end_offset": 86
-    },
-    {
-      "chunk_source_id": "ver_d617676bd8d0_c00010_s003",
-      "chunk_id": "ver_d617676bd8d0_c00010",
-      "normalized_block_id": "nrm_ver_d617676bd8d0_b00020",
-      "source_order": 3,
-      "start_offset": 87,
-      "end_offset": 99
-    },
-    {
-      "chunk_source_id": "ver_d617676bd8d0_c00010_s004",
-      "chunk_id": "ver_d617676bd8d0_c00010",
-      "normalized_block_id": "nrm_ver_d617676bd8d0_b00021",
-      "source_order": 4,
-      "start_offset": 0,
-      "end_offset": 57
-    },
-    {
-      "chunk_source_id": "ver_d617676bd8d0_c00010_s005",
-      "chunk_id": "ver_d617676bd8d0_c00010",
-      "normalized_block_id": "nrm_ver_d617676bd8d0_b00022",
-      "source_order": 5,
-      "start_offset": 0,
-      "end_offset": 84
-    },
-    {
-      "chunk_source_id": "ver_d617676bd8d0_c00010_s006",
-      "chunk_id": "ver_d617676bd8d0_c00010",
-      "normalized_block_id": "nrm_ver_d617676bd8d0_b00022",
-      "source_order": 6,
-      "start_offset": 85,
-      "end_offset": 169
-    },
-    {
-      "chunk_source_id": "ver_d617676bd8d0_c00010_s007",
-      "chunk_id": "ver_d617676bd8d0_c00010",
-      "normalized_block_id": "nrm_ver_d617676bd8d0_b00023",
-      "source_order": 7,
-      "start_offset": 0,
-      "end_offset": 108
-    },
-    {
-      "chunk_source_id": "ver_d617676bd8d0_c00010_s008",
-      "chunk_id": "ver_d617676bd8d0_c00010",
-      "normalized_block_id": "nrm_ver_d617676bd8d0_b00023",
-      "source_order": 8,
-      "start_offset": 109,
-      "end_offset": 153
-    },
-    {
-      "chunk_source_id": "ver_d617676bd8d0_c00010_s009",
-      "chunk_id": "ver_d617676bd8d0_c00010",
-      "normalized_block_id": "nrm_ver_d617676bd8d0_b00024",
-      "source_order": 9,
-      "start_offset": 0,
-      "end_offset": 112
-    },
-    {
-      "chunk_source_id": "ver_d617676bd8d0_c00010_s010",
-      "chunk_id": "ver_d617676bd8d0_c00010",
-      "normalized_block_id": "nrm_ver_d617676bd8d0_b00025",
-      "source_order": 10,
-      "start_offset": 0,
-      "end_offset": 60
-    },
-    {
-      "chunk_source_id": "ver_d617676bd8d0_c00010_s011",
-      "chunk_id": "ver_d617676bd8d0_c00010",
-      "normalized_block_id": "nrm_ver_d617676bd8d0_b00025",
-      "source_order": 11,
-      "start_offset": 61,
-      "end_offset": 111
-    },
-    {
-      "chunk_source_id": "ver_d617676bd8d0_c00010_s012",
-      "chunk_id": "ver_d617676bd8d0_c00010",
-      "normalized_block_id": "nrm_ver_d617676bd8d0_b00025",
-      "source_order": 12,
-      "start_offset": 112,
-      "end_offset": 252
-    },
-    {
-      "chunk_source_id": "ver_d617676bd8d0_c00010_s013",
-      "chunk_id": "ver_d617676bd8d0_c00010",
-      "normalized_block_id": "nrm_ver_d617676bd8d0_b00026",
-      "source_order": 13,
-      "start_offset": 0,
-      "end_offset": 76
-    },
-    {
-      "chunk_source_id": "ver_d617676bd8d0_c00010_s014",
-      "chunk_id": "ver_d617676bd8d0_c00010",
-      "normalized_block_id": "nrm_ver_d617676bd8d0_b00027",
-      "source_order": 14,
-      "start_offset": 0,
-      "end_offset": 98
-    },
-    {
-      "chunk_source_id": "ver_d617676bd8d0_c00010_s015",
-      "chunk_id": "ver_d617676bd8d0_c00010",
-      "normalized_block_id": "nrm_ver_d617676bd8d0_b00028",
-      "source_order": 15,
-      "start_offset": 0,
-      "end_offset": 96
-    },
-    {
       "chunk_source_id": "ver_d617676bd8d0_c00011_s000",
       "chunk_id": "ver_d617676bd8d0_c00011",
-      "normalized_block_id": "nrm_ver_d617676bd8d0_b00029",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00019",
       "source_order": 0,
       "start_offset": 0,
-      "end_offset": 14
+      "end_offset": 98
     },
     {
       "chunk_source_id": "ver_d617676bd8d0_c00012_s000",
       "chunk_id": "ver_d617676bd8d0_c00012",
-      "normalized_block_id": "nrm_ver_d617676bd8d0_b00030",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00020",
       "source_order": 0,
       "start_offset": 0,
-      "end_offset": 1697
+      "end_offset": 86
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00012_s001",
+      "chunk_id": "ver_d617676bd8d0_c00012",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00020",
+      "source_order": 1,
+      "start_offset": 87,
+      "end_offset": 99
     },
     {
       "chunk_source_id": "ver_d617676bd8d0_c00013_s000",
       "chunk_id": "ver_d617676bd8d0_c00013",
-      "normalized_block_id": "nrm_ver_d617676bd8d0_b00031",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00021",
       "source_order": 0,
       "start_offset": 0,
-      "end_offset": 22
+      "end_offset": 57
     },
     {
       "chunk_source_id": "ver_d617676bd8d0_c00014_s000",
       "chunk_id": "ver_d617676bd8d0_c00014",
-      "normalized_block_id": "nrm_ver_d617676bd8d0_b00032",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00022",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 84
@@ -707,286 +707,398 @@
     {
       "chunk_source_id": "ver_d617676bd8d0_c00014_s001",
       "chunk_id": "ver_d617676bd8d0_c00014",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00022",
+      "source_order": 1,
+      "start_offset": 85,
+      "end_offset": 169
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00014_s002",
+      "chunk_id": "ver_d617676bd8d0_c00014",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00023",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 108
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00014_s003",
+      "chunk_id": "ver_d617676bd8d0_c00014",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00023",
+      "source_order": 3,
+      "start_offset": 109,
+      "end_offset": 153
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00015_s000",
+      "chunk_id": "ver_d617676bd8d0_c00015",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00024",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 112
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00016_s000",
+      "chunk_id": "ver_d617676bd8d0_c00016",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00025",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 60
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00016_s001",
+      "chunk_id": "ver_d617676bd8d0_c00016",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00025",
+      "source_order": 1,
+      "start_offset": 61,
+      "end_offset": 111
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00016_s002",
+      "chunk_id": "ver_d617676bd8d0_c00016",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00025",
+      "source_order": 2,
+      "start_offset": 112,
+      "end_offset": 252
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00016_s003",
+      "chunk_id": "ver_d617676bd8d0_c00016",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00026",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 76
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00017_s000",
+      "chunk_id": "ver_d617676bd8d0_c00017",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00027",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 98
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00018_s000",
+      "chunk_id": "ver_d617676bd8d0_c00018",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00028",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 96
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00019_s000",
+      "chunk_id": "ver_d617676bd8d0_c00019",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00029",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 14
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00020_s000",
+      "chunk_id": "ver_d617676bd8d0_c00020",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00030",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 1697
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00021_s000",
+      "chunk_id": "ver_d617676bd8d0_c00021",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00031",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 22
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00022_s000",
+      "chunk_id": "ver_d617676bd8d0_c00022",
+      "normalized_block_id": "nrm_ver_d617676bd8d0_b00032",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 84
+    },
+    {
+      "chunk_source_id": "ver_d617676bd8d0_c00022_s001",
+      "chunk_id": "ver_d617676bd8d0_c00022",
       "normalized_block_id": "nrm_ver_d617676bd8d0_b00032",
       "source_order": 1,
       "start_offset": 86,
       "end_offset": 243
     },
     {
-      "chunk_source_id": "ver_d617676bd8d0_c00014_s002",
-      "chunk_id": "ver_d617676bd8d0_c00014",
+      "chunk_source_id": "ver_d617676bd8d0_c00022_s002",
+      "chunk_id": "ver_d617676bd8d0_c00022",
       "normalized_block_id": "nrm_ver_d617676bd8d0_b00032",
       "source_order": 2,
       "start_offset": 245,
       "end_offset": 358
     },
     {
-      "chunk_source_id": "ver_d617676bd8d0_c00014_s003",
-      "chunk_id": "ver_d617676bd8d0_c00014",
+      "chunk_source_id": "ver_d617676bd8d0_c00022_s003",
+      "chunk_id": "ver_d617676bd8d0_c00022",
       "normalized_block_id": "nrm_ver_d617676bd8d0_b00032",
       "source_order": 3,
       "start_offset": 360,
       "end_offset": 502
     },
     {
-      "chunk_source_id": "ver_d617676bd8d0_c00014_s004",
-      "chunk_id": "ver_d617676bd8d0_c00014",
+      "chunk_source_id": "ver_d617676bd8d0_c00022_s004",
+      "chunk_id": "ver_d617676bd8d0_c00022",
       "normalized_block_id": "nrm_ver_d617676bd8d0_b00032",
       "source_order": 4,
       "start_offset": 504,
       "end_offset": 653
     },
     {
-      "chunk_source_id": "ver_d617676bd8d0_c00014_s005",
-      "chunk_id": "ver_d617676bd8d0_c00014",
+      "chunk_source_id": "ver_d617676bd8d0_c00022_s005",
+      "chunk_id": "ver_d617676bd8d0_c00022",
       "normalized_block_id": "nrm_ver_d617676bd8d0_b00032",
       "source_order": 5,
       "start_offset": 655,
       "end_offset": 798
     },
     {
-      "chunk_source_id": "ver_d617676bd8d0_c00014_s006",
-      "chunk_id": "ver_d617676bd8d0_c00014",
+      "chunk_source_id": "ver_d617676bd8d0_c00022_s006",
+      "chunk_id": "ver_d617676bd8d0_c00022",
       "normalized_block_id": "nrm_ver_d617676bd8d0_b00032",
       "source_order": 6,
       "start_offset": 800,
       "end_offset": 936
     },
     {
-      "chunk_source_id": "ver_d617676bd8d0_c00014_s007",
-      "chunk_id": "ver_d617676bd8d0_c00014",
+      "chunk_source_id": "ver_d617676bd8d0_c00022_s007",
+      "chunk_id": "ver_d617676bd8d0_c00022",
       "normalized_block_id": "nrm_ver_d617676bd8d0_b00032",
       "source_order": 7,
       "start_offset": 938,
       "end_offset": 1058
     },
     {
-      "chunk_source_id": "ver_d617676bd8d0_c00014_s008",
-      "chunk_id": "ver_d617676bd8d0_c00014",
+      "chunk_source_id": "ver_d617676bd8d0_c00022_s008",
+      "chunk_id": "ver_d617676bd8d0_c00022",
       "normalized_block_id": "nrm_ver_d617676bd8d0_b00032",
       "source_order": 8,
       "start_offset": 1060,
       "end_offset": 1192
     },
     {
-      "chunk_source_id": "ver_d617676bd8d0_c00014_s009",
-      "chunk_id": "ver_d617676bd8d0_c00014",
+      "chunk_source_id": "ver_d617676bd8d0_c00022_s009",
+      "chunk_id": "ver_d617676bd8d0_c00022",
       "normalized_block_id": "nrm_ver_d617676bd8d0_b00032",
       "source_order": 9,
       "start_offset": 1194,
       "end_offset": 1335
     },
     {
-      "chunk_source_id": "ver_d617676bd8d0_c00014_s010",
-      "chunk_id": "ver_d617676bd8d0_c00014",
+      "chunk_source_id": "ver_d617676bd8d0_c00022_s010",
+      "chunk_id": "ver_d617676bd8d0_c00022",
       "normalized_block_id": "nrm_ver_d617676bd8d0_b00032",
       "source_order": 10,
       "start_offset": 1337,
       "end_offset": 1480
     },
     {
-      "chunk_source_id": "ver_d617676bd8d0_c00015_s000",
-      "chunk_id": "ver_d617676bd8d0_c00015",
+      "chunk_source_id": "ver_d617676bd8d0_c00023_s000",
+      "chunk_id": "ver_d617676bd8d0_c00023",
       "normalized_block_id": "nrm_ver_d617676bd8d0_b00032",
       "source_order": 0,
       "start_offset": 1482,
       "end_offset": 1625
     },
     {
-      "chunk_source_id": "ver_d617676bd8d0_c00015_s001",
-      "chunk_id": "ver_d617676bd8d0_c00015",
+      "chunk_source_id": "ver_d617676bd8d0_c00023_s001",
+      "chunk_id": "ver_d617676bd8d0_c00023",
       "normalized_block_id": "nrm_ver_d617676bd8d0_b00032",
       "source_order": 1,
       "start_offset": 1627,
       "end_offset": 1727
     },
     {
-      "chunk_source_id": "ver_d617676bd8d0_c00015_s002",
-      "chunk_id": "ver_d617676bd8d0_c00015",
+      "chunk_source_id": "ver_d617676bd8d0_c00023_s002",
+      "chunk_id": "ver_d617676bd8d0_c00023",
       "normalized_block_id": "nrm_ver_d617676bd8d0_b00032",
       "source_order": 2,
       "start_offset": 1729,
       "end_offset": 1848
     },
     {
-      "chunk_source_id": "ver_d617676bd8d0_c00015_s003",
-      "chunk_id": "ver_d617676bd8d0_c00015",
+      "chunk_source_id": "ver_d617676bd8d0_c00023_s003",
+      "chunk_id": "ver_d617676bd8d0_c00023",
       "normalized_block_id": "nrm_ver_d617676bd8d0_b00032",
       "source_order": 3,
       "start_offset": 1850,
       "end_offset": 1966
     },
     {
-      "chunk_source_id": "ver_d617676bd8d0_c00015_s004",
-      "chunk_id": "ver_d617676bd8d0_c00015",
+      "chunk_source_id": "ver_d617676bd8d0_c00023_s004",
+      "chunk_id": "ver_d617676bd8d0_c00023",
       "normalized_block_id": "nrm_ver_d617676bd8d0_b00032",
       "source_order": 4,
       "start_offset": 1968,
       "end_offset": 2113
     },
     {
-      "chunk_source_id": "ver_d617676bd8d0_c00015_s005",
-      "chunk_id": "ver_d617676bd8d0_c00015",
+      "chunk_source_id": "ver_d617676bd8d0_c00023_s005",
+      "chunk_id": "ver_d617676bd8d0_c00023",
       "normalized_block_id": "nrm_ver_d617676bd8d0_b00032",
       "source_order": 5,
       "start_offset": 2115,
       "end_offset": 2262
     },
     {
-      "chunk_source_id": "ver_d617676bd8d0_c00015_s006",
-      "chunk_id": "ver_d617676bd8d0_c00015",
+      "chunk_source_id": "ver_d617676bd8d0_c00023_s006",
+      "chunk_id": "ver_d617676bd8d0_c00023",
       "normalized_block_id": "nrm_ver_d617676bd8d0_b00032",
       "source_order": 6,
       "start_offset": 2264,
       "end_offset": 2394
     },
     {
-      "chunk_source_id": "ver_d617676bd8d0_c00015_s007",
-      "chunk_id": "ver_d617676bd8d0_c00015",
+      "chunk_source_id": "ver_d617676bd8d0_c00023_s007",
+      "chunk_id": "ver_d617676bd8d0_c00023",
       "normalized_block_id": "nrm_ver_d617676bd8d0_b00032",
       "source_order": 7,
       "start_offset": 2396,
       "end_offset": 2558
     },
     {
-      "chunk_source_id": "ver_d617676bd8d0_c00015_s008",
-      "chunk_id": "ver_d617676bd8d0_c00015",
+      "chunk_source_id": "ver_d617676bd8d0_c00023_s008",
+      "chunk_id": "ver_d617676bd8d0_c00023",
       "normalized_block_id": "nrm_ver_d617676bd8d0_b00032",
       "source_order": 8,
       "start_offset": 2560,
       "end_offset": 2682
     },
     {
-      "chunk_source_id": "ver_d617676bd8d0_c00015_s009",
-      "chunk_id": "ver_d617676bd8d0_c00015",
+      "chunk_source_id": "ver_d617676bd8d0_c00023_s009",
+      "chunk_id": "ver_d617676bd8d0_c00023",
       "normalized_block_id": "nrm_ver_d617676bd8d0_b00032",
       "source_order": 9,
       "start_offset": 2684,
       "end_offset": 2792
     },
     {
-      "chunk_source_id": "ver_d617676bd8d0_c00015_s010",
-      "chunk_id": "ver_d617676bd8d0_c00015",
+      "chunk_source_id": "ver_d617676bd8d0_c00023_s010",
+      "chunk_id": "ver_d617676bd8d0_c00023",
       "normalized_block_id": "nrm_ver_d617676bd8d0_b00032",
       "source_order": 10,
       "start_offset": 2794,
       "end_offset": 2905
     },
     {
-      "chunk_source_id": "ver_d617676bd8d0_c00015_s011",
-      "chunk_id": "ver_d617676bd8d0_c00015",
+      "chunk_source_id": "ver_d617676bd8d0_c00023_s011",
+      "chunk_id": "ver_d617676bd8d0_c00023",
       "normalized_block_id": "nrm_ver_d617676bd8d0_b00032",
       "source_order": 11,
       "start_offset": 2907,
       "end_offset": 2990
     },
     {
-      "chunk_source_id": "ver_d617676bd8d0_c00016_s000",
-      "chunk_id": "ver_d617676bd8d0_c00016",
+      "chunk_source_id": "ver_d617676bd8d0_c00024_s000",
+      "chunk_id": "ver_d617676bd8d0_c00024",
       "normalized_block_id": "nrm_ver_d617676bd8d0_b00032",
       "source_order": 0,
       "start_offset": 2992,
       "end_offset": 3138
     },
     {
-      "chunk_source_id": "ver_d617676bd8d0_c00016_s001",
-      "chunk_id": "ver_d617676bd8d0_c00016",
+      "chunk_source_id": "ver_d617676bd8d0_c00024_s001",
+      "chunk_id": "ver_d617676bd8d0_c00024",
       "normalized_block_id": "nrm_ver_d617676bd8d0_b00032",
       "source_order": 1,
       "start_offset": 3140,
       "end_offset": 3216
     },
     {
-      "chunk_source_id": "ver_d617676bd8d0_c00016_s002",
-      "chunk_id": "ver_d617676bd8d0_c00016",
+      "chunk_source_id": "ver_d617676bd8d0_c00024_s002",
+      "chunk_id": "ver_d617676bd8d0_c00024",
       "normalized_block_id": "nrm_ver_d617676bd8d0_b00032",
       "source_order": 2,
       "start_offset": 3218,
       "end_offset": 3306
     },
     {
-      "chunk_source_id": "ver_d617676bd8d0_c00016_s003",
-      "chunk_id": "ver_d617676bd8d0_c00016",
+      "chunk_source_id": "ver_d617676bd8d0_c00024_s003",
+      "chunk_id": "ver_d617676bd8d0_c00024",
       "normalized_block_id": "nrm_ver_d617676bd8d0_b00032",
       "source_order": 3,
       "start_offset": 3308,
       "end_offset": 3408
     },
     {
-      "chunk_source_id": "ver_d617676bd8d0_c00016_s004",
-      "chunk_id": "ver_d617676bd8d0_c00016",
+      "chunk_source_id": "ver_d617676bd8d0_c00024_s004",
+      "chunk_id": "ver_d617676bd8d0_c00024",
       "normalized_block_id": "nrm_ver_d617676bd8d0_b00032",
       "source_order": 4,
       "start_offset": 3410,
       "end_offset": 3505
     },
     {
-      "chunk_source_id": "ver_d617676bd8d0_c00016_s005",
-      "chunk_id": "ver_d617676bd8d0_c00016",
+      "chunk_source_id": "ver_d617676bd8d0_c00024_s005",
+      "chunk_id": "ver_d617676bd8d0_c00024",
       "normalized_block_id": "nrm_ver_d617676bd8d0_b00032",
       "source_order": 5,
       "start_offset": 3507,
       "end_offset": 3620
     },
     {
-      "chunk_source_id": "ver_d617676bd8d0_c00016_s006",
-      "chunk_id": "ver_d617676bd8d0_c00016",
+      "chunk_source_id": "ver_d617676bd8d0_c00024_s006",
+      "chunk_id": "ver_d617676bd8d0_c00024",
       "normalized_block_id": "nrm_ver_d617676bd8d0_b00032",
       "source_order": 6,
       "start_offset": 3622,
       "end_offset": 3765
     },
     {
-      "chunk_source_id": "ver_d617676bd8d0_c00016_s007",
-      "chunk_id": "ver_d617676bd8d0_c00016",
+      "chunk_source_id": "ver_d617676bd8d0_c00024_s007",
+      "chunk_id": "ver_d617676bd8d0_c00024",
       "normalized_block_id": "nrm_ver_d617676bd8d0_b00032",
       "source_order": 7,
       "start_offset": 3767,
       "end_offset": 3875
     },
     {
-      "chunk_source_id": "ver_d617676bd8d0_c00016_s008",
-      "chunk_id": "ver_d617676bd8d0_c00016",
+      "chunk_source_id": "ver_d617676bd8d0_c00024_s008",
+      "chunk_id": "ver_d617676bd8d0_c00024",
       "normalized_block_id": "nrm_ver_d617676bd8d0_b00032",
       "source_order": 8,
       "start_offset": 3877,
       "end_offset": 3974
     },
     {
-      "chunk_source_id": "ver_d617676bd8d0_c00016_s009",
-      "chunk_id": "ver_d617676bd8d0_c00016",
+      "chunk_source_id": "ver_d617676bd8d0_c00024_s009",
+      "chunk_id": "ver_d617676bd8d0_c00024",
       "normalized_block_id": "nrm_ver_d617676bd8d0_b00032",
       "source_order": 9,
       "start_offset": 3976,
       "end_offset": 4061
     },
     {
-      "chunk_source_id": "ver_d617676bd8d0_c00016_s010",
-      "chunk_id": "ver_d617676bd8d0_c00016",
+      "chunk_source_id": "ver_d617676bd8d0_c00024_s010",
+      "chunk_id": "ver_d617676bd8d0_c00024",
       "normalized_block_id": "nrm_ver_d617676bd8d0_b00032",
       "source_order": 10,
       "start_offset": 4063,
       "end_offset": 4187
     },
     {
-      "chunk_source_id": "ver_d617676bd8d0_c00016_s011",
-      "chunk_id": "ver_d617676bd8d0_c00016",
+      "chunk_source_id": "ver_d617676bd8d0_c00024_s011",
+      "chunk_id": "ver_d617676bd8d0_c00024",
       "normalized_block_id": "nrm_ver_d617676bd8d0_b00032",
       "source_order": 11,
       "start_offset": 4189,
       "end_offset": 4326
     },
     {
-      "chunk_source_id": "ver_d617676bd8d0_c00016_s012",
-      "chunk_id": "ver_d617676bd8d0_c00016",
+      "chunk_source_id": "ver_d617676bd8d0_c00024_s012",
+      "chunk_id": "ver_d617676bd8d0_c00024",
       "normalized_block_id": "nrm_ver_d617676bd8d0_b00032",
       "source_order": 12,
       "start_offset": 4328,
       "end_offset": 4449
     },
     {
-      "chunk_source_id": "ver_d617676bd8d0_c00017_s000",
-      "chunk_id": "ver_d617676bd8d0_c00017",
+      "chunk_source_id": "ver_d617676bd8d0_c00025_s000",
+      "chunk_id": "ver_d617676bd8d0_c00025",
       "normalized_block_id": "nrm_ver_d617676bd8d0_b00032",
       "source_order": 0,
       "start_offset": 4451,

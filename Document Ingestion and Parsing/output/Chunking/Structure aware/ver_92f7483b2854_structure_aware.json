@@ -660,8 +660,8 @@
       "version_id": "ver_92f7483b2854",
       "chunk_idx": 43,
       "chunk_type": "mixed",
-      "text_content": "Using any of the authentication mechanisms (login, password reset, or password recovery), an application must respond with a generic error message regardless of whether:\n\n- The user ID or password was incorrect.\n\n- The account does not exist.\n\n- The account is locked or disabled.\n\nThe account registration feature should also be taken into consideration, and the same approach of a generic error message can be applied regarding the case in which the user exists.\n\nThe objective is to prevent the creation of a [discrepancy factor](https://cwe.mitre.org/data/definitions/204.html), allowing an attacker to mount a user enumeration action against the application.\n\nIt is interesting to note that the business logic itself can bring a discrepancy factor related to the processing time taken.\n\nIndeed, depending on the implementation, the processing time can be significantly different according to the case (success vs failure) allowing an attacker to mount a [time-based attack](https://en.wikipedia.org/wiki/Timing_attack) (delta of some seconds for example).\n\nExample using pseudo-code for a login feature:\n\n- First implementation using the \"quick exit\" approach\n\n```text\nIF USER_EXISTS(username) THEN\n    password_hash=HASH(password)\n    IS_VALID=LOOKUP_CREDENTIALS_IN_STORE(username, password_hash)\n    IF NOT IS_VALID THEN\n        RETURN Error(\"Invalid Username or Password!\")\n    ENDIF\nELSE\n   RETURN Error(\"Invalid Username or Password!\")\nENDIF\n```\n\nIt can be clearly seen that if the user doesn't exist, the application will directly throw an error.\n\nOtherwise, when the user exists and the password doesn't, it is apparent that there will be more processing before the application errors out.\n\nIn return, the response time will be different for the same error, allowing the attacker to differentiate between a wrong username and a wrong password.\n\n- Second implementation without relying on the \"quick exit\" approach:\n\n```text\npassword_hash=HASH(password)\nIS_VALID=LOOKUP_CREDENTIALS_IN_STORE(username, password_hash)\nIF NOT IS_VALID THEN\n   RETURN Error(\"Invalid Username or Password!\")\nENDIF\n```\n\nThis code will go through the same process no matter what the user or the password is, allowing the application to return in approximately the same response time.",
-      "token_count": 447,
+      "text_content": "Using any of the authentication mechanisms (login, password reset, or password recovery), an application must respond with a generic error message regardless of whether:\n\n- The user ID or password was incorrect.\n\n- The account does not exist.\n\n- The account is locked or disabled.\n\nThe account registration feature should also be taken into consideration, and the same approach of a generic error message can be applied regarding the case in which the user exists.\n\nThe objective is to prevent the creation of a [discrepancy factor](https://cwe.mitre.org/data/definitions/204.html), allowing an attacker to mount a user enumeration action against the application.\n\nIt is interesting to note that the business logic itself can bring a discrepancy factor related to the processing time taken.\n\nIndeed, depending on the implementation, the processing time can be significantly different according to the case (success vs failure) allowing an attacker to mount a [time-based attack](https://en.wikipedia.org/wiki/Timing_attack) (delta of some seconds for example).\n\nExample using pseudo-code for a login feature:\n\n- First implementation using the \"quick exit\" approach",
+      "token_count": 233,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Authentication Cheat Sheet",
@@ -675,9 +675,9 @@
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
       "chunk_idx": 44,
-      "chunk_type": "paragraph",
-      "text_content": "The problem with returning a generic error message for the user is a User Experience (UX) matter.\n\nA legitimate user might feel confused with the generic messages, thus making it hard for them to use the application, and might after several retries, leave the application because of its complexity.\n\nThe decision to return a *generic error message* can be determined based on the criticality of the application and its data.\n\nFor example, for critical applications, the team can decide that under the failure scenario, a user will always be redirected to the support page and a *generic error message* will be returned.\n\nRegarding the user enumeration itself, protection against [brute-force attacks](#protect-against-automated-attacks) is also effective because it prevents an attacker from applying the enumeration at scale.\n\nUsage of [CAPTCHA](https://en.wikipedia.org/wiki/CAPTCHA) can be applied to a feature for which a *generic error message* cannot be returned because the *user experience* must be preserved.",
-      "token_count": 204,
+      "chunk_type": "code",
+      "text_content": "```text\nIF USER_EXISTS(username) THEN\n    password_hash=HASH(password)\n    IS_VALID=LOOKUP_CREDENTIALS_IN_STORE(username, password_hash)\n    IF NOT IS_VALID THEN\n        RETURN Error(\"Invalid Username or Password!\")\n    ENDIF\nELSE\n   RETURN Error(\"Invalid Username or Password!\")\nENDIF\n```",
+      "token_count": 56,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Authentication Cheat Sheet",
@@ -691,6 +691,54 @@
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
       "chunk_idx": 45,
+      "chunk_type": "mixed",
+      "text_content": "It can be clearly seen that if the user doesn't exist, the application will directly throw an error.\n\nOtherwise, when the user exists and the password doesn't, it is apparent that there will be more processing before the application errors out.\n\nIn return, the response time will be different for the same error, allowing the attacker to differentiate between a wrong username and a wrong password.\n\n- Second implementation without relying on the \"quick exit\" approach:",
+      "token_count": 91,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Authentication Cheat Sheet",
+        "Authentication General Guidelines",
+        "Authentication and Error Messages",
+        "Authentication Responses"
+      ]
+    },
+    {
+      "chunk_id": "ver_92f7483b2854_c00046",
+      "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+      "version_id": "ver_92f7483b2854",
+      "chunk_idx": 46,
+      "chunk_type": "code",
+      "text_content": "```text\npassword_hash=HASH(password)\nIS_VALID=LOOKUP_CREDENTIALS_IN_STORE(username, password_hash)\nIF NOT IS_VALID THEN\n   RETURN Error(\"Invalid Username or Password!\")\nENDIF\n```",
+      "token_count": 37,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Authentication Cheat Sheet",
+        "Authentication General Guidelines",
+        "Authentication and Error Messages",
+        "Authentication Responses"
+      ]
+    },
+    {
+      "chunk_id": "ver_92f7483b2854_c00047",
+      "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+      "version_id": "ver_92f7483b2854",
+      "chunk_idx": 47,
+      "chunk_type": "paragraph",
+      "text_content": "This code will go through the same process no matter what the user or the password is, allowing the application to return in approximately the same response time.\n\nThe problem with returning a generic error message for the user is a User Experience (UX) matter.\n\nA legitimate user might feel confused with the generic messages, thus making it hard for them to use the application, and might after several retries, leave the application because of its complexity.\n\nThe decision to return a *generic error message* can be determined based on the criticality of the application and its data.\n\nFor example, for critical applications, the team can decide that under the failure scenario, a user will always be redirected to the support page and a *generic error message* will be returned.\n\nRegarding the user enumeration itself, protection against [brute-force attacks](#protect-against-automated-attacks) is also effective because it prevents an attacker from applying the enumeration at scale.\n\nUsage of [CAPTCHA](https://en.wikipedia.org/wiki/CAPTCHA) can be applied to a feature for which a *generic error message* cannot be returned because the *user experience* must be preserved.",
+      "token_count": 234,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Authentication Cheat Sheet",
+        "Authentication General Guidelines",
+        "Authentication and Error Messages",
+        "Authentication Responses"
+      ]
+    },
+    {
+      "chunk_id": "ver_92f7483b2854_c00048",
+      "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+      "version_id": "ver_92f7483b2854",
+      "chunk_idx": 48,
       "chunk_type": "heading",
       "text_content": "##### Incorrect and correct response examples",
       "token_count": 10,
@@ -704,10 +752,10 @@
       ]
     },
     {
-      "chunk_id": "ver_92f7483b2854_c00046",
+      "chunk_id": "ver_92f7483b2854_c00049",
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
-      "chunk_idx": 46,
+      "chunk_idx": 49,
       "chunk_type": "heading",
       "text_content": "###### Login",
       "token_count": 7,
@@ -722,10 +770,10 @@
       ]
     },
     {
-      "chunk_id": "ver_92f7483b2854_c00047",
+      "chunk_id": "ver_92f7483b2854_c00050",
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
-      "chunk_idx": 47,
+      "chunk_idx": 50,
       "chunk_type": "mixed",
       "text_content": "Incorrect response examples:\n\n- \"Login for User foo: invalid password.\"\n- \"Login failed, invalid user ID.\"\n- \"Login failed; account disabled.\"\n- \"Login failed; this user is not active.\"\n\nCorrect response example:\n\n- \"Login failed; Invalid user ID or password.\"",
       "token_count": 62,
@@ -740,10 +788,10 @@
       ]
     },
     {
-      "chunk_id": "ver_92f7483b2854_c00048",
+      "chunk_id": "ver_92f7483b2854_c00051",
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
-      "chunk_idx": 48,
+      "chunk_idx": 51,
       "chunk_type": "heading",
       "text_content": "###### Password recovery",
       "token_count": 8,
@@ -758,10 +806,10 @@
       ]
     },
     {
-      "chunk_id": "ver_92f7483b2854_c00049",
+      "chunk_id": "ver_92f7483b2854_c00052",
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
-      "chunk_idx": 49,
+      "chunk_idx": 52,
       "chunk_type": "mixed",
       "text_content": "Incorrect response examples:\n\n- \"We just sent you a password reset link.\"\n- \"This email address doesn't exist in our database.\"\n\nCorrect response example:\n\n- \"If that email address is in our database, we will send you an email to reset your password.\"",
       "token_count": 57,
@@ -776,10 +824,10 @@
       ]
     },
     {
-      "chunk_id": "ver_92f7483b2854_c00050",
+      "chunk_id": "ver_92f7483b2854_c00053",
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
-      "chunk_idx": 50,
+      "chunk_idx": 53,
       "chunk_type": "heading",
       "text_content": "###### Account creation",
       "token_count": 8,
@@ -794,10 +842,10 @@
       ]
     },
     {
-      "chunk_id": "ver_92f7483b2854_c00051",
+      "chunk_id": "ver_92f7483b2854_c00054",
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
-      "chunk_idx": 51,
+      "chunk_idx": 54,
       "chunk_type": "mixed",
       "text_content": "Incorrect response examples:\n\n- \"This user ID is already in use.\"\n- \"Welcome!\n\nYou have signed up successfully.\"\n\nCorrect response example:\n\n- \"A link to activate your account has been emailed to the address provided.\"",
       "token_count": 47,
@@ -812,10 +860,10 @@
       ]
     },
     {
-      "chunk_id": "ver_92f7483b2854_c00052",
+      "chunk_id": "ver_92f7483b2854_c00055",
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
-      "chunk_idx": 52,
+      "chunk_idx": 55,
       "chunk_type": "heading",
       "text_content": "##### Error Codes and URLs",
       "token_count": 9,
@@ -829,10 +877,10 @@
       ]
     },
     {
-      "chunk_id": "ver_92f7483b2854_c00053",
+      "chunk_id": "ver_92f7483b2854_c00056",
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
-      "chunk_idx": 53,
+      "chunk_idx": 56,
       "chunk_type": "paragraph",
       "text_content": "The application may return a different [HTTP Error code](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status) depending on the authentication attempt response.\n\nIt may respond with a 200 for a positive result and a 403 for a negative result.\n\nEven though a generic error page is shown to a user, the HTTP response code may differ which can leak information about whether the account is valid or not.\n\nError disclosure can also be used as a discrepancy factor, consult the [error handling cheat sheet](Error_Handling_Cheat_Sheet.md) regarding the global handling of different errors in an application.",
       "token_count": 125,
@@ -846,58 +894,13 @@
       ]
     },
     {
-      "chunk_id": "ver_92f7483b2854_c00054",
-      "document_id": "doc_owasp_a07_authentication_cheat_sheet",
-      "version_id": "ver_92f7483b2854",
-      "chunk_idx": 54,
-      "chunk_type": "heading",
-      "text_content": "### Protect Against Automated Attacks",
-      "token_count": 7,
-      "chunk_strategy": "structure_aware",
-      "heading_path": [
-        "Authentication Cheat Sheet",
-        "Authentication General Guidelines",
-        "Protect Against Automated Attacks"
-      ]
-    },
-    {
-      "chunk_id": "ver_92f7483b2854_c00055",
-      "document_id": "doc_owasp_a07_authentication_cheat_sheet",
-      "version_id": "ver_92f7483b2854",
-      "chunk_idx": 55,
-      "chunk_type": "paragraph",
-      "text_content": "There are a number of different types of automated attacks that attackers can use to try and compromise user accounts.\n\nThe most common types are listed below:",
-      "token_count": 29,
-      "chunk_strategy": "structure_aware",
-      "heading_path": [
-        "Authentication Cheat Sheet",
-        "Authentication General Guidelines",
-        "Protect Against Automated Attacks"
-      ]
-    },
-    {
-      "chunk_id": "ver_92f7483b2854_c00056",
-      "document_id": "doc_owasp_a07_authentication_cheat_sheet",
-      "version_id": "ver_92f7483b2854",
-      "chunk_idx": 56,
-      "chunk_type": "table",
-      "text_content": "| Attack Type | Description |\n|---------------------|--------------------------------------------------------------------------------------------------|\n| Brute Force | Testing multiple passwords from a dictionary or other source against a single account. |\n| Credential Stuffing | Testing username/password pairs obtained from the breach of another site. |\n| Password Spraying | Testing a single weak password against a large number of different accounts. |",
-      "token_count": 183,
-      "chunk_strategy": "structure_aware",
-      "heading_path": [
-        "Authentication Cheat Sheet",
-        "Authentication General Guidelines",
-        "Protect Against Automated Attacks"
-      ]
-    },
-    {
       "chunk_id": "ver_92f7483b2854_c00057",
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
       "chunk_idx": 57,
-      "chunk_type": "paragraph",
-      "text_content": "Different protection mechanisms can be implemented to protect against these attacks.\n\nIn many cases, these defenses do not provide complete protection, but when a number of them are implemented in a defense-in-depth approach, a reasonable level of protection can be achieved.\n\nThe following sections will focus primarily on preventing brute-force attacks, although these controls can also be effective against other types of attacks.\n\nFor further guidance on defending against credential stuffing and password spraying, see the [Credential Stuffing Cheat Sheet](Credential_Stuffing_Prevention_Cheat_Sheet.md).",
-      "token_count": 102,
+      "chunk_type": "heading",
+      "text_content": "### Protect Against Automated Attacks",
+      "token_count": 7,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Authentication Cheat Sheet",
@@ -910,6 +913,51 @@
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
       "chunk_idx": 58,
+      "chunk_type": "paragraph",
+      "text_content": "There are a number of different types of automated attacks that attackers can use to try and compromise user accounts.\n\nThe most common types are listed below:",
+      "token_count": 29,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Authentication Cheat Sheet",
+        "Authentication General Guidelines",
+        "Protect Against Automated Attacks"
+      ]
+    },
+    {
+      "chunk_id": "ver_92f7483b2854_c00059",
+      "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+      "version_id": "ver_92f7483b2854",
+      "chunk_idx": 59,
+      "chunk_type": "table",
+      "text_content": "| Attack Type | Description |\n|---------------------|--------------------------------------------------------------------------------------------------|\n| Brute Force | Testing multiple passwords from a dictionary or other source against a single account. |\n| Credential Stuffing | Testing username/password pairs obtained from the breach of another site. |\n| Password Spraying | Testing a single weak password against a large number of different accounts. |",
+      "token_count": 183,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Authentication Cheat Sheet",
+        "Authentication General Guidelines",
+        "Protect Against Automated Attacks"
+      ]
+    },
+    {
+      "chunk_id": "ver_92f7483b2854_c00060",
+      "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+      "version_id": "ver_92f7483b2854",
+      "chunk_idx": 60,
+      "chunk_type": "paragraph",
+      "text_content": "Different protection mechanisms can be implemented to protect against these attacks.\n\nIn many cases, these defenses do not provide complete protection, but when a number of them are implemented in a defense-in-depth approach, a reasonable level of protection can be achieved.\n\nThe following sections will focus primarily on preventing brute-force attacks, although these controls can also be effective against other types of attacks.\n\nFor further guidance on defending against credential stuffing and password spraying, see the [Credential Stuffing Cheat Sheet](Credential_Stuffing_Prevention_Cheat_Sheet.md).",
+      "token_count": 102,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Authentication Cheat Sheet",
+        "Authentication General Guidelines",
+        "Protect Against Automated Attacks"
+      ]
+    },
+    {
+      "chunk_id": "ver_92f7483b2854_c00061",
+      "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+      "version_id": "ver_92f7483b2854",
+      "chunk_idx": 61,
       "chunk_type": "heading",
       "text_content": "#### Multi-Factor Authentication",
       "token_count": 8,
@@ -922,10 +970,10 @@
       ]
     },
     {
-      "chunk_id": "ver_92f7483b2854_c00059",
+      "chunk_id": "ver_92f7483b2854_c00062",
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
-      "chunk_idx": 59,
+      "chunk_idx": 62,
       "chunk_type": "paragraph",
       "text_content": "Multi-factor authentication (MFA) is by far the best defense against the majority of password-related attacks, including brute-force attacks, with analysis by Microsoft suggesting that it would have stopped [99.9% of account compromises](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Your-Pa-word-doesn-t-matter/ba-p/731984).\n\nAs such, it should be implemented wherever possible; however, depending on the audience of the application, it may not be practical or feasible to enforce the use of MFA.\n\nThe [Multifactor Authentication Cheat Sheet](Multifactor_Authentication_Cheat_Sheet.md) contains further guidance on implementing MFA.",
       "token_count": 140,
@@ -938,10 +986,10 @@
       ]
     },
     {
-      "chunk_id": "ver_92f7483b2854_c00060",
+      "chunk_id": "ver_92f7483b2854_c00063",
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
-      "chunk_idx": 60,
+      "chunk_idx": 63,
       "chunk_type": "heading",
       "text_content": "#### Login Throttling",
       "token_count": 6,
@@ -954,10 +1002,10 @@
       ]
     },
     {
-      "chunk_id": "ver_92f7483b2854_c00061",
+      "chunk_id": "ver_92f7483b2854_c00064",
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
-      "chunk_idx": 61,
+      "chunk_idx": 64,
       "chunk_type": "mixed",
       "text_content": "Login Throttling is a security mechanism used to prevent an attacker from making too many attempts at guessing a password through normal interactive means, it includes the following controls:\n\n- Maximum number of attempts.",
       "token_count": 37,
@@ -970,10 +1018,10 @@
       ]
     },
     {
-      "chunk_id": "ver_92f7483b2854_c00062",
+      "chunk_id": "ver_92f7483b2854_c00065",
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
-      "chunk_idx": 62,
+      "chunk_idx": 65,
       "chunk_type": "heading",
       "text_content": "##### Account Lockout",
       "token_count": 7,
@@ -987,10 +1035,10 @@
       ]
     },
     {
-      "chunk_id": "ver_92f7483b2854_c00063",
+      "chunk_id": "ver_92f7483b2854_c00066",
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
-      "chunk_idx": 63,
+      "chunk_idx": 66,
       "chunk_type": "mixed",
       "text_content": "The most common protection against these attacks is to implement account lockout, which prevents any more login attempts for a period after a certain number of failed logins.\n\nThe counter of failed logins should be associated with the account itself, rather than the source IP address, in order to prevent an attacker from making login attempts from a large number of different IP addresses.\n\nThere are a number of different factors that should be considered when implementing an account lockout policy in order to find a balance between security and usability:\n\n- The number of failed attempts before the account is locked out (lockout threshold).\n\n- The time period that these attempts must occur within (observation window).\n\n- How long the account is locked out for (lockout duration).\n\nRather than implementing a fixed lockout duration (e.g., ten minutes), some applications use an exponential lockout, where the lockout duration starts as a very short period (e.g., one second), but doubles after each failed login attempt.\n\n- Amount of time to delay after each account lockout (max 2-3, after that permanent account lockout).\n\nWhen designing an account lockout system, care must be taken to prevent it from being used to cause a denial of service by locking out other users' accounts.\n\nOne way this could be performed is to allow the use of the forgotten password functionality to log in, even if the account is locked out.",
       "token_count": 277,
@@ -1004,10 +1052,10 @@
       ]
     },
     {
-      "chunk_id": "ver_92f7483b2854_c00064",
+      "chunk_id": "ver_92f7483b2854_c00067",
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
-      "chunk_idx": 64,
+      "chunk_idx": 67,
       "chunk_type": "heading",
       "text_content": "#### CAPTCHA",
       "token_count": 5,
@@ -1020,10 +1068,10 @@
       ]
     },
     {
-      "chunk_id": "ver_92f7483b2854_c00065",
+      "chunk_id": "ver_92f7483b2854_c00068",
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
-      "chunk_idx": 65,
+      "chunk_idx": 68,
       "chunk_type": "paragraph",
       "text_content": "The use of an effective CAPTCHA can help to prevent automated login attempts against accounts.\n\nHowever, many CAPTCHA implementations have weaknesses that allow them to be solved using automated techniques or can be outsourced to services that can solve them.\n\nAs such, the use of CAPTCHA should be viewed as a defense-in-depth control to make brute-force attacks more time-consuming and expensive, rather than as a preventative.\n\nIt may be more user-friendly to only require a CAPTCHA be solved after a small number of failed login attempts, rather than requiring it from the very first login.",
       "token_count": 113,
@@ -1036,10 +1084,10 @@
       ]
     },
     {
-      "chunk_id": "ver_92f7483b2854_c00066",
+      "chunk_id": "ver_92f7483b2854_c00069",
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
-      "chunk_idx": 66,
+      "chunk_idx": 69,
       "chunk_type": "heading",
       "text_content": "#### Security Questions and Memorable Words",
       "token_count": 9,
@@ -1052,10 +1100,10 @@
       ]
     },
     {
-      "chunk_id": "ver_92f7483b2854_c00067",
+      "chunk_id": "ver_92f7483b2854_c00070",
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
-      "chunk_idx": 67,
+      "chunk_idx": 70,
       "chunk_type": "paragraph",
       "text_content": "Do not use security questions for authentication or re-authentication; [ASVS 6.4.2](https://github.com/OWASP/ASVS/blob/master/5.0/en/0x15-V6-Authentication.md#v64-authentication-factor-lifecycle-and-recovery) excludes knowledge-based authentication.\n\nWhen verifying a password or memorable word, request and verify the full secret rather than selected characters, as required by [NIST SP 800-63B-4](https://pages.nist.gov/800-63-4/sp800-63b.html#passwordver).\n\nSee the [Choosing and Using Security Questions Cheat Sheet](Choosing_and_Using_Security_Questions_Cheat_Sheet.md) for guidance limited to legacy systems.",
       "token_count": 149,
@@ -1068,10 +1116,10 @@
       ]
     },
     {
-      "chunk_id": "ver_92f7483b2854_c00068",
+      "chunk_id": "ver_92f7483b2854_c00071",
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
-      "chunk_idx": 68,
+      "chunk_idx": 71,
       "chunk_type": "heading",
       "text_content": "## Logging and Monitoring",
       "token_count": 5,
@@ -1082,10 +1130,10 @@
       ]
     },
     {
-      "chunk_id": "ver_92f7483b2854_c00069",
+      "chunk_id": "ver_92f7483b2854_c00072",
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
-      "chunk_idx": 69,
+      "chunk_idx": 72,
       "chunk_type": "mixed",
       "text_content": "Enable logging and monitoring of authentication functions to detect attacks/failures on a real-time basis\n\n- Ensure that all failures are logged and reviewed\n- Ensure that all password failures are logged and reviewed\n- Ensure that all account lockouts are logged and reviewed",
       "token_count": 47,
@@ -1096,10 +1144,10 @@
       ]
     },
     {
-      "chunk_id": "ver_92f7483b2854_c00070",
+      "chunk_id": "ver_92f7483b2854_c00073",
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
-      "chunk_idx": 70,
+      "chunk_idx": 73,
       "chunk_type": "heading",
       "text_content": "## Use of authentication protocols that require no password",
       "token_count": 10,
@@ -1110,10 +1158,10 @@
       ]
     },
     {
-      "chunk_id": "ver_92f7483b2854_c00071",
+      "chunk_id": "ver_92f7483b2854_c00074",
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
-      "chunk_idx": 71,
+      "chunk_idx": 74,
       "chunk_type": "paragraph",
       "text_content": "While authentication through a combination of username, password, and multi-factor authentication is considered generally secure, there are use cases where it isn't considered the best option or even safe.\n\nExamples of this are third-party applications that desire to connect to the web application, either from a mobile device, another website, desktop, or other situations.\n\nWhen this happens, it is NOT considered safe to allow the third-party application to store the user/password combo, since then it extends the attack surface into their hands, where it isn't in your control.\n\nFor this and other use cases, there are several authentication protocols that can protect you from exposing your users' data to attackers.",
       "token_count": 138,
@@ -1124,10 +1172,10 @@
       ]
     },
     {
-      "chunk_id": "ver_92f7483b2854_c00072",
+      "chunk_id": "ver_92f7483b2854_c00075",
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
-      "chunk_idx": 72,
+      "chunk_idx": 75,
       "chunk_type": "heading",
       "text_content": "### OAuth 2.0 and 2.1",
       "token_count": 11,
@@ -1139,10 +1187,10 @@
       ]
     },
     {
-      "chunk_id": "ver_92f7483b2854_c00073",
+      "chunk_id": "ver_92f7483b2854_c00076",
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
-      "chunk_idx": 73,
+      "chunk_idx": 76,
       "chunk_type": "paragraph",
       "text_content": "OAuth is an **authorization** framework for delegated access to APIs.\n\nSee also: [OAuth 2.0 Cheat Sheet](OAuth2_Cheat_Sheet.md).\n\n> **Note:** OAuth 2.1 is an active IETF Working Group draft that consolidates OAuth 2.0 and widely adopted best practices and is intended to replace RFC 6749/6750; guidance in this cheat sheet applies to both OAuth 2.0 and OAuth 2.1.\n\nBecause Internet-Drafts are revisioned, use the [unversioned OAuth 2.1 Datatracker page](https://datatracker.ietf.org/doc/draft-ietf-oauth-v2-1/) for the current draft.\n\nSee also [oauth.net/2.1](https://oauth.net/2.1/).",
       "token_count": 162,
@@ -1154,10 +1202,10 @@
       ]
     },
     {
-      "chunk_id": "ver_92f7483b2854_c00074",
+      "chunk_id": "ver_92f7483b2854_c00077",
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
-      "chunk_idx": 74,
+      "chunk_idx": 77,
       "chunk_type": "heading",
       "text_content": "### OpenID Connect (OIDC)",
       "token_count": 8,
@@ -1169,10 +1217,10 @@
       ]
     },
     {
-      "chunk_id": "ver_92f7483b2854_c00075",
+      "chunk_id": "ver_92f7483b2854_c00078",
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
-      "chunk_idx": 75,
+      "chunk_idx": 78,
       "chunk_type": "paragraph",
       "text_content": "**OpenID Connect 1.0 (OIDC)** is an identity layer **on top of OAuth**.\n\nIt defines how a client (**relying party**) verifies the **end user's** identity using an **ID Token** (a signed JWT) and how to obtain user claims in an interoperable way.\n\nUse **OIDC for authentication/SSO**; use **OAuth for authorization** to APIs.",
       "token_count": 95,
@@ -1184,10 +1232,10 @@
       ]
     },
     {
-      "chunk_id": "ver_92f7483b2854_c00076",
+      "chunk_id": "ver_92f7483b2854_c00079",
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
-      "chunk_idx": 76,
+      "chunk_idx": 79,
       "chunk_type": "heading",
       "text_content": "#### OIDC implementation guidance",
       "token_count": 7,
@@ -1200,10 +1248,10 @@
       ]
     },
     {
-      "chunk_id": "ver_92f7483b2854_c00077",
+      "chunk_id": "ver_92f7483b2854_c00080",
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
-      "chunk_idx": 77,
+      "chunk_idx": 80,
       "chunk_type": "mixed",
       "text_content": "- **Validate ID Tokens** on the relying party: issuer (`iss`), audience (`aud`), signature (per provider JWKs), expiration (`exp`).\n\n- Prefer **well-maintained libraries/SDKs** and provider discovery/JWKS endpoints.\n\n- Use the **UserInfo** endpoint when additional claims beyond the ID Token are required.\n\n> **Avoid confusion:** **OpenID 2.0 (\"OpenID\")** was a separate, legacy authentication protocol that has been **superseded by OpenID Connect** and is considered obsolete.\n\nNew systems should not implement OpenID 2.0.\n\nReferences: [OpenID Foundation — obsolete OpenID 2.0 libraries](https://openid.net/developers/libraries-for-obsolete-specifications/), [OpenID 2.0 → OIDC migration](https://openid.net/specs/openid-connect-migration-1_0.html)",
       "token_count": 197,
@@ -1216,10 +1264,10 @@
       ]
     },
     {
-      "chunk_id": "ver_92f7483b2854_c00078",
+      "chunk_id": "ver_92f7483b2854_c00081",
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
-      "chunk_idx": 78,
+      "chunk_idx": 81,
       "chunk_type": "heading",
       "text_content": "#### Secure Federated Account Linking",
       "token_count": 8,
@@ -1232,10 +1280,10 @@
       ]
     },
     {
-      "chunk_id": "ver_92f7483b2854_c00079",
+      "chunk_id": "ver_92f7483b2854_c00082",
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
-      "chunk_idx": 79,
+      "chunk_idx": 82,
       "chunk_type": "mixed",
       "text_content": "When linking an OIDC identity to an existing application account:\n\n- Identify the federated identity using the combination of `iss` (issuer) and `sub` (subject), not `sub` alone.\n\nSee [OIDC claim stability and uniqueness](https://openid.net/specs/openid-connect-core-1_0.html#ClaimStability).\n\n- Do not automatically link accounts solely because their `email`, `preferred_username`, or other profile attributes match.\n\nThese claims are not guaranteed to be unique or stable, as explained in [OIDC Core Section 5.7](https://openid.net/specs/openid-connect-core-1_0.html#ClaimStability).\n\n- Require an authenticated session with the existing application account before adding or removing linked identities, as described in [NIST SP 800-63C-4, Section 3.8.1](https://pages.nist.gov/800-63-4/sp800-63c/Federation/).\n\nApply the guidance in [Require Re-authentication for Sensitive Features](#require-re-authentication-for-sensitive-features) before changing account links.\n\n- Authenticate the identity being added and [validate the resulting ID Token](https://openid.net/specs/openid-connect-core-1_0.html#IDTokenValidation) before saving the link.\n\nBind the authentication response to the user's linking session using the protections described in the [OAuth 2.0 Cheat Sheet](OAuth2_Cheat_Sheet.md).\n\n- After unlinking, disallow access to the application account through the removed identity.\n\nSee [NIST SP 800-63C-4, Section 3.8.1](https://pages.nist.gov/800-63-4/sp800-63c/Federation/).\n\n- Notify the user when an identity is added, or when an identity is removed without terminating the application account, as described in [NIST SP 800-63C-4, Section 3.8](https://pages.nist.gov/800-63-4/sp800-63c/Federation/).",
       "token_count": 428,
@@ -1248,10 +1296,10 @@
       ]
     },
     {
-      "chunk_id": "ver_92f7483b2854_c00080",
+      "chunk_id": "ver_92f7483b2854_c00083",
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
-      "chunk_idx": 80,
+      "chunk_idx": 83,
       "chunk_type": "heading",
       "text_content": "### SAML",
       "token_count": 4,
@@ -1263,10 +1311,10 @@
       ]
     },
     {
-      "chunk_id": "ver_92f7483b2854_c00081",
+      "chunk_id": "ver_92f7483b2854_c00084",
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
-      "chunk_idx": 81,
+      "chunk_idx": 84,
       "chunk_type": "paragraph",
       "text_content": "Security Assertion Markup Language (SAML) is often considered to compete with OpenId.\n\nThe most recommended version is 2.0 since it is very feature-complete and provides strong security.\n\nLike OpenId, SAML uses identity providers, but unlike OpenId, it is XML-based and provides more flexibility.\n\nSAML is based on browser redirects which send XML data.\n\nFurthermore, SAML isn't only initiated by a service provider; it can also be initiated from the identity provider.\n\nThis allows the user to navigate through different portals while still being authenticated without having to do anything, making the process transparent.\n\nWhile OpenId has taken most of the consumer market, SAML is often the choice for enterprise applications because there are few OpenId identity providers which are considered enterprise-class (meaning that the way they validate the user identity doesn't have high standards required for enterprise identity).\n\nIt is more common to see SAML being used inside of intranet websites, sometimes even using a server from the intranet as the identity provider.\n\nIn the past few years, applications like SAP ERP and SharePoint (SharePoint by using Active Directory Federation Services 2.0) have decided to use SAML 2.0 authentication as an often preferred method for single sign-on implementations whenever enterprise federation is required for web services and web applications.\n\n**See also: [SAML Security Cheat Sheet](SAML_Security_Cheat_Sheet.md)**",
       "token_count": 269,
@@ -1278,10 +1326,10 @@
       ]
     },
     {
-      "chunk_id": "ver_92f7483b2854_c00082",
+      "chunk_id": "ver_92f7483b2854_c00085",
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
-      "chunk_idx": 82,
+      "chunk_idx": 85,
       "chunk_type": "heading",
       "text_content": "### FIDO",
       "token_count": 4,
@@ -1293,10 +1341,10 @@
       ]
     },
     {
-      "chunk_id": "ver_92f7483b2854_c00083",
+      "chunk_id": "ver_92f7483b2854_c00086",
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
-      "chunk_idx": 83,
+      "chunk_idx": 86,
       "chunk_type": "paragraph",
       "text_content": "The Fast Identity Online (FIDO) Alliance has created two protocols to facilitate online authentication: the Universal Authentication Framework (UAF) protocol and the Universal Second Factor (U2F) protocol.\n\nWhile UAF focuses on passwordless authentication, U2F allows the addition of a second factor to existing password-based authentication.\n\nBoth protocols are based on a public key cryptography challenge-response model.\n\nUAF takes advantage of existing security technologies present on devices for authentication including fingerprint sensors, cameras (face biometrics), microphones (voice biometrics), Trusted Execution Environments (TEEs), Secure Elements (SEs), and others.\n\nThe protocol is designed to plug these device capabilities into a common authentication framework.\n\nUAF works with both native applications and web applications.\n\nU2F augments password-based authentication using a hardware token (typically USB) that stores cryptographic authentication keys and uses them for signing.\n\nThe user can use the same token as a second factor for multiple applications.\n\nU2F works with web applications.\n\nIt provides **protection against phishing** by using the URL of the website to look up the stored authentication key.\n\n**FIDO2**: [FIDO2 combines WebAuthn with the Client-to-Authenticator Protocols (CTAP)](https://fidoalliance.org/specifications/).\n\nU2F is now named CTAP1; UAF is a separate protocol.\n\nWebAuthn credentials form the foundation of modern **Passkeys** technology.\n\nPasskeys enable users to securely log in using local user verification (such as biometrics or device PINs), often with credential synchronization across devices.",
       "token_count": 298,
@@ -1308,10 +1356,10 @@
       ]
     },
     {
-      "chunk_id": "ver_92f7483b2854_c00084",
+      "chunk_id": "ver_92f7483b2854_c00087",
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
-      "chunk_idx": 84,
+      "chunk_idx": 87,
       "chunk_type": "heading",
       "text_content": "#### Hardware-backed Key Storage",
       "token_count": 9,
@@ -1324,10 +1372,10 @@
       ]
     },
     {
-      "chunk_id": "ver_92f7483b2854_c00085",
+      "chunk_id": "ver_92f7483b2854_c00088",
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
-      "chunk_idx": 85,
+      "chunk_idx": 88,
       "chunk_type": "paragraph",
       "text_content": "For many authenticators, including common platform passkeys, the private key is generated and stored by the operating system's secure key manager.\n\nDepending on the platform and authenticator, keys may be protected using hardware-backed components such as the Trusted Platform Module (TPM) on Windows, Secure Enclave on Apple devices, or the Android Keystore/StrongBox on Android, or by other software-based mechanisms.\n\nIn typical implementations, the private key is intended to be non-exportable and bound to the authenticator, and the platform security module signs a server challenge using this key.\n\nHowever, some authenticators support credential synchronization or backup that may involve export or server-side storage, and not all implementations are hardware-backed.\n\nRelying parties should not assume that keys are hardware-backed and non-exportable unless this is verified (for example, via authenticator properties or attestation).",
       "token_count": 168,
@@ -1340,10 +1388,10 @@
       ]
     },
     {
-      "chunk_id": "ver_92f7483b2854_c00086",
+      "chunk_id": "ver_92f7483b2854_c00089",
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
-      "chunk_idx": 86,
+      "chunk_idx": 89,
       "chunk_type": "heading",
       "text_content": "## Password Managers",
       "token_count": 4,
@@ -1354,10 +1402,10 @@
       ]
     },
     {
-      "chunk_id": "ver_92f7483b2854_c00087",
+      "chunk_id": "ver_92f7483b2854_c00090",
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
-      "chunk_idx": 87,
+      "chunk_idx": 90,
       "chunk_type": "mixed",
       "text_content": "Password managers are programs, browser plugins, or web services that automate the management of a large quantity of different credentials.\n\nMost password managers have functionality to allow users to easily use them on websites, either:\n(a) by pasting the passwords into the login form\n-- or --\n(b) by simulating the user typing them in.\n\nWeb applications should not make the job of password managers more difficult than necessary by observing the following recommendations:\n\n- Use standard HTML forms for username and password input with appropriate `type` attributes.\n\n- Avoid plugin-based login pages (such as Flash or Silverlight).\n\n- Implement a reasonable maximum password length, at least 64 characters, as discussed in the [Implement Proper Password Strength Controls section](#implement-proper-password-strength-controls).\n\n- Allow any printable characters to be used in passwords.\n\n- Allow users to paste into the username, password, and MFA fields.\n\n- Allow users to navigate between the username and password field with a single press of the `Tab` key.",
       "token_count": 205,
@@ -1368,10 +1416,10 @@
       ]
     },
     {
-      "chunk_id": "ver_92f7483b2854_c00088",
+      "chunk_id": "ver_92f7483b2854_c00091",
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
-      "chunk_idx": 88,
+      "chunk_idx": 91,
       "chunk_type": "heading",
       "text_content": "## Changing A User's Registered Email Address",
       "token_count": 10,
@@ -1382,10 +1430,10 @@
       ]
     },
     {
-      "chunk_id": "ver_92f7483b2854_c00089",
+      "chunk_id": "ver_92f7483b2854_c00092",
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
-      "chunk_idx": 89,
+      "chunk_idx": 92,
       "chunk_type": "paragraph",
       "text_content": "User email addresses often change.\n\nThe following process is recommended to handle such situations in a system:\n\n*Note: The process is less stringent with [Multifactor Authentication](https://cheatsheetseries.owasp.org/cheatsheets/Multifactor_Authentication_Cheat_Sheet.html), as proof-of-identity is stronger than relying solely on a password.*",
       "token_count": 66,
@@ -1396,10 +1444,10 @@
       ]
     },
     {
-      "chunk_id": "ver_92f7483b2854_c00090",
+      "chunk_id": "ver_92f7483b2854_c00093",
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
-      "chunk_idx": 90,
+      "chunk_idx": 93,
       "chunk_type": "heading",
       "text_content": "### Recommended Process If the User HAS [Multifactor Authentication](https://cheatsheetseries.owasp.org/cheatsheets/Multifactor_Authentication_Cheat_Sheet.html) Enabled",
       "token_count": 31,
@@ -1411,10 +1459,10 @@
       ]
     },
     {
-      "chunk_id": "ver_92f7483b2854_c00091",
+      "chunk_id": "ver_92f7483b2854_c00094",
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
-      "chunk_idx": 91,
+      "chunk_idx": 94,
       "chunk_type": "list",
       "text_content": "1.\n\nConfirm the validity of the user's authentication cookie/token.\n\nIf not valid, display a login screen.\n\n2.\n\nDescribe the process for changing the registered email address to the user.\n\n3.\n\nAsk the user to submit a proposed new email address, ensuring it complies with system rules.\n\n4.\n\nRequest the use of [Multifactor Authentication](https://cheatsheetseries.owasp.org/cheatsheets/Multifactor_Authentication_Cheat_Sheet.html) for identity verification.\n\n5.\n\nStore the proposed new email address as a pending change.\n\n6.\n\nCreate and store **two** time-limited nonces for (a) system administrators' notification, and (b) user confirmation.\n\n7.\n\nSend two email messages with links that include those nonces:\n\n- A **notification-only email message** to the current address, alerting the user to the impending change and providing a link to report unexpected activity.\n\n- A **confirmation-required email message** to the proposed new address, instructing the user to confirm the change and providing a link for unexpected situations.\n\n8.\n\nHandle responses from the links accordingly.",
       "token_count": 219,
@@ -1426,10 +1474,10 @@
       ]
     },
     {
-      "chunk_id": "ver_92f7483b2854_c00092",
+      "chunk_id": "ver_92f7483b2854_c00095",
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
-      "chunk_idx": 92,
+      "chunk_idx": 95,
       "chunk_type": "heading",
       "text_content": "### Recommended Process If the User DOES NOT HAVE Multifactor Authentication Enabled",
       "token_count": 14,
@@ -1441,10 +1489,10 @@
       ]
     },
     {
-      "chunk_id": "ver_92f7483b2854_c00093",
+      "chunk_id": "ver_92f7483b2854_c00096",
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
-      "chunk_idx": 93,
+      "chunk_idx": 96,
       "chunk_type": "list",
       "text_content": "1.\n\nConfirm the validity of the user's authentication cookie/token.\n\nIf not valid, display a login screen.\n\n2.\n\nDescribe the process for changing the registered email address to the user.\n\n3.\n\nAsk the user to submit a proposed new email address, ensuring it complies with system rules.\n\n4.\n\nRequest the user's current password for identity verification.\n\n5.\n\nStore the proposed new email address as a pending change.\n\n6.\n\nCreate and store three time-limited nonces for system administrators' notification, user confirmation, and an additional step for password reliance.\n\n7.\n\nSend two email messages with links to those nonces:\n\n- A **confirmation-required email message** to the current address, instructing the user to confirm the change and providing a link for an unexpected situation.\n\n- A **separate confirmation-required email message** to the proposed new address, instructing the user to confirm the change and providing a link for unexpected situations.\n\n8.\n\nHandle responses from the links accordingly.",
       "token_count": 198,
@@ -1456,10 +1504,10 @@
       ]
     },
     {
-      "chunk_id": "ver_92f7483b2854_c00094",
+      "chunk_id": "ver_92f7483b2854_c00097",
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
-      "chunk_idx": 94,
+      "chunk_idx": 97,
       "chunk_type": "heading",
       "text_content": "### Notes on the Above Processes",
       "token_count": 8,
@@ -1471,10 +1519,10 @@
       ]
     },
     {
-      "chunk_id": "ver_92f7483b2854_c00095",
+      "chunk_id": "ver_92f7483b2854_c00098",
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
-      "chunk_idx": 95,
+      "chunk_idx": 98,
       "chunk_type": "list",
       "text_content": "- It's worth noting that Google adopts a different approach with accounts secured only by a password -- [where the current email address receives a notification-only email](https://support.google.com/accounts/answer/55393?hl=en).\n\nThis method carries risks and requires user vigilance.\n\n- Regular social engineering training is crucial.\n\nSystem administrators and help desk staff should be trained to follow the prescribed process and recognize and respond to social engineering attacks.\n\nRefer to [CISA's \"Avoiding Social Engineering and Phishing Attacks\"](https://www.cisa.gov/news-events/news/avoiding-social-engineering-and-phishing-attacks) for guidance.",
       "token_count": 143,
@@ -1486,10 +1534,10 @@
       ]
     },
     {
-      "chunk_id": "ver_92f7483b2854_c00096",
+      "chunk_id": "ver_92f7483b2854_c00099",
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
-      "chunk_idx": 96,
+      "chunk_idx": 99,
       "chunk_type": "heading",
       "text_content": "## Adaptive or Risk Based Authentication",
       "token_count": 7,
@@ -1500,10 +1548,10 @@
       ]
     },
     {
-      "chunk_id": "ver_92f7483b2854_c00097",
+      "chunk_id": "ver_92f7483b2854_c00100",
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
-      "chunk_idx": 97,
+      "chunk_idx": 100,
       "chunk_type": "mixed",
       "text_content": "A feature of more advanced applications is the ability to require different authentication stages depending on various environmental and contextual attributes (including but not limited to, the sensitivity of the data for which access is being requested, time of day, user location, IP address, or device fingerprint).\n\nFor example, an application may require MFA for the first login from a particular device but not for subsequent logins from that device.\n\nAlternatively, a single sign-on solution may authenticate the user and allow them to remain logged in for a day but require a reauthentication if they try to access their profile page.\n\nUse device fingerprints, IP addresses, and remembered-device cookies as risk signals, not as substitutes for authentication.\n\n[NIST session guidance](https://pages.nist.gov/800-63-4/sp800-63b/session/) distinguishes an authenticated session secret from device and browser characteristics used for monitoring.\n\nRequire authentication or a valid authenticated session before exposing private account data.\n\nFor example, a banking application may allow balance viewing within an authenticated session and require stronger or fresher authentication for transaction details or money movement.\n\nQuestions that should be considered when implementing a mechanism like this include:\n\n- Are the policies being put in place in line with any corporate policies and especially any regulatory policy?\n\n- Which user‑ or device‑attributes (IP, geolocation, device fingerprint, time‑of‑day, behavioral biometrics, etc.) will we monitor at session start?\n\n- Which of those signals need to be refreshed during an active session, and at what cadence?\n\n- How will we ensure each signal’s accuracy and handle missing or low‑confidence data?\n\n- What scoring model (weights, thresholds, ML, rule‑based, hybrid) will convert raw signals into a risk tier?\n\n- Where will the model run (edge, API gateway, central service), and what is our latency budget?\n\n- What action maps to each risk tier (allow, CAPTCHA, step‑up MFA, block, revoke session)?\n\n- What user‑facing messages and error codes will accompany each action?\n\n- At which exact code or platform layers will we invoke the risk engine (login controller, middleware, API gateway, service mesh)?",
       "token_count": 440,
@@ -1514,10 +1562,10 @@
       ]
     },
     {
-      "chunk_id": "ver_92f7483b2854_c00098",
+      "chunk_id": "ver_92f7483b2854_c00101",
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
-      "chunk_idx": 98,
+      "chunk_idx": 101,
       "chunk_type": "list",
       "text_content": "- How do we propagate decisions consistently across web, mobile, and API clients?\n\n- How do we mutate, extend, or revoke tokens/cookies when a mid‑session risk check escalates?\n\n- How do we synchronize state across multiple concurrent devices or browser tabs?\n\n- What monitoring and alerting will be in place for potentially suspicious activity, including how the user is notified.",
       "token_count": 73,
@@ -1528,10 +1576,10 @@
       ]
     },
     {
-      "chunk_id": "ver_92f7483b2854_c00099",
+      "chunk_id": "ver_92f7483b2854_c00102",
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
-      "chunk_idx": 99,
+      "chunk_idx": 102,
       "chunk_type": "heading",
       "text_content": "## References",
       "token_count": 3,
@@ -1542,10 +1590,10 @@
       ]
     },
     {
-      "chunk_id": "ver_92f7483b2854_c00100",
+      "chunk_id": "ver_92f7483b2854_c00103",
       "document_id": "doc_owasp_a07_authentication_cheat_sheet",
       "version_id": "ver_92f7483b2854",
-      "chunk_idx": 100,
+      "chunk_idx": 103,
       "chunk_type": "list",
       "text_content": "- [NIST SP 800-63B-4: Password Verifiers](https://pages.nist.gov/800-63-4/sp800-63b.html#passwordver)\n- [OWASP Application Security Verification Standard (ASVS): V6 Authentication](https://github.com/OWASP/ASVS/blob/master/5.0/en/0x15-V6-Authentication.md#v6-authentication)\n- [OpenID Connect Core 1.0: ID Token Validation](https://openid.net/specs/openid-connect-core-1_0.html#IDTokenValidation)",
       "token_count": 123,
@@ -2582,1792 +2630,1792 @@
       "end_offset": 54
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00043_s010",
-      "chunk_id": "ver_92f7483b2854_c00043",
+      "chunk_source_id": "ver_92f7483b2854_c00044_s000",
+      "chunk_id": "ver_92f7483b2854_c00044",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00061",
-      "source_order": 10,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 289
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00043_s011",
-      "chunk_id": "ver_92f7483b2854_c00043",
+      "chunk_source_id": "ver_92f7483b2854_c00045_s000",
+      "chunk_id": "ver_92f7483b2854_c00045",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00062",
-      "source_order": 11,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 100
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00043_s012",
-      "chunk_id": "ver_92f7483b2854_c00043",
+      "chunk_source_id": "ver_92f7483b2854_c00045_s001",
+      "chunk_id": "ver_92f7483b2854_c00045",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00062",
-      "source_order": 12,
+      "source_order": 1,
       "start_offset": 101,
       "end_offset": 243
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00043_s013",
-      "chunk_id": "ver_92f7483b2854_c00043",
+      "chunk_source_id": "ver_92f7483b2854_c00045_s002",
+      "chunk_id": "ver_92f7483b2854_c00045",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00062",
-      "source_order": 13,
+      "source_order": 2,
       "start_offset": 244,
       "end_offset": 396
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00043_s014",
-      "chunk_id": "ver_92f7483b2854_c00043",
+      "chunk_source_id": "ver_92f7483b2854_c00045_s003",
+      "chunk_id": "ver_92f7483b2854_c00045",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00063",
-      "source_order": 14,
+      "source_order": 3,
       "start_offset": 0,
       "end_offset": 69
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00043_s015",
-      "chunk_id": "ver_92f7483b2854_c00043",
+      "chunk_source_id": "ver_92f7483b2854_c00046_s000",
+      "chunk_id": "ver_92f7483b2854_c00046",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00064",
-      "source_order": 15,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 178
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00043_s016",
-      "chunk_id": "ver_92f7483b2854_c00043",
+      "chunk_source_id": "ver_92f7483b2854_c00047_s000",
+      "chunk_id": "ver_92f7483b2854_c00047",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00065",
-      "source_order": 16,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 162
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00044_s000",
-      "chunk_id": "ver_92f7483b2854_c00044",
+      "chunk_source_id": "ver_92f7483b2854_c00047_s001",
+      "chunk_id": "ver_92f7483b2854_c00047",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00066",
-      "source_order": 0,
+      "source_order": 1,
       "start_offset": 0,
       "end_offset": 97
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00044_s001",
-      "chunk_id": "ver_92f7483b2854_c00044",
+      "chunk_source_id": "ver_92f7483b2854_c00047_s002",
+      "chunk_id": "ver_92f7483b2854_c00047",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00066",
-      "source_order": 1,
+      "source_order": 2,
       "start_offset": 98,
       "end_offset": 297
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00044_s002",
-      "chunk_id": "ver_92f7483b2854_c00044",
+      "chunk_source_id": "ver_92f7483b2854_c00047_s003",
+      "chunk_id": "ver_92f7483b2854_c00047",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00066",
-      "source_order": 2,
+      "source_order": 3,
       "start_offset": 298,
       "end_offset": 422
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00044_s003",
-      "chunk_id": "ver_92f7483b2854_c00044",
+      "chunk_source_id": "ver_92f7483b2854_c00047_s004",
+      "chunk_id": "ver_92f7483b2854_c00047",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00066",
-      "source_order": 3,
+      "source_order": 4,
       "start_offset": 423,
       "end_offset": 616
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00044_s004",
-      "chunk_id": "ver_92f7483b2854_c00044",
+      "chunk_source_id": "ver_92f7483b2854_c00047_s005",
+      "chunk_id": "ver_92f7483b2854_c00047",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00067",
-      "source_order": 4,
+      "source_order": 5,
       "start_offset": 0,
       "end_offset": 205
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00044_s005",
-      "chunk_id": "ver_92f7483b2854_c00044",
+      "chunk_source_id": "ver_92f7483b2854_c00047_s006",
+      "chunk_id": "ver_92f7483b2854_c00047",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00067",
-      "source_order": 5,
+      "source_order": 6,
       "start_offset": 206,
       "end_offset": 395
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00045_s000",
-      "chunk_id": "ver_92f7483b2854_c00045",
+      "chunk_source_id": "ver_92f7483b2854_c00048_s000",
+      "chunk_id": "ver_92f7483b2854_c00048",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00068",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 45
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00046_s000",
-      "chunk_id": "ver_92f7483b2854_c00046",
+      "chunk_source_id": "ver_92f7483b2854_c00049_s000",
+      "chunk_id": "ver_92f7483b2854_c00049",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00069",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 12
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00047_s000",
-      "chunk_id": "ver_92f7483b2854_c00047",
+      "chunk_source_id": "ver_92f7483b2854_c00050_s000",
+      "chunk_id": "ver_92f7483b2854_c00050",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00070",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 28
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00047_s001",
-      "chunk_id": "ver_92f7483b2854_c00047",
+      "chunk_source_id": "ver_92f7483b2854_c00050_s001",
+      "chunk_id": "ver_92f7483b2854_c00050",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00071",
       "source_order": 1,
       "start_offset": 0,
       "end_offset": 155
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00047_s002",
-      "chunk_id": "ver_92f7483b2854_c00047",
+      "chunk_source_id": "ver_92f7483b2854_c00050_s002",
+      "chunk_id": "ver_92f7483b2854_c00050",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00072",
       "source_order": 2,
       "start_offset": 0,
       "end_offset": 25
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00047_s003",
-      "chunk_id": "ver_92f7483b2854_c00047",
+      "chunk_source_id": "ver_92f7483b2854_c00050_s003",
+      "chunk_id": "ver_92f7483b2854_c00050",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00073",
       "source_order": 3,
       "start_offset": 0,
       "end_offset": 46
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00048_s000",
-      "chunk_id": "ver_92f7483b2854_c00048",
+      "chunk_source_id": "ver_92f7483b2854_c00051_s000",
+      "chunk_id": "ver_92f7483b2854_c00051",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00074",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 24
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00049_s000",
-      "chunk_id": "ver_92f7483b2854_c00049",
+      "chunk_source_id": "ver_92f7483b2854_c00052_s000",
+      "chunk_id": "ver_92f7483b2854_c00052",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00075",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 28
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00049_s001",
-      "chunk_id": "ver_92f7483b2854_c00049",
+      "chunk_source_id": "ver_92f7483b2854_c00052_s001",
+      "chunk_id": "ver_92f7483b2854_c00052",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00076",
       "source_order": 1,
       "start_offset": 0,
       "end_offset": 97
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00049_s002",
-      "chunk_id": "ver_92f7483b2854_c00049",
+      "chunk_source_id": "ver_92f7483b2854_c00052_s002",
+      "chunk_id": "ver_92f7483b2854_c00052",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00077",
       "source_order": 2,
       "start_offset": 0,
       "end_offset": 25
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00049_s003",
-      "chunk_id": "ver_92f7483b2854_c00049",
+      "chunk_source_id": "ver_92f7483b2854_c00052_s003",
+      "chunk_id": "ver_92f7483b2854_c00052",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00078",
       "source_order": 3,
       "start_offset": 0,
       "end_offset": 95
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00050_s000",
-      "chunk_id": "ver_92f7483b2854_c00050",
+      "chunk_source_id": "ver_92f7483b2854_c00053_s000",
+      "chunk_id": "ver_92f7483b2854_c00053",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00079",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 23
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00051_s000",
-      "chunk_id": "ver_92f7483b2854_c00051",
+      "chunk_source_id": "ver_92f7483b2854_c00054_s000",
+      "chunk_id": "ver_92f7483b2854_c00054",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00080",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 28
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00051_s001",
-      "chunk_id": "ver_92f7483b2854_c00051",
+      "chunk_source_id": "ver_92f7483b2854_c00054_s001",
+      "chunk_id": "ver_92f7483b2854_c00054",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00081",
       "source_order": 1,
       "start_offset": 0,
       "end_offset": 47
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00051_s002",
-      "chunk_id": "ver_92f7483b2854_c00051",
+      "chunk_source_id": "ver_92f7483b2854_c00054_s002",
+      "chunk_id": "ver_92f7483b2854_c00054",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00081",
       "source_order": 2,
       "start_offset": 48,
       "end_offset": 81
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00051_s003",
-      "chunk_id": "ver_92f7483b2854_c00051",
+      "chunk_source_id": "ver_92f7483b2854_c00054_s003",
+      "chunk_id": "ver_92f7483b2854_c00054",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00082",
       "source_order": 3,
       "start_offset": 0,
       "end_offset": 25
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00051_s004",
-      "chunk_id": "ver_92f7483b2854_c00051",
+      "chunk_source_id": "ver_92f7483b2854_c00054_s004",
+      "chunk_id": "ver_92f7483b2854_c00054",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00083",
       "source_order": 4,
       "start_offset": 0,
       "end_offset": 77
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00052_s000",
-      "chunk_id": "ver_92f7483b2854_c00052",
+      "chunk_source_id": "ver_92f7483b2854_c00055_s000",
+      "chunk_id": "ver_92f7483b2854_c00055",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00084",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 26
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00053_s000",
-      "chunk_id": "ver_92f7483b2854_c00053",
+      "chunk_source_id": "ver_92f7483b2854_c00056_s000",
+      "chunk_id": "ver_92f7483b2854_c00056",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00085",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 164
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00053_s001",
-      "chunk_id": "ver_92f7483b2854_c00053",
+      "chunk_source_id": "ver_92f7483b2854_c00056_s001",
+      "chunk_id": "ver_92f7483b2854_c00056",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00085",
       "source_order": 1,
       "start_offset": 165,
       "end_offset": 245
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00053_s002",
-      "chunk_id": "ver_92f7483b2854_c00053",
+      "chunk_source_id": "ver_92f7483b2854_c00056_s002",
+      "chunk_id": "ver_92f7483b2854_c00056",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00085",
       "source_order": 2,
       "start_offset": 246,
       "end_offset": 402
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00053_s003",
-      "chunk_id": "ver_92f7483b2854_c00053",
+      "chunk_source_id": "ver_92f7483b2854_c00056_s003",
+      "chunk_id": "ver_92f7483b2854_c00056",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00086",
       "source_order": 3,
       "start_offset": 0,
       "end_offset": 199
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00054_s000",
-      "chunk_id": "ver_92f7483b2854_c00054",
+      "chunk_source_id": "ver_92f7483b2854_c00057_s000",
+      "chunk_id": "ver_92f7483b2854_c00057",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00087",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 37
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00055_s000",
-      "chunk_id": "ver_92f7483b2854_c00055",
+      "chunk_source_id": "ver_92f7483b2854_c00058_s000",
+      "chunk_id": "ver_92f7483b2854_c00058",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00088",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 118
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00055_s001",
-      "chunk_id": "ver_92f7483b2854_c00055",
+      "chunk_source_id": "ver_92f7483b2854_c00058_s001",
+      "chunk_id": "ver_92f7483b2854_c00058",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00088",
       "source_order": 1,
       "start_offset": 119,
       "end_offset": 158
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00056_s000",
-      "chunk_id": "ver_92f7483b2854_c00056",
+      "chunk_source_id": "ver_92f7483b2854_c00059_s000",
+      "chunk_id": "ver_92f7483b2854_c00059",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00089",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 458
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00057_s000",
-      "chunk_id": "ver_92f7483b2854_c00057",
+      "chunk_source_id": "ver_92f7483b2854_c00060_s000",
+      "chunk_id": "ver_92f7483b2854_c00060",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00090",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 84
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00057_s001",
-      "chunk_id": "ver_92f7483b2854_c00057",
+      "chunk_source_id": "ver_92f7483b2854_c00060_s001",
+      "chunk_id": "ver_92f7483b2854_c00060",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00090",
       "source_order": 1,
       "start_offset": 85,
       "end_offset": 274
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00057_s002",
-      "chunk_id": "ver_92f7483b2854_c00057",
+      "chunk_source_id": "ver_92f7483b2854_c00060_s002",
+      "chunk_id": "ver_92f7483b2854_c00060",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00091",
       "source_order": 2,
       "start_offset": 0,
       "end_offset": 156
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00057_s003",
-      "chunk_id": "ver_92f7483b2854_c00057",
+      "chunk_source_id": "ver_92f7483b2854_c00060_s003",
+      "chunk_id": "ver_92f7483b2854_c00060",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00091",
       "source_order": 3,
       "start_offset": 157,
       "end_offset": 331
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00058_s000",
-      "chunk_id": "ver_92f7483b2854_c00058",
+      "chunk_source_id": "ver_92f7483b2854_c00061_s000",
+      "chunk_id": "ver_92f7483b2854_c00061",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00092",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 32
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00059_s000",
-      "chunk_id": "ver_92f7483b2854_c00059",
+      "chunk_source_id": "ver_92f7483b2854_c00062_s000",
+      "chunk_id": "ver_92f7483b2854_c00062",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00093",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 350
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00059_s001",
-      "chunk_id": "ver_92f7483b2854_c00059",
+      "chunk_source_id": "ver_92f7483b2854_c00062_s001",
+      "chunk_id": "ver_92f7483b2854_c00062",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00093",
       "source_order": 1,
       "start_offset": 351,
       "end_offset": 521
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00059_s002",
-      "chunk_id": "ver_92f7483b2854_c00059",
+      "chunk_source_id": "ver_92f7483b2854_c00062_s002",
+      "chunk_id": "ver_92f7483b2854_c00062",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00094",
       "source_order": 2,
       "start_offset": 0,
       "end_offset": 134
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00060_s000",
-      "chunk_id": "ver_92f7483b2854_c00060",
+      "chunk_source_id": "ver_92f7483b2854_c00063_s000",
+      "chunk_id": "ver_92f7483b2854_c00063",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00095",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 21
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00061_s000",
-      "chunk_id": "ver_92f7483b2854_c00061",
+      "chunk_source_id": "ver_92f7483b2854_c00064_s000",
+      "chunk_id": "ver_92f7483b2854_c00064",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00096",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 191
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00061_s001",
-      "chunk_id": "ver_92f7483b2854_c00061",
+      "chunk_source_id": "ver_92f7483b2854_c00064_s001",
+      "chunk_id": "ver_92f7483b2854_c00064",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00097",
       "source_order": 1,
       "start_offset": 0,
       "end_offset": 29
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00062_s000",
-      "chunk_id": "ver_92f7483b2854_c00062",
+      "chunk_source_id": "ver_92f7483b2854_c00065_s000",
+      "chunk_id": "ver_92f7483b2854_c00065",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00098",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 21
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00063_s000",
-      "chunk_id": "ver_92f7483b2854_c00063",
+      "chunk_source_id": "ver_92f7483b2854_c00066_s000",
+      "chunk_id": "ver_92f7483b2854_c00066",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00099",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 174
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00063_s001",
-      "chunk_id": "ver_92f7483b2854_c00063",
+      "chunk_source_id": "ver_92f7483b2854_c00066_s001",
+      "chunk_id": "ver_92f7483b2854_c00066",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00100",
       "source_order": 1,
       "start_offset": 0,
       "end_offset": 215
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00063_s002",
-      "chunk_id": "ver_92f7483b2854_c00063",
+      "chunk_source_id": "ver_92f7483b2854_c00066_s002",
+      "chunk_id": "ver_92f7483b2854_c00066",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00100",
       "source_order": 2,
       "start_offset": 216,
       "end_offset": 384
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00063_s003",
-      "chunk_id": "ver_92f7483b2854_c00063",
+      "chunk_source_id": "ver_92f7483b2854_c00066_s003",
+      "chunk_id": "ver_92f7483b2854_c00066",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00101",
       "source_order": 3,
       "start_offset": 0,
       "end_offset": 85
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00063_s004",
-      "chunk_id": "ver_92f7483b2854_c00063",
+      "chunk_source_id": "ver_92f7483b2854_c00066_s004",
+      "chunk_id": "ver_92f7483b2854_c00066",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00101",
       "source_order": 4,
       "start_offset": 86,
       "end_offset": 163
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00063_s005",
-      "chunk_id": "ver_92f7483b2854_c00063",
+      "chunk_source_id": "ver_92f7483b2854_c00066_s005",
+      "chunk_id": "ver_92f7483b2854_c00066",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00101",
       "source_order": 5,
       "start_offset": 164,
       "end_offset": 224
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00063_s006",
-      "chunk_id": "ver_92f7483b2854_c00063",
+      "chunk_source_id": "ver_92f7483b2854_c00066_s006",
+      "chunk_id": "ver_92f7483b2854_c00066",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00102",
       "source_order": 6,
       "start_offset": 0,
       "end_offset": 238
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00063_s007",
-      "chunk_id": "ver_92f7483b2854_c00063",
+      "chunk_source_id": "ver_92f7483b2854_c00066_s007",
+      "chunk_id": "ver_92f7483b2854_c00066",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00103",
       "source_order": 7,
       "start_offset": 0,
       "end_offset": 101
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00063_s008",
-      "chunk_id": "ver_92f7483b2854_c00063",
+      "chunk_source_id": "ver_92f7483b2854_c00066_s008",
+      "chunk_id": "ver_92f7483b2854_c00066",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00104",
       "source_order": 8,
       "start_offset": 0,
       "end_offset": 157
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00063_s009",
-      "chunk_id": "ver_92f7483b2854_c00063",
+      "chunk_source_id": "ver_92f7483b2854_c00066_s009",
+      "chunk_id": "ver_92f7483b2854_c00066",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00104",
       "source_order": 9,
       "start_offset": 158,
       "end_offset": 295
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00064_s000",
-      "chunk_id": "ver_92f7483b2854_c00064",
+      "chunk_source_id": "ver_92f7483b2854_c00067_s000",
+      "chunk_id": "ver_92f7483b2854_c00067",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00105",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 12
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00065_s000",
-      "chunk_id": "ver_92f7483b2854_c00065",
+      "chunk_source_id": "ver_92f7483b2854_c00068_s000",
+      "chunk_id": "ver_92f7483b2854_c00068",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00106",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 94
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00065_s001",
-      "chunk_id": "ver_92f7483b2854_c00065",
+      "chunk_source_id": "ver_92f7483b2854_c00068_s001",
+      "chunk_id": "ver_92f7483b2854_c00068",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00106",
       "source_order": 1,
       "start_offset": 95,
       "end_offset": 258
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00065_s002",
-      "chunk_id": "ver_92f7483b2854_c00065",
+      "chunk_source_id": "ver_92f7483b2854_c00068_s002",
+      "chunk_id": "ver_92f7483b2854_c00068",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00106",
       "source_order": 2,
       "start_offset": 259,
       "end_offset": 427
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00065_s003",
-      "chunk_id": "ver_92f7483b2854_c00065",
+      "chunk_source_id": "ver_92f7483b2854_c00068_s003",
+      "chunk_id": "ver_92f7483b2854_c00068",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00107",
       "source_order": 3,
       "start_offset": 0,
       "end_offset": 163
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00066_s000",
-      "chunk_id": "ver_92f7483b2854_c00066",
+      "chunk_source_id": "ver_92f7483b2854_c00069_s000",
+      "chunk_id": "ver_92f7483b2854_c00069",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00108",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 43
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00067_s000",
-      "chunk_id": "ver_92f7483b2854_c00067",
+      "chunk_source_id": "ver_92f7483b2854_c00070_s000",
+      "chunk_id": "ver_92f7483b2854_c00070",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00109",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 249
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00067_s001",
-      "chunk_id": "ver_92f7483b2854_c00067",
+      "chunk_source_id": "ver_92f7483b2854_c00070_s001",
+      "chunk_id": "ver_92f7483b2854_c00070",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00109",
       "source_order": 1,
       "start_offset": 250,
       "end_offset": 458
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00067_s002",
-      "chunk_id": "ver_92f7483b2854_c00067",
+      "chunk_source_id": "ver_92f7483b2854_c00070_s002",
+      "chunk_id": "ver_92f7483b2854_c00070",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00109",
       "source_order": 2,
       "start_offset": 459,
       "end_offset": 612
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00068_s000",
-      "chunk_id": "ver_92f7483b2854_c00068",
+      "chunk_source_id": "ver_92f7483b2854_c00071_s000",
+      "chunk_id": "ver_92f7483b2854_c00071",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00110",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 25
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00069_s000",
-      "chunk_id": "ver_92f7483b2854_c00069",
+      "chunk_source_id": "ver_92f7483b2854_c00072_s000",
+      "chunk_id": "ver_92f7483b2854_c00072",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00111",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 105
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00069_s001",
-      "chunk_id": "ver_92f7483b2854_c00069",
+      "chunk_source_id": "ver_92f7483b2854_c00072_s001",
+      "chunk_id": "ver_92f7483b2854_c00072",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00112",
       "source_order": 1,
       "start_offset": 0,
       "end_offset": 169
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00070_s000",
-      "chunk_id": "ver_92f7483b2854_c00070",
+      "chunk_source_id": "ver_92f7483b2854_c00073_s000",
+      "chunk_id": "ver_92f7483b2854_c00073",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00113",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 59
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00071_s000",
-      "chunk_id": "ver_92f7483b2854_c00071",
+      "chunk_source_id": "ver_92f7483b2854_c00074_s000",
+      "chunk_id": "ver_92f7483b2854_c00074",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00114",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 205
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00071_s001",
-      "chunk_id": "ver_92f7483b2854_c00071",
+      "chunk_source_id": "ver_92f7483b2854_c00074_s001",
+      "chunk_id": "ver_92f7483b2854_c00074",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00114",
       "source_order": 1,
       "start_offset": 206,
       "end_offset": 374
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00071_s002",
-      "chunk_id": "ver_92f7483b2854_c00071",
+      "chunk_source_id": "ver_92f7483b2854_c00074_s002",
+      "chunk_id": "ver_92f7483b2854_c00074",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00114",
       "source_order": 2,
       "start_offset": 375,
       "end_offset": 581
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00071_s003",
-      "chunk_id": "ver_92f7483b2854_c00071",
+      "chunk_source_id": "ver_92f7483b2854_c00074_s003",
+      "chunk_id": "ver_92f7483b2854_c00074",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00114",
       "source_order": 3,
       "start_offset": 582,
       "end_offset": 720
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00072_s000",
-      "chunk_id": "ver_92f7483b2854_c00072",
+      "chunk_source_id": "ver_92f7483b2854_c00075_s000",
+      "chunk_id": "ver_92f7483b2854_c00075",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00115",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 21
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00073_s000",
-      "chunk_id": "ver_92f7483b2854_c00073",
+      "chunk_source_id": "ver_92f7483b2854_c00076_s000",
+      "chunk_id": "ver_92f7483b2854_c00076",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00116",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 69
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00073_s001",
-      "chunk_id": "ver_92f7483b2854_c00073",
+      "chunk_source_id": "ver_92f7483b2854_c00076_s001",
+      "chunk_id": "ver_92f7483b2854_c00076",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00116",
       "source_order": 1,
       "start_offset": 70,
       "end_offset": 127
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00073_s002",
-      "chunk_id": "ver_92f7483b2854_c00073",
+      "chunk_source_id": "ver_92f7483b2854_c00076_s002",
+      "chunk_id": "ver_92f7483b2854_c00076",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00117",
       "source_order": 2,
       "start_offset": 0,
       "end_offset": 233
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00073_s003",
-      "chunk_id": "ver_92f7483b2854_c00073",
+      "chunk_source_id": "ver_92f7483b2854_c00076_s003",
+      "chunk_id": "ver_92f7483b2854_c00076",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00117",
       "source_order": 3,
       "start_offset": 234,
       "end_offset": 402
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00073_s004",
-      "chunk_id": "ver_92f7483b2854_c00073",
+      "chunk_source_id": "ver_92f7483b2854_c00076_s004",
+      "chunk_id": "ver_92f7483b2854_c00076",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00117",
       "source_order": 4,
       "start_offset": 403,
       "end_offset": 452
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00074_s000",
-      "chunk_id": "ver_92f7483b2854_c00074",
+      "chunk_source_id": "ver_92f7483b2854_c00077_s000",
+      "chunk_id": "ver_92f7483b2854_c00077",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00118",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 25
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00075_s000",
-      "chunk_id": "ver_92f7483b2854_c00075",
+      "chunk_source_id": "ver_92f7483b2854_c00078_s000",
+      "chunk_id": "ver_92f7483b2854_c00078",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00119",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 71
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00075_s001",
-      "chunk_id": "ver_92f7483b2854_c00075",
+      "chunk_source_id": "ver_92f7483b2854_c00078_s001",
+      "chunk_id": "ver_92f7483b2854_c00078",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00119",
       "source_order": 1,
       "start_offset": 72,
       "end_offset": 244
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00075_s002",
-      "chunk_id": "ver_92f7483b2854_c00075",
+      "chunk_source_id": "ver_92f7483b2854_c00078_s002",
+      "chunk_id": "ver_92f7483b2854_c00078",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00119",
       "source_order": 2,
       "start_offset": 245,
       "end_offset": 322
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00076_s000",
-      "chunk_id": "ver_92f7483b2854_c00076",
+      "chunk_source_id": "ver_92f7483b2854_c00079_s000",
+      "chunk_id": "ver_92f7483b2854_c00079",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00120",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 33
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00077_s000",
-      "chunk_id": "ver_92f7483b2854_c00077",
+      "chunk_source_id": "ver_92f7483b2854_c00080_s000",
+      "chunk_id": "ver_92f7483b2854_c00080",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00121",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 131
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00077_s001",
-      "chunk_id": "ver_92f7483b2854_c00077",
+      "chunk_source_id": "ver_92f7483b2854_c00080_s001",
+      "chunk_id": "ver_92f7483b2854_c00080",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00121",
       "source_order": 1,
       "start_offset": 132,
       "end_offset": 214
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00077_s002",
-      "chunk_id": "ver_92f7483b2854_c00077",
+      "chunk_source_id": "ver_92f7483b2854_c00080_s002",
+      "chunk_id": "ver_92f7483b2854_c00080",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00121",
       "source_order": 2,
       "start_offset": 215,
       "end_offset": 303
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00077_s003",
-      "chunk_id": "ver_92f7483b2854_c00077",
+      "chunk_source_id": "ver_92f7483b2854_c00080_s003",
+      "chunk_id": "ver_92f7483b2854_c00080",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00122",
       "source_order": 3,
       "start_offset": 0,
       "end_offset": 170
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00077_s004",
-      "chunk_id": "ver_92f7483b2854_c00077",
+      "chunk_source_id": "ver_92f7483b2854_c00080_s004",
+      "chunk_id": "ver_92f7483b2854_c00080",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00122",
       "source_order": 4,
       "start_offset": 171,
       "end_offset": 215
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00077_s005",
-      "chunk_id": "ver_92f7483b2854_c00077",
+      "chunk_source_id": "ver_92f7483b2854_c00080_s005",
+      "chunk_id": "ver_92f7483b2854_c00080",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00122",
       "source_order": 5,
       "start_offset": 216,
       "end_offset": 440
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00078_s000",
-      "chunk_id": "ver_92f7483b2854_c00078",
+      "chunk_source_id": "ver_92f7483b2854_c00081_s000",
+      "chunk_id": "ver_92f7483b2854_c00081",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00123",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 37
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00079_s000",
-      "chunk_id": "ver_92f7483b2854_c00079",
+      "chunk_source_id": "ver_92f7483b2854_c00082_s000",
+      "chunk_id": "ver_92f7483b2854_c00082",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00124",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 65
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00079_s001",
-      "chunk_id": "ver_92f7483b2854_c00079",
+      "chunk_source_id": "ver_92f7483b2854_c00082_s001",
+      "chunk_id": "ver_92f7483b2854_c00082",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00125",
       "source_order": 1,
       "start_offset": 0,
       "end_offset": 111
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00079_s002",
-      "chunk_id": "ver_92f7483b2854_c00079",
+      "chunk_source_id": "ver_92f7483b2854_c00082_s002",
+      "chunk_id": "ver_92f7483b2854_c00082",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00125",
       "source_order": 2,
       "start_offset": 112,
       "end_offset": 224
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00079_s003",
-      "chunk_id": "ver_92f7483b2854_c00079",
+      "chunk_source_id": "ver_92f7483b2854_c00082_s003",
+      "chunk_id": "ver_92f7483b2854_c00082",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00125",
       "source_order": 3,
       "start_offset": 225,
       "end_offset": 348
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00079_s004",
-      "chunk_id": "ver_92f7483b2854_c00079",
+      "chunk_source_id": "ver_92f7483b2854_c00082_s004",
+      "chunk_id": "ver_92f7483b2854_c00082",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00125",
       "source_order": 4,
       "start_offset": 349,
       "end_offset": 515
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00079_s005",
-      "chunk_id": "ver_92f7483b2854_c00079",
+      "chunk_source_id": "ver_92f7483b2854_c00082_s005",
+      "chunk_id": "ver_92f7483b2854_c00082",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00125",
       "source_order": 5,
       "start_offset": 516,
       "end_offset": 740
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00079_s006",
-      "chunk_id": "ver_92f7483b2854_c00079",
+      "chunk_source_id": "ver_92f7483b2854_c00082_s006",
+      "chunk_id": "ver_92f7483b2854_c00082",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00125",
       "source_order": 6,
       "start_offset": 741,
       "end_offset": 895
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00079_s007",
-      "chunk_id": "ver_92f7483b2854_c00079",
+      "chunk_source_id": "ver_92f7483b2854_c00082_s007",
+      "chunk_id": "ver_92f7483b2854_c00082",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00125",
       "source_order": 7,
       "start_offset": 896,
       "end_offset": 1070
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00079_s008",
-      "chunk_id": "ver_92f7483b2854_c00079",
+      "chunk_source_id": "ver_92f7483b2854_c00082_s008",
+      "chunk_id": "ver_92f7483b2854_c00082",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00125",
       "source_order": 8,
       "start_offset": 1071,
       "end_offset": 1220
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00079_s009",
-      "chunk_id": "ver_92f7483b2854_c00079",
+      "chunk_source_id": "ver_92f7483b2854_c00082_s009",
+      "chunk_id": "ver_92f7483b2854_c00082",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00125",
       "source_order": 9,
       "start_offset": 1221,
       "end_offset": 1312
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00079_s010",
-      "chunk_id": "ver_92f7483b2854_c00079",
+      "chunk_source_id": "ver_92f7483b2854_c00082_s010",
+      "chunk_id": "ver_92f7483b2854_c00082",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00125",
       "source_order": 10,
       "start_offset": 1313,
       "end_offset": 1407
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00079_s011",
-      "chunk_id": "ver_92f7483b2854_c00079",
+      "chunk_source_id": "ver_92f7483b2854_c00082_s011",
+      "chunk_id": "ver_92f7483b2854_c00082",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00125",
       "source_order": 11,
       "start_offset": 1408,
       "end_offset": 1633
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00080_s000",
-      "chunk_id": "ver_92f7483b2854_c00080",
+      "chunk_source_id": "ver_92f7483b2854_c00083_s000",
+      "chunk_id": "ver_92f7483b2854_c00083",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00126",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 8
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00081_s000",
-      "chunk_id": "ver_92f7483b2854_c00081",
+      "chunk_source_id": "ver_92f7483b2854_c00084_s000",
+      "chunk_id": "ver_92f7483b2854_c00084",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00127",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 85
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00081_s001",
-      "chunk_id": "ver_92f7483b2854_c00081",
+      "chunk_source_id": "ver_92f7483b2854_c00084_s001",
+      "chunk_id": "ver_92f7483b2854_c00084",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00127",
       "source_order": 1,
       "start_offset": 86,
       "end_offset": 185
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00081_s002",
-      "chunk_id": "ver_92f7483b2854_c00081",
+      "chunk_source_id": "ver_92f7483b2854_c00084_s002",
+      "chunk_id": "ver_92f7483b2854_c00084",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00127",
       "source_order": 2,
       "start_offset": 186,
       "end_offset": 294
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00081_s003",
-      "chunk_id": "ver_92f7483b2854_c00081",
+      "chunk_source_id": "ver_92f7483b2854_c00084_s003",
+      "chunk_id": "ver_92f7483b2854_c00084",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00127",
       "source_order": 3,
       "start_offset": 295,
       "end_offset": 350
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00081_s004",
-      "chunk_id": "ver_92f7483b2854_c00081",
+      "chunk_source_id": "ver_92f7483b2854_c00084_s004",
+      "chunk_id": "ver_92f7483b2854_c00084",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00127",
       "source_order": 4,
       "start_offset": 351,
       "end_offset": 465
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00081_s005",
-      "chunk_id": "ver_92f7483b2854_c00081",
+      "chunk_source_id": "ver_92f7483b2854_c00084_s005",
+      "chunk_id": "ver_92f7483b2854_c00084",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00127",
       "source_order": 5,
       "start_offset": 466,
       "end_offset": 619
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00081_s006",
-      "chunk_id": "ver_92f7483b2854_c00081",
+      "chunk_source_id": "ver_92f7483b2854_c00084_s006",
+      "chunk_id": "ver_92f7483b2854_c00084",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00128",
       "source_order": 6,
       "start_offset": 0,
       "end_offset": 307
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00081_s007",
-      "chunk_id": "ver_92f7483b2854_c00081",
+      "chunk_source_id": "ver_92f7483b2854_c00084_s007",
+      "chunk_id": "ver_92f7483b2854_c00084",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00128",
       "source_order": 7,
       "start_offset": 308,
       "end_offset": 451
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00081_s008",
-      "chunk_id": "ver_92f7483b2854_c00081",
+      "chunk_source_id": "ver_92f7483b2854_c00084_s008",
+      "chunk_id": "ver_92f7483b2854_c00084",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00129",
       "source_order": 8,
       "start_offset": 0,
       "end_offset": 316
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00081_s009",
-      "chunk_id": "ver_92f7483b2854_c00081",
+      "chunk_source_id": "ver_92f7483b2854_c00084_s009",
+      "chunk_id": "ver_92f7483b2854_c00084",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00130",
       "source_order": 9,
       "start_offset": 0,
       "end_offset": 71
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00082_s000",
-      "chunk_id": "ver_92f7483b2854_c00082",
+      "chunk_source_id": "ver_92f7483b2854_c00085_s000",
+      "chunk_id": "ver_92f7483b2854_c00085",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00131",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 8
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00083_s000",
-      "chunk_id": "ver_92f7483b2854_c00083",
+      "chunk_source_id": "ver_92f7483b2854_c00086_s000",
+      "chunk_id": "ver_92f7483b2854_c00086",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00132",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 205
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00083_s001",
-      "chunk_id": "ver_92f7483b2854_c00083",
+      "chunk_source_id": "ver_92f7483b2854_c00086_s001",
+      "chunk_id": "ver_92f7483b2854_c00086",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00132",
       "source_order": 1,
       "start_offset": 206,
       "end_offset": 341
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00083_s002",
-      "chunk_id": "ver_92f7483b2854_c00083",
+      "chunk_source_id": "ver_92f7483b2854_c00086_s002",
+      "chunk_id": "ver_92f7483b2854_c00086",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00132",
       "source_order": 2,
       "start_offset": 342,
       "end_offset": 421
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00083_s003",
-      "chunk_id": "ver_92f7483b2854_c00083",
+      "chunk_source_id": "ver_92f7483b2854_c00086_s003",
+      "chunk_id": "ver_92f7483b2854_c00086",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00133",
       "source_order": 3,
       "start_offset": 0,
       "end_offset": 255
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00083_s004",
-      "chunk_id": "ver_92f7483b2854_c00083",
+      "chunk_source_id": "ver_92f7483b2854_c00086_s004",
+      "chunk_id": "ver_92f7483b2854_c00086",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00133",
       "source_order": 4,
       "start_offset": 256,
       "end_offset": 354
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00083_s005",
-      "chunk_id": "ver_92f7483b2854_c00083",
+      "chunk_source_id": "ver_92f7483b2854_c00086_s005",
+      "chunk_id": "ver_92f7483b2854_c00086",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00133",
       "source_order": 5,
       "start_offset": 355,
       "end_offset": 416
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00083_s006",
-      "chunk_id": "ver_92f7483b2854_c00083",
+      "chunk_source_id": "ver_92f7483b2854_c00086_s006",
+      "chunk_id": "ver_92f7483b2854_c00086",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00134",
       "source_order": 6,
       "start_offset": 0,
       "end_offset": 154
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00083_s007",
-      "chunk_id": "ver_92f7483b2854_c00083",
+      "chunk_source_id": "ver_92f7483b2854_c00086_s007",
+      "chunk_id": "ver_92f7483b2854_c00086",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00134",
       "source_order": 7,
       "start_offset": 155,
       "end_offset": 232
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00083_s008",
-      "chunk_id": "ver_92f7483b2854_c00083",
+      "chunk_source_id": "ver_92f7483b2854_c00086_s008",
+      "chunk_id": "ver_92f7483b2854_c00086",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00134",
       "source_order": 8,
       "start_offset": 233,
       "end_offset": 265
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00083_s009",
-      "chunk_id": "ver_92f7483b2854_c00083",
+      "chunk_source_id": "ver_92f7483b2854_c00086_s009",
+      "chunk_id": "ver_92f7483b2854_c00086",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00134",
       "source_order": 9,
       "start_offset": 266,
       "end_offset": 383
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00083_s010",
-      "chunk_id": "ver_92f7483b2854_c00083",
+      "chunk_source_id": "ver_92f7483b2854_c00086_s010",
+      "chunk_id": "ver_92f7483b2854_c00086",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00135",
       "source_order": 10,
       "start_offset": 0,
       "end_offset": 129
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00083_s011",
-      "chunk_id": "ver_92f7483b2854_c00083",
+      "chunk_source_id": "ver_92f7483b2854_c00086_s011",
+      "chunk_id": "ver_92f7483b2854_c00086",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00135",
       "source_order": 11,
       "start_offset": 130,
       "end_offset": 181
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00083_s012",
-      "chunk_id": "ver_92f7483b2854_c00083",
+      "chunk_source_id": "ver_92f7483b2854_c00086_s012",
+      "chunk_id": "ver_92f7483b2854_c00086",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00135",
       "source_order": 12,
       "start_offset": 182,
       "end_offset": 257
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00083_s013",
-      "chunk_id": "ver_92f7483b2854_c00083",
+      "chunk_source_id": "ver_92f7483b2854_c00086_s013",
+      "chunk_id": "ver_92f7483b2854_c00086",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00135",
       "source_order": 13,
       "start_offset": 258,
       "end_offset": 419
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00084_s000",
-      "chunk_id": "ver_92f7483b2854_c00084",
+      "chunk_source_id": "ver_92f7483b2854_c00087_s000",
+      "chunk_id": "ver_92f7483b2854_c00087",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00136",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 32
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00085_s000",
-      "chunk_id": "ver_92f7483b2854_c00085",
+      "chunk_source_id": "ver_92f7483b2854_c00088_s000",
+      "chunk_id": "ver_92f7483b2854_c00088",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00137",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 146
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00085_s001",
-      "chunk_id": "ver_92f7483b2854_c00085",
+      "chunk_source_id": "ver_92f7483b2854_c00088_s001",
+      "chunk_id": "ver_92f7483b2854_c00088",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00137",
       "source_order": 1,
       "start_offset": 147,
       "end_offset": 418
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00085_s002",
-      "chunk_id": "ver_92f7483b2854_c00085",
+      "chunk_source_id": "ver_92f7483b2854_c00088_s002",
+      "chunk_id": "ver_92f7483b2854_c00088",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00138",
       "source_order": 2,
       "start_offset": 0,
       "end_offset": 182
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00085_s003",
-      "chunk_id": "ver_92f7483b2854_c00085",
+      "chunk_source_id": "ver_92f7483b2854_c00088_s003",
+      "chunk_id": "ver_92f7483b2854_c00088",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00138",
       "source_order": 3,
       "start_offset": 183,
       "end_offset": 353
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00085_s004",
-      "chunk_id": "ver_92f7483b2854_c00085",
+      "chunk_source_id": "ver_92f7483b2854_c00088_s004",
+      "chunk_id": "ver_92f7483b2854_c00088",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00138",
       "source_order": 4,
       "start_offset": 354,
       "end_offset": 520
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00086_s000",
-      "chunk_id": "ver_92f7483b2854_c00086",
+      "chunk_source_id": "ver_92f7483b2854_c00089_s000",
+      "chunk_id": "ver_92f7483b2854_c00089",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00139",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 20
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00087_s000",
-      "chunk_id": "ver_92f7483b2854_c00087",
+      "chunk_source_id": "ver_92f7483b2854_c00090_s000",
+      "chunk_id": "ver_92f7483b2854_c00090",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00140",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 139
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00087_s001",
-      "chunk_id": "ver_92f7483b2854_c00087",
+      "chunk_source_id": "ver_92f7483b2854_c00090_s001",
+      "chunk_id": "ver_92f7483b2854_c00090",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00140",
       "source_order": 1,
       "start_offset": 140,
       "end_offset": 337
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00087_s002",
-      "chunk_id": "ver_92f7483b2854_c00087",
+      "chunk_source_id": "ver_92f7483b2854_c00090_s002",
+      "chunk_id": "ver_92f7483b2854_c00090",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00141",
       "source_order": 2,
       "start_offset": 0,
       "end_offset": 135
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00087_s003",
-      "chunk_id": "ver_92f7483b2854_c00087",
+      "chunk_source_id": "ver_92f7483b2854_c00090_s003",
+      "chunk_id": "ver_92f7483b2854_c00090",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00142",
       "source_order": 3,
       "start_offset": 0,
       "end_offset": 93
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00087_s004",
-      "chunk_id": "ver_92f7483b2854_c00087",
+      "chunk_source_id": "ver_92f7483b2854_c00090_s004",
+      "chunk_id": "ver_92f7483b2854_c00090",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00142",
       "source_order": 4,
       "start_offset": 94,
       "end_offset": 158
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00087_s005",
-      "chunk_id": "ver_92f7483b2854_c00087",
+      "chunk_source_id": "ver_92f7483b2854_c00090_s005",
+      "chunk_id": "ver_92f7483b2854_c00090",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00142",
       "source_order": 5,
       "start_offset": 159,
       "end_offset": 353
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00087_s006",
-      "chunk_id": "ver_92f7483b2854_c00087",
+      "chunk_source_id": "ver_92f7483b2854_c00090_s006",
+      "chunk_id": "ver_92f7483b2854_c00090",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00142",
       "source_order": 6,
       "start_offset": 354,
       "end_offset": 411
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00087_s007",
-      "chunk_id": "ver_92f7483b2854_c00087",
+      "chunk_source_id": "ver_92f7483b2854_c00090_s007",
+      "chunk_id": "ver_92f7483b2854_c00090",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00142",
       "source_order": 7,
       "start_offset": 412,
       "end_offset": 479
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00087_s008",
-      "chunk_id": "ver_92f7483b2854_c00087",
+      "chunk_source_id": "ver_92f7483b2854_c00090_s008",
+      "chunk_id": "ver_92f7483b2854_c00090",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00142",
       "source_order": 8,
       "start_offset": 480,
       "end_offset": 583
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00088_s000",
-      "chunk_id": "ver_92f7483b2854_c00088",
+      "chunk_source_id": "ver_92f7483b2854_c00091_s000",
+      "chunk_id": "ver_92f7483b2854_c00091",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00143",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 45
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00089_s000",
-      "chunk_id": "ver_92f7483b2854_c00089",
+      "chunk_source_id": "ver_92f7483b2854_c00092_s000",
+      "chunk_id": "ver_92f7483b2854_c00092",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00144",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 34
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00089_s001",
-      "chunk_id": "ver_92f7483b2854_c00089",
+      "chunk_source_id": "ver_92f7483b2854_c00092_s001",
+      "chunk_id": "ver_92f7483b2854_c00092",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00144",
       "source_order": 1,
       "start_offset": 35,
       "end_offset": 110
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00089_s002",
-      "chunk_id": "ver_92f7483b2854_c00089",
+      "chunk_source_id": "ver_92f7483b2854_c00092_s002",
+      "chunk_id": "ver_92f7483b2854_c00092",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00145",
       "source_order": 2,
       "start_offset": 0,
       "end_offset": 232
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00090_s000",
-      "chunk_id": "ver_92f7483b2854_c00090",
+      "chunk_source_id": "ver_92f7483b2854_c00093_s000",
+      "chunk_id": "ver_92f7483b2854_c00093",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00146",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 168
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00091_s000",
-      "chunk_id": "ver_92f7483b2854_c00091",
+      "chunk_source_id": "ver_92f7483b2854_c00094_s000",
+      "chunk_id": "ver_92f7483b2854_c00094",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00147",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 2
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00091_s001",
-      "chunk_id": "ver_92f7483b2854_c00091",
+      "chunk_source_id": "ver_92f7483b2854_c00094_s001",
+      "chunk_id": "ver_92f7483b2854_c00094",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00147",
       "source_order": 1,
       "start_offset": 3,
       "end_offset": 66
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00091_s002",
-      "chunk_id": "ver_92f7483b2854_c00091",
+      "chunk_source_id": "ver_92f7483b2854_c00094_s002",
+      "chunk_id": "ver_92f7483b2854_c00094",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00147",
       "source_order": 2,
       "start_offset": 67,
       "end_offset": 104
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00091_s003",
-      "chunk_id": "ver_92f7483b2854_c00091",
+      "chunk_source_id": "ver_92f7483b2854_c00094_s003",
+      "chunk_id": "ver_92f7483b2854_c00094",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00147",
       "source_order": 3,
       "start_offset": 105,
       "end_offset": 107
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00091_s004",
-      "chunk_id": "ver_92f7483b2854_c00091",
+      "chunk_source_id": "ver_92f7483b2854_c00094_s004",
+      "chunk_id": "ver_92f7483b2854_c00094",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00147",
       "source_order": 4,
       "start_offset": 108,
       "end_offset": 183
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00091_s005",
-      "chunk_id": "ver_92f7483b2854_c00091",
+      "chunk_source_id": "ver_92f7483b2854_c00094_s005",
+      "chunk_id": "ver_92f7483b2854_c00094",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00147",
       "source_order": 5,
       "start_offset": 184,
       "end_offset": 186
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00091_s006",
-      "chunk_id": "ver_92f7483b2854_c00091",
+      "chunk_source_id": "ver_92f7483b2854_c00094_s006",
+      "chunk_id": "ver_92f7483b2854_c00094",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00147",
       "source_order": 6,
       "start_offset": 187,
       "end_offset": 279
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00091_s007",
-      "chunk_id": "ver_92f7483b2854_c00091",
+      "chunk_source_id": "ver_92f7483b2854_c00094_s007",
+      "chunk_id": "ver_92f7483b2854_c00094",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00147",
       "source_order": 7,
       "start_offset": 280,
       "end_offset": 282
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00091_s008",
-      "chunk_id": "ver_92f7483b2854_c00091",
+      "chunk_source_id": "ver_92f7483b2854_c00094_s008",
+      "chunk_id": "ver_92f7483b2854_c00094",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00147",
       "source_order": 8,
       "start_offset": 283,
       "end_offset": 449
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00091_s009",
-      "chunk_id": "ver_92f7483b2854_c00091",
+      "chunk_source_id": "ver_92f7483b2854_c00094_s009",
+      "chunk_id": "ver_92f7483b2854_c00094",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00147",
       "source_order": 9,
       "start_offset": 450,
       "end_offset": 452
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00091_s010",
-      "chunk_id": "ver_92f7483b2854_c00091",
+      "chunk_source_id": "ver_92f7483b2854_c00094_s010",
+      "chunk_id": "ver_92f7483b2854_c00094",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00147",
       "source_order": 10,
       "start_offset": 453,
       "end_offset": 510
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00091_s011",
-      "chunk_id": "ver_92f7483b2854_c00091",
+      "chunk_source_id": "ver_92f7483b2854_c00094_s011",
+      "chunk_id": "ver_92f7483b2854_c00094",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00147",
       "source_order": 11,
       "start_offset": 511,
       "end_offset": 513
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00091_s012",
-      "chunk_id": "ver_92f7483b2854_c00091",
+      "chunk_source_id": "ver_92f7483b2854_c00094_s012",
+      "chunk_id": "ver_92f7483b2854_c00094",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00147",
       "source_order": 12,
       "start_offset": 514,
       "end_offset": 630
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00091_s013",
-      "chunk_id": "ver_92f7483b2854_c00091",
+      "chunk_source_id": "ver_92f7483b2854_c00094_s013",
+      "chunk_id": "ver_92f7483b2854_c00094",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00147",
       "source_order": 13,
       "start_offset": 631,
       "end_offset": 633
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00091_s014",
-      "chunk_id": "ver_92f7483b2854_c00091",
+      "chunk_source_id": "ver_92f7483b2854_c00094_s014",
+      "chunk_id": "ver_92f7483b2854_c00094",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00147",
       "source_order": 14,
       "start_offset": 634,
       "end_offset": 695
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00091_s015",
-      "chunk_id": "ver_92f7483b2854_c00091",
+      "chunk_source_id": "ver_92f7483b2854_c00094_s015",
+      "chunk_id": "ver_92f7483b2854_c00094",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00147",
       "source_order": 15,
       "start_offset": 701,
       "end_offset": 858
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00091_s016",
-      "chunk_id": "ver_92f7483b2854_c00091",
+      "chunk_source_id": "ver_92f7483b2854_c00094_s016",
+      "chunk_id": "ver_92f7483b2854_c00094",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00147",
       "source_order": 16,
       "start_offset": 864,
       "end_offset": 1027
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00091_s017",
-      "chunk_id": "ver_92f7483b2854_c00091",
+      "chunk_source_id": "ver_92f7483b2854_c00094_s017",
+      "chunk_id": "ver_92f7483b2854_c00094",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00147",
       "source_order": 17,
       "start_offset": 1029,
       "end_offset": 1031
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00091_s018",
-      "chunk_id": "ver_92f7483b2854_c00091",
+      "chunk_source_id": "ver_92f7483b2854_c00094_s018",
+      "chunk_id": "ver_92f7483b2854_c00094",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00147",
       "source_order": 18,
       "start_offset": 1032,
       "end_offset": 1076
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00092_s000",
-      "chunk_id": "ver_92f7483b2854_c00092",
+      "chunk_source_id": "ver_92f7483b2854_c00095_s000",
+      "chunk_id": "ver_92f7483b2854_c00095",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00148",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 84
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00093_s000",
-      "chunk_id": "ver_92f7483b2854_c00093",
+      "chunk_source_id": "ver_92f7483b2854_c00096_s000",
+      "chunk_id": "ver_92f7483b2854_c00096",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00149",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 2
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00093_s001",
-      "chunk_id": "ver_92f7483b2854_c00093",
+      "chunk_source_id": "ver_92f7483b2854_c00096_s001",
+      "chunk_id": "ver_92f7483b2854_c00096",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00149",
       "source_order": 1,
       "start_offset": 3,
       "end_offset": 66
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00093_s002",
-      "chunk_id": "ver_92f7483b2854_c00093",
+      "chunk_source_id": "ver_92f7483b2854_c00096_s002",
+      "chunk_id": "ver_92f7483b2854_c00096",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00149",
       "source_order": 2,
       "start_offset": 67,
       "end_offset": 104
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00093_s003",
-      "chunk_id": "ver_92f7483b2854_c00093",
+      "chunk_source_id": "ver_92f7483b2854_c00096_s003",
+      "chunk_id": "ver_92f7483b2854_c00096",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00149",
       "source_order": 3,
       "start_offset": 105,
       "end_offset": 107
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00093_s004",
-      "chunk_id": "ver_92f7483b2854_c00093",
+      "chunk_source_id": "ver_92f7483b2854_c00096_s004",
+      "chunk_id": "ver_92f7483b2854_c00096",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00149",
       "source_order": 4,
       "start_offset": 108,
       "end_offset": 183
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00093_s005",
-      "chunk_id": "ver_92f7483b2854_c00093",
+      "chunk_source_id": "ver_92f7483b2854_c00096_s005",
+      "chunk_id": "ver_92f7483b2854_c00096",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00149",
       "source_order": 5,
       "start_offset": 184,
       "end_offset": 186
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00093_s006",
-      "chunk_id": "ver_92f7483b2854_c00093",
+      "chunk_source_id": "ver_92f7483b2854_c00096_s006",
+      "chunk_id": "ver_92f7483b2854_c00096",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00149",
       "source_order": 6,
       "start_offset": 187,
       "end_offset": 279
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00093_s007",
-      "chunk_id": "ver_92f7483b2854_c00093",
+      "chunk_source_id": "ver_92f7483b2854_c00096_s007",
+      "chunk_id": "ver_92f7483b2854_c00096",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00149",
       "source_order": 7,
       "start_offset": 280,
       "end_offset": 282
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00093_s008",
-      "chunk_id": "ver_92f7483b2854_c00093",
+      "chunk_source_id": "ver_92f7483b2854_c00096_s008",
+      "chunk_id": "ver_92f7483b2854_c00096",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00149",
       "source_order": 8,
       "start_offset": 283,
       "end_offset": 345
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00093_s009",
-      "chunk_id": "ver_92f7483b2854_c00093",
+      "chunk_source_id": "ver_92f7483b2854_c00096_s009",
+      "chunk_id": "ver_92f7483b2854_c00096",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00149",
       "source_order": 9,
       "start_offset": 346,
       "end_offset": 348
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00093_s010",
-      "chunk_id": "ver_92f7483b2854_c00093",
+      "chunk_source_id": "ver_92f7483b2854_c00096_s010",
+      "chunk_id": "ver_92f7483b2854_c00096",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00149",
       "source_order": 10,
       "start_offset": 349,
       "end_offset": 406
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00093_s011",
-      "chunk_id": "ver_92f7483b2854_c00093",
+      "chunk_source_id": "ver_92f7483b2854_c00096_s011",
+      "chunk_id": "ver_92f7483b2854_c00096",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00149",
       "source_order": 11,
       "start_offset": 407,
       "end_offset": 409
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00093_s012",
-      "chunk_id": "ver_92f7483b2854_c00093",
+      "chunk_source_id": "ver_92f7483b2854_c00096_s012",
+      "chunk_id": "ver_92f7483b2854_c00096",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00149",
       "source_order": 12,
       "start_offset": 410,
       "end_offset": 558
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00093_s013",
-      "chunk_id": "ver_92f7483b2854_c00093",
+      "chunk_source_id": "ver_92f7483b2854_c00096_s013",
+      "chunk_id": "ver_92f7483b2854_c00096",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00149",
       "source_order": 13,
       "start_offset": 559,
       "end_offset": 561
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00093_s014",
-      "chunk_id": "ver_92f7483b2854_c00093",
+      "chunk_source_id": "ver_92f7483b2854_c00096_s014",
+      "chunk_id": "ver_92f7483b2854_c00096",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00149",
       "source_order": 14,
       "start_offset": 562,
       "end_offset": 613
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00093_s015",
-      "chunk_id": "ver_92f7483b2854_c00093",
+      "chunk_source_id": "ver_92f7483b2854_c00096_s015",
+      "chunk_id": "ver_92f7483b2854_c00096",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00149",
       "source_order": 15,
       "start_offset": 619,
       "end_offset": 779
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00093_s016",
-      "chunk_id": "ver_92f7483b2854_c00093",
+      "chunk_source_id": "ver_92f7483b2854_c00096_s016",
+      "chunk_id": "ver_92f7483b2854_c00096",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00149",
       "source_order": 16,
       "start_offset": 785,
       "end_offset": 957
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00093_s017",
-      "chunk_id": "ver_92f7483b2854_c00093",
+      "chunk_source_id": "ver_92f7483b2854_c00096_s017",
+      "chunk_id": "ver_92f7483b2854_c00096",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00149",
       "source_order": 17,
       "start_offset": 959,
       "end_offset": 961
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00093_s018",
-      "chunk_id": "ver_92f7483b2854_c00093",
+      "chunk_source_id": "ver_92f7483b2854_c00096_s018",
+      "chunk_id": "ver_92f7483b2854_c00096",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00149",
       "source_order": 18,
       "start_offset": 962,
       "end_offset": 1006
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00094_s000",
-      "chunk_id": "ver_92f7483b2854_c00094",
+      "chunk_source_id": "ver_92f7483b2854_c00097_s000",
+      "chunk_id": "ver_92f7483b2854_c00097",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00150",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 32
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00095_s000",
-      "chunk_id": "ver_92f7483b2854_c00095",
+      "chunk_source_id": "ver_92f7483b2854_c00098_s000",
+      "chunk_id": "ver_92f7483b2854_c00098",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00151",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 229
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00095_s001",
-      "chunk_id": "ver_92f7483b2854_c00095",
+      "chunk_source_id": "ver_92f7483b2854_c00098_s001",
+      "chunk_id": "ver_92f7483b2854_c00098",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00151",
       "source_order": 1,
       "start_offset": 230,
       "end_offset": 284
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00095_s002",
-      "chunk_id": "ver_92f7483b2854_c00095",
+      "chunk_source_id": "ver_92f7483b2854_c00098_s002",
+      "chunk_id": "ver_92f7483b2854_c00098",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00151",
       "source_order": 2,
       "start_offset": 286,
       "end_offset": 335
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00095_s003",
-      "chunk_id": "ver_92f7483b2854_c00095",
+      "chunk_source_id": "ver_92f7483b2854_c00098_s003",
+      "chunk_id": "ver_92f7483b2854_c00098",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00151",
       "source_order": 3,
       "start_offset": 336,
       "end_offset": 485
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00095_s004",
-      "chunk_id": "ver_92f7483b2854_c00095",
+      "chunk_source_id": "ver_92f7483b2854_c00098_s004",
+      "chunk_id": "ver_92f7483b2854_c00098",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00151",
       "source_order": 4,
       "start_offset": 486,
       "end_offset": 656
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00096_s000",
-      "chunk_id": "ver_92f7483b2854_c00096",
+      "chunk_source_id": "ver_92f7483b2854_c00099_s000",
+      "chunk_id": "ver_92f7483b2854_c00099",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00152",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 40
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00097_s000",
-      "chunk_id": "ver_92f7483b2854_c00097",
+      "chunk_source_id": "ver_92f7483b2854_c00100_s000",
+      "chunk_id": "ver_92f7483b2854_c00100",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00153",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 318
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00097_s001",
-      "chunk_id": "ver_92f7483b2854_c00097",
+      "chunk_source_id": "ver_92f7483b2854_c00100_s001",
+      "chunk_id": "ver_92f7483b2854_c00100",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00154",
       "source_order": 1,
       "start_offset": 0,
       "end_offset": 136
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00097_s002",
-      "chunk_id": "ver_92f7483b2854_c00097",
+      "chunk_source_id": "ver_92f7483b2854_c00100_s002",
+      "chunk_id": "ver_92f7483b2854_c00100",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00154",
       "source_order": 2,
       "start_offset": 137,
       "end_offset": 321
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00097_s003",
-      "chunk_id": "ver_92f7483b2854_c00097",
+      "chunk_source_id": "ver_92f7483b2854_c00100_s003",
+      "chunk_id": "ver_92f7483b2854_c00100",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00155",
       "source_order": 3,
       "start_offset": 0,
       "end_offset": 124
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00097_s004",
-      "chunk_id": "ver_92f7483b2854_c00097",
+      "chunk_source_id": "ver_92f7483b2854_c00100_s004",
+      "chunk_id": "ver_92f7483b2854_c00100",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00155",
       "source_order": 4,
       "start_offset": 125,
       "end_offset": 307
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00097_s005",
-      "chunk_id": "ver_92f7483b2854_c00097",
+      "chunk_source_id": "ver_92f7483b2854_c00100_s005",
+      "chunk_id": "ver_92f7483b2854_c00100",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00155",
       "source_order": 5,
       "start_offset": 308,
       "end_offset": 401
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00097_s006",
-      "chunk_id": "ver_92f7483b2854_c00097",
+      "chunk_source_id": "ver_92f7483b2854_c00100_s006",
+      "chunk_id": "ver_92f7483b2854_c00100",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00155",
       "source_order": 6,
       "start_offset": 402,
       "end_offset": 584
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00097_s007",
-      "chunk_id": "ver_92f7483b2854_c00097",
+      "chunk_source_id": "ver_92f7483b2854_c00100_s007",
+      "chunk_id": "ver_92f7483b2854_c00100",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00156",
       "source_order": 7,
       "start_offset": 0,
       "end_offset": 84
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00097_s008",
-      "chunk_id": "ver_92f7483b2854_c00097",
+      "chunk_source_id": "ver_92f7483b2854_c00100_s008",
+      "chunk_id": "ver_92f7483b2854_c00100",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00157",
       "source_order": 8,
       "start_offset": 0,
       "end_offset": 111
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00097_s009",
-      "chunk_id": "ver_92f7483b2854_c00097",
+      "chunk_source_id": "ver_92f7483b2854_c00100_s009",
+      "chunk_id": "ver_92f7483b2854_c00100",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00157",
       "source_order": 9,
       "start_offset": 112,
       "end_offset": 260
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00097_s010",
-      "chunk_id": "ver_92f7483b2854_c00097",
+      "chunk_source_id": "ver_92f7483b2854_c00100_s010",
+      "chunk_id": "ver_92f7483b2854_c00100",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00157",
       "source_order": 10,
       "start_offset": 261,
       "end_offset": 353
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00097_s011",
-      "chunk_id": "ver_92f7483b2854_c00097",
+      "chunk_source_id": "ver_92f7483b2854_c00100_s011",
+      "chunk_id": "ver_92f7483b2854_c00100",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00157",
       "source_order": 11,
       "start_offset": 354,
       "end_offset": 440
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00097_s012",
-      "chunk_id": "ver_92f7483b2854_c00097",
+      "chunk_source_id": "ver_92f7483b2854_c00100_s012",
+      "chunk_id": "ver_92f7483b2854_c00100",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00157",
       "source_order": 12,
       "start_offset": 441,
       "end_offset": 550
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00097_s013",
-      "chunk_id": "ver_92f7483b2854_c00097",
+      "chunk_source_id": "ver_92f7483b2854_c00100_s013",
+      "chunk_id": "ver_92f7483b2854_c00100",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00157",
       "source_order": 13,
       "start_offset": 551,
       "end_offset": 647
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00097_s014",
-      "chunk_id": "ver_92f7483b2854_c00097",
+      "chunk_source_id": "ver_92f7483b2854_c00100_s014",
+      "chunk_id": "ver_92f7483b2854_c00100",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00157",
       "source_order": 14,
       "start_offset": 648,
       "end_offset": 738
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00097_s015",
-      "chunk_id": "ver_92f7483b2854_c00097",
+      "chunk_source_id": "ver_92f7483b2854_c00100_s015",
+      "chunk_id": "ver_92f7483b2854_c00100",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00157",
       "source_order": 15,
       "start_offset": 739,
       "end_offset": 810
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00097_s016",
-      "chunk_id": "ver_92f7483b2854_c00097",
+      "chunk_source_id": "ver_92f7483b2854_c00100_s016",
+      "chunk_id": "ver_92f7483b2854_c00100",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00157",
       "source_order": 16,
       "start_offset": 811,
       "end_offset": 941
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00098_s000",
-      "chunk_id": "ver_92f7483b2854_c00098",
+      "chunk_source_id": "ver_92f7483b2854_c00101_s000",
+      "chunk_id": "ver_92f7483b2854_c00101",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00157",
       "source_order": 0,
       "start_offset": 942,
       "end_offset": 1023
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00098_s001",
-      "chunk_id": "ver_92f7483b2854_c00098",
+      "chunk_source_id": "ver_92f7483b2854_c00101_s001",
+      "chunk_id": "ver_92f7483b2854_c00101",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00157",
       "source_order": 1,
       "start_offset": 1024,
       "end_offset": 1117
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00098_s002",
-      "chunk_id": "ver_92f7483b2854_c00098",
+      "chunk_source_id": "ver_92f7483b2854_c00101_s002",
+      "chunk_id": "ver_92f7483b2854_c00101",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00157",
       "source_order": 2,
       "start_offset": 1118,
       "end_offset": 1199
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00098_s003",
-      "chunk_id": "ver_92f7483b2854_c00098",
+      "chunk_source_id": "ver_92f7483b2854_c00101_s003",
+      "chunk_id": "ver_92f7483b2854_c00101",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00157",
       "source_order": 3,
       "start_offset": 1200,
       "end_offset": 1320
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00099_s000",
-      "chunk_id": "ver_92f7483b2854_c00099",
+      "chunk_source_id": "ver_92f7483b2854_c00102_s000",
+      "chunk_id": "ver_92f7483b2854_c00102",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00158",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 13
     },
     {
-      "chunk_source_id": "ver_92f7483b2854_c00100_s000",
-      "chunk_id": "ver_92f7483b2854_c00100",
+      "chunk_source_id": "ver_92f7483b2854_c00103_s000",
+      "chunk_id": "ver_92f7483b2854_c00103",
       "normalized_block_id": "nrm_ver_92f7483b2854_b00159",
       "source_order": 0,
       "start_offset": 0,

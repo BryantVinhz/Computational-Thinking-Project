@@ -20,6 +20,7 @@ from rrf import reciprocal_rank_fusion
 from MMR import LangChainMMRSelector
 from reranker import CrossEncoderReranker
 from evidence_package import EvidenceAssembler
+from ontology_utils import load_ontology_terms
 
 logger = logging.getLogger(__name__)
 
@@ -45,7 +46,8 @@ class RetrievalSystem:
         mmr_selector: LangChainMMRSelector | None = None,
         evidence_assembler: EvidenceAssembler | None = None,
     ):
-        self.scope_builder = scope_builder or ScopeBuilder()
+        terms, self.ontology_labels = load_ontology_terms()
+        self.scope_builder = scope_builder or ScopeBuilder(ontology_dict=terms)
         self.vectorizer = query_vectorizer or QueryVectorizer()
         self.dense = dense_retriever or DenseRetriever()
         self.bm25 = bm25_retriever or BM25Retriever()
@@ -70,7 +72,7 @@ class RetrievalSystem:
         else:
             return 3, 0.65  # SEARCH 
 
-    def _execute_search_pipeline(self, payload: ScopedRetrievalPayload, target_k: int, lambda_val: float) -> list[dict[str, Any]]:
+    def _execute_search_pipeline(self, payload: ScopedRetrievalPayload, target_k: int, lambda_val: float) -> tuple[list[dict[str, Any]], bool, str | None]:
         """Execute search pipeline (Sparse + Dense -> RRF -> Rerank -> MMR)"""
         # Expanded initial retrieval top-K (3-5x target k to allow room for RRF and MMR selection)
         candidate_pool_size = max(15, target_k * 4)
@@ -88,7 +90,7 @@ class RetrievalSystem:
         )
 
         if not fused:
-            return []
+            return [], False, None
 
         # Rescore with Cross-Encoder Reranker
         candidate_chunks_for_mmr = fused
@@ -150,7 +152,7 @@ class RetrievalSystem:
                 "total_evidence": 0,
                 "evidence_by_task": {},
                 "evidence_list": [],
-                "llm_context": plan.get("clarify_question") or "Please clarify your question",
+                "llm_context": plan.get("clarification_message") or "Please clarify your question",
             }
 
         global_intent = plan.get("intent", "SEARCH").upper()
@@ -165,6 +167,26 @@ class RetrievalSystem:
                 "depends_on": False,
             }]
 
+    
+        if global_intent == "COMPARE" and len(raw_tasks) == 1:
+            main_task = raw_tasks[0]
+            query_text = main_task.get("query") or plan.get("resolved_query") or plan.get("original_query", "")
+            detected_vers = ScopeBuilder.extract_versions(query_text)
+            
+            if len(detected_vers) >= 2:
+                logger.info("Multi-branch Retrieval")
+                branched_tasks = []
+                for idx, v_tag in enumerate(detected_vers, start=1):
+                    branched_tasks.append({
+                        "task_id": f"{main_task.get('task_id', 'task_compare')}_branch_{v_tag}",
+                        "intent_task": "COMPARE",
+                        "query": f"{query_text} {v_tag}",
+                        "depends_on": False,
+                        "objective": main_task.get("objective", {}),
+                    })
+                raw_tasks = branched_tasks
+
+        
         task_results: dict[str, list[dict[str, Any]]] = {}
         all_selected_chunks: list[dict[str, Any]] = []
         task_insufficient_flags: list[bool] = []

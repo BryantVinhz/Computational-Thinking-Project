@@ -203,7 +203,42 @@ def extract_claims(draft_answer: str, min_tokens: int = MIN_CLAIM_TOKENS) -> lis
 
     return claims
 
-
+class MultilingualSemanticSimilarity:
+    """
+    Compute cross-lingual semantic similarity
+    Resolves the language discrepancy when cross-referencing Vietnamese claims against English evidence
+    """
+    def __init__(self, model_name: str = "BAAI/bge-m3", device: str = "cpu"):
+        self.model_name = model_name
+        self.device = device
+        self._model = None
+    @property
+    def model(self):
+        if self._model is None:
+            try:
+                from sentence_transformers import SentenceTransformer
+                self._model = SentenceTransformer(self.model_name, device=self.device)
+            except Exception as e:
+                # Fallback nếu môi trường chưa cài sentence-transformers
+                return None
+        return self._model
+    def __call__(self, claim: str, passage: str) -> float:
+        """Tính cosine similarity giữa claim (Tiếng Việt) và passage (Tiếng Anh)."""
+        if not self.model:
+            # Fallback sang lexical nếu không nạp được model
+            return lexical_support_score(claim, passage)
+        try:
+            embeddings = self.model.encode(
+                [claim, passage[:600]],
+                normalize_embeddings=True,
+                show_progress_bar=False,
+            )
+            # Dot product của normalized embeddings chính là cosine similarity
+            cos_sim = float((embeddings[0] * embeddings[1]).sum())
+            return max(0.0, min(1.0, cos_sim))
+        except Exception:
+            return lexical_support_score(claim, passage)
+        
 # =====================================================================
 # Verifier
 # =====================================================================

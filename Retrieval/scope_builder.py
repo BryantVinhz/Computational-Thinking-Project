@@ -13,13 +13,22 @@ DOCUMENTS_CATALOG_PATH = INGESTION_OUTPUT_DIR / "documents.json"
 VERSIONS_CATALOG_PATH = INGESTION_OUTPUT_DIR / "documents_version.json"
 
 FORMAT_MAPPING = {
-    "MD": "MD",
-    "MARKDOWN": "MD",
+    "MD": "MARKDOWN",
+    "MARKDOWN": "MARKDOWN",
     "PDF": "PDF",
     "JSON": "JSON",
     "CSV": "CSV",
     "TXT": "TXT",
 }
+
+DOC_TYPE_KEYWORDS = {
+    "cheatsheet": ["cheat_sheet"],
+    "standard": ["asvs"], 
+    "specification": ["cvss"]
+}
+
+def norm(s: str) -> str:
+    return " ".join(re.findall(r"[a-z0-9]+", (s or "").lower()))
 
 class ScopeBuilder:
     def __init__(
@@ -102,14 +111,48 @@ class ScopeBuilder:
 
         return sorted(resolved_ids)
 
-    def _resolve_version_ids(self, target_doc_ids: list[str], version_tag_req: str) -> list[str]:
+    @staticmethod
+    def extract_versions(text: str) -> list[str]:
+        """
+        Extract all version formats appearing in the sentence:
+        - Year: 2021, 2025, 2017...
+        - Tag: v4.0, 5.0.0, v3.1, 1.2, 4.0...
+        """
+        if not text:
+            return []
+        
+        """
+        Pattern bắt:
+            1. 4-digit year 
+            2. Version with 'v' or 'ver' prefix: v4.0, ver5.0.0
+            3. Decimal/SemVer format: 4.0, 5.0.0, 3.1
+        """
+        pattern = r"\b(?:v(?:er(?:sion)?)?\.?\s*)?(\d{4}|\d+(?:\.\d+)+)\b"
+        
+        matches = re.findall(pattern, text, flags=re.IGNORECASE)
+
+        seen = set()
+        results = []
+        for m in matches:
+            m_clean = m.strip().lower()
+            if m_clean not in seen:
+                seen.add(m_clean)
+                results.append(m_clean)
+        return results
+
+    @staticmethod
+    def normalize_version_tag(tag: str) -> str:
+        """Strip 'v' or 'ver.' prefix for flexible comparison (v4.0 -> 4.0)"""
+        return re.sub(r"^v(?:er)?\.?\s*", "", str(tag).strip().lower())
+
+    def _resolve_version_ids(self, target_doc_ids: list[str], raw_version: str) -> list[str]:
         """
         Maps version_tag (e.g., '2025', 'v4.0') to hashed version_id in metadata.db
         """
-        if not version_tag_req:
+        if not raw_version:
             return []
 
-        v_req = str(version_tag_req).strip().lower()
+        norm_req = self.normalize_version_tag(raw_version)
         matched_version_ids = []
 
         for ver in self.ver_catalog:
@@ -118,7 +161,9 @@ class ScopeBuilder:
                 continue
 
             tag = str(ver.get("version_tag", "")).lower()
-            if v_req == tag or v_req in ver.get("file_name", "").lower():
+            norm_tag = self.normalize_version_tag(tag)
+            file_name = ver.get("file_name", "").lower()
+            if (norm_req == norm_tag) or (norm_req in file_name):
                 matched_version_ids.append(ver["version_id"])
 
         return sorted(set(matched_version_ids))
@@ -249,16 +294,33 @@ class ScopeBuilder:
 
         doc_ids = self._resolve_canonical_doc_ids(target_sources)
 
+        task_query = task.get("query", "") if task else ""
+        detected_versions = self.extract_versions(task_query)
+        if not detected_versions and flt.get("version"):
+            detected_versions = [flt.get("version")]
+        version_ids = []
+        for v_req in detected_versions:
+            v_ids = self._resolve_version_ids(doc_ids, v_req)
+            version_ids.extend(v_ids)
+        version_ids = sorted(set(version_ids))
+        
         # Filter file_format
-        raw_fmt = flt.get("document_type")
-        file_format = FORMAT_MAPPING.get(raw_fmt.upper().replace(".", ""), raw_fmt.upper()) if raw_fmt else None
-
-        # Filter version
-        version_ids = self._resolve_version_ids(doc_ids, flt.get("version"))
+        raw_type = (flt.get("document_type") or "").strip().lower().replace(".", "")
+        file_format = FORMAT_MAPPING.get(raw_type.upper())
+        
+        if not file_format and raw_type in DOC_TYPE_KEYWORDS:
+            kws = DOC_TYPE_KEYWORDS[raw_type]
+            pool = doc_ids or sorted(self.valid_doc_ids)
+            narrowed = [d for d in pool if any(k in d.lower() for k in kws)]
+            if narrowed:
+                doc_ids = narrowed
 
         is_relaxed = False
-        if flt.get("version") and not version_ids:
-            logger.warning("Không tìm thấy version_id nào khớp với '%s'. Tự động nới lỏng bỏ lọc version.", flt.get("version"))
+        if detected_versions and not version_ids:
+            logger.warning(
+                "No matching version_id found for %s. Automatically falling back to unfiltered search",
+                detected_versions,
+            )
             is_relaxed = True
             
             
@@ -293,9 +355,8 @@ class ScopeBuilder:
         candidate_docs = []
         if not doc_ids and ontology_expansions:
             for doc in self.doc_catalog:
-                title = doc.get("canonical_title", "").lower()
-                doc_id = doc.get("document_id", "").lower()
-                if any(k in title or k in doc_id for k in ontology_expansions):
+                hay = f" {norm(doc.get('canonical_title', ''))} {norm(doc.get('document_id', ''))} "
+                if any(f" {norm(k)} " in hay for k in ontology_expansions if norm(k)):
                     candidate_docs.append(doc["document_id"])
                     
         scope = RetrievalScope(

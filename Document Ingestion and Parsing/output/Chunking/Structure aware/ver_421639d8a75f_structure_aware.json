@@ -50,8 +50,8 @@
       "version_id": "ver_421639d8a75f",
       "chunk_idx": 3,
       "chunk_type": "mixed",
-      "text_content": "The complication is compounded by the differing meanings and treatment of encoded values within each subcontext (HTML, HTML attribute, URL, and CSS) within the execution context.\n\nFor the purposes of this article, we refer to the HTML, HTML attribute, URL, and CSS contexts as subcontexts because each of these contexts can be reached and set within a JavaScript execution context.\n\nIn JavaScript code, the main context is JavaScript but with the right tags and context closing characters, an attacker can try to attack the other 4 contexts using equivalent JavaScript DOM methods.\n\nThe following is an example vulnerability which occurs in the JavaScript context and HTML subcontext:\n\n```html\n <script>\n var x = '<%= taintedVar %>';\n var d = document.createElement('div');\n d.innerHTML = x;\n document.body.appendChild(d);\n </script>\n```\n\nLet's look at the individual subcontexts of the execution context in turn.",
-      "token_count": 190,
+      "text_content": "The complication is compounded by the differing meanings and treatment of encoded values within each subcontext (HTML, HTML attribute, URL, and CSS) within the execution context.\n\nFor the purposes of this article, we refer to the HTML, HTML attribute, URL, and CSS contexts as subcontexts because each of these contexts can be reached and set within a JavaScript execution context.\n\nIn JavaScript code, the main context is JavaScript but with the right tags and context closing characters, an attacker can try to attack the other 4 contexts using equivalent JavaScript DOM methods.\n\nThe following is an example vulnerability which occurs in the JavaScript context and HTML subcontext:",
+      "token_count": 122,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "DOM based XSS Prevention Cheat Sheet",
@@ -63,6 +63,34 @@
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
       "chunk_idx": 4,
+      "chunk_type": "code",
+      "text_content": "```html\n <script>\n var x = '<%= taintedVar %>';\n var d = document.createElement('div');\n d.innerHTML = x;\n document.body.appendChild(d);\n </script>\n```",
+      "token_count": 53,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "Introduction"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00005",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 5,
+      "chunk_type": "paragraph",
+      "text_content": "Let's look at the individual subcontexts of the execution context in turn.",
+      "token_count": 15,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "Introduction"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00006",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 6,
       "chunk_type": "heading",
       "text_content": "## RULE \\#1 - HTML Escape then JavaScript Escape Before Inserting Untrusted Data into HTML Subcontext within the Execution Context",
       "token_count": 23,
@@ -73,10 +101,10 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00005",
+      "chunk_id": "ver_421639d8a75f_c00007",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 5,
+      "chunk_idx": 7,
       "chunk_type": "paragraph",
       "text_content": "There are several methods and attributes which can be used to directly render HTML content within JavaScript.\n\nThese methods constitute the HTML Subcontext within the Execution Context.\n\nIf these methods are provided with untrusted input, then an XSS vulnerability could result.\n\nFor example:",
       "token_count": 48,
@@ -87,10 +115,10 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00006",
+      "chunk_id": "ver_421639d8a75f_c00008",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 6,
+      "chunk_idx": 8,
       "chunk_type": "heading",
       "text_content": "### Example Dangerous HTML Methods",
       "token_count": 7,
@@ -102,10 +130,10 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00007",
+      "chunk_id": "ver_421639d8a75f_c00009",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 7,
+      "chunk_idx": 9,
       "chunk_type": "heading",
       "text_content": "#### Attributes",
       "token_count": 5,
@@ -118,10 +146,10 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00008",
+      "chunk_id": "ver_421639d8a75f_c00010",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 8,
+      "chunk_idx": 10,
       "chunk_type": "code",
       "text_content": "```javascript\n element.innerHTML = \"<HTML> Tags and markup\";\n element.outerHTML = \"<HTML> Tags and markup\";\n```",
       "token_count": 33,
@@ -134,10 +162,10 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00009",
+      "chunk_id": "ver_421639d8a75f_c00011",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 9,
+      "chunk_idx": 11,
       "chunk_type": "heading",
       "text_content": "#### Methods",
       "token_count": 5,
@@ -150,10 +178,10 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00010",
+      "chunk_id": "ver_421639d8a75f_c00012",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 10,
+      "chunk_idx": 12,
       "chunk_type": "code",
       "text_content": "```javascript\n document.write(\"<HTML> Tags and markup\");\n document.writeln(\"<HTML> Tags and markup\");\n```",
       "token_count": 35,
@@ -166,10 +194,10 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00011",
+      "chunk_id": "ver_421639d8a75f_c00013",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 11,
+      "chunk_idx": 13,
       "chunk_type": "heading",
       "text_content": "### Guideline",
       "token_count": 4,
@@ -181,13 +209,13 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00012",
+      "chunk_id": "ver_421639d8a75f_c00014",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 12,
+      "chunk_idx": 14,
       "chunk_type": "mixed",
-      "text_content": "To make dynamic updates to HTML in the DOM safe, we recommend:\n\n1.\n\nHTML encoding, and then\n 2.\n\nJavaScript encoding all untrusted input, as shown in these examples:\n\n```javascript\n var ESAPI = require('node-esapi');\n element.innerHTML = \"<%=ESAPI.encoder().encodeForJavascript(ESAPI.encoder().encodeForHTML(untrustedData))%>\";\n element.outerHTML = \"<%=ESAPI.encoder().encodeForJavascript(ESAPI.encoder().encodeForHTML(untrustedData))%>\";\n```\n\n```javascript\n var ESAPI = require('node-esapi');\n document.write(\"<%=ESAPI.encoder().encodeForJavascript(ESAPI.encoder().encodeForHTML(untrustedData))%>\");\n document.writeln(\"<%=ESAPI.encoder().encodeForJavascript(ESAPI.encoder().encodeForHTML(untrustedData))%>\");\n```",
-      "token_count": 199,
+      "text_content": "To make dynamic updates to HTML in the DOM safe, we recommend:\n\n1.\n\nHTML encoding, and then\n 2.\n\nJavaScript encoding all untrusted input, as shown in these examples:",
+      "token_count": 35,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "DOM based XSS Prevention Cheat Sheet",
@@ -196,10 +224,40 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00013",
+      "chunk_id": "ver_421639d8a75f_c00015",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 13,
+      "chunk_idx": 15,
+      "chunk_type": "code",
+      "text_content": "```javascript\n var ESAPI = require('node-esapi');\n element.innerHTML = \"<%=ESAPI.encoder().encodeForJavascript(ESAPI.encoder().encodeForHTML(untrustedData))%>\";\n element.outerHTML = \"<%=ESAPI.encoder().encodeForJavascript(ESAPI.encoder().encodeForHTML(untrustedData))%>\";\n```",
+      "token_count": 81,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "RULE \\#1 - HTML Escape then JavaScript Escape Before Inserting Untrusted Data into HTML Subcontext within the Execution Context",
+        "Guideline"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00016",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 16,
+      "chunk_type": "code",
+      "text_content": "```javascript\n var ESAPI = require('node-esapi');\n document.write(\"<%=ESAPI.encoder().encodeForJavascript(ESAPI.encoder().encodeForHTML(untrustedData))%>\");\n document.writeln(\"<%=ESAPI.encoder().encodeForJavascript(ESAPI.encoder().encodeForHTML(untrustedData))%>\");\n```",
+      "token_count": 83,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "RULE \\#1 - HTML Escape then JavaScript Escape Before Inserting Untrusted Data into HTML Subcontext within the Execution Context",
+        "Guideline"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00017",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 17,
       "chunk_type": "heading",
       "text_content": "## RULE \\#2 - JavaScript Escape Before Inserting Untrusted Data into HTML Attribute Subcontext within the Execution Context",
       "token_count": 21,
@@ -210,10 +268,10 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00014",
+      "chunk_id": "ver_421639d8a75f_c00018",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 14,
+      "chunk_idx": 18,
       "chunk_type": "paragraph",
       "text_content": "The HTML attribute *subcontext* within the *execution* context is divergent from the standard encoding rules.\n\nThis is because the rule to HTML attribute encode in an HTML attribute rendering context is necessary in order to mitigate attacks which try to exit out of an HTML attributes or try to add additional attributes which could lead to XSS.\n\nWhen you are in a DOM execution context you only need to JavaScript encode HTML attributes which do not execute code (attributes other than event handler, CSS, and URL attributes).\n\nFor example, the general rule is to HTML Attribute encode untrusted data (data from the database, HTTP request, user, back-end system, etc.) placed in an HTML Attribute.\n\nThis is the appropriate step to take when outputting data in a rendering context, however using HTML Attribute encoding in an execution context will break the application display of data.",
       "token_count": 168,
@@ -224,10 +282,10 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00015",
+      "chunk_id": "ver_421639d8a75f_c00019",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 15,
+      "chunk_idx": 19,
       "chunk_type": "heading",
       "text_content": "### SAFE but BROKEN example",
       "token_count": 7,
@@ -239,13 +297,13 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00016",
+      "chunk_id": "ver_421639d8a75f_c00020",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 16,
-      "chunk_type": "mixed",
-      "text_content": "```javascript\n var ESAPI = require('node-esapi');\n var x = document.createElement(\"input\");\n x.setAttribute(\"name\", \"company_name\");\n // In the following line of code, companyName represents untrusted user input\n // The ESAPI.encoder().encodeForHTMLAttribute() is unnecessary and causes double-encoding\n x.setAttribute(\"value\", '<%=ESAPI.encoder().encodeForJavascript(ESAPI.encoder().encodeForHTMLAttribute(companyName))%>');\n var form1 = document.forms[0];\n form1.appendChild(x);\n```\n\nThe problem is that if companyName had the value \"Johnson & Johnson\".\n\nWhat would be displayed in the input text field would be \"Johnson &#x26;amp; Johnson\".\n\nThe appropriate encoding to use in the above case would be only JavaScript encoding to disallow an attacker from closing out the single quotes and in-lining code, or escaping to HTML and opening a new script tag.",
-      "token_count": 208,
+      "chunk_idx": 20,
+      "chunk_type": "code",
+      "text_content": "```javascript\n var ESAPI = require('node-esapi');\n var x = document.createElement(\"input\");\n x.setAttribute(\"name\", \"company_name\");\n // In the following line of code, companyName represents untrusted user input\n // The ESAPI.encoder().encodeForHTMLAttribute() is unnecessary and causes double-encoding\n x.setAttribute(\"value\", '<%=ESAPI.encoder().encodeForJavascript(ESAPI.encoder().encodeForHTMLAttribute(companyName))%>');\n var form1 = document.forms[0];\n form1.appendChild(x);\n```",
+      "token_count": 130,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "DOM based XSS Prevention Cheat Sheet",
@@ -254,10 +312,25 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00017",
+      "chunk_id": "ver_421639d8a75f_c00021",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 17,
+      "chunk_idx": 21,
+      "chunk_type": "paragraph",
+      "text_content": "The problem is that if companyName had the value \"Johnson & Johnson\".\n\nWhat would be displayed in the input text field would be \"Johnson &#x26;amp; Johnson\".\n\nThe appropriate encoding to use in the above case would be only JavaScript encoding to disallow an attacker from closing out the single quotes and in-lining code, or escaping to HTML and opening a new script tag.",
+      "token_count": 78,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "RULE \\#2 - JavaScript Escape Before Inserting Untrusted Data into HTML Attribute Subcontext within the Execution Context",
+        "SAFE but BROKEN example"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00022",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 22,
       "chunk_type": "heading",
       "text_content": "### SAFE and FUNCTIONALLY CORRECT example",
       "token_count": 8,
@@ -269,13 +342,13 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00018",
+      "chunk_id": "ver_421639d8a75f_c00023",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 18,
-      "chunk_type": "mixed",
-      "text_content": "```javascript\n var ESAPI = require('node-esapi');\n var x = document.createElement(\"input\");\n x.setAttribute(\"name\", \"company_name\");\n x.setAttribute(\"value\", '<%=ESAPI.encoder().encodeForJavascript(companyName)%>');\n var form1 = document.forms[0];\n form1.appendChild(x);\n```\n\nIt is important to note that when setting an HTML attribute which does not execute code, the value is set directly within the object attribute of the HTML element so there is no concerns with injecting up.",
-      "token_count": 127,
+      "chunk_idx": 23,
+      "chunk_type": "code",
+      "text_content": "```javascript\n var ESAPI = require('node-esapi');\n var x = document.createElement(\"input\");\n x.setAttribute(\"name\", \"company_name\");\n x.setAttribute(\"value\", '<%=ESAPI.encoder().encodeForJavascript(companyName)%>');\n var form1 = document.forms[0];\n form1.appendChild(x);\n```",
+      "token_count": 88,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "DOM based XSS Prevention Cheat Sheet",
@@ -284,10 +357,25 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00019",
+      "chunk_id": "ver_421639d8a75f_c00024",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 19,
+      "chunk_idx": 24,
+      "chunk_type": "paragraph",
+      "text_content": "It is important to note that when setting an HTML attribute which does not execute code, the value is set directly within the object attribute of the HTML element so there is no concerns with injecting up.",
+      "token_count": 39,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "RULE \\#2 - JavaScript Escape Before Inserting Untrusted Data into HTML Attribute Subcontext within the Execution Context",
+        "SAFE and FUNCTIONALLY CORRECT example"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00025",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 25,
       "chunk_type": "heading",
       "text_content": "## RULE \\#3 - Be Careful when Inserting Untrusted Data into the Event Handler and JavaScript code Subcontexts within an Execution Context",
       "token_count": 25,
@@ -298,13 +386,13 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00020",
+      "chunk_id": "ver_421639d8a75f_c00026",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 20,
-      "chunk_type": "mixed",
-      "text_content": "Putting dynamic data within JavaScript code is especially dangerous because JavaScript encoding has different semantics for JavaScript encoded data when compared to other encodings.\n\nIn many cases, JavaScript encoding does not stop attacks within an execution context.\n\nFor example, a JavaScript encoded string will execute even though it is JavaScript encoded.\n\nTherefore, the primary recommendation is to **avoid including untrusted data in this context**.\n\nIf you must, the following examples describe some approaches that do and do not work.\n\n```javascript\nvar x = document.createElement(\"a\");\nx.href=\"#\";\n// In the line of code below, the encoded data on the right (the second argument to setAttribute)\n// is an example of untrusted data that was properly JavaScript encoded but still executes.\n\nx.setAttribute(\"onclick\", \"\\u0061\\u006c\\u0065\\u0072\\u0074\\u0028\\u0032\\u0032\\u0029\");\nvar y = document.createTextNode(\"Click To Test\");\nx.appendChild(y);\ndocument.body.appendChild(x);\n```\n\nThe `setAttribute(name_string,value_string)` method is dangerous because it implicitly coerces the *value_string* into the DOM attribute datatype of *name_string*.\n\nIn the case above, the attribute name is an JavaScript event handler, so the attribute value is implicitly converted to JavaScript code and evaluated.\n\nIn the case above, JavaScript encoding does not mitigate against DOM based XSS.\n\nOther JavaScript methods that interpret strings as code, such as `setTimeout`, `setInterval`, and `Function`, have the same risk.\n\nHTML event-handler attributes also contain [JavaScript function bodies](https://html.spec.whatwg.org/multipage/webappapis.html#event-handler-content-attributes).\n\nEscaping every character in one payload may produce a syntax error, but JavaScript encoding is not a defense for this context: escaped identifiers remain executable when the surrounding syntax is valid.\n\n```html\n<!-- Executes alert(1) when clicked; encoding the identifier does not make it safe.",
-      "token_count": 418,
+      "chunk_idx": 26,
+      "chunk_type": "paragraph",
+      "text_content": "Putting dynamic data within JavaScript code is especially dangerous because JavaScript encoding has different semantics for JavaScript encoded data when compared to other encodings.\n\nIn many cases, JavaScript encoding does not stop attacks within an execution context.\n\nFor example, a JavaScript encoded string will execute even though it is JavaScript encoded.\n\nTherefore, the primary recommendation is to **avoid including untrusted data in this context**.\n\nIf you must, the following examples describe some approaches that do and do not work.",
+      "token_count": 92,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "DOM based XSS Prevention Cheat Sheet",
@@ -312,13 +400,13 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00021",
+      "chunk_id": "ver_421639d8a75f_c00027",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 21,
-      "chunk_type": "mixed",
-      "text_content": "-->\n<a id=\"bb\" href=\"#\" onclick=\"\\u0061\\u006c\\u0065\\u0072\\u0074(1)\">Test Me</a>\n```\n\nSetting the JavaScript `onclick` property is different from setting an HTML attribute.\n\nIt expects a callback; assigning a primitive string [sets it to null](https://webidl.spec.whatwg.org/#LegacyTreatNonObjectAsNull), whether or not the string is encoded.\n\nThis is type conversion, not a benefit of JavaScript encoding.\n\nAssign a trusted function, and keep untrusted values as data inside that function rather than compiling them as code.\n\n```html\n<a id=\"bb\" href=\"#\">Test Me</a>\n```\n\n```javascript\n// Neither string becomes a handler.\n\ndocument.getElementById(\"bb\").onclick = \"alert(7)\";\ndocument.getElementById(\"bb\").onclick = \"\\u0061\\u006c\\u0065\\u0072\\u0074\\u0028\\u0037\\u0029\";\n\n// A trusted function is a handler.\n\ndocument.getElementById(\"bb\").onclick = function () {\n    alert(\"I was called.\");\n};\n```\n\nThere are other places in JavaScript where JavaScript encoding is accepted as valid executable code.\n\n```javascript\n for(var \\u0062=0; \\u0062 < 10; \\u0062++){\n     \\u0064\\u006f\\u0063\\u0075\\u006d\\u0065\\u006e\\u0074\n     .\\u0077\\u0072\\u0069\\u0074\\u0065\\u006c\\u006e\n     (\"\\u0048\\u0065\\u006c\\u006c\\u006f\\u0020\\u0057\\u006f\\u0072\\u006c\\u0064\");\n }\n \\u0077\\u0069\\u006e\\u0064\\u006f\\u0077\n .\\u0065\\u0076\\u0061\\u006c\n \\u0064\\u006f\\u0063\\u0075\\u006d\\u0065\\u006e\\u0074\n .\\u0077\\u0072\\u0069\\u0074\\u0065(111111111);\n```\n\nor",
-      "token_count": 409,
+      "chunk_idx": 27,
+      "chunk_type": "code",
+      "text_content": "```javascript\nvar x = document.createElement(\"a\");\nx.href=\"#\";\n// In the line of code below, the encoded data on the right (the second argument to setAttribute)\n// is an example of untrusted data that was properly JavaScript encoded but still executes.\nx.setAttribute(\"onclick\", \"\\u0061\\u006c\\u0065\\u0072\\u0074\\u0028\\u0032\\u0032\\u0029\");\nvar y = document.createTextNode(\"Click To Test\");\nx.appendChild(y);\ndocument.body.appendChild(x);\n```",
+      "token_count": 126,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "DOM based XSS Prevention Cheat Sheet",
@@ -326,13 +414,13 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00022",
+      "chunk_id": "ver_421639d8a75f_c00028",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 22,
-      "chunk_type": "mixed",
-      "text_content": "```javascript\n var s = \"\\u0065\\u0076\\u0061\\u006c\";\n var t = \"\\u0061\\u006c\\u0065\\u0072\\u0074\\u0028\\u0031\\u0031\\u0029\";\n window[s](t);\n```\n\nBecause JavaScript is based on an international standard (ECMAScript), JavaScript encoding enables the support of international characters in programming constructs and variables in addition to alternate string representations (string escapes).\n\nHowever the opposite is the case with HTML encoding.\n\nHTML tag elements are well defined and do not support alternate representations of the same tag.\n\nSo HTML encoding cannot be used to allow the developer to have alternate representations of the `<a>` tag for example.",
-      "token_count": 141,
+      "chunk_idx": 28,
+      "chunk_type": "paragraph",
+      "text_content": "The `setAttribute(name_string,value_string)` method is dangerous because it implicitly coerces the *value_string* into the DOM attribute datatype of *name_string*.\n\nIn the case above, the attribute name is an JavaScript event handler, so the attribute value is implicitly converted to JavaScript code and evaluated.\n\nIn the case above, JavaScript encoding does not mitigate against DOM based XSS.\n\nOther JavaScript methods that interpret strings as code, such as `setTimeout`, `setInterval`, and `Function`, have the same risk.\n\nHTML event-handler attributes also contain [JavaScript function bodies](https://html.spec.whatwg.org/multipage/webappapis.html#event-handler-content-attributes).\n\nEscaping every character in one payload may produce a syntax error, but JavaScript encoding is not a defense for this context: escaped identifiers remain executable when the surrounding syntax is valid.",
+      "token_count": 175,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "DOM based XSS Prevention Cheat Sheet",
@@ -340,10 +428,136 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00023",
+      "chunk_id": "ver_421639d8a75f_c00029",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 23,
+      "chunk_idx": 29,
+      "chunk_type": "code",
+      "text_content": "```html\n<!-- Executes alert(1) when clicked; encoding the identifier does not make it safe. -->\n<a id=\"bb\" href=\"#\" onclick=\"\\u0061\\u006c\\u0065\\u0072\\u0074(1)\">Test Me</a>\n```",
+      "token_count": 67,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "RULE \\#3 - Be Careful when Inserting Untrusted Data into the Event Handler and JavaScript code Subcontexts within an Execution Context"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00030",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 30,
+      "chunk_type": "paragraph",
+      "text_content": "Setting the JavaScript `onclick` property is different from setting an HTML attribute.\n\nIt expects a callback; assigning a primitive string [sets it to null](https://webidl.spec.whatwg.org/#LegacyTreatNonObjectAsNull), whether or not the string is encoded.\n\nThis is type conversion, not a benefit of JavaScript encoding.\n\nAssign a trusted function, and keep untrusted values as data inside that function rather than compiling them as code.",
+      "token_count": 88,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "RULE \\#3 - Be Careful when Inserting Untrusted Data into the Event Handler and JavaScript code Subcontexts within an Execution Context"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00031",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 31,
+      "chunk_type": "code",
+      "text_content": "```html\n<a id=\"bb\" href=\"#\">Test Me</a>\n```",
+      "token_count": 26,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "RULE \\#3 - Be Careful when Inserting Untrusted Data into the Event Handler and JavaScript code Subcontexts within an Execution Context"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00032",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 32,
+      "chunk_type": "code",
+      "text_content": "```javascript\n// Neither string becomes a handler.\ndocument.getElementById(\"bb\").onclick = \"alert(7)\";\ndocument.getElementById(\"bb\").onclick = \"\\u0061\\u006c\\u0065\\u0072\\u0074\\u0028\\u0037\\u0029\";\n\n// A trusted function is a handler.\ndocument.getElementById(\"bb\").onclick = function () {\n    alert(\"I was called.\");\n};\n```",
+      "token_count": 99,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "RULE \\#3 - Be Careful when Inserting Untrusted Data into the Event Handler and JavaScript code Subcontexts within an Execution Context"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00033",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 33,
+      "chunk_type": "paragraph",
+      "text_content": "There are other places in JavaScript where JavaScript encoding is accepted as valid executable code.",
+      "token_count": 16,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "RULE \\#3 - Be Careful when Inserting Untrusted Data into the Event Handler and JavaScript code Subcontexts within an Execution Context"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00034",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 34,
+      "chunk_type": "code",
+      "text_content": "```javascript\n for(var \\u0062=0; \\u0062 < 10; \\u0062++){\n     \\u0064\\u006f\\u0063\\u0075\\u006d\\u0065\\u006e\\u0074\n     .\\u0077\\u0072\\u0069\\u0074\\u0065\\u006c\\u006e\n     (\"\\u0048\\u0065\\u006c\\u006c\\u006f\\u0020\\u0057\\u006f\\u0072\\u006c\\u0064\");\n }\n \\u0077\\u0069\\u006e\\u0064\\u006f\\u0077\n .\\u0065\\u0076\\u0061\\u006c\n \\u0064\\u006f\\u0063\\u0075\\u006d\\u0065\\u006e\\u0074\n .\\u0077\\u0072\\u0069\\u0074\\u0065(111111111);\n```",
+      "token_count": 137,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "RULE \\#3 - Be Careful when Inserting Untrusted Data into the Event Handler and JavaScript code Subcontexts within an Execution Context"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00035",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 35,
+      "chunk_type": "paragraph",
+      "text_content": "or",
+      "token_count": 1,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "RULE \\#3 - Be Careful when Inserting Untrusted Data into the Event Handler and JavaScript code Subcontexts within an Execution Context"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00036",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 36,
+      "chunk_type": "code",
+      "text_content": "```javascript\n var s = \"\\u0065\\u0076\\u0061\\u006c\";\n var t = \"\\u0061\\u006c\\u0065\\u0072\\u0074\\u0028\\u0031\\u0031\\u0029\";\n window[s](t);\n```",
+      "token_count": 53,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "RULE \\#3 - Be Careful when Inserting Untrusted Data into the Event Handler and JavaScript code Subcontexts within an Execution Context"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00037",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 37,
+      "chunk_type": "paragraph",
+      "text_content": "Because JavaScript is based on an international standard (ECMAScript), JavaScript encoding enables the support of international characters in programming constructs and variables in addition to alternate string representations (string escapes).\n\nHowever the opposite is the case with HTML encoding.\n\nHTML tag elements are well defined and do not support alternate representations of the same tag.\n\nSo HTML encoding cannot be used to allow the developer to have alternate representations of the `<a>` tag for example.",
+      "token_count": 88,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "RULE \\#3 - Be Careful when Inserting Untrusted Data into the Event Handler and JavaScript code Subcontexts within an Execution Context"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00038",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 38,
       "chunk_type": "heading",
       "text_content": "### HTML Encoding's Disarming Nature",
       "token_count": 9,
@@ -355,13 +569,13 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00024",
+      "chunk_id": "ver_421639d8a75f_c00039",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 24,
-      "chunk_type": "mixed",
-      "text_content": "In general, HTML encoding serves to castrate HTML tags which are placed in HTML and HTML attribute contexts.\n\nWorking example (no HTML encoding):\n\n```html\n<a href=\"...\" >\n```\n\nNormally encoded example (Does Not Work – DNW):\n\n```html\n&#x3c;a href=...\n\n&#x3e;\n```\n\nHTML encoded example to highlight a fundamental difference with JavaScript encoded values (DNW):\n\n```html\n<&#x61; href=...>\n```\n\nIf HTML encoding followed the same semantics as JavaScript encoding, the line above could have possibly worked to render a link.\n\nThis difference makes JavaScript encoding a less viable weapon in our fight against XSS.",
-      "token_count": 149,
+      "chunk_idx": 39,
+      "chunk_type": "paragraph",
+      "text_content": "In general, HTML encoding serves to castrate HTML tags which are placed in HTML and HTML attribute contexts.\n\nWorking example (no HTML encoding):",
+      "token_count": 28,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "DOM based XSS Prevention Cheat Sheet",
@@ -370,10 +584,100 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00025",
+      "chunk_id": "ver_421639d8a75f_c00040",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 25,
+      "chunk_idx": 40,
+      "chunk_type": "code",
+      "text_content": "```html\n<a href=\"...\" >\n```",
+      "token_count": 17,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "RULE \\#3 - Be Careful when Inserting Untrusted Data into the Event Handler and JavaScript code Subcontexts within an Execution Context",
+        "HTML Encoding's Disarming Nature"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00041",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 41,
+      "chunk_type": "paragraph",
+      "text_content": "Normally encoded example (Does Not Work – DNW):",
+      "token_count": 11,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "RULE \\#3 - Be Careful when Inserting Untrusted Data into the Event Handler and JavaScript code Subcontexts within an Execution Context",
+        "HTML Encoding's Disarming Nature"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00042",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 42,
+      "chunk_type": "code",
+      "text_content": "```html\n&#x3c;a href=... &#x3e;\n```",
+      "token_count": 21,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "RULE \\#3 - Be Careful when Inserting Untrusted Data into the Event Handler and JavaScript code Subcontexts within an Execution Context",
+        "HTML Encoding's Disarming Nature"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00043",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 43,
+      "chunk_type": "paragraph",
+      "text_content": "HTML encoded example to highlight a fundamental difference with JavaScript encoded values (DNW):",
+      "token_count": 16,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "RULE \\#3 - Be Careful when Inserting Untrusted Data into the Event Handler and JavaScript code Subcontexts within an Execution Context",
+        "HTML Encoding's Disarming Nature"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00044",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 44,
+      "chunk_type": "code",
+      "text_content": "```html\n<&#x61; href=...>\n```",
+      "token_count": 18,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "RULE \\#3 - Be Careful when Inserting Untrusted Data into the Event Handler and JavaScript code Subcontexts within an Execution Context",
+        "HTML Encoding's Disarming Nature"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00045",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 45,
+      "chunk_type": "paragraph",
+      "text_content": "If HTML encoding followed the same semantics as JavaScript encoding, the line above could have possibly worked to render a link.\n\nThis difference makes JavaScript encoding a less viable weapon in our fight against XSS.",
+      "token_count": 38,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "RULE \\#3 - Be Careful when Inserting Untrusted Data into the Event Handler and JavaScript code Subcontexts within an Execution Context",
+        "HTML Encoding's Disarming Nature"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00046",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 46,
       "chunk_type": "heading",
       "text_content": "## RULE \\#4 - JavaScript Escape Before Inserting Untrusted Data into the CSS Attribute Subcontext within the Execution Context",
       "token_count": 22,
@@ -384,13 +688,13 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00026",
+      "chunk_id": "ver_421639d8a75f_c00047",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 26,
-      "chunk_type": "mixed",
-      "text_content": "Normally executing JavaScript from a CSS context required either passing `javascript:attackCode()` to the CSS `url()` method or invoking the CSS `expression()` method passing JavaScript code to be directly executed.\n\nFrom my experience, calling the `expression()` function from an execution context (JavaScript) has been disabled.\n\nIn order to mitigate against the CSS `url()` method, ensure that you are URL encoding the data passed to the CSS `url()` method.\n\n```javascript\nvar ESAPI = require('node-esapi');\ndocument.body.style.backgroundImage = \"url(<%=ESAPI.encoder().encodeForJavascript(ESAPI.encoder().encodeForURL(companyName))%>)\";\n```",
-      "token_count": 157,
+      "chunk_idx": 47,
+      "chunk_type": "paragraph",
+      "text_content": "Normally executing JavaScript from a CSS context required either passing `javascript:attackCode()` to the CSS `url()` method or invoking the CSS `expression()` method passing JavaScript code to be directly executed.\n\nFrom my experience, calling the `expression()` function from an execution context (JavaScript) has been disabled.\n\nIn order to mitigate against the CSS `url()` method, ensure that you are URL encoding the data passed to the CSS `url()` method.",
+      "token_count": 100,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "DOM based XSS Prevention Cheat Sheet",
@@ -398,10 +702,24 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00027",
+      "chunk_id": "ver_421639d8a75f_c00048",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 27,
+      "chunk_idx": 48,
+      "chunk_type": "code",
+      "text_content": "```javascript\nvar ESAPI = require('node-esapi');\ndocument.body.style.backgroundImage = \"url(<%=ESAPI.encoder().encodeForJavascript(ESAPI.encoder().encodeForURL(companyName))%>)\";\n```",
+      "token_count": 57,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "RULE \\#4 - JavaScript Escape Before Inserting Untrusted Data into the CSS Attribute Subcontext within the Execution Context"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00049",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 49,
       "chunk_type": "heading",
       "text_content": "## RULE \\#5 - URL Escape then JavaScript Escape Before Inserting Untrusted Data into URL Attribute Subcontext within the Execution Context",
       "token_count": 24,
@@ -412,13 +730,13 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00028",
+      "chunk_id": "ver_421639d8a75f_c00050",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 28,
-      "chunk_type": "mixed",
-      "text_content": "The logic which parses URLs in both execution and rendering contexts looks to be the same.\n\nTherefore there is little change in the encoding rules for URL attributes in an execution (DOM) context.\n\n```javascript\nvar ESAPI = require('node-esapi');\nvar x = document.createElement(\"a\");\nx.setAttribute(\"href\", '<%=ESAPI.encoder().encodeForJavascript(ESAPI.encoder().encodeForURL(userRelativePath))%>');\nvar y = document.createTextElement(\"Click Me To Test\");\nx.appendChild(y);\ndocument.body.appendChild(x);\n```\n\nIf you utilize fully qualified URLs then this will break the links as the colon in the protocol identifier (`http:` or `javascript:`) will be URL encoded preventing the `http` and `javascript` protocols from being invoked.",
-      "token_count": 183,
+      "chunk_idx": 50,
+      "chunk_type": "paragraph",
+      "text_content": "The logic which parses URLs in both execution and rendering contexts looks to be the same.\n\nTherefore there is little change in the encoding rules for URL attributes in an execution (DOM) context.",
+      "token_count": 37,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "DOM based XSS Prevention Cheat Sheet",
@@ -426,10 +744,38 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00029",
+      "chunk_id": "ver_421639d8a75f_c00051",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 29,
+      "chunk_idx": 51,
+      "chunk_type": "code",
+      "text_content": "```javascript\nvar ESAPI = require('node-esapi');\nvar x = document.createElement(\"a\");\nx.setAttribute(\"href\", '<%=ESAPI.encoder().encodeForJavascript(ESAPI.encoder().encodeForURL(userRelativePath))%>');\nvar y = document.createTextElement(\"Click Me To Test\");\nx.appendChild(y);\ndocument.body.appendChild(x);\n```",
+      "token_count": 98,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "RULE \\#5 - URL Escape then JavaScript Escape Before Inserting Untrusted Data into URL Attribute Subcontext within the Execution Context"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00052",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 52,
+      "chunk_type": "paragraph",
+      "text_content": "If you utilize fully qualified URLs then this will break the links as the colon in the protocol identifier (`http:` or `javascript:`) will be URL encoded preventing the `http` and `javascript` protocols from being invoked.",
+      "token_count": 48,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "RULE \\#5 - URL Escape then JavaScript Escape Before Inserting Untrusted Data into URL Attribute Subcontext within the Execution Context"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00053",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 53,
       "chunk_type": "heading",
       "text_content": "## RULE \\#6 - Populate the DOM using safe JavaScript functions or properties",
       "token_count": 16,
@@ -440,13 +786,13 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00030",
+      "chunk_id": "ver_421639d8a75f_c00054",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 30,
-      "chunk_type": "mixed",
-      "text_content": "The most fundamental safe way to populate the DOM with untrusted data is to use the safe assignment property `textContent`.\n\nHere is an example of safe usage.\n\n```html\n<script>\nelement.textContent = untrustedData;  //does not execute code\n</script>\n```",
-      "token_count": 57,
+      "chunk_idx": 54,
+      "chunk_type": "paragraph",
+      "text_content": "The most fundamental safe way to populate the DOM with untrusted data is to use the safe assignment property `textContent`.\n\nHere is an example of safe usage.",
+      "token_count": 31,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "DOM based XSS Prevention Cheat Sheet",
@@ -454,10 +800,24 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00031",
+      "chunk_id": "ver_421639d8a75f_c00055",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 31,
+      "chunk_idx": 55,
+      "chunk_type": "code",
+      "text_content": "```html\n<script>\nelement.textContent = untrustedData;  //does not execute code\n</script>\n```",
+      "token_count": 26,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "RULE \\#6 - Populate the DOM using safe JavaScript functions or properties"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00056",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 56,
       "chunk_type": "heading",
       "text_content": "## RULE \\#7 - Fixing DOM Cross-site Scripting Vulnerabilities",
       "token_count": 14,
@@ -468,13 +828,13 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00032",
+      "chunk_id": "ver_421639d8a75f_c00057",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 32,
-      "chunk_type": "mixed",
-      "text_content": "The best way to fix DOM based cross-site scripting is to use the right output method (sink).\n\nFor example if you want to use user input to write in a `div tag` element don't use `innerHtml`, instead use `innerText` or `textContent`.\n\nThis will solve the problem, and it is the right way to re-mediate DOM based XSS vulnerabilities.\n\n**It is always a bad idea to use a user-controlled input in dangerous sources such as eval.\n\n99% of the time it is an indication of bad or lazy programming practice, so simply don't do it instead of trying to sanitize the input.**\n\nFinally, to fix the problem in our initial code, instead of trying to encode the output correctly which is a hassle and can easily go wrong we would simply use `element.textContent` to write it in a content like this:\n\n```html\n<b>Current URL:</b> <span id=\"contentholder\"></span>\n...\n\n<script>\ndocument.getElementById(\"contentholder\").textContent = document.baseURI;\n</script>\n```\n\nIt does the same thing but this time it is not vulnerable to DOM based cross-site scripting vulnerabilities.",
-      "token_count": 255,
+      "chunk_idx": 57,
+      "chunk_type": "paragraph",
+      "text_content": "The best way to fix DOM based cross-site scripting is to use the right output method (sink).\n\nFor example if you want to use user input to write in a `div tag` element don't use `innerHtml`, instead use `innerText` or `textContent`.\n\nThis will solve the problem, and it is the right way to re-mediate DOM based XSS vulnerabilities.\n\n**It is always a bad idea to use a user-controlled input in dangerous sources such as eval.\n\n99% of the time it is an indication of bad or lazy programming practice, so simply don't do it instead of trying to sanitize the input.**\n\nFinally, to fix the problem in our initial code, instead of trying to encode the output correctly which is a hassle and can easily go wrong we would simply use `element.textContent` to write it in a content like this:",
+      "token_count": 180,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "DOM based XSS Prevention Cheat Sheet",
@@ -482,10 +842,38 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00033",
+      "chunk_id": "ver_421639d8a75f_c00058",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 33,
+      "chunk_idx": 58,
+      "chunk_type": "code",
+      "text_content": "```html\n<b>Current URL:</b> <span id=\"contentholder\"></span>\n...\n<script>\ndocument.getElementById(\"contentholder\").textContent = document.baseURI;\n</script>\n```",
+      "token_count": 54,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "RULE \\#7 - Fixing DOM Cross-site Scripting Vulnerabilities"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00059",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 59,
+      "chunk_type": "paragraph",
+      "text_content": "It does the same thing but this time it is not vulnerable to DOM based cross-site scripting vulnerabilities.",
+      "token_count": 21,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "RULE \\#7 - Fixing DOM Cross-site Scripting Vulnerabilities"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00060",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 60,
       "chunk_type": "heading",
       "text_content": "## Guidelines for Developing Secure Applications Utilizing JavaScript",
       "token_count": 9,
@@ -496,10 +884,10 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00034",
+      "chunk_id": "ver_421639d8a75f_c00061",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 34,
+      "chunk_idx": 61,
       "chunk_type": "paragraph",
       "text_content": "DOM based XSS is extremely difficult to mitigate against because of its large attack surface and lack of standardization across browsers.\n\nThe guidelines below are an attempt to provide guidelines for developers when developing Web based JavaScript applications (Web 2.0) such that they can avoid XSS.",
       "token_count": 52,
@@ -510,10 +898,10 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00035",
+      "chunk_id": "ver_421639d8a75f_c00062",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 35,
+      "chunk_idx": 62,
       "chunk_type": "heading",
       "text_content": "### GUIDELINE \\#1 - Untrusted data should only be treated as displayable text",
       "token_count": 17,
@@ -525,10 +913,10 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00036",
+      "chunk_id": "ver_421639d8a75f_c00063",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 36,
+      "chunk_idx": 63,
       "chunk_type": "paragraph",
       "text_content": "Avoid treating untrusted data as code or markup within JavaScript code.",
       "token_count": 12,
@@ -540,10 +928,10 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00037",
+      "chunk_id": "ver_421639d8a75f_c00064",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 37,
+      "chunk_idx": 64,
       "chunk_type": "heading",
       "text_content": "### GUIDELINE \\#2 - Always JavaScript encode and delimit untrusted data as quoted strings when entering the application when building templated JavaScript",
       "token_count": 26,
@@ -555,13 +943,13 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00038",
+      "chunk_id": "ver_421639d8a75f_c00065",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 38,
-      "chunk_type": "mixed",
-      "text_content": "Always JavaScript encode and delimit untrusted data as quoted strings when entering the application as illustrated in the following example.\n\n```javascript\nvar x = \"<%= Encode.forJavaScript(untrustedData) %>\";\n```",
-      "token_count": 45,
+      "chunk_idx": 65,
+      "chunk_type": "paragraph",
+      "text_content": "Always JavaScript encode and delimit untrusted data as quoted strings when entering the application as illustrated in the following example.",
+      "token_count": 21,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "DOM based XSS Prevention Cheat Sheet",
@@ -570,10 +958,25 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00039",
+      "chunk_id": "ver_421639d8a75f_c00066",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 39,
+      "chunk_idx": 66,
+      "chunk_type": "code",
+      "text_content": "```javascript\nvar x = \"<%= Encode.forJavaScript(untrustedData) %>\";\n```",
+      "token_count": 24,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "Guidelines for Developing Secure Applications Utilizing JavaScript",
+        "GUIDELINE \\#2 - Always JavaScript encode and delimit untrusted data as quoted strings when entering the application when building templated JavaScript"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00067",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 67,
       "chunk_type": "heading",
       "text_content": "### GUIDELINE \\#3 - Use document.createElement(\"...\"), element.setAttribute(\"...\",\"value\"), element.appendChild(...) and similar to build dynamic interfaces",
       "token_count": 49,
@@ -585,10 +988,10 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00040",
+      "chunk_id": "ver_421639d8a75f_c00068",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 40,
+      "chunk_idx": 68,
       "chunk_type": "paragraph",
       "text_content": "`document.createElement(\"...\")`, `element.setAttribute(\"...\",\"value\")`, `element.appendChild(...)` and similar are safe ways to build dynamic interfaces.\n\nPlease note, `element.setAttribute` is only safe for a limited number of attributes.\n\nDangerous attributes include any attribute that is a command execution context, such as `onclick` or `onblur`.\n\nExamples of safe attributes includes: `align`, `alink`, `alt`, `bgcolor`, `border`, `cellpadding`, `cellspacing`, `class`, `color`, `cols`, `colspan`, `coords`, `dir`, `face`, `height`, `hspace`, `ismap`, `lang`, `marginheight`, `marginwidth`, `multiple`, `nohref`, `noresize`, `noshade`, `nowrap`, `ref`, `rel`, `rev`, `rows`, `rowspan`, `scrolling`, `shape`, `span`, `summary`, `tabindex`, `title`, `usemap`, `valign`, `value`, `vlink`, `vspace`, `width`.",
       "token_count": 264,
@@ -600,10 +1003,10 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00041",
+      "chunk_id": "ver_421639d8a75f_c00069",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 41,
+      "chunk_idx": 69,
       "chunk_type": "heading",
       "text_content": "### GUIDELINE \\#4 - Avoid sending untrusted data into HTML rendering methods",
       "token_count": 16,
@@ -615,10 +1018,10 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00042",
+      "chunk_id": "ver_421639d8a75f_c00070",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 42,
+      "chunk_idx": 70,
       "chunk_type": "mixed",
       "text_content": "Avoid populating the following methods with untrusted data.\n\n1.\n\n`element.innerHTML = \"...\";`\n2.\n\n`element.outerHTML = \"...\";`\n3.\n\n`document.write(...);`\n4.\n\n`document.writeln(...);`",
       "token_count": 63,
@@ -630,10 +1033,10 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00043",
+      "chunk_id": "ver_421639d8a75f_c00071",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 43,
+      "chunk_idx": 71,
       "chunk_type": "heading",
       "text_content": "### GUIDELINE \\#5 - Avoid the numerous methods which implicitly eval() data passed to it",
       "token_count": 21,
@@ -645,10 +1048,10 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00044",
+      "chunk_id": "ver_421639d8a75f_c00072",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 44,
+      "chunk_idx": 72,
       "chunk_type": "mixed",
       "text_content": "There are numerous methods which implicitly `eval()` data passed to it that must be avoided.\n\nMake sure that any untrusted data passed to these methods is:\n\n1.\n\nDelimited with string delimiters\n2.\n\nEnclosed within a closure or JavaScript encoded to N-levels based on usage\n3.\n\nWrapped in a custom function.\n\nEnsure to follow step 3 above to make sure that the untrusted data is not sent to dangerous methods within the custom function or handle it by adding an extra layer of encoding.",
       "token_count": 96,
@@ -660,10 +1063,10 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00045",
+      "chunk_id": "ver_421639d8a75f_c00073",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 45,
+      "chunk_idx": 73,
       "chunk_type": "heading",
       "text_content": "#### Utilizing an Enclosure (as suggested by Gaz)",
       "token_count": 13,
@@ -676,13 +1079,13 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00046",
+      "chunk_id": "ver_421639d8a75f_c00074",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 46,
-      "chunk_type": "mixed",
-      "text_content": "The example that follows illustrates using closures to avoid double JavaScript encoding.\n\n```javascript\n var ESAPI = require('node-esapi');\n setTimeout((function(param) { return function() {\n          customFunction(param);\n        }\n })(\"<%=ESAPI.encoder().encodeForJavascript(untrustedData)%>\"), y);\n```\n\nThe other alternative is using N-levels of encoding.",
-      "token_count": 87,
+      "chunk_idx": 74,
+      "chunk_type": "paragraph",
+      "text_content": "The example that follows illustrates using closures to avoid double JavaScript encoding.",
+      "token_count": 13,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "DOM based XSS Prevention Cheat Sheet",
@@ -692,10 +1095,42 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00047",
+      "chunk_id": "ver_421639d8a75f_c00075",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 47,
+      "chunk_idx": 75,
+      "chunk_type": "code",
+      "text_content": "```javascript\n var ESAPI = require('node-esapi');\n setTimeout((function(param) { return function() {\n          customFunction(param);\n        }\n })(\"<%=ESAPI.encoder().encodeForJavascript(untrustedData)%>\"), y);\n```",
+      "token_count": 63,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "Guidelines for Developing Secure Applications Utilizing JavaScript",
+        "GUIDELINE \\#5 - Avoid the numerous methods which implicitly eval() data passed to it",
+        "Utilizing an Enclosure (as suggested by Gaz)"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00076",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 76,
+      "chunk_type": "paragraph",
+      "text_content": "The other alternative is using N-levels of encoding.",
+      "token_count": 11,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "Guidelines for Developing Secure Applications Utilizing JavaScript",
+        "GUIDELINE \\#5 - Avoid the numerous methods which implicitly eval() data passed to it",
+        "Utilizing an Enclosure (as suggested by Gaz)"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00077",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 77,
       "chunk_type": "heading",
       "text_content": "#### N-Levels of Encoding",
       "token_count": 9,
@@ -708,13 +1143,13 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00048",
+      "chunk_id": "ver_421639d8a75f_c00078",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 48,
-      "chunk_type": "mixed",
-      "text_content": "If your code looked like the following, you would need to only double JavaScript encode input data.\n\n```javascript\nsetTimeout(\"customFunction('<%=doubleJavaScriptEncodedData%>', y)\");\nfunction customFunction (firstName, lastName)\n     alert(\"Hello\" + firstName + \" \" + lastName);\n}\n```\n\nThe `doubleJavaScriptEncodedData` has its first layer of JavaScript encoding reversed (upon execution) in the single quotes.\n\nThen the implicit `eval` of `setTimeout` reverses another layer of JavaScript encoding to pass the correct value to `customFunction`\n\nThe reason why you only need to double JavaScript encode is that the `customFunction` function did not itself pass the input to another method which implicitly or explicitly called `eval` If *firstName* was passed to another JavaScript method which implicitly or explicitly called `eval()` then `<%=doubleJavaScriptEncodedData%>` above would need to be changed to `<%=tripleJavaScriptEncodedData%>`.\n\nAn important implementation note is that if the JavaScript code tries to utilize the double or triple encoded data in string comparisons, the value may be interpreted as different values based on the number of `evals()` the data has passed through before being passed to the if comparison and the number of times the value was JavaScript encoded.\n\nIf **A** is double JavaScript encoded then the following **if** check will return false.\n\n``` javascript\n var x = \"doubleJavaScriptEncodedA\";  //\\u005c\\u0075\\u0030\\u0030\\u0034\\u0031\n if (x == \"A\") {\n    alert(\"x is A\");\n } else if (x == \"\\u0041\") {\n    alert(\"This is what pops\");\n }\n```\n\nThis brings up an interesting design point.\n\nIdeally, the correct way to apply encoding and avoid the problem stated above is to server-side encode for the output context where data is introduced into the application.\n\nThen client-side encode (using a JavaScript encoding library such as [node-esapi](https://github.com/ESAPI/node-esapi/)) for the individual subcontext (DOM methods) which untrusted data is passed to.\n\nHere are some examples of how they are used:",
-      "token_count": 450,
+      "chunk_idx": 78,
+      "chunk_type": "paragraph",
+      "text_content": "If your code looked like the following, you would need to only double JavaScript encode input data.",
+      "token_count": 19,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "DOM based XSS Prevention Cheat Sheet",
@@ -724,13 +1159,13 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00049",
+      "chunk_id": "ver_421639d8a75f_c00079",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 49,
-      "chunk_type": "mixed",
-      "text_content": "```javascript\n//server-side encoding\nvar ESAPI = require('node-esapi');\nvar input = \"<%=ESAPI.encoder().encodeForJavascript(untrustedData)%>\";\n```\n\n```javascript\n//HTML encoding is happening in JavaScript\nvar ESAPI = require('node-esapi');\ndocument.writeln(ESAPI.encoder().encodeForHTML(input));\n```\n\nOne option is utilize ECMAScript 5 immutable properties in the JavaScript library.\n\nAnother option provided by Gaz (Gareth) was to use a specific code construct to limit mutability with anonymous closures.\n\nAn example follows:\n\n```javascript\nfunction escapeHTML(str) {\n     str = str + \"''\";\n     var out = \"''\";\n     for(var i=0; i<str.length; i++) {\n         if(str[i] === '<') {\n             out += '&lt;';\n         } else if(str[i] === '>') {\n             out += '&gt;';\n         } else if(str[i] === \"'\") {\n             out += '&#39;';\n         } else if(str[i] === '\"') {\n             out += '&quot;';\n         } else {\n             out += str[i];\n         }\n     }\n     return out;\n}\n```",
-      "token_count": 292,
+      "chunk_idx": 79,
+      "chunk_type": "code",
+      "text_content": "```javascript\nsetTimeout(\"customFunction('<%=doubleJavaScriptEncodedData%>', y)\");\nfunction customFunction (firstName, lastName)\n     alert(\"Hello\" + firstName + \" \" + lastName);\n}\n```",
+      "token_count": 48,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "DOM based XSS Prevention Cheat Sheet",
@@ -740,10 +1175,122 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00050",
+      "chunk_id": "ver_421639d8a75f_c00080",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 50,
+      "chunk_idx": 80,
+      "chunk_type": "paragraph",
+      "text_content": "The `doubleJavaScriptEncodedData` has its first layer of JavaScript encoding reversed (upon execution) in the single quotes.\n\nThen the implicit `eval` of `setTimeout` reverses another layer of JavaScript encoding to pass the correct value to `customFunction`\n\nThe reason why you only need to double JavaScript encode is that the `customFunction` function did not itself pass the input to another method which implicitly or explicitly called `eval` If *firstName* was passed to another JavaScript method which implicitly or explicitly called `eval()` then `<%=doubleJavaScriptEncodedData%>` above would need to be changed to `<%=tripleJavaScriptEncodedData%>`.\n\nAn important implementation note is that if the JavaScript code tries to utilize the double or triple encoded data in string comparisons, the value may be interpreted as different values based on the number of `evals()` the data has passed through before being passed to the if comparison and the number of times the value was JavaScript encoded.\n\nIf **A** is double JavaScript encoded then the following **if** check will return false.",
+      "token_count": 212,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "Guidelines for Developing Secure Applications Utilizing JavaScript",
+        "GUIDELINE \\#5 - Avoid the numerous methods which implicitly eval() data passed to it",
+        "N-Levels of Encoding"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00081",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 81,
+      "chunk_type": "code",
+      "text_content": "``` javascript\n var x = \"doubleJavaScriptEncodedA\";  //\\u005c\\u0075\\u0030\\u0030\\u0034\\u0031\n if (x == \"A\") {\n    alert(\"x is A\");\n } else if (x == \"\\u0041\") {\n    alert(\"This is what pops\");\n }\n```",
+      "token_count": 71,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "Guidelines for Developing Secure Applications Utilizing JavaScript",
+        "GUIDELINE \\#5 - Avoid the numerous methods which implicitly eval() data passed to it",
+        "N-Levels of Encoding"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00082",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 82,
+      "chunk_type": "paragraph",
+      "text_content": "This brings up an interesting design point.\n\nIdeally, the correct way to apply encoding and avoid the problem stated above is to server-side encode for the output context where data is introduced into the application.\n\nThen client-side encode (using a JavaScript encoding library such as [node-esapi](https://github.com/ESAPI/node-esapi/)) for the individual subcontext (DOM methods) which untrusted data is passed to.\n\nHere are some examples of how they are used:",
+      "token_count": 100,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "Guidelines for Developing Secure Applications Utilizing JavaScript",
+        "GUIDELINE \\#5 - Avoid the numerous methods which implicitly eval() data passed to it",
+        "N-Levels of Encoding"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00083",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 83,
+      "chunk_type": "code",
+      "text_content": "```javascript\n//server-side encoding\nvar ESAPI = require('node-esapi');\nvar input = \"<%=ESAPI.encoder().encodeForJavascript(untrustedData)%>\";\n```",
+      "token_count": 46,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "Guidelines for Developing Secure Applications Utilizing JavaScript",
+        "GUIDELINE \\#5 - Avoid the numerous methods which implicitly eval() data passed to it",
+        "N-Levels of Encoding"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00084",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 84,
+      "chunk_type": "code",
+      "text_content": "```javascript\n//HTML encoding is happening in JavaScript\nvar ESAPI = require('node-esapi');\ndocument.writeln(ESAPI.encoder().encodeForHTML(input));\n```",
+      "token_count": 43,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "Guidelines for Developing Secure Applications Utilizing JavaScript",
+        "GUIDELINE \\#5 - Avoid the numerous methods which implicitly eval() data passed to it",
+        "N-Levels of Encoding"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00085",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 85,
+      "chunk_type": "paragraph",
+      "text_content": "One option is utilize ECMAScript 5 immutable properties in the JavaScript library.\n\nAnother option provided by Gaz (Gareth) was to use a specific code construct to limit mutability with anonymous closures.\n\nAn example follows:",
+      "token_count": 39,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "Guidelines for Developing Secure Applications Utilizing JavaScript",
+        "GUIDELINE \\#5 - Avoid the numerous methods which implicitly eval() data passed to it",
+        "N-Levels of Encoding"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00086",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 86,
+      "chunk_type": "code",
+      "text_content": "```javascript\nfunction escapeHTML(str) {\n     str = str + \"''\";\n     var out = \"''\";\n     for(var i=0; i<str.length; i++) {\n         if(str[i] === '<') {\n             out += '&lt;';\n         } else if(str[i] === '>') {\n             out += '&gt;';\n         } else if(str[i] === \"'\") {\n             out += '&#39;';\n         } else if(str[i] === '\"') {\n             out += '&quot;';\n         } else {\n             out += str[i];\n         }\n     }\n     return out;\n}\n```",
+      "token_count": 164,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "Guidelines for Developing Secure Applications Utilizing JavaScript",
+        "GUIDELINE \\#5 - Avoid the numerous methods which implicitly eval() data passed to it",
+        "N-Levels of Encoding"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00087",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 87,
       "chunk_type": "heading",
       "text_content": "### GUIDELINE \\#6 - Use untrusted data on only the right side of an expression",
       "token_count": 19,
@@ -755,13 +1302,13 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00051",
+      "chunk_id": "ver_421639d8a75f_c00088",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 51,
-      "chunk_type": "mixed",
-      "text_content": "Use untrusted data on only the right side of an expression, especially data that looks like code and may be passed to the application (e.g., `location` and `eval()`).\n\n```javascript\nwindow[userDataOnLeftSide] = \"userDataOnRightSide\";\n```\n\nUsing untrusted user data on the left side of the expression allows an attacker to subvert internal and external attributes of the window object, whereas using user input on the right side of the expression doesn't allow direct manipulation.",
-      "token_count": 101,
+      "chunk_idx": 88,
+      "chunk_type": "paragraph",
+      "text_content": "Use untrusted data on only the right side of an expression, especially data that looks like code and may be passed to the application (e.g., `location` and `eval()`).",
+      "token_count": 42,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "DOM based XSS Prevention Cheat Sheet",
@@ -770,10 +1317,40 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00052",
+      "chunk_id": "ver_421639d8a75f_c00089",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 52,
+      "chunk_idx": 89,
+      "chunk_type": "code",
+      "text_content": "```javascript\nwindow[userDataOnLeftSide] = \"userDataOnRightSide\";\n```",
+      "token_count": 16,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "Guidelines for Developing Secure Applications Utilizing JavaScript",
+        "GUIDELINE \\#6 - Use untrusted data on only the right side of an expression"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00090",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 90,
+      "chunk_type": "paragraph",
+      "text_content": "Using untrusted user data on the left side of the expression allows an attacker to subvert internal and external attributes of the window object, whereas using user input on the right side of the expression doesn't allow direct manipulation.",
+      "token_count": 43,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "Guidelines for Developing Secure Applications Utilizing JavaScript",
+        "GUIDELINE \\#6 - Use untrusted data on only the right side of an expression"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00091",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 91,
       "chunk_type": "heading",
       "text_content": "### GUIDELINE \\#7 - When URL encoding in DOM be aware of character set issues",
       "token_count": 19,
@@ -785,10 +1362,10 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00053",
+      "chunk_id": "ver_421639d8a75f_c00092",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 53,
+      "chunk_idx": 92,
       "chunk_type": "paragraph",
       "text_content": "When URL encoding in DOM be aware of character set issues as the character set in JavaScript DOM is not clearly defined (Mike Samuel).",
       "token_count": 27,
@@ -800,10 +1377,10 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00054",
+      "chunk_id": "ver_421639d8a75f_c00093",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 54,
+      "chunk_idx": 93,
       "chunk_type": "heading",
       "text_content": "### GUIDELINE \\#8 - Limit access to object properties when using object\\[x\\] accessors",
       "token_count": 22,
@@ -815,13 +1392,13 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00055",
+      "chunk_id": "ver_421639d8a75f_c00094",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 55,
-      "chunk_type": "mixed",
-      "text_content": "Limit access to object properties when using `object[x]` accessors (Mike Samuel).\n\nIn other words, add a level of indirection between untrusted input and specified object properties.\n\nHere is an example of the problem using map types:\n\n```javascript\nvar myMapType = {};\nmyMapType[<%=untrustedData%>] = \"moreUntrustedData\";\n```\n\nThe developer writing the code above was trying to add additional keyed elements to the `myMapType` object.\n\nHowever, this could be used by an attacker to subvert internal and external attributes of the `myMapType` object.\n\nA better approach would be to use the following:\n\n```javascript\nif (untrustedData === 'location') {\n  myMapType.location = \"moreUntrustedData\";\n}\n```",
-      "token_count": 153,
+      "chunk_idx": 94,
+      "chunk_type": "paragraph",
+      "text_content": "Limit access to object properties when using `object[x]` accessors (Mike Samuel).\n\nIn other words, add a level of indirection between untrusted input and specified object properties.\n\nHere is an example of the problem using map types:",
+      "token_count": 47,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "DOM based XSS Prevention Cheat Sheet",
@@ -830,10 +1407,55 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00056",
+      "chunk_id": "ver_421639d8a75f_c00095",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 56,
+      "chunk_idx": 95,
+      "chunk_type": "code",
+      "text_content": "```javascript\nvar myMapType = {};\nmyMapType[<%=untrustedData%>] = \"moreUntrustedData\";\n```",
+      "token_count": 27,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "Guidelines for Developing Secure Applications Utilizing JavaScript",
+        "GUIDELINE \\#8 - Limit access to object properties when using object\\[x\\] accessors"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00096",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 96,
+      "chunk_type": "paragraph",
+      "text_content": "The developer writing the code above was trying to add additional keyed elements to the `myMapType` object.\n\nHowever, this could be used by an attacker to subvert internal and external attributes of the `myMapType` object.\n\nA better approach would be to use the following:",
+      "token_count": 52,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "Guidelines for Developing Secure Applications Utilizing JavaScript",
+        "GUIDELINE \\#8 - Limit access to object properties when using object\\[x\\] accessors"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00097",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 97,
+      "chunk_type": "code",
+      "text_content": "```javascript\nif (untrustedData === 'location') {\n  myMapType.location = \"moreUntrustedData\";\n}\n```",
+      "token_count": 27,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "Guidelines for Developing Secure Applications Utilizing JavaScript",
+        "GUIDELINE \\#8 - Limit access to object properties when using object\\[x\\] accessors"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00098",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 98,
       "chunk_type": "heading",
       "text_content": "### GUIDELINE \\#9 - Keep HTML sanitization separate from JavaScript execution",
       "token_count": 15,
@@ -845,10 +1467,10 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00057",
+      "chunk_id": "ver_421639d8a75f_c00099",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 57,
+      "chunk_idx": 99,
       "chunk_type": "paragraph",
       "text_content": "Use an HTML sanitizer such as [DOMPurify](https://github.com/cure53/DOMPurify#what-does-it-do) when the application must render untrusted markup; see the [HTML sanitization guidance](Cross_Site_Scripting_Prevention_Cheat_Sheet.md#html-sanitization).\n\nHTML sanitizers filter markup and do not provide a sandbox for executing arbitrary JavaScript.\n\nDo not pass untrusted code to [`eval()` or `Function()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval#never_use_direct_eval!).",
       "token_count": 120,
@@ -860,10 +1482,10 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00058",
+      "chunk_id": "ver_421639d8a75f_c00100",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 58,
+      "chunk_idx": 100,
       "chunk_type": "heading",
       "text_content": "### GUIDELINE \\#10 - Don't eval() JSON to convert it to native JavaScript objects",
       "token_count": 22,
@@ -875,10 +1497,10 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00059",
+      "chunk_id": "ver_421639d8a75f_c00101",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 59,
+      "chunk_idx": 101,
       "chunk_type": "paragraph",
       "text_content": "Don't `eval()` JSON to convert it to native JavaScript objects.\n\nUse the built-in `JSON.parse()` to deserialize JSON into JavaScript values, and `JSON.stringify()` to serialize JavaScript values into JSON.\n\n`JSON.parse()` rejects anything that is not valid JSON, so it cannot execute attacker-supplied code the way `eval()` can.\n\n> [!WARNING]\n> `JSON.stringify()` is **not** an output-encoding function.\n\nIts output is valid JSON, but embedding it in HTML requires protection for the destination context.\n\nPrefer a separate response with `Content-Type: application/json`, parsed client-side with `JSON.parse()`.\n\nIf JSON must be embedded in an inline script, use a serializer or encoder documented for that exact placement, protecting both JavaScript syntax and the [enclosing HTML script context](https://html.spec.whatwg.org/multipage/scripting.html#restrictions-for-contents-of-script-elements), including literal `</script` sequences.\n\nHTML entity encoding or JavaScript quote escaping alone is not sufficient for this placement.\n\nFor other placements, follow the [context-specific XSS encoding rules](Cross_Site_Scripting_Prevention_Cheat_Sheet.md#output-encoding).",
       "token_count": 267,
@@ -890,10 +1512,10 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00060",
+      "chunk_id": "ver_421639d8a75f_c00102",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 60,
+      "chunk_idx": 102,
       "chunk_type": "heading",
       "text_content": "## Common Problems Associated with Mitigating DOM Based XSS",
       "token_count": 10,
@@ -904,10 +1526,10 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00061",
+      "chunk_id": "ver_421639d8a75f_c00103",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 61,
+      "chunk_idx": 103,
       "chunk_type": "heading",
       "text_content": "### Complex Contexts",
       "token_count": 5,
@@ -919,13 +1541,13 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00062",
+      "chunk_id": "ver_421639d8a75f_c00104",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 62,
-      "chunk_type": "mixed",
-      "text_content": "In many cases the context isn't always straightforward to discern.\n\n```html\n<a href=\"javascript:myFunction('<%=untrustedData%>', 'test');\">Click Me</a>\n ...\n\n<script>\nFunction myFunction (url,name) {\n    window.location = url;\n}\n</script>\n```\n\nIn the above example, untrusted data started in the rendering URL context (`href` attribute of an `a` tag) then changed to a JavaScript execution context (`javascript:` protocol handler) which passed the untrusted data to an execution URL subcontext (`window.location` of `myFunction`).\n\nBecause the data was introduced in JavaScript code and passed to a URL subcontext the appropriate server-side encoding would be the following:\n\n```html\n<a href=\"javascript:myFunction('<%=ESAPI.encoder().encodeForJavascript(ESAPI.encoder().encodeForURL(untrustedData)) %>', 'test');\">\nClick Me</a>\n ...\n\n```\n\nOr if you were using ECMAScript 5 with an immutable JavaScript client-side encoding libraries you could do the following:\n\n```html\n<!-- server side URL encoding has been removed.\n\nNow only JavaScript encoding on server side.\n\n-->\n<a href=\"javascript:myFunction('<%=ESAPI.encoder().encodeForJavascript(untrustedData)%>', 'test');\">Click Me</a>\n ...\n\n<script>\nFunction myFunction (url,name) {\n    var encodedURL = ESAPI.encoder().encodeForURL(url);  //URL encoding using client-side scripts\n    window.location = encodedURL;\n}\n</script>\n```",
-      "token_count": 362,
+      "chunk_idx": 104,
+      "chunk_type": "paragraph",
+      "text_content": "In many cases the context isn't always straightforward to discern.",
+      "token_count": 13,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "DOM based XSS Prevention Cheat Sheet",
@@ -934,10 +1556,85 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00063",
+      "chunk_id": "ver_421639d8a75f_c00105",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 63,
+      "chunk_idx": 105,
+      "chunk_type": "code",
+      "text_content": "```html\n<a href=\"javascript:myFunction('<%=untrustedData%>', 'test');\">Click Me</a>\n ...\n<script>\nFunction myFunction (url,name) {\n    window.location = url;\n}\n</script>\n```",
+      "token_count": 63,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "Common Problems Associated with Mitigating DOM Based XSS",
+        "Complex Contexts"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00106",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 106,
+      "chunk_type": "paragraph",
+      "text_content": "In the above example, untrusted data started in the rendering URL context (`href` attribute of an `a` tag) then changed to a JavaScript execution context (`javascript:` protocol handler) which passed the untrusted data to an execution URL subcontext (`window.location` of `myFunction`).\n\nBecause the data was introduced in JavaScript code and passed to a URL subcontext the appropriate server-side encoding would be the following:",
+      "token_count": 87,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "Common Problems Associated with Mitigating DOM Based XSS",
+        "Complex Contexts"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00107",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 107,
+      "chunk_type": "code",
+      "text_content": "```html\n<a href=\"javascript:myFunction('<%=ESAPI.encoder().encodeForJavascript(ESAPI.encoder().encodeForURL(untrustedData)) %>', 'test');\">\nClick Me</a>\n ...\n```",
+      "token_count": 59,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "Common Problems Associated with Mitigating DOM Based XSS",
+        "Complex Contexts"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00108",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 108,
+      "chunk_type": "paragraph",
+      "text_content": "Or if you were using ECMAScript 5 with an immutable JavaScript client-side encoding libraries you could do the following:",
+      "token_count": 22,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "Common Problems Associated with Mitigating DOM Based XSS",
+        "Complex Contexts"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00109",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 109,
+      "chunk_type": "code",
+      "text_content": "```html\n<!-- server side URL encoding has been removed.  Now only JavaScript encoding on server side. -->\n<a href=\"javascript:myFunction('<%=ESAPI.encoder().encodeForJavascript(untrustedData)%>', 'test');\">Click Me</a>\n ...\n<script>\nFunction myFunction (url,name) {\n    var encodedURL = ESAPI.encoder().encodeForURL(url);  //URL encoding using client-side scripts\n    window.location = encodedURL;\n}\n</script>\n```",
+      "token_count": 118,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "Common Problems Associated with Mitigating DOM Based XSS",
+        "Complex Contexts"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00110",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 110,
       "chunk_type": "heading",
       "text_content": "### Inconsistencies of Encoding Libraries",
       "token_count": 7,
@@ -949,10 +1646,10 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00064",
+      "chunk_id": "ver_421639d8a75f_c00111",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 64,
+      "chunk_idx": 111,
       "chunk_type": "mixed",
       "text_content": "There are a number of open source encoding libraries out there:\n\n1.\n\nOWASP [ESAPI](https://owasp.org/www-project-enterprise-security-api/)\n2.\n\nOWASP [Java Encoder](https://owasp.org/www-project-java-encoder/)\n3.\n\nApache Commons Text [StringEscapeUtils](https://commons.apache.org/proper/commons-text/javadocs/api-release/org/apache/commons/text/StringEscapeUtils.html), replace one from [Apache Commons Lang3](https://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/StringEscapeUtils.html)\n4.\n\n[Jtidy](http://jtidy.sourceforge.net/)\n5.\n\nYour company's custom implementation.\n\nSome work on a denylist while others ignore important characters like \"&lt;\" and \"&gt;\".\n\nJava Encoder is an active project providing supports for HTML, CSS and JavaScript encoding.\n\nESAPI is one of the few which works on an allowlist and encodes all non-alphanumeric characters.\n\nIt is important to use an encoding library that understands which characters can be used to exploit vulnerabilities in their respective contexts.\n\nMisconceptions abound related to the proper encoding that is required.",
       "token_count": 264,
@@ -964,10 +1661,10 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00065",
+      "chunk_id": "ver_421639d8a75f_c00112",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 65,
+      "chunk_idx": 112,
       "chunk_type": "heading",
       "text_content": "### Encoding Misconceptions",
       "token_count": 5,
@@ -979,13 +1676,13 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00066",
+      "chunk_id": "ver_421639d8a75f_c00113",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 66,
-      "chunk_type": "mixed",
-      "text_content": "Many security training curriculums and papers advocate the blind usage of HTML encoding to resolve XSS.\n\nThis logically seems to be prudent advice as the JavaScript parser does not understand HTML encoding.\n\nHowever, if the pages returned from your web application utilize a content type of `text/xhtml` or the file type extension of `*.xhtml` then HTML encoding may not work to mitigate against XSS.\n\nFor example:\n\n```html\n<script>\n&#x61;lert(1);\n</script>\n```\n\nThe HTML encoded value above is still executable.\n\nIf that isn't enough to keep in mind, you have to remember that encodings are lost when you retrieve them using the value attribute of a DOM element.\n\nLet's look at the sample page and script:\n\n```html\n<form name=\"myForm\" ...>\n  <input type=\"text\" name=\"lName\" value=\"<%=ESAPI.encoder().encodeForHTML(last_name)%>\">\n ...\n\n</form>\n<script>\n  var x = document.myForm.lName.value;  //when the value is retrieved the encoding is reversed\n  document.writeln(x);  //any code passed into lName is now executable.\n\n</script>\n```\n\nFinally there is the problem that certain methods in JavaScript which are usually safe can be unsafe in certain contexts.",
-      "token_count": 279,
+      "chunk_idx": 113,
+      "chunk_type": "paragraph",
+      "text_content": "Many security training curriculums and papers advocate the blind usage of HTML encoding to resolve XSS.\n\nThis logically seems to be prudent advice as the JavaScript parser does not understand HTML encoding.\n\nHowever, if the pages returned from your web application utilize a content type of `text/xhtml` or the file type extension of `*.xhtml` then HTML encoding may not work to mitigate against XSS.\n\nFor example:",
+      "token_count": 79,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "DOM based XSS Prevention Cheat Sheet",
@@ -994,10 +1691,70 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00067",
+      "chunk_id": "ver_421639d8a75f_c00114",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 67,
+      "chunk_idx": 114,
+      "chunk_type": "code",
+      "text_content": "```html\n<script>\n&#x61;lert(1);\n</script>\n```",
+      "token_count": 23,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "Common Problems Associated with Mitigating DOM Based XSS",
+        "Encoding Misconceptions"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00115",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 115,
+      "chunk_type": "paragraph",
+      "text_content": "The HTML encoded value above is still executable.\n\nIf that isn't enough to keep in mind, you have to remember that encodings are lost when you retrieve them using the value attribute of a DOM element.\n\nLet's look at the sample page and script:",
+      "token_count": 52,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "Common Problems Associated with Mitigating DOM Based XSS",
+        "Encoding Misconceptions"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00116",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 116,
+      "chunk_type": "code",
+      "text_content": "```html\n<form name=\"myForm\" ...>\n  <input type=\"text\" name=\"lName\" value=\"<%=ESAPI.encoder().encodeForHTML(last_name)%>\">\n ...\n</form>\n<script>\n  var x = document.myForm.lName.value;  //when the value is retrieved the encoding is reversed\n  document.writeln(x);  //any code passed into lName is now executable.\n</script>\n```",
+      "token_count": 104,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "Common Problems Associated with Mitigating DOM Based XSS",
+        "Encoding Misconceptions"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00117",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 117,
+      "chunk_type": "paragraph",
+      "text_content": "Finally there is the problem that certain methods in JavaScript which are usually safe can be unsafe in certain contexts.",
+      "token_count": 21,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "Common Problems Associated with Mitigating DOM Based XSS",
+        "Encoding Misconceptions"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00118",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 118,
       "chunk_type": "heading",
       "text_content": "### Usually Safe Methods",
       "token_count": 6,
@@ -1009,13 +1766,13 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00068",
+      "chunk_id": "ver_421639d8a75f_c00119",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 68,
-      "chunk_type": "mixed",
-      "text_content": "One example of an attribute which is thought to be safe is `innerText`.\n\nSome papers or guides advocate its use as an alternative to `innerHTML` to mitigate against XSS in `innerHTML`.\n\nHowever, depending on the tag which `innerText` is applied, code can be executed.\n\n```html\n<script>\n var tag = document.createElement(\"script\");\n tag.innerText = \"<%=untrustedData%>\";  //executes code\n</script>\n```\n\nThe `innerText` feature was originally introduced by Internet Explorer, and was formally specified in the HTML standard in 2016 after being adopted by all major browser vendors.",
-      "token_count": 131,
+      "chunk_idx": 119,
+      "chunk_type": "paragraph",
+      "text_content": "One example of an attribute which is thought to be safe is `innerText`.\n\nSome papers or guides advocate its use as an alternative to `innerHTML` to mitigate against XSS in `innerHTML`.\n\nHowever, depending on the tag which `innerText` is applied, code can be executed.",
+      "token_count": 57,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "DOM based XSS Prevention Cheat Sheet",
@@ -1024,10 +1781,40 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00069",
+      "chunk_id": "ver_421639d8a75f_c00120",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 69,
+      "chunk_idx": 120,
+      "chunk_type": "code",
+      "text_content": "```html\n<script>\n var tag = document.createElement(\"script\");\n tag.innerText = \"<%=untrustedData%>\";  //executes code\n</script>\n```",
+      "token_count": 43,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "Common Problems Associated with Mitigating DOM Based XSS",
+        "Usually Safe Methods"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00121",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 121,
+      "chunk_type": "paragraph",
+      "text_content": "The `innerText` feature was originally introduced by Internet Explorer, and was formally specified in the HTML standard in 2016 after being adopted by all major browser vendors.",
+      "token_count": 31,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "Common Problems Associated with Mitigating DOM Based XSS",
+        "Usually Safe Methods"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00122",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 122,
       "chunk_type": "heading",
       "text_content": "### Detect DOM XSS using variant analysis",
       "token_count": 9,
@@ -1039,13 +1826,13 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00070",
+      "chunk_id": "ver_421639d8a75f_c00123",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 70,
-      "chunk_type": "mixed",
-      "text_content": "**Vulnerable code:**\n\n```\n<script>\nvar x = location.hash.split(\"#\")[1];\ndocument.write(x);\n</script>\n```\n\nSemgrep rule to identify above dom xss [link](https://semgrep.dev/s/we30).",
-      "token_count": 68,
+      "chunk_idx": 123,
+      "chunk_type": "paragraph",
+      "text_content": "**Vulnerable code:**",
+      "token_count": 7,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "DOM based XSS Prevention Cheat Sheet",
@@ -1054,10 +1841,40 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00071",
+      "chunk_id": "ver_421639d8a75f_c00124",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 71,
+      "chunk_idx": 124,
+      "chunk_type": "code",
+      "text_content": "```\n<script>\nvar x = location.hash.split(\"#\")[1];\ndocument.write(x);\n</script>\n```",
+      "token_count": 37,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "Common Problems Associated with Mitigating DOM Based XSS",
+        "Detect DOM XSS using variant analysis"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00125",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 125,
+      "chunk_type": "paragraph",
+      "text_content": "Semgrep rule to identify above dom xss [link](https://semgrep.dev/s/we30).",
+      "token_count": 24,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "Common Problems Associated with Mitigating DOM Based XSS",
+        "Detect DOM XSS using variant analysis"
+      ]
+    },
+    {
+      "chunk_id": "ver_421639d8a75f_c00126",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "version_id": "ver_421639d8a75f",
+      "chunk_idx": 126,
       "chunk_type": "heading",
       "text_content": "## References",
       "token_count": 3,
@@ -1068,10 +1885,10 @@
       ]
     },
     {
-      "chunk_id": "ver_421639d8a75f_c00072",
+      "chunk_id": "ver_421639d8a75f_c00127",
       "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
       "version_id": "ver_421639d8a75f",
-      "chunk_idx": 72,
+      "chunk_idx": 127,
       "chunk_type": "list",
       "text_content": "- [MDN: innerHTML Security Considerations](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML#security_considerations)\n- [DOMPurify: HTML Sanitization](https://github.com/cure53/DOMPurify#what-does-it-do)",
       "token_count": 63,
@@ -1244,1864 +2061,1752 @@
       "end_offset": 101
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00003_s004",
-      "chunk_id": "ver_421639d8a75f_c00003",
+      "chunk_source_id": "ver_421639d8a75f_c00004_s000",
+      "chunk_id": "ver_421639d8a75f_c00004",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00012",
-      "source_order": 4,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 151
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00003_s005",
-      "chunk_id": "ver_421639d8a75f_c00003",
+      "chunk_source_id": "ver_421639d8a75f_c00005_s000",
+      "chunk_id": "ver_421639d8a75f_c00005",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00013",
-      "source_order": 5,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 74
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00004_s000",
-      "chunk_id": "ver_421639d8a75f_c00004",
+      "chunk_source_id": "ver_421639d8a75f_c00006_s000",
+      "chunk_id": "ver_421639d8a75f_c00006",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00014",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 130
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00005_s000",
-      "chunk_id": "ver_421639d8a75f_c00005",
+      "chunk_source_id": "ver_421639d8a75f_c00007_s000",
+      "chunk_id": "ver_421639d8a75f_c00007",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00015",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 109
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00005_s001",
-      "chunk_id": "ver_421639d8a75f_c00005",
+      "chunk_source_id": "ver_421639d8a75f_c00007_s001",
+      "chunk_id": "ver_421639d8a75f_c00007",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00015",
       "source_order": 1,
       "start_offset": 110,
       "end_offset": 184
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00005_s002",
-      "chunk_id": "ver_421639d8a75f_c00005",
+      "chunk_source_id": "ver_421639d8a75f_c00007_s002",
+      "chunk_id": "ver_421639d8a75f_c00007",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00015",
       "source_order": 2,
       "start_offset": 185,
       "end_offset": 276
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00005_s003",
-      "chunk_id": "ver_421639d8a75f_c00005",
+      "chunk_source_id": "ver_421639d8a75f_c00007_s003",
+      "chunk_id": "ver_421639d8a75f_c00007",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00015",
       "source_order": 3,
       "start_offset": 277,
       "end_offset": 289
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00006_s000",
-      "chunk_id": "ver_421639d8a75f_c00006",
+      "chunk_source_id": "ver_421639d8a75f_c00008_s000",
+      "chunk_id": "ver_421639d8a75f_c00008",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00016",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 34
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00007_s000",
-      "chunk_id": "ver_421639d8a75f_c00007",
+      "chunk_source_id": "ver_421639d8a75f_c00009_s000",
+      "chunk_id": "ver_421639d8a75f_c00009",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00017",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 15
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00008_s000",
-      "chunk_id": "ver_421639d8a75f_c00008",
+      "chunk_source_id": "ver_421639d8a75f_c00010_s000",
+      "chunk_id": "ver_421639d8a75f_c00010",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00018",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 111
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00009_s000",
-      "chunk_id": "ver_421639d8a75f_c00009",
+      "chunk_source_id": "ver_421639d8a75f_c00011_s000",
+      "chunk_id": "ver_421639d8a75f_c00011",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00019",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 12
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00010_s000",
-      "chunk_id": "ver_421639d8a75f_c00010",
+      "chunk_source_id": "ver_421639d8a75f_c00012_s000",
+      "chunk_id": "ver_421639d8a75f_c00012",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00020",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 105
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00011_s000",
-      "chunk_id": "ver_421639d8a75f_c00011",
+      "chunk_source_id": "ver_421639d8a75f_c00013_s000",
+      "chunk_id": "ver_421639d8a75f_c00013",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00021",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 13
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00012_s000",
-      "chunk_id": "ver_421639d8a75f_c00012",
+      "chunk_source_id": "ver_421639d8a75f_c00014_s000",
+      "chunk_id": "ver_421639d8a75f_c00014",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00022",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 62
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00012_s001",
-      "chunk_id": "ver_421639d8a75f_c00012",
+      "chunk_source_id": "ver_421639d8a75f_c00014_s001",
+      "chunk_id": "ver_421639d8a75f_c00014",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00023",
       "source_order": 1,
       "start_offset": 1,
       "end_offset": 3
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00012_s002",
-      "chunk_id": "ver_421639d8a75f_c00012",
+      "chunk_source_id": "ver_421639d8a75f_c00014_s002",
+      "chunk_id": "ver_421639d8a75f_c00014",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00023",
       "source_order": 2,
       "start_offset": 4,
       "end_offset": 31
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00012_s003",
-      "chunk_id": "ver_421639d8a75f_c00012",
+      "chunk_source_id": "ver_421639d8a75f_c00014_s003",
+      "chunk_id": "ver_421639d8a75f_c00014",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00023",
       "source_order": 3,
       "start_offset": 32,
       "end_offset": 100
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00012_s004",
-      "chunk_id": "ver_421639d8a75f_c00012",
+      "chunk_source_id": "ver_421639d8a75f_c00015_s000",
+      "chunk_id": "ver_421639d8a75f_c00015",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00024",
-      "source_order": 4,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 275
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00012_s005",
-      "chunk_id": "ver_421639d8a75f_c00012",
+      "chunk_source_id": "ver_421639d8a75f_c00016_s000",
+      "chunk_id": "ver_421639d8a75f_c00016",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00025",
-      "source_order": 5,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 269
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00013_s000",
-      "chunk_id": "ver_421639d8a75f_c00013",
+      "chunk_source_id": "ver_421639d8a75f_c00017_s000",
+      "chunk_id": "ver_421639d8a75f_c00017",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00026",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 123
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00014_s000",
-      "chunk_id": "ver_421639d8a75f_c00014",
+      "chunk_source_id": "ver_421639d8a75f_c00018_s000",
+      "chunk_id": "ver_421639d8a75f_c00018",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00027",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 109
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00014_s001",
-      "chunk_id": "ver_421639d8a75f_c00014",
+      "chunk_source_id": "ver_421639d8a75f_c00018_s001",
+      "chunk_id": "ver_421639d8a75f_c00018",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00027",
       "source_order": 1,
       "start_offset": 110,
       "end_offset": 345
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00014_s002",
-      "chunk_id": "ver_421639d8a75f_c00014",
+      "chunk_source_id": "ver_421639d8a75f_c00018_s002",
+      "chunk_id": "ver_421639d8a75f_c00018",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00028",
       "source_order": 2,
       "start_offset": 0,
       "end_offset": 180
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00014_s003",
-      "chunk_id": "ver_421639d8a75f_c00014",
+      "chunk_source_id": "ver_421639d8a75f_c00018_s003",
+      "chunk_id": "ver_421639d8a75f_c00018",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00029",
       "source_order": 3,
       "start_offset": 0,
       "end_offset": 169
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00014_s004",
-      "chunk_id": "ver_421639d8a75f_c00014",
+      "chunk_source_id": "ver_421639d8a75f_c00018_s004",
+      "chunk_id": "ver_421639d8a75f_c00018",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00029",
       "source_order": 4,
       "start_offset": 170,
       "end_offset": 357
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00015_s000",
-      "chunk_id": "ver_421639d8a75f_c00015",
+      "chunk_source_id": "ver_421639d8a75f_c00019_s000",
+      "chunk_id": "ver_421639d8a75f_c00019",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00030",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 27
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00016_s000",
-      "chunk_id": "ver_421639d8a75f_c00016",
+      "chunk_source_id": "ver_421639d8a75f_c00020_s000",
+      "chunk_id": "ver_421639d8a75f_c00020",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00031",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 484
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00016_s001",
-      "chunk_id": "ver_421639d8a75f_c00016",
+      "chunk_source_id": "ver_421639d8a75f_c00021_s000",
+      "chunk_id": "ver_421639d8a75f_c00021",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00032",
-      "source_order": 1,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 69
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00016_s002",
-      "chunk_id": "ver_421639d8a75f_c00016",
+      "chunk_source_id": "ver_421639d8a75f_c00021_s001",
+      "chunk_id": "ver_421639d8a75f_c00021",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00032",
-      "source_order": 2,
+      "source_order": 1,
       "start_offset": 70,
       "end_offset": 156
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00016_s003",
-      "chunk_id": "ver_421639d8a75f_c00016",
+      "chunk_source_id": "ver_421639d8a75f_c00021_s002",
+      "chunk_id": "ver_421639d8a75f_c00021",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00032",
-      "source_order": 3,
+      "source_order": 2,
       "start_offset": 157,
       "end_offset": 369
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00017_s000",
-      "chunk_id": "ver_421639d8a75f_c00017",
+      "chunk_source_id": "ver_421639d8a75f_c00022_s000",
+      "chunk_id": "ver_421639d8a75f_c00022",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00033",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 41
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00018_s000",
-      "chunk_id": "ver_421639d8a75f_c00018",
+      "chunk_source_id": "ver_421639d8a75f_c00023_s000",
+      "chunk_id": "ver_421639d8a75f_c00023",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00034",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 274
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00018_s001",
-      "chunk_id": "ver_421639d8a75f_c00018",
+      "chunk_source_id": "ver_421639d8a75f_c00024_s000",
+      "chunk_id": "ver_421639d8a75f_c00024",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00035",
-      "source_order": 1,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 205
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00019_s000",
-      "chunk_id": "ver_421639d8a75f_c00019",
+      "chunk_source_id": "ver_421639d8a75f_c00025_s000",
+      "chunk_id": "ver_421639d8a75f_c00025",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00036",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 137
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00020_s000",
-      "chunk_id": "ver_421639d8a75f_c00020",
+      "chunk_source_id": "ver_421639d8a75f_c00026_s000",
+      "chunk_id": "ver_421639d8a75f_c00026",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00037",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 181
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00020_s001",
-      "chunk_id": "ver_421639d8a75f_c00020",
+      "chunk_source_id": "ver_421639d8a75f_c00026_s001",
+      "chunk_id": "ver_421639d8a75f_c00026",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00037",
       "source_order": 1,
       "start_offset": 182,
       "end_offset": 267
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00020_s002",
-      "chunk_id": "ver_421639d8a75f_c00020",
+      "chunk_source_id": "ver_421639d8a75f_c00026_s002",
+      "chunk_id": "ver_421639d8a75f_c00026",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00037",
       "source_order": 2,
       "start_offset": 268,
       "end_offset": 359
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00020_s003",
-      "chunk_id": "ver_421639d8a75f_c00020",
+      "chunk_source_id": "ver_421639d8a75f_c00026_s003",
+      "chunk_id": "ver_421639d8a75f_c00026",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00038",
       "source_order": 3,
       "start_offset": 0,
       "end_offset": 95
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00020_s004",
-      "chunk_id": "ver_421639d8a75f_c00020",
+      "chunk_source_id": "ver_421639d8a75f_c00026_s004",
+      "chunk_id": "ver_421639d8a75f_c00026",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00038",
       "source_order": 4,
       "start_offset": 96,
       "end_offset": 181
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00020_s005",
-      "chunk_id": "ver_421639d8a75f_c00020",
+      "chunk_source_id": "ver_421639d8a75f_c00027_s000",
+      "chunk_id": "ver_421639d8a75f_c00027",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00039",
-      "source_order": 5,
+      "source_order": 0,
       "start_offset": 0,
-      "end_offset": 252
-    },
-    {
-      "chunk_source_id": "ver_421639d8a75f_c00020_s006",
-      "chunk_id": "ver_421639d8a75f_c00020",
-      "normalized_block_id": "nrm_ver_421639d8a75f_b00039",
-      "source_order": 6,
-      "start_offset": 253,
       "end_offset": 439
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00020_s007",
-      "chunk_id": "ver_421639d8a75f_c00020",
+      "chunk_source_id": "ver_421639d8a75f_c00028_s000",
+      "chunk_id": "ver_421639d8a75f_c00028",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00040",
-      "source_order": 7,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 163
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00020_s008",
-      "chunk_id": "ver_421639d8a75f_c00020",
+      "chunk_source_id": "ver_421639d8a75f_c00028_s001",
+      "chunk_id": "ver_421639d8a75f_c00028",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00041",
-      "source_order": 8,
+      "source_order": 1,
       "start_offset": 0,
       "end_offset": 150
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00020_s009",
-      "chunk_id": "ver_421639d8a75f_c00020",
+      "chunk_source_id": "ver_421639d8a75f_c00028_s002",
+      "chunk_id": "ver_421639d8a75f_c00028",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00041",
-      "source_order": 9,
+      "source_order": 2,
       "start_offset": 151,
       "end_offset": 230
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00020_s010",
-      "chunk_id": "ver_421639d8a75f_c00020",
+      "chunk_source_id": "ver_421639d8a75f_c00028_s003",
+      "chunk_id": "ver_421639d8a75f_c00028",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00042",
-      "source_order": 10,
+      "source_order": 3,
       "start_offset": 0,
       "end_offset": 129
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00020_s011",
-      "chunk_id": "ver_421639d8a75f_c00020",
+      "chunk_source_id": "ver_421639d8a75f_c00028_s004",
+      "chunk_id": "ver_421639d8a75f_c00028",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00042",
-      "source_order": 11,
+      "source_order": 4,
       "start_offset": 130,
       "end_offset": 291
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00020_s012",
-      "chunk_id": "ver_421639d8a75f_c00020",
+      "chunk_source_id": "ver_421639d8a75f_c00028_s005",
+      "chunk_id": "ver_421639d8a75f_c00028",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00042",
-      "source_order": 12,
+      "source_order": 5,
       "start_offset": 292,
       "end_offset": 494
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00020_s013",
-      "chunk_id": "ver_421639d8a75f_c00020",
-      "normalized_block_id": "nrm_ver_421639d8a75f_b00043",
-      "source_order": 13,
-      "start_offset": 0,
-      "end_offset": 91
-    },
-    {
-      "chunk_source_id": "ver_421639d8a75f_c00021_s000",
-      "chunk_id": "ver_421639d8a75f_c00021",
+      "chunk_source_id": "ver_421639d8a75f_c00029_s000",
+      "chunk_id": "ver_421639d8a75f_c00029",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00043",
       "source_order": 0,
-      "start_offset": 92,
+      "start_offset": 0,
       "end_offset": 175
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00021_s001",
-      "chunk_id": "ver_421639d8a75f_c00021",
+      "chunk_source_id": "ver_421639d8a75f_c00030_s000",
+      "chunk_id": "ver_421639d8a75f_c00030",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00044",
-      "source_order": 1,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 86
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00021_s002",
-      "chunk_id": "ver_421639d8a75f_c00021",
+      "chunk_source_id": "ver_421639d8a75f_c00030_s001",
+      "chunk_id": "ver_421639d8a75f_c00030",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00044",
-      "source_order": 2,
+      "source_order": 1,
       "start_offset": 87,
       "end_offset": 255
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00021_s003",
-      "chunk_id": "ver_421639d8a75f_c00021",
+      "chunk_source_id": "ver_421639d8a75f_c00030_s002",
+      "chunk_id": "ver_421639d8a75f_c00030",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00044",
-      "source_order": 3,
+      "source_order": 2,
       "start_offset": 256,
       "end_offset": 318
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00021_s004",
-      "chunk_id": "ver_421639d8a75f_c00021",
+      "chunk_source_id": "ver_421639d8a75f_c00030_s003",
+      "chunk_id": "ver_421639d8a75f_c00030",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00044",
-      "source_order": 4,
+      "source_order": 3,
       "start_offset": 319,
       "end_offset": 436
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00021_s005",
-      "chunk_id": "ver_421639d8a75f_c00021",
+      "chunk_source_id": "ver_421639d8a75f_c00031_s000",
+      "chunk_id": "ver_421639d8a75f_c00031",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00045",
-      "source_order": 5,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 43
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00021_s006",
-      "chunk_id": "ver_421639d8a75f_c00021",
+      "chunk_source_id": "ver_421639d8a75f_c00032_s000",
+      "chunk_id": "ver_421639d8a75f_c00032",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00046",
-      "source_order": 6,
+      "source_order": 0,
       "start_offset": 0,
-      "end_offset": 50
-    },
-    {
-      "chunk_source_id": "ver_421639d8a75f_c00021_s007",
-      "chunk_id": "ver_421639d8a75f_c00021",
-      "normalized_block_id": "nrm_ver_421639d8a75f_b00046",
-      "source_order": 7,
-      "start_offset": 51,
-      "end_offset": 194
-    },
-    {
-      "chunk_source_id": "ver_421639d8a75f_c00021_s008",
-      "chunk_id": "ver_421639d8a75f_c00021",
-      "normalized_block_id": "nrm_ver_421639d8a75f_b00046",
-      "source_order": 8,
-      "start_offset": 196,
-      "end_offset": 231
-    },
-    {
-      "chunk_source_id": "ver_421639d8a75f_c00021_s009",
-      "chunk_id": "ver_421639d8a75f_c00021",
-      "normalized_block_id": "nrm_ver_421639d8a75f_b00046",
-      "source_order": 9,
-      "start_offset": 232,
       "end_offset": 320
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00021_s010",
-      "chunk_id": "ver_421639d8a75f_c00021",
+      "chunk_source_id": "ver_421639d8a75f_c00033_s000",
+      "chunk_id": "ver_421639d8a75f_c00033",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00047",
-      "source_order": 10,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 100
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00021_s011",
-      "chunk_id": "ver_421639d8a75f_c00021",
+      "chunk_source_id": "ver_421639d8a75f_c00034_s000",
+      "chunk_id": "ver_421639d8a75f_c00034",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00048",
-      "source_order": 11,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 403
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00021_s012",
-      "chunk_id": "ver_421639d8a75f_c00021",
+      "chunk_source_id": "ver_421639d8a75f_c00035_s000",
+      "chunk_id": "ver_421639d8a75f_c00035",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00049",
-      "source_order": 12,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 2
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00022_s000",
-      "chunk_id": "ver_421639d8a75f_c00022",
+      "chunk_source_id": "ver_421639d8a75f_c00036_s000",
+      "chunk_id": "ver_421639d8a75f_c00036",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00050",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 136
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00022_s001",
-      "chunk_id": "ver_421639d8a75f_c00022",
+      "chunk_source_id": "ver_421639d8a75f_c00037_s000",
+      "chunk_id": "ver_421639d8a75f_c00037",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00051",
-      "source_order": 1,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 244
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00022_s002",
-      "chunk_id": "ver_421639d8a75f_c00022",
+      "chunk_source_id": "ver_421639d8a75f_c00037_s001",
+      "chunk_id": "ver_421639d8a75f_c00037",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00052",
-      "source_order": 2,
+      "source_order": 1,
       "start_offset": 0,
       "end_offset": 52
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00022_s003",
-      "chunk_id": "ver_421639d8a75f_c00022",
+      "chunk_source_id": "ver_421639d8a75f_c00037_s002",
+      "chunk_id": "ver_421639d8a75f_c00037",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00052",
-      "source_order": 3,
+      "source_order": 2,
       "start_offset": 53,
       "end_offset": 149
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00022_s004",
-      "chunk_id": "ver_421639d8a75f_c00022",
+      "chunk_source_id": "ver_421639d8a75f_c00037_s003",
+      "chunk_id": "ver_421639d8a75f_c00037",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00052",
-      "source_order": 4,
+      "source_order": 3,
       "start_offset": 150,
       "end_offset": 268
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00023_s000",
-      "chunk_id": "ver_421639d8a75f_c00023",
+      "chunk_source_id": "ver_421639d8a75f_c00038_s000",
+      "chunk_id": "ver_421639d8a75f_c00038",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00053",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 36
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00024_s000",
-      "chunk_id": "ver_421639d8a75f_c00024",
+      "chunk_source_id": "ver_421639d8a75f_c00039_s000",
+      "chunk_id": "ver_421639d8a75f_c00039",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00054",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 108
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00024_s001",
-      "chunk_id": "ver_421639d8a75f_c00024",
+      "chunk_source_id": "ver_421639d8a75f_c00039_s001",
+      "chunk_id": "ver_421639d8a75f_c00039",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00054",
       "source_order": 1,
       "start_offset": 109,
       "end_offset": 144
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00024_s002",
-      "chunk_id": "ver_421639d8a75f_c00024",
+      "chunk_source_id": "ver_421639d8a75f_c00040_s000",
+      "chunk_id": "ver_421639d8a75f_c00040",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00055",
-      "source_order": 2,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 27
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00024_s003",
-      "chunk_id": "ver_421639d8a75f_c00024",
+      "chunk_source_id": "ver_421639d8a75f_c00041_s000",
+      "chunk_id": "ver_421639d8a75f_c00041",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00056",
-      "source_order": 3,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 47
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00024_s004",
-      "chunk_id": "ver_421639d8a75f_c00024",
+      "chunk_source_id": "ver_421639d8a75f_c00042_s000",
+      "chunk_id": "ver_421639d8a75f_c00042",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00057",
-      "source_order": 4,
+      "source_order": 0,
       "start_offset": 0,
-      "end_offset": 24
-    },
-    {
-      "chunk_source_id": "ver_421639d8a75f_c00024_s005",
-      "chunk_id": "ver_421639d8a75f_c00024",
-      "normalized_block_id": "nrm_ver_421639d8a75f_b00057",
-      "source_order": 5,
-      "start_offset": 25,
       "end_offset": 35
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00024_s006",
-      "chunk_id": "ver_421639d8a75f_c00024",
+      "chunk_source_id": "ver_421639d8a75f_c00043_s000",
+      "chunk_id": "ver_421639d8a75f_c00043",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00058",
-      "source_order": 6,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 96
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00024_s007",
-      "chunk_id": "ver_421639d8a75f_c00024",
+      "chunk_source_id": "ver_421639d8a75f_c00044_s000",
+      "chunk_id": "ver_421639d8a75f_c00044",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00059",
-      "source_order": 7,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 29
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00024_s008",
-      "chunk_id": "ver_421639d8a75f_c00024",
+      "chunk_source_id": "ver_421639d8a75f_c00045_s000",
+      "chunk_id": "ver_421639d8a75f_c00045",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00060",
-      "source_order": 8,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 128
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00024_s009",
-      "chunk_id": "ver_421639d8a75f_c00024",
+      "chunk_source_id": "ver_421639d8a75f_c00045_s001",
+      "chunk_id": "ver_421639d8a75f_c00045",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00060",
-      "source_order": 9,
+      "source_order": 1,
       "start_offset": 129,
       "end_offset": 217
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00025_s000",
-      "chunk_id": "ver_421639d8a75f_c00025",
+      "chunk_source_id": "ver_421639d8a75f_c00046_s000",
+      "chunk_id": "ver_421639d8a75f_c00046",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00061",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 126
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00026_s000",
-      "chunk_id": "ver_421639d8a75f_c00026",
+      "chunk_source_id": "ver_421639d8a75f_c00047_s000",
+      "chunk_id": "ver_421639d8a75f_c00047",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00062",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 215
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00026_s001",
-      "chunk_id": "ver_421639d8a75f_c00026",
+      "chunk_source_id": "ver_421639d8a75f_c00047_s001",
+      "chunk_id": "ver_421639d8a75f_c00047",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00063",
       "source_order": 1,
       "start_offset": 0,
       "end_offset": 113
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00026_s002",
-      "chunk_id": "ver_421639d8a75f_c00026",
+      "chunk_source_id": "ver_421639d8a75f_c00047_s002",
+      "chunk_id": "ver_421639d8a75f_c00047",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00063",
       "source_order": 2,
       "start_offset": 114,
       "end_offset": 242
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00026_s003",
-      "chunk_id": "ver_421639d8a75f_c00026",
+      "chunk_source_id": "ver_421639d8a75f_c00048_s000",
+      "chunk_id": "ver_421639d8a75f_c00048",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00064",
-      "source_order": 3,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 182
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00027_s000",
-      "chunk_id": "ver_421639d8a75f_c00027",
+      "chunk_source_id": "ver_421639d8a75f_c00049_s000",
+      "chunk_id": "ver_421639d8a75f_c00049",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00065",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 138
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00028_s000",
-      "chunk_id": "ver_421639d8a75f_c00028",
+      "chunk_source_id": "ver_421639d8a75f_c00050_s000",
+      "chunk_id": "ver_421639d8a75f_c00050",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00066",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 90
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00028_s001",
-      "chunk_id": "ver_421639d8a75f_c00028",
+      "chunk_source_id": "ver_421639d8a75f_c00050_s001",
+      "chunk_id": "ver_421639d8a75f_c00050",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00066",
       "source_order": 1,
       "start_offset": 91,
       "end_offset": 195
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00028_s002",
-      "chunk_id": "ver_421639d8a75f_c00028",
+      "chunk_source_id": "ver_421639d8a75f_c00051_s000",
+      "chunk_id": "ver_421639d8a75f_c00051",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00067",
-      "source_order": 2,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 309
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00028_s003",
-      "chunk_id": "ver_421639d8a75f_c00028",
+      "chunk_source_id": "ver_421639d8a75f_c00052_s000",
+      "chunk_id": "ver_421639d8a75f_c00052",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00068",
-      "source_order": 3,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 222
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00029_s000",
-      "chunk_id": "ver_421639d8a75f_c00029",
+      "chunk_source_id": "ver_421639d8a75f_c00053_s000",
+      "chunk_id": "ver_421639d8a75f_c00053",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00069",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 76
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00030_s000",
-      "chunk_id": "ver_421639d8a75f_c00030",
+      "chunk_source_id": "ver_421639d8a75f_c00054_s000",
+      "chunk_id": "ver_421639d8a75f_c00054",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00070",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 123
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00030_s001",
-      "chunk_id": "ver_421639d8a75f_c00030",
+      "chunk_source_id": "ver_421639d8a75f_c00054_s001",
+      "chunk_id": "ver_421639d8a75f_c00054",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00071",
       "source_order": 1,
       "start_offset": 0,
       "end_offset": 33
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00030_s002",
-      "chunk_id": "ver_421639d8a75f_c00030",
+      "chunk_source_id": "ver_421639d8a75f_c00055_s000",
+      "chunk_id": "ver_421639d8a75f_c00055",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00072",
-      "source_order": 2,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 92
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00031_s000",
-      "chunk_id": "ver_421639d8a75f_c00031",
+      "chunk_source_id": "ver_421639d8a75f_c00056_s000",
+      "chunk_id": "ver_421639d8a75f_c00056",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00073",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 61
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00032_s000",
-      "chunk_id": "ver_421639d8a75f_c00032",
+      "chunk_source_id": "ver_421639d8a75f_c00057_s000",
+      "chunk_id": "ver_421639d8a75f_c00057",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00074",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 92
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00032_s001",
-      "chunk_id": "ver_421639d8a75f_c00032",
+      "chunk_source_id": "ver_421639d8a75f_c00057_s001",
+      "chunk_id": "ver_421639d8a75f_c00057",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00074",
       "source_order": 1,
       "start_offset": 93,
       "end_offset": 231
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00032_s002",
-      "chunk_id": "ver_421639d8a75f_c00032",
+      "chunk_source_id": "ver_421639d8a75f_c00057_s002",
+      "chunk_id": "ver_421639d8a75f_c00057",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00074",
       "source_order": 2,
       "start_offset": 232,
       "end_offset": 329
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00032_s003",
-      "chunk_id": "ver_421639d8a75f_c00032",
+      "chunk_source_id": "ver_421639d8a75f_c00057_s003",
+      "chunk_id": "ver_421639d8a75f_c00057",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00075",
       "source_order": 3,
       "start_offset": 0,
       "end_offset": 91
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00032_s004",
-      "chunk_id": "ver_421639d8a75f_c00032",
+      "chunk_source_id": "ver_421639d8a75f_c00057_s004",
+      "chunk_id": "ver_421639d8a75f_c00057",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00075",
       "source_order": 4,
       "start_offset": 92,
       "end_offset": 229
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00032_s005",
-      "chunk_id": "ver_421639d8a75f_c00032",
+      "chunk_source_id": "ver_421639d8a75f_c00057_s005",
+      "chunk_id": "ver_421639d8a75f_c00057",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00076",
       "source_order": 5,
       "start_offset": 0,
       "end_offset": 217
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00032_s006",
-      "chunk_id": "ver_421639d8a75f_c00032",
+      "chunk_source_id": "ver_421639d8a75f_c00058_s000",
+      "chunk_id": "ver_421639d8a75f_c00058",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00077",
-      "source_order": 6,
+      "source_order": 0,
       "start_offset": 0,
-      "end_offset": 64
-    },
-    {
-      "chunk_source_id": "ver_421639d8a75f_c00032_s007",
-      "chunk_id": "ver_421639d8a75f_c00032",
-      "normalized_block_id": "nrm_ver_421639d8a75f_b00077",
-      "source_order": 7,
-      "start_offset": 65,
       "end_offset": 160
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00032_s008",
-      "chunk_id": "ver_421639d8a75f_c00032",
+      "chunk_source_id": "ver_421639d8a75f_c00059_s000",
+      "chunk_id": "ver_421639d8a75f_c00059",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00078",
-      "source_order": 8,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 108
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00033_s000",
-      "chunk_id": "ver_421639d8a75f_c00033",
+      "chunk_source_id": "ver_421639d8a75f_c00060_s000",
+      "chunk_id": "ver_421639d8a75f_c00060",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00079",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 69
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00034_s000",
-      "chunk_id": "ver_421639d8a75f_c00034",
+      "chunk_source_id": "ver_421639d8a75f_c00061_s000",
+      "chunk_id": "ver_421639d8a75f_c00061",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00080",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 137
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00034_s001",
-      "chunk_id": "ver_421639d8a75f_c00034",
+      "chunk_source_id": "ver_421639d8a75f_c00061_s001",
+      "chunk_id": "ver_421639d8a75f_c00061",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00081",
       "source_order": 1,
       "start_offset": 0,
       "end_offset": 162
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00035_s000",
-      "chunk_id": "ver_421639d8a75f_c00035",
+      "chunk_source_id": "ver_421639d8a75f_c00062_s000",
+      "chunk_id": "ver_421639d8a75f_c00062",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00082",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 77
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00036_s000",
-      "chunk_id": "ver_421639d8a75f_c00036",
+      "chunk_source_id": "ver_421639d8a75f_c00063_s000",
+      "chunk_id": "ver_421639d8a75f_c00063",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00083",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 71
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00037_s000",
-      "chunk_id": "ver_421639d8a75f_c00037",
+      "chunk_source_id": "ver_421639d8a75f_c00064_s000",
+      "chunk_id": "ver_421639d8a75f_c00064",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00084",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 154
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00038_s000",
-      "chunk_id": "ver_421639d8a75f_c00038",
+      "chunk_source_id": "ver_421639d8a75f_c00065_s000",
+      "chunk_id": "ver_421639d8a75f_c00065",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00085",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 140
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00038_s001",
-      "chunk_id": "ver_421639d8a75f_c00038",
+      "chunk_source_id": "ver_421639d8a75f_c00066_s000",
+      "chunk_id": "ver_421639d8a75f_c00066",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00086",
-      "source_order": 1,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 71
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00039_s000",
-      "chunk_id": "ver_421639d8a75f_c00039",
+      "chunk_source_id": "ver_421639d8a75f_c00067_s000",
+      "chunk_id": "ver_421639d8a75f_c00067",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00087",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 156
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00040_s000",
-      "chunk_id": "ver_421639d8a75f_c00040",
+      "chunk_source_id": "ver_421639d8a75f_c00068_s000",
+      "chunk_id": "ver_421639d8a75f_c00068",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00088",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 153
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00040_s001",
-      "chunk_id": "ver_421639d8a75f_c00040",
+      "chunk_source_id": "ver_421639d8a75f_c00068_s001",
+      "chunk_id": "ver_421639d8a75f_c00068",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00089",
       "source_order": 1,
       "start_offset": 0,
       "end_offset": 84
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00040_s002",
-      "chunk_id": "ver_421639d8a75f_c00040",
+      "chunk_source_id": "ver_421639d8a75f_c00068_s002",
+      "chunk_id": "ver_421639d8a75f_c00068",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00090",
       "source_order": 2,
       "start_offset": 0,
       "end_offset": 110
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00040_s003",
-      "chunk_id": "ver_421639d8a75f_c00040",
+      "chunk_source_id": "ver_421639d8a75f_c00068_s003",
+      "chunk_id": "ver_421639d8a75f_c00068",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00091",
       "source_order": 3,
       "start_offset": 0,
       "end_offset": 457
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00041_s000",
-      "chunk_id": "ver_421639d8a75f_c00041",
+      "chunk_source_id": "ver_421639d8a75f_c00069_s000",
+      "chunk_id": "ver_421639d8a75f_c00069",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00092",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 76
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00042_s000",
-      "chunk_id": "ver_421639d8a75f_c00042",
+      "chunk_source_id": "ver_421639d8a75f_c00070_s000",
+      "chunk_id": "ver_421639d8a75f_c00070",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00093",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 59
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00042_s001",
-      "chunk_id": "ver_421639d8a75f_c00042",
+      "chunk_source_id": "ver_421639d8a75f_c00070_s001",
+      "chunk_id": "ver_421639d8a75f_c00070",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00094",
       "source_order": 1,
       "start_offset": 0,
       "end_offset": 2
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00042_s002",
-      "chunk_id": "ver_421639d8a75f_c00042",
+      "chunk_source_id": "ver_421639d8a75f_c00070_s002",
+      "chunk_id": "ver_421639d8a75f_c00070",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00094",
       "source_order": 2,
       "start_offset": 3,
       "end_offset": 34
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00042_s003",
-      "chunk_id": "ver_421639d8a75f_c00042",
+      "chunk_source_id": "ver_421639d8a75f_c00070_s003",
+      "chunk_id": "ver_421639d8a75f_c00070",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00094",
       "source_order": 3,
       "start_offset": 35,
       "end_offset": 66
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00042_s004",
-      "chunk_id": "ver_421639d8a75f_c00042",
+      "chunk_source_id": "ver_421639d8a75f_c00070_s004",
+      "chunk_id": "ver_421639d8a75f_c00070",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00094",
       "source_order": 4,
       "start_offset": 67,
       "end_offset": 92
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00042_s005",
-      "chunk_id": "ver_421639d8a75f_c00042",
+      "chunk_source_id": "ver_421639d8a75f_c00070_s005",
+      "chunk_id": "ver_421639d8a75f_c00070",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00094",
       "source_order": 5,
       "start_offset": 93,
       "end_offset": 117
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00043_s000",
-      "chunk_id": "ver_421639d8a75f_c00043",
+      "chunk_source_id": "ver_421639d8a75f_c00071_s000",
+      "chunk_id": "ver_421639d8a75f_c00071",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00095",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 88
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00044_s000",
-      "chunk_id": "ver_421639d8a75f_c00044",
+      "chunk_source_id": "ver_421639d8a75f_c00072_s000",
+      "chunk_id": "ver_421639d8a75f_c00072",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00096",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 92
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00044_s001",
-      "chunk_id": "ver_421639d8a75f_c00044",
+      "chunk_source_id": "ver_421639d8a75f_c00072_s001",
+      "chunk_id": "ver_421639d8a75f_c00072",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00097",
       "source_order": 1,
       "start_offset": 0,
       "end_offset": 61
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00044_s002",
-      "chunk_id": "ver_421639d8a75f_c00044",
+      "chunk_source_id": "ver_421639d8a75f_c00072_s002",
+      "chunk_id": "ver_421639d8a75f_c00072",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00098",
       "source_order": 2,
       "start_offset": 0,
       "end_offset": 2
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00044_s003",
-      "chunk_id": "ver_421639d8a75f_c00044",
+      "chunk_source_id": "ver_421639d8a75f_c00072_s003",
+      "chunk_id": "ver_421639d8a75f_c00072",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00098",
       "source_order": 3,
       "start_offset": 3,
       "end_offset": 38
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00044_s004",
-      "chunk_id": "ver_421639d8a75f_c00044",
+      "chunk_source_id": "ver_421639d8a75f_c00072_s004",
+      "chunk_id": "ver_421639d8a75f_c00072",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00098",
       "source_order": 4,
       "start_offset": 39,
       "end_offset": 116
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00044_s005",
-      "chunk_id": "ver_421639d8a75f_c00044",
+      "chunk_source_id": "ver_421639d8a75f_c00072_s005",
+      "chunk_id": "ver_421639d8a75f_c00072",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00098",
       "source_order": 5,
       "start_offset": 117,
       "end_offset": 146
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00044_s006",
-      "chunk_id": "ver_421639d8a75f_c00044",
+      "chunk_source_id": "ver_421639d8a75f_c00072_s006",
+      "chunk_id": "ver_421639d8a75f_c00072",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00099",
       "source_order": 6,
       "start_offset": 0,
       "end_offset": 177
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00045_s000",
-      "chunk_id": "ver_421639d8a75f_c00045",
+      "chunk_source_id": "ver_421639d8a75f_c00073_s000",
+      "chunk_id": "ver_421639d8a75f_c00073",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00100",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 49
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00046_s000",
-      "chunk_id": "ver_421639d8a75f_c00046",
+      "chunk_source_id": "ver_421639d8a75f_c00074_s000",
+      "chunk_id": "ver_421639d8a75f_c00074",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00101",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 88
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00046_s001",
-      "chunk_id": "ver_421639d8a75f_c00046",
+      "chunk_source_id": "ver_421639d8a75f_c00075_s000",
+      "chunk_id": "ver_421639d8a75f_c00075",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00102",
-      "source_order": 1,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 215
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00046_s002",
-      "chunk_id": "ver_421639d8a75f_c00046",
+      "chunk_source_id": "ver_421639d8a75f_c00076_s000",
+      "chunk_id": "ver_421639d8a75f_c00076",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00103",
-      "source_order": 2,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 52
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00047_s000",
-      "chunk_id": "ver_421639d8a75f_c00047",
+      "chunk_source_id": "ver_421639d8a75f_c00077_s000",
+      "chunk_id": "ver_421639d8a75f_c00077",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00104",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 25
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00048_s000",
-      "chunk_id": "ver_421639d8a75f_c00048",
+      "chunk_source_id": "ver_421639d8a75f_c00078_s000",
+      "chunk_id": "ver_421639d8a75f_c00078",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00105",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 99
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00048_s001",
-      "chunk_id": "ver_421639d8a75f_c00048",
+      "chunk_source_id": "ver_421639d8a75f_c00079_s000",
+      "chunk_id": "ver_421639d8a75f_c00079",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00106",
-      "source_order": 1,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 184
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00048_s002",
-      "chunk_id": "ver_421639d8a75f_c00048",
+      "chunk_source_id": "ver_421639d8a75f_c00080_s000",
+      "chunk_id": "ver_421639d8a75f_c00080",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00107",
-      "source_order": 2,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 124
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00048_s003",
-      "chunk_id": "ver_421639d8a75f_c00048",
+      "chunk_source_id": "ver_421639d8a75f_c00080_s001",
+      "chunk_id": "ver_421639d8a75f_c00080",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00108",
-      "source_order": 3,
+      "source_order": 1,
       "start_offset": 0,
       "end_offset": 132
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00048_s004",
-      "chunk_id": "ver_421639d8a75f_c00048",
+      "chunk_source_id": "ver_421639d8a75f_c00080_s002",
+      "chunk_id": "ver_421639d8a75f_c00080",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00109",
-      "source_order": 4,
+      "source_order": 2,
       "start_offset": 0,
       "end_offset": 399
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00048_s005",
-      "chunk_id": "ver_421639d8a75f_c00048",
+      "chunk_source_id": "ver_421639d8a75f_c00080_s003",
+      "chunk_id": "ver_421639d8a75f_c00080",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00110",
-      "source_order": 5,
+      "source_order": 3,
       "start_offset": 0,
       "end_offset": 346
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00048_s006",
-      "chunk_id": "ver_421639d8a75f_c00048",
+      "chunk_source_id": "ver_421639d8a75f_c00080_s004",
+      "chunk_id": "ver_421639d8a75f_c00080",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00111",
-      "source_order": 6,
+      "source_order": 4,
       "start_offset": 0,
       "end_offset": 88
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00048_s007",
-      "chunk_id": "ver_421639d8a75f_c00048",
+      "chunk_source_id": "ver_421639d8a75f_c00081_s000",
+      "chunk_id": "ver_421639d8a75f_c00081",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00112",
-      "source_order": 7,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 197
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00048_s008",
-      "chunk_id": "ver_421639d8a75f_c00048",
+      "chunk_source_id": "ver_421639d8a75f_c00082_s000",
+      "chunk_id": "ver_421639d8a75f_c00082",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00113",
-      "source_order": 8,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 43
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00048_s009",
-      "chunk_id": "ver_421639d8a75f_c00048",
+      "chunk_source_id": "ver_421639d8a75f_c00082_s001",
+      "chunk_id": "ver_421639d8a75f_c00082",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00113",
-      "source_order": 9,
+      "source_order": 1,
       "start_offset": 44,
       "end_offset": 216
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00048_s010",
-      "chunk_id": "ver_421639d8a75f_c00048",
+      "chunk_source_id": "ver_421639d8a75f_c00082_s002",
+      "chunk_id": "ver_421639d8a75f_c00082",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00114",
-      "source_order": 10,
+      "source_order": 2,
       "start_offset": 0,
       "end_offset": 199
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00048_s011",
-      "chunk_id": "ver_421639d8a75f_c00048",
+      "chunk_source_id": "ver_421639d8a75f_c00082_s003",
+      "chunk_id": "ver_421639d8a75f_c00082",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00115",
-      "source_order": 11,
+      "source_order": 3,
       "start_offset": 0,
       "end_offset": 44
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00049_s000",
-      "chunk_id": "ver_421639d8a75f_c00049",
+      "chunk_source_id": "ver_421639d8a75f_c00083_s000",
+      "chunk_id": "ver_421639d8a75f_c00083",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00116",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 146
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00049_s001",
-      "chunk_id": "ver_421639d8a75f_c00049",
+      "chunk_source_id": "ver_421639d8a75f_c00084_s000",
+      "chunk_id": "ver_421639d8a75f_c00084",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00117",
-      "source_order": 1,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 151
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00049_s002",
-      "chunk_id": "ver_421639d8a75f_c00049",
+      "chunk_source_id": "ver_421639d8a75f_c00085_s000",
+      "chunk_id": "ver_421639d8a75f_c00085",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00118",
-      "source_order": 2,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 82
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00049_s003",
-      "chunk_id": "ver_421639d8a75f_c00049",
+      "chunk_source_id": "ver_421639d8a75f_c00085_s001",
+      "chunk_id": "ver_421639d8a75f_c00085",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00118",
-      "source_order": 3,
+      "source_order": 1,
       "start_offset": 83,
       "end_offset": 204
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00049_s004",
-      "chunk_id": "ver_421639d8a75f_c00049",
+      "chunk_source_id": "ver_421639d8a75f_c00085_s002",
+      "chunk_id": "ver_421639d8a75f_c00085",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00119",
-      "source_order": 4,
+      "source_order": 2,
       "start_offset": 0,
       "end_offset": 19
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00049_s005",
-      "chunk_id": "ver_421639d8a75f_c00049",
+      "chunk_source_id": "ver_421639d8a75f_c00086_s000",
+      "chunk_id": "ver_421639d8a75f_c00086",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00120",
-      "source_order": 5,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 466
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00050_s000",
-      "chunk_id": "ver_421639d8a75f_c00050",
+      "chunk_source_id": "ver_421639d8a75f_c00087_s000",
+      "chunk_id": "ver_421639d8a75f_c00087",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00121",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 78
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00051_s000",
-      "chunk_id": "ver_421639d8a75f_c00051",
+      "chunk_source_id": "ver_421639d8a75f_c00088_s000",
+      "chunk_id": "ver_421639d8a75f_c00088",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00122",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 166
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00051_s001",
-      "chunk_id": "ver_421639d8a75f_c00051",
+      "chunk_source_id": "ver_421639d8a75f_c00089_s000",
+      "chunk_id": "ver_421639d8a75f_c00089",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00123",
-      "source_order": 1,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 69
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00051_s002",
-      "chunk_id": "ver_421639d8a75f_c00051",
+      "chunk_source_id": "ver_421639d8a75f_c00090_s000",
+      "chunk_id": "ver_421639d8a75f_c00090",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00124",
-      "source_order": 2,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 241
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00052_s000",
-      "chunk_id": "ver_421639d8a75f_c00052",
+      "chunk_source_id": "ver_421639d8a75f_c00091_s000",
+      "chunk_id": "ver_421639d8a75f_c00091",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00125",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 77
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00053_s000",
-      "chunk_id": "ver_421639d8a75f_c00053",
+      "chunk_source_id": "ver_421639d8a75f_c00092_s000",
+      "chunk_id": "ver_421639d8a75f_c00092",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00126",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 134
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00054_s000",
-      "chunk_id": "ver_421639d8a75f_c00054",
+      "chunk_source_id": "ver_421639d8a75f_c00093_s000",
+      "chunk_id": "ver_421639d8a75f_c00093",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00127",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 86
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00055_s000",
-      "chunk_id": "ver_421639d8a75f_c00055",
+      "chunk_source_id": "ver_421639d8a75f_c00094_s000",
+      "chunk_id": "ver_421639d8a75f_c00094",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00128",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 81
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00055_s001",
-      "chunk_id": "ver_421639d8a75f_c00055",
+      "chunk_source_id": "ver_421639d8a75f_c00094_s001",
+      "chunk_id": "ver_421639d8a75f_c00094",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00128",
       "source_order": 1,
       "start_offset": 82,
       "end_offset": 181
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00055_s002",
-      "chunk_id": "ver_421639d8a75f_c00055",
+      "chunk_source_id": "ver_421639d8a75f_c00094_s002",
+      "chunk_id": "ver_421639d8a75f_c00094",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00129",
       "source_order": 2,
       "start_offset": 0,
       "end_offset": 50
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00055_s003",
-      "chunk_id": "ver_421639d8a75f_c00055",
+      "chunk_source_id": "ver_421639d8a75f_c00095_s000",
+      "chunk_id": "ver_421639d8a75f_c00095",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00130",
-      "source_order": 3,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 90
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00055_s004",
-      "chunk_id": "ver_421639d8a75f_c00055",
+      "chunk_source_id": "ver_421639d8a75f_c00096_s000",
+      "chunk_id": "ver_421639d8a75f_c00096",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00131",
-      "source_order": 4,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 107
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00055_s005",
-      "chunk_id": "ver_421639d8a75f_c00055",
+      "chunk_source_id": "ver_421639d8a75f_c00096_s001",
+      "chunk_id": "ver_421639d8a75f_c00096",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00131",
-      "source_order": 5,
+      "source_order": 1,
       "start_offset": 108,
       "end_offset": 221
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00055_s006",
-      "chunk_id": "ver_421639d8a75f_c00055",
+      "chunk_source_id": "ver_421639d8a75f_c00096_s002",
+      "chunk_id": "ver_421639d8a75f_c00096",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00132",
-      "source_order": 6,
+      "source_order": 2,
       "start_offset": 0,
       "end_offset": 48
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00055_s007",
-      "chunk_id": "ver_421639d8a75f_c00055",
+      "chunk_source_id": "ver_421639d8a75f_c00097_s000",
+      "chunk_id": "ver_421639d8a75f_c00097",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00133",
-      "source_order": 7,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 99
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00056_s000",
-      "chunk_id": "ver_421639d8a75f_c00056",
+      "chunk_source_id": "ver_421639d8a75f_c00098_s000",
+      "chunk_id": "ver_421639d8a75f_c00098",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00134",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 77
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00057_s000",
-      "chunk_id": "ver_421639d8a75f_c00057",
+      "chunk_source_id": "ver_421639d8a75f_c00099_s000",
+      "chunk_id": "ver_421639d8a75f_c00099",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00135",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 249
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00057_s001",
-      "chunk_id": "ver_421639d8a75f_c00057",
+      "chunk_source_id": "ver_421639d8a75f_c00099_s001",
+      "chunk_id": "ver_421639d8a75f_c00099",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00135",
       "source_order": 1,
       "start_offset": 250,
       "end_offset": 344
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00057_s002",
-      "chunk_id": "ver_421639d8a75f_c00057",
+      "chunk_source_id": "ver_421639d8a75f_c00099_s002",
+      "chunk_id": "ver_421639d8a75f_c00099",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00135",
       "source_order": 2,
       "start_offset": 345,
       "end_offset": 512
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00058_s000",
-      "chunk_id": "ver_421639d8a75f_c00058",
+      "chunk_source_id": "ver_421639d8a75f_c00100_s000",
+      "chunk_id": "ver_421639d8a75f_c00100",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00136",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 81
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00059_s000",
-      "chunk_id": "ver_421639d8a75f_c00059",
+      "chunk_source_id": "ver_421639d8a75f_c00101_s000",
+      "chunk_id": "ver_421639d8a75f_c00101",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00137",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 63
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00059_s001",
-      "chunk_id": "ver_421639d8a75f_c00059",
+      "chunk_source_id": "ver_421639d8a75f_c00101_s001",
+      "chunk_id": "ver_421639d8a75f_c00101",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00137",
       "source_order": 1,
       "start_offset": 64,
       "end_offset": 204
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00059_s002",
-      "chunk_id": "ver_421639d8a75f_c00059",
+      "chunk_source_id": "ver_421639d8a75f_c00101_s002",
+      "chunk_id": "ver_421639d8a75f_c00101",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00137",
       "source_order": 2,
       "start_offset": 205,
       "end_offset": 326
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00059_s003",
-      "chunk_id": "ver_421639d8a75f_c00059",
+      "chunk_source_id": "ver_421639d8a75f_c00101_s003",
+      "chunk_id": "ver_421639d8a75f_c00101",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00138",
       "source_order": 3,
       "start_offset": 0,
       "end_offset": 73
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00059_s004",
-      "chunk_id": "ver_421639d8a75f_c00059",
+      "chunk_source_id": "ver_421639d8a75f_c00101_s004",
+      "chunk_id": "ver_421639d8a75f_c00101",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00138",
       "source_order": 4,
       "start_offset": 74,
       "end_offset": 173
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00059_s005",
-      "chunk_id": "ver_421639d8a75f_c00059",
+      "chunk_source_id": "ver_421639d8a75f_c00101_s005",
+      "chunk_id": "ver_421639d8a75f_c00101",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00138",
       "source_order": 5,
       "start_offset": 174,
       "end_offset": 279
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00059_s006",
-      "chunk_id": "ver_421639d8a75f_c00059",
+      "chunk_source_id": "ver_421639d8a75f_c00101_s006",
+      "chunk_id": "ver_421639d8a75f_c00101",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00138",
       "source_order": 6,
       "start_offset": 280,
       "end_offset": 605
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00059_s007",
-      "chunk_id": "ver_421639d8a75f_c00059",
+      "chunk_source_id": "ver_421639d8a75f_c00101_s007",
+      "chunk_id": "ver_421639d8a75f_c00101",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00138",
       "source_order": 7,
       "start_offset": 606,
       "end_offset": 699
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00059_s008",
-      "chunk_id": "ver_421639d8a75f_c00059",
+      "chunk_source_id": "ver_421639d8a75f_c00101_s008",
+      "chunk_id": "ver_421639d8a75f_c00101",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00138",
       "source_order": 8,
       "start_offset": 700,
       "end_offset": 835
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00060_s000",
-      "chunk_id": "ver_421639d8a75f_c00060",
+      "chunk_source_id": "ver_421639d8a75f_c00102_s000",
+      "chunk_id": "ver_421639d8a75f_c00102",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00139",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 59
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00061_s000",
-      "chunk_id": "ver_421639d8a75f_c00061",
+      "chunk_source_id": "ver_421639d8a75f_c00103_s000",
+      "chunk_id": "ver_421639d8a75f_c00103",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00140",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 20
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00062_s000",
-      "chunk_id": "ver_421639d8a75f_c00062",
+      "chunk_source_id": "ver_421639d8a75f_c00104_s000",
+      "chunk_id": "ver_421639d8a75f_c00104",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00141",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 66
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00062_s001",
-      "chunk_id": "ver_421639d8a75f_c00062",
+      "chunk_source_id": "ver_421639d8a75f_c00105_s000",
+      "chunk_id": "ver_421639d8a75f_c00105",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00142",
-      "source_order": 1,
+      "source_order": 0,
       "start_offset": 0,
-      "end_offset": 88
-    },
-    {
-      "chunk_source_id": "ver_421639d8a75f_c00062_s002",
-      "chunk_id": "ver_421639d8a75f_c00062",
-      "normalized_block_id": "nrm_ver_421639d8a75f_b00142",
-      "source_order": 2,
-      "start_offset": 89,
       "end_offset": 173
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00062_s003",
-      "chunk_id": "ver_421639d8a75f_c00062",
+      "chunk_source_id": "ver_421639d8a75f_c00106_s000",
+      "chunk_id": "ver_421639d8a75f_c00106",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00143",
-      "source_order": 3,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 286
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00062_s004",
-      "chunk_id": "ver_421639d8a75f_c00062",
+      "chunk_source_id": "ver_421639d8a75f_c00106_s001",
+      "chunk_id": "ver_421639d8a75f_c00106",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00144",
-      "source_order": 4,
+      "source_order": 1,
       "start_offset": 0,
       "end_offset": 142
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00062_s005",
-      "chunk_id": "ver_421639d8a75f_c00062",
+      "chunk_source_id": "ver_421639d8a75f_c00107_s000",
+      "chunk_id": "ver_421639d8a75f_c00107",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00145",
-      "source_order": 5,
+      "source_order": 0,
       "start_offset": 0,
-      "end_offset": 157
-    },
-    {
-      "chunk_source_id": "ver_421639d8a75f_c00062_s006",
-      "chunk_id": "ver_421639d8a75f_c00062",
-      "normalized_block_id": "nrm_ver_421639d8a75f_b00145",
-      "source_order": 6,
-      "start_offset": 158,
       "end_offset": 161
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00062_s007",
-      "chunk_id": "ver_421639d8a75f_c00062",
+      "chunk_source_id": "ver_421639d8a75f_c00108_s000",
+      "chunk_id": "ver_421639d8a75f_c00108",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00146",
-      "source_order": 7,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 121
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00062_s008",
-      "chunk_id": "ver_421639d8a75f_c00062",
+      "chunk_source_id": "ver_421639d8a75f_c00109_s000",
+      "chunk_id": "ver_421639d8a75f_c00109",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00147",
-      "source_order": 8,
+      "source_order": 0,
       "start_offset": 0,
-      "end_offset": 55
-    },
-    {
-      "chunk_source_id": "ver_421639d8a75f_c00062_s009",
-      "chunk_id": "ver_421639d8a75f_c00062",
-      "normalized_block_id": "nrm_ver_421639d8a75f_b00147",
-      "source_order": 9,
-      "start_offset": 57,
-      "end_offset": 101
-    },
-    {
-      "chunk_source_id": "ver_421639d8a75f_c00062_s010",
-      "chunk_id": "ver_421639d8a75f_c00062",
-      "normalized_block_id": "nrm_ver_421639d8a75f_b00147",
-      "source_order": 10,
-      "start_offset": 102,
-      "end_offset": 223
-    },
-    {
-      "chunk_source_id": "ver_421639d8a75f_c00062_s011",
-      "chunk_id": "ver_421639d8a75f_c00062",
-      "normalized_block_id": "nrm_ver_421639d8a75f_b00147",
-      "source_order": 11,
-      "start_offset": 224,
       "end_offset": 413
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00063_s000",
-      "chunk_id": "ver_421639d8a75f_c00063",
+      "chunk_source_id": "ver_421639d8a75f_c00110_s000",
+      "chunk_id": "ver_421639d8a75f_c00110",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00148",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 41
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00064_s000",
-      "chunk_id": "ver_421639d8a75f_c00064",
+      "chunk_source_id": "ver_421639d8a75f_c00111_s000",
+      "chunk_id": "ver_421639d8a75f_c00111",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00149",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 63
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00064_s001",
-      "chunk_id": "ver_421639d8a75f_c00064",
+      "chunk_source_id": "ver_421639d8a75f_c00111_s001",
+      "chunk_id": "ver_421639d8a75f_c00111",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00150",
       "source_order": 1,
       "start_offset": 0,
       "end_offset": 2
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00064_s002",
-      "chunk_id": "ver_421639d8a75f_c00064",
+      "chunk_source_id": "ver_421639d8a75f_c00111_s002",
+      "chunk_id": "ver_421639d8a75f_c00111",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00150",
       "source_order": 2,
       "start_offset": 3,
       "end_offset": 75
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00064_s003",
-      "chunk_id": "ver_421639d8a75f_c00064",
+      "chunk_source_id": "ver_421639d8a75f_c00111_s003",
+      "chunk_id": "ver_421639d8a75f_c00111",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00150",
       "source_order": 3,
       "start_offset": 76,
       "end_offset": 144
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00064_s004",
-      "chunk_id": "ver_421639d8a75f_c00064",
+      "chunk_source_id": "ver_421639d8a75f_c00111_s004",
+      "chunk_id": "ver_421639d8a75f_c00111",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00150",
       "source_order": 4,
       "start_offset": 145,
       "end_offset": 448
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00064_s005",
-      "chunk_id": "ver_421639d8a75f_c00064",
+      "chunk_source_id": "ver_421639d8a75f_c00111_s005",
+      "chunk_id": "ver_421639d8a75f_c00111",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00150",
       "source_order": 5,
       "start_offset": 449,
       "end_offset": 490
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00064_s006",
-      "chunk_id": "ver_421639d8a75f_c00064",
+      "chunk_source_id": "ver_421639d8a75f_c00111_s006",
+      "chunk_id": "ver_421639d8a75f_c00111",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00150",
       "source_order": 6,
       "start_offset": 491,
       "end_offset": 528
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00064_s007",
-      "chunk_id": "ver_421639d8a75f_c00064",
+      "chunk_source_id": "ver_421639d8a75f_c00111_s007",
+      "chunk_id": "ver_421639d8a75f_c00111",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00151",
       "source_order": 7,
       "start_offset": 0,
       "end_offset": 88
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00064_s008",
-      "chunk_id": "ver_421639d8a75f_c00064",
+      "chunk_source_id": "ver_421639d8a75f_c00111_s008",
+      "chunk_id": "ver_421639d8a75f_c00111",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00152",
       "source_order": 8,
       "start_offset": 0,
       "end_offset": 91
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00064_s009",
-      "chunk_id": "ver_421639d8a75f_c00064",
+      "chunk_source_id": "ver_421639d8a75f_c00111_s009",
+      "chunk_id": "ver_421639d8a75f_c00111",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00153",
       "source_order": 9,
       "start_offset": 0,
       "end_offset": 96
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00064_s010",
-      "chunk_id": "ver_421639d8a75f_c00064",
+      "chunk_source_id": "ver_421639d8a75f_c00111_s010",
+      "chunk_id": "ver_421639d8a75f_c00111",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00153",
       "source_order": 10,
       "start_offset": 97,
       "end_offset": 242
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00064_s011",
-      "chunk_id": "ver_421639d8a75f_c00064",
+      "chunk_source_id": "ver_421639d8a75f_c00111_s011",
+      "chunk_id": "ver_421639d8a75f_c00111",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00153",
       "source_order": 11,
       "start_offset": 243,
       "end_offset": 313
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00065_s000",
-      "chunk_id": "ver_421639d8a75f_c00065",
+      "chunk_source_id": "ver_421639d8a75f_c00112_s000",
+      "chunk_id": "ver_421639d8a75f_c00112",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00154",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 27
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00066_s000",
-      "chunk_id": "ver_421639d8a75f_c00066",
+      "chunk_source_id": "ver_421639d8a75f_c00113_s000",
+      "chunk_id": "ver_421639d8a75f_c00113",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00155",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 103
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00066_s001",
-      "chunk_id": "ver_421639d8a75f_c00066",
+      "chunk_source_id": "ver_421639d8a75f_c00113_s001",
+      "chunk_id": "ver_421639d8a75f_c00113",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00156",
       "source_order": 1,
       "start_offset": 0,
       "end_offset": 101
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00066_s002",
-      "chunk_id": "ver_421639d8a75f_c00066",
+      "chunk_source_id": "ver_421639d8a75f_c00113_s002",
+      "chunk_id": "ver_421639d8a75f_c00113",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00157",
       "source_order": 2,
       "start_offset": 0,
       "end_offset": 192
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00066_s003",
-      "chunk_id": "ver_421639d8a75f_c00066",
+      "chunk_source_id": "ver_421639d8a75f_c00113_s003",
+      "chunk_id": "ver_421639d8a75f_c00113",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00158",
       "source_order": 3,
       "start_offset": 0,
       "end_offset": 12
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00066_s004",
-      "chunk_id": "ver_421639d8a75f_c00066",
+      "chunk_source_id": "ver_421639d8a75f_c00114_s000",
+      "chunk_id": "ver_421639d8a75f_c00114",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00159",
-      "source_order": 4,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 45
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00066_s005",
-      "chunk_id": "ver_421639d8a75f_c00066",
+      "chunk_source_id": "ver_421639d8a75f_c00115_s000",
+      "chunk_id": "ver_421639d8a75f_c00115",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00160",
-      "source_order": 5,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 49
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00066_s006",
-      "chunk_id": "ver_421639d8a75f_c00066",
+      "chunk_source_id": "ver_421639d8a75f_c00115_s001",
+      "chunk_id": "ver_421639d8a75f_c00115",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00160",
-      "source_order": 6,
+      "source_order": 1,
       "start_offset": 50,
       "end_offset": 199
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00066_s007",
-      "chunk_id": "ver_421639d8a75f_c00066",
+      "chunk_source_id": "ver_421639d8a75f_c00115_s002",
+      "chunk_id": "ver_421639d8a75f_c00115",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00161",
-      "source_order": 7,
+      "source_order": 2,
       "start_offset": 0,
       "end_offset": 41
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00066_s008",
-      "chunk_id": "ver_421639d8a75f_c00066",
+      "chunk_source_id": "ver_421639d8a75f_c00116_s000",
+      "chunk_id": "ver_421639d8a75f_c00116",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00162",
-      "source_order": 8,
+      "source_order": 0,
       "start_offset": 0,
-      "end_offset": 126
-    },
-    {
-      "chunk_source_id": "ver_421639d8a75f_c00066_s009",
-      "chunk_id": "ver_421639d8a75f_c00066",
-      "normalized_block_id": "nrm_ver_421639d8a75f_b00162",
-      "source_order": 9,
-      "start_offset": 127,
-      "end_offset": 310
-    },
-    {
-      "chunk_source_id": "ver_421639d8a75f_c00066_s010",
-      "chunk_id": "ver_421639d8a75f_c00066",
-      "normalized_block_id": "nrm_ver_421639d8a75f_b00162",
-      "source_order": 10,
-      "start_offset": 311,
       "end_offset": 324
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00066_s011",
-      "chunk_id": "ver_421639d8a75f_c00066",
+      "chunk_source_id": "ver_421639d8a75f_c00117_s000",
+      "chunk_id": "ver_421639d8a75f_c00117",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00163",
-      "source_order": 11,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 121
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00067_s000",
-      "chunk_id": "ver_421639d8a75f_c00067",
+      "chunk_source_id": "ver_421639d8a75f_c00118_s000",
+      "chunk_id": "ver_421639d8a75f_c00118",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00164",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 24
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00068_s000",
-      "chunk_id": "ver_421639d8a75f_c00068",
+      "chunk_source_id": "ver_421639d8a75f_c00119_s000",
+      "chunk_id": "ver_421639d8a75f_c00119",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00165",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 71
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00068_s001",
-      "chunk_id": "ver_421639d8a75f_c00068",
+      "chunk_source_id": "ver_421639d8a75f_c00119_s001",
+      "chunk_id": "ver_421639d8a75f_c00119",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00166",
       "source_order": 1,
       "start_offset": 0,
       "end_offset": 111
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00068_s002",
-      "chunk_id": "ver_421639d8a75f_c00068",
+      "chunk_source_id": "ver_421639d8a75f_c00119_s002",
+      "chunk_id": "ver_421639d8a75f_c00119",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00166",
       "source_order": 2,
       "start_offset": 112,
       "end_offset": 193
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00068_s003",
-      "chunk_id": "ver_421639d8a75f_c00068",
+      "chunk_source_id": "ver_421639d8a75f_c00120_s000",
+      "chunk_id": "ver_421639d8a75f_c00120",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00167",
-      "source_order": 3,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 131
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00068_s004",
-      "chunk_id": "ver_421639d8a75f_c00068",
+      "chunk_source_id": "ver_421639d8a75f_c00121_s000",
+      "chunk_id": "ver_421639d8a75f_c00121",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00168",
-      "source_order": 4,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 177
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00069_s000",
-      "chunk_id": "ver_421639d8a75f_c00069",
+      "chunk_source_id": "ver_421639d8a75f_c00122_s000",
+      "chunk_id": "ver_421639d8a75f_c00122",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00169",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 41
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00070_s000",
-      "chunk_id": "ver_421639d8a75f_c00070",
+      "chunk_source_id": "ver_421639d8a75f_c00123_s000",
+      "chunk_id": "ver_421639d8a75f_c00123",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00170",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 20
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00070_s001",
-      "chunk_id": "ver_421639d8a75f_c00070",
+      "chunk_source_id": "ver_421639d8a75f_c00124_s000",
+      "chunk_id": "ver_421639d8a75f_c00124",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00171",
-      "source_order": 1,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 82
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00070_s002",
-      "chunk_id": "ver_421639d8a75f_c00070",
+      "chunk_source_id": "ver_421639d8a75f_c00125_s000",
+      "chunk_id": "ver_421639d8a75f_c00125",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00172",
-      "source_order": 2,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 74
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00071_s000",
-      "chunk_id": "ver_421639d8a75f_c00071",
+      "chunk_source_id": "ver_421639d8a75f_c00126_s000",
+      "chunk_id": "ver_421639d8a75f_c00126",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00173",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 13
     },
     {
-      "chunk_source_id": "ver_421639d8a75f_c00072_s000",
-      "chunk_id": "ver_421639d8a75f_c00072",
+      "chunk_source_id": "ver_421639d8a75f_c00127_s000",
+      "chunk_id": "ver_421639d8a75f_c00127",
       "normalized_block_id": "nrm_ver_421639d8a75f_b00174",
       "source_order": 0,
       "start_offset": 0,

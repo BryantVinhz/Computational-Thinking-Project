@@ -171,12 +171,14 @@ class DenseRetriever:
         self,
         payload: ScopedRetrievalPayload,
         top_k: int = 10,
-        fallback_unfiltered: bool = True,
+        fallback_unfiltered=None,
     ) -> list[dict[str, Any]]:
         """
         Nhận trực tiếp ScopedRetrievalPayload từ bước Scope Building và thực hiện Dense Retrieval.
         """
         chroma_filter = payload.scope.chroma_filter if payload.scope else None
+        if fallback_unfiltered is None:
+            fallback_unfiltered = bool(payload.scope and payload.scope.is_relaxed)
         return self.retrieve(
             query_text=payload.original_query,
             query_vector=payload.query_vector if payload.query_vector else None,

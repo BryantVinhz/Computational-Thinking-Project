@@ -26,6 +26,8 @@ try:
         VerificationStatus,
     )
     from .synthesizer import ResponseSynthesizer
+    from .verifier import EvidenceVerifier                    
+    from .traceable_formatter import TraceableFormatter  
 except ImportError:
     from schema_response import (
         ClaimStatus,
@@ -36,6 +38,8 @@ except ImportError:
         VerificationStatus,
     )
     from synthesizer import ResponseSynthesizer
+    from verifier import EvidenceVerifier                    
+    from traceable_formatter import TraceableFormatter  
 
 logger = logging.getLogger(__name__)
 
@@ -134,7 +138,7 @@ class DefaultTraceableFormatter:
         if not citations:
             return draft.draft_answer, []
 
-        footnotes = ["\n\n---\n### 📚 Danh mục tài liệu tham chiếu (References & Citations)"]
+        footnotes = ["\n\n---\n###Danh mục tài liệu tham chiếu (References & Citations)"]
         for c in citations:
             heading_info = f" > {' > '.join(c.heading_path)}" if c.heading_path else ""
             footnotes.append(
@@ -159,8 +163,17 @@ class RAGOrchestrator:
         traceable_formatter: Any | None = None,
     ):
         self.synthesizer = synthesizer or ResponseSynthesizer()
-        self.verifier = verifier
-        self.traceable_formatter = traceable_formatter or DefaultTraceableFormatter()
+        if verifier is not None:
+            self.verifier = verifier
+        else:
+            try:
+                from .verifier import EvidenceVerifier, MultilingualSemanticSimilarity
+                sim_fn = MultilingualSemanticSimilarity(model_name="BAAI/bge-m3")
+                self.verifier = EvidenceVerifier(similarity_fn=sim_fn, support_threshold=0.60)
+            except Exception:
+                from .verifier import EvidenceVerifier
+                self.verifier = EvidenceVerifier()
+        self.traceable_formatter = traceable_formatter or TraceableFormatter()
         self.retrieval_system = retrieval_system
 
     def _get_retrieval_system(self) -> Any:
@@ -187,26 +200,13 @@ class RAGOrchestrator:
             return process_query(query, conversation_history=conversation_history)
         except Exception:
             # Fallback tối thiểu nếu không import được pipeline Stage 2
-            return {
-                "schema_version": "1.0",
-                "status": "ok",
+            logger.exception("Stage 2 failed")
+            return{
+                "schema_version": "1.0", 
+                "status": "error", 
                 "original_query": query,
-                "resolved_query": query,
-                "intent": "SEARCH",
-                "query_plan": {
-                    "original_query": query,
-                    "resolved_query": query,
-                    "intent": "SEARCH",
-                    "need_clarify": False,
-                    "task": [
-                        {
-                            "task_id": "task_01",
-                            "intent_task": "SEARCH",
-                            "query": query,
-                            "depends_on": False,
-                        }
-                    ],
-                },
+                "error_code": "internal_error",
+                "reason": "Hệ thống tạm thời không xử lý được yêu cầu. Vui lòng thử lại sau."
             }
 
     def run_from_retrieval(
@@ -237,29 +237,15 @@ class RAGOrchestrator:
 
         # 2. Gọi Verifier (Bảo) nếu có
         verification_report: VerificationReportSchema | None = None
-        if self.verifier is not None:
-            try:
-                verification_report = self.verifier.verify(draft, evidence_list)
-            except Exception as e:
-                logger.error("Error executing Verifier: %s", e)
-        else:
-            # Tự động tạo report mặc định
-            if draft.is_abstained:
-                verification_report = VerificationReportSchema(
-                    faithfulness_score=1.0,
-                    status=VerificationStatus.SKIPPED,
-                    total_claims=0,
-                    warnings=["Verification skipped due to abstention / clarification flow."],
-                )
-            else:
-                verification_report = VerificationReportSchema(
-                    faithfulness_score=0.95 if draft.generation_mode == "STRICT_RAG" else 0.85,
-                    status=VerificationStatus.PASSED,
-                    total_claims=len(draft.cited_evidence_ids),
-                    supported_claims=len(draft.cited_evidence_ids),
-                    unverified_claims=0,
-                    contradicted_claims=0,
-                )
+        try:
+            verification_report = self.verifier.verify(draft, evidence_list)
+        except Exception as e:
+            logger.error("Error executing Verifier: %s", e)
+            verification_report = VerificationReportSchema(
+                faithfulness_score=0.0,
+                status=VerificationStatus.FAILED,
+                warnings=[f"Verifier error: {e}"],
+            )
 
         # 3. Định dạng Trích dẫn & Footnotes (Traceable Formatter)
         final_markdown, citations = self.traceable_formatter.format_citations(draft, evidence_list)
@@ -293,6 +279,25 @@ class RAGOrchestrator:
             },
         )
 
+    def _early_exit(self, status, query, s2, message, reason=None):
+        return FinalResponseEnvelope(
+            status=status,
+            original_query=query,
+            resolved_query=query,
+            intent=s2.get("intent", "UNKNOWN"),
+            final_answer_markdown=message,
+            verification=VerificationReportSchema(
+                faithfulness_score=1.0,
+                status=VerificationStatus.SKIPPED,
+                warnings=[f"Stage 2 returned: {s2.get('status')}"],
+            ),
+            citations=[],
+            metadata={"rejected_at_stage": 2,
+                    "reason": reason or message,
+                    "reject_reason": s2.get("reject_reason"),
+                    "error_code": s2.get("error_code")},
+        )
+    
     def run(
         self,
         query: str,
@@ -303,30 +308,24 @@ class RAGOrchestrator:
         Query -> Stage 2 (Understanding & Routing) -> Stage 3 (Retrieval) -> Stage 4 (Synthesis).
         """
         # Bước 1: Stage 2 - Query Understanding & Routing
-        stage2_result = self.execute_stage2(query, conversation_history)
-        routing_status = stage2_result.get("status", "ok")
+        s2 = self.execute_stage2(query, conversation_history)
+        status = s2.get("status", "error")
 
         # Xử lý các trường hợp bị từ chối từ Stage 2 (Safety, Out of Scope, Invalid)
-        if routing_status in {"rejected", "out_of_scope"}:
-            reason = stage2_result.get("reject_reason") or stage2_result.get("reason") or "Yêu cầu không thuộc phạm vi xử lý."
-            return FinalResponseEnvelope(
-                status=routing_status,
-                original_query=query,
-                resolved_query=stage2_result.get("resolved_query", query),
-                intent=stage2_result.get("intent", "UNKNOWN"),
-                final_answer_markdown=f"**Từ chối xử lý ({routing_status})**: {reason}",
-                verification=VerificationReportSchema(
-                    faithfulness_score=1.0,
-                    status=VerificationStatus.SKIPPED,
-                    warnings=[f"Stage 2 rejected: {routing_status}"],
-                ),
-                citations=[],
-                metadata={"rejected_at_stage": 2, "reason": reason},
-            )
+        if status in {"rejected", "out_of_scope", "error"}:
+            reason = s2.get("reason") or "Yêu cầu không thuộc phạm vi xử lý."
+            return self._early_exit(status, query, s2, f"**Không thể xử lý ({status})**: {reason}")
 
-        query_plan = stage2_result.get("query_plan", stage2_result)
-        resolved_query = stage2_result.get("resolved_query") or query
-        intent = stage2_result.get("intent", "SEARCH")
+        if status == "clarification":
+            msg = s2.get("clarification_message") or "Vui lòng làm rõ câu hỏi."
+            return self._early_exit("clarification_needed", query, s2, msg)
+
+        if status != "ok" or "query_plan" not in s2:
+            return self._early_exit("error", query, s2, "Phản hồi Stage 2 không hợp lệ.")
+
+        query_plan = s2["query_plan"]
+        resolved_query = query_plan.get("resolved_query") or query
+        intent = query_plan.get("intent", "SEARCH")
 
         # Bước 2: Stage 3 - Retrieval System
         retrieval_sys = self._get_retrieval_system()

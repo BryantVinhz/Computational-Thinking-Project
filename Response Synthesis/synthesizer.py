@@ -115,12 +115,9 @@ class ResponseSynthesizer:
         if llm_client is not None:
             self.llm_client = llm_client
         else:
-            # Thử nạp create_llm_client từ Stage 2 nếu có
-            try:
-                from llm import ColabLLMClient
-                self.llm_client = ColabLLMClient()
-            except Exception:
-                self.llm_client = DefaultDeterministicLLM()
+            from llm import ColabLLMClient
+            self.llm_client = ColabLLMClient()
+
 
     def synthesize(
         self,
@@ -218,10 +215,16 @@ class ResponseSynthesizer:
                 system_instruction=SYSTEM_INSTRUCTION_SYNTHESIS,
             )
         except Exception as e:
-            logger.error("Error generating answer with LLM: %s", e)
-            # Fallback sang Default deterministic nếu client bị lỗi mạng/timeout
-            fallback_client = DefaultDeterministicLLM()
-            draft_answer = fallback_client.generate(prompt=messages)
+            logger.error("LLM generate failed: %s", e)
+            return SynthesizedDraftSchema(
+                draft_answer="Hệ thống tạm thời không kết nối được mô hình sinh câu trả lời. Vui lòng thử lại sau.",
+                intent=resolved_intent, cited_evidence_ids=[],
+                is_abstained=True, abstention_reason="llm_unavailable",
+                evidence_status=evidence_status, generation_mode="ABSTENTION",
+                generation_metadata={"model_name": getattr(self.llm_client, "model_name", "unknown"),
+                                    "latency_s": round(time.perf_counter() - start_time, 4),
+                                    "error": str(e)},
+            )
 
         # Trích xuất toàn bộ các thẻ trích dẫn [1], [2] từ văn bản Markdown
         cited_tags = extract_citation_tags(draft_answer)

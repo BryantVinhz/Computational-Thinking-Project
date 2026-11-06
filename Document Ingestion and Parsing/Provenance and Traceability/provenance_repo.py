@@ -8,6 +8,10 @@ class ProvenanceRepository:
 
     def ingest_full_provenance(self, document: dict[str, Any], version: dict[str, Any], 
                                blocks: list[dict[str, Any]], chunk_sources: list[dict[str, Any]]) -> None:
+        v_id = version["version_id"]
+        doc_id = document["document_id"]
+        f_name = version.get("file_name")
+        v_tag = version.get("version_tag")
         with self.database.connect() as conn:
             # 1. Upsert Document
             conn.execute(
@@ -20,6 +24,23 @@ class ProvenanceRepository:
                 """, 
                 (document["document_id"], document["canonical_title"], document.get("publisher")))
 
+            old_versions = conn.execute("""
+                SELECT version_id FROM document_versions 
+                WHERE document_id = ? AND (file_name = ? OR version_tag = ?) AND version_id != ?
+            """, (doc_id, f_name, v_tag, v_id)).fetchall()
+            stale_v_ids = [row["version_id"] for row in old_versions]
+            stale_v_ids.append(v_id) 
+            for target_vid in stale_v_ids:
+                conn.execute("""
+                    DELETE FROM chunk_sources 
+                    WHERE normalized_block_id IN (
+                        SELECT normalized_id FROM normalized_blocks WHERE version_id = ?
+                    )
+                """, (target_vid,))
+                conn.execute("DELETE FROM normalized_blocks WHERE version_id = ?", (target_vid,))
+                if target_vid != v_id:
+                    conn.execute("DELETE FROM document_versions WHERE version_id = ?", (target_vid,))
+                    
             # 2. Upsert Document Version
             conn.execute(
                 """
@@ -40,6 +61,14 @@ class ProvenanceRepository:
                 )   
             )
 
+            conn.execute("""
+                DELETE FROM chunk_sources 
+                WHERE normalized_block_id IN (
+                    SELECT normalized_id FROM normalized_blocks WHERE version_id = ?
+                )
+            """, (v_id,))
+            conn.execute("DELETE FROM normalized_blocks WHERE version_id = ?", (v_id,))
+            
             # 3. Batch Insert Blocks 
             blocks_data = [
                 (
@@ -75,7 +104,12 @@ class ProvenanceRepository:
                 INSERT INTO chunk_sources (
                     chunk_source_id, chunk_id, normalized_block_id, source_order, start_offset, end_offset
                 ) VALUES (?, ?, ?, ?, ?, ?)
-                ON CONFLICT(chunk_source_id) DO NOTHING
+                ON CONFLICT(chunk_source_id) DO UPDATE SET
+                    chunk_id = excluded.chunk_id,
+                    normalized_block_id = excluded.normalized_block_id,
+                    source_order = excluded.source_order,
+                    start_offset = excluded.start_offset,
+                    end_offset = excluded.end_offset
             """, sources_data)
 
             conn.commit()
