@@ -9,7 +9,7 @@
     "text_content": "license: Copyright (c) 2025, FIRST.ORG, INC., All rights reserved., , Redistribution and use in source and binary forms, with or without modification, are permitted provided that the , following conditions are met:, 1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following ,    disclaimer., 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the ,    following disclaimer in the documentation and/or other materials provided with the distribution., 3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote ,    products derived from this software without specific prior written permission., , THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 'AS IS' AND ANY EXPRESS OR IMPLIED WARRANTIES, , INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE , DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, , SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR , SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, , WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE , OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n$schema: https://www.first.org/cvss/meta.json\n$id: https://www.first.org/cvss/cvss-v4.0.json?20260226\ntitle: JSON Schema for Common Vulnerability Scoring System version 4.0, Revision 2\ntype: object\nrequired: version, vectorString, baseScore, baseSeverity\nunevaluatedProperties: false",
     "text_hash": "8c783796266d55dd1fb891deb62337c030807fd3998021c788ee22de0bb28f7f",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$"
     },
@@ -72,7 +72,7 @@
     "text_content": "attackComplexityType\ntype: string\nenum: HIGH, LOW",
     "text_hash": "cef397e721d2cebc5473c7624dc28721a968205a50f1de9848b35e94c3049470",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$['$defs'].attackComplexityType"
     },
@@ -108,7 +108,7 @@
     "text_content": "attackRequirementsType\ntype: string\nenum: NONE, PRESENT",
     "text_hash": "d1d4ae200bb4bf8cb0e1cf92875b670f29e2e9a264bd73433c86e70df1313670",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$['$defs'].attackRequirementsType"
     },
@@ -144,7 +144,7 @@
     "text_content": "attackVectorType\ntype: string\nenum: NETWORK, ADJACENT, LOCAL, PHYSICAL",
     "text_hash": "1809a1b2a35d8a8a6a4eb34c60225858432c99e2ac02476361efb2be0ce8f306",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$['$defs'].attackVectorType"
     },
@@ -182,7 +182,7 @@
     "text_content": "automatableType\ntype: string\nenum: NO, YES, NOT_DEFINED\ndefault: NOT_DEFINED",
     "text_hash": "43f91729bc0345e1c8e6df40c220cceaf06bd7ace50b72f6e3033402e5529bc1",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$['$defs'].automatableType"
     },
@@ -220,7 +220,7 @@
     "text_content": "ciaRequirementType\ntype: string\nenum: LOW, MEDIUM, HIGH, NOT_DEFINED\ndefault: NOT_DEFINED",
     "text_hash": "0706d74e534f5fa411e585c693646aa7dff2f3394f718d3aafd63881617e0240",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$['$defs'].ciaRequirementType"
     },
@@ -259,7 +259,7 @@
     "text_content": "criticalScoreType\ntype: number\nmaximum: 10\nminimum: 9\nmultipleOf: 0.1",
     "text_hash": "ec07adbd5a76ddabe7bdcf1d2633c6c25e74103714992faecab28e130afac10d",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$['$defs'].criticalScoreType"
     },
@@ -294,7 +294,7 @@
     "text_content": "criticalSeverityType\nconst: CRITICAL",
     "text_hash": "c9ea60b0d87ce973659ecfe8b1a22d2bdb0ee531f84bf5f245b8d186723cf5c7",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$['$defs'].criticalSeverityType"
     },
@@ -326,7 +326,7 @@
     "text_content": "exploitMaturityType\ntype: string\nenum: UNREPORTED, PROOF_OF_CONCEPT, ATTACKED, NOT_DEFINED\ndefault: NOT_DEFINED",
     "text_hash": "db89974efb1ed0d4e41baaae65c02d486472b1fe6bf613e9c339abbce07a5809",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$['$defs'].exploitMaturityType"
     },
@@ -365,7 +365,7 @@
     "text_content": "highScoreType\ntype: number\nmaximum: 8.9\nminimum: 7",
     "text_hash": "cc319c9f2d3f5c8b73cdc6f96a21038d1714bfb3f844186f995a6332a327fcd5",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$['$defs'].highScoreType"
     },
@@ -399,7 +399,7 @@
     "text_content": "highSeverityType\nconst: HIGH",
     "text_hash": "8f48fbbc2960002470d134b0f92458e9e66e71c2c3b7116d968dbf4be9783bc4",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$['$defs'].highSeverityType"
     },
@@ -431,7 +431,7 @@
     "text_content": "lowScoreType\ntype: number\nmaximum: 3.9\nminimum: 0.1\nmultipleOf: 0.1",
     "text_hash": "b1f76db63bbd15133742e9342e45fb0efc6a08a10e8e3e98d07dbf420f51af00",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$['$defs'].lowScoreType"
     },
@@ -466,7 +466,7 @@
     "text_content": "lowSeverityType\nconst: LOW",
     "text_hash": "39ea66989e9917429943b28a86a654723bb9cd04077ffb8dfc36c6c21978bcff",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$['$defs'].lowSeverityType"
     },
@@ -498,7 +498,7 @@
     "text_content": "mediumScoreType\ntype: number\nmaximum: 6.9\nminimum: 4\nmultipleOf: 0.1",
     "text_hash": "d5546d0076e564925602341c386a283dd91fbd6bf362b1282bd62cc506195aea",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$['$defs'].mediumScoreType"
     },
@@ -533,7 +533,7 @@
     "text_content": "mediumSeverityType\nconst: MEDIUM",
     "text_hash": "8eedaf26f88cd3981e0e528b44201c1620267a0172c2082c7a9592589f566762",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$['$defs'].mediumSeverityType"
     },
@@ -565,7 +565,7 @@
     "text_content": "modifiedAttackComplexityType\ntype: string\nenum: HIGH, LOW, NOT_DEFINED\ndefault: NOT_DEFINED",
     "text_hash": "f99ff1a011bdc35e5ab8a0ffc99d427219a774eed0151972c8568e2f6064d1e9",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$['$defs'].modifiedAttackComplexityType"
     },
@@ -603,7 +603,7 @@
     "text_content": "modifiedAttackRequirementsType\ntype: string\nenum: NONE, PRESENT, NOT_DEFINED\ndefault: NOT_DEFINED",
     "text_hash": "31cda7f2133073e5a00b5cbc18ddeeac04a8e7cbe5176a73e21db5fa3b598703",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$['$defs'].modifiedAttackRequirementsType"
     },
@@ -641,7 +641,7 @@
     "text_content": "modifiedAttackVectorType\ntype: string\nenum: NETWORK, ADJACENT, LOCAL, PHYSICAL, NOT_DEFINED\ndefault: NOT_DEFINED",
     "text_hash": "f5dbf15cd7db3fd25f38598294e5edde0972ef98aea7796b0d02206785292069",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$['$defs'].modifiedAttackVectorType"
     },
@@ -681,7 +681,7 @@
     "text_content": "modifiedPrivilegesRequiredType\ntype: string\nenum: HIGH, LOW, NONE, NOT_DEFINED\ndefault: NOT_DEFINED",
     "text_hash": "dff7813a1a8ad657df1abf4d74eee7c10008f4b5bd91998b265eba20dd8728ea",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$['$defs'].modifiedPrivilegesRequiredType"
     },
@@ -720,7 +720,7 @@
     "text_content": "modifiedSubCType\ntype: string\nenum: NEGLIGIBLE, LOW, HIGH, NOT_DEFINED\ndefault: NOT_DEFINED",
     "text_hash": "8e55a3fce8ac78dec0bd148e5d592abab9972a3f6acf107b65f79e30d491fae8",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$['$defs'].modifiedSubCType"
     },
@@ -759,7 +759,7 @@
     "text_content": "modifiedSubIaType\ntype: string\nenum: NEGLIGIBLE, LOW, HIGH, SAFETY, NOT_DEFINED\ndefault: NOT_DEFINED",
     "text_hash": "650308a7bac058823bdb6781b1456319a9dc795d2a1201c776de46ce9f6b387c",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$['$defs'].modifiedSubIaType"
     },
@@ -799,7 +799,7 @@
     "text_content": "modifiedUserInteractionType\ntype: string\nenum: NONE, PASSIVE, ACTIVE, NOT_DEFINED\ndefault: NOT_DEFINED",
     "text_hash": "3c0d6b62e25d2fd46b800d509112fef426f291c5d3969d9c72514ac3ee2a9067",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$['$defs'].modifiedUserInteractionType"
     },
@@ -838,7 +838,7 @@
     "text_content": "modifiedVulnCiaType\ntype: string\nenum: NONE, LOW, HIGH, NOT_DEFINED\ndefault: NOT_DEFINED",
     "text_hash": "27f0b4e972907e95d5329050a8da31c16a8d34f6141e9b30f4c95d8be874ab1f",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$['$defs'].modifiedVulnCiaType"
     },
@@ -877,7 +877,7 @@
     "text_content": "noneScoreType\ntype: number\nmaximum: 0\nminimum: 0",
     "text_hash": "f430d136c40ec1632349f5044a0738b1a9351e40a0d5fcee38d8232499e6e350",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$['$defs'].noneScoreType"
     },
@@ -911,7 +911,7 @@
     "text_content": "noneSeverityType\nconst: NONE",
     "text_hash": "edcff4ec29154e3e66d7c3d68ac74482c9a5edab72444f8df3f0c434192ae714",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$['$defs'].noneSeverityType"
     },
@@ -943,7 +943,7 @@
     "text_content": "privilegesRequiredType\ntype: string\nenum: HIGH, LOW, NONE",
     "text_hash": "e8a6ca2a695389eb93dbf6279a7f67080218af94a25c9e88ab52e04f5b2fea12",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$['$defs'].privilegesRequiredType"
     },
@@ -980,7 +980,7 @@
     "text_content": "providerUrgencyType\ntype: string\nenum: CLEAR, GREEN, AMBER, RED, NOT_DEFINED\ndefault: NOT_DEFINED",
     "text_hash": "dcd5fb4ee1b07d03eb05ad6d9d06e385ce0cd41458fb5991cdfe2371469b7b7c",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$['$defs'].providerUrgencyType"
     },
@@ -1020,7 +1020,7 @@
     "text_content": "recoveryType\ntype: string\nenum: AUTOMATIC, USER, IRRECOVERABLE, NOT_DEFINED\ndefault: NOT_DEFINED",
     "text_hash": "767456ad8946e8ddba20cbfe24965927f4cb3370a33785be4149e27ef3846888",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$['$defs'].recoveryType"
     },
@@ -1059,7 +1059,7 @@
     "text_content": "safetyType\ntype: string\nenum: NEGLIGIBLE, PRESENT, NOT_DEFINED\ndefault: NOT_DEFINED",
     "text_hash": "1ed8a95d300f16b7095c3115b4c88fb7d7e39d9d1e5562d58183e5cccbe5d7f8",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$['$defs'].safetyType"
     },
@@ -1097,7 +1097,7 @@
     "text_content": "subCiaType\ntype: string\nenum: NONE, LOW, HIGH",
     "text_hash": "9f321163a1395efe47cecb9c57d7b0e263d900dd7809b1505ac15449c9ee3a2e",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$['$defs'].subCiaType"
     },
@@ -1134,7 +1134,7 @@
     "text_content": "userInteractionType\ntype: string\nenum: NONE, PASSIVE, ACTIVE",
     "text_hash": "1e4da593f18e86ac96e5d87fda64559e21f12799df1aa9e62e2691ace9e412bf",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$['$defs'].userInteractionType"
     },
@@ -1171,7 +1171,7 @@
     "text_content": "valueDensityType\ntype: string\nenum: DIFFUSE, CONCENTRATED, NOT_DEFINED\ndefault: NOT_DEFINED",
     "text_hash": "d44f27a95fa15505418c7228c04c70c6e0a5f2db6fa4ee59b282197e664bc579",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$['$defs'].valueDensityType"
     },
@@ -1209,7 +1209,7 @@
     "text_content": "vulnCiaType\ntype: string\nenum: NONE, LOW, HIGH",
     "text_hash": "6ec1025cf440bf584a497ac1bedf99fe5bb2cf69e91637eb5a9d4d2ba56e9aee",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$['$defs'].vulnCiaType"
     },
@@ -1246,7 +1246,7 @@
     "text_content": "vulnerabilityResponseEffortType\ntype: string\nenum: LOW, MODERATE, HIGH, NOT_DEFINED\ndefault: NOT_DEFINED",
     "text_hash": "17aba7b95631557ac1b8634d194094435e2845c8dfa0fa2913b6ea90717b5760",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$['$defs'].vulnerabilityResponseEffortType"
     },
@@ -1285,7 +1285,7 @@
     "text_content": "Automatable\n$ref: #/$defs/automatableType",
     "text_hash": "a2619ef19c0513e72f345baedcb3c8489ce7d11e91e16428737349a6e98592f6",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$.properties.Automatable"
     },
@@ -1317,7 +1317,7 @@
     "text_content": "Recovery\n$ref: #/$defs/recoveryType",
     "text_hash": "1759c274d8825cb4a49a28ec7a5fc457803d81ae73d96f149a6e7237f8a85f43",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$.properties.Recovery"
     },
@@ -1349,7 +1349,7 @@
     "text_content": "Safety\n$ref: #/$defs/safetyType",
     "text_hash": "118f98011e6b8d2b1d2d5bbc06709529b88a8311929d27f964ce514bbba72a67",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$.properties.Safety"
     },
@@ -1381,7 +1381,7 @@
     "text_content": "attackComplexity\n$ref: #/$defs/attackComplexityType",
     "text_hash": "45c4f2bcf3c4027932eb395960c049d4a266d6dc10d3218bd888b056358093ad",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$.properties.attackComplexity"
     },
@@ -1413,7 +1413,7 @@
     "text_content": "attackRequirements\n$ref: #/$defs/attackRequirementsType",
     "text_hash": "84ce66e5e05634e8640c0c2e64c9fb127613ec4efce234bfcbbf9b99906f46b1",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$.properties.attackRequirements"
     },
@@ -1445,7 +1445,7 @@
     "text_content": "attackVector\n$ref: #/$defs/attackVectorType",
     "text_hash": "e9a8d3ad84d8103a454e1dba8ef3435bff178f250945a68d99892bad018faba1",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$.properties.attackVector"
     },
@@ -1477,7 +1477,7 @@
     "text_content": "availabilityRequirement\n$ref: #/$defs/ciaRequirementType",
     "text_hash": "e2f749cbd969b9eb06a2f63f978ca4e5f220c02d66f1930871b9b48a2d412e12",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$.properties.availabilityRequirement"
     },
@@ -1509,7 +1509,7 @@
     "text_content": "confidentialityRequirement\n$ref: #/$defs/ciaRequirementType",
     "text_hash": "df8870750a644b8d174ed01bf3574731d253ebd755a94891628b9387a4ba2e0c",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$.properties.confidentialityRequirement"
     },
@@ -1541,7 +1541,7 @@
     "text_content": "exploitMaturity\n$ref: #/$defs/exploitMaturityType",
     "text_hash": "f21673001ce40495dbd5ba6eaf09e877f8c11c6f4b5fda5141fe73247bee5eec",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$.properties.exploitMaturity"
     },
@@ -1573,7 +1573,7 @@
     "text_content": "integrityRequirement\n$ref: #/$defs/ciaRequirementType",
     "text_hash": "d830359be38d6ee7dab8979f84b5b3b42efa0cb2797461f1f985a703b08cc422",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$.properties.integrityRequirement"
     },
@@ -1605,7 +1605,7 @@
     "text_content": "modifiedAttackComplexity\n$ref: #/$defs/modifiedAttackComplexityType",
     "text_hash": "564f002c7e261b756ea7e1e9cf0a25b26243a8e4c66118b5682ee71c8ecce05c",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$.properties.modifiedAttackComplexity"
     },
@@ -1637,7 +1637,7 @@
     "text_content": "modifiedAttackRequirements\n$ref: #/$defs/modifiedAttackRequirementsType",
     "text_hash": "720598733527634525c3957aef242ffe50b791599eab5468e41d322f7a1c90da",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$.properties.modifiedAttackRequirements"
     },
@@ -1669,7 +1669,7 @@
     "text_content": "modifiedAttackVector\n$ref: #/$defs/modifiedAttackVectorType",
     "text_hash": "3d89414987b328b982ad4e7ac910dc18a2469f46edc3cb58b1ac5e9c9d4632f6",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$.properties.modifiedAttackVector"
     },
@@ -1701,7 +1701,7 @@
     "text_content": "modifiedPrivilegesRequired\n$ref: #/$defs/modifiedPrivilegesRequiredType",
     "text_hash": "e1c6b4c0c0eb25d1b0d6eb401c7d08deab1de94f0c43d783f67a741180a90f0c",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$.properties.modifiedPrivilegesRequired"
     },
@@ -1733,7 +1733,7 @@
     "text_content": "modifiedSubAvailabilityImpact\n$ref: #/$defs/modifiedSubIaType",
     "text_hash": "616da168e30ed19928fc54808abc5a72eca7cfd7f0a1cf5906da72a3c829d94a",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$.properties.modifiedSubAvailabilityImpact"
     },
@@ -1765,7 +1765,7 @@
     "text_content": "modifiedSubConfidentialityImpact\n$ref: #/$defs/modifiedSubCType",
     "text_hash": "8903a10624a1fc5d503b1ddf0054e02e71dc5c731fd9805566b9154fa38d2c01",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$.properties.modifiedSubConfidentialityImpact"
     },
@@ -1797,7 +1797,7 @@
     "text_content": "modifiedSubIntegrityImpact\n$ref: #/$defs/modifiedSubIaType",
     "text_hash": "774a150cf473cbb8912173532078185a780778a4f3c0584368d76b77d5e4db93",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$.properties.modifiedSubIntegrityImpact"
     },
@@ -1829,7 +1829,7 @@
     "text_content": "modifiedUserInteraction\n$ref: #/$defs/modifiedUserInteractionType",
     "text_hash": "24cff3bcf1702710baf47f8f871b1ba854f8343b3812bcf21b74b59ba7cb169c",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$.properties.modifiedUserInteraction"
     },
@@ -1861,7 +1861,7 @@
     "text_content": "modifiedVulnAvailabilityImpact\n$ref: #/$defs/modifiedVulnCiaType",
     "text_hash": "8bd638b8673fe39b8b174a46ba7be17a4887ccaa51749773186fbe4fccc3ad3c",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$.properties.modifiedVulnAvailabilityImpact"
     },
@@ -1893,7 +1893,7 @@
     "text_content": "modifiedVulnConfidentialityImpact\n$ref: #/$defs/modifiedVulnCiaType",
     "text_hash": "4ed702440fd21bc8ec3e99c050f5f3caccf9ced2fbac2ebdc31a3fe21ba81b3e",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$.properties.modifiedVulnConfidentialityImpact"
     },
@@ -1925,7 +1925,7 @@
     "text_content": "modifiedVulnIntegrityImpact\n$ref: #/$defs/modifiedVulnCiaType",
     "text_hash": "458ad9e68b92e8b42b6986ae1e1f0bfb00958bd32bd9564e35b42183c49419cf",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$.properties.modifiedVulnIntegrityImpact"
     },
@@ -1957,7 +1957,7 @@
     "text_content": "privilegesRequired\n$ref: #/$defs/privilegesRequiredType",
     "text_hash": "390e4ce07163d9cba8ddee138111952df7549a790fc03778184ef6a72af27c3d",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$.properties.privilegesRequired"
     },
@@ -1989,7 +1989,7 @@
     "text_content": "providerUrgency\n$ref: #/$defs/providerUrgencyType",
     "text_hash": "20fc7aeb3a48448e9d186ae165441ad0bb3876227ccde1fe0673aa8fbefa6725",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$.properties.providerUrgency"
     },
@@ -2021,7 +2021,7 @@
     "text_content": "subAvailabilityImpact\n$ref: #/$defs/subCiaType",
     "text_hash": "9d025670da57bf7b09e305217e4ca95ed8b0f419a9fc61784904751e90e5e4d7",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$.properties.subAvailabilityImpact"
     },
@@ -2053,7 +2053,7 @@
     "text_content": "subConfidentialityImpact\n$ref: #/$defs/subCiaType",
     "text_hash": "5f78bc094595d9f699d276f7e9a7b6ec75c808a38e8bd53efefa87454baeaeca",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$.properties.subConfidentialityImpact"
     },
@@ -2085,7 +2085,7 @@
     "text_content": "subIntegrityImpact\n$ref: #/$defs/subCiaType",
     "text_hash": "b4c1116e77a79bc5667e404bd49f4abd0d6569a03a4119b692bd504ec2f2e35e",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$.properties.subIntegrityImpact"
     },
@@ -2117,7 +2117,7 @@
     "text_content": "userInteraction\n$ref: #/$defs/userInteractionType",
     "text_hash": "9cac70b588e3e8c72a947b45ce4f2d1ea9818970c3c013411214050201d4c299",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$.properties.userInteraction"
     },
@@ -2149,7 +2149,7 @@
     "text_content": "valueDensity\n$ref: #/$defs/valueDensityType",
     "text_hash": "3df847df39c68f55c3ac813b8cad9bd49218b76b31561d0818e1245c44663b73",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$.properties.valueDensity"
     },
@@ -2181,7 +2181,7 @@
     "text_content": "vectorString\ntype: string\npattern: ^CVSS:4[.]0/AV:[NALP]/AC:[LH]/AT:[NP]/PR:[NLH]/UI:[NPA]/VC:[HLN]/VI:[HLN]/VA:[HLN]/SC:[HLN]/SI:[HLN]/SA:[HLN](/E:[XAPU])?(/CR:[XHML])?(/IR:[XHML])?(/AR:[XHML])?(/MAV:[XNALP])?(/MAC:[XLH])?(/MAT:[XNP])?(/MPR:[XNLH])?(/MUI:[XNPA])?(/MVC:[XNLH])?(/MVI:[XNLH])?(/MVA:[XNLH])?(/MSC:[XNLH])?(/MSI:[XNLHS])?(/MSA:[XNLHS])?(/S:[XNP])?(/AU:[XNY])?(/R:[XAUI])?(/V:[XDC])?(/RE:[XLMH])?(/U:(X|Clear|Green|Amber|Red))?$",
     "text_hash": "591de3d5636d88a48feef22ff676fed8658f987e5b80668e93f8871a7023dbc2",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$.properties.vectorString"
     },
@@ -2214,7 +2214,7 @@
     "text_content": "version\ndescription: CVSS Version\ntype: string\nenum: 4.0",
     "text_hash": "2748ae78a71d3c35f26fe51cde3cc72e0e7695bd18936be9344d16e6d35b11ed",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$.properties.version"
     },
@@ -2250,7 +2250,7 @@
     "text_content": "vulnAvailabilityImpact\n$ref: #/$defs/vulnCiaType",
     "text_hash": "74f53c20ce31a5cc4b2afedb070207f7bf90467590e537d33325e7029b60538b",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$.properties.vulnAvailabilityImpact"
     },
@@ -2282,7 +2282,7 @@
     "text_content": "vulnConfidentialityImpact\n$ref: #/$defs/vulnCiaType",
     "text_hash": "a1b6dda789eb107e61f47e1ad7fee730b7b994219a833ccd04f2b4d8d215e011",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$.properties.vulnConfidentialityImpact"
     },
@@ -2314,7 +2314,7 @@
     "text_content": "vulnIntegrityImpact\n$ref: #/$defs/vulnCiaType",
     "text_hash": "10ae57d7565616c8f7a5d1af1a01980f6798221bd1656c3e08ff36aec777f8e7",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$.properties.vulnIntegrityImpact"
     },
@@ -2346,7 +2346,7 @@
     "text_content": "vulnerabilityResponseEffort\n$ref: #/$defs/vulnerabilityResponseEffortType",
     "text_hash": "9374f26f5c85d7b9f47696e7764da7493d11b1eac646644f7adcbe6d8de08d75",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$.properties.vulnerabilityResponseEffort"
     },
@@ -2378,7 +2378,7 @@
     "text_content": "allOf[0]\nanyOf[0].properties.baseScore.$ref: #/$defs/noneScoreType\nanyOf[0].properties.baseSeverity.$ref: #/$defs/noneSeverityType\nanyOf[1].properties.baseScore.$ref: #/$defs/lowScoreType\nanyOf[1].properties.baseSeverity.$ref: #/$defs/lowSeverityType\nanyOf[2].properties.baseScore.$ref: #/$defs/mediumScoreType\nanyOf[2].properties.baseSeverity.$ref: #/$defs/mediumSeverityType\nanyOf[3].properties.baseScore.$ref: #/$defs/highScoreType\nanyOf[3].properties.baseSeverity.$ref: #/$defs/highSeverityType\nanyOf[4].properties.baseScore.$ref: #/$defs/criticalScoreType\nanyOf[4].properties.baseSeverity.$ref: #/$defs/criticalSeverityType",
     "text_hash": "0b1bcb3e8e06c35c2115fb148245380683c6b304d2807129939cc4d57341db22",
     "parser_name": "python-json",
-    "parser_version": "3.12.9",
+    "parser_version": "3.11.8",
     "locator": {
       "json_path": "$.allOf[0]"
     },

@@ -1,0 +1,1187 @@
+{
+  "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+  "version_id": "ver_d449b1cc14cf",
+  "chunking_strategy": "structure_aware",
+  "chunks": [
+    {
+      "chunk_id": "ver_d449b1cc14cf_c00000",
+      "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+      "version_id": "ver_d449b1cc14cf",
+      "chunk_idx": 0,
+      "chunk_type": "heading",
+      "text_content": "# Query Parameterization Cheat Sheet",
+      "token_count": 5,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Query Parameterization Cheat Sheet"
+      ]
+    },
+    {
+      "chunk_id": "ver_d449b1cc14cf_c00001",
+      "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+      "version_id": "ver_d449b1cc14cf",
+      "chunk_idx": 1,
+      "chunk_type": "heading",
+      "text_content": "## Introduction",
+      "token_count": 3,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Query Parameterization Cheat Sheet",
+        "Introduction"
+      ]
+    },
+    {
+      "chunk_id": "ver_d449b1cc14cf_c00002",
+      "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+      "version_id": "ver_d449b1cc14cf",
+      "chunk_idx": 2,
+      "chunk_type": "paragraph",
+      "text_content": "[SQL Injection](https://owasp.org/www-community/attacks/SQL_Injection) is one of the most dangerous web vulnerabilities.\n\nAs of the [OWASP Top 10:2025](https://owasp.org/Top10/2025/A05_2025-Injection/), it is categorized under A05:2025-Injection.\n\nIt represents a serious threat because SQL Injection allows evil attacker code to change the structure of a web application's SQL statement in a way that can steal data, modify data, or potentially facilitate command injection to the underlying OS.\n\nThis cheat sheet is a derivative work of the [SQL Injection Prevention Cheat Sheet](SQL_Injection_Prevention_Cheat_Sheet.md).",
+      "token_count": 136,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Query Parameterization Cheat Sheet",
+        "Introduction"
+      ]
+    },
+    {
+      "chunk_id": "ver_d449b1cc14cf_c00003",
+      "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+      "version_id": "ver_d449b1cc14cf",
+      "chunk_idx": 3,
+      "chunk_type": "heading",
+      "text_content": "## Parameterized Query Examples",
+      "token_count": 5,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Query Parameterization Cheat Sheet",
+        "Parameterized Query Examples"
+      ]
+    },
+    {
+      "chunk_id": "ver_d449b1cc14cf_c00004",
+      "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+      "version_id": "ver_d449b1cc14cf",
+      "chunk_idx": 4,
+      "chunk_type": "paragraph",
+      "text_content": "SQL Injection is best prevented through the use of [*parameterized queries*](SQL_Injection_Prevention_Cheat_Sheet.md).\n\nThe following chart demonstrates, with real-world code samples, how to build parameterized queries in most of the common web languages.\n\nThe purpose of these code samples is to demonstrate to the web developer how to avoid SQL Injection when building database queries within a web application.\n\nPlease note, many client side frameworks and libraries offer client side query parameterization.\n\nThese libraries often just build queries with string concatenation before sending raw queries to a server.\n\nPlease ensure that query parameterization is done server-side!",
+      "token_count": 116,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Query Parameterization Cheat Sheet",
+        "Parameterized Query Examples"
+      ]
+    },
+    {
+      "chunk_id": "ver_d449b1cc14cf_c00005",
+      "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+      "version_id": "ver_d449b1cc14cf",
+      "chunk_idx": 5,
+      "chunk_type": "heading",
+      "text_content": "### Prepared Statement Examples",
+      "token_count": 6,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Query Parameterization Cheat Sheet",
+        "Parameterized Query Examples",
+        "Prepared Statement Examples"
+      ]
+    },
+    {
+      "chunk_id": "ver_d449b1cc14cf_c00006",
+      "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+      "version_id": "ver_d449b1cc14cf",
+      "chunk_idx": 6,
+      "chunk_type": "heading",
+      "text_content": "#### Using Java built-in feature",
+      "token_count": 10,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Query Parameterization Cheat Sheet",
+        "Parameterized Query Examples",
+        "Prepared Statement Examples",
+        "Using Java built-in feature"
+      ]
+    },
+    {
+      "chunk_id": "ver_d449b1cc14cf_c00007",
+      "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+      "version_id": "ver_d449b1cc14cf",
+      "chunk_idx": 7,
+      "chunk_type": "code",
+      "text_content": "```java\nString custname = request.getParameter(\"customerName\");\nString query = \"SELECT account_balance FROM user_data WHERE user_name = ? \";  \nPreparedStatement pstmt = connection.prepareStatement( query );\npstmt.setString( 1, custname);\nResultSet results = pstmt.executeQuery( );\n```",
+      "token_count": 61,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Query Parameterization Cheat Sheet",
+        "Parameterized Query Examples",
+        "Prepared Statement Examples",
+        "Using Java built-in feature"
+      ]
+    },
+    {
+      "chunk_id": "ver_d449b1cc14cf_c00008",
+      "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+      "version_id": "ver_d449b1cc14cf",
+      "chunk_idx": 8,
+      "chunk_type": "heading",
+      "text_content": "#### Using Java with JPA/Hibernate",
+      "token_count": 10,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Query Parameterization Cheat Sheet",
+        "Parameterized Query Examples",
+        "Prepared Statement Examples",
+        "Using Java with JPA/Hibernate"
+      ]
+    },
+    {
+      "chunk_id": "ver_d449b1cc14cf_c00009",
+      "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+      "version_id": "ver_d449b1cc14cf",
+      "chunk_idx": 9,
+      "chunk_type": "code",
+      "text_content": "```java\n// HQL\n@Entity // declare as entity;\n@NamedQuery(\n name=\"findByDescription\",\n query=\"FROM Inventory i WHERE i.productDescription = :productDescription\"\n)\npublic class Inventory implements Serializable {\n @Id\n private long id;\n private String productDescription;\n}\n\n// Use case\n// This should REALLY be validated too\nString userSuppliedParameter = request.getParameter(\"Product-Description\");\n// Perform input validation to detect attacks\nList<Inventory> list =\n session.getNamedQuery(\"findByDescription\")\n .setParameter(\"productDescription\", userSuppliedParameter).list();\n\n// Criteria API\n// This should REALLY be validated too\nString userSuppliedParameter = request.getParameter(\"Product-Description\");\n// Perform input validation to detect attacks\nInventory inv = (Inventory) session.createCriteria(Inventory.class).add\n(Restrictions.eq(\"productDescription\", userSuppliedParameter)).uniqueResult();\n```",
+      "token_count": 188,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Query Parameterization Cheat Sheet",
+        "Parameterized Query Examples",
+        "Prepared Statement Examples",
+        "Using Java with JPA/Hibernate"
+      ]
+    },
+    {
+      "chunk_id": "ver_d449b1cc14cf_c00010",
+      "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+      "version_id": "ver_d449b1cc14cf",
+      "chunk_idx": 10,
+      "chunk_type": "heading",
+      "text_content": "#### Using .NET built-in feature",
+      "token_count": 11,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Query Parameterization Cheat Sheet",
+        "Parameterized Query Examples",
+        "Prepared Statement Examples",
+        "Using .NET built-in feature"
+      ]
+    },
+    {
+      "chunk_id": "ver_d449b1cc14cf_c00011",
+      "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+      "version_id": "ver_d449b1cc14cf",
+      "chunk_idx": 11,
+      "chunk_type": "code",
+      "text_content": "```csharp\nString query = \"SELECT account_balance FROM user_data WHERE user_name = ?\";\ntry {\n   OleDbCommand command = new OleDbCommand(query, connection);\n   command.Parameters.Add(new OleDbParameter(\"customerName\", CustomerName.Text));\n   OleDbDataReader reader = command.ExecuteReader();\n   // …\n} catch (OleDbException se) {\n   // error handling\n}\n```",
+      "token_count": 77,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Query Parameterization Cheat Sheet",
+        "Parameterized Query Examples",
+        "Prepared Statement Examples",
+        "Using .NET built-in feature"
+      ]
+    },
+    {
+      "chunk_id": "ver_d449b1cc14cf_c00012",
+      "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+      "version_id": "ver_d449b1cc14cf",
+      "chunk_idx": 12,
+      "chunk_type": "heading",
+      "text_content": "#### Using ASP .NET built-in feature",
+      "token_count": 12,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Query Parameterization Cheat Sheet",
+        "Parameterized Query Examples",
+        "Prepared Statement Examples",
+        "Using ASP .NET built-in feature"
+      ]
+    },
+    {
+      "chunk_id": "ver_d449b1cc14cf_c00013",
+      "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+      "version_id": "ver_d449b1cc14cf",
+      "chunk_idx": 13,
+      "chunk_type": "code",
+      "text_content": "```csharp\nstring sql = \"SELECT * FROM Customers WHERE CustomerId = @CustomerId\";\nSqlCommand command = new SqlCommand(sql);\ncommand.Parameters.Add(new SqlParameter(\"@CustomerId\", System.Data.SqlDbType.Int));\ncommand.Parameters[\"@CustomerId\"].Value = 1;\n```",
+      "token_count": 69,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Query Parameterization Cheat Sheet",
+        "Parameterized Query Examples",
+        "Prepared Statement Examples",
+        "Using ASP .NET built-in feature"
+      ]
+    },
+    {
+      "chunk_id": "ver_d449b1cc14cf_c00014",
+      "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+      "version_id": "ver_d449b1cc14cf",
+      "chunk_idx": 14,
+      "chunk_type": "heading",
+      "text_content": "#### Using Ruby with ActiveRecord",
+      "token_count": 8,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Query Parameterization Cheat Sheet",
+        "Parameterized Query Examples",
+        "Prepared Statement Examples",
+        "Using Ruby with ActiveRecord"
+      ]
+    },
+    {
+      "chunk_id": "ver_d449b1cc14cf_c00015",
+      "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+      "version_id": "ver_d449b1cc14cf",
+      "chunk_idx": 15,
+      "chunk_type": "code",
+      "text_content": "```ruby\n## Create\nProject.create!(:name => 'owasp')\n## Read\nProject.all(:conditions => \"name = ?\", name)\nProject.all(:conditions => { :name => name })\nProject.where(\"name = :name\", :name => name)\n## Update\nproject.update_attributes(:name => 'owasp')\n## Delete\nProject.delete(:name => 'name')\n```",
+      "token_count": 105,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Query Parameterization Cheat Sheet",
+        "Parameterized Query Examples",
+        "Prepared Statement Examples",
+        "Using Ruby with ActiveRecord"
+      ]
+    },
+    {
+      "chunk_id": "ver_d449b1cc14cf_c00016",
+      "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+      "version_id": "ver_d449b1cc14cf",
+      "chunk_idx": 16,
+      "chunk_type": "heading",
+      "text_content": "#### Using Ruby built-in feature",
+      "token_count": 10,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Query Parameterization Cheat Sheet",
+        "Parameterized Query Examples",
+        "Prepared Statement Examples",
+        "Using Ruby built-in feature"
+      ]
+    },
+    {
+      "chunk_id": "ver_d449b1cc14cf_c00017",
+      "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+      "version_id": "ver_d449b1cc14cf",
+      "chunk_idx": 17,
+      "chunk_type": "code",
+      "text_content": "```ruby\ninsert_new_user = db.prepare \"INSERT INTO users (name, age, gender) VALUES (?, ? ,?)\"\ninsert_new_user.execute 'aizatto', '20', 'male'\n```",
+      "token_count": 46,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Query Parameterization Cheat Sheet",
+        "Parameterized Query Examples",
+        "Prepared Statement Examples",
+        "Using Ruby built-in feature"
+      ]
+    },
+    {
+      "chunk_id": "ver_d449b1cc14cf_c00018",
+      "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+      "version_id": "ver_d449b1cc14cf",
+      "chunk_idx": 18,
+      "chunk_type": "heading",
+      "text_content": "#### Using PHP with PHP Data Objects",
+      "token_count": 10,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Query Parameterization Cheat Sheet",
+        "Parameterized Query Examples",
+        "Prepared Statement Examples",
+        "Using PHP with PHP Data Objects"
+      ]
+    },
+    {
+      "chunk_id": "ver_d449b1cc14cf_c00019",
+      "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+      "version_id": "ver_d449b1cc14cf",
+      "chunk_idx": 19,
+      "chunk_type": "code",
+      "text_content": "```php\n$stmt = $dbh->prepare(\"INSERT INTO REGISTRY (name, value) VALUES (:name, :value)\");\n$stmt->bindParam(':name', $name);\n$stmt->bindParam(':value', $value);\n```",
+      "token_count": 66,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Query Parameterization Cheat Sheet",
+        "Parameterized Query Examples",
+        "Prepared Statement Examples",
+        "Using PHP with PHP Data Objects"
+      ]
+    },
+    {
+      "chunk_id": "ver_d449b1cc14cf_c00020",
+      "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+      "version_id": "ver_d449b1cc14cf",
+      "chunk_idx": 20,
+      "chunk_type": "heading",
+      "text_content": "#### Using Cold Fusion built-in feature",
+      "token_count": 11,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Query Parameterization Cheat Sheet",
+        "Parameterized Query Examples",
+        "Prepared Statement Examples",
+        "Using Cold Fusion built-in feature"
+      ]
+    },
+    {
+      "chunk_id": "ver_d449b1cc14cf_c00021",
+      "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+      "version_id": "ver_d449b1cc14cf",
+      "chunk_idx": 21,
+      "chunk_type": "code",
+      "text_content": "```coldfusion\n<cfquery name = \"getFirst\" dataSource = \"cfsnippets\">\n    SELECT * FROM #strDatabasePrefix#_courses WHERE intCourseID =\n    <cfqueryparam value = #intCourseID# CFSQLType = \"CF_SQL_INTEGER\">\n</cfquery>\n```",
+      "token_count": 47,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Query Parameterization Cheat Sheet",
+        "Parameterized Query Examples",
+        "Prepared Statement Examples",
+        "Using Cold Fusion built-in feature"
+      ]
+    },
+    {
+      "chunk_id": "ver_d449b1cc14cf_c00022",
+      "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+      "version_id": "ver_d449b1cc14cf",
+      "chunk_idx": 22,
+      "chunk_type": "heading",
+      "text_content": "#### Using PERL with Database Independent Interface",
+      "token_count": 10,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Query Parameterization Cheat Sheet",
+        "Parameterized Query Examples",
+        "Prepared Statement Examples",
+        "Using PERL with Database Independent Interface"
+      ]
+    },
+    {
+      "chunk_id": "ver_d449b1cc14cf_c00023",
+      "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+      "version_id": "ver_d449b1cc14cf",
+      "chunk_idx": 23,
+      "chunk_type": "code",
+      "text_content": "```perl\nmy $sql = \"INSERT INTO foo (bar, baz) VALUES ( ?, ? )\";\nmy $sth = $dbh->prepare( $sql );\n$sth->execute( $bar, $baz );\n```",
+      "token_count": 55,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Query Parameterization Cheat Sheet",
+        "Parameterized Query Examples",
+        "Prepared Statement Examples",
+        "Using PERL with Database Independent Interface"
+      ]
+    },
+    {
+      "chunk_id": "ver_d449b1cc14cf_c00024",
+      "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+      "version_id": "ver_d449b1cc14cf",
+      "chunk_idx": 24,
+      "chunk_type": "heading",
+      "text_content": "#### Using Rust with SQLx",
+      "token_count": 8,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Query Parameterization Cheat Sheet",
+        "Parameterized Query Examples",
+        "Prepared Statement Examples",
+        "Using Rust with SQLx"
+      ]
+    },
+    {
+      "chunk_id": "ver_d449b1cc14cf_c00025",
+      "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+      "version_id": "ver_d449b1cc14cf",
+      "chunk_idx": 25,
+      "chunk_type": "paragraph",
+      "text_content": "<!-- contributed by GeekMasher -->",
+      "token_count": 10,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Query Parameterization Cheat Sheet",
+        "Parameterized Query Examples",
+        "Prepared Statement Examples",
+        "Using Rust with SQLx"
+      ]
+    },
+    {
+      "chunk_id": "ver_d449b1cc14cf_c00026",
+      "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+      "version_id": "ver_d449b1cc14cf",
+      "chunk_idx": 26,
+      "chunk_type": "code",
+      "text_content": "```rust\n// Input from CLI args but could be anything\nlet username = std::env::args().last().unwrap();\n\n// Using build-in macros (compile time checks)\nlet users = sqlx::query_as!(\n        User,\n        \"SELECT * FROM users WHERE name = ?\",\n        username\n    )\n    .fetch_all(&pool)\n    .await \n    .unwrap();\n\n// Using built-in functions\nlet users: Vec<User> = sqlx::query_as::<_, User>(\n        \"SELECT * FROM users WHERE name = ?\"\n    )\n    .bind(&username)\n    .fetch_all(&pool)\n    .await\n    .unwrap();\n```",
+      "token_count": 144,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Query Parameterization Cheat Sheet",
+        "Parameterized Query Examples",
+        "Prepared Statement Examples",
+        "Using Rust with SQLx"
+      ]
+    },
+    {
+      "chunk_id": "ver_d449b1cc14cf_c00027",
+      "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+      "version_id": "ver_d449b1cc14cf",
+      "chunk_idx": 27,
+      "chunk_type": "heading",
+      "text_content": "### Stored Procedure Examples",
+      "token_count": 6,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Query Parameterization Cheat Sheet",
+        "Parameterized Query Examples",
+        "Stored Procedure Examples"
+      ]
+    },
+    {
+      "chunk_id": "ver_d449b1cc14cf_c00028",
+      "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+      "version_id": "ver_d449b1cc14cf",
+      "chunk_idx": 28,
+      "chunk_type": "paragraph",
+      "text_content": "The SQL you write in your web application isn't the only place that SQL injection vulnerabilities can be introduced.\n\nIf you are using Stored Procedures, and you are dynamically constructing SQL inside them, you can also introduce SQL injection vulnerabilities.\n\nDynamic SQL can be parameterized using bind variables, to ensure the dynamically constructed SQL is secure.\n\nHere are some examples of using bind variables in stored procedures in different databases.",
+      "token_count": 79,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Query Parameterization Cheat Sheet",
+        "Parameterized Query Examples",
+        "Stored Procedure Examples"
+      ]
+    },
+    {
+      "chunk_id": "ver_d449b1cc14cf_c00029",
+      "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+      "version_id": "ver_d449b1cc14cf",
+      "chunk_idx": 29,
+      "chunk_type": "heading",
+      "text_content": "#### Oracle using PL/SQL",
+      "token_count": 9,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Query Parameterization Cheat Sheet",
+        "Parameterized Query Examples",
+        "Stored Procedure Examples",
+        "Oracle using PL/SQL"
+      ]
+    },
+    {
+      "chunk_id": "ver_d449b1cc14cf_c00030",
+      "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+      "version_id": "ver_d449b1cc14cf",
+      "chunk_idx": 30,
+      "chunk_type": "heading",
+      "text_content": "##### Normal Stored Procedure",
+      "token_count": 8,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Query Parameterization Cheat Sheet",
+        "Parameterized Query Examples",
+        "Stored Procedure Examples",
+        "Oracle using PL/SQL",
+        "Normal Stored Procedure"
+      ]
+    },
+    {
+      "chunk_id": "ver_d449b1cc14cf_c00031",
+      "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+      "version_id": "ver_d449b1cc14cf",
+      "chunk_idx": 31,
+      "chunk_type": "paragraph",
+      "text_content": "No dynamic SQL being created.\n\nParameters passed in to stored procedures are naturally bound to their location within the query without anything special being required:",
+      "token_count": 27,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Query Parameterization Cheat Sheet",
+        "Parameterized Query Examples",
+        "Stored Procedure Examples",
+        "Oracle using PL/SQL",
+        "Normal Stored Procedure"
+      ]
+    },
+    {
+      "chunk_id": "ver_d449b1cc14cf_c00032",
+      "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+      "version_id": "ver_d449b1cc14cf",
+      "chunk_idx": 32,
+      "chunk_type": "code",
+      "text_content": "```sql\nPROCEDURE SafeGetBalanceQuery(UserID varchar, Dept varchar) AS BEGIN\n   SELECT balance FROM accounts_table WHERE user_ID = UserID AND department = Dept;\nEND;\n```",
+      "token_count": 33,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Query Parameterization Cheat Sheet",
+        "Parameterized Query Examples",
+        "Stored Procedure Examples",
+        "Oracle using PL/SQL",
+        "Normal Stored Procedure"
+      ]
+    },
+    {
+      "chunk_id": "ver_d449b1cc14cf_c00033",
+      "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+      "version_id": "ver_d449b1cc14cf",
+      "chunk_idx": 33,
+      "chunk_type": "heading",
+      "text_content": "##### Stored Procedure Using Bind Variables in SQL Run with EXECUTE",
+      "token_count": 15,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Query Parameterization Cheat Sheet",
+        "Parameterized Query Examples",
+        "Stored Procedure Examples",
+        "Oracle using PL/SQL",
+        "Stored Procedure Using Bind Variables in SQL Run with EXECUTE"
+      ]
+    },
+    {
+      "chunk_id": "ver_d449b1cc14cf_c00034",
+      "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+      "version_id": "ver_d449b1cc14cf",
+      "chunk_idx": 34,
+      "chunk_type": "paragraph",
+      "text_content": "Bind variables are used to tell the database that the inputs to this dynamic SQL are 'data' and not possibly code:",
+      "token_count": 24,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Query Parameterization Cheat Sheet",
+        "Parameterized Query Examples",
+        "Stored Procedure Examples",
+        "Oracle using PL/SQL",
+        "Stored Procedure Using Bind Variables in SQL Run with EXECUTE"
+      ]
+    },
+    {
+      "chunk_id": "ver_d449b1cc14cf_c00035",
+      "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+      "version_id": "ver_d449b1cc14cf",
+      "chunk_idx": 35,
+      "chunk_type": "code",
+      "text_content": "```sql\nPROCEDURE AnotherSafeGetBalanceQuery(UserID varchar, Dept varchar)\n          AS stmt VARCHAR(400); result NUMBER;\nBEGIN\n   stmt := 'SELECT balance FROM accounts_table WHERE user_ID = :1\n            AND department = :2';\n   EXECUTE IMMEDIATE stmt INTO result USING UserID, Dept;\n   RETURN result;\nEND;\n```",
+      "token_count": 62,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Query Parameterization Cheat Sheet",
+        "Parameterized Query Examples",
+        "Stored Procedure Examples",
+        "Oracle using PL/SQL",
+        "Stored Procedure Using Bind Variables in SQL Run with EXECUTE"
+      ]
+    },
+    {
+      "chunk_id": "ver_d449b1cc14cf_c00036",
+      "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+      "version_id": "ver_d449b1cc14cf",
+      "chunk_idx": 36,
+      "chunk_type": "heading",
+      "text_content": "#### SQL Server using Transact-SQL",
+      "token_count": 10,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Query Parameterization Cheat Sheet",
+        "Parameterized Query Examples",
+        "Stored Procedure Examples",
+        "SQL Server using Transact-SQL"
+      ]
+    },
+    {
+      "chunk_id": "ver_d449b1cc14cf_c00037",
+      "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+      "version_id": "ver_d449b1cc14cf",
+      "chunk_idx": 37,
+      "chunk_type": "heading",
+      "text_content": "##### Normal Stored Procedure",
+      "token_count": 8,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Query Parameterization Cheat Sheet",
+        "Parameterized Query Examples",
+        "Stored Procedure Examples",
+        "SQL Server using Transact-SQL",
+        "Normal Stored Procedure"
+      ]
+    },
+    {
+      "chunk_id": "ver_d449b1cc14cf_c00038",
+      "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+      "version_id": "ver_d449b1cc14cf",
+      "chunk_idx": 38,
+      "chunk_type": "paragraph",
+      "text_content": "No dynamic SQL being created.\n\nParameters passed in to stored procedures are naturally bound to their location within the query without anything special being required:",
+      "token_count": 27,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Query Parameterization Cheat Sheet",
+        "Parameterized Query Examples",
+        "Stored Procedure Examples",
+        "SQL Server using Transact-SQL",
+        "Normal Stored Procedure"
+      ]
+    },
+    {
+      "chunk_id": "ver_d449b1cc14cf_c00039",
+      "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+      "version_id": "ver_d449b1cc14cf",
+      "chunk_idx": 39,
+      "chunk_type": "code",
+      "text_content": "```sql\nPROCEDURE SafeGetBalanceQuery(@UserID varchar(20), @Dept varchar(10)) AS BEGIN\n   SELECT balance FROM accounts_table WHERE user_ID = @UserID AND department = @Dept\nEND\n```",
+      "token_count": 41,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Query Parameterization Cheat Sheet",
+        "Parameterized Query Examples",
+        "Stored Procedure Examples",
+        "SQL Server using Transact-SQL",
+        "Normal Stored Procedure"
+      ]
+    },
+    {
+      "chunk_id": "ver_d449b1cc14cf_c00040",
+      "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+      "version_id": "ver_d449b1cc14cf",
+      "chunk_idx": 40,
+      "chunk_type": "heading",
+      "text_content": "##### Stored Procedure Using Bind Variables in SQL Run with EXEC",
+      "token_count": 15,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Query Parameterization Cheat Sheet",
+        "Parameterized Query Examples",
+        "Stored Procedure Examples",
+        "SQL Server using Transact-SQL",
+        "Stored Procedure Using Bind Variables in SQL Run with EXEC"
+      ]
+    },
+    {
+      "chunk_id": "ver_d449b1cc14cf_c00041",
+      "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+      "version_id": "ver_d449b1cc14cf",
+      "chunk_idx": 41,
+      "chunk_type": "paragraph",
+      "text_content": "Bind variables are used to tell the database that the inputs to this dynamic SQL are 'data' and not possibly code:",
+      "token_count": 24,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Query Parameterization Cheat Sheet",
+        "Parameterized Query Examples",
+        "Stored Procedure Examples",
+        "SQL Server using Transact-SQL",
+        "Stored Procedure Using Bind Variables in SQL Run with EXEC"
+      ]
+    },
+    {
+      "chunk_id": "ver_d449b1cc14cf_c00042",
+      "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+      "version_id": "ver_d449b1cc14cf",
+      "chunk_idx": 42,
+      "chunk_type": "code",
+      "text_content": "```sql\nPROCEDURE SafeGetBalanceQuery(@UserID varchar(20), @Dept varchar(10)) AS BEGIN\n   DECLARE @sql VARCHAR(200)\n   SELECT @sql = 'SELECT balance FROM accounts_table WHERE '\n                 + 'user_ID = @UID AND department = @DPT'\n   EXEC sp_executesql @sql,\n                      '@UID VARCHAR(20), @DPT VARCHAR(10)',\n                      @UID=@UserID, @DPT=@Dept\nEND\n```",
+      "token_count": 89,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Query Parameterization Cheat Sheet",
+        "Parameterized Query Examples",
+        "Stored Procedure Examples",
+        "SQL Server using Transact-SQL",
+        "Stored Procedure Using Bind Variables in SQL Run with EXEC"
+      ]
+    },
+    {
+      "chunk_id": "ver_d449b1cc14cf_c00043",
+      "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+      "version_id": "ver_d449b1cc14cf",
+      "chunk_idx": 43,
+      "chunk_type": "heading",
+      "text_content": "## References",
+      "token_count": 3,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Query Parameterization Cheat Sheet",
+        "References"
+      ]
+    },
+    {
+      "chunk_id": "ver_d449b1cc14cf_c00044",
+      "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+      "version_id": "ver_d449b1cc14cf",
+      "chunk_idx": 44,
+      "chunk_type": "list",
+      "text_content": "- [Oracle JDBC: Using Prepared Statements](https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html)\n- [PHP PDO: Prepared Statements and Stored Procedures](https://www.php.net/pdo.prepared-statements)",
+      "token_count": 60,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "Query Parameterization Cheat Sheet",
+        "References"
+      ]
+    }
+  ],
+  "chunk_sources": [
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00000_s000",
+      "chunk_id": "ver_d449b1cc14cf_c00000",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00000",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 36
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00001_s000",
+      "chunk_id": "ver_d449b1cc14cf_c00001",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00001",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 15
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00002_s000",
+      "chunk_id": "ver_d449b1cc14cf_c00002",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00002",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 120
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00002_s001",
+      "chunk_id": "ver_d449b1cc14cf_c00002",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00002",
+      "source_order": 1,
+      "start_offset": 121,
+      "end_offset": 245
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00002_s002",
+      "chunk_id": "ver_d449b1cc14cf_c00002",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00003",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 248
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00002_s003",
+      "chunk_id": "ver_d449b1cc14cf_c00002",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00004",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 125
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00003_s000",
+      "chunk_id": "ver_d449b1cc14cf_c00003",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00005",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 31
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00004_s000",
+      "chunk_id": "ver_d449b1cc14cf_c00004",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00006",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 118
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00004_s001",
+      "chunk_id": "ver_d449b1cc14cf_c00004",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00006",
+      "source_order": 1,
+      "start_offset": 119,
+      "end_offset": 254
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00004_s002",
+      "chunk_id": "ver_d449b1cc14cf_c00004",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00006",
+      "source_order": 2,
+      "start_offset": 255,
+      "end_offset": 411
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00004_s003",
+      "chunk_id": "ver_d449b1cc14cf_c00004",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00007",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 96
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00004_s004",
+      "chunk_id": "ver_d449b1cc14cf_c00004",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00007",
+      "source_order": 4,
+      "start_offset": 97,
+      "end_offset": 203
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00004_s005",
+      "chunk_id": "ver_d449b1cc14cf_c00004",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00007",
+      "source_order": 5,
+      "start_offset": 204,
+      "end_offset": 266
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00005_s000",
+      "chunk_id": "ver_d449b1cc14cf_c00005",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00008",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 31
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00006_s000",
+      "chunk_id": "ver_d449b1cc14cf_c00006",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00009",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 32
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00007_s000",
+      "chunk_id": "ver_d449b1cc14cf_c00007",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00010",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 284
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00008_s000",
+      "chunk_id": "ver_d449b1cc14cf_c00008",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00011",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 34
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00009_s000",
+      "chunk_id": "ver_d449b1cc14cf_c00009",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00012",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 913
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00010_s000",
+      "chunk_id": "ver_d449b1cc14cf_c00010",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00013",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 32
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00011_s000",
+      "chunk_id": "ver_d449b1cc14cf_c00011",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00014",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 354
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00012_s000",
+      "chunk_id": "ver_d449b1cc14cf_c00012",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00015",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 36
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00013_s000",
+      "chunk_id": "ver_d449b1cc14cf_c00013",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00016",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 255
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00014_s000",
+      "chunk_id": "ver_d449b1cc14cf_c00014",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00017",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 33
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00015_s000",
+      "chunk_id": "ver_d449b1cc14cf_c00015",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00018",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 295
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00016_s000",
+      "chunk_id": "ver_d449b1cc14cf_c00016",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00019",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 32
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00017_s000",
+      "chunk_id": "ver_d449b1cc14cf_c00017",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00020",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 145
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00018_s000",
+      "chunk_id": "ver_d449b1cc14cf_c00018",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00021",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 36
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00019_s000",
+      "chunk_id": "ver_d449b1cc14cf_c00019",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00022",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 164
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00020_s000",
+      "chunk_id": "ver_d449b1cc14cf_c00020",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00023",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 39
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00021_s000",
+      "chunk_id": "ver_d449b1cc14cf_c00021",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00024",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 218
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00022_s000",
+      "chunk_id": "ver_d449b1cc14cf_c00022",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00025",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 51
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00023_s000",
+      "chunk_id": "ver_d449b1cc14cf_c00023",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00026",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 129
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00024_s000",
+      "chunk_id": "ver_d449b1cc14cf_c00024",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00027",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 25
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00025_s000",
+      "chunk_id": "ver_d449b1cc14cf_c00025",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00028",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 34
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00026_s000",
+      "chunk_id": "ver_d449b1cc14cf_c00026",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00029",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 513
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00027_s000",
+      "chunk_id": "ver_d449b1cc14cf_c00027",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00030",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 29
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00028_s000",
+      "chunk_id": "ver_d449b1cc14cf_c00028",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00031",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 116
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00028_s001",
+      "chunk_id": "ver_d449b1cc14cf_c00028",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00031",
+      "source_order": 1,
+      "start_offset": 117,
+      "end_offset": 260
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00028_s002",
+      "chunk_id": "ver_d449b1cc14cf_c00028",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00032",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 107
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00028_s003",
+      "chunk_id": "ver_d449b1cc14cf_c00028",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00033",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 91
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00029_s000",
+      "chunk_id": "ver_d449b1cc14cf_c00029",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00034",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 24
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00030_s000",
+      "chunk_id": "ver_d449b1cc14cf_c00030",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00035",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 29
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00031_s000",
+      "chunk_id": "ver_d449b1cc14cf_c00031",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00036",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 29
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00031_s001",
+      "chunk_id": "ver_d449b1cc14cf_c00031",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00036",
+      "source_order": 1,
+      "start_offset": 30,
+      "end_offset": 167
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00032_s000",
+      "chunk_id": "ver_d449b1cc14cf_c00032",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00037",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 168
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00033_s000",
+      "chunk_id": "ver_d449b1cc14cf_c00033",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00038",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 67
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00034_s000",
+      "chunk_id": "ver_d449b1cc14cf_c00034",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00039",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 114
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00035_s000",
+      "chunk_id": "ver_d449b1cc14cf_c00035",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00040",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 311
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00036_s000",
+      "chunk_id": "ver_d449b1cc14cf_c00036",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00041",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 34
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00037_s000",
+      "chunk_id": "ver_d449b1cc14cf_c00037",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00042",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 29
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00038_s000",
+      "chunk_id": "ver_d449b1cc14cf_c00038",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00043",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 29
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00038_s001",
+      "chunk_id": "ver_d449b1cc14cf_c00038",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00043",
+      "source_order": 1,
+      "start_offset": 30,
+      "end_offset": 167
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00039_s000",
+      "chunk_id": "ver_d449b1cc14cf_c00039",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00044",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 178
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00040_s000",
+      "chunk_id": "ver_d449b1cc14cf_c00040",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00045",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 64
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00041_s000",
+      "chunk_id": "ver_d449b1cc14cf_c00041",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00046",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 114
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00042_s000",
+      "chunk_id": "ver_d449b1cc14cf_c00042",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00047",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 376
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00043_s000",
+      "chunk_id": "ver_d449b1cc14cf_c00043",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00048",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 13
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00044_s000",
+      "chunk_id": "ver_d449b1cc14cf_c00044",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00049",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 209
+    }
+  ]
+}

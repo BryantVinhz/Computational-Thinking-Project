@@ -1,0 +1,1407 @@
+[
+  {
+    "block_id": "ver_298e416105dc_b00000",
+    "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+    "version_id": "ver_298e416105dc",
+    "block_idx": 0,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "# A05:2021 – Security Misconfiguration    ![icon](assets/TOP_10_Icons_Final_Security_Misconfiguration.png){: style=\"height:80px;width:80px\" align=\"right\"}",
+    "text_hash": "07b54835af970d451391474ae436d530855df4ba815975269465d13d2a0ec075",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 1,
+      "end_line": 1
+    },
+    "heading_path": [
+      "A05:2021 – Security Misconfiguration"
+    ],
+    "heading_level": 1,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_298e416105dc_b00000",
+    "normalized_text": "# A05:2021 – Security Misconfiguration ![icon](assets/TOP_10_Icons_Final_Security_Misconfiguration.png){: style=\"height:80px;width:80px\" align=\"right\"}",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 3
+    }
+  },
+  {
+    "block_id": "ver_298e416105dc_b00001",
+    "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+    "version_id": "ver_298e416105dc",
+    "block_idx": 1,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Factors",
+    "text_hash": "5f5d0998dc56b8b8839e5d7224b890cb67dc8e3c6d51d965af0e30db66f2ef0c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 3,
+      "end_line": 3
+    },
+    "heading_path": [
+      "A05:2021 – Security Misconfiguration",
+      "Factors"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_298e416105dc_b00001",
+    "normalized_text": "## Factors",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_298e416105dc_b00002",
+    "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+    "version_id": "ver_298e416105dc",
+    "block_idx": 2,
+    "file_format": "MARKDOWN",
+    "block_type": "table",
+    "text_content": "| CWEs Mapped | Max Incidence Rate | Avg Incidence Rate | Avg Weighted Exploit | Avg Weighted Impact | Max Coverage | Avg Coverage | Total Occurrences | Total CVEs |\n|:-------------:|:--------------------:|:--------------------:|:--------------:|:--------------:|:----------------------:|:---------------------:|:-------------------:|:------------:|\n| 20          | 19.84%             | 4.51%              | 8.12                 | 6.56                | 89.58%       | 44.84%       | 208,387           | 789        |",
+    "text_hash": "82de2816295dbd05b1751ec65d053802cbd799f4db0ab2c3b0ff46158fcbe4ae",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 5,
+      "end_line": 7
+    },
+    "heading_path": [
+      "A05:2021 – Security Misconfiguration",
+      "Factors"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": [
+      "CWEs Mapped",
+      "Max Incidence Rate",
+      "Avg Incidence Rate",
+      "Avg Weighted Exploit",
+      "Avg Weighted Impact",
+      "Max Coverage",
+      "Avg Coverage",
+      "Total Occurrences",
+      "Total CVEs"
+    ],
+    "table_rows": [
+      [
+        "20",
+        "19.84%",
+        "4.51%",
+        "8.12",
+        "6.56",
+        "89.58%",
+        "44.84%",
+        "208,387",
+        "789"
+      ]
+    ],
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_298e416105dc_b00002",
+    "normalized_text": "| CWEs Mapped | Max Incidence Rate | Avg Incidence Rate | Avg Weighted Exploit | Avg Weighted Impact | Max Coverage | Avg Coverage | Total Occurrences | Total CVEs |\n|:-------------:|:--------------------:|:--------------------:|:--------------:|:--------------:|:----------------------:|:---------------------:|:-------------------:|:------------:|\n| 20 | 19.84% | 4.51% | 8.12 | 6.56 | 89.58% | 44.84% | 208,387 | 789 |",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 94
+    },
+    "normalized_table_header_cols": [
+      "CWEs Mapped",
+      "Max Incidence Rate",
+      "Avg Incidence Rate",
+      "Avg Weighted Exploit",
+      "Avg Weighted Impact",
+      "Max Coverage",
+      "Avg Coverage",
+      "Total Occurrences",
+      "Total CVEs"
+    ],
+    "normalized_table_rows": [
+      [
+        "20",
+        "19.84%",
+        "4.51%",
+        "8.12",
+        "6.56",
+        "89.58%",
+        "44.84%",
+        "208,387",
+        "789"
+      ]
+    ]
+  },
+  {
+    "block_id": "ver_298e416105dc_b00003",
+    "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+    "version_id": "ver_298e416105dc",
+    "block_idx": 3,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Overview",
+    "text_hash": "7337f3d0aa29e9a82b8f1650b743a98eef90794631fa763a319686e69c546821",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 9,
+      "end_line": 9
+    },
+    "heading_path": [
+      "A05:2021 – Security Misconfiguration",
+      "Overview"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_298e416105dc_b00003",
+    "normalized_text": "## Overview",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_298e416105dc_b00004",
+    "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+    "version_id": "ver_298e416105dc",
+    "block_idx": 4,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Moving up from #6 in the previous edition, 90% of applications were\ntested for some form of misconfiguration, with an average incidence rate of 4.51%, and over 208k occurrences of a Common Weakness Enumeration (CWE) in this risk category. With more shifts into highly configurable software, it's not surprising to see this category move up.\nNotable CWEs included are *CWE-16 Configuration* and *CWE-611 Improper\nRestriction of XML External Entity Reference*.",
+    "text_hash": "bdae06a6a6a63faaed4f65d330cccae2fcdcb22ead9bd0ac7c84baca187f28c0",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 11,
+      "end_line": 14
+    },
+    "heading_path": [
+      "A05:2021 – Security Misconfiguration",
+      "Overview"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_298e416105dc_b00004",
+    "normalized_text": "Moving up from #6 in the previous edition, 90% of applications were\ntested for some form of misconfiguration, with an average incidence rate of 4.51%, and over 208k occurrences of a Common Weakness Enumeration (CWE) in this risk category. With more shifts into highly configurable software, it's not surprising to see this category move up.\nNotable CWEs included are *CWE-16 Configuration* and *CWE-611 Improper\nRestriction of XML External Entity Reference*.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_298e416105dc_b00005",
+    "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+    "version_id": "ver_298e416105dc",
+    "block_idx": 5,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Description ",
+    "text_hash": "9416a3944fca599f6f9dcff2ff92354dcd7d50d51829259e33dd97612f7d0769",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 16,
+      "end_line": 16
+    },
+    "heading_path": [
+      "A05:2021 – Security Misconfiguration",
+      "Description"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_298e416105dc_b00005",
+    "normalized_text": "## Description",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_298e416105dc_b00006",
+    "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+    "version_id": "ver_298e416105dc",
+    "block_idx": 6,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The application might be vulnerable if the application is:",
+    "text_hash": "ed99d936b6879232e752e7cd9efecedb1aa5078fcf7b64e485571ba277e703ed",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 18,
+      "end_line": 18
+    },
+    "heading_path": [
+      "A05:2021 – Security Misconfiguration",
+      "Description"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_298e416105dc_b00006",
+    "normalized_text": "The application might be vulnerable if the application is:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_298e416105dc_b00007",
+    "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+    "version_id": "ver_298e416105dc",
+    "block_idx": 7,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "-   Missing appropriate security hardening across any part of the\n    application stack or improperly configured permissions on cloud\n    services.\n\n-   Unnecessary features are enabled or installed (e.g., unnecessary\n    ports, services, pages, accounts, or privileges).\n\n-   Default accounts and their passwords are still enabled and\n    unchanged.\n\n-   Error handling reveals stack traces or other overly informative\n    error messages to users.\n\n-   For upgraded systems, the latest security features are disabled or\n    not configured securely.\n\n-   The security settings in the application servers, application\n    frameworks (e.g., Struts, Spring, ASP.NET), libraries, databases,\n    etc., are not set to secure values.\n\n-   The server does not send security headers or directives, or they are\n    not set to secure values.\n\n-   The software is out of date or vulnerable (see [A06:2021-Vulnerable\n    and Outdated Components](A06_2021-Vulnerable_and_Outdated_Components.md)).\n",
+    "text_hash": "723158914c9ddb495c4b573932f616ec9afb790d629447368e8fd4b9643cf5d3",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 20,
+      "end_line": 45
+    },
+    "heading_path": [
+      "A05:2021 – Security Misconfiguration",
+      "Description"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_298e416105dc_b00007",
+    "normalized_text": "- Missing appropriate security hardening across any part of the\n    application stack or improperly configured permissions on cloud\n    services.\n\n- Unnecessary features are enabled or installed (e.g., unnecessary\n    ports, services, pages, accounts, or privileges).\n\n- Default accounts and their passwords are still enabled and\n    unchanged.\n\n- Error handling reveals stack traces or other overly informative\n    error messages to users.\n\n- For upgraded systems, the latest security features are disabled or\n    not configured securely.\n\n- The security settings in the application servers, application\n    frameworks (e.g., Struts, Spring, ASP.NET), libraries, databases,\n    etc., are not set to secure values.\n\n- The server does not send security headers or directives, or they are\n    not set to secure values.\n\n- The software is out of date or vulnerable (see [A06:2021-Vulnerable\n    and Outdated Components](A06_2021-Vulnerable_and_Outdated_Components.md)).",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 17
+    }
+  },
+  {
+    "block_id": "ver_298e416105dc_b00008",
+    "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+    "version_id": "ver_298e416105dc",
+    "block_idx": 8,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Without a concerted, repeatable application security configuration\nprocess, systems are at a higher risk.",
+    "text_hash": "1078a0285838faa0143512b799bb0a3c37697eb273cf9a15a816d88ca700a02d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 46,
+      "end_line": 47
+    },
+    "heading_path": [
+      "A05:2021 – Security Misconfiguration",
+      "Description"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_298e416105dc_b00008",
+    "normalized_text": "Without a concerted, repeatable application security configuration\nprocess, systems are at a higher risk.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_298e416105dc_b00009",
+    "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+    "version_id": "ver_298e416105dc",
+    "block_idx": 9,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## How to Prevent",
+    "text_hash": "43bbb04bfc567ef1014682cdf1f43165a9bff6d1f500aaffec83d4f93706b025",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 49,
+      "end_line": 49
+    },
+    "heading_path": [
+      "A05:2021 – Security Misconfiguration",
+      "How to Prevent"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_298e416105dc_b00009",
+    "normalized_text": "## How to Prevent",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_298e416105dc_b00010",
+    "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+    "version_id": "ver_298e416105dc",
+    "block_idx": 10,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Secure installation processes should be implemented, including:",
+    "text_hash": "fa1ae15121ce3d8dc9007ab1d25a9cc112dc33b4b2c485b358f5def7238d4cc9",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 51,
+      "end_line": 51
+    },
+    "heading_path": [
+      "A05:2021 – Security Misconfiguration",
+      "How to Prevent"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_298e416105dc_b00010",
+    "normalized_text": "Secure installation processes should be implemented, including:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_298e416105dc_b00011",
+    "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+    "version_id": "ver_298e416105dc",
+    "block_idx": 11,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "-   A repeatable hardening process makes it fast and easy to deploy\n    another environment that is appropriately locked down. Development,\n    QA, and production environments should all be configured\n    identically, with different credentials used in each environment.\n    This process should be automated to minimize the effort required to\n    set up a new secure environment.\n\n-   A minimal platform without any unnecessary features, components,\n    documentation, and samples. Remove or do not install unused features\n    and frameworks.\n\n-   A task to review and update the configurations appropriate to all\n    security notes, updates, and patches as part of the patch management\n    process (see [A06:2021-Vulnerable\n    and Outdated Components](A06_2021-Vulnerable_and_Outdated_Components.md)). Review\n    cloud storage permissions (e.g., S3 bucket permissions).\n\n-   A segmented application architecture provides effective and secure\n    separation between components or tenants, with segmentation,\n    containerization, or cloud security groups (ACLs).\n\n-   Sending security directives to clients, e.g., Security Headers.\n\n-   An automated process to verify the effectiveness of the\n    configurations and settings in all environments.\n",
+    "text_hash": "24ba9b09b710d3ee69e2edbccb0ec48bdb752a3468c67c0a0a207831dfc8df4d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 53,
+      "end_line": 78
+    },
+    "heading_path": [
+      "A05:2021 – Security Misconfiguration",
+      "How to Prevent"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_298e416105dc_b00011",
+    "normalized_text": "- A repeatable hardening process makes it fast and easy to deploy\n    another environment that is appropriately locked down. Development,\n    QA, and production environments should all be configured\n    identically, with different credentials used in each environment.\n    This process should be automated to minimize the effort required to\n    set up a new secure environment.\n\n- A minimal platform without any unnecessary features, components,\n    documentation, and samples. Remove or do not install unused features\n    and frameworks.\n\n- A task to review and update the configurations appropriate to all\n    security notes, updates, and patches as part of the patch management\n    process (see [A06:2021-Vulnerable\n    and Outdated Components](A06_2021-Vulnerable_and_Outdated_Components.md)). Review\n    cloud storage permissions (e.g., S3 bucket permissions).\n\n- A segmented application architecture provides effective and secure\n    separation between components or tenants, with segmentation,\n    containerization, or cloud security groups (ACLs).\n\n- Sending security directives to clients, e.g., Security Headers.\n\n- An automated process to verify the effectiveness of the\n    configurations and settings in all environments.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 13
+    }
+  },
+  {
+    "block_id": "ver_298e416105dc_b00012",
+    "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+    "version_id": "ver_298e416105dc",
+    "block_idx": 12,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Example Attack Scenarios",
+    "text_hash": "bb9afd051258ccbc75211089f3528f89d12f1e068ab3f1a85f3233d2888d0b39",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 79,
+      "end_line": 79
+    },
+    "heading_path": [
+      "A05:2021 – Security Misconfiguration",
+      "Example Attack Scenarios"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_298e416105dc_b00012",
+    "normalized_text": "## Example Attack Scenarios",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_298e416105dc_b00013",
+    "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+    "version_id": "ver_298e416105dc",
+    "block_idx": 13,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**Scenario #1:** The application server comes with sample applications\nnot removed from the production server. These sample applications have\nknown security flaws attackers use to compromise the server. Suppose one\nof these applications is the admin console, and default accounts weren't\nchanged. In that case, the attacker logs in with default passwords and\ntakes over.",
+    "text_hash": "52979b3dd7b62b13720d57cf928b59a0f656872e2d6f3857e15c448e93b39e50",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 81,
+      "end_line": 86
+    },
+    "heading_path": [
+      "A05:2021 – Security Misconfiguration",
+      "Example Attack Scenarios"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_298e416105dc_b00013",
+    "normalized_text": "**Scenario #1:** The application server comes with sample applications\nnot removed from the production server. These sample applications have\nknown security flaws attackers use to compromise the server. Suppose one\nof these applications is the admin console, and default accounts weren't\nchanged. In that case, the attacker logs in with default passwords and\ntakes over.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_298e416105dc_b00014",
+    "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+    "version_id": "ver_298e416105dc",
+    "block_idx": 14,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**Scenario #2:** Directory listing is not disabled on the server. An\nattacker discovers they can simply list directories. The attacker finds\nand downloads the compiled Java classes, which they decompile and\nreverse engineer to view the code. The attacker then finds a severe\naccess control flaw in the application.",
+    "text_hash": "ad9b77fc5ae0f5addb1f9d527e0dd580f1c6afd3bb0099ec99fd3bc81338f982",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 88,
+      "end_line": 92
+    },
+    "heading_path": [
+      "A05:2021 – Security Misconfiguration",
+      "Example Attack Scenarios"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_298e416105dc_b00014",
+    "normalized_text": "**Scenario #2:** Directory listing is not disabled on the server. An\nattacker discovers they can simply list directories. The attacker finds\nand downloads the compiled Java classes, which they decompile and\nreverse engineer to view the code. The attacker then finds a severe\naccess control flaw in the application.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_298e416105dc_b00015",
+    "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+    "version_id": "ver_298e416105dc",
+    "block_idx": 15,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**Scenario #3:** The application server's configuration allows detailed\nerror messages, e.g., stack traces, to be returned to users. This\npotentially exposes sensitive information or underlying flaws such as\ncomponent versions that are known to be vulnerable.",
+    "text_hash": "87615961987c9a80c1dee640adf15036148af0cc3b918b3bc2c8be8df6492deb",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 94,
+      "end_line": 97
+    },
+    "heading_path": [
+      "A05:2021 – Security Misconfiguration",
+      "Example Attack Scenarios"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_298e416105dc_b00015",
+    "normalized_text": "**Scenario #3:** The application server's configuration allows detailed\nerror messages, e.g., stack traces, to be returned to users. This\npotentially exposes sensitive information or underlying flaws such as\ncomponent versions that are known to be vulnerable.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_298e416105dc_b00016",
+    "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+    "version_id": "ver_298e416105dc",
+    "block_idx": 16,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**Scenario #4:** A cloud service provider (CSP) has default sharing\npermissions open to the Internet by other CSP users. This allows\nsensitive data stored within cloud storage to be accessed.",
+    "text_hash": "4f9029c4ce232afd729561c30e1773e542ece090c691d4786ca07f40c4b8ad1a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 99,
+      "end_line": 101
+    },
+    "heading_path": [
+      "A05:2021 – Security Misconfiguration",
+      "Example Attack Scenarios"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_298e416105dc_b00016",
+    "normalized_text": "**Scenario #4:** A cloud service provider (CSP) has default sharing\npermissions open to the Internet by other CSP users. This allows\nsensitive data stored within cloud storage to be accessed.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_298e416105dc_b00017",
+    "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+    "version_id": "ver_298e416105dc",
+    "block_idx": 17,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## References",
+    "text_hash": "65b72d86eeeb214ab8ca5fd24cb7cd7773e58084e95b670040df03e21e8c6fa7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 103,
+      "end_line": 103
+    },
+    "heading_path": [
+      "A05:2021 – Security Misconfiguration",
+      "References"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_298e416105dc_b00017",
+    "normalized_text": "## References",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_298e416105dc_b00018",
+    "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+    "version_id": "ver_298e416105dc",
+    "block_idx": 18,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "-   [OWASP Testing Guide: Configuration\n    Management](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/02-Configuration_and_Deployment_Management_Testing/README)\n\n-   [OWASP Testing Guide: Testing for Error Codes](https://owasp.org/www-project-web-security-testing-guide/stable/4-Web_Application_Security_Testing/08-Testing_for_Error_Handling/01-Testing_For_Improper_Error_Handling)\n\n-   [Application Security Verification Standard V14 Configuration](https://github.com/OWASP/ASVS/blob/master/4.0/en/0x22-V14-Config.md)\n\n-   [NIST Guide to General Server\n    Hardening](https://csrc.nist.gov/publications/detail/sp/800-123/final)\n\n-   [CIS Security Configuration\n    Guides/Benchmarks](https://www.cisecurity.org/cis-benchmarks/)\n\n-   [Amazon S3 Bucket Discovery and\n    Enumeration](https://blog.websecurify.com/2017/10/aws-s3-bucket-discovery.html)\n",
+    "text_hash": "9ce59352b79c62a4ababa11f3ec1232cde46958dbc43a5f061c29c1178293857",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 105,
+      "end_line": 120
+    },
+    "heading_path": [
+      "A05:2021 – Security Misconfiguration",
+      "References"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_298e416105dc_b00018",
+    "normalized_text": "- [OWASP Testing Guide: Configuration\n    Management](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/02-Configuration_and_Deployment_Management_Testing/README)\n\n- [OWASP Testing Guide: Testing for Error Codes](https://owasp.org/www-project-web-security-testing-guide/stable/4-Web_Application_Security_Testing/08-Testing_for_Error_Handling/01-Testing_For_Improper_Error_Handling)\n\n- [Application Security Verification Standard V14 Configuration](https://github.com/OWASP/ASVS/blob/master/4.0/en/0x22-V14-Config.md)\n\n- [NIST Guide to General Server\n    Hardening](https://csrc.nist.gov/publications/detail/sp/800-123/final)\n\n- [CIS Security Configuration\n    Guides/Benchmarks](https://www.cisecurity.org/cis-benchmarks/)\n\n- [Amazon S3 Bucket Discovery and\n    Enumeration](https://blog.websecurify.com/2017/10/aws-s3-bucket-discovery.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 13
+    }
+  },
+  {
+    "block_id": "ver_298e416105dc_b00019",
+    "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+    "version_id": "ver_298e416105dc",
+    "block_idx": 19,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## List of Mapped CWEs",
+    "text_hash": "25ada4e89aaab165926a55b7c068b5ff4c988e4d4cd1593dfb340087f3d969b2",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 121,
+      "end_line": 121
+    },
+    "heading_path": [
+      "A05:2021 – Security Misconfiguration",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_298e416105dc_b00019",
+    "normalized_text": "## List of Mapped CWEs",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_298e416105dc_b00020",
+    "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+    "version_id": "ver_298e416105dc",
+    "block_idx": 20,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-2 7PK - Environment](https://cwe.mitre.org/data/definitions/2.html)",
+    "text_hash": "8f06939706009e5ff31952e25bffaff38f02f0352926bb46a451d81ae6ee0733",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 123,
+      "end_line": 123
+    },
+    "heading_path": [
+      "A05:2021 – Security Misconfiguration",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_298e416105dc_b00020",
+    "normalized_text": "[CWE-2 7PK - Environment](https://cwe.mitre.org/data/definitions/2.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_298e416105dc_b00021",
+    "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+    "version_id": "ver_298e416105dc",
+    "block_idx": 21,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-11 ASP.NET Misconfiguration: Creating Debug Binary](https://cwe.mitre.org/data/definitions/11.html)",
+    "text_hash": "4e6594a7478cc8cdbf3adf126e7801d2331cfa9d6717419dba8c66a025ec943b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 125,
+      "end_line": 125
+    },
+    "heading_path": [
+      "A05:2021 – Security Misconfiguration",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_298e416105dc_b00021",
+    "normalized_text": "[CWE-11 ASP.NET Misconfiguration: Creating Debug Binary](https://cwe.mitre.org/data/definitions/11.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_298e416105dc_b00022",
+    "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+    "version_id": "ver_298e416105dc",
+    "block_idx": 22,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-13 ASP.NET Misconfiguration: Password in Configuration File](https://cwe.mitre.org/data/definitions/13.html)",
+    "text_hash": "aff5f16a242f458d0ccbf67da16485a885987792e66496c45863a068e9d0103f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 127,
+      "end_line": 127
+    },
+    "heading_path": [
+      "A05:2021 – Security Misconfiguration",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_298e416105dc_b00022",
+    "normalized_text": "[CWE-13 ASP.NET Misconfiguration: Password in Configuration File](https://cwe.mitre.org/data/definitions/13.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_298e416105dc_b00023",
+    "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+    "version_id": "ver_298e416105dc",
+    "block_idx": 23,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-15 External Control of System or Configuration Setting](https://cwe.mitre.org/data/definitions/15.html)",
+    "text_hash": "8e93954d2ea64f6a3232a8a7eec4abe8010a14be4a72df8efbd44c0d03013ab7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 129,
+      "end_line": 129
+    },
+    "heading_path": [
+      "A05:2021 – Security Misconfiguration",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_298e416105dc_b00023",
+    "normalized_text": "[CWE-15 External Control of System or Configuration Setting](https://cwe.mitre.org/data/definitions/15.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_298e416105dc_b00024",
+    "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+    "version_id": "ver_298e416105dc",
+    "block_idx": 24,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-16 Configuration](https://cwe.mitre.org/data/definitions/16.html)",
+    "text_hash": "7a4c94bfc797aaeecf48ed5a446a80fac781e8cae265ba036ca5ad693346e6e2",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 131,
+      "end_line": 131
+    },
+    "heading_path": [
+      "A05:2021 – Security Misconfiguration",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_298e416105dc_b00024",
+    "normalized_text": "[CWE-16 Configuration](https://cwe.mitre.org/data/definitions/16.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_298e416105dc_b00025",
+    "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+    "version_id": "ver_298e416105dc",
+    "block_idx": 25,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-260 Password in Configuration File](https://cwe.mitre.org/data/definitions/260.html)",
+    "text_hash": "38a9aa4d53a385c28850dcd2075f5feedd8008a09d26c137c7ee0b4f86a691c2",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 133,
+      "end_line": 133
+    },
+    "heading_path": [
+      "A05:2021 – Security Misconfiguration",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_298e416105dc_b00025",
+    "normalized_text": "[CWE-260 Password in Configuration File](https://cwe.mitre.org/data/definitions/260.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_298e416105dc_b00026",
+    "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+    "version_id": "ver_298e416105dc",
+    "block_idx": 26,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-315 Cleartext Storage of Sensitive Information in a Cookie](https://cwe.mitre.org/data/definitions/315.html)",
+    "text_hash": "3ab846122647ce54da147f84434faf004a89a31980303a681365e6e13fce049c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 135,
+      "end_line": 135
+    },
+    "heading_path": [
+      "A05:2021 – Security Misconfiguration",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_298e416105dc_b00026",
+    "normalized_text": "[CWE-315 Cleartext Storage of Sensitive Information in a Cookie](https://cwe.mitre.org/data/definitions/315.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_298e416105dc_b00027",
+    "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+    "version_id": "ver_298e416105dc",
+    "block_idx": 27,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-520 .NET Misconfiguration: Use of Impersonation](https://cwe.mitre.org/data/definitions/520.html)",
+    "text_hash": "317ccf875812007e549d776cfb95cd83e51cde8ed29e2bb5b0eeef86e1aaf682",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 137,
+      "end_line": 137
+    },
+    "heading_path": [
+      "A05:2021 – Security Misconfiguration",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_298e416105dc_b00027",
+    "normalized_text": "[CWE-520 .NET Misconfiguration: Use of Impersonation](https://cwe.mitre.org/data/definitions/520.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_298e416105dc_b00028",
+    "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+    "version_id": "ver_298e416105dc",
+    "block_idx": 28,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-526 Exposure of Sensitive Information Through Environmental Variables](https://cwe.mitre.org/data/definitions/526.html)",
+    "text_hash": "011f5525f3d7c01cd3eb3eb03cb10af339931a750de22e2fa2f0e97a333a3390",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 139,
+      "end_line": 139
+    },
+    "heading_path": [
+      "A05:2021 – Security Misconfiguration",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_298e416105dc_b00028",
+    "normalized_text": "[CWE-526 Exposure of Sensitive Information Through Environmental Variables](https://cwe.mitre.org/data/definitions/526.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_298e416105dc_b00029",
+    "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+    "version_id": "ver_298e416105dc",
+    "block_idx": 29,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-537 Java Runtime Error Message Containing Sensitive Information](https://cwe.mitre.org/data/definitions/537.html)",
+    "text_hash": "0af2e7a3a239411f3f4316310c4f881d986ad3b4161c910fd477ceae37e5acd2",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 141,
+      "end_line": 141
+    },
+    "heading_path": [
+      "A05:2021 – Security Misconfiguration",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_298e416105dc_b00029",
+    "normalized_text": "[CWE-537 Java Runtime Error Message Containing Sensitive Information](https://cwe.mitre.org/data/definitions/537.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_298e416105dc_b00030",
+    "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+    "version_id": "ver_298e416105dc",
+    "block_idx": 30,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-541 Inclusion of Sensitive Information in an Include File](https://cwe.mitre.org/data/definitions/541.html)",
+    "text_hash": "e554788f6d641676f34684f0d741b135d9a35918ede0f64c1748f77ef6434d24",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 143,
+      "end_line": 143
+    },
+    "heading_path": [
+      "A05:2021 – Security Misconfiguration",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_298e416105dc_b00030",
+    "normalized_text": "[CWE-541 Inclusion of Sensitive Information in an Include File](https://cwe.mitre.org/data/definitions/541.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_298e416105dc_b00031",
+    "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+    "version_id": "ver_298e416105dc",
+    "block_idx": 31,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-547 Use of Hard-coded, Security-relevant Constants](https://cwe.mitre.org/data/definitions/547.html)",
+    "text_hash": "6cc9be5dd33be2d4558f6b25e4fe88ba4379b0090183d2d71c2b521b8be47e98",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 145,
+      "end_line": 145
+    },
+    "heading_path": [
+      "A05:2021 – Security Misconfiguration",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_298e416105dc_b00031",
+    "normalized_text": "[CWE-547 Use of Hard-coded, Security-relevant Constants](https://cwe.mitre.org/data/definitions/547.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_298e416105dc_b00032",
+    "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+    "version_id": "ver_298e416105dc",
+    "block_idx": 32,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-611 Improper Restriction of XML External Entity Reference](https://cwe.mitre.org/data/definitions/611.html)",
+    "text_hash": "e951bc7304810eb68f5b75ca08c2e6dac9d52d09d64d20e541c4b706574574e6",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 147,
+      "end_line": 147
+    },
+    "heading_path": [
+      "A05:2021 – Security Misconfiguration",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_298e416105dc_b00032",
+    "normalized_text": "[CWE-611 Improper Restriction of XML External Entity Reference](https://cwe.mitre.org/data/definitions/611.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_298e416105dc_b00033",
+    "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+    "version_id": "ver_298e416105dc",
+    "block_idx": 33,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-614 Sensitive Cookie in HTTPS Session Without 'Secure' Attribute](https://cwe.mitre.org/data/definitions/614.html)",
+    "text_hash": "81b24a930a3f1386741214c87b0c9e9a70d6f026c7db8e75670b9ce0ba04514f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 149,
+      "end_line": 149
+    },
+    "heading_path": [
+      "A05:2021 – Security Misconfiguration",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_298e416105dc_b00033",
+    "normalized_text": "[CWE-614 Sensitive Cookie in HTTPS Session Without 'Secure' Attribute](https://cwe.mitre.org/data/definitions/614.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_298e416105dc_b00034",
+    "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+    "version_id": "ver_298e416105dc",
+    "block_idx": 34,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-756 Missing Custom Error Page](https://cwe.mitre.org/data/definitions/756.html)",
+    "text_hash": "c0fa81ec9ada3edfec6555058f4dc74ef7fe561673db5031d09333da3e6db857",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 151,
+      "end_line": 151
+    },
+    "heading_path": [
+      "A05:2021 – Security Misconfiguration",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_298e416105dc_b00034",
+    "normalized_text": "[CWE-756 Missing Custom Error Page](https://cwe.mitre.org/data/definitions/756.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_298e416105dc_b00035",
+    "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+    "version_id": "ver_298e416105dc",
+    "block_idx": 35,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-776 Improper Restriction of Recursive Entity References in DTDs ('XML Entity Expansion')](https://cwe.mitre.org/data/definitions/776.html)",
+    "text_hash": "61b1c3771a0ec2e43069f379d077fddac87e9676b98cce46a0f7a286139a05e9",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 153,
+      "end_line": 153
+    },
+    "heading_path": [
+      "A05:2021 – Security Misconfiguration",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_298e416105dc_b00035",
+    "normalized_text": "[CWE-776 Improper Restriction of Recursive Entity References in DTDs ('XML Entity Expansion')](https://cwe.mitre.org/data/definitions/776.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_298e416105dc_b00036",
+    "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+    "version_id": "ver_298e416105dc",
+    "block_idx": 36,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-942 Permissive Cross-domain Policy with Untrusted Domains](https://cwe.mitre.org/data/definitions/942.html)",
+    "text_hash": "1f4ba3426e103fafe14ee1625a2bde7b4c5e07d31dd76f33bc6fe7057ee2f24b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 155,
+      "end_line": 155
+    },
+    "heading_path": [
+      "A05:2021 – Security Misconfiguration",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_298e416105dc_b00036",
+    "normalized_text": "[CWE-942 Permissive Cross-domain Policy with Untrusted Domains](https://cwe.mitre.org/data/definitions/942.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_298e416105dc_b00037",
+    "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+    "version_id": "ver_298e416105dc",
+    "block_idx": 37,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-1004 Sensitive Cookie Without 'HttpOnly' Flag](https://cwe.mitre.org/data/definitions/1004.html)",
+    "text_hash": "510e511d9fa0ded629255e8fe3506cd529acccf1d12cbc838e73eb9c839ae290",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 157,
+      "end_line": 157
+    },
+    "heading_path": [
+      "A05:2021 – Security Misconfiguration",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_298e416105dc_b00037",
+    "normalized_text": "[CWE-1004 Sensitive Cookie Without 'HttpOnly' Flag](https://cwe.mitre.org/data/definitions/1004.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_298e416105dc_b00038",
+    "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+    "version_id": "ver_298e416105dc",
+    "block_idx": 38,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-1032 OWASP Top Ten 2017 Category A6 - Security Misconfiguration](https://cwe.mitre.org/data/definitions/1032.html)",
+    "text_hash": "375f622badb1ed62b40aa9c3a2f61b5a286f775ba3c8ef43522cf86f6e6e577e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 159,
+      "end_line": 159
+    },
+    "heading_path": [
+      "A05:2021 – Security Misconfiguration",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_298e416105dc_b00038",
+    "normalized_text": "[CWE-1032 OWASP Top Ten 2017 Category A6 - Security Misconfiguration](https://cwe.mitre.org/data/definitions/1032.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_298e416105dc_b00039",
+    "document_id": "doc_owasp_top10_a05_security_misconfiguration",
+    "version_id": "ver_298e416105dc",
+    "block_idx": 39,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-1174 ASP.NET Misconfiguration: Improper Model Validation](https://cwe.mitre.org/data/definitions/1174.html)",
+    "text_hash": "b10d843f65efb54a8296cd30890b50bc38219ea0e5b733a3b1de6eff786f5b88",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 161,
+      "end_line": 161
+    },
+    "heading_path": [
+      "A05:2021 – Security Misconfiguration",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_298e416105dc_b00039",
+    "normalized_text": "[CWE-1174 ASP.NET Misconfiguration: Improper Model Validation](https://cwe.mitre.org/data/definitions/1174.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  }
+]

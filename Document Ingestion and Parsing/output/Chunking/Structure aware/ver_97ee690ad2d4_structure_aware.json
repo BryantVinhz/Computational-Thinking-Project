@@ -1,0 +1,312 @@
+{
+  "document_id": "doc_owasp_avss_access_control",
+  "version_id": "ver_97ee690ad2d4",
+  "chunking_strategy": "structure_aware",
+  "chunks": [
+    {
+      "chunk_id": "ver_97ee690ad2d4_c00000",
+      "document_id": "doc_owasp_avss_access_control",
+      "version_id": "ver_97ee690ad2d4",
+      "chunk_idx": 0,
+      "chunk_type": "heading",
+      "text_content": "# V4 Access Control",
+      "token_count": 4,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V4 Access Control"
+      ]
+    },
+    {
+      "chunk_id": "ver_97ee690ad2d4_c00001",
+      "document_id": "doc_owasp_avss_access_control",
+      "version_id": "ver_97ee690ad2d4",
+      "chunk_idx": 1,
+      "chunk_type": "heading",
+      "text_content": "## Control Objective",
+      "token_count": 4,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V4 Access Control",
+        "Control Objective"
+      ]
+    },
+    {
+      "chunk_id": "ver_97ee690ad2d4_c00002",
+      "document_id": "doc_owasp_avss_access_control",
+      "version_id": "ver_97ee690ad2d4",
+      "chunk_idx": 2,
+      "chunk_type": "mixed",
+      "text_content": "Authorization is the concept of allowing access to resources only to those permitted to use them.\n\nEnsure that a verified application satisfies the following high level requirements:\n\n* Persons accessing resources hold valid credentials to do so.\n\n* Users are associated with a well-defined set of roles and privileges.\n\n* Role and permission metadata is protected from replay or tampering.",
+      "token_count": 67,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V4 Access Control",
+        "Control Objective"
+      ]
+    },
+    {
+      "chunk_id": "ver_97ee690ad2d4_c00003",
+      "document_id": "doc_owasp_avss_access_control",
+      "version_id": "ver_97ee690ad2d4",
+      "chunk_idx": 3,
+      "chunk_type": "heading",
+      "text_content": "## Security Verification Requirements",
+      "token_count": 5,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V4 Access Control",
+        "Security Verification Requirements"
+      ]
+    },
+    {
+      "chunk_id": "ver_97ee690ad2d4_c00004",
+      "document_id": "doc_owasp_avss_access_control",
+      "version_id": "ver_97ee690ad2d4",
+      "chunk_idx": 4,
+      "chunk_type": "heading",
+      "text_content": "## V4.1 General Access Control Design",
+      "token_count": 9,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V4 Access Control",
+        "V4.1 General Access Control Design"
+      ]
+    },
+    {
+      "chunk_id": "ver_97ee690ad2d4_c00005",
+      "document_id": "doc_owasp_avss_access_control",
+      "version_id": "ver_97ee690ad2d4",
+      "chunk_idx": 5,
+      "chunk_type": "table",
+      "text_content": "| # | Description | L1 | L2 | L3 | CWE |\n| :---: | :--- | :---: | :---:| :---: | :---: |\n| **4.1.1** | Verify that the application enforces access control rules on a trusted service layer, especially if client-side access control is present and could be bypassed. | ✓ | ✓ | ✓ | 602 |\n| **4.1.2** | Verify that all user and data attributes and policy information used by access controls cannot be manipulated by end users unless specifically authorized. | ✓ | ✓ | ✓ | 639 |\n| **4.1.3** | Verify that the principle of least privilege exists - users should only be able to access functions, data files, URLs, controllers, services, and other resources, for which they possess specific authorization. This implies protection against spoofing and elevation of privilege. ([C7](https://owasp.org/www-project-proactive-controls/#div-numbering)) | ✓ | ✓ | ✓ | 285 |\n| **4.1.4** | [DELETED, DUPLICATE OF 4.1.3] | | | | |\n| **4.1.5** | Verify that access controls fail securely including when an exception occurs. ([C10](https://owasp.org/www-project-proactive-controls/#div-numbering)) | ✓ | ✓ | ✓ | 285 |",
+      "token_count": 322,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V4 Access Control",
+        "V4.1 General Access Control Design"
+      ]
+    },
+    {
+      "chunk_id": "ver_97ee690ad2d4_c00006",
+      "document_id": "doc_owasp_avss_access_control",
+      "version_id": "ver_97ee690ad2d4",
+      "chunk_idx": 6,
+      "chunk_type": "heading",
+      "text_content": "## V4.2 Operation Level Access Control",
+      "token_count": 9,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V4 Access Control",
+        "V4.2 Operation Level Access Control"
+      ]
+    },
+    {
+      "chunk_id": "ver_97ee690ad2d4_c00007",
+      "document_id": "doc_owasp_avss_access_control",
+      "version_id": "ver_97ee690ad2d4",
+      "chunk_idx": 7,
+      "chunk_type": "table",
+      "text_content": "| # | Description | L1 | L2 | L3 | CWE |\n| :---: | :--- | :---: | :---:| :---: | :---: |\n| **4.2.1** | Verify that sensitive data and APIs are protected against Insecure Direct Object Reference (IDOR) attacks targeting creation, reading, updating and deletion of records, such as creating or updating someone else's record, viewing everyone's records, or deleting all records. | ✓ | ✓ | ✓ | 639 |\n| **4.2.2** | Verify that the application or framework enforces a strong anti-CSRF mechanism to protect authenticated functionality, and effective anti-automation or anti-CSRF protects unauthenticated functionality. | ✓ | ✓ | ✓ | 352 |",
+      "token_count": 170,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V4 Access Control",
+        "V4.2 Operation Level Access Control"
+      ]
+    },
+    {
+      "chunk_id": "ver_97ee690ad2d4_c00008",
+      "document_id": "doc_owasp_avss_access_control",
+      "version_id": "ver_97ee690ad2d4",
+      "chunk_idx": 8,
+      "chunk_type": "heading",
+      "text_content": "## V4.3 Other Access Control Considerations",
+      "token_count": 9,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V4 Access Control",
+        "V4.3 Other Access Control Considerations"
+      ]
+    },
+    {
+      "chunk_id": "ver_97ee690ad2d4_c00009",
+      "document_id": "doc_owasp_avss_access_control",
+      "version_id": "ver_97ee690ad2d4",
+      "chunk_idx": 9,
+      "chunk_type": "table",
+      "text_content": "| # | Description | L1 | L2 | L3 | CWE |\n| :---: | :--- | :---: | :---:| :---: | :---: |\n| **4.3.1** | Verify administrative interfaces use appropriate multi-factor authentication to prevent unauthorized use. | ✓ | ✓ | ✓ | 419 |\n| **4.3.2** | Verify that directory browsing is disabled unless deliberately desired. Additionally, applications should not allow discovery or disclosure of file or directory metadata, such as Thumbs.db, .DS_Store, .git or .svn folders. | ✓ | ✓ | ✓ | 548 |\n| **4.3.3** | Verify the application has additional authorization (such as step up or adaptive authentication) for lower value systems, and / or segregation of duties for high value applications to enforce anti-fraud controls as per the risk of application and past fraud. | | ✓ | ✓ | 732 |",
+      "token_count": 209,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V4 Access Control",
+        "V4.3 Other Access Control Considerations"
+      ]
+    },
+    {
+      "chunk_id": "ver_97ee690ad2d4_c00010",
+      "document_id": "doc_owasp_avss_access_control",
+      "version_id": "ver_97ee690ad2d4",
+      "chunk_idx": 10,
+      "chunk_type": "heading",
+      "text_content": "## References",
+      "token_count": 3,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V4 Access Control",
+        "References"
+      ]
+    },
+    {
+      "chunk_id": "ver_97ee690ad2d4_c00011",
+      "document_id": "doc_owasp_avss_access_control",
+      "version_id": "ver_97ee690ad2d4",
+      "chunk_idx": 11,
+      "chunk_type": "mixed",
+      "text_content": "For more information, see also:\n\n* [OWASP Testing Guide 4.0: Authorization](https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/05-Authorization_Testing/README.html)\n* [OWASP Cheat Sheet: Access Control](https://cheatsheetseries.owasp.org/cheatsheets/Access_Control_Cheat_Sheet.html)\n* [OWASP CSRF Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html)\n* [OWASP REST Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html)",
+      "token_count": 129,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "V4 Access Control",
+        "References"
+      ]
+    }
+  ],
+  "chunk_sources": [
+    {
+      "chunk_source_id": "ver_97ee690ad2d4_c00000_s000",
+      "chunk_id": "ver_97ee690ad2d4_c00000",
+      "normalized_block_id": "nrm_ver_97ee690ad2d4_b00000",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 19
+    },
+    {
+      "chunk_source_id": "ver_97ee690ad2d4_c00001_s000",
+      "chunk_id": "ver_97ee690ad2d4_c00001",
+      "normalized_block_id": "nrm_ver_97ee690ad2d4_b00001",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 20
+    },
+    {
+      "chunk_source_id": "ver_97ee690ad2d4_c00002_s000",
+      "chunk_id": "ver_97ee690ad2d4_c00002",
+      "normalized_block_id": "nrm_ver_97ee690ad2d4_b00002",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 97
+    },
+    {
+      "chunk_source_id": "ver_97ee690ad2d4_c00002_s001",
+      "chunk_id": "ver_97ee690ad2d4_c00002",
+      "normalized_block_id": "nrm_ver_97ee690ad2d4_b00002",
+      "source_order": 1,
+      "start_offset": 98,
+      "end_offset": 181
+    },
+    {
+      "chunk_source_id": "ver_97ee690ad2d4_c00002_s002",
+      "chunk_id": "ver_97ee690ad2d4_c00002",
+      "normalized_block_id": "nrm_ver_97ee690ad2d4_b00003",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 62
+    },
+    {
+      "chunk_source_id": "ver_97ee690ad2d4_c00002_s003",
+      "chunk_id": "ver_97ee690ad2d4_c00002",
+      "normalized_block_id": "nrm_ver_97ee690ad2d4_b00003",
+      "source_order": 3,
+      "start_offset": 63,
+      "end_offset": 134
+    },
+    {
+      "chunk_source_id": "ver_97ee690ad2d4_c00002_s004",
+      "chunk_id": "ver_97ee690ad2d4_c00002",
+      "normalized_block_id": "nrm_ver_97ee690ad2d4_b00003",
+      "source_order": 4,
+      "start_offset": 135,
+      "end_offset": 204
+    },
+    {
+      "chunk_source_id": "ver_97ee690ad2d4_c00003_s000",
+      "chunk_id": "ver_97ee690ad2d4_c00003",
+      "normalized_block_id": "nrm_ver_97ee690ad2d4_b00004",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 37
+    },
+    {
+      "chunk_source_id": "ver_97ee690ad2d4_c00004_s000",
+      "chunk_id": "ver_97ee690ad2d4_c00004",
+      "normalized_block_id": "nrm_ver_97ee690ad2d4_b00005",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 37
+    },
+    {
+      "chunk_source_id": "ver_97ee690ad2d4_c00005_s000",
+      "chunk_id": "ver_97ee690ad2d4_c00005",
+      "normalized_block_id": "nrm_ver_97ee690ad2d4_b00006",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 1096
+    },
+    {
+      "chunk_source_id": "ver_97ee690ad2d4_c00006_s000",
+      "chunk_id": "ver_97ee690ad2d4_c00006",
+      "normalized_block_id": "nrm_ver_97ee690ad2d4_b00007",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 38
+    },
+    {
+      "chunk_source_id": "ver_97ee690ad2d4_c00007_s000",
+      "chunk_id": "ver_97ee690ad2d4_c00007",
+      "normalized_block_id": "nrm_ver_97ee690ad2d4_b00008",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 632
+    },
+    {
+      "chunk_source_id": "ver_97ee690ad2d4_c00008_s000",
+      "chunk_id": "ver_97ee690ad2d4_c00008",
+      "normalized_block_id": "nrm_ver_97ee690ad2d4_b00009",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 43
+    },
+    {
+      "chunk_source_id": "ver_97ee690ad2d4_c00009_s000",
+      "chunk_id": "ver_97ee690ad2d4_c00009",
+      "normalized_block_id": "nrm_ver_97ee690ad2d4_b00010",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 776
+    },
+    {
+      "chunk_source_id": "ver_97ee690ad2d4_c00010_s000",
+      "chunk_id": "ver_97ee690ad2d4_c00010",
+      "normalized_block_id": "nrm_ver_97ee690ad2d4_b00011",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 13
+    },
+    {
+      "chunk_source_id": "ver_97ee690ad2d4_c00011_s000",
+      "chunk_id": "ver_97ee690ad2d4_c00011",
+      "normalized_block_id": "nrm_ver_97ee690ad2d4_b00012",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 31
+    },
+    {
+      "chunk_source_id": "ver_97ee690ad2d4_c00011_s001",
+      "chunk_id": "ver_97ee690ad2d4_c00011",
+      "normalized_block_id": "nrm_ver_97ee690ad2d4_b00013",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 530
+    }
+  ]
+}

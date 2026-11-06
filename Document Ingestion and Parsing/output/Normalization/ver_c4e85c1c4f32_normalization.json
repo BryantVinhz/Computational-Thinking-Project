@@ -1,0 +1,1373 @@
+[
+  {
+    "block_id": "ver_c4e85c1c4f32_b00000",
+    "document_id": "doc_owasp_top10_a07_identification_and_authentication_failures",
+    "version_id": "ver_c4e85c1c4f32",
+    "block_idx": 0,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "# A07:2021 – Identification and Authentication Failures    ![icon](assets/TOP_10_Icons_Final_Identification_and_Authentication_Failures.png){: style=\"height:80px;width:80px\" align=\"right\"}",
+    "text_hash": "fb413545e1500b140badfe2cba37d1db737a5b63e3f1300579b5eac497a5690c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 1,
+      "end_line": 1
+    },
+    "heading_path": [
+      "A07:2021 – Identification and Authentication Failures"
+    ],
+    "heading_level": 1,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c4e85c1c4f32_b00000",
+    "normalized_text": "# A07:2021 – Identification and Authentication Failures ![icon](assets/TOP_10_Icons_Final_Identification_and_Authentication_Failures.png){: style=\"height:80px;width:80px\" align=\"right\"}",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 3
+    }
+  },
+  {
+    "block_id": "ver_c4e85c1c4f32_b00001",
+    "document_id": "doc_owasp_top10_a07_identification_and_authentication_failures",
+    "version_id": "ver_c4e85c1c4f32",
+    "block_idx": 1,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Factors",
+    "text_hash": "5f5d0998dc56b8b8839e5d7224b890cb67dc8e3c6d51d965af0e30db66f2ef0c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 3,
+      "end_line": 3
+    },
+    "heading_path": [
+      "A07:2021 – Identification and Authentication Failures",
+      "Factors"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c4e85c1c4f32_b00001",
+    "normalized_text": "## Factors",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c4e85c1c4f32_b00002",
+    "document_id": "doc_owasp_top10_a07_identification_and_authentication_failures",
+    "version_id": "ver_c4e85c1c4f32",
+    "block_idx": 2,
+    "file_format": "MARKDOWN",
+    "block_type": "table",
+    "text_content": "| CWEs Mapped | Max Incidence Rate | Avg Incidence Rate | Avg Weighted Exploit | Avg Weighted Impact | Max Coverage | Avg Coverage | Total Occurrences | Total CVEs |\n|:-------------:|:--------------------:|:--------------------:|:--------------:|:--------------:|:----------------------:|:---------------------:|:-------------------:|:------------:|\n| 22          | 14.84%             | 2.55%              | 7.40                 | 6.50                | 79.51%       | 45.72%       | 132,195           | 3,897      |",
+    "text_hash": "6c7d7e02a620fa47eedcffea4380ef02f66a7f186b108a6567c8a6b1316074d9",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 5,
+      "end_line": 7
+    },
+    "heading_path": [
+      "A07:2021 – Identification and Authentication Failures",
+      "Factors"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": [
+      "CWEs Mapped",
+      "Max Incidence Rate",
+      "Avg Incidence Rate",
+      "Avg Weighted Exploit",
+      "Avg Weighted Impact",
+      "Max Coverage",
+      "Avg Coverage",
+      "Total Occurrences",
+      "Total CVEs"
+    ],
+    "table_rows": [
+      [
+        "22",
+        "14.84%",
+        "2.55%",
+        "7.40",
+        "6.50",
+        "79.51%",
+        "45.72%",
+        "132,195",
+        "3,897"
+      ]
+    ],
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c4e85c1c4f32_b00002",
+    "normalized_text": "| CWEs Mapped | Max Incidence Rate | Avg Incidence Rate | Avg Weighted Exploit | Avg Weighted Impact | Max Coverage | Avg Coverage | Total Occurrences | Total CVEs |\n|:-------------:|:--------------------:|:--------------------:|:--------------:|:--------------:|:----------------------:|:---------------------:|:-------------------:|:------------:|\n| 22 | 14.84% | 2.55% | 7.40 | 6.50 | 79.51% | 45.72% | 132,195 | 3,897 |",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 92
+    },
+    "normalized_table_header_cols": [
+      "CWEs Mapped",
+      "Max Incidence Rate",
+      "Avg Incidence Rate",
+      "Avg Weighted Exploit",
+      "Avg Weighted Impact",
+      "Max Coverage",
+      "Avg Coverage",
+      "Total Occurrences",
+      "Total CVEs"
+    ],
+    "normalized_table_rows": [
+      [
+        "22",
+        "14.84%",
+        "2.55%",
+        "7.40",
+        "6.50",
+        "79.51%",
+        "45.72%",
+        "132,195",
+        "3,897"
+      ]
+    ]
+  },
+  {
+    "block_id": "ver_c4e85c1c4f32_b00003",
+    "document_id": "doc_owasp_top10_a07_identification_and_authentication_failures",
+    "version_id": "ver_c4e85c1c4f32",
+    "block_idx": 3,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Overview",
+    "text_hash": "7337f3d0aa29e9a82b8f1650b743a98eef90794631fa763a319686e69c546821",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 9,
+      "end_line": 9
+    },
+    "heading_path": [
+      "A07:2021 – Identification and Authentication Failures",
+      "Overview"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c4e85c1c4f32_b00003",
+    "normalized_text": "## Overview",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c4e85c1c4f32_b00004",
+    "document_id": "doc_owasp_top10_a07_identification_and_authentication_failures",
+    "version_id": "ver_c4e85c1c4f32",
+    "block_idx": 4,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Previously known as *Broken Authentication*, this category slid down\nfrom the second position and now includes Common Weakness \nEnumerations (CWEs) related to identification\nfailures. Notable CWEs included are *CWE-297: Improper Validation of\nCertificate with Host Mismatch*, *CWE-287: Improper Authentication*, and\n*CWE-384: Session Fixation*.",
+    "text_hash": "411d6452ef642f24662764d27eb36022330525cf150cee5302faa0b86157abe6",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 11,
+      "end_line": 16
+    },
+    "heading_path": [
+      "A07:2021 – Identification and Authentication Failures",
+      "Overview"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c4e85c1c4f32_b00004",
+    "normalized_text": "Previously known as *Broken Authentication*, this category slid down\nfrom the second position and now includes Common Weakness\nEnumerations (CWEs) related to identification\nfailures. Notable CWEs included are *CWE-297: Improper Validation of\nCertificate with Host Mismatch*, *CWE-287: Improper Authentication*, and\n*CWE-384: Session Fixation*.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_c4e85c1c4f32_b00005",
+    "document_id": "doc_owasp_top10_a07_identification_and_authentication_failures",
+    "version_id": "ver_c4e85c1c4f32",
+    "block_idx": 5,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Description ",
+    "text_hash": "9416a3944fca599f6f9dcff2ff92354dcd7d50d51829259e33dd97612f7d0769",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 18,
+      "end_line": 18
+    },
+    "heading_path": [
+      "A07:2021 – Identification and Authentication Failures",
+      "Description"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c4e85c1c4f32_b00005",
+    "normalized_text": "## Description",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_c4e85c1c4f32_b00006",
+    "document_id": "doc_owasp_top10_a07_identification_and_authentication_failures",
+    "version_id": "ver_c4e85c1c4f32",
+    "block_idx": 6,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Confirmation of the user's identity, authentication, and session\nmanagement is critical to protect against authentication-related\nattacks. There may be authentication weaknesses if the application:",
+    "text_hash": "facbe6a9708292f7466a449c96857122e6f6a3e82c8bdaf25942de8b4cc28d60",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 20,
+      "end_line": 22
+    },
+    "heading_path": [
+      "A07:2021 – Identification and Authentication Failures",
+      "Description"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c4e85c1c4f32_b00006",
+    "normalized_text": "Confirmation of the user's identity, authentication, and session\nmanagement is critical to protect against authentication-related\nattacks. There may be authentication weaknesses if the application:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c4e85c1c4f32_b00007",
+    "document_id": "doc_owasp_top10_a07_identification_and_authentication_failures",
+    "version_id": "ver_c4e85c1c4f32",
+    "block_idx": 7,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "-   Permits automated attacks such as credential stuffing, where the\n    attacker has a list of valid usernames and passwords.\n\n-   Permits brute force or other automated attacks.\n\n-   Permits default, weak, or well-known passwords, such as \"Password1\"\n    or \"admin/admin\".\n\n-   Uses weak or ineffective credential recovery and forgot-password\n    processes, such as \"knowledge-based answers,\" which cannot be made\n    safe.\n\n-   Uses plain text, encrypted, or weakly hashed passwords data stores (see\n    [A02:2021-Cryptographic Failures](A02_2021-Cryptographic_Failures.md)).\n\n-   Has missing or ineffective multi-factor authentication.\n\n-   Exposes session identifier in the URL.\n\n-   Reuse session identifier after successful login.\n\n-   Does not correctly invalidate Session IDs. User sessions or\n    authentication tokens (mainly single sign-on (SSO) tokens) aren't\n    properly invalidated during logout or a period of inactivity.\n",
+    "text_hash": "9bcd9d80bda2628689b9c7be87baa75c3f3a8359a9c52dd006a622ddfa6ed027",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 24,
+      "end_line": 48
+    },
+    "heading_path": [
+      "A07:2021 – Identification and Authentication Failures",
+      "Description"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c4e85c1c4f32_b00007",
+    "normalized_text": "- Permits automated attacks such as credential stuffing, where the\n    attacker has a list of valid usernames and passwords.\n\n- Permits brute force or other automated attacks.\n\n- Permits default, weak, or well-known passwords, such as \"Password1\"\n    or \"admin/admin\".\n\n- Uses weak or ineffective credential recovery and forgot-password\n    processes, such as \"knowledge-based answers,\" which cannot be made\n    safe.\n\n- Uses plain text, encrypted, or weakly hashed passwords data stores (see\n    [A02:2021-Cryptographic Failures](A02_2021-Cryptographic_Failures.md)).\n\n- Has missing or ineffective multi-factor authentication.\n\n- Exposes session identifier in the URL.\n\n- Reuse session identifier after successful login.\n\n- Does not correctly invalidate Session IDs. User sessions or\n    authentication tokens (mainly single sign-on (SSO) tokens) aren't\n    properly invalidated during logout or a period of inactivity.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 19
+    }
+  },
+  {
+    "block_id": "ver_c4e85c1c4f32_b00008",
+    "document_id": "doc_owasp_top10_a07_identification_and_authentication_failures",
+    "version_id": "ver_c4e85c1c4f32",
+    "block_idx": 8,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## How to Prevent",
+    "text_hash": "43bbb04bfc567ef1014682cdf1f43165a9bff6d1f500aaffec83d4f93706b025",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 49,
+      "end_line": 49
+    },
+    "heading_path": [
+      "A07:2021 – Identification and Authentication Failures",
+      "How to Prevent"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c4e85c1c4f32_b00008",
+    "normalized_text": "## How to Prevent",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c4e85c1c4f32_b00009",
+    "document_id": "doc_owasp_top10_a07_identification_and_authentication_failures",
+    "version_id": "ver_c4e85c1c4f32",
+    "block_idx": 9,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "-   Where possible, implement multi-factor authentication to prevent\n    automated credential stuffing, brute force, and stolen credential\n    reuse attacks.\n\n-   Do not ship or deploy with any default credentials, particularly for\n    admin users.\n\n-   Implement weak password checks, such as testing new or changed\n    passwords against the top 10,000 worst passwords list.\n\n-   Align password length, complexity, and rotation policies with\n    National Institute of Standards and Technology (NIST)\n    800-63b's guidelines in section 5.1.1 for Memorized Secrets or other\n    modern, evidence-based password policies.\n\n-   Ensure registration, credential recovery, and API pathways are\n    hardened against account enumeration attacks by using the same\n    messages for all outcomes.\n\n-   Limit or increasingly delay failed login attempts, but be careful not to create a denial of service scenario. Log all failures\n    and alert administrators when credential stuffing, brute force, or\n    other attacks are detected.\n\n-   Use a server-side, secure, built-in session manager that generates a\n    new random session ID with high entropy after login. Session identifier\n    should not be in the URL, be securely stored, and invalidated after\n    logout, idle, and absolute timeouts.\n",
+    "text_hash": "cf67485a75a330c55a78e143418a456848120ff9e77e69fbeecd03bdad1cc50a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 51,
+      "end_line": 78
+    },
+    "heading_path": [
+      "A07:2021 – Identification and Authentication Failures",
+      "How to Prevent"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c4e85c1c4f32_b00009",
+    "normalized_text": "- Where possible, implement multi-factor authentication to prevent\n    automated credential stuffing, brute force, and stolen credential\n    reuse attacks.\n\n- Do not ship or deploy with any default credentials, particularly for\n    admin users.\n\n- Implement weak password checks, such as testing new or changed\n    passwords against the top 10,000 worst passwords list.\n\n- Align password length, complexity, and rotation policies with\n    National Institute of Standards and Technology (NIST)\n    800-63b's guidelines in section 5.1.1 for Memorized Secrets or other\n    modern, evidence-based password policies.\n\n- Ensure registration, credential recovery, and API pathways are\n    hardened against account enumeration attacks by using the same\n    messages for all outcomes.\n\n- Limit or increasingly delay failed login attempts, but be careful not to create a denial of service scenario. Log all failures\n    and alert administrators when credential stuffing, brute force, or\n    other attacks are detected.\n\n- Use a server-side, secure, built-in session manager that generates a\n    new random session ID with high entropy after login. Session identifier\n    should not be in the URL, be securely stored, and invalidated after\n    logout, idle, and absolute timeouts.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 15
+    }
+  },
+  {
+    "block_id": "ver_c4e85c1c4f32_b00010",
+    "document_id": "doc_owasp_top10_a07_identification_and_authentication_failures",
+    "version_id": "ver_c4e85c1c4f32",
+    "block_idx": 10,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Example Attack Scenarios",
+    "text_hash": "bb9afd051258ccbc75211089f3528f89d12f1e068ab3f1a85f3233d2888d0b39",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 79,
+      "end_line": 79
+    },
+    "heading_path": [
+      "A07:2021 – Identification and Authentication Failures",
+      "Example Attack Scenarios"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c4e85c1c4f32_b00010",
+    "normalized_text": "## Example Attack Scenarios",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c4e85c1c4f32_b00011",
+    "document_id": "doc_owasp_top10_a07_identification_and_authentication_failures",
+    "version_id": "ver_c4e85c1c4f32",
+    "block_idx": 11,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**Scenario #1:** Credential stuffing, the use of lists of known\npasswords, is a common attack. Suppose an application does not implement\nautomated threat or credential stuffing protection. In that case, the\napplication can be used as a password oracle to determine if the\ncredentials are valid.",
+    "text_hash": "b900abce7a916b047f253172597956fb129b4686b74a6a89e4f0c74a2586ff60",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 81,
+      "end_line": 85
+    },
+    "heading_path": [
+      "A07:2021 – Identification and Authentication Failures",
+      "Example Attack Scenarios"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c4e85c1c4f32_b00011",
+    "normalized_text": "**Scenario #1:** Credential stuffing, the use of lists of known\npasswords, is a common attack. Suppose an application does not implement\nautomated threat or credential stuffing protection. In that case, the\napplication can be used as a password oracle to determine if the\ncredentials are valid.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c4e85c1c4f32_b00012",
+    "document_id": "doc_owasp_top10_a07_identification_and_authentication_failures",
+    "version_id": "ver_c4e85c1c4f32",
+    "block_idx": 12,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**Scenario #2:** Most authentication attacks occur due to the continued\nuse of passwords as a sole factor. Once considered best practices,\npassword rotation and complexity requirements encourage users to use\nand reuse weak passwords. Organizations are recommended to stop these\npractices per NIST 800-63 and use multi-factor authentication.",
+    "text_hash": "8c04a20d64a053e8b61ec8ce8e104d7791d71690bfede8cf04b97c6cda68038f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 87,
+      "end_line": 91
+    },
+    "heading_path": [
+      "A07:2021 – Identification and Authentication Failures",
+      "Example Attack Scenarios"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c4e85c1c4f32_b00012",
+    "normalized_text": "**Scenario #2:** Most authentication attacks occur due to the continued\nuse of passwords as a sole factor. Once considered best practices,\npassword rotation and complexity requirements encourage users to use\nand reuse weak passwords. Organizations are recommended to stop these\npractices per NIST 800-63 and use multi-factor authentication.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c4e85c1c4f32_b00013",
+    "document_id": "doc_owasp_top10_a07_identification_and_authentication_failures",
+    "version_id": "ver_c4e85c1c4f32",
+    "block_idx": 13,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**Scenario #3:** Application session timeouts aren't set correctly. A\nuser uses a public computer to access an application. Instead of\nselecting \"logout,\" the user simply closes the browser tab and walks\naway. An attacker uses the same browser an hour later, and the user is\nstill authenticated.",
+    "text_hash": "cd0bed8a6348c4f4d1c8412a7b63746b433a7642fc8321276fc71c065d6939e0",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 93,
+      "end_line": 97
+    },
+    "heading_path": [
+      "A07:2021 – Identification and Authentication Failures",
+      "Example Attack Scenarios"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c4e85c1c4f32_b00013",
+    "normalized_text": "**Scenario #3:** Application session timeouts aren't set correctly. A\nuser uses a public computer to access an application. Instead of\nselecting \"logout,\" the user simply closes the browser tab and walks\naway. An attacker uses the same browser an hour later, and the user is\nstill authenticated.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c4e85c1c4f32_b00014",
+    "document_id": "doc_owasp_top10_a07_identification_and_authentication_failures",
+    "version_id": "ver_c4e85c1c4f32",
+    "block_idx": 14,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## References",
+    "text_hash": "65b72d86eeeb214ab8ca5fd24cb7cd7773e58084e95b670040df03e21e8c6fa7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 99,
+      "end_line": 99
+    },
+    "heading_path": [
+      "A07:2021 – Identification and Authentication Failures",
+      "References"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c4e85c1c4f32_b00014",
+    "normalized_text": "## References",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c4e85c1c4f32_b00015",
+    "document_id": "doc_owasp_top10_a07_identification_and_authentication_failures",
+    "version_id": "ver_c4e85c1c4f32",
+    "block_idx": 15,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "-   [OWASP Proactive Controls: Implement Digital Identity](https://owasp.org/www-project-proactive-controls/v3/en/c6-digital-identity)\n\n-   [OWASP Application Security Verification Standard: V2 authentication](https://owasp.org/www-project-application-security-verification-standard)\n\n-   [OWASP Application Security Verification Standard: V3 Session Management](https://owasp.org/www-project-application-security-verification-standard)\n\n-   [OWASP Testing Guide: Identity](https://owasp.org/www-project-web-security-testing-guide/stable/4-Web_Application_Security_Testing/03-Identity_Management_Testing/README), [Authentication](https://owasp.org/www-project-web-security-testing-guide/stable/4-Web_Application_Security_Testing/04-Authentication_Testing/README)\n\n-   [OWASP Cheat Sheet: Authentication](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html)\n\n-   [OWASP Cheat Sheet: Credential Stuffing](https://cheatsheetseries.owasp.org/cheatsheets/Credential_Stuffing_Prevention_Cheat_Sheet.html)\n\n-   [OWASP Cheat Sheet: Forgot Password](https://cheatsheetseries.owasp.org/cheatsheets/Forgot_Password_Cheat_Sheet.html)\n\n-   [OWASP Cheat Sheet: Session Management](https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html)\n\n-   [OWASP Automated Threats Handbook](https://owasp.org/www-project-automated-threats-to-web-applications/)\n\n-   [NIST 800-63b: 5.1.1 Memorized Secrets](https://pages.nist.gov/800-63-3/sp800-63b.html#memsecret)\n",
+    "text_hash": "41b49da0d656a6a7c7ae10fadb082379e123d310b1b6e7fe8afe5d42b2366be8",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 101,
+      "end_line": 120
+    },
+    "heading_path": [
+      "A07:2021 – Identification and Authentication Failures",
+      "References"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c4e85c1c4f32_b00015",
+    "normalized_text": "- [OWASP Proactive Controls: Implement Digital Identity](https://owasp.org/www-project-proactive-controls/v3/en/c6-digital-identity)\n\n- [OWASP Application Security Verification Standard: V2 authentication](https://owasp.org/www-project-application-security-verification-standard)\n\n- [OWASP Application Security Verification Standard: V3 Session Management](https://owasp.org/www-project-application-security-verification-standard)\n\n- [OWASP Testing Guide: Identity](https://owasp.org/www-project-web-security-testing-guide/stable/4-Web_Application_Security_Testing/03-Identity_Management_Testing/README), [Authentication](https://owasp.org/www-project-web-security-testing-guide/stable/4-Web_Application_Security_Testing/04-Authentication_Testing/README)\n\n- [OWASP Cheat Sheet: Authentication](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html)\n\n- [OWASP Cheat Sheet: Credential Stuffing](https://cheatsheetseries.owasp.org/cheatsheets/Credential_Stuffing_Prevention_Cheat_Sheet.html)\n\n- [OWASP Cheat Sheet: Forgot Password](https://cheatsheetseries.owasp.org/cheatsheets/Forgot_Password_Cheat_Sheet.html)\n\n- [OWASP Cheat Sheet: Session Management](https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html)\n\n- [OWASP Automated Threats Handbook](https://owasp.org/www-project-automated-threats-to-web-applications/)\n\n- [NIST 800-63b: 5.1.1 Memorized Secrets](https://pages.nist.gov/800-63-3/sp800-63b.html#memsecret)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 21
+    }
+  },
+  {
+    "block_id": "ver_c4e85c1c4f32_b00016",
+    "document_id": "doc_owasp_top10_a07_identification_and_authentication_failures",
+    "version_id": "ver_c4e85c1c4f32",
+    "block_idx": 16,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## List of Mapped CWEs",
+    "text_hash": "25ada4e89aaab165926a55b7c068b5ff4c988e4d4cd1593dfb340087f3d969b2",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 121,
+      "end_line": 121
+    },
+    "heading_path": [
+      "A07:2021 – Identification and Authentication Failures",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c4e85c1c4f32_b00016",
+    "normalized_text": "## List of Mapped CWEs",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c4e85c1c4f32_b00017",
+    "document_id": "doc_owasp_top10_a07_identification_and_authentication_failures",
+    "version_id": "ver_c4e85c1c4f32",
+    "block_idx": 17,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-255 Credentials Management Errors](https://cwe.mitre.org/data/definitions/255.html)",
+    "text_hash": "4a803def704c1dca97f1d98b11c28cc2483b5ce0522b3f1e3dc6fd3018902409",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 123,
+      "end_line": 123
+    },
+    "heading_path": [
+      "A07:2021 – Identification and Authentication Failures",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c4e85c1c4f32_b00017",
+    "normalized_text": "[CWE-255 Credentials Management Errors](https://cwe.mitre.org/data/definitions/255.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c4e85c1c4f32_b00018",
+    "document_id": "doc_owasp_top10_a07_identification_and_authentication_failures",
+    "version_id": "ver_c4e85c1c4f32",
+    "block_idx": 18,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-259 Use of Hard-coded Password](https://cwe.mitre.org/data/definitions/259.html)",
+    "text_hash": "d431bad78a5f88049944c5f1620ebb81f2d1856e58c0558018728018b0d6d2c1",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 125,
+      "end_line": 125
+    },
+    "heading_path": [
+      "A07:2021 – Identification and Authentication Failures",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c4e85c1c4f32_b00018",
+    "normalized_text": "[CWE-259 Use of Hard-coded Password](https://cwe.mitre.org/data/definitions/259.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c4e85c1c4f32_b00019",
+    "document_id": "doc_owasp_top10_a07_identification_and_authentication_failures",
+    "version_id": "ver_c4e85c1c4f32",
+    "block_idx": 19,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-287 Improper Authentication](https://cwe.mitre.org/data/definitions/287.html)",
+    "text_hash": "0fd43d69ae5688ac578c9b722ad9add258816a9f57ce3bc7837e2abe69cb6898",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 127,
+      "end_line": 127
+    },
+    "heading_path": [
+      "A07:2021 – Identification and Authentication Failures",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c4e85c1c4f32_b00019",
+    "normalized_text": "[CWE-287 Improper Authentication](https://cwe.mitre.org/data/definitions/287.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c4e85c1c4f32_b00020",
+    "document_id": "doc_owasp_top10_a07_identification_and_authentication_failures",
+    "version_id": "ver_c4e85c1c4f32",
+    "block_idx": 20,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-288 Authentication Bypass Using an Alternate Path or Channel](https://cwe.mitre.org/data/definitions/288.html)",
+    "text_hash": "2763da59adc843a2c18b56e13f030aee42a58d88a2354de8157e91f5d905039a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 129,
+      "end_line": 129
+    },
+    "heading_path": [
+      "A07:2021 – Identification and Authentication Failures",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c4e85c1c4f32_b00020",
+    "normalized_text": "[CWE-288 Authentication Bypass Using an Alternate Path or Channel](https://cwe.mitre.org/data/definitions/288.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c4e85c1c4f32_b00021",
+    "document_id": "doc_owasp_top10_a07_identification_and_authentication_failures",
+    "version_id": "ver_c4e85c1c4f32",
+    "block_idx": 21,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-290 Authentication Bypass by Spoofing](https://cwe.mitre.org/data/definitions/290.html)",
+    "text_hash": "7b8e78b78fa696317e8f68615185dc1683b69ebbbeebb77783ef031f1b3e023a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 131,
+      "end_line": 131
+    },
+    "heading_path": [
+      "A07:2021 – Identification and Authentication Failures",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c4e85c1c4f32_b00021",
+    "normalized_text": "[CWE-290 Authentication Bypass by Spoofing](https://cwe.mitre.org/data/definitions/290.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c4e85c1c4f32_b00022",
+    "document_id": "doc_owasp_top10_a07_identification_and_authentication_failures",
+    "version_id": "ver_c4e85c1c4f32",
+    "block_idx": 22,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-294 Authentication Bypass by Capture-replay](https://cwe.mitre.org/data/definitions/294.html)",
+    "text_hash": "0bf900589f6222df03664609f14e8309c6c42ca0a00dcf2218241d1629139327",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 133,
+      "end_line": 133
+    },
+    "heading_path": [
+      "A07:2021 – Identification and Authentication Failures",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c4e85c1c4f32_b00022",
+    "normalized_text": "[CWE-294 Authentication Bypass by Capture-replay](https://cwe.mitre.org/data/definitions/294.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c4e85c1c4f32_b00023",
+    "document_id": "doc_owasp_top10_a07_identification_and_authentication_failures",
+    "version_id": "ver_c4e85c1c4f32",
+    "block_idx": 23,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-295 Improper Certificate Validation](https://cwe.mitre.org/data/definitions/295.html)",
+    "text_hash": "eab0582654f53958e0b0b4996f83fcb35fc83641b7d5ea4eb0572437a1e9b29c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 135,
+      "end_line": 135
+    },
+    "heading_path": [
+      "A07:2021 – Identification and Authentication Failures",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c4e85c1c4f32_b00023",
+    "normalized_text": "[CWE-295 Improper Certificate Validation](https://cwe.mitre.org/data/definitions/295.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c4e85c1c4f32_b00024",
+    "document_id": "doc_owasp_top10_a07_identification_and_authentication_failures",
+    "version_id": "ver_c4e85c1c4f32",
+    "block_idx": 24,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-297 Improper Validation of Certificate with Host Mismatch](https://cwe.mitre.org/data/definitions/297.html)",
+    "text_hash": "5ba1a77d971036fb7747061f64990890db77d524f1d0f50ae0771eb3c37244a4",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 137,
+      "end_line": 137
+    },
+    "heading_path": [
+      "A07:2021 – Identification and Authentication Failures",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c4e85c1c4f32_b00024",
+    "normalized_text": "[CWE-297 Improper Validation of Certificate with Host Mismatch](https://cwe.mitre.org/data/definitions/297.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c4e85c1c4f32_b00025",
+    "document_id": "doc_owasp_top10_a07_identification_and_authentication_failures",
+    "version_id": "ver_c4e85c1c4f32",
+    "block_idx": 25,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-300 Channel Accessible by Non-Endpoint](https://cwe.mitre.org/data/definitions/300.html)",
+    "text_hash": "9f95f219053cfec26d75d705042ec5caab7c99a136239979ca711d5658009a96",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 139,
+      "end_line": 139
+    },
+    "heading_path": [
+      "A07:2021 – Identification and Authentication Failures",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c4e85c1c4f32_b00025",
+    "normalized_text": "[CWE-300 Channel Accessible by Non-Endpoint](https://cwe.mitre.org/data/definitions/300.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c4e85c1c4f32_b00026",
+    "document_id": "doc_owasp_top10_a07_identification_and_authentication_failures",
+    "version_id": "ver_c4e85c1c4f32",
+    "block_idx": 26,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-302 Authentication Bypass by Assumed-Immutable Data](https://cwe.mitre.org/data/definitions/302.html)",
+    "text_hash": "999670cf05323c15c7819cd2fd8efa6de29aa4d243a3f75f4370fea92194a3f9",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 141,
+      "end_line": 141
+    },
+    "heading_path": [
+      "A07:2021 – Identification and Authentication Failures",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c4e85c1c4f32_b00026",
+    "normalized_text": "[CWE-302 Authentication Bypass by Assumed-Immutable Data](https://cwe.mitre.org/data/definitions/302.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c4e85c1c4f32_b00027",
+    "document_id": "doc_owasp_top10_a07_identification_and_authentication_failures",
+    "version_id": "ver_c4e85c1c4f32",
+    "block_idx": 27,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-304 Missing Critical Step in Authentication](https://cwe.mitre.org/data/definitions/304.html)",
+    "text_hash": "621f5aaa55d9ae9bdb40ead53627c422b192283f51c7853d04138c861638a001",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 143,
+      "end_line": 143
+    },
+    "heading_path": [
+      "A07:2021 – Identification and Authentication Failures",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c4e85c1c4f32_b00027",
+    "normalized_text": "[CWE-304 Missing Critical Step in Authentication](https://cwe.mitre.org/data/definitions/304.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c4e85c1c4f32_b00028",
+    "document_id": "doc_owasp_top10_a07_identification_and_authentication_failures",
+    "version_id": "ver_c4e85c1c4f32",
+    "block_idx": 28,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-306 Missing Authentication for Critical Function](https://cwe.mitre.org/data/definitions/306.html)",
+    "text_hash": "6a7dadcf1582ef1adb0bc6b884cb62103edc2f73e2fa757dfa9835a82cc9e926",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 145,
+      "end_line": 145
+    },
+    "heading_path": [
+      "A07:2021 – Identification and Authentication Failures",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c4e85c1c4f32_b00028",
+    "normalized_text": "[CWE-306 Missing Authentication for Critical Function](https://cwe.mitre.org/data/definitions/306.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c4e85c1c4f32_b00029",
+    "document_id": "doc_owasp_top10_a07_identification_and_authentication_failures",
+    "version_id": "ver_c4e85c1c4f32",
+    "block_idx": 29,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-307 Improper Restriction of Excessive Authentication Attempts](https://cwe.mitre.org/data/definitions/307.html)",
+    "text_hash": "9b5564f21c0b81f8cbc885e4094575be523d8c3d2bf4afdc3ef7f1e43585705e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 147,
+      "end_line": 147
+    },
+    "heading_path": [
+      "A07:2021 – Identification and Authentication Failures",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c4e85c1c4f32_b00029",
+    "normalized_text": "[CWE-307 Improper Restriction of Excessive Authentication Attempts](https://cwe.mitre.org/data/definitions/307.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c4e85c1c4f32_b00030",
+    "document_id": "doc_owasp_top10_a07_identification_and_authentication_failures",
+    "version_id": "ver_c4e85c1c4f32",
+    "block_idx": 30,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-346 Origin Validation Error](https://cwe.mitre.org/data/definitions/346.html)",
+    "text_hash": "03904489f4f265142e688e7123e15df98e56f55d5d175f3c3b7c733b36daaaa4",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 149,
+      "end_line": 149
+    },
+    "heading_path": [
+      "A07:2021 – Identification and Authentication Failures",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c4e85c1c4f32_b00030",
+    "normalized_text": "[CWE-346 Origin Validation Error](https://cwe.mitre.org/data/definitions/346.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c4e85c1c4f32_b00031",
+    "document_id": "doc_owasp_top10_a07_identification_and_authentication_failures",
+    "version_id": "ver_c4e85c1c4f32",
+    "block_idx": 31,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-384 Session Fixation](https://cwe.mitre.org/data/definitions/384.html)",
+    "text_hash": "5b3f684ccd1fdcdfab83023207753be6bcf913427871e8d1709606d56bac2847",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 151,
+      "end_line": 151
+    },
+    "heading_path": [
+      "A07:2021 – Identification and Authentication Failures",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c4e85c1c4f32_b00031",
+    "normalized_text": "[CWE-384 Session Fixation](https://cwe.mitre.org/data/definitions/384.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c4e85c1c4f32_b00032",
+    "document_id": "doc_owasp_top10_a07_identification_and_authentication_failures",
+    "version_id": "ver_c4e85c1c4f32",
+    "block_idx": 32,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-521 Weak Password Requirements](https://cwe.mitre.org/data/definitions/521.html)",
+    "text_hash": "93714d3d6ddf44ee9ebfb3434d87f63cd5d33cefc9979f193f71d77ff0fe1c2b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 153,
+      "end_line": 153
+    },
+    "heading_path": [
+      "A07:2021 – Identification and Authentication Failures",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c4e85c1c4f32_b00032",
+    "normalized_text": "[CWE-521 Weak Password Requirements](https://cwe.mitre.org/data/definitions/521.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c4e85c1c4f32_b00033",
+    "document_id": "doc_owasp_top10_a07_identification_and_authentication_failures",
+    "version_id": "ver_c4e85c1c4f32",
+    "block_idx": 33,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-613 Insufficient Session Expiration](https://cwe.mitre.org/data/definitions/613.html)",
+    "text_hash": "e33b81bb7bfe64cb9d833e54a87aade45a21cccb6ce8cb317e9c668f13cd3fbd",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 155,
+      "end_line": 155
+    },
+    "heading_path": [
+      "A07:2021 – Identification and Authentication Failures",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c4e85c1c4f32_b00033",
+    "normalized_text": "[CWE-613 Insufficient Session Expiration](https://cwe.mitre.org/data/definitions/613.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c4e85c1c4f32_b00034",
+    "document_id": "doc_owasp_top10_a07_identification_and_authentication_failures",
+    "version_id": "ver_c4e85c1c4f32",
+    "block_idx": 34,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-620 Unverified Password Change](https://cwe.mitre.org/data/definitions/620.html)",
+    "text_hash": "bd336171b224d9dfae42813e9f20ce7947273f22e1b0f431a7473f61a9081668",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 157,
+      "end_line": 157
+    },
+    "heading_path": [
+      "A07:2021 – Identification and Authentication Failures",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c4e85c1c4f32_b00034",
+    "normalized_text": "[CWE-620 Unverified Password Change](https://cwe.mitre.org/data/definitions/620.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c4e85c1c4f32_b00035",
+    "document_id": "doc_owasp_top10_a07_identification_and_authentication_failures",
+    "version_id": "ver_c4e85c1c4f32",
+    "block_idx": 35,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-640 Weak Password Recovery Mechanism for Forgotten Password](https://cwe.mitre.org/data/definitions/640.html)",
+    "text_hash": "9de727dba8d637bf9964eb92c3d81f3af50d27e0eec2ff86c6dd9627c9fe76d2",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 159,
+      "end_line": 159
+    },
+    "heading_path": [
+      "A07:2021 – Identification and Authentication Failures",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c4e85c1c4f32_b00035",
+    "normalized_text": "[CWE-640 Weak Password Recovery Mechanism for Forgotten Password](https://cwe.mitre.org/data/definitions/640.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c4e85c1c4f32_b00036",
+    "document_id": "doc_owasp_top10_a07_identification_and_authentication_failures",
+    "version_id": "ver_c4e85c1c4f32",
+    "block_idx": 36,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-798 Use of Hard-coded Credentials](https://cwe.mitre.org/data/definitions/798.html)",
+    "text_hash": "a542d14437804cbfb5f462fd87a0c61ba13ca6a74fff9efb4015626d5bf043d7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 161,
+      "end_line": 161
+    },
+    "heading_path": [
+      "A07:2021 – Identification and Authentication Failures",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c4e85c1c4f32_b00036",
+    "normalized_text": "[CWE-798 Use of Hard-coded Credentials](https://cwe.mitre.org/data/definitions/798.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c4e85c1c4f32_b00037",
+    "document_id": "doc_owasp_top10_a07_identification_and_authentication_failures",
+    "version_id": "ver_c4e85c1c4f32",
+    "block_idx": 37,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-940 Improper Verification of Source of a Communication Channel](https://cwe.mitre.org/data/definitions/940.html)",
+    "text_hash": "5bde2daf08641adf09b8d44d01b236683b1624403665f7f3d8ed33d1d3bcda50",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 163,
+      "end_line": 163
+    },
+    "heading_path": [
+      "A07:2021 – Identification and Authentication Failures",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c4e85c1c4f32_b00037",
+    "normalized_text": "[CWE-940 Improper Verification of Source of a Communication Channel](https://cwe.mitre.org/data/definitions/940.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_c4e85c1c4f32_b00038",
+    "document_id": "doc_owasp_top10_a07_identification_and_authentication_failures",
+    "version_id": "ver_c4e85c1c4f32",
+    "block_idx": 38,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[CWE-1216 Lockout Mechanism Errors](https://cwe.mitre.org/data/definitions/1216.html)",
+    "text_hash": "44e2968f68fb0460e74ea44c7d9ed92e9b8aa5ce13ef29ee9b202826dd94830b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 165,
+      "end_line": 165
+    },
+    "heading_path": [
+      "A07:2021 – Identification and Authentication Failures",
+      "List of Mapped CWEs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_c4e85c1c4f32_b00038",
+    "normalized_text": "[CWE-1216 Lockout Mechanism Errors](https://cwe.mitre.org/data/definitions/1216.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  }
+]

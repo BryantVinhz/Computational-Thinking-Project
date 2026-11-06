@@ -1,0 +1,2185 @@
+[
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00000",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 0,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "# Credential Stuffing Prevention Cheat Sheet",
+    "text_hash": "641215243b36f8b1b751a29a003a89d491e546bf0caa543d1f8551daf35f7418",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 1,
+      "end_line": 1
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet"
+    ],
+    "heading_level": 1,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00000",
+    "normalized_text": "# Credential Stuffing Prevention Cheat Sheet",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00001",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 1,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Introduction",
+    "text_hash": "d753efbab681fa4da82470d9a83b1c202de58f92fd498e77a269c1163bc4714b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 3,
+      "end_line": 3
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00001",
+    "normalized_text": "## Introduction",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00002",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 2,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "This cheatsheet covers defenses against two common types of authentication-related attacks: credential stuffing and password spraying. Although these are separate, distinct attacks, in many cases the defenses that would be implemented to protect against them are the same, and they would also be effective at protecting against brute-force attacks.  A summary of these different attacks is listed below:",
+    "text_hash": "c9829ca96e4b06adbaf2f5ab0d7b9a39b0e3f9d906679b2f6675f8dac0ddf43c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 5,
+      "end_line": 5
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00002",
+    "normalized_text": "This cheatsheet covers defenses against two common types of authentication-related attacks: credential stuffing and password spraying. Although these are separate, distinct attacks, in many cases the defenses that would be implemented to protect against them are the same, and they would also be effective at protecting against brute-force attacks. A summary of these different attacks is listed below:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00003",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 3,
+    "file_format": "MARKDOWN",
+    "block_type": "table",
+    "text_content": "| Attack Type | Description |\n|-------------|-------------|\n| Brute Force | Testing multiple passwords from dictionary or other source against a single account. |\n| Credential Stuffing | Testing username/password pairs obtained from the breach of another site. |\n| Password Spraying | Testing a single weak password against a large number of different accounts.|",
+    "text_hash": "bb74f0d6dd4f3811d34f0d2ab8558cc50203e69eeb80e78200ae246859edd271",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 7,
+      "end_line": 11
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": [
+      "Attack Type",
+      "Description"
+    ],
+    "table_rows": [
+      [
+        "Brute Force",
+        "Testing multiple passwords from dictionary or other source against a single account."
+      ],
+      [
+        "Credential Stuffing",
+        "Testing username/password pairs obtained from the breach of another site."
+      ],
+      [
+        "Password Spraying",
+        "Testing a single weak password against a large number of different accounts."
+      ]
+    ],
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00003",
+    "normalized_text": "| Attack Type | Description |\n|-------------|-------------|\n| Brute Force | Testing multiple passwords from dictionary or other source against a single account. |\n| Credential Stuffing | Testing username/password pairs obtained from the breach of another site. |\n| Password Spraying | Testing a single weak password against a large number of different accounts.|",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    },
+    "normalized_table_header_cols": [
+      "Attack Type",
+      "Description"
+    ],
+    "normalized_table_rows": [
+      [
+        "Brute Force",
+        "Testing multiple passwords from dictionary or other source against a single account."
+      ],
+      [
+        "Credential Stuffing",
+        "Testing username/password pairs obtained from the breach of another site."
+      ],
+      [
+        "Password Spraying",
+        "Testing a single weak password against a large number of different accounts."
+      ]
+    ]
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00004",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 4,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Multi-Factor Authentication",
+    "text_hash": "4e4d30b344ea579a07f9babdfefa05d6705a94e3d59a00794b8204d0d35bef67",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 13,
+      "end_line": 13
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Multi-Factor Authentication"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00004",
+    "normalized_text": "## Multi-Factor Authentication",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00005",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 5,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[Multi-factor authentication (MFA)](Multifactor_Authentication_Cheat_Sheet.md) is by far the best defense against the majority of password-related attacks, including credential stuffing and password spraying, with analysis by Microsoft suggesting that it would have stopped [99.9% of account compromises](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Your-Pa-word-doesn-t-matter/ba-p/731984). As such, it should be implemented wherever possible. Historically, depending on the audience of the application, it may not have been practical or feasible to enforce the use of MFA, however with modern browsers and mobile devices now supporting FIDO2 Passkeys and other forms of MFA, it is attainable for most use cases.",
+    "text_hash": "28a653b276eab7ecdcc70393734bea35cd0f8cc45b817c98668b6446f2a56505",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 15,
+      "end_line": 15
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Multi-Factor Authentication"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00005",
+    "normalized_text": "[Multi-factor authentication (MFA)](Multifactor_Authentication_Cheat_Sheet.md) is by far the best defense against the majority of password-related attacks, including credential stuffing and password spraying, with analysis by Microsoft suggesting that it would have stopped [99.9% of account compromises](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Your-Pa-word-doesn-t-matter/ba-p/731984). As such, it should be implemented wherever possible. Historically, depending on the audience of the application, it may not have been practical or feasible to enforce the use of MFA, however with modern browsers and mobile devices now supporting FIDO2 Passkeys and other forms of MFA, it is attainable for most use cases.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00006",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 6,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "In order to balance security and usability, multi-factor authentication can be combined with other techniques to require the 2nd factor only in specific circumstances where there is reason to suspect that the login attempt may not be legitimate, such as a login from:",
+    "text_hash": "f3d9d6fb24d85afaf344fd0dac7be8a58f408287a619a463a324db7166b026fe",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 17,
+      "end_line": 17
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Multi-Factor Authentication"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00006",
+    "normalized_text": "In order to balance security and usability, multi-factor authentication can be combined with other techniques to require the 2nd factor only in specific circumstances where there is reason to suspect that the login attempt may not be legitimate, such as a login from:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00007",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 7,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- A new browser/device or IP address.\n- An unusual country or location.\n- Specific countries that are considered untrusted or typically do not contain users of a service.\n- An IP address that appears on known denylists or is associated with anonymization services, such as proxy or VPN services.\n- An IP address that has tried to login to multiple accounts.\n- A login attempt that appears to be scripted or from a bot rather than a human (i.e. large login volume sourced from a single IP or subnet).\n",
+    "text_hash": "1151c87959c13a158ab6e784cfb60414b21528e51eb73d871108704f1b640531",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 19,
+      "end_line": 25
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Multi-Factor Authentication"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00007",
+    "normalized_text": "- A new browser/device or IP address.\n- An unusual country or location.\n- Specific countries that are considered untrusted or typically do not contain users of a service.\n- An IP address that appears on known denylists or is associated with anonymization services, such as proxy or VPN services.\n- An IP address that has tried to login to multiple accounts.\n- A login attempt that appears to be scripted or from a bot rather than a human (i.e. large login volume sourced from a single IP or subnet).",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00008",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 8,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Or an organization may choose to require MFA in the form of a \"step-up\" authentication for the above scenarios during a session combined with a request for a high risk activity such as:",
+    "text_hash": "c520c4292e79eccd14790f93a191436697a6330939be14552c9d95cc93e9a3ed",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 26,
+      "end_line": 26
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Multi-Factor Authentication"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00008",
+    "normalized_text": "Or an organization may choose to require MFA in the form of a \"step-up\" authentication for the above scenarios during a session combined with a request for a high risk activity such as:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00009",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 9,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- Large currency transactions\n- Privileged or Administrative configuration changes\n",
+    "text_hash": "4348dadbf53115fdde04d8e09ca01645a2ecdd0d7f82a78117ffc30e80293d5e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 28,
+      "end_line": 30
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Multi-Factor Authentication"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00009",
+    "normalized_text": "- Large currency transactions\n- Privileged or Administrative configuration changes",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00010",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 10,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Additionally, for enterprise applications, known trusted IP ranges could be added to an allowlist so that MFA is not required when users connect from these ranges.",
+    "text_hash": "f99f8b25dc51cb6726a772e9c3aa0ef4eac55cc1f63c16b101d07962de72d3a6",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 31,
+      "end_line": 31
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Multi-Factor Authentication"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00010",
+    "normalized_text": "Additionally, for enterprise applications, known trusted IP ranges could be added to an allowlist so that MFA is not required when users connect from these ranges.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00011",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 11,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Alternative Defenses",
+    "text_hash": "2f5e590af276436eb0fdebfb1dac08b05ae79b3d9fa3e325014c60081eff1861",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 33,
+      "end_line": 33
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Alternative Defenses"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00011",
+    "normalized_text": "## Alternative Defenses",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00012",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 12,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Where it is not possible to implement MFA, there are many alternative defenses that can be used to protect against credential stuffing and password spraying. In isolation none of these are as effective as MFA, however multiple, layered defenses can provide a reasonable degree of protection. In many cases, these mechanisms will also protect against brute-force or password spraying attacks.",
+    "text_hash": "b4fe2f4838f4d48b754328165a4765eb48bf334a0f571ce674589b62cfb58574",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 35,
+      "end_line": 35
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Alternative Defenses"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00012",
+    "normalized_text": "Where it is not possible to implement MFA, there are many alternative defenses that can be used to protect against credential stuffing and password spraying. In isolation none of these are as effective as MFA, however multiple, layered defenses can provide a reasonable degree of protection. In many cases, these mechanisms will also protect against brute-force or password spraying attacks.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00013",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 13,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Where an application has multiple user roles, it may be appropriate to implement different defenses for different roles. For example, it may not be feasible to enforce MFA for all users, but it should be possible to require that all administrators use it.",
+    "text_hash": "090c910cdd20d2449630f7a2a416336310022c1b812b72d1bdb6cf411b2bf87e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 37,
+      "end_line": 37
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Alternative Defenses"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00013",
+    "normalized_text": "Where an application has multiple user roles, it may be appropriate to implement different defenses for different roles. For example, it may not be feasible to enforce MFA for all users, but it should be possible to require that all administrators use it.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00014",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 14,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Defense in Depth & Metrics",
+    "text_hash": "27710870005da4ba257f78393fd4fe90c6ae628c1236d892f481e1fcc1af2116",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 39,
+      "end_line": 39
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Defense in Depth & Metrics"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00014",
+    "normalized_text": "## Defense in Depth & Metrics",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00015",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 15,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "While not a specific technique, it is important to implement defenses that consider the impact of individual defenses being defeated or otherwise failing.  As an example, client-side defenses, such as device fingerprinting or JavaScript challenges, may be spoofed or bypassed and other layers of defense should be implemented to account for this.",
+    "text_hash": "a771a24cb2b4b90f29c2af34044552a48028436624bbc4b936f6953fb47dcb2d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 41,
+      "end_line": 41
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Defense in Depth & Metrics"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00015",
+    "normalized_text": "While not a specific technique, it is important to implement defenses that consider the impact of individual defenses being defeated or otherwise failing. As an example, client-side defenses, such as device fingerprinting or JavaScript challenges, may be spoofed or bypassed and other layers of defense should be implemented to account for this.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00016",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 16,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Additionally, each defense should generate volume metrics for use as a detective mechanism. Ideally the metrics will include both detected and mitigated attack volume and allow for filtering on fields such as IP address. Monitoring and reporting on these metrics may identify defense failures or the presence of unidentified attacks, as well as the impact of new or improved defenses.",
+    "text_hash": "f21d326bb2af21017fd82e1f2f20859bfc755d7f9300251140f4f341d32a93cb",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 43,
+      "end_line": 43
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Defense in Depth & Metrics"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00016",
+    "normalized_text": "Additionally, each defense should generate volume metrics for use as a detective mechanism. Ideally the metrics will include both detected and mitigated attack volume and allow for filtering on fields such as IP address. Monitoring and reporting on these metrics may identify defense failures or the presence of unidentified attacks, as well as the impact of new or improved defenses.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00017",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 17,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Finally, when administration of different defenses is performed by multiple teams, care should be taken to ensure there is communication and coordination when separate teams are performing maintenance, deployment or otherwise modifying individual defenses.",
+    "text_hash": "fd160e6ea9d4d6ef400c4b77e80a00e46048093f4a62f46798744a7679027d4a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 45,
+      "end_line": 45
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Defense in Depth & Metrics"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00017",
+    "normalized_text": "Finally, when administration of different defenses is performed by multiple teams, care should be taken to ensure there is communication and coordination when separate teams are performing maintenance, deployment or otherwise modifying individual defenses.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00018",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 18,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Secondary Passwords, PINs and Security Questions",
+    "text_hash": "58868db14ac1afe86cd231f99ea3c99c67f75c5277f3f55980bd1cc3fb39204d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 47,
+      "end_line": 47
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Defense in Depth & Metrics",
+      "Secondary Passwords, PINs and Security Questions"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00018",
+    "normalized_text": "### Secondary Passwords, PINs and Security Questions",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00019",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 19,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Do not use security questions as an additional authentication challenge. [OWASP ASVS 5.0 requirement 6.4.2](https://github.com/OWASP/ASVS/blob/v5.0.0_release/5.0/en/0x15-V6-Authentication.md#v64-authentication-factor-lifecycle-and-recovery) excludes knowledge-based security questions. The [Security Questions Cheat Sheet](Choosing_and_Using_Security_Questions_Cheat_Sheet.md) discusses limitations in legacy systems.",
+    "text_hash": "c2ca93b978bc6e9227e41a304f25b218af7326b3815bbe6fe7a2051d42ee5559",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 49,
+      "end_line": 49
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Defense in Depth & Metrics",
+      "Secondary Passwords, PINs and Security Questions"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00019",
+    "normalized_text": "Do not use security questions as an additional authentication challenge. [OWASP ASVS 5.0 requirement 6.4.2](https://github.com/OWASP/ASVS/blob/v5.0.0_release/5.0/en/0x15-V6-Authentication.md#v64-authentication-factor-lifecycle-and-recovery) excludes knowledge-based security questions. The [Security Questions Cheat Sheet](Choosing_and_Using_Security_Questions_Cheat_Sheet.md) discusses limitations in legacy systems.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00020",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 20,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "If a secondary password, PIN, or memorable word is used, request and verify the entire secret rather than selected characters, as required by [NIST SP 800-63B-4](https://pages.nist.gov/800-63-4/sp800-63b.html#passwordver). Adding another knowledge factor does not constitute [MFA](Multifactor_Authentication_Cheat_Sheet.md); prefer an independent factor instead.",
+    "text_hash": "42daa20786cf4117d7bf54c02afe7e6be8406c91e77ac1693cdad165dfa73ef0",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 51,
+      "end_line": 51
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Defense in Depth & Metrics",
+      "Secondary Passwords, PINs and Security Questions"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00020",
+    "normalized_text": "If a secondary password, PIN, or memorable word is used, request and verify the entire secret rather than selected characters, as required by [NIST SP 800-63B-4](https://pages.nist.gov/800-63-4/sp800-63b.html#passwordver). Adding another knowledge factor does not constitute [MFA](Multifactor_Authentication_Cheat_Sheet.md); prefer an independent factor instead.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00021",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 21,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### CAPTCHA",
+    "text_hash": "4b4e6141e82eb5cc0e0915cccacbd4f37f70627b933491aaaac777a7db53722c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 53,
+      "end_line": 53
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Defense in Depth & Metrics",
+      "CAPTCHA"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00021",
+    "normalized_text": "### CAPTCHA",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00022",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 22,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Requiring a user to solve a \"Completely Automated Public Turing test to tell Computers and Humans Apart\" (CAPTCHA) or similar puzzle for each login attempt can help to identify automated/bot attacks and help prevent automated login attempts, and may slow down credential stuffing or password spraying attacks.  However, CAPTCHAs are not perfect, and in many cases tools or services exist that can be used to break them with a reasonably high success rate.  Monitoring CAPTCHA solve rates may help identify impact to good users, as well as automated CAPTCHA breaking technology, possibly indicated by abnormally high solve rates.",
+    "text_hash": "886f8399d0ceda9589376fdb061f983370f0260a923ffa4b0b5e3723e55b649f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 55,
+      "end_line": 55
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Defense in Depth & Metrics",
+      "CAPTCHA"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00022",
+    "normalized_text": "Requiring a user to solve a \"Completely Automated Public Turing test to tell Computers and Humans Apart\" (CAPTCHA) or similar puzzle for each login attempt can help to identify automated/bot attacks and help prevent automated login attempts, and may slow down credential stuffing or password spraying attacks. However, CAPTCHAs are not perfect, and in many cases tools or services exist that can be used to break them with a reasonably high success rate. Monitoring CAPTCHA solve rates may help identify impact to good users, as well as automated CAPTCHA breaking technology, possibly indicated by abnormally high solve rates.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 2
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00023",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 23,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "To improve usability, it may be desirable to only require the user solve a CAPTCHA when the login request is considered suspicious or high risk, using the same criteria discussed in the MFA section.",
+    "text_hash": "d4c9ddbdedb8834c362e802fa0c73469d29506deddab675dc4a995d56eef58f7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 57,
+      "end_line": 57
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Defense in Depth & Metrics",
+      "CAPTCHA"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00023",
+    "normalized_text": "To improve usability, it may be desirable to only require the user solve a CAPTCHA when the login request is considered suspicious or high risk, using the same criteria discussed in the MFA section.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00024",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 24,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### IP Mitigation and Intelligence",
+    "text_hash": "8af8c5e0fd9ae123761ce3c53c452c5798776513fdf6eb65866315aa83c7e95f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 59,
+      "end_line": 59
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Defense in Depth & Metrics",
+      "IP Mitigation and Intelligence"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00024",
+    "normalized_text": "### IP Mitigation and Intelligence",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00025",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 25,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Blocking IP addresses may be sufficient to stop less sophisticated attacks, but should not be used as the sole or primary defense due to the ease in circumvention.  It is more effective to have a graduated response to abuse that leverages multiple defensive measures depending on different factors of the attack.",
+    "text_hash": "d9ab729c3fa0611e90fbd98abdfe821818bb80f335e61a3cdfabf4482a347800",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 61,
+      "end_line": 61
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Defense in Depth & Metrics",
+      "IP Mitigation and Intelligence"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00025",
+    "normalized_text": "Blocking IP addresses may be sufficient to stop less sophisticated attacks, but should not be used as the sole or primary defense due to the ease in circumvention. It is more effective to have a graduated response to abuse that leverages multiple defensive measures depending on different factors of the attack.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00026",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 26,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Any process or decision to mitigate (including blocking and CAPTCHA) credential stuffing traffic from an IP address should consider a multitude of abuse scenarios, and not rely on a single predictable volume limit.  Short (i.e. burst) and long time periods should be considered, as well as high request volume and instances where one IP address, likely in concert with _many_ other IP addresses, generates low but consistent volumes of traffic.  Additionally, mitigation decisions should consider factors such as IP address classification (ex: residential vs hosting) and geolocation.  These factors may be leveraged to raise or lower mitigation thresholds in order to reduce potential impact on legitimate users or more aggressively mitigate abuse originating from abnormal sources.  Mitigations, especially blocking an IP address, should be temporary and processes should be in place to remove an IP address from a mitigated state as abuse declines or stops.",
+    "text_hash": "6a28b3c9fc2b020f57b6130e229711bf83181da725a70ba56bd4cc9bf5f33e9c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 63,
+      "end_line": 63
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Defense in Depth & Metrics",
+      "IP Mitigation and Intelligence"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00026",
+    "normalized_text": "Any process or decision to mitigate (including blocking and CAPTCHA) credential stuffing traffic from an IP address should consider a multitude of abuse scenarios, and not rely on a single predictable volume limit. Short (i.e. burst) and long time periods should be considered, as well as high request volume and instances where one IP address, likely in concert with _many_ other IP addresses, generates low but consistent volumes of traffic. Additionally, mitigation decisions should consider factors such as IP address classification (ex: residential vs hosting) and geolocation. These factors may be leveraged to raise or lower mitigation thresholds in order to reduce potential impact on legitimate users or more aggressively mitigate abuse originating from abnormal sources. Mitigations, especially blocking an IP address, should be temporary and processes should be in place to remove an IP address from a mitigated state as abuse declines or stops.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 4
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00027",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 27,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Many credential stuffing toolkits, such as [Sentry MBA](https://federalnewsnetwork.com/wp-content/uploads/2020/06/Shape-Threat-Research-Automating-Cybercrime-with-SentryMBA.pdf), offer built-in use of proxy networks to distribute requests across a large volume of unique IP addresses.  This may defeat both IP block-lists and rate limiting, as per IP request volume may remain relatively low, even on high volume attacks.  Correlating authentication traffic with proxy and similar IP address intelligence, as well as hosting provider IP address ranges can help identify highly distributed credential stuffing attacks, as well as serve as a mitigation trigger.  For example, every request originating from a hosting provider could be required to solve CAPTCHA.",
+    "text_hash": "0e8783145df69caf1ed1e9ddaf48a77e5552bdeaeb0b2dc64e5c636a23427a88",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 65,
+      "end_line": 65
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Defense in Depth & Metrics",
+      "IP Mitigation and Intelligence"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00027",
+    "normalized_text": "Many credential stuffing toolkits, such as [Sentry MBA](https://federalnewsnetwork.com/wp-content/uploads/2020/06/Shape-Threat-Research-Automating-Cybercrime-with-SentryMBA.pdf), offer built-in use of proxy networks to distribute requests across a large volume of unique IP addresses. This may defeat both IP block-lists and rate limiting, as per IP request volume may remain relatively low, even on high volume attacks. Correlating authentication traffic with proxy and similar IP address intelligence, as well as hosting provider IP address ranges can help identify highly distributed credential stuffing attacks, as well as serve as a mitigation trigger. For example, every request originating from a hosting provider could be required to solve CAPTCHA.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 3
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00028",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 28,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "There are both public and commercial sources of IP address intelligence and classification that may be leveraged as data sources for this purpose.  Additionally, some hosting providers publish their own IP address space, such as [AWS](https://docs.aws.amazon.com/vpc/latest/userguide/aws-ip-ranges.html).",
+    "text_hash": "76fcb3cdbed7214f13d01959080edae9decd9c297ebea51e7a639d712ae9b6ce",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 67,
+      "end_line": 67
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Defense in Depth & Metrics",
+      "IP Mitigation and Intelligence"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00028",
+    "normalized_text": "There are both public and commercial sources of IP address intelligence and classification that may be leveraged as data sources for this purpose. Additionally, some hosting providers publish their own IP address space, such as [AWS](https://docs.aws.amazon.com/vpc/latest/userguide/aws-ip-ranges.html).",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00029",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 29,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Separate from blocking network connections, consider storing an account's IP address authentication history.  In case a recent IP address is added to a block or mitigation list, it may be appropriate to lock the account and notify the user.",
+    "text_hash": "718e5bf82584d3f875a4e09a1974ecc8cc40e2b0162c414d16103d5bedae474e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 69,
+      "end_line": 69
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Defense in Depth & Metrics",
+      "IP Mitigation and Intelligence"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00029",
+    "normalized_text": "Separate from blocking network connections, consider storing an account's IP address authentication history. In case a recent IP address is added to a block or mitigation list, it may be appropriate to lock the account and notify the user.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00030",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 30,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Device Fingerprinting",
+    "text_hash": "206bde01f978f7059753ac9610bfd203d685b2bafb2eb7d06c0eaecaa87f3da5",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 71,
+      "end_line": 71
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Defense in Depth & Metrics",
+      "Device Fingerprinting"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00030",
+    "normalized_text": "### Device Fingerprinting",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00031",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 31,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Aside from the IP address, there are a number of different factors that can be used to attempt to fingerprint a device. Some of these can be obtained passively by the server from the HTTP headers (particularly the \"User-Agent\" header), including:",
+    "text_hash": "b2b2b1dbd9d68087a9f0710a7a489d10e6f35502210d835a04a53a6df3083434",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 73,
+      "end_line": 73
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Defense in Depth & Metrics",
+      "Device Fingerprinting"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00031",
+    "normalized_text": "Aside from the IP address, there are a number of different factors that can be used to attempt to fingerprint a device. Some of these can be obtained passively by the server from the HTTP headers (particularly the \"User-Agent\" header), including:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00032",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 32,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- Operating system & version\n- Browser & version\n- Language\n",
+    "text_hash": "02d033642d5e6b5569f5761b4a25140395e482b8088e078fefedc9d191baa087",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 75,
+      "end_line": 78
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Defense in Depth & Metrics",
+      "Device Fingerprinting"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00032",
+    "normalized_text": "- Operating system & version\n- Browser & version\n- Language",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00033",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 33,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Using JavaScript it is possible to access far more information, such as:",
+    "text_hash": "56785aff4d8ca35d1b83afb04d308a1b602a925f249377114dddb8a62ab4f600",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 79,
+      "end_line": 79
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Defense in Depth & Metrics",
+      "Device Fingerprinting"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00033",
+    "normalized_text": "Using JavaScript it is possible to access far more information, such as:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00034",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 34,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- Screen resolution\n- Installed fonts\n- Installed browser plugins\n",
+    "text_hash": "20908920559cac262d4ea8567baf6af549f90fdbcf6b4e3bd73fe9776381b4ab",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 81,
+      "end_line": 84
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Defense in Depth & Metrics",
+      "Device Fingerprinting"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00034",
+    "normalized_text": "- Screen resolution\n- Installed fonts\n- Installed browser plugins",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00035",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 35,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Using these various attributes, it is possible to create a fingerprint of the device. This fingerprint can then be matched against any browser attempting to login to the account, and if it doesn't match then the user can be prompted for additional authentication. Many users will have multiple devices or browsers that they use, so it is not practical to simply block attempts that do not match the existing fingerprints, however it is common to define a process for users or customers to view their device history and manage their remembered devices.  Also these attributes can be used to detect anomalous activity such as a device appearing to be running an older version of OS or Browser.",
+    "text_hash": "8c8df8481199dfa8c6d786a194dcb98804e01e46286c817a5c8350c07ec57c0c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 85,
+      "end_line": 85
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Defense in Depth & Metrics",
+      "Device Fingerprinting"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00035",
+    "normalized_text": "Using these various attributes, it is possible to create a fingerprint of the device. This fingerprint can then be matched against any browser attempting to login to the account, and if it doesn't match then the user can be prompted for additional authentication. Many users will have multiple devices or browsers that they use, so it is not practical to simply block attempts that do not match the existing fingerprints, however it is common to define a process for users or customers to view their device history and manage their remembered devices. Also these attributes can be used to detect anomalous activity such as a device appearing to be running an older version of OS or Browser.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00036",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 36,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The [fingerprintjs2](https://github.com/Valve/fingerprintjs2) JavaScript library can be used to carry out client-side fingerprinting.",
+    "text_hash": "1966f82c00d9077408c55dee1d2ff892e59b7e2f5b7f71817bf66a81cf7e00ff",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 87,
+      "end_line": 87
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Defense in Depth & Metrics",
+      "Device Fingerprinting"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00036",
+    "normalized_text": "The [fingerprintjs2](https://github.com/Valve/fingerprintjs2) JavaScript library can be used to carry out client-side fingerprinting.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00037",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 37,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "It should be noted that as all this information is provided by the client, it can potentially be spoofed by an attacker. In some cases spoofing these attributes is trivial (such as the \"User-Agent\") header, but in other cases it may be more difficult to modify these attributes.",
+    "text_hash": "2af5f8261d107610e5f99a9ea85d8595f26c57159ad9909d595e37bdb8dab2eb",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 89,
+      "end_line": 89
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Defense in Depth & Metrics",
+      "Device Fingerprinting"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00037",
+    "normalized_text": "It should be noted that as all this information is provided by the client, it can potentially be spoofed by an attacker. In some cases spoofing these attributes is trivial (such as the \"User-Agent\") header, but in other cases it may be more difficult to modify these attributes.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00038",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 38,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Connection Fingerprinting",
+    "text_hash": "c10ef0b16339266b05e132cf7c920710b6c02a68fe6570df9cba3f16f7416e45",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 91,
+      "end_line": 91
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Defense in Depth & Metrics",
+      "Connection Fingerprinting"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00038",
+    "normalized_text": "### Connection Fingerprinting",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00039",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 39,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Similar to device fingerprinting, there are numerous fingerprinting techniques available for network connections.  Some examples include [JA3](https://github.com/salesforce/ja3), HTTP/2 fingerprinting and HTTP header order.  As these techniques typically focus on how a connection is made, connection fingerprinting may provide more accurate results than other defenses that rely on an indicator, such as an IP address, or request data, such as user agent string.",
+    "text_hash": "fb22e17e8c18ef67e30eaf69d87eb4d557176d380ab925cd7611da00a81d677e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 93,
+      "end_line": 93
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Defense in Depth & Metrics",
+      "Connection Fingerprinting"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00039",
+    "normalized_text": "Similar to device fingerprinting, there are numerous fingerprinting techniques available for network connections. Some examples include [JA3](https://github.com/salesforce/ja3), HTTP/2 fingerprinting and HTTP header order. As these techniques typically focus on how a connection is made, connection fingerprinting may provide more accurate results than other defenses that rely on an indicator, such as an IP address, or request data, such as user agent string.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 2
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00040",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 40,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Connection fingerprinting may also be used in conjunction with other defenses to ascertain the truthfulness of an authentication request.  For example, if the user agent header and device fingerprint indicates a mobile device, but the connection fingerprint indicates a Python script, the request is likely suspect.",
+    "text_hash": "99bf59990934f467a4274c3db6d1922ed6ffde92d05196d320f90f45c8fcfc1a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 95,
+      "end_line": 95
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Defense in Depth & Metrics",
+      "Connection Fingerprinting"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00040",
+    "normalized_text": "Connection fingerprinting may also be used in conjunction with other defenses to ascertain the truthfulness of an authentication request. For example, if the user agent header and device fingerprint indicates a mobile device, but the connection fingerprint indicates a Python script, the request is likely suspect.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00041",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 41,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Require Unpredictable Usernames",
+    "text_hash": "2ac117439cf82e6e9e85e936dbde98dbb3a7c8ed0ea529897f6848309fd5f009",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 97,
+      "end_line": 97
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Defense in Depth & Metrics",
+      "Require Unpredictable Usernames"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00041",
+    "normalized_text": "### Require Unpredictable Usernames",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00042",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 42,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Credential stuffing attacks rely on not just the re-use of passwords between multiple sites, but also the re-use of usernames. A significant number of websites use the email address as the username, and as most users will have a single email address they use for all their accounts, this makes the combination of an email address and password very effective for credential stuffing attacks.",
+    "text_hash": "ebd7fbf73462dabbf67f8905cbb03cf1cef6a0f3ba8449b963a1cb26450d5a85",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 99,
+      "end_line": 99
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Defense in Depth & Metrics",
+      "Require Unpredictable Usernames"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00042",
+    "normalized_text": "Credential stuffing attacks rely on not just the re-use of passwords between multiple sites, but also the re-use of usernames. A significant number of websites use the email address as the username, and as most users will have a single email address they use for all their accounts, this makes the combination of an email address and password very effective for credential stuffing attacks.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00043",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 43,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Requiring users to create their own username when registering on the website makes it harder for an attacker to obtain valid username and password pairs for credential stuffing, as many of the available credential lists only include email addresses. Providing the user with a generated username can provide a higher degree of protection (as users are likely to choose the same username on most websites), but is user unfriendly. Additionally, care needs to be taken to ensure that the generated username is not predictable (such as being based on the user's full name, or sequential numeric IDs), as this could make enumerating valid usernames for a password spraying attack easier.",
+    "text_hash": "1a79ee43dd3a874d80661946312c58942f5ad07265f5104c1015aa7e25036f27",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 101,
+      "end_line": 101
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Defense in Depth & Metrics",
+      "Require Unpredictable Usernames"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00043",
+    "normalized_text": "Requiring users to create their own username when registering on the website makes it harder for an attacker to obtain valid username and password pairs for credential stuffing, as many of the available credential lists only include email addresses. Providing the user with a generated username can provide a higher degree of protection (as users are likely to choose the same username on most websites), but is user unfriendly. Additionally, care needs to be taken to ensure that the generated username is not predictable (such as being based on the user's full name, or sequential numeric IDs), as this could make enumerating valid usernames for a password spraying attack easier.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00044",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 44,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Multi-Step Login Processes",
+    "text_hash": "3f36848756df6ba1e9f3affb51f62b1a55a0bf7ebcf034e410f25028e0b7c32f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 103,
+      "end_line": 103
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Defense in Depth & Metrics",
+      "Multi-Step Login Processes"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00044",
+    "normalized_text": "### Multi-Step Login Processes",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00045",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 45,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The majority of off-the-shelf tools are designed for a single step login process, where the credentials are POSTed to the server, and the response indicates whether or not the login attempt was successful. By adding additional steps to this process, such as requiring the username and password to be entered sequentially, or requiring that the user first obtains a random [CSRF Token](Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.md) before they can login, this makes the attack slightly more difficult to perform, and doubles the number of requests that the attacker must make.",
+    "text_hash": "16a44c8fd30fe69041e01094d4f42c73ca36a01463a576bf32265bcdcaee0221",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 105,
+      "end_line": 105
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Defense in Depth & Metrics",
+      "Multi-Step Login Processes"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00045",
+    "normalized_text": "The majority of off-the-shelf tools are designed for a single step login process, where the credentials are POSTed to the server, and the response indicates whether or not the login attempt was successful. By adding additional steps to this process, such as requiring the username and password to be entered sequentially, or requiring that the user first obtains a random [CSRF Token](Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.md) before they can login, this makes the attack slightly more difficult to perform, and doubles the number of requests that the attacker must make.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00046",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 46,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Multi-step login processes, however, should be mindful that they do not facilitate [user enumeration](Authentication_Cheat_Sheet.md).  Enumerating users prior to a credential stuffing attack may result in a harder to identify, lower request volume attack.",
+    "text_hash": "6551e9997b6cb0226b21c2254d103124c656a2fd90c27df75e13b972419ce4d3",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 107,
+      "end_line": 107
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Defense in Depth & Metrics",
+      "Multi-Step Login Processes"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00046",
+    "normalized_text": "Multi-step login processes, however, should be mindful that they do not facilitate [user enumeration](Authentication_Cheat_Sheet.md). Enumerating users prior to a credential stuffing attack may result in a harder to identify, lower request volume attack.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00047",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 47,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Require JavaScript and Block Headless Browsers",
+    "text_hash": "63de6626a78510e1c2cf5f6cf6b482448fbaaf190decf6eea06c737689f2fc94",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 109,
+      "end_line": 109
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Defense in Depth & Metrics",
+      "Require JavaScript and Block Headless Browsers"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00047",
+    "normalized_text": "### Require JavaScript and Block Headless Browsers",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00048",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 48,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Most tools used for these types of attacks will make direct POST requests to the server and read the responses, but will not download or execute JavaScript that was contained in them. By requiring the attacker to evaluate JavaScript in the response (for example to generate a valid token that must be submitted with the request), this forces the attacker to either use a real browser with an automation framework like Selenium or Headless Chrome, or to implement JavaScript parsing with another tool such as PhantomJS. Additionally, there are a number of techniques that can be used to identify [Headless Chrome](https://antoinevastel.com/bot%20detection/2018/01/17/detect-chrome-headless-v2.html) or [PhantomJS](https://blog.shapesecurity.com/2015/01/22/detecting-phantomjs-based-visitors/).",
+    "text_hash": "7f01263b2da787df7458fad43b2f541203b58c069233135fb951a846b0c9bfbd",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 111,
+      "end_line": 111
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Defense in Depth & Metrics",
+      "Require JavaScript and Block Headless Browsers"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00048",
+    "normalized_text": "Most tools used for these types of attacks will make direct POST requests to the server and read the responses, but will not download or execute JavaScript that was contained in them. By requiring the attacker to evaluate JavaScript in the response (for example to generate a valid token that must be submitted with the request), this forces the attacker to either use a real browser with an automation framework like Selenium or Headless Chrome, or to implement JavaScript parsing with another tool such as PhantomJS. Additionally, there are a number of techniques that can be used to identify [Headless Chrome](https://antoinevastel.com/bot%20detection/2018/01/17/detect-chrome-headless-v2.html) or [PhantomJS](https://blog.shapesecurity.com/2015/01/22/detecting-phantomjs-based-visitors/).",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00049",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 49,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Please note that blocking visitors who have JavaScript disabled will reduce the accessibility of the website, especially to visitors who use screen readers. In certain jurisdictions this may be in breach of equalities legislation.",
+    "text_hash": "aef3f121def19b082f34681bb235b62d30889fd4ddb380069fabc4afc565e9fb",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 113,
+      "end_line": 113
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Defense in Depth & Metrics",
+      "Require JavaScript and Block Headless Browsers"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00049",
+    "normalized_text": "Please note that blocking visitors who have JavaScript disabled will reduce the accessibility of the website, especially to visitors who use screen readers. In certain jurisdictions this may be in breach of equalities legislation.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00050",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 50,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Degradation",
+    "text_hash": "08090e5f0ad6ef224aa1e9093ca69ef187eaf33270cbd96fa1d6d0f7f3c35fbd",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 115,
+      "end_line": 115
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Defense in Depth & Metrics",
+      "Degradation"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00050",
+    "normalized_text": "### Degradation",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00051",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 51,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "A more aggressive defense against credential stuffing is to implement measures that increase the amount of time the attack takes to complete. This may include incrementally increasing the complexity of the JavaScript that must be evaluated, requiring users to solve a cryptographic or Proof-of-Work computational puzzle, introducing long wait periods before responding to requests, returning overly large HTML assets or returning randomized error messages.",
+    "text_hash": "ca8f709a2b57850783ae0d28397445916c2c8246c5c72b2870262681f45e96a8",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 117,
+      "end_line": 117
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Defense in Depth & Metrics",
+      "Degradation"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00051",
+    "normalized_text": "A more aggressive defense against credential stuffing is to implement measures that increase the amount of time the attack takes to complete. This may include incrementally increasing the complexity of the JavaScript that must be evaluated, requiring users to solve a cryptographic or Proof-of-Work computational puzzle, introducing long wait periods before responding to requests, returning overly large HTML assets or returning randomized error messages.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00052",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 52,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "These techniques provide some level of security without resorting to user tracking or profiling. They typically do not require a human in the loop, but rather constrain the minimum latency and/or the maximum request rate of a particular client implementation and the attacker's budget and sophistication, and requires a context-dependent risk assessment to gauge their efficacy, resistance to countermeasures and user experience impact.",
+    "text_hash": "5b78702a319ef052112337b0943623165115ec287d4351091ee767fbdf240396",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 119,
+      "end_line": 119
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Defense in Depth & Metrics",
+      "Degradation"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00052",
+    "normalized_text": "These techniques provide some level of security without resorting to user tracking or profiling. They typically do not require a human in the loop, but rather constrain the minimum latency and/or the maximum request rate of a particular client implementation and the attacker's budget and sophistication, and requires a context-dependent risk assessment to gauge their efficacy, resistance to countermeasures and user experience impact.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00053",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 53,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Identifying Leaked Passwords",
+    "text_hash": "eebc5da3155607a93c64e2f60c2ad6b23cbeb97e2f59c9d9e05b451868ade57b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 121,
+      "end_line": 121
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Defense in Depth & Metrics",
+      "Identifying Leaked Passwords"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00053",
+    "normalized_text": "### Identifying Leaked Passwords",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00054",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 54,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[ASVS v4.0 Password Security Requirements](https://github.com/OWASP/ASVS/blob/master/4.0/en/0x11-V2-Authentication.md#v21-password-security-requirements) provision (2.1.7) on verifying new passwords presence in breached password datasets should be implemented.",
+    "text_hash": "e9c4439df34ec7bb457e6ac83957d80c77b58b48c18d29358ae42afb4004f5f8",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 123,
+      "end_line": 123
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Defense in Depth & Metrics",
+      "Identifying Leaked Passwords"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00054",
+    "normalized_text": "[ASVS v4.0 Password Security Requirements](https://github.com/OWASP/ASVS/blob/master/4.0/en/0x11-V2-Authentication.md#v21-password-security-requirements) provision (2.1.7) on verifying new passwords presence in breached password datasets should be implemented.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00055",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 55,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "There are both commercial and free services that may be of use for validating passwords presence in prior breaches.  A well known free service for this is [Pwned Passwords](https://haveibeenpwned.com/Passwords). You can host a copy of the application yourself, or use the [API](https://haveibeenpwned.com/API/v3#PwnedPasswords).",
+    "text_hash": "38bba7d42dd2699b9485b753fe286001166a58286368186e9dfdfb4e7bf267bb",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 125,
+      "end_line": 125
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Defense in Depth & Metrics",
+      "Identifying Leaked Passwords"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00055",
+    "normalized_text": "There are both commercial and free services that may be of use for validating passwords presence in prior breaches. A well known free service for this is [Pwned Passwords](https://haveibeenpwned.com/Passwords). You can host a copy of the application yourself, or use the [API](https://haveibeenpwned.com/API/v3#PwnedPasswords).",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00056",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 56,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Notify users about unusual security events",
+    "text_hash": "ff2f9342f97a8b3c1beae2a201f1e89b75cdfaa4d998ef2ad8f7f832c0ccca8c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 127,
+      "end_line": 127
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Defense in Depth & Metrics",
+      "Notify users about unusual security events"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00056",
+    "normalized_text": "### Notify users about unusual security events",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00057",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 57,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "When suspicious or unusual activity is detected, it may be appropriate to notify or warn the user. However, care should be taken that the user does not get overwhelmed with a large number of notifications that are not important to them, or they will just start to ignore or delete them.  Additionally, due to frequent reuse of passwords across multiple sites, the possibility that the users email account has also been compromised should be considered.",
+    "text_hash": "07194f0f9eadf24f7c786546dbde2abe9ed063cb3990559af217f00aa311ca3d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 129,
+      "end_line": 129
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Defense in Depth & Metrics",
+      "Notify users about unusual security events"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00057",
+    "normalized_text": "When suspicious or unusual activity is detected, it may be appropriate to notify or warn the user. However, care should be taken that the user does not get overwhelmed with a large number of notifications that are not important to them, or they will just start to ignore or delete them. Additionally, due to frequent reuse of passwords across multiple sites, the possibility that the users email account has also been compromised should be considered.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00058",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 58,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "For example, it would generally not be appropriate to notify a user that there had been an attempt to login to their account with an incorrect password. However, if there had been a login with the correct password, but which had then failed the subsequent MFA check, the user should be notified so that they can change their password.  Subsequently, should the user request multiple password resets from different devices or IP addresses, it may be appropriate to prevent further access to the account pending further user verification processes.",
+    "text_hash": "0f46d0de34c353a1094907e4922f93cbd53b306b643823bc9ccec7cba52231c1",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 131,
+      "end_line": 131
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Defense in Depth & Metrics",
+      "Notify users about unusual security events"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00058",
+    "normalized_text": "For example, it would generally not be appropriate to notify a user that there had been an attempt to login to their account with an incorrect password. However, if there had been a login with the correct password, but which had then failed the subsequent MFA check, the user should be notified so that they can change their password. Subsequently, should the user request multiple password resets from different devices or IP addresses, it may be appropriate to prevent further access to the account pending further user verification processes.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00059",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 59,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Details related to current or recent logins should also be made visible to the user. For example, when they login to the application, the date, time and location of their previous login attempt could be displayed to them. Additionally, if the application supports concurrent sessions, the user should be able to view a list of all active sessions, and to terminate any other sessions that are not legitimate.",
+    "text_hash": "1037a051600110301318e34d37c863998a02e261ff8bbcd9efbafcc895cef69f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 133,
+      "end_line": 133
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "Defense in Depth & Metrics",
+      "Notify users about unusual security events"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00059",
+    "normalized_text": "Details related to current or recent logins should also be made visible to the user. For example, when they login to the application, the date, time and location of their previous login attempt could be displayed to them. Additionally, if the application supports concurrent sessions, the user should be able to view a list of all active sessions, and to terminate any other sessions that are not legitimate.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00060",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 60,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## References",
+    "text_hash": "65b72d86eeeb214ab8ca5fd24cb7cd7773e58084e95b670040df03e21e8c6fa7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 135,
+      "end_line": 135
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "References"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00060",
+    "normalized_text": "## References",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d3ad6e7fce8b_b00061",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "block_idx": 61,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- [OWASP: Credential Stuffing](https://community.owasp.org/attacks/Credential_stuffing)\n- [NIST SP 800-63B-4: Password Verifiers](https://pages.nist.gov/800-63-4/sp800-63b.html#passwordver)",
+    "text_hash": "bcc26c1dd508f3f353370b7b40d58e115a7a481b1238896a7fd15aea254c0eb8",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 137,
+      "end_line": 138
+    },
+    "heading_path": [
+      "Credential Stuffing Prevention Cheat Sheet",
+      "References"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d3ad6e7fce8b_b00061",
+    "normalized_text": "- [OWASP: Credential Stuffing](https://community.owasp.org/attacks/Credential_stuffing)\n- [NIST SP 800-63B-4: Password Verifiers](https://pages.nist.gov/800-63-4/sp800-63b.html#passwordver)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  }
+]

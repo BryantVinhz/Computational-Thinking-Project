@@ -1,0 +1,563 @@
+{
+  "document_id": "doc_owasp_top10_what_are_application_security_risks",
+  "version_id": "ver_6bc3550cc066",
+  "chunking_strategy": "structure_aware",
+  "chunks": [
+    {
+      "chunk_id": "ver_6bc3550cc066_c00000",
+      "document_id": "doc_owasp_top10_what_are_application_security_risks",
+      "version_id": "ver_6bc3550cc066",
+      "chunk_idx": 0,
+      "chunk_type": "heading",
+      "text_content": "# What are Application Security Risks?",
+      "token_count": 7,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "What are Application Security Risks?"
+      ]
+    },
+    {
+      "chunk_id": "ver_6bc3550cc066_c00001",
+      "document_id": "doc_owasp_top10_what_are_application_security_risks",
+      "version_id": "ver_6bc3550cc066",
+      "chunk_idx": 1,
+      "chunk_type": "paragraph",
+      "text_content": "Attackers can potentially use many different paths through your application to do harm to your business or organization.\n\nEach of these ways poses a potential risk that needs to be investigated.\n\n![Calculation diagram](../assets/2025-algorithm-diagram.png)",
+      "token_count": 52,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "What are Application Security Risks?"
+      ]
+    },
+    {
+      "chunk_id": "ver_6bc3550cc066_c00002",
+      "document_id": "doc_owasp_top10_what_are_application_security_risks",
+      "version_id": "ver_6bc3550cc066",
+      "chunk_idx": 2,
+      "chunk_type": "table",
+      "text_content": "<table>\n  <tr>\n   <td>\n    <strong>Threat Agents</strong>\n   </td>\n   <td>\n    <strong>Attack \\\nVectors</strong>\n   </td>\n   <td>\n    <strong>Exploitability</strong>\n   </td>\n   <td>\n    <strong>Likelihood of Missing Security</strong>\n<p style=\"text-align: center\">",
+      "token_count": 80,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "What are Application Security Risks?"
+      ]
+    },
+    {
+      "chunk_id": "ver_6bc3550cc066_c00003",
+      "document_id": "doc_owasp_top10_what_are_application_security_risks",
+      "version_id": "ver_6bc3550cc066",
+      "chunk_idx": 3,
+      "chunk_type": "paragraph",
+      "text_content": "</td>\n   <td>\n    <strong>Technical</strong>\n<p style=\"text-align: center\">\n\n</td>\n   <td>\n    <strong>Business</strong>\n<p style=\"text-align: center\">\n\n</td>\n  </tr>\n  <tr>\n   <td>\n    <strong>By environment, \\\ndynamic by situation picture</strong>\n   </td>\n   <td>\n    <strong>By Application exposure (by environment)</strong>\n   </td>\n   <td>\n    <strong>Avg Weighted Exploit</strong>\n   </td>\n   <td>\n    <strong>Missing Controls \\\nby average Incidence rate \\\nWeighed by coverage</strong>\n   </td>\n   <td>\n    <strong>Avg Weighted Impact</strong>\n   </td>\n   <td>\n    <strong>By Business</strong>\n   </td>\n  </tr>\n</table>\n\nIn our Risk Rating we have taken into account the universal parameters of exploitability, average likelihood of missing security controls for a weakness and its technical impacts.\n\nEach organization is unique, and so are the threat actors for that organization, their goals, and the impact of any breach.\n\nIf a public interest organization uses a content management system (CMS) for public information and a health system uses that same exact CMS for sensitive health records, the threat actors and business impacts can be very different for the same software.\n\nIt is critical to understand the risk to your organization based on the exposure of the application, the applicable threat agents by situation picture (for targeted and undirected attacks by business and location) and the individual business impacts.",
+      "token_count": 332,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "What are Application Security Risks?"
+      ]
+    },
+    {
+      "chunk_id": "ver_6bc3550cc066_c00004",
+      "document_id": "doc_owasp_top10_what_are_application_security_risks",
+      "version_id": "ver_6bc3550cc066",
+      "chunk_idx": 4,
+      "chunk_type": "heading",
+      "text_content": "## How the data is used for selecting categories and ranking them",
+      "token_count": 13,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "What are Application Security Risks?",
+        "How the data is used for selecting categories and ranking them"
+      ]
+    },
+    {
+      "chunk_id": "ver_6bc3550cc066_c00005",
+      "document_id": "doc_owasp_top10_what_are_application_security_risks",
+      "version_id": "ver_6bc3550cc066",
+      "chunk_idx": 5,
+      "chunk_type": "paragraph",
+      "text_content": "In 2017, we selected categories by incidence rate to determine likelihood, then ranked them by team discussion based on decades of experience for Exploitability, Detectability (also likelihood), and Technical Impact.\n\nFor 2021, we used data for Exploitability and (Technical) Impact from the CVSSv2 and CVSSv3 scores in the National Vulnerability Database (NVD).\n\nFor 2025, we continued the same methodology that we created in 2021.\n\nWe downloaded OWASP Dependency Check and extracted the CVSS Exploit, and Impact scores grouped by related CWEs.\n\nIt took a fair bit of research and effort as all the CVEs have CVSSv2 scores, but there are flaws in CVSSv2 that CVSSv3 should address.\n\nAfter a certain point in time, all CVEs are assigned a CVSSv3 score as well.\n\nAdditionally, the scoring ranges and formulas were updated between CVSSv2 and CVSSv3.\n\nIn CVSSv2, both Exploit and (Technical) Impact could be up to 10.0, but the formula would knock them down to 60% for Exploit and 40% for Impact.\n\nIn CVSSv3, the theoretical max was limited to 6.0 for Exploit and 4.0 for Impact.\n\nWith the weighting considered, the Impact scoring shifted higher, almost a point and a half on average in CVSSv3, and exploitability moved nearly half a point lower on average when we conducted analysis for the 2021 Top Ten.\n\nThere are approximately 175k records (up from 125k in 2021) of CVEs mapped to CWEs in the National Vulnerability Database (NVD), extracted from OWASP Dependency Check.\n\nAdditionally, there are 643 unique CWEs mapped to CVEs (up from 241 in 2021).\n\nWithin the nearly 220k CVEs that were extracted, 160k had CVSS v2 scores, 156k had CVSS v3 scores, and 6k had CVSS v4 scores.\n\nMany CVEs have multiple scores, which is why they total more than 220k.\n\nFor the Top Ten 2025, we calculated average exploit and impact scores in the following manner.\n\nWe grouped all the CVEs with CVSS scores by CWE and weighted both exploit and impact scores by the percentage of the population that had CVSSv3, as well as the remaining population with CVSSv2 scores, to get an overall average.\n\nWe mapped these averages to the CWEs in the dataset to use as Exploit and (Technical) Impact scoring for the other half of the risk equation.",
+      "token_count": 439,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "What are Application Security Risks?",
+        "How the data is used for selecting categories and ranking them"
+      ]
+    },
+    {
+      "chunk_id": "ver_6bc3550cc066_c00006",
+      "document_id": "doc_owasp_top10_what_are_application_security_risks",
+      "version_id": "ver_6bc3550cc066",
+      "chunk_idx": 6,
+      "chunk_type": "paragraph",
+      "text_content": "Why not use CVSS v4.0, you may ask?\n\nThat’s because the scoring algorithm was fundamentally changed, and it no longer easily provides the *Exploit* or *Impact* scores as CVSSv2 and CVSSv3 do.\n\nWe will attempt to figure out a way to use CVSS v4.0 scoring for future versions of the Top Ten, but we were unable to determine a timely way to do so for the 2025 edition.\n\nFor the incidence rate, we calculated the percentage of applications vulnerable to each CWE from the population tested by an org for a period of time.\n\nAs a reminder, we are not using frequency (or how many times an issue appears in an application), we are interested in what percentage of the population of applications were found to have each CWE.\n\nFor coverage we look at the percentage of applications tested by all organizations for a given CWE.\n\nThe higher the calculated coverage, the stronger the assurance that the incidence rate is accurate as the sample size is more representative of the population.\n\nThe formula that we used for this iteration is similar to 2021, with some weighting changes:\n(Max Incidence Rate % * 1000) + (Max Coverage % * 100) + (Avg Exploit * 10) + (Avg Impact * 20) + (Sum Occurrences / 10000) = Risk Score\n\nThe calculated scores ranged from 621.60 for the category of Broken Access Control to 271.08 for Memory Management Errors.\n\nThis is not a perfect system, but it is valuable for ranking risk categories.\n\nOne additional challenge that is growing is the definition of an \"application\".\n\nAs the industry shifts to different architectures that consist of micro-services and other implementations that are smaller than a traditional application, calculations are more difficult.\n\nFor instance, if an organization is testing code repositories, what does it consider an application?\n\nSimilar to the growth of CVSSv4, the next edition of the Top Ten may need to adjust the analysis and scoring to account for a constantly changing industry.",
+      "token_count": 387,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "What are Application Security Risks?",
+        "How the data is used for selecting categories and ranking them"
+      ]
+    },
+    {
+      "chunk_id": "ver_6bc3550cc066_c00007",
+      "document_id": "doc_owasp_top10_what_are_application_security_risks",
+      "version_id": "ver_6bc3550cc066",
+      "chunk_idx": 7,
+      "chunk_type": "heading",
+      "text_content": "## Data Factors",
+      "token_count": 4,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "What are Application Security Risks?",
+        "Data Factors"
+      ]
+    },
+    {
+      "chunk_id": "ver_6bc3550cc066_c00008",
+      "document_id": "doc_owasp_top10_what_are_application_security_risks",
+      "version_id": "ver_6bc3550cc066",
+      "chunk_idx": 8,
+      "chunk_type": "paragraph",
+      "text_content": "There are data factors that are listed for each of the Top Ten Categories, here is what they mean:\n\n**CWEs Mapped:** The number of CWEs mapped to a category by the Top Ten team.\n\n**Incidence Rate:** Incidence rate is the percentage of applications vulnerable to that CWE from the population tested by that org for that year.\n\n**Weighted Exploit:** The Exploit sub-score from CVSSv2 and CVSSv3 scores assigned to CVEs mapped to CWEs, normalized, and placed on a 10pt scale.\n\n**Weighted Impact:** The Impact sub-score from CVSSv2 and CVSSv3 scores assigned to CVEs mapped to CWEs, normalized, and placed on a 10pt scale.\n\n**(Testing) Coverage:** The percentage of applications tested by all organizations for a given CWE.\n\n**Total Occurrences:** Total number of applications found to have the CWEs mapped to a category.\n\n**Total CVEs:** Total number of CVEs in the NVD DB that were mapped to the CWEs mapped to a category.\n\n**Formula:** (Max Incidence Rate % * 1000) + (Max Coverage % * 100) + (Avg Exploit * 10) + (Avg Impact * 20) + (Sum Occurrences / 10000) = Risk Score",
+      "token_count": 252,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "What are Application Security Risks?",
+        "Data Factors"
+      ]
+    }
+  ],
+  "chunk_sources": [
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00000_s000",
+      "chunk_id": "ver_6bc3550cc066_c00000",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00000",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 38
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00001_s000",
+      "chunk_id": "ver_6bc3550cc066_c00001",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00001",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 120
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00001_s001",
+      "chunk_id": "ver_6bc3550cc066_c00001",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00001",
+      "source_order": 1,
+      "start_offset": 121,
+      "end_offset": 193
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00001_s002",
+      "chunk_id": "ver_6bc3550cc066_c00001",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00002",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 60
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00002_s000",
+      "chunk_id": "ver_6bc3550cc066_c00002",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00003",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 265
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00003_s000",
+      "chunk_id": "ver_6bc3550cc066_c00003",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00004",
+      "source_order": 0,
+      "start_offset": 3,
+      "end_offset": 78
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00003_s001",
+      "chunk_id": "ver_6bc3550cc066_c00003",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00005",
+      "source_order": 1,
+      "start_offset": 3,
+      "end_offset": 77
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00003_s002",
+      "chunk_id": "ver_6bc3550cc066_c00003",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00006",
+      "source_order": 2,
+      "start_offset": 3,
+      "end_offset": 476
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00003_s003",
+      "chunk_id": "ver_6bc3550cc066_c00003",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00007",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 179
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00003_s004",
+      "chunk_id": "ver_6bc3550cc066_c00003",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00008",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 123
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00003_s005",
+      "chunk_id": "ver_6bc3550cc066_c00003",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00008",
+      "source_order": 5,
+      "start_offset": 124,
+      "end_offset": 378
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00003_s006",
+      "chunk_id": "ver_6bc3550cc066_c00003",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00008",
+      "source_order": 6,
+      "start_offset": 379,
+      "end_offset": 629
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00004_s000",
+      "chunk_id": "ver_6bc3550cc066_c00004",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00009",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 65
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00005_s000",
+      "chunk_id": "ver_6bc3550cc066_c00005",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00010",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 216
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00005_s001",
+      "chunk_id": "ver_6bc3550cc066_c00005",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00010",
+      "source_order": 1,
+      "start_offset": 217,
+      "end_offset": 361
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00005_s002",
+      "chunk_id": "ver_6bc3550cc066_c00005",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00010",
+      "source_order": 2,
+      "start_offset": 362,
+      "end_offset": 430
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00005_s003",
+      "chunk_id": "ver_6bc3550cc066_c00005",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00011",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 111
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00005_s004",
+      "chunk_id": "ver_6bc3550cc066_c00005",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00011",
+      "source_order": 4,
+      "start_offset": 112,
+      "end_offset": 247
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00005_s005",
+      "chunk_id": "ver_6bc3550cc066_c00005",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00011",
+      "source_order": 5,
+      "start_offset": 248,
+      "end_offset": 324
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00005_s006",
+      "chunk_id": "ver_6bc3550cc066_c00005",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00011",
+      "source_order": 6,
+      "start_offset": 325,
+      "end_offset": 410
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00005_s007",
+      "chunk_id": "ver_6bc3550cc066_c00005",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00012",
+      "source_order": 7,
+      "start_offset": 0,
+      "end_offset": 144
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00005_s008",
+      "chunk_id": "ver_6bc3550cc066_c00005",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00012",
+      "source_order": 8,
+      "start_offset": 145,
+      "end_offset": 226
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00005_s009",
+      "chunk_id": "ver_6bc3550cc066_c00005",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00012",
+      "source_order": 9,
+      "start_offset": 227,
+      "end_offset": 451
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00005_s010",
+      "chunk_id": "ver_6bc3550cc066_c00005",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00013",
+      "source_order": 10,
+      "start_offset": 0,
+      "end_offset": 167
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00005_s011",
+      "chunk_id": "ver_6bc3550cc066_c00005",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00013",
+      "source_order": 11,
+      "start_offset": 168,
+      "end_offset": 245
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00005_s012",
+      "chunk_id": "ver_6bc3550cc066_c00005",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00013",
+      "source_order": 12,
+      "start_offset": 246,
+      "end_offset": 371
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00005_s013",
+      "chunk_id": "ver_6bc3550cc066_c00005",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00013",
+      "source_order": 13,
+      "start_offset": 372,
+      "end_offset": 443
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00005_s014",
+      "chunk_id": "ver_6bc3550cc066_c00005",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00014",
+      "source_order": 14,
+      "start_offset": 0,
+      "end_offset": 94
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00005_s015",
+      "chunk_id": "ver_6bc3550cc066_c00005",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00014",
+      "source_order": 15,
+      "start_offset": 95,
+      "end_offset": 322
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00005_s016",
+      "chunk_id": "ver_6bc3550cc066_c00005",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00014",
+      "source_order": 16,
+      "start_offset": 323,
+      "end_offset": 464
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00006_s000",
+      "chunk_id": "ver_6bc3550cc066_c00006",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00015",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 35
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00006_s001",
+      "chunk_id": "ver_6bc3550cc066_c00006",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00015",
+      "source_order": 1,
+      "start_offset": 36,
+      "end_offset": 190
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00006_s002",
+      "chunk_id": "ver_6bc3550cc066_c00006",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00015",
+      "source_order": 2,
+      "start_offset": 191,
+      "end_offset": 363
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00006_s003",
+      "chunk_id": "ver_6bc3550cc066_c00006",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00016",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 150
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00006_s004",
+      "chunk_id": "ver_6bc3550cc066_c00006",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00016",
+      "source_order": 4,
+      "start_offset": 151,
+      "end_offset": 348
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00006_s005",
+      "chunk_id": "ver_6bc3550cc066_c00006",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00017",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 99
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00006_s006",
+      "chunk_id": "ver_6bc3550cc066_c00006",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00017",
+      "source_order": 6,
+      "start_offset": 100,
+      "end_offset": 259
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00006_s007",
+      "chunk_id": "ver_6bc3550cc066_c00006",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00018",
+      "source_order": 7,
+      "start_offset": 0,
+      "end_offset": 229
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00006_s008",
+      "chunk_id": "ver_6bc3550cc066_c00006",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00019",
+      "source_order": 8,
+      "start_offset": 0,
+      "end_offset": 122
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00006_s009",
+      "chunk_id": "ver_6bc3550cc066_c00006",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00020",
+      "source_order": 9,
+      "start_offset": 0,
+      "end_offset": 77
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00006_s010",
+      "chunk_id": "ver_6bc3550cc066_c00006",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00021",
+      "source_order": 10,
+      "start_offset": 0,
+      "end_offset": 79
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00006_s011",
+      "chunk_id": "ver_6bc3550cc066_c00006",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00021",
+      "source_order": 11,
+      "start_offset": 80,
+      "end_offset": 268
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00006_s012",
+      "chunk_id": "ver_6bc3550cc066_c00006",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00021",
+      "source_order": 12,
+      "start_offset": 269,
+      "end_offset": 369
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00006_s013",
+      "chunk_id": "ver_6bc3550cc066_c00006",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00021",
+      "source_order": 13,
+      "start_offset": 370,
+      "end_offset": 525
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00007_s000",
+      "chunk_id": "ver_6bc3550cc066_c00007",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00022",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 15
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00008_s000",
+      "chunk_id": "ver_6bc3550cc066_c00008",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00023",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 98
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00008_s001",
+      "chunk_id": "ver_6bc3550cc066_c00008",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00024",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 77
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00008_s002",
+      "chunk_id": "ver_6bc3550cc066_c00008",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00025",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 145
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00008_s003",
+      "chunk_id": "ver_6bc3550cc066_c00008",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00026",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 146
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00008_s004",
+      "chunk_id": "ver_6bc3550cc066_c00008",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00027",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 144
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00008_s005",
+      "chunk_id": "ver_6bc3550cc066_c00008",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00028",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 99
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00008_s006",
+      "chunk_id": "ver_6bc3550cc066_c00008",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00029",
+      "source_order": 6,
+      "start_offset": 0,
+      "end_offset": 96
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00008_s007",
+      "chunk_id": "ver_6bc3550cc066_c00008",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00030",
+      "source_order": 7,
+      "start_offset": 0,
+      "end_offset": 101
+    },
+    {
+      "chunk_source_id": "ver_6bc3550cc066_c00008_s008",
+      "chunk_id": "ver_6bc3550cc066_c00008",
+      "normalized_block_id": "nrm_ver_6bc3550cc066_b00031",
+      "source_order": 8,
+      "start_offset": 0,
+      "end_offset": 149
+    }
+  ]
+}

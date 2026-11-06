@@ -1,0 +1,2469 @@
+[
+  {
+    "block_id": "ver_27d189554452_b00000",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 0,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "# Transaction Authorization Cheat Sheet",
+    "text_hash": "fe10b450eb398c96ddc7d6582b67f4c71173f5693871de42ce9dab1b4ecc17bf",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 1,
+      "end_line": 1
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet"
+    ],
+    "heading_level": 1,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00000",
+    "normalized_text": "# Transaction Authorization Cheat Sheet",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00001",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 1,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Purpose and audience",
+    "text_hash": "ef8614c5c5bfabdc2c35fb3bde2e1477665097d92bd7756d15a2f7801b45bccf",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 3,
+      "end_line": 3
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "Purpose and audience"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00001",
+    "normalized_text": "## Purpose and audience",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00002",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 2,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "This cheat sheet discusses how developers can secure transaction authorizations and prevent them from being bypassed. These guidelines are for:",
+    "text_hash": "9927314a9a70f62130158a4112a7b886ebdf9affeb12dcbe54b33b24c6433526",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 5,
+      "end_line": 5
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "Purpose and audience"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00002",
+    "normalized_text": "This cheat sheet discusses how developers can secure transaction authorizations and prevent them from being bypassed. These guidelines are for:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00003",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 3,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- **Banks** - who must create functional and non-functional requirements for transaction authorization.\n- **Developers** – who need to eliminate vulnerabilities in transaction authorizations.\n- **Pentesters** – who must determine if transaction authorizations are secure.\n",
+    "text_hash": "c9212780402ed54a002d3b50a9645b04b4c3f59c37fef5284ca3f220148e13df",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 7,
+      "end_line": 10
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "Purpose and audience"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00003",
+    "normalized_text": "- **Banks** - who must create functional and non-functional requirements for transaction authorization.\n- **Developers** – who need to eliminate vulnerabilities in transaction authorizations.\n- **Pentesters** – who must determine if transaction authorizations are secure.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00004",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 4,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Introduction",
+    "text_hash": "d753efbab681fa4da82470d9a83b1c202de58f92fd498e77a269c1163bc4714b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 11,
+      "end_line": 11
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00004",
+    "normalized_text": "## Introduction",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00005",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 5,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Generally, mobile and online applications will require users to submit a second factor so the system can check whether they are authorized to perform a sensitive operation (such as wire transfer authorization). In this document, we say that these actions are *transaction authorizations*.",
+    "text_hash": "171292f10bc7673498eb07c90ec6c84317dedd45dae9e5b401d1d11c2c1878b8",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 13,
+      "end_line": 13
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00005",
+    "normalized_text": "Generally, mobile and online applications will require users to submit a second factor so the system can check whether they are authorized to perform a sensitive operation (such as wire transfer authorization). In this document, we say that these actions are *transaction authorizations*.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00006",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 6,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Transaction authorizations are often used in financial systems, but the need for secure transactions has driven the adoption of authorizations across the internet.  For example, an email that allows users to unlock a user account by providing them with a secret code or a link that has a token contains a transaction authorization. A transaction authorization can be implemented with methods such as:",
+    "text_hash": "166f71e926f0edcb3b5116575f2975fee003fb43d9a92bc316a6e350d46e3e49",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 15,
+      "end_line": 15
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00006",
+    "normalized_text": "Transaction authorizations are often used in financial systems, but the need for secure transactions has driven the adoption of authorizations across the internet. For example, an email that allows users to unlock a user account by providing them with a secret code or a link that has a token contains a transaction authorization. A transaction authorization can be implemented with methods such as:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00007",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 7,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- A card that has a transaction authorization number\n- A time-based one-time password (OTP) token, such as an [OATH TOTP (Time-based One-Time Password)](https://en.wikipedia.org/wiki/Time-based_One-time_Password_Algorithm)\n- A OTP sent by SMS or provided by phone\n- A digital signature provided by a smart card or a smartphone\n- A challenge-response token, including unconnected card readers or solutions which scan transaction data from the user's computer screen\n",
+    "text_hash": "88130cd16a7cd0753bba11c6cc769179c152c5324add755680b1f5301d0c6b76",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 17,
+      "end_line": 22
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00007",
+    "normalized_text": "- A card that has a transaction authorization number\n- A time-based one-time password (OTP) token, such as an [OATH TOTP (Time-based One-Time Password)](https://en.wikipedia.org/wiki/Time-based_One-time_Password_Algorithm)\n- A OTP sent by SMS or provided by phone\n- A digital signature provided by a smart card or a smartphone\n- A challenge-response token, including unconnected card readers or solutions which scan transaction data from the user's computer screen",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00008",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 8,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Some of these forms of transaction authorizations can be implemented with a physical device or in a mobile application.",
+    "text_hash": "2e92f75f47af27d0e60dfcb62f42b2a937aa35d02059960cff4aa1465600010d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 23,
+      "end_line": 23
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00008",
+    "normalized_text": "Some of these forms of transaction authorizations can be implemented with a physical device or in a mobile application.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00009",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 9,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## 1. Functional Guidelines",
+    "text_hash": "e9821c727f6b8344f281ebaeb271b0839bf968439d92bb815de21889942a1ba9",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 25,
+      "end_line": 25
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "1. Functional Guidelines"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00009",
+    "normalized_text": "## 1. Functional Guidelines",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00010",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 10,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### 1.1 Transaction authorization method has to allow a user to identify and acknowledge significant transaction data",
+    "text_hash": "a1d3a35d113d42ae04f129bf7cf2567ca2887292ba232e7fd83c468ff3a6f410",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 27,
+      "end_line": 27
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "1. Functional Guidelines",
+      "1.1 Transaction authorization method has to allow a user to identify and acknowledge significant transaction data"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00010",
+    "normalized_text": "### 1.1 Transaction authorization method has to allow a user to identify and acknowledge significant transaction data",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00011",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 11,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Since developers cannot assume that a user's computer is secure, an external authorization component would be have to check data for a typical transaction.",
+    "text_hash": "3b2b0df9ee2fe2b3b83444990c3bc817db0a0b3255e4a92f781aa26312030e9b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 29,
+      "end_line": 29
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "1. Functional Guidelines",
+      "1.1 Transaction authorization method has to allow a user to identify and acknowledge significant transaction data"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00011",
+    "normalized_text": "Since developers cannot assume that a user's computer is secure, an external authorization component would be have to check data for a typical transaction.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00012",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 12,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "When the developer builds components for transaction authorizations, they should use the *What You See Is What You Sign* principle. An authorization method must permit a user to identify and acknowledge the data that is significant to a given transaction. For example, in the case of a wire transfer, the user should be able to identify the target account and amount.",
+    "text_hash": "12c8b8f91ebfbb13b5c16407a37a0a1271758db452646bed62f3e104d1267205",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 31,
+      "end_line": 31
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "1. Functional Guidelines",
+      "1.1 Transaction authorization method has to allow a user to identify and acknowledge significant transaction data"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00012",
+    "normalized_text": "When the developer builds components for transaction authorizations, they should use the *What You See Is What You Sign* principle. An authorization method must permit a user to identify and acknowledge the data that is significant to a given transaction. For example, in the case of a wire transfer, the user should be able to identify the target account and amount.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00013",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 13,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "As developers determine what transaction data is significant, their decisions should be based on:",
+    "text_hash": "efc966ffeabde429a9c798dbde4e85c7caced4fb7bcfddb9ec4d13392adc98c7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 33,
+      "end_line": 33
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "1. Functional Guidelines",
+      "1.1 Transaction authorization method has to allow a user to identify and acknowledge significant transaction data"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00013",
+    "normalized_text": "As developers determine what transaction data is significant, their decisions should be based on:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00014",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 14,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- The real risk\n- The technical capabilities and constraints of the chosen authorization method\n- The users having a positive experience\n",
+    "text_hash": "52ab95ffbfc0031b7ca2fcff2d91d90d52c56301d4be4d66e46660d06f506906",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 35,
+      "end_line": 38
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "1. Functional Guidelines",
+      "1.1 Transaction authorization method has to allow a user to identify and acknowledge significant transaction data"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00014",
+    "normalized_text": "- The real risk\n- The technical capabilities and constraints of the chosen authorization method\n- The users having a positive experience",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00015",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 15,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "For example, if an SMS message confirms significant transaction data, the developer could respond by returning the target account, amount and type of transfer to the user. However, it is inconvenient for an unconnected [CAP reader](https://en.wikipedia.org/wiki/Chip_Authentication_Program) to require users to enter that data. In such cases, the developer should probably return the minimum amount of significant transaction data (e.g. partial target account number and amount) for confirmation.",
+    "text_hash": "c8338d0c2ed0510612f41ac4ee32adc160be6ecfbb2dcc008b7dcdd04fbaa13f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 39,
+      "end_line": 39
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "1. Functional Guidelines",
+      "1.1 Transaction authorization method has to allow a user to identify and acknowledge significant transaction data"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00015",
+    "normalized_text": "For example, if an SMS message confirms significant transaction data, the developer could respond by returning the target account, amount and type of transfer to the user. However, it is inconvenient for an unconnected [CAP reader](https://en.wikipedia.org/wiki/Chip_Authentication_Program) to require users to enter that data. In such cases, the developer should probably return the minimum amount of significant transaction data (e.g. partial target account number and amount) for confirmation.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00016",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 16,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "In general, the user must verify all significant transaction data as a part of the transaction authorization process. If a transaction process requires a user to enter transaction data into an external device, the user should be prompted to confirm a specific value in the transaction (e.g. a target account number). The absence of a meaningful prompt could be easily abused by social engineering techniques and malware as described below in Section 1.4. Also, for more detailed discussion of input overloading problems, see [here](https://www.cl.cam.ac.uk/~sjm217/papers/fc09optimised.pdf).",
+    "text_hash": "a20952157e8774e2bbcb995656cfa984a398efdca44f1669e4c4abcaa02fb7c8",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 41,
+      "end_line": 41
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "1. Functional Guidelines",
+      "1.1 Transaction authorization method has to allow a user to identify and acknowledge significant transaction data"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00016",
+    "normalized_text": "In general, the user must verify all significant transaction data as a part of the transaction authorization process. If a transaction process requires a user to enter transaction data into an external device, the user should be prompted to confirm a specific value in the transaction (e.g. a target account number). The absence of a meaningful prompt could be easily abused by social engineering techniques and malware as described below in Section 1.4. Also, for more detailed discussion of input overloading problems, see [here](https://www.cl.cam.ac.uk/~sjm217/papers/fc09optimised.pdf).",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00017",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 17,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### 1.2 Change of authorization token should be authorized using the current authorization token",
+    "text_hash": "aa54c87ff50cbab9f2be3c5a85fe27d8c05ad8273a65f0a09fcab7f773bc52c7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 43,
+      "end_line": 43
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "1. Functional Guidelines",
+      "1.2 Change of authorization token should be authorized using the current authorization token"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00017",
+    "normalized_text": "### 1.2 Change of authorization token should be authorized using the current authorization token",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00018",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 18,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "If a user can use the application interface to change the authorization token, they should be able to authorize the operation with their current authorization credentials (as is the case with [password change procedure](https://owasp.org/www-project-web-security-testing-guide/stable/4-Web_Application_Security_Testing/04-Authentication_Testing/09-Testing_for_Weak_Password_Change_or_Reset_Functionalities.html)). For example: when a user changes a phone number for SMS codes, an authorization SMS code should be sent to the current phone number.",
+    "text_hash": "3721bf95f12b1acf1e97d2d02eb1125ef4ff4c802f652e549fad99c62f3f0c0d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 45,
+      "end_line": 45
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "1. Functional Guidelines",
+      "1.2 Change of authorization token should be authorized using the current authorization token"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00018",
+    "normalized_text": "If a user can use the application interface to change the authorization token, they should be able to authorize the operation with their current authorization credentials (as is the case with [password change procedure](https://owasp.org/www-project-web-security-testing-guide/stable/4-Web_Application_Security_Testing/04-Authentication_Testing/09-Testing_for_Weak_Password_Change_or_Reset_Functionalities.html)). For example: when a user changes a phone number for SMS codes, an authorization SMS code should be sent to the current phone number.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00019",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 19,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### 1.3 Change of authorization method should be authorized using the current authorization method",
+    "text_hash": "b6d3e4c4be36a815af293e0f2e4bb7eea09b7b5735ed9a05d6fe2cb091401d9d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 47,
+      "end_line": 47
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "1. Functional Guidelines",
+      "1.3 Change of authorization method should be authorized using the current authorization method"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00019",
+    "normalized_text": "### 1.3 Change of authorization method should be authorized using the current authorization method",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00020",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 20,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Some applications allow a user to chose how their transactions will be authorized. In such cases, the developer should make sure that the application can confirm the user's method of authorization to prevent any malware from changing the user's authorization method to the most vulnerable method. Additionally, the application should inform the user about any potential dangers associated with their authorization method.",
+    "text_hash": "c1ca47d4af1397e248b651531b3049561ea9bfa70a0723d8cba975ec101b3dd3",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 49,
+      "end_line": 49
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "1. Functional Guidelines",
+      "1.3 Change of authorization method should be authorized using the current authorization method"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00020",
+    "normalized_text": "Some applications allow a user to chose how their transactions will be authorized. In such cases, the developer should make sure that the application can confirm the user's method of authorization to prevent any malware from changing the user's authorization method to the most vulnerable method. Additionally, the application should inform the user about any potential dangers associated with their authorization method.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00021",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 21,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### 1.4 Users should be able to easily distinguish the authentication process from the transaction authorization process",
+    "text_hash": "24ad0d090a50314dd76217081ba0ba044288fa16768e91b75c768679e15cd392",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 51,
+      "end_line": 51
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "1. Functional Guidelines",
+      "1.4 Users should be able to easily distinguish the authentication process from the transaction authorization process"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00021",
+    "normalized_text": "### 1.4 Users should be able to easily distinguish the authentication process from the transaction authorization process",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00022",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 22,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Since developers need to prevent users from authorizing fraudulent operations, their applications should not require a user to perform the same actions for authentication and transaction authorization. Consider the following example:",
+    "text_hash": "928776d3fe4734ce0c00b0f2c2766e9446e7aae0a229b8c75659c484e6995e74",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 53,
+      "end_line": 53
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "1. Functional Guidelines",
+      "1.4 Users should be able to easily distinguish the authentication process from the transaction authorization process"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00022",
+    "normalized_text": "Since developers need to prevent users from authorizing fraudulent operations, their applications should not require a user to perform the same actions for authentication and transaction authorization. Consider the following example:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00023",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 23,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "1. An application is using the same method for user authentication and for transaction authorization {i.e. with an OTP token).\n2. Malware could use a man-in-the-middle attack to present a user with a false error message when they submit credentials to the application, which could trick the user into repeating the authentication procedure. The first credential will be used by the malware for authentication and the second credential would be used to authorize a fraudulent transaction. Even challenge-response schemes could be abused using this scenario, since malware can present a challenge taken from a fraudulent transaction and trick the user to provide a response. Such an attack scenario is used widely in [malware attacks against electronic banking](https://web.archive.org/web/20241210210645/https://securityintelligence.com/back-basics-malware-authors-downgrade-tactics-stay-radar/).\n",
+    "text_hash": "3e457edf051c894bf8834c3fa16ab005945cf761c3d83503d99efb977c4ec69b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 55,
+      "end_line": 57
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "1. Functional Guidelines",
+      "1.4 Users should be able to easily distinguish the authentication process from the transaction authorization process"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00023",
+    "normalized_text": "1. An application is using the same method for user authentication and for transaction authorization {i.e. with an OTP token).\n2. Malware could use a man-in-the-middle attack to present a user with a false error message when they submit credentials to the application, which could trick the user into repeating the authentication procedure. The first credential will be used by the malware for authentication and the second credential would be used to authorize a fraudulent transaction. Even challenge-response schemes could be abused using this scenario, since malware can present a challenge taken from a fraudulent transaction and trick the user to provide a response. Such an attack scenario is used widely in [malware attacks against electronic banking](https://web.archive.org/web/20241210210645/https://securityintelligence.com/back-basics-malware-authors-downgrade-tactics-stay-radar/).",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00024",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 24,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "To stop such attacks, developers can make sure that authentication actions are different than transaction authorizations by:",
+    "text_hash": "87564b6ff597f8f04a7ed16e2dec15904b95c365c129cc4acd6be097647fb320",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 58,
+      "end_line": 58
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "1. Functional Guidelines",
+      "1.4 Users should be able to easily distinguish the authentication process from the transaction authorization process"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00024",
+    "normalized_text": "To stop such attacks, developers can make sure that authentication actions are different than transaction authorizations by:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00025",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 25,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- Using different methods to authenticate and to authorize\n- Employing different actions in an external security component (i.e using a different mode of operation in a CAP reader)\n- Presenting the user with a clear message about what they are \"signing\" (What You See Is What You Sign Principle)\n",
+    "text_hash": "750c1d2a1135de1749737797084598aac5003fc78094a73e8f7e140300868e55",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 60,
+      "end_line": 63
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "1. Functional Guidelines",
+      "1.4 Users should be able to easily distinguish the authentication process from the transaction authorization process"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00025",
+    "normalized_text": "- Using different methods to authenticate and to authorize\n- Employing different actions in an external security component (i.e using a different mode of operation in a CAP reader)\n- Presenting the user with a clear message about what they are \"signing\" (What You See Is What You Sign Principle)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00026",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 26,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Social engineering methods [can be used despite authentication and operation authorization methods](https://web.archive.org/web/20250206121430/https://securityintelligence.com/tatanga-attack-exposes-chiptan-weaknesses/) but the application shouldn't make it easier for such attack scenarios.",
+    "text_hash": "1cc2b59090fbd93dd20bfa6ccd3945fabcd6f95308f9e527af5d112db53da928",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 64,
+      "end_line": 64
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "1. Functional Guidelines",
+      "1.4 Users should be able to easily distinguish the authentication process from the transaction authorization process"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00026",
+    "normalized_text": "Social engineering methods [can be used despite authentication and operation authorization methods](https://web.archive.org/web/20250206121430/https://securityintelligence.com/tatanga-attack-exposes-chiptan-weaknesses/) but the application shouldn't make it easier for such attack scenarios.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00027",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 27,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### 1.5 Each transaction should be authorized using unique authorization credentials",
+    "text_hash": "ef83b8ff3246aca83d374330c84dc1fccdaac38d4d8c178cb573ea07533f0df2",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 66,
+      "end_line": 66
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "1. Functional Guidelines",
+      "1.5 Each transaction should be authorized using unique authorization credentials"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00027",
+    "normalized_text": "### 1.5 Each transaction should be authorized using unique authorization credentials",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00028",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 28,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "If applications only ask for transaction authorization credentials once (such as a static password, code sent through SMS, or a token response), the user could authorize any transaction during the entire session or reuse the same credentials when they need to authorize a transaction. In this scenario, attackers can employ malware to sniff credentials and use them to authorize any transaction without the user's knowledge.",
+    "text_hash": "cbc7f2528873acb3042398592527b16b7b9db1fc2ded2535504655b0d51f8ca5",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 68,
+      "end_line": 68
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "1. Functional Guidelines",
+      "1.5 Each transaction should be authorized using unique authorization credentials"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00028",
+    "normalized_text": "If applications only ask for transaction authorization credentials once (such as a static password, code sent through SMS, or a token response), the user could authorize any transaction during the entire session or reuse the same credentials when they need to authorize a transaction. In this scenario, attackers can employ malware to sniff credentials and use them to authorize any transaction without the user's knowledge.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00029",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 29,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Expiration (Section 2.9) and per-operation uniqueness (Section 2.10) do not prevent replay of the same transaction. Accept each authorization credential only once, as [NIST SP 800-63B requires for one-time passwords](https://pages.nist.gov/800-63-4/sp800-63b/authenticators/#single-factor-otp-verifiers). Before execution, atomically check that the credential is unused and mark it used, using state shared by all accepting servers.",
+    "text_hash": "9a2938a607aa0b4b0e368977d75df1c090d1845170ae211b671d0057e487d20f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 70,
+      "end_line": 70
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "1. Functional Guidelines",
+      "1.5 Each transaction should be authorized using unique authorization credentials"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00029",
+    "normalized_text": "Expiration (Section 2.9) and per-operation uniqueness (Section 2.10) do not prevent replay of the same transaction. Accept each authorization credential only once, as [NIST SP 800-63B requires for one-time passwords](https://pages.nist.gov/800-63-4/sp800-63b/authenticators/#single-factor-otp-verifiers). Before execution, atomically check that the credential is unused and mark it used, using state shared by all accepting servers.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00030",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 30,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## 2. Non-functional guidelines",
+    "text_hash": "0466ebe0a6d75bec04239db5f779c8f526d9f5b647c8291909a52d55878644a8",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 72,
+      "end_line": 72
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "2. Non-functional guidelines"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00030",
+    "normalized_text": "## 2. Non-functional guidelines",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00031",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 31,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### 2.1 Authorization should be performed and enforced server-side",
+    "text_hash": "e3e325aad357920f0eb2b8ffac8d9f76b34ae808cfabc1e213944329183de10d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 74,
+      "end_line": 74
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "2. Non-functional guidelines",
+      "2.1 Authorization should be performed and enforced server-side"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00031",
+    "normalized_text": "### 2.1 Authorization should be performed and enforced server-side",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00032",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 32,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Like [all other security controls](https://cwe.mitre.org/data/definitions/602.html), transaction authorizations should be enforced on the server side. It should **never** be possible to influence an authorization's result by altering the data that flows from a client to a server by:",
+    "text_hash": "222fdea06d6ccf379941f0a396e6cdfe8375c63e61691aa2a5309d2ca585e7e5",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 76,
+      "end_line": 76
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "2. Non-functional guidelines",
+      "2.1 Authorization should be performed and enforced server-side"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00032",
+    "normalized_text": "Like [all other security controls](https://cwe.mitre.org/data/definitions/602.html), transaction authorizations should be enforced on the server side. It should **never** be possible to influence an authorization's result by altering the data that flows from a client to a server by:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00033",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 33,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- Tampering with parameters that contain transaction data\n- Adding/removing parameters which will disable authorization check\n- Causing an error\n",
+    "text_hash": "01f8bf35a332636386edebbdaccf7ea24f3465cd2ae16f5d5cad7823da814e18",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 78,
+      "end_line": 81
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "2. Non-functional guidelines",
+      "2.1 Authorization should be performed and enforced server-side"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00033",
+    "normalized_text": "- Tampering with parameters that contain transaction data\n- Adding/removing parameters which will disable authorization check\n- Causing an error",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00034",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 34,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "To ensure that data is only managed on the server side, security programming best practices should be applied, such as:",
+    "text_hash": "58a077c9286f22e9a7fa82d182441c2454f3445383b9344370a55935b812da05",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 82,
+      "end_line": 82
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "2. Non-functional guidelines",
+      "2.1 Authorization should be performed and enforced server-side"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00034",
+    "normalized_text": "To ensure that data is only managed on the server side, security programming best practices should be applied, such as:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00035",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 35,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- [Default deny](https://wiki.owasp.org/index.php/Positive_security_model)\n- Avoiding debugging functionality in production code\n",
+    "text_hash": "e3cfffe6bda30ea834540e185a786bf5873f01c99e206db60f41bbfc280e35ba",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 84,
+      "end_line": 86
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "2. Non-functional guidelines",
+      "2.1 Authorization should be performed and enforced server-side"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00035",
+    "normalized_text": "- [Default deny](https://wiki.owasp.org/index.php/Positive_security_model)\n- Avoiding debugging functionality in production code",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00036",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 36,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Other safeguards should be considered to prevent tampering, such as encrypting the data for confidentiality and integrity, then decrypting and verifying the data on the server side.",
+    "text_hash": "9ce22912d85f35b4c8d3280d9400b1257858b6999542d9e4eb5ef07d31c13b8e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 87,
+      "end_line": 87
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "2. Non-functional guidelines",
+      "2.1 Authorization should be performed and enforced server-side"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00036",
+    "normalized_text": "Other safeguards should be considered to prevent tampering, such as encrypting the data for confidentiality and integrity, then decrypting and verifying the data on the server side.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00037",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 37,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### 2.2 Authorization method should be enforced server-side",
+    "text_hash": "68284ec07fc613ba350ab070454b623c4f28653ddec66f0cd6a649884661d4b5",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 89,
+      "end_line": 89
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "2. Non-functional guidelines",
+      "2.2 Authorization method should be enforced server-side"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00037",
+    "normalized_text": "### 2.2 Authorization method should be enforced server-side",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00038",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 38,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "If multiple transaction authorization methods are made available to the user, the server side must make sure that the transaction occurs with the user's chosen authorization method or the authorization method enforced by application policies. Otherwise, malware could downgrade an authorization method to even the least secure authorization method. Developers must make it impossible for attackers to change a chosen authorization method by manipulating the parameters provided from the client.",
+    "text_hash": "48bb87c737b23437fbf9014d321970ad232cd6f66ded76d6b56377e17ff77ffc",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 91,
+      "end_line": 91
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "2. Non-functional guidelines",
+      "2.2 Authorization method should be enforced server-side"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00038",
+    "normalized_text": "If multiple transaction authorization methods are made available to the user, the server side must make sure that the transaction occurs with the user's chosen authorization method or the authorization method enforced by application policies. Otherwise, malware could downgrade an authorization method to even the least secure authorization method. Developers must make it impossible for attackers to change a chosen authorization method by manipulating the parameters provided from the client.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00039",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 39,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Developers should be especially careful if they are asked to add a new authorization method that enhances security. Unfortunately, developers often decide to build a new authorization method on top of an old codebase. This case is insecure and an attacker could manipulate a client to successfully authorize a transaction by sending parameters using the old method, despite the fact that the application has already switched to a new method.",
+    "text_hash": "91529123131c35724a47d38e86e091e49b7248502316f52288aa8f50e02ee3cd",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 93,
+      "end_line": 93
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "2. Non-functional guidelines",
+      "2.2 Authorization method should be enforced server-side"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00039",
+    "normalized_text": "Developers should be especially careful if they are asked to add a new authorization method that enhances security. Unfortunately, developers often decide to build a new authorization method on top of an old codebase. This case is insecure and an attacker could manipulate a client to successfully authorize a transaction by sending parameters using the old method, despite the fact that the application has already switched to a new method.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00040",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 40,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### 2.3 Transaction verification data should be generated server-side",
+    "text_hash": "12f1d7075c1a50878e6c36f42b1c159310e011d3d4502c1108ccc58a1e155ede",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 95,
+      "end_line": 95
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "2. Non-functional guidelines",
+      "2.3 Transaction verification data should be generated server-side"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00040",
+    "normalized_text": "### 2.3 Transaction verification data should be generated server-side",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00041",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 41,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "If developers decide to transmit significant transaction data programmatically to an authorization component, they should take extra care to prevent any client modifications to the transaction data at authorization. **All significant transaction data must be verified by the user, generated and stored on a server, then passed to an authorization component without any possibility of tampering by the client.**",
+    "text_hash": "3333196e46c9212d312898c589782a533bf557ff9f8d7ad2bcce638beab8236d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 97,
+      "end_line": 97
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "2. Non-functional guidelines",
+      "2.3 Transaction verification data should be generated server-side"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00041",
+    "normalized_text": "If developers decide to transmit significant transaction data programmatically to an authorization component, they should take extra care to prevent any client modifications to the transaction data at authorization. **All significant transaction data must be verified by the user, generated and stored on a server, then passed to an authorization component without any possibility of tampering by the client.**",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00042",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 42,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "And when developers collect significant transaction data on the client side and pass it on to the server, malware could manipulate the data and show faked transaction data in an authorization component.",
+    "text_hash": "bf326452939e7fca219e1ada53762e9d77d93b6fbed73222d35decdad237120e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 99,
+      "end_line": 99
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "2. Non-functional guidelines",
+      "2.3 Transaction verification data should be generated server-side"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00042",
+    "normalized_text": "And when developers collect significant transaction data on the client side and pass it on to the server, malware could manipulate the data and show faked transaction data in an authorization component.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00043",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 43,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### 2.4 Application should prevent authorization credentials brute-forcing",
+    "text_hash": "081e04386a351bfda99d93c6cb3dd048349242d9f2d14915f0cdddc9c0f82ae5",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 101,
+      "end_line": 101
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "2. Non-functional guidelines",
+      "2.4 Application should prevent authorization credentials brute-forcing"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00043",
+    "normalized_text": "### 2.4 Application should prevent authorization credentials brute-forcing",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00044",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 44,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**Developers must make sure that their application can't allow attackers to brute-force a transaction at the point where transaction authorization credentials are submitted to the server for verification. After a set number of failed authorization attempts, the entire transaction authorization process should be restarted.** Also, there are other methods to prevent brute-forcing and stop other automation-related techniques, see [OWASP Authentication Cheat Sheet](Authentication_Cheat_Sheet.md#protect-against-automated-attacks).",
+    "text_hash": "5cd1ee86968c0f48efebf0b3ccc78072ce568216ed4e064704e3b818a0b64086",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 103,
+      "end_line": 103
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "2. Non-functional guidelines",
+      "2.4 Application should prevent authorization credentials brute-forcing"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00044",
+    "normalized_text": "**Developers must make sure that their application can't allow attackers to brute-force a transaction at the point where transaction authorization credentials are submitted to the server for verification. After a set number of failed authorization attempts, the entire transaction authorization process should be restarted.** Also, there are other methods to prevent brute-forcing and stop other automation-related techniques, see [OWASP Authentication Cheat Sheet](Authentication_Cheat_Sheet.md#protect-against-automated-attacks).",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00045",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 45,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### 2.5 Application should control which transaction state transitions are allowed",
+    "text_hash": "317d04423a90f743308c7660486fd993108dcaf159d2b1d59627b458fcc25e7a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 105,
+      "end_line": 105
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "2. Non-functional guidelines",
+      "2.5 Application should control which transaction state transitions are allowed"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00045",
+    "normalized_text": "### 2.5 Application should control which transaction state transitions are allowed",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00046",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 46,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Transaction authorization is usually performed in multiple steps, e.g.:",
+    "text_hash": "4c2f96b08f80a774e4cfa1b6c3628be7c8aa0ec654c847ff698eef839ca7e676",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 107,
+      "end_line": 107
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "2. Non-functional guidelines",
+      "2.5 Application should control which transaction state transitions are allowed"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00046",
+    "normalized_text": "Transaction authorization is usually performed in multiple steps, e.g.:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00047",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 47,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "1. The user enters the transaction data.\n2. The user requests authorization from the application.\n3. The application initializes an authorization mechanism.\n4. The user verifies/confirms the transaction data.\n5. The user responds with the authorization credentials.\n6. The application validates authorization and executes a transaction.\n",
+    "text_hash": "3ebb2af41ab68902a63a4c5415c09c7dacb3ce42c3d87e2aab6ae4b704e6841e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 109,
+      "end_line": 115
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "2. Non-functional guidelines",
+      "2.5 Application should control which transaction state transitions are allowed"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00047",
+    "normalized_text": "1. The user enters the transaction data.\n2. The user requests authorization from the application.\n3. The application initializes an authorization mechanism.\n4. The user verifies/confirms the transaction data.\n5. The user responds with the authorization credentials.\n6. The application validates authorization and executes a transaction.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00048",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 48,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**The developers must ensure that the business logic flow for a transaction authorization occurs in sequential order so users (or attackers) cannot perform the steps out of order or even skip any of the steps.** This should protect against attack techniques such as:",
+    "text_hash": "d8d3a79c4da43e232abdc315cae1d021f64babf401b62f9e207971bd6c06147b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 116,
+      "end_line": 116
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "2. Non-functional guidelines",
+      "2.5 Application should control which transaction state transitions are allowed"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00048",
+    "normalized_text": "**The developers must ensure that the business logic flow for a transaction authorization occurs in sequential order so users (or attackers) cannot perform the steps out of order or even skip any of the steps.** This should protect against attack techniques such as:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00049",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 49,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- Overwriting transaction data before user will enter the authorization credentials\n- Skipping transaction authorization\n",
+    "text_hash": "49be3ff1026b9ec4529c9d2277394590ceca85e65d8174021a90f21f1e584e35",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 118,
+      "end_line": 120
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "2. Non-functional guidelines",
+      "2.5 Application should control which transaction state transitions are allowed"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00049",
+    "normalized_text": "- Overwriting transaction data before user will enter the authorization credentials\n- Skipping transaction authorization",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00050",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 50,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": " See [OWASP ASVS](https://owasp.org/www-project-application-security-verification-standard/) requirement **15.1**).",
+    "text_hash": "6540271f47ffb780f3bd1026267325c371770b0122ddc05dc4bc96ac7b20d83a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 121,
+      "end_line": 121
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "2. Non-functional guidelines",
+      "2.5 Application should control which transaction state transitions are allowed"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00050",
+    "normalized_text": " See [OWASP ASVS](https://owasp.org/www-project-application-security-verification-standard/) requirement **15.1**).",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00051",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 51,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### 2.6 Transaction data should be protected against modification",
+    "text_hash": "df13428e1bfca0ad695f1dfe31871dc354a3ba9d39970601a04bbe3fd60b1083",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 123,
+      "end_line": 123
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "2. Non-functional guidelines",
+      "2.6 Transaction data should be protected against modification"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00051",
+    "normalized_text": "### 2.6 Transaction data should be protected against modification",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00052",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 52,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Developers must not allow attackers to modify transaction data when the user enters the data for the first time. Poor implementations may allow malware to:",
+    "text_hash": "9b8e4b0b3d3515d09190c433bacf10ff784e972d08758d4099ca299247ea9e61",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 125,
+      "end_line": 125
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "2. Non-functional guidelines",
+      "2.6 Transaction data should be protected against modification"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00052",
+    "normalized_text": "Developers must not allow attackers to modify transaction data when the user enters the data for the first time. Poor implementations may allow malware to:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00053",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 53,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "1. Replay the first step in Section 2.5 (sending transaction data) in the background before the user enters authorization credentials and then overwrite transaction details with a fraudulent transaction.\n2. Create and add new transaction data parameters to a HTTP request that is authorizing the transaction. In such a case, a transaction authorization process that is poorly implemented might authorize the initial transaction and then execute a fraudulent transaction (specific example of [Time of Check to Time of Use vulnerability](https://cwe.mitre.org/data/definitions/367.html)).\n",
+    "text_hash": "f9fdecd556b9e4217fb25957425531b25026fe47c37f81d5743c4ef07000763d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 127,
+      "end_line": 129
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "2. Non-functional guidelines",
+      "2.6 Transaction data should be protected against modification"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00053",
+    "normalized_text": "1. Replay the first step in Section 2.5 (sending transaction data) in the background before the user enters authorization credentials and then overwrite transaction details with a fraudulent transaction.\n2. Create and add new transaction data parameters to a HTTP request that is authorizing the transaction. In such a case, a transaction authorization process that is poorly implemented might authorize the initial transaction and then execute a fraudulent transaction (specific example of [Time of Check to Time of Use vulnerability](https://cwe.mitre.org/data/definitions/367.html)).",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00054",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 54,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "There are multiple methods that can prevent transaction data from being modified during authorization:",
+    "text_hash": "7256be1020e9fa969161189071dd66329d16dbcf37ba74487d592f58bd60da49",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 130,
+      "end_line": 130
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "2. Non-functional guidelines",
+      "2.6 Transaction data should be protected against modification"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00054",
+    "normalized_text": "There are multiple methods that can prevent transaction data from being modified during authorization:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00055",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 55,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "1. If transaction data is modified, the code could invalidate any previously entered authorization data (e.g. Generated OTP) and the challenge.\n2. Modifications to transaction data could trigger a reset of the authorization process.\n3. Any attempt to modify transaction data after user entry is an attack on the system and it should be logged, monitored, and carefully investigated.\n",
+    "text_hash": "5081a1e798d3f769cc90ffd79d76554c3f3c636a2a81b9ed711202c12972783d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 132,
+      "end_line": 135
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "2. Non-functional guidelines",
+      "2.6 Transaction data should be protected against modification"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00055",
+    "normalized_text": "1. If transaction data is modified, the code could invalidate any previously entered authorization data (e.g. Generated OTP) and the challenge.\n2. Modifications to transaction data could trigger a reset of the authorization process.\n3. Any attempt to modify transaction data after user entry is an attack on the system and it should be logged, monitored, and carefully investigated.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00056",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 56,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### 2.7 Confidentiality of transaction data should be protected during all client-server communications",
+    "text_hash": "b865174138dedbd0518cf91dfc996f1ffe6a26434449aabbd94314cbe8596ec9",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 136,
+      "end_line": 136
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "2. Non-functional guidelines",
+      "2.7 Confidentiality of transaction data should be protected during all client-server communications"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00056",
+    "normalized_text": "### 2.7 Confidentiality of transaction data should be protected during all client-server communications",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00057",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 57,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The transaction authorization process should protect the privacy of transaction data that the user will be authorizing (i.e. at Section 2.5, steps 2 and 4).",
+    "text_hash": "3dde6c1b83b4a225d8cbdc4b455ddef72f402a542febf22f944d941fc0bb27f5",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 138,
+      "end_line": 138
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "2. Non-functional guidelines",
+      "2.7 Confidentiality of transaction data should be protected during all client-server communications"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00057",
+    "normalized_text": "The transaction authorization process should protect the privacy of transaction data that the user will be authorizing (i.e. at Section 2.5, steps 2 and 4).",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00058",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 58,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### 2.8 System should check each transaction execution and make sure it has been properly authorized",
+    "text_hash": "a9fca83091c8a2edf0bdfa060a6fd608086eea1920218c2fcf96ef5890dbb922",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 140,
+      "end_line": 140
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "2. Non-functional guidelines",
+      "2.8 System should check each transaction execution and make sure it has been properly authorized"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00058",
+    "normalized_text": "### 2.8 System should check each transaction execution and make sure it has been properly authorized",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00059",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 59,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The final result of the transaction entry and authorization process (as described in Section 2.5) is also called the *transaction execution*. There should be a final control gate before transaction execution which verifies whether the transaction was properly authorized by the user. This control should be tied to execution and prevent attacks such as:",
+    "text_hash": "64a18ca7da0e0715349d04837586f00a94912db7acba1b136fe887129422c29d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 142,
+      "end_line": 142
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "2. Non-functional guidelines",
+      "2.8 System should check each transaction execution and make sure it has been properly authorized"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00059",
+    "normalized_text": "The final result of the transaction entry and authorization process (as described in Section 2.5) is also called the *transaction execution*. There should be a final control gate before transaction execution which verifies whether the transaction was properly authorized by the user. This control should be tied to execution and prevent attacks such as:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00060",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 60,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- Time of Check to Time of Use (TOCTOU) – example in Section 2.6\n- Skipping authorization check in the transaction entry process (see. Section 2.5)\n",
+    "text_hash": "b14362617fc0dcffb00e46ef305cd17f2c9279af32c93c83a00ebfd393c3ec39",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 144,
+      "end_line": 146
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "2. Non-functional guidelines",
+      "2.8 System should check each transaction execution and make sure it has been properly authorized"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00060",
+    "normalized_text": "- Time of Check to Time of Use (TOCTOU) – example in Section 2.6\n- Skipping authorization check in the transaction entry process (see. Section 2.5)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00061",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 61,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### 2.9 Authorization credentials should only be valid during a limited time period",
+    "text_hash": "33c77da686b2d52a20d30c54a72800ef1492cbdfd616df79880ebf1e86f55a75",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 147,
+      "end_line": 147
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "2. Non-functional guidelines",
+      "2.9 Authorization credentials should only be valid during a limited time period"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00061",
+    "normalized_text": "### 2.9 Authorization credentials should only be valid during a limited time period",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00062",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 62,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "In some attacks, a user's authorization credentials are passed by malware to a command-and-control server and then are used from an attacker-controlled machine. Often, this process is often performed manually by an attacker. To make sure that these are attacks are difficult, the server should only allow transaction authorization to occur in a limited time window which should occur between the generation of a challenge (or OTP) and the completion of an authorization. Additionally, such safeguards will also help stop resource exhaustion attacks. This time period should be carefully selected so it will not disrupt normal user behavior.",
+    "text_hash": "339e9665fc3f729aeb31e53046b0d55199f049aa7cef64a96727fa339aa42d05",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 149,
+      "end_line": 149
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "2. Non-functional guidelines",
+      "2.9 Authorization credentials should only be valid during a limited time period"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00062",
+    "normalized_text": "In some attacks, a user's authorization credentials are passed by malware to a command-and-control server and then are used from an attacker-controlled machine. Often, this process is often performed manually by an attacker. To make sure that these are attacks are difficult, the server should only allow transaction authorization to occur in a limited time window which should occur between the generation of a challenge (or OTP) and the completion of an authorization. Additionally, such safeguards will also help stop resource exhaustion attacks. This time period should be carefully selected so it will not disrupt normal user behavior.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00063",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 63,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### 2.10 Authorization credentials should be unique for every operation",
+    "text_hash": "5c91583e908223fecfa8cdc12423c9c329abb1b83f1f4596dff29555cc9a5853",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 151,
+      "end_line": 151
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "2. Non-functional guidelines",
+      "2.10 Authorization credentials should be unique for every operation"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00063",
+    "normalized_text": "### 2.10 Authorization credentials should be unique for every operation",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00064",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 64,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "To prevent multiple replay attacks, each set of authorization credentials should be unique for every operation. These credentials can be generated with different methods depending on the mechanism. For example: developers can use a timestamp, a sequence number, or a random value in signed transaction data or as a part of a challenge.",
+    "text_hash": "e0e8a1099daf7417f654bb60d433dcc3eb1fbf07c30be27097d0e9d400566c55",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 153,
+      "end_line": 153
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "2. Non-functional guidelines",
+      "2.10 Authorization credentials should be unique for every operation"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00064",
+    "normalized_text": "To prevent multiple replay attacks, each set of authorization credentials should be unique for every operation. These credentials can be generated with different methods depending on the mechanism. For example: developers can use a timestamp, a sequence number, or a random value in signed transaction data or as a part of a challenge.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00065",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 65,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Remarks",
+    "text_hash": "933cc5b8f91d1d1f820979a8c8f8f74505a02131efdebef9adcdf963a95bb04f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 155,
+      "end_line": 155
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "Remarks"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00065",
+    "normalized_text": "## Remarks",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00066",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 66,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "For the original implementation recommendations, see [Wojciech Dworakowski's AppSec EU 2015 presentation](https://www.slideshare.net/slideshow/ebanking-transaction-authorization-appsec-eu-2015-amsterdam/48703604). For banking threat-modeling context, see [Morana and Ucedavelez's AppSec EU 2011 presentation](https://www.slideshare.net/slideshow/owasp-app-seceu2011version1/8333111).",
+    "text_hash": "66f22b7e14f19bb27c49f43b92f5b2d853079fe24aa61473f09037ee522aa00f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 157,
+      "end_line": 157
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "Remarks"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00066",
+    "normalized_text": "For the original implementation recommendations, see [Wojciech Dworakowski's AppSec EU 2015 presentation](https://www.slideshare.net/slideshow/ebanking-transaction-authorization-appsec-eu-2015-amsterdam/48703604). For banking threat-modeling context, see [Morana and Ucedavelez's AppSec EU 2011 presentation](https://www.slideshare.net/slideshow/owasp-app-seceu2011version1/8333111).",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00067",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 67,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Here are some other issues that should be considered while implementing transaction authorizations, but are beyond the scope of this cheat sheet:",
+    "text_hash": "95ad9e18ed8147d68f051bd17e460a26140235bcb0d4b8424c3f34f73c4fab8c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 159,
+      "end_line": 159
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "Remarks"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00067",
+    "normalized_text": "Here are some other issues that should be considered while implementing transaction authorizations, but are beyond the scope of this cheat sheet:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00068",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 68,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- Which transactions should be authorized? All transactions or only some of them? Each application is different and an application owner should decide if all transactions should be authorized or only some of them. The developers should consider risk analysis, risk exposition of given application, and other safeguards implemented in an application.\n- **We recommend the use of cryptographic operations to protect transactions and to ensure integrity, confidentiality and non-repudiation.**\n- **It is critically important to provision & protect the device signing keys during device \"pairing\" is as is the actual signing protocol itself. Malware may attempt to inject/replace or steal the signing keys.**\n- User awareness: For example in transaction authorization methods, when a user types in significant transaction data to an authorization component (e.g. an external dedicated device or a mobile application), users should be trained to rewrite transaction data from a trusted source and not from a computer screen.\n- **There are some anti-malware solutions that protect against such threats but these solutions [cannot be 100% effective](http://www.securing.pl/en/script-based-malware-detection-in-online-banking-security-overview/index.html) and should be used only as an additional layer of protection.**\n- Protecting your signing keys with a second factor such as passwords, biometrics, etc. or leveraging secure elements (TEE, TPM, Smart card).\n",
+    "text_hash": "f5e4952c4112163eb5b598591b09ed287b8558e4baf9fa3f8b1c8d01615383b8",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 161,
+      "end_line": 167
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "Remarks"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00068",
+    "normalized_text": "- Which transactions should be authorized? All transactions or only some of them? Each application is different and an application owner should decide if all transactions should be authorized or only some of them. The developers should consider risk analysis, risk exposition of given application, and other safeguards implemented in an application.\n- **We recommend the use of cryptographic operations to protect transactions and to ensure integrity, confidentiality and non-repudiation.**\n- **It is critically important to provision & protect the device signing keys during device \"pairing\" is as is the actual signing protocol itself. Malware may attempt to inject/replace or steal the signing keys.**\n- User awareness: For example in transaction authorization methods, when a user types in significant transaction data to an authorization component (e.g. an external dedicated device or a mobile application), users should be trained to rewrite transaction data from a trusted source and not from a computer screen.\n- **There are some anti-malware solutions that protect against such threats but these solutions [cannot be 100% effective](http://www.securing.pl/en/script-based-malware-detection-in-online-banking-security-overview/index.html) and should be used only as an additional layer of protection.**\n- Protecting your signing keys with a second factor such as passwords, biometrics, etc. or leveraging secure elements (TEE, TPM, Smart card).",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00069",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 69,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## References",
+    "text_hash": "65b72d86eeeb214ab8ca5fd24cb7cd7773e58084e95b670040df03e21e8c6fa7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 168,
+      "end_line": 168
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "References"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00069",
+    "normalized_text": "## References",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_27d189554452_b00070",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "block_idx": 70,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- [Drimer, Murdoch and Anderson: Optimised to Fail — Card Readers for Online Banking](https://www.cl.cam.ac.uk/~sjm217/papers/fc09optimised.pdf)\n- [Peotta et al.: A Formal Classification of Internet Banking Attacks and Vulnerabilities](https://airccse.org/journal/jcsit/0211ijcsit13.pdf)\n- [Blom et al.: Designed to Fail — A USB-Connected Reader for Online Banking](https://www.cs.ru.nl/~rverdult/Designed_to_Fail_A_USB-Connected_Reader_for_Online_Banking-NORDSEC_2012.pdf)",
+    "text_hash": "9c6ff4589d4423e5d31ae65d51f8f0de0cade4ffd5ac082202447209cd38ae5a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 170,
+      "end_line": 172
+    },
+    "heading_path": [
+      "Transaction Authorization Cheat Sheet",
+      "References"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_27d189554452_b00070",
+    "normalized_text": "- [Drimer, Murdoch and Anderson: Optimised to Fail — Card Readers for Online Banking](https://www.cl.cam.ac.uk/~sjm217/papers/fc09optimised.pdf)\n- [Peotta et al.: A Formal Classification of Internet Banking Attacks and Vulnerabilities](https://airccse.org/journal/jcsit/0211ijcsit13.pdf)\n- [Blom et al.: Designed to Fail — A USB-Connected Reader for Online Banking](https://www.cs.ru.nl/~rverdult/Designed_to_Fail_A_USB-Connected_Reader_for_Online_Banking-NORDSEC_2012.pdf)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  }
+]

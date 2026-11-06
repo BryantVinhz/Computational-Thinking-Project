@@ -1,0 +1,1475 @@
+[
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00000",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 0,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "# Authorization Cheat Sheet",
+    "text_hash": "4f9d0e4975353ac025fa8b234f3de96b1012cdfe7718adf5c23c5ac4437f11e7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 1,
+      "end_line": 1
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet"
+    ],
+    "heading_level": 1,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00001",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 1,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Introduction",
+    "text_hash": "d753efbab681fa4da82470d9a83b1c202de58f92fd498e77a269c1163bc4714b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 3,
+      "end_line": 3
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00002",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 2,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Authorization may be defined as \"the process of verifying that a requested action or service is approved for a specific entity\" ([NIST](https://csrc.nist.gov/glossary/term/authorization)). Authorization is distinct from authentication which is the process of verifying an entity's identity. When designing and developing a software solution, it is important to keep these distinctions in mind. A user who has been authenticated (perhaps by providing a username and password) is often not authorized to access every resource and perform every action that is technically possible through a system. For example, a web app may have both regular users and admins, with the admins being able to perform actions the average user is not privileged to perform, even though they have been authenticated. Additionally, authentication is not always required for accessing resources; an unauthenticated user may be authorized to access certain public resources, such as an image or login page, or even an entire web app.",
+    "text_hash": "e476c61d807be4558ac8309af71a7d5cc91b523487e2aa0c5ee9bd6da06e5f23",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 5,
+      "end_line": 5
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00003",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 3,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The objective of this cheat sheet is to assist developers in implementing authorization logic that is robust, appropriate to the app's business context, maintainable, and scalable. The guidance provided in this cheat sheet should be applicable to all phases of the development lifecycle and flexible enough to meet the needs of diverse development environments.",
+    "text_hash": "418d73d67b07df5da0b500330d83db9531b253a007845274b04baa506d601afa",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 7,
+      "end_line": 7
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00004",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 4,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Flaws related to authorization logic are a notable concern for web apps. Broken Access Control was ranked as the most concerning web security vulnerability in [OWASP's 2021 Top 10](https://owasp.org/Top10/A01_2021-Broken_Access_Control/) and asserted to have a \"High\" likelihood of exploit by [MITRE's CWE program](https://cwe.mitre.org/data/definitions/285.html). Furthermore, according to [Veracode's State of Software Vol. 10](https://www.veracode.com/sites/default/files/pdf/resources/sossreports/state-of-software-security-volume-10-veracode-report.pdf), Access Control was among the more common of OWASP's Top 10 risks to be involved in exploits and security incidents despite being among the least prevalent of those examined.",
+    "text_hash": "62a0e97a9ecb6459c4c98b64b8185e5625a46100fe952af622e212fdf683730e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 9,
+      "end_line": 9
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00005",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 5,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The potential impact resulting from exploitation of authorization flaws is highly variable, both in form and severity. Attackers may be able to read, create, modify, or delete resources that were meant to be protected (thus jeopardizing their confidentiality, integrity, and/or availability); however, the actual impact of such actions is necessarily linked to the criticality and sensitivity of the compromised resources. Thus, the business cost of a successfully exploited authorization flaw can range from very low to extremely high.",
+    "text_hash": "55f4ba354c66ccf92300fea0f772e120a7b689dddab31648a5d66798d544aed2",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 11,
+      "end_line": 11
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00006",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 6,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Both entirely unauthenticated outsiders and authenticated (but not necessarily authorized) users can take advantage of authorization weaknesses.  Although honest mistakes or carelessness on the part of non-malicious entities may enable authorization bypasses, malicious intent is typically required for access control threats to be fully realized.  Horizontal privilege escalation (i.e. being able to access another user's resources) is an especially common weakness that an authenticated user may be able to take advantage of. Faults related to authorization control can allow malicious insiders and outsiders alike to view, modify, or delete sensitive resources of all forms (database records, static files, personally identifiable information (PII), etc.) or perform actions, such as creating a new account or initiating a costly order, that they should not be privileged to do. Furthermore, if logging related to access control is not properly set-up, such authorization violations may go undetected or at least remain unattributable to a particular individual or group.",
+    "text_hash": "9ff65219bd654f8a5a94e3fd95d71f7de4e397bd214baa56a30b6c4344d2a3cc",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 13,
+      "end_line": 13
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00007",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 7,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Recommendations",
+    "text_hash": "0e5e0ba9cdaf39663c664adfd33253d084a22101947d20a1ec025d62f268c1c8",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 15,
+      "end_line": 15
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet",
+      "Recommendations"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00008",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 8,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Enforce Least Privileges",
+    "text_hash": "9d7ff1d736e6e2c2c8bab24ce977ed723589eab34457d949213112c92bd96de8",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 17,
+      "end_line": 17
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet",
+      "Recommendations",
+      "Enforce Least Privileges"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00009",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 9,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "As a security concept, Least Privileges refers to the principle of assigning users only the minimum privileges necessary to complete their job. Although perhaps most commonly applied in system administration, this principle has relevance to the software developer as well. Least Privileges must be applied both horizontally and vertically. For example, even though both an accountant and sales representative may occupy the same level in an organization's hierarchy, both require access to different resources to perform their jobs. The accountant should likely not be granted access to a customer database and the sales representative should not be able to access payroll data. Similarly, the head of the sales department is likely to need more privileged access than their subordinates.",
+    "text_hash": "23e799d0903ea4790181857a678ef7c779bc4dd41ea80d9ba1341a4d45029c18",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 19,
+      "end_line": 19
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet",
+      "Recommendations",
+      "Enforce Least Privileges"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00010",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 10,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Failure to enforce least privileges in an application can jeopardize the confidentiality of sensitive resources. Mitigation strategies are applied primarily during the Architecture and Design phase (see [CWE-272](https://cwe.mitre.org/data/definitions/272.html)); however, the principle must be addressed throughout the SDLC.",
+    "text_hash": "b4905d2b9132fa35785fa0fcfdb6c27921559c011b4699a8714ddf8b94d86bd5",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 21,
+      "end_line": 21
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet",
+      "Recommendations",
+      "Enforce Least Privileges"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00011",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 11,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Consider the following points and best practices:",
+    "text_hash": "a7fa0dd86e1fe4e4e393f879187f0b16e048dea4222cd44e2cb47c7dcdfbbb3b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 23,
+      "end_line": 23
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet",
+      "Recommendations",
+      "Enforce Least Privileges"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00012",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 12,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- During the design phase, ensure trust boundaries are defined. Enumerate the types of users that will be accessing the system, the resources exposed and the operations (such as read, write, update, etc) that might be performed on those resources. For every combination of user type and resource, determine what operations, if any, the user (based on role and/or other attributes) must be able to perform on that resource. For an ABAC system ensure all categories of attributes are considered. For example, a Sales Representative may need to access a customer database from the internal network during working hours, but not from home at midnight.\n- Create tests that validate that the permissions mapped out in the design phase are being correctly enforced.\n- After the app has been deployed, periodically review permissions in the system for \"privilege creep\"; that is, ensure the privileges of users in the current environment do not exceed those defined during the design phase (plus or minus any formally approved changes).\n- Remember, it is easier to grant users additional permissions rather than to take away some they previously enjoyed. Careful planning and implementation of Least Privileges early in the SDLC can help reduce the risk of needing to revoke permissions that are later deemed overly broad.\n",
+    "text_hash": "f36d8c36d9d8832f008ae07ef05455d24520dd5f1cfeb3a133781c04044dbd87",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 25,
+      "end_line": 29
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet",
+      "Recommendations",
+      "Enforce Least Privileges"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00013",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 13,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Deny by Default",
+    "text_hash": "b799591564c560124245443efb5735b69eefb32c7e465cd263b2e22a3b23462c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 30,
+      "end_line": 30
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet",
+      "Recommendations",
+      "Deny by Default"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00014",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 14,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Even when no access control rules are explicitly matched, the application cannot remain neutral when an entity is requesting access to a particular resource. The application must always make a decision, whether implicitly or explicitly, to either deny or permit the requested access. Logic errors and other mistakes relating to access control may happen, especially when access requirements are complex; consequently, one should not rely entirely on explicitly defined rules for matching all possible requests. For security purposes an application should be configured to deny access by default.",
+    "text_hash": "f61bf279840ffcf187d67c86bc973bc140a46d7e149b081c489be25d6b4692df",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 32,
+      "end_line": 32
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet",
+      "Recommendations",
+      "Deny by Default"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00015",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 15,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Consider the following points and best practices:",
+    "text_hash": "a7fa0dd86e1fe4e4e393f879187f0b16e048dea4222cd44e2cb47c7dcdfbbb3b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 34,
+      "end_line": 34
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet",
+      "Recommendations",
+      "Deny by Default"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00016",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 16,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- Adopt a \"deny-by-default\" mentality both during initial development and whenever new functionality or resources are exposed by the app. One should be able to explicitly justify why a specific permission was granted to a particular user or group rather than assuming access to be the default position.\n- Although some frameworks or libraries may themselves adopt a deny-by-default strategy, explicit configuration should be preferred over relying on framework or library defaults. The logic and defaults of third-party code may evolve over time, without the developer's full knowledge or understanding of the change's implications for a particular project.\n  ",
+    "text_hash": "2ca6e3c663a60ba3bbd460e8017ca7732f71d154e2326438922795d080cd975f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 36,
+      "end_line": 38
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet",
+      "Recommendations",
+      "Deny by Default"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00017",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 17,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Validate the Permissions on Every Request",
+    "text_hash": "de925deb06549f7575851829658f52c4fbafa147c5b64c48bac2719ac3d217ab",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 39,
+      "end_line": 39
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet",
+      "Recommendations",
+      "Validate the Permissions on Every Request"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00018",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 18,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Permission should be validated correctly on every request, regardless of whether the request was initiated by an AJAX script, server-side, or any other source. The technology used to perform such checks should allow for global, application-wide configuration rather than needing to be applied individually to every method or class. Remember an attacker only needs to find one way in. Even if just a single access control check is \"missed\", the confidentiality and/or integrity of a resource can be jeopardized. Validating permissions correctly on just the majority of requests is insufficient. Specific technologies that can help developers in performing such consistent permission checks include the following:",
+    "text_hash": "1df39ce9fb3fb448d9bd9cdc9b22055ae183da63c7a50cc781cac9713202d7c8",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 41,
+      "end_line": 41
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet",
+      "Recommendations",
+      "Validate the Permissions on Every Request"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00019",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 19,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- [Java/Jakarta EE Filters](https://jakarta.ee/specifications/platform/8/apidocs/javax/servlet/Filter.html) including implementations in [Spring Security](https://docs.spring.io/spring-security/site/docs/5.4.0/reference/html5/#servlet-security-filters)\n- [Middleware in the Django Framework](https://docs.djangoproject.com/en/4.0/ref/middleware/)\n- [.NET Core Filters](https://docs.microsoft.com/en-us/aspnet/core/mvc/controllers/filters?view=aspnetcore-3.1#authorization-filters)\n- [Middleware in the Laravel PHP Framework](https://laravel.com/docs/8.x/middleware)\n",
+    "text_hash": "55840f9c20f32d4e212a5b6a73905d7e6378670f301f47f9332e549ee6e734b5",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 43,
+      "end_line": 47
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet",
+      "Recommendations",
+      "Validate the Permissions on Every Request"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00020",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 20,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Thoroughly Review the Authorization Logic of Chosen Tools and Technologies, Implementing Custom Logic if Necessary",
+    "text_hash": "6b7ebbf748603e793621744d61eb55f609b47c718f45d341e8fd6efd46e1a005",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 48,
+      "end_line": 48
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet",
+      "Recommendations",
+      "Thoroughly Review the Authorization Logic of Chosen Tools and Technologies, Implementing Custom Logic if Necessary"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00021",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 21,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Today's developers have access to vast amounts of libraries, platforms, and frameworks that allow them to incorporate robust, complex logic into their apps with minimal effort. However, these frameworks and libraries must not be viewed as a quick panacea for all development problems; developers have a duty to use such frameworks responsibly and wisely. Two general concerns relevant to framework/library selection as relevant to proper access control are misconfiguration/lack of configuration on the part of the developer and vulnerabilities within the components themselves (see [A6](https://owasp.org/www-project-top-ten/OWASP_Top_Ten_2017/Top_10-2017_A6-Security_Misconfiguration) and [A9](https://owasp.org/www-project-top-ten/2017/A9_2017-Using_Components_with_Known_Vulnerabilities.html) for general guidance on these topics).",
+    "text_hash": "05dee9df27e628d05e875b42ec49d6f38819d1bbb129bb343f2956c11ba8c87e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 50,
+      "end_line": 50
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet",
+      "Recommendations",
+      "Thoroughly Review the Authorization Logic of Chosen Tools and Technologies, Implementing Custom Logic if Necessary"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00022",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 22,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Even in an otherwise securely developed application, vulnerabilities in third-party components can allow an attacker to bypass normal authorization controls. Such concerns need not be restricted to unproven or poorly maintained projects, but affect even the most robust and popular libraries and frameworks. Writing complex, secure software is hard. Even the most competent developers, working on high-quality libraries and frameworks, will make mistakes. Assume any third-party component you incorporate into an application *could* be or become subject to an authorization vulnerability. Important considerations include:",
+    "text_hash": "2e2675bdf7a35b0c2c2898309596d8b59ae6507a47c700bf0fe456eae76a272f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 52,
+      "end_line": 52
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet",
+      "Recommendations",
+      "Thoroughly Review the Authorization Logic of Chosen Tools and Technologies, Implementing Custom Logic if Necessary"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00023",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 23,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- Create, maintain, and follow processes for detecting and responding to vulnerable components.\n- Incorporate tools such as [Dependency Check](https://owasp.org/www-project-dependency-check/) into the SDLC and consider subscribing to data feeds from vendors, [the NVD](https://nvd.nist.gov/vuln/data-feeds), or other relevant sources.\n- Implement defense in depth. Do not depend on any single framework, library, technology, or control to be the sole thing enforcing proper access control.\n",
+    "text_hash": "6fe18342bababd28155582e65e06f2574b18fbb4bd77e8a89eb4822a0526c467",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 54,
+      "end_line": 57
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet",
+      "Recommendations",
+      "Thoroughly Review the Authorization Logic of Chosen Tools and Technologies, Implementing Custom Logic if Necessary"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00024",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 24,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Misconfiguration (or complete lack of configuration) is another major area in which the components developers build upon can lead to broken authorization.  These components are typically intended to be relatively general purpose tools made to appeal to a wide audience. For all but the simplest use cases, these frameworks and libraries must be customized or supplemented with additional logic in order to meet the unique requirements of a particular app or environment. This consideration is especially important when security requirements, including authorization, are concerned. Notable configuration considerations for authorization include the following:",
+    "text_hash": "cf28f67e33d8ed9388a2e274e6d40871ff9a6b2808f57de2f1add7f7ddb052be",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 58,
+      "end_line": 58
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet",
+      "Recommendations",
+      "Thoroughly Review the Authorization Logic of Chosen Tools and Technologies, Implementing Custom Logic if Necessary"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00025",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 25,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- Take time to thoroughly understand any technology you build authorization logic upon. Analyze the technology's capabilities with an understanding that *the authorization logic provided by the component may be insufficient for your application's specific security requirements*. Relying on prebuilt logic may be convenient, but this does not mean it is sufficient. Understand that custom authorization logic may well be necessary to meet an app's security requirements.\n- Do not let the capabilities of any library, platform, or framework guide your authorization requirements. Rather, authorization requirements should be decided first and then the third-party components may be analyzed in light of these requirements.\n- Do not rely on default configurations.\n- Test configuration. Do not just assume any configuration performed on a third-party component will work exactly as intended in your particular environment. Documentation can be misunderstood, vague, outdated, or simply inaccurate.\n",
+    "text_hash": "12899426d03f7163a527aa70feeedbe4d6e90a6cfb16dffafd1657b4e8fb3694",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 60,
+      "end_line": 64
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet",
+      "Recommendations",
+      "Thoroughly Review the Authorization Logic of Chosen Tools and Technologies, Implementing Custom Logic if Necessary"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00026",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 26,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Prefer Attribute and Relationship Based Access Control over RBAC",
+    "text_hash": "158973b7701a38ca709378b64ebcdc7e26fd17c6fe70c98629b6eff0511457e5",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 65,
+      "end_line": 65
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet",
+      "Recommendations",
+      "Prefer Attribute and Relationship Based Access Control over RBAC"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00027",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 27,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "In software engineering, two basic forms of access control are widely utilized: Role-Based Access Control (RBAC) and Attribute-Based Access Control (ABAC). There is a third, more recent, model which has gained popularity: Relationship-Based Access Control (ReBAC). The decision between the models has significant implications for the entire SDLC and should be made as early as possible.",
+    "text_hash": "539e8cc4844b312af5fc6f023c2ba866453b267534a4e108495a0f810ddf8b3e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 67,
+      "end_line": 67
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet",
+      "Recommendations",
+      "Prefer Attribute and Relationship Based Access Control over RBAC"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00028",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 28,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- RBAC is a model of access control in which access is granted or denied based upon the roles assigned to a user. Permissions are not directly assigned to an entity; rather, permissions are associated with a role and the entity inherits the permissions of any roles assigned to it. Generally, the relationship between roles and users can be many-to-many, and roles may be hierarchical in nature.\n\n- ABAC may be defined as an access control model where \"subject requests to perform operations on objects are granted or denied based on assigned attributes of the subject, assigned attributes of the object, environment conditions, and a set of policies that are specified in terms of those attributes and conditions\" ([NIST SP 800-162](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-162.pdf), pg. 7). As defined in NIST SP 800-162, attributes are simply characteristics that can be represented as name-value pairs and assigned to a subject, object, or the environment. Job role, time of day, project name, MAC address, and creation date are but a very small sampling of possible attributes that highlight the flexibility of ABAC implementations.\n\n- ReBAC is an access control model that grants access based on the relationships between resources. For instance, allowing only the user who created a post to edit it. This is especially necessary in social network applications, like Twitter or Facebook, where users want to limit access to their data (tweets or posts) to people they choose (friends, family, followers).\n",
+    "text_hash": "7e5140dfc362f0bb5afedfabfd4a7af1cbfc82da314f68548e8b34bee29fa8a3",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 69,
+      "end_line": 74
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet",
+      "Recommendations",
+      "Prefer Attribute and Relationship Based Access Control over RBAC"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00029",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 29,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Although RBAC has a long history and remains popular among software developers today, ABAC and ReBAC should typically be preferred for application development. Their advantages over RBAC include:",
+    "text_hash": "eb7f4d3cc5454e9394ce955d715ce05ab6012eb40a43920d3e8519e53c19fb98",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 75,
+      "end_line": 75
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet",
+      "Recommendations",
+      "Prefer Attribute and Relationship Based Access Control over RBAC"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00030",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 30,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- **Support fine-grained, complex Boolean logic**. In RBAC, access decisions are made on the presence or absence of roles; that is, the main characteristic of a requesting entity considered is the role(s) assigned to it. Such simplistic logic does a poor job of supporting object-level or horizontal access control decisions and those that require multiple factors.\n\n    - ABAC greatly expands both the number and type of characteristics that can be considered. In ABAC, a \"role\" or job function can certainly be one attribute assigned to a subject, but it need not be considered in isolation (or at all if this characteristic is not relevant to the particular access requested). Furthermore, ABAC can incorporate environmental and other dynamic attributes, such as time of day, type of device used, and geographic location. Denying access to a sensitive resource outside of normal business hours or if a user has not recently completed mandatory training are just a couple of examples where ABAC could meet access control requirements that RBAC would struggle to fulfill. Thus, ABAC is more effective than RBAC in addressing the principle of least privileges.\n    - ReBAC, since it supports assigning relationships between direct objects and direct users (and not just a role), allows for fine-grained permissions. Some systems also support algebraic operators like AND and NOT to express policies like \"if this user has relationship X but not relationship Y with the object, then grant access\".\n\n- **Robustness**. In large projects or when numerous roles are present, it is easy to miss or improperly perform role checks ([OWASP C7: Enforce Access Controls](https://owasp.org/www-project-proactive-controls/v3/en/c7-enforce-access-controls)). This can result in both too much and too little access. This is especially true in RBAC implementations where a role hierarchy is not present and multiple role checks must be chained to have the desired impact (i.e., `if(user.hasAnyRole(\"SUPERUSER\", \"ADMIN\", \"ACCT_MANAGER\"))` ).\n- **Speed**. In RBAC, \"role explosion\" can occur when a system defines too many roles. If users send their credential and roles through means like HTTP headers, which have size limits, there may not be enough space to include all of the user's roles. A viable workaround to this problem is to only send the user ID, and then the application retrieves the user's roles, but this will increase the latency of every request.\n- **Supports Multi-Tenancy and Cross-Organizational Requests**. RBAC is poorly suited for use cases where distinct organizations or customers will need access to the same set of protected resources. Meeting such requirements with RBAC would require highly cumbersome methods such as configuring rule sets for each customer in a multi-tenant environment or requiring pre-provisioning of identities for cross-organizational requests ([OWASP C7](https://owasp.org/www-project-proactive-controls/v3/en/c7-enforce-access-controls); [NIST SP 800-162](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-162.pdf)). By contrast, as long as attributes are consistently defined, ABAC implementations allow access control decisions to be \"executed and administered in the same or separate infrastructures, while maintaining appropriate levels of security\" ([NIST SP 800-162](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-162.pdf), pg. 6).\n- **Ease of Management**. Although the initial setup for RBAC is often simpler than ABAC, this short-term benefit quickly vanishes as the scale and complexity of a system grows. In the beginning, a couple of simple roles, such as User and Admin, may suffice for some apps, but this is very unlikely to hold true for any length of time in production applications. As roles become more numerous, both testing and auditing, critical processes for establishing trust in one's codebase and logic, become more difficult ([OWASP C7](https://owasp.org/www-project-proactive-controls/v3/en/c7-enforce-access-controls)). By contrast, ABAC and ReBAC are far more expressive, incorporate attributes and Boolean logic that better reflects real-world concerns, are easier to update when access-control needs change, and encourages the separation of policy management from  enforcement and provisioning of identities ([NIST SP 800-162](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-162.pdf); see also [XACML-V3.0](https://docs.oasis-open.org/xacml/3.0/xacml-3.0-core-spec-os-en.html) for a standard that highlights these benefits)\n",
+    "text_hash": "1b753ef96aa65c7d572d386bf59841784a3c0d183567e91804b0d7d40e6bc681",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 77,
+      "end_line": 86
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet",
+      "Recommendations",
+      "Prefer Attribute and Relationship Based Access Control over RBAC"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00031",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 31,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Ensure Lookup IDs are Not Accessible Even When Guessed or Cannot Be Tampered With",
+    "text_hash": "82039b9a75cd88dac60d017ddd9dec72de1e005354d19dd85b06e82d1f1b5c3f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 87,
+      "end_line": 87
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet",
+      "Recommendations",
+      "Ensure Lookup IDs are Not Accessible Even When Guessed or Cannot Be Tampered With"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00032",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 32,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Applications often expose the internal object identifiers (such as an account number or Primary Key in a database) that are used to locate and reference an object. This ID may be exposed as a query parameter, path variable, \"hidden\" form field or elsewhere. For example:",
+    "text_hash": "2cd7153491340767269c43507459dcd94093592f73145c0e393a5196ffae3e4f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 89,
+      "end_line": 89
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet",
+      "Recommendations",
+      "Ensure Lookup IDs are Not Accessible Even When Guessed or Cannot Be Tampered With"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00033",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 33,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "```https://mybank.com/accountTransactions?acct_id=901```",
+    "text_hash": "4049b361fc2217f3c583f0ff7ec08e27c4971599d863c982dc834a032c5416a4",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 91,
+      "end_line": 91
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet",
+      "Recommendations",
+      "Ensure Lookup IDs are Not Accessible Even When Guessed or Cannot Be Tampered With"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00034",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 34,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Based on this URL, one could reasonably assume that the application will return a listing of transactions and that the transactions returned will be restricted to a particular account - the account indicated in the `acct_id` param. But what would happen if the user changed the value of the `acct_id` param to another value such as `523`. Will the user be able to view transactions associated with another account even if it does not belong to them? If not, will the failure simply be the result of the account \"523\" not existing/not being found or will it be due to a failed access control check? Although this example may be an oversimplification, it illustrates a very common security flaw in application development - [CWE 639: Authorization Bypass Through User-Controlled Key](https://cwe.mitre.org/data/definitions/639.html).  When exploited, this weakness can result in authorization bypasses, horizontal privilege escalation and, less commonly, vertical privilege escalation (see [CWE-639](https://cwe.mitre.org/data/definitions/639.html)). This type of vulnerability also represents a form of Insecure Direct Object Reference (IDOR). The following paragraphs will describe the weakness and possible mitigations.",
+    "text_hash": "97c56dc0c661296d118f82a224c08ecc8e3cecac545844f1310b7a7334836227",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 93,
+      "end_line": 93
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet",
+      "Recommendations",
+      "Ensure Lookup IDs are Not Accessible Even When Guessed or Cannot Be Tampered With"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00035",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 35,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": " In the example above, the lookup ID was not only exposed to the user and readily tampered with, but also appears to have been a fairly predictable, perhaps sequential, value.  While one can use various techniques to mask or randomize these IDs and make them hard to guess, such an approach is generally not sufficient by itself. A user should not be able to access a resource they do not have permissions simply because they are able to guess and manipulate that object's identifier in a query param or elsewhere. Rather than relying on some form of security through obscurity, the focus should be on controlling access to the underlying objects and/or the identifiers themselves. Recommended mitigations for this weakness include the following:",
+    "text_hash": "5e4dded18af1e07c8b0358153c7a6517648dcd76ff193e369e10b08602376dc2",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 95,
+      "end_line": 95
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet",
+      "Recommendations",
+      "Ensure Lookup IDs are Not Accessible Even When Guessed or Cannot Be Tampered With"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00036",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 36,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- Avoid exposing identifiers to the user when possible. For example it should be possible to retrieve some objects, such as account details,  based solely on currently authenticated user's identity and attributes (e.g. through information contained in a securely implemented JSON Web Token (JWT) or server-side session).\n- Implement user/session specific indirect references using a tool such as [OWASP ESAPI](https://owasp.org/www-project-enterprise-security-api/) (see [OWASP Top 10:2025 A01 Broken Access Control](https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/) and the [Insecure Direct Object Reference Prevention Cheat Sheet](Insecure_Direct_Object_Reference_Prevention_Cheat_Sheet.md))\n- Perform access control checks on *every* request for the *specific* object or functionality being accessed. Just because a user has access to an object of a particular type does not mean they should have access to every object of that particular type.\n",
+    "text_hash": "c2b9a5041b313c413fdf2add133aaca45680659c167a4af5d1c1f508554f82ad",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 97,
+      "end_line": 100
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet",
+      "Recommendations",
+      "Ensure Lookup IDs are Not Accessible Even When Guessed or Cannot Be Tampered With"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00037",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 37,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Enforce Authorization Checks on Static Resources",
+    "text_hash": "35fbc63814b537d9416df735d5da25c569846606a9e2871e00e1f181687c3814",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 101,
+      "end_line": 101
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet",
+      "Recommendations",
+      "Enforce Authorization Checks on Static Resources"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00038",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 38,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The importance of securing static resources is often overlooked or at least overshadowed by other security concerns. Although securing databases and similar data stores often justly receive significant attention from security conscious teams, static resources must also be appropriately secured. Although unprotected static resources are certainly a problem for websites and web applications of all forms, in recent years, poorly secured resources in cloud storage offerings (such as Amazon S3 Buckets) have risen to prominence. When securing static resources, consider the following:",
+    "text_hash": "9389c6d361fd7688f9aefb29af77408a59f2adc698504bb11430646fab5989b6",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 103,
+      "end_line": 103
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet",
+      "Recommendations",
+      "Enforce Authorization Checks on Static Resources"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00039",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 39,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- Ensure that static resources are incorporated into access control policies. The type of protection required for static resources will necessarily be highly contextual. It may be perfectly acceptable for some static resources to be publicly accessible, while others should only be accessible when a highly restrictive set of user and environmental attributes are present. Understanding the type of data exposed in the specific resources under consideration is thus critical. Consider whether a formal Data Classification scheme should be established and incorporated into the application's access control logic (see [here](https://resources.infosecinstitute.com/information-and-asset-classification/) for an overview of data classification).\n- Ensure any cloud-based services used to store static resources are secured using the configuration options and tools provided by the vendor. Review the cloud provider's documentation (see guidance from [AWS](https://aws.amazon.com/premiumsupport/knowledge-center/secure-s3-resources/), [Google Cloud](https://cloud.google.com/storage/docs/best-practices#security) and [Azure](https://docs.microsoft.com/en-us/azure/storage/blobs/security-recommendations) for specific implementation details).\n- When possible, protect static resources using the same access control logic and mechanisms that are used to secure other application resources and functionality.\n",
+    "text_hash": "59f52025874734c125138c864bfed0d47f2722b96c674e2a883afd39b3970ba4",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 105,
+      "end_line": 108
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet",
+      "Recommendations",
+      "Enforce Authorization Checks on Static Resources"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00040",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 40,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Verify that Authorization Checks are Performed in the Right Location",
+    "text_hash": "cb1c5e7ec5ddaa542cfd07e456ccfc7067df97817e10d42a5c2c906bc82d0764",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 109,
+      "end_line": 109
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet",
+      "Recommendations",
+      "Verify that Authorization Checks are Performed in the Right Location"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00041",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 41,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Developers must never rely on client-side access control checks. While such checks may be permissible for improving the user experience, they should never be the decisive factor in granting or denying access to a resource; client-side logic is often easy to bypass. Access control checks must be performed server-side, at the gateway, or using serverless functions (see [OWASP ASVS 4.0.3, V1.4.1 and V4.1.1](https://raw.githubusercontent.com/OWASP/ASVS/v4.0.3/4.0/OWASP%20Application%20Security%20Verification%20Standard%204.0.3-en.pdf))",
+    "text_hash": "f8daabe64fdf59b2e5be6cbf215535b27da7ffd758e5259ae63859521228df59",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 111,
+      "end_line": 111
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet",
+      "Recommendations",
+      "Verify that Authorization Checks are Performed in the Right Location"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00042",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 42,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Exit Safely when Authorization Checks Fail",
+    "text_hash": "43ef826ad39f1ebc6da9803cacaeea7ab2302b118493ce1fb50ced6af097abe4",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 113,
+      "end_line": 113
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet",
+      "Recommendations",
+      "Exit Safely when Authorization Checks Fail"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00043",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 43,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Failed access control checks are a normal occurrence in a secured application; consequently, developers must plan for such failures and handle them securely. Improper handling of such failures can lead to the application being left in an unpredictable state ([CWE-280: Improper Handling of Insufficient Permissions or Privileges](https://cwe.mitre.org/data/definitions/280.html)). Specific recommendations include the following:",
+    "text_hash": "287df5528028a87e09bdca91b38317026f50b8369af88ad8757bc41b10a75e50",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 115,
+      "end_line": 115
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet",
+      "Recommendations",
+      "Exit Safely when Authorization Checks Fail"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00044",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 44,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- Ensure all exception and failed access control checks are handled no matter how unlikely they seem ([OWASP Top Ten Proactive Controls C10: Handle all errors and exceptions](https://owasp.org/www-project-proactive-controls/v3/en/c10-errors-exceptions)). This does not mean that an application should always try to \"correct\" for a failed check; oftentimes a simple message or HTTP status code is all that is required.\n- Centralize the logic for handling failed access control checks.\n- Verify the handling of exceptions and authorization failures. Ensure that such failures, no matter how unlikely, do not put the software into an unstable state that could lead to authorization bypass.\n- Ensure sensitive information, such as system logs or debugging output, is not exposed in error messages. Misconfigured error messages can increase the attack surface of your application. ([CWE-209: Generation of Error Message Containing Sensitive Information](https://cwe.mitre.org/data/definitions/209.html))\n",
+    "text_hash": "88f53144fc5637ac87c86e647c1edb33114bae124ec8abc80467e4f836b9512c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 117,
+      "end_line": 121
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet",
+      "Recommendations",
+      "Exit Safely when Authorization Checks Fail"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00045",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 45,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Implement Appropriate Logging",
+    "text_hash": "84b19f64c6d075fab08a5721740547552a2d118e9f301c262a7344eb9160640b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 122,
+      "end_line": 122
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet",
+      "Recommendations",
+      "Implement Appropriate Logging"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00046",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 46,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Logging is one of the most important detective controls in application security; insufficient logging and monitoring is recognized as among  the most critical security risks in [OWASP's Top Ten 2021](https://owasp.org/Top10/A09_2021-Security_Logging_and_Monitoring_Failures/). Appropriate logs can not only detect malicious activity, but are also invaluable resources in post-incident investigations, can be used to troubleshoot access control and other security related problems, and are useful in security auditing. Though easy to overlook during the initial design and requirements phase, logging is an important component of holistic application security and must be incorporated into all phases of the SDLC. Recommendations for logging include the following:",
+    "text_hash": "9b4c3dd0ffa6dbad1a2da6cdf1e45ea2ddae9932b47b4ee0d4ba9308c3774a18",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 124,
+      "end_line": 124
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet",
+      "Recommendations",
+      "Implement Appropriate Logging"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00047",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 47,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- Log using consistent, well-defined formats that can be readily parsed for analysis. According to [OWASP Top Ten Proactive Controls C9](https://owasp.org/www-project-proactive-controls/v3/en/c9-security-logging), [Apache Logging Services](https://logging.apache.org/) is one example of a project that provides support for numerous languages and platforms\n- Carefully determine the amount of information to log. This should be determined according to the specific application environment and requirements. Both too much and too little logging may be considered security weaknesses (see [CWE-778](https://cwe.mitre.org/data/definitions/778.html) and [CWE-779](https://cwe.mitre.org/data/definitions/779.html)). Too little logging can result in malicious activity going undetected and greatly reduce the effectiveness of post-incident analysis. Too much logging not only can strain resources and lead to excessive false positives, but may also result in sensitive data being needlessly logged.\n- Ensure clocks and timezones are synchronized across systems. Accuracy is crucial in piecing together the sequence of an attack during and after incident response.\n- Consider incorporating application logs into a centralized log server or SIEM.\n",
+    "text_hash": "5ad6152ae982724f07fdecd405834cab8012fee0b26b4f2b9e1158c81ae53cd1",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 126,
+      "end_line": 130
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet",
+      "Recommendations",
+      "Implement Appropriate Logging"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00048",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 48,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Create Unit and Integration Test Cases for Authorization Logic",
+    "text_hash": "df18887d58488bc005e31d59f01ddb1bf6e2e39a7db695b37f2ce655aa6bb1e8",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 131,
+      "end_line": 131
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet",
+      "Recommendations",
+      "Create Unit and Integration Test Cases for Authorization Logic"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00049",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 49,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Unit and integration testing are essential for verifying that an application performs as expected and consistently across changes. Flaws in access control logic can be subtle, particularly when requirements are complex; however, even a small logical or configuration error in access control can result in severe consequences. Although not a substitution for a dedicated security test or penetration test (see [OWASP WSTG 4.5](https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/05-Authorization_Testing/README) for an excellent guide on this topic as it relates to access control), automated unit and integration testing of access control logic can help reduce the number of security flaws that make it into production. These tests are good at catching the \"low-hanging fruit\" of security issues but not more sophisticated attack vectors ([OWASP SAMM: Security Testing](https://owaspsamm.org/model/verification/security-testing/)).",
+    "text_hash": "238d5872da78ef58b261efd8af2390e6310b32599fc1d64c72658157b96b7585",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 133,
+      "end_line": 133
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet",
+      "Recommendations",
+      "Create Unit and Integration Test Cases for Authorization Logic"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00050",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 50,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Unit and integration testing should aim to incorporate many of the concepts explored in this document. For example, is access being denied by default? Does the application terminate safely when an access control check fails, even under abnormal conditions? Are ABAC policies being properly enforced? While simple unit and integration tests can never replace manual testing performed by a skilled hacker, they are an important tool for detecting and correcting security issues quickly and with far less resources than manual testing.",
+    "text_hash": "965091b52d0b9dd4808aab2027c8ba71318b60c5e805556e6ef47d44a3588109",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 135,
+      "end_line": 135
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet",
+      "Recommendations",
+      "Create Unit and Integration Test Cases for Authorization Logic"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00051",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 51,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## References",
+    "text_hash": "65b72d86eeeb214ab8ca5fd24cb7cd7773e58084e95b670040df03e21e8c6fa7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 137,
+      "end_line": 137
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet",
+      "References"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_fb8b6e5c60ed_b00052",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "block_idx": 52,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- [NIST SP 800-162: Guide to Attribute Based Access Control (ABAC) Definition and Considerations](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-162.pdf)\n- [OWASP Proactive Controls 2018: Enforce Access Controls](https://top10proactive.owasp.org/archive/2018/c7-enforce-access-controls/)\n- [Ferraiolo and Kuhn: Role-Based Access Controls (1992)](https://csrc.nist.gov/files/pubs/conference/1992/10/13/rolebased-access-controls/final/docs/ferraiolo-kuhn-92.pdf)",
+    "text_hash": "ad9fe0597b620931733642c14e2500f515580fef8a1a2bc2c2b8bb7c748c0161",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 139,
+      "end_line": 141
+    },
+    "heading_path": [
+      "Authorization Cheat Sheet",
+      "References"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  }
+]

@@ -1,0 +1,1627 @@
+[
+  {
+    "block_id": "ver_d5ac6829b294_b00000",
+    "document_id": "doc_owasp_avss_session_management",
+    "version_id": "ver_d5ac6829b294",
+    "block_idx": 0,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "# V3 Session Management",
+    "text_hash": "f786ef455594517cc4ab662fe8e02e716f8fe82fc4397b036243fe7441b03c84",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 1,
+      "end_line": 1
+    },
+    "heading_path": [
+      "V3 Session Management"
+    ],
+    "heading_level": 1,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d5ac6829b294_b00000",
+    "normalized_text": "# V3 Session Management",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d5ac6829b294_b00001",
+    "document_id": "doc_owasp_avss_session_management",
+    "version_id": "ver_d5ac6829b294",
+    "block_idx": 1,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Control Objective",
+    "text_hash": "001a812a758511a84268bd8558a292f3c03b8b1e6a533217a4f03165f8774203",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 3,
+      "end_line": 3
+    },
+    "heading_path": [
+      "V3 Session Management",
+      "Control Objective"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d5ac6829b294_b00001",
+    "normalized_text": "## Control Objective",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d5ac6829b294_b00002",
+    "document_id": "doc_owasp_avss_session_management",
+    "version_id": "ver_d5ac6829b294",
+    "block_idx": 2,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "One of the core components of any web-based application or stateful API is the mechanism by which it controls and maintains the state for a user or device interacting with it. Session management changes a stateless protocol to stateful, which is critical for differentiating different users or devices.",
+    "text_hash": "b4161e3103f7308e5ff0bc89ce0642912185e033002a302bbdec32e413155ed3",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 5,
+      "end_line": 5
+    },
+    "heading_path": [
+      "V3 Session Management",
+      "Control Objective"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d5ac6829b294_b00002",
+    "normalized_text": "One of the core components of any web-based application or stateful API is the mechanism by which it controls and maintains the state for a user or device interacting with it. Session management changes a stateless protocol to stateful, which is critical for differentiating different users or devices.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d5ac6829b294_b00003",
+    "document_id": "doc_owasp_avss_session_management",
+    "version_id": "ver_d5ac6829b294",
+    "block_idx": 3,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Ensure that a verified application satisfies the following high-level session management requirements:",
+    "text_hash": "9bc06ffd850ba90a1e8ffc134d42e522c04d7e37db1a6dfe6c5685f174fe03ae",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 7,
+      "end_line": 7
+    },
+    "heading_path": [
+      "V3 Session Management",
+      "Control Objective"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d5ac6829b294_b00003",
+    "normalized_text": "Ensure that a verified application satisfies the following high-level session management requirements:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d5ac6829b294_b00004",
+    "document_id": "doc_owasp_avss_session_management",
+    "version_id": "ver_d5ac6829b294",
+    "block_idx": 4,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "* Sessions are unique to each individual and cannot be guessed or shared.\n* Sessions are invalidated when no longer required and timed out during periods of inactivity.\n",
+    "text_hash": "b92694a0c0d22b6296714c9f18808d8e81399789c831dcf65741ac16de124e4a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 9,
+      "end_line": 11
+    },
+    "heading_path": [
+      "V3 Session Management",
+      "Control Objective"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d5ac6829b294_b00004",
+    "normalized_text": "* Sessions are unique to each individual and cannot be guessed or shared.\n* Sessions are invalidated when no longer required and timed out during periods of inactivity.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_d5ac6829b294_b00005",
+    "document_id": "doc_owasp_avss_session_management",
+    "version_id": "ver_d5ac6829b294",
+    "block_idx": 5,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "As previously noted, these requirements have been adapted to be a compliant subset of selected NIST 800-63b controls, focused around common threats and commonly exploited authentication weaknesses. Previous verification requirements have been retired, de-duped, or in most cases adapted to be strongly aligned with the intent of mandatory [NIST 800-63b](https://pages.nist.gov/800-63-3/sp800-63b.html) requirements.",
+    "text_hash": "668018ae580cbe29420bf359e3e0c286a32082c80a56593292ca674c7ebc5031",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 12,
+      "end_line": 12
+    },
+    "heading_path": [
+      "V3 Session Management",
+      "Control Objective"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d5ac6829b294_b00005",
+    "normalized_text": "As previously noted, these requirements have been adapted to be a compliant subset of selected NIST 800-63b controls, focused around common threats and commonly exploited authentication weaknesses. Previous verification requirements have been retired, de-duped, or in most cases adapted to be strongly aligned with the intent of mandatory [NIST 800-63b](https://pages.nist.gov/800-63-3/sp800-63b.html) requirements.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d5ac6829b294_b00006",
+    "document_id": "doc_owasp_avss_session_management",
+    "version_id": "ver_d5ac6829b294",
+    "block_idx": 6,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Security Verification Requirements",
+    "text_hash": "68fe37e41fa1dd923ab4afd9047af7dc0ad8afdfe998c239c06f2704f694e5ba",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 14,
+      "end_line": 14
+    },
+    "heading_path": [
+      "V3 Session Management",
+      "Security Verification Requirements"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d5ac6829b294_b00006",
+    "normalized_text": "## Security Verification Requirements",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d5ac6829b294_b00007",
+    "document_id": "doc_owasp_avss_session_management",
+    "version_id": "ver_d5ac6829b294",
+    "block_idx": 7,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## V3.1 Fundamental Session Management Security",
+    "text_hash": "17992e09aac91e98082aebacedfa1fa31cf00783500d34abd1b20d5d9ab6ac35",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 16,
+      "end_line": 16
+    },
+    "heading_path": [
+      "V3 Session Management",
+      "V3.1 Fundamental Session Management Security"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d5ac6829b294_b00007",
+    "normalized_text": "## V3.1 Fundamental Session Management Security",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d5ac6829b294_b00008",
+    "document_id": "doc_owasp_avss_session_management",
+    "version_id": "ver_d5ac6829b294",
+    "block_idx": 8,
+    "file_format": "MARKDOWN",
+    "block_type": "table",
+    "text_content": "| # | Description | L1 | L2 | L3 | CWE | [NIST &sect;](https://pages.nist.gov/800-63-3/sp800-63b.html) |\n| :---: | :--- | :---: | :---:| :---: | :---: | :---: |\n| **3.1.1** | Verify the application never reveals session tokens in URL parameters. | ✓ | ✓ | ✓ | 598 | |",
+    "text_hash": "07e3495936af1a93db46a104c613e934ae6e4e712957dcdf8f6b880def40ae11",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 18,
+      "end_line": 20
+    },
+    "heading_path": [
+      "V3 Session Management",
+      "V3.1 Fundamental Session Management Security"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": [
+      "#",
+      "Description",
+      "L1",
+      "L2",
+      "L3",
+      "CWE",
+      "[NIST &sect;](https://pages.nist.gov/800-63-3/sp800-63b.html)"
+    ],
+    "table_rows": [
+      [
+        "**3.1.1**",
+        "Verify the application never reveals session tokens in URL parameters.",
+        "✓",
+        "✓",
+        "✓",
+        "598",
+        ""
+      ]
+    ],
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d5ac6829b294_b00008",
+    "normalized_text": "| # | Description | L1 | L2 | L3 | CWE | [NIST &sect;](https://pages.nist.gov/800-63-3/sp800-63b.html) |\n| :---: | :--- | :---: | :---:| :---: | :---: | :---: |\n| **3.1.1** | Verify the application never reveals session tokens in URL parameters. | ✓ | ✓ | ✓ | 598 | |",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    },
+    "normalized_table_header_cols": [
+      "#",
+      "Description",
+      "L1",
+      "L2",
+      "L3",
+      "CWE",
+      "[NIST &sect;](https://pages.nist.gov/800-63-3/sp800-63b.html)"
+    ],
+    "normalized_table_rows": [
+      [
+        "**3.1.1**",
+        "Verify the application never reveals session tokens in URL parameters.",
+        "✓",
+        "✓",
+        "✓",
+        "598",
+        ""
+      ]
+    ]
+  },
+  {
+    "block_id": "ver_d5ac6829b294_b00009",
+    "document_id": "doc_owasp_avss_session_management",
+    "version_id": "ver_d5ac6829b294",
+    "block_idx": 9,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## V3.2 Session Binding",
+    "text_hash": "08069c240bd296e89ff48ff2f9cb99299bbd7150d5b168e01dda06128b60cfb0",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 22,
+      "end_line": 22
+    },
+    "heading_path": [
+      "V3 Session Management",
+      "V3.2 Session Binding"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d5ac6829b294_b00009",
+    "normalized_text": "## V3.2 Session Binding",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d5ac6829b294_b00010",
+    "document_id": "doc_owasp_avss_session_management",
+    "version_id": "ver_d5ac6829b294",
+    "block_idx": 10,
+    "file_format": "MARKDOWN",
+    "block_type": "table",
+    "text_content": "| # | Description | L1 | L2 | L3 | CWE | [NIST &sect;](https://pages.nist.gov/800-63-3/sp800-63b.html) |\n| :---: | :--- | :---: | :---:| :---: | :---: | :---: |\n| **3.2.1** | Verify the application generates a new session token on user authentication. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering)) | ✓ | ✓ | ✓ | 384 | 7.1 |\n| **3.2.2** | Verify that session tokens possess at least 64 bits of entropy. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering)) | ✓ | ✓ | ✓ | 331 | 7.1 |\n| **3.2.3** | Verify the application only stores session tokens in the browser using secure methods such as appropriately secured cookies (see section 3.4) or HTML 5 session storage. | ✓ | ✓ | ✓ | 539 | 7.1 |\n| **3.2.4** | Verify that session tokens are generated using approved cryptographic algorithms. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering)) | | ✓ | ✓ | 331 | 7.1 |",
+    "text_hash": "d9ef364930973bc636132fd584ea128d6aee1c2c76d5ba79f32b6040490900e9",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 24,
+      "end_line": 29
+    },
+    "heading_path": [
+      "V3 Session Management",
+      "V3.2 Session Binding"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": [
+      "#",
+      "Description",
+      "L1",
+      "L2",
+      "L3",
+      "CWE",
+      "[NIST &sect;](https://pages.nist.gov/800-63-3/sp800-63b.html)"
+    ],
+    "table_rows": [
+      [
+        "**3.2.1**",
+        "Verify the application generates a new session token on user authentication. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering))",
+        "✓",
+        "✓",
+        "✓",
+        "384",
+        "7.1"
+      ],
+      [
+        "**3.2.2**",
+        "Verify that session tokens possess at least 64 bits of entropy. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering))",
+        "✓",
+        "✓",
+        "✓",
+        "331",
+        "7.1"
+      ],
+      [
+        "**3.2.3**",
+        "Verify the application only stores session tokens in the browser using secure methods such as appropriately secured cookies (see section 3.4) or HTML 5 session storage.",
+        "✓",
+        "✓",
+        "✓",
+        "539",
+        "7.1"
+      ],
+      [
+        "**3.2.4**",
+        "Verify that session tokens are generated using approved cryptographic algorithms. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering))",
+        "",
+        "✓",
+        "✓",
+        "331",
+        "7.1"
+      ]
+    ],
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d5ac6829b294_b00010",
+    "normalized_text": "| # | Description | L1 | L2 | L3 | CWE | [NIST &sect;](https://pages.nist.gov/800-63-3/sp800-63b.html) |\n| :---: | :--- | :---: | :---:| :---: | :---: | :---: |\n| **3.2.1** | Verify the application generates a new session token on user authentication. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering)) | ✓ | ✓ | ✓ | 384 | 7.1 |\n| **3.2.2** | Verify that session tokens possess at least 64 bits of entropy. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering)) | ✓ | ✓ | ✓ | 331 | 7.1 |\n| **3.2.3** | Verify the application only stores session tokens in the browser using secure methods such as appropriately secured cookies (see section 3.4) or HTML 5 session storage. | ✓ | ✓ | ✓ | 539 | 7.1 |\n| **3.2.4** | Verify that session tokens are generated using approved cryptographic algorithms. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering)) | | ✓ | ✓ | 331 | 7.1 |",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    },
+    "normalized_table_header_cols": [
+      "#",
+      "Description",
+      "L1",
+      "L2",
+      "L3",
+      "CWE",
+      "[NIST &sect;](https://pages.nist.gov/800-63-3/sp800-63b.html)"
+    ],
+    "normalized_table_rows": [
+      [
+        "**3.2.1**",
+        "Verify the application generates a new session token on user authentication. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering))",
+        "✓",
+        "✓",
+        "✓",
+        "384",
+        "7.1"
+      ],
+      [
+        "**3.2.2**",
+        "Verify that session tokens possess at least 64 bits of entropy. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering))",
+        "✓",
+        "✓",
+        "✓",
+        "331",
+        "7.1"
+      ],
+      [
+        "**3.2.3**",
+        "Verify the application only stores session tokens in the browser using secure methods such as appropriately secured cookies (see section 3.4) or HTML 5 session storage.",
+        "✓",
+        "✓",
+        "✓",
+        "539",
+        "7.1"
+      ],
+      [
+        "**3.2.4**",
+        "Verify that session tokens are generated using approved cryptographic algorithms. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering))",
+        "",
+        "✓",
+        "✓",
+        "331",
+        "7.1"
+      ]
+    ]
+  },
+  {
+    "block_id": "ver_d5ac6829b294_b00011",
+    "document_id": "doc_owasp_avss_session_management",
+    "version_id": "ver_d5ac6829b294",
+    "block_idx": 11,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "TLS or another secure transport channel is mandatory for session management. This is covered off in the Communications Security chapter.",
+    "text_hash": "96c1f2a19d11cfe87b2bb3043c2d91059a1c5502f321351fd88070c9bb01bc15",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 31,
+      "end_line": 31
+    },
+    "heading_path": [
+      "V3 Session Management",
+      "V3.2 Session Binding"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d5ac6829b294_b00011",
+    "normalized_text": "TLS or another secure transport channel is mandatory for session management. This is covered off in the Communications Security chapter.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d5ac6829b294_b00012",
+    "document_id": "doc_owasp_avss_session_management",
+    "version_id": "ver_d5ac6829b294",
+    "block_idx": 12,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## V3.3 Session Termination",
+    "text_hash": "211cd441e7c4df5fb81dd2102317aa224a4dd2b1ac3f71318791abeaaac188fc",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 33,
+      "end_line": 33
+    },
+    "heading_path": [
+      "V3 Session Management",
+      "V3.3 Session Termination"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d5ac6829b294_b00012",
+    "normalized_text": "## V3.3 Session Termination",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d5ac6829b294_b00013",
+    "document_id": "doc_owasp_avss_session_management",
+    "version_id": "ver_d5ac6829b294",
+    "block_idx": 13,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Session timeouts have been aligned with NIST 800-63, which permits much longer session timeouts than traditionally permitted by security standards. Organizations should review the table below, and if a longer time out is desirable based around the application's risk, the NIST value should be the upper bounds of session idle timeouts.",
+    "text_hash": "e05c4c4abd131dd86ead8f51844b7c58143dcde8cd5a2ad50f44f4b7663dd4e4",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 35,
+      "end_line": 35
+    },
+    "heading_path": [
+      "V3 Session Management",
+      "V3.3 Session Termination"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d5ac6829b294_b00013",
+    "normalized_text": "Session timeouts have been aligned with NIST 800-63, which permits much longer session timeouts than traditionally permitted by security standards. Organizations should review the table below, and if a longer time out is desirable based around the application's risk, the NIST value should be the upper bounds of session idle timeouts.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d5ac6829b294_b00014",
+    "document_id": "doc_owasp_avss_session_management",
+    "version_id": "ver_d5ac6829b294",
+    "block_idx": 14,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "L1 in this context is IAL1/AAL1, L2 is IAL2/AAL3, L3 is IAL3/AAL3. For IAL2/AAL2 and IAL3/AAL3, the shorter idle timeout is, the lower bound of idle times for being logged out or re-authenticated to resume the session.",
+    "text_hash": "8cf3cd35486f707501aaebd15154ceb5c50b388aa3c2a0b6682073a5d59b338f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 37,
+      "end_line": 37
+    },
+    "heading_path": [
+      "V3 Session Management",
+      "V3.3 Session Termination"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d5ac6829b294_b00014",
+    "normalized_text": "L1 in this context is IAL1/AAL1, L2 is IAL2/AAL3, L3 is IAL3/AAL3. For IAL2/AAL2 and IAL3/AAL3, the shorter idle timeout is, the lower bound of idle times for being logged out or re-authenticated to resume the session.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d5ac6829b294_b00015",
+    "document_id": "doc_owasp_avss_session_management",
+    "version_id": "ver_d5ac6829b294",
+    "block_idx": 15,
+    "file_format": "MARKDOWN",
+    "block_type": "table",
+    "text_content": "| # | Description | L1 | L2 | L3 | CWE | [NIST &sect;](https://pages.nist.gov/800-63-3/sp800-63b.html) |\n| :---: | :--- | :---: | :---:| :---: | :---: | :---: |\n| **3.3.1** | Verify that logout and expiration invalidate the session token, such that the back button or a downstream relying party does not resume an authenticated session, including across relying parties. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering)) | ✓ | ✓ | ✓ | 613 | 7.1 |\n| **3.3.2** | If authenticators permit users to remain logged in, verify that re-authentication occurs periodically both when actively used or after an idle period. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering)) | 30 days | 12 hours or 30 minutes of inactivity, 2FA optional | 12 hours or 15 minutes of inactivity, with 2FA | 613 | 7.2 |\n| **3.3.3** | Verify that the application gives the option to terminate all other active sessions after a successful password change (including change via password reset/recovery), and that this is effective across the application, federated login (if present), and any relying parties. | | ✓ | ✓ | 613 | |\n| **3.3.4** | Verify that users are able to view and (having re-entered login credentials) log out of any or all currently active sessions and devices. | | ✓ | ✓ | 613 | 7.1 |",
+    "text_hash": "6b11fbf17ccc63a492567781606389fce62062187da47db0288c8d188df88d89",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 39,
+      "end_line": 44
+    },
+    "heading_path": [
+      "V3 Session Management",
+      "V3.3 Session Termination"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": [
+      "#",
+      "Description",
+      "L1",
+      "L2",
+      "L3",
+      "CWE",
+      "[NIST &sect;](https://pages.nist.gov/800-63-3/sp800-63b.html)"
+    ],
+    "table_rows": [
+      [
+        "**3.3.1**",
+        "Verify that logout and expiration invalidate the session token, such that the back button or a downstream relying party does not resume an authenticated session, including across relying parties. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering))",
+        "✓",
+        "✓",
+        "✓",
+        "613",
+        "7.1"
+      ],
+      [
+        "**3.3.2**",
+        "If authenticators permit users to remain logged in, verify that re-authentication occurs periodically both when actively used or after an idle period. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering))",
+        "30 days",
+        "12 hours or 30 minutes of inactivity, 2FA optional",
+        "12 hours or 15 minutes of inactivity, with 2FA",
+        "613",
+        "7.2"
+      ],
+      [
+        "**3.3.3**",
+        "Verify that the application gives the option to terminate all other active sessions after a successful password change (including change via password reset/recovery), and that this is effective across the application, federated login (if present), and any relying parties.",
+        "",
+        "✓",
+        "✓",
+        "613",
+        ""
+      ],
+      [
+        "**3.3.4**",
+        "Verify that users are able to view and (having re-entered login credentials) log out of any or all currently active sessions and devices.",
+        "",
+        "✓",
+        "✓",
+        "613",
+        "7.1"
+      ]
+    ],
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d5ac6829b294_b00015",
+    "normalized_text": "| # | Description | L1 | L2 | L3 | CWE | [NIST &sect;](https://pages.nist.gov/800-63-3/sp800-63b.html) |\n| :---: | :--- | :---: | :---:| :---: | :---: | :---: |\n| **3.3.1** | Verify that logout and expiration invalidate the session token, such that the back button or a downstream relying party does not resume an authenticated session, including across relying parties. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering)) | ✓ | ✓ | ✓ | 613 | 7.1 |\n| **3.3.2** | If authenticators permit users to remain logged in, verify that re-authentication occurs periodically both when actively used or after an idle period. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering)) | 30 days | 12 hours or 30 minutes of inactivity, 2FA optional | 12 hours or 15 minutes of inactivity, with 2FA | 613 | 7.2 |\n| **3.3.3** | Verify that the application gives the option to terminate all other active sessions after a successful password change (including change via password reset/recovery), and that this is effective across the application, federated login (if present), and any relying parties. | | ✓ | ✓ | 613 | |\n| **3.3.4** | Verify that users are able to view and (having re-entered login credentials) log out of any or all currently active sessions and devices. | | ✓ | ✓ | 613 | 7.1 |",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    },
+    "normalized_table_header_cols": [
+      "#",
+      "Description",
+      "L1",
+      "L2",
+      "L3",
+      "CWE",
+      "[NIST &sect;](https://pages.nist.gov/800-63-3/sp800-63b.html)"
+    ],
+    "normalized_table_rows": [
+      [
+        "**3.3.1**",
+        "Verify that logout and expiration invalidate the session token, such that the back button or a downstream relying party does not resume an authenticated session, including across relying parties. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering))",
+        "✓",
+        "✓",
+        "✓",
+        "613",
+        "7.1"
+      ],
+      [
+        "**3.3.2**",
+        "If authenticators permit users to remain logged in, verify that re-authentication occurs periodically both when actively used or after an idle period. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering))",
+        "30 days",
+        "12 hours or 30 minutes of inactivity, 2FA optional",
+        "12 hours or 15 minutes of inactivity, with 2FA",
+        "613",
+        "7.2"
+      ],
+      [
+        "**3.3.3**",
+        "Verify that the application gives the option to terminate all other active sessions after a successful password change (including change via password reset/recovery), and that this is effective across the application, federated login (if present), and any relying parties.",
+        "",
+        "✓",
+        "✓",
+        "613",
+        ""
+      ],
+      [
+        "**3.3.4**",
+        "Verify that users are able to view and (having re-entered login credentials) log out of any or all currently active sessions and devices.",
+        "",
+        "✓",
+        "✓",
+        "613",
+        "7.1"
+      ]
+    ]
+  },
+  {
+    "block_id": "ver_d5ac6829b294_b00016",
+    "document_id": "doc_owasp_avss_session_management",
+    "version_id": "ver_d5ac6829b294",
+    "block_idx": 16,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## V3.4 Cookie-based Session Management",
+    "text_hash": "ab2c15438030cfc5ac39b643a437dc4d05cdb6f359e536fc4e73dbef616ecb8d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 46,
+      "end_line": 46
+    },
+    "heading_path": [
+      "V3 Session Management",
+      "V3.4 Cookie-based Session Management"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d5ac6829b294_b00016",
+    "normalized_text": "## V3.4 Cookie-based Session Management",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d5ac6829b294_b00017",
+    "document_id": "doc_owasp_avss_session_management",
+    "version_id": "ver_d5ac6829b294",
+    "block_idx": 17,
+    "file_format": "MARKDOWN",
+    "block_type": "table",
+    "text_content": "| # | Description | L1 | L2 | L3 | CWE | [NIST &sect;](https://pages.nist.gov/800-63-3/sp800-63b.html) |\n| :---: | :--- | :---: | :---:| :---: | :---: | :---: |\n| **3.4.1** | Verify that cookie-based session tokens have the 'Secure' attribute set. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering)) | ✓ | ✓ | ✓ | 614 | 7.1.1 |\n| **3.4.2** | Verify that cookie-based session tokens have the 'HttpOnly' attribute set. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering)) | ✓ | ✓ | ✓ | 1004 | 7.1.1 |\n| **3.4.3** | Verify that cookie-based session tokens utilize the 'SameSite' attribute to limit exposure to cross-site request forgery attacks. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering)) | ✓ | ✓ | ✓ | 1275 | 7.1.1 |\n| **3.4.4** | Verify that cookie-based session tokens use the \"__Host-\" prefix so cookies are only sent to the host that initially set the cookie. | ✓ | ✓ | ✓ | 16 | 7.1.1 |\n| **3.4.5** | Verify that if the application is published under a domain name with other applications that set or use session cookies that might disclose the session cookies, set the path attribute in cookie-based session tokens using the most precise path possible. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering)) | ✓ | ✓ | ✓ | 16 | 7.1.1 |",
+    "text_hash": "f6b9896f4469869af31bf24f9076b0551cf697216e1bac3536a9778c66a9075d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 48,
+      "end_line": 54
+    },
+    "heading_path": [
+      "V3 Session Management",
+      "V3.4 Cookie-based Session Management"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": [
+      "#",
+      "Description",
+      "L1",
+      "L2",
+      "L3",
+      "CWE",
+      "[NIST &sect;](https://pages.nist.gov/800-63-3/sp800-63b.html)"
+    ],
+    "table_rows": [
+      [
+        "**3.4.1**",
+        "Verify that cookie-based session tokens have the 'Secure' attribute set. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering))",
+        "✓",
+        "✓",
+        "✓",
+        "614",
+        "7.1.1"
+      ],
+      [
+        "**3.4.2**",
+        "Verify that cookie-based session tokens have the 'HttpOnly' attribute set. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering))",
+        "✓",
+        "✓",
+        "✓",
+        "1004",
+        "7.1.1"
+      ],
+      [
+        "**3.4.3**",
+        "Verify that cookie-based session tokens utilize the 'SameSite' attribute to limit exposure to cross-site request forgery attacks. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering))",
+        "✓",
+        "✓",
+        "✓",
+        "1275",
+        "7.1.1"
+      ],
+      [
+        "**3.4.4**",
+        "Verify that cookie-based session tokens use the \"__Host-\" prefix so cookies are only sent to the host that initially set the cookie.",
+        "✓",
+        "✓",
+        "✓",
+        "16",
+        "7.1.1"
+      ],
+      [
+        "**3.4.5**",
+        "Verify that if the application is published under a domain name with other applications that set or use session cookies that might disclose the session cookies, set the path attribute in cookie-based session tokens using the most precise path possible. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering))",
+        "✓",
+        "✓",
+        "✓",
+        "16",
+        "7.1.1"
+      ]
+    ],
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d5ac6829b294_b00017",
+    "normalized_text": "| # | Description | L1 | L2 | L3 | CWE | [NIST &sect;](https://pages.nist.gov/800-63-3/sp800-63b.html) |\n| :---: | :--- | :---: | :---:| :---: | :---: | :---: |\n| **3.4.1** | Verify that cookie-based session tokens have the 'Secure' attribute set. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering)) | ✓ | ✓ | ✓ | 614 | 7.1.1 |\n| **3.4.2** | Verify that cookie-based session tokens have the 'HttpOnly' attribute set. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering)) | ✓ | ✓ | ✓ | 1004 | 7.1.1 |\n| **3.4.3** | Verify that cookie-based session tokens utilize the 'SameSite' attribute to limit exposure to cross-site request forgery attacks. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering)) | ✓ | ✓ | ✓ | 1275 | 7.1.1 |\n| **3.4.4** | Verify that cookie-based session tokens use the \"__Host-\" prefix so cookies are only sent to the host that initially set the cookie. | ✓ | ✓ | ✓ | 16 | 7.1.1 |\n| **3.4.5** | Verify that if the application is published under a domain name with other applications that set or use session cookies that might disclose the session cookies, set the path attribute in cookie-based session tokens using the most precise path possible. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering)) | ✓ | ✓ | ✓ | 16 | 7.1.1 |",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    },
+    "normalized_table_header_cols": [
+      "#",
+      "Description",
+      "L1",
+      "L2",
+      "L3",
+      "CWE",
+      "[NIST &sect;](https://pages.nist.gov/800-63-3/sp800-63b.html)"
+    ],
+    "normalized_table_rows": [
+      [
+        "**3.4.1**",
+        "Verify that cookie-based session tokens have the 'Secure' attribute set. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering))",
+        "✓",
+        "✓",
+        "✓",
+        "614",
+        "7.1.1"
+      ],
+      [
+        "**3.4.2**",
+        "Verify that cookie-based session tokens have the 'HttpOnly' attribute set. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering))",
+        "✓",
+        "✓",
+        "✓",
+        "1004",
+        "7.1.1"
+      ],
+      [
+        "**3.4.3**",
+        "Verify that cookie-based session tokens utilize the 'SameSite' attribute to limit exposure to cross-site request forgery attacks. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering))",
+        "✓",
+        "✓",
+        "✓",
+        "1275",
+        "7.1.1"
+      ],
+      [
+        "**3.4.4**",
+        "Verify that cookie-based session tokens use the \"__Host-\" prefix so cookies are only sent to the host that initially set the cookie.",
+        "✓",
+        "✓",
+        "✓",
+        "16",
+        "7.1.1"
+      ],
+      [
+        "**3.4.5**",
+        "Verify that if the application is published under a domain name with other applications that set or use session cookies that might disclose the session cookies, set the path attribute in cookie-based session tokens using the most precise path possible. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering))",
+        "✓",
+        "✓",
+        "✓",
+        "16",
+        "7.1.1"
+      ]
+    ]
+  },
+  {
+    "block_id": "ver_d5ac6829b294_b00018",
+    "document_id": "doc_owasp_avss_session_management",
+    "version_id": "ver_d5ac6829b294",
+    "block_idx": 18,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## V3.5 Token-based Session Management",
+    "text_hash": "eb7fa826343460982078db5213466bffed62e752f5b9682dda12f41cc9bae006",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 56,
+      "end_line": 56
+    },
+    "heading_path": [
+      "V3 Session Management",
+      "V3.5 Token-based Session Management"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d5ac6829b294_b00018",
+    "normalized_text": "## V3.5 Token-based Session Management",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d5ac6829b294_b00019",
+    "document_id": "doc_owasp_avss_session_management",
+    "version_id": "ver_d5ac6829b294",
+    "block_idx": 19,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Token-based session management includes JWT, OAuth, SAML, and API keys. Of these, API keys are known to be weak and should not be used in new code.",
+    "text_hash": "7c0dab29b7209890428e7e49686933810723c29f6d60791cfbaff3c657f41ebb",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 58,
+      "end_line": 58
+    },
+    "heading_path": [
+      "V3 Session Management",
+      "V3.5 Token-based Session Management"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d5ac6829b294_b00019",
+    "normalized_text": "Token-based session management includes JWT, OAuth, SAML, and API keys. Of these, API keys are known to be weak and should not be used in new code.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d5ac6829b294_b00020",
+    "document_id": "doc_owasp_avss_session_management",
+    "version_id": "ver_d5ac6829b294",
+    "block_idx": 20,
+    "file_format": "MARKDOWN",
+    "block_type": "table",
+    "text_content": "| # | Description | L1 | L2 | L3 | CWE | [NIST &sect;](https://pages.nist.gov/800-63-3/sp800-63b.html) |\n| :---: | :--- | :---: | :---:| :---: | :---: | :---: |\n| **3.5.1** | Verify the application allows users to revoke OAuth tokens that form trust relationships with linked applications. | | ✓ | ✓ | 290 | 7.1.2 |\n| **3.5.2** | Verify the application uses session tokens rather than static API secrets and keys, except with legacy implementations. | | ✓ | ✓ | 798 | |\n| **3.5.3** | Verify that stateless session tokens use digital signatures, encryption, and other countermeasures to protect against tampering, enveloping, replay, null cipher, and key substitution attacks. | | ✓ | ✓ | 345 | |",
+    "text_hash": "58be42241e217c4c19e50bcfda30b4335d21cf78d214c5b1c5533d4e62cfbbea",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 60,
+      "end_line": 64
+    },
+    "heading_path": [
+      "V3 Session Management",
+      "V3.5 Token-based Session Management"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": [
+      "#",
+      "Description",
+      "L1",
+      "L2",
+      "L3",
+      "CWE",
+      "[NIST &sect;](https://pages.nist.gov/800-63-3/sp800-63b.html)"
+    ],
+    "table_rows": [
+      [
+        "**3.5.1**",
+        "Verify the application allows users to revoke OAuth tokens that form trust relationships with linked applications.",
+        "",
+        "✓",
+        "✓",
+        "290",
+        "7.1.2"
+      ],
+      [
+        "**3.5.2**",
+        "Verify the application uses session tokens rather than static API secrets and keys, except with legacy implementations.",
+        "",
+        "✓",
+        "✓",
+        "798",
+        ""
+      ],
+      [
+        "**3.5.3**",
+        "Verify that stateless session tokens use digital signatures, encryption, and other countermeasures to protect against tampering, enveloping, replay, null cipher, and key substitution attacks.",
+        "",
+        "✓",
+        "✓",
+        "345",
+        ""
+      ]
+    ],
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d5ac6829b294_b00020",
+    "normalized_text": "| # | Description | L1 | L2 | L3 | CWE | [NIST &sect;](https://pages.nist.gov/800-63-3/sp800-63b.html) |\n| :---: | :--- | :---: | :---:| :---: | :---: | :---: |\n| **3.5.1** | Verify the application allows users to revoke OAuth tokens that form trust relationships with linked applications. | | ✓ | ✓ | 290 | 7.1.2 |\n| **3.5.2** | Verify the application uses session tokens rather than static API secrets and keys, except with legacy implementations. | | ✓ | ✓ | 798 | |\n| **3.5.3** | Verify that stateless session tokens use digital signatures, encryption, and other countermeasures to protect against tampering, enveloping, replay, null cipher, and key substitution attacks. | | ✓ | ✓ | 345 | |",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    },
+    "normalized_table_header_cols": [
+      "#",
+      "Description",
+      "L1",
+      "L2",
+      "L3",
+      "CWE",
+      "[NIST &sect;](https://pages.nist.gov/800-63-3/sp800-63b.html)"
+    ],
+    "normalized_table_rows": [
+      [
+        "**3.5.1**",
+        "Verify the application allows users to revoke OAuth tokens that form trust relationships with linked applications.",
+        "",
+        "✓",
+        "✓",
+        "290",
+        "7.1.2"
+      ],
+      [
+        "**3.5.2**",
+        "Verify the application uses session tokens rather than static API secrets and keys, except with legacy implementations.",
+        "",
+        "✓",
+        "✓",
+        "798",
+        ""
+      ],
+      [
+        "**3.5.3**",
+        "Verify that stateless session tokens use digital signatures, encryption, and other countermeasures to protect against tampering, enveloping, replay, null cipher, and key substitution attacks.",
+        "",
+        "✓",
+        "✓",
+        "345",
+        ""
+      ]
+    ]
+  },
+  {
+    "block_id": "ver_d5ac6829b294_b00021",
+    "document_id": "doc_owasp_avss_session_management",
+    "version_id": "ver_d5ac6829b294",
+    "block_idx": 21,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## V3.6 Federated Re-authentication",
+    "text_hash": "c20b02901056ebc9828c80edee467a2fd2b4f9276dc90dd2f2fc2da5f2bda478",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 66,
+      "end_line": 66
+    },
+    "heading_path": [
+      "V3 Session Management",
+      "V3.6 Federated Re-authentication"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d5ac6829b294_b00021",
+    "normalized_text": "## V3.6 Federated Re-authentication",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d5ac6829b294_b00022",
+    "document_id": "doc_owasp_avss_session_management",
+    "version_id": "ver_d5ac6829b294",
+    "block_idx": 22,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "This section relates to those writing Relying Party (RP) or Credential Service Provider (CSP) code. If relying on code implementing these features, ensure that these issues are handled correctly.",
+    "text_hash": "ab6d3945d26511f83cd84b6801d505489cfdfa933d8128c15d531658698e554e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 68,
+      "end_line": 68
+    },
+    "heading_path": [
+      "V3 Session Management",
+      "V3.6 Federated Re-authentication"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d5ac6829b294_b00022",
+    "normalized_text": "This section relates to those writing Relying Party (RP) or Credential Service Provider (CSP) code. If relying on code implementing these features, ensure that these issues are handled correctly.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d5ac6829b294_b00023",
+    "document_id": "doc_owasp_avss_session_management",
+    "version_id": "ver_d5ac6829b294",
+    "block_idx": 23,
+    "file_format": "MARKDOWN",
+    "block_type": "table",
+    "text_content": "| # | Description | L1 | L2 | L3 | CWE | [NIST &sect;](https://pages.nist.gov/800-63-3/sp800-63b.html) |\n| :---: | :--- | :---: | :---:| :---: | :---: | :---: |\n| **3.6.1** | Verify that Relying Parties (RPs) specify the maximum authentication time to Credential Service Providers (CSPs) and that CSPs re-authenticate the user if they haven't used a session within that period. | | | ✓ | 613 | 7.2.1 |\n| **3.6.2** | Verify that Credential Service Providers (CSPs) inform Relying Parties (RPs) of the last authentication event, to allow RPs to determine if they need to re-authenticate the user. | | | ✓ | 613 | 7.2.1 |",
+    "text_hash": "c7bfb5cb118870b263d88d30632b4bc3c2b3644ecc9108aded2269caa34aaf68",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 70,
+      "end_line": 73
+    },
+    "heading_path": [
+      "V3 Session Management",
+      "V3.6 Federated Re-authentication"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": [
+      "#",
+      "Description",
+      "L1",
+      "L2",
+      "L3",
+      "CWE",
+      "[NIST &sect;](https://pages.nist.gov/800-63-3/sp800-63b.html)"
+    ],
+    "table_rows": [
+      [
+        "**3.6.1**",
+        "Verify that Relying Parties (RPs) specify the maximum authentication time to Credential Service Providers (CSPs) and that CSPs re-authenticate the user if they haven't used a session within that period.",
+        "",
+        "",
+        "✓",
+        "613",
+        "7.2.1"
+      ],
+      [
+        "**3.6.2**",
+        "Verify that Credential Service Providers (CSPs) inform Relying Parties (RPs) of the last authentication event, to allow RPs to determine if they need to re-authenticate the user.",
+        "",
+        "",
+        "✓",
+        "613",
+        "7.2.1"
+      ]
+    ],
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d5ac6829b294_b00023",
+    "normalized_text": "| # | Description | L1 | L2 | L3 | CWE | [NIST &sect;](https://pages.nist.gov/800-63-3/sp800-63b.html) |\n| :---: | :--- | :---: | :---:| :---: | :---: | :---: |\n| **3.6.1** | Verify that Relying Parties (RPs) specify the maximum authentication time to Credential Service Providers (CSPs) and that CSPs re-authenticate the user if they haven't used a session within that period. | | | ✓ | 613 | 7.2.1 |\n| **3.6.2** | Verify that Credential Service Providers (CSPs) inform Relying Parties (RPs) of the last authentication event, to allow RPs to determine if they need to re-authenticate the user. | | | ✓ | 613 | 7.2.1 |",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    },
+    "normalized_table_header_cols": [
+      "#",
+      "Description",
+      "L1",
+      "L2",
+      "L3",
+      "CWE",
+      "[NIST &sect;](https://pages.nist.gov/800-63-3/sp800-63b.html)"
+    ],
+    "normalized_table_rows": [
+      [
+        "**3.6.1**",
+        "Verify that Relying Parties (RPs) specify the maximum authentication time to Credential Service Providers (CSPs) and that CSPs re-authenticate the user if they haven't used a session within that period.",
+        "",
+        "",
+        "✓",
+        "613",
+        "7.2.1"
+      ],
+      [
+        "**3.6.2**",
+        "Verify that Credential Service Providers (CSPs) inform Relying Parties (RPs) of the last authentication event, to allow RPs to determine if they need to re-authenticate the user.",
+        "",
+        "",
+        "✓",
+        "613",
+        "7.2.1"
+      ]
+    ]
+  },
+  {
+    "block_id": "ver_d5ac6829b294_b00024",
+    "document_id": "doc_owasp_avss_session_management",
+    "version_id": "ver_d5ac6829b294",
+    "block_idx": 24,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## V3.7 Defenses Against Session Management Exploits",
+    "text_hash": "0b35a7c0c8d64d899e431b01dc68a1e1ab092b132520bd09c5e910f8a72052ea",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 75,
+      "end_line": 75
+    },
+    "heading_path": [
+      "V3 Session Management",
+      "V3.7 Defenses Against Session Management Exploits"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d5ac6829b294_b00024",
+    "normalized_text": "## V3.7 Defenses Against Session Management Exploits",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d5ac6829b294_b00025",
+    "document_id": "doc_owasp_avss_session_management",
+    "version_id": "ver_d5ac6829b294",
+    "block_idx": 25,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "There are a small number of session management attacks, some related to the user experience (UX) of sessions. Previously, based on ISO 27002 requirements, the ASVS has required blocking multiple simultaneous sessions. Blocking simultaneous sessions is no longer appropriate, not only as modern users have many devices or the app is an API without a browser session, but in most of these implementations, the last authenticator wins, which is often the attacker. This section provides leading guidance on deterring, delaying and detecting session management attacks using code.",
+    "text_hash": "208b076cd1477251b84e21b2746c58a5aee511ebee814043f361e1f9b502ff51",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 77,
+      "end_line": 77
+    },
+    "heading_path": [
+      "V3 Session Management",
+      "V3.7 Defenses Against Session Management Exploits"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d5ac6829b294_b00025",
+    "normalized_text": "There are a small number of session management attacks, some related to the user experience (UX) of sessions. Previously, based on ISO 27002 requirements, the ASVS has required blocking multiple simultaneous sessions. Blocking simultaneous sessions is no longer appropriate, not only as modern users have many devices or the app is an API without a browser session, but in most of these implementations, the last authenticator wins, which is often the attacker. This section provides leading guidance on deterring, delaying and detecting session management attacks using code.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d5ac6829b294_b00026",
+    "document_id": "doc_owasp_avss_session_management",
+    "version_id": "ver_d5ac6829b294",
+    "block_idx": 26,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Description of the half-open Attack",
+    "text_hash": "bac05c01f87ef3f78ab3347faccfb7e7c65f981db714cae30a26f8b35287659e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 79,
+      "end_line": 79
+    },
+    "heading_path": [
+      "V3 Session Management",
+      "V3.7 Defenses Against Session Management Exploits",
+      "Description of the half-open Attack"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d5ac6829b294_b00026",
+    "normalized_text": "### Description of the half-open Attack",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d5ac6829b294_b00027",
+    "document_id": "doc_owasp_avss_session_management",
+    "version_id": "ver_d5ac6829b294",
+    "block_idx": 27,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "In early 2018, several financial institutions were compromised using what the attackers called \"half-open attacks\". This term has stuck in the industry. The attackers struck multiple institutions with different proprietary code bases, and indeed it seems different code bases within the same institutions. The half-open attack is exploiting a design pattern flaw commonly found in many existing authentication, session management and access control systems.",
+    "text_hash": "514a7eeebe844762f93645463685b2cdbf45788f7d392c368da910a8f5d57bf9",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 81,
+      "end_line": 81
+    },
+    "heading_path": [
+      "V3 Session Management",
+      "V3.7 Defenses Against Session Management Exploits",
+      "Description of the half-open Attack"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d5ac6829b294_b00027",
+    "normalized_text": "In early 2018, several financial institutions were compromised using what the attackers called \"half-open attacks\". This term has stuck in the industry. The attackers struck multiple institutions with different proprietary code bases, and indeed it seems different code bases within the same institutions. The half-open attack is exploiting a design pattern flaw commonly found in many existing authentication, session management and access control systems.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d5ac6829b294_b00028",
+    "document_id": "doc_owasp_avss_session_management",
+    "version_id": "ver_d5ac6829b294",
+    "block_idx": 28,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Attackers start a half-open attack by attempting to lock, reset, or recover a credential. A popular session management design pattern re-uses user profile session objects/models between unauthenticated, half-authenticated (password resets, forgot username), and fully authenticated code. This design pattern populates a valid session object or token containing the victim's profile, including password hashes and roles. If access control checks in controllers or routers does not correctly verify that the user is fully logged in, the attacker will be able to act as the user. Attacks could include changing the user's password to a known value, update the email address to perform a valid password reset, disable multi-factor authentication or enroll a new MFA device, reveal or change API keys, and so on.",
+    "text_hash": "a3ab28ac5b7f1e2f22811e97e8086c2a105b3d3556cd1b4f014b04cde94a52e3",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 83,
+      "end_line": 83
+    },
+    "heading_path": [
+      "V3 Session Management",
+      "V3.7 Defenses Against Session Management Exploits",
+      "Description of the half-open Attack"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d5ac6829b294_b00028",
+    "normalized_text": "Attackers start a half-open attack by attempting to lock, reset, or recover a credential. A popular session management design pattern re-uses user profile session objects/models between unauthenticated, half-authenticated (password resets, forgot username), and fully authenticated code. This design pattern populates a valid session object or token containing the victim's profile, including password hashes and roles. If access control checks in controllers or routers does not correctly verify that the user is fully logged in, the attacker will be able to act as the user. Attacks could include changing the user's password to a known value, update the email address to perform a valid password reset, disable multi-factor authentication or enroll a new MFA device, reveal or change API keys, and so on.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d5ac6829b294_b00029",
+    "document_id": "doc_owasp_avss_session_management",
+    "version_id": "ver_d5ac6829b294",
+    "block_idx": 29,
+    "file_format": "MARKDOWN",
+    "block_type": "table",
+    "text_content": "| # | Description | L1 | L2 | L3 | CWE | [NIST &sect;](https://pages.nist.gov/800-63-3/sp800-63b.html) |\n| :---: | :--- | :---: | :---:| :---: | :---: | :---: |\n| **3.7.1** | Verify the application ensures a full, valid login session or requires re-authentication or secondary verification before allowing any sensitive transactions or account modifications. | ✓ | ✓ | ✓ | 306 | |",
+    "text_hash": "e14155d258d296d8f8e092f1bf527040abfc79195e42a6ba1ca108df305b6b17",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 85,
+      "end_line": 87
+    },
+    "heading_path": [
+      "V3 Session Management",
+      "V3.7 Defenses Against Session Management Exploits",
+      "Description of the half-open Attack"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": [
+      "#",
+      "Description",
+      "L1",
+      "L2",
+      "L3",
+      "CWE",
+      "[NIST &sect;](https://pages.nist.gov/800-63-3/sp800-63b.html)"
+    ],
+    "table_rows": [
+      [
+        "**3.7.1**",
+        "Verify the application ensures a full, valid login session or requires re-authentication or secondary verification before allowing any sensitive transactions or account modifications.",
+        "✓",
+        "✓",
+        "✓",
+        "306",
+        ""
+      ]
+    ],
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d5ac6829b294_b00029",
+    "normalized_text": "| # | Description | L1 | L2 | L3 | CWE | [NIST &sect;](https://pages.nist.gov/800-63-3/sp800-63b.html) |\n| :---: | :--- | :---: | :---:| :---: | :---: | :---: |\n| **3.7.1** | Verify the application ensures a full, valid login session or requires re-authentication or secondary verification before allowing any sensitive transactions or account modifications. | ✓ | ✓ | ✓ | 306 | |",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    },
+    "normalized_table_header_cols": [
+      "#",
+      "Description",
+      "L1",
+      "L2",
+      "L3",
+      "CWE",
+      "[NIST &sect;](https://pages.nist.gov/800-63-3/sp800-63b.html)"
+    ],
+    "normalized_table_rows": [
+      [
+        "**3.7.1**",
+        "Verify the application ensures a full, valid login session or requires re-authentication or secondary verification before allowing any sensitive transactions or account modifications.",
+        "✓",
+        "✓",
+        "✓",
+        "306",
+        ""
+      ]
+    ]
+  },
+  {
+    "block_id": "ver_d5ac6829b294_b00030",
+    "document_id": "doc_owasp_avss_session_management",
+    "version_id": "ver_d5ac6829b294",
+    "block_idx": 30,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## References",
+    "text_hash": "65b72d86eeeb214ab8ca5fd24cb7cd7773e58084e95b670040df03e21e8c6fa7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 89,
+      "end_line": 89
+    },
+    "heading_path": [
+      "V3 Session Management",
+      "References"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d5ac6829b294_b00030",
+    "normalized_text": "## References",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d5ac6829b294_b00031",
+    "document_id": "doc_owasp_avss_session_management",
+    "version_id": "ver_d5ac6829b294",
+    "block_idx": 31,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "For more information, see also:",
+    "text_hash": "d186cf1c20554a76e4cb9cb4b90fc215c970386abed4aec1b45288abe5fb2d72",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 91,
+      "end_line": 91
+    },
+    "heading_path": [
+      "V3 Session Management",
+      "References"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d5ac6829b294_b00031",
+    "normalized_text": "For more information, see also:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_d5ac6829b294_b00032",
+    "document_id": "doc_owasp_avss_session_management",
+    "version_id": "ver_d5ac6829b294",
+    "block_idx": 32,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "* [OWASP Testing Guide 4.0: Session Management Testing](https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/06-Session_Management_Testing/README.html)\n* [OWASP Session Management Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html)\n* [Set-Cookie __Host- prefix details](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#Directives)",
+    "text_hash": "3ebcb8de0add84b77e76877216fc87e8d5ef876a1bab477c0ff160963a48022b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 93,
+      "end_line": 95
+    },
+    "heading_path": [
+      "V3 Session Management",
+      "References"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_d5ac6829b294_b00032",
+    "normalized_text": "* [OWASP Testing Guide 4.0: Session Management Testing](https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/06-Session_Management_Testing/README.html)\n* [OWASP Session Management Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html)\n* [Set-Cookie __Host- prefix details](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#Directives)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  }
+]

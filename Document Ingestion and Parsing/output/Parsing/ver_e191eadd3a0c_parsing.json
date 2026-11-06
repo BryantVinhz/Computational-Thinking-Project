@@ -1,0 +1,1843 @@
+[
+  {
+    "block_id": "ver_e191eadd3a0c_b00000",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 0,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "# Choosing and Using Security Questions Cheat Sheet",
+    "text_hash": "eb51cd9e856df93e29354229a744ce7733421d946c52d68a5eb5a2995bee305a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 1,
+      "end_line": 1
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet"
+    ],
+    "heading_level": 1,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00001",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 1,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Introduction",
+    "text_hash": "d753efbab681fa4da82470d9a83b1c202de58f92fd498e77a269c1163bc4714b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 3,
+      "end_line": 3
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00002",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 2,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**WARNING: Security questions are no longer recognized as an acceptable authentication factor per [NIST SP 800-63](https://pages.nist.gov/800-63-3/sp800-63b.html). Account recovery is just an alternate way to authenticate so it should be no weaker than regular authentication. See [SP 800-63B sec 5.1.1.2 paragraph 4](https://pages.nist.gov/800-63-3/sp800-63b.html#sec5): *Verifiers SHALL NOT prompt subscribers to use specific types of information (e.g., “What was the name of your first pet?”) when choosing memorized secrets*.**",
+    "text_hash": "6af9e4c7b09a841fd499890ff79738ba0d93555cea4217eefbe98719c1792683",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 5,
+      "end_line": 5
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00003",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 3,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "If you are curious, please have a look at this [study](https://www.microsoft.com/en-us/research/publication/its-no-secret-measuring-the-security-and-reliability-of-authentication-via-secret-questions/) by Microsoft Research in 2009 and this [study](https://research.google/pubs/pub43783/) performed at Google in 2015. The accompanying [Security blog](https://security.googleblog.com/2015/05/new-research-some-tough-questions-for.html) update includes an infographic on the issues identified with security questions.",
+    "text_hash": "3379dd89a6a7c0400263b0396fc51dc433f4b224a718c4aaf7a45772ba2e99d7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 7,
+      "end_line": 7
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00004",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 4,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**Please Note:** While there are no acceptable uses of security questions in secure software, this cheat sheet provides guidance on how to choose strong security questions for legacy purposes.",
+    "text_hash": "67231e7d9556e2567cd9144d46f6cc78a6cad7e0bdc199d7ee63481e3bddbd21",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 9,
+      "end_line": 9
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00005",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 5,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Choosing Security Questions",
+    "text_hash": "82dea9a976284487e7c79e528a166ddb9cc5509cfc405443bddf92063af38382",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 11,
+      "end_line": 11
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Choosing Security Questions"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00006",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 6,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Desired Characteristics",
+    "text_hash": "8dfa983f4b3e1bb69c48353c547944c274a6768d3bf12ec03fe63199a5d84b29",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 13,
+      "end_line": 13
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Choosing Security Questions",
+      "Desired Characteristics"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00007",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 7,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Any security questions presented to users to reset forgotten passwords must meet the following characteristics:",
+    "text_hash": "193d3d83e3112345b6226ef1c22d58b8c79e8484e31e98cd5cdf1ad1b7939336",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 15,
+      "end_line": 15
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Choosing Security Questions",
+      "Desired Characteristics"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00008",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 8,
+    "file_format": "MARKDOWN",
+    "block_type": "table",
+    "text_content": "| Characteristic | Explanation |\n|----------------|-------------|\n| Memorable | The user must be able to recall the answer to the question, potentially years after creating their account. |\n| Consistent | The answer to the question must not change over time. |\n| Applicable | The user must be able to answer the question. |\n| Confidential | The answer to the question must be hard for an attacker to obtain. |\n| Specific | The answer should be clear to the user. |",
+    "text_hash": "63236da243b1b7ab7b27f0474af2da77935b21e70b46210791149c8a8fd1daeb",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 17,
+      "end_line": 23
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Choosing Security Questions",
+      "Desired Characteristics"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": [
+      "Characteristic",
+      "Explanation"
+    ],
+    "table_rows": [
+      [
+        "Memorable",
+        "The user must be able to recall the answer to the question, potentially years after creating their account."
+      ],
+      [
+        "Consistent",
+        "The answer to the question must not change over time."
+      ],
+      [
+        "Applicable",
+        "The user must be able to answer the question."
+      ],
+      [
+        "Confidential",
+        "The answer to the question must be hard for an attacker to obtain."
+      ],
+      [
+        "Specific",
+        "The answer should be clear to the user."
+      ]
+    ],
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00009",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 9,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Types of Security Questions",
+    "text_hash": "523d366b5d1d8cdd7d6b9c9664fe27b8e6ed66dff5ff60a83c9c4efca5ee0796",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 25,
+      "end_line": 25
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Choosing Security Questions",
+      "Types of Security Questions"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00010",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 10,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "<!-- textlint-disable terminology -->",
+    "text_hash": "576b1297fb41583734d83ed013327e99b9d4afc230f8735e021bd73006a12ecc",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 27,
+      "end_line": 27
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Choosing Security Questions",
+      "Types of Security Questions"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00011",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 11,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Security questions fall into two main types. With *user defined* security questions, the user must choose a question from a list, and provide an answer to the question. Common examples are \"What is your favourite colour?\" or \"What was your first car?\"",
+    "text_hash": "8dff03b1f3883499127ad87a456d2834865d96259ecbc45f772b40da95a4b4ad",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 28,
+      "end_line": 28
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Choosing Security Questions",
+      "Types of Security Questions"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00012",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 12,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "<!-- textlint-enable terminology -->",
+    "text_hash": "f5a4d727a213b73444db6a4491951e9c36fc98ad8a80728389e12b92214ccae5",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 29,
+      "end_line": 29
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Choosing Security Questions",
+      "Types of Security Questions"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00013",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 13,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "These are easy for applications to implement, as the additional information required is provided by the user when they first create their account. However, users will often choose weak or easily discovered answers to these questions.",
+    "text_hash": "72a8155e4f06cf3cc88f771bc74f264e9bbce72bb2b5e0cb5506e9cfd455c15a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 31,
+      "end_line": 31
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Choosing Security Questions",
+      "Types of Security Questions"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00014",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 14,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "*System defined* security questions are based on information that is already known about the user. This approach avoids having to ask the user to provide specific security questions and answers, and also prevents them from being able to choose weak details. However it relies on sufficient information already being stored about the user, and on this information being hard for an attacker to obtain.",
+    "text_hash": "991b1ba3d605fd15fb4d946fffcf9a515164ff79153db0025bfa5b88ddd94c5b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 33,
+      "end_line": 33
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Choosing Security Questions",
+      "Types of Security Questions"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00015",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 15,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### User Defined Security Questions",
+    "text_hash": "0da4d34127587b48692cd62a47c7d1e2b37644681dac3c333e15df01e4265a74",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 35,
+      "end_line": 35
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Choosing Security Questions",
+      "User Defined Security Questions"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00016",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 16,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Bad Questions",
+    "text_hash": "da43f500f9c646d92ff44b750002a07825c34658611a09e01de8efb0f8155ad0",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 37,
+      "end_line": 37
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Choosing Security Questions",
+      "User Defined Security Questions",
+      "Bad Questions"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00017",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 17,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Any questions that do not have all of the characteristics discussed above should be avoided. The table below gives some examples of bad security questions:",
+    "text_hash": "cdd148f61efc25c10adfb11ea663fb8a868a8ee22edb3be5968acb5f89e32c28",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 39,
+      "end_line": 39
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Choosing Security Questions",
+      "User Defined Security Questions",
+      "Bad Questions"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00018",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 18,
+    "file_format": "MARKDOWN",
+    "block_type": "table",
+    "text_content": "| Question | Problem |\n|----------|---------|\n| When is your date of birth? | Easy for an attacker to discover. |\n| What is your memorable date? | Most users will just enter their birthday. |\n| What is your favourite movie? | Likely to change over time. |\n| What is your favourite cricket team? | Not applicable to most users. |\n| What is the make and model of your first car? | Fairly small range of likely answers. |\n| What is your nickname? | This could be guessed by glancing through social media posts. |",
+    "text_hash": "ea78a36c10e65a39cc678af01c2b959dacc518b174b6eaad58e4dbc51dee4489",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 41,
+      "end_line": 48
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Choosing Security Questions",
+      "User Defined Security Questions",
+      "Bad Questions"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": [
+      "Question",
+      "Problem"
+    ],
+    "table_rows": [
+      [
+        "When is your date of birth?",
+        "Easy for an attacker to discover."
+      ],
+      [
+        "What is your memorable date?",
+        "Most users will just enter their birthday."
+      ],
+      [
+        "What is your favourite movie?",
+        "Likely to change over time."
+      ],
+      [
+        "What is your favourite cricket team?",
+        "Not applicable to most users."
+      ],
+      [
+        "What is the make and model of your first car?",
+        "Fairly small range of likely answers."
+      ],
+      [
+        "What is your nickname?",
+        "This could be guessed by glancing through social media posts."
+      ]
+    ],
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00019",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 19,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Additionally, the context of the application must be considered when deciding whether questions are good or bad. For example, a question such as \"What was your maths teacher's surname in your 8th year of school?\" would be very easy to guess if it was used in a virtual learning environment for your school (as other students probably know this information), but would be much stronger for an online gaming website.",
+    "text_hash": "03a19064cd574500eb93f03b68379f246cc538674a6d1f4c97a131620498dcbd",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 50,
+      "end_line": 50
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Choosing Security Questions",
+      "User Defined Security Questions",
+      "Bad Questions"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00020",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 20,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Good Questions",
+    "text_hash": "e6832af4544c9874e308307e7e72a949c7aef005ebe95970132c37b83db2c872",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 52,
+      "end_line": 52
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Choosing Security Questions",
+      "User Defined Security Questions",
+      "Good Questions"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00021",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 21,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Many good security questions are not applicable to all users, so the best approach is to give the user a list of security questions that they can choose from. This allows you to have more specific questions (with more secure answers), while still providing every user with questions that they can answer.",
+    "text_hash": "5f09e9974016e1c704a7d0961855a441eb3b64b2d322aed74a4d64c55b83e384",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 54,
+      "end_line": 54
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Choosing Security Questions",
+      "User Defined Security Questions",
+      "Good Questions"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00022",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 22,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The following list provides some examples of good questions:",
+    "text_hash": "639cf48ec0e4c378743477aef3595a79b8ec459c39770668954b81944f8feadd",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 56,
+      "end_line": 56
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Choosing Security Questions",
+      "User Defined Security Questions",
+      "Good Questions"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00023",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 23,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- What is the name of a college you applied to but didn’t attend?\n- What was the name of the first school you remember attending?\n- Where was the destination of your most memorable school field trip?\n- What was your maths teacher's surname in your 8th year of school?\n- What was the name of your first stuffed toy?\n- What was your driving instructor's first name?\n",
+    "text_hash": "7feb081e386a7aa8e0e44467062a9011a7a0c6d3d854bb3765cf24a88ab4dbbc",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 58,
+      "end_line": 64
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Choosing Security Questions",
+      "User Defined Security Questions",
+      "Good Questions"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00024",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 24,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Much like passwords, there is a risk that users will re-use recovery questions between different sites, which could expose the users if the other site is compromised. As such, there are benefits to having unique security questions that are unlikely to be shared between sites. An easy way to achieve this is to create more targeted questions based on the type of application. For example, on a share dealing platform, finance-related questions such as \"What is the first company you owned shares in?\" could be used.",
+    "text_hash": "dccf2046eb0fd1cee862c19480aa0ff76d12bc12d193b81ac25e7f45931d708c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 65,
+      "end_line": 65
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Choosing Security Questions",
+      "User Defined Security Questions",
+      "Good Questions"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00025",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 25,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Allowing Users to Write Their Own Questions",
+    "text_hash": "6e16ee8adde860c74724d2bb36793e6ede9fcb155945a6c9fa3a9716224a714b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 67,
+      "end_line": 67
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Choosing Security Questions",
+      "User Defined Security Questions",
+      "Allowing Users to Write Their Own Questions"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00026",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 26,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Allowing users to write their own security questions can result in them choosing very strong and unique questions that would be very hard for an attacker to guess. However, there is also a significant risk that users will choose weak questions. In some cases, users might even set a recovery question to a reminder of what their password is - allowing anyone guessing their email address to compromise their account.",
+    "text_hash": "bf77d779d63045dbe5e4e55c63e56afd89d2c7e6edf953369f1362177c0f68e0",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 69,
+      "end_line": 69
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Choosing Security Questions",
+      "User Defined Security Questions",
+      "Allowing Users to Write Their Own Questions"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00027",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 27,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "As such, it is generally best not to allow users to write their own questions.",
+    "text_hash": "69e303bedeb27280cd1d796cd4c8b197c39b66fe5c27cf8ce009d538a975d40b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 71,
+      "end_line": 71
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Choosing Security Questions",
+      "User Defined Security Questions",
+      "Allowing Users to Write Their Own Questions"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00028",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 28,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Restricting Answers",
+    "text_hash": "a8529c3406dde0e197dd337acaa3c0b996df21882b0d63e14f17711b2b5fb11c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 73,
+      "end_line": 73
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Choosing Security Questions",
+      "User Defined Security Questions",
+      "Restricting Answers"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00029",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 29,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Enforcing a minimum length for answers can prevent users from entering strings such as \"a\" or \"123\" for their answers. However, depending on the questions asked, it could also prevent users from being able to correctly answer the question. For example, asking for a first name or surname could result in a two letter answer such as \"Li\", and a color-based question could be four letters such as \"blue\".",
+    "text_hash": "697e717db16b775b08340469ecff97f24b4b4e16e2c94f06ac58cc2734e7a5a5",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 75,
+      "end_line": 75
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Choosing Security Questions",
+      "User Defined Security Questions",
+      "Restricting Answers"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00030",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 30,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Answers should also be checked against a denylist, including:",
+    "text_hash": "f8297128c0609283d2a7892a9752ec00baa85505cdc10039f2e6fc6b56989e27",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 77,
+      "end_line": 77
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Choosing Security Questions",
+      "User Defined Security Questions",
+      "Restricting Answers"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00031",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 31,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- The username or email address.\n- The user's current password.\n- Common strings such as \"123\" or \"password\".\n",
+    "text_hash": "8aa13372f1a25628e9295ffae633fc22cadec6af04825e3eb9785d079b731edf",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 79,
+      "end_line": 82
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Choosing Security Questions",
+      "User Defined Security Questions",
+      "Restricting Answers"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00032",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 32,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Renewing Security Questions",
+    "text_hash": "8d68d513f55315d81e248577aeaf3f6ab671c788054abb47f813a1e8da909e5d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 83,
+      "end_line": 83
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Choosing Security Questions",
+      "User Defined Security Questions",
+      "Renewing Security Questions"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00033",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 33,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "If the security questions are not used as part of the main authentication process, then consider periodically (such as when they are changing their passwords after expiration) prompting the user to review their security questions and verify that they still know the answers. This should give them a chance to update any answers that may have changed (although ideally this shouldn't happen with good questions), and increases the likelihood that they will remember them if they ever need to recover their account.",
+    "text_hash": "601428abeba2a6a683a2799c4cca677aee66381db500020aa60f7ec08e8eb609",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 85,
+      "end_line": 85
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Choosing Security Questions",
+      "User Defined Security Questions",
+      "Renewing Security Questions"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00034",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 34,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### System Defined Security Questions",
+    "text_hash": "99d98e8297dd8ce942fa81f8a7556497d9a4bd1ca9d5313eeba4f6469bb06d36",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 87,
+      "end_line": 87
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Choosing Security Questions",
+      "System Defined Security Questions"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00035",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 35,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "System defined security questions are based on information that is already known about the user. The users' personal details are often used, including the full name, address and date of birth. However these can easily be obtained by an attacker from social media, and as such provide a very weak form of authentication.",
+    "text_hash": "dc50f0dc95eaa8eaeaf4cffdcabbeb85551d92f2d57af9832cfbd3bb793638b9",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 89,
+      "end_line": 89
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Choosing Security Questions",
+      "System Defined Security Questions"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00036",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 36,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The questions that can be used will vary hugely depending on the application, and how much information is already held about the user. When deciding which bits of information may be usable for security questions, the following areas should be considered:",
+    "text_hash": "9b75a0fad67e6d83b2844f62fb27c2bd9924bfa1c57abc213a4f5541dce401ef",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 91,
+      "end_line": 91
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Choosing Security Questions",
+      "System Defined Security Questions"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00037",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 37,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- Will the user be able to remember the answer to the question?\n- Could an attacker easily obtain this information from social media or other sources?\n- Is the answer likely to be the same for a large number of users, or easily guessable?\n",
+    "text_hash": "0c71b6959a86ba01f8353956b127e2d0203a963517815fa8367595a42692dd41",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 93,
+      "end_line": 96
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Choosing Security Questions",
+      "System Defined Security Questions"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00038",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 38,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Using Security Questions",
+    "text_hash": "e023dab8159eb1c5de6f26a30f1fae52317888493e467329ae87a74fb8e21fb9",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 97,
+      "end_line": 97
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Using Security Questions"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00039",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 39,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### When to Use Security Questions",
+    "text_hash": "30ba70c2827b9c51bd7ccdcefe3eacf2d1166828167b109327ec3f6524915873",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 99,
+      "end_line": 99
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Using Security Questions",
+      "When to Use Security Questions"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00040",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 40,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Applications should generally use a password along with a second authentication factor (such as an OTP code) to authenticate users. The combination of a password and security questions **does not constitute MFA**, as both factors are the same (i.e. something you know)..",
+    "text_hash": "0f3a6e2b0072612ce218af768461d69a0e88e17a4d2a203d6722f6f7fd86fa47",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 101,
+      "end_line": 101
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Using Security Questions",
+      "When to Use Security Questions"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00041",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 41,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**Security questions should never be relied upon as the sole mechanism to authenticate a user**. However, they can provide a useful additional layer of security when other stronger factors are not available. Common cases where they would be used include:",
+    "text_hash": "c5c7de8e4d2f7e60581005259aa8f735559b29d983d0ec742c432ec74964ae0c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 103,
+      "end_line": 103
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Using Security Questions",
+      "When to Use Security Questions"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00042",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 42,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- Logging in.\n- Resetting a forgotten password.\n- Resetting a lost MFA token.\n",
+    "text_hash": "69e912b097562c85b72499af797db82e9dab527f71ed1104d4180f2b9292961c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 105,
+      "end_line": 108
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Using Security Questions",
+      "When to Use Security Questions"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00043",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 43,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Authentication Flow",
+    "text_hash": "780984113e2eebf39c53a706939d40ab0d42b96439390420d8c988e830c33be3",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 109,
+      "end_line": 109
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Using Security Questions",
+      "When to Use Security Questions",
+      "Authentication Flow"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00044",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 44,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Security questions may be used as part of the main authentication flow to supplement passwords where MFA is not available. A typical authentication flow would be:",
+    "text_hash": "50320d47afcd17d8e6e945069d24aeb7811fa7bcf59418af70a7d3bb7ce5097e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 111,
+      "end_line": 111
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Using Security Questions",
+      "When to Use Security Questions",
+      "Authentication Flow"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00045",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 45,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- The user enters their username and password.\n- If the username and password are correct, the user is presented with the security question(s).\n- If the answers are correct, the user is logged in.\n",
+    "text_hash": "63ba77871ee6c8c67c05321a377000942297e16a0d1aed1d4ae93ab096c3e254",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 113,
+      "end_line": 116
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Using Security Questions",
+      "When to Use Security Questions",
+      "Authentication Flow"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00046",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 46,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "If the answers to the security questions are incorrect, then this should be counted as a failed login attempt, and the account lockout counter should be incremented for the user.",
+    "text_hash": "9c450798be9e067536f806a28729351c847d709ff79fa24bee30566b2b9c94a4",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 117,
+      "end_line": 117
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Using Security Questions",
+      "When to Use Security Questions",
+      "Authentication Flow"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00047",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 47,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Forgotten Password or Lost MFA Token Flow",
+    "text_hash": "1822f2fc08f129509932fe5859d8ecd041e8d2416239ec958e6d9ed6b796b125",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 119,
+      "end_line": 119
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Using Security Questions",
+      "When to Use Security Questions",
+      "Forgotten Password or Lost MFA Token Flow"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00048",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 48,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Forgotten password functionality often provides a mechanism for attackers to enumerate user accounts if it is not correctly implemented. The following flow avoids this issue by only displaying the security questions once the user has proved ownership of the email address:",
+    "text_hash": "1337637e3c14da7e3b64d3f224859fbb88292f891762338b52fcfad8fcc30c96",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 121,
+      "end_line": 121
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Using Security Questions",
+      "When to Use Security Questions",
+      "Forgotten Password or Lost MFA Token Flow"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00049",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 49,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- The user enters email address (and solves a CAPTCHA).\n- The application displays a generic message such as \"If the email address was correct, an email will be sent to it\".\n- An email with a randomly generated, single-use link is sent to the user.\n- The user clicks the link.\n- The user is presented with the security question(s).\n- If the answer is correct, the user can enter a new password.\n",
+    "text_hash": "8c967572e52d3a49ddd676d582089c553acb815539b64272bcaa26fd68fc81e7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 123,
+      "end_line": 129
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Using Security Questions",
+      "When to Use Security Questions",
+      "Forgotten Password or Lost MFA Token Flow"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00050",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 50,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### How to Use Security Questions",
+    "text_hash": "97c59630a7494024d970ba7daee491fae1b9c2b8f3a54f772170a3fd77e8d606",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 130,
+      "end_line": 130
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Using Security Questions",
+      "How to Use Security Questions"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00051",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 51,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Storing Answers",
+    "text_hash": "85da6b0a6ec046426fa76f3195cecb3f64c510f41a970effd4a2cdb46b93efdc",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 132,
+      "end_line": 132
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Using Security Questions",
+      "How to Use Security Questions",
+      "Storing Answers"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00052",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 52,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The answers to security questions may contain personal information about the user, and may also be re-used by the user between different applications. As such, they should be treated in the same way as passwords, and stored using a secure hashing algorithm such as Bcrypt. The [password storage cheat sheet](Password_Storage_Cheat_Sheet.md) contains further guidance on this.",
+    "text_hash": "7426a44f553e7a8e9b2be71736d8ddad5e7c2c777b9071ebc09286da7f0b92cf",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 134,
+      "end_line": 134
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Using Security Questions",
+      "How to Use Security Questions",
+      "Storing Answers"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00053",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 53,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Comparing Answers",
+    "text_hash": "5c5348bd4d4753f120b2cce785f9c1ed7d4927ddbf65d913b59bb2a3d496b2bc",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 136,
+      "end_line": 136
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Using Security Questions",
+      "How to Use Security Questions",
+      "Comparing Answers"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00054",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 54,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Comparing the answers provided by the user with the stored answer in a case-insensitive manner makes it much easier for the user. The simplest way to do this is to convert the answer to lowercase before hashing the answer to store it, and then lowercase the user-provided answer before comparing them.",
+    "text_hash": "0a435eb353d95c78740b0eeb04efc29c8c5d298a4936507c70cf9e5a7fe133b0",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 138,
+      "end_line": 138
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Using Security Questions",
+      "How to Use Security Questions",
+      "Comparing Answers"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00055",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 55,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "It is also beneficial to give the user some indication of the format that they should use to enter answers. This could be done through input validation, or simply by recommending that the user enters their details in a specific format. For example, when asking for a date, indicating that the format should be \"DD/MM/YYYY\" will mean that the user doesn't have to try and guess what format they entered when registering.",
+    "text_hash": "afb421f2428b68d9fbdaf229bba15f9dc68c93d5c2861a8d8fa3cecd27102f7f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 140,
+      "end_line": 140
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Using Security Questions",
+      "How to Use Security Questions",
+      "Comparing Answers"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00056",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 56,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Updating Answers",
+    "text_hash": "ca306f1505590cd017dd95a29c26d90f925b30b54feeaa71e7e6b466eeb61d61",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 142,
+      "end_line": 142
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Using Security Questions",
+      "How to Use Security Questions",
+      "Updating Answers"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00057",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 57,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "When the user updates the answers to their security questions, this should be treated as a sensitive operation within the application. As such, the user should be required to re-authenticate themselves by entering their password (or ideally using MFA), in order to prevent an attacker updating the questions if they gain temporary access to the user's account.",
+    "text_hash": "7379bf871b39173c1b35bd34e087e22ff5794e56be5439f9019e86c3e4c90391",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 144,
+      "end_line": 144
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Using Security Questions",
+      "How to Use Security Questions",
+      "Updating Answers"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00058",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 58,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Multiple Security Questions",
+    "text_hash": "2029577945b28e762c9fdd3c681df058e8edcdf9ad92994dce5758e14603726b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 146,
+      "end_line": 146
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Using Security Questions",
+      "How to Use Security Questions",
+      "Multiple Security Questions"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00059",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 59,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "When security questions are used, the user can either be asked a single question, or can be asked multiple questions at the same time. This provides a greater level of assurance, especially if the questions are diverse, as an attacker would need to obtain more information about the target user. A mixture of user-defined and system-defined questions can be very effective for this.",
+    "text_hash": "474ae3544d96dcc4cefde20691b977350e4ad961e672139bafc757433ea3ca10",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 148,
+      "end_line": 148
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Using Security Questions",
+      "How to Use Security Questions",
+      "Multiple Security Questions"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00060",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 60,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "If the user is asked a single question out of a bank of possible questions, then this question **should not** be changed until the user has answered it correctly. If the attacker is allowed to try answering all of the different security questions, this greatly increases the chance that they will be able to guess or obtain the answer to one of them.",
+    "text_hash": "7c08e00aed568b9a885905f9073f45097a57c5f6ca6efb0f51dd7859d41271ea",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 150,
+      "end_line": 150
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "Using Security Questions",
+      "How to Use Security Questions",
+      "Multiple Security Questions"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00061",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 61,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## References",
+    "text_hash": "65b72d86eeeb214ab8ca5fd24cb7cd7773e58084e95b670040df03e21e8c6fa7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 152,
+      "end_line": 152
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "References"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_e191eadd3a0c_b00062",
+    "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+    "version_id": "ver_e191eadd3a0c",
+    "block_idx": 62,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- [Google Research: Secrets, Lies, and Account Recovery](https://research.google/pubs/pub43783/)\n- [NIST SP 800-63B-4: Authentication and Authenticator Management](https://pages.nist.gov/800-63-4/sp800-63b.html)",
+    "text_hash": "45a0684d3f61750064ae13e0d246b76739d64a81259e131a548e111e501eb6df",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 154,
+      "end_line": 155
+    },
+    "heading_path": [
+      "Choosing and Using Security Questions Cheat Sheet",
+      "References"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  }
+]

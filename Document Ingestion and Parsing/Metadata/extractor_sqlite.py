@@ -200,7 +200,7 @@ class MetadataExtractor:
 
 if __name__ == "__main__":
     documents = json.loads((INGESTION_OUT_DIR / "documents.json").read_text(encoding="utf-8"))
-    versions = json.loads((INGESTION_OUT_DIR / "ducuments_version.json").read_text(encoding="utf-8"))
+    versions = json.loads((INGESTION_OUT_DIR / "documents_version.json").read_text(encoding="utf-8"))
 
     document = documents[0]
     version = next(v for v in versions if v["document_id"] == document["document_id"])

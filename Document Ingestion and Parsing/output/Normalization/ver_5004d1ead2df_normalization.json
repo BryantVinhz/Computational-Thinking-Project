@@ -1,0 +1,3044 @@
+[
+  {
+    "block_id": "ver_5004d1ead2df_b00000",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 0,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "# Password Storage Cheat Sheet",
+    "text_hash": "40844a4d4992b1ad5a68f4c87bf1376022562ae7ce303ffca5d4ac4950c7d41e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 1,
+      "end_line": 1
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet"
+    ],
+    "heading_level": 1,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00000",
+    "normalized_text": "# Password Storage Cheat Sheet",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00001",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 1,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Introduction",
+    "text_hash": "d753efbab681fa4da82470d9a83b1c202de58f92fd498e77a269c1163bc4714b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 3,
+      "end_line": 3
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00001",
+    "normalized_text": "## Introduction",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00002",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 2,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "This cheat sheet advises you on the proper methods for storing passwords for authentication. When passwords are stored, they must be protected from an attacker even if the application or database is compromised. Fortunately, a majority of modern languages and frameworks provide built-in functionality to help store passwords safely.",
+    "text_hash": "3345187c64b208fd04208fbd8ec13a40cddaffe4cc0de5fe6e14eed6eed1fbee",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 5,
+      "end_line": 5
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00002",
+    "normalized_text": "This cheat sheet advises you on the proper methods for storing passwords for authentication. When passwords are stored, they must be protected from an attacker even if the application or database is compromised. Fortunately, a majority of modern languages and frameworks provide built-in functionality to help store passwords safely.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00003",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 3,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Passwords should never be stored in plain text. Instead, they must be protected using strong, slow hashing algorithms such as Argon2id, bcrypt, or PBKDF2. A unique salt must be added to each password to prevent attackers from using precomputed lookup tables like rainbow tables. Fast hashing algorithms such as SHA‑256 are not suitable for password storage because they allow attackers to perform large numbers of guesses quickly. Using slow, memory‑hard algorithms makes brute‑force attacks significantly more difficult, expensive, and time‑consuming.",
+    "text_hash": "876f37885a6ef6888a2789a2bc7fafab353185c549de947916218cfd4b4bcbec",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 7,
+      "end_line": 7
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00003",
+    "normalized_text": "Passwords should never be stored in plain text. Instead, they must be protected using strong, slow hashing algorithms such as Argon2id, bcrypt, or PBKDF2. A unique salt must be added to each password to prevent attackers from using precomputed lookup tables like rainbow tables. Fast hashing algorithms such as SHA‑256 are not suitable for password storage because they allow attackers to perform large numbers of guesses quickly. Using slow, memory‑hard algorithms makes brute‑force attacks significantly more difficult, expensive, and time‑consuming.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00004",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 4,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "To sum up our recommendations:",
+    "text_hash": "4730bdcca96e7b4b80408d5f0d934314daa2b34419dca36c3486193dba1496ce",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 9,
+      "end_line": 9
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00004",
+    "normalized_text": "To sum up our recommendations:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00005",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 5,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- **Use [Argon2id](#argon2id) with a minimum configuration of 19 MiB of memory, an iteration count of 2, and 1 degree of parallelism.**\n- **If [Argon2id](#argon2id) is not available, use [scrypt](#scrypt) with a minimum CPU/memory cost parameter of (2^17), a minimum block size of 8 (1024 bytes), and a parallelization parameter of 1.**\n- **For legacy systems using [bcrypt](#bcrypt), use a work factor of 10 or more and with a password limit of 72 bytes.**\n- **If FIPS-140 compliance is required, use [PBKDF2](#pbkdf2) with a work factor of 600,000 or more and set with an internal hash function of HMAC-SHA-256.**\n- **Consider using a [pepper](#peppering) to provide additional defense in depth (though alone, it provides no additional secure characteristics).**\n",
+    "text_hash": "11d12a51afe53ceb50f31c6fe262634dd06777882a7fffdddc8499a402f9bc34",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 11,
+      "end_line": 16
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00005",
+    "normalized_text": "- **Use [Argon2id](#argon2id) with a minimum configuration of 19 MiB of memory, an iteration count of 2, and 1 degree of parallelism.**\n- **If [Argon2id](#argon2id) is not available, use [scrypt](#scrypt) with a minimum CPU/memory cost parameter of (2^17), a minimum block size of 8 (1024 bytes), and a parallelization parameter of 1.**\n- **For legacy systems using [bcrypt](#bcrypt), use a work factor of 10 or more and with a password limit of 72 bytes.**\n- **If FIPS-140 compliance is required, use [PBKDF2](#pbkdf2) with a work factor of 600,000 or more and set with an internal hash function of HMAC-SHA-256.**\n- **Consider using a [pepper](#peppering) to provide additional defense in depth (though alone, it provides no additional secure characteristics).**",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00006",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 6,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Background",
+    "text_hash": "9e644d899762f4766b529be2738b476459f7324a17156ee974382f440b47aae5",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 17,
+      "end_line": 17
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Background"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00006",
+    "normalized_text": "## Background",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00007",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 7,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Hashing vs Encryption",
+    "text_hash": "9e31314857cc25458a3462a7f42a972292171ffaea9e9bfc64a26af2fa4cb61c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 19,
+      "end_line": 19
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Background",
+      "Hashing vs Encryption"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00007",
+    "normalized_text": "### Hashing vs Encryption",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00008",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 8,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Hashing and encryption can keep sensitive data safe, but in almost all circumstances, **Passwords should be securely hashed using modern, adaptive hashing algorithms (e.g., Argon2id, bcrypt, or PBKDF2), rather than encrypted or stored in plaintext.**",
+    "text_hash": "83fcd1e785ee7336cb721320613f5aa0494e149d85d8b70dfd0c1151b22ff202",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 21,
+      "end_line": 21
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Background",
+      "Hashing vs Encryption"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00008",
+    "normalized_text": "Hashing and encryption can keep sensitive data safe, but in almost all circumstances, **Passwords should be securely hashed using modern, adaptive hashing algorithms (e.g., Argon2id, bcrypt, or PBKDF2), rather than encrypted or stored in plaintext.**",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00009",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 9,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Because **hashing is a one-way function** (i.e., it is impossible to \"decrypt\" a hash and obtain the original plaintext value), it is the most appropriate approach for password validation. Even if an attacker obtains the hashed password, they cannot use it to log in as the victim.",
+    "text_hash": "cb196e2a7d237f787fac8eebd61be355bfece21301df803c654f83b68eab153c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 23,
+      "end_line": 23
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Background",
+      "Hashing vs Encryption"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00009",
+    "normalized_text": "Because **hashing is a one-way function** (i.e., it is impossible to \"decrypt\" a hash and obtain the original plaintext value), it is the most appropriate approach for password validation. Even if an attacker obtains the hashed password, they cannot use it to log in as the victim.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00010",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 10,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Since **encryption is a two-way function**, attackers can retrieve the original plaintext from the encrypted data. It can be used to store data such as a user's address since this data is displayed in plaintext on the user's profile. Hashing their address would result in a garbled mess.",
+    "text_hash": "98d5867d2ba1c819e19579a7d0ef0f3d12fa083e95cc955c22248e5f45d528b2",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 25,
+      "end_line": 25
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Background",
+      "Hashing vs Encryption"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00010",
+    "normalized_text": "Since **encryption is a two-way function**, attackers can retrieve the original plaintext from the encrypted data. It can be used to store data such as a user's address since this data is displayed in plaintext on the user's profile. Hashing their address would result in a garbled mess.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00011",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 11,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The only time encryption should be used in passwords is in edge cases where it is necessary to obtain the original plaintext password. This might be necessary if the application needs to use the password to authenticate with another system that does not support a modern way to programmatically grant access, such as OpenID Connect (OIDC). Wherever possible, an alternative architecture should be used to avoid the need to store passwords in an encrypted form.",
+    "text_hash": "f46591bd621a1deae9e40d6c008c1ed278ad446f156e710efc3d6b306851fd08",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 27,
+      "end_line": 27
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Background",
+      "Hashing vs Encryption"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00011",
+    "normalized_text": "The only time encryption should be used in passwords is in edge cases where it is necessary to obtain the original plaintext password. This might be necessary if the application needs to use the password to authenticate with another system that does not support a modern way to programmatically grant access, such as OpenID Connect (OIDC). Wherever possible, an alternative architecture should be used to avoid the need to store passwords in an encrypted form.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00012",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 12,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "For further guidance on encryption, see the [Cryptographic Storage Cheat Sheet](Cryptographic_Storage_Cheat_Sheet.md).",
+    "text_hash": "e0eb370ab5681694c7d9f3a5d3cc5d66da542f0d15fa875a6f01f19ab84d3628",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 29,
+      "end_line": 29
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Background",
+      "Hashing vs Encryption"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00012",
+    "normalized_text": "For further guidance on encryption, see the [Cryptographic Storage Cheat Sheet](Cryptographic_Storage_Cheat_Sheet.md).",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00013",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 13,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### When Password Hashes Can Be Cracked",
+    "text_hash": "98a13d2ff979871cad7062a1f269603d2b55690b726618523f37d9aa14fcd318",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 31,
+      "end_line": 31
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Background",
+      "When Password Hashes Can Be Cracked"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00013",
+    "normalized_text": "### When Password Hashes Can Be Cracked",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00014",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 14,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**Strong passwords stored with modern hashing algorithms and using hashing best practices should be effectively impossible for an attacker to crack.** It is your responsibility as an application owner to select a modern hashing algorithm.",
+    "text_hash": "52edc3ef56b9db7f0ffa661757f3826eb959b3f75541c0b78e896296f6f13c84",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 33,
+      "end_line": 33
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Background",
+      "When Password Hashes Can Be Cracked"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00014",
+    "normalized_text": "**Strong passwords stored with modern hashing algorithms and using hashing best practices should be effectively impossible for an attacker to crack.** It is your responsibility as an application owner to select a modern hashing algorithm.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00015",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 15,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "However, there are some situations where an attacker can \"crack\" the hashes in some circumstances by doing the following:",
+    "text_hash": "6484bdc2cbde3dddbb23456c45b3f4ba3b5044beb9042162634762dea58421e8",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 35,
+      "end_line": 35
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Background",
+      "When Password Hashes Can Be Cracked"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00015",
+    "normalized_text": "However, there are some situations where an attacker can \"crack\" the hashes in some circumstances by doing the following:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00016",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 16,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- Selecting a password you think the victim has chosen (e.g.`password1!`)\n- Calculating the hash\n- Comparing the hash you calculated to the hash of the victim. If they match, you have correctly \"cracked\" the hash and now know the plaintext value of their password.\n",
+    "text_hash": "fb97c63680e198567fba061ab0ae33c05e81acec508aef0b302d6c422dd4d42f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 37,
+      "end_line": 40
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Background",
+      "When Password Hashes Can Be Cracked"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00016",
+    "normalized_text": "- Selecting a password you think the victim has chosen (e.g.`password1!`)\n- Calculating the hash\n- Comparing the hash you calculated to the hash of the victim. If they match, you have correctly \"cracked\" the hash and now know the plaintext value of their password.",
+    "normalization_flags": {
+      "is_code_or_payload": true,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00017",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 17,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Usually, the attacker will repeat this process with a list of large number of potential candidate passwords, such as:",
+    "text_hash": "9d19c874c18f1f39d0e82d1a565f8f017c729953d1cf527e1a7a499356e8dc06",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 41,
+      "end_line": 41
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Background",
+      "When Password Hashes Can Be Cracked"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00017",
+    "normalized_text": "Usually, the attacker will repeat this process with a list of large number of potential candidate passwords, such as:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00018",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 18,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- Lists of passwords obtained from other compromised sites\n- Brute force (trying every possible candidate)\n- Dictionaries or wordlists of common passwords\n",
+    "text_hash": "c0c429fe49afe0fbf386d93994d1295583a3b4b9322cff59009e89cc7bcba448",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 43,
+      "end_line": 46
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Background",
+      "When Password Hashes Can Be Cracked"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00018",
+    "normalized_text": "- Lists of passwords obtained from other compromised sites\n- Brute force (trying every possible candidate)\n- Dictionaries or wordlists of common passwords",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00019",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 19,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "While the number of permutations can be enormous, with high speed hardware (such as GPUs) and cloud services with many servers for rent, the cost to an attacker is relatively small to do successful password cracking, especially when best practices for hashing are not followed.",
+    "text_hash": "af14feda730f5ace994d14d3933b2f4c73cd2ca97d5017937696c37247967893",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 47,
+      "end_line": 47
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Background",
+      "When Password Hashes Can Be Cracked"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00019",
+    "normalized_text": "While the number of permutations can be enormous, with high speed hardware (such as GPUs) and cloud services with many servers for rent, the cost to an attacker is relatively small to do successful password cracking, especially when best practices for hashing are not followed.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00020",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 20,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Methods for Enhancing Password Storage",
+    "text_hash": "32aaca3e14a4417d64b5393b8c3b203b7652a1a2088e745fb1c23782d686c685",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 49,
+      "end_line": 49
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Methods for Enhancing Password Storage"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00020",
+    "normalized_text": "## Methods for Enhancing Password Storage",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00021",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 21,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Salting",
+    "text_hash": "721401cb312b929df828cff199c3eebfd510fb4a4a190bc27deb132e1457bdee",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 51,
+      "end_line": 51
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Methods for Enhancing Password Storage",
+      "Salting"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00021",
+    "normalized_text": "### Salting",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00022",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 22,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "A salt is a unique, randomly generated string that is added to each password as part of the hashing process. As the salt is unique for every user, an attacker has to crack hashes one at a time using the respective salt rather than calculating a hash once and comparing it against every stored hash. This makes cracking large numbers of hashes significantly harder, as the time required grows in direct proportion to the number of hashes.",
+    "text_hash": "2d2af65e73a5003eeff8bf81fc04e6dacc70c673c1fcc0431cfe9907047410f8",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 53,
+      "end_line": 53
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Methods for Enhancing Password Storage",
+      "Salting"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00022",
+    "normalized_text": "A salt is a unique, randomly generated string that is added to each password as part of the hashing process. As the salt is unique for every user, an attacker has to crack hashes one at a time using the respective salt rather than calculating a hash once and comparing it against every stored hash. This makes cracking large numbers of hashes significantly harder, as the time required grows in direct proportion to the number of hashes.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00023",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 23,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Salting also protects against an attacker's pre-computing hashes using rainbow tables or database-based lookups. Finally, salting means that it is impossible to determine whether two users have the same password without cracking the hashes, as the different salts will result in different hashes even if the passwords are the same.",
+    "text_hash": "5ad92f7121adbce582e455e96a652ebda22ab777a124ad42c45c1eedaf676efc",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 55,
+      "end_line": 55
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Methods for Enhancing Password Storage",
+      "Salting"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00023",
+    "normalized_text": "Salting also protects against an attacker's pre-computing hashes using rainbow tables or database-based lookups. Finally, salting means that it is impossible to determine whether two users have the same password without cracking the hashes, as the different salts will result in different hashes even if the passwords are the same.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00024",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 24,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "At the algorithm and specification level, modern password hashing functions such as [Argon2id](#argon2id), [bcrypt](#bcrypt), and [PBKDF2](#pbkdf2) require the caller to provide a salt.\nHowever, most widely used implementations and libraries automatically generate and manage salts internally, so application developers typically do not need to handle salt generation manually when using these libraries correctly.",
+    "text_hash": "ea56ca213d62bc32958aca295064b9a8bbe58ffada36fc61ef12715f9f2b47ac",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 57,
+      "end_line": 58
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Methods for Enhancing Password Storage",
+      "Salting"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00024",
+    "normalized_text": "At the algorithm and specification level, modern password hashing functions such as [Argon2id](#argon2id), [bcrypt](#bcrypt), and [PBKDF2](#pbkdf2) require the caller to provide a salt.\nHowever, most widely used implementations and libraries automatically generate and manage salts internally, so application developers typically do not need to handle salt generation manually when using these libraries correctly.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00025",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 25,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Peppering",
+    "text_hash": "b036bfb5712ebf66660400b940caddb8e45985b96ad9f1455b83ef1f3a4835b4",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 60,
+      "end_line": 60
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Methods for Enhancing Password Storage",
+      "Peppering"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00025",
+    "normalized_text": "### Peppering",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00026",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 26,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[Peppering](https://datatracker.ietf.org/doc/html/draft-ietf-kitten-password-storage-07#section-4.2) is a class of strategies that can be used in addition to salting to provide an additional layer of protection. It prevents an attacker from being able to crack any of the hashes if they only have access to the database, for example, if they have exploited a SQL injection vulnerability or obtained a backup of the database.",
+    "text_hash": "1461baebe5b102b6ac2fb62a78e3cd2edba394e808f3a06e1b066ad8f7623637",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 62,
+      "end_line": 62
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Methods for Enhancing Password Storage",
+      "Peppering"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00026",
+    "normalized_text": "[Peppering](https://datatracker.ietf.org/doc/html/draft-ietf-kitten-password-storage-07#section-4.2) is a class of strategies that can be used in addition to salting to provide an additional layer of protection. It prevents an attacker from being able to crack any of the hashes if they only have access to the database, for example, if they have exploited a SQL injection vulnerability or obtained a backup of the database.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00027",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 27,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Common requirements for peppering strategies",
+    "text_hash": "1cd6c0312098fb4cd903d76c3da14d0773cd728d32d019157256b4b125d125a1",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 64,
+      "end_line": 64
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Methods for Enhancing Password Storage",
+      "Peppering",
+      "Common requirements for peppering strategies"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00027",
+    "normalized_text": "#### Common requirements for peppering strategies",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00028",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 28,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- A pepper is **shared between stored passwords**, rather than being *unique* to an individual password like a password salt.\n- Unlike a password salt, the pepper should not be public and **should not be stored along with the generated hash**. The pepper should be stored separately from the password database.\n- Peppers are secrets and should be stored in \"secrets vaults\" or HSMs (Hardware Security Modules). See the [Secrets Management Cheat Sheet](Secrets_Management_Cheat_Sheet.md) for more information on securely storing secrets.\n- In the event of a pepper's compromise, the pepper will have to be changed. Peppers cannot be changed without knowledge of a user's password. Therefore changing a pepper will require forcing all users whose passwords were protected by the previous pepper to reset their passwords.\n",
+    "text_hash": "3e3d2073c8547afe4bd3d11f874545d3718e6c9d696ed47ca9b330de4293a54b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 66,
+      "end_line": 70
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Methods for Enhancing Password Storage",
+      "Peppering",
+      "Common requirements for peppering strategies"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00028",
+    "normalized_text": "- A pepper is **shared between stored passwords**, rather than being *unique* to an individual password like a password salt.\n- Unlike a password salt, the pepper should not be public and **should not be stored along with the generated hash**. The pepper should be stored separately from the password database.\n- Peppers are secrets and should be stored in \"secrets vaults\" or HSMs (Hardware Security Modules). See the [Secrets Management Cheat Sheet](Secrets_Management_Cheat_Sheet.md) for more information on securely storing secrets.\n- In the event of a pepper's compromise, the pepper will have to be changed. Peppers cannot be changed without knowledge of a user's password. Therefore changing a pepper will require forcing all users whose passwords were protected by the previous pepper to reset their passwords.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00029",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 29,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Pre-hashing peppers",
+    "text_hash": "2dcc6ba4bf4b76fc049ee4c1f08323e0f5c7746f08af3940095c14f1d5353b24",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 71,
+      "end_line": 71
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Methods for Enhancing Password Storage",
+      "Peppering",
+      "Pre-hashing peppers"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00029",
+    "normalized_text": "#### Pre-hashing peppers",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00030",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 30,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "In this strategy, a pepper is added to a password before being hashed by a password hashing algorithm. The computed hash is then stored in the database. In this case the pepper should be a random value generated securely. See the [Cryptographic_Storage_Cheat_Sheet](Cryptographic_Storage_Cheat_Sheet.md#secure-random-number-generation) for more information on securely generating random values.",
+    "text_hash": "2617767076bdb69025f281c6bc33c820d70a02bc572f831a52706dcf28104498",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 73,
+      "end_line": 73
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Methods for Enhancing Password Storage",
+      "Peppering",
+      "Pre-hashing peppers"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00030",
+    "normalized_text": "In this strategy, a pepper is added to a password before being hashed by a password hashing algorithm. The computed hash is then stored in the database. In this case the pepper should be a random value generated securely. See the [Cryptographic_Storage_Cheat_Sheet](Cryptographic_Storage_Cheat_Sheet.md#secure-random-number-generation) for more information on securely generating random values.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00031",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 31,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Post-hashing peppers",
+    "text_hash": "11b2f4df7bb036fe39d8b278dd81918e947ccb59830845608c613618088a11c0",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 75,
+      "end_line": 75
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Methods for Enhancing Password Storage",
+      "Peppering",
+      "Post-hashing peppers"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00031",
+    "normalized_text": "#### Post-hashing peppers",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00032",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 32,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "In this strategy, a password is hashed as usual using a password hashing algorithm. The resulting password hash is then hashed again using an HMAC (e.g., HMAC-SHA256, HMAC-SHA512, depending on the desired output length) before storing the resulting hash in the database. In this case the pepper is acting as the HMAC key and should be generated as per requirements of the HMAC algorithm.",
+    "text_hash": "f0cd1c96e05e321ff608b936a387e6ade897d6bb7ce0e43c87b7205ca44ba302",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 77,
+      "end_line": 77
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Methods for Enhancing Password Storage",
+      "Peppering",
+      "Post-hashing peppers"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00032",
+    "normalized_text": "In this strategy, a password is hashed as usual using a password hashing algorithm. The resulting password hash is then hashed again using an HMAC (e.g., HMAC-SHA256, HMAC-SHA512, depending on the desired output length) before storing the resulting hash in the database. In this case the pepper is acting as the HMAC key and should be generated as per requirements of the HMAC algorithm.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00033",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 33,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Using Work Factors",
+    "text_hash": "fcee98b703a912a8c56f8302c4e1d5ca2a91eccfd266c27593687918c6fbff78",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 79,
+      "end_line": 79
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Methods for Enhancing Password Storage",
+      "Using Work Factors"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00033",
+    "normalized_text": "### Using Work Factors",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00034",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 34,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": " The work factor is the number of iterations of the hashing algorithm that are performed for each password (usually, it's actually `2^work` iterations). The work factor is typically stored in the hash output. It makes calculating the hash more computationally expensive, which in turn reduces the speed and/or increases the cost for which an attacker can attempt to crack the password hash.",
+    "text_hash": "f9a715e10015f47f9cc61f30c30c4b47dcedad138650332fe075da3d1ffc707b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 81,
+      "end_line": 81
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Methods for Enhancing Password Storage",
+      "Using Work Factors"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00034",
+    "normalized_text": " The work factor is the number of iterations of the hashing algorithm that are performed for each password (usually, it's actually `2^work` iterations). The work factor is typically stored in the hash output. It makes calculating the hash more computationally expensive, which in turn reduces the speed and/or increases the cost for which an attacker can attempt to crack the password hash.",
+    "normalization_flags": {
+      "is_code_or_payload": true,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00035",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 35,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "When you choose a work factor, strike a balance between security and performance. Though higher work factors make hashes more difficult for an attacker to crack, they will slow down the process of verifying a login attempt. If the work factor is too high, the performance of the application may be degraded, which could be used by an attacker to carry out a denial of service attack by exhausting the server's CPU with a large number of login attempts.",
+    "text_hash": "c46e009b63e7068d0df96932dc42d3e0144f32a2d25b8c49220682c6f4fb75da",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 83,
+      "end_line": 83
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Methods for Enhancing Password Storage",
+      "Using Work Factors"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00035",
+    "normalized_text": "When you choose a work factor, strike a balance between security and performance. Though higher work factors make hashes more difficult for an attacker to crack, they will slow down the process of verifying a login attempt. If the work factor is too high, the performance of the application may be degraded, which could be used by an attacker to carry out a denial of service attack by exhausting the server's CPU with a large number of login attempts.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00036",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 36,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "There is no golden rule for the ideal work factor - it will depend on the performance of the server and the number of users on the application. Determining the optimal work factor will require experimentation on the specific server(s) used by the application. As a general rule, calculating a hash should take less than one second.",
+    "text_hash": "d8dfcb29453b7c396989c8e779132ebf629783881bba255b5931e26573d44508",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 85,
+      "end_line": 85
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Methods for Enhancing Password Storage",
+      "Using Work Factors"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00036",
+    "normalized_text": "There is no golden rule for the ideal work factor - it will depend on the performance of the server and the number of users on the application. Determining the optimal work factor will require experimentation on the specific server(s) used by the application. As a general rule, calculating a hash should take less than one second.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00037",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 37,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Upgrading the Work Factor",
+    "text_hash": "7b7b3f67417b097cbdaa788ad9c5673e2f7f6848825d8b7e165ede49d2fc815c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 87,
+      "end_line": 87
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Methods for Enhancing Password Storage",
+      "Using Work Factors",
+      "Upgrading the Work Factor"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00037",
+    "normalized_text": "#### Upgrading the Work Factor",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00038",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 38,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "One key advantage of having a work factor is that it can be increased over time as hardware becomes more powerful and cheaper.",
+    "text_hash": "958658d74057eabf9d068a580c0f5cffe543dd08836b3f286cee3ddcba179c5a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 89,
+      "end_line": 89
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Methods for Enhancing Password Storage",
+      "Using Work Factors",
+      "Upgrading the Work Factor"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00038",
+    "normalized_text": "One key advantage of having a work factor is that it can be increased over time as hardware becomes more powerful and cheaper.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00039",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 39,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The most common approach to upgrading the work factor is to wait until the user next authenticates, then re-hash their password with the new work factor. The different hashes will have different work factors and hashes may never be upgraded if the user doesn't log back into the application. Depending on the application, it may be appropriate to remove the older password hashes and require users to reset their passwords next time they need to login in order to avoid storing older and less secure hashes.",
+    "text_hash": "cc7a91490020a62b5e3b9052920420864045a295a5011fc8ec5becf7b68d357c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 91,
+      "end_line": 91
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Methods for Enhancing Password Storage",
+      "Using Work Factors",
+      "Upgrading the Work Factor"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00039",
+    "normalized_text": "The most common approach to upgrading the work factor is to wait until the user next authenticates, then re-hash their password with the new work factor. The different hashes will have different work factors and hashes may never be upgraded if the user doesn't log back into the application. Depending on the application, it may be appropriate to remove the older password hashes and require users to reset their passwords next time they need to login in order to avoid storing older and less secure hashes.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00040",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 40,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Password Hashing Algorithms",
+    "text_hash": "ff2c8aecfb37865083a39190732559f8e0e3a038e482943dcd2b7de4f9e547fb",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 93,
+      "end_line": 93
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Password Hashing Algorithms"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00040",
+    "normalized_text": "## Password Hashing Algorithms",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00041",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 41,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Some modern hashing algorithms have been specifically designed to securely store passwords. This means that they should be slow (unlike algorithms such as MD5 and SHA-1, which were designed to be fast), and you can change how slow they are by changing the work factor.",
+    "text_hash": "37b19949afb3c345ac26a25812c0d47d24818ab610713a9300035590fe5ae649",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 95,
+      "end_line": 95
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Password Hashing Algorithms"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00041",
+    "normalized_text": "Some modern hashing algorithms have been specifically designed to securely store passwords. This means that they should be slow (unlike algorithms such as MD5 and SHA-1, which were designed to be fast), and you can change how slow they are by changing the work factor.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00042",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 42,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "You do not need to hide which password hashing algorithm is used by an application. If you utilize a modern password hashing algorithm with proper configuration parameters, it should be safe to state in public which password hashing algorithms are in use and be listed [here](https://pulse.michalspacek.cz/passwords/storages).",
+    "text_hash": "44dfa2250d522eb68b07b5b260378179d24643f0e9662613f307b342f6e7d27e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 97,
+      "end_line": 97
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Password Hashing Algorithms"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00042",
+    "normalized_text": "You do not need to hide which password hashing algorithm is used by an application. If you utilize a modern password hashing algorithm with proper configuration parameters, it should be safe to state in public which password hashing algorithms are in use and be listed [here](https://pulse.michalspacek.cz/passwords/storages).",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00043",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 43,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "When selecting a password hashing algorithm, developers should prefer modern algorithms that are designed to resist both GPU-based and memory-based attacks.\nWhere available, newer algorithms should be chosen for new applications, while older algorithms may still be acceptable for legacy systems with appropriate configuration.",
+    "text_hash": "7efbdb3c8acff1dd4be338aa6b87ba0d09ac17317fcea8090877bc0606682e9d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 99,
+      "end_line": 100
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Password Hashing Algorithms"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00043",
+    "normalized_text": "When selecting a password hashing algorithm, developers should prefer modern algorithms that are designed to resist both GPU-based and memory-based attacks.\nWhere available, newer algorithms should be chosen for new applications, while older algorithms may still be acceptable for legacy systems with appropriate configuration.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00044",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 44,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Three hashing algorithms that should be considered.",
+    "text_hash": "6d544578ad60020caa750c9cf33026d166c5a1deaaef622db4b7a08759e66ae1",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 102,
+      "end_line": 102
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Password Hashing Algorithms"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00044",
+    "normalized_text": "Three hashing algorithms that should be considered.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00045",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 45,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Argon2id",
+    "text_hash": "3f5fe230975b464f7e31221fefce7fce4beda783a7a95a57ccf35911c0d623ca",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 104,
+      "end_line": 104
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Password Hashing Algorithms",
+      "Argon2id"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00045",
+    "normalized_text": "### Argon2id",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00046",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 46,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[Argon2](https://en.wikipedia.org/wiki/Argon2) was the winner of the 2015 [Password Hashing Competition](https://en.wikipedia.org/wiki/Password_Hashing_Competition). Out of the three Argon2 versions, use the  Argon2id variant since it provides a balanced approach to resisting both side-channel and GPU-based attacks.",
+    "text_hash": "416675f92a31e1498a9ab5e194d1e63069ce2ea24c4974fd69fd6a343f281720",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 106,
+      "end_line": 106
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Password Hashing Algorithms",
+      "Argon2id"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00046",
+    "normalized_text": "[Argon2](https://en.wikipedia.org/wiki/Argon2) was the winner of the 2015 [Password Hashing Competition](https://en.wikipedia.org/wiki/Password_Hashing_Competition). Out of the three Argon2 versions, use the Argon2id variant since it provides a balanced approach to resisting both side-channel and GPU-based attacks.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00047",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 47,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Argon2id has three main cost parameters: total memory in KiB (m), the number of passes (t), and the degree of parallelism (p). Parallelism controls the number of lanes over which the memory is divided; increasing p does not multiply the total memory or act as an iteration count. See [RFC 9106 Section 3.1](https://www.rfc-editor.org/rfc/rfc9106.html#section-3.1) for the parameter definitions.",
+    "text_hash": "80ce42e424de9817f0ef760348810fd86f1cdbedc3b2028b6722318406bc06f3",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 108,
+      "end_line": 108
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Password Hashing Algorithms",
+      "Argon2id"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00047",
+    "normalized_text": "Argon2id has three main cost parameters: total memory in KiB (m), the number of passes (t), and the degree of parallelism (p). Parallelism controls the number of lanes over which the memory is divided; increasing p does not multiply the total memory or act as an iteration count. See [RFC 9106 Section 3.1](https://www.rfc-editor.org/rfc/rfc9106.html#section-3.1) for the parameter definitions.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00048",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 48,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Tune memory and iteration costs to make password cracking expensive while keeping authentication practical under expected load. [Benchmark the chosen parameters on the target system](https://www.rfc-editor.org/rfc/rfc9106.html#section-4); increasing parallelism is not a guarantee of slower password guessing. Use one of the following minimum configurations:",
+    "text_hash": "6c3d25c94766e4a9b8a9f73b36b8360d337683099aed2665b145f5f7313796fc",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 110,
+      "end_line": 110
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Password Hashing Algorithms",
+      "Argon2id"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00048",
+    "normalized_text": "Tune memory and iteration costs to make password cracking expensive while keeping authentication practical under expected load. [Benchmark the chosen parameters on the target system](https://www.rfc-editor.org/rfc/rfc9106.html#section-4); increasing parallelism is not a guarantee of slower password guessing. Use one of the following minimum configurations:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00049",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 49,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- m=47104 (46 MiB), t=1, p=1 (Do not use with Argon2i)\n- m=19456 (19 MiB), t=2, p=1 (Do not use with Argon2i)\n- m=12288 (12 MiB), t=3, p=1\n- m=9216 (9 MiB), t=4, p=1\n- m=7168 (7 MiB), t=5, p=1\n",
+    "text_hash": "0e4f7fb5c5d76f57b45b32c60b204e756f1660e34b43a86b8cf6632baa6c71be",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 112,
+      "end_line": 117
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Password Hashing Algorithms",
+      "Argon2id"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00049",
+    "normalized_text": "- m=47104 (46 MiB), t=1, p=1 (Do not use with Argon2i)\n- m=19456 (19 MiB), t=2, p=1 (Do not use with Argon2i)\n- m=12288 (12 MiB), t=3, p=1\n- m=9216 (9 MiB), t=4, p=1\n- m=7168 (7 MiB), t=5, p=1",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00050",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 50,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "These configuration settings provide an equal level of defense, and the only difference is a trade off between CPU and RAM usage.",
+    "text_hash": "24652b9e920485831b73edbece9aa4ee19a677241c1dbfba7a8e4683e7320325",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 118,
+      "end_line": 118
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Password Hashing Algorithms",
+      "Argon2id"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00050",
+    "normalized_text": "These configuration settings provide an equal level of defense, and the only difference is a trade off between CPU and RAM usage.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00051",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 51,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### scrypt",
+    "text_hash": "47f3cbf4ae124b25cbdde78d7b98b52f573a3ef47abe66b6c56a904513619930",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 120,
+      "end_line": 120
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Password Hashing Algorithms",
+      "scrypt"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00051",
+    "normalized_text": "### scrypt",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00052",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 52,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[scrypt](http://www.tarsnap.com/scrypt/scrypt.pdf) is a password-based key derivation function created by [Colin Percival](https://twitter.com/cperciva). While [Argon2id](#argon2id) should be the best choice for password hashing, [scrypt](#scrypt) should be used when the former is not available.",
+    "text_hash": "78aec3b7a432131da7dbdd03b86eae7ab2684f0eaaaf844b96cf6d04d00d3219",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 122,
+      "end_line": 122
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Password Hashing Algorithms",
+      "scrypt"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00052",
+    "normalized_text": "[scrypt](http://www.tarsnap.com/scrypt/scrypt.pdf) is a password-based key derivation function created by [Colin Percival](https://twitter.com/cperciva). While [Argon2id](#argon2id) should be the best choice for password hashing, [scrypt](#scrypt) should be used when the former is not available.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00053",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 53,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Like [Argon2id](#argon2id), scrypt has three parameters that can be configured: the minimum memory cost parameter (N), the blocksize (r), and the degree of parallelism (p). Use one of the following settings:",
+    "text_hash": "20fd0294374fe53792edaa7b250d533480501ea285cc929f867073cc8aec26c7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 124,
+      "end_line": 124
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Password Hashing Algorithms",
+      "scrypt"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00053",
+    "normalized_text": "Like [Argon2id](#argon2id), scrypt has three parameters that can be configured: the minimum memory cost parameter (N), the blocksize (r), and the degree of parallelism (p). Use one of the following settings:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00054",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 54,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- N=2^17 (128 MiB), r=8 (1024 bytes), p=1\n- N=2^16 (64 MiB), r=8 (1024 bytes), p=2\n- N=2^15 (32 MiB), r=8 (1024 bytes), p=3\n- N=2^14 (16 MiB), r=8 (1024 bytes), p=5\n- N=2^13 (8 MiB), r=8 (1024 bytes), p=10\n",
+    "text_hash": "60dc44e3e727346c4e0386494f6e2679acd41d5f7a6845786a211c823383da61",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 126,
+      "end_line": 131
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Password Hashing Algorithms",
+      "scrypt"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00054",
+    "normalized_text": "- N=2^17 (128 MiB), r=8 (1024 bytes), p=1\n- N=2^16 (64 MiB), r=8 (1024 bytes), p=2\n- N=2^15 (32 MiB), r=8 (1024 bytes), p=3\n- N=2^14 (16 MiB), r=8 (1024 bytes), p=5\n- N=2^13 (8 MiB), r=8 (1024 bytes), p=10",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00055",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 55,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "These configuration settings provide a similar minimal level of defense, with the main trade-off between parallelism and RAM usage.",
+    "text_hash": "ad3d213e502d98d86af445b7cf0e4780f93a1fd4ba224895f9a0dca6bdfc1dce",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 132,
+      "end_line": 132
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Password Hashing Algorithms",
+      "scrypt"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00055",
+    "normalized_text": "These configuration settings provide a similar minimal level of defense, with the main trade-off between parallelism and RAM usage.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00056",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 56,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### bcrypt",
+    "text_hash": "12bc44c1043cf007ce7034c44979536026c42d1fed6670e3ef2468fea03ffe80",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 134,
+      "end_line": 134
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Password Hashing Algorithms",
+      "bcrypt"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00056",
+    "normalized_text": "### bcrypt",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00057",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 57,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The [bcrypt](https://en.wikipedia.org/wiki/bcrypt) password hashing function **should only** be used for password storage in legacy systems where Argon2 and scrypt are not available.",
+    "text_hash": "f9e61dc809ba7b43df16b3c23f3ba8482467f569afdc060b740ac3e35c1f491e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 136,
+      "end_line": 136
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Password Hashing Algorithms",
+      "bcrypt"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00057",
+    "normalized_text": "The [bcrypt](https://en.wikipedia.org/wiki/bcrypt) password hashing function **should only** be used for password storage in legacy systems where Argon2 and scrypt are not available.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00058",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 58,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The work factor should be as large as verification server performance will allow, with a minimum of 10.",
+    "text_hash": "293328550371f684b7fb662025d95b7d726ea988854413c400b02c8a55152733",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 138,
+      "end_line": 138
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Password Hashing Algorithms",
+      "bcrypt"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00058",
+    "normalized_text": "The work factor should be as large as verification server performance will allow, with a minimum of 10.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00059",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 59,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Input Limits of bcrypt",
+    "text_hash": "bca338c820a069e815a3163e89f5ca73161d00429a145a4723eba0292dec98c9",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 140,
+      "end_line": 140
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Password Hashing Algorithms",
+      "bcrypt",
+      "Input Limits of bcrypt"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00059",
+    "normalized_text": "#### Input Limits of bcrypt",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00060",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 60,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "bcrypt has a maximum length input length of 72 bytes [for most implementations](https://security.stackexchange.com/questions/39849/does-bcrypt-have-a-maximum-password-length), so you should enforce a maximum password length of 72 bytes (or less if the bcrypt implementation in use has smaller limits).",
+    "text_hash": "22abf4a98ae438dfc6ce1ab9fc0013b1f8868280ddff75e9582318f627677dc7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 142,
+      "end_line": 142
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Password Hashing Algorithms",
+      "bcrypt",
+      "Input Limits of bcrypt"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00060",
+    "normalized_text": "bcrypt has a maximum length input length of 72 bytes [for most implementations](https://security.stackexchange.com/questions/39849/does-bcrypt-have-a-maximum-password-length), so you should enforce a maximum password length of 72 bytes (or less if the bcrypt implementation in use has smaller limits).",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00061",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 61,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Pre-Hashing Passwords with bcrypt",
+    "text_hash": "94119c43ced0d9f555b5bc4026a44fdeca0a73a1d6697ec6f22a13eadaff7e2f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 144,
+      "end_line": 144
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Password Hashing Algorithms",
+      "bcrypt",
+      "Pre-Hashing Passwords with bcrypt"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00061",
+    "normalized_text": "#### Pre-Hashing Passwords with bcrypt",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00062",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 62,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "An alternative approach is to pre-hash the user-supplied password with a fast algorithm such as SHA-2, HMAC, or BLAKE3 and then to hash the resulting hash value with bcrypt (i.e., `bcrypt(H($password)), $salt, $cost)`)..\nThis can be **dangerous** because of null bytes in the hash output value and because of [password shucking](https://www.youtube.com/watch?v=OQD3qDYMyYQ).",
+    "text_hash": "2a6f4ec1abdf1476d74f565c1deeae3f2bb80c065ed19dd61caccc53b4ab7b8e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 146,
+      "end_line": 147
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Password Hashing Algorithms",
+      "bcrypt",
+      "Pre-Hashing Passwords with bcrypt"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00062",
+    "normalized_text": "An alternative approach is to pre-hash the user-supplied password with a fast algorithm such as SHA-2, HMAC, or BLAKE3 and then to hash the resulting hash value with bcrypt (i.e., `bcrypt(H($password)), $salt, $cost)`)..\nThis can be **dangerous** because of null bytes in the hash output value and because of [password shucking](https://www.youtube.com/watch?v=OQD3qDYMyYQ).",
+    "normalization_flags": {
+      "is_code_or_payload": true,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00063",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 63,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The original bcrypt expects a null terminated password string, this means that the hash value will only be used to the first null byte in the hash value. (`bcrypt(H($password)), $salt, $cost) == bcrypt(\"\", $salt, $cost)` if `H($password)[0] == 0`)\nThis increases the chance of finding a collision when [combining bcrypt with other hash functions](https://blog.ircmaxell.com/2015/03/security-issue-combining-bcrypt-with.html) and can be avoided by encoding the hash value to printable string with something like base64.\nbase64 can increases the length of the hash value above 72 characters and so there is a bit of truncation for large hash values from hashes like SHA-512, this is [negligible](https://soatok.blog/2024/11/27/beyond-bcrypt/).",
+    "text_hash": "2327e80c2ae6e5f11e540e07aae3dce04d8f3621b4c517e445dfaba7cb6a7dd5",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 149,
+      "end_line": 151
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Password Hashing Algorithms",
+      "bcrypt",
+      "Pre-Hashing Passwords with bcrypt"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00063",
+    "normalized_text": "The original bcrypt expects a null terminated password string, this means that the hash value will only be used to the first null byte in the hash value. (`bcrypt(H($password)), $salt, $cost) == bcrypt(\"\", $salt, $cost)` if `H($password)[0] == 0`)\nThis increases the chance of finding a collision when [combining bcrypt with other hash functions](https://blog.ircmaxell.com/2015/03/security-issue-combining-bcrypt-with.html) and can be avoided by encoding the hash value to printable string with something like base64.\nbase64 can increases the length of the hash value above 72 characters and so there is a bit of truncation for large hash values from hashes like SHA-512, this is [negligible](https://soatok.blog/2024/11/27/beyond-bcrypt/).",
+    "normalization_flags": {
+      "is_code_or_payload": true,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00064",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 64,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Password shucking uses the fact, that it is easy to check if  `bcrypt(base64(H($password))), $salt, $cost) == bcrypt(base64($leaked_hash), $salt, $cost)`.\nIf the inner hash function `H` is used with the same password somewhere else and known to an attacker cracking the password can be reduced to breaking the hash function `H`.\nJust using pure SHA-512, ( i.e. `bcrypt(base64(sha512($password))), $salt, $cost)`) is a **dangerous practice** and is as secure as just using pure SHA-512.\nPassword shucking only works if a leaked hash is known to the attacker, either through a breach database or rainbow tables.\nTo mitigate password shucking a [pepper](#peppering) can be used.",
+    "text_hash": "0bf8fd9adf71d822172bc05938478a0fa072ff495cf12d191a896be8b8ee3205",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 153,
+      "end_line": 157
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Password Hashing Algorithms",
+      "bcrypt",
+      "Pre-Hashing Passwords with bcrypt"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00064",
+    "normalized_text": "Password shucking uses the fact, that it is easy to check if `bcrypt(base64(H($password))), $salt, $cost) == bcrypt(base64($leaked_hash), $salt, $cost)`.\nIf the inner hash function `H` is used with the same password somewhere else and known to an attacker cracking the password can be reduced to breaking the hash function `H`.\nJust using pure SHA-512, ( i.e. `bcrypt(base64(sha512($password))), $salt, $cost)`) is a **dangerous practice** and is as secure as just using pure SHA-512.\nPassword shucking only works if a leaked hash is known to the attacker, either through a breach database or rainbow tables.\nTo mitigate password shucking a [pepper](#peppering) can be used.",
+    "normalization_flags": {
+      "is_code_or_payload": true,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00065",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 65,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "To summarize if bcrypt has to be used and the password should to be pre-hashed you should do `bcrypt(base64(hmac-sha384(data:$password, key:$pepper)), $salt, $cost)` and store the pepper not in the database.",
+    "text_hash": "4f1aed258b6d1d91c52d397276ac297f649e33aaf61f8d83d0f317a22ac828e2",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 159,
+      "end_line": 159
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Password Hashing Algorithms",
+      "bcrypt",
+      "Pre-Hashing Passwords with bcrypt"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00065",
+    "normalized_text": "To summarize if bcrypt has to be used and the password should to be pre-hashed you should do `bcrypt(base64(hmac-sha384(data:$password, key:$pepper)), $salt, $cost)` and store the pepper not in the database.",
+    "normalization_flags": {
+      "is_code_or_payload": true,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00066",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 66,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### PBKDF2",
+    "text_hash": "48441287e084c2750209697b82760ef52a203fe2023a3fb028364784f69ba7de",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 161,
+      "end_line": 161
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Password Hashing Algorithms",
+      "PBKDF2"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00066",
+    "normalized_text": "### PBKDF2",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00067",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 67,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Since [PBKDF2](https://en.wikipedia.org/wiki/PBKDF2) is permitted by [NIST SP 800-63B-4](https://pages.nist.gov/800-63-4/sp800-63b.html#passwordver) and has FIPS-140 validated implementations, it should be the preferred algorithm when these are required.",
+    "text_hash": "97024d0d2ed0b1613553fd54a08f17ad399d7bb58af9f73c8970bd401841b4b5",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 163,
+      "end_line": 163
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Password Hashing Algorithms",
+      "PBKDF2"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00067",
+    "normalized_text": "Since [PBKDF2](https://en.wikipedia.org/wiki/PBKDF2) is permitted by [NIST SP 800-63B-4](https://pages.nist.gov/800-63-4/sp800-63b.html#passwordver) and has FIPS-140 validated implementations, it should be the preferred algorithm when these are required.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00068",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 68,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The PBKDF2 algorithm requires that you select an internal hashing algorithm such as an HMAC or a variety of other hashing algorithms. HMAC-SHA-256 is widely supported and is recommended by NIST.",
+    "text_hash": "c1965eee67593aec49c4617cc2363533b54ad355adf7c212b1b78c3df29519db",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 165,
+      "end_line": 165
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Password Hashing Algorithms",
+      "PBKDF2"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00068",
+    "normalized_text": "The PBKDF2 algorithm requires that you select an internal hashing algorithm such as an HMAC or a variety of other hashing algorithms. HMAC-SHA-256 is widely supported and is recommended by NIST.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00069",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 69,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The work factor for PBKDF2 is implemented through an iteration count, which should be set differently based on the internal hashing algorithm used.",
+    "text_hash": "d61188a6381be842c8797f81b6594bbb02e84b77e5d4baab7a2a70551d596494",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 167,
+      "end_line": 167
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Password Hashing Algorithms",
+      "PBKDF2"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00069",
+    "normalized_text": "The work factor for PBKDF2 is implemented through an iteration count, which should be set differently based on the internal hashing algorithm used.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00070",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 70,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- PBKDF2-HMAC-SHA256: 600,000 iterations (recommended)\n- PBKDF2-HMAC-SHA512: 220,000 iterations\n- PBKDF2-HMAC-SHA1: 1,400,000 iterations — **legacy only**, do not select for new systems.\n",
+    "text_hash": "befa10d53e39cc10e6826a11ada7b624400cc84d75fcb15073b143596e4666b8",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 169,
+      "end_line": 172
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Password Hashing Algorithms",
+      "PBKDF2"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00070",
+    "normalized_text": "- PBKDF2-HMAC-SHA256: 600,000 iterations (recommended)\n- PBKDF2-HMAC-SHA512: 220,000 iterations\n- PBKDF2-HMAC-SHA1: 1,400,000 iterations — **legacy only**, do not select for new systems.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00071",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 71,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Parallel PBKDF2",
+    "text_hash": "3db09708d01270e08d4fc3a1c86d5dfac2cb9ccd13a8e8c8627cf31f85363bb3",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 173,
+      "end_line": 173
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Password Hashing Algorithms",
+      "Parallel PBKDF2"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00071",
+    "normalized_text": "### Parallel PBKDF2",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00072",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 72,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- PPBKDF2-SHA512: cost 2\n- PPBKDF2-SHA256: cost 5\n- PPBKDF2-SHA1: cost 10\n",
+    "text_hash": "3bdf4a1f2e9560d254595f9b449e6210eec6b0544fe1c88dd2ab9515e83d097d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 175,
+      "end_line": 178
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Password Hashing Algorithms",
+      "Parallel PBKDF2"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00072",
+    "normalized_text": "- PPBKDF2-SHA512: cost 2\n- PPBKDF2-SHA256: cost 5\n- PPBKDF2-SHA1: cost 10",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00073",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 73,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "These configuration settings are equivalent in the defense they provide. ([Number as of December 2022, based on testing of RTX 4000 GPUs](https://tobtu.com/minimum-password-settings/))",
+    "text_hash": "1a916628a4a660723f38964a66f64ba41347aa348eed3c62b2ac9eda7fc4f2c5",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 179,
+      "end_line": 179
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Password Hashing Algorithms",
+      "Parallel PBKDF2"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00073",
+    "normalized_text": "These configuration settings are equivalent in the defense they provide. ([Number as of December 2022, based on testing of RTX 4000 GPUs](https://tobtu.com/minimum-password-settings/))",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00074",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 74,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### PBKDF2 Pre-Hashing",
+    "text_hash": "212e53027563dd181e36985de3dfdb35ad58bbffa4aa7cb227f96ca1c184d76d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 181,
+      "end_line": 181
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Password Hashing Algorithms",
+      "Parallel PBKDF2",
+      "PBKDF2 Pre-Hashing"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00074",
+    "normalized_text": "#### PBKDF2 Pre-Hashing",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00075",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 75,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "When PBKDF2 is used with an HMAC, and the password is longer than the hash function's block size (64 bytes for SHA-256), the password will be automatically pre-hashed. For example, the password \"This is a password longer than 512 bits which is the block size of SHA-256\" is converted to the hash value (in hex): `fa91498c139805af73f7ba275cca071e78d78675027000c99a9925e2ec92eedd`.",
+    "text_hash": "49c2a2514ebc0616b0bc1c9cfd463581ac253fd5cb9d1ccf25f68119f17898a9",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 183,
+      "end_line": 183
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Password Hashing Algorithms",
+      "Parallel PBKDF2",
+      "PBKDF2 Pre-Hashing"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00075",
+    "normalized_text": "When PBKDF2 is used with an HMAC, and the password is longer than the hash function's block size (64 bytes for SHA-256), the password will be automatically pre-hashed. For example, the password \"This is a password longer than 512 bits which is the block size of SHA-256\" is converted to the hash value (in hex): `fa91498c139805af73f7ba275cca071e78d78675027000c99a9925e2ec92eedd`.",
+    "normalization_flags": {
+      "is_code_or_payload": true,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00076",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 76,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Good implementations of PBKDF2 perform pre-hashing before the expensive iterated hashing phase. However, some implementations perform the conversion on each iteration, which can make hashing long passwords significantly more expensive than hashing short passwords. When users supply very long passwords, a potential denial of service vulnerability could occur, such as the one published in [Django](https://www.djangoproject.com/weblog/2013/sep/15/security/) during 2013. Manual pre-hashing can reduce this risk but requires adding a [salt](#salting) to the pre-hash step.",
+    "text_hash": "b3ea1c0b3b22cccd23d8b661052673307b5b239494ef938d51bdbde6a3c19a9d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 185,
+      "end_line": 185
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Password Hashing Algorithms",
+      "Parallel PBKDF2",
+      "PBKDF2 Pre-Hashing"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00076",
+    "normalized_text": "Good implementations of PBKDF2 perform pre-hashing before the expensive iterated hashing phase. However, some implementations perform the conversion on each iteration, which can make hashing long passwords significantly more expensive than hashing short passwords. When users supply very long passwords, a potential denial of service vulnerability could occur, such as the one published in [Django](https://www.djangoproject.com/weblog/2013/sep/15/security/) during 2013. Manual pre-hashing can reduce this risk but requires adding a [salt](#salting) to the pre-hash step.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00077",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 77,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Upgrading Legacy Hashes",
+    "text_hash": "7e6ba7ccdc21b21e9a9dc71f9027920010641d86f5205de2eab8347b71f1d809",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 187,
+      "end_line": 187
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Upgrading Legacy Hashes"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00077",
+    "normalized_text": "## Upgrading Legacy Hashes",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00078",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 78,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Older applications that use less secure hashing algorithms, such as MD5 or SHA-1, can be upgraded to modern password hashing algorithms as described above. When the users enter their password (usually by authenticating on the application), that input should be re-hashed using the new algorithm. Defenders should expire the users' current password and require them to enter a new one, so that any older (less secure) hashes of their password are no longer useful to an attacker.",
+    "text_hash": "05a8ed0911d00313953a3f8f505565c73fed557fc4289f5ac5b1c981c4848deb",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 189,
+      "end_line": 189
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Upgrading Legacy Hashes"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00078",
+    "normalized_text": "Older applications that use less secure hashing algorithms, such as MD5 or SHA-1, can be upgraded to modern password hashing algorithms as described above. When the users enter their password (usually by authenticating on the application), that input should be re-hashed using the new algorithm. Defenders should expire the users' current password and require them to enter a new one, so that any older (less secure) hashes of their password are no longer useful to an attacker.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00079",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 79,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "However, this means that old (less secure) password hashes will be stored in the database until the user logs in. You can take one of two approaches to avoid this dilemma.",
+    "text_hash": "ea6009f4dd0612f5780367979eba0016d274b50ac6934634735e55bdf7f9f17c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 191,
+      "end_line": 191
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Upgrading Legacy Hashes"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00079",
+    "normalized_text": "However, this means that old (less secure) password hashes will be stored in the database until the user logs in. You can take one of two approaches to avoid this dilemma.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00080",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 80,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Upgrade Method One: Expire and delete the password hashes of users who have been inactive for an extended period and require them to reset their passwords to login again. Although secure, this approach is not particularly user-friendly. Expiring the passwords of many users may cause issues for support staff or may be interpreted by users as an indication of a breach.",
+    "text_hash": "e06f1648e1ee71907dc9e31c1acfaf042238361942e2f4deb5936c4ad48960a8",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 193,
+      "end_line": 193
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Upgrading Legacy Hashes"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00080",
+    "normalized_text": "Upgrade Method One: Expire and delete the password hashes of users who have been inactive for an extended period and require them to reset their passwords to login again. Although secure, this approach is not particularly user-friendly. Expiring the passwords of many users may cause issues for support staff or may be interpreted by users as an indication of a breach.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00081",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 81,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Upgrade Method Two: Use the existing password hashes as inputs for a more secure algorithm. For example, if the application originally stored passwords as `md5($password)`, this could be easily upgraded to `bcrypt(md5($password))`. Layering the hashes avoids the need to know the original password; however, it can make the hashes easier to crack. These hashes should be replaced with direct hashes of the users' passwords next time the user logs in.",
+    "text_hash": "51cc94a18f3c29f29018bc35331a5acceefc0b3d9cf61efefd42561824e84e98",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 195,
+      "end_line": 195
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Upgrading Legacy Hashes"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00081",
+    "normalized_text": "Upgrade Method Two: Use the existing password hashes as inputs for a more secure algorithm. For example, if the application originally stored passwords as `md5($password)`, this could be easily upgraded to `bcrypt(md5($password))`. Layering the hashes avoids the need to know the original password; however, it can make the hashes easier to crack. These hashes should be replaced with direct hashes of the users' passwords next time the user logs in.",
+    "normalization_flags": {
+      "is_code_or_payload": true,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00082",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 82,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Remember that once your password hashing method is selected, it will have to be upgraded in the future, so ensure that upgrading your hashing algorithm is as easy as possible. During the transition period, allow for a mix of old and new hashing algorithms. Using a mix of hashing algorithms is easier if the password hashing algorithm and work factor are stored with the password using a standard format, for example, the [modular PHC string format](https://github.com/P-H-C/phc-string-format/blob/master/phc-sf-spec.md).",
+    "text_hash": "a075f1f534816212678d4b0be7c19e1443b05d79a9a48fcfaac18982ddc717de",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 197,
+      "end_line": 197
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Upgrading Legacy Hashes"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00082",
+    "normalized_text": "Remember that once your password hashing method is selected, it will have to be upgraded in the future, so ensure that upgrading your hashing algorithm is as easy as possible. During the transition period, allow for a mix of old and new hashing algorithms. Using a mix of hashing algorithms is easier if the password hashing algorithm and work factor are stored with the password using a standard format, for example, the [modular PHC string format](https://github.com/P-H-C/phc-string-format/blob/master/phc-sf-spec.md).",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00083",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 83,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### International Characters",
+    "text_hash": "3baed3afb43c0e4752cf4732cd6757844ded7c848800cca9aacf259a7e5f79c8",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 199,
+      "end_line": 199
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Upgrading Legacy Hashes",
+      "International Characters"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00083",
+    "normalized_text": "### International Characters",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00084",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 84,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Your hashing library must be able to accept a wide range of characters and should be compatible with all Unicode codepoints, so users can use the full range of characters available on modern devices - especially mobile keyboards. They should be able to select passwords from various languages and include pictograms. Prior to hashing the entropy of the user's entry should not be reduced, and password hashing libraries need to be able to use input that may contain a NULL byte.",
+    "text_hash": "b5b34e524a2788da76834ee191cab35eb0dc66a761eee0b8682a687eff1c6c8d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 201,
+      "end_line": 201
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "Upgrading Legacy Hashes",
+      "International Characters"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00084",
+    "normalized_text": "Your hashing library must be able to accept a wide range of characters and should be compatible with all Unicode codepoints, so users can use the full range of characters available on modern devices - especially mobile keyboards. They should be able to select passwords from various languages and include pictograms. Prior to hashing the entropy of the user's entry should not be reduced, and password hashing libraries need to be able to use input that may contain a NULL byte.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00085",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 85,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## References",
+    "text_hash": "65b72d86eeeb214ab8ca5fd24cb7cd7773e58084e95b670040df03e21e8c6fa7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 203,
+      "end_line": 203
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "References"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00085",
+    "normalized_text": "## References",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_5004d1ead2df_b00086",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "block_idx": 86,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- [NIST SP 800-63B-4: Password Verifiers](https://pages.nist.gov/800-63-4/sp800-63b.html#passwordver)\n- [RFC 9106: Argon2 Inputs and Outputs](https://datatracker.ietf.org/doc/html/rfc9106#section-3.1)\n- [RFC 7914: scrypt Parameters](https://www.rfc-editor.org/rfc/rfc7914.html#section-2)",
+    "text_hash": "ce5895cd8e6b7f47374b94739532cf331b3b71c53c32e3c5afd1098a47047f83",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 205,
+      "end_line": 207
+    },
+    "heading_path": [
+      "Password Storage Cheat Sheet",
+      "References"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_5004d1ead2df_b00086",
+    "normalized_text": "- [NIST SP 800-63B-4: Password Verifiers](https://pages.nist.gov/800-63-4/sp800-63b.html#passwordver)\n- [RFC 9106: Argon2 Inputs and Outputs](https://datatracker.ietf.org/doc/html/rfc9106#section-3.1)\n- [RFC 7914: scrypt Parameters](https://www.rfc-editor.org/rfc/rfc7914.html#section-2)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  }
+]

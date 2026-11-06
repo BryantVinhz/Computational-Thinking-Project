@@ -27,7 +27,7 @@ from schema_metadata import (
 # - "BAAI/bge-base-en-v1.5": Chuẩn tốt cho tài liệu bảo mật Tiếng Anh (OWASP, CVSS)
 # - "all-MiniLM-L6-v2": Siêu nhẹ, chạy CPU rất nhanh theo slide bài giảng
 # - "BAAI/bge-m3": Hỗ trợ đa ngôn ngữ (hỏi Tiếng Việt trên tài liệu Tiếng Anh)
-MODEL_NAME = "BAAI/bge-base-en-v1.5"
+MODEL_NAME = "BAAI/bge-m3"
 CHROMA_DB_DIR = VECTOR_DB_DIR / "chroma_security_db"
 COLLECTION_NAME = "owasp_security_knowledge"
 
@@ -196,14 +196,31 @@ def prepare_and_ingest_to_chroma(
         ids.append(record.id)
         documents.append(record.text)
         metadatas.append(record.to_chroma_metadata())
-
+        
+    doc_id = doc_meta["document_id"]
+    curr_ver_id = doc_meta["version_id"]
+    curr_file_name = doc_meta.get("file_name") or ""
+    try:
+        if curr_file_name:
+            collection.delete(where={"$and": [
+                {"document_id": doc_id},
+                {"file_name": curr_file_name},
+                {"version_id": {"$ne": curr_ver_id}}
+            ]})
+        else:
+            collection.delete(where={"version_id": curr_ver_id})
+    except Exception as e:
+        try:
+            collection.delete(where={"version_id": curr_ver_id})
+        except Exception:
+            pass
+    
     if ids:
         collection.upsert(
             ids=ids,
             documents=documents,
             metadatas=metadatas,
         )
-
     exported_records = export_records_from_chroma(
         collection=collection,
     )
@@ -216,7 +233,7 @@ def prepare_and_ingest_to_chroma(
 def main() -> None:
     # 1. Đọc dữ liệu Document & Version từ Step 1 (Ingestion)
     documents_data = json.loads((INGESTION_OUT_DIR / "documents.json").read_text(encoding="utf-8"))
-    versions_data = json.loads((INGESTION_OUT_DIR / "ducuments_version.json").read_text(encoding="utf-8"))
+    versions_data = json.loads((INGESTION_OUT_DIR / "documents_version.json").read_text(encoding="utf-8"))
 
     doc_by_id = {d["document_id"]: d for d in documents_data}
     ver_by_id = {v["version_id"]: v for v in versions_data}

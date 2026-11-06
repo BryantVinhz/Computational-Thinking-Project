@@ -44,7 +44,7 @@ class StructureAwareChunker(ChunkingStrategy):
                 continue
             
             # Specially handle non-prose text structures
-            if btype in {"table", "record"}:
+            if btype in {"table", "record", "code"}:
                 flush()
                 if self.counter.count(text) <= self.max_tokens:
                     drafts.append(ChunkDraft(text, [TextPiece(text, block, 0, len(text))], btype,

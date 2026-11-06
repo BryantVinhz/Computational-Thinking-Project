@@ -1,0 +1,4043 @@
+{
+  "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+  "version_id": "ver_9363b0048b47",
+  "chunking_strategy": "structure_aware",
+  "chunks": [
+    {
+      "chunk_id": "ver_9363b0048b47_c00000",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 0,
+      "chunk_type": "heading",
+      "text_content": "# XML External Entity Prevention Cheat Sheet",
+      "token_count": 7,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00001",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 1,
+      "chunk_type": "heading",
+      "text_content": "## Introduction",
+      "token_count": 3,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Introduction"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00002",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 2,
+      "chunk_type": "paragraph",
+      "text_content": "XML External Entity (XXE) injection occurs when an XML processor resolves an external entity from untrusted input.\n\nThis can expose local files, cause server-side request forgery (SSRF), or exhaust resources.\n\n[CWE-611](https://cwe.mitre.org/data/definitions/611.html) describes the weakness; this cheat sheet gives parser-specific controls to prevent it.",
+      "token_count": 80,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Introduction"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00003",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 3,
+      "chunk_type": "heading",
+      "text_content": "## General Guidance",
+      "token_count": 4,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "General Guidance"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00004",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 4,
+      "chunk_type": "mixed",
+      "text_content": "**Disable document type definitions (DTDs) whenever possible.** Reject DOCTYPE declarations if the parser supports it.\n\nIf your application needs DTDs, disable external entity resolution and external DTD loading, and limit entity expansion.\n\n- Keep XInclude disabled unless explicitly required; it can load resources independently of DTDs.\n\n- Restrict external access during schema validation and style sheet processing as well as XML parsing.\n\n- Treat an unsupported security setting as a configuration failure.\n\nDo not continue processing untrusted XML with partial hardening.\n\nControls and defaults vary by parser; see the language-specific guidance below and, for Java, the [JAXP Security Guide](https://docs.oracle.com/en/java/javase/25/security/java-api-xml-processing-jaxp-security-guide.html).\n\nPreventing XXE does not prevent every XML denial-of-service attack.\n\nSee the [XML Security Cheat Sheet](XML_Security_Cheat_Sheet.md#xml-entity-expansion) for entity expansion and other XML resource risks.",
+      "token_count": 202,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "General Guidance"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00005",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 5,
+      "chunk_type": "heading",
+      "text_content": "## C/C++",
+      "token_count": 7,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "C/C++"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00006",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 6,
+      "chunk_type": "heading",
+      "text_content": "### libxml2",
+      "token_count": 4,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "C/C++",
+        "libxml2"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00007",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 7,
+      "chunk_type": "mixed",
+      "text_content": "The Enum [xmlParserOption](https://gnome.pages.gitlab.gnome.org/libxml2/html/parser_8h.html) should not have the following options defined:\n\n- `XML_PARSE_NOENT`: Expands entities and substitutes them with replacement text\n- `XML_PARSE_DTDLOAD`: Load the external DTD\n\nNote:\n\nPer: According to [this post](https://mail.gnome.org/archives/xml/2012-October/msg00045.html), starting with libxml2 version 2.9, XXE has been disabled by default as committed by the following [patch](https://gitlab.gnome.org/GNOME/libxml2/commit/4629ee02ac649c27f9c0cf98ba017c6b5526070f).\n\nSearch whether the following APIs are being used and make sure there is no `XML_PARSE_NOENT` and `XML_PARSE_DTDLOAD` defined in the parameters:\n\n- `xmlCtxtReadDoc`\n- `xmlCtxtReadFd`\n- `xmlCtxtReadFile`\n- `xmlCtxtReadIO`\n- `xmlCtxtReadMemory`\n- `xmlCtxtUseOptions`\n- `xmlParseInNodeContext`\n- `xmlReadDoc`\n- `xmlReadFd`\n- `xmlReadFile`\n- `xmlReadIO`\n- `xmlReadMemory`",
+      "token_count": 208,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "C/C++",
+        "libxml2"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00008",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 8,
+      "chunk_type": "heading",
+      "text_content": "### libxerces-c",
+      "token_count": 6,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "C/C++",
+        "libxerces-c"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00009",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 9,
+      "chunk_type": "paragraph",
+      "text_content": "Use of `XercesDOMParser` do this to prevent XXE:",
+      "token_count": 11,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "C/C++",
+        "libxerces-c"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00010",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 10,
+      "chunk_type": "code",
+      "text_content": "``` cpp\nXercesDOMParser *parser = new XercesDOMParser;\nparser->setCreateEntityReferenceNodes(true);\nparser->setDisableDefaultEntityResolution(true);\n```",
+      "token_count": 30,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "C/C++",
+        "libxerces-c"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00011",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 11,
+      "chunk_type": "paragraph",
+      "text_content": "Use of SAXParser, do this to prevent XXE:",
+      "token_count": 10,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "C/C++",
+        "libxerces-c"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00012",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 12,
+      "chunk_type": "code",
+      "text_content": "``` cpp\nSAXParser* parser = new SAXParser;\nparser->setDisableDefaultEntityResolution(true);\n```",
+      "token_count": 22,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "C/C++",
+        "libxerces-c"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00013",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 13,
+      "chunk_type": "paragraph",
+      "text_content": "For `SAX2XMLReader`, configure the reader that will parse the document.\n\nThe [Xerces-C++ feature documentation](https://xerces.apache.org/xerces-c/program-sax2-3.html) describes `fgXercesDisableDefaultEntityResolution`: it prevents fallback resolution when `resolveEntity` returns `NULL`.\n\nA custom resolver must also reject unapproved resources.",
+      "token_count": 74,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "C/C++",
+        "libxerces-c"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00014",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 14,
+      "chunk_type": "code",
+      "text_content": "``` cpp\nSAX2XMLReader* reader = XMLReaderFactory::createXMLReader();\nreader->setFeature(XMLUni::fgXercesDisableDefaultEntityResolution, true);\n```",
+      "token_count": 31,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "C/C++",
+        "libxerces-c"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00015",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 15,
+      "chunk_type": "heading",
+      "text_content": "## ColdFusion",
+      "token_count": 3,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "ColdFusion"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00016",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 16,
+      "chunk_type": "paragraph",
+      "text_content": "Per [this blog post](https://www.hoyahaxa.com/2022/11/on-coldfusion-xxe-and-other-xml-attacks.html), both Adobe ColdFusion and Lucee have built-in mechanisms to disable support for external XML entities.",
+      "token_count": 56,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "ColdFusion"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00017",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 17,
+      "chunk_type": "heading",
+      "text_content": "### Adobe ColdFusion",
+      "token_count": 5,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "ColdFusion",
+        "Adobe ColdFusion"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00018",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 18,
+      "chunk_type": "paragraph",
+      "text_content": "As of ColdFusion 2018 Update 14 and ColdFusion 2021 Update 4, all native ColdFusion functions that process XML have a XML parser argument that disables support for external XML entities.\n\nSince there is no global setting that disables external entities, developers must ensure that every XML function call uses the correct security options.\n\nFrom the [documentation for the XmlParse() function](https://guides.adobe.com/coldfusion/en/docs/cfml-reference/xmlparse.html), you can disable XXE with the code below:",
+      "token_count": 103,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "ColdFusion",
+        "Adobe ColdFusion"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00019",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 19,
+      "chunk_type": "code",
+      "text_content": "```\n<cfset parseroptions = structnew()>\n<cfset parseroptions.ALLOWEXTERNALENTITIES = false>\n<cfscript>\na = XmlParse(\"xml.xml\", false, parseroptions);\nwriteDump(a);\n</cfscript>\n```",
+      "token_count": 49,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "ColdFusion",
+        "Adobe ColdFusion"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00020",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 20,
+      "chunk_type": "paragraph",
+      "text_content": "You can use the \"parseroptions\" structure shown above as an argument to secure other functions that process XML as well, such as:",
+      "token_count": 26,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "ColdFusion",
+        "Adobe ColdFusion"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00021",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 21,
+      "chunk_type": "code",
+      "text_content": "```\nXxmlSearch(xmldoc, xpath,parseroptions);\n\nXmlTransform(xmldoc,xslt,parseroptions);\n\nisXML(xmldoc,parseroptions);\n```",
+      "token_count": 31,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "ColdFusion",
+        "Adobe ColdFusion"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00022",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 22,
+      "chunk_type": "heading",
+      "text_content": "### Lucee",
+      "token_count": 4,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "ColdFusion",
+        "Lucee"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00023",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 23,
+      "chunk_type": "paragraph",
+      "text_content": "As of Lucee 5.3.4.51 and later, you can disable support for XML external entities by adding the following to your Application.cfc:",
+      "token_count": 31,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "ColdFusion",
+        "Lucee"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00024",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 24,
+      "chunk_type": "code",
+      "text_content": "```\nthis.xmlFeatures = {\n     externalGeneralEntities: false,\n     secure: true,\n     disallowDoctypeDecl: true\n};\n```",
+      "token_count": 24,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "ColdFusion",
+        "Lucee"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00025",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 25,
+      "chunk_type": "paragraph",
+      "text_content": "Support for external XML entities is disabled by default as of Lucee 5.4.2.10 and Lucee 6.0.0.514.",
+      "token_count": 29,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "ColdFusion",
+        "Lucee"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00026",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 26,
+      "chunk_type": "heading",
+      "text_content": "## Java",
+      "token_count": 3,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Java"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00027",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 27,
+      "chunk_type": "paragraph",
+      "text_content": "The examples below use the built-in Java API for XML Processing (JAXP) implementations on Java 9 or later.\n\n`newDefaultInstance()` (`newDefaultFactory()` for StAX) selects the built-in implementation instead of a provider selected through the [JAXP lookup mechanism](https://docs.oracle.com/en/java/javase/25/docs/api/java.xml/module-summary.html#LookupMechanism).\n\nFor other providers, see [implementation differences](#other-providers-and-required-dtds).\n\nThese are illustrative configuration fragments.\n\nThe application opens and closes the input streams, supplies trusted schemas and style sheets, and handles exceptions.\n\n**Stop processing if any required security setting fails; do not catch the exception and continue parsing.** Pass streams rather than untrusted filenames or URLs: external-entity controls do not restrict access to the initial resource passed directly to a parsing or processing API.",
+      "token_count": 191,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Java"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00028",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 28,
+      "chunk_type": "heading",
+      "text_content": "### Secure configuration by API",
+      "token_count": 7,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Java",
+        "Secure configuration by API"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00029",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 29,
+      "chunk_type": "table",
+      "text_content": "| API | Recommended approach |\n| --- | --- |\n| [`DocumentBuilderFactory`](#documentbuilderfactory-dom) | Reject DOCTYPE declarations before building a document tree |\n| [`SAXParserFactory` / `XMLReader`](#saxparserfactory-and-xmlreader) | Reject DOCTYPE declarations; parse through the configured reader |\n| [`XMLInputFactory`](#xmlinputfactory-stax) | Disable DTD processing and external entities |\n| [`TransformerFactory`](#transformerfactory-xslt) | Deny external access before compiling the style sheet |\n| [`SchemaFactory` / `Validator`](#schemafactory-and-validator) | Deny external access during compilation and validation |\n| [`XPath`](#xpath) | Evaluate against a document parsed with a hardened builder |\n| [`Unmarshaller`](#jaxb-unmarshaller) | Supply a hardened StAX reader |",
+      "token_count": 175,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Java",
+        "Secure configuration by API"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00030",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 30,
+      "chunk_type": "heading",
+      "text_content": "#### DocumentBuilderFactory (DOM)",
+      "token_count": 8,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Java",
+        "Secure configuration by API",
+        "DocumentBuilderFactory (DOM)"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00031",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 31,
+      "chunk_type": "paragraph",
+      "text_content": "For Document Object Model (DOM) parsing, [reject DOCTYPE declarations](https://xerces.apache.org/xerces2-j/features.html#disallow-doctype-decl) and leave XInclude disabled.",
+      "token_count": 44,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Java",
+        "Secure configuration by API",
+        "DocumentBuilderFactory (DOM)"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00032",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 32,
+      "chunk_type": "code",
+      "text_content": "``` java\nDocumentBuilderFactory dbf = DocumentBuilderFactory.newDefaultInstance();\ndbf.setFeature(\"http://apache.org/xml/features/disallow-doctype-decl\", true);\ndbf.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);\n\nDocumentBuilder builder = dbf.newDocumentBuilder();\nDocument doc = builder.parse(untrustedStream);\n```",
+      "token_count": 73,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Java",
+        "Secure configuration by API",
+        "DocumentBuilderFactory (DOM)"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00033",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 33,
+      "chunk_type": "paragraph",
+      "text_content": "[`setExpandEntityReferences(false)`](https://docs.oracle.com/en/java/javase/25/docs/api/java.xml/javax/xml/parsers/DocumentBuilderFactory.html#setExpandEntityReferences(boolean)) controls the representation of entity references in the tree.\n\nDo not use it as a substitute for blocking external resources.",
+      "token_count": 72,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Java",
+        "Secure configuration by API",
+        "DocumentBuilderFactory (DOM)"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00034",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 34,
+      "chunk_type": "heading",
+      "text_content": "#### SAXParserFactory and XMLReader",
+      "token_count": 7,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Java",
+        "Secure configuration by API",
+        "SAXParserFactory and XMLReader"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00035",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 35,
+      "chunk_type": "paragraph",
+      "text_content": "For Simple API for XML (SAX) parsing, reject DOCTYPE declarations on the factory before creating the reader.",
+      "token_count": 21,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Java",
+        "Secure configuration by API",
+        "SAXParserFactory and XMLReader"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00036",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 36,
+      "chunk_type": "code",
+      "text_content": "``` java\nSAXParserFactory spf = SAXParserFactory.newDefaultInstance();\nspf.setNamespaceAware(true);\nspf.setFeature(\"http://apache.org/xml/features/disallow-doctype-decl\", true);\nspf.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);\n\nXMLReader reader = spf.newSAXParser().getXMLReader();\nreader.setContentHandler(handler);  // application's SAX content handler\nreader.parse(new InputSource(untrustedStream));\n```",
+      "token_count": 100,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Java",
+        "Secure configuration by API",
+        "SAXParserFactory and XMLReader"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00037",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 37,
+      "chunk_type": "heading",
+      "text_content": "#### XMLInputFactory (StAX)",
+      "token_count": 8,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Java",
+        "Secure configuration by API",
+        "XMLInputFactory (StAX)"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00038",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 38,
+      "chunk_type": "paragraph",
+      "text_content": "For Streaming API for XML (StAX), set both [DTD and external-entity properties](https://docs.oracle.com/en/java/javase/25/docs/api/java.xml/javax/xml/stream/XMLInputFactory.html).\n\nDTD processing defaults to enabled; the external-entity default is unspecified.",
+      "token_count": 71,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Java",
+        "Secure configuration by API",
+        "XMLInputFactory (StAX)"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00039",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 39,
+      "chunk_type": "code",
+      "text_content": "``` java\nXMLInputFactory xif = XMLInputFactory.newDefaultFactory();\nxif.setProperty(XMLInputFactory.SUPPORT_DTD, false);\nxif.setProperty(XMLInputFactory.IS_SUPPORTING_EXTERNAL_ENTITIES, false);\nxif.setXMLResolver((publicId, systemId, baseURI, namespace) -> {\n    throw new XMLStreamException(\"External references are not allowed\");\n});\nXMLStreamReader xsr = xif.createXMLStreamReader(untrustedStream);\n```",
+      "token_count": 80,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Java",
+        "Secure configuration by API",
+        "XMLInputFactory (StAX)"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00040",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 40,
+      "chunk_type": "paragraph",
+      "text_content": "Disabling DTD processing does not necessarily reject the DOCTYPE declaration.\n\nStAX does not support `FEATURE_SECURE_PROCESSING`; use the provider's processing limits when DTDs are required.",
+      "token_count": 31,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Java",
+        "Secure configuration by API",
+        "XMLInputFactory (StAX)"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00041",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 41,
+      "chunk_type": "heading",
+      "text_content": "#### TransformerFactory (XSLT)",
+      "token_count": 8,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Java",
+        "Secure configuration by API",
+        "TransformerFactory (XSLT)"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00042",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 42,
+      "chunk_type": "paragraph",
+      "text_content": "XSL Transformations (XSLT) can load resources through style sheet imports, includes and `document()`, independently of external entities.\n\nFor a trusted application-owned style sheet that needs no external resources, set [both external-access restrictions](https://docs.oracle.com/en/java/javase/25/docs/api/java.xml/javax/xml/transform/TransformerFactory.html#setAttribute(java.lang.String,java.lang.Object)) before compilation:",
+      "token_count": 103,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Java",
+        "Secure configuration by API",
+        "TransformerFactory (XSLT)"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00043",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 43,
+      "chunk_type": "code",
+      "text_content": "``` java\nTransformerFactory factory = TransformerFactory.newDefaultInstance();\nfactory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);\nfactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, \"\");\nfactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_STYLESHEET, \"\");\n\nTransformer transformer =\n        factory.newTransformer(new StreamSource(trustedStylesheetStream));\ntransformer.transform(new StreamSource(untrustedStream), result);\n```",
+      "token_count": 78,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Java",
+        "Secure configuration by API",
+        "TransformerFactory (XSLT)"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00044",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 44,
+      "chunk_type": "paragraph",
+      "text_content": "This configuration limits internal entity expansion but is not a sandbox for untrusted style sheets.\n\nChoose the style sheet in application code; do not trust a style sheet reference supplied by the input document.\n\nFor other providers or required dependencies, apply the [resource policy](#external-resources-for-transformations-and-validation) below.",
+      "token_count": 66,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Java",
+        "Secure configuration by API",
+        "TransformerFactory (XSLT)"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00045",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 45,
+      "chunk_type": "heading",
+      "text_content": "#### SchemaFactory and Validator",
+      "token_count": 7,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Java",
+        "Secure configuration by API",
+        "SchemaFactory and Validator"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00046",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 46,
+      "chunk_type": "paragraph",
+      "text_content": "Schema compilation and validation can each load external resources.\n\nFor a trusted application-owned schema that needs no external resources, [restrict access on the factory before compiling the schema](https://docs.oracle.com/en/java/javase/25/docs/api/java.xml/javax/xml/validation/SchemaFactory.html#setProperty(java.lang.String,java.lang.Object)); these restrictions also apply during validation:",
+      "token_count": 94,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Java",
+        "Secure configuration by API",
+        "SchemaFactory and Validator"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00047",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 47,
+      "chunk_type": "code",
+      "text_content": "``` java\nSchemaFactory sf = SchemaFactory.newDefaultInstance();\nsf.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);\nsf.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, \"\");\nsf.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, \"\");\nSchema schema = sf.newSchema(new StreamSource(trustedSchemaStream));\n\nValidator validator = schema.newValidator();\nvalidator.validate(new StreamSource(untrustedStream));\n```",
+      "token_count": 85,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Java",
+        "Secure configuration by API",
+        "SchemaFactory and Validator"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00048",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 48,
+      "chunk_type": "paragraph",
+      "text_content": "If you install a resolver, configure it on the factory **and each validator**: [validators do not inherit the factory's resolver](https://docs.oracle.com/en/java/javase/25/docs/api/java.xml/javax/xml/validation/SchemaFactory.html#setResourceResolver(org.w3c.dom.ls.LSResourceResolver)).\n\nThe same applies to `ValidatorHandler`.",
+      "token_count": 89,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Java",
+        "Secure configuration by API",
+        "SchemaFactory and Validator"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00049",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 49,
+      "chunk_type": "heading",
+      "text_content": "#### XPath",
+      "token_count": 5,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Java",
+        "Secure configuration by API",
+        "XPath"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00050",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 50,
+      "chunk_type": "paragraph",
+      "text_content": "Avoid the [`InputSource` overloads of `XPath.evaluate`](https://docs.oracle.com/en/java/javase/25/docs/api/java.xml/javax/xml/xpath/XPath.html#evaluate(java.lang.String,org.xml.sax.InputSource)), which parse the document internally.\n\nUse the [hardened DOM builder](#documentbuilderfactory-dom) and evaluate against the resulting document:",
+      "token_count": 95,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Java",
+        "Secure configuration by API",
+        "XPath"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00051",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 51,
+      "chunk_type": "code",
+      "text_content": "``` java\nDocument doc = builder.parse(untrustedStream);\nXPath xpath = XPathFactory.newDefaultInstance().newXPath();\nNodeList nodes = (NodeList) xpath.evaluate(\"//user/name\", doc, XPathConstants.NODESET);\n```",
+      "token_count": 55,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Java",
+        "Secure configuration by API",
+        "XPath"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00052",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 52,
+      "chunk_type": "heading",
+      "text_content": "#### JAXB Unmarshaller",
+      "token_count": 6,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Java",
+        "Secure configuration by API",
+        "JAXB Unmarshaller"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00053",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 53,
+      "chunk_type": "paragraph",
+      "text_content": "For Java Architecture for XML Binding (JAXB), pass the reader from the [StAX example](#xmlinputfactory-stax) to [`Unmarshaller.unmarshal`](https://jakarta.ee/specifications/xml-binding/4.0/apidocs/jakarta.xml.bind/jakarta/xml/bind/Unmarshaller.html#unmarshal(javax.xml.stream.XMLStreamReader)).\n\nPassing raw XML instead delegates parser configuration to the JAXB provider.",
+      "token_count": 94,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Java",
+        "Secure configuration by API",
+        "JAXB Unmarshaller"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00054",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 54,
+      "chunk_type": "code",
+      "text_content": "``` java\nObject result = jaxbContext.createUnmarshaller().unmarshal(xsr);\n```",
+      "token_count": 21,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Java",
+        "Secure configuration by API",
+        "JAXB Unmarshaller"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00055",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 55,
+      "chunk_type": "heading",
+      "text_content": "### Other providers and required DTDs",
+      "token_count": 8,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Java",
+        "Other providers and required DTDs"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00056",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 56,
+      "chunk_type": "mixed",
+      "text_content": "`newInstance()` can select a third-party provider whose settings differ.\n\nVerify the provider's documented controls and fail if a required setting is unsupported.\n\nBoolean features use `setFeature`; external-access properties use `setAttribute` on a DOM factory and `setProperty` on a SAX parser or reader.\n\nIf internal DTDs are required, install an `EntityResolver` on the DOM builder or SAX reader that throws `SAXException` for external references.\n\nReturning `null` delegates resolution to the parser.\n\nSet these [Xerces/SAX features](https://xerces.apache.org/xerces2-j/features.html#external-general-entities) to `false` instead of rejecting DOCTYPE:\n\n- `http://xml.org/sax/features/external-general-entities`\n- `http://xml.org/sax/features/external-parameter-entities`\n- `http://apache.org/xml/features/nonvalidating/load-external-dtd`\n\nKeep XInclude disabled.\n\nThe last feature only controls non-validating parsing; DTD validation needs an explicit policy for any required external DTD.\n\nSet applicable `ACCESS_EXTERNAL_*` properties to `\"\"` when supported.\n\nA resolver does not limit internal entity expansion: enable [`FEATURE_SECURE_PROCESSING`](https://docs.oracle.com/en/java/javase/25/docs/api/java.xml/javax/xml/XMLConstants.html#FEATURE_SECURE_PROCESSING) where supported and configure the provider's processing limits.\n\nSecure processing alone is not a portable replacement for external-access restrictions.\n\nWhen using a SAX resolver, call `reader.parse(...)` directly.\n\n[`SAXParser.parse(source, DefaultHandler)` replaces the reader's resolver](https://github.com/openjdk/jdk/blob/6c48f4ed707bf0b15f9b6098de30db8aae6fa40f/src/java.xml/share/classes/javax/xml/parsers/SAXParser.java#L389-L392) with the supplied handler.",
+      "token_count": 404,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Java",
+        "Other providers and required DTDs"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00057",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 57,
+      "chunk_type": "heading",
+      "text_content": "### External resources for transformations and validation",
+      "token_count": 9,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Java",
+        "External resources for transformations and validation"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00058",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 58,
+      "chunk_type": "paragraph",
+      "text_content": "For other transformation or validation providers, supply XML, schemas and style sheets through a [`SAXSource`](https://docs.oracle.com/en/java/javase/25/docs/api/java.xml/javax/xml/transform/sax/SAXSource.html) with a hardened, namespace-aware `XMLReader`.\n\nSeparately install a rejecting `URIResolver` for transformations or `LSResourceResolver` for schemas.\n\nThe input parser's settings do not control style sheet or schema dependencies.\n\nWhen external dependencies are required, use a [catalog with `RESOLVE=strict`](https://docs.oracle.com/en/java/javase/25/docs/api/java.xml/javax/xml/catalog/CatalogFeatures.html) to map approved identifiers to local resources, or an allowlisting resolver.\n\nReject unapproved identifiers; returning `null` delegates to default resolution.\n\nExternal-access properties restrict protocols, not individual resources: allowing `https` is not a resource allowlist.\n\nResources returned by your resolver remain your responsibility.\n\nApply the policy before compilation and during processing.\n\nSet the [`URIResolver` on the transformer factory before `newTransformer`](https://docs.oracle.com/en/java/javase/25/docs/api/java.xml/javax/xml/transform/TransformerFactory.html#setURIResolver(javax.xml.transform.URIResolver)); transformers use it by default.\n\nFor validation, install the resolver on the factory and every validator as described above.",
+      "token_count": 307,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Java",
+        "External resources for transformations and validation"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00059",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 59,
+      "chunk_type": "heading",
+      "text_content": "### Parsers that wrap a JAXP parser",
+      "token_count": 9,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Java",
+        "Parsers that wrap a JAXP parser"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00060",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 60,
+      "chunk_type": "paragraph",
+      "text_content": "Supply wrappers with a hardened parser and check whether they replace its resolver:",
+      "token_count": 14,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Java",
+        "Parsers that wrap a JAXP parser"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00061",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 61,
+      "chunk_type": "table",
+      "text_content": "| Library | Configuration |\n| --- | --- |\n| dom4j | Supply the reader with [`SAXReader.setXMLReader`](https://javadoc.io/doc/org.dom4j/dom4j/latest/org/dom4j/io/SAXReader.html#setXMLReader(org.xml.sax.XMLReader)) and set the rejecting resolver with `SAXReader.setEntityResolver`; [dom4j replaces the reader's resolver](https://github.com/dom4j/dom4j/blob/8db3742e13860c6767971867458073e8dd0fa1d1/src/main/java/org/dom4j/io/SAXReader.java#L464-L476) |\n| JDOM | Supply the reader through [`SAXBuilder(XMLReaderJDOMFactory)`](https://www.jdom.org/docs/apidocs/org/jdom2/input/SAXBuilder.html#SAXBuilder-org.jdom2.input.sax.XMLReaderJDOMFactory-) |\n| Commons Digester | Supply a hardened reader and call `Digester.setEntityResolver` before parsing; [Digester replaces the reader's resolver](https://github.com/apache/commons-digester/blob/0e6d183e1edba72b5d78208307c82f71bfdfb7ad/commons-digester3-core/src/main/java/org/apache/commons/digester3/Digester.java#L1869-L1876) |",
+      "token_count": 256,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Java",
+        "Parsers that wrap a JAXP parser"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00062",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 62,
+      "chunk_type": "heading",
+      "text_content": "### Oracle DOM Parser",
+      "token_count": 6,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Java",
+        "Oracle DOM Parser"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00063",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 63,
+      "chunk_type": "paragraph",
+      "text_content": "For Oracle XML Developer's Kit (`oracle.xml.parser.v2`), call [`setSecureProcessing()`](https://docs.oracle.com/en/database/oracle/oracle-database/21/adxdk/security-considerations-oracle-xml-developers-kit.html) on the DOM or SAX parser.\n\nIt disables entity resolution and limits expansion.\n\nOn its JAXP binding, enable `FEATURE_SECURE_PROCESSING`.",
+      "token_count": 91,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Java",
+        "Oracle DOM Parser"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00064",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 64,
+      "chunk_type": "heading",
+      "text_content": "### java.beans.XMLDecoder",
+      "token_count": 8,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Java",
+        "java.beans.XMLDecoder"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00065",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 65,
+      "chunk_type": "paragraph",
+      "text_content": "Do not use `XMLDecoder` with untrusted input.\n\nBlocking external entities does not remove its [deserialization risk](Deserialization_Cheat_Sheet.md#other-deserialization-libraries-and-formats).",
+      "token_count": 37,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Java",
+        "java.beans.XMLDecoder"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00066",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 66,
+      "chunk_type": "heading",
+      "text_content": "### Secure JAXP factory sources",
+      "token_count": 7,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Java",
+        "Secure JAXP factory sources"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00067",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 67,
+      "chunk_type": "paragraph",
+      "text_content": "[Apache Commons Secure XML](https://commons.apache.org/proper/commons-secure-xml/) provides preconfigured factories.\n\nCheck its [threat model](https://github.com/apache/commons-secure-xml/blob/main/src/site/markdown/threat_model.md) for supported runtimes and limits.\n\nIts protections do not cover URIs passed directly to parsing APIs, parsers created outside the library, or untrusted resources your resolver chooses to supply.\n\nDo not loosen its reserved security settings.",
+      "token_count": 108,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Java",
+        "Secure JAXP factory sources"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00068",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 68,
+      "chunk_type": "heading",
+      "text_content": "## .NET",
+      "token_count": 4,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        ".NET"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00069",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 69,
+      "chunk_type": "mixed",
+      "text_content": "**Up-to-date information for XXE injection in .NET is taken directly from the [web application of unit tests by Dean Fleming](https://github.com/deanf1/dotnet-security-unit-tests), which covers all currently supported .NET XML parsers, and has test cases that demonstrate when they are safe from XXE injection and when they are not, but these tests are only with injection from file and not direct DTD (used by DoS attacks).**\n\nFor DoS attacks using a direct DTD (such as the [Billion laughs attack](https://en.wikipedia.org/wiki/Billion_laughs_attack)), a [separate testing application from Josh Grossman at Bounce Security](https://github.com/BounceSecurity/BillionLaughsTester) has been created to verify that .NET >=4.5.2 is safe from these attacks.\n\nPreviously, this information was based on some older articles which may not be 100% accurate including:\n\n- [James Jardine's excellent .NET XXE article](https://www.jardinesoftware.net/2016/05/26/xxe-and-net/).\n\n- [Guidance from Microsoft on how to prevent XXE and XML Denial of Service in .NET](https://learn.microsoft.com/en-us/archive/msdn-magazine/2009/november/xml-denial-of-service-attacks-and-defenses).",
+      "token_count": 294,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        ".NET"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00070",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 70,
+      "chunk_type": "heading",
+      "text_content": "### Overview of .NET Parser Safety Levels",
+      "token_count": 10,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        ".NET",
+        "Overview of .NET Parser Safety Levels"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00071",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 71,
+      "chunk_type": "paragraph",
+      "text_content": "**Below is an overview of all supported .NET XML parsers and their default safety levels.\n\nMore details about each parser are included below.**",
+      "token_count": 30,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        ".NET",
+        "Overview of .NET Parser Safety Levels"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00072",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 72,
+      "chunk_type": "heading",
+      "text_content": "#### XDocument (LINQ to XML) default safety levels",
+      "token_count": 13,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        ".NET",
+        "Overview of .NET Parser Safety Levels",
+        "XDocument (LINQ to XML) default safety levels"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00073",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 73,
+      "chunk_type": "paragraph",
+      "text_content": "This parser is protected from external entities at .NET Framework version 4.5.2 and protected from Billion Laughs at version 4.5.2 or greater, but it is uncertain if this parser is protected from Billion Laughs before version 4.5.2.",
+      "token_count": 52,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        ".NET",
+        "Overview of .NET Parser Safety Levels",
+        "XDocument (LINQ to XML) default safety levels"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00074",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 74,
+      "chunk_type": "heading",
+      "text_content": "#### XmlDocument, XmlTextReader, XPathNavigator default safety levels",
+      "token_count": 12,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        ".NET",
+        "Overview of .NET Parser Safety Levels",
+        "XmlDocument, XmlTextReader, XPathNavigator default safety levels"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00075",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 75,
+      "chunk_type": "paragraph",
+      "text_content": "These parsers are vulnerable to external entity attacks and Billion Laughs at versions below version 4.5.2 but protected at versions equal or greater than 4.5.2.",
+      "token_count": 34,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        ".NET",
+        "Overview of .NET Parser Safety Levels",
+        "XmlDocument, XmlTextReader, XPathNavigator default safety levels"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00076",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 76,
+      "chunk_type": "heading",
+      "text_content": "#### XmlDictionaryReader, XmlNodeReader, XmlReader default safety levels",
+      "token_count": 12,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        ".NET",
+        "Overview of .NET Parser Safety Levels",
+        "XmlDictionaryReader, XmlNodeReader, XmlReader default safety levels"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00077",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 77,
+      "chunk_type": "paragraph",
+      "text_content": "These parsers are not vulnerable to external entity attacks or Billion Laughs before or after version 4.5.2.\n\nAlso, at or greater than versions ≥4.5.2, these libraries won't even process the in-line DTD by default.\n\nEven if you change the default to allow processing a DTD, if a DoS attempt is performed an exception will still be thrown as documented above.",
+      "token_count": 79,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        ".NET",
+        "Overview of .NET Parser Safety Levels",
+        "XmlDictionaryReader, XmlNodeReader, XmlReader default safety levels"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00078",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 78,
+      "chunk_type": "heading",
+      "text_content": "### ASP.NET",
+      "token_count": 6,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        ".NET",
+        "ASP.NET"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00079",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 79,
+      "chunk_type": "paragraph",
+      "text_content": "ASP.NET applications ≥ .NET 4.5.2 must also ensure setting the `<httpRuntime targetFramework=\"...\" />` in their `Web.config` to ≥4.5.2 or risk being vulnerable regardless of the actual .NET version.\n\nOmitting this tag will also result in unsafe-by-default behavior.\n\nFor the purpose of understanding the version thresholds above, the effective .NET Framework version for an ASP.NET application is either the .NET version the application was built with or the httpRuntime's `targetFramework` (Web.config), **whichever is lower**.\n\nThis configuration tag should not be confused with a similar configuration tag: `<compilation targetFramework=\"...\" />` or the assemblies / projects targetFramework, which are **not** sufficient for achieving secure-by-default behavior as described above.",
+      "token_count": 178,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        ".NET",
+        "ASP.NET"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00080",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 80,
+      "chunk_type": "heading",
+      "text_content": "### LINQ to XML",
+      "token_count": 6,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        ".NET",
+        "LINQ to XML"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00081",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 81,
+      "chunk_type": "paragraph",
+      "text_content": "**Both the `XElement` and `XDocument` objects in the `System.Xml.Linq` library are safe from XXE injection from external file and DoS attack by default.** `XElement` parses only the elements within the XML file, so DTDs are ignored altogether.\n\n`XDocument` has XmlResolver [disabled by default](https://learn.microsoft.com/en-us/dotnet/standard/linq/linq-xml-security) so it's safe from SSRF.\n\nWhile DTDs are [enabled by default](https://github.com/microsoft/referencesource/blob/main/System.Xml.Linq/System/Xml/Linq/XLinq.cs#L1986-L1993), from Framework versions ≥4.5.2, it is **not** vulnerable to DoS as noted but it may be vulnerable in earlier Framework versions.\n\nFor more information, see [Microsoft's guidance on how to prevent XXE and XML Denial of Service in .NET](https://learn.microsoft.com/en-us/archive/msdn-magazine/2009/november/xml-denial-of-service-attacks-and-defenses)",
+      "token_count": 242,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        ".NET",
+        "LINQ to XML"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00082",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 82,
+      "chunk_type": "heading",
+      "text_content": "### XmlDictionaryReader",
+      "token_count": 4,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        ".NET",
+        "XmlDictionaryReader"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00083",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 83,
+      "chunk_type": "paragraph",
+      "text_content": "**`System.Xml.XmlDictionaryReader` is safe by default, as when it attempts to parse the DTD, the compiler throws an exception saying that \"CData elements not valid at top level of an XML document\".\n\nIt becomes unsafe if constructed with a different unsafe XML parser.**",
+      "token_count": 58,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        ".NET",
+        "XmlDictionaryReader"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00084",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 84,
+      "chunk_type": "heading",
+      "text_content": "### XmlDocument",
+      "token_count": 4,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        ".NET",
+        "XmlDocument"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00085",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 85,
+      "chunk_type": "paragraph",
+      "text_content": "**Prior to .NET Framework version 4.5.2, `System.Xml.XmlDocument` is unsafe by default.\n\nThe `XmlDocument` object has an `XmlResolver` object within it that needs to be set to null in versions prior to 4.5.2.\n\nIn versions 4.5.2 and up, this `XmlResolver` is set to null by default.**\n\nThe following example shows how it is made safe:",
+      "token_count": 89,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        ".NET",
+        "XmlDocument"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00086",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 86,
+      "chunk_type": "code",
+      "text_content": "``` csharp\n static void LoadXML()\n {\n   string xxePayload = \"<!DOCTYPE doc [<!ENTITY win SYSTEM 'file:///C:/Users/testdata2.txt'>]>\"\n                     + \"<doc>&win;</doc>\";\n   string xml = \"<?xml version='1.0' ?>\" + xxePayload;\n\n   XmlDocument xmlDoc = new XmlDocument();\n   // Setting this to NULL disables DTDs - Its NOT null by default.\n   xmlDoc.XmlResolver = null;\n   xmlDoc.LoadXml(xml);\n   Console.WriteLine(xmlDoc.InnerText);\n   Console.ReadLine();\n }\n```",
+      "token_count": 132,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        ".NET",
+        "XmlDocument"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00087",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 87,
+      "chunk_type": "paragraph",
+      "text_content": "**For .NET Framework version ≥4.5.2, this is safe by default**.\n\n`XmlDocument` can become unsafe if you create your own nonnull `XmlResolver` with default or unsafe settings.\n\nIf you need to enable DTD processing, instructions on how to do so safely are described in detail in the [referenced MSDN article](https://learn.microsoft.com/en-us/archive/msdn-magazine/2009/november/xml-denial-of-service-attacks-and-defenses).",
+      "token_count": 109,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        ".NET",
+        "XmlDocument"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00088",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 88,
+      "chunk_type": "heading",
+      "text_content": "### XmlNodeReader",
+      "token_count": 4,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        ".NET",
+        "XmlNodeReader"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00089",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 89,
+      "chunk_type": "paragraph",
+      "text_content": "`System.Xml.XmlNodeReader` objects are safe by default and will ignore DTDs even when constructed with an unsafe parser or wrapped in another unsafe parser.",
+      "token_count": 30,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        ".NET",
+        "XmlNodeReader"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00090",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 90,
+      "chunk_type": "heading",
+      "text_content": "### XmlReader",
+      "token_count": 4,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        ".NET",
+        "XmlReader"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00091",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 91,
+      "chunk_type": "paragraph",
+      "text_content": "`System.Xml.XmlReader` objects are safe by default.\n\nThey are set by default to have their ProhibitDtd property set to false in .NET Framework versions 4.0 and earlier, or their `DtdProcessing` property set to Prohibit in .NET versions 4.0 and later.\n\nAdditionally, in .NET versions 4.5.2 and later, the `XmlReaderSettings` belonging to the `XmlReader` has its `XmlResolver` set to null by default, which provides an additional layer of safety.\n\nTherefore, `XmlReader` objects will only become unsafe in version 4.5.2 and up if both the `DtdProcessing` property is set to Parse and the `XmlReaderSetting`'s `XmlResolver` is set to a nonnull XmlResolver with default or unsafe settings.\n\nIf you need to enable DTD processing, instructions on how to do so safely are described in detail in the [referenced MSDN article](https://learn.microsoft.com/en-us/archive/msdn-magazine/2009/november/xml-denial-of-service-attacks-and-defenses).",
+      "token_count": 217,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        ".NET",
+        "XmlReader"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00092",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 92,
+      "chunk_type": "heading",
+      "text_content": "### XmlTextReader",
+      "token_count": 4,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        ".NET",
+        "XmlTextReader"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00093",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 93,
+      "chunk_type": "paragraph",
+      "text_content": "`System.Xml.XmlTextReader` is **unsafe** by default in .NET Framework versions prior to 4.5.2.\n\nHere is how to make it safe in various .NET versions:",
+      "token_count": 41,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        ".NET",
+        "XmlTextReader"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00094",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 94,
+      "chunk_type": "heading",
+      "text_content": "#### Prior to .NET 4.0",
+      "token_count": 11,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        ".NET",
+        "XmlTextReader",
+        "Prior to .NET 4.0"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00095",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 95,
+      "chunk_type": "paragraph",
+      "text_content": "In .NET Framework versions prior to 4.0, DTD parsing behavior for `XmlReader` objects like `XmlTextReader` are controlled by the Boolean `ProhibitDtd` property found in the `System.Xml.XmlReaderSettings` and `System.Xml.XmlTextReader` classes.\n\nSet these values to true to disable inline DTDs completely.",
+      "token_count": 63,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        ".NET",
+        "XmlTextReader",
+        "Prior to .NET 4.0"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00096",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 96,
+      "chunk_type": "code",
+      "text_content": "``` csharp\nXmlTextReader reader = new XmlTextReader(stream);\n// NEEDED because the default is FALSE!!\nreader.ProhibitDtd = true;  \n```",
+      "token_count": 32,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        ".NET",
+        "XmlTextReader",
+        "Prior to .NET 4.0"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00097",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 97,
+      "chunk_type": "heading",
+      "text_content": "#### .NET 4.0 - .NET 4.5.2",
+      "token_count": 17,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        ".NET",
+        "XmlTextReader",
+        ".NET 4.0 - .NET 4.5.2"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00098",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 98,
+      "chunk_type": "paragraph",
+      "text_content": "**In .NET Framework version 4.0, DTD parsing behavior has been changed.\n\nThe `ProhibitDtd` property has been deprecated in favor of the new `DtdProcessing` property.**\n\n**However, they didn't change the default settings so `XmlTextReader` is still vulnerable to XXE by default.**\n\n**Setting `DtdProcessing` to `Prohibit` causes the runtime to throw an exception if a `<!DOCTYPE>` element is present in the XML.**\n\nTo set this value yourself, it looks like this:",
+      "token_count": 109,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        ".NET",
+        "XmlTextReader",
+        ".NET 4.0 - .NET 4.5.2"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00099",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 99,
+      "chunk_type": "code",
+      "text_content": "``` csharp\nXmlTextReader reader = new XmlTextReader(stream);\n// NEEDED because the default is Parse!!\nreader.DtdProcessing = DtdProcessing.Prohibit;  \n```",
+      "token_count": 34,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        ".NET",
+        "XmlTextReader",
+        ".NET 4.0 - .NET 4.5.2"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00100",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 100,
+      "chunk_type": "paragraph",
+      "text_content": "Alternatively, you can set the `DtdProcessing` property to `Ignore`, which will not throw an exception on encountering a `<!DOCTYPE>` element but will simply skip over it and not process it.\n\nFinally, you can set `DtdProcessing` to `Parse` if you do want to allow and process inline DTDs.",
+      "token_count": 65,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        ".NET",
+        "XmlTextReader",
+        ".NET 4.0 - .NET 4.5.2"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00101",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 101,
+      "chunk_type": "heading",
+      "text_content": "#### .NET 4.5.2 and later",
+      "token_count": 13,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        ".NET",
+        "XmlTextReader",
+        ".NET 4.5.2 and later"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00102",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 102,
+      "chunk_type": "paragraph",
+      "text_content": "In .NET Framework versions 4.5.2 and up, `XmlTextReader`'s internal `XmlResolver` is set to null by default, making the `XmlTextReader` ignore DTDs by default.\n\nThe `XmlTextReader` can become unsafe if you create your own nonnull `XmlResolver` with default or unsafe settings.",
+      "token_count": 61,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        ".NET",
+        "XmlTextReader",
+        ".NET 4.5.2 and later"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00103",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 103,
+      "chunk_type": "heading",
+      "text_content": "### XPathNavigator",
+      "token_count": 4,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        ".NET",
+        "XPathNavigator"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00104",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 104,
+      "chunk_type": "paragraph",
+      "text_content": "`System.Xml.XPath.XPathNavigator` is **unsafe** by default in .NET Framework versions prior to 4.5.2.\n\nThis is due to the fact that it implements `IXPathNavigable` objects like `XmlDocument`, which are also unsafe by default in versions prior to 4.5.2.\n\nYou can make `XPathNavigator` safe by giving it a safe parser like `XmlReader` (which is safe by default) in the `XPathDocument`'s constructor.\n\nHere is an example:",
+      "token_count": 102,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        ".NET",
+        "XPathNavigator"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00105",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 105,
+      "chunk_type": "code",
+      "text_content": "``` csharp\nXmlReader reader = XmlReader.Create(\"example.xml\");\nXPathDocument doc = new XPathDocument(reader);\nXPathNavigator nav = doc.CreateNavigator();\nstring xml = nav.InnerXml.ToString();\n```",
+      "token_count": 50,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        ".NET",
+        "XPathNavigator"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00106",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 106,
+      "chunk_type": "paragraph",
+      "text_content": "For .NET Framework version ≥4.5.2, XPathNavigator is **safe by default**.",
+      "token_count": 22,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        ".NET",
+        "XPathNavigator"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00107",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 107,
+      "chunk_type": "heading",
+      "text_content": "### XslCompiledTransform",
+      "token_count": 4,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        ".NET",
+        "XslCompiledTransform"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00108",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 108,
+      "chunk_type": "paragraph",
+      "text_content": "`System.Xml.Xsl.XslCompiledTransform` (an XML transformer) is safe by default as long as the parser it's given is safe.\n\nIt is safe by default because the default parser of the `Transform()` methods is an `XmlReader`, which is safe by default (per above).\n\n[The source code for this method is here.](https://github.com/microsoft/referencesource/blob/main/System.Xml/System/Xml/Xslt/XslCompiledTransform.cs)\n\nSome of the `Transform()` methods accept an `XmlReader` or `IXPathNavigable` (e.g., `XmlDocument`) as an input, and if you pass in an unsafe XML Parser then the `Transform` will also be unsafe.",
+      "token_count": 156,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        ".NET",
+        "XslCompiledTransform"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00109",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 109,
+      "chunk_type": "heading",
+      "text_content": "## iOS",
+      "token_count": 3,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "iOS"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00110",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 110,
+      "chunk_type": "heading",
+      "text_content": "### libxml2",
+      "token_count": 4,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "iOS",
+        "libxml2"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00111",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 111,
+      "chunk_type": "paragraph",
+      "text_content": "**iOS includes the C/C++ libxml2 library described above, so that guidance applies if you are using libxml2 directly.**\n\n**However, the version of libxml2 provided up through iOS6 is prior to version 2.9 of libxml2 (which protects against XXE by default).**",
+      "token_count": 60,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "iOS",
+        "libxml2"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00112",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 112,
+      "chunk_type": "heading",
+      "text_content": "### NSXMLDocument",
+      "token_count": 4,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "iOS",
+        "NSXMLDocument"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00113",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 113,
+      "chunk_type": "mixed",
+      "text_content": "**iOS also provides an `NSXMLDocument` type, which is built on top of libxml2.**\n\n**However, `NSXMLDocument` provides some additional protections against XXE that aren't available in libxml2 directly.**\n\nPer the 'NSXMLDocument External Entity Restriction API' section of this [page](https://developer.apple.com/library/archive/releasenotes/Foundation/RN-Foundation-iOS/Foundation_iOS5.html):\n\n- iOS4 and earlier: All external entities are loaded by default.\n\n- iOS5 and later: Only entities that don't require network access are loaded.\n\n(which is safer)\n\n**However, to completely disable XXE in an `NSXMLDocument` in any version of iOS you simply specify `NSXMLNodeLoadExternalEntitiesNever` when creating the `NSXMLDocument`.**",
+      "token_count": 158,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "iOS",
+        "NSXMLDocument"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00114",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 114,
+      "chunk_type": "heading",
+      "text_content": "## PHP",
+      "token_count": 3,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "PHP"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00115",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 115,
+      "chunk_type": "paragraph",
+      "text_content": "With libxml 2.9.0 or later, entity substitution is disabled by default.\n\nDo not enable `LIBXML_NOENT`, `LIBXML_DTDLOAD`, or `LIBXML_DTDVALID` for untrusted XML without explicitly blocking external resources; these options can require [additional protection against external entity loading](https://www.php.net/manual/en/function.libxml-disable-entity-loader.php).\n\nTo reject external entity resolution, install a [resolver callback that returns `null`](https://www.php.net/manual/en/function.libxml-set-external-entity-loader.php) before processing untrusted XML and keep it installed for that operation:",
+      "token_count": 139,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "PHP"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00116",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 116,
+      "chunk_type": "code",
+      "text_content": "``` php\nlibxml_set_external_entity_loader(function () {\n    return null;\n});\n```",
+      "token_count": 19,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "PHP"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00117",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 117,
+      "chunk_type": "paragraph",
+      "text_content": "Passing `null` directly to `libxml_set_external_entity_loader()` is not equivalent to returning `null` from the callback and does not block external entity loading, as the [PHP security advisory's mitigation](https://github.com/php/php-src/security/advisories/GHSA-3qrf-m4j2-pcrr) demonstrates.\n\nA description of how to abuse this in PHP is presented in a good [SensePost article](https://sensepost.com/blog/2014/revisting-xxe-and-abusing-protocols/) describing a cool PHP based XXE vulnerability that was fixed in Facebook.",
+      "token_count": 124,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "PHP"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00118",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 118,
+      "chunk_type": "heading",
+      "text_content": "## Python",
+      "token_count": 3,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Python"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00119",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 119,
+      "chunk_type": "paragraph",
+      "text_content": "Follow Python's current [XML security guidance](https://docs.python.org/3/library/xml.html#xml-security).\n\nThe built-in parsers rely on Expat, which may be bundled with Python or supplied by the operating system.\n\nCheck `pyexpat.EXPAT_VERSION` in the deployed interpreter and keep both Python and Expat updated.\n\nExpat versions below 2.7.2 may be affected by entity-expansion, large-token, or dynamic-memory denial-of-service vulnerabilities; a Python version alone does not establish the linked Expat version.\n\nExpat itself does not access files or the network by default.\n\nHigher-level APIs and custom handlers still need an external-resource policy.\n\nIndependently bound input size and decompressed data: the standard-library `xmlrpc` module is vulnerable to decompression bombs.\n\nFor untrusted XML, use the [defusedxml parsing interfaces](https://github.com/tiran/defusedxml#defusedxml) in place of the corresponding standard-library parsing functions.\n\nKeep entity and external-resource rejection enabled, and set `forbid_dtd=True` on APIs that offer it when DTDs are unnecessary.\n\nThese interfaces reject prohibited constructs; they do not sanitize XML or replace application resource limits.",
+      "token_count": 246,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Python"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00120",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 120,
+      "chunk_type": "heading",
+      "text_content": "## Semgrep Rules",
+      "token_count": 4,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Semgrep Rules"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00121",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 121,
+      "chunk_type": "paragraph",
+      "text_content": "[Semgrep](https://semgrep.dev/) is a command-line tool for offline static analysis.\n\nUse pre-built or custom rules to enforce code and security standards in your codebase.",
+      "token_count": 41,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Semgrep Rules"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00122",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 122,
+      "chunk_type": "heading",
+      "text_content": "### Java",
+      "token_count": 4,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Semgrep Rules",
+        "Java"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00123",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 123,
+      "chunk_type": "paragraph",
+      "text_content": "Below are the rules for different XML parsers in Java",
+      "token_count": 10,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Semgrep Rules",
+        "Java"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00124",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 124,
+      "chunk_type": "heading",
+      "text_content": "#### DocumentBuilderFactory",
+      "token_count": 5,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Semgrep Rules",
+        "Java",
+        "DocumentBuilderFactory"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00125",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 125,
+      "chunk_type": "paragraph",
+      "text_content": "Identifying XXE vulnerability in the `javax.xml.parsers.DocumentBuilderFactory` library.\n\nThe official registry rule is [documentbuilderfactory-disallow-doctype-decl-missing](https://semgrep.dev/r/java.lang.security.audit.xxe.documentbuilderfactory-disallow-doctype-decl-missing.documentbuilderfactory-disallow-doctype-decl-missing).",
+      "token_count": 74,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Semgrep Rules",
+        "Java",
+        "DocumentBuilderFactory"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00126",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 126,
+      "chunk_type": "heading",
+      "text_content": "#### SAXParserFactory",
+      "token_count": 5,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Semgrep Rules",
+        "Java",
+        "SAXParserFactory"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00127",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 127,
+      "chunk_type": "paragraph",
+      "text_content": "Identifying XXE vulnerability in the `javax.xml.parsers.SAXParserFactory` library.\n\nThe official registry rule is [saxparserfactory-disallow-doctype-decl-missing](https://semgrep.dev/r/java.lang.security.audit.xxe.saxparserfactory-disallow-doctype-decl-missing.saxparserfactory-disallow-doctype-decl-missing).",
+      "token_count": 74,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Semgrep Rules",
+        "Java",
+        "SAXParserFactory"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00128",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 128,
+      "chunk_type": "heading",
+      "text_content": "#### XMLInputFactory",
+      "token_count": 5,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Semgrep Rules",
+        "Java",
+        "XMLInputFactory"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00129",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 129,
+      "chunk_type": "paragraph",
+      "text_content": "Identifying XXE vulnerability in the `javax.xml.stream.XMLInputFactory` library.\n\nThe official registry rule is [xmlinputfactory-possible-xxe](https://semgrep.dev/r/java.lang.security.xmlinputfactory-possible-xxe.xmlinputfactory-possible-xxe).",
+      "token_count": 58,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "Semgrep Rules",
+        "Java",
+        "XMLInputFactory"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00130",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 130,
+      "chunk_type": "heading",
+      "text_content": "## References",
+      "token_count": 3,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "References"
+      ]
+    },
+    {
+      "chunk_id": "ver_9363b0048b47_c00131",
+      "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+      "version_id": "ver_9363b0048b47",
+      "chunk_idx": 131,
+      "chunk_type": "list",
+      "text_content": "- [Oracle Java 25: JAXP Security Guide](https://docs.oracle.com/en/java/javase/25/security/java-api-xml-processing-jaxp-security-guide.html)\n- [Python: XML Security](https://docs.python.org/3/library/xml.html)\n- [Morgan and Al Ibrahim: XML Schema, DTD, and Entity Attacks](https://dl.packetstormsecurity.net/papers/general/XMLDTDEntityAttacks.pdf)",
+      "token_count": 108,
+      "chunk_strategy": "structure_aware",
+      "heading_path": [
+        "XML External Entity Prevention Cheat Sheet",
+        "References"
+      ]
+    }
+  ],
+  "chunk_sources": [
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00000_s000",
+      "chunk_id": "ver_9363b0048b47_c00000",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00000",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 44
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00001_s000",
+      "chunk_id": "ver_9363b0048b47_c00001",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00001",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 15
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00002_s000",
+      "chunk_id": "ver_9363b0048b47_c00002",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00002",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 114
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00002_s001",
+      "chunk_id": "ver_9363b0048b47_c00002",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00002",
+      "source_order": 1,
+      "start_offset": 115,
+      "end_offset": 207
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00002_s002",
+      "chunk_id": "ver_9363b0048b47_c00002",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00002",
+      "source_order": 2,
+      "start_offset": 208,
+      "end_offset": 353
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00003_s000",
+      "chunk_id": "ver_9363b0048b47_c00003",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00003",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 19
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00004_s000",
+      "chunk_id": "ver_9363b0048b47_c00004",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00004",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 118
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00004_s001",
+      "chunk_id": "ver_9363b0048b47_c00004",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00004",
+      "source_order": 1,
+      "start_offset": 119,
+      "end_offset": 239
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00004_s002",
+      "chunk_id": "ver_9363b0048b47_c00004",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00005",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 97
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00004_s003",
+      "chunk_id": "ver_9363b0048b47_c00004",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00005",
+      "source_order": 3,
+      "start_offset": 98,
+      "end_offset": 200
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00004_s004",
+      "chunk_id": "ver_9363b0048b47_c00004",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00005",
+      "source_order": 4,
+      "start_offset": 201,
+      "end_offset": 268
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00004_s005",
+      "chunk_id": "ver_9363b0048b47_c00004",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00005",
+      "source_order": 5,
+      "start_offset": 269,
+      "end_offset": 333
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00004_s006",
+      "chunk_id": "ver_9363b0048b47_c00004",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00006",
+      "source_order": 6,
+      "start_offset": 0,
+      "end_offset": 221
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00004_s007",
+      "chunk_id": "ver_9363b0048b47_c00004",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00006",
+      "source_order": 7,
+      "start_offset": 222,
+      "end_offset": 289
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00004_s008",
+      "chunk_id": "ver_9363b0048b47_c00004",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00006",
+      "source_order": 8,
+      "start_offset": 290,
+      "end_offset": 425
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00005_s000",
+      "chunk_id": "ver_9363b0048b47_c00005",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00007",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 8
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00006_s000",
+      "chunk_id": "ver_9363b0048b47_c00006",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00008",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 11
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00007_s000",
+      "chunk_id": "ver_9363b0048b47_c00007",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00009",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 139
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00007_s001",
+      "chunk_id": "ver_9363b0048b47_c00007",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00010",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 125
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00007_s002",
+      "chunk_id": "ver_9363b0048b47_c00007",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00011",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 5
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00007_s003",
+      "chunk_id": "ver_9363b0048b47_c00007",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00012",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 289
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00007_s004",
+      "chunk_id": "ver_9363b0048b47_c00007",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00013",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 143
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00007_s005",
+      "chunk_id": "ver_9363b0048b47_c00007",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00014",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 221
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00008_s000",
+      "chunk_id": "ver_9363b0048b47_c00008",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00015",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 15
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00009_s000",
+      "chunk_id": "ver_9363b0048b47_c00009",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00016",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 48
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00010_s000",
+      "chunk_id": "ver_9363b0048b47_c00010",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00017",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 152
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00011_s000",
+      "chunk_id": "ver_9363b0048b47_c00011",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00018",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 41
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00012_s000",
+      "chunk_id": "ver_9363b0048b47_c00012",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00019",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 95
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00013_s000",
+      "chunk_id": "ver_9363b0048b47_c00013",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00020",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 71
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00013_s001",
+      "chunk_id": "ver_9363b0048b47_c00013",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00020",
+      "source_order": 1,
+      "start_offset": 72,
+      "end_offset": 287
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00013_s002",
+      "chunk_id": "ver_9363b0048b47_c00013",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00020",
+      "source_order": 2,
+      "start_offset": 288,
+      "end_offset": 344
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00014_s000",
+      "chunk_id": "ver_9363b0048b47_c00014",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00021",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 146
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00015_s000",
+      "chunk_id": "ver_9363b0048b47_c00015",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00022",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 13
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00016_s000",
+      "chunk_id": "ver_9363b0048b47_c00016",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00023",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 203
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00017_s000",
+      "chunk_id": "ver_9363b0048b47_c00017",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00024",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 20
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00018_s000",
+      "chunk_id": "ver_9363b0048b47_c00018",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00025",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 186
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00018_s001",
+      "chunk_id": "ver_9363b0048b47_c00018",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00025",
+      "source_order": 1,
+      "start_offset": 187,
+      "end_offset": 339
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00018_s002",
+      "chunk_id": "ver_9363b0048b47_c00018",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00026",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 168
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00019_s000",
+      "chunk_id": "ver_9363b0048b47_c00019",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00027",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 179
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00020_s000",
+      "chunk_id": "ver_9363b0048b47_c00020",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00028",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 129
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00021_s000",
+      "chunk_id": "ver_9363b0048b47_c00021",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00029",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 120
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00022_s000",
+      "chunk_id": "ver_9363b0048b47_c00022",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00030",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 9
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00023_s000",
+      "chunk_id": "ver_9363b0048b47_c00023",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00031",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 130
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00024_s000",
+      "chunk_id": "ver_9363b0048b47_c00024",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00032",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 118
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00025_s000",
+      "chunk_id": "ver_9363b0048b47_c00025",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00033",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 98
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00026_s000",
+      "chunk_id": "ver_9363b0048b47_c00026",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00034",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 7
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00027_s000",
+      "chunk_id": "ver_9363b0048b47_c00027",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00035",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 106
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00027_s001",
+      "chunk_id": "ver_9363b0048b47_c00027",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00035",
+      "source_order": 1,
+      "start_offset": 107,
+      "end_offset": 363
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00027_s002",
+      "chunk_id": "ver_9363b0048b47_c00027",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00035",
+      "source_order": 2,
+      "start_offset": 364,
+      "end_offset": 454
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00027_s003",
+      "chunk_id": "ver_9363b0048b47_c00027",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00036",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 47
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00027_s004",
+      "chunk_id": "ver_9363b0048b47_c00027",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00036",
+      "source_order": 4,
+      "start_offset": 48,
+      "end_offset": 166
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00027_s005",
+      "chunk_id": "ver_9363b0048b47_c00027",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00036",
+      "source_order": 5,
+      "start_offset": 167,
+      "end_offset": 449
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00028_s000",
+      "chunk_id": "ver_9363b0048b47_c00028",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00037",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 31
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00029_s000",
+      "chunk_id": "ver_9363b0048b47_c00029",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00038",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 787
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00030_s000",
+      "chunk_id": "ver_9363b0048b47_c00030",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00039",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 33
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00031_s000",
+      "chunk_id": "ver_9363b0048b47_c00031",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00040",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 172
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00032_s000",
+      "chunk_id": "ver_9363b0048b47_c00032",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00041",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 326
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00033_s000",
+      "chunk_id": "ver_9363b0048b47_c00033",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00042",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 240
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00033_s001",
+      "chunk_id": "ver_9363b0048b47_c00033",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00042",
+      "source_order": 1,
+      "start_offset": 241,
+      "end_offset": 303
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00034_s000",
+      "chunk_id": "ver_9363b0048b47_c00034",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00043",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 35
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00035_s000",
+      "chunk_id": "ver_9363b0048b47_c00035",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00044",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 108
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00036_s000",
+      "chunk_id": "ver_9363b0048b47_c00036",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00045",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 419
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00037_s000",
+      "chunk_id": "ver_9363b0048b47_c00037",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00046",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 27
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00038_s000",
+      "chunk_id": "ver_9363b0048b47_c00038",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00047",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 179
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00038_s001",
+      "chunk_id": "ver_9363b0048b47_c00038",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00047",
+      "source_order": 1,
+      "start_offset": 180,
+      "end_offset": 259
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00039_s000",
+      "chunk_id": "ver_9363b0048b47_c00039",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00048",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 405
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00040_s000",
+      "chunk_id": "ver_9363b0048b47_c00040",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00049",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 77
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00040_s001",
+      "chunk_id": "ver_9363b0048b47_c00040",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00049",
+      "source_order": 1,
+      "start_offset": 78,
+      "end_offset": 189
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00041_s000",
+      "chunk_id": "ver_9363b0048b47_c00041",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00050",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 30
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00042_s000",
+      "chunk_id": "ver_9363b0048b47_c00042",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00051",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 137
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00042_s001",
+      "chunk_id": "ver_9363b0048b47_c00042",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00051",
+      "source_order": 1,
+      "start_offset": 138,
+      "end_offset": 428
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00043_s000",
+      "chunk_id": "ver_9363b0048b47_c00043",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00052",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 443
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00044_s000",
+      "chunk_id": "ver_9363b0048b47_c00044",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00053",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 100
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00044_s001",
+      "chunk_id": "ver_9363b0048b47_c00044",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00053",
+      "source_order": 1,
+      "start_offset": 101,
+      "end_offset": 213
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00044_s002",
+      "chunk_id": "ver_9363b0048b47_c00044",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00053",
+      "source_order": 2,
+      "start_offset": 214,
+      "end_offset": 350
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00045_s000",
+      "chunk_id": "ver_9363b0048b47_c00045",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00054",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 32
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00046_s000",
+      "chunk_id": "ver_9363b0048b47_c00046",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00055",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 67
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00046_s001",
+      "chunk_id": "ver_9363b0048b47_c00046",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00055",
+      "source_order": 1,
+      "start_offset": 68,
+      "end_offset": 399
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00047_s000",
+      "chunk_id": "ver_9363b0048b47_c00047",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00056",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 409
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00048_s000",
+      "chunk_id": "ver_9363b0048b47_c00048",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00057",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 286
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00048_s001",
+      "chunk_id": "ver_9363b0048b47_c00048",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00057",
+      "source_order": 1,
+      "start_offset": 287,
+      "end_offset": 326
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00049_s000",
+      "chunk_id": "ver_9363b0048b47_c00049",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00058",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 10
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00050_s000",
+      "chunk_id": "ver_9363b0048b47_c00050",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00059",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 232
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00050_s001",
+      "chunk_id": "ver_9363b0048b47_c00050",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00059",
+      "source_order": 1,
+      "start_offset": 233,
+      "end_offset": 337
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00051_s000",
+      "chunk_id": "ver_9363b0048b47_c00051",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00060",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 207
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00052_s000",
+      "chunk_id": "ver_9363b0048b47_c00052",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00061",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 22
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00053_s000",
+      "chunk_id": "ver_9363b0048b47_c00053",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00062",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 294
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00053_s001",
+      "chunk_id": "ver_9363b0048b47_c00053",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00062",
+      "source_order": 1,
+      "start_offset": 295,
+      "end_offset": 371
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00054_s000",
+      "chunk_id": "ver_9363b0048b47_c00054",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00063",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 77
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00055_s000",
+      "chunk_id": "ver_9363b0048b47_c00055",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00064",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 37
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00056_s000",
+      "chunk_id": "ver_9363b0048b47_c00056",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00065",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 72
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00056_s001",
+      "chunk_id": "ver_9363b0048b47_c00056",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00065",
+      "source_order": 1,
+      "start_offset": 73,
+      "end_offset": 161
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00056_s002",
+      "chunk_id": "ver_9363b0048b47_c00056",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00065",
+      "source_order": 2,
+      "start_offset": 162,
+      "end_offset": 304
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00056_s003",
+      "chunk_id": "ver_9363b0048b47_c00056",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00066",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 143
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00056_s004",
+      "chunk_id": "ver_9363b0048b47_c00056",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00066",
+      "source_order": 4,
+      "start_offset": 144,
+      "end_offset": 196
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00056_s005",
+      "chunk_id": "ver_9363b0048b47_c00056",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00066",
+      "source_order": 5,
+      "start_offset": 197,
+      "end_offset": 346
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00056_s006",
+      "chunk_id": "ver_9363b0048b47_c00056",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00067",
+      "source_order": 6,
+      "start_offset": 0,
+      "end_offset": 184
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00056_s007",
+      "chunk_id": "ver_9363b0048b47_c00056",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00068",
+      "source_order": 7,
+      "start_offset": 0,
+      "end_offset": 23
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00056_s008",
+      "chunk_id": "ver_9363b0048b47_c00056",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00068",
+      "source_order": 8,
+      "start_offset": 24,
+      "end_offset": 149
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00056_s009",
+      "chunk_id": "ver_9363b0048b47_c00056",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00068",
+      "source_order": 9,
+      "start_offset": 150,
+      "end_offset": 219
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00056_s010",
+      "chunk_id": "ver_9363b0048b47_c00056",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00068",
+      "source_order": 10,
+      "start_offset": 220,
+      "end_offset": 488
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00056_s011",
+      "chunk_id": "ver_9363b0048b47_c00056",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00068",
+      "source_order": 11,
+      "start_offset": 489,
+      "end_offset": 576
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00056_s012",
+      "chunk_id": "ver_9363b0048b47_c00056",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00069",
+      "source_order": 12,
+      "start_offset": 0,
+      "end_offset": 61
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00056_s013",
+      "chunk_id": "ver_9363b0048b47_c00056",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00069",
+      "source_order": 13,
+      "start_offset": 62,
+      "end_offset": 311
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00057_s000",
+      "chunk_id": "ver_9363b0048b47_c00057",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00070",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 57
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00058_s000",
+      "chunk_id": "ver_9363b0048b47_c00058",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00071",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 256
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00058_s001",
+      "chunk_id": "ver_9363b0048b47_c00058",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00071",
+      "source_order": 1,
+      "start_offset": 257,
+      "end_offset": 358
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00058_s002",
+      "chunk_id": "ver_9363b0048b47_c00058",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00071",
+      "source_order": 2,
+      "start_offset": 359,
+      "end_offset": 437
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00058_s003",
+      "chunk_id": "ver_9363b0048b47_c00058",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00072",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 255
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00058_s004",
+      "chunk_id": "ver_9363b0048b47_c00058",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00072",
+      "source_order": 4,
+      "start_offset": 256,
+      "end_offset": 336
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00058_s005",
+      "chunk_id": "ver_9363b0048b47_c00058",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00072",
+      "source_order": 5,
+      "start_offset": 337,
+      "end_offset": 455
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00058_s006",
+      "chunk_id": "ver_9363b0048b47_c00058",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00072",
+      "source_order": 6,
+      "start_offset": 456,
+      "end_offset": 519
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00058_s007",
+      "chunk_id": "ver_9363b0048b47_c00058",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00073",
+      "source_order": 7,
+      "start_offset": 0,
+      "end_offset": 58
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00058_s008",
+      "chunk_id": "ver_9363b0048b47_c00058",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00073",
+      "source_order": 8,
+      "start_offset": 59,
+      "end_offset": 319
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00058_s009",
+      "chunk_id": "ver_9363b0048b47_c00058",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00073",
+      "source_order": 9,
+      "start_offset": 320,
+      "end_offset": 411
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00059_s000",
+      "chunk_id": "ver_9363b0048b47_c00059",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00074",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 35
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00060_s000",
+      "chunk_id": "ver_9363b0048b47_c00060",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00075",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 83
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00061_s000",
+      "chunk_id": "ver_9363b0048b47_c00061",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00076",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 970
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00062_s000",
+      "chunk_id": "ver_9363b0048b47_c00062",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00077",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 21
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00063_s000",
+      "chunk_id": "ver_9363b0048b47_c00063",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00078",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 237
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00063_s001",
+      "chunk_id": "ver_9363b0048b47_c00063",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00078",
+      "source_order": 1,
+      "start_offset": 238,
+      "end_offset": 289
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00063_s002",
+      "chunk_id": "ver_9363b0048b47_c00063",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00078",
+      "source_order": 2,
+      "start_offset": 290,
+      "end_offset": 346
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00064_s000",
+      "chunk_id": "ver_9363b0048b47_c00064",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00079",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 25
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00065_s000",
+      "chunk_id": "ver_9363b0048b47_c00065",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00080",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 45
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00065_s001",
+      "chunk_id": "ver_9363b0048b47_c00065",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00080",
+      "source_order": 1,
+      "start_offset": 46,
+      "end_offset": 192
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00066_s000",
+      "chunk_id": "ver_9363b0048b47_c00066",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00081",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 31
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00067_s000",
+      "chunk_id": "ver_9363b0048b47_c00067",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00082",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 116
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00067_s001",
+      "chunk_id": "ver_9363b0048b47_c00067",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00082",
+      "source_order": 1,
+      "start_offset": 117,
+      "end_offset": 266
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00067_s002",
+      "chunk_id": "ver_9363b0048b47_c00067",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00082",
+      "source_order": 2,
+      "start_offset": 267,
+      "end_offset": 426
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00067_s003",
+      "chunk_id": "ver_9363b0048b47_c00067",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00082",
+      "source_order": 3,
+      "start_offset": 427,
+      "end_offset": 472
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00068_s000",
+      "chunk_id": "ver_9363b0048b47_c00068",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00083",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 7
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00069_s000",
+      "chunk_id": "ver_9363b0048b47_c00069",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00084",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 426
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00069_s001",
+      "chunk_id": "ver_9363b0048b47_c00069",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00085",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 325
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00069_s002",
+      "chunk_id": "ver_9363b0048b47_c00069",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00086",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 103
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00069_s003",
+      "chunk_id": "ver_9363b0048b47_c00069",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00087",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 104
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00069_s004",
+      "chunk_id": "ver_9363b0048b47_c00069",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00087",
+      "source_order": 4,
+      "start_offset": 105,
+      "end_offset": 303
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00070_s000",
+      "chunk_id": "ver_9363b0048b47_c00070",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00088",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 41
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00071_s000",
+      "chunk_id": "ver_9363b0048b47_c00071",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00089",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 89
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00071_s001",
+      "chunk_id": "ver_9363b0048b47_c00071",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00089",
+      "source_order": 1,
+      "start_offset": 90,
+      "end_offset": 142
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00072_s000",
+      "chunk_id": "ver_9363b0048b47_c00072",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00090",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 50
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00073_s000",
+      "chunk_id": "ver_9363b0048b47_c00073",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00091",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 232
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00074_s000",
+      "chunk_id": "ver_9363b0048b47_c00074",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00092",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 69
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00075_s000",
+      "chunk_id": "ver_9363b0048b47_c00075",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00093",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 161
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00076_s000",
+      "chunk_id": "ver_9363b0048b47_c00076",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00094",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 72
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00077_s000",
+      "chunk_id": "ver_9363b0048b47_c00077",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00095",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 108
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00077_s001",
+      "chunk_id": "ver_9363b0048b47_c00077",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00095",
+      "source_order": 1,
+      "start_offset": 109,
+      "end_offset": 213
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00077_s002",
+      "chunk_id": "ver_9363b0048b47_c00077",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00095",
+      "source_order": 2,
+      "start_offset": 214,
+      "end_offset": 356
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00078_s000",
+      "chunk_id": "ver_9363b0048b47_c00078",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00096",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 11
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00079_s000",
+      "chunk_id": "ver_9363b0048b47_c00079",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00097",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 198
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00079_s001",
+      "chunk_id": "ver_9363b0048b47_c00079",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00097",
+      "source_order": 1,
+      "start_offset": 199,
+      "end_offset": 264
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00079_s002",
+      "chunk_id": "ver_9363b0048b47_c00079",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00098",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 261
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00079_s003",
+      "chunk_id": "ver_9363b0048b47_c00079",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00099",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 255
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00080_s000",
+      "chunk_id": "ver_9363b0048b47_c00080",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00100",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 15
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00081_s000",
+      "chunk_id": "ver_9363b0048b47_c00081",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00101",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 243
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00081_s001",
+      "chunk_id": "ver_9363b0048b47_c00081",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00101",
+      "source_order": 1,
+      "start_offset": 244,
+      "end_offset": 391
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00081_s002",
+      "chunk_id": "ver_9363b0048b47_c00081",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00101",
+      "source_order": 2,
+      "start_offset": 392,
+      "end_offset": 666
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00081_s003",
+      "chunk_id": "ver_9363b0048b47_c00081",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00101",
+      "source_order": 3,
+      "start_offset": 667,
+      "end_offset": 885
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00082_s000",
+      "chunk_id": "ver_9363b0048b47_c00082",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00102",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 23
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00083_s000",
+      "chunk_id": "ver_9363b0048b47_c00083",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00103",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 197
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00083_s001",
+      "chunk_id": "ver_9363b0048b47_c00083",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00103",
+      "source_order": 1,
+      "start_offset": 198,
+      "end_offset": 268
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00084_s000",
+      "chunk_id": "ver_9363b0048b47_c00084",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00104",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 15
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00085_s000",
+      "chunk_id": "ver_9363b0048b47_c00085",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00105",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 87
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00085_s001",
+      "chunk_id": "ver_9363b0048b47_c00085",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00105",
+      "source_order": 1,
+      "start_offset": 88,
+      "end_offset": 207
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00085_s002",
+      "chunk_id": "ver_9363b0048b47_c00085",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00105",
+      "source_order": 2,
+      "start_offset": 208,
+      "end_offset": 281
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00085_s003",
+      "chunk_id": "ver_9363b0048b47_c00085",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00106",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 48
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00086_s000",
+      "chunk_id": "ver_9363b0048b47_c00086",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00107",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 466
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00087_s000",
+      "chunk_id": "ver_9363b0048b47_c00087",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00108",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 63
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00087_s001",
+      "chunk_id": "ver_9363b0048b47_c00087",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00109",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 109
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00087_s002",
+      "chunk_id": "ver_9363b0048b47_c00087",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00109",
+      "source_order": 2,
+      "start_offset": 110,
+      "end_offset": 355
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00088_s000",
+      "chunk_id": "ver_9363b0048b47_c00088",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00110",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 17
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00089_s000",
+      "chunk_id": "ver_9363b0048b47_c00089",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00111",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 156
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00090_s000",
+      "chunk_id": "ver_9363b0048b47_c00090",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00112",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 13
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00091_s000",
+      "chunk_id": "ver_9363b0048b47_c00091",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00113",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 51
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00091_s001",
+      "chunk_id": "ver_9363b0048b47_c00091",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00114",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 197
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00091_s002",
+      "chunk_id": "ver_9363b0048b47_c00091",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00115",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 192
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00091_s003",
+      "chunk_id": "ver_9363b0048b47_c00091",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00116",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 239
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00091_s004",
+      "chunk_id": "ver_9363b0048b47_c00091",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00116",
+      "source_order": 4,
+      "start_offset": 240,
+      "end_offset": 485
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00092_s000",
+      "chunk_id": "ver_9363b0048b47_c00092",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00117",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 17
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00093_s000",
+      "chunk_id": "ver_9363b0048b47_c00093",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00118",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 94
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00093_s001",
+      "chunk_id": "ver_9363b0048b47_c00093",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00118",
+      "source_order": 1,
+      "start_offset": 95,
+      "end_offset": 148
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00094_s000",
+      "chunk_id": "ver_9363b0048b47_c00094",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00119",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 22
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00095_s000",
+      "chunk_id": "ver_9363b0048b47_c00095",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00120",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 243
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00095_s001",
+      "chunk_id": "ver_9363b0048b47_c00095",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00121",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 59
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00096_s000",
+      "chunk_id": "ver_9363b0048b47_c00096",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00122",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 134
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00097_s000",
+      "chunk_id": "ver_9363b0048b47_c00097",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00123",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 26
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00098_s000",
+      "chunk_id": "ver_9363b0048b47_c00098",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00124",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 71
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00098_s001",
+      "chunk_id": "ver_9363b0048b47_c00098",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00124",
+      "source_order": 1,
+      "start_offset": 72,
+      "end_offset": 166
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00098_s002",
+      "chunk_id": "ver_9363b0048b47_c00098",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00125",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 110
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00098_s003",
+      "chunk_id": "ver_9363b0048b47_c00098",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00126",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 131
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00098_s004",
+      "chunk_id": "ver_9363b0048b47_c00098",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00127",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 47
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00099_s000",
+      "chunk_id": "ver_9363b0048b47_c00099",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00128",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 154
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00100_s000",
+      "chunk_id": "ver_9363b0048b47_c00100",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00129",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 190
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00100_s001",
+      "chunk_id": "ver_9363b0048b47_c00100",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00129",
+      "source_order": 1,
+      "start_offset": 191,
+      "end_offset": 287
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00101_s000",
+      "chunk_id": "ver_9363b0048b47_c00101",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00130",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 25
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00102_s000",
+      "chunk_id": "ver_9363b0048b47_c00102",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00131",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 159
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00102_s001",
+      "chunk_id": "ver_9363b0048b47_c00102",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00131",
+      "source_order": 1,
+      "start_offset": 160,
+      "end_offset": 275
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00103_s000",
+      "chunk_id": "ver_9363b0048b47_c00103",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00132",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 18
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00104_s000",
+      "chunk_id": "ver_9363b0048b47_c00104",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00133",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 101
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00104_s001",
+      "chunk_id": "ver_9363b0048b47_c00104",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00134",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 149
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00104_s002",
+      "chunk_id": "ver_9363b0048b47_c00104",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00135",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 143
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00104_s003",
+      "chunk_id": "ver_9363b0048b47_c00104",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00136",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 19
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00105_s000",
+      "chunk_id": "ver_9363b0048b47_c00105",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00137",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 195
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00106_s000",
+      "chunk_id": "ver_9363b0048b47_c00106",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00138",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 73
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00107_s000",
+      "chunk_id": "ver_9363b0048b47_c00107",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00139",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 24
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00108_s000",
+      "chunk_id": "ver_9363b0048b47_c00108",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00140",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 119
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00108_s001",
+      "chunk_id": "ver_9363b0048b47_c00108",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00141",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 134
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00108_s002",
+      "chunk_id": "ver_9363b0048b47_c00108",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00142",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 149
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00108_s003",
+      "chunk_id": "ver_9363b0048b47_c00108",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00143",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 193
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00109_s000",
+      "chunk_id": "ver_9363b0048b47_c00109",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00144",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 6
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00110_s000",
+      "chunk_id": "ver_9363b0048b47_c00110",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00145",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 11
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00111_s000",
+      "chunk_id": "ver_9363b0048b47_c00111",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00146",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 119
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00111_s001",
+      "chunk_id": "ver_9363b0048b47_c00111",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00147",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 136
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00112_s000",
+      "chunk_id": "ver_9363b0048b47_c00112",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00148",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 17
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00113_s000",
+      "chunk_id": "ver_9363b0048b47_c00113",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00149",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 80
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00113_s001",
+      "chunk_id": "ver_9363b0048b47_c00113",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00150",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 120
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00113_s002",
+      "chunk_id": "ver_9363b0048b47_c00113",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00151",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 187
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00113_s003",
+      "chunk_id": "ver_9363b0048b47_c00113",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00152",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 64
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00113_s004",
+      "chunk_id": "ver_9363b0048b47_c00113",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00152",
+      "source_order": 4,
+      "start_offset": 65,
+      "end_offset": 142
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00113_s005",
+      "chunk_id": "ver_9363b0048b47_c00113",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00152",
+      "source_order": 5,
+      "start_offset": 143,
+      "end_offset": 159
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00113_s006",
+      "chunk_id": "ver_9363b0048b47_c00113",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00153",
+      "source_order": 6,
+      "start_offset": 0,
+      "end_offset": 173
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00114_s000",
+      "chunk_id": "ver_9363b0048b47_c00114",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00154",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 6
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00115_s000",
+      "chunk_id": "ver_9363b0048b47_c00115",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00155",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 71
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00115_s001",
+      "chunk_id": "ver_9363b0048b47_c00115",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00155",
+      "source_order": 1,
+      "start_offset": 72,
+      "end_offset": 362
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00115_s002",
+      "chunk_id": "ver_9363b0048b47_c00115",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00156",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 239
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00116_s000",
+      "chunk_id": "ver_9363b0048b47_c00116",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00157",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 80
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00117_s000",
+      "chunk_id": "ver_9363b0048b47_c00117",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00158",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 294
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00117_s001",
+      "chunk_id": "ver_9363b0048b47_c00117",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00159",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 228
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00118_s000",
+      "chunk_id": "ver_9363b0048b47_c00118",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00160",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 9
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00119_s000",
+      "chunk_id": "ver_9363b0048b47_c00119",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00161",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 105
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00119_s001",
+      "chunk_id": "ver_9363b0048b47_c00119",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00161",
+      "source_order": 1,
+      "start_offset": 106,
+      "end_offset": 211
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00119_s002",
+      "chunk_id": "ver_9363b0048b47_c00119",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00161",
+      "source_order": 2,
+      "start_offset": 212,
+      "end_offset": 309
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00119_s003",
+      "chunk_id": "ver_9363b0048b47_c00119",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00161",
+      "source_order": 3,
+      "start_offset": 310,
+      "end_offset": 507
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00119_s004",
+      "chunk_id": "ver_9363b0048b47_c00119",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00162",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 61
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00119_s005",
+      "chunk_id": "ver_9363b0048b47_c00119",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00162",
+      "source_order": 5,
+      "start_offset": 62,
+      "end_offset": 139
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00119_s006",
+      "chunk_id": "ver_9363b0048b47_c00119",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00162",
+      "source_order": 6,
+      "start_offset": 140,
+      "end_offset": 268
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00119_s007",
+      "chunk_id": "ver_9363b0048b47_c00119",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00163",
+      "source_order": 7,
+      "start_offset": 0,
+      "end_offset": 172
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00119_s008",
+      "chunk_id": "ver_9363b0048b47_c00119",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00163",
+      "source_order": 8,
+      "start_offset": 173,
+      "end_offset": 300
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00119_s009",
+      "chunk_id": "ver_9363b0048b47_c00119",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00163",
+      "source_order": 9,
+      "start_offset": 301,
+      "end_offset": 412
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00120_s000",
+      "chunk_id": "ver_9363b0048b47_c00120",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00164",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 16
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00121_s000",
+      "chunk_id": "ver_9363b0048b47_c00121",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00165",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 83
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00121_s001",
+      "chunk_id": "ver_9363b0048b47_c00121",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00165",
+      "source_order": 1,
+      "start_offset": 84,
+      "end_offset": 170
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00122_s000",
+      "chunk_id": "ver_9363b0048b47_c00122",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00166",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 8
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00123_s000",
+      "chunk_id": "ver_9363b0048b47_c00123",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00167",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 53
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00124_s000",
+      "chunk_id": "ver_9363b0048b47_c00124",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00168",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 27
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00125_s000",
+      "chunk_id": "ver_9363b0048b47_c00125",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00169",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 88
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00125_s001",
+      "chunk_id": "ver_9363b0048b47_c00125",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00169",
+      "source_order": 1,
+      "start_offset": 89,
+      "end_offset": 332
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00126_s000",
+      "chunk_id": "ver_9363b0048b47_c00126",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00170",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 21
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00127_s000",
+      "chunk_id": "ver_9363b0048b47_c00127",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00171",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 82
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00127_s001",
+      "chunk_id": "ver_9363b0048b47_c00127",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00171",
+      "source_order": 1,
+      "start_offset": 83,
+      "end_offset": 308
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00128_s000",
+      "chunk_id": "ver_9363b0048b47_c00128",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00172",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 20
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00129_s000",
+      "chunk_id": "ver_9363b0048b47_c00129",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00173",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 80
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00129_s001",
+      "chunk_id": "ver_9363b0048b47_c00129",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00173",
+      "source_order": 1,
+      "start_offset": 81,
+      "end_offset": 242
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00130_s000",
+      "chunk_id": "ver_9363b0048b47_c00130",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00174",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 13
+    },
+    {
+      "chunk_source_id": "ver_9363b0048b47_c00131_s000",
+      "chunk_id": "ver_9363b0048b47_c00131",
+      "normalized_block_id": "nrm_ver_9363b0048b47_b00175",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 347
+    }
+  ]
+}

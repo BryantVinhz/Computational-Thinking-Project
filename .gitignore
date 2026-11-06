@@ -51,9 +51,11 @@ coverage.xml
 .hypothesis/
 .pytest_cache/
 cover/
-long_nguyen/
+
 
 # Translations
+long_nguyen/
+/Document Ingestion and Parsing/output/Normalization/
 *.mo
 *.pot
 
@@ -224,9 +226,12 @@ __marimo__/
 
 #Generated SQLite metadata
 *.db
+!workspace_data.db
+!metadata.db
 *.db-journal
 *.db-wal
 *.db-shm
+
 
 
 

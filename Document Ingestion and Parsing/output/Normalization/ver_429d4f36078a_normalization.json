@@ -1,0 +1,1820 @@
+[
+  {
+    "block_id": "ver_429d4f36078a_b00000",
+    "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+    "version_id": "ver_429d4f36078a",
+    "block_idx": 0,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "# Denial of Service Cheat Sheet",
+    "text_hash": "2a6b949b9761ef757b70be9ad8216c9113b866c976f0e5046ae0993eb671974b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 1,
+      "end_line": 1
+    },
+    "heading_path": [
+      "Denial of Service Cheat Sheet"
+    ],
+    "heading_level": 1,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_429d4f36078a_b00000",
+    "normalized_text": "# Denial of Service Cheat Sheet",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_429d4f36078a_b00001",
+    "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+    "version_id": "ver_429d4f36078a",
+    "block_idx": 1,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Introduction",
+    "text_hash": "d753efbab681fa4da82470d9a83b1c202de58f92fd498e77a269c1163bc4714b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 3,
+      "end_line": 3
+    },
+    "heading_path": [
+      "Denial of Service Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_429d4f36078a_b00001",
+    "normalized_text": "## Introduction",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_429d4f36078a_b00002",
+    "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+    "version_id": "ver_429d4f36078a",
+    "block_idx": 2,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "This cheat sheet describes a methodology for handling denial of service (DoS) attacks on different layers. It also serves as a platform for further discussion and analysis, since there are many different ways to perform DoS attacks.",
+    "text_hash": "026415711bc5bbaea81a59ff609421762e7ac7fdc354d93996f3fb456fd7908c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 5,
+      "end_line": 5
+    },
+    "heading_path": [
+      "Denial of Service Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_429d4f36078a_b00002",
+    "normalized_text": "This cheat sheet describes a methodology for handling denial of service (DoS) attacks on different layers. It also serves as a platform for further discussion and analysis, since there are many different ways to perform DoS attacks.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_429d4f36078a_b00003",
+    "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+    "version_id": "ver_429d4f36078a",
+    "block_idx": 3,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Fundamentals",
+    "text_hash": "a3bae7d92a0a0a4b5a152c2ed6ab36ebce8928c50959abeed1aef1f591454a22",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 7,
+      "end_line": 7
+    },
+    "heading_path": [
+      "Denial of Service Cheat Sheet",
+      "Introduction",
+      "Fundamentals"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_429d4f36078a_b00003",
+    "normalized_text": "### Fundamentals",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_429d4f36078a_b00004",
+    "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+    "version_id": "ver_429d4f36078a",
+    "block_idx": 4,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Because anti-DoS methods cannot be one-step solutions, your developers and application/infrastructure architects must develop DoS solutions carefully.  They must keep in mind that \"availability\" is a basic part of the [CIA triad](https://whatis.techtarget.com/definition/Confidentiality-integrity-and-availability-CIA).",
+    "text_hash": "e623967a209f204ebcb5e6e407f2d4c59f4dfd7638702e66b8038670bfffa584",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 9,
+      "end_line": 9
+    },
+    "heading_path": [
+      "Denial of Service Cheat Sheet",
+      "Introduction",
+      "Fundamentals"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_429d4f36078a_b00004",
+    "normalized_text": "Because anti-DoS methods cannot be one-step solutions, your developers and application/infrastructure architects must develop DoS solutions carefully. They must keep in mind that \"availability\" is a basic part of the [CIA triad](https://whatis.techtarget.com/definition/Confidentiality-integrity-and-availability-CIA).",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_429d4f36078a_b00005",
+    "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+    "version_id": "ver_429d4f36078a",
+    "block_idx": 5,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "  Remember that if every part of the computing system within the interoperability flow does not function correctly, your infrastructure suffers. A successful DoS attack hinders the availability of instances or objects to a system and can eventually render the entire system inaccessible.",
+    "text_hash": "7fe3126392620a1b63e3927a51026dbb32a5e4e57bfa3eb7c7db49d9d793d26c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 11,
+      "end_line": 11
+    },
+    "heading_path": [
+      "Denial of Service Cheat Sheet",
+      "Introduction",
+      "Fundamentals"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_429d4f36078a_b00005",
+    "normalized_text": "  Remember that if every part of the computing system within the interoperability flow does not function correctly, your infrastructure suffers. A successful DoS attack hinders the availability of instances or objects to a system and can eventually render the entire system inaccessible.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_429d4f36078a_b00006",
+    "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+    "version_id": "ver_429d4f36078a",
+    "block_idx": 6,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**To ensure systems can be resilient and resist a DoS attack, we strongly suggest a thorough analysis on components within your inventory based on functionality, architecture and performance (i.e. application-wise, infrastructure and network related).**",
+    "text_hash": "97c51058c0e58ff5a03151b6eed30ca9fd685bbe1642bf78df150bf3947e8cfd",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 13,
+      "end_line": 13
+    },
+    "heading_path": [
+      "Denial of Service Cheat Sheet",
+      "Introduction",
+      "Fundamentals"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_429d4f36078a_b00006",
+    "normalized_text": "**To ensure systems can be resilient and resist a DoS attack, we strongly suggest a thorough analysis on components within your inventory based on functionality, architecture and performance (i.e. application-wise, infrastructure and network related).**",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_429d4f36078a_b00007",
+    "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+    "version_id": "ver_429d4f36078a",
+    "block_idx": 7,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "![DDOSFlow](../assets/Denial_of_Service_Cheat_Sheet_FlowDDOS.png)",
+    "text_hash": "dc176a11325dd0aa231e81d8f8a41113f44219932273cfc6e5d637041f5a6846",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 15,
+      "end_line": 15
+    },
+    "heading_path": [
+      "Denial of Service Cheat Sheet",
+      "Introduction",
+      "Fundamentals"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_429d4f36078a_b00007",
+    "normalized_text": "![DDOSFlow](../assets/Denial_of_Service_Cheat_Sheet_FlowDDOS.png)",
+    "normalization_flags": {
+      "is_code_or_payload": true,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_429d4f36078a_b00008",
+    "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+    "version_id": "ver_429d4f36078a",
+    "block_idx": 8,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "This DoS system inventory should look for potential places where DoS attacks can cause problems and highlight any single points of system failures, which can range from programming related errors to resource exhaustion. It should give you a clear picture of what issues are at stake (e.g. bottlenecks, etc.). **To resolve problems, a solid understanding of your environment is essential to develop suitable defense mechanisms**. These could be aligned with:",
+    "text_hash": "fa085b6fa23dbdc0900ab916cbd9cd6f0509d2d56d23a42c0e3806ecf98445c4",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 17,
+      "end_line": 17
+    },
+    "heading_path": [
+      "Denial of Service Cheat Sheet",
+      "Introduction",
+      "Fundamentals"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_429d4f36078a_b00008",
+    "normalized_text": "This DoS system inventory should look for potential places where DoS attacks can cause problems and highlight any single points of system failures, which can range from programming related errors to resource exhaustion. It should give you a clear picture of what issues are at stake (e.g. bottlenecks, etc.). **To resolve problems, a solid understanding of your environment is essential to develop suitable defense mechanisms**. These could be aligned with:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_429d4f36078a_b00009",
+    "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+    "version_id": "ver_429d4f36078a",
+    "block_idx": 9,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "1. Scaling options (**up** = inner hardware components, **out** = the number of complete components).\n2. Existing conceptual / logical techniques (such as applying redundancy measurements, bulk-heading, etc. - which expands your in-house capabilities).\n3. A cost analysis applied to your situation.\n",
+    "text_hash": "80b68d092739c132413fc00f8b518f88eb31a65c22c004be885f6001ff5a1236",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 19,
+      "end_line": 22
+    },
+    "heading_path": [
+      "Denial of Service Cheat Sheet",
+      "Introduction",
+      "Fundamentals"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_429d4f36078a_b00009",
+    "normalized_text": "1. Scaling options (**up** = inner hardware components, **out** = the number of complete components).\n2. Existing conceptual / logical techniques (such as applying redundancy measurements, bulk-heading, etc. - which expands your in-house capabilities).\n3. A cost analysis applied to your situation.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_429d4f36078a_b00010",
+    "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+    "version_id": "ver_429d4f36078a",
+    "block_idx": 10,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "This document adopts a specific guidance structure from CERT-EU to analyze this subject, which you may need to change depending on your situation. It is not a complete approach but it will help you create fundamental blocks which should be utilized to assist you in constructing anti-DoS concepts fitting your needs.",
+    "text_hash": "f7e038545f8453088155c451ee6c644b71da8a35f7c81af3d5cd533506d127e9",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 23,
+      "end_line": 23
+    },
+    "heading_path": [
+      "Denial of Service Cheat Sheet",
+      "Introduction",
+      "Fundamentals"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_429d4f36078a_b00010",
+    "normalized_text": "This document adopts a specific guidance structure from CERT-EU to analyze this subject, which you may need to change depending on your situation. It is not a complete approach but it will help you create fundamental blocks which should be utilized to assist you in constructing anti-DoS concepts fitting your needs.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_429d4f36078a_b00011",
+    "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+    "version_id": "ver_429d4f36078a",
+    "block_idx": 11,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Analyzing DoS attack surfaces",
+    "text_hash": "d283157e40719470dac12951da385c3795598c6ef5c57cfb05beab0fa417dd07",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 25,
+      "end_line": 25
+    },
+    "heading_path": [
+      "Denial of Service Cheat Sheet",
+      "Introduction",
+      "Analyzing DoS attack surfaces"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_429d4f36078a_b00011",
+    "normalized_text": "### Analyzing DoS attack surfaces",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_429d4f36078a_b00012",
+    "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+    "version_id": "ver_429d4f36078a",
+    "block_idx": 12,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "In this cheat sheet, we will use the DDOS classification as documented by CERT-EU to examine DoS system vulnerabilities. It uses the seven OSI model and focuses three main attack surfaces, namely Application, Session and Network.",
+    "text_hash": "ff54a589428b851065f73a0e50c70850edae73e27e7f8c734b257c2da630242f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 27,
+      "end_line": 27
+    },
+    "heading_path": [
+      "Denial of Service Cheat Sheet",
+      "Introduction",
+      "Analyzing DoS attack surfaces"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_429d4f36078a_b00012",
+    "normalized_text": "In this cheat sheet, we will use the DDOS classification as documented by CERT-EU to examine DoS system vulnerabilities. It uses the seven OSI model and focuses three main attack surfaces, namely Application, Session and Network.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_429d4f36078a_b00013",
+    "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+    "version_id": "ver_429d4f36078a",
+    "block_idx": 13,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### 1) Overview of potential DoS weaknesses",
+    "text_hash": "d8b79b10b892f4f77a88908cc8846130066fbee34a15a881ec464afff525edf7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 29,
+      "end_line": 29
+    },
+    "heading_path": [
+      "Denial of Service Cheat Sheet",
+      "Introduction",
+      "Analyzing DoS attack surfaces",
+      "1) Overview of potential DoS weaknesses"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_429d4f36078a_b00013",
+    "normalized_text": "#### 1) Overview of potential DoS weaknesses",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_429d4f36078a_b00014",
+    "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+    "version_id": "ver_429d4f36078a",
+    "block_idx": 14,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "It is important to understand that each of these three attack categories needs to be considered when designing a DoS-resilient solution:",
+    "text_hash": "ee5c4692216f9a6496268141800653fa1f81e27c827799f2f93b84b479387cd3",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 31,
+      "end_line": 31
+    },
+    "heading_path": [
+      "Denial of Service Cheat Sheet",
+      "Introduction",
+      "Analyzing DoS attack surfaces",
+      "1) Overview of potential DoS weaknesses"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_429d4f36078a_b00014",
+    "normalized_text": "It is important to understand that each of these three attack categories needs to be considered when designing a DoS-resilient solution:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_429d4f36078a_b00015",
+    "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+    "version_id": "ver_429d4f36078a",
+    "block_idx": 15,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": " **Application attacks** focus on rendering applications unavailable by exhausting resources or by making it unusable in a functional way.",
+    "text_hash": "3fcaf9ecbcd357640d34d80d9ff316be1afd639aec029c114d1ede4f72dddbfa",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 33,
+      "end_line": 33
+    },
+    "heading_path": [
+      "Denial of Service Cheat Sheet",
+      "Introduction",
+      "Analyzing DoS attack surfaces",
+      "1) Overview of potential DoS weaknesses"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_429d4f36078a_b00015",
+    "normalized_text": " **Application attacks** focus on rendering applications unavailable by exhausting resources or by making it unusable in a functional way.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_429d4f36078a_b00016",
+    "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+    "version_id": "ver_429d4f36078a",
+    "block_idx": 16,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": " **Session (or protocol) attacks** focus on consuming server resources, or resources of intermediary equipment like firewalls and load-balancers.",
+    "text_hash": "09fa84082189f3529474a04fc8b7fa3aceba82465a2a0c2a5bc244c6fa583a7e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 35,
+      "end_line": 35
+    },
+    "heading_path": [
+      "Denial of Service Cheat Sheet",
+      "Introduction",
+      "Analyzing DoS attack surfaces",
+      "1) Overview of potential DoS weaknesses"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_429d4f36078a_b00016",
+    "normalized_text": " **Session (or protocol) attacks** focus on consuming server resources, or resources of intermediary equipment like firewalls and load-balancers.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_429d4f36078a_b00017",
+    "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+    "version_id": "ver_429d4f36078a",
+    "block_idx": 17,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": " **Network (or volumetric) attacks** focus on saturating the bandwidth of the network resource.",
+    "text_hash": "8766678e21d9b2c5cd6002f29702869f398ab360212f352e4ef7af4be2d21430",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 37,
+      "end_line": 37
+    },
+    "heading_path": [
+      "Denial of Service Cheat Sheet",
+      "Introduction",
+      "Analyzing DoS attack surfaces",
+      "1) Overview of potential DoS weaknesses"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_429d4f36078a_b00017",
+    "normalized_text": " **Network (or volumetric) attacks** focus on saturating the bandwidth of the network resource.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_429d4f36078a_b00018",
+    "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+    "version_id": "ver_429d4f36078a",
+    "block_idx": 18,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Note that OSI model layers 1 and 2 are not included in this categorization, so we will now discuss these layers and how DoS applies to them.",
+    "text_hash": "5c0114e2fd7b6884942c8046072699728a72e70ac99257716195d23eb73acb22",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 39,
+      "end_line": 39
+    },
+    "heading_path": [
+      "Denial of Service Cheat Sheet",
+      "Introduction",
+      "Analyzing DoS attack surfaces",
+      "1) Overview of potential DoS weaknesses"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_429d4f36078a_b00018",
+    "normalized_text": "Note that OSI model layers 1 and 2 are not included in this categorization, so we will now discuss these layers and how DoS applies to them.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_429d4f36078a_b00019",
+    "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+    "version_id": "ver_429d4f36078a",
+    "block_idx": 19,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The **physical layer** consists of the networking hardware transmission technologies of a network. It is a fundamental layer underlying the logical data structures of the higher-level functions in a network. Typical DoS scenarios that involve the physical layer involve system destruction, obstruction, and malfunction. For example, a Georgian elderly woman sliced through an underground cable, resulting in the loss of internet for the whole of Armenia.",
+    "text_hash": "30105aa69a0b798ea87e46c36c84e07d524e22bf799e2a7433c38d5e5788b5ad",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 41,
+      "end_line": 41
+    },
+    "heading_path": [
+      "Denial of Service Cheat Sheet",
+      "Introduction",
+      "Analyzing DoS attack surfaces",
+      "1) Overview of potential DoS weaknesses"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_429d4f36078a_b00019",
+    "normalized_text": "The **physical layer** consists of the networking hardware transmission technologies of a network. It is a fundamental layer underlying the logical data structures of the higher-level functions in a network. Typical DoS scenarios that involve the physical layer involve system destruction, obstruction, and malfunction. For example, a Georgian elderly woman sliced through an underground cable, resulting in the loss of internet for the whole of Armenia.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_429d4f36078a_b00020",
+    "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+    "version_id": "ver_429d4f36078a",
+    "block_idx": 20,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The **data layer** is the protocol layer that transfers data between adjacent network nodes in a wide area network (WAN) or between nodes on the same local area network (LAN) segment. Typical DoS scenarios are MAC flooding (targeting switch MAC tables) and ARP poisoning.",
+    "text_hash": "242d818dbbc6888e2b96528e46becf91d60f6d1823522a3f3b5627bf445ee7e5",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 43,
+      "end_line": 43
+    },
+    "heading_path": [
+      "Denial of Service Cheat Sheet",
+      "Introduction",
+      "Analyzing DoS attack surfaces",
+      "1) Overview of potential DoS weaknesses"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_429d4f36078a_b00020",
+    "normalized_text": "The **data layer** is the protocol layer that transfers data between adjacent network nodes in a wide area network (WAN) or between nodes on the same local area network (LAN) segment. Typical DoS scenarios are MAC flooding (targeting switch MAC tables) and ARP poisoning.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_429d4f36078a_b00021",
+    "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+    "version_id": "ver_429d4f36078a",
+    "block_idx": 21,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "In **MAC flooding attacks**, a switch is flooded with packets that all have different source MAC addresses. The goal of this attack is to consume the limited memory used by a switch to store the MAC and physical port translation table (MAC table), which causes valid MAC addresses to be purged and forces the switch to enter a fail-over mode where it becomes a network hub. If this occurs, all data is forwarded to all ports, resulting in a data leakage.",
+    "text_hash": "38915d79c9bea851d7a143aef01593097d7a25fddad4c29150334f8d1fc0ea51",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 45,
+      "end_line": 45
+    },
+    "heading_path": [
+      "Denial of Service Cheat Sheet",
+      "Introduction",
+      "Analyzing DoS attack surfaces",
+      "1) Overview of potential DoS weaknesses"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_429d4f36078a_b00021",
+    "normalized_text": "In **MAC flooding attacks**, a switch is flooded with packets that all have different source MAC addresses. The goal of this attack is to consume the limited memory used by a switch to store the MAC and physical port translation table (MAC table), which causes valid MAC addresses to be purged and forces the switch to enter a fail-over mode where it becomes a network hub. If this occurs, all data is forwarded to all ports, resulting in a data leakage.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_429d4f36078a_b00022",
+    "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+    "version_id": "ver_429d4f36078a",
+    "block_idx": 22,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[Future additions to sheet: The impact in relation to DoS and document compact remediation]",
+    "text_hash": "bbbbbb2a4365a06f6bf9e9db260d629e4c2450c5678abbe56a604d4056286ab6",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 47,
+      "end_line": 47
+    },
+    "heading_path": [
+      "Denial of Service Cheat Sheet",
+      "Introduction",
+      "Analyzing DoS attack surfaces",
+      "1) Overview of potential DoS weaknesses"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_429d4f36078a_b00022",
+    "normalized_text": "[Future additions to sheet: The impact in relation to DoS and document compact remediation]",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_429d4f36078a_b00023",
+    "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+    "version_id": "ver_429d4f36078a",
+    "block_idx": 23,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "In **ARP poisoning attacks**, a malicious actor sends spoofed ARP (Address Resolution Protocol) messages over the wire. If the attacker's MAC address becomes linked to the IP address of a legitimate device on the network, the attacker can intercept, modify or stop data that was intended for the victim IP address. The ARP protocol is specific to the local area network and could cause a DoS on the wire communication.",
+    "text_hash": "53978921e7809f1d4451fc9eaf6a8e3d946e105e528284267df697aaa600a389",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 49,
+      "end_line": 49
+    },
+    "heading_path": [
+      "Denial of Service Cheat Sheet",
+      "Introduction",
+      "Analyzing DoS attack surfaces",
+      "1) Overview of potential DoS weaknesses"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_429d4f36078a_b00023",
+    "normalized_text": "In **ARP poisoning attacks**, a malicious actor sends spoofed ARP (Address Resolution Protocol) messages over the wire. If the attacker's MAC address becomes linked to the IP address of a legitimate device on the network, the attacker can intercept, modify or stop data that was intended for the victim IP address. The ARP protocol is specific to the local area network and could cause a DoS on the wire communication.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_429d4f36078a_b00024",
+    "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+    "version_id": "ver_429d4f36078a",
+    "block_idx": 24,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Packet filtering technology can be used to inspect packets in transit to identify and block offending ARP packets. Another approach is to use static ARP tables but they prove difficult to be maintained.",
+    "text_hash": "ddcaf1c1e9bd62262ef0b3ea34e818e722edd8069ec48769972adafb60f2bfc5",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 51,
+      "end_line": 51
+    },
+    "heading_path": [
+      "Denial of Service Cheat Sheet",
+      "Introduction",
+      "Analyzing DoS attack surfaces",
+      "1) Overview of potential DoS weaknesses"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_429d4f36078a_b00024",
+    "normalized_text": "Packet filtering technology can be used to inspect packets in transit to identify and block offending ARP packets. Another approach is to use static ARP tables but they prove difficult to be maintained.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_429d4f36078a_b00025",
+    "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+    "version_id": "ver_429d4f36078a",
+    "block_idx": 25,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Application attacks",
+    "text_hash": "fe5c3b2fcc0cc4cc4c1e07e999430415397c5f20979ca174cd6ae8d1afae37b8",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 53,
+      "end_line": 53
+    },
+    "heading_path": [
+      "Denial of Service Cheat Sheet",
+      "Application attacks"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_429d4f36078a_b00025",
+    "normalized_text": "## Application attacks",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_429d4f36078a_b00026",
+    "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+    "version_id": "ver_429d4f36078a",
+    "block_idx": 26,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**Application layer attacks usually make applications unavailable by exhausting system resources or by making it unusable in a functional way.** These attacks do not have to consume the network bandwidth to be effective. Rather they place an operational strain on the application server in such a way that the server becomes unavailable, unusable or non-functional. All attacks exploiting weaknesses on OSI layer 7 protocol stack are generally categorised as application attacks. They are the most challenging to identify/mitigate.",
+    "text_hash": "67b36b7a874b3173ccb6477dba16e9175a711c9e2f57a443ddadfaf9e5ba915c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 55,
+      "end_line": 55
+    },
+    "heading_path": [
+      "Denial of Service Cheat Sheet",
+      "Application attacks"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_429d4f36078a_b00026",
+    "normalized_text": "**Application layer attacks usually make applications unavailable by exhausting system resources or by making it unusable in a functional way.** These attacks do not have to consume the network bandwidth to be effective. Rather they place an operational strain on the application server in such a way that the server becomes unavailable, unusable or non-functional. All attacks exploiting weaknesses on OSI layer 7 protocol stack are generally categorised as application attacks. They are the most challenging to identify/mitigate.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_429d4f36078a_b00027",
+    "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+    "version_id": "ver_429d4f36078a",
+    "block_idx": 27,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[Future additions to sheet: List all attacks per category. Because we cannot map remediations one on one with an attack vector, we will first need to list them before discussing the action points.]",
+    "text_hash": "eae0b352b3b791be707c79dc3b99a9be889665b8bff572ecc3bb1ff89531a639",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 57,
+      "end_line": 57
+    },
+    "heading_path": [
+      "Denial of Service Cheat Sheet",
+      "Application attacks"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_429d4f36078a_b00027",
+    "normalized_text": "[Future additions to sheet: List all attacks per category. Because we cannot map remediations one on one with an attack vector, we will first need to list them before discussing the action points.]",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_429d4f36078a_b00028",
+    "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+    "version_id": "ver_429d4f36078a",
+    "block_idx": 28,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**Slow HTTP attacks deliver HTTP requests very slow and fragmented, one at a time. Until the HTTP request was fully delivered, the server will keep resources stalled while waiting for the missing incoming data.** At one moment, the server will reach the maximum concurrent connection pool, resulting in a DoS. From an attacker's perspective, slow HTTP attacks are cheap to perform because they require minimal resources.",
+    "text_hash": "0c8fb2cc0e02b54043ddcce29ce833a1891bc7b98d6de7e80c2a5d7b861c7100",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 59,
+      "end_line": 59
+    },
+    "heading_path": [
+      "Denial of Service Cheat Sheet",
+      "Application attacks"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_429d4f36078a_b00028",
+    "normalized_text": "**Slow HTTP attacks deliver HTTP requests very slow and fragmented, one at a time. Until the HTTP request was fully delivered, the server will keep resources stalled while waiting for the missing incoming data.** At one moment, the server will reach the maximum concurrent connection pool, resulting in a DoS. From an attacker's perspective, slow HTTP attacks are cheap to perform because they require minimal resources.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_429d4f36078a_b00029",
+    "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+    "version_id": "ver_429d4f36078a",
+    "block_idx": 29,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Software Design Concepts",
+    "text_hash": "2d7d3b813d65eea0b8f0e1de31005cfd9c6e2797bcd5de5e6a65f16140f41946",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 61,
+      "end_line": 61
+    },
+    "heading_path": [
+      "Denial of Service Cheat Sheet",
+      "Application attacks",
+      "Software Design Concepts"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_429d4f36078a_b00029",
+    "normalized_text": "### Software Design Concepts",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_429d4f36078a_b00030",
+    "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+    "version_id": "ver_429d4f36078a",
+    "block_idx": 30,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- **Using validation that is cheap in resources first**: We want to reduce impact on these resources as soon as possible. More (CPU, memory and bandwidth) expensive validation should be performed afterward.\n- **Employing graceful degradation**: This is a core concept to follow during application design phase, in order to limit impact of DoS. You need to continue some level of functionality when portions of a system or application break. One of the main problems with DoS is that it causes sudden and abrupt application terminations throughout the system. A fault tolerant design enables a system or application to continue its intended operation, possibly at a reduced level, rather than failing completely if parts of the system fails.\n- **Prevent single point of failure**: Detecting and preventing single points of failure (SPOF) is key to resisting DoS attacks. Most DoS attacks assume that a system has SPOFs that will fail due to overwhelmed systems. We suggest that you employ stateless components, use redundant systems, create bulkheads to stop failures from spreading across the infrastructure, and make sure that systems can survive when external services fail. [Prevention](https://www.baeldung.com/cs/distributed-systems-prevent-single-point-failure)\n- **Avoid highly CPU consuming operations**: When a DoS attack occurs, operations that tend to use a lot of CPU resources can become serious drags on system performance and can become a point of failure. We strongly suggest that you review performance issues with your code, including problems that are inherent in the languages that you are using. See [Java](https://www.theserverside.com/answer/How-to-fix-high-Java-CPU-usage-problems) [JVM-IBM](https://www.ibm.com/docs/en/baw/23.x?topic=issues-best-practices-high-jvm-cpu-utilization) and [Microsoft-IIS](https://learn.microsoft.com/en-us/troubleshoot/developer/webapps/iis/health-diagnostic-performance/troubleshoot-high-cpu-in-iis-app-pool)\n- **Handle exceptions**: When a DoS attack occurs, it is likely that applications will throw exceptions and it is vital that your systems can handle them gracefully. Again, a DoS attack assumes that an overwhelmed system will not be able to throw exceptions in a way that the system can continue operating. We suggest that you go through your code and make sure that exceptions are handled properly. See [Large-Scale-Systems](https://raygun.com/blog/errors-and-exceptions/) [Java](https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/Java-Exception-handling-best-practices) and [Java](https://www.digitalocean.com/community/tutorials/exception-handling-in-java)\n- **Protect overflow and underflow** Since buffer overflow and underflow often lead to vulnerabilities, learning how to prevent them is key. [OWASP](https://owasp.org/www-community/vulnerabilities/Buffer_Overflow) [Overflow-Underflow-C](https://developer.apple.com/library/archive/documentation/Security/Conceptual/SecureCodingGuide/Articles/BufferOverflows.html) [Overflow](https://www.freecodecamp.org/news/buffer-overflow-attacks/)\n- **Threading**: Avoid operations which must wait for completion of large tasks to proceed. Asynchronous operations are useful in these situations.\n- Identify resource intensive pages and plan ahead.\n",
+    "text_hash": "954b0503b58e8be0f271802a5eb2a9441a88a5c33bbfb44c50309e22d33115c4",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 63,
+      "end_line": 71
+    },
+    "heading_path": [
+      "Denial of Service Cheat Sheet",
+      "Application attacks",
+      "Software Design Concepts"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_429d4f36078a_b00030",
+    "normalized_text": "- **Using validation that is cheap in resources first**: We want to reduce impact on these resources as soon as possible. More (CPU, memory and bandwidth) expensive validation should be performed afterward.\n- **Employing graceful degradation**: This is a core concept to follow during application design phase, in order to limit impact of DoS. You need to continue some level of functionality when portions of a system or application break. One of the main problems with DoS is that it causes sudden and abrupt application terminations throughout the system. A fault tolerant design enables a system or application to continue its intended operation, possibly at a reduced level, rather than failing completely if parts of the system fails.\n- **Prevent single point of failure**: Detecting and preventing single points of failure (SPOF) is key to resisting DoS attacks. Most DoS attacks assume that a system has SPOFs that will fail due to overwhelmed systems. We suggest that you employ stateless components, use redundant systems, create bulkheads to stop failures from spreading across the infrastructure, and make sure that systems can survive when external services fail. [Prevention](https://www.baeldung.com/cs/distributed-systems-prevent-single-point-failure)\n- **Avoid highly CPU consuming operations**: When a DoS attack occurs, operations that tend to use a lot of CPU resources can become serious drags on system performance and can become a point of failure. We strongly suggest that you review performance issues with your code, including problems that are inherent in the languages that you are using. See [Java](https://www.theserverside.com/answer/How-to-fix-high-Java-CPU-usage-problems) [JVM-IBM](https://www.ibm.com/docs/en/baw/23.x?topic=issues-best-practices-high-jvm-cpu-utilization) and [Microsoft-IIS](https://learn.microsoft.com/en-us/troubleshoot/developer/webapps/iis/health-diagnostic-performance/troubleshoot-high-cpu-in-iis-app-pool)\n- **Handle exceptions**: When a DoS attack occurs, it is likely that applications will throw exceptions and it is vital that your systems can handle them gracefully. Again, a DoS attack assumes that an overwhelmed system will not be able to throw exceptions in a way that the system can continue operating. We suggest that you go through your code and make sure that exceptions are handled properly. See [Large-Scale-Systems](https://raygun.com/blog/errors-and-exceptions/) [Java](https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/Java-Exception-handling-best-practices) and [Java](https://www.digitalocean.com/community/tutorials/exception-handling-in-java)\n- **Protect overflow and underflow** Since buffer overflow and underflow often lead to vulnerabilities, learning how to prevent them is key. [OWASP](https://owasp.org/www-community/vulnerabilities/Buffer_Overflow) [Overflow-Underflow-C](https://developer.apple.com/library/archive/documentation/Security/Conceptual/SecureCodingGuide/Articles/BufferOverflows.html) [Overflow](https://www.freecodecamp.org/news/buffer-overflow-attacks/)\n- **Threading**: Avoid operations which must wait for completion of large tasks to proceed. Asynchronous operations are useful in these situations.\n- Identify resource intensive pages and plan ahead.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_429d4f36078a_b00031",
+    "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+    "version_id": "ver_429d4f36078a",
+    "block_idx": 31,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Session",
+    "text_hash": "400bd574a207820826c90503f2a0c07fa402a3c98ed685bad26ee13202ec0d8e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 72,
+      "end_line": 72
+    },
+    "heading_path": [
+      "Denial of Service Cheat Sheet",
+      "Application attacks",
+      "Session"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_429d4f36078a_b00031",
+    "normalized_text": "### Session",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_429d4f36078a_b00032",
+    "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+    "version_id": "ver_429d4f36078a",
+    "block_idx": 32,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- **Limit server side session time based on inactivity and a final timeout**: (resource exhaustion) While sessions timeout is most of the time discussed in relation to session security and preventing session hijacking, it is also an important measure to prevent resource exhaustion.\n- **Limit session bound information storage**: The less data is linked to a session, the less burden a user session has on the webserver's performance.\n",
+    "text_hash": "c1fa55d4810bce9f8ee453a2c82a418fced11ddece10c34c548dbc7796217e75",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 74,
+      "end_line": 76
+    },
+    "heading_path": [
+      "Denial of Service Cheat Sheet",
+      "Application attacks",
+      "Session"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_429d4f36078a_b00032",
+    "normalized_text": "- **Limit server side session time based on inactivity and a final timeout**: (resource exhaustion) While sessions timeout is most of the time discussed in relation to session security and preventing session hijacking, it is also an important measure to prevent resource exhaustion.\n- **Limit session bound information storage**: The less data is linked to a session, the less burden a user session has on the webserver's performance.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_429d4f36078a_b00033",
+    "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+    "version_id": "ver_429d4f36078a",
+    "block_idx": 33,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Input validation",
+    "text_hash": "ef3ca6e4c8375cbe7fc416d32f7e348452c552997c538c3de244e9c4182f9dba",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 77,
+      "end_line": 77
+    },
+    "heading_path": [
+      "Denial of Service Cheat Sheet",
+      "Application attacks",
+      "Input validation"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_429d4f36078a_b00033",
+    "normalized_text": "### Input validation",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_429d4f36078a_b00034",
+    "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+    "version_id": "ver_429d4f36078a",
+    "block_idx": 34,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- **Limit file upload size and extensions**:  This tactic prevents DoS on file space storage or other web application functions which will use the upload as input (e.g. image resizing, PDF creation, etc. (resource exhaustion) - [Checklist](https://owasp.org/www-community/vulnerabilities/Unrestricted_File_Upload).\n- **Limit total request size**:  To make it harder for resource-consuming DoS attacks to succeed. (resource exhaustion)\n- **Prevent input based resource allocation**: Again, to make it harder for resource-consuming DoS attacks to succeed. (resource exhaustion)\n- **Prevent input based function and threading interaction**:  User input can influence how many times a function needs to be executed, or how intensive the CPU consumption becomes. Depending on (unfiltered) user input for resource allocation could allow a DoS scenario through resource exhaustion. (resource exhaustion)\n- **Input based puzzles** like captchas or simple math problems are often used to 'protect' a web form. The classic example is a webform that will send out an email after posting the request. A captcha could then prevent the mailbox from getting flooded by a malicious attacker or spambot.  **Puzzles serve a purpose against functionality abuse but this kind of technology will not help defend against DoS attacks.**\n",
+    "text_hash": "07947212e615f881da89d8512038d59f1bb0776c346f4acbea2414c18f548fbb",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 79,
+      "end_line": 84
+    },
+    "heading_path": [
+      "Denial of Service Cheat Sheet",
+      "Application attacks",
+      "Input validation"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_429d4f36078a_b00034",
+    "normalized_text": "- **Limit file upload size and extensions**: This tactic prevents DoS on file space storage or other web application functions which will use the upload as input (e.g. image resizing, PDF creation, etc. (resource exhaustion) - [Checklist](https://owasp.org/www-community/vulnerabilities/Unrestricted_File_Upload).\n- **Limit total request size**: To make it harder for resource-consuming DoS attacks to succeed. (resource exhaustion)\n- **Prevent input based resource allocation**: Again, to make it harder for resource-consuming DoS attacks to succeed. (resource exhaustion)\n- **Prevent input based function and threading interaction**: User input can influence how many times a function needs to be executed, or how intensive the CPU consumption becomes. Depending on (unfiltered) user input for resource allocation could allow a DoS scenario through resource exhaustion. (resource exhaustion)\n- **Input based puzzles** like captchas or simple math problems are often used to 'protect' a web form. The classic example is a webform that will send out an email after posting the request. A captcha could then prevent the mailbox from getting flooded by a malicious attacker or spambot. **Puzzles serve a purpose against functionality abuse but this kind of technology will not help defend against DoS attacks.**",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 5
+    }
+  },
+  {
+    "block_id": "ver_429d4f36078a_b00035",
+    "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+    "version_id": "ver_429d4f36078a",
+    "block_idx": 35,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Access control",
+    "text_hash": "94dd60675adbe5e45fd3978ed91d878b096ae6894c14234592f05998af17be8e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 85,
+      "end_line": 85
+    },
+    "heading_path": [
+      "Denial of Service Cheat Sheet",
+      "Application attacks",
+      "Access control"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_429d4f36078a_b00035",
+    "normalized_text": "### Access control",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_429d4f36078a_b00036",
+    "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+    "version_id": "ver_429d4f36078a",
+    "block_idx": 36,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- **Authentication as a means to expose functionality**: The principle of least privilege can play a key role in preventing DoS attacks by denying attackers the ability to access potentially damaging functions with DoS techniques.\n- **User lockout** is a scenario where an attacker can take advantage of the application security mechanisms to cause DoS by abusing the login failure.\n",
+    "text_hash": "188d192602df14ebffd9b42ec41db6de271eae7c3b31dea31fd49d0081dc7d08",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 87,
+      "end_line": 89
+    },
+    "heading_path": [
+      "Denial of Service Cheat Sheet",
+      "Application attacks",
+      "Access control"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_429d4f36078a_b00036",
+    "normalized_text": "- **Authentication as a means to expose functionality**: The principle of least privilege can play a key role in preventing DoS attacks by denying attackers the ability to access potentially damaging functions with DoS techniques.\n- **User lockout** is a scenario where an attacker can take advantage of the application security mechanisms to cause DoS by abusing the login failure.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_429d4f36078a_b00037",
+    "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+    "version_id": "ver_429d4f36078a",
+    "block_idx": 37,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Network attacks",
+    "text_hash": "7a62eae9aaadf2317df2fc4bf7824ae8de9b3d973bf1b2c497480d74128e2ee7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 90,
+      "end_line": 90
+    },
+    "heading_path": [
+      "Denial of Service Cheat Sheet",
+      "Network attacks"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_429d4f36078a_b00037",
+    "normalized_text": "## Network attacks",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_429d4f36078a_b00038",
+    "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+    "version_id": "ver_429d4f36078a",
+    "block_idx": 38,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "For more information on network attacks, see:",
+    "text_hash": "7375a0534c35d431c62f619c620a4572258c6708b566882a4767c2346f210cd9",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 92,
+      "end_line": 92
+    },
+    "heading_path": [
+      "Denial of Service Cheat Sheet",
+      "Network attacks"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_429d4f36078a_b00038",
+    "normalized_text": "For more information on network attacks, see:",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_429d4f36078a_b00039",
+    "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+    "version_id": "ver_429d4f36078a",
+    "block_idx": 39,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[Juniper](https://www.juniper.net/documentation/us/en/software/junos/denial-of-service/topics/topic-map/security-network-dos-attack.html)\n[eSecurityPlanet](https://www.esecurityplanet.com/networks/types-of-ddos-attacks/)",
+    "text_hash": "600c0208541c61a5a4e2f73cc7f9cf605923cd133165c2f14c104ab12385003d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 94,
+      "end_line": 95
+    },
+    "heading_path": [
+      "Denial of Service Cheat Sheet",
+      "Network attacks"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_429d4f36078a_b00039",
+    "normalized_text": "[Juniper](https://www.juniper.net/documentation/us/en/software/junos/denial-of-service/topics/topic-map/security-network-dos-attack.html)\n[eSecurityPlanet](https://www.esecurityplanet.com/networks/types-of-ddos-attacks/)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_429d4f36078a_b00040",
+    "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+    "version_id": "ver_429d4f36078a",
+    "block_idx": 40,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "[Future additions to cheat sheet: Discuss attacks where network bandwidth gets saturation. Volumetric in nature. Amplification techniques make these attacks effective. List attacks: NTP amplification, DNS amplification, UDP flooding, TCP flooding]",
+    "text_hash": "104144884a680dbb9af26b7f16ee311ce746e17fb0fa80eb7fe0179cca282fb2",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 97,
+      "end_line": 97
+    },
+    "heading_path": [
+      "Denial of Service Cheat Sheet",
+      "Network attacks"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_429d4f36078a_b00040",
+    "normalized_text": "[Future additions to cheat sheet: Discuss attacks where network bandwidth gets saturation. Volumetric in nature. Amplification techniques make these attacks effective. List attacks: NTP amplification, DNS amplification, UDP flooding, TCP flooding]",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_429d4f36078a_b00041",
+    "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+    "version_id": "ver_429d4f36078a",
+    "block_idx": 41,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Network Design Concepts",
+    "text_hash": "1baf71b96b29d5905e37a18304aafb63f78d645351d440ba47df56525c7393f9",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 99,
+      "end_line": 99
+    },
+    "heading_path": [
+      "Denial of Service Cheat Sheet",
+      "Network attacks",
+      "Network Design Concepts"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_429d4f36078a_b00041",
+    "normalized_text": "### Network Design Concepts",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_429d4f36078a_b00042",
+    "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+    "version_id": "ver_429d4f36078a",
+    "block_idx": 42,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- **Preventing single point of failure**: See above.\n- **Caching**: The concept that data is stored so future requests for that data can be served faster. The more data is served via caching, to more resilient the application becomes to bandwidth exhaustion.\n- **Static resources hosting on a different domain** will reduce the number of http requests on the web application. Images and JavaScript are typical files that are loaded from a different domain.  \n",
+    "text_hash": "102f1f3d980033948dc87d7378a3a7f162a97c29edac9429c9dbd09d767d9541",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 101,
+      "end_line": 104
+    },
+    "heading_path": [
+      "Denial of Service Cheat Sheet",
+      "Network attacks",
+      "Network Design Concepts"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_429d4f36078a_b00042",
+    "normalized_text": "- **Preventing single point of failure**: See above.\n- **Caching**: The concept that data is stored so future requests for that data can be served faster. The more data is served via caching, to more resilient the application becomes to bandwidth exhaustion.\n- **Static resources hosting on a different domain** will reduce the number of http requests on the web application. Images and JavaScript are typical files that are loaded from a different domain.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 3
+    }
+  },
+  {
+    "block_id": "ver_429d4f36078a_b00043",
+    "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+    "version_id": "ver_429d4f36078a",
+    "block_idx": 43,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Rate limiting",
+    "text_hash": "533ee06100ac52a2ab3ce48e329abaf79fc811cecf5f6bb013e086b709dc2ea6",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 105,
+      "end_line": 105
+    },
+    "heading_path": [
+      "Denial of Service Cheat Sheet",
+      "Network attacks",
+      "Rate limiting"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_429d4f36078a_b00043",
+    "normalized_text": "### Rate limiting",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_429d4f36078a_b00044",
+    "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+    "version_id": "ver_429d4f36078a",
+    "block_idx": 44,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Rate limiting is the process of controlling traffic rate from and to a server or component. It can be implemented on infrastructure as well as on an application level. Rate limiting can be based on (offending) IPs, on IP block lists, on geolocation, etc.",
+    "text_hash": "ee2800005e2c349865e597c4993af07b0aa53303020877a11411cc18fc3e6339",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 107,
+      "end_line": 107
+    },
+    "heading_path": [
+      "Denial of Service Cheat Sheet",
+      "Network attacks",
+      "Rate limiting"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_429d4f36078a_b00044",
+    "normalized_text": "Rate limiting is the process of controlling traffic rate from and to a server or component. It can be implemented on infrastructure as well as on an application level. Rate limiting can be based on (offending) IPs, on IP block lists, on geolocation, etc.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_429d4f36078a_b00045",
+    "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+    "version_id": "ver_429d4f36078a",
+    "block_idx": 45,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- **Define a minimum ingress data rate** with request-read timeouts to mitigate slow HTTP attacks; see [Apache's minimum-rate and timeout controls](https://httpd.apache.org/docs/current/mod/mod_reqtimeout.html#requestreadtimeout) for an example. A minimum rate set too high can reject legitimate slow clients; setting it too low weakens protection against slow senders. Inspect the logs to establish a baseline of genuine traffic rates.\n- **Define an absolute connection timeout**\n- **Define a maximum ingress data rate limit** then drop all connections above that rate.\n- **Define a total bandwidth size limit** to prevent bandwidth exhaustion\n- **Define a load limit**, which specifies the number of users allowed to access any given resource at any given time.\n",
+    "text_hash": "a5648d80dd0b04e39522447a96453329f56bcbd485bef1dda990b67d44c68135",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 109,
+      "end_line": 114
+    },
+    "heading_path": [
+      "Denial of Service Cheat Sheet",
+      "Network attacks",
+      "Rate limiting"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_429d4f36078a_b00045",
+    "normalized_text": "- **Define a minimum ingress data rate** with request-read timeouts to mitigate slow HTTP attacks; see [Apache's minimum-rate and timeout controls](https://httpd.apache.org/docs/current/mod/mod_reqtimeout.html#requestreadtimeout) for an example. A minimum rate set too high can reject legitimate slow clients; setting it too low weakens protection against slow senders. Inspect the logs to establish a baseline of genuine traffic rates.\n- **Define an absolute connection timeout**\n- **Define a maximum ingress data rate limit** then drop all connections above that rate.\n- **Define a total bandwidth size limit** to prevent bandwidth exhaustion\n- **Define a load limit**, which specifies the number of users allowed to access any given resource at any given time.",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_429d4f36078a_b00046",
+    "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+    "version_id": "ver_429d4f36078a",
+    "block_idx": 46,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### ISP-Level remediations",
+    "text_hash": "4a27bdf48f5439e6814f5bdee0985630f8d473f597ae2e52d7308361a76f4d2a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 115,
+      "end_line": 115
+    },
+    "heading_path": [
+      "Denial of Service Cheat Sheet",
+      "Network attacks",
+      "ISP-Level remediations"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_429d4f36078a_b00046",
+    "normalized_text": "### ISP-Level remediations",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_429d4f36078a_b00047",
+    "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+    "version_id": "ver_429d4f36078a",
+    "block_idx": 47,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- **Filter invalid sender addresses using edge routers**, in accordance with RFC 2267, to filter out IP-spoofing attacks done with the goal of bypassing block lists.\n- **Check your ISP services in terms of DDOS beforehand** (support for multiple internet access points, enough bandwidth (xx-xxx Gbit/s) and special hardware for traffic analysis and defense on application level\n",
+    "text_hash": "c76ded40bbcb447ee478ebf92d1e4e55925b2fafa7cf34bc2126293231fc5164",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 117,
+      "end_line": 119
+    },
+    "heading_path": [
+      "Denial of Service Cheat Sheet",
+      "Network attacks",
+      "ISP-Level remediations"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_429d4f36078a_b00047",
+    "normalized_text": "- **Filter invalid sender addresses using edge routers**, in accordance with RFC 2267, to filter out IP-spoofing attacks done with the goal of bypassing block lists.\n- **Check your ISP services in terms of DDOS beforehand** (support for multiple internet access points, enough bandwidth (xx-xxx Gbit/s) and special hardware for traffic analysis and defense on application level",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_429d4f36078a_b00048",
+    "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+    "version_id": "ver_429d4f36078a",
+    "block_idx": 48,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Global-Level remediations: Commercial cloud filter services",
+    "text_hash": "f2cc3e8c135d955ad42650d387fe321c8b2acf99610863154c85c9542c4a7473",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 120,
+      "end_line": 120
+    },
+    "heading_path": [
+      "Denial of Service Cheat Sheet",
+      "Network attacks",
+      "Global-Level remediations: Commercial cloud filter services"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_429d4f36078a_b00048",
+    "normalized_text": "### Global-Level remediations: Commercial cloud filter services",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_429d4f36078a_b00049",
+    "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+    "version_id": "ver_429d4f36078a",
+    "block_idx": 49,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- Consider a DDoS filtering service for larger attacks. [Assess the provider's mitigation capacity and coverage](https://www.cisa.gov/sites/default/files/2023-09/TLP%20CLEAR%20-DDOS%20Mitigations%20Guidance_508c.pdf) against your availability requirements; do not assume a fixed attack-size ceiling.\n- **Filter services** support different mechanics to filter out malicious or non compliant traffic\n- **Comply with relevant data protection/privacy laws** - a lot of providers route traffic through USA/UK\n",
+    "text_hash": "335d756de42239de4bb57ced8cca12a3366ae91fcc329908462fb1e239fab07d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 122,
+      "end_line": 125
+    },
+    "heading_path": [
+      "Denial of Service Cheat Sheet",
+      "Network attacks",
+      "Global-Level remediations: Commercial cloud filter services"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_429d4f36078a_b00049",
+    "normalized_text": "- Consider a DDoS filtering service for larger attacks. [Assess the provider's mitigation capacity and coverage](https://www.cisa.gov/sites/default/files/2023-09/TLP%20CLEAR%20-DDOS%20Mitigations%20Guidance_508c.pdf) against your availability requirements; do not assume a fixed attack-size ceiling.\n- **Filter services** support different mechanics to filter out malicious or non compliant traffic\n- **Comply with relevant data protection/privacy laws** - a lot of providers route traffic through USA/UK",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": true,
+      "char_count_delta": 1
+    }
+  },
+  {
+    "block_id": "ver_429d4f36078a_b00050",
+    "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+    "version_id": "ver_429d4f36078a",
+    "block_idx": 50,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## References",
+    "text_hash": "65b72d86eeeb214ab8ca5fd24cb7cd7773e58084e95b670040df03e21e8c6fa7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 126,
+      "end_line": 126
+    },
+    "heading_path": [
+      "Denial of Service Cheat Sheet",
+      "References"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_429d4f36078a_b00050",
+    "normalized_text": "## References",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  },
+  {
+    "block_id": "ver_429d4f36078a_b00051",
+    "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+    "version_id": "ver_429d4f36078a",
+    "block_idx": 51,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- [CERT-EU: DDoS Overview and Incident Response Guide](https://cert.europa.eu/static/WhitePapers/CERT-EU-SWP_14_09_DDoS_final.pdf)\n- [Juniper: Network DoS Attacks](https://www.juniper.net/documentation/us/en/software/junos/denial-of-service/topics/topic-map/security-network-dos-attack.html)",
+    "text_hash": "27e1a522fb45e845e221ea85bf3d47921236d864d67c99434036fd3b8ae770e4",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 128,
+      "end_line": 129
+    },
+    "heading_path": [
+      "Denial of Service Cheat Sheet",
+      "References"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null,
+    "normalized_id": "nrm_ver_429d4f36078a_b00051",
+    "normalized_text": "- [CERT-EU: DDoS Overview and Incident Response Guide](https://cert.europa.eu/static/WhitePapers/CERT-EU-SWP_14_09_DDoS_final.pdf)\n- [Juniper: Network DoS Attacks](https://www.juniper.net/documentation/us/en/software/junos/denial-of-service/topics/topic-map/security-network-dos-attack.html)",
+    "normalization_flags": {
+      "is_code_or_payload": false,
+      "has_modified": false,
+      "char_count_delta": 0
+    }
+  }
+]

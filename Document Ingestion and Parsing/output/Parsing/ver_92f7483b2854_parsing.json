@@ -1,0 +1,4587 @@
+[
+  {
+    "block_id": "ver_92f7483b2854_b00000",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 0,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "# Authentication Cheat Sheet",
+    "text_hash": "2e920a323d42d3fdb6da9a5c0822ddcc314429c9285575872f22dfa2d424ca29",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 1,
+      "end_line": 1
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet"
+    ],
+    "heading_level": 1,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00001",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 1,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Introduction",
+    "text_hash": "d753efbab681fa4da82470d9a83b1c202de58f92fd498e77a269c1163bc4714b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 3,
+      "end_line": 3
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00002",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 2,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**Authentication** (**AuthN**) is the process of verifying that an individual, entity, or website is who or what it claims to be by determining the validity of one or more authenticators (like passwords, fingerprints, or security tokens) that are used to back up this claim.",
+    "text_hash": "5872f90a7b5f8459b8c458d3dd92e919f7e2c455184c9d33116e2b1eb3898bc3",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 5,
+      "end_line": 5
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00003",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 3,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**Digital Identity** is the unique representation of a subject engaged in an online transaction. A digital identity is always unique in the context of a digital service but does not necessarily need to be traceable back to a specific real-life subject.",
+    "text_hash": "f8f6234a9285c05f28c1b7a5e06a951fe423cae597873d6573b9dae85efa71ba",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 7,
+      "end_line": 7
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00004",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 4,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**Identity Proofing** establishes that a subject is actually who they claim to be. This concept is related to KYC concepts and it aims to bind a digital identity with a real person.",
+    "text_hash": "a40343fb7ae0c3d055cbe869a0cf551db5b51cf3924f19eaaf34a2149d0a9c6f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 9,
+      "end_line": 9
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00005",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 5,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**Session Management** is a process by which a server maintains the state of an entity interacting with it. This is required for a server to remember how to react to subsequent requests throughout a transaction. Sessions are maintained on the server by a session identifier which can be passed back and forth between the client and server when transmitting and receiving requests. Sessions should be unique per user and computationally very difficult to predict. The [Session Management Cheat Sheet](Session_Management_Cheat_Sheet.md) contains further guidance on the best practices in this area.",
+    "text_hash": "edb14864cb7bf00fa9994a98be723f4e9d3070db5ae1038fa434d25308d63336",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 11,
+      "end_line": 11
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Introduction"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00006",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 6,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Authentication General Guidelines",
+    "text_hash": "657411b99dd5029a2dcb6bc86a97de5aa47eb9729c7169afaefc0e37549f171b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 13,
+      "end_line": 13
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00007",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 7,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### User IDs",
+    "text_hash": "bb3d04ad6de7665c1595e7519a7e3a246cd6d28436cad0f0bf7460d101d17996",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 15,
+      "end_line": 15
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "User IDs"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00008",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 8,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The primary function of a User ID is to uniquely identify a user within a system. Ideally, User IDs should be randomly generated to prevent the creation of predictable or sequential IDs, which could pose a security risk, especially in systems where User IDs might be exposed or inferred from external sources.",
+    "text_hash": "96c7198b15981ea98ed995fd9520c99ef112b60b8ccfec743b4a99c4b6bac050",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 17,
+      "end_line": 17
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "User IDs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00009",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 9,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Usernames",
+    "text_hash": "83a1fe68ba6fc36bf9f88bc4f14423e6e0ab4f5702c0b5a5dca8b72e1eacf85a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 19,
+      "end_line": 19
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Usernames"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00010",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 10,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Usernames are easy-to-remember identifiers chosen by the user and used for identifying themselves when logging into a system or service. The terms User ID and username might be used interchangeably if the username chosen by the user also serves as their unique identifier within the system.",
+    "text_hash": "9b108f6b45ca7ec595b8409e36ccc3041c23a97ee6b2d252fde4763864e0101d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 21,
+      "end_line": 21
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Usernames"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00011",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 11,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Users should be permitted to use their email address as a username, provided the email is verified during sign-up. Additionally, they should have the option to choose a username other than an email address. For information on validating email addresses, please visit the [input validation cheat sheet email discussion](Input_Validation_Cheat_Sheet.md#email-address-validation).",
+    "text_hash": "40b54ae302bd212cf21eeaf02efa7b3d21be1ba60bd72702fe3f8bec22dd8ca9",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 23,
+      "end_line": 23
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Usernames"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00012",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 12,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Authentication Solution and Sensitive Accounts",
+    "text_hash": "77853c26cef9f6361e2a4820f8fe5bb5cef01e258a5b91d612e4d473f450db09",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 25,
+      "end_line": 25
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Authentication Solution and Sensitive Accounts"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00013",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 13,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- Do **NOT** allow login with sensitive accounts (i.e. accounts that can be used internally within the solution such as to a backend / middleware / database) to any front-end user interface\n- Do **NOT** use the same authentication solution (e.g. IDP / AD) used internally for unsecured access (e.g., public access / DMZ)\n",
+    "text_hash": "09773f4b2c6846e517414e059500ea1fc2d05460766ab5500ce6f16109bec4df",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 27,
+      "end_line": 29
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Authentication Solution and Sensitive Accounts"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00014",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 14,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Implement Proper Password Strength Controls",
+    "text_hash": "062d56e68c2440bd9a3d8e5aef945f9ef0edb53d699069f3d113617edae583a0",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 30,
+      "end_line": 30
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Implement Proper Password Strength Controls"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00015",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 15,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "A key concern when using passwords for authentication is password strength. A \"strong\" password policy makes it difficult or even improbable for one to guess the password through either manual or automated means. The following characteristics define a strong password:",
+    "text_hash": "3f3af542df06eae48191b73e5bdcc6a60ca36f807f7c0ae250882172efe266b9",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 32,
+      "end_line": 32
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Implement Proper Password Strength Controls"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00016",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 16,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- Password Length\n    - **Minimum** length for passwords should be enforced by the application.\n        - If MFA is enabled passwords **shorter than 8 characters** are considered to be weak ([NIST SP800-63B](https://pages.nist.gov/800-63-4/sp800-63b.html#passwordver)).\n        - If MFA is not enabled passwords **shorter than 15 characters** are considered to be weak ([NIST SP800-63B](https://pages.nist.gov/800-63-4/sp800-63b.html#passwordver)).\n    - **Maximum** password length should be **at least 64 characters** to allow passphrases ([NIST SP800-63B](https://pages.nist.gov/800-63-4/sp800-63b.html#passwordlength)). Note that certain implementations of hashing algorithms may cause [long password denial of service](https://www.acunetix.com/vulnerabilities/web/long-password-denial-of-service/).\n    - Longer passphrases are effective because they raise the number of guesses an attacker's dictionary or wordlist has to cover, not because of a precise entropy value: NIST notes that \"estimating entropy for user-chosen passwords is challenging\" and recommends length and blocklist checks (see below) over composition or entropy math ([NIST SP800-63B, Strength of Passwords](https://pages.nist.gov/800-63-4/sp800-63b/passwords/#appA)). Entropy estimates rely on assumptions about the search space and should be treated as illustrative rather than as absolute measures of password strength.\n    - Attackers commonly use password guessing techniques that leverage common-password dictionaries and password lists, and may use previously compromised credentials in credential stuffing attacks. These behaviors are reflected in [MITRE ATT&CK T1110 – Brute Force](https://attack.mitre.org/techniques/T1110/), including Password Guessing, Password Spraying, and Credential Stuffing. Screening passwords against blocklists helps prevent users from selecting passwords that are commonly used or already known to attackers, as recommended by [NIST SP 800-63B – Passwords](https://pages.nist.gov/800-63-4/sp800-63b/passwords/).\n- Do not silently truncate passwords. The [Password Storage Cheat Sheet](Password_Storage_Cheat_Sheet.md#input-limits-of-bcrypt) provides further guidance on how to handle passwords that are longer than the maximum length.\n- Allow usage of **all** characters including unicode and whitespace. There should be no password composition rules limiting the type of characters permitted. There should be no requirement for upper or lower case or numbers or special characters.\n- Ensure credential rotation when a password leak occurs, at the time of compromise identification or when authenticator technology changes. Avoid requiring periodic password changes; instead, encourage users to pick strong passwords and enable [Multifactor Authentication Cheat Sheet (MFA)](Multifactor_Authentication_Cheat_Sheet.md). According to NIST guidelines, verifiers should not mandate arbitrary password changes (e.g., periodically).\n- Include a password strength meter to help users create a more complex password\n    - [zxcvbn-ts library](https://github.com/zxcvbn-ts/zxcvbn) can be used for this purpose.\n    - Other language implementations of zxcvbn [listed here](https://github.com/dropbox/zxcvbn?tab=readme-ov-file); however check the age and maturity of each example before use.\n- Block common and previously breached passwords\n    - [Pwned Passwords](https://haveibeenpwned.com/Passwords) is a service where passwords can be checked against previously breached passwords. Details on the API [are here](https://haveibeenpwned.com/API/v3#PwnedPasswords).\n    - Alternatively, you can download the [Pwned Passwords](https://haveibeenpwned.com/Passwords) database [using this mechanism](https://github.com/HaveIBeenPwned/PwnedPasswordsDownloader?tab=readme-ov-file#what-is-haveibeenpwned-downloader) to host it yourself.\n    - Other top password lists are available but there is no guarantee as to how updated they are:\n        - [Various password lists](https://github.com/danielmiessler/SecLists/tree/master/Passwords) hosted by SecLists from Daniel Miessler.\n",
+    "text_hash": "cbac7cb85f8095f2052c1783d1b50ed67f534b57b37432524a0f3c01daef0150",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 34,
+      "end_line": 52
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Implement Proper Password Strength Controls"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00017",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 17,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### For more detailed information check",
+    "text_hash": "4b2de087cfed9fcf3a61cf9d2980e6955a3db87cf647e73180238299b7cb333e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 53,
+      "end_line": 53
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Implement Proper Password Strength Controls",
+      "For more detailed information check"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00018",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 18,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- [ASVS v5.0 Password Security Requirements](https://github.com/OWASP/ASVS/blob/master/5.0/en/0x15-V6-Authentication.md#v62-password-security)\n- [Passwords Evolved: Authentication Guidance for the Modern Era](https://www.troyhunt.com/passwords-evolved-authentication-guidance-for-the-modern-era/)\n",
+    "text_hash": "4dac06aaeda8b14f564a0de1f88fb906d99aa7c8c9d8084508379fadd4dfe219",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 55,
+      "end_line": 57
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Implement Proper Password Strength Controls",
+      "For more detailed information check"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00019",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 19,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Implement Secure Password Recovery Mechanism",
+    "text_hash": "9550f56e6b2f2ec50c2b9f70f6eb8fe81daa99a9e004aaf002787681d55b19c2",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 58,
+      "end_line": 58
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Implement Secure Password Recovery Mechanism"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00020",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 20,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "It is common for an application to have a mechanism that provides a means for a user to gain access to their account in the event they forget their password. Please see [Forgot Password Cheat Sheet](Forgot_Password_Cheat_Sheet.md) for details on this feature.",
+    "text_hash": "c58828961707fbf8b23b2f84f0c22df38a513a08cb6516ec418d9550aaf4ebc6",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 60,
+      "end_line": 60
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Implement Secure Password Recovery Mechanism"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00021",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 21,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Store Passwords in a Secure Fashion",
+    "text_hash": "db574422726aa1de2bbceca6064241991b51612431e41027b51060dbc721fc2f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 62,
+      "end_line": 62
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Store Passwords in a Secure Fashion"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00022",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 22,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "It is critical for an application to store a password using the right cryptographic technique. Please see [Password Storage Cheat Sheet](Password_Storage_Cheat_Sheet.md) for details on this feature.",
+    "text_hash": "9931b706f34583c539780e613d3acc7a558b58051fecd7ac85cb940330f71a51",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 64,
+      "end_line": 64
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Store Passwords in a Secure Fashion"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00023",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 23,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Compare Password Hashes Using Safe Functions",
+    "text_hash": "4e2314a885fb6b85c8aeb1d1e987fb601432f6ebecd955391144f48f566ea80e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 66,
+      "end_line": 66
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Compare Password Hashes Using Safe Functions"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00024",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 24,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Where possible, the user-supplied password should be compared to the stored password hash using a secure password comparison function provided by the language or framework, such as the [password_verify()](https://www.php.net/manual/en/function.password-verify.php) function in PHP. Where this is not possible, ensure that the comparison function:",
+    "text_hash": "3992ffbb0f91da788ec79e862d026de95299e76968929ef740052d163264cd78",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 68,
+      "end_line": 68
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Compare Password Hashes Using Safe Functions"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00025",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 25,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- Has a maximum input length, to protect against denial of service attacks with very long inputs.\n- Explicitly sets the type of both variables, to protect against type confusion attacks such as Magic Hashes in PHP.\n- Returns in constant time, to protect against timing attacks.\n",
+    "text_hash": "af94a271e61747f11170cd8995845c1262801bbedfa0831a32da983ecef9baa9",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 70,
+      "end_line": 73
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Compare Password Hashes Using Safe Functions"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00026",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 26,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Change Password Feature",
+    "text_hash": "cf365e8e7fe3d009e1aa6f866c87e7dd83fa82be9c7f4eedfb49e5eb6668262d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 74,
+      "end_line": 74
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Change Password Feature"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00027",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 27,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "When developing a change password feature, ensure to have:",
+    "text_hash": "045f5e90e1435768fb338946b211a6b15e32a7b6a5445a98eab6264cbefcf6c9",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 76,
+      "end_line": 76
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Change Password Feature"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00028",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 28,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- The user is authenticated with an active session.\n- Current password verification. This is to ensure that it's the legitimate user who is changing the password. Consider this abuse case: a user logs in on a public computer and forgets to log out. Another person could then use that active session. If we don't verify the current password, this other person may be able to change the password.\n",
+    "text_hash": "83bd4987fda86fd1ca8c3cf5eebda9559a8c3522364e0a1553daf403bd47b962",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 78,
+      "end_line": 80
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Change Password Feature"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00029",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 29,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Transmit Passwords Only Over TLS or Other Strong Transport",
+    "text_hash": "9076d0d2af1ee827971f141b312144c299202a878a890e0b269890eb227613e9",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 81,
+      "end_line": 81
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Transmit Passwords Only Over TLS or Other Strong Transport"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00030",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 30,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "See: [Transport Layer Security Cheat Sheet](Transport_Layer_Security_Cheat_Sheet.md)",
+    "text_hash": "0cd02323ff54c4bd0afcc5ec2b1e71d4802fbb6fc6d83bc7e146ac89a3ecd54b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 83,
+      "end_line": 83
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Transmit Passwords Only Over TLS or Other Strong Transport"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00031",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 31,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The login page and all subsequent authenticated pages must be exclusively accessed over TLS or other strong transport. Failure to utilize TLS or other strong transport for the login page allows an attacker to modify the login form action, causing the user's credentials to be posted to an arbitrary location. Failure to utilize TLS or other strong transport for authenticated pages after login enables an attacker to view the unencrypted session ID and compromise the user's authenticated session.",
+    "text_hash": "7c6503a1c636fb41c4fe197fe6bb7ba96e7b11f9daff9e9f55c40ef97c6a2df5",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 85,
+      "end_line": 85
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Transmit Passwords Only Over TLS or Other Strong Transport"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00032",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 32,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Require Re-authentication for Sensitive Features",
+    "text_hash": "5bd8486a69a95887d151d058fa71b7b52e6a340aeba738c874c4df44d5a58948",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 87,
+      "end_line": 87
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Require Re-authentication for Sensitive Features"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00033",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 33,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "In order to mitigate CSRF and session hijacking, it's important to require the current credentials for an account before updating sensitive account information such as the user's password or email address -- or before sensitive transactions, such as shipping a purchase to a new address. Without this countermeasure, an attacker may be able to execute sensitive transactions through a CSRF or XSS attack without needing to know the user's current credentials. Additionally, an attacker may get temporary physical access to a user's browser or steal their session ID to take over the user's session.",
+    "text_hash": "30012a651265e6ec433f881839f8edbda5728154430588887fea666362172929",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 89,
+      "end_line": 89
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Require Re-authentication for Sensitive Features"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00034",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 34,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Re-authentication After Risk Events",
+    "text_hash": "f27b6f2ebd2fd0cbe541d69b673004b879d96cb55c2707f711e29f660caf4948",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 91,
+      "end_line": 91
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Re-authentication After Risk Events"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00035",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 35,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**Overview:**\nRe-authentication is critical when an account has experienced high-risk activity such as account recovery, password resets, or suspicious behavior patterns. This section outlines when and how to trigger re-authentication to protect users and prevent unauthorized access. For further details, see the [Require Re-authentication for Sensitive Features](#require-re-authentication-for-sensitive-features) section.",
+    "text_hash": "1a8a0938e0488a0be73224e1ee70f267419a06fa822367889c7e7a4f8d58df5a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 93,
+      "end_line": 94
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Re-authentication After Risk Events"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00036",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 36,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### When to Trigger Re-authentication",
+    "text_hash": "980e007d36742527f19b51227662bedffa19e22ff8c3bc9657340f5e1ab280a9",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 96,
+      "end_line": 96
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Re-authentication After Risk Events",
+      "When to Trigger Re-authentication"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00037",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 37,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- **Suspicious Account Activity**\n  When unusual login patterns, IP address changes, or device enrollments occur\n- **Account Recovery**\n  After users reset their passwords or change sensitive account details\n- **Critical Actions**\n  For high-risk actions like changing payment details or adding new trusted devices\n",
+    "text_hash": "408734f17042b0a4ab8302ec8cfc1b70767c62a1cd2899074bf1450cda323f4b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 98,
+      "end_line": 104
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Re-authentication After Risk Events",
+      "When to Trigger Re-authentication"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00038",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 38,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Re-authentication Mechanisms",
+    "text_hash": "33a2fff0ca8f1fc81c960b4ca5b55d085f11bc946ae9b3b3f3c7933d1dd04b90",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 105,
+      "end_line": 105
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Re-authentication After Risk Events",
+      "Re-authentication Mechanisms"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00039",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 39,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- **Adaptive Authentication**\n  Use risk-based authentication models that adapt to the user's behavior and context\n- **Multi-Factor Authentication (MFA)**\n  Require an additional layer of verification for sensitive actions or events\n- **Bound Authenticators**\n  Require an authenticator already bound to the account, such as the current password or a passkey. Do not substitute security questions, which are excluded by [ASVS 6.4.2](https://github.com/OWASP/ASVS/blob/master/5.0/en/0x15-V6-Authentication.md#v64-authentication-factor-lifecycle-and-recovery).\n",
+    "text_hash": "2218a38308910e8b3638e2f223ce7836dd0da97b90d639ae56ed41dfe404fb89",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 107,
+      "end_line": 113
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Re-authentication After Risk Events",
+      "Re-authentication Mechanisms"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00040",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 40,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Implementation Recommendations",
+    "text_hash": "de9647e6eaea6724b3d69dd2f7962ef71fe7dc9ab47dbfb9d1551ce7a0af0cf5",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 114,
+      "end_line": 114
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Re-authentication After Risk Events",
+      "Implementation Recommendations"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00041",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 41,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- **Minimize User Friction**\n  Ensure that re-authentication does not disrupt the user experience unnecessarily\n- **Context-Aware Decisions**\n  Make re-authentication decisions based on context (e.g., geolocation, device type, prior patterns)\n- **Secure Session Management**\n  Invalidate sessions after re-authentication and rotate tokens—see the [OWASP Session Management Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html)\n",
+    "text_hash": "3822975d063a092bfa24ce3b8776e832e1b1dda18db8590832317310a78921fd",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 116,
+      "end_line": 122
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Re-authentication After Risk Events",
+      "Implementation Recommendations"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00042",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 42,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Consider Strong Transaction Authentication",
+    "text_hash": "478ecf63ac8aea4ebdd6ab6f0a90c6f5cf8b9b26081f33088ee331792b80727a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 123,
+      "end_line": 123
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Consider Strong Transaction Authentication"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00043",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 43,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Some applications should use a second factor to check whether a user may perform sensitive operations. For more information, see the [Transaction Authorization Cheat Sheet](Transaction_Authorization_Cheat_Sheet.md).",
+    "text_hash": "e620d4713caa286522dea1dcdad85b3d10e866814cdfdc80615ff4042f5e1a2e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 125,
+      "end_line": 125
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Consider Strong Transaction Authentication"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00044",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 44,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### TLS Client Authentication",
+    "text_hash": "697f319131ced674df4970a9c473e61ac3e806759cd621d1cc20ae6773405959",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 127,
+      "end_line": 127
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Consider Strong Transaction Authentication",
+      "TLS Client Authentication"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00045",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 45,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "TLS Client Authentication, also known as two-way TLS authentication, consists of both browser and server sending their respective TLS certificates during the TLS handshake process. Just as you can validate the authenticity of a server by using the certificate and asking a verifiably-valid Certificate Authority (CA) if the certificate is valid, the server can authenticate the user by receiving a certificate from the client and validating against a third-party CA or its own CA. To do this, the server must provide the user with a certificate generated specifically for him, assigning values to the subject so that these can be used to determine what user the certificate should validate. The user installs the certificate on a browser and now uses it for the website.",
+    "text_hash": "1be726bee7c6f27a07fd4703d70c408ba7df4bce19feadd1d729721b70184ae2",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 129,
+      "end_line": 129
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Consider Strong Transaction Authentication",
+      "TLS Client Authentication"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00046",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 46,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "This approach is appropriate when:",
+    "text_hash": "1bf2cd77e6703cf7ce43524a09e2e5bf63ee08f75802ff9c51a4933efcc8829c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 131,
+      "end_line": 131
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Consider Strong Transaction Authentication",
+      "TLS Client Authentication"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00047",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 47,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- It is acceptable (or even preferred) that the user has access to the website only from a single computer/browser.\n- The user is not easily scared by the process of installing TLS certificates on their browser, or there will be someone, probably from IT support, who will do this for the user.\n- The website requires an extra step of security.\n- It is also a good thing to use when the website is for an intranet of a company or organization.\n",
+    "text_hash": "743f5781a83b7967558bfb6b2bedec264352def94146e2799de7ef138632c1d7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 133,
+      "end_line": 137
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Consider Strong Transaction Authentication",
+      "TLS Client Authentication"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00048",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 48,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "It is generally not a good idea to use this method for widely and publicly available websites that will have an average user. For example, it wouldn't be a good idea to implement this for a website like Facebook. While this technique can prevent the user from having to type a password (thus protecting against an average keylogger from stealing it), it is still considered a good idea to consider using both a password and TLS client authentication combined.",
+    "text_hash": "b7a8deadd83b4f46d53a06fc0f90637b8a830435702687d9110112db862cbe02",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 138,
+      "end_line": 138
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Consider Strong Transaction Authentication",
+      "TLS Client Authentication"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00049",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 49,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Additionally, if the client is behind an enterprise proxy that performs SSL/TLS decryption, this will break certificate authentication unless the site is allowed on the proxy.",
+    "text_hash": "85f3d2dca7d4009a2ff2097c1a98450ac1e3b911f2b6b3199ee9e7bda49e3175",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 140,
+      "end_line": 140
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Consider Strong Transaction Authentication",
+      "TLS Client Authentication"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00050",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 50,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "For more information, see: [Client-authenticated TLS handshake](https://en.wikipedia.org/wiki/Transport_Layer_Security#Client-authenticated_TLS_handshake)",
+    "text_hash": "c40ce6ca1c442ae2e8cb9878275949d0cc38160b7d15167148a6ab55466d0ec6",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 142,
+      "end_line": 142
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Consider Strong Transaction Authentication",
+      "TLS Client Authentication"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00051",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 51,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Authentication and Error Messages",
+    "text_hash": "02c4bd43a221f2e67c3786598c08713b93fb6779f246556bba99d561b78cc620",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 144,
+      "end_line": 144
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Authentication and Error Messages"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00052",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 52,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Incorrectly implemented error messages in the case of authentication functionality can be used for the purposes of user ID and password enumeration. An application should respond (both HTTP and HTML) in a generic manner.",
+    "text_hash": "8dc1feaa010eebc473d0460a50622490afc0dd472bf286eef64cbe21eb1fb25d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 146,
+      "end_line": 146
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Authentication and Error Messages"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00053",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 53,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Authentication Responses",
+    "text_hash": "597c263ccfb58e7da8266632d1d64f204844b5a0bbf4c656c65d74bc163893d8",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 148,
+      "end_line": 148
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Authentication and Error Messages",
+      "Authentication Responses"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00054",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 54,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Using any of the authentication mechanisms (login, password reset, or password recovery), an application must respond with a generic error message regardless of whether:",
+    "text_hash": "e324016263596842dcf6267705b44388b6534c403950391f69944e1af50acbee",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 150,
+      "end_line": 150
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Authentication and Error Messages",
+      "Authentication Responses"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00055",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 55,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- The user ID or password was incorrect.\n- The account does not exist.\n- The account is locked or disabled.\n",
+    "text_hash": "fa76b10d92bc67ba3330bb92859f979086c23e53ecf7cf26685614377639c3b4",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 152,
+      "end_line": 155
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Authentication and Error Messages",
+      "Authentication Responses"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00056",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 56,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The account registration feature should also be taken into consideration, and the same approach of a generic error message can be applied regarding the case in which the user exists.",
+    "text_hash": "750ad7ab00d407133352dfeddb4ed64c6fc23539a08eb2e353a05df0dafe7a7d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 156,
+      "end_line": 156
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Authentication and Error Messages",
+      "Authentication Responses"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00057",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 57,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The objective is to prevent the creation of a [discrepancy factor](https://cwe.mitre.org/data/definitions/204.html), allowing an attacker to mount a user enumeration action against the application.",
+    "text_hash": "f806f19c0cc4007745eac869d220c1260afe7810718aee6589e678c79f82b3ec",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 158,
+      "end_line": 158
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Authentication and Error Messages",
+      "Authentication Responses"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00058",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 58,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "It is interesting to note that the business logic itself can bring a discrepancy factor related to the processing time taken. Indeed, depending on the implementation, the processing time can be significantly different according to the case (success vs failure) allowing an attacker to mount a [time-based attack](https://en.wikipedia.org/wiki/Timing_attack) (delta of some seconds for example).",
+    "text_hash": "b3dbb2635a6a587f4dc4a2a24c0549fe242b0a1c1deae58999edb415bbf1d74c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 160,
+      "end_line": 160
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Authentication and Error Messages",
+      "Authentication Responses"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00059",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 59,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Example using pseudo-code for a login feature:",
+    "text_hash": "8d2d9c367db09d2280a4a9e46635ebb4e2653d189af6ef61d8925de1e4552f04",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 162,
+      "end_line": 162
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Authentication and Error Messages",
+      "Authentication Responses"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00060",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 60,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- First implementation using the \"quick exit\" approach\n",
+    "text_hash": "e5c445536a718a29998252e574f89619336f75629a1c05f462206f1c6da9dc6a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 164,
+      "end_line": 165
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Authentication and Error Messages",
+      "Authentication Responses"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00061",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 61,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```text\nIF USER_EXISTS(username) THEN\n    password_hash=HASH(password)\n    IS_VALID=LOOKUP_CREDENTIALS_IN_STORE(username, password_hash)\n    IF NOT IS_VALID THEN\n        RETURN Error(\"Invalid Username or Password!\")\n    ENDIF\nELSE\n   RETURN Error(\"Invalid Username or Password!\")\nENDIF\n```",
+    "text_hash": "ca63df196cba39362cb943fecef9415f8cb9e435006db1430c7fbeab5809b455",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 166,
+      "end_line": 176
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Authentication and Error Messages",
+      "Authentication Responses"
+    ],
+    "heading_level": null,
+    "code_language": "text",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00062",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 62,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "It can be clearly seen that if the user doesn't exist, the application will directly throw an error. Otherwise, when the user exists and the password doesn't, it is apparent that there will be more processing before the application errors out. In return, the response time will be different for the same error, allowing the attacker to differentiate between a wrong username and a wrong password.",
+    "text_hash": "a19750540d55220111da9ec47b578e47fe64b0f2cf24c50f10e9aca8842c9e1b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 178,
+      "end_line": 178
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Authentication and Error Messages",
+      "Authentication Responses"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00063",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 63,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- Second implementation without relying on the \"quick exit\" approach:\n",
+    "text_hash": "2012323d8f19a20e8e3659b9bc65e881bb38a1dccbb7a257e509b6a50972dd6c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 180,
+      "end_line": 181
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Authentication and Error Messages",
+      "Authentication Responses"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00064",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 64,
+    "file_format": "MARKDOWN",
+    "block_type": "code",
+    "text_content": "```text\npassword_hash=HASH(password)\nIS_VALID=LOOKUP_CREDENTIALS_IN_STORE(username, password_hash)\nIF NOT IS_VALID THEN\n   RETURN Error(\"Invalid Username or Password!\")\nENDIF\n```",
+    "text_hash": "ce9d08a476f84a9501d8120f6b8e5e0ffc7dfbaecf63f571c177735d48711aaf",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 182,
+      "end_line": 188
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Authentication and Error Messages",
+      "Authentication Responses"
+    ],
+    "heading_level": null,
+    "code_language": "text",
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00065",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 65,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "This code will go through the same process no matter what the user or the password is, allowing the application to return in approximately the same response time.",
+    "text_hash": "fd4ad027e8c2eb8e8dc12e0969e46fe9b5abeac02a0a0db1850355c8675e6170",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 190,
+      "end_line": 190
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Authentication and Error Messages",
+      "Authentication Responses"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00066",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 66,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The problem with returning a generic error message for the user is a User Experience (UX) matter. A legitimate user might feel confused with the generic messages, thus making it hard for them to use the application, and might after several retries, leave the application because of its complexity. The decision to return a *generic error message* can be determined based on the criticality of the application and its data. For example, for critical applications, the team can decide that under the failure scenario, a user will always be redirected to the support page and a *generic error message* will be returned.",
+    "text_hash": "c0c12293df1b8090b99539259f87caaf0b55003f69f614890d21ca29d5489097",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 192,
+      "end_line": 192
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Authentication and Error Messages",
+      "Authentication Responses"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00067",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 67,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Regarding the user enumeration itself, protection against [brute-force attacks](#protect-against-automated-attacks) is also effective because it prevents an attacker from applying the enumeration at scale. Usage of [CAPTCHA](https://en.wikipedia.org/wiki/CAPTCHA) can be applied to a feature for which a *generic error message* cannot be returned because the *user experience* must be preserved.",
+    "text_hash": "eca3bcf4cbb9fc8ddb8556a49d4169ad9f1f23f8c8178b368fac8d180f6f1deb",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 194,
+      "end_line": 194
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Authentication and Error Messages",
+      "Authentication Responses"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00068",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 68,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "##### Incorrect and correct response examples",
+    "text_hash": "5d71404a6963c854e4f0dfa450f5afd622bfc3fad4f3fafbf8c2b854263cf3c7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 196,
+      "end_line": 196
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Authentication and Error Messages",
+      "Authentication Responses",
+      "Incorrect and correct response examples"
+    ],
+    "heading_level": 5,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00069",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 69,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "###### Login",
+    "text_hash": "89c88c5dbdad92012204d0f4d5ba4eff6f170df210082b1960eb10c40e9e6709",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 198,
+      "end_line": 198
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Authentication and Error Messages",
+      "Authentication Responses",
+      "Incorrect and correct response examples",
+      "Login"
+    ],
+    "heading_level": 6,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00070",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 70,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Incorrect response examples:",
+    "text_hash": "119538b59b3953732de59889bea50c7266b3ea010d0674edc6ddca4425a0b9fd",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 200,
+      "end_line": 200
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Authentication and Error Messages",
+      "Authentication Responses",
+      "Incorrect and correct response examples",
+      "Login"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00071",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 71,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- \"Login for User foo: invalid password.\"\n- \"Login failed, invalid user ID.\"\n- \"Login failed; account disabled.\"\n- \"Login failed; this user is not active.\"\n",
+    "text_hash": "441cfe8ef33b739c5845be3df45043de2e32bc486c0b3fa82c1686f86ed00a2d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 202,
+      "end_line": 206
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Authentication and Error Messages",
+      "Authentication Responses",
+      "Incorrect and correct response examples",
+      "Login"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00072",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 72,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Correct response example:",
+    "text_hash": "4b434c33fc09c57fbb9b72e55195ad5c17746965fe09e420bbd06db0d2b4462c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 207,
+      "end_line": 207
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Authentication and Error Messages",
+      "Authentication Responses",
+      "Incorrect and correct response examples",
+      "Login"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00073",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 73,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- \"Login failed; Invalid user ID or password.\"\n",
+    "text_hash": "ac0c59d409d909d3f82a5fa16de0825740e1ef39a0d17b1eefc1d2e645824047",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 209,
+      "end_line": 210
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Authentication and Error Messages",
+      "Authentication Responses",
+      "Incorrect and correct response examples",
+      "Login"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00074",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 74,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "###### Password recovery",
+    "text_hash": "ca6d6b531975b1bb8fb22871d9b4fb4ec8bafd39493cc4b5256545429edd7789",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 211,
+      "end_line": 211
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Authentication and Error Messages",
+      "Authentication Responses",
+      "Incorrect and correct response examples",
+      "Password recovery"
+    ],
+    "heading_level": 6,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00075",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 75,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Incorrect response examples:",
+    "text_hash": "119538b59b3953732de59889bea50c7266b3ea010d0674edc6ddca4425a0b9fd",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 213,
+      "end_line": 213
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Authentication and Error Messages",
+      "Authentication Responses",
+      "Incorrect and correct response examples",
+      "Password recovery"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00076",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 76,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- \"We just sent you a password reset link.\"\n- \"This email address doesn't exist in our database.\"\n",
+    "text_hash": "e5d6a8fa21f1d2297d190154f9585d35f4198bd4f719214470a74ef8e5c4682d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 215,
+      "end_line": 217
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Authentication and Error Messages",
+      "Authentication Responses",
+      "Incorrect and correct response examples",
+      "Password recovery"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00077",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 77,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Correct response example:",
+    "text_hash": "4b434c33fc09c57fbb9b72e55195ad5c17746965fe09e420bbd06db0d2b4462c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 218,
+      "end_line": 218
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Authentication and Error Messages",
+      "Authentication Responses",
+      "Incorrect and correct response examples",
+      "Password recovery"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00078",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 78,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- \"If that email address is in our database, we will send you an email to reset your password.\"\n",
+    "text_hash": "b7a86d3188b1f1d30c337a0b4c6e382f7ac551f5c341f6ffadd1bd6903177423",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 220,
+      "end_line": 221
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Authentication and Error Messages",
+      "Authentication Responses",
+      "Incorrect and correct response examples",
+      "Password recovery"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00079",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 79,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "###### Account creation",
+    "text_hash": "fe8abcfb30925dbde56c492d805e2380f5c8cefb451d979478d9665d9fc57211",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 222,
+      "end_line": 222
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Authentication and Error Messages",
+      "Authentication Responses",
+      "Incorrect and correct response examples",
+      "Account creation"
+    ],
+    "heading_level": 6,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00080",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 80,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Incorrect response examples:",
+    "text_hash": "119538b59b3953732de59889bea50c7266b3ea010d0674edc6ddca4425a0b9fd",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 224,
+      "end_line": 224
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Authentication and Error Messages",
+      "Authentication Responses",
+      "Incorrect and correct response examples",
+      "Account creation"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00081",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 81,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- \"This user ID is already in use.\"\n- \"Welcome! You have signed up successfully.\"\n",
+    "text_hash": "2083b8a60bfdfce6858c9af0542f27d01bd2a5c3aa40dd227485e456b5c0b3cb",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 226,
+      "end_line": 228
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Authentication and Error Messages",
+      "Authentication Responses",
+      "Incorrect and correct response examples",
+      "Account creation"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00082",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 82,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Correct response example:",
+    "text_hash": "4b434c33fc09c57fbb9b72e55195ad5c17746965fe09e420bbd06db0d2b4462c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 229,
+      "end_line": 229
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Authentication and Error Messages",
+      "Authentication Responses",
+      "Incorrect and correct response examples",
+      "Account creation"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00083",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 83,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- \"A link to activate your account has been emailed to the address provided.\"\n",
+    "text_hash": "e62d0f5edbe2004cc3c8c56f47ec7c205988038128ec427f4d30668bbcd1916d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 231,
+      "end_line": 232
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Authentication and Error Messages",
+      "Authentication Responses",
+      "Incorrect and correct response examples",
+      "Account creation"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00084",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 84,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "##### Error Codes and URLs",
+    "text_hash": "8b89cef81a51bdc986f94887e92530ea4aab5a90d8f22aee275e17ae4b5793a7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 233,
+      "end_line": 233
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Authentication and Error Messages",
+      "Authentication Responses",
+      "Error Codes and URLs"
+    ],
+    "heading_level": 5,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00085",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 85,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The application may return a different [HTTP Error code](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status) depending on the authentication attempt response. It may respond with a 200 for a positive result and a 403 for a negative result. Even though a generic error page is shown to a user, the HTTP response code may differ which can leak information about whether the account is valid or not.",
+    "text_hash": "a9121cec6430e27b92494eb6ccfd05aa5cedb43d0a0d428d9ff514993fbd0afc",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 235,
+      "end_line": 235
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Authentication and Error Messages",
+      "Authentication Responses",
+      "Error Codes and URLs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00086",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 86,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Error disclosure can also be used as a discrepancy factor, consult the [error handling cheat sheet](Error_Handling_Cheat_Sheet.md) regarding the global handling of different errors in an application.",
+    "text_hash": "3e4c20da22caae6a2f6d1be8248341da56ff9225f456b8001ce2db621b8535b2",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 237,
+      "end_line": 237
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Authentication and Error Messages",
+      "Authentication Responses",
+      "Error Codes and URLs"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00087",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 87,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Protect Against Automated Attacks",
+    "text_hash": "1efaf44cf789d279b68739006f367bed39ac22f24168ec815631edf53c6ee440",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 239,
+      "end_line": 239
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Protect Against Automated Attacks"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00088",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 88,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "There are a number of different types of automated attacks that attackers can use to try and compromise user accounts. The most common types are listed below:",
+    "text_hash": "cebb83356021cf63e0891cd7809b24eb4696ae4bc91ba4231aeac38acbd97a97",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 241,
+      "end_line": 241
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Protect Against Automated Attacks"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00089",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 89,
+    "file_format": "MARKDOWN",
+    "block_type": "table",
+    "text_content": "| Attack Type         | Description                                                                                      |\n|---------------------|--------------------------------------------------------------------------------------------------|\n| Brute Force         | Testing multiple passwords from a dictionary or other source against a single account.           |\n| Credential Stuffing | Testing username/password pairs obtained from the breach of another site.                        |\n| Password Spraying   | Testing a single weak password against a large number of different accounts.                     |",
+    "text_hash": "9ffbc5240968e7c62593af1c5072a6e63af32b033513b8a6125963ccdc7066cb",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 243,
+      "end_line": 247
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Protect Against Automated Attacks"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": [
+      "Attack Type",
+      "Description"
+    ],
+    "table_rows": [
+      [
+        "Brute Force",
+        "Testing multiple passwords from a dictionary or other source against a single account."
+      ],
+      [
+        "Credential Stuffing",
+        "Testing username/password pairs obtained from the breach of another site."
+      ],
+      [
+        "Password Spraying",
+        "Testing a single weak password against a large number of different accounts."
+      ]
+    ],
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00090",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 90,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Different protection mechanisms can be implemented to protect against these attacks. In many cases, these defenses do not provide complete protection, but when a number of them are implemented in a defense-in-depth approach, a reasonable level of protection can be achieved.",
+    "text_hash": "d077d39ba2ce82c0260ff835ae7bd08b757a1dc18334e2edc8a6cfbaecfc58b3",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 249,
+      "end_line": 249
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Protect Against Automated Attacks"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00091",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 91,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The following sections will focus primarily on preventing brute-force attacks, although these controls can also be effective against other types of attacks. For further guidance on defending against credential stuffing and password spraying, see the [Credential Stuffing Cheat Sheet](Credential_Stuffing_Prevention_Cheat_Sheet.md).",
+    "text_hash": "e16605449a7b57111952bc979b9e24272ae9db0a9d85a6135a0cee458bd2fd24",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 251,
+      "end_line": 251
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Protect Against Automated Attacks"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00092",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 92,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Multi-Factor Authentication",
+    "text_hash": "8093c0757971cff6a0262db65c4b465cb12cccf6b3080c9f58744f763357ec93",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 253,
+      "end_line": 253
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Protect Against Automated Attacks",
+      "Multi-Factor Authentication"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00093",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 93,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Multi-factor authentication (MFA) is by far the best defense against the majority of password-related attacks, including brute-force attacks, with analysis by Microsoft suggesting that it would have stopped [99.9% of account compromises](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Your-Pa-word-doesn-t-matter/ba-p/731984). As such, it should be implemented wherever possible; however, depending on the audience of the application, it may not be practical or feasible to enforce the use of MFA.",
+    "text_hash": "431e97e4f22febd9f7100503e945284f60b62f0065051627b3dfc2975f4ef512",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 255,
+      "end_line": 255
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Protect Against Automated Attacks",
+      "Multi-Factor Authentication"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00094",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 94,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The [Multifactor Authentication Cheat Sheet](Multifactor_Authentication_Cheat_Sheet.md) contains further guidance on implementing MFA.",
+    "text_hash": "20999bb4e3da0d149b820f049efc112720434757c38e6d425ffdd636d372d103",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 257,
+      "end_line": 257
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Protect Against Automated Attacks",
+      "Multi-Factor Authentication"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00095",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 95,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Login Throttling",
+    "text_hash": "a2f437122fce98fd41a3004e571550df6fe69ac6c6bbcb19fef10e930c127163",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 259,
+      "end_line": 259
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Protect Against Automated Attacks",
+      "Login Throttling"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00096",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 96,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Login Throttling is a security mechanism used to prevent an attacker from making too many attempts at guessing a password through normal interactive means, it includes the following controls:",
+    "text_hash": "4732591bc10f084b84c2ea6a2380ab2806d62d26834bbe6691d8340cf821f67b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 261,
+      "end_line": 261
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Protect Against Automated Attacks",
+      "Login Throttling"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00097",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 97,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- Maximum number of attempts.\n",
+    "text_hash": "4abf5f8872220c742def078713df802eeb80e3080404a163eefb56d02037298c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 263,
+      "end_line": 264
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Protect Against Automated Attacks",
+      "Login Throttling"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00098",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 98,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "##### Account Lockout",
+    "text_hash": "e012ec7c3a0cc20a96503986ec4902c1c61b9ecf0023c8c20dd521b8e9df9406",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 265,
+      "end_line": 265
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Protect Against Automated Attacks",
+      "Login Throttling",
+      "Account Lockout"
+    ],
+    "heading_level": 5,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00099",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 99,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The most common protection against these attacks is to implement account lockout, which prevents any more login attempts for a period after a certain number of failed logins.",
+    "text_hash": "3443b92fe98eb4334ad5b49477bd10df57c2aed6efb3bc20e829913c92702a48",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 267,
+      "end_line": 267
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Protect Against Automated Attacks",
+      "Login Throttling",
+      "Account Lockout"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00100",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 100,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The counter of failed logins should be associated with the account itself, rather than the source IP address, in order to prevent an attacker from making login attempts from a large number of different IP addresses. There are a number of different factors that should be considered when implementing an account lockout policy in order to find a balance between security and usability:",
+    "text_hash": "884b478c54aa87f2897a6478a99875c69b7c310e0bbe2144eb0ef5a033e8b872",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 269,
+      "end_line": 269
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Protect Against Automated Attacks",
+      "Login Throttling",
+      "Account Lockout"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00101",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 101,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- The number of failed attempts before the account is locked out (lockout threshold).\n- The time period that these attempts must occur within (observation window).\n- How long the account is locked out for (lockout duration).\n",
+    "text_hash": "94b9011f7915ef482271f567ac6daddc75b3741cdf38aaee639a35f4f1977c4e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 271,
+      "end_line": 274
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Protect Against Automated Attacks",
+      "Login Throttling",
+      "Account Lockout"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00102",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 102,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Rather than implementing a fixed lockout duration (e.g., ten minutes), some applications use an exponential lockout, where the lockout duration starts as a very short period (e.g., one second), but doubles after each failed login attempt.",
+    "text_hash": "b4f056c8a2c4ae33c9ef7b02c01932c957ffd1c28a5ab318b7a8376aa543492c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 275,
+      "end_line": 275
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Protect Against Automated Attacks",
+      "Login Throttling",
+      "Account Lockout"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00103",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 103,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- Amount of time to delay after each account lockout (max 2-3, after that permanent account lockout).\n",
+    "text_hash": "625019e93449ad11d7c5ed75e8864ff2e587e12d8619823716d20fb31f25d817",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 277,
+      "end_line": 278
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Protect Against Automated Attacks",
+      "Login Throttling",
+      "Account Lockout"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00104",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 104,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "When designing an account lockout system, care must be taken to prevent it from being used to cause a denial of service by locking out other users' accounts. One way this could be performed is to allow the use of the forgotten password functionality to log in, even if the account is locked out.",
+    "text_hash": "b0852b47d44b39bd2905aca8c1816639efcb7aef273a041502af2ce06aeaf1c7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 279,
+      "end_line": 279
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Protect Against Automated Attacks",
+      "Login Throttling",
+      "Account Lockout"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00105",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 105,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### CAPTCHA",
+    "text_hash": "149bfd951f923b4ce3d77147779f80e7e2f918289200390a786af004ec18117f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 281,
+      "end_line": 281
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Protect Against Automated Attacks",
+      "CAPTCHA"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00106",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 106,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The use of an effective CAPTCHA can help to prevent automated login attempts against accounts. However, many CAPTCHA implementations have weaknesses that allow them to be solved using automated techniques or can be outsourced to services that can solve them. As such, the use of CAPTCHA should be viewed as a defense-in-depth control to make brute-force attacks more time-consuming and expensive, rather than as a preventative.",
+    "text_hash": "130902e150a2d80c209b224e06e691d2c67b240e8529cf79a7e0d910ea9e5e78",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 283,
+      "end_line": 283
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Protect Against Automated Attacks",
+      "CAPTCHA"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00107",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 107,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "It may be more user-friendly to only require a CAPTCHA be solved after a small number of failed login attempts, rather than requiring it from the very first login.",
+    "text_hash": "d626880b9ee619b6bd3212b53af66d84e92f033e9d118e90c4570e2cc275a231",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 285,
+      "end_line": 285
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Protect Against Automated Attacks",
+      "CAPTCHA"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00108",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 108,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Security Questions and Memorable Words",
+    "text_hash": "cd1261a3d524890cc8d44219bed15238faec128ca3cbdbba80de28ade1f71ff5",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 287,
+      "end_line": 287
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Protect Against Automated Attacks",
+      "Security Questions and Memorable Words"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00109",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 109,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Do not use security questions for authentication or re-authentication; [ASVS 6.4.2](https://github.com/OWASP/ASVS/blob/master/5.0/en/0x15-V6-Authentication.md#v64-authentication-factor-lifecycle-and-recovery) excludes knowledge-based authentication. When verifying a password or memorable word, request and verify the full secret rather than selected characters, as required by [NIST SP 800-63B-4](https://pages.nist.gov/800-63-4/sp800-63b.html#passwordver). See the [Choosing and Using Security Questions Cheat Sheet](Choosing_and_Using_Security_Questions_Cheat_Sheet.md) for guidance limited to legacy systems.",
+    "text_hash": "768353be51ed94e72b9b35f57755076f638a5c65a6ccb11b0b8c4357f2c72ad0",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 289,
+      "end_line": 289
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Authentication General Guidelines",
+      "Protect Against Automated Attacks",
+      "Security Questions and Memorable Words"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00110",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 110,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Logging and Monitoring",
+    "text_hash": "547550abfb31ef72d8cb485a331fadfe81fd9402be8c2e4fd65f6e27e7f8fd42",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 291,
+      "end_line": 291
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Logging and Monitoring"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00111",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 111,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Enable logging and monitoring of authentication functions to detect attacks/failures on a real-time basis",
+    "text_hash": "72405d225d817b5dab954f783cce7bbe8a4c48e41d3bfa96f767f80eb0e21137",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 293,
+      "end_line": 293
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Logging and Monitoring"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00112",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 112,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- Ensure that all failures are logged and reviewed\n- Ensure that all password failures are logged and reviewed\n- Ensure that all account lockouts are logged and reviewed\n",
+    "text_hash": "39c25c84c6b7b74dfa56197a7e877f6692c233e6edf72fbd499aaac9a313f7d6",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 295,
+      "end_line": 298
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Logging and Monitoring"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00113",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 113,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Use of authentication protocols that require no password",
+    "text_hash": "01e749387cc733bee618728abd494ef89b99a5afd131496c05256c7195c21502",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 299,
+      "end_line": 299
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Use of authentication protocols that require no password"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00114",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 114,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "While authentication through a combination of username, password, and multi-factor authentication is considered generally secure, there are use cases where it isn't considered the best option or even safe. Examples of this are third-party applications that desire to connect to the web application, either from a mobile device, another website, desktop, or other situations. When this happens, it is NOT considered safe to allow the third-party application to store the user/password combo, since then it extends the attack surface into their hands, where it isn't in your control. For this and other use cases, there are several authentication protocols that can protect you from exposing your users' data to attackers.",
+    "text_hash": "2b19aab57fed366c6002fa9d2015a252c7a438e9559df1baedafa828d398b44a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 301,
+      "end_line": 301
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Use of authentication protocols that require no password"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00115",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 115,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### OAuth 2.0 and 2.1",
+    "text_hash": "c2fd6da7a54d203a1e1e9f5de34a00761a633681c88cef60c77bf9afd5f22b77",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 303,
+      "end_line": 303
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Use of authentication protocols that require no password",
+      "OAuth 2.0 and 2.1"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00116",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 116,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "OAuth is an **authorization** framework for delegated access to APIs. See also: [OAuth 2.0 Cheat Sheet](OAuth2_Cheat_Sheet.md).",
+    "text_hash": "c17de2a860732f0df1eb1720d76e17f10faf1285f59bc77aa0dc1816c7cdff53",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 305,
+      "end_line": 305
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Use of authentication protocols that require no password",
+      "OAuth 2.0 and 2.1"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00117",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 117,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "> **Note:** OAuth 2.1 is an active IETF Working Group draft that consolidates OAuth 2.0 and widely adopted best practices and is intended to replace RFC 6749/6750; guidance in this cheat sheet applies to both OAuth 2.0 and OAuth 2.1. Because Internet-Drafts are revisioned, use the [unversioned OAuth 2.1 Datatracker page](https://datatracker.ietf.org/doc/draft-ietf-oauth-v2-1/) for the current draft. See also [oauth.net/2.1](https://oauth.net/2.1/).",
+    "text_hash": "b1424c725a5b0120c58d285a54c67a5e40fa4c100da18b07e682412d54a42603",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 307,
+      "end_line": 307
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Use of authentication protocols that require no password",
+      "OAuth 2.0 and 2.1"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00118",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 118,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### OpenID Connect (OIDC)",
+    "text_hash": "19fb1b203f64fac9ecc46ef1751d396f51d50f90f91d92e43f22185613c6c15b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 309,
+      "end_line": 309
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Use of authentication protocols that require no password",
+      "OpenID Connect (OIDC)"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00119",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 119,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**OpenID Connect 1.0 (OIDC)** is an identity layer **on top of OAuth**. It defines how a client (**relying party**) verifies the **end user's** identity using an **ID Token** (a signed JWT) and how to obtain user claims in an interoperable way. Use **OIDC for authentication/SSO**; use **OAuth for authorization** to APIs.",
+    "text_hash": "65e61d93306c069bc79f2f2e96e101cd07616c9cb19fd131fb76a527026fb3fd",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 311,
+      "end_line": 311
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Use of authentication protocols that require no password",
+      "OpenID Connect (OIDC)"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00120",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 120,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### OIDC implementation guidance",
+    "text_hash": "dd5fafd3eb21922d091e114d46137ffaf724e75c65d17d06a4729e7587f16e7e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 313,
+      "end_line": 313
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Use of authentication protocols that require no password",
+      "OpenID Connect (OIDC)",
+      "OIDC implementation guidance"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00121",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 121,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- **Validate ID Tokens** on the relying party: issuer (`iss`), audience (`aud`), signature (per provider JWKs), expiration (`exp`).\n- Prefer **well-maintained libraries/SDKs** and provider discovery/JWKS endpoints.\n- Use the **UserInfo** endpoint when additional claims beyond the ID Token are required.\n",
+    "text_hash": "81e45dc4993dbb998db7cc5aee43eccc11ebff6d27d907e2e18858001dd1b21c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 315,
+      "end_line": 318
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Use of authentication protocols that require no password",
+      "OpenID Connect (OIDC)",
+      "OIDC implementation guidance"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00122",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 122,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "> **Avoid confusion:** **OpenID 2.0 (\"OpenID\")** was a separate, legacy authentication protocol that has been **superseded by OpenID Connect** and is considered obsolete. New systems should not implement OpenID 2.0. References: [OpenID Foundation — obsolete OpenID 2.0 libraries](https://openid.net/developers/libraries-for-obsolete-specifications/), [OpenID 2.0 → OIDC migration](https://openid.net/specs/openid-connect-migration-1_0.html)",
+    "text_hash": "1e5bb7f9b41751800a31e13e89d6c761fc8ee67e5d214b06d90f902d2e357129",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 319,
+      "end_line": 319
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Use of authentication protocols that require no password",
+      "OpenID Connect (OIDC)",
+      "OIDC implementation guidance"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00123",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 123,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Secure Federated Account Linking",
+    "text_hash": "fa0f69c93c32d9ef73962e4f223a2ba412afa476bd76df9a6fa13664a3db0672",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 321,
+      "end_line": 321
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Use of authentication protocols that require no password",
+      "OpenID Connect (OIDC)",
+      "Secure Federated Account Linking"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00124",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 124,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "When linking an OIDC identity to an existing application account:",
+    "text_hash": "26d01cf1987859c22108c1944db18462823857f1027b295c843219d3ff805335",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 323,
+      "end_line": 323
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Use of authentication protocols that require no password",
+      "OpenID Connect (OIDC)",
+      "Secure Federated Account Linking"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00125",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 125,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- Identify the federated identity using the combination of `iss` (issuer) and `sub` (subject), not `sub` alone. See [OIDC claim stability and uniqueness](https://openid.net/specs/openid-connect-core-1_0.html#ClaimStability).\n- Do not automatically link accounts solely because their `email`, `preferred_username`, or other profile attributes match. These claims are not guaranteed to be unique or stable, as explained in [OIDC Core Section 5.7](https://openid.net/specs/openid-connect-core-1_0.html#ClaimStability).\n- Require an authenticated session with the existing application account before adding or removing linked identities, as described in [NIST SP 800-63C-4, Section 3.8.1](https://pages.nist.gov/800-63-4/sp800-63c/Federation/). Apply the guidance in [Require Re-authentication for Sensitive Features](#require-re-authentication-for-sensitive-features) before changing account links.\n- Authenticate the identity being added and [validate the resulting ID Token](https://openid.net/specs/openid-connect-core-1_0.html#IDTokenValidation) before saving the link. Bind the authentication response to the user's linking session using the protections described in the [OAuth 2.0 Cheat Sheet](OAuth2_Cheat_Sheet.md).\n- After unlinking, disallow access to the application account through the removed identity. See [NIST SP 800-63C-4, Section 3.8.1](https://pages.nist.gov/800-63-4/sp800-63c/Federation/).\n- Notify the user when an identity is added, or when an identity is removed without terminating the application account, as described in [NIST SP 800-63C-4, Section 3.8](https://pages.nist.gov/800-63-4/sp800-63c/Federation/).\n",
+    "text_hash": "8146d8ca4636c0f7c8b1b7e783a9eb84e02daf57e9fc800c6ccf507a35dfe0d1",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 325,
+      "end_line": 331
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Use of authentication protocols that require no password",
+      "OpenID Connect (OIDC)",
+      "Secure Federated Account Linking"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00126",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 126,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### SAML",
+    "text_hash": "31db2953d6b039691f73b58707fbf533daad24cdffd546f7c4e77cdd3a45d021",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 332,
+      "end_line": 332
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Use of authentication protocols that require no password",
+      "SAML"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00127",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 127,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Security Assertion Markup Language (SAML) is often considered to compete with OpenId. The most recommended version is 2.0 since it is very feature-complete and provides strong security. Like OpenId, SAML uses identity providers, but unlike OpenId, it is XML-based and provides more flexibility. SAML is based on browser redirects which send XML data. Furthermore, SAML isn't only initiated by a service provider; it can also be initiated from the identity provider. This allows the user to navigate through different portals while still being authenticated without having to do anything, making the process transparent.",
+    "text_hash": "ada6bfdadf6e07a329a4bc427e385441337a24273e156f3a87884bd04fbac737",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 334,
+      "end_line": 334
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Use of authentication protocols that require no password",
+      "SAML"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00128",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 128,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "While OpenId has taken most of the consumer market, SAML is often the choice for enterprise applications because there are few OpenId identity providers which are considered enterprise-class (meaning that the way they validate the user identity doesn't have high standards required for enterprise identity). It is more common to see SAML being used inside of intranet websites, sometimes even using a server from the intranet as the identity provider.",
+    "text_hash": "83a57c9c6a8c624bcce4b2d97e15659fef3ccdb02463a626c4562d49e7e102aa",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 336,
+      "end_line": 336
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Use of authentication protocols that require no password",
+      "SAML"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00129",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 129,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "In the past few years, applications like SAP ERP and SharePoint (SharePoint by using Active Directory Federation Services 2.0) have decided to use SAML 2.0 authentication as an often preferred method for single sign-on implementations whenever enterprise federation is required for web services and web applications.",
+    "text_hash": "55ade8bf204ddfc15abbc31737876f6b0a43c2249d5a29d18f952c5fd46da775",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 338,
+      "end_line": 338
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Use of authentication protocols that require no password",
+      "SAML"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00130",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 130,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**See also: [SAML Security Cheat Sheet](SAML_Security_Cheat_Sheet.md)**",
+    "text_hash": "ac496df3b5b666eae6184d2f9587a0cd9e3a80cdf2d3f7a0a2c0d0057ba70cb5",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 340,
+      "end_line": 340
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Use of authentication protocols that require no password",
+      "SAML"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00131",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 131,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### FIDO",
+    "text_hash": "dbe588239a26bc41c120e877feee8ffdceab694a2354f366ea5c313b28322823",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 342,
+      "end_line": 342
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Use of authentication protocols that require no password",
+      "FIDO"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00132",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 132,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "The Fast Identity Online (FIDO) Alliance has created two protocols to facilitate online authentication: the Universal Authentication Framework (UAF) protocol and the Universal Second Factor (U2F) protocol. While UAF focuses on passwordless authentication, U2F allows the addition of a second factor to existing password-based authentication. Both protocols are based on a public key cryptography challenge-response model.",
+    "text_hash": "62a8ad9a512a0438a3dfa85e7c136753eeddb407336a00290a801bdf2704c14c",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 344,
+      "end_line": 344
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Use of authentication protocols that require no password",
+      "FIDO"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00133",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 133,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "UAF takes advantage of existing security technologies present on devices for authentication including fingerprint sensors, cameras (face biometrics), microphones (voice biometrics), Trusted Execution Environments (TEEs), Secure Elements (SEs), and others. The protocol is designed to plug these device capabilities into a common authentication framework. UAF works with both native applications and web applications.",
+    "text_hash": "39f4ccc75a8572cf46a74639663f2d19fda3bb3c7e907f08e6c790a52a8940b3",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 346,
+      "end_line": 346
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Use of authentication protocols that require no password",
+      "FIDO"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00134",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 134,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "U2F augments password-based authentication using a hardware token (typically USB) that stores cryptographic authentication keys and uses them for signing. The user can use the same token as a second factor for multiple applications. U2F works with web applications. It provides **protection against phishing** by using the URL of the website to look up the stored authentication key.",
+    "text_hash": "8445a9a4f3239956d5c6937f815b35d2ff232fd421876341da30f37c475cda45",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 348,
+      "end_line": 348
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Use of authentication protocols that require no password",
+      "FIDO"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00135",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 135,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "**FIDO2**: [FIDO2 combines WebAuthn with the Client-to-Authenticator Protocols (CTAP)](https://fidoalliance.org/specifications/). U2F is now named CTAP1; UAF is a separate protocol. WebAuthn credentials form the foundation of modern **Passkeys** technology. Passkeys enable users to securely log in using local user verification (such as biometrics or device PINs), often with credential synchronization across devices.",
+    "text_hash": "4e3f68f9f921464fda23ecaa59297bdc640b090d250a9a48c8e5d476b4a3c503",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 350,
+      "end_line": 350
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Use of authentication protocols that require no password",
+      "FIDO"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00136",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 136,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "#### Hardware-backed Key Storage",
+    "text_hash": "24322eb0346da4fbc922302656fc7d41fdee2dd54d04560761f78ba2ec9906b6",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 352,
+      "end_line": 352
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Use of authentication protocols that require no password",
+      "FIDO",
+      "Hardware-backed Key Storage"
+    ],
+    "heading_level": 4,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00137",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 137,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "For many authenticators, including common platform passkeys, the private key is generated and stored by the operating system's secure key manager. Depending on the platform and authenticator, keys may be protected using hardware-backed components such as the Trusted Platform Module (TPM) on Windows, Secure Enclave on Apple devices, or the Android Keystore/StrongBox on Android, or by other software-based mechanisms.",
+    "text_hash": "57ee586cd2da563fe81b1433261b5c7aab09e17072f423959bb336b629c0fd6e",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 354,
+      "end_line": 354
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Use of authentication protocols that require no password",
+      "FIDO",
+      "Hardware-backed Key Storage"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00138",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 138,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "In typical implementations, the private key is intended to be non-exportable and bound to the authenticator, and the platform security module signs a server challenge using this key. However, some authenticators support credential synchronization or backup that may involve export or server-side storage, and not all implementations are hardware-backed. Relying parties should not assume that keys are hardware-backed and non-exportable unless this is verified (for example, via authenticator properties or attestation).",
+    "text_hash": "f9af080ea0e2993dda53b07ed64ad7e08e03cbf8ef7dbc5fa6acc52ddf1935bf",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 356,
+      "end_line": 356
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Use of authentication protocols that require no password",
+      "FIDO",
+      "Hardware-backed Key Storage"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00139",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 139,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Password Managers",
+    "text_hash": "b751bdd68eb2ee5e90f90aa2082d7796b5bfe9c14b8c3c01a574807aa8c5a805",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 358,
+      "end_line": 358
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Password Managers"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00140",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 140,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Password managers are programs, browser plugins, or web services that automate the management of a large quantity of different credentials. Most password managers have functionality to allow users to easily use them on websites, either:\n(a) by pasting the passwords into the login form\n-- or --\n(b) by simulating the user typing them in.",
+    "text_hash": "5602171b35896efc4fd1ab8c87cede4722d13e20185ce8a04698840ce2eadfab",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 360,
+      "end_line": 363
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Password Managers"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00141",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 141,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Web applications should not make the job of password managers more difficult than necessary by observing the following recommendations:",
+    "text_hash": "8fd326eaca76a46db41c2c0b7beed337d410aa361b90450e3c00a7f1b2e2b201",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 365,
+      "end_line": 365
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Password Managers"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00142",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 142,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- Use standard HTML forms for username and password input with appropriate `type` attributes.\n- Avoid plugin-based login pages (such as Flash or Silverlight).\n- Implement a reasonable maximum password length, at least 64 characters, as discussed in the [Implement Proper Password Strength Controls section](#implement-proper-password-strength-controls).\n- Allow any printable characters to be used in passwords.\n- Allow users to paste into the username, password, and MFA fields.\n- Allow users to navigate between the username and password field with a single press of the `Tab` key.\n",
+    "text_hash": "2585ddad52aab2a82879d7ae6a742517d74105db16af5370fa6403292cd4e141",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 367,
+      "end_line": 373
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Password Managers"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00143",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 143,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Changing A User's Registered Email Address",
+    "text_hash": "05ac8c3270fb6f5d7c76524f8e6803b5703c767428eb5b097cd3e24598632bd5",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 374,
+      "end_line": 374
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Changing A User's Registered Email Address"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00144",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 144,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "User email addresses often change. The following process is recommended to handle such situations in a system:",
+    "text_hash": "711087b092bcc18d72b3bb8ec7b62b77fcebc12d7a66d1b68ac230ad85a221c6",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 376,
+      "end_line": 376
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Changing A User's Registered Email Address"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00145",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 145,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "*Note: The process is less stringent with [Multifactor Authentication](https://cheatsheetseries.owasp.org/cheatsheets/Multifactor_Authentication_Cheat_Sheet.html), as proof-of-identity is stronger than relying solely on a password.*",
+    "text_hash": "25cbaeb2bddd2c8b7ad80d1338b3b9d4e8609e57d28a517c467da50a58e0be00",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 378,
+      "end_line": 378
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Changing A User's Registered Email Address"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00146",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 146,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Recommended Process If the User HAS [Multifactor Authentication](https://cheatsheetseries.owasp.org/cheatsheets/Multifactor_Authentication_Cheat_Sheet.html) Enabled",
+    "text_hash": "f83f86efcbe750a33ab28dda4ceb88e4d9a6fcea1a1430acb3e33928688d62b3",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 380,
+      "end_line": 380
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Changing A User's Registered Email Address",
+      "Recommended Process If the User HAS [Multifactor Authentication](https://cheatsheetseries.owasp.org/cheatsheets/Multifactor_Authentication_Cheat_Sheet.html) Enabled"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00147",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 147,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "1. Confirm the validity of the user's authentication cookie/token. If not valid, display a login screen.\n2. Describe the process for changing the registered email address to the user.\n3. Ask the user to submit a proposed new email address, ensuring it complies with system rules.\n4. Request the use of [Multifactor Authentication](https://cheatsheetseries.owasp.org/cheatsheets/Multifactor_Authentication_Cheat_Sheet.html) for identity verification.\n5. Store the proposed new email address as a pending change.\n6. Create and store **two** time-limited nonces for (a) system administrators' notification, and (b) user confirmation.\n7. Send two email messages with links that include those nonces:\n\n    - A **notification-only email message** to the current address, alerting the user to the impending change and providing a link to report unexpected activity.\n\n    - A **confirmation-required email message** to the proposed new address, instructing the user to confirm the change and providing a link for unexpected situations.\n\n8. Handle responses from the links accordingly.\n",
+    "text_hash": "66c4e215293e0733f78c20a6267d865ddccf1d245285a631b5c18bc9f7991fae",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 382,
+      "end_line": 395
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Changing A User's Registered Email Address",
+      "Recommended Process If the User HAS [Multifactor Authentication](https://cheatsheetseries.owasp.org/cheatsheets/Multifactor_Authentication_Cheat_Sheet.html) Enabled"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00148",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 148,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Recommended Process If the User DOES NOT HAVE Multifactor Authentication Enabled",
+    "text_hash": "cd9651295d864550b78eee37798727dbb16c84c6d10d6143790f75edb53faafe",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 396,
+      "end_line": 396
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Changing A User's Registered Email Address",
+      "Recommended Process If the User DOES NOT HAVE Multifactor Authentication Enabled"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00149",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 149,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "1. Confirm the validity of the user's authentication cookie/token. If not valid, display a login screen.\n2. Describe the process for changing the registered email address to the user.\n3. Ask the user to submit a proposed new email address, ensuring it complies with system rules.\n4. Request the user's current password for identity verification.\n5. Store the proposed new email address as a pending change.\n6. Create and store three time-limited nonces for system administrators' notification, user confirmation, and an additional step for password reliance.\n7. Send two email messages with links to those nonces:\n\n    - A **confirmation-required email message** to the current address, instructing the user to confirm the change and providing a link for an unexpected situation.\n\n    - A **separate confirmation-required email message** to the proposed new address, instructing the user to confirm the change and providing a link for unexpected situations.\n\n8. Handle responses from the links accordingly.\n",
+    "text_hash": "5731a2349aa9edbf61ae231f59da96e4b7c952fa392697a12bf3dc9e83a9f598",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 398,
+      "end_line": 411
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Changing A User's Registered Email Address",
+      "Recommended Process If the User DOES NOT HAVE Multifactor Authentication Enabled"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00150",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 150,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "### Notes on the Above Processes",
+    "text_hash": "b84e67692505aab42f8d647c4ca501584b096a68d77f952661e3f874fb9d4692",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 412,
+      "end_line": 412
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Changing A User's Registered Email Address",
+      "Notes on the Above Processes"
+    ],
+    "heading_level": 3,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00151",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 151,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- It's worth noting that Google adopts a different approach with accounts secured only by a password -- [where the current email address receives a notification-only email](https://support.google.com/accounts/answer/55393?hl=en). This method carries risks and requires user vigilance.\n\n- Regular social engineering training is crucial. System administrators and help desk staff should be trained to follow the prescribed process and recognize and respond to social engineering attacks. Refer to [CISA's \"Avoiding Social Engineering and Phishing Attacks\"](https://www.cisa.gov/news-events/news/avoiding-social-engineering-and-phishing-attacks) for guidance.\n",
+    "text_hash": "1a4e1fcf2bfed0070ce260a39bfd2a2287fdd90f3aba34665abe71b9b4f8fccc",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 414,
+      "end_line": 417
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Changing A User's Registered Email Address",
+      "Notes on the Above Processes"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00152",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 152,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## Adaptive or Risk Based Authentication",
+    "text_hash": "137e0e6e283499df5bd5b5acc0fbb298a98817250069a42d955c96d3c20a132b",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 418,
+      "end_line": 418
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Adaptive or Risk Based Authentication"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00153",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 153,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "A feature of more advanced applications is the ability to require different authentication stages depending on various environmental and contextual attributes (including but not limited to, the sensitivity of the data for which access is being requested, time of day, user location, IP address, or device fingerprint).",
+    "text_hash": "872734be15a37f9e1836fc0fc0d5384322b04c61581d75c8c808b1aac91e363d",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 420,
+      "end_line": 420
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Adaptive or Risk Based Authentication"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00154",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 154,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "For example, an application may require MFA for the first login from a particular device but not for subsequent logins from that device. Alternatively, a single sign-on solution may authenticate the user and allow them to remain logged in for a day but require a reauthentication if they try to access their profile page.",
+    "text_hash": "9eea244f54d5eb16913c97008668f0adfe8d190a5bfcd60723acb0758a4c558f",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 422,
+      "end_line": 422
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Adaptive or Risk Based Authentication"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00155",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 155,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Use device fingerprints, IP addresses, and remembered-device cookies as risk signals, not as substitutes for authentication. [NIST session guidance](https://pages.nist.gov/800-63-4/sp800-63b/session/) distinguishes an authenticated session secret from device and browser characteristics used for monitoring. Require authentication or a valid authenticated session before exposing private account data. For example, a banking application may allow balance viewing within an authenticated session and require stronger or fresher authentication for transaction details or money movement.",
+    "text_hash": "edbd20847a07e92b8729a45fb0a500db17a208fe4b1fc233e526de25506cc3f9",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 424,
+      "end_line": 424
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Adaptive or Risk Based Authentication"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00156",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 156,
+    "file_format": "MARKDOWN",
+    "block_type": "paragraph",
+    "text_content": "Questions that should be considered when implementing a mechanism like this include:",
+    "text_hash": "1687be5385f1e71409fc08097880e6cd0adde7a0aa03d5dcffbbcbf328adc19a",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 426,
+      "end_line": 426
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Adaptive or Risk Based Authentication"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00157",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 157,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- Are the policies being put in place in line with any corporate policies and especially any regulatory policy?\n- Which user‑ or device‑attributes (IP, geolocation, device fingerprint, time‑of‑day, behavioral biometrics, etc.) will we monitor at session start?\n- Which of those signals need to be refreshed during an active session, and at what cadence?\n- How will we ensure each signal’s accuracy and handle missing or low‑confidence data?\n- What scoring model (weights, thresholds, ML, rule‑based, hybrid) will convert raw signals into a risk tier?\n- Where will the model run (edge, API gateway, central service), and what is our latency budget?\n- What action maps to each risk tier (allow, CAPTCHA, step‑up MFA, block, revoke session)?\n- What user‑facing messages and error codes will accompany each action?\n- At which exact code or platform layers will we invoke the risk engine (login controller, middleware, API gateway, service mesh)?\n- How do we propagate decisions consistently across web, mobile, and API clients?\n- How do we mutate, extend, or revoke tokens/cookies when a mid‑session risk check escalates?\n- How do we synchronize state across multiple concurrent devices or browser tabs?\n- What monitoring and alerting will be in place for potentially suspicious activity, including how the user is notified.\n",
+    "text_hash": "90680aa913810cb8f91236255bd3498c2feb2d8e92e0503e003efd797d3def91",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 428,
+      "end_line": 441
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "Adaptive or Risk Based Authentication"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00158",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 158,
+    "file_format": "MARKDOWN",
+    "block_type": "heading",
+    "text_content": "## References",
+    "text_hash": "65b72d86eeeb214ab8ca5fd24cb7cd7773e58084e95b670040df03e21e8c6fa7",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 442,
+      "end_line": 442
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "References"
+    ],
+    "heading_level": 2,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  },
+  {
+    "block_id": "ver_92f7483b2854_b00159",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "block_idx": 159,
+    "file_format": "MARKDOWN",
+    "block_type": "list",
+    "text_content": "- [NIST SP 800-63B-4: Password Verifiers](https://pages.nist.gov/800-63-4/sp800-63b.html#passwordver)\n- [OWASP Application Security Verification Standard (ASVS): V6 Authentication](https://github.com/OWASP/ASVS/blob/master/5.0/en/0x15-V6-Authentication.md#v6-authentication)\n- [OpenID Connect Core 1.0: ID Token Validation](https://openid.net/specs/openid-connect-core-1_0.html#IDTokenValidation)",
+    "text_hash": "d43a97559ad87934bc8c8ca887fbf9801469ac1201cbcb91a15da522d8f8e711",
+    "parser_name": "markdown-it-py",
+    "parser_version": "4.0.0",
+    "locator": {
+      "start_line": 444,
+      "end_line": 446
+    },
+    "heading_path": [
+      "Authentication Cheat Sheet",
+      "References"
+    ],
+    "heading_level": null,
+    "code_language": null,
+    "lang": null,
+    "table_header_cols": null,
+    "table_rows": null,
+    "continues_from_previous": false,
+    "raw_record": null
+  }
+]

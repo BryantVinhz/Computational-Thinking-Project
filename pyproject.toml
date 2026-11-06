@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools==80.9.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "query-understanding-routing"
+version = "1.0.0"
+description = "Query Understanding and Routing (Stage 2: Validation, Normalization, LLM Understanding, Routing), Contract v1.0"
+requires-python = ">=3.10"
+dependencies = ["PyYAML==6.0.3"]
+
+# Package structure under "Query Understanding and Routing/"
+[tool.setuptools.packages.find]
+where = ["Query Understanding and Routing"]
+include = ["query_understanding_routing*"]
+
+[tool.setuptools.package-data]
+query_understanding_routing = ["ontology.yaml", "PIPELINE.md", "DEVELOPMENT.md", "tests/fixtures/*.json"]
+
+[tool.pytest.ini_options]
+pythonpath = [
+    ".",
+    "Query Understanding and Routing",
+    "Query Understanding and Routing/query_understanding_routing",
+]
+testpaths = [
+    "Query Understanding and Routing/query_understanding_routing/tests",
+]
