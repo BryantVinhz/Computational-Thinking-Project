@@ -357,6 +357,7 @@ class ScopeBuilder:
         elif len(filters_list) > 1:
             chroma_filter = {"$and": filters_list}
 
+        # SEMANTIC FILTER
         query_text = (task.get("query") if task else None) or query_plan.get("resolved_query") or ""
         pref_types, pref_headings = self._detect_semantic_preferences(query_text)
         ontology_expansions = self.expand_concepts(task, entities)

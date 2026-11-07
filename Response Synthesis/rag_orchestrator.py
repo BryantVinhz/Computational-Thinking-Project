@@ -247,7 +247,7 @@ class RAGOrchestrator:
         if not draft.is_abstained and verification_report.status == VerificationStatus.FAILED:
             verification_gate = "blocked"
             final_markdown = (
-                "**Câu trả lời đã bị chặn**: nội dung sinh ra không được tài liệu nguồn chứng thực "
+                ">>> Câu trả lời đã bị chặn: nội dung sinh ra không được tài liệu nguồn chứng thực "
                 f"(faithfulness {verification_report.faithfulness_score:.0%}). "
                 "Vui lòng diễn đạt lại câu hỏi hoặc thu hẹp phạm vi tài liệu."
             )
@@ -261,6 +261,7 @@ class RAGOrchestrator:
             
         total_latency = time.perf_counter() - start_time
 
+        # 4. Xác định status phản hồi
         status = "ok"
         if retrieval_output.get("status") == "clarification_needed":
             status = "clarification_needed"
