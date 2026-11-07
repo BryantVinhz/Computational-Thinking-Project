@@ -25,6 +25,6 @@ class ColabLLMClient:
 
         text = data.get("response") if isinstance(data, dict) else None
         if not isinstance(text, str) or not text.strip():
-            # An empty completion must not become an empty "ok" answer; the synthesizer abstains on errors
+            # An empty completion must not become an empty "ok" answer; the synthesizer abstains on errors.
             raise RuntimeError(f"Colab API returned an empty completion ({self.api_url})")
         return text

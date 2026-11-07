@@ -162,8 +162,11 @@ class TestResponseSynthesizer(unittest.TestCase):
 
 class TestRAGOrchestrator(unittest.TestCase):
     def setUp(self):
+        from verifier import EvidenceVerifier
+        # Happy-path tests: a verifier that accepts every claim, so the gate passes.
         self.orchestrator = RAGOrchestrator(
             synthesizer=ResponseSynthesizer(llm_client=DefaultDeterministicLLM()),
+            verifier=EvidenceVerifier(similarity_fn=lambda claim, passage: 0.9),
             traceable_formatter=DefaultTraceableFormatter(),
         )
 

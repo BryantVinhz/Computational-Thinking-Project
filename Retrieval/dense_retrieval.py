@@ -177,6 +177,7 @@ class DenseRetriever:
         Nhận trực tiếp ScopedRetrievalPayload từ bước Scope Building và thực hiện Dense Retrieval.
         """
         chroma_filter = payload.scope.chroma_filter if payload.scope else None
+        # Scope filters are hard constraints: never widen to the whole corpus behind the caller's back.
         if fallback_unfiltered is None:
             fallback_unfiltered = False
         return self.retrieve(

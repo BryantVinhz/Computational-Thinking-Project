@@ -126,7 +126,8 @@ def prepare_and_ingest_to_chroma(
     chunks_from_chunking: list[dict],
     doc_meta_from_diep: dict | DocumentMetadataSchema,
     chunk_meta_records_from_diep: list[dict | ChunkMetadataSchema] | None = None,
-    collection=None, version_record: dict | None = None
+    collection=None,
+    version_record: dict | None = None,
 ) -> list[dict]:
     
     if collection is None:
@@ -174,7 +175,7 @@ def prepare_and_ingest_to_chroma(
             "version_id": doc_meta["version_id"],
             "title": doc_meta.get("title") or doc_meta.get("canonical_title") or "",
             "file_format": file_format,
-                        "file_name": (version_record or {}).get("file_name") or "",
+            "file_name": (version_record or {}).get("file_name") or "",
             "version_tag": str((version_record or {}).get("version_tag") or ""),
 
             # --- Toàn bộ thuộc tính từ ChunkSchema (bỏ ChunkSource, chunk_id, text_content) ---
@@ -199,6 +200,8 @@ def prepare_and_ingest_to_chroma(
         documents.append(record.text)
         metadatas.append(record.to_chroma_metadata())
         
+    # Mirror the SQLite provenance purge: drop chunks of older versions of the same document that share
+    # this file_name or version_tag, then drop this version's own chunks before re-upserting.
     doc_id = doc_meta["document_id"]
     curr_ver_id = doc_meta["version_id"]
     curr_file_name = (version_record or {}).get("file_name") or ""

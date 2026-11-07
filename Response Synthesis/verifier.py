@@ -203,6 +203,9 @@ def extract_claims(draft_answer: str, min_tokens: int = MIN_CLAIM_TOKENS) -> lis
 
     return claims
 
+SEMANTIC_SUPPORT_THRESHOLD = 0.60
+
+
 class MultilingualSemanticSimilarity:
     """
     Cross-lingual cosine similarity (Vietnamese claim vs English evidence) with a multilingual encoder.
@@ -211,6 +214,7 @@ class MultilingualSemanticSimilarity:
     degrading to lexical overlap, which scores ~0 across languages and fails every grounded answer.
     Embeddings are cached per text because the verifier scores each claim against every evidence sentence.
     """
+
     def __init__(
         self,
         model_name: str = "BAAI/bge-m3",
@@ -239,7 +243,7 @@ class MultilingualSemanticSimilarity:
             self._load_error = e
             raise RuntimeError(f"Semantic verifier model unavailable: {e}") from e
         return self._model
-    
+
     def _embed(self, text: str) -> Any:
         key = text[: self.max_chars]
         vector = self._cache.get(key)
@@ -249,14 +253,14 @@ class MultilingualSemanticSimilarity:
                 self._cache.pop(next(iter(self._cache)))
             self._cache[key] = vector
         return vector
-    
-    
+
     def __call__(self, claim: str, passage: str) -> float:
         if not claim.strip() or not passage.strip():
             return 0.0
         cosine = float((self._embed(claim) * self._embed(passage)).sum())
         return max(0.0, min(1.0, cosine))
-        
+
+
 # =====================================================================
 # Verifier
 # =====================================================================

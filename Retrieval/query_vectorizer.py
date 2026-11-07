@@ -26,7 +26,7 @@ class QueryVectorizer:
     def _uses_query_instruction(self) -> bool:
         name = self.model_name.lower()
         return self.use_bge_instruction and "bge" in name and "v1.5" in name
-    
+
     def _get_model(self) -> Any:
         if self._model is None:
             try:
@@ -47,7 +47,7 @@ class QueryVectorizer:
             batch_size=len(texts),
         )
         return vectors.tolist() if hasattr(vectors, "tolist") else [list(v) for v in vectors]
-    
+
     def vectorize(self, text: str) -> list[float]:
         if not text or not text.strip():
             raise ValueError("Query text cannot be empty for vectorization")

@@ -118,7 +118,6 @@ class BM25Retriever:
 
             candidates.append((score, chunk))
 
-
         # Rank in descending order by BM25 score
         candidates.sort(key=lambda x: x[0], reverse=True)
         top_candidates = candidates[:top_k]

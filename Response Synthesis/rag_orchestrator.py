@@ -26,7 +26,7 @@ try:
         VerificationStatus,
     )
     from .synthesizer import ResponseSynthesizer
-    from .verifier import SEMANTIC_SUPPORT_THRESHOLD, EvidenceVerifier, MultilingualSemanticSimilarity                    
+    from .verifier import SEMANTIC_SUPPORT_THRESHOLD, EvidenceVerifier, MultilingualSemanticSimilarity
     from .traceable_formatter import TraceableFormatter  
 except ImportError:
     from schema_response import (
@@ -38,7 +38,7 @@ except ImportError:
         VerificationStatus,
     )
     from synthesizer import ResponseSynthesizer
-    from verifier import SEMANTIC_SUPPORT_THRESHOLD, EvidenceVerifier, MultilingualSemanticSimilarity                   
+    from verifier import SEMANTIC_SUPPORT_THRESHOLD, EvidenceVerifier, MultilingualSemanticSimilarity
     from traceable_formatter import TraceableFormatter  
 
 logger = logging.getLogger(__name__)
@@ -163,6 +163,8 @@ class RAGOrchestrator:
         traceable_formatter: Any | None = None,
     ):
         self.synthesizer = synthesizer or ResponseSynthesizer()
+        # Vietnamese answers are verified against an English corpus, so the default verifier must be
+        # cross-lingual. If the model cannot load, verify() raises and run_from_retrieval records FAILED.
         self.verifier = verifier or EvidenceVerifier(
             similarity_fn=MultilingualSemanticSimilarity(),
             support_threshold=SEMANTIC_SUPPORT_THRESHOLD,
@@ -220,7 +222,6 @@ class RAGOrchestrator:
         active_query = resolved_query or query
         resolved_intent = intent or retrieval_output.get("intent", "SEARCH")
 
-        # 1. Gọi ResponseSynthesizer (Nguyên)
         draft: SynthesizedDraftSchema = self.synthesizer.synthesize(
             query=active_query,
             retrieval_output=retrieval_output,
@@ -230,7 +231,6 @@ class RAGOrchestrator:
 
         evidence_list = retrieval_output.get("evidence_list", [])
 
-        # 2. Gọi Verifier (Bảo) nếu có
         try:
             verification_report = self.verifier.verify(draft, evidence_list)
         except Exception as e:
@@ -241,14 +241,13 @@ class RAGOrchestrator:
                 warnings=[f"Verifier error: {e}"],
             )
 
-        # 3. Định dạng Trích dẫn & Footnotes (Traceable Formatter)
         final_markdown, citations = self.traceable_formatter.format_citations(draft, evidence_list)
 
         verification_gate = "skipped" if draft.is_abstained else "passed"
         if not draft.is_abstained and verification_report.status == VerificationStatus.FAILED:
             verification_gate = "blocked"
             final_markdown = (
-                ">>> Câu trả lời đã bị chặn: nội dung sinh ra không được tài liệu nguồn chứng thực "
+                "**Câu trả lời đã bị chặn**: nội dung sinh ra không được tài liệu nguồn chứng thực "
                 f"(faithfulness {verification_report.faithfulness_score:.0%}). "
                 "Vui lòng diễn đạt lại câu hỏi hoặc thu hẹp phạm vi tài liệu."
             )
@@ -262,7 +261,6 @@ class RAGOrchestrator:
             
         total_latency = time.perf_counter() - start_time
 
-        # 4. Xác định status phản hồi
         status = "ok"
         if retrieval_output.get("status") == "clarification_needed":
             status = "clarification_needed"
