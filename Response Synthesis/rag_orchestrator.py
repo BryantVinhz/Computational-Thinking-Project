@@ -26,7 +26,7 @@ try:
         VerificationStatus,
     )
     from .synthesizer import ResponseSynthesizer
-    from .verifier import EvidenceVerifier                    
+    from .verifier import SEMANTIC_SUPPORT_THRESHOLD, EvidenceVerifier, MultilingualSemanticSimilarity                    
     from .traceable_formatter import TraceableFormatter  
 except ImportError:
     from schema_response import (
@@ -38,7 +38,7 @@ except ImportError:
         VerificationStatus,
     )
     from synthesizer import ResponseSynthesizer
-    from verifier import EvidenceVerifier                    
+    from verifier import SEMANTIC_SUPPORT_THRESHOLD, EvidenceVerifier, MultilingualSemanticSimilarity                   
     from traceable_formatter import TraceableFormatter  
 
 logger = logging.getLogger(__name__)
@@ -163,16 +163,10 @@ class RAGOrchestrator:
         traceable_formatter: Any | None = None,
     ):
         self.synthesizer = synthesizer or ResponseSynthesizer()
-        if verifier is not None:
-            self.verifier = verifier
-        else:
-            try:
-                from .verifier import EvidenceVerifier, MultilingualSemanticSimilarity
-                sim_fn = MultilingualSemanticSimilarity(model_name="BAAI/bge-m3")
-                self.verifier = EvidenceVerifier(similarity_fn=sim_fn, support_threshold=0.60)
-            except Exception:
-                from .verifier import EvidenceVerifier
-                self.verifier = EvidenceVerifier()
+        self.verifier = verifier or EvidenceVerifier(
+            similarity_fn=MultilingualSemanticSimilarity(),
+            support_threshold=SEMANTIC_SUPPORT_THRESHOLD,
+        )
         self.traceable_formatter = traceable_formatter or TraceableFormatter()
         self.retrieval_system = retrieval_system
 
@@ -218,8 +212,9 @@ class RAGOrchestrator:
         conversation_history: list[dict[str, Any]] | None = None,
     ) -> FinalResponseEnvelope:
         """
-        Thực thi Stage 4 trực tiếp khi đã có sẵn output từ Retrieval.
-        Rất hữu ích khi test hoặc khi luồng Retrieval chạy độc lập.
+        Run Stage 4 on an existing Retrieval output.
+        A draft whose verification FAILED is never returned as an "ok" answer: it is withheld
+        (status "abstained") and kept in raw_draft for audit.
         """
         start_time = time.perf_counter()
         active_query = resolved_query or query
@@ -236,41 +231,42 @@ class RAGOrchestrator:
         evidence_list = retrieval_output.get("evidence_list", [])
 
         # 2. Gọi Verifier (Bảo) nếu có
-        verification_report: VerificationReportSchema | None = None
-        if self.verifier is not None:
-            try:
-                verification_report = self.verifier.verify(draft, evidence_list)
-            except Exception as e:
-                logger.error("Error executing Verifier: %s", e)
-        else:
-            # Tự động tạo report mặc định
-            if draft.is_abstained:
-                verification_report = VerificationReportSchema(
-                    faithfulness_score=1.0,
-                    status=VerificationStatus.SKIPPED,
-                    total_claims=0,
-                    warnings=["Verification skipped due to abstention / clarification flow."],
-                )
-            else:
-                verification_report = VerificationReportSchema(
-                    faithfulness_score=0.95 if draft.generation_mode == "STRICT_RAG" else 0.85,
-                    status=VerificationStatus.PASSED,
-                    total_claims=len(draft.cited_evidence_ids),
-                    supported_claims=len(draft.cited_evidence_ids),
-                    unverified_claims=0,
-                    contradicted_claims=0,
-                )
+        try:
+            verification_report = self.verifier.verify(draft, evidence_list)
+        except Exception as e:
+            logger.error("Error executing Verifier: %s", e)
+            verification_report = VerificationReportSchema(
+                faithfulness_score=0.0,
+                status=VerificationStatus.FAILED,
+                warnings=[f"Verifier error: {e}"],
+            )
 
         # 3. Định dạng Trích dẫn & Footnotes (Traceable Formatter)
         final_markdown, citations = self.traceable_formatter.format_citations(draft, evidence_list)
 
+        verification_gate = "skipped" if draft.is_abstained else "passed"
+        if not draft.is_abstained and verification_report.status == VerificationStatus.FAILED:
+            verification_gate = "blocked"
+            final_markdown = (
+                ">>> Câu trả lời đã bị chặn: nội dung sinh ra không được tài liệu nguồn chứng thực "
+                f"(faithfulness {verification_report.faithfulness_score:.0%}). "
+                "Vui lòng diễn đạt lại câu hỏi hoặc thu hẹp phạm vi tài liệu."
+            )
+            citations = []
+        elif not draft.is_abstained and verification_report.status == VerificationStatus.WARNING:
+            verification_gate = "warning"
+            final_markdown = (
+                ">>> Một số nhận định chưa được tài liệu nguồn chứng thực đầy đủ "
+                f"(faithfulness {verification_report.faithfulness_score:.0%}).\n\n{final_markdown}"
+            )
+            
         total_latency = time.perf_counter() - start_time
 
         # 4. Xác định status phản hồi
         status = "ok"
         if retrieval_output.get("status") == "clarification_needed":
             status = "clarification_needed"
-        elif draft.is_abstained:
+        elif draft.is_abstained or verification_gate == "blocked":
             status = "abstained"
 
         return FinalResponseEnvelope(
@@ -290,6 +286,7 @@ class RAGOrchestrator:
                 "evidence_status": draft.evidence_status,
                 "total_evidence": retrieval_output.get("total_evidence", len(evidence_list)),
                 "cited_count": len(citations),
+                "verification_gate": verification_gate,
             },
         )
 

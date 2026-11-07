@@ -126,7 +126,7 @@ def prepare_and_ingest_to_chroma(
     chunks_from_chunking: list[dict],
     doc_meta_from_diep: dict | DocumentMetadataSchema,
     chunk_meta_records_from_diep: list[dict | ChunkMetadataSchema] | None = None,
-    collection=None,
+    collection=None, version_record: dict | None = None
 ) -> list[dict]:
     
     if collection is None:
@@ -174,6 +174,8 @@ def prepare_and_ingest_to_chroma(
             "version_id": doc_meta["version_id"],
             "title": doc_meta.get("title") or doc_meta.get("canonical_title") or "",
             "file_format": file_format,
+                        "file_name": (version_record or {}).get("file_name") or "",
+            "version_tag": str((version_record or {}).get("version_tag") or ""),
 
             # --- Toàn bộ thuộc tính từ ChunkSchema (bỏ ChunkSource, chunk_id, text_content) ---
             "chunk_idx": int(c_meta.get("chunk_idx", chunk_dict.get("chunk_idx", idx))),
@@ -199,21 +201,19 @@ def prepare_and_ingest_to_chroma(
         
     doc_id = doc_meta["document_id"]
     curr_ver_id = doc_meta["version_id"]
-    curr_file_name = doc_meta.get("file_name") or ""
-    try:
-        if curr_file_name:
-            collection.delete(where={"$and": [
-                {"document_id": doc_id},
-                {"file_name": curr_file_name},
-                {"version_id": {"$ne": curr_ver_id}}
-            ]})
-        else:
-            collection.delete(where={"version_id": curr_ver_id})
-    except Exception as e:
-        try:
-            collection.delete(where={"version_id": curr_ver_id})
-        except Exception:
-            pass
+    curr_file_name = (version_record or {}).get("file_name") or ""
+    curr_version_tag = str((version_record or {}).get("version_tag") or "")
+    same_lineage = [{"file_name": curr_file_name}] if curr_file_name else []
+    if curr_version_tag:
+        same_lineage.append({"version_tag": curr_version_tag})
+    if same_lineage:
+        lineage_clause = same_lineage[0] if len(same_lineage) == 1 else {"$or": same_lineage}
+        collection.delete(where={"$and": [
+            {"document_id": doc_id},
+            {"version_id": {"$ne": curr_ver_id}},
+            lineage_clause,
+        ]})
+    collection.delete(where={"version_id": curr_ver_id})
     
     if ids:
         collection.upsert(
@@ -277,6 +277,7 @@ def main() -> None:
             doc_meta_from_diep=meta_output.document,
             chunk_meta_records_from_diep=meta_output.chunks,
             collection=collection,
+            version_record=ver,
         )
         total_chunks += len(chunking_output.get("chunks", []))
 

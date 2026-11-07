@@ -281,13 +281,34 @@ class ScopeBuilder:
 
         return sorted(set(expansions))
 
+    def requested_versions(self, text: str) -> list[str]:
+        """
+        Versions the user explicitly asks for. A number counts as a version request only if it is a
+        year (19xx/20xx), carries a v/ver/version prefix, or equals a version_tag in the catalog.
+        This keeps protocol numbers such as "TLS 1.2" or "OAuth 2.0" from becoming version filters.
+        """
+        if not text:
+            return []
+        known_tags = {
+            self.normalize_version_tag(v.get("version_tag", ""))
+            for v in self.ver_catalog
+            if isinstance(v, dict) and v.get("version_tag")
+        }
+        pattern = r"\b(v(?:er(?:sion)?)?\.?\s*)?(\d{4}|\d+(?:\.\d+)+)\b"
+        results: list[str] = []
+        for prefix, number in re.findall(pattern, text, flags=re.IGNORECASE):
+            is_year = re.fullmatch(r"(?:19|20)\d{2}", number) is not None
+            if (prefix or is_year or number in known_tags) and number not in results:
+                results.append(number)
+        return results
+    
     def build_scope(self, query_plan: dict[str, Any], task: dict[str, Any] | None = None) -> tuple[RetrievalScope, list[str]]:
         flt = query_plan.get("filter", {})
         entities = query_plan.get("entities", {})
 
 
         target_sources = []
-        if task and task.get("objective", {}).get("type") == "documents":
+        if task and (task.get("objective") or {}).get("type") == "documents":
             target_sources = task["objective"].get("ids", [])
         else:
             target_sources = flt.get("source") or []
@@ -295,16 +316,21 @@ class ScopeBuilder:
         doc_ids = self._resolve_canonical_doc_ids(target_sources)
 
         task_query = task.get("query", "") if task else ""
-        detected_versions = self.extract_versions(task_query)
-        if not detected_versions and flt.get("version"):
-            detected_versions = [flt.get("version")]
-        version_ids = []
-        for v_req in detected_versions:
-            v_ids = self._resolve_version_ids(doc_ids, v_req)
-            version_ids.extend(v_ids)
+        
+        explicit_version = task.get("version") if task else None
+        if explicit_version:
+            requested = [str(explicit_version)]
+        else:
+            requested = self.requested_versions(task_query)
+            if not requested and flt.get("version"):
+                requested = [str(flt["version"])]
+
+        version_ids: list[str] = []
+        for v_req in requested:
+            version_ids.extend(self._resolve_version_ids(doc_ids, v_req))
         version_ids = sorted(set(version_ids))
         
-        # Filter file_format
+        # document_type is semantic (cheatsheet/standard/specification) unless it names a physical format
         raw_type = (flt.get("document_type") or "").strip().lower().replace(".", "")
         file_format = FORMAT_MAPPING.get(raw_type.upper())
         
@@ -315,16 +341,11 @@ class ScopeBuilder:
             if narrowed:
                 doc_ids = narrowed
 
-        is_relaxed = False
-        if detected_versions and not version_ids:
-            logger.warning(
-                "No matching version_id found for %s. Automatically falling back to unfiltered search",
-                detected_versions,
-            )
-            is_relaxed = True
+        # is_relaxed now means "a version was requested but the catalog has none": the caller abstains.
+        is_relaxed = bool(requested) and not version_ids
+        if is_relaxed:
+            logger.warning("Requested version(s) %s not found in catalog", requested)
             
-            
-        # Compiles filter clauses for ChromaDB
         filters_list = []
         if doc_ids:
             if len(doc_ids) == 1:

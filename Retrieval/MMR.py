@@ -57,7 +57,7 @@ class LangChainMMRSelector:
 
         # Vectorize text of candidate chunks (2D array)
         chunk_texts = [c.get("text") or c.get("text_content") or "" for c in candidates]
-        raw_chunk_vectors = self.vectorizer.vectorize_batch(chunk_texts)
+        raw_chunk_vectors = self.vectorizer.vectorize_passages(chunk_texts)
         chunk_vecs = np.array(raw_chunk_vectors, dtype=np.float32)
 
 

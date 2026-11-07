@@ -118,15 +118,6 @@ class BM25Retriever:
 
             candidates.append((score, chunk))
 
-        # 3. Scope Relaxation (Relax filters if hard filtering yields no results)
-        if (
-            not candidates
-            and (target_doc_ids or target_ver_ids or target_formats)
-            and (scope and scope.is_relaxed)
-        ):
-            for idx, score in enumerate(doc_scores):
-                if score > 0.0:
-                    candidates.append((score, self.chunks[idx]))
 
         # Rank in descending order by BM25 score
         candidates.sort(key=lambda x: x[0], reverse=True)

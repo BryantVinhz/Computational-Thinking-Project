@@ -15,7 +15,7 @@ for p in (PROJECT_ROOT, RETRIEVAL_DIR, SYNTHESIS_DIR, STAGE_2_DIR):
 from retrieval_system import RetrievalSystem
 from schema_response import FinalResponseEnvelope
 from synthesizer import ResponseSynthesizer
-from verifier import EvidenceVerifier
+from verifier import SEMANTIC_SUPPORT_THRESHOLD, EvidenceVerifier, MultilingualSemanticSimilarity
 from traceable_formatter import TraceableFormatter
 from rag_orchestrator import RAGOrchestrator
 from llm import ColabLLMClient
@@ -35,10 +35,10 @@ class PipelineConnector:
         print("Initializing Response Synthesis, Verifier & Formatter with Remote LLM")
         self.synthesizer = ResponseSynthesizer(llm_client=self.llm_client)
 
-        try:
-            self.verifier = EvidenceVerifier(llm_client=self.llm_client)
-        except TypeError:
-            self.verifier = EvidenceVerifier()
+        self.verifier = EvidenceVerifier(
+            similarity_fn=MultilingualSemanticSimilarity(),
+            support_threshold=SEMANTIC_SUPPORT_THRESHOLD,
+        )
 
         self.formatter = TraceableFormatter()
 

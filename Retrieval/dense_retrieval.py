@@ -178,7 +178,7 @@ class DenseRetriever:
         """
         chroma_filter = payload.scope.chroma_filter if payload.scope else None
         if fallback_unfiltered is None:
-            fallback_unfiltered = bool(payload.scope and payload.scope.is_relaxed)
+            fallback_unfiltered = False
         return self.retrieve(
             query_text=payload.original_query,
             query_vector=payload.query_vector if payload.query_vector else None,
