@@ -1,10 +1,10 @@
 import requests
 from typing import Any
 
-COLAB_URL = "https://comp-venue-penalty-oaks.trycloudflare.com"
+COLAB_URL = "https://tribute-springfield-minnesota-frost.trycloudflare.com"
 class ColabLLMClient:
     """client calls the LLM running on Google Colab via FastAPI"""
-    model_name: str = "Qwen3-1.7B-colab-remote"
+    model_name: str = "Qwen2.5-3B-Instruct-colab-remote"
 
     def __init__(self, endpoint_url: str = COLAB_URL):
         self.api_url = f"{endpoint_url.rstrip('/')}/generate"

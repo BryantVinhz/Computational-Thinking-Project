@@ -132,7 +132,7 @@
         "Hạn chế thực thi Script", "Chặn plugin legacy", "Chống Base Injection", "Báo cáo vi phạm",
         "Ưu tiên HTTP Header", "Tái cấu trúc mã nguồn (Refactoring Code)",
         "Dùng Content-Security-Policy-Report-Only trong giai đoạn phát triển/kiểm thử để ghi nhận lỗi mà không làm gián đoạn tính năng ứng dụng trước khi bật chế độ chặn",
-        "OWASP nhấn mạnh CSP là lớp bảo vệ thứ hai (Secondary layer)[24][27]. Không được coi CSP là giải pháp duy nhất** để thay thế cho việc Output Encoding (Mã hóa đầu ra theo ngữ cảnh) và HTML Sanitization (như DOMPurify)"
+        "OWASP nhấn mạnh CSP là lớp bảo vệ thứ hai (Secondary layer). Không được coi CSP là giải pháp duy nhất để thay thế cho việc Output Encoding (Mã hóa đầu ra theo ngữ cảnh) và HTML Sanitization (như DOMPurify)"
       ]
     }
   },
