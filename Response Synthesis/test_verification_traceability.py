@@ -264,14 +264,41 @@ class TestOrchestratorIntegration(unittest.TestCase):
         }
         envelope = orchestrator.run_from_retrieval("Chống SQLi thế nào?", retrieval_output)
 
-        self.assertEqual(envelope.status, "ok")
-        self.assertEqual([c.tag for c in envelope.citations], ["[1]", "[2]"])
-        self.assertGreater(envelope.verification.total_claims, 0)
-        self.assertIn(
-            envelope.verification.status,
-            {VerificationStatus.PASSED, VerificationStatus.WARNING, VerificationStatus.FAILED},
-        )
+        # The deterministic LLM returns boilerplate unrelated to the evidence: the gate must withhold it.
+        self.assertEqual(envelope.verification.status, VerificationStatus.FAILED)
+        self.assertEqual(envelope.status, "abstained")
+        self.assertEqual(envelope.metadata["verification_gate"], "blocked")
+        self.assertEqual(envelope.citations, [])
+        self.assertIn("bị chặn", envelope.final_answer_markdown)
+        self.assertIsNotNone(envelope.raw_draft)
         json.loads(envelope.to_json())
+
+    def test_default_verifier_fails_closed_without_model(self):
+        orchestrator = RAGOrchestrator(
+            synthesizer=ResponseSynthesizer(llm_client=DefaultDeterministicLLM()),
+        )
+        retrieval_output = {
+            "status": "ok", "evidence_status": "FULL", "intent": "SEARCH", "total_evidence": 2,
+            "evidence_list": SQLI_EVIDENCE, "llm_context": "--- Evidence [1] ---\nA",
+        }
+        envelope = orchestrator.run_from_retrieval("q", retrieval_output)
+        self.assertEqual(envelope.verification.status, VerificationStatus.FAILED)
+        self.assertEqual(envelope.status, "abstained")
+
+    def test_semantic_similarity_is_cached_and_cross_lingual(self):
+        import numpy as np
+        from verifier import MultilingualSemanticSimilarity
+
+        class FakeModel:
+            calls = 0
+            def encode(self, texts, **kwargs):
+                FakeModel.calls += 1
+                return np.array([[1.0, 0.0]])
+
+        sim = MultilingualSemanticSimilarity(model=FakeModel())
+        self.assertAlmostEqual(sim("Truy vấn tham số hóa", "Parameterized queries"), 1.0)
+        sim("Truy vấn tham số hóa", "Parameterized queries")
+        self.assertEqual(FakeModel.calls, 2)
 
 
 if __name__ == "__main__":

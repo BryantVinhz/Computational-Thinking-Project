@@ -203,42 +203,64 @@ def extract_claims(draft_answer: str, min_tokens: int = MIN_CLAIM_TOKENS) -> lis
 
     return claims
 
+SEMANTIC_SUPPORT_THRESHOLD = 0.60
+
+
 class MultilingualSemanticSimilarity:
     """
-    Compute cross-lingual semantic similarity
-    Resolves the language discrepancy when cross-referencing Vietnamese claims against English evidence
+    Cross-lingual cosine similarity (Vietnamese claim vs English evidence) with a multilingual encoder.
+
+    The model is loaded once. If it cannot be loaded, calls raise RuntimeError instead of silently
+    degrading to lexical overlap, which scores ~0 across languages and fails every grounded answer.
+    Embeddings are cached per text because the verifier scores each claim against every evidence sentence.
     """
-    def __init__(self, model_name: str = "BAAI/bge-m3", device: str = "cpu"):
+
+    def __init__(
+        self,
+        model_name: str = "BAAI/bge-m3",
+        device: str = "cpu",
+        model: Any | None = None,
+        max_chars: int = 2000,
+        cache_size: int = 4096,
+    ):
         self.model_name = model_name
         self.device = device
-        self._model = None
-    @property
-    def model(self):
-        if self._model is None:
-            try:
-                from sentence_transformers import SentenceTransformer
-                self._model = SentenceTransformer(self.model_name, device=self.device)
-            except Exception as e:
-                # Fallback nếu môi trường chưa cài sentence-transformers
-                return None
-        return self._model
-    def __call__(self, claim: str, passage: str) -> float:
-        """Tính cosine similarity giữa claim (Tiếng Việt) và passage (Tiếng Anh)."""
-        if not self.model:
-            # Fallback sang lexical nếu không nạp được model
-            return lexical_support_score(claim, passage)
+        self.max_chars = max_chars
+        self.cache_size = cache_size
+        self._model = model
+        self._load_error: Exception | None = None
+        self._cache: dict[str, Any] = {}
+
+    def _get_model(self) -> Any:
+        if self._model is not None:
+            return self._model
+        if self._load_error is not None:
+            raise RuntimeError(f"Semantic verifier model unavailable: {self._load_error}") from self._load_error
         try:
-            embeddings = self.model.encode(
-                [claim, passage[:600]],
-                normalize_embeddings=True,
-                show_progress_bar=False,
-            )
-            # Dot product của normalized embeddings chính là cosine similarity
-            cos_sim = float((embeddings[0] * embeddings[1]).sum())
-            return max(0.0, min(1.0, cos_sim))
-        except Exception:
-            return lexical_support_score(claim, passage)
-        
+            from sentence_transformers import SentenceTransformer
+            self._model = SentenceTransformer(self.model_name, device=self.device)
+        except Exception as e:
+            self._load_error = e
+            raise RuntimeError(f"Semantic verifier model unavailable: {e}") from e
+        return self._model
+
+    def _embed(self, text: str) -> Any:
+        key = text[: self.max_chars]
+        vector = self._cache.get(key)
+        if vector is None:
+            vector = self._get_model().encode([key], normalize_embeddings=True, show_progress_bar=False)[0]
+            if len(self._cache) >= self.cache_size:
+                self._cache.pop(next(iter(self._cache)))
+            self._cache[key] = vector
+        return vector
+
+    def __call__(self, claim: str, passage: str) -> float:
+        if not claim.strip() or not passage.strip():
+            return 0.0
+        cosine = float((self._embed(claim) * self._embed(passage)).sum())
+        return max(0.0, min(1.0, cosine))
+
+
 # =====================================================================
 # Verifier
 # =====================================================================

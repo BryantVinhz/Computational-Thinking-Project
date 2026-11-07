@@ -20,6 +20,11 @@ class ColabLLMClient:
             resp = requests.post(self.api_url, json=payload, timeout=900)
             resp.raise_for_status()
             data = resp.json()
-            return data.get("response", "")
         except Exception as e:
-            raise RuntimeError(f"Colab API Connection Error ({self.api_url}): {e}")
+            raise RuntimeError(f"Colab API Connection Error ({self.api_url}): {e}") from e
+
+        text = data.get("response") if isinstance(data, dict) else None
+        if not isinstance(text, str) or not text.strip():
+            # An empty completion must not become an empty "ok" answer; the synthesizer abstains on errors.
+            raise RuntimeError(f"Colab API returned an empty completion ({self.api_url})")
+        return text

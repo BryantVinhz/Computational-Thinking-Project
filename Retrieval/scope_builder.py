@@ -281,33 +281,56 @@ class ScopeBuilder:
 
         return sorted(set(expansions))
 
+    def requested_versions(self, text: str) -> list[str]:
+        """
+        Versions the user explicitly asks for. A number counts as a version request only if it is a
+        year (19xx/20xx), carries a v/ver/version prefix, or equals a version_tag in the catalog.
+        This keeps protocol numbers such as "TLS 1.2" or "OAuth 2.0" from becoming version filters.
+        """
+        if not text:
+            return []
+        known_tags = {
+            self.normalize_version_tag(v.get("version_tag", ""))
+            for v in self.ver_catalog
+            if isinstance(v, dict) and v.get("version_tag")
+        }
+        pattern = r"\b(v(?:er(?:sion)?)?\.?\s*)?(\d{4}|\d+(?:\.\d+)+)\b"
+        results: list[str] = []
+        for prefix, number in re.findall(pattern, text, flags=re.IGNORECASE):
+            is_year = re.fullmatch(r"(?:19|20)\d{2}", number) is not None
+            if (prefix or is_year or number in known_tags) and number not in results:
+                results.append(number)
+        return results
+
     def build_scope(self, query_plan: dict[str, Any], task: dict[str, Any] | None = None) -> tuple[RetrievalScope, list[str]]:
-        flt = query_plan.get("filter", {})
-        entities = query_plan.get("entities", {})
+        flt = query_plan.get("filter") or {}
+        entities = query_plan.get("entities") or {}
 
-
-        target_sources = []
-        if task and task.get("objective", {}).get("type") == "documents":
+        if task and (task.get("objective") or {}).get("type") == "documents":
             target_sources = task["objective"].get("ids", [])
         else:
             target_sources = flt.get("source") or []
 
         doc_ids = self._resolve_canonical_doc_ids(target_sources)
 
+        # Version precedence: explicit branch version > versions named in the task query > plan filter.
         task_query = task.get("query", "") if task else ""
-        detected_versions = self.extract_versions(task_query)
-        if not detected_versions and flt.get("version"):
-            detected_versions = [flt.get("version")]
-        version_ids = []
-        for v_req in detected_versions:
-            v_ids = self._resolve_version_ids(doc_ids, v_req)
-            version_ids.extend(v_ids)
+        explicit_version = task.get("version") if task else None
+        if explicit_version:
+            requested = [str(explicit_version)]
+        else:
+            requested = self.requested_versions(task_query)
+            if not requested and flt.get("version"):
+                requested = [str(flt["version"])]
+
+        version_ids: list[str] = []
+        for v_req in requested:
+            version_ids.extend(self._resolve_version_ids(doc_ids, v_req))
         version_ids = sorted(set(version_ids))
-        
-        # Filter file_format
+
+        # document_type is semantic (cheatsheet/standard/specification) unless it names a physical format.
         raw_type = (flt.get("document_type") or "").strip().lower().replace(".", "")
         file_format = FORMAT_MAPPING.get(raw_type.upper())
-        
         if not file_format and raw_type in DOC_TYPE_KEYWORDS:
             kws = DOC_TYPE_KEYWORDS[raw_type]
             pool = doc_ids or sorted(self.valid_doc_ids)
@@ -315,31 +338,18 @@ class ScopeBuilder:
             if narrowed:
                 doc_ids = narrowed
 
-        is_relaxed = False
-        if detected_versions and not version_ids:
-            logger.warning(
-                "No matching version_id found for %s. Automatically falling back to unfiltered search",
-                detected_versions,
-            )
-            is_relaxed = True
-            
-            
-        # Compiles filter clauses for ChromaDB
+        # is_relaxed now means "a version was requested but the catalog has none": the caller abstains.
+        is_relaxed = bool(requested) and not version_ids
+        if is_relaxed:
+            logger.warning("Requested version(s) %s not found in catalog", requested)
+
         filters_list = []
         if doc_ids:
-            if len(doc_ids) == 1:
-                filters_list.append({"document_id": doc_ids[0]})
-            else:
-                filters_list.append({"document_id": {"$in": doc_ids}})
-
+            filters_list.append({"document_id": doc_ids[0]} if len(doc_ids) == 1 else {"document_id": {"$in": doc_ids}})
         if file_format:
             filters_list.append({"file_format": file_format})
-
         if version_ids:
-            if len(version_ids) == 1:
-                filters_list.append({"version_id": version_ids[0]})
-            else:
-                filters_list.append({"version_id": {"$in": version_ids}})
+            filters_list.append({"version_id": version_ids[0]} if len(version_ids) == 1 else {"version_id": {"$in": version_ids}})
 
         chroma_filter = None
         if len(filters_list) == 1:
@@ -347,7 +357,6 @@ class ScopeBuilder:
         elif len(filters_list) > 1:
             chroma_filter = {"$and": filters_list}
 
-        # SEMANTIC FILTER
         query_text = (task.get("query") if task else None) or query_plan.get("resolved_query") or ""
         pref_types, pref_headings = self._detect_semantic_preferences(query_text)
         ontology_expansions = self.expand_concepts(task, entities)
@@ -358,7 +367,7 @@ class ScopeBuilder:
                 hay = f" {norm(doc.get('canonical_title', ''))} {norm(doc.get('document_id', ''))} "
                 if any(f" {norm(k)} " in hay for k in ontology_expansions if norm(k)):
                     candidate_docs.append(doc["document_id"])
-                    
+
         scope = RetrievalScope(
             chroma_filter=chroma_filter,
             document_ids=doc_ids,
@@ -368,7 +377,6 @@ class ScopeBuilder:
             preferred_chunk_types=pref_types,
             preferred_headings=pref_headings,
             candidate_doc_ids=sorted(set(candidate_docs)),
-            ontology_keywords=ontology_expansions
+            ontology_keywords=ontology_expansions,
         )
-
         return scope, ontology_expansions
