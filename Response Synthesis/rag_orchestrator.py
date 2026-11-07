@@ -255,10 +255,10 @@ class RAGOrchestrator:
         elif not draft.is_abstained and verification_report.status == VerificationStatus.WARNING:
             verification_gate = "warning"
             final_markdown = (
-                "> ⚠️ Một số nhận định chưa được tài liệu nguồn chứng thực đầy đủ "
+                ">>> Một số nhận định chưa được tài liệu nguồn chứng thực đầy đủ "
                 f"(faithfulness {verification_report.faithfulness_score:.0%}).\n\n{final_markdown}"
             )
-
+            
         total_latency = time.perf_counter() - start_time
 
         status = "ok"

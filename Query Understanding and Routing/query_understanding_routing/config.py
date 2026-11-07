@@ -94,8 +94,7 @@ MESSAGES: dict[str, str] = {
     "suspicious_pattern": "Không thể xử lý yêu cầu này. Vui lòng diễn đạt lại câu hỏi về kiến thức bảo mật.",
 }
 
-SAFETY_CLARIFY_MESSAGE: str = "Bạn muốn tìm hiểu để phòng chống hoặc kiểm thử trong hệ thống của mình hay môi trường lab được phép? Hãy cho mình biết thêm về mục đích và phạm vi nhé."
-
+SAFETY_CLARIFY_MESSAGE: str = "Mình không cung cấp hướng dẫn tấn công mục tiêu thực tế. Nếu phục vụ mục đích nghiên cứu hoặc làm bài lab, bạn hãy mô tả kịch bản/lỗ hổng cụ thể để chúng ta cùng phân tích nguyên lý và giải pháp nhé."
 OUT_OF_SCOPE_MSG: str = "Câu hỏi này nằm ngoài phạm vi kiến thức bảo mật web của hệ thống (XSS, SQL Injection, Broken Access Control, Authentication Failures, Security Misconfiguration)."
 ERROR_MSG: str = "Hệ thống tạm thời không xử lý được yêu cầu. Vui lòng thử lại sau."
 
