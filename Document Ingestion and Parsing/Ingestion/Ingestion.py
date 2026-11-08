@@ -1,7 +1,7 @@
 import sys
 from pathlib import Path
 
-# Đảm bảo import được path.py ở thư mục cha khi bấm nút Run trực tiếp trên VS Code
+# Ensure path.py in the parent directory can be imported when running this file directly
 CURRENT_DIR = Path(__file__).resolve().parent
 PARENT_DIR = CURRENT_DIR.parent
 if str(CURRENT_DIR) not in sys.path:

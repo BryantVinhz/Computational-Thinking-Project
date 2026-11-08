@@ -4,7 +4,7 @@ import re
 import sys
 from pathlib import Path
 
-# Đảm bảo Python nhận diện được cả thư mục hiện tại (Ingestion/) và thư mục cha (chứa path.py)
+# Ensure both the current directory (Ingestion/) and parent directory (containing path.py) are in sys.path
 CURRENT_DIR = Path(__file__).resolve().parent
 PARENT_DIR = CURRENT_DIR.parent
 if str(CURRENT_DIR) not in sys.path:
@@ -18,7 +18,7 @@ from validation import FileValidator
 
 
 class Hasher:
-    """Tính mã băm SHA-256 để nhận diện file trùng lặp và thay đổi nội dung."""
+    """Compute SHA-256 hashes to detect duplicate files and content changes."""
 
     @staticmethod
     def compute_sha256(file_path: Path, chunk_size: int = 65536) -> str:
@@ -30,7 +30,7 @@ class Hasher:
 
 
 class IngestionService:
-    """Dịch vụ điều phối Bước 1: Data Ingestion."""
+    """Service orchestrating Step 1: Data Ingestion."""
 
     def __init__(self, raw_dir: str | Path, manifest_dir: str | Path):
         self.raw_dir = Path(raw_dir)
@@ -64,7 +64,7 @@ class IngestionService:
             return {item[key_field]: dto_cls(**item) for item in data}
 
     def discover_files(self) -> list[Path]:
-        """Quét danh sách toàn bộ tài liệu từ thư mục nguồn."""
+        """Scan all document files from the source directory."""
         if not self.raw_dir.exists():
             return []
         return sorted([
@@ -75,7 +75,7 @@ class IngestionService:
     @staticmethod
     def _parse_filename(file_path: Path) -> dict:
         """
-        Tách tên file theo chuẩn: {Tổ chức}_{Tên file}_{Phiên bản / Năm xuất bản}.{ext}
+        Parse filename following the convention: {Publisher}_{Title}_{Version / Year}.{ext}
         """
         stem = file_path.stem
         parts = [p for p in stem.split("_") if p]
@@ -133,12 +133,12 @@ class IngestionService:
             self.rejected[norm_rel_path] = failed_record
             return "FAILED", failed_record
 
-        # 2. Tính SHA-256
+        # 2. Compute SHA-256
         sha256_hash = Hasher.compute_sha256(abs_file_path)
         short_hash = sha256_hash[:12]
         version_id = f"ver_{short_hash}"
 
-        # 3. Kiểm tra trùng lặp hoặc giữ nguyên nếu là cùng một file chạy lại
+        # 3. Check for duplicates or unchanged files on re-run
         if sha256_hash in self.hash_index:
             existing_record = self.hash_index[sha256_hash]
 
@@ -166,7 +166,7 @@ class IngestionService:
             self.rejected[norm_rel_path] = dup_record
             return "DUPLICATE", dup_record
 
-        # 4. File hợp lệ mới
+        # 4. New valid file
         self.rejected.pop(norm_rel_path, None)
         old_versions_at_same_path = [
             v_id for v_id, v in self.versions.items() if v.file_path == norm_rel_path
