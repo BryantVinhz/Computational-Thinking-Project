@@ -28,7 +28,7 @@ ABSTENTION_MESSAGE = "Không tìm thấy thông tin phù hợp trong kho tài li
 
 
 def _sigmoid(x: float) -> float:
-    """Quy đổi điểm Logit bất kỳ về xác suất trong khoảng [0, 1] bằng hàm Sigmoid."""
+    """Map arbitrary logit scores into probabilities within the range [0, 1] via the Sigmoid function"""
     if x >= 0:
         z = math.exp(-x)
         return 1.0 / (1.0 + z)
@@ -38,7 +38,7 @@ def _sigmoid(x: float) -> float:
 
 
 def _to_chunk_dict(item: Any) -> dict[str, Any]:
-    """Chuẩn hóa phần tử đầu vào (dict hoặc dataclass RetrievedChunk) về dạng dict."""
+    """Normalize an input element (either a dict or a RetrievedChunk dataclass instance) to a standard dict"""
     if isinstance(item, dict):
         return dict(item)
     if hasattr(item, "to_dict"):
@@ -50,17 +50,17 @@ def _to_chunk_dict(item: Any) -> dict[str, Any]:
 
 class CrossEncoderReranker:
     """
-    Bước 1: Cross-Encoder Reranker (Chấm điểm lại)
-        - Đưa trực tiếp cặp (query, chunk_text) vào mô hình Transformer Cross-Encoder
-          (như BAAI/bge-reranker-v2-m3 hoặc cross-encoder/ms-marco-MiniLM-L-6-v2).
-        - Cơ chế Cross-Attention cho phép đối chiếu trực tiếp từng từ trong câu truy vấn
-          với từng từ trong văn bản chunk.
-        - Đầu ra Logits được đưa qua hàm Sigmoid để quy đổi về xác suất trong khoảng [0, 1].
+    Step 1: Cross-Encoder Reranker (Rescoring)
+        - Directly feed the (query, chunk_text) pair into a Transformer Cross-Encoder model
+        (e.g., BAAI/bge-reranker-v2-m3 or cross-encoder/ms-marco-MiniLM-L-6-v2).
+        - The cross-attention mechanism enables full-token interaction between every query token
+        and every token in the chunk text.
+        - Raw output logits are passed through a Sigmoid function to map scores into probabilities within [0, 1].
 
-    Bước 2: Lọc ngưỡng tin cậy & Chính sách từ chối (Confidence Thresholding & Abstention Policy)
-        - Loại bỏ hoàn toàn mọi chunk có điểm Cross-Encoder < ngưỡng tin cậy tau (ví dụ 0.35 hoặc 0.40).
-        - Nếu không có chunk nào vượt qua ngưỡng tau, trả về danh sách rỗng kèm cờ
-          `insufficient_evidence: True` để chặn LLM bịa đặt thông tin (Hallucination).
+    Step 2: Confidence Thresholding & Abstention Policy
+        - Completely filter out any chunk with a Cross-Encoder score below the confidence threshold tau (e.g., 0.35 or 0.40).
+        - If no chunk exceeds the threshold tau, return an empty list with the flag
+        `insufficient_evidence: True` to prevent LLM hallucinations.
     """
 
     def __init__(
@@ -81,7 +81,7 @@ class CrossEncoderReranker:
         self._model = model
 
     def _get_model(self) -> Any:
-        """Lazy-load mô hình CrossEncoder với hàm kích hoạt Sigmoid ở đầu ra."""
+        """Lazy-load the CrossEncoder model with a Sigmoid activation function at the output"""
         if self._model is None:
             try:
                 import torch
@@ -102,8 +102,8 @@ class CrossEncoderReranker:
 
     def score_pairs(self, query: str, candidate_chunks: list[dict[str, Any] | Any]) -> list[dict[str, Any]]:
         """
-        Bước 1: Chấm điểm lại từng cặp (query, chunk_text) bằng Cross-Encoder.
-        Trả về danh sách các chunk đã được gắn thêm `rerank_score` (trong đoạn [0, 1]).
+        Rescore each (query, chunk_text) pair using a Cross-Encoder and 
+        return the chunks with an added rerank_score field in the range [0, 1]
         """
         if not query or not query.strip() or not candidate_chunks:
             return []
@@ -122,7 +122,7 @@ class CrossEncoderReranker:
         scored_chunks: list[dict[str, Any]] = []
         for idx, (chunk, score_val) in enumerate(zip(normalized_chunks, raw_scores), start=1):
             prob = float(score_val)
-            # Đảm bảo nếu model custom trả về logits ngoài [0, 1] thì vẫn chuẩn hóa qua Sigmoid
+            # Ensure custom model logits outside [0, 1] are still normalized via Sigmoid
             if prob < 0.0 or prob > 1.0:
                 prob = _sigmoid(prob)
 
@@ -143,16 +143,16 @@ class CrossEncoderReranker:
         top_k: int | None = None,
     ) -> RerankResult:
         """
-        Thực hiện trọn vẹn Bước 1 (Cross-Encoder Reranking) và Bước 2 (Confidence Thresholding & Abstention).
+        Execute both Step 1 (Cross-Encoder Reranking) and Step 2 (Confidence Thresholding & Abstention).
 
         Args:
-            query: Câu truy vấn của người dùng.
-            candidate_chunks: Danh sách chunk thu được từ bước Dense Retrieval hoặc Hybrid RRF.
-            threshold: Ngưỡng tin cậy tau trong khoảng [0, 1] (nếu None sẽ dùng self.threshold).
-            top_k: Số lượng chunk tối đa giữ lại sau khi lọc (nếu None sẽ dùng self.top_k).
+            query: User query string.
+            candidate_chunks: List of candidate chunks retrieved from Dense Retrieval or Hybrid RRF.
+            threshold: Confidence threshold tau in the range [0, 1] (defaults to self.threshold if None).
+            top_k: Maximum number of chunks to retain after filtering (defaults to self.top_k if None).
 
         Returns:
-            RerankResult chứa danh sách chunks vượt ngưỡng, cờ `insufficient_evidence`, và thông báo từ chối (nếu có).
+            RerankResult containing the list of chunks passing the threshold, the `insufficient_evidence` flag, and an abstention message (if applicable).
         """
         tau = self.threshold if threshold is None else threshold
         limit = self.top_k if top_k is None else top_k
@@ -168,24 +168,24 @@ class CrossEncoderReranker:
                 passed_count=0,
             )
 
-        # Bước 1: Chấm điểm bằng Cross-Encoder (đã qua hàm Sigmoid -> [0, 1])
+        # Step 1: Rescore using Cross-Encoder (mapped to [0, 1] via Sigmoid)
         scored_chunks = self.score_pairs(query, candidate_chunks)
 
-        # Bước 2: Lọc theo ngưỡng tin cậy tau (loại bỏ hoàn toàn chunk có điểm < tau)
+        # Step 2: Filter by confidence threshold tau (discard any chunk with score < tau)
         filtered_chunks = [c for c in scored_chunks if c["rerank_score"] >= tau]
 
-        # Sắp xếp giảm dần theo điểm Cross-Encoder
+        # Sort in descending order by Cross-Encoder score
         filtered_chunks.sort(key=lambda x: x["rerank_score"], reverse=True)
 
         if limit is not None:
             filtered_chunks = filtered_chunks[:limit]
 
-        # Cập nhật thứ hạng mới sau khi rerank
+        # Update new ranks post-reranking
         for new_rank, chunk in enumerate(filtered_chunks, start=1):
             chunk["rerank_rank"] = new_rank
             chunk["rank"] = new_rank
 
-        # Chính sách từ chối an toàn: Nếu không có chunk nào vượt ngưỡng tau
+        # Safe abstention policy: If no chunks pass the threshold tau
         if not filtered_chunks:
             logger.warning(
                 "Abstention triggered cho query='%s': 0/%d chunks đạt ngưỡng tin cậy tau=%.2f.",
@@ -220,7 +220,7 @@ class CrossEncoderReranker:
         threshold: float | None = None,
         top_k: int | None = None,
     ) -> RerankResult:
-        """Nhận trực tiếp ScopedRetrievalPayload và danh sách candidate chunks để Rerank & Lọc ngưỡng."""
+        """Accept ScopedRetrievalPayload and a list of candidate chunks to perform Cross-Encoder reranking and confidence thresholding"""
         return self.rerank(
             query=payload.original_query,
             candidate_chunks=candidate_chunks,
@@ -238,12 +238,12 @@ def orchestrate_security_qa(
     top_k: int | None = None,
 ) -> dict[str, Any]:
     """
-    Xử lý ở luồng điều phối (Orchestrator):
-        - Gọi tầng Rerank & Lọc ngưỡng tin cậy.
-        - Nếu nhận được cờ `insufficient_evidence: True`, chặn hoàn toàn việc gọi LLM sinh câu trả lời
-          và trả về ngay thông báo từ chối an toàn:
-          "Không tìm thấy thông tin phù hợp trong kho tài liệu bảo mật".
-        - Nếu đủ bằng chứng (`insufficient_evidence: False`), chuyển danh sách chunk hợp lệ cho LLM.
+    Orchestration workflow handling:
+        - Invoke the Reranking & Confidence Thresholding layer.
+        - If `insufficient_evidence: True` is received, completely block the LLM generation call
+        and immediately return a safe abstention message:
+        "No matching information found in the security document repository".
+        - If evidence is sufficient (`insufficient_evidence: False`), pass the valid chunks to the LLM.
     """
     rerank_result = reranker.rerank(
         query=query,
@@ -252,7 +252,7 @@ def orchestrate_security_qa(
         top_k=top_k,
     )
 
-    # Chốt chặn an toàn: Ngắt luồng trước khi gọi LLM nếu thiếu bằng chứng
+    # Safety guardrail: Short-circuit the workflow before invoking the LLM if evidence is insufficient
     if rerank_result.insufficient_evidence:
         return {
             "query": query,
@@ -263,7 +263,7 @@ def orchestrate_security_qa(
             "chunks": [],
         }
 
-    # Chỉ gọi LLM khi có ít nhất 1 chunk vượt qua ngưỡng tin cậy tau
+    # Only invoke the LLM when at least one chunk exceeds the confidence threshold tau
     if llm_generator is not None:
         answer = llm_generator(query, rerank_result.chunks)
     else:
@@ -287,26 +287,24 @@ if __name__ == "__main__":
     from dense_retrieval import DenseRetriever
     from rrf import reciprocal_rank_fusion
 
-    # Minh họa toàn bộ luồng: Dense Retrieval + RRF -> Cross-Encoder Reranker -> Confidence Thresholding & Abstention
-    print("=" * 80)
+    # End-to-end pipeline walkthrough: Dense Retrieval + RRF -> Cross-Encoder Reranker -> Confidence Thresholding & Abstention
     print("DEMO: CROSS-ENCODER RERANKER & CONFIDENCE THRESHOLDING (TAU = 0.40)")
     print("=" * 80)
 
-    # 1. Truy xuất các candidate chunks ban đầu từ ChromaDB (Dense Retrieval + RRF)
+    # 1. Retrieve initial candidate chunks from ChromaDB (Dense Retrieval + RRF)
     dense_retriever = DenseRetriever()
     valid_query = "How to prevent SQL Injection and Broken Access Control in web applications?"
     dense_candidates = dense_retriever.retrieve(query_text=valid_query, top_k=5)
     rrf_candidates = reciprocal_rank_fusion(bm25_results=[], dense_results=dense_candidates, k=60, top_k=5)
 
-    # 2. Khởi tạo Cross-Encoder Reranker
-    # Sử dụng cross-encoder/ms-marco-MiniLM-L-6-v2 để demo nhanh (hoặc BAAI/bge-reranker-v2-m3)
+    # 2. Initialize the Cross-Encoder Reranker
     reranker = CrossEncoderReranker(
         model_name=DEFAULT_RERANKER_MODEL,
         threshold=0.40,
         top_k=3,
     )
 
-    print(f"\n[TRƯỜNG HỢP 1] Câu hỏi có bằng chứng trong kho tài liệu:")
+    print(f"\n[CASE 1] In-Scope Query with Sufficient Documented Evidence:")
     print(f"  Query: '{valid_query}'")
     response_1 = orchestrate_security_qa(
         query=valid_query,
@@ -315,17 +313,17 @@ if __name__ == "__main__":
     )
     print(f"  -> insufficient_evidence : {response_1['insufficient_evidence']}")
     print(f"  -> llm_called            : {response_1['llm_called']}")
-    print(f"  -> Số chunk vượt ngưỡng  : {len(response_1['chunks'])}/{len(rrf_candidates)}")
+    print(f"  -> Chunks exceeding threshold  : {len(response_1['chunks'])}/{len(rrf_candidates)}")
     for c in response_1["chunks"]:
         print(
             f"     [Rerank #{c['rank']}] ID: {c['id']} | "
             f"Cross-Encoder Score (Sigmoid): {c['rerank_score']:.4f} | "
             f"Initial RRF Rank: {c['initial_rank']}"
         )
-    print(f"  -> Phản hồi hệ thống     : {response_1['answer']}")
+    print(f"  -> System Response     : {response_1['answer']}")
 
-    print(f"\n[TRƯỜNG HỢP 2] Câu hỏi ngoài phạm vi / không đủ bằng chứng tin cậy:")
-    unrelated_query = "Công thức nấu món phở bò truyền thống Hà Nội và cách chọn gia vị?"
+    print(f"\n[CASE 2] Out-of-Scope Query / Insufficient Confidence Evidence:")
+    unrelated_query = "Traditional Hanoi beef pho recipe and how to choose the spices?"
     response_2 = orchestrate_security_qa(
         query=unrelated_query,
         candidate_chunks=rrf_candidates,
@@ -334,5 +332,5 @@ if __name__ == "__main__":
     print(f"  Query: '{unrelated_query}'")
     print(f"  -> insufficient_evidence : {response_2['insufficient_evidence']}")
     print(f"  -> llm_called            : {response_2['llm_called']}")
-    print(f"  -> Số chunk vượt ngưỡng  : {len(response_2['chunks'])}/{len(rrf_candidates)}")
-    print(f"  -> Phản hồi hệ thống     : {response_2['answer']}")
+    print(f"  -> Chunks exceeding threshold  : {len(response_2['chunks'])}/{len(rrf_candidates)}")
+    print(f"  -> System Response     : {response_2['answer']}")

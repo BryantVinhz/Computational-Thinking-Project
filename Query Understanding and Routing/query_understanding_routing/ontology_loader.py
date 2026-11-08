@@ -1,4 +1,4 @@
-"""Ontology Loader and Validator (Contract v1.0)."""
+"""Ontology Loader and Validator (Contract)."""
 
 from __future__ import annotations
 
@@ -32,7 +32,7 @@ REQUIRED_FIELDS = ["canonical", "aliases", "cwe", "subtypes", "related_terms"]
 
 def load_ontology(path: str | Path = DEFAULT_ONTOLOGY_PATH) -> Dict[str, Dict[str, Any]]:
     """
-    Load and rigorously validate ontology YAML according to Contract v1.0 Section 3.1.
+    Load and rigorously validate ontology YAML according to Contract Section 3.1.
 
     Validations performed:
     1. File exists and is valid YAML.
@@ -97,7 +97,7 @@ def load_ontology(path: str | Path = DEFAULT_ONTOLOGY_PATH) -> Dict[str, Dict[st
 
             # Check L7 rule: do not use overly short/ambiguous alias like "bac"
             if cleaned_alias == "bac":
-                raise ValueError("Alias 'bac' is forbidden due to ambiguity (Contract v1.0 L7).")
+                raise ValueError("Alias 'bac' is forbidden due to ambiguity (Contract L7).")
 
             if cleaned_alias in alias_to_slug:
                 existing_slug = alias_to_slug[cleaned_alias]

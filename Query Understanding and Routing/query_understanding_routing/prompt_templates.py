@@ -1,8 +1,8 @@
 """
-Prompt templates and instruction design for Query Understanding module (Contract v1.0).
+Prompt templates and instruction design for Query Understanding module (Contract).
 
 This module defines system instructions, few-shot examples, and prompt builders
-for LLM-based query understanding adhering to Contract v1.0 schema (Section 4 & 7.2).
+for LLM-based query understanding adhering to Contract schema (Section 4 & 7.2).
 """
 
 from __future__ import annotations
@@ -44,7 +44,7 @@ QUY TẮC CẤU TRÚC 'task[]' VÀ 'objective' (Section 6.3 & 7.2):
 - task.objective BẮT BUỘC là object: {"type": "vulnerabilities" | "documents", "ids": [string]}
 - task.depends_on là null hoặc task_id của task đứng TRƯỚC (không vòng lặp, không tự trỏ).
 
-ĐỊNH DẠNG JSON ĐẦU RA BẮT BUỘC (Contract v1.0 Section 7.2):
+ĐỊNH DẠNG JSON ĐẦU RA BẮT BUỘC (Contract Section 7.2):
 {
   "resolved_query": string,
   "intent": "SEARCH" | "COMPARE" | "SYNTHESIS" | "CLARIFICATION" | "OUT_OF_SCOPE",
@@ -247,7 +247,7 @@ def build_understanding_prompt(
     ontology_summary: Optional[str] = None
 ) -> List[Dict[str, str]]:
     """
-    Construct chat messages for LLM completion adhering to Contract v1.0 Section 7.1.
+    Construct chat messages for LLM completion adhering to Contract Section 7.1.
     History is safely truncated and wrapped as untrusted data.
     """
     try:

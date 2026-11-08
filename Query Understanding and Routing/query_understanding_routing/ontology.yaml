@@ -1,10 +1,10 @@
 # ==============================================================================
-# Ontology YAML for Query Understanding & Routing (Contract v1.0 - Refactored)
+# Ontology YAML for Query Understanding & Routing (Contract - Refactored)
 # Project: Vulnerability Knowledge & Query Understanding Workspace
 # Standard Slugs: xss, sqli, bac, auth_failures, misconfig
 # Rules:
 #   - Missing data must be [] rather than omitted.
-#   - Aliases must not contain ambiguous/short terms like "bac" (Contract v1.0 L7).
+#   - Aliases must not contain ambiguous/short terms like "bac" (Contract L7).
 #   - Aliases must not collide across different entries (case-insensitive).
 #   - Related terms represent defenses, metrics, or concepts (not direct synonyms).
 # Sources: OWASP Top 10 2021/2025, OWASP Cheat Sheets, CWE, ASVS, WSTG.

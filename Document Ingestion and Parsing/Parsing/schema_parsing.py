@@ -32,9 +32,8 @@ class BlockType(str, Enum):
     RECORD = "record"
 
 
-# ---------------------------------------------------------------------------
+
 # Format-specific locators
-# ---------------------------------------------------------------------------
 @dataclass
 class PdfLocator:
     page_number: int                       # 1-based
@@ -86,9 +85,8 @@ ALLOWED_BLOCK_TYPES: dict[str, set[str]] = {
 }
 
 
-# ---------------------------------------------------------------------------
+
 # Main Schema
-# ---------------------------------------------------------------------------
 @dataclass
 class ContentBlockSchema:
     # Identity
@@ -147,9 +145,8 @@ class ContentBlockSchema:
         return d
 
 
-# ---------------------------------------------------------------------------
+
 # Common helpers for all parsers
-# ---------------------------------------------------------------------------
 def make_block_id(version_id: str, block_idx: int) -> str:
     return f"{version_id}_b{block_idx:05d}"
 

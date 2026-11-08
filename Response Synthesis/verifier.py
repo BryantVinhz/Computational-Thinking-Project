@@ -90,10 +90,8 @@ class ExtractedClaim:
     is_advisory: bool       # Belongs to General Knowledge Advisory section (HYBRID)
 
 
-# =====================================================================
-# Text processing utilities
-# =====================================================================
 
+# Text processing utilities
 def _tokens(text: str) -> list[str]:
     normalized = unicodedata.normalize("NFC", text.lower())
     return [t for t in _TOKEN_RE.findall(normalized) if not t.isdigit()]
@@ -147,10 +145,8 @@ def _truncate(text: str, max_chars: int = SNIPPET_MAX_CHARS) -> str:
     return flat if len(flat) <= max_chars else f"{flat[:max_chars].rsplit(' ', 1)[0]}…"
 
 
-# =====================================================================
-# Claim Extraction
-# =====================================================================
 
+# Claim Extraction
 def extract_claims(draft_answer: str, min_tokens: int = MIN_CLAIM_TOKENS) -> list[ExtractedClaim]:
     """
     Split Markdown draft into atomic claims.
@@ -261,10 +257,8 @@ class MultilingualSemanticSimilarity:
         return max(0.0, min(1.0, cosine))
 
 
-# =====================================================================
-# Verifier
-# =====================================================================
 
+# Verifier
 class EvidenceVerifier:
     """Verify claims against evidence and assemble VerificationReportSchema."""
 

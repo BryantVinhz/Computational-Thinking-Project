@@ -1,5 +1,5 @@
 """
-Query Understanding Module (Contract v1.0).
+Query Understanding Module (Contract).
 Part of Stage 2: Query Understanding & Routing.
 
 Responsibilities:
@@ -10,7 +10,7 @@ Responsibilities:
        History truncation algorithm (Section 7.1).
 - 2.4: Clarification logic with confidence thresholding (CLARIFY_THRESHOLD = 0.6)
        and two-way equivalence: intent == CLARIFICATION <=> need_clarify == true.
-- Contract v1.0: Output adheres strictly to Section 4 & 7.2 (returns understanding_result or error_code; routing attaches original_query).
+- Contract: Output adheres strictly to Section 4 & 7.2 (returns understanding_result or error_code; routing attaches original_query).
 """
 
 from __future__ import annotations
@@ -167,7 +167,7 @@ def truncate_conversation_history(
     max_chars: int = HISTORY_MAX_CHARS,
 ) -> List[Dict[str, str]]:
     """
-    Truncate conversation history according to Contract v1.0 Section 7.1:
+    Truncate conversation history according to Contract Section 7.1:
     - Format: [{"role": "user" | "assistant", "content": str}, ...]
     - Take at most max_turns pairs of recent turns (2 * max_turns messages).
     - If a single message > max_chars, cut the head and keep the tail (last max_chars).
@@ -204,7 +204,7 @@ def validate_understanding_schema(
     document_ids: Optional[Set[str]] = None,
 ) -> bool:
     """
-    Validate output against Section 7.2 of Contract v1.0.
+    Validate output against Section 7.2 of Contract.
     Returns True if fully compliant, False otherwise.
     """
     if not isinstance(result, dict):
@@ -332,7 +332,7 @@ def validate_understanding_schema(
 
 
 class QueryUnderstandingEngine:
-    """Core Query Understanding Engine implementing Section 2 requirements under Contract v1.0."""
+    """Core Query Understanding Engine implementing Section 2 requirements under Contract."""
 
     def __init__(self, ontology_path: Optional[Path | str] = None):
         self.ontology_path = Path(ontology_path or DEFAULT_ONTOLOGY_PATH)
@@ -724,7 +724,7 @@ def understand_query(
     llm_client: Any = None
 ) -> Dict[str, Any]:
     """
-    Standard interface function as agreed in Contract v1.0 Section 4:
+    Standard interface function as agreed in Contract Section 4:
     understand_query(normalized_query: str,
                      conversation_history: list[dict] | None = None) -> dict
 

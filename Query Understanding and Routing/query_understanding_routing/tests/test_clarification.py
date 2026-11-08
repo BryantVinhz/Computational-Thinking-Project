@@ -1,4 +1,4 @@
-"""Tests for Clarification Logic and Confidence Threshold (Contract v1.0 Section 2.4)."""
+"""Tests for Clarification Logic and Confidence Threshold (Contract Section 2.4)."""
 
 import sys
 from pathlib import Path
@@ -20,7 +20,7 @@ from query_understanding_routing.understanding_module import understand_query
 
 
 class TestClarificationLogic:
-    """Tests for Contract v1.0 Section 2.4 and Section 0.2 L8."""
+    """Tests for Contract Section 2.4 and Section 0.2 L8."""
 
     def test_vague_query_triggers_clarification(self):
         """Matrix #20: 'Các lỗ hổng nguy hiểm' -> clarification, source=understanding."""
@@ -32,7 +32,7 @@ class TestClarificationLogic:
         assert result["task"] == []
 
     def test_two_way_equivalence_when_clarify_false(self):
-        """Contract v1.0 L8: intent=CLARIFICATION iff need_clarify=true."""
+        """Contract L8: intent=CLARIFICATION iff need_clarify=true."""
         result = understand_query("Cross-Site Scripting hoạt động ra sao?")
         assert result["need_clarify"] is False
         assert result["intent"] != "CLARIFICATION"

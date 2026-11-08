@@ -155,7 +155,7 @@ class MockLLMClient(BaseLLMClient):
         if self.canned_response is not None:
             return self.canned_response
 
-        # Default mock response conforming to Contract v1.0
+        # Default mock response conforming to Contract
         return {
             "resolved_query": normalized_query,
             "intent": "SEARCH",

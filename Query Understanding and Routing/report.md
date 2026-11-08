@@ -11,9 +11,9 @@
 
 ## 1. TỔNG HỢP SO SÁNH VÀ CÁC ĐIỂM ĐÃ SỬA ĐỔI / HOÀN THIỆN
 
-Qua đối soát chi tiết giữa bản kế hoạch ban đầu (bản PDF) và bản kế hoạch hoàn chỉnh mới nhất (`Contract v1.0`), các thay đổi và điểm hoàn thiện trong phần việc của Long bao gồm:
+Qua đối soát chi tiết giữa bản kế hoạch ban đầu (bản PDF) và bản kế hoạch hoàn chỉnh mới nhất (`Contract`), các thay đổi và điểm hoàn thiện trong phần việc của Long bao gồm:
 
-| STT | Hạng mục | Bản cũ (PDF) | Bản mới (Contract v1.0) | Giải pháp và hiện thực của Long |
+| STT | Hạng mục | Bản cũ (PDF) | Bản mới (Contract) | Giải pháp và hiện thực của Long |
 |:---:|:---|:---|:---|:---|
 | **1** | **Alias "bac" trong Ontology** | Cho phép `"bac"` trong aliases | **L7 & Phụ lục A:** Cấm alias `"bac"` vì quá ngắn và đa nghĩa; thêm alias tiếng Việt; không trùng alias giữa các entry | Đã xóa `"bac"` khỏi `aliases` của `bac`; bổ sung `"lỗi kiểm soát truy cập"`, `"lỗi xác thực"`, `"cấu hình sai bảo mật"`; kiểm tra không có alias nào trùng nhau |
 | **2** | **Trường `owasp` trong Ontology** | Chưa quy định trong schema YAML | **Mục 0.2 (L6) & Phụ lục A:** Bổ sung trường `owasp` (ví dụ `A05:2025`, `A01:2025`...) | Đã cập nhật trường `owasp` cho cả 5 slug trong [`ontology.yaml`](file:///D:/computational_thinking/Computational-Thinking-Project/stage2/ontology.yaml) |
@@ -32,7 +32,7 @@ Qua đối soát chi tiết giữa bản kế hoạch ban đầu (bản PDF) và
 ## 2. CHI TIẾT CÁC MODULE VÀ SẢN PHẨM BÀN GIAO CỦA LONG
 
 ### 2.1. Cấu hình hệ thống [`stage2/config.py`](file:///D:/computational_thinking/Computational-Thinking-Project/stage2/config.py)
-Tập hợp toàn bộ các hằng số, ngưỡng và tham số theo đúng Mục 10 của Contract v1.0:
+Tập hợp toàn bộ các hằng số, ngưỡng và tham số theo đúng Mục 10 của Contract:
 - `MIN_QUERY_LEN = 3`, `MAX_QUERY_LEN = 500`.
 - `HISTORY_MAX_TURNS = 3` (3 cặp = 6 messages), `HISTORY_MAX_CHARS = 2000`.
 - `LLM_MAX_RETRIES = 2`, `LLM_TIMEOUT_S = 30.0`, `LLM_TEMPERATURE = 0.0`.
@@ -63,7 +63,7 @@ Hàm `load_ontology(path)` chịu trách nhiệm:
 ---
 
 ### 2.4. Module Query Understanding [`stage2/understanding_module.py`](file:///D:/computational_thinking/Computational-Thinking-Project/stage2/understanding_module.py)
-Triển khai toàn bộ logic nghiệp vụ theo Contract v1.0:
+Triển khai toàn bộ logic nghiệp vụ theo Contract:
 - **Chữ ký chuẩn (Mục 4):**
   ```python
   def understand_query(
@@ -89,7 +89,7 @@ Triển khai toàn bộ logic nghiệp vụ theo Contract v1.0:
 ---
 
 ### 2.5. Thiết kế Prompt chuẩn [`stage2/prompt_templates.py`](file:///D:/computational_thinking/Computational-Thinking-Project/stage2/prompt_templates.py)
-- Cập nhật theo schema Contract v1.0 (không có `original_query`).
+- Cập nhật theo schema Contract (không có `original_query`).
 - Bổ sung hướng dẫn chống Prompt Injection từ lịch sử và quy tắc cô lập dữ liệu người dùng.
 - Tích hợp 5 few-shot examples mẫu bao quát các nhánh: Search, Dependent co-reference, Multi-task decomposition, Ambiguous clarification, và Out-of-scope.
 
@@ -191,7 +191,7 @@ stage2/tests/test_understanding.py::TestLLMRetriesAndErrorCodes::test_llm_timeou
 
 ## 5. KẾT LUẬN & TÍNH SẴN SÀNG TÍCH HỢP
 
-Toàn bộ các yêu cầu của Long trong tài liệu phân công hoàn chỉnh `Contract v1.0` đã được rà soát, vá lỗi, hoàn thiện mã nguồn và kiểm thử tự động 100%.  
+Toàn bộ các yêu cầu của Long trong tài liệu phân công hoàn chỉnh `Contract` đã được rà soát, vá lỗi, hoàn thiện mã nguồn và kiểm thử tự động 100%.  
 Module của Long đã sẵn sàng ở mức cao nhất để:
 1. Giao `ontology.yaml` cho Trí bổ sung Alias Mapping (Pha B).
 2. Cung cấp hàm `understand_query()` kết nối trực tiếp với hàm `route()` và `process_query()` của Trí.

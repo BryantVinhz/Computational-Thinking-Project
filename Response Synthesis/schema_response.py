@@ -30,10 +30,8 @@ class VerificationStatus(str, Enum):
     SKIPPED = "SKIPPED"              # Verification skipped (e.g., when Abstention is triggered)
 
 
-# =====================================================================
-# 1. SYNTHESIS OUTPUT CONTRACT (SYNTHESIS DRAFT)
-# =====================================================================
 
+# 1. SYNTHESIS OUTPUT CONTRACT (SYNTHESIS DRAFT)
 @dataclass
 class SynthesizedDraftSchema:
     """
@@ -68,10 +66,8 @@ class SynthesizedDraftSchema:
         )
 
 
-# =====================================================================
-# 2. VERIFICATION & TRACEABILITY CONTRACT
-# =====================================================================
 
+# 2. VERIFICATION & TRACEABILITY CONTRACT
 @dataclass
 class ClaimVerificationResult:
     """Verification result for an individual atomic claim."""
@@ -134,10 +130,8 @@ class TraceableCitationSchema:
         return asdict(self)
 
 
-# =====================================================================
-# 3. END-TO-END SYSTEM OUTPUT CONTRACT (FINAL RESPONSE ENVELOPE)
-# =====================================================================
 
+# 3. END-TO-END SYSTEM OUTPUT CONTRACT (FINAL RESPONSE ENVELOPE)
 @dataclass
 class FinalResponseEnvelope:
     """

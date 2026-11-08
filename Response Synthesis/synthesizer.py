@@ -146,9 +146,8 @@ class ResponseSynthesizer:
         llm_context = retrieval_output.get("llm_context", "").strip()
         total_evidence = int(retrieval_output.get("total_evidence", len(retrieval_output.get("evidence_list", []))))
 
-        # -------------------------------------------------------------
+
         # 1. CASE: CLARIFICATION NEEDED
-        # -------------------------------------------------------------
         if status == "clarification_needed":
             latency = time.perf_counter() - start_time
             clarify_text = llm_context or "Your request is unclear. Please provide more specific details."
@@ -168,9 +167,8 @@ class ResponseSynthesizer:
                 },
             )
 
-        # -------------------------------------------------------------
+
         # 2. CASE: INSUFFICIENT EVIDENCE (ABSTENTION POLICY - NONE)
-        # -------------------------------------------------------------
         if evidence_status == "NONE" or total_evidence == 0 or not llm_context:
             latency = time.perf_counter() - start_time
             abstention_answer = (
@@ -194,9 +192,8 @@ class ResponseSynthesizer:
                 },
             )
 
-        # -------------------------------------------------------------
+
         # 3. CASE: GROUNDED EVIDENCE AVAILABLE (HYBRID MODE or STRICT RAG MODE)
-        # -------------------------------------------------------------
         generation_mode = "HYBRID" if evidence_status == "PARTIAL" else "STRICT_RAG"
 
         # Build messages prompt

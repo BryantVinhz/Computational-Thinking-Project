@@ -83,7 +83,7 @@ class TestClaimExtraction(unittest.TestCase):
     def test_marks_advisory_section(self):
         answer = (
             "Nội dung có tài liệu chứng minh rõ ràng [1].\n\n"
-            "### 💡 Khuyến nghị (General Knowledge Advisory)\n"
+            "### Khuyến nghị (General Knowledge Advisory)\n"
             "- Triển khai phòng thủ theo chiều sâu kết hợp kiểm thử định kỳ.\n"
         )
         claims = extract_claims(answer)

@@ -1,4 +1,4 @@
-"""Tests for Conversation Context and Co-reference Resolution (Contract v1.0 Section 2.3 & 7.1)."""
+"""Tests for Conversation Context and Co-reference Resolution (Contract Section 2.3 & 7.1)."""
 
 import sys
 from pathlib import Path
@@ -23,7 +23,7 @@ from query_understanding_routing.understanding_module import (
 
 
 class TestHistoryTruncation:
-    """Tests for Contract v1.0 Section 7.1 history truncation algorithm."""
+    """Tests for Contract Section 7.1 history truncation algorithm."""
 
     def test_truncate_non_list_history(self):
         assert truncate_conversation_history(None) == []
@@ -60,7 +60,7 @@ class TestHistoryTruncation:
 
 
 class TestContextUsedRules:
-    """Tests for Contract v1.0 Section 2.3 context_used evaluation."""
+    """Tests for Contract Section 2.3 context_used evaluation."""
 
     def test_dependent_query_sets_context_used_true(self):
         history = [

@@ -120,7 +120,7 @@ def _is_valid_task(task, seen_ids: set[str], slugs: set[str], document_ids) -> b
 
 
 def _is_valid_understanding(result: dict, slugs: set[str], document_ids) -> bool:
-    """Return True if understanding_result follows Contract v1.0 Section 7.2."""
+    """Return True if understanding_result follows Contract Section 7.2."""
     if any(key not in result for key in UNDERSTANDING_KEYS):
         return False
 

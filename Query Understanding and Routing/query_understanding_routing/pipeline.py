@@ -1,4 +1,4 @@
-"""Pipeline: validation -> normalization -> understanding -> routing (Contract v1.0)."""
+"""Pipeline: validation -> normalization -> understanding -> routing (Contract)."""
 
 import logging
 import time
@@ -97,7 +97,7 @@ def process_query(
     ontology=None,
     document_ids=None,
 ) -> dict:
-    """Run the full pipeline and return exactly one Contract v1.0 response envelope."""
+    """Run the full pipeline and return exactly one Contract response envelope."""
     start = time.perf_counter()
     try:
         envelope = _run(raw_query, conversation_history, llm_client, ontology, document_ids)

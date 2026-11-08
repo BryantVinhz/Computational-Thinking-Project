@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-Manual Test Runner for Query Understanding & Routing (Contract v1.0).
+Manual Test Runner for Query Understanding & Routing (Contract).
 
 Allows running pre-configured test cases or interactive queries through:
 - Validation (structural & safety checks)
 - Normalization (whitespace, unicode, ontology alias mapping)
 - Understanding (intent classification, entity extraction, multi-task parsing)
-- Routing (Contract v1.0 JSON response envelope)
+- Routing (Contract JSON response envelope)
 - End-to-End RAG (retrieval + response generation)
 """
 

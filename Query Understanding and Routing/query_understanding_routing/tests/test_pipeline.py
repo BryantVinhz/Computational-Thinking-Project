@@ -1,4 +1,4 @@
-"""Tests for the pipeline orchestration (Contract v1.0)."""
+"""Tests for the pipeline orchestration (Contract)."""
 
 import json
 import logging

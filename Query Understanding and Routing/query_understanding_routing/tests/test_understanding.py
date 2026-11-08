@@ -1,12 +1,12 @@
 """
-Unit and Integration Test Suite for Query Understanding Module (Contract v1.0).
+Unit and Integration Test Suite for Query Understanding Module (Contract).
 
 Tests coverage:
 - 2.1: Ontology YAML validation (5 slugs, canonical, aliases, cwe, subtypes, related_terms, owasp, NO 'bac' alias)
 - 2.2: Intent classification, entities & filters extraction, multi-task parsing
 - 2.3: Context_used rules & History Truncation (Section 7.1)
 - 2.4: Clarification logic, confidence threshold (0.6), two-way equivalence
-- Contract v1.0: understanding_result does NOT contain original_query
+- Contract: understanding_result does NOT contain original_query
 - Section 11: Mandatory test matrix verification
 """
 
@@ -60,14 +60,14 @@ class TestOntologyYAMLAndLoader:
             assert len(entry["cwe"]) > 0
 
     def test_no_bac_in_aliases(self):
-        """Contract v1.0 L7: Do not use overly short/ambiguous alias like 'bac'."""
+        """Contract L7: Do not use overly short/ambiguous alias like 'bac'."""
         data = load_ontology(DEFAULT_ONTOLOGY_PATH)
         for slug, entry in data.items():
             lower_aliases = [str(a).lower() for a in entry["aliases"]]
             assert "bac" not in lower_aliases
 
     def test_owasp_field_present(self):
-        """Contract v1.0 Section 3.1 #1 & Phụ lục A: owasp field."""
+        """Contract Section 3.1 #1 & Phụ lục A: owasp field."""
         data = load_ontology(DEFAULT_ONTOLOGY_PATH)
         for slug, entry in data.items():
             assert "owasp" in entry
@@ -75,10 +75,10 @@ class TestOntologyYAMLAndLoader:
 
 
 class TestContractOutputSchemaV1:
-    """Verify Contract v1.0 Section 4 & 7.2 output schema compliance."""
+    """Verify Contract Section 4 & 7.2 output schema compliance."""
 
     def test_understanding_result_has_no_original_query(self):
-        """Contract v1.0 Section 4: understanding_module returns understanding_result WITHOUT original_query."""
+        """Contract Section 4: understanding_module returns understanding_result WITHOUT original_query."""
         result = understand_query("XSS là gì?")
         assert "original_query" not in result, "understanding_result must NOT contain original_query"
         expected_keys = {
@@ -177,7 +177,7 @@ class TestQueryUnderstandingCore:
 
 
 class TestLLMRetriesAndErrorCodes:
-    """Tests for Contract v1.0 Section 7.3: LLM error codes & retry behavior."""
+    """Tests for Contract Section 7.3: LLM error codes & retry behavior."""
 
     class MockBadJsonLLM:
         def __init__(self):

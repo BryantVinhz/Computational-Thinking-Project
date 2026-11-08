@@ -1,4 +1,4 @@
-"""Tests for the Routing module (Contract v1.0)."""
+"""Tests for the Routing module (Contract)."""
 
 import os
 from copy import deepcopy

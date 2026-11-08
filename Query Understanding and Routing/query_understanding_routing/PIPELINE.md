@@ -1,4 +1,4 @@
-# Pipeline Integration (Contract v1.0)
+# Pipeline Integration (Contract)
 
 Orchestrates Validation → Normalization → Understanding → Routing.
 
@@ -62,7 +62,7 @@ Do not leave `REQUIRE_INTEGRATION` set when dependencies cannot be imported: int
 
 1. **Rule-based Understanding**: This phase uses Long's deterministic engine. LLM-dependent cases are pending.
 2. **Multi-turn attacks**: Validation runs once per turn. Multi-turn attack patterns are not detected (v1.0 known gap; test is `xfail`).
-3. **`llm_client` parameter**: Pipeline extension outside Contract v1.0, forwarded as a keyword to `understand_query`. No live-LLM tests yet.
+3. **`llm_client` parameter**: Pipeline extension outside Contract, forwarded as a keyword to `understand_query`. No live-LLM tests yet.
 4. **Configuration**: Unified in `query_understanding_routing/config.py`. Legacy `stage_2` shims have been retired.
 5. **Ontology cache**: The default ontology is loaded once per process. A failed load is not cached; a caller-supplied ontology skips loading.
 6. **Caller ontology**: must be a non-empty dict. `None` selects the default; anything else returns `internal_error`.
