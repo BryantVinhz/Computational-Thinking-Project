@@ -1,13 +1,13 @@
 """
 Schema for Step 2: Document Parsing.
 
-General conventions (all parsers must follow):
-- One record corresponds to one block (ContentBlockSchema).
-- page_number, start_line, end_line, start_row, and end_row are all 1-based.
-- bbox = [x0, y0, x1, y1], origin at the top-left corner of the page (PyMuPDF convention), in points.
-- CSV: start_row/end_row count data rows only, excluding the header row.
-- text_content is always the raw unnormalized text (Step 3 handles normalization).
-- document_id and version_id come from DocumentVersionSchema (schema_ingestion.py).
+Common conventions (must be followed by all parsers):
+- One record = one block (ContentBlockSchema).
+- page_number, start_line, end_line, start_row, end_row are all 1-based.
+- bbox = [x0, y0, x1, y1], origin at top-left corner of the page (PyMuPDF standard), in points.
+- CSV: start_row/end_row count data rows, NOT including header row.
+- text_content is always the raw text before normalization (handled in step 3).
+- document_id, version_id come from DocumentVersionSchema (schema_ingestion.py).
 """
 import hashlib
 import sys
@@ -23,7 +23,7 @@ class BlockType(str, Enum):
     LIST = "list"
     TABLE = "table"
     CODE = "code"
-    # Primarily encountered in PDFs
+    # Primarily found in PDF
     FIGURE = "figure"
     CAPTION = "caption"
     FOOTNOTE = "footnote"
@@ -32,13 +32,15 @@ class BlockType(str, Enum):
     RECORD = "record"
 
 
+# ---------------------------------------------------------------------------
 # Format-specific locators
+# ---------------------------------------------------------------------------
 @dataclass
 class PdfLocator:
     page_number: int                       # 1-based
     bbox: list[float] | None = None        # [x0, y0, x1, y1], top-left origin
     is_ocr: bool = False
-    ocr_confidence: float | None = None    # 0..1, present only when is_ocr = True
+    ocr_confidence: float | None = None    # 0..1, only present when is_ocr = True
 
 
 @dataclass
@@ -50,7 +52,7 @@ class LineLocator:
 
 @dataclass
 class CsvLocator:
-    table_idx: int = 0                     # 0 if the file has only 1 table
+    table_idx: int = 0                     # 0 if file contains only 1 table
     start_row: int = 1                     # 1-based, excluding header
     end_row: int = 1
 
@@ -62,7 +64,7 @@ class JsonLocator:
 
 Locator = PdfLocator | LineLocator | CsvLocator | JsonLocator
 
-# Locator class required per file format
+# Locator mapping by format
 LOCATOR_BY_FORMAT: dict[str, type] = {
     FileFormat.PDF.value: PdfLocator,
     FileFormat.MARKDOWN.value: LineLocator,
@@ -71,7 +73,7 @@ LOCATOR_BY_FORMAT: dict[str, type] = {
     FileFormat.JSON.value: JsonLocator,
 }
 
-# Allowed block types per file format
+# Allowed block types by format
 ALLOWED_BLOCK_TYPES: dict[str, set[str]] = {
     FileFormat.PDF.value: {t.value for t in BlockType if t != BlockType.RECORD},
     FileFormat.MARKDOWN.value: {
@@ -84,34 +86,37 @@ ALLOWED_BLOCK_TYPES: dict[str, set[str]] = {
 }
 
 
+# ---------------------------------------------------------------------------
+# Main Schema
+# ---------------------------------------------------------------------------
 @dataclass
 class ContentBlockSchema:
-    # Identifiers
+    # Identity
     block_id: str                          # {version_id}_b{block_idx:05d}
     document_id: str
     version_id: str
-    block_idx: int                         # 0-based order within the document
+    block_idx: int                         # order in document, 0-based
     file_format: str                       # FileFormat value
 
     # Content
     block_type: str                        # BlockType value
-    text_content: str                      # Raw text content
-    text_hash: str                         # SHA-256 of text_content
+    text_content: str                      # raw text
+    text_hash: str                         # sha256 of text_content
 
     # Parser provenance
     parser_name: str                       # e.g. "markdown-it-py", "pymupdf"
     parser_version: str
 
-    # Locator: matches file_format
+    # Locator: exactly 1 type according to file_format
     locator: Locator | None = None
 
     # Structural context
-    heading_path: list[str] = field(default_factory=list)   # populated during parsing/postprocessing
+    heading_path: list[str] = field(default_factory=list)   # assigned during postprocessing
     heading_level: int | None = None       # only when block_type = heading
     code_language: str | None = None       # only when block_type = code
     lang: str | None = None                # "vi", "en"
 
-    # Table fields (block_type = table)
+    # Table (block_type = table)
     table_header_cols: list[str] | None = None
     table_rows: list[list[str]] | None = None
     continues_from_previous: bool = False  # multi-page PDF table continuation
@@ -123,8 +128,8 @@ class ContentBlockSchema:
         return asdict(self)
 
     def to_flat_dict(self) -> dict:
-        """Flatten locator fields into top-level keys for SQLite storage.
-        Locator columns not applicable to this format are set to None."""
+        """Flatten locator into separate columns for SQLite convenience.
+        Locator columns not applicable for this format will be None."""
         d = asdict(self)
         loc = d.pop("locator") or {}
         d.update({
@@ -142,7 +147,9 @@ class ContentBlockSchema:
         return d
 
 
-# Shared helpers for all parsers
+# ---------------------------------------------------------------------------
+# Common helpers for all parsers
+# ---------------------------------------------------------------------------
 def make_block_id(version_id: str, block_idx: int) -> str:
     return f"{version_id}_b{block_idx:05d}"
 
@@ -152,51 +159,51 @@ def make_text_hash(text: str) -> str:
 
 
 def validate_block(block: ContentBlockSchema) -> list[str]:
-    """Return a list of validation errors; an empty list means the block is valid."""
+    """Return list of validation errors; empty means valid."""
     errors: list[str] = []
     fmt = block.file_format
 
     if fmt not in LOCATOR_BY_FORMAT:
-        return [f"file_format không được hỗ trợ: {fmt}"]
+        return [f"Unsupported file_format: {fmt}"]
 
     if block.block_type not in ALLOWED_BLOCK_TYPES[fmt]:
-        errors.append(f"block_type '{block.block_type}' không hợp lệ cho {fmt}")
+        errors.append(f"block_type '{block.block_type}' is not valid for {fmt}")
 
     expected = LOCATOR_BY_FORMAT[fmt]
     if not isinstance(block.locator, expected):
-        errors.append(f"{fmt} cần locator kiểu {expected.__name__}")
+        errors.append(f"{fmt} requires locator of type {expected.__name__}")
     else:
         loc = block.locator
         if isinstance(loc, PdfLocator):
             if loc.page_number < 1:
-                errors.append("page_number phải >= 1")
+                errors.append("page_number must be >= 1")
             if loc.bbox is not None and len(loc.bbox) != 4:
-                errors.append("bbox phải có 4 phần tử")
+                errors.append("bbox must have 4 elements")
         elif isinstance(loc, LineLocator):
             if loc.start_line < 1 or loc.end_line < loc.start_line:
-                errors.append("line range không hợp lệ")
+                errors.append("invalid line range")
         elif isinstance(loc, CsvLocator):
             if loc.start_row < 1 or loc.end_row < loc.start_row:
-                errors.append("row range không hợp lệ")
+                errors.append("invalid row range")
         elif isinstance(loc, JsonLocator):
             if not loc.json_path.startswith("$"):
-                errors.append("json_path phải bắt đầu bằng '$'")
+                errors.append("json_path must start with '$'")
 
     if block.block_type == BlockType.HEADING.value and block.heading_level is None:
-        errors.append("heading thiếu heading_level")
+        errors.append("heading missing heading_level")
     if block.block_type == BlockType.TABLE.value:
         if block.table_header_cols is None or block.table_rows is None:
-            errors.append("table thiếu table_header_cols/table_rows")
+            errors.append("table missing table_header_cols/table_rows")
         else:
             n = len(block.table_header_cols)
             if any(len(r) != n for r in block.table_rows):
-                errors.append("table có dòng lệch số cột")
+                errors.append("table has ragged rows (mismatched column count)")
     if block.block_type == BlockType.RECORD.value and block.raw_record is None:
-        errors.append("record thiếu raw_record")
+        errors.append("record missing raw_record")
     if not block.text_content.strip():
-        errors.append("text_content rỗng")
+        errors.append("empty text_content")
     if block.text_hash != make_text_hash(block.text_content):
-        errors.append("text_hash không khớp text_content")
+        errors.append("text_hash does not match text_content")
     if block.block_id != make_block_id(block.version_id, block.block_idx):
-        errors.append("block_id không khớp quy ước")
+        errors.append("block_id does not follow convention")
     return errors

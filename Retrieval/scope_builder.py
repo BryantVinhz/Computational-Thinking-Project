@@ -121,10 +121,12 @@ class ScopeBuilder:
         if not text:
             return []
         
-        # Matches:
-        # 1. 4-digit year
-        # 2. Version with 'v' or 'ver' prefix: v4.0, ver5.0.0
-        # 3. Decimal/SemVer format: 4.0, 5.0.0, 3.1
+        """
+        Pattern bắt:
+            1. 4-digit year 
+            2. Version with 'v' or 'ver' prefix: v4.0, ver5.0.0
+            3. Decimal/SemVer format: 4.0, 5.0.0, 3.1
+        """
         pattern = r"\b(?:v(?:er(?:sion)?)?\.?\s*)?(\d{4}|\d+(?:\.\d+)+)\b"
         
         matches = re.findall(pattern, text, flags=re.IGNORECASE)

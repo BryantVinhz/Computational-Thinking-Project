@@ -1,6 +1,6 @@
 """
-Markdown Parser: extracts .md documents into HEADING, PARAGRAPH, LIST, TABLE, and CODE blocks.
-Follows schema_parsing.py conventions and uses helpers from parser_utils.py.
+Markdown Parser: extracts .md documents into HEADING, PARAGRAPH, LIST, TABLE, CODE blocks.
+Complies with schema_parsing.py standards and uses helpers from parser_utils.py.
 """
 import re
 from bs4 import BeautifulSoup
@@ -18,7 +18,7 @@ _IMAGE_OR_LINK_TAG = re.compile(r"!\[.*?\]\(.*?\)(\{:.*?\})?")
 
 
 def _clean_heading_title(raw_title: str) -> str:
-    """Strip markdown '#' prefixes and image/icon tags to obtain a clean title for heading_path."""
+    """Strip markdown '#' characters and images/icons to get a clean title for heading_path."""
     cleaned = _HEADING_CLEAN.sub("", raw_title).strip()
     cleaned = _IMAGE_OR_LINK_TAG.sub("", cleaned).strip()
     return cleaned or raw_title.strip()
@@ -28,14 +28,14 @@ class MarkdownParser:
     file_format = FileFormat.MARKDOWN.value
 
     def __init__(self):
-        # Disable linkify to avoid depending on linkify-it-py; enable table for GFM pipe tables
+        # Disable linkify to avoid linkify-it-py dependency; enable table to support GFM pipe tables
         self.md = MarkdownIt().disable("linkify").enable("table")
 
     def parse(self, version: DocumentVersionSchema) -> list[ContentBlockSchema]:
         raw_text = read_text(version)
         lines = raw_text.splitlines()
         if not raw_text.strip():
-            raise ValueError("Markdown không có nội dung")
+            raise ValueError("Markdown has no content")
 
         tokens = self.md.parse(raw_text)
         blocks: list[ContentBlockSchema] = []
@@ -52,7 +52,7 @@ class MarkdownParser:
                 inline_token = tokens[i + 1] if i + 1 < n and tokens[i + 1].type == "inline" else None
                 heading_title = _clean_heading_title(inline_token.content if inline_token else "")
 
-                # Update heading stack according to hierarchy
+                # Update hierarchical heading stack
                 while heading_stack and heading_stack[-1][0] >= level:
                     heading_stack.pop()
                 heading_stack.append((level, heading_title))
@@ -114,7 +114,7 @@ class MarkdownParser:
                         parser_version=PARSER_VERSION,
                         heading_path=[h[1] for h in heading_stack],
                     ))
-                # Skip past the entire list block
+                # Skip entire list block
                 depth = 1
                 i += 1
                 while i < n and depth > 0:
@@ -152,7 +152,7 @@ class MarkdownParser:
                             rows.append(current_row)
                             current_row = []
                     i += 1
-                i += 1  # advance past table_close
+                i += 1  # pass table_close
 
                 num_cols = len(headers)
                 if num_cols == 0 and rows:
@@ -175,7 +175,7 @@ class MarkdownParser:
                     ))
                 continue
 
-            # 5. HTML BLOCK (May contain a <table> or general HTML content)
+            # 5. HTML BLOCK (May contain <table> or HTML content)
             if token.type == "html_block":
                 start_idx, end_idx = token.map[0], token.map[1]
                 text_content = "\n".join(lines[start_idx:end_idx])
@@ -247,7 +247,7 @@ class MarkdownParser:
             i += 1
 
         if not blocks:
-            raise ValueError("Markdown không sinh được block nào")
+            raise ValueError("Markdown generated no blocks")
         return blocks
 
 

@@ -37,12 +37,12 @@ from rag_orchestrator import DefaultTraceableFormatter, RAGOrchestrator
 
 class TestPromptTemplates(unittest.TestCase):
     def test_extract_citation_tags(self):
-        text = "SQL Injection xảy ra do [1] và [2]. Biện pháp phòng vệ là [2] và [3]. Không hợp lệ [abc]."
+        text = "SQL Injection occurs due to [1] and [2]. Remediation includes [2] and [3]. Invalid [abc]."
         tags = extract_citation_tags(text)
         self.assertEqual(tags, ["[1]", "[2]", "[3]"])
 
     def test_extract_empty_tags(self):
-        self.assertEqual(extract_citation_tags("Không có tag nào"), [])
+        self.assertEqual(extract_citation_tags("No tags here"), [])
         self.assertEqual(extract_citation_tags(""), [])
 
     def test_search_prompt_strict_vs_hybrid(self):

@@ -1,8 +1,8 @@
 """
-JSON Parser: splits a JSON file into RECORD blocks using general structural rules (independent of key names):
-- Root is a list -> each element becomes 1 record at $[i].
-- Root is a dict -> any key whose value is a collection (a list/dict where all children are lists/dicts)
-  produces 1 record per child; remaining keys are grouped into a single metadata record at "$".
+JSON Parser: splits files into RECORD blocks following common rules (independent of key names):
+- Root is a list -> each element is 1 record at $[i].
+- Root is a dict -> any "collection" key (list/dict where all child elements are list/dict) becomes 1 record per child;
+  remaining keys are grouped into 1 metadata record at "$".
 - Root is a scalar -> 1 record at "$".
 """
 import json
@@ -20,7 +20,7 @@ _IDENTIFIER = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*$")
 
 
 def build_json_path(parent: str, key: str | int) -> str:
-    """Append one step to a JSONPath: index -> [i], identifier -> .key, otherwise -> ['key']."""
+    """Append 1 step to JSONPath: index -> [i], identifier -> .key, else -> ['key']."""
     if isinstance(key, int):
         return f"{parent}[{key}]"
     if _IDENTIFIER.match(key):
@@ -35,12 +35,12 @@ def _is_collection(value) -> bool:
 
 
 def _scalar_to_text(value) -> str:
-    # Keep strings as-is; format numbers/booleans/null as JSON literals (true/false/null)
+    # strings remain unchanged; numbers/booleans/nulls formatted as JSON (true/false/null)
     return value if isinstance(value, str) else json.dumps(value, ensure_ascii=False)
 
 
 def _flatten(value, prefix: str = "") -> list[str]:
-    """Flatten a value into "path.key: value" lines preserving original key order."""
+    """Flatten value into 'path: value' lines according to original key order."""
     if isinstance(value, dict):
         lines = []
         for k, v in value.items():
@@ -63,13 +63,13 @@ class JsonParser:
         try:
             data = json.loads(read_text(version))
         except json.JSONDecodeError as e:
-            raise ValueError(f"JSON không hợp lệ: dòng {e.lineno} cột {e.colno}: {e.msg}") from e
+            raise ValueError(f"Invalid JSON: line {e.lineno} (dòng {e.lineno}) column {e.colno}: {e.msg}") from e
 
         blocks: list[ContentBlockSchema] = []
         for json_path, title, value in self._split_records(data):
             lines = _flatten(value)
             if not "".join(lines).strip():
-                continue  # skip empty records ({}, [], "") that have no searchable content
+                continue  # empty records ({}, [], "") have no searchable content
             text = "\n".join([title, *lines]) if title else "\n".join(lines)
             blocks.append(build_block(
                 version,
@@ -83,12 +83,12 @@ class JsonParser:
             ))
 
         if not blocks:
-            raise ValueError("JSON không có record nào có nội dung")
+            raise ValueError("JSON contains no records with content")
         return blocks
 
     @staticmethod
     def _split_records(data) -> list[tuple[str, str | None, object]]:
-        """Return a list of (json_path, record_title, value) tuples."""
+        """Return list of (json_path, record_title, value)."""
         if isinstance(data, list):
             return [(build_json_path("$", i), f"[{i}]", item) for i, item in enumerate(data)]
         if not isinstance(data, dict):
@@ -106,7 +106,7 @@ class JsonParser:
                 title = child_key if isinstance(child_key, str) else f"{key}[{child_key}]"
                 collections.append((build_json_path(parent, child_key), title, child))
 
-        # Place metadata record first so block_idx 0 describes the document as a whole
+        # Metadata record comes first so block_idx 0 describes the whole document
         return ([("$", None, metadata)] if metadata else []) + collections
 
 

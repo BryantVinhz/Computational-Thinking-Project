@@ -1,7 +1,7 @@
 """
-PDF Parser: extracts .pdf documents into HEADING, PARAGRAPH, LIST, TABLE, CODE, and HEADER_FOOTER blocks.
-Uses PyMuPDF (fitz) to detect layout, bounding boxes, font sizes, and tables.
-Follows schema_parsing.py conventions and uses helpers from parser_utils.py.
+PDF Parser: extracts .pdf documents into HEADING, PARAGRAPH, LIST, TABLE, CODE, HEADER_FOOTER blocks.
+Uses PyMuPDF (fitz) to detect layout, bbox coordinates, font sizes, and tables.
+Complies with schema_parsing.py standards and uses helpers from parser_utils.py.
 """
 import re
 from pathlib import Path
@@ -20,7 +20,7 @@ _PAGE_NUM_RE = re.compile(r"^(page\s+\d+(\s+of\s+\d+)?|\d+(\s*/\s*\d+)?)$", re.I
 
 
 def _bbox_overlap(b1: list[float], b2: list[float], threshold: float = 0.5) -> bool:
-    """Check whether bbox b1 lies mostly inside bbox b2 (e.g., a table)."""
+    """Check whether bbox b1 largely overlaps inside bbox b2 (e.g. table)."""
     x0 = max(b1[0], b2[0])
     y0 = max(b1[1], b2[1])
     x1 = min(b1[2], b2[2])
@@ -40,10 +40,10 @@ class PdfParser:
         try:
             doc = pymupdf.open(file_path)
         except Exception as e:
-            raise ValueError(f"Không mở được file PDF: {file_path.name} ({e})") from e
+            raise ValueError(f"Cannot open PDF file: {file_path.name} ({e})") from e
 
         if len(doc) == 0:
-            raise ValueError("PDF không có trang nào")
+            raise ValueError("PDF has no pages")
 
         blocks: list[ContentBlockSchema] = []
         heading_stack: list[tuple[int, str]] = []
@@ -90,7 +90,7 @@ class PdfParser:
                         padded = padded[:num_cols]
                     data_rows.append(padded)
 
-                # Check if table continues from the previous page
+                # Check continuation of table from previous page
                 continues = False
                 if prev_table_cols and len(prev_table_cols) == num_cols and t.bbox[1] < 120:
                     continues = True
@@ -111,7 +111,7 @@ class PdfParser:
                     "y0": bbox_clean[1],
                 })
 
-            # 2. Extract text blocks from layout dictionary
+            # 2. Extract text blocks from layout dict
             page_dict = page.get_text("dict")
             text_blocks_on_page = []
 
@@ -120,7 +120,7 @@ class PdfParser:
                     continue
                 b_bbox = [round(float(c), 2) for c in b["bbox"]]
 
-                # Skip if block overlaps with an already-extracted table
+                # Skip if block is inside an extracted table
                 if any(_bbox_overlap(b_bbox, t_bbox) for t_bbox in table_bboxes):
                     continue
 
@@ -146,7 +146,7 @@ class PdfParser:
                 if not block_text:
                     continue
 
-                # Classify block by position and font style/size
+                # Classify block by context & dimensions
                 is_header_footer = False
                 if b_bbox[1] < 45 or b_bbox[3] > (page_height - 45):
                     if len(full_lines) <= 2 or _PAGE_NUM_RE.match(block_text):
@@ -183,7 +183,7 @@ class PdfParser:
                     "y0": b_bbox[1],
                 })
 
-            # 3. Sort in reading order (y0 from top to bottom of page)
+            # 3. Sort by reading order (y0 top-to-bottom on page)
             all_page_items = []
             for t in tables_on_page:
                 all_page_items.append(("table", t["y0"], t))
@@ -191,7 +191,7 @@ class PdfParser:
                 all_page_items.append(("text", tb["y0"], tb))
             all_page_items.sort(key=lambda x: x[1])
 
-            # 4. Build ContentBlockSchema instances
+            # 4. Generate ContentBlockSchema
             for kind, _, item in all_page_items:
                 if kind == "table":
                     blocks.append(build_block(
@@ -239,7 +239,7 @@ class PdfParser:
                     ))
 
         if not blocks:
-            raise ValueError("PDF không sinh được block nào")
+            raise ValueError("PDF generated no blocks")
         return blocks
 
 

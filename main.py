@@ -83,12 +83,12 @@ if __name__ == "__main__":
 
 
             print("\n" + "-" * 80)
-            print("[RESPONE]: ")
+            print("[RESPONSE]: ")
             print("-" * 80)
             print(envelope.final_answer_markdown)
             print("-" * 80)
 
-            # Print moderation and verification metadata
+            # Print control metadata
             print(f">>> [Moderation] Status: {envelope.status} | Intent: {envelope.intent}")
             if envelope.verification:
                 v = envelope.verification

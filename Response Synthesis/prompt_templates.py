@@ -2,11 +2,11 @@
 Module: prompt_templates.py
 Stage 4: Response Synthesis, Evidence Verification, and Traceable Response
 
-Standardized prompt templates for query intents:
-- SEARCH (Single-concept search and explanation)
-- COMPARE (Multi-entity or vulnerability comparison)
+Standardized Prompt Templates system for Intents:
+- SEARCH (Single entity explanation & retrieval)
+- COMPARE (Multi-entity / vulnerability comparison)
 - SYNTHESIS (Comprehensive multi-document synthesis)
-Supports STRICT_RAG and HYBRID MODE based on `evidence_status`.
+- Supports STRICT_RAG and HYBRID MODE according to `evidence_status`.
 """
 
 from __future__ import annotations
@@ -56,7 +56,7 @@ Hệ thống kích hoạt chính sách từ chối trả lời (Abstention Polic
 def extract_citation_tags(text: str) -> list[str]:
     """
     Extract all citation tags of the form [1], [2] from Markdown text,
-    deduplicate them, and sort in ascending integer order.
+    remove duplicates, and sort in ascending integer order.
     """
     if not text:
         return []
@@ -70,113 +70,9 @@ def build_search_prompt(
     llm_context: str,
     mode: str = "STRICT_RAG",
 ) -> str:
-    """Build prompt for the SEARCH intent (Search & Explanation)."""
+    """Prompt template for SEARCH intent (Search & Explain)."""
     guideline = HYBRID_MODE_GUIDELINES if mode == "HYBRID" else STRICT_RAG_GUIDELINES
     return f"""{guideline}
 
 === BẰNG CHỨNG TÀI LIỆU ĐƯỢC CUNG CẤP (CONTEXT) ===
 {llm_context}
-===================================================
-
-YÊU CẦU CHO INTENT 'SEARCH':
-- Trả lời trực tiếp, chính xác và có chiều sâu kỹ thuật cho câu hỏi của người dùng.
-- Cấu trúc đề xuất:
-  1. Khái niệm / Định nghĩa cốt lõi (kèm [i])
-  2. Cơ chế hoạt động & Vector tấn công / Rủi ro (kèm [i])
-  3. Biện pháp phòng chống, khắc phục và mã mẫu an toàn (Secure Code Example) (kèm [i])
-
-CÂU HỎI CỦA NGƯỜI DÙNG:
-{query}
-
-Hãy sinh câu trả lời Markdown hoàn chỉnh:"""
-
-
-def build_compare_prompt(
-    query: str,
-    llm_context: str,
-    mode: str = "STRICT_RAG",
-) -> str:
-    """Build prompt for the COMPARE intent (Comparison & Contrast)."""
-    guideline = HYBRID_MODE_GUIDELINES if mode == "HYBRID" else STRICT_RAG_GUIDELINES
-    return f"""{guideline}
-
-=== BẰNG CHỨNG TÀI LIỆU ĐƯỢC CUNG CẤP (CONTEXT) ===
-{llm_context}
-===================================================
-
-YÊU CẦU CHO INTENT 'COMPARE':
-- Thực hiện so sánh đối chiếu đa chiều giữa các thực thể, lỗ hổng hoặc cơ chế an ninh được hỏi.
-- BẮT BUỘC phải bao gồm:
-  1. Bảng so sánh tổng hợp (Markdown Table) với các tiêu chí tối thiểu: Khái niệm, Vị trí/Tầng tác động, Mức độ rủi ro (CVSS/CWE), Phương thức khai thác, Biện pháp phòng vệ chính.
-  2. Phân tích chi tiết điểm tương đồng và khác biệt cốt lõi (gắn thẻ trích dẫn [i]).
-  3. Kịch bản thực tế áp dụng hoặc tình huống dễ gây nhầm lẫn giữa chúng.
-
-CÂU HỎI SO SÁNH:
-{query}
-
-Hãy sinh câu trả lời so sánh Markdown hoàn chỉnh:"""
-
-
-def build_synthesis_prompt(
-    query: str,
-    llm_context: str,
-    mode: str = "STRICT_RAG",
-) -> str:
-    """Build prompt for the SYNTHESIS intent (Comprehensive Multi-Faceted Synthesis)."""
-    guideline = HYBRID_MODE_GUIDELINES if mode == "HYBRID" else STRICT_RAG_GUIDELINES
-    return f"""{guideline}
-
-=== BẰNG CHỨNG TÀI LIỆU ĐƯỢC CUNG CẤP (CONTEXT) ===
-{llm_context}
-===================================================
-
-YÊU CẦU CHO INTENT 'SYNTHESIS':
-- Tổng hợp kiến thức từ nhiều nguồn tài liệu thành một tài liệu tham vấn an toàn thông tin toàn diện và có cấu trúc mạch lạc.
-- Cấu trúc đề xuất:
-  ## 1. Tóm tắt điều hành (Executive Summary)
-  ## 2. Bối cảnh & Phân tích rủi ro kỹ thuật (Technical Threat Landscape)
-  ## 3. Chiến lược phòng vệ theo chiều sâu (Defense-in-Depth Roadmap)
-  ## 4. Ánh xạ Tiêu chuẩn & Khung hướng dẫn (OWASP / CWE / ASVS Mapping)
-- Chèn trích dẫn [i] xuyên suốt các mục nội dung.
-
-YÊU CẦU TỔNG HỢP:
-{query}
-
-Hãy sinh bản thảo tổng hợp Markdown hoàn chỉnh:"""
-
-
-def build_synthesis_messages(
-    query: str,
-    llm_context: str,
-    intent: str = "SEARCH",
-    evidence_status: str = "FULL",
-    conversation_history: list[dict[str, Any]] | None = None,
-) -> list[dict[str, str]]:
-    """
-    Build the chat messages payload for the LLM client.
-    Automatically selects the appropriate prompt builder based on intent and evidence_status.
-    """
-    mode = "HYBRID" if evidence_status.upper() == "PARTIAL" else "STRICT_RAG"
-    normalized_intent = (intent or "SEARCH").upper()
-
-    if normalized_intent == "COMPARE":
-        user_prompt = build_compare_prompt(query, llm_context, mode=mode)
-    elif normalized_intent == "SYNTHESIS":
-        user_prompt = build_synthesis_prompt(query, llm_context, mode=mode)
-    else:  # Fallback to SEARCH
-        user_prompt = build_search_prompt(query, llm_context, mode=mode)
-
-    messages: list[dict[str, str]] = [
-        {"role": "system", "content": SYSTEM_INSTRUCTION_SYNTHESIS}
-    ]
-
-    # Include up to the 4 most recent conversation turns if available
-    if conversation_history:
-        for turn in conversation_history[-4:]:
-            role = str(turn.get("role", "user"))
-            content = str(turn.get("content", ""))
-            if content.strip():
-                messages.append({"role": role, "content": content})
-
-    messages.append({"role": "user", "content": user_prompt})
-    return messages

@@ -10,7 +10,7 @@ if hasattr(sys.stdout, "reconfigure"):
 import chromadb
 from chromadb.utils.embedding_functions import SentenceTransformerEmbeddingFunction
 
-# Ensure modules in Retrieval and Document Ingestion and Parsing can be imported
+# Đảm bảo import được các module trong Retrieval và Document Ingestion and Parsing
 CURRENT_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = CURRENT_DIR.parent
 METADATA_DIR = PROJECT_ROOT / "Document Ingestion and Parsing" / "Metadata"
@@ -33,9 +33,9 @@ logger = logging.getLogger(__name__)
 
 class DenseRetriever:
     """
-    Dense Retrieval using ChromaDB and the embedding model configured in Stage 1.
-    ChromaDB automatically embeds the query (via SentenceTransformerEmbeddingFunction)
-    or accepts a precomputed query_vector and performs semantic search using cosine distance (HNSW).
+    Hướng 2: Dense Retrieval sử dụng ChromaDB và mô hình Embedding đã cấu hình ở Phase 1.
+    ChromaDB tự động nhúng câu truy vấn (qua SentenceTransformerEmbeddingFunction)
+    hoặc nhận trực tiếp query_vector và tìm kiếm ngữ nghĩa theo khoảng cách Cosine (HNSW).
     """
 
     def __init__(
@@ -54,7 +54,7 @@ class DenseRetriever:
 
     @property
     def collection(self):
-        """Initialize or return the ChromaDB collection (lazy-loaded once)."""
+        """Khởi tạo hoặc trả về ChromaDB collection (lazy-load 1 lần duy nhất)."""
         if self._collection is None:
             self._collection = get_chroma_collection(
                 db_path=self.db_path,
@@ -66,7 +66,7 @@ class DenseRetriever:
 
     @staticmethod
     def _normalize_metadata(raw_meta: dict[str, Any] | None) -> dict[str, Any]:
-        """Restore heading_path from a JSON string in ChromaDB back to list[str]."""
+        """Khôi phục heading_path từ chuỗi JSON trong ChromaDB về lại list[str]."""
         meta_copy = dict(raw_meta or {})
         hp = meta_copy.get("heading_path", [])
         if isinstance(hp, str):
@@ -97,17 +97,17 @@ class DenseRetriever:
         fallback_unfiltered: bool = True,
     ) -> list[dict[str, Any]]:
         """
-        Retrieve the top_k semantically closest chunks from ChromaDB.
+        Truy xuất top_k chunks có ngữ nghĩa gần nhất từ ChromaDB.
 
         Args:
-            query_text: Text query (ChromaDB will automatically invoke the configured embedding function).
-            query_vector: Precomputed query embedding vector (if computed via QueryVectorizer).
-            chroma_filter: Metadata filter (ChromaDB where clause from ScopeBuilder).
-            top_k: Maximum number of results to retrieve.
-            fallback_unfiltered: Automatically search the entire DB if strict filtering returns 0 results.
+            query_text: Câu truy vấn văn bản (ChromaDB sẽ tự động gọi hàm Embedding đã cấu hình).
+            query_vector: Vector embedding của câu truy vấn (nếu đã tính trước qua QueryVectorizer).
+            chroma_filter: Bộ lọc metadata (where clause của ChromaDB từ ScopeBuilder).
+            top_k: Số lượng kết quả tối đa cần lấy.
+            fallback_unfiltered: Tự động tìm trên toàn bộ DB nếu bộ lọc quá chặt trả về 0 kết quả.
 
         Returns:
-            List of ranked chunks (rank = 1, 2, ...) with cosine similarity scores.
+            Danh sách các chunk đã xếp hạng (rank = 1, 2, ...) kèm điểm tương đồng Cosine.
         """
         if not query_vector and (not query_text or not query_text.strip()):
             raise ValueError("Cần cung cấp 'query_text' hoặc 'query_vector' để thực hiện Dense Retrieval.")
@@ -128,7 +128,7 @@ class DenseRetriever:
         raw_results = self.collection.query(**query_kwargs)
         ids_list = (raw_results.get("ids") or [[]])[0]
 
-        # Fall back to unfiltered search if scoped filtering returns no results and relaxation is enabled
+        # Nếu lọc theo scope không ra kết quả nào và cho phép nới lỏng (fallback)
         if not ids_list and chroma_filter and fallback_unfiltered:
             logger.warning(
                 "Dense Retrieval với chroma_filter=%s không có kết quả. Tự động nới lỏng bộ lọc.",
@@ -146,7 +146,7 @@ class DenseRetriever:
         for rank, (c_id, text, meta, dist) in enumerate(
             zip(ids_list, docs_list, metas_list, dists_list), start=1
         ):
-            # ChromaDB uses "hnsw:space": "cosine" => distance = 1 - cosine_similarity
+            # ChromaDB dùng "hnsw:space": "cosine" => distance = 1 - cosine_similarity
             cosine_similarity = round(max(0.0, 1.0 - float(dist)), 6)
             normalized_meta = self._normalize_metadata(meta)
 
@@ -174,7 +174,7 @@ class DenseRetriever:
         fallback_unfiltered=None,
     ) -> list[dict[str, Any]]:
         """
-        Accept a ScopedRetrievalPayload from Scope Building and execute Dense Retrieval.
+        Nhận trực tiếp ScopedRetrievalPayload từ bước Scope Building và thực hiện Dense Retrieval.
         """
         chroma_filter = payload.scope.chroma_filter if payload.scope else None
         # Scope filters are hard constraints: never widen to the whole corpus behind the caller's back.
@@ -197,7 +197,7 @@ def dense_search(
     collection: Any | None = None,
 ) -> list[dict[str, Any]]:
     """
-    Convenience helper to invoke Dense Retrieval directly with ChromaDB.
+    Hàm tiện ích gọn nhẹ để gọi trực tiếp Dense Retrieval với ChromaDB.
     """
     retriever = DenseRetriever(collection=collection)
     return retriever.retrieve(
@@ -206,3 +206,4 @@ def dense_search(
         chroma_filter=chroma_filter,
         top_k=top_k,
     )
+

@@ -1,6 +1,6 @@
 """
-TXT Parser: segments plain text into PARAGRAPH, LIST, and CODE blocks separated by blank lines.
-Plain text has no heading syntax, so HEADING blocks are not emitted (nor allowed by the schema).
+TXT Parser: splits plain text into PARAGRAPH / LIST / CODE blocks separated by blank lines.
+TXT lacks heading syntax so it never generates HEADING (not allowed by schema either).
 """
 import re
 
@@ -9,7 +9,7 @@ from Ingestion.schema_ingestion import DocumentVersionSchema, FileFormat
 from schema_parsing import BlockType, ContentBlockSchema, LineLocator
 
 PARSER_NAME = "txt-rule-parser"
-PARSER_VERSION = "1.0.0"  # increment when segmentation rules change
+PARSER_VERSION = "1.0.0"  # increment when block segmentation rules change
 
 _FENCE = re.compile(r"^\s*(```|~~~)\s*([\w+#.-]*)")
 _BULLET = re.compile(r"^\s*([-*•+]|\d+[.)]|[a-zA-Z][.)])\s+")
@@ -29,7 +29,7 @@ class TxtParser:
     def parse(self, version: DocumentVersionSchema) -> list[ContentBlockSchema]:
         lines = read_text(version).splitlines()
         if all(_is_blank(line) for line in lines):
-            raise ValueError("TXT không có nội dung")
+            raise ValueError("TXT has no content")
 
         blocks: list[ContentBlockSchema] = []
         for block_type, start, end, code_language in self._segment(lines):
@@ -47,7 +47,7 @@ class TxtParser:
         return blocks
 
     def _segment(self, lines: list[str]) -> list[tuple[str, int, int, str | None]]:
-        """Return a list of (block_type, start_idx, end_idx, code_language) tuples."""
+        """Return list of (block_type, start_idx, end_idx, code_language)."""
         segments = []
         i, n = 0, len(lines)
         while i < n:
@@ -57,14 +57,14 @@ class TxtParser:
 
             fence = _FENCE.match(lines[i])
             if fence:
-                # Fenced code takes precedence: includes internal blank lines; if unclosed, extends to EOF
+                # Fenced code has priority over all rules: includes blank lines inside; unclosed -> extends to EOF
                 marker = fence.group(1)
                 end = next((j for j in range(i + 1, n) if lines[j].lstrip().startswith(marker)), n - 1)
                 segments.append((BlockType.CODE.value, i, end, fence.group(2) or None))
                 i = end + 1
                 continue
 
-            # Group consecutive non-blank lines, stopping before a blank line or new fence
+            # Group = consecutive non-blank lines, stops before blank lines or new fence
             start = i
             while i < n and not _is_blank(lines[i]) and not _FENCE.match(lines[i]):
                 i += 1
@@ -73,11 +73,11 @@ class TxtParser:
 
     @staticmethod
     def _classify_group(lines: list[str], start: int, end: int) -> list[tuple[str, int, int, None]]:
-        """Classify a group of lines; split into multiple blocks if paragraphs and lists alternate."""
+        """Classify a line group; splits into multiple blocks if alternating paragraphs and lists."""
         if all(_is_indented_code(lines[j]) for j in range(start, end + 1)):
             return [(BlockType.CODE.value, start, end, None)]
 
-        # Label each line: bullets and indented continuation lines immediately following a bullet are LIST
+        # Label each line: bullets and indented lines immediately following bullets (continuation lines) are lists
         kinds = []
         for j in range(start, end + 1):
             line = lines[j]
@@ -85,7 +85,7 @@ class TxtParser:
             is_list = _BULLET.match(line) or is_continuation
             kinds.append(BlockType.LIST.value if is_list else BlockType.PARAGRAPH.value)
 
-        # Merge consecutive lines with the same label into a single block
+        # Merge consecutive lines with the same label into 1 block
         result = []
         run_start = start
         for offset in range(1, len(kinds) + 1):

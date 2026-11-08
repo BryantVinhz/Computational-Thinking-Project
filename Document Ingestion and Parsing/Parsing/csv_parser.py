@@ -1,5 +1,5 @@
 """
-CSV Parser: maps each data row to a single RECORD block so search results can cite the exact source row.
+CSV Parser: each data row -> 1 RECORD block, allowing search results to cite exact source rows.
 """
 import csv
 import io
@@ -26,10 +26,10 @@ class CsvParser:
         try:
             header = self._read_header(reader)
             if header is None:
-                raise ValueError("CSV không có header")
+                raise ValueError("CSV has no header")
 
             blocks: list[ContentBlockSchema] = []
-            # row_num counts every row after the header (including blank rows) to match actual file positions
+            # row_num counts every row after header (including blank rows) to match actual line position in file
             for row_num, row in enumerate(reader, start=1):
                 if not any(cell.strip() for cell in row):
                     continue
@@ -45,10 +45,10 @@ class CsvParser:
                     raw_record=record,
                 ))
         except csv.Error as e:
-            raise ValueError(f"CSV lỗi định dạng ở dòng {reader.line_num}: {e}") from e
+            raise ValueError(f"CSV format error at line {reader.line_num}: {e}") from e
 
         if not blocks:
-            raise ValueError("CSV không có dòng dữ liệu")
+            raise ValueError("CSV contains no data rows")
         return blocks
 
     @staticmethod
@@ -56,11 +56,11 @@ class CsvParser:
         try:
             return csv.Sniffer().sniff(text[:SNIFF_SAMPLE_SIZE], delimiters=CANDIDATE_DELIMITERS)
         except csv.Error:
-            return csv.excel  # default to comma delimiter
+            return csv.excel  # default comma
 
     @staticmethod
     def _read_header(reader) -> list[str] | None:
-        """Use the first non-empty row as header; rename empty or duplicate column names."""
+        """Take the first non-empty row as header; rename empty/duplicate columns."""
         for row in reader:
             if not any(cell.strip() for cell in row):
                 continue
@@ -79,7 +79,7 @@ class CsvParser:
 
     @staticmethod
     def _to_record(header: list[str], row: list[str]) -> dict:
-        """Pair header names with row values; pad missing columns with "" and place extra columns in _extra."""
+        """Zip header with raw values; pad '' if missing columns, put extra columns into _extra."""
         padded = row + [""] * (len(header) - len(row))
         record = dict(zip(header, padded))
         if len(row) > len(header):

@@ -1,10 +1,11 @@
 """
 Module: synthesizer.py
 Stage 4: Response Synthesis, Evidence Verification, and Traceable Response
+Role: NGUYEN (Response Synthesis)
 
-Calls the LLM to generate a draft answer (SynthesizedDraftSchema)
-based on retrieved document context (Evidence Chunks) and query intent,
-supporting branching across:
+Module calls LLM to generate answer drafts (SynthesizedDraftSchema)
+based on document context from Retrieval (Evidence Chunks) and Intent,
+supporting flexible branching between:
 - STRICT RAG MODE (evidence_status == FULL)
 - HYBRID MODE (evidence_status == PARTIAL)
 - ABSTENTION FLOW (evidence_status == NONE or clarification_needed)
@@ -36,7 +37,7 @@ logger = logging.getLogger(__name__)
 
 @runtime_checkable
 class GenerativeLLM(Protocol):
-    """Standard protocol for LLM clients in the response synthesis layer."""
+    """Standard protocol for LLM Client in the synthesis layer."""
     model_name: str
 
     def generate(
@@ -50,8 +51,8 @@ class GenerativeLLM(Protocol):
 
 class DefaultDeterministicLLM:
     """
-    Fallback deterministic LLM when no external API key is configured.
-    Generates structured sample answers with [1], [2] citation tags
+    Fallback deterministic LLM when external API key is not configured.
+    Generates structured sample answers with accurate [1], [2] citation tags
     for testing and offline validation.
     """
     model_name: str = "builtin-deterministic-synthesis"
@@ -62,7 +63,7 @@ class DefaultDeterministicLLM:
         system_instruction: str | None = None,
         **kwargs: Any,
     ) -> str:
-        # Prompt may be a string or a list of chat messages
+        # Prompt can be string or list of messages
         query_text = ""
         context_text = ""
         mode = "STRICT_RAG"
@@ -102,14 +103,14 @@ class DefaultDeterministicLLM:
 
 class ResponseSynthesizer:
     """
-    Response Synthesis Layer (Stage 4).
-    Accepts retrieval output and generates a SynthesizedDraftSchema with [1], [2] citation tags.
+    Response synthesis layer (Stage 4 - Synthesis Layer).
+    Receives input from Retrieval and generates SynthesizedDraftSchema with tags [1], [2].
     """
 
     def __init__(self, llm_client: Any | None = None):
         """
         Initialize ResponseSynthesizer.
-        If `llm_client` is not provided, defaults to ColabLLMClient.
+        If `llm_client` is not provided, automatically find client from Stage 2 or use DefaultDeterministicLLM.
         """
         if llm_client is not None:
             self.llm_client = llm_client
@@ -126,16 +127,16 @@ class ResponseSynthesizer:
         conversation_history: list[dict[str, Any]] | None = None,
     ) -> SynthesizedDraftSchema:
         """
-        Synthesize a draft response from Retrieval results.
+        Synthesize answer draft from Retrieval results.
         
         Args:
-            query: User query (original_query or resolved_query).
-            retrieval_output: Output dictionary returned by RetrievalSystem.retrieve(plan).
+            query: User question (original_query or resolved_query).
+            retrieval_output: Result returned from RetrievalSystem.retrieve(plan).
             intent: Query intent (SEARCH | COMPARE | SYNTHESIS).
             conversation_history: Conversation history if available.
             
         Returns:
-            SynthesizedDraftSchema: Contains draft answer, citation tags [1], [2], and metadata.
+            SynthesizedDraftSchema: Contains answer draft, tags [1], [2], and metadata.
         """
         start_time = time.perf_counter()
 
@@ -145,10 +146,12 @@ class ResponseSynthesizer:
         llm_context = retrieval_output.get("llm_context", "").strip()
         total_evidence = int(retrieval_output.get("total_evidence", len(retrieval_output.get("evidence_list", []))))
 
-        # 1. Clarification needed
+        # -------------------------------------------------------------
+        # 1. CASE: CLARIFICATION NEEDED
+        # -------------------------------------------------------------
         if status == "clarification_needed":
             latency = time.perf_counter() - start_time
-            clarify_text = llm_context or "Yêu cầu của bạn chưa rõ ràng. Vui lòng cung cấp thêm thông tin chi tiết."
+            clarify_text = llm_context or "Your request is unclear. Please provide more specific details."
             return SynthesizedDraftSchema(
                 draft_answer=clarify_text,
                 intent=resolved_intent,
@@ -165,13 +168,15 @@ class ResponseSynthesizer:
                 },
             )
 
-        # 2. No evidence available (Abstention Policy - NONE)
+        # -------------------------------------------------------------
+        # 2. CASE: INSUFFICIENT EVIDENCE (ABSTENTION POLICY - NONE)
+        # -------------------------------------------------------------
         if evidence_status == "NONE" or total_evidence == 0 or not llm_context:
             latency = time.perf_counter() - start_time
             abstention_answer = (
                 llm_context
-                or f"Hệ thống không tìm thấy bằng chứng tài liệu bảo mật phù hợp cho câu hỏi: '{query}'. "
-                f"Chính sách từ chối (Abstention Policy) được kích hoạt để tránh thông tin sai lệch."
+                or f"The system found insufficient security documentation evidence for the question: '{query}'. "
+                f"Abstention policy is activated to avoid misinformation."
             )
             return SynthesizedDraftSchema(
                 draft_answer=abstention_answer,
@@ -189,10 +194,12 @@ class ResponseSynthesizer:
                 },
             )
 
-        # 3. Evidence available: HYBRID MODE or STRICT RAG MODE
+        # -------------------------------------------------------------
+        # 3. CASE: GROUNDED EVIDENCE AVAILABLE (HYBRID MODE or STRICT RAG MODE)
+        # -------------------------------------------------------------
         generation_mode = "HYBRID" if evidence_status == "PARTIAL" else "STRICT_RAG"
 
-        # Build prompt messages
+        # Build messages prompt
         messages = build_synthesis_messages(
             query=query,
             llm_context=llm_context,
@@ -210,7 +217,7 @@ class ResponseSynthesizer:
         except Exception as e:
             logger.error("LLM generate failed: %s", e)
             return SynthesizedDraftSchema(
-                draft_answer="Hệ thống tạm thời không kết nối được mô hình sinh câu trả lời. Vui lòng thử lại sau.",
+                draft_answer="The system is temporarily unable to connect to the synthesis model. Please try again later.",
                 intent=resolved_intent, cited_evidence_ids=[],
                 is_abstained=True, abstention_reason="llm_unavailable",
                 evidence_status=evidence_status, generation_mode="ABSTENTION",
@@ -219,7 +226,7 @@ class ResponseSynthesizer:
                                     "error": str(e)},
             )
 
-        # Extract all citation tags [1], [2] from the Markdown text
+        # Extract all citation tags [1], [2] from Markdown text
         cited_tags = extract_citation_tags(draft_answer)
 
         latency = time.perf_counter() - start_time
