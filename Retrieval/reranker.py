@@ -21,7 +21,7 @@ for _dir in (PROJECT_ROOT, CURRENT_DIR, RETRIEVAL_DIR):
 
 logger = logging.getLogger(__name__)
 
-DEFAULT_RERANKER_MODEL = "BAAI/bge-reranker-v2-m3"
+DEFAULT_RERANKER_MODEL = "BAAI/bge-m3"
 FALLBACK_RERANKER_MODEL = "cross-encoder/ms-marco-MiniLM-L-6-v2"
 DEFAULT_CONFIDENCE_THRESHOLD = 0.35
 ABSTENTION_MESSAGE = "Không tìm thấy thông tin phù hợp trong kho tài liệu bảo mật"
