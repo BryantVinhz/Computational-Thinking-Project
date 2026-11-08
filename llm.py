@@ -1,7 +1,7 @@
 import requests
 from typing import Any
 
-COLAB_URL = "https://eat-worldwide-necessity-fred.trycloudflare.com"
+COLAB_URL = "https://motor-residential-dresses-hair.trycloudflare.com"
 class ColabLLMClient:
     """client calls the LLM running on Google Colab via FastAPI"""
     model_name: str = "Qwen2.5-3B-Instruct-colab-remote"
