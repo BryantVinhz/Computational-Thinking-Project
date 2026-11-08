@@ -2,35 +2,32 @@
   {
     "test_id": "TEST_01",
     "scenario": "SINGLE_HOP_SEARCH",
-    "query": "Làm thế nào để phòng chống lỗ hổng SQL Injection theo OWASP?",
+    "query": "What is XSS?",
     "ground_truth": {
       "expected_intent": "SEARCH",
       "target_documents": [
-        "Data/OWASP_A03-SQL-Injection-Prevention-Cheat-Sheet_2021-2025.md",
-        "Data/OWASP_A03-Query-Parameterization-Cheat-Sheet_2021-2025.md",
+        "Data/OWASP_A03-Cross-Site-Scripting-Prevention-Cheat-Sheet_2021-2025.md",
+        "Data/OWASP_A03-DOM-based-XSS-Prevention-Cheat-Sheet_2021-2025.md",
         "Data/OWASP_A03-Injection-Prevention-Cheat-Sheet_2021-2025.md",
         "Data/OWASP_Top10-A03-Injection_2021.md", 
         "Data/OWASP_Top10-A05-Injection_2025.md",
-        "Data/OWASP_Application-Security-Verification-Standard_5.0.0.pdf"
+        "Data/OWASP_WSTG-testing-methods_v4.2.md"
       ],
       "key_headings": [
-        "Primary Defenses", "Defense Option 1: Prepared Statements (with Parameterized Queries)",
-        "Stored Procedures", "Allow-List Input Validation", "Escaping All Dynamic Inputs (STRONGLY DISCOURAGED)",
-        "Hardening", "Least Privilege", "Minimizing Application and OS Privileges",
-        "Details Of Least Privilege When Developing", "Enhancing Least Privilege with SQL Views",
-        "Forms of Injection", "Injection Prevention Rules",
-        "How to Prevent", "V1.2 Injection Prevention", "Prepared Statement Examples", "Stored Procedure Examples"
+        "XSS Defense Philosophy", "Safe Sinks", "Other Controls", "Content Security Policy", "Trusted Types",
+        "RULE 6 - Populate the DOM using safe JavaScript functions or properties",
+        "RULE 7 - Fixing DOM Cross-site Scripting Vulnerabilities",
+        "List of Mapped CWEs", "Cross-Site Scripting (XSS)",
+        "1. Test Objectives", "2. Testing Approach &amp; Methodology"
       ],
       "expected_evidence_status": "FULL",
       "ideal_answer_points": [
-        "Truy vấn tham số hóa (Prepared Statements / Parameterized Queries)",
-        "Bắt buộc liên kết tham số khi gọi thủ tục (Stored Procedures)",
-        "Sử dụng công cụ ORM / Entity Framework an toàn",
-        "Xử lý các thành phần cấu trúc truy vấn (Allow-List Input Validation)",
-        "Gia cố bảo mật và áp dụng nguyên tắc quyền tối thiểu (Least Privilege)",
-        "Cấp quyền tối thiểu cho tài khoản CSDL ứng dụng dùng để kết nối",
-        "Sử dụng SQL Views",
-        "Giới hạn quyền hạn của tài khoản OS chạy DBMS (không chạy DBMS dưới quyền root hoặc system)"
+        "Cross-Site Scripting (XSS) là lỗ hổng bảo mật xảy ra khi ứng dụng web đưa dữ liệu không tin cậy (untrusted data) vào trang web mà không được kiểm tra, làm sạch hoặc mã hóa đúng cách theo ngữ cảnh",
+        "Tác hại của XSS: Khai thác thành công XSS cho phép kẻ tấn công mạo danh người dùng (account impersonation), đánh cắp cookie/phiên làm việc (session hijacking), theo dõi hành vi người dùng, hoặc đánh cắp dữ liệu nhạy cảm",
+        "Reflected XSS: Mã độc được chèn vào một request HTTP duy nhất và phản hồi ngay lập tức trong response từ máy chủ",
+        "Stored XSS: Mã độc được lưu trữ cố định trên máy chủ (ví dụ: trong CSDL, bài đăng, bình luận) và tự động thực thi mỗi khi người dùng truy cập vào tài nguyên đó",
+        "DOM-based XSS: Luồng tấn công diễn ra hoàn toàn ở phía client, khi mã JavaScript đọc dữ liệu không tin cậy từ một nguồn phía client và truyền trực tiếp vào các hàm/điểm thực thi nguy hiểm (sinks)",
+        "Các phương pháp phòng chống chính: Mã hóa đầu ra theo ngữ cảnh (Context-Aware Output Encoding), Làm sạch HTML (HTML Sanitization), Sử dụng các DOM Sinks an toàn, Phòng thủ chiều sâu (Defense-in-Depth)"
       ]
     }
   },
@@ -64,7 +61,7 @@
     {
     "test_id": "TEST_03",
     "scenario": "COMPREHENSIVE_SYNTHESIS",
-    "query": "Compile comprehensive solutions for securing user authentication systems for me",
+    "query": "Tổng hợp các giải pháp kiến trúc toàn diện nhằm bảo mật hệ thống xác thực người dùng",
     "ground_truth": {
       "expected_intent": "SYNTHESIS",
       "target_documents": [
@@ -190,7 +187,7 @@
       ],
       "expected_evidence_status": "NONE",
       "ideal_answer_points": [
-        "Trong toàn bộ hệ thống tài liệu OWASP Cheat Sheet, **hoàn toàn không có** thuật toán hay giao thức nào có tên OWASP Query Tokenization Protocol hoặc QTP-256",
+        "Trong toàn bộ hệ thống tài liệu OWASP Cheat Sheet, hoàn toàn không có thuật toán hay giao thức nào có tên OWASP Query Tokenization Protocol hoặc QTP-256",
         "OWASP khẳng định Prepared Statements (Parameterized Queries) vẫn là biện pháp phòng vệ cấp 1 (Primary Defense) cốt lõi và không bị thay thế bởi bất kỳ giao thức tokenization nào"
       ]
     }
@@ -291,6 +288,20 @@
       "ideal_answer_points": [
         "Nhận diện câu truy vấn chưa phân loại cụ thể",
         "Dừng luồng sớm (early-exit) và phản hồi tin nhắn yêu cầu làm rõ phạm vi tìm kiếm (như Loại lỗ hỏng nào?)"
+      ]
+    }
+  },
+    {
+    "test_id": "TEST_12",
+    "scenario": "SHORT_QUERY",
+    "query": "Injection",
+    "ground_truth": {
+      "expected_intent": "CLARIFICATION",
+      "target_documents": [],
+      "key_headings": [],
+      "expected_evidence_status": "NONE",
+      "ideal_answer_points": [
+        "Dừng luồng sớm (early-exit) và phản hồi tin nhắn yêu cầu làm rõ câu hỏi"
       ]
     }
   }
