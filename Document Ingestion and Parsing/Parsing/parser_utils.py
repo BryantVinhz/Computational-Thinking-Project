@@ -1,11 +1,11 @@
 """
-Helper dùng chung cho các parser CSV / JSON / TXT (Step 2: Document Parsing).
+Shared helpers for CSV, JSON, and TXT parsers (Step 2: Document Parsing).
 """
 import json
 import sys
 from pathlib import Path
 
-# Đảm bảo import được path.py và package Ingestion/ khi chạy trực tiếp file parser
+# Ensure path.py and the Ingestion/ package can be imported when running a parser file directly
 CURRENT_DIR = Path(__file__).resolve().parent
 PARENT_DIR = CURRENT_DIR.parent
 for _p in (CURRENT_DIR, PARENT_DIR):
@@ -24,7 +24,7 @@ from schema_parsing import (
 
 
 def read_text(version: DocumentVersionSchema) -> str:
-    """Đọc file của version dưới dạng text UTF-8 (tự bỏ BOM)."""
+    """Read a document version file as UTF-8 text (stripping any BOM)."""
     file_path = to_actual_path(version.file_path)
     try:
         return file_path.read_text(encoding="utf-8-sig")
@@ -42,7 +42,7 @@ def build_block(
     parser_version: str,
     **extra,
 ) -> ContentBlockSchema:
-    """Tạo ContentBlockSchema đã điền ID, hash và kiểm định theo schema."""
+    """Create a ContentBlockSchema populated with ID and hash, and validate it against the schema."""
     block = ContentBlockSchema(
         block_id=make_block_id(version.version_id, block_idx),
         document_id=version.document_id,
@@ -59,13 +59,13 @@ def build_block(
     )
     errors = validate_block(block)
     if errors:
-        # Lỗi ở đây là bug của parser, không phải lỗi dữ liệu -> không nuốt
+        # Validation errors here indicate a parser bug rather than a data error, so raise immediately
         raise ValueError(f"Block {block.block_id} không hợp lệ: {'; '.join(errors)}")
     return block
 
 
 def run_cli(parser) -> None:
-    """Chạy thử parser trên manifest Step 1 và ghi output vào PARSING_OUT_DIR."""
+    """Run a parser against the Step 1 manifest and write outputs to PARSING_OUT_DIR."""
     versions_path = INGESTION_OUT_DIR / "documents_version.json"
     versions = [
         DocumentVersionSchema(**item)

@@ -1,13 +1,13 @@
 """
-Schema cho bước 2: Document Parsing.
+Schema for Step 2: Document Parsing.
 
-Quy ước chung (tất cả parser phải tuân thủ):
-- Một record = một block (ContentBlockSchema).
-- page_number, start_line, end_line, start_row, end_row đều 1-based.
-- bbox = [x0, y0, x1, y1], gốc tọa độ ở góc TRÊN-TRÁI trang (chuẩn PyMuPDF), đơn vị point.
-- CSV: start_row/end_row đánh số theo dòng dữ liệu, KHÔNG tính dòng header.
-- text_content luôn là bản gốc chưa chuẩn hóa (bước 3 sẽ xử lý riêng).
-- document_id, version_id lấy từ DocumentVersionSchema (schema_ingestion.py).
+General conventions (all parsers must follow):
+- One record corresponds to one block (ContentBlockSchema).
+- page_number, start_line, end_line, start_row, and end_row are all 1-based.
+- bbox = [x0, y0, x1, y1], origin at the top-left corner of the page (PyMuPDF convention), in points.
+- CSV: start_row/end_row count data rows only, excluding the header row.
+- text_content is always the raw unnormalized text (Step 3 handles normalization).
+- document_id and version_id come from DocumentVersionSchema (schema_ingestion.py).
 """
 import hashlib
 import sys
@@ -23,48 +23,46 @@ class BlockType(str, Enum):
     LIST = "list"
     TABLE = "table"
     CODE = "code"
-    # Chủ yếu gặp ở PDF
+    # Primarily encountered in PDFs
     FIGURE = "figure"
     CAPTION = "caption"
     FOOTNOTE = "footnote"
     HEADER_FOOTER = "header_footer"
-    # Dùng cho JSON/CSV: một bản ghi có cấu trúc
+    # Used for JSON/CSV: a structured record
     RECORD = "record"
 
 
-# ---------------------------------------------------------------------------
-# Locator riêng cho từng định dạng
-# ---------------------------------------------------------------------------
+# Format-specific locators
 @dataclass
 class PdfLocator:
     page_number: int                       # 1-based
-    bbox: list[float] | None = None        # [x0, y0, x1, y1], gốc trên-trái
+    bbox: list[float] | None = None        # [x0, y0, x1, y1], top-left origin
     is_ocr: bool = False
-    ocr_confidence: float | None = None    # 0..1, chỉ có khi is_ocr = True
+    ocr_confidence: float | None = None    # 0..1, present only when is_ocr = True
 
 
 @dataclass
 class LineLocator:
-    """Dùng cho MARKDOWN và TXT."""
+    """Used for MARKDOWN and TXT."""
     start_line: int                        # 1-based
-    end_line: int                          # 1-based, bao gồm
+    end_line: int                          # 1-based, inclusive
 
 
 @dataclass
 class CsvLocator:
-    table_idx: int = 0                     # 0 nếu file chỉ có 1 bảng
-    start_row: int = 1                     # 1-based, không tính header
+    table_idx: int = 0                     # 0 if the file has only 1 table
+    start_row: int = 1                     # 1-based, excluding header
     end_row: int = 1
 
 
 @dataclass
 class JsonLocator:
-    json_path: str                         # ví dụ "$.weaknesses[12]"
+    json_path: str                         # e.g. "$.weaknesses[12]"
 
 
 Locator = PdfLocator | LineLocator | CsvLocator | JsonLocator
 
-# Định dạng nào dùng locator nào
+# Locator class required per file format
 LOCATOR_BY_FORMAT: dict[str, type] = {
     FileFormat.PDF.value: PdfLocator,
     FileFormat.MARKDOWN.value: LineLocator,
@@ -73,7 +71,7 @@ LOCATOR_BY_FORMAT: dict[str, type] = {
     FileFormat.JSON.value: JsonLocator,
 }
 
-# Block type hợp lệ theo định dạng
+# Allowed block types per file format
 ALLOWED_BLOCK_TYPES: dict[str, set[str]] = {
     FileFormat.PDF.value: {t.value for t in BlockType if t != BlockType.RECORD},
     FileFormat.MARKDOWN.value: {
@@ -86,50 +84,47 @@ ALLOWED_BLOCK_TYPES: dict[str, set[str]] = {
 }
 
 
-# ---------------------------------------------------------------------------
-# Schema chính
-# ---------------------------------------------------------------------------
 @dataclass
 class ContentBlockSchema:
-    # Định danh
+    # Identifiers
     block_id: str                          # {version_id}_b{block_idx:05d}
     document_id: str
     version_id: str
-    block_idx: int                         # thứ tự trong tài liệu, từ 0
-    file_format: str                       # giá trị FileFormat
+    block_idx: int                         # 0-based order within the document
+    file_format: str                       # FileFormat value
 
-    # Nội dung
-    block_type: str                        # giá trị BlockType
-    text_content: str                      # bản gốc
-    text_hash: str                         # sha256 của text_content
+    # Content
+    block_type: str                        # BlockType value
+    text_content: str                      # Raw text content
+    text_hash: str                         # SHA-256 of text_content
 
-    # Truy vết parser
-    parser_name: str                       # ví dụ "markdown-it-py", "pymupdf"
+    # Parser provenance
+    parser_name: str                       # e.g. "markdown-it-py", "pymupdf"
     parser_version: str
 
-    # Locator: đúng 1 loại theo file_format
+    # Locator: matches file_format
     locator: Locator | None = None
 
-    # Ngữ cảnh cấu trúc
-    heading_path: list[str] = field(default_factory=list)   # gán ở postprocess
-    heading_level: int | None = None       # chỉ khi block_type = heading
-    code_language: str | None = None       # chỉ khi block_type = code
+    # Structural context
+    heading_path: list[str] = field(default_factory=list)   # populated during parsing/postprocessing
+    heading_level: int | None = None       # only when block_type = heading
+    code_language: str | None = None       # only when block_type = code
     lang: str | None = None                # "vi", "en"
 
-    # Bảng (block_type = table)
+    # Table fields (block_type = table)
     table_header_cols: list[str] | None = None
     table_rows: list[list[str]] | None = None
-    continues_from_previous: bool = False  # bảng PDF kéo dài nhiều trang
+    continues_from_previous: bool = False  # multi-page PDF table continuation
 
-    # Bản ghi có cấu trúc (block_type = record, dùng cho JSON/CSV)
+    # Structured record (block_type = record, used for JSON/CSV)
     raw_record: dict | None = None
 
     def to_dict(self) -> dict:
         return asdict(self)
 
     def to_flat_dict(self) -> dict:
-        """Làm phẳng locator thành cột riêng, tiện lưu SQLite.
-        Cột locator không áp dụng cho định dạng này sẽ là None."""
+        """Flatten locator fields into top-level keys for SQLite storage.
+        Locator columns not applicable to this format are set to None."""
         d = asdict(self)
         loc = d.pop("locator") or {}
         d.update({
@@ -147,9 +142,7 @@ class ContentBlockSchema:
         return d
 
 
-# ---------------------------------------------------------------------------
-# Helper dùng chung cho mọi parser
-# ---------------------------------------------------------------------------
+# Shared helpers for all parsers
 def make_block_id(version_id: str, block_idx: int) -> str:
     return f"{version_id}_b{block_idx:05d}"
 
@@ -159,7 +152,7 @@ def make_text_hash(text: str) -> str:
 
 
 def validate_block(block: ContentBlockSchema) -> list[str]:
-    """Trả về danh sách lỗi; rỗng nghĩa là hợp lệ."""
+    """Return a list of validation errors; an empty list means the block is valid."""
     errors: list[str] = []
     fmt = block.file_format
 

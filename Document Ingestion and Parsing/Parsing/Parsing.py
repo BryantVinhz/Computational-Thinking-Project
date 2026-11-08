@@ -1,6 +1,6 @@
 """
-Điểm chạy chính (Entry Point) cho Bước 2: Document Parsing.
-Tự động nạp kết quả từ Bước 1 (Ingestion) và điều phối các bộ parser:
+Entry point for Step 2: Document Parsing.
+Loads output manifests from Step 1 (Ingestion) and dispatches format-specific parsers:
 - PDF: PdfParser
 - Markdown: MarkdownParser
 - CSV: CsvParser
@@ -11,14 +11,14 @@ import json
 import sys
 from pathlib import Path
 
-# Đảm bảo in tiếng Việt trên console Windows không bị lỗi cp1252
+# Configure UTF-8 output on Windows consoles to avoid cp1252 encoding errors
 if hasattr(sys.stdout, "reconfigure"):
     try:
         sys.stdout.reconfigure(encoding="utf-8")
     except Exception:
         pass
 
-# Đảm bảo import được path.py và package Ingestion/ khi chạy trực tiếp file
+# Ensure path.py and the Ingestion/ package can be imported when running this file directly
 CURRENT_DIR = Path(__file__).resolve().parent
 PARENT_DIR = CURRENT_DIR.parent
 for _p in (CURRENT_DIR, PARENT_DIR):

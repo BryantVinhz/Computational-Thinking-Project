@@ -88,7 +88,7 @@ if __name__ == "__main__":
             print(envelope.final_answer_markdown)
             print("-" * 80)
 
-            # In thông tin metadata kiểm soát
+            # Print moderation and verification metadata
             print(f">>> [Moderation] Status: {envelope.status} | Intent: {envelope.intent}")
             if envelope.verification:
                 v = envelope.verification

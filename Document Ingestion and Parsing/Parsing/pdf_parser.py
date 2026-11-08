@@ -1,7 +1,7 @@
 """
-Parser PDF: trích xuất tài liệu .pdf thành các block HEADING, PARAGRAPH, LIST, TABLE, CODE, HEADER_FOOTER.
-Sử dụng PyMuPDF (fitz) để phát hiện layout, tọa độ bbox, font size và bảng biểu.
-Tuân thủ chuẩn schema_parsing.py và sử dụng helper từ parser_utils.py.
+PDF Parser: extracts .pdf documents into HEADING, PARAGRAPH, LIST, TABLE, CODE, and HEADER_FOOTER blocks.
+Uses PyMuPDF (fitz) to detect layout, bounding boxes, font sizes, and tables.
+Follows schema_parsing.py conventions and uses helpers from parser_utils.py.
 """
 import re
 from pathlib import Path
@@ -20,7 +20,7 @@ _PAGE_NUM_RE = re.compile(r"^(page\s+\d+(\s+of\s+\d+)?|\d+(\s*/\s*\d+)?)$", re.I
 
 
 def _bbox_overlap(b1: list[float], b2: list[float], threshold: float = 0.5) -> bool:
-    """Kiểm tra bbox b1 có nằm phần lớn bên trong bbox b2 (ví dụ table) không."""
+    """Check whether bbox b1 lies mostly inside bbox b2 (e.g., a table)."""
     x0 = max(b1[0], b2[0])
     y0 = max(b1[1], b2[1])
     x1 = min(b1[2], b2[2])
@@ -53,7 +53,7 @@ class PdfParser:
             page_num = page_idx + 1
             page_height = page.rect.height
 
-            # 1. Trích xuất Tables trước
+            # 1. Extract tables first
             tab_finder = page.find_tables()
             table_bboxes = []
             tables_on_page = []
@@ -90,7 +90,7 @@ class PdfParser:
                         padded = padded[:num_cols]
                     data_rows.append(padded)
 
-                # Kiểm tra tiếp nối bảng ở trang trước
+                # Check if table continues from the previous page
                 continues = False
                 if prev_table_cols and len(prev_table_cols) == num_cols and t.bbox[1] < 120:
                     continues = True
@@ -111,7 +111,7 @@ class PdfParser:
                     "y0": bbox_clean[1],
                 })
 
-            # 2. Trích xuất Text blocks từ layout dict
+            # 2. Extract text blocks from layout dictionary
             page_dict = page.get_text("dict")
             text_blocks_on_page = []
 
@@ -120,7 +120,7 @@ class PdfParser:
                     continue
                 b_bbox = [round(float(c), 2) for c in b["bbox"]]
 
-                # Bỏ qua nếu block nằm trong bảng đã trích xuất
+                # Skip if block overlaps with an already-extracted table
                 if any(_bbox_overlap(b_bbox, t_bbox) for t_bbox in table_bboxes):
                     continue
 
@@ -146,7 +146,7 @@ class PdfParser:
                 if not block_text:
                     continue
 
-                # Phân loại block theo ngữ cảnh & kích thước
+                # Classify block by position and font style/size
                 is_header_footer = False
                 if b_bbox[1] < 45 or b_bbox[3] > (page_height - 45):
                     if len(full_lines) <= 2 or _PAGE_NUM_RE.match(block_text):
@@ -183,7 +183,7 @@ class PdfParser:
                     "y0": b_bbox[1],
                 })
 
-            # 3. Sắp xếp theo thứ tự đọc (y0 từ trên xuống dưới trang)
+            # 3. Sort in reading order (y0 from top to bottom of page)
             all_page_items = []
             for t in tables_on_page:
                 all_page_items.append(("table", t["y0"], t))
@@ -191,7 +191,7 @@ class PdfParser:
                 all_page_items.append(("text", tb["y0"], tb))
             all_page_items.sort(key=lambda x: x[1])
 
-            # 4. Sinh ContentBlockSchema
+            # 4. Build ContentBlockSchema instances
             for kind, _, item in all_page_items:
                 if kind == "table":
                     blocks.append(build_block(

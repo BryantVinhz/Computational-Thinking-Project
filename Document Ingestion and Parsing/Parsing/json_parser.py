@@ -1,9 +1,9 @@
 """
-Parser JSON: chia file thành các block RECORD theo luật chung (không phụ thuộc tên key):
-- Root là list -> mỗi phần tử 1 record tại $[i].
-- Root là dict -> key nào là "collection" (list/dict mà mọi phần tử con là list/dict) thì mỗi phần tử con
-  1 record; các key còn lại gom chung vào 1 record metadata tại "$".
-- Root là scalar -> 1 record tại "$".
+JSON Parser: splits a JSON file into RECORD blocks using general structural rules (independent of key names):
+- Root is a list -> each element becomes 1 record at $[i].
+- Root is a dict -> any key whose value is a collection (a list/dict where all children are lists/dicts)
+  produces 1 record per child; remaining keys are grouped into a single metadata record at "$".
+- Root is a scalar -> 1 record at "$".
 """
 import json
 import platform
@@ -20,7 +20,7 @@ _IDENTIFIER = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*$")
 
 
 def build_json_path(parent: str, key: str | int) -> str:
-    """Nối 1 bước vào JSONPath: index -> [i], identifier -> .key, còn lại -> ['key']."""
+    """Append one step to a JSONPath: index -> [i], identifier -> .key, otherwise -> ['key']."""
     if isinstance(key, int):
         return f"{parent}[{key}]"
     if _IDENTIFIER.match(key):
@@ -35,12 +35,12 @@ def _is_collection(value) -> bool:
 
 
 def _scalar_to_text(value) -> str:
-    # str giữ nguyên; số/bool/null hiển thị dạng JSON (true/false/null)
+    # Keep strings as-is; format numbers/booleans/null as JSON literals (true/false/null)
     return value if isinstance(value, str) else json.dumps(value, ensure_ascii=False)
 
 
 def _flatten(value, prefix: str = "") -> list[str]:
-    """Làm phẳng giá trị thành các dòng "đường.dẫn: giá trị" theo thứ tự key gốc."""
+    """Flatten a value into "path.key: value" lines preserving original key order."""
     if isinstance(value, dict):
         lines = []
         for k, v in value.items():
@@ -69,7 +69,7 @@ class JsonParser:
         for json_path, title, value in self._split_records(data):
             lines = _flatten(value)
             if not "".join(lines).strip():
-                continue  # record rỗng ({}, [], "") không có nội dung để search
+                continue  # skip empty records ({}, [], "") that have no searchable content
             text = "\n".join([title, *lines]) if title else "\n".join(lines)
             blocks.append(build_block(
                 version,
@@ -88,7 +88,7 @@ class JsonParser:
 
     @staticmethod
     def _split_records(data) -> list[tuple[str, str | None, object]]:
-        """Trả về list (json_path, tiêu đề record, giá trị)."""
+        """Return a list of (json_path, record_title, value) tuples."""
         if isinstance(data, list):
             return [(build_json_path("$", i), f"[{i}]", item) for i, item in enumerate(data)]
         if not isinstance(data, dict):
@@ -106,7 +106,7 @@ class JsonParser:
                 title = child_key if isinstance(child_key, str) else f"{key}[{child_key}]"
                 collections.append((build_json_path(parent, child_key), title, child))
 
-        # Record metadata đứng đầu để block_idx 0 mô tả chung cả tài liệu
+        # Place metadata record first so block_idx 0 describes the document as a whole
         return ([("$", None, metadata)] if metadata else []) + collections
 
 

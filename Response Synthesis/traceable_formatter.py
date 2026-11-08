@@ -1,14 +1,13 @@
 """
 Module: traceable_formatter.py
 Stage 4: Response Synthesis, Evidence Verification, and Traceable Response
-Role: BẢO (Traceability)
 
-Bóc tách các thẻ trích dẫn [1], [2] trong bản thảo của Synthesizer, ánh xạ
-từng thẻ về AssembledEvidence (Retrieval) và dữ liệu Provenance để sinh:
-- list[TraceableCitationSchema]: thông tin định vị nguồn chi tiết cho UI/API.
-- Mục "References" (Footnotes) ở cuối câu trả lời Markdown.
+Extracts citation tags [1], [2] from the Synthesizer's draft and maps each tag
+back to AssembledEvidence (Retrieval) and Provenance records to produce:
+- list[TraceableCitationSchema]: detailed source location metadata for UI/API.
+- A "References" (Footnotes) section appended to the end of the Markdown response.
 
-Interface tuân thủ FormatterProtocol trong rag_orchestrator.py:
+Conforms to FormatterProtocol in rag_orchestrator.py:
     format_citations(draft, evidence_list) -> (final_markdown, citations)
 """
 
@@ -35,10 +34,10 @@ JSON_PATHS_MAX_SHOWN = 3
 
 def index_evidence_by_tag(evidence_list: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
     """
-    Ánh xạ thẻ "[n]" -> evidence.
+    Map tag "[n]" -> evidence record.
 
-    Ưu tiên trường `evidence_id` do Retrieval gán (EvidenceAssembler), vì đó chính là
-    số thứ tự xuất hiện trong llm_context mà LLM nhìn thấy. Nếu thiếu thì dùng vị trí 1-based.
+    Prefers the `evidence_id` field assigned by Retrieval (EvidenceAssembler), since that matches
+    the numbering in `llm_context` seen by the LLM. Falls back to 1-based list position if missing.
     """
     indexed: dict[str, dict[str, Any]] = {}
     for position, ev in enumerate(evidence_list, start=1):
@@ -54,8 +53,8 @@ def _format_range(label: str, start: int, end: int) -> str:
 
 def summarize_location(sources: list[dict[str, Any]], fallback: str = "") -> str:
     """
-    Tóm tắt vị trí của chunk trong tài liệu gốc từ các locator Provenance.
-    Locator theo định dạng (schema_parsing.py):
+    Summarize a chunk's position in the source document from Provenance locators.
+    Locator formats (schema_parsing.py):
       PDF: page_number (+bbox) | MARKDOWN/TXT: start_line, end_line
       CSV: table_idx, start_row, end_row | JSON: json_path
     """
@@ -97,7 +96,7 @@ def summarize_location(sources: list[dict[str, Any]], fallback: str = "") -> str
 
 
 def _build_snippet(text: str, max_chars: int = SNIPPET_MAX_CHARS) -> str:
-    """Cắt đoạn trích preview theo ranh giới từ, gộp khoảng trắng."""
+    """Truncate preview snippet on a word boundary and collapse whitespace."""
     flat = " ".join((text or "").split())
     if len(flat) <= max_chars:
         return flat
@@ -106,7 +105,7 @@ def _build_snippet(text: str, max_chars: int = SNIPPET_MAX_CHARS) -> str:
 
 
 def build_citation(tag: str, evidence: dict[str, Any]) -> TraceableCitationSchema:
-    """Chuyển một AssembledEvidence (dict) thành TraceableCitationSchema."""
+    """Convert an AssembledEvidence dict into a TraceableCitationSchema."""
     meta = evidence.get("metadata") or {}
     prov = evidence.get("provenance") or {}
     sources = sorted(prov.get("sources") or [], key=lambda s: s.get("source_order") or 0)
@@ -163,7 +162,7 @@ def _render_reference_line(citation: TraceableCitationSchema) -> str:
 
 
 class TraceableFormatter:
-    """Sinh danh mục trích dẫn có thể truy vết và ghép Footnotes vào câu trả lời."""
+    """Build traceable citation records and append footnotes to the final response."""
 
     def format_citations(
         self,
@@ -173,7 +172,7 @@ class TraceableFormatter:
         if draft.is_abstained:
             return draft.draft_answer, []
 
-        # Văn bản là nguồn sự thật: chỉ liệt kê các thẻ thực sự xuất hiện trong câu trả lời.
+        # The answer text is the source of truth: list only tags that actually appear in the response.
         cited_tags = extract_citation_tags(draft.draft_answer) or list(draft.cited_evidence_ids)
         if not cited_tags:
             return draft.draft_answer, []
@@ -185,7 +184,7 @@ class TraceableFormatter:
         for tag in cited_tags:
             evidence = evidence_by_tag.get(tag)
             if evidence is None:
-                # Không âm thầm bỏ qua: người đọc cần biết thẻ này không truy vết được.
+                # Do not silently ignore missing citations: alert the reader that this tag could not be traced.
                 logger.warning("Citation %s has no matching evidence", tag)
                 reference_lines.append(f"- **{tag}** ⚠️ Không tìm thấy nguồn tương ứng trong evidence")
                 continue

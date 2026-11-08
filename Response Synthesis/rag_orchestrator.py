@@ -1,12 +1,11 @@
 """
 Module: rag_orchestrator.py
 Stage 4: Response Synthesis, Evidence Verification, and Traceable Response
-Role: NGUYÊN (Response Synthesis & Orchestration)
 
-Bộ điều phối trung tâm (RAG Orchestrator) liên kết toàn bộ luồng RAG từ:
-1. Giai đoạn 2: Query Understanding & Routing (Phân loại Intent, Safety check, Query Plan)
-2. Giai đoạn 3: Retrieval (BM25 + Dense + RRF + Reranking + MMR -> Assembled Evidence)
-3. Giai đoạn 4: Response Synthesis (Nguyên) -> Verification & Footnotes (Bảo) -> Final Envelope
+Central RAG Orchestrator connecting the end-to-end RAG pipeline across:
+1. Stage 2: Query Understanding & Routing (Intent classification, safety check, Query Plan)
+2. Stage 3: Retrieval (BM25 + Dense + RRF + Reranking + MMR -> Assembled Evidence)
+3. Stage 4: Response Synthesis -> Verification & Footnotes -> Final Envelope
 """
 
 from __future__ import annotations
@@ -46,14 +45,14 @@ logger = logging.getLogger(__name__)
 
 @runtime_checkable
 class RetrievalSystemProtocol(Protocol):
-    """Interface tiêu chuẩn cho Retrieval System."""
+    """Standard interface for the Retrieval System."""
     def retrieve(self, plan: dict[str, Any]) -> dict[str, Any]:
         ...
 
 
 @runtime_checkable
 class VerifierProtocol(Protocol):
-    """Interface cho module Verifier (do Bảo phụ trách)."""
+    """Interface for the Evidence Verifier module."""
     def verify(
         self,
         draft: SynthesizedDraftSchema,
@@ -64,7 +63,7 @@ class VerifierProtocol(Protocol):
 
 @runtime_checkable
 class FormatterProtocol(Protocol):
-    """Interface cho module TraceableFormatter (do Bảo phụ trách)."""
+    """Interface for the TraceableFormatter module."""
     def format_citations(
         self,
         draft: SynthesizedDraftSchema,
@@ -75,8 +74,7 @@ class FormatterProtocol(Protocol):
 
 class DefaultTraceableFormatter:
     """
-    Bộ định dạng trích dẫn dự phòng chuẩn hóa (Fallback Traceable Formatter)
-    hoạt động độc lập khi module của Bảo đang trong quá trình tích hợp.
+    Fallback Traceable Formatter that operates independently when a custom formatter is not provided.
     """
 
     @staticmethod
@@ -85,8 +83,8 @@ class DefaultTraceableFormatter:
         evidence_list: list[dict[str, Any]],
     ) -> tuple[str, list[TraceableCitationSchema]]:
         """
-        Bóc tách thông tin trích dẫn từ evidence_list tương ứng với các thẻ [1], [2]...
-        và sinh phần Footnotes ở cuối bài viết Markdown.
+        Extract citation metadata from evidence_list corresponding to tags [1], [2]...
+        and append a Footnotes section at the end of the Markdown response.
         """
         if draft.is_abstained or not evidence_list:
             return draft.draft_answer, []
@@ -99,7 +97,7 @@ class DefaultTraceableFormatter:
         citations: list[TraceableCitationSchema] = []
         cited_tags = draft.cited_evidence_ids or list(ev_by_tag.keys())
 
-        # Tạo danh sách TraceableCitationSchema
+        # Build list of TraceableCitationSchema records
         for tag in cited_tags:
             ev = ev_by_tag.get(tag)
             if not ev:
@@ -134,7 +132,7 @@ class DefaultTraceableFormatter:
                 )
             )
 
-        # Ghép Footnotes vào cuối câu trả lời nếu có citations
+        # Append footnotes to the end of the answer if citations are present
         if not citations:
             return draft.draft_answer, []
 
@@ -151,8 +149,8 @@ class DefaultTraceableFormatter:
 
 class RAGOrchestrator:
     """
-    Bộ điều phối toàn diện cho hệ thống RAG (Computational Thinking Project).
-    Kết nối tuần tự: Stage 2 -> Stage 3 (Retrieval) -> Stage 4 (Synthesis & Verification).
+    End-to-end orchestrator for the RAG system.
+    Connects Stage 2 -> Stage 3 (Retrieval) -> Stage 4 (Synthesis & Verification).
     """
 
     def __init__(
@@ -173,7 +171,7 @@ class RAGOrchestrator:
         self.retrieval_system = retrieval_system
 
     def _get_retrieval_system(self) -> Any:
-        """Khởi tạo trễ (lazy init) RetrievalSystem nếu chưa được truyền vào."""
+        """Lazy-initialize RetrievalSystem if not already provided."""
         if self.retrieval_system is not None:
             return self.retrieval_system
 
@@ -190,12 +188,12 @@ class RAGOrchestrator:
         query: str,
         conversation_history: list[dict[str, Any]] | None = None,
     ) -> dict[str, Any]:
-        """Thực thi Stage 2: Query Understanding & Routing."""
+        """Execute Stage 2: Query Understanding & Routing."""
         try:
             from query_understanding_routing.pipeline import process_query
             return process_query(query, conversation_history=conversation_history)
         except Exception:
-            # Fallback tối thiểu nếu không import được pipeline Stage 2
+            # Minimal fallback if Stage 2 pipeline cannot be imported
             logger.exception("Stage 2 failed")
             return{
                 "schema_version": "1.0", 
@@ -261,7 +259,7 @@ class RAGOrchestrator:
             
         total_latency = time.perf_counter() - start_time
 
-        # 4. Xác định status phản hồi
+        # 4. Determine response status
         status = "ok"
         if retrieval_output.get("status") == "clarification_needed":
             status = "clarification_needed"
@@ -314,14 +312,14 @@ class RAGOrchestrator:
         conversation_history: list[dict[str, Any]] | None = None,
     ) -> FinalResponseEnvelope:
         """
-        Chạy toàn bộ quy trình RAG hoàn chỉnh (End-to-End Orchestration).
+        Execute the complete end-to-end RAG workflow:
         Query -> Stage 2 (Understanding & Routing) -> Stage 3 (Retrieval) -> Stage 4 (Synthesis).
         """
-        # Bước 1: Stage 2 - Query Understanding & Routing
+        # Step 1: Stage 2 - Query Understanding & Routing
         s2 = self.execute_stage2(query, conversation_history)
         status = s2.get("status", "error")
 
-        # Xử lý các trường hợp bị từ chối từ Stage 2 (Safety, Out of Scope, Invalid)
+        # Handle requests rejected at Stage 2 (Safety, Out of Scope, Invalid)
         if status in {"rejected", "out_of_scope", "error"}:
             reason = s2.get("reason") or "Yêu cầu không thuộc phạm vi xử lý."
             return self._early_exit(status, query, s2, f"**Không thể xử lý ({status})**: {reason}")
@@ -337,10 +335,10 @@ class RAGOrchestrator:
         resolved_query = query_plan.get("resolved_query") or query
         intent = query_plan.get("intent", "SEARCH")
 
-        # Bước 2: Stage 3 - Retrieval System
+        # Step 2: Stage 3 - Retrieval System
         retrieval_sys = self._get_retrieval_system()
         if retrieval_sys is None:
-            # Fallback nếu không có RetrievalSystem khả dụng
+            # Fallback when RetrievalSystem is unavailable
             retrieval_output = {
                 "status": "ok",
                 "evidence_status": "NONE",
@@ -350,10 +348,9 @@ class RAGOrchestrator:
                 "llm_context": "Không thể kết nối đến hệ thống Retrieval.",
             }
         else:
-            # GỌI RETRIEVE THEO CẬP NHẬT MỚI NHẤT CỦA COMMIT e858eca
             retrieval_output = retrieval_sys.retrieve(query_plan)
 
-        # Bước 3 & 4: Stage 4 - Synthesis & Final Packaging
+        # Step 3 & 4: Stage 4 - Synthesis & Final Packaging
         return self.run_from_retrieval(
             query=query,
             retrieval_output=retrieval_output,

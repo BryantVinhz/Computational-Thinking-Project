@@ -5,9 +5,7 @@ Unified configuration constants for Query Understanding & Routing (Contract v1.0
 from __future__ import annotations
 import os
 
-# ==============================================================================
-# 1. Query length boundaries (Section 10)
-# ==============================================================================
+# Query length boundaries
 MIN_QUERY_LEN: int = 3
 MAX_QUERY_LEN: int = 500
 
@@ -15,17 +13,13 @@ MAX_QUERY_LEN: int = 500
 SPAM_CHAR_THRESHOLD: int = 30
 SPAM_TOKEN_THRESHOLD: int = 8
 
-# ==============================================================================
-# 2. Conversation history boundaries (Section 7.1 & Section 10)
-# ==============================================================================
+# Conversation history boundaries
 # Maximum 3 turn pairs (6 messages) and maximum 2,000 total characters
 HISTORY_MAX_TURNS: int = 3  # pairs: user + assistant = 1 pair
 HISTORY_MAX_MESSAGES: int = HISTORY_MAX_TURNS * 2  # 6 messages
 HISTORY_MAX_CHARS: int = 2000
 
-# ==============================================================================
-# 3. LLM execution settings (Section 7.3 & Section 10)
-# ==============================================================================
+# LLM execution settings
 LLM_TEMPERATURE: float = 0.0
 LLM_TIMEOUT_S: float = 30.0
 LLM_MAX_RETRIES: int = 2  # Only for parse/schema errors (total 3 attempts)
@@ -36,14 +30,10 @@ LLM_MODEL: str = os.getenv("LLM_MODEL", "")
 OLLAMA_HOST: str = os.getenv("OLLAMA_HOST", "http://localhost:11434")
 OPENAI_BASE_URL: str = os.getenv("OPENAI_BASE_URL", "https://api.openai.com/v1")
 
-# ==============================================================================
-# 4. Clarification threshold (Section 0.2 L1 & Section 10)
-# ==============================================================================
+# Clarification threshold
 CLARIFY_THRESHOLD: float = 0.6
 
-# ==============================================================================
-# 5. Ontology standard slugs (Section 2.1 & Section 6.3)
-# ==============================================================================
+# Ontology standard slugs
 STANDARD_VULNERABILITY_SLUGS: set[str] = {
     "xss",
     "sqli",
@@ -52,9 +42,7 @@ STANDARD_VULNERABILITY_SLUGS: set[str] = {
     "misconfig",
 }
 
-# ==============================================================================
-# 6. Intent categories & Task intents (Section 2.2 & Section 7.2)
-# ==============================================================================
+# Intent categories & Task intents
 VALID_INTENTS: set[str] = {
     "SEARCH",
     "COMPARE",
@@ -70,18 +58,14 @@ VALID_TASK_INTENTS: set[str] = {
     "SYNTHESIS",
 }
 
-# ==============================================================================
-# 7. Permitted LLM error codes (Section 7.3)
-# ==============================================================================
+# Permitted LLM error codes
 VALID_LLM_ERROR_CODES: set[str] = {
     "llm_unavailable",
     "llm_invalid_json",
     "llm_schema_violation",
 }
 
-# ==============================================================================
-# 8. User-facing messages & Reject reasons (Section 9)
-# ==============================================================================
+# User-facing messages & Reject reasons
 MESSAGES: dict[str, str] = {
     "empty_query": "Câu hỏi đang trống. Vui lòng nhập nội dung cần hỏi.",
     "query_too_short": "Câu hỏi quá ngắn. Vui lòng mô tả rõ hơn.",
@@ -98,9 +82,7 @@ SAFETY_CLARIFY_MESSAGE: str = "Mình không cung cấp hướng dẫn tấn côn
 OUT_OF_SCOPE_MSG: str = "Câu hỏi này nằm ngoài phạm vi kiến thức bảo mật web của hệ thống (XSS, SQL Injection, Broken Access Control, Authentication Failures, Security Misconfiguration)."
 ERROR_MSG: str = "Hệ thống tạm thời không xử lý được yêu cầu. Vui lòng thử lại sau."
 
-# ==============================================================================
-# 9. Safety and Prompt Injection Regex Patterns
-# ==============================================================================
+# Safety and Prompt Injection Regex Patterns
 # Safety patterns are written against folded text: lowercase, no diacritics, "đ" -> "d".
 INJECTION_PATTERNS: list[str] = [
     r"\b(bo qua|quen di|ignore|disregard|forget)\b.{0,25}\b(huong dan|chi dan|chi thi|lenh|instructions?|prompts?|rules?)\b",

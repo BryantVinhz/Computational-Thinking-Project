@@ -1,14 +1,13 @@
 """
 Module: synthesizer.py
 Stage 4: Response Synthesis, Evidence Verification, and Traceable Response
-Role: NGUYÊN (Response Synthesis)
 
-Module thực hiện gọi LLM để sinh bản thảo câu trả lời (SynthesizedDraftSchema)
-dựa trên ngữ cảnh tài liệu từ Retrieval (Evidence Chunks) và Intent,
-hỗ trợ phân nhánh linh hoạt giữa:
+Calls the LLM to generate a draft answer (SynthesizedDraftSchema)
+based on retrieved document context (Evidence Chunks) and query intent,
+supporting branching across:
 - STRICT RAG MODE (evidence_status == FULL)
 - HYBRID MODE (evidence_status == PARTIAL)
-- ABSTENTION FLOW (evidence_status == NONE hoặc clarification_needed)
+- ABSTENTION FLOW (evidence_status == NONE or clarification_needed)
 """
 
 from __future__ import annotations
@@ -37,7 +36,7 @@ logger = logging.getLogger(__name__)
 
 @runtime_checkable
 class GenerativeLLM(Protocol):
-    """Protocol chuẩn hóa cho LLM Client trong tầng sinh câu trả lời."""
+    """Standard protocol for LLM clients in the response synthesis layer."""
     model_name: str
 
     def generate(
@@ -51,9 +50,9 @@ class GenerativeLLM(Protocol):
 
 class DefaultDeterministicLLM:
     """
-    Fallback deterministic LLM khi không cấu hình API key ngoài.
-    Sinh câu trả lời mẫu chuẩn cấu trúc và gắn thẻ trích dẫn [1], [2] chính xác
-    phục vụ testing và offline validation.
+    Fallback deterministic LLM when no external API key is configured.
+    Generates structured sample answers with [1], [2] citation tags
+    for testing and offline validation.
     """
     model_name: str = "builtin-deterministic-synthesis"
 
@@ -63,7 +62,7 @@ class DefaultDeterministicLLM:
         system_instruction: str | None = None,
         **kwargs: Any,
     ) -> str:
-        # Prompt có thể là chuỗi hoặc list messages
+        # Prompt may be a string or a list of chat messages
         query_text = ""
         context_text = ""
         mode = "STRICT_RAG"
@@ -103,14 +102,14 @@ class DefaultDeterministicLLM:
 
 class ResponseSynthesizer:
     """
-    Tầng sinh câu trả lời (Stage 4 - Synthesis Layer).
-    Nhận đầu vào từ Retrieval và sinh SynthesizedDraftSchema có gắn thẻ [1], [2].
+    Response Synthesis Layer (Stage 4).
+    Accepts retrieval output and generates a SynthesizedDraftSchema with [1], [2] citation tags.
     """
 
     def __init__(self, llm_client: Any | None = None):
         """
-        Khởi tạo ResponseSynthesizer.
-        Nếu không truyền `llm_client`, tự động tìm kiếm client từ Stage 2 hoặc dùng DefaultDeterministicLLM.
+        Initialize ResponseSynthesizer.
+        If `llm_client` is not provided, defaults to ColabLLMClient.
         """
         if llm_client is not None:
             self.llm_client = llm_client
@@ -127,16 +126,16 @@ class ResponseSynthesizer:
         conversation_history: list[dict[str, Any]] | None = None,
     ) -> SynthesizedDraftSchema:
         """
-        Thực hiện sinh bản thảo câu trả lời từ kết quả Retrieval.
+        Synthesize a draft response from Retrieval results.
         
         Args:
-            query: Câu hỏi của người dùng (original_query hoặc resolved_query).
-            retrieval_output: Kết quả trả về từ RetrievalSystem.retrieve(plan).
-            intent: Intent của truy vấn (SEARCH | COMPARE | SYNTHESIS).
-            conversation_history: Lịch sử hội thoại nếu có.
+            query: User query (original_query or resolved_query).
+            retrieval_output: Output dictionary returned by RetrievalSystem.retrieve(plan).
+            intent: Query intent (SEARCH | COMPARE | SYNTHESIS).
+            conversation_history: Conversation history if available.
             
         Returns:
-            SynthesizedDraftSchema: Chứa bản thảo câu trả lời, tags [1], [2], và metadata.
+            SynthesizedDraftSchema: Contains draft answer, citation tags [1], [2], and metadata.
         """
         start_time = time.perf_counter()
 
@@ -146,9 +145,7 @@ class ResponseSynthesizer:
         llm_context = retrieval_output.get("llm_context", "").strip()
         total_evidence = int(retrieval_output.get("total_evidence", len(retrieval_output.get("evidence_list", []))))
 
-        # -------------------------------------------------------------
-        # 1. TRƯỜNG HỢP: CẦN LÀM RÕ (CLARIFICATION NEEDED)
-        # -------------------------------------------------------------
+        # 1. Clarification needed
         if status == "clarification_needed":
             latency = time.perf_counter() - start_time
             clarify_text = llm_context or "Yêu cầu của bạn chưa rõ ràng. Vui lòng cung cấp thêm thông tin chi tiết."
@@ -168,9 +165,7 @@ class ResponseSynthesizer:
                 },
             )
 
-        # -------------------------------------------------------------
-        # 2. TRƯỜNG HỢP: KHÔNG CÓ BẰNG CHỨNG (ABSTENTION POLICY - NONE)
-        # -------------------------------------------------------------
+        # 2. No evidence available (Abstention Policy - NONE)
         if evidence_status == "NONE" or total_evidence == 0 or not llm_context:
             latency = time.perf_counter() - start_time
             abstention_answer = (
@@ -194,12 +189,10 @@ class ResponseSynthesizer:
                 },
             )
 
-        # -------------------------------------------------------------
-        # 3. TRƯỜNG HỢP CÓ BẰNG CHỨNG: HYBRID MODE hoặc STRICT RAG MODE
-        # -------------------------------------------------------------
+        # 3. Evidence available: HYBRID MODE or STRICT RAG MODE
         generation_mode = "HYBRID" if evidence_status == "PARTIAL" else "STRICT_RAG"
 
-        # Xây dựng messages prompt
+        # Build prompt messages
         messages = build_synthesis_messages(
             query=query,
             llm_context=llm_context,
@@ -209,7 +202,7 @@ class ResponseSynthesizer:
         )
 
         try:
-            # Gọi LLM
+            # Call LLM
             draft_answer = self.llm_client.generate(
                 prompt=messages,
                 system_instruction=SYSTEM_INSTRUCTION_SYNTHESIS,
@@ -226,7 +219,7 @@ class ResponseSynthesizer:
                                     "error": str(e)},
             )
 
-        # Trích xuất toàn bộ các thẻ trích dẫn [1], [2] từ văn bản Markdown
+        # Extract all citation tags [1], [2] from the Markdown text
         cited_tags = extract_citation_tags(draft_answer)
 
         latency = time.perf_counter() - start_time
