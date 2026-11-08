@@ -2,9 +2,9 @@
 Response Synthesis, Evidence Verification and Traceable Response Module.
 Contract and Implementation for Stage 4 of the Computational Thinking Project.
 
-Phân công:
-- Nguyên: Response Synthesis & Orchestration (schema_response.py, prompt_templates.py, synthesizer.py, rag_orchestrator.py)
-- Bảo: Evidence Verification & Traceability (verifier.py, traceable_formatter.py)
+Assignments:
+- Nguyen: Response Synthesis & Orchestration (schema_response.py, prompt_templates.py, synthesizer.py, rag_orchestrator.py)
+- Bao: Evidence Verification & Traceability (verifier.py, traceable_formatter.py)
 """
 
 from .prompt_templates import (

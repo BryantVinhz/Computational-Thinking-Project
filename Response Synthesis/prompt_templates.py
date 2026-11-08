@@ -2,11 +2,11 @@
 Module: prompt_templates.py
 Stage 4: Response Synthesis, Evidence Verification, and Traceable Response
 
-Xây dựng hệ thống Prompt Templates chuẩn hóa cho các Intent:
-- SEARCH (Tìm kiếm giải thích đơn lẻ)
-- COMPARE (So sánh đa thực thể / lỗ hổng)
-- SYNTHESIS (Tổng hợp chuyên sâu đa tài liệu)
-- Kèm hỗ trợ chế độ STRICT_RAG và HYBRID MODE theo `evidence_status`.
+Standardized Prompt Templates system for Intents:
+- SEARCH (Single entity explanation & retrieval)
+- COMPARE (Multi-entity / vulnerability comparison)
+- SYNTHESIS (Comprehensive multi-document synthesis)
+- Supports STRICT_RAG and HYBRID MODE according to `evidence_status`.
 """
 
 from __future__ import annotations
@@ -55,8 +55,8 @@ Hệ thống kích hoạt chính sách từ chối trả lời (Abstention Polic
 
 def extract_citation_tags(text: str) -> list[str]:
     """
-    Trích xuất toàn bộ các thẻ trích dẫn dạng [1], [2] từ văn bản Markdown,
-    loại bỏ trùng lặp và sắp xếp theo thứ tự số nguyên tăng dần.
+    Extract all citation tags of the form [1], [2] from Markdown text,
+    remove duplicates, and sort in ascending integer order.
     """
     if not text:
         return []
@@ -70,7 +70,7 @@ def build_search_prompt(
     llm_context: str,
     mode: str = "STRICT_RAG",
 ) -> str:
-    """Prompt dành riêng cho Intent SEARCH (Tìm kiếm & Giải thích)."""
+    """Prompt template for SEARCH intent (Search & Explain)."""
     guideline = HYBRID_MODE_GUIDELINES if mode == "HYBRID" else STRICT_RAG_GUIDELINES
     return f"""{guideline}
 
@@ -96,7 +96,7 @@ def build_compare_prompt(
     llm_context: str,
     mode: str = "STRICT_RAG",
 ) -> str:
-    """Prompt dành riêng cho Intent COMPARE (So sánh đối chiếu)."""
+    """Prompt template for COMPARE intent (Comparative analysis)."""
     guideline = HYBRID_MODE_GUIDELINES if mode == "HYBRID" else STRICT_RAG_GUIDELINES
     return f"""{guideline}
 
@@ -122,7 +122,7 @@ def build_synthesis_prompt(
     llm_context: str,
     mode: str = "STRICT_RAG",
 ) -> str:
-    """Prompt dành riêng cho Intent SYNTHESIS (Tổng hợp đa chiều toàn diện)."""
+    """Prompt template for SYNTHESIS intent (Comprehensive multi-perspective synthesis)."""
     guideline = HYBRID_MODE_GUIDELINES if mode == "HYBRID" else STRICT_RAG_GUIDELINES
     return f"""{guideline}
 
@@ -153,8 +153,8 @@ def build_synthesis_messages(
     conversation_history: list[dict[str, Any]] | None = None,
 ) -> list[dict[str, str]]:
     """
-    Xây dựng danh sách tin nhắn (Messages Payload) chuẩn bị cho LLM Client.
-    Tự động chọn prompt builder phù hợp dựa trên intent và evidence_status.
+    Build messages payload for LLM Client.
+    Automatically selects the appropriate prompt builder based on intent and evidence_status.
     """
     mode = "HYBRID" if evidence_status.upper() == "PARTIAL" else "STRICT_RAG"
     normalized_intent = (intent or "SEARCH").upper()
@@ -170,7 +170,7 @@ def build_synthesis_messages(
         {"role": "system", "content": SYSTEM_INSTRUCTION_SYNTHESIS}
     ]
 
-    # Bổ sung tối đa 4 lượt hội thoại gần nhất nếu có
+    # Append up to 4 most recent conversation turns if available
     if conversation_history:
         for turn in conversation_history[-4:]:
             role = str(turn.get("role", "user"))

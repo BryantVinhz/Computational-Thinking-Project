@@ -1,6 +1,6 @@
 """
-Parser Markdown: trích xuất tài liệu .md thành các block HEADING, PARAGRAPH, LIST, TABLE, CODE.
-Tuân thủ chuẩn schema_parsing.py và sử dụng helper từ parser_utils.py.
+Markdown Parser: extracts .md documents into HEADING, PARAGRAPH, LIST, TABLE, CODE blocks.
+Complies with schema_parsing.py standards and uses helpers from parser_utils.py.
 """
 import re
 from bs4 import BeautifulSoup
@@ -18,7 +18,7 @@ _IMAGE_OR_LINK_TAG = re.compile(r"!\[.*?\]\(.*?\)(\{:.*?\})?")
 
 
 def _clean_heading_title(raw_title: str) -> str:
-    """Loại bỏ ký tự markdown '#', ảnh/icon để lấy tiêu đề sạch cho heading_path."""
+    """Strip markdown '#' characters and images/icons to get a clean title for heading_path."""
     cleaned = _HEADING_CLEAN.sub("", raw_title).strip()
     cleaned = _IMAGE_OR_LINK_TAG.sub("", cleaned).strip()
     return cleaned or raw_title.strip()
@@ -28,14 +28,14 @@ class MarkdownParser:
     file_format = FileFormat.MARKDOWN.value
 
     def __init__(self):
-        # Tắt linkify để không phụ thuộc linkify-it-py; bật table để hỗ trợ GFM pipe table
+        # Disable linkify to avoid linkify-it-py dependency; enable table to support GFM pipe tables
         self.md = MarkdownIt().disable("linkify").enable("table")
 
     def parse(self, version: DocumentVersionSchema) -> list[ContentBlockSchema]:
         raw_text = read_text(version)
         lines = raw_text.splitlines()
         if not raw_text.strip():
-            raise ValueError("Markdown không có nội dung")
+            raise ValueError("Markdown has no content")
 
         tokens = self.md.parse(raw_text)
         blocks: list[ContentBlockSchema] = []
@@ -52,7 +52,7 @@ class MarkdownParser:
                 inline_token = tokens[i + 1] if i + 1 < n and tokens[i + 1].type == "inline" else None
                 heading_title = _clean_heading_title(inline_token.content if inline_token else "")
 
-                # Cập nhật stack heading theo phân cấp
+                # Update hierarchical heading stack
                 while heading_stack and heading_stack[-1][0] >= level:
                     heading_stack.pop()
                 heading_stack.append((level, heading_title))
@@ -72,7 +72,7 @@ class MarkdownParser:
                         heading_level=level,
                         heading_path=current_heading_path,
                     ))
-                # Di chuyển qua inline và heading_close
+                # Advance past inline and heading_close
                 while i < n and tokens[i].type != "heading_close":
                     i += 1
                 i += 1
@@ -98,7 +98,7 @@ class MarkdownParser:
                 i += 1
                 continue
 
-            # 3. LIST (bullet_list hoặc ordered_list)
+            # 3. LIST (bullet_list or ordered_list)
             if token.type in ("bullet_list_open", "ordered_list_open"):
                 close_type = "bullet_list_close" if token.type == "bullet_list_open" else "ordered_list_close"
                 start_idx, end_idx = token.map[0], token.map[1]
@@ -114,7 +114,7 @@ class MarkdownParser:
                         parser_version=PARSER_VERSION,
                         heading_path=[h[1] for h in heading_stack],
                     ))
-                # Nhảy qua hết khối list
+                # Skip entire list block
                 depth = 1
                 i += 1
                 while i < n and depth > 0:
@@ -152,7 +152,7 @@ class MarkdownParser:
                             rows.append(current_row)
                             current_row = []
                     i += 1
-                i += 1  # qua table_close
+                i += 1  # pass table_close
 
                 num_cols = len(headers)
                 if num_cols == 0 and rows:
@@ -175,7 +175,7 @@ class MarkdownParser:
                     ))
                 continue
 
-            # 5. HTML BLOCK (Có thể chứa bảng <table> hoặc nội dung HTML)
+            # 5. HTML BLOCK (May contain <table> or HTML content)
             if token.type == "html_block":
                 start_idx, end_idx = token.map[0], token.map[1]
                 text_content = "\n".join(lines[start_idx:end_idx])
@@ -247,7 +247,7 @@ class MarkdownParser:
             i += 1
 
         if not blocks:
-            raise ValueError("Markdown không sinh được block nào")
+            raise ValueError("Markdown generated no blocks")
         return blocks
 
 
