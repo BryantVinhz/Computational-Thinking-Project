@@ -161,6 +161,7 @@ class RAGOrchestrator:
         synthesizer: ResponseSynthesizer | None = None,
         verifier: Any | None = None,
         traceable_formatter: Any | None = None,
+        max_history_turns: int = 5,
     ):
         self.synthesizer = synthesizer or ResponseSynthesizer()
         # Vietnamese answers are verified against an English corpus, so the default verifier must be
@@ -171,7 +172,15 @@ class RAGOrchestrator:
         )
         self.traceable_formatter = traceable_formatter or TraceableFormatter()
         self.retrieval_system = retrieval_system
+        # Internal Conservation memory
+        self.conversation_memory: list[dict[str, str]] = []
+        self.max_history_turns = max_history_turns
 
+    def reset_conversation(self) -> None:
+        """Clear conversational context when starting a new session"""
+        self.conversation_memory.clear()
+        logger.info("Đã làm mới bộ nhớ hội thoại nội bộ.")
+        
     def _get_retrieval_system(self) -> Any:
         """Lazy initialization of RetrievalSystem if not injected."""
         if self.retrieval_system is not None:
@@ -317,14 +326,15 @@ class RAGOrchestrator:
         Run end-to-end RAG orchestration pipeline.
         Query -> Stage 2 (Understanding & Routing) -> Stage 3 (Retrieval) -> Stage 4 (Synthesis).
         """
+        active_history = conversation_history if conversation_history is not None else self.conversation_memory
         # Step 1: Stage 2 - Query Understanding & Routing
-        s2 = self.execute_stage2(query, conversation_history)
+        s2 = self.execute_stage2(query, active_history)
         status = s2.get("status", "error")
 
         # Handle rejection cases from Stage 2 (Safety, Out of Scope, Invalid)
         if status in {"rejected", "out_of_scope", "error"}:
             reason = s2.get("reason") or "Request is out of processing scope."
-            return self._early_exit(status, query, s2, f"**Cannot process ({status})**: {reason}")
+            return self._early_exit(status, query, s2, f"Cannot process ({status}): {reason}")
 
         if status == "clarification":
             msg = s2.get("clarification_message") or "Please clarify your question."
@@ -354,10 +364,21 @@ class RAGOrchestrator:
             retrieval_output = retrieval_sys.retrieve(query_plan)
 
         # Step 3 & 4: Stage 4 - Synthesis & Final Packaging
-        return self.run_from_retrieval(
+        envelope =  self.run_from_retrieval(
             query=query,
             retrieval_output=retrieval_output,
             resolved_query=resolved_query,
             intent=intent,
-            conversation_history=conversation_history,
+            conversation_history=active_history,
         )
+        
+        if envelope.status in {"ok", "abstained"} and conversation_history is None:
+            self.conversation_memory.append({"role": "user", "content": query})
+            # Store summary in history (keep concise to prevent token overflow)
+            snippet = envelope.final_answer_markdown[:300].replace("\n", " ")
+            self.conversation_memory.append({"role": "assistant", "content": snippet})
+            # Prune history to max turns allowed
+            max_messages = self.max_history_turns * 2
+            if len(self.conversation_memory) > max_messages:
+                self.conversation_memory = self.conversation_memory[-max_messages:]
+        return envelope

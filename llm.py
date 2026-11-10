@@ -1,7 +1,9 @@
+import os
 import requests
 from typing import Any
 
-COLAB_URL = "https://motor-residential-dresses-hair.trycloudflare.com"
+OLLAMA_HOST = os.getenv("OLLAMA_HOST", "http://localhost:11434")
+COLAB_URL = "https://compete-talent-fwd-demographic.trycloudflare.com"
 class ColabLLMClient:
     """client calls the LLM running on Google Colab via FastAPI"""
     model_name: str = "Qwen2.5-3B-Instruct-colab-remote"
@@ -28,3 +30,49 @@ class ColabLLMClient:
             # An empty completion must not become an empty "ok" answer; the synthesizer abstains on errors.
             raise RuntimeError(f"Colab API returned an empty completion ({self.api_url})")
         return text
+
+
+class OllamaLLMClient:
+    """Client calls the local model via Ollama API (localhost)"""
+    
+    def __init__(self, model_name: str = "qwen3.5:4b", host: str = OLLAMA_HOST):
+        self.model_name = model_name
+        self.api_url = f"{host.rstrip('/')}/api/chat"
+
+    def generate(self, prompt: Any, system_instruction: str | None = None, **kwargs: Any) -> str:
+        # Normalize format messages for Ollama
+        messages = []
+        if system_instruction:
+            messages.append({"role": "system", "content": system_instruction})
+
+        if isinstance(prompt, list):
+            messages.extend(prompt)
+        else:
+            messages.append({"role": "user", "content": str(prompt)})
+
+        payload = {
+            "model": self.model_name,
+            "messages": messages,
+            "stream": False,
+            "options": {
+                "temperature": kwargs.get("temperature", 0.2),
+                "num_predict": kwargs.get("max_tokens", 798),
+            },
+        }
+
+        try:
+            resp = requests.post(self.api_url, json=payload, timeout=900)
+            resp.raise_for_status()
+            data = resp.json()
+            response_text = data.get("message", {}).get("content", "")
+            if not response_text.strip():
+                raise RuntimeError("Ollama returned an empty response")
+            return response_text
+        except requests.exceptions.ConnectionError:
+            raise RuntimeError(
+                f"Failed to connect to Ollama at {self.api_url}. "
+                "Please make sure 'ollama serve' is running or the Ollama app is open!"
+            )
+        except Exception as e:
+            raise RuntimeError(f"Ollama API Error: {e}") from e
+        

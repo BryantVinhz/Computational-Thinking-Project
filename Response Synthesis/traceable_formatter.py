@@ -28,7 +28,7 @@ except ImportError:
 logger = logging.getLogger(__name__)
 
 _TAG_PATTERN = re.compile(r"^\[\d+\]$")
-REFERENCES_HEADING = "### 📚 Danh mục tài liệu tham chiếu (References & Citations)"
+REFERENCES_HEADING = "### Danh mục tài liệu tham chiếu (References & Citations)"
 SNIPPET_MAX_CHARS = 200
 JSON_PATHS_MAX_SHOWN = 3
 

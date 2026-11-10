@@ -29,6 +29,29 @@ def _normalize_newlines(text: str) -> str:
 def _normalize_conservative(text: str) -> str:
     return _normalize_newlines(text).strip()
 
+import re
+
+def detect_language(text: str) -> str:
+    """
+    Detecting Query Language (Language Identification)
+    """
+    if not text or not text.strip():
+        return "en"
+
+    vietnamese_accent_pattern = re.compile(
+        r"[àáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]",
+        re.IGNORECASE
+    )
+    if vietnamese_accent_pattern.search(text):
+        return "vi"
+
+    # Detecting Additional Common Stopwords and Connectives in Unaccented Vietnamese Queries
+    vi_stopwords = {"la", "gi", "sao", "nao", "cho", "toi", "cach", "khac", "phuc", "phong", "chong", "va", "nhu", "the"}
+    tokens = set(re.findall(r"\b\w+\b", text.lower()))
+    if len(tokens & vi_stopwords) >= 2:
+        return "vi"
+
+    return "en"
 
 def _normalize_regular(text: str) -> str:
     text = _normalize_newlines(text)

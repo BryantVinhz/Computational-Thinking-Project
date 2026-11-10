@@ -18,7 +18,7 @@ from synthesizer import ResponseSynthesizer
 from verifier import SEMANTIC_SUPPORT_THRESHOLD, EvidenceVerifier, MultilingualSemanticSimilarity
 from traceable_formatter import TraceableFormatter
 from rag_orchestrator import RAGOrchestrator
-from llm import ColabLLMClient
+from llm import OllamaLLMClient, ColabLLMClient
 
 
 class PipelineConnector:
@@ -57,6 +57,7 @@ class PipelineConnector:
 
 if __name__ == "__main__":
     try:
+        local_llm = OllamaLLMClient(model_name="qwen3.5:4b")
         remote_llm = ColabLLMClient()
         pipeline = PipelineConnector(llm_client=remote_llm)
     except Exception as e:
@@ -65,7 +66,9 @@ if __name__ == "__main__":
 
     print("\n" + "=" * 80)
     print(" INTELLIGENT INFORMATION SECURITY ASSISTANT (INTELLIGENT SECURITY WORKSPACE)")
-    print(" Enter your question and press Enter. Type 'exit' or 'quit' to exit")
+    print(" Enter your question and press Enter")
+    print("    Type 'exit' or 'quit' to exit")
+    print("    Type 'reset' or 'clear' or 'refresh' to reset session")
     print("=" * 80)
 
     while True:
@@ -77,7 +80,11 @@ if __name__ == "__main__":
             if user_query.lower() in {"exit", "quit", "q"}:
                 print("Goodbye!")
                 break
-
+            
+            if user_query.lower() in {"reset", "clear"}:
+                pipeline.orchestrator.reset_conversation()
+                print("Session context refreshed")
+                continue
 
             envelope = pipeline.ask(user_query)
 
@@ -88,6 +95,9 @@ if __name__ == "__main__":
             print(envelope.final_answer_markdown)
             print("-" * 80)
 
+            if envelope.resolved_query and envelope.resolved_query != user_query:
+                print(f"[Context Used]: Query rewritten as: {envelope.resolved_query}")
+                
             # Print control metadata
             print(f">>> [Moderation] Status: {envelope.status} | Intent: {envelope.intent}")
             if envelope.verification:

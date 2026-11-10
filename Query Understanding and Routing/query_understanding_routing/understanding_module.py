@@ -21,7 +21,7 @@ import os
 import re
 import sys
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Set, Tuple
+from typing import Any
 
 MODULE_DIR = Path(__file__).resolve().parent
 STAGE_DIR = MODULE_DIR.parent
@@ -98,6 +98,8 @@ PRONOUN_PATTERNS = [
     r"\bhow to prevent it\b",
     r"\bmitigate it\b",
     r"\babout it\b",
+    r"\bits\b",
+    r"\bit\b",
 ]
 
 ELLIPSIS_STARTERS = [
@@ -162,10 +164,10 @@ def clean_json_codeblock(raw: str) -> str:
 
 
 def truncate_conversation_history(
-    conversation_history: Optional[List[Dict[str, Any]]],
+    conversation_history: list[dict[str, Any]] | None,
     max_turns: int = HISTORY_MAX_TURNS,
     max_chars: int = HISTORY_MAX_CHARS,
-) -> List[Dict[str, str]]:
+) -> list[dict[str, str]]:
     """
     Truncate conversation history according to Contract Section 7.1:
     - Format: [{"role": "user" | "assistant", "content": str}, ...]
@@ -177,7 +179,7 @@ def truncate_conversation_history(
     if not isinstance(conversation_history, list):
         return []
 
-    valid_messages: List[Dict[str, str]] = []
+    valid_messages: list[dict[str, str]] = []
     for turn in conversation_history:
         if isinstance(turn, dict) and "role" in turn and "content" in turn:
             role = str(turn.get("role", "user"))
@@ -200,8 +202,8 @@ def truncate_conversation_history(
 
 def validate_understanding_schema(
     result: Any,
-    allowed_slugs: Set[str] = STANDARD_VULNERABILITY_SLUGS,
-    document_ids: Optional[Set[str]] = None,
+    allowed_slugs: set[str] = STANDARD_VULNERABILITY_SLUGS,
+    document_ids: set[str] | None = None,
 ) -> bool:
     """
     Validate output against Section 7.2 of Contract.
@@ -292,7 +294,7 @@ def validate_understanding_schema(
     if intent in {"SEARCH", "COMPARE", "SYNTHESIS"}:
         if len(tasks) == 0:
             return False
-        seen_task_ids: Set[str] = set()
+        seen_task_ids: set[str] = set()
         for idx, t in enumerate(tasks):
             if not isinstance(t, dict):
                 return False
@@ -334,12 +336,12 @@ def validate_understanding_schema(
 class QueryUnderstandingEngine:
     """Core Query Understanding Engine implementing Section 2 requirements under Contract."""
 
-    def __init__(self, ontology_path: Optional[Path | str] = None):
+    def __init__(self, ontology_path: (Path | str) | None = None):
         self.ontology_path = Path(ontology_path or DEFAULT_ONTOLOGY_PATH)
         self.ontology = self._init_ontology()
         self._build_alias_index()
 
-    def _init_ontology(self) -> Dict[str, Dict[str, Any]]:
+    def _init_ontology(self) -> dict[str, dict[str, Any]]:
         """Load and validate ontology via load_ontology."""
         try:
             return load_ontology(self.ontology_path)
@@ -350,8 +352,8 @@ class QueryUnderstandingEngine:
 
     def _build_alias_index(self) -> None:
         """Map aliases and canonical names to standard slugs."""
-        self.term_to_slug: Dict[str, str] = {}
-        self.related_to_slug: Dict[str, str] = {}
+        self.term_to_slug: dict[str, str] = {}
+        self.related_to_slug: dict[str, str] = {}
 
         for slug, details in self.ontology.items():
             canonical = details.get("canonical", "").strip().lower()
@@ -373,7 +375,7 @@ class QueryUnderstandingEngine:
                 if cleaned:
                     self.related_to_slug[cleaned] = slug
 
-    def extract_vulnerabilities(self, text: str) -> List[str]:
+    def extract_vulnerabilities(self, text: str) -> list[str]:
         """Extract ontology vulnerability slugs from text."""
         lowered = text.lower()
         matched_slugs = set()
@@ -391,11 +393,11 @@ class QueryUnderstandingEngine:
 
         return sorted(list(matched_slugs))
 
-    def extract_documents_and_filters(self, text: str) -> Tuple[List[str], Dict[str, Any]]:
+    def extract_documents_and_filters(self, text: str) -> tuple[list[str], dict[str, Any]]:
         """Extract referenced documents and filter constraints."""
         lowered = text.lower()
         documents = []
-        filter_dict: Dict[str, Any] = {
+        filter_dict: dict[str, Any] = {
             "version": None,
             "document_type": None,
             "source": []
@@ -430,7 +432,7 @@ class QueryUnderstandingEngine:
 
         return documents, filter_dict
 
-    def detect_coreference(self, query: str) -> Tuple[bool, Optional[str]]:
+    def detect_coreference(self, query: str) -> tuple[bool, str | None]:
         lowered = query.lower().strip()
         for pattern in PRONOUN_PATTERNS:
             match = re.search(pattern, lowered)
@@ -445,8 +447,8 @@ class QueryUnderstandingEngine:
         return False, None
 
     def resolve_coreference_from_history(
-        self, query: str, conversation_history: Optional[List[Dict[str, str]]]
-    ) -> Tuple[bool, str, List[str]]:
+        self, query: str, conversation_history: list[dict[str, str]] | None
+    ) -> tuple[bool, str, list[str]]:
         has_ref, ref_text = self.detect_coreference(query)
 
         if not has_ref:
@@ -456,7 +458,7 @@ class QueryUnderstandingEngine:
         if not safe_history:
             return False, query, self.extract_vulnerabilities(query)
 
-        history_slugs: List[str] = []
+        history_slugs: list[str] = []
         antecedent_canonical = ""
 
         for turn in reversed(safe_history):
@@ -472,7 +474,10 @@ class QueryUnderstandingEngine:
             return False, query, []
 
         resolved = query
-        if ref_text and ref_text in ["nó", "lỗi này", "lỗ hổng này", "cái đó", "it", "this vulnerability"]:
+        if ref_text and ref_text in [
+            "nó", "lỗi này", "lỗ hổng này", "cái đó", "lỗi trên",
+            "it", "its", "of it", "this", "that", "this vulnerability", "this flaw"
+        ]:
             resolved = re.sub(
                 r"\b" + re.escape(ref_text) + r"\b",
                 antecedent_canonical,
@@ -491,9 +496,9 @@ class QueryUnderstandingEngine:
         self,
         query: str,
         overall_intent: str,
-        vulnerabilities: List[str],
-        documents: List[str]
-    ) -> List[Dict[str, Any]]:
+        vulnerabilities: list[str],
+        documents: list[str]
+    ) -> list[dict[str, Any]]:
         if overall_intent in {"CLARIFICATION", "OUT_OF_SCOPE"}:
             return []
 
@@ -550,10 +555,10 @@ class QueryUnderstandingEngine:
     def classify_intent_and_clarification(
         self,
         query: str,
-        vulnerabilities: List[str],
-        documents: List[str],
+        vulnerabilities: list[str],
+        documents: list[str],
         has_unresolved_ref: bool
-    ) -> Tuple[str, float, bool, Optional[str]]:
+    ) -> tuple[str, float, bool, str | None]:
         lowered = query.lower().strip()
 
         # 1. Out of Scope Check
@@ -614,10 +619,10 @@ class QueryUnderstandingEngine:
     def execute_understanding(
         self,
         normalized_query: str,
-        conversation_history: Optional[List[Dict[str, str]]] = None,
+        conversation_history: list[dict[str, str]] | None = None,
         confidence_threshold: float = CLARIFY_THRESHOLD,
         llm_client: Any = None
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         clean_query = str(normalized_query).strip()
 
         if not clean_query:
@@ -670,7 +675,7 @@ class QueryUnderstandingEngine:
 
         tasks = self.decompose_tasks(clean_query, intent, entities_vulns, documents)
 
-        result: Dict[str, Any] = {
+        result: dict[str, Any] = {
             "resolved_query": query_after_context if context_used else clean_query,
             "intent": intent,
             "confidence": round(float(confidence), 2),
@@ -692,7 +697,7 @@ class QueryUnderstandingEngine:
 
 
 # Singleton instance
-_default_engine: Optional[QueryUnderstandingEngine] = None
+_default_engine: QueryUnderstandingEngine | None = None
 _default_llm_client: Any = None
 
 
@@ -705,7 +710,7 @@ def get_engine() -> QueryUnderstandingEngine:
 
 
 def set_default_llm_client(client: Any) -> None:
-    """Set global default LLM client for understanding and pipeline orchestration."""
+    """set global default LLM client for understanding and pipeline orchestration."""
     global _default_llm_client
     _default_llm_client = client
 
@@ -718,11 +723,11 @@ def get_default_llm_client() -> Any:
 
 def understand_query(
     normalized_query: str,
-    conversation_history: Optional[List[Dict[str, Any]]] = None,
+    conversation_history: list[dict[str, Any]] | None = None,
     *,
     confidence_threshold: float = CLARIFY_THRESHOLD,
     llm_client: Any = None
-) -> Dict[str, Any]:
+) -> dict[str, Any]:
     """
     Standard interface function as agreed in Contract Section 4:
     understand_query(normalized_query: str,
