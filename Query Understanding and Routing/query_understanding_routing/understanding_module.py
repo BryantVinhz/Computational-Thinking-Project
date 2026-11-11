@@ -451,12 +451,31 @@ class QueryUnderstandingEngine:
     ) -> tuple[bool, str, list[str]]:
         has_ref, ref_text = self.detect_coreference(query)
 
+        # Scan entities directly within the current sentence
+        current_slugs = self.extract_vulnerabilities(query)
+        
         if not has_ref:
-            return False, query, self.extract_vulnerabilities(query)
+            return False, query, current_slugs
 
+        # RESOLVE INTRA-SENTENCE REFERENCES
+        # Example: "What is SQL Injection? How can I prevent it?"
+        # 'it' refers back to 'SQL Injection' in the same input; DO NOT pull from history.
+        if current_slugs:
+            canonical = self.ontology.get(current_slugs[0], {}).get("canonical", current_slugs[0])
+            resolved = query
+            if ref_text:
+                resolved = re.sub(
+                    r"\b" + re.escape(ref_text) + r"\b",
+                    canonical,
+                    query,
+                    flags=re.IGNORECASE
+                )
+        
+        # RESOLVE CROSS-TURN REFERENCES
+        # Example: "What is the CWE of it?" -> No in-turn entity; must retrieve from conversation history.
         safe_history = truncate_conversation_history(conversation_history)
         if not safe_history:
-            return False, query, self.extract_vulnerabilities(query)
+            return False, query, []
 
         history_slugs: list[str] = []
         antecedent_canonical = ""
@@ -673,7 +692,8 @@ class QueryUnderstandingEngine:
             else:
                 clar_msg = None
 
-        tasks = self.decompose_tasks(clean_query, intent, entities_vulns, documents)
+        active_query_for_tasks = query_after_context if query_after_context else clean_query
+        tasks = self.decompose_tasks(active_query_for_tasks, intent, entities_vulns, documents)
 
         result: dict[str, Any] = {
             "resolved_query": query_after_context if context_used else clean_query,

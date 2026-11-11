@@ -363,13 +363,16 @@ class RAGOrchestrator:
             # Call retrieve matching commit e858eca
             retrieval_output = retrieval_sys.retrieve(query_plan)
 
+        context_needed = query_plan.get("context_used", False)
+        history_for_synthesis = active_history if context_needed else None
+        
         # Step 3 & 4: Stage 4 - Synthesis & Final Packaging
         envelope =  self.run_from_retrieval(
             query=query,
             retrieval_output=retrieval_output,
             resolved_query=resolved_query,
             intent=intent,
-            conversation_history=active_history,
+            conversation_history=history_for_synthesis,
         )
         
         if envelope.status in {"ok", "abstained"} and conversation_history is None:

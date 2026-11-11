@@ -187,7 +187,7 @@ class TraceableFormatter:
             if evidence is None:
                 # Do not silently ignore: reader needs to know this tag cannot be traced.
                 logger.warning("Citation %s has no matching evidence", tag)
-                reference_lines.append(f"- **{tag}** ⚠️ Source not found in evidence")
+                reference_lines.append(f"- **{tag}**Source not found in evidence")
                 continue
             citation = build_citation(tag, evidence)
             citations.append(citation)

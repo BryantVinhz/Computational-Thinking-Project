@@ -13,7 +13,7 @@ supporting flexible branching between:
 
 from __future__ import annotations
 
-import logging
+import logging, re
 import time
 from typing import Any, Protocol, runtime_checkable
 
@@ -209,7 +209,7 @@ class ResponseSynthesizer:
             # Call LLM
             draft_answer = self.llm_client.generate(
                 prompt=messages,
-                system_instruction=SYSTEM_INSTRUCTION_SYNTHESIS,
+                system_instruction=None,
             )
         except Exception as e:
             logger.error("LLM generate failed: %s", e)
@@ -223,6 +223,8 @@ class ResponseSynthesizer:
                                     "error": str(e)},
             )
 
+        draft_answer = re.sub(r"\[i\]", "", draft_answer)
+        
         # Extract all citation tags [1], [2] from Markdown text
         cited_tags = extract_citation_tags(draft_answer)
 

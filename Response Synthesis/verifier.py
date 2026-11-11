@@ -19,11 +19,20 @@ Interface complies with VerifierProtocol in rag_orchestrator.py:
 
 from __future__ import annotations
 
-import re
+import re, sys
 import unicodedata
 from dataclasses import dataclass
 from typing import Any, Callable
+from pathlib import Path
 
+QUR_DIR = Path(__file__).resolve().parent.parent / "Query Understanding and Routing" / "query_understanding_routing"
+if str(QUR_DIR) not in sys.path:
+    sys.path.insert(0, str(QUR_DIR))
+try:
+    from normalization_module import detect_language
+except ImportError:
+    from query_understanding_routing.normalization_module import detect_language
+    
 try:
     from .schema_response import (
         ClaimStatus,
@@ -48,10 +57,10 @@ SimilarityFn = Callable[[str, str], float]
 # Overall thresholds matching VerificationStatus docstring.
 PASSED_THRESHOLD = 0.8
 WARNING_THRESHOLD = 0.5
-DEFAULT_SUPPORT_THRESHOLD = 0.5
+DEFAULT_SUPPORT_THRESHOLD = 0.50
 MIN_CLAIM_TOKENS = 3
 SNIPPET_MAX_CHARS = 300
-SEMANTIC_SUPPORT_THRESHOLD = 0.60
+SEMANTIC_SUPPORT_THRESHOLD = 0.50
 ADVISORY_MARKER = "general knowledge advisory"
 
 _TAG_RE = re.compile(r"\[(\d+)\]")
@@ -81,6 +90,19 @@ STOPWORDS = frozenset({
     "were", "has", "have", "which", "its", "into",
 })
 
+DISCLAIMER_PATTERNS = [
+    r"do chuyên gia minh họa",
+    r"không nằm trong tài liệu",
+    r"not part of the cited documents",
+    r"illustrative code provided by",
+    r"hypothetical vulnerable code",
+    r"^(dưới đây là|sau đây là|như đã nêu|tóm lại|nhìn chung)",
+    r"^(below are|as mentioned|in summary|the following are)",
+]
+
+def _is_disclaimer_or_filler(text: str) -> bool:
+    t = text.lower().strip()
+    return any(re.search(p, t) for p in DISCLAIMER_PATTERNS)
 
 @dataclass
 class ExtractedClaim:
@@ -193,6 +215,9 @@ def extract_claims(draft_answer: str, min_tokens: int = MIN_CLAIM_TOKENS) -> lis
         for segment in segments:
             tags = list(dict.fromkeys(f"[{n}]" for n in _TAG_RE.findall(segment)))
             text = " ".join(_TAG_RE.sub(" ", segment).split()).strip(" .,;:")
+            if _is_disclaimer_or_filler(text):
+                continue
+            
             if len(_content_tokens(text)) < min_tokens:
                 continue
             claims.append(ExtractedClaim(text=text, tags=tags, is_advisory=in_advisory))
@@ -283,10 +308,23 @@ class EvidenceVerifier:
         text = evidence.get("text_content") or ""
         if not text.strip():
             return 0.0, ""
-        chunk_score = self.similarity_fn(claim_text, text)
+        
+        # Detecting the language of the claim
+        c_lang = detect_language(claim_text)
+        
+        # If the claim is in Vietnamese and the evidence is in English -> semantic embedding is required
+        if c_lang == "vi" and hasattr(self, "semantic_fn") and self.semantic_fn:
+            chunk_score = self.semantic_fn(claim_text, text)
+        else:
+            chunk_score = self.similarity_fn(claim_text, text)
+            
+
         best_sentence, best_sentence_score = "", -1.0
         for sentence in _split_sentences(text):
-            score = self.similarity_fn(claim_text, sentence)
+            if c_lang == "vi" and hasattr(self, "semantic_fn") and self.semantic_fn:
+                score = self.semantic_fn(claim_text, sentence)
+            else:
+                score = self.similarity_fn(claim_text, sentence)
             if score > best_sentence_score:
                 best_sentence, best_sentence_score = sentence, score
         return max(chunk_score, best_sentence_score), best_sentence or text
@@ -334,6 +372,17 @@ class EvidenceVerifier:
             if best_tag is None or score > best_score:
                 best_tag, best_score, best_snippet = tag, score, snippet
 
+        # Secondary Evidence Fallback: If the assigned tag lacks sufficient evidence,
+        # check the remaining evidence in the pool to avoid false penalties when the LLM misassigns an index.
+        if valid_tags and best_score < self.support_threshold and len(evidence_by_tag) > 1:
+            other_tags = [t for t in evidence_by_tag if t not in valid_tags]
+            for tag in other_tags:
+                score, snippet = self._best_match(claim.text, evidence_by_tag[tag])
+                if score > best_score:
+                    best_tag, best_score, best_snippet = tag, score, snippet
+                    if score >= self.support_threshold:
+                        warnings.append(f"{claim_id}: Citation for {valid_tags} does not match, but evidence was found in {tag}.")
+                        
         score = round(max(0.0, min(1.0, best_score)), 4)
         snippet = _truncate(best_snippet) if best_snippet else None
 

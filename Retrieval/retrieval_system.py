@@ -168,25 +168,6 @@ class RetrievalSystem:
             )
 
         raw_tasks = plan.get("task") or []
-
-        if plan.get("need_clarify") is True or global_intent == "CLARIFICATION":
-            return self._empty_response(
-                status="clarification_needed",
-                intent=global_intent,
-                llm_context=plan.get("clarification_message") or "Please clarify your question",
-            )
-
-        # Only retrieval intents may reach the index. Anything else (OUT_OF_SCOPE, unknown) must not
-        # degrade into an unconstrained corpus-wide SEARCH.
-        if global_intent not in RETRIEVAL_INTENTS:
-            logger.warning("Refusing retrieval for non-retrieval intent '%s'", global_intent)
-            return self._empty_response(
-                status="ok",
-                intent=global_intent,
-                llm_context="Yêu cầu nằm ngoài phạm vi truy xuất tài liệu.",
-            )
-
-        raw_tasks = plan.get("task") or []
         if not raw_tasks:
             raw_tasks = [{
                 "task_id": "main_task",

@@ -29,7 +29,7 @@ class PipelineConnector:
         self.retrieval_system = RetrievalSystem()
 
         if llm_client is None:
-            llm_client = ColabLLMClient()
+            llm_client =  OllamaLLMClient(model_name="qwen2.5:3b") # ColabLLMClient() 
         self.llm_client = llm_client
 
         print("Initializing Response Synthesis, Verifier & Formatter with Remote LLM")
@@ -50,16 +50,27 @@ class PipelineConnector:
             traceable_formatter=self.formatter,
         )
 
+        self.conversation_history: list[dict[str, str]] = []
     def ask(self, query: str) -> FinalResponseEnvelope:
         print(f"\n>>> Processing query: '{query}'...")
-        return self.orchestrator.run(query)
+        
+        envelope = self.orchestrator.run(query, conversation_history=self.conversation_history)
+        
+        if envelope.status == "ok" and envelope.final_answer_markdown:
+            self.conversation_history.append({"role": "user", "content": query})
+            clean_answer = envelope.final_answer_markdown.split("---")[0].strip()
+            self.conversation_history.append({"role": "assistant", "content": clean_answer})
+            
+        return envelope
 
-
+    def reset_conversation(self):
+        self.conversation_history.clear()
+        
 if __name__ == "__main__":
     try:
-        local_llm = OllamaLLMClient(model_name="qwen3.5:4b")
+        local_llm = OllamaLLMClient(model_name="qwen2.5:3b")
         remote_llm = ColabLLMClient()
-        pipeline = PipelineConnector(llm_client=remote_llm)
+        pipeline = PipelineConnector(llm_client=local_llm)
     except Exception as e:
         print(f"System initialization error: {e}")
         sys.exit(1)
@@ -81,7 +92,7 @@ if __name__ == "__main__":
                 print("Goodbye!")
                 break
             
-            if user_query.lower() in {"reset", "clear"}:
+            if user_query.lower() in {"reset", "clear", "refresh"}:
                 pipeline.orchestrator.reset_conversation()
                 print("Session context refreshed")
                 continue
