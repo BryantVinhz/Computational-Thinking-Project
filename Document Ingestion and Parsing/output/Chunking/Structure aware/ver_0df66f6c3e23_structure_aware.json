@@ -204,22 +204,8 @@
       "version_id": "ver_0df66f6c3e23",
       "chunk_idx": 14,
       "chunk_type": "list",
-      "text_content": "* [CWE-5 J2EE Misconfiguration: Data Transmission Without Encryption](https://cwe.mitre.org/data/definitions/5.html)\n\n* [CWE-11 ASP.NET Misconfiguration: Creating Debug Binary](https://cwe.mitre.org/data/definitions/11.html)\n\n* [CWE-13 ASP.NET Misconfiguration: Password in Configuration File](https://cwe.mitre.org/data/definitions/13.html)\n\n* [CWE-15 External Control of System or Configuration Setting](https://cwe.mitre.org/data/definitions/15.html)\n\n* [CWE-16 Configuration](https://cwe.mitre.org/data/definitions/16.html)\n\n* [CWE-260 Password in Configuration File](https://cwe.mitre.org/data/definitions/260.html)\n\n* [CWE-315 Cleartext Storage of Sensitive Information in a Cookie](https://cwe.mitre.org/data/definitions/315.html)\n\n* [CWE-489 Active Debug Code](https://cwe.mitre.org/data/definitions/489.html)\n\n* [CWE-526 Exposure of Sensitive Information Through Environmental Variables](https://cwe.mitre.org/data/definitions/526.html)\n\n* [CWE-547 Use of Hard-coded, Security-relevant Constants](https://cwe.mitre.org/data/definitions/547.html)\n\n* [CWE-611 Improper Restriction of XML External Entity Reference](https://cwe.mitre.org/data/definitions/611.html)\n\n* [CWE-614 Sensitive Cookie in HTTPS Session Without 'Secure' Attribute](https://cwe.mitre.org/data/definitions/614.html)\n\n* [CWE-776 Improper Restriction of Recursive Entity References in DTDs ('XML Entity Expansion')](https://cwe.mitre.org/data/definitions/776.html)",
-      "token_count": 421,
-      "chunk_strategy": "structure_aware",
-      "heading_path": [
-        "A02:2025 Security Misconfiguration",
-        "List of Mapped CWEs"
-      ]
-    },
-    {
-      "chunk_id": "ver_0df66f6c3e23_c00015",
-      "document_id": "doc_owasp_top10_a02_security_misconfiguration",
-      "version_id": "ver_0df66f6c3e23",
-      "chunk_idx": 15,
-      "chunk_type": "list",
-      "text_content": "* [CWE-942 Permissive Cross-domain Policy with Untrusted Domains](https://cwe.mitre.org/data/definitions/942.html)\n\n* [CWE-1004 Sensitive Cookie Without 'HttpOnly' Flag](https://cwe.mitre.org/data/definitions/1004.html)\n\n* [CWE-1174 ASP.NET Misconfiguration: Improper Model Validation](https://cwe.mitre.org/data/definitions/1174.html)",
-      "token_count": 98,
+      "text_content": "* [CWE-5 J2EE Misconfiguration: Data Transmission Without Encryption](https://cwe.mitre.org/data/definitions/5.html)\n\n* [CWE-11 ASP.NET Misconfiguration: Creating Debug Binary](https://cwe.mitre.org/data/definitions/11.html)\n\n* [CWE-13 ASP.NET Misconfiguration: Password in Configuration File](https://cwe.mitre.org/data/definitions/13.html)\n\n* [CWE-15 External Control of System or Configuration Setting](https://cwe.mitre.org/data/definitions/15.html)\n\n* [CWE-16 Configuration](https://cwe.mitre.org/data/definitions/16.html)\n\n* [CWE-260 Password in Configuration File](https://cwe.mitre.org/data/definitions/260.html)\n\n* [CWE-315 Cleartext Storage of Sensitive Information in a Cookie](https://cwe.mitre.org/data/definitions/315.html)\n\n* [CWE-489 Active Debug Code](https://cwe.mitre.org/data/definitions/489.html)\n\n* [CWE-526 Exposure of Sensitive Information Through Environmental Variables](https://cwe.mitre.org/data/definitions/526.html)\n\n* [CWE-547 Use of Hard-coded, Security-relevant Constants](https://cwe.mitre.org/data/definitions/547.html)\n\n* [CWE-611 Improper Restriction of XML External Entity Reference](https://cwe.mitre.org/data/definitions/611.html)\n\n* [CWE-614 Sensitive Cookie in HTTPS Session Without 'Secure' Attribute](https://cwe.mitre.org/data/definitions/614.html)\n\n* [CWE-776 Improper Restriction of Recursive Entity References in DTDs ('XML Entity Expansion')](https://cwe.mitre.org/data/definitions/776.html)\n\n* [CWE-942 Permissive Cross-domain Policy with Untrusted Domains](https://cwe.mitre.org/data/definitions/942.html)\n\n* [CWE-1004 Sensitive Cookie Without 'HttpOnly' Flag](https://cwe.mitre.org/data/definitions/1004.html)\n\n* [CWE-1174 ASP.NET Misconfiguration: Improper Model Validation](https://cwe.mitre.org/data/definitions/1174.html)",
+      "token_count": 519,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "A02:2025 Security Misconfiguration",
@@ -741,26 +727,26 @@
       "end_offset": 1440
     },
     {
-      "chunk_source_id": "ver_0df66f6c3e23_c00015_s000",
-      "chunk_id": "ver_0df66f6c3e23_c00015",
+      "chunk_source_id": "ver_0df66f6c3e23_c00014_s013",
+      "chunk_id": "ver_0df66f6c3e23_c00014",
       "normalized_block_id": "nrm_ver_0df66f6c3e23_b00021",
-      "source_order": 0,
+      "source_order": 13,
       "start_offset": 1442,
       "end_offset": 1556
     },
     {
-      "chunk_source_id": "ver_0df66f6c3e23_c00015_s001",
-      "chunk_id": "ver_0df66f6c3e23_c00015",
+      "chunk_source_id": "ver_0df66f6c3e23_c00014_s014",
+      "chunk_id": "ver_0df66f6c3e23_c00014",
       "normalized_block_id": "nrm_ver_0df66f6c3e23_b00021",
-      "source_order": 1,
+      "source_order": 14,
       "start_offset": 1558,
       "end_offset": 1661
     },
     {
-      "chunk_source_id": "ver_0df66f6c3e23_c00015_s002",
-      "chunk_id": "ver_0df66f6c3e23_c00015",
+      "chunk_source_id": "ver_0df66f6c3e23_c00014_s015",
+      "chunk_id": "ver_0df66f6c3e23_c00014",
       "normalized_block_id": "nrm_ver_0df66f6c3e23_b00021",
-      "source_order": 2,
+      "source_order": 15,
       "start_offset": 1663,
       "end_offset": 1777
     }

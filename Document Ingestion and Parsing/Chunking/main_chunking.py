@@ -80,4 +80,4 @@ def run_pipeline(strategy_name: str, max_tokens: int, overlap_tokens: int):
 
 
 if __name__ == "__main__":
-    run_pipeline(strategy_name="structure_aware", max_tokens=450, overlap_tokens=50)
+    run_pipeline(strategy_name="structure_aware", max_tokens=650, overlap_tokens=50)

@@ -288,8 +288,8 @@
       "version_id": "ver_c660dd06c1d6",
       "chunk_idx": 20,
       "chunk_type": "paragraph",
-      "text_content": "[CWE-20 Improper Input Validation](https://cwe.mitre.org/data/definitions/20.html)\n\n[CWE-74 Improper Neutralization of Special Elements in Output Used by a\nDownstream Component ('Injection')](https://cwe.mitre.org/data/definitions/74.html)\n\n[CWE-75 Failure to Sanitize Special Elements into a Different Plane\n(Special Element Injection)](https://cwe.mitre.org/data/definitions/75.html)\n\n[CWE-77 Improper Neutralization of Special Elements used in a Command\n('Command Injection')](https://cwe.mitre.org/data/definitions/77.html)\n\n[CWE-78 Improper Neutralization of Special Elements used in an OS Command\n('OS Command Injection')](https://cwe.mitre.org/data/definitions/78.html)\n\n[CWE-79 Improper Neutralization of Input During Web Page Generation\n('Cross-site Scripting')](https://cwe.mitre.org/data/definitions/79.html)\n\n[CWE-80 Improper Neutralization of Script-Related HTML Tags in a Web Page\n(Basic XSS)](https://cwe.mitre.org/data/definitions/80.html)\n\n[CWE-83 Improper Neutralization of Script in Attributes in a Web Page](https://cwe.mitre.org/data/definitions/83.html)\n\n[CWE-87 Improper Neutralization of Alternate XSS Syntax](https://cwe.mitre.org/data/definitions/87.html)\n\n[CWE-88 Improper Neutralization of Argument Delimiters in a Command ('Argument Injection')](https://cwe.mitre.org/data/definitions/88.html)\n\n[CWE-89 Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')](https://cwe.mitre.org/data/definitions/89.html)\n\n[CWE-90 Improper Neutralization of Special Elements used in an LDAP Query ('LDAP Injection')](https://cwe.mitre.org/data/definitions/90.html)",
-      "token_count": 448,
+      "text_content": "[CWE-20 Improper Input Validation](https://cwe.mitre.org/data/definitions/20.html)\n\n[CWE-74 Improper Neutralization of Special Elements in Output Used by a\nDownstream Component ('Injection')](https://cwe.mitre.org/data/definitions/74.html)\n\n[CWE-75 Failure to Sanitize Special Elements into a Different Plane\n(Special Element Injection)](https://cwe.mitre.org/data/definitions/75.html)\n\n[CWE-77 Improper Neutralization of Special Elements used in a Command\n('Command Injection')](https://cwe.mitre.org/data/definitions/77.html)\n\n[CWE-78 Improper Neutralization of Special Elements used in an OS Command\n('OS Command Injection')](https://cwe.mitre.org/data/definitions/78.html)\n\n[CWE-79 Improper Neutralization of Input During Web Page Generation\n('Cross-site Scripting')](https://cwe.mitre.org/data/definitions/79.html)\n\n[CWE-80 Improper Neutralization of Script-Related HTML Tags in a Web Page\n(Basic XSS)](https://cwe.mitre.org/data/definitions/80.html)\n\n[CWE-83 Improper Neutralization of Script in Attributes in a Web Page](https://cwe.mitre.org/data/definitions/83.html)\n\n[CWE-87 Improper Neutralization of Alternate XSS Syntax](https://cwe.mitre.org/data/definitions/87.html)\n\n[CWE-88 Improper Neutralization of Argument Delimiters in a Command ('Argument Injection')](https://cwe.mitre.org/data/definitions/88.html)\n\n[CWE-89 Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')](https://cwe.mitre.org/data/definitions/89.html)\n\n[CWE-90 Improper Neutralization of Special Elements used in an LDAP Query ('LDAP Injection')](https://cwe.mitre.org/data/definitions/90.html)\n\n[CWE-91 XML Injection (aka Blind XPath Injection)](https://cwe.mitre.org/data/definitions/91.html)\n\n[CWE-93 Improper Neutralization of CRLF Sequences ('CRLF Injection')](https://cwe.mitre.org/data/definitions/93.html)\n\n[CWE-94 Improper Control of Generation of Code ('Code Injection')](https://cwe.mitre.org/data/definitions/94.html)\n\n[CWE-95 Improper Neutralization of Directives in Dynamically Evaluated Code ('Eval Injection')](https://cwe.mitre.org/data/definitions/95.html)\n\n[CWE-96 Improper Neutralization of Directives in Statically Saved Code ('Static Code Injection')](https://cwe.mitre.org/data/definitions/96.html)",
+      "token_count": 628,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "A03:2021 – Injection",
@@ -302,22 +302,8 @@
       "version_id": "ver_c660dd06c1d6",
       "chunk_idx": 21,
       "chunk_type": "paragraph",
-      "text_content": "[CWE-91 XML Injection (aka Blind XPath Injection)](https://cwe.mitre.org/data/definitions/91.html)\n\n[CWE-93 Improper Neutralization of CRLF Sequences ('CRLF Injection')](https://cwe.mitre.org/data/definitions/93.html)\n\n[CWE-94 Improper Control of Generation of Code ('Code Injection')](https://cwe.mitre.org/data/definitions/94.html)\n\n[CWE-95 Improper Neutralization of Directives in Dynamically Evaluated Code ('Eval Injection')](https://cwe.mitre.org/data/definitions/95.html)\n\n[CWE-96 Improper Neutralization of Directives in Statically Saved Code ('Static Code Injection')](https://cwe.mitre.org/data/definitions/96.html)\n\n[CWE-97 Improper Neutralization of Server-Side Includes (SSI) Within a Web Page](https://cwe.mitre.org/data/definitions/97.html)\n\n[CWE-98 Improper Control of Filename for Include/Require Statement in PHP Program ('PHP Remote File Inclusion')](https://cwe.mitre.org/data/definitions/98.html)\n\n[CWE-99 Improper Control of Resource Identifiers ('Resource Injection')](https://cwe.mitre.org/data/definitions/99.html)\n\n[CWE-100 Deprecated: Was catch-all for input validation issues](https://cwe.mitre.org/data/definitions/100.html)\n\n[CWE-113 Improper Neutralization of CRLF Sequences in HTTP Headers ('HTTP Response Splitting')](https://cwe.mitre.org/data/definitions/113.html)\n\n[CWE-116 Improper Encoding or Escaping of Output](https://cwe.mitre.org/data/definitions/116.html)\n\n[CWE-138 Improper Neutralization of Special Elements](https://cwe.mitre.org/data/definitions/138.html)",
-      "token_count": 429,
-      "chunk_strategy": "structure_aware",
-      "heading_path": [
-        "A03:2021 – Injection",
-        "List of Mapped CWEs"
-      ]
-    },
-    {
-      "chunk_id": "ver_c660dd06c1d6_c00022",
-      "document_id": "doc_owasp_top10_a03_injection",
-      "version_id": "ver_c660dd06c1d6",
-      "chunk_idx": 22,
-      "chunk_type": "paragraph",
-      "text_content": "[CWE-184 Incomplete List of Disallowed Inputs](https://cwe.mitre.org/data/definitions/184.html)\n\n[CWE-470 Use of Externally-Controlled Input to Select Classes or Code ('Unsafe Reflection')](https://cwe.mitre.org/data/definitions/470.html)\n\n[CWE-471 Modification of Assumed-Immutable Data (MAID)](https://cwe.mitre.org/data/definitions/471.html)\n\n[CWE-564 SQL Injection: Hibernate](https://cwe.mitre.org/data/definitions/564.html)\n\n[CWE-610 Externally Controlled Reference to a Resource in Another Sphere](https://cwe.mitre.org/data/definitions/610.html)\n\n[CWE-643 Improper Neutralization of Data within XPath Expressions ('XPath Injection')](https://cwe.mitre.org/data/definitions/643.html)\n\n[CWE-644 Improper Neutralization of HTTP Headers for Scripting Syntax](https://cwe.mitre.org/data/definitions/644.html)\n\n[CWE-652 Improper Neutralization of Data within XQuery Expressions ('XQuery Injection')](https://cwe.mitre.org/data/definitions/652.html)\n\n[CWE-917 Improper Neutralization of Special Elements used in an Expression Language Statement ('Expression Language Injection')](https://cwe.mitre.org/data/definitions/917.html)",
-      "token_count": 312,
+      "text_content": "[CWE-97 Improper Neutralization of Server-Side Includes (SSI) Within a Web Page](https://cwe.mitre.org/data/definitions/97.html)\n\n[CWE-98 Improper Control of Filename for Include/Require Statement in PHP Program ('PHP Remote File Inclusion')](https://cwe.mitre.org/data/definitions/98.html)\n\n[CWE-99 Improper Control of Resource Identifiers ('Resource Injection')](https://cwe.mitre.org/data/definitions/99.html)\n\n[CWE-100 Deprecated: Was catch-all for input validation issues](https://cwe.mitre.org/data/definitions/100.html)\n\n[CWE-113 Improper Neutralization of CRLF Sequences in HTTP Headers ('HTTP Response Splitting')](https://cwe.mitre.org/data/definitions/113.html)\n\n[CWE-116 Improper Encoding or Escaping of Output](https://cwe.mitre.org/data/definitions/116.html)\n\n[CWE-138 Improper Neutralization of Special Elements](https://cwe.mitre.org/data/definitions/138.html)\n\n[CWE-184 Incomplete List of Disallowed Inputs](https://cwe.mitre.org/data/definitions/184.html)\n\n[CWE-470 Use of Externally-Controlled Input to Select Classes or Code ('Unsafe Reflection')](https://cwe.mitre.org/data/definitions/470.html)\n\n[CWE-471 Modification of Assumed-Immutable Data (MAID)](https://cwe.mitre.org/data/definitions/471.html)\n\n[CWE-564 SQL Injection: Hibernate](https://cwe.mitre.org/data/definitions/564.html)\n\n[CWE-610 Externally Controlled Reference to a Resource in Another Sphere](https://cwe.mitre.org/data/definitions/610.html)\n\n[CWE-643 Improper Neutralization of Data within XPath Expressions ('XPath Injection')](https://cwe.mitre.org/data/definitions/643.html)\n\n[CWE-644 Improper Neutralization of HTTP Headers for Scripting Syntax](https://cwe.mitre.org/data/definitions/644.html)\n\n[CWE-652 Improper Neutralization of Data within XQuery Expressions ('XQuery Injection')](https://cwe.mitre.org/data/definitions/652.html)\n\n[CWE-917 Improper Neutralization of Special Elements used in an Expression Language Statement ('Expression Language Injection')](https://cwe.mitre.org/data/definitions/917.html)",
+      "token_count": 561,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "A03:2021 – Injection",
@@ -799,170 +785,170 @@
       "end_offset": 141
     },
     {
-      "chunk_source_id": "ver_c660dd06c1d6_c00021_s000",
-      "chunk_id": "ver_c660dd06c1d6_c00021",
+      "chunk_source_id": "ver_c660dd06c1d6_c00020_s012",
+      "chunk_id": "ver_c660dd06c1d6_c00020",
       "normalized_block_id": "nrm_ver_c660dd06c1d6_b00035",
-      "source_order": 0,
+      "source_order": 12,
       "start_offset": 0,
       "end_offset": 98
     },
     {
-      "chunk_source_id": "ver_c660dd06c1d6_c00021_s001",
-      "chunk_id": "ver_c660dd06c1d6_c00021",
+      "chunk_source_id": "ver_c660dd06c1d6_c00020_s013",
+      "chunk_id": "ver_c660dd06c1d6_c00020",
       "normalized_block_id": "nrm_ver_c660dd06c1d6_b00036",
-      "source_order": 1,
+      "source_order": 13,
       "start_offset": 0,
       "end_offset": 117
     },
     {
-      "chunk_source_id": "ver_c660dd06c1d6_c00021_s002",
-      "chunk_id": "ver_c660dd06c1d6_c00021",
+      "chunk_source_id": "ver_c660dd06c1d6_c00020_s014",
+      "chunk_id": "ver_c660dd06c1d6_c00020",
       "normalized_block_id": "nrm_ver_c660dd06c1d6_b00037",
-      "source_order": 2,
+      "source_order": 14,
       "start_offset": 0,
       "end_offset": 114
     },
     {
-      "chunk_source_id": "ver_c660dd06c1d6_c00021_s003",
-      "chunk_id": "ver_c660dd06c1d6_c00021",
+      "chunk_source_id": "ver_c660dd06c1d6_c00020_s015",
+      "chunk_id": "ver_c660dd06c1d6_c00020",
       "normalized_block_id": "nrm_ver_c660dd06c1d6_b00038",
-      "source_order": 3,
+      "source_order": 15,
       "start_offset": 0,
       "end_offset": 143
     },
     {
-      "chunk_source_id": "ver_c660dd06c1d6_c00021_s004",
-      "chunk_id": "ver_c660dd06c1d6_c00021",
+      "chunk_source_id": "ver_c660dd06c1d6_c00020_s016",
+      "chunk_id": "ver_c660dd06c1d6_c00020",
       "normalized_block_id": "nrm_ver_c660dd06c1d6_b00039",
-      "source_order": 4,
+      "source_order": 16,
       "start_offset": 0,
       "end_offset": 145
     },
     {
-      "chunk_source_id": "ver_c660dd06c1d6_c00021_s005",
+      "chunk_source_id": "ver_c660dd06c1d6_c00021_s000",
       "chunk_id": "ver_c660dd06c1d6_c00021",
       "normalized_block_id": "nrm_ver_c660dd06c1d6_b00040",
-      "source_order": 5,
+      "source_order": 0,
       "start_offset": 0,
       "end_offset": 128
     },
     {
-      "chunk_source_id": "ver_c660dd06c1d6_c00021_s006",
+      "chunk_source_id": "ver_c660dd06c1d6_c00021_s001",
       "chunk_id": "ver_c660dd06c1d6_c00021",
       "normalized_block_id": "nrm_ver_c660dd06c1d6_b00041",
-      "source_order": 6,
+      "source_order": 1,
       "start_offset": 0,
       "end_offset": 160
     },
     {
-      "chunk_source_id": "ver_c660dd06c1d6_c00021_s007",
+      "chunk_source_id": "ver_c660dd06c1d6_c00021_s002",
       "chunk_id": "ver_c660dd06c1d6_c00021",
       "normalized_block_id": "nrm_ver_c660dd06c1d6_b00042",
-      "source_order": 7,
+      "source_order": 2,
       "start_offset": 0,
       "end_offset": 120
     },
     {
-      "chunk_source_id": "ver_c660dd06c1d6_c00021_s008",
+      "chunk_source_id": "ver_c660dd06c1d6_c00021_s003",
       "chunk_id": "ver_c660dd06c1d6_c00021",
       "normalized_block_id": "nrm_ver_c660dd06c1d6_b00043",
-      "source_order": 8,
+      "source_order": 3,
       "start_offset": 0,
       "end_offset": 112
     },
     {
-      "chunk_source_id": "ver_c660dd06c1d6_c00021_s009",
+      "chunk_source_id": "ver_c660dd06c1d6_c00021_s004",
       "chunk_id": "ver_c660dd06c1d6_c00021",
       "normalized_block_id": "nrm_ver_c660dd06c1d6_b00044",
-      "source_order": 9,
+      "source_order": 4,
       "start_offset": 0,
       "end_offset": 144
     },
     {
-      "chunk_source_id": "ver_c660dd06c1d6_c00021_s010",
+      "chunk_source_id": "ver_c660dd06c1d6_c00021_s005",
       "chunk_id": "ver_c660dd06c1d6_c00021",
       "normalized_block_id": "nrm_ver_c660dd06c1d6_b00045",
-      "source_order": 10,
+      "source_order": 5,
       "start_offset": 0,
       "end_offset": 98
     },
     {
-      "chunk_source_id": "ver_c660dd06c1d6_c00021_s011",
+      "chunk_source_id": "ver_c660dd06c1d6_c00021_s006",
       "chunk_id": "ver_c660dd06c1d6_c00021",
       "normalized_block_id": "nrm_ver_c660dd06c1d6_b00046",
-      "source_order": 11,
+      "source_order": 6,
       "start_offset": 0,
       "end_offset": 102
     },
     {
-      "chunk_source_id": "ver_c660dd06c1d6_c00022_s000",
-      "chunk_id": "ver_c660dd06c1d6_c00022",
+      "chunk_source_id": "ver_c660dd06c1d6_c00021_s007",
+      "chunk_id": "ver_c660dd06c1d6_c00021",
       "normalized_block_id": "nrm_ver_c660dd06c1d6_b00047",
-      "source_order": 0,
+      "source_order": 7,
       "start_offset": 0,
       "end_offset": 95
     },
     {
-      "chunk_source_id": "ver_c660dd06c1d6_c00022_s001",
-      "chunk_id": "ver_c660dd06c1d6_c00022",
+      "chunk_source_id": "ver_c660dd06c1d6_c00021_s008",
+      "chunk_id": "ver_c660dd06c1d6_c00021",
       "normalized_block_id": "nrm_ver_c660dd06c1d6_b00048",
-      "source_order": 1,
+      "source_order": 8,
       "start_offset": 0,
       "end_offset": 141
     },
     {
-      "chunk_source_id": "ver_c660dd06c1d6_c00022_s002",
-      "chunk_id": "ver_c660dd06c1d6_c00022",
+      "chunk_source_id": "ver_c660dd06c1d6_c00021_s009",
+      "chunk_id": "ver_c660dd06c1d6_c00021",
       "normalized_block_id": "nrm_ver_c660dd06c1d6_b00049",
-      "source_order": 2,
+      "source_order": 9,
       "start_offset": 0,
       "end_offset": 104
     },
     {
-      "chunk_source_id": "ver_c660dd06c1d6_c00022_s003",
-      "chunk_id": "ver_c660dd06c1d6_c00022",
+      "chunk_source_id": "ver_c660dd06c1d6_c00021_s010",
+      "chunk_id": "ver_c660dd06c1d6_c00021",
       "normalized_block_id": "nrm_ver_c660dd06c1d6_b00050",
-      "source_order": 3,
+      "source_order": 10,
       "start_offset": 0,
       "end_offset": 83
     },
     {
-      "chunk_source_id": "ver_c660dd06c1d6_c00022_s004",
-      "chunk_id": "ver_c660dd06c1d6_c00022",
+      "chunk_source_id": "ver_c660dd06c1d6_c00021_s011",
+      "chunk_id": "ver_c660dd06c1d6_c00021",
       "normalized_block_id": "nrm_ver_c660dd06c1d6_b00051",
-      "source_order": 4,
+      "source_order": 11,
       "start_offset": 0,
       "end_offset": 122
     },
     {
-      "chunk_source_id": "ver_c660dd06c1d6_c00022_s005",
-      "chunk_id": "ver_c660dd06c1d6_c00022",
+      "chunk_source_id": "ver_c660dd06c1d6_c00021_s012",
+      "chunk_id": "ver_c660dd06c1d6_c00021",
       "normalized_block_id": "nrm_ver_c660dd06c1d6_b00052",
-      "source_order": 5,
+      "source_order": 12,
       "start_offset": 0,
       "end_offset": 135
     },
     {
-      "chunk_source_id": "ver_c660dd06c1d6_c00022_s006",
-      "chunk_id": "ver_c660dd06c1d6_c00022",
+      "chunk_source_id": "ver_c660dd06c1d6_c00021_s013",
+      "chunk_id": "ver_c660dd06c1d6_c00021",
       "normalized_block_id": "nrm_ver_c660dd06c1d6_b00053",
-      "source_order": 6,
+      "source_order": 13,
       "start_offset": 0,
       "end_offset": 119
     },
     {
-      "chunk_source_id": "ver_c660dd06c1d6_c00022_s007",
-      "chunk_id": "ver_c660dd06c1d6_c00022",
+      "chunk_source_id": "ver_c660dd06c1d6_c00021_s014",
+      "chunk_id": "ver_c660dd06c1d6_c00021",
       "normalized_block_id": "nrm_ver_c660dd06c1d6_b00054",
-      "source_order": 7,
+      "source_order": 14,
       "start_offset": 0,
       "end_offset": 137
     },
     {
-      "chunk_source_id": "ver_c660dd06c1d6_c00022_s008",
-      "chunk_id": "ver_c660dd06c1d6_c00022",
+      "chunk_source_id": "ver_c660dd06c1d6_c00021_s015",
+      "chunk_id": "ver_c660dd06c1d6_c00021",
       "normalized_block_id": "nrm_ver_c660dd06c1d6_b00055",
-      "source_order": 8,
+      "source_order": 15,
       "start_offset": 0,
       "end_offset": 177
     }

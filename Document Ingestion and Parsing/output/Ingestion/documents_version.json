@@ -12,7 +12,7 @@
     "current_stage": "INGESTED",
     "is_duplicate": false,
     "error_message": null,
-    "updated_at": "2026-11-04T02:42:19.659358+00:00"
+    "updated_at": "2026-11-12T12:15:05.558342+00:00"
   },
   {
     "version_id": "ver_04040e0917f5",
@@ -27,22 +27,7 @@
     "current_stage": "INGESTED",
     "is_duplicate": false,
     "error_message": null,
-    "updated_at": "2026-11-04T02:42:19.661970+00:00"
-  },
-  {
-    "version_id": "ver_9dbb61302dd0",
-    "document_id": "doc_mitre_cwe_list",
-    "version_tag": "NaN",
-    "file_name": "MITRE_CWE-List.json",
-    "file_path": "Data/MITRE_CWE-List.json",
-    "file_format": "JSON",
-    "file_size_bytes": 12997806,
-    "sha256_hash": "9dbb61302dd0244efcc72eb53cc1c234b07cc3173936333de09f296ce902b144",
-    "status": "pending",
-    "current_stage": "INGESTED",
-    "is_duplicate": false,
-    "error_message": null,
-    "updated_at": "2026-11-04T02:42:19.674410+00:00"
+    "updated_at": "2026-11-12T12:15:05.558951+00:00"
   },
   {
     "version_id": "ver_fb8b6e5c60ed",
@@ -57,7 +42,7 @@
     "current_stage": "INGESTED",
     "is_duplicate": false,
     "error_message": null,
-    "updated_at": "2026-11-04T02:42:19.674410+00:00"
+    "updated_at": "2026-11-12T12:15:05.559286+00:00"
   },
   {
     "version_id": "ver_fb6fb6a43e11",
@@ -72,7 +57,7 @@
     "current_stage": "INGESTED",
     "is_duplicate": false,
     "error_message": null,
-    "updated_at": "2026-11-04T02:42:19.674410+00:00"
+    "updated_at": "2026-11-12T12:15:05.560064+00:00"
   },
   {
     "version_id": "ver_3b0cef632300",
@@ -87,7 +72,7 @@
     "current_stage": "INGESTED",
     "is_duplicate": false,
     "error_message": null,
-    "updated_at": "2026-11-04T02:42:19.674410+00:00"
+    "updated_at": "2026-11-12T12:15:05.560663+00:00"
   },
   {
     "version_id": "ver_27d189554452",
@@ -102,14 +87,14 @@
     "current_stage": "INGESTED",
     "is_duplicate": false,
     "error_message": null,
-    "updated_at": "2026-11-04T02:42:19.674410+00:00"
+    "updated_at": "2026-11-12T12:15:05.560663+00:00"
   },
   {
     "version_id": "ver_4d5e2f4d1c42",
     "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
-    "version_tag": "2021-(2025",
-    "file_name": "OWASP_A03-Content-Security-Policy-Cheat-Sheet_2021-(2025.md",
-    "file_path": "Data/OWASP_A03-Content-Security-Policy-Cheat-Sheet_2021-(2025.md",
+    "version_tag": "2021-2025",
+    "file_name": "OWASP_A03-Content-Security-Policy-Cheat-Sheet_2021-2025.md",
+    "file_path": "Data/OWASP_A03-Content-Security-Policy-Cheat-Sheet_2021-2025.md",
     "file_format": "MARKDOWN",
     "file_size_bytes": 18946,
     "sha256_hash": "4d5e2f4d1c42ae58672fabb8088b2254ce5e6990432b58e110604942f14b34d0",
@@ -117,7 +102,7 @@
     "current_stage": "INGESTED",
     "is_duplicate": false,
     "error_message": null,
-    "updated_at": "2026-11-04T02:42:19.674410+00:00"
+    "updated_at": "2026-11-12T12:15:05.648249+00:00"
   },
   {
     "version_id": "ver_e4bbeced6010",
@@ -132,7 +117,7 @@
     "current_stage": "INGESTED",
     "is_duplicate": false,
     "error_message": null,
-    "updated_at": "2026-11-04T02:42:19.674410+00:00"
+    "updated_at": "2026-11-12T12:15:05.649264+00:00"
   },
   {
     "version_id": "ver_421639d8a75f",
@@ -147,7 +132,7 @@
     "current_stage": "INGESTED",
     "is_duplicate": false,
     "error_message": null,
-    "updated_at": "2026-11-04T02:42:19.674410+00:00"
+    "updated_at": "2026-11-12T12:15:05.650086+00:00"
   },
   {
     "version_id": "ver_fafcc12af83a",
@@ -162,7 +147,7 @@
     "current_stage": "INGESTED",
     "is_duplicate": false,
     "error_message": null,
-    "updated_at": "2026-11-04T02:42:19.674410+00:00"
+    "updated_at": "2026-11-12T12:15:05.650565+00:00"
   },
   {
     "version_id": "ver_b3aaa8d67fbf",
@@ -177,7 +162,7 @@
     "current_stage": "INGESTED",
     "is_duplicate": false,
     "error_message": null,
-    "updated_at": "2026-11-04T02:42:19.680327+00:00"
+    "updated_at": "2026-11-12T12:15:05.650565+00:00"
   },
   {
     "version_id": "ver_b497005071ae",
@@ -192,7 +177,7 @@
     "current_stage": "INGESTED",
     "is_duplicate": false,
     "error_message": null,
-    "updated_at": "2026-11-04T02:42:19.680327+00:00"
+    "updated_at": "2026-11-12T12:15:05.650565+00:00"
   },
   {
     "version_id": "ver_d449b1cc14cf",
@@ -207,7 +192,7 @@
     "current_stage": "INGESTED",
     "is_duplicate": false,
     "error_message": null,
-    "updated_at": "2026-11-04T02:42:19.682114+00:00"
+    "updated_at": "2026-11-12T12:15:05.650565+00:00"
   },
   {
     "version_id": "ver_5597b04e2a6f",
@@ -222,7 +207,7 @@
     "current_stage": "INGESTED",
     "is_duplicate": false,
     "error_message": null,
-    "updated_at": "2026-11-04T02:42:19.682114+00:00"
+    "updated_at": "2026-11-12T12:15:05.650565+00:00"
   },
   {
     "version_id": "ver_d44134e3d0a1",
@@ -237,7 +222,7 @@
     "current_stage": "INGESTED",
     "is_duplicate": false,
     "error_message": null,
-    "updated_at": "2026-11-04T02:42:19.682114+00:00"
+    "updated_at": "2026-11-12T12:15:05.650565+00:00"
   },
   {
     "version_id": "ver_81e50e16cbc6",
@@ -252,7 +237,7 @@
     "current_stage": "INGESTED",
     "is_duplicate": false,
     "error_message": null,
-    "updated_at": "2026-11-04T02:42:19.683178+00:00"
+    "updated_at": "2026-11-12T12:15:05.650565+00:00"
   },
   {
     "version_id": "ver_d1b9bedd6c92",
@@ -267,7 +252,7 @@
     "current_stage": "INGESTED",
     "is_duplicate": false,
     "error_message": null,
-    "updated_at": "2026-11-04T02:42:19.683178+00:00"
+    "updated_at": "2026-11-12T12:15:05.650565+00:00"
   },
   {
     "version_id": "ver_e880e38449f2",
@@ -282,7 +267,7 @@
     "current_stage": "INGESTED",
     "is_duplicate": false,
     "error_message": null,
-    "updated_at": "2026-11-04T02:42:19.684179+00:00"
+    "updated_at": "2026-11-12T12:15:05.650565+00:00"
   },
   {
     "version_id": "ver_9363b0048b47",
@@ -297,7 +282,7 @@
     "current_stage": "INGESTED",
     "is_duplicate": false,
     "error_message": null,
-    "updated_at": "2026-11-04T02:42:19.684179+00:00"
+    "updated_at": "2026-11-12T12:15:05.659256+00:00"
   },
   {
     "version_id": "ver_92f7483b2854",
@@ -312,7 +297,7 @@
     "current_stage": "INGESTED",
     "is_duplicate": false,
     "error_message": null,
-    "updated_at": "2026-11-04T02:42:19.685232+00:00"
+    "updated_at": "2026-11-12T12:15:05.659256+00:00"
   },
   {
     "version_id": "ver_e191eadd3a0c",
@@ -327,7 +312,7 @@
     "current_stage": "INGESTED",
     "is_duplicate": false,
     "error_message": null,
-    "updated_at": "2026-11-04T02:42:19.685232+00:00"
+    "updated_at": "2026-11-12T12:15:05.664563+00:00"
   },
   {
     "version_id": "ver_d3ad6e7fce8b",
@@ -342,7 +327,7 @@
     "current_stage": "INGESTED",
     "is_duplicate": false,
     "error_message": null,
-    "updated_at": "2026-11-04T02:42:19.685232+00:00"
+    "updated_at": "2026-11-12T12:15:05.668165+00:00"
   },
   {
     "version_id": "ver_429d4f36078a",
@@ -357,7 +342,7 @@
     "current_stage": "INGESTED",
     "is_duplicate": false,
     "error_message": null,
-    "updated_at": "2026-11-04T02:42:19.686177+00:00"
+    "updated_at": "2026-11-12T12:15:05.668733+00:00"
   },
   {
     "version_id": "ver_c3cc207d452c",
@@ -372,7 +357,7 @@
     "current_stage": "INGESTED",
     "is_duplicate": false,
     "error_message": null,
-    "updated_at": "2026-11-04T02:42:19.686177+00:00"
+    "updated_at": "2026-11-12T12:15:05.672604+00:00"
   },
   {
     "version_id": "ver_a604ef065640",
@@ -387,7 +372,7 @@
     "current_stage": "INGESTED",
     "is_duplicate": false,
     "error_message": null,
-    "updated_at": "2026-11-04T02:42:19.687095+00:00"
+    "updated_at": "2026-11-12T12:15:05.673625+00:00"
   },
   {
     "version_id": "ver_aa0c03c9d10c",
@@ -402,7 +387,7 @@
     "current_stage": "INGESTED",
     "is_duplicate": false,
     "error_message": null,
-    "updated_at": "2026-11-04T02:42:19.688269+00:00"
+    "updated_at": "2026-11-12T12:15:05.675821+00:00"
   },
   {
     "version_id": "ver_5004d1ead2df",
@@ -417,7 +402,7 @@
     "current_stage": "INGESTED",
     "is_duplicate": false,
     "error_message": null,
-    "updated_at": "2026-11-04T02:42:19.689500+00:00"
+    "updated_at": "2026-11-12T12:15:05.675821+00:00"
   },
   {
     "version_id": "ver_3653eed28e7f",
@@ -432,7 +417,7 @@
     "current_stage": "INGESTED",
     "is_duplicate": false,
     "error_message": null,
-    "updated_at": "2026-11-04T02:42:19.689500+00:00"
+    "updated_at": "2026-11-12T12:15:05.676679+00:00"
   },
   {
     "version_id": "ver_3c38656e2be6",
@@ -447,7 +432,7 @@
     "current_stage": "INGESTED",
     "is_duplicate": false,
     "error_message": null,
-    "updated_at": "2026-11-04T02:42:19.689500+00:00"
+    "updated_at": "2026-11-12T12:15:05.676679+00:00"
   },
   {
     "version_id": "ver_a2fa1bbe38f1",
@@ -462,7 +447,7 @@
     "current_stage": "INGESTED",
     "is_duplicate": false,
     "error_message": null,
-    "updated_at": "2026-11-04T02:42:19.690553+00:00"
+    "updated_at": "2026-11-12T12:15:05.677653+00:00"
   },
   {
     "version_id": "ver_97ee690ad2d4",
@@ -477,7 +462,7 @@
     "current_stage": "INGESTED",
     "is_duplicate": false,
     "error_message": null,
-    "updated_at": "2026-11-04T02:42:19.690553+00:00"
+    "updated_at": "2026-11-12T12:15:05.680050+00:00"
   },
   {
     "version_id": "ver_ea47056e8e8f",
@@ -492,7 +477,7 @@
     "current_stage": "INGESTED",
     "is_duplicate": false,
     "error_message": null,
-    "updated_at": "2026-11-04T02:42:19.690553+00:00"
+    "updated_at": "2026-11-12T12:15:05.680050+00:00"
   },
   {
     "version_id": "ver_e1e0aaa15e48",
@@ -507,7 +492,7 @@
     "current_stage": "INGESTED",
     "is_duplicate": false,
     "error_message": null,
-    "updated_at": "2026-11-04T02:42:19.692131+00:00"
+    "updated_at": "2026-11-12T12:15:05.681054+00:00"
   },
   {
     "version_id": "ver_cc8eeb30af79",
@@ -522,7 +507,7 @@
     "current_stage": "INGESTED",
     "is_duplicate": false,
     "error_message": null,
-    "updated_at": "2026-11-04T02:42:19.692131+00:00"
+    "updated_at": "2026-11-12T12:15:05.682064+00:00"
   },
   {
     "version_id": "ver_d5ac6829b294",
@@ -537,7 +522,7 @@
     "current_stage": "INGESTED",
     "is_duplicate": false,
     "error_message": null,
-    "updated_at": "2026-11-04T02:42:19.693146+00:00"
+    "updated_at": "2026-11-12T12:15:05.682064+00:00"
   },
   {
     "version_id": "ver_4aec329f2642",
@@ -552,7 +537,7 @@
     "current_stage": "INGESTED",
     "is_duplicate": false,
     "error_message": null,
-    "updated_at": "2026-11-04T02:42:19.693146+00:00"
+    "updated_at": "2026-11-12T12:15:05.683325+00:00"
   },
   {
     "version_id": "ver_8d5b8e494a0c",
@@ -567,7 +552,7 @@
     "current_stage": "INGESTED",
     "is_duplicate": false,
     "error_message": null,
-    "updated_at": "2026-11-04T02:42:19.693919+00:00"
+    "updated_at": "2026-11-12T12:15:05.683325+00:00"
   },
   {
     "version_id": "ver_52d3cef100ba",
@@ -582,7 +567,7 @@
     "current_stage": "INGESTED",
     "is_duplicate": false,
     "error_message": null,
-    "updated_at": "2026-11-04T02:42:19.693919+00:00"
+    "updated_at": "2026-11-12T12:15:05.685244+00:00"
   },
   {
     "version_id": "ver_d6ebc4e65422",
@@ -597,7 +582,7 @@
     "current_stage": "INGESTED",
     "is_duplicate": false,
     "error_message": null,
-    "updated_at": "2026-11-04T02:42:19.696593+00:00"
+    "updated_at": "2026-11-12T12:15:05.685244+00:00"
   },
   {
     "version_id": "ver_0df66f6c3e23",
@@ -612,7 +597,7 @@
     "current_stage": "INGESTED",
     "is_duplicate": false,
     "error_message": null,
-    "updated_at": "2026-11-04T02:42:19.696593+00:00"
+    "updated_at": "2026-11-12T12:15:05.687803+00:00"
   },
   {
     "version_id": "ver_c660dd06c1d6",
@@ -627,7 +612,7 @@
     "current_stage": "INGESTED",
     "is_duplicate": false,
     "error_message": null,
-    "updated_at": "2026-11-04T02:42:19.696593+00:00"
+    "updated_at": "2026-11-12T12:15:05.687803+00:00"
   },
   {
     "version_id": "ver_d617676bd8d0",
@@ -642,7 +627,7 @@
     "current_stage": "INGESTED",
     "is_duplicate": false,
     "error_message": null,
-    "updated_at": "2026-11-04T02:42:19.696593+00:00"
+    "updated_at": "2026-11-12T12:15:05.688345+00:00"
   },
   {
     "version_id": "ver_298e416105dc",
@@ -657,7 +642,7 @@
     "current_stage": "INGESTED",
     "is_duplicate": false,
     "error_message": null,
-    "updated_at": "2026-11-04T02:42:19.696593+00:00"
+    "updated_at": "2026-11-12T12:15:05.689110+00:00"
   },
   {
     "version_id": "ver_9f98e0c8f055",
@@ -672,7 +657,7 @@
     "current_stage": "INGESTED",
     "is_duplicate": false,
     "error_message": null,
-    "updated_at": "2026-11-04T02:42:19.698598+00:00"
+    "updated_at": "2026-11-12T12:15:05.689110+00:00"
   },
   {
     "version_id": "ver_c4e85c1c4f32",
@@ -687,7 +672,7 @@
     "current_stage": "INGESTED",
     "is_duplicate": false,
     "error_message": null,
-    "updated_at": "2026-11-04T02:42:19.698598+00:00"
+    "updated_at": "2026-11-12T12:15:05.690058+00:00"
   },
   {
     "version_id": "ver_71e4b9124e76",
@@ -702,7 +687,7 @@
     "current_stage": "INGESTED",
     "is_duplicate": false,
     "error_message": null,
-    "updated_at": "2026-11-04T02:42:19.698598+00:00"
+    "updated_at": "2026-11-12T12:15:05.690058+00:00"
   },
   {
     "version_id": "ver_6bc3550cc066",
@@ -717,7 +702,7 @@
     "current_stage": "INGESTED",
     "is_duplicate": false,
     "error_message": null,
-    "updated_at": "2026-11-04T02:42:19.698598+00:00"
+    "updated_at": "2026-11-12T12:15:05.690058+00:00"
   },
   {
     "version_id": "ver_799c3e5bf1bc",
@@ -732,6 +717,6 @@
     "current_stage": "INGESTED",
     "is_duplicate": false,
     "error_message": null,
-    "updated_at": "2026-11-04T02:42:19.698598+00:00"
+    "updated_at": "2026-11-12T12:15:05.691623+00:00"
   }
 ]

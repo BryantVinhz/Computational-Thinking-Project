@@ -522,8 +522,8 @@
       "version_id": "ver_5004d1ead2df",
       "chunk_idx": 34,
       "chunk_type": "paragraph",
-      "text_content": "An alternative approach is to pre-hash the user-supplied password with a fast algorithm such as SHA-2, HMAC, or BLAKE3 and then to hash the resulting hash value with bcrypt (i.e., `bcrypt(H($password)), $salt, $cost)`)..\n\nThis can be **dangerous** because of null bytes in the hash output value and because of [password shucking](https://www.youtube.com/watch?v=OQD3qDYMyYQ).\n\nThe original bcrypt expects a null terminated password string, this means that the hash value will only be used to the first null byte in the hash value.\n\n(`bcrypt(H($password)), $salt, $cost) == bcrypt(\"\", $salt, $cost)` if `H($password)[0] == 0`)\nThis increases the chance of finding a collision when [combining bcrypt with other hash functions](https://blog.ircmaxell.com/2015/03/security-issue-combining-bcrypt-with.html) and can be avoided by encoding the hash value to printable string with something like base64.\n\nbase64 can increases the length of the hash value above 72 characters and so there is a bit of truncation for large hash values from hashes like SHA-512, this is [negligible](https://soatok.blog/2024/11/27/beyond-bcrypt/).\n\nPassword shucking uses the fact, that it is easy to check if `bcrypt(base64(H($password))), $salt, $cost) == bcrypt(base64($leaked_hash), $salt, $cost)`.\n\nIf the inner hash function `H` is used with the same password somewhere else and known to an attacker cracking the password can be reduced to breaking the hash function `H`.\n\nJust using pure SHA-512, ( i.e.\n\n`bcrypt(base64(sha512($password))), $salt, $cost)`) is a **dangerous practice** and is as secure as just using pure SHA-512.",
-      "token_count": 438,
+      "text_content": "An alternative approach is to pre-hash the user-supplied password with a fast algorithm such as SHA-2, HMAC, or BLAKE3 and then to hash the resulting hash value with bcrypt (i.e., `bcrypt(H($password)), $salt, $cost)`)..\n\nThis can be **dangerous** because of null bytes in the hash output value and because of [password shucking](https://www.youtube.com/watch?v=OQD3qDYMyYQ).\n\nThe original bcrypt expects a null terminated password string, this means that the hash value will only be used to the first null byte in the hash value.\n\n(`bcrypt(H($password)), $salt, $cost) == bcrypt(\"\", $salt, $cost)` if `H($password)[0] == 0`)\nThis increases the chance of finding a collision when [combining bcrypt with other hash functions](https://blog.ircmaxell.com/2015/03/security-issue-combining-bcrypt-with.html) and can be avoided by encoding the hash value to printable string with something like base64.\n\nbase64 can increases the length of the hash value above 72 characters and so there is a bit of truncation for large hash values from hashes like SHA-512, this is [negligible](https://soatok.blog/2024/11/27/beyond-bcrypt/).\n\nPassword shucking uses the fact, that it is easy to check if `bcrypt(base64(H($password))), $salt, $cost) == bcrypt(base64($leaked_hash), $salt, $cost)`.\n\nIf the inner hash function `H` is used with the same password somewhere else and known to an attacker cracking the password can be reduced to breaking the hash function `H`.\n\nJust using pure SHA-512, ( i.e.\n\n`bcrypt(base64(sha512($password))), $salt, $cost)`) is a **dangerous practice** and is as secure as just using pure SHA-512.\n\nPassword shucking only works if a leaked hash is known to the attacker, either through a breach database or rainbow tables.\n\nTo mitigate password shucking a [pepper](#peppering) can be used.\n\nTo summarize if bcrypt has to be used and the password should to be pre-hashed you should do `bcrypt(base64(hmac-sha384(data:$password, key:$pepper)), $salt, $cost)` and store the pepper not in the database.",
+      "token_count": 534,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Password Storage Cheat Sheet",
@@ -537,15 +537,14 @@
       "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
       "version_id": "ver_5004d1ead2df",
       "chunk_idx": 35,
-      "chunk_type": "paragraph",
-      "text_content": "Password shucking only works if a leaked hash is known to the attacker, either through a breach database or rainbow tables.\n\nTo mitigate password shucking a [pepper](#peppering) can be used.\n\nTo summarize if bcrypt has to be used and the password should to be pre-hashed you should do `bcrypt(base64(hmac-sha384(data:$password, key:$pepper)), $salt, $cost)` and store the pepper not in the database.",
-      "token_count": 96,
+      "chunk_type": "heading",
+      "text_content": "### PBKDF2",
+      "token_count": 4,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Password Storage Cheat Sheet",
         "Password Hashing Algorithms",
-        "bcrypt",
-        "Pre-Hashing Passwords with bcrypt"
+        "PBKDF2"
       ]
     },
     {
@@ -553,9 +552,9 @@
       "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
       "version_id": "ver_5004d1ead2df",
       "chunk_idx": 36,
-      "chunk_type": "heading",
-      "text_content": "### PBKDF2",
-      "token_count": 4,
+      "chunk_type": "mixed",
+      "text_content": "Since [PBKDF2](https://en.wikipedia.org/wiki/PBKDF2) is permitted by [NIST SP 800-63B-4](https://pages.nist.gov/800-63-4/sp800-63b.html#passwordver) and has FIPS-140 validated implementations, it should be the preferred algorithm when these are required.\n\nThe PBKDF2 algorithm requires that you select an internal hashing algorithm such as an HMAC or a variety of other hashing algorithms.\n\nHMAC-SHA-256 is widely supported and is recommended by NIST.\n\nThe work factor for PBKDF2 is implemented through an iteration count, which should be set differently based on the internal hashing algorithm used.\n\n- PBKDF2-HMAC-SHA256: 600,000 iterations (recommended)\n- PBKDF2-HMAC-SHA512: 220,000 iterations\n- PBKDF2-HMAC-SHA1: 1,400,000 iterations — **legacy only**, do not select for new systems.",
+      "token_count": 190,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Password Storage Cheat Sheet",
@@ -568,14 +567,14 @@
       "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
       "version_id": "ver_5004d1ead2df",
       "chunk_idx": 37,
-      "chunk_type": "mixed",
-      "text_content": "Since [PBKDF2](https://en.wikipedia.org/wiki/PBKDF2) is permitted by [NIST SP 800-63B-4](https://pages.nist.gov/800-63-4/sp800-63b.html#passwordver) and has FIPS-140 validated implementations, it should be the preferred algorithm when these are required.\n\nThe PBKDF2 algorithm requires that you select an internal hashing algorithm such as an HMAC or a variety of other hashing algorithms.\n\nHMAC-SHA-256 is widely supported and is recommended by NIST.\n\nThe work factor for PBKDF2 is implemented through an iteration count, which should be set differently based on the internal hashing algorithm used.\n\n- PBKDF2-HMAC-SHA256: 600,000 iterations (recommended)\n- PBKDF2-HMAC-SHA512: 220,000 iterations\n- PBKDF2-HMAC-SHA1: 1,400,000 iterations — **legacy only**, do not select for new systems.",
-      "token_count": 190,
+      "chunk_type": "heading",
+      "text_content": "### Parallel PBKDF2",
+      "token_count": 5,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Password Storage Cheat Sheet",
         "Password Hashing Algorithms",
-        "PBKDF2"
+        "Parallel PBKDF2"
       ]
     },
     {
@@ -583,9 +582,9 @@
       "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
       "version_id": "ver_5004d1ead2df",
       "chunk_idx": 38,
-      "chunk_type": "heading",
-      "text_content": "### Parallel PBKDF2",
-      "token_count": 5,
+      "chunk_type": "mixed",
+      "text_content": "- PPBKDF2-SHA512: cost 2\n- PPBKDF2-SHA256: cost 5\n- PPBKDF2-SHA1: cost 10\n\nThese configuration settings are equivalent in the defense they provide.\n\n([Number as of December 2022, based on testing of RTX 4000 GPUs](https://tobtu.com/minimum-password-settings/))",
+      "token_count": 65,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Password Storage Cheat Sheet",
@@ -598,14 +597,15 @@
       "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
       "version_id": "ver_5004d1ead2df",
       "chunk_idx": 39,
-      "chunk_type": "mixed",
-      "text_content": "- PPBKDF2-SHA512: cost 2\n- PPBKDF2-SHA256: cost 5\n- PPBKDF2-SHA1: cost 10\n\nThese configuration settings are equivalent in the defense they provide.\n\n([Number as of December 2022, based on testing of RTX 4000 GPUs](https://tobtu.com/minimum-password-settings/))",
-      "token_count": 65,
+      "chunk_type": "heading",
+      "text_content": "#### PBKDF2 Pre-Hashing",
+      "token_count": 8,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Password Storage Cheat Sheet",
         "Password Hashing Algorithms",
-        "Parallel PBKDF2"
+        "Parallel PBKDF2",
+        "PBKDF2 Pre-Hashing"
       ]
     },
     {
@@ -613,9 +613,9 @@
       "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
       "version_id": "ver_5004d1ead2df",
       "chunk_idx": 40,
-      "chunk_type": "heading",
-      "text_content": "#### PBKDF2 Pre-Hashing",
-      "token_count": 8,
+      "chunk_type": "paragraph",
+      "text_content": "When PBKDF2 is used with an HMAC, and the password is longer than the hash function's block size (64 bytes for SHA-256), the password will be automatically pre-hashed.\n\nFor example, the password \"This is a password longer than 512 bits which is the block size of SHA-256\" is converted to the hash value (in hex): `fa91498c139805af73f7ba275cca071e78d78675027000c99a9925e2ec92eedd`.\n\nGood implementations of PBKDF2 perform pre-hashing before the expensive iterated hashing phase.\n\nHowever, some implementations perform the conversion on each iteration, which can make hashing long passwords significantly more expensive than hashing short passwords.\n\nWhen users supply very long passwords, a potential denial of service vulnerability could occur, such as the one published in [Django](https://www.djangoproject.com/weblog/2013/sep/15/security/) during 2013.\n\nManual pre-hashing can reduce this risk but requires adding a [salt](#salting) to the pre-hash step.",
+      "token_count": 194,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Password Storage Cheat Sheet",
@@ -629,15 +629,13 @@
       "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
       "version_id": "ver_5004d1ead2df",
       "chunk_idx": 41,
-      "chunk_type": "paragraph",
-      "text_content": "When PBKDF2 is used with an HMAC, and the password is longer than the hash function's block size (64 bytes for SHA-256), the password will be automatically pre-hashed.\n\nFor example, the password \"This is a password longer than 512 bits which is the block size of SHA-256\" is converted to the hash value (in hex): `fa91498c139805af73f7ba275cca071e78d78675027000c99a9925e2ec92eedd`.\n\nGood implementations of PBKDF2 perform pre-hashing before the expensive iterated hashing phase.\n\nHowever, some implementations perform the conversion on each iteration, which can make hashing long passwords significantly more expensive than hashing short passwords.\n\nWhen users supply very long passwords, a potential denial of service vulnerability could occur, such as the one published in [Django](https://www.djangoproject.com/weblog/2013/sep/15/security/) during 2013.\n\nManual pre-hashing can reduce this risk but requires adding a [salt](#salting) to the pre-hash step.",
-      "token_count": 194,
+      "chunk_type": "heading",
+      "text_content": "## Upgrading Legacy Hashes",
+      "token_count": 5,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Password Storage Cheat Sheet",
-        "Password Hashing Algorithms",
-        "Parallel PBKDF2",
-        "PBKDF2 Pre-Hashing"
+        "Upgrading Legacy Hashes"
       ]
     },
     {
@@ -645,9 +643,9 @@
       "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
       "version_id": "ver_5004d1ead2df",
       "chunk_idx": 42,
-      "chunk_type": "heading",
-      "text_content": "## Upgrading Legacy Hashes",
-      "token_count": 5,
+      "chunk_type": "paragraph",
+      "text_content": "Older applications that use less secure hashing algorithms, such as MD5 or SHA-1, can be upgraded to modern password hashing algorithms as described above.\n\nWhen the users enter their password (usually by authenticating on the application), that input should be re-hashed using the new algorithm.\n\nDefenders should expire the users' current password and require them to enter a new one, so that any older (less secure) hashes of their password are no longer useful to an attacker.\n\nHowever, this means that old (less secure) password hashes will be stored in the database until the user logs in.\n\nYou can take one of two approaches to avoid this dilemma.\n\nUpgrade Method One: Expire and delete the password hashes of users who have been inactive for an extended period and require them to reset their passwords to login again.\n\nAlthough secure, this approach is not particularly user-friendly.\n\nExpiring the passwords of many users may cause issues for support staff or may be interpreted by users as an indication of a breach.\n\nUpgrade Method Two: Use the existing password hashes as inputs for a more secure algorithm.\n\nFor example, if the application originally stored passwords as `md5($password)`, this could be easily upgraded to `bcrypt(md5($password))`.\n\nLayering the hashes avoids the need to know the original password; however, it can make the hashes easier to crack.\n\nThese hashes should be replaced with direct hashes of the users' passwords next time the user logs in.\n\nRemember that once your password hashing method is selected, it will have to be upgraded in the future, so ensure that upgrading your hashing algorithm is as easy as possible.\n\nDuring the transition period, allow for a mix of old and new hashing algorithms.\n\nUsing a mix of hashing algorithms is easier if the password hashing algorithm and work factor are stored with the password using a standard format, for example, the [modular PHC string format](https://github.com/P-H-C/phc-string-format/blob/master/phc-sf-spec.md).",
+      "token_count": 411,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Password Storage Cheat Sheet",
@@ -659,13 +657,14 @@
       "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
       "version_id": "ver_5004d1ead2df",
       "chunk_idx": 43,
-      "chunk_type": "paragraph",
-      "text_content": "Older applications that use less secure hashing algorithms, such as MD5 or SHA-1, can be upgraded to modern password hashing algorithms as described above.\n\nWhen the users enter their password (usually by authenticating on the application), that input should be re-hashed using the new algorithm.\n\nDefenders should expire the users' current password and require them to enter a new one, so that any older (less secure) hashes of their password are no longer useful to an attacker.\n\nHowever, this means that old (less secure) password hashes will be stored in the database until the user logs in.\n\nYou can take one of two approaches to avoid this dilemma.\n\nUpgrade Method One: Expire and delete the password hashes of users who have been inactive for an extended period and require them to reset their passwords to login again.\n\nAlthough secure, this approach is not particularly user-friendly.\n\nExpiring the passwords of many users may cause issues for support staff or may be interpreted by users as an indication of a breach.\n\nUpgrade Method Two: Use the existing password hashes as inputs for a more secure algorithm.\n\nFor example, if the application originally stored passwords as `md5($password)`, this could be easily upgraded to `bcrypt(md5($password))`.\n\nLayering the hashes avoids the need to know the original password; however, it can make the hashes easier to crack.\n\nThese hashes should be replaced with direct hashes of the users' passwords next time the user logs in.\n\nRemember that once your password hashing method is selected, it will have to be upgraded in the future, so ensure that upgrading your hashing algorithm is as easy as possible.\n\nDuring the transition period, allow for a mix of old and new hashing algorithms.\n\nUsing a mix of hashing algorithms is easier if the password hashing algorithm and work factor are stored with the password using a standard format, for example, the [modular PHC string format](https://github.com/P-H-C/phc-string-format/blob/master/phc-sf-spec.md).",
-      "token_count": 411,
+      "chunk_type": "heading",
+      "text_content": "### International Characters",
+      "token_count": 5,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Password Storage Cheat Sheet",
-        "Upgrading Legacy Hashes"
+        "Upgrading Legacy Hashes",
+        "International Characters"
       ]
     },
     {
@@ -673,9 +672,9 @@
       "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
       "version_id": "ver_5004d1ead2df",
       "chunk_idx": 44,
-      "chunk_type": "heading",
-      "text_content": "### International Characters",
-      "token_count": 5,
+      "chunk_type": "paragraph",
+      "text_content": "Your hashing library must be able to accept a wide range of characters and should be compatible with all Unicode codepoints, so users can use the full range of characters available on modern devices - especially mobile keyboards.\n\nThey should be able to select passwords from various languages and include pictograms.\n\nPrior to hashing the entropy of the user's entry should not be reduced, and password hashing libraries need to be able to use input that may contain a NULL byte.",
+      "token_count": 88,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Password Storage Cheat Sheet",
@@ -688,21 +687,6 @@
       "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
       "version_id": "ver_5004d1ead2df",
       "chunk_idx": 45,
-      "chunk_type": "paragraph",
-      "text_content": "Your hashing library must be able to accept a wide range of characters and should be compatible with all Unicode codepoints, so users can use the full range of characters available on modern devices - especially mobile keyboards.\n\nThey should be able to select passwords from various languages and include pictograms.\n\nPrior to hashing the entropy of the user's entry should not be reduced, and password hashing libraries need to be able to use input that may contain a NULL byte.",
-      "token_count": 88,
-      "chunk_strategy": "structure_aware",
-      "heading_path": [
-        "Password Storage Cheat Sheet",
-        "Upgrading Legacy Hashes",
-        "International Characters"
-      ]
-    },
-    {
-      "chunk_id": "ver_5004d1ead2df_c00046",
-      "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
-      "version_id": "ver_5004d1ead2df",
-      "chunk_idx": 46,
       "chunk_type": "heading",
       "text_content": "## References",
       "token_count": 3,
@@ -713,10 +697,10 @@
       ]
     },
     {
-      "chunk_id": "ver_5004d1ead2df_c00047",
+      "chunk_id": "ver_5004d1ead2df_c00046",
       "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
       "version_id": "ver_5004d1ead2df",
-      "chunk_idx": 47,
+      "chunk_idx": 46,
       "chunk_type": "list",
       "text_content": "- [NIST SP 800-63B-4: Password Verifiers](https://pages.nist.gov/800-63-4/sp800-63b.html#passwordver)\n- [RFC 9106: Argon2 Inputs and Outputs](https://datatracker.ietf.org/doc/html/rfc9106#section-3.1)\n- [RFC 7914: scrypt Parameters](https://www.rfc-editor.org/rfc/rfc7914.html#section-2)",
       "token_count": 102,
@@ -1673,336 +1657,336 @@
       "end_offset": 484
     },
     {
-      "chunk_source_id": "ver_5004d1ead2df_c00035_s000",
-      "chunk_id": "ver_5004d1ead2df_c00035",
+      "chunk_source_id": "ver_5004d1ead2df_c00034_s009",
+      "chunk_id": "ver_5004d1ead2df_c00034",
       "normalized_block_id": "nrm_ver_5004d1ead2df_b00064",
-      "source_order": 0,
+      "source_order": 9,
       "start_offset": 485,
       "end_offset": 608
     },
     {
-      "chunk_source_id": "ver_5004d1ead2df_c00035_s001",
-      "chunk_id": "ver_5004d1ead2df_c00035",
+      "chunk_source_id": "ver_5004d1ead2df_c00034_s010",
+      "chunk_id": "ver_5004d1ead2df_c00034",
       "normalized_block_id": "nrm_ver_5004d1ead2df_b00064",
-      "source_order": 1,
+      "source_order": 10,
       "start_offset": 609,
       "end_offset": 674
     },
     {
-      "chunk_source_id": "ver_5004d1ead2df_c00035_s002",
-      "chunk_id": "ver_5004d1ead2df_c00035",
+      "chunk_source_id": "ver_5004d1ead2df_c00034_s011",
+      "chunk_id": "ver_5004d1ead2df_c00034",
       "normalized_block_id": "nrm_ver_5004d1ead2df_b00065",
-      "source_order": 2,
+      "source_order": 11,
       "start_offset": 0,
       "end_offset": 207
     },
     {
-      "chunk_source_id": "ver_5004d1ead2df_c00036_s000",
-      "chunk_id": "ver_5004d1ead2df_c00036",
+      "chunk_source_id": "ver_5004d1ead2df_c00035_s000",
+      "chunk_id": "ver_5004d1ead2df_c00035",
       "normalized_block_id": "nrm_ver_5004d1ead2df_b00066",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 10
     },
     {
-      "chunk_source_id": "ver_5004d1ead2df_c00037_s000",
-      "chunk_id": "ver_5004d1ead2df_c00037",
+      "chunk_source_id": "ver_5004d1ead2df_c00036_s000",
+      "chunk_id": "ver_5004d1ead2df_c00036",
       "normalized_block_id": "nrm_ver_5004d1ead2df_b00067",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 254
     },
     {
-      "chunk_source_id": "ver_5004d1ead2df_c00037_s001",
-      "chunk_id": "ver_5004d1ead2df_c00037",
+      "chunk_source_id": "ver_5004d1ead2df_c00036_s001",
+      "chunk_id": "ver_5004d1ead2df_c00036",
       "normalized_block_id": "nrm_ver_5004d1ead2df_b00068",
       "source_order": 1,
       "start_offset": 0,
       "end_offset": 133
     },
     {
-      "chunk_source_id": "ver_5004d1ead2df_c00037_s002",
-      "chunk_id": "ver_5004d1ead2df_c00037",
+      "chunk_source_id": "ver_5004d1ead2df_c00036_s002",
+      "chunk_id": "ver_5004d1ead2df_c00036",
       "normalized_block_id": "nrm_ver_5004d1ead2df_b00068",
       "source_order": 2,
       "start_offset": 134,
       "end_offset": 194
     },
     {
-      "chunk_source_id": "ver_5004d1ead2df_c00037_s003",
-      "chunk_id": "ver_5004d1ead2df_c00037",
+      "chunk_source_id": "ver_5004d1ead2df_c00036_s003",
+      "chunk_id": "ver_5004d1ead2df_c00036",
       "normalized_block_id": "nrm_ver_5004d1ead2df_b00069",
       "source_order": 3,
       "start_offset": 0,
       "end_offset": 147
     },
     {
-      "chunk_source_id": "ver_5004d1ead2df_c00037_s004",
-      "chunk_id": "ver_5004d1ead2df_c00037",
+      "chunk_source_id": "ver_5004d1ead2df_c00036_s004",
+      "chunk_id": "ver_5004d1ead2df_c00036",
       "normalized_block_id": "nrm_ver_5004d1ead2df_b00070",
       "source_order": 4,
       "start_offset": 0,
       "end_offset": 186
     },
     {
-      "chunk_source_id": "ver_5004d1ead2df_c00038_s000",
-      "chunk_id": "ver_5004d1ead2df_c00038",
+      "chunk_source_id": "ver_5004d1ead2df_c00037_s000",
+      "chunk_id": "ver_5004d1ead2df_c00037",
       "normalized_block_id": "nrm_ver_5004d1ead2df_b00071",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 19
     },
     {
-      "chunk_source_id": "ver_5004d1ead2df_c00039_s000",
-      "chunk_id": "ver_5004d1ead2df_c00039",
+      "chunk_source_id": "ver_5004d1ead2df_c00038_s000",
+      "chunk_id": "ver_5004d1ead2df_c00038",
       "normalized_block_id": "nrm_ver_5004d1ead2df_b00072",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 73
     },
     {
-      "chunk_source_id": "ver_5004d1ead2df_c00039_s001",
-      "chunk_id": "ver_5004d1ead2df_c00039",
+      "chunk_source_id": "ver_5004d1ead2df_c00038_s001",
+      "chunk_id": "ver_5004d1ead2df_c00038",
       "normalized_block_id": "nrm_ver_5004d1ead2df_b00073",
       "source_order": 1,
       "start_offset": 0,
       "end_offset": 72
     },
     {
-      "chunk_source_id": "ver_5004d1ead2df_c00039_s002",
-      "chunk_id": "ver_5004d1ead2df_c00039",
+      "chunk_source_id": "ver_5004d1ead2df_c00038_s002",
+      "chunk_id": "ver_5004d1ead2df_c00038",
       "normalized_block_id": "nrm_ver_5004d1ead2df_b00073",
       "source_order": 2,
       "start_offset": 73,
       "end_offset": 184
     },
     {
-      "chunk_source_id": "ver_5004d1ead2df_c00040_s000",
-      "chunk_id": "ver_5004d1ead2df_c00040",
+      "chunk_source_id": "ver_5004d1ead2df_c00039_s000",
+      "chunk_id": "ver_5004d1ead2df_c00039",
       "normalized_block_id": "nrm_ver_5004d1ead2df_b00074",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 23
     },
     {
-      "chunk_source_id": "ver_5004d1ead2df_c00041_s000",
-      "chunk_id": "ver_5004d1ead2df_c00041",
+      "chunk_source_id": "ver_5004d1ead2df_c00040_s000",
+      "chunk_id": "ver_5004d1ead2df_c00040",
       "normalized_block_id": "nrm_ver_5004d1ead2df_b00075",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 167
     },
     {
-      "chunk_source_id": "ver_5004d1ead2df_c00041_s001",
-      "chunk_id": "ver_5004d1ead2df_c00041",
+      "chunk_source_id": "ver_5004d1ead2df_c00040_s001",
+      "chunk_id": "ver_5004d1ead2df_c00040",
       "normalized_block_id": "nrm_ver_5004d1ead2df_b00075",
       "source_order": 1,
       "start_offset": 168,
       "end_offset": 379
     },
     {
-      "chunk_source_id": "ver_5004d1ead2df_c00041_s002",
-      "chunk_id": "ver_5004d1ead2df_c00041",
+      "chunk_source_id": "ver_5004d1ead2df_c00040_s002",
+      "chunk_id": "ver_5004d1ead2df_c00040",
       "normalized_block_id": "nrm_ver_5004d1ead2df_b00076",
       "source_order": 2,
       "start_offset": 0,
       "end_offset": 95
     },
     {
-      "chunk_source_id": "ver_5004d1ead2df_c00041_s003",
-      "chunk_id": "ver_5004d1ead2df_c00041",
+      "chunk_source_id": "ver_5004d1ead2df_c00040_s003",
+      "chunk_id": "ver_5004d1ead2df_c00040",
       "normalized_block_id": "nrm_ver_5004d1ead2df_b00076",
       "source_order": 3,
       "start_offset": 96,
       "end_offset": 264
     },
     {
-      "chunk_source_id": "ver_5004d1ead2df_c00041_s004",
-      "chunk_id": "ver_5004d1ead2df_c00041",
+      "chunk_source_id": "ver_5004d1ead2df_c00040_s004",
+      "chunk_id": "ver_5004d1ead2df_c00040",
       "normalized_block_id": "nrm_ver_5004d1ead2df_b00076",
       "source_order": 4,
       "start_offset": 265,
       "end_offset": 471
     },
     {
-      "chunk_source_id": "ver_5004d1ead2df_c00041_s005",
-      "chunk_id": "ver_5004d1ead2df_c00041",
+      "chunk_source_id": "ver_5004d1ead2df_c00040_s005",
+      "chunk_id": "ver_5004d1ead2df_c00040",
       "normalized_block_id": "nrm_ver_5004d1ead2df_b00076",
       "source_order": 5,
       "start_offset": 472,
       "end_offset": 572
     },
     {
-      "chunk_source_id": "ver_5004d1ead2df_c00042_s000",
-      "chunk_id": "ver_5004d1ead2df_c00042",
+      "chunk_source_id": "ver_5004d1ead2df_c00041_s000",
+      "chunk_id": "ver_5004d1ead2df_c00041",
       "normalized_block_id": "nrm_ver_5004d1ead2df_b00077",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 26
     },
     {
-      "chunk_source_id": "ver_5004d1ead2df_c00043_s000",
-      "chunk_id": "ver_5004d1ead2df_c00043",
+      "chunk_source_id": "ver_5004d1ead2df_c00042_s000",
+      "chunk_id": "ver_5004d1ead2df_c00042",
       "normalized_block_id": "nrm_ver_5004d1ead2df_b00078",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 155
     },
     {
-      "chunk_source_id": "ver_5004d1ead2df_c00043_s001",
-      "chunk_id": "ver_5004d1ead2df_c00043",
+      "chunk_source_id": "ver_5004d1ead2df_c00042_s001",
+      "chunk_id": "ver_5004d1ead2df_c00042",
       "normalized_block_id": "nrm_ver_5004d1ead2df_b00078",
       "source_order": 1,
       "start_offset": 156,
       "end_offset": 295
     },
     {
-      "chunk_source_id": "ver_5004d1ead2df_c00043_s002",
-      "chunk_id": "ver_5004d1ead2df_c00043",
+      "chunk_source_id": "ver_5004d1ead2df_c00042_s002",
+      "chunk_id": "ver_5004d1ead2df_c00042",
       "normalized_block_id": "nrm_ver_5004d1ead2df_b00078",
       "source_order": 2,
       "start_offset": 296,
       "end_offset": 478
     },
     {
-      "chunk_source_id": "ver_5004d1ead2df_c00043_s003",
-      "chunk_id": "ver_5004d1ead2df_c00043",
+      "chunk_source_id": "ver_5004d1ead2df_c00042_s003",
+      "chunk_id": "ver_5004d1ead2df_c00042",
       "normalized_block_id": "nrm_ver_5004d1ead2df_b00079",
       "source_order": 3,
       "start_offset": 0,
       "end_offset": 113
     },
     {
-      "chunk_source_id": "ver_5004d1ead2df_c00043_s004",
-      "chunk_id": "ver_5004d1ead2df_c00043",
+      "chunk_source_id": "ver_5004d1ead2df_c00042_s004",
+      "chunk_id": "ver_5004d1ead2df_c00042",
       "normalized_block_id": "nrm_ver_5004d1ead2df_b00079",
       "source_order": 4,
       "start_offset": 114,
       "end_offset": 171
     },
     {
-      "chunk_source_id": "ver_5004d1ead2df_c00043_s005",
-      "chunk_id": "ver_5004d1ead2df_c00043",
+      "chunk_source_id": "ver_5004d1ead2df_c00042_s005",
+      "chunk_id": "ver_5004d1ead2df_c00042",
       "normalized_block_id": "nrm_ver_5004d1ead2df_b00080",
       "source_order": 5,
       "start_offset": 0,
       "end_offset": 170
     },
     {
-      "chunk_source_id": "ver_5004d1ead2df_c00043_s006",
-      "chunk_id": "ver_5004d1ead2df_c00043",
+      "chunk_source_id": "ver_5004d1ead2df_c00042_s006",
+      "chunk_id": "ver_5004d1ead2df_c00042",
       "normalized_block_id": "nrm_ver_5004d1ead2df_b00080",
       "source_order": 6,
       "start_offset": 171,
       "end_offset": 236
     },
     {
-      "chunk_source_id": "ver_5004d1ead2df_c00043_s007",
-      "chunk_id": "ver_5004d1ead2df_c00043",
+      "chunk_source_id": "ver_5004d1ead2df_c00042_s007",
+      "chunk_id": "ver_5004d1ead2df_c00042",
       "normalized_block_id": "nrm_ver_5004d1ead2df_b00080",
       "source_order": 7,
       "start_offset": 237,
       "end_offset": 369
     },
     {
-      "chunk_source_id": "ver_5004d1ead2df_c00043_s008",
-      "chunk_id": "ver_5004d1ead2df_c00043",
+      "chunk_source_id": "ver_5004d1ead2df_c00042_s008",
+      "chunk_id": "ver_5004d1ead2df_c00042",
       "normalized_block_id": "nrm_ver_5004d1ead2df_b00081",
       "source_order": 8,
       "start_offset": 0,
       "end_offset": 91
     },
     {
-      "chunk_source_id": "ver_5004d1ead2df_c00043_s009",
-      "chunk_id": "ver_5004d1ead2df_c00043",
+      "chunk_source_id": "ver_5004d1ead2df_c00042_s009",
+      "chunk_id": "ver_5004d1ead2df_c00042",
       "normalized_block_id": "nrm_ver_5004d1ead2df_b00081",
       "source_order": 9,
       "start_offset": 92,
       "end_offset": 231
     },
     {
-      "chunk_source_id": "ver_5004d1ead2df_c00043_s010",
-      "chunk_id": "ver_5004d1ead2df_c00043",
+      "chunk_source_id": "ver_5004d1ead2df_c00042_s010",
+      "chunk_id": "ver_5004d1ead2df_c00042",
       "normalized_block_id": "nrm_ver_5004d1ead2df_b00081",
       "source_order": 10,
       "start_offset": 232,
       "end_offset": 347
     },
     {
-      "chunk_source_id": "ver_5004d1ead2df_c00043_s011",
-      "chunk_id": "ver_5004d1ead2df_c00043",
+      "chunk_source_id": "ver_5004d1ead2df_c00042_s011",
+      "chunk_id": "ver_5004d1ead2df_c00042",
       "normalized_block_id": "nrm_ver_5004d1ead2df_b00081",
       "source_order": 11,
       "start_offset": 348,
       "end_offset": 450
     },
     {
-      "chunk_source_id": "ver_5004d1ead2df_c00043_s012",
-      "chunk_id": "ver_5004d1ead2df_c00043",
+      "chunk_source_id": "ver_5004d1ead2df_c00042_s012",
+      "chunk_id": "ver_5004d1ead2df_c00042",
       "normalized_block_id": "nrm_ver_5004d1ead2df_b00082",
       "source_order": 12,
       "start_offset": 0,
       "end_offset": 175
     },
     {
-      "chunk_source_id": "ver_5004d1ead2df_c00043_s013",
-      "chunk_id": "ver_5004d1ead2df_c00043",
+      "chunk_source_id": "ver_5004d1ead2df_c00042_s013",
+      "chunk_id": "ver_5004d1ead2df_c00042",
       "normalized_block_id": "nrm_ver_5004d1ead2df_b00082",
       "source_order": 13,
       "start_offset": 176,
       "end_offset": 256
     },
     {
-      "chunk_source_id": "ver_5004d1ead2df_c00043_s014",
-      "chunk_id": "ver_5004d1ead2df_c00043",
+      "chunk_source_id": "ver_5004d1ead2df_c00042_s014",
+      "chunk_id": "ver_5004d1ead2df_c00042",
       "normalized_block_id": "nrm_ver_5004d1ead2df_b00082",
       "source_order": 14,
       "start_offset": 257,
       "end_offset": 521
     },
     {
-      "chunk_source_id": "ver_5004d1ead2df_c00044_s000",
-      "chunk_id": "ver_5004d1ead2df_c00044",
+      "chunk_source_id": "ver_5004d1ead2df_c00043_s000",
+      "chunk_id": "ver_5004d1ead2df_c00043",
       "normalized_block_id": "nrm_ver_5004d1ead2df_b00083",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 28
     },
     {
-      "chunk_source_id": "ver_5004d1ead2df_c00045_s000",
-      "chunk_id": "ver_5004d1ead2df_c00045",
+      "chunk_source_id": "ver_5004d1ead2df_c00044_s000",
+      "chunk_id": "ver_5004d1ead2df_c00044",
       "normalized_block_id": "nrm_ver_5004d1ead2df_b00084",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 229
     },
     {
-      "chunk_source_id": "ver_5004d1ead2df_c00045_s001",
-      "chunk_id": "ver_5004d1ead2df_c00045",
+      "chunk_source_id": "ver_5004d1ead2df_c00044_s001",
+      "chunk_id": "ver_5004d1ead2df_c00044",
       "normalized_block_id": "nrm_ver_5004d1ead2df_b00084",
       "source_order": 1,
       "start_offset": 230,
       "end_offset": 316
     },
     {
-      "chunk_source_id": "ver_5004d1ead2df_c00045_s002",
-      "chunk_id": "ver_5004d1ead2df_c00045",
+      "chunk_source_id": "ver_5004d1ead2df_c00044_s002",
+      "chunk_id": "ver_5004d1ead2df_c00044",
       "normalized_block_id": "nrm_ver_5004d1ead2df_b00084",
       "source_order": 2,
       "start_offset": 317,
       "end_offset": 478
     },
     {
-      "chunk_source_id": "ver_5004d1ead2df_c00046_s000",
-      "chunk_id": "ver_5004d1ead2df_c00046",
+      "chunk_source_id": "ver_5004d1ead2df_c00045_s000",
+      "chunk_id": "ver_5004d1ead2df_c00045",
       "normalized_block_id": "nrm_ver_5004d1ead2df_b00085",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 13
     },
     {
-      "chunk_source_id": "ver_5004d1ead2df_c00047_s000",
-      "chunk_id": "ver_5004d1ead2df_c00047",
+      "chunk_source_id": "ver_5004d1ead2df_c00046_s000",
+      "chunk_id": "ver_5004d1ead2df_c00046",
       "normalized_block_id": "nrm_ver_5004d1ead2df_b00086",
       "source_order": 0,
       "start_offset": 0,

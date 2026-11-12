@@ -204,22 +204,8 @@
       "version_id": "ver_298e416105dc",
       "chunk_idx": 14,
       "chunk_type": "paragraph",
-      "text_content": "[CWE-2 7PK - Environment](https://cwe.mitre.org/data/definitions/2.html)\n\n[CWE-11 ASP.NET Misconfiguration: Creating Debug Binary](https://cwe.mitre.org/data/definitions/11.html)\n\n[CWE-13 ASP.NET Misconfiguration: Password in Configuration File](https://cwe.mitre.org/data/definitions/13.html)\n\n[CWE-15 External Control of System or Configuration Setting](https://cwe.mitre.org/data/definitions/15.html)\n\n[CWE-16 Configuration](https://cwe.mitre.org/data/definitions/16.html)\n\n[CWE-260 Password in Configuration File](https://cwe.mitre.org/data/definitions/260.html)\n\n[CWE-315 Cleartext Storage of Sensitive Information in a Cookie](https://cwe.mitre.org/data/definitions/315.html)\n\n[CWE-520 .NET Misconfiguration: Use of Impersonation](https://cwe.mitre.org/data/definitions/520.html)\n\n[CWE-526 Exposure of Sensitive Information Through Environmental Variables](https://cwe.mitre.org/data/definitions/526.html)\n\n[CWE-537 Java Runtime Error Message Containing Sensitive Information](https://cwe.mitre.org/data/definitions/537.html)\n\n[CWE-541 Inclusion of Sensitive Information in an Include File](https://cwe.mitre.org/data/definitions/541.html)\n\n[CWE-547 Use of Hard-coded, Security-relevant Constants](https://cwe.mitre.org/data/definitions/547.html)\n\n[CWE-611 Improper Restriction of XML External Entity Reference](https://cwe.mitre.org/data/definitions/611.html)\n\n[CWE-614 Sensitive Cookie in HTTPS Session Without 'Secure' Attribute](https://cwe.mitre.org/data/definitions/614.html)",
-      "token_count": 432,
-      "chunk_strategy": "structure_aware",
-      "heading_path": [
-        "A05:2021 – Security Misconfiguration",
-        "List of Mapped CWEs"
-      ]
-    },
-    {
-      "chunk_id": "ver_298e416105dc_c00015",
-      "document_id": "doc_owasp_top10_a05_security_misconfiguration",
-      "version_id": "ver_298e416105dc",
-      "chunk_idx": 15,
-      "chunk_type": "paragraph",
-      "text_content": "[CWE-756 Missing Custom Error Page](https://cwe.mitre.org/data/definitions/756.html)\n\n[CWE-776 Improper Restriction of Recursive Entity References in DTDs ('XML Entity Expansion')](https://cwe.mitre.org/data/definitions/776.html)\n\n[CWE-942 Permissive Cross-domain Policy with Untrusted Domains](https://cwe.mitre.org/data/definitions/942.html)\n\n[CWE-1004 Sensitive Cookie Without 'HttpOnly' Flag](https://cwe.mitre.org/data/definitions/1004.html)\n\n[CWE-1032 OWASP Top Ten 2017 Category A6 - Security Misconfiguration](https://cwe.mitre.org/data/definitions/1032.html)\n\n[CWE-1174 ASP.NET Misconfiguration: Improper Model Validation](https://cwe.mitre.org/data/definitions/1174.html)",
-      "token_count": 195,
+      "text_content": "[CWE-2 7PK - Environment](https://cwe.mitre.org/data/definitions/2.html)\n\n[CWE-11 ASP.NET Misconfiguration: Creating Debug Binary](https://cwe.mitre.org/data/definitions/11.html)\n\n[CWE-13 ASP.NET Misconfiguration: Password in Configuration File](https://cwe.mitre.org/data/definitions/13.html)\n\n[CWE-15 External Control of System or Configuration Setting](https://cwe.mitre.org/data/definitions/15.html)\n\n[CWE-16 Configuration](https://cwe.mitre.org/data/definitions/16.html)\n\n[CWE-260 Password in Configuration File](https://cwe.mitre.org/data/definitions/260.html)\n\n[CWE-315 Cleartext Storage of Sensitive Information in a Cookie](https://cwe.mitre.org/data/definitions/315.html)\n\n[CWE-520 .NET Misconfiguration: Use of Impersonation](https://cwe.mitre.org/data/definitions/520.html)\n\n[CWE-526 Exposure of Sensitive Information Through Environmental Variables](https://cwe.mitre.org/data/definitions/526.html)\n\n[CWE-537 Java Runtime Error Message Containing Sensitive Information](https://cwe.mitre.org/data/definitions/537.html)\n\n[CWE-541 Inclusion of Sensitive Information in an Include File](https://cwe.mitre.org/data/definitions/541.html)\n\n[CWE-547 Use of Hard-coded, Security-relevant Constants](https://cwe.mitre.org/data/definitions/547.html)\n\n[CWE-611 Improper Restriction of XML External Entity Reference](https://cwe.mitre.org/data/definitions/611.html)\n\n[CWE-614 Sensitive Cookie in HTTPS Session Without 'Secure' Attribute](https://cwe.mitre.org/data/definitions/614.html)\n\n[CWE-756 Missing Custom Error Page](https://cwe.mitre.org/data/definitions/756.html)\n\n[CWE-776 Improper Restriction of Recursive Entity References in DTDs ('XML Entity Expansion')](https://cwe.mitre.org/data/definitions/776.html)\n\n[CWE-942 Permissive Cross-domain Policy with Untrusted Domains](https://cwe.mitre.org/data/definitions/942.html)\n\n[CWE-1004 Sensitive Cookie Without 'HttpOnly' Flag](https://cwe.mitre.org/data/definitions/1004.html)\n\n[CWE-1032 OWASP Top Ten 2017 Category A6 - Security Misconfiguration](https://cwe.mitre.org/data/definitions/1032.html)\n\n[CWE-1174 ASP.NET Misconfiguration: Improper Model Validation](https://cwe.mitre.org/data/definitions/1174.html)",
+      "token_count": 627,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "A05:2021 – Security Misconfiguration",
@@ -749,50 +735,50 @@
       "end_offset": 119
     },
     {
-      "chunk_source_id": "ver_298e416105dc_c00015_s000",
-      "chunk_id": "ver_298e416105dc_c00015",
+      "chunk_source_id": "ver_298e416105dc_c00014_s014",
+      "chunk_id": "ver_298e416105dc_c00014",
       "normalized_block_id": "nrm_ver_298e416105dc_b00034",
-      "source_order": 0,
+      "source_order": 14,
       "start_offset": 0,
       "end_offset": 84
     },
     {
-      "chunk_source_id": "ver_298e416105dc_c00015_s001",
-      "chunk_id": "ver_298e416105dc_c00015",
+      "chunk_source_id": "ver_298e416105dc_c00014_s015",
+      "chunk_id": "ver_298e416105dc_c00014",
       "normalized_block_id": "nrm_ver_298e416105dc_b00035",
-      "source_order": 1,
+      "source_order": 15,
       "start_offset": 0,
       "end_offset": 143
     },
     {
-      "chunk_source_id": "ver_298e416105dc_c00015_s002",
-      "chunk_id": "ver_298e416105dc_c00015",
+      "chunk_source_id": "ver_298e416105dc_c00014_s016",
+      "chunk_id": "ver_298e416105dc_c00014",
       "normalized_block_id": "nrm_ver_298e416105dc_b00036",
-      "source_order": 2,
+      "source_order": 16,
       "start_offset": 0,
       "end_offset": 112
     },
     {
-      "chunk_source_id": "ver_298e416105dc_c00015_s003",
-      "chunk_id": "ver_298e416105dc_c00015",
+      "chunk_source_id": "ver_298e416105dc_c00014_s017",
+      "chunk_id": "ver_298e416105dc_c00014",
       "normalized_block_id": "nrm_ver_298e416105dc_b00037",
-      "source_order": 3,
+      "source_order": 17,
       "start_offset": 0,
       "end_offset": 101
     },
     {
-      "chunk_source_id": "ver_298e416105dc_c00015_s004",
-      "chunk_id": "ver_298e416105dc_c00015",
+      "chunk_source_id": "ver_298e416105dc_c00014_s018",
+      "chunk_id": "ver_298e416105dc_c00014",
       "normalized_block_id": "nrm_ver_298e416105dc_b00038",
-      "source_order": 4,
+      "source_order": 18,
       "start_offset": 0,
       "end_offset": 119
     },
     {
-      "chunk_source_id": "ver_298e416105dc_c00015_s005",
-      "chunk_id": "ver_298e416105dc_c00015",
+      "chunk_source_id": "ver_298e416105dc_c00014_s019",
+      "chunk_id": "ver_298e416105dc_c00014",
       "normalized_block_id": "nrm_ver_298e416105dc_b00039",
-      "source_order": 5,
+      "source_order": 19,
       "start_offset": 0,
       "end_offset": 112
     }

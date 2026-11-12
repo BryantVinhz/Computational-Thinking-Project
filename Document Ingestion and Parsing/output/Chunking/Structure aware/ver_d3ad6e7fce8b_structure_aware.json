@@ -223,8 +223,8 @@
       "version_id": "ver_d3ad6e7fce8b",
       "chunk_idx": 15,
       "chunk_type": "paragraph",
-      "text_content": "Blocking IP addresses may be sufficient to stop less sophisticated attacks, but should not be used as the sole or primary defense due to the ease in circumvention.\n\nIt is more effective to have a graduated response to abuse that leverages multiple defensive measures depending on different factors of the attack.\n\nAny process or decision to mitigate (including blocking and CAPTCHA) credential stuffing traffic from an IP address should consider a multitude of abuse scenarios, and not rely on a single predictable volume limit.\n\nShort (i.e.\n\nburst) and long time periods should be considered, as well as high request volume and instances where one IP address, likely in concert with _many_ other IP addresses, generates low but consistent volumes of traffic.\n\nAdditionally, mitigation decisions should consider factors such as IP address classification (ex: residential vs hosting) and geolocation.\n\nThese factors may be leveraged to raise or lower mitigation thresholds in order to reduce potential impact on legitimate users or more aggressively mitigate abuse originating from abnormal sources.\n\nMitigations, especially blocking an IP address, should be temporary and processes should be in place to remove an IP address from a mitigated state as abuse declines or stops.\n\nMany credential stuffing toolkits, such as [Sentry MBA](https://federalnewsnetwork.com/wp-content/uploads/2020/06/Shape-Threat-Research-Automating-Cybercrime-with-SentryMBA.pdf), offer built-in use of proxy networks to distribute requests across a large volume of unique IP addresses.\n\nThis may defeat both IP block-lists and rate limiting, as per IP request volume may remain relatively low, even on high volume attacks.\n\nCorrelating authentication traffic with proxy and similar IP address intelligence, as well as hosting provider IP address ranges can help identify highly distributed credential stuffing attacks, as well as serve as a mitigation trigger.\n\nFor example, every request originating from a hosting provider could be required to solve CAPTCHA.\n\nThere are both public and commercial sources of IP address intelligence and classification that may be leveraged as data sources for this purpose.\n\nAdditionally, some hosting providers publish their own IP address space, such as [AWS](https://docs.aws.amazon.com/vpc/latest/userguide/aws-ip-ranges.html).",
-      "token_count": 439,
+      "text_content": "Blocking IP addresses may be sufficient to stop less sophisticated attacks, but should not be used as the sole or primary defense due to the ease in circumvention.\n\nIt is more effective to have a graduated response to abuse that leverages multiple defensive measures depending on different factors of the attack.\n\nAny process or decision to mitigate (including blocking and CAPTCHA) credential stuffing traffic from an IP address should consider a multitude of abuse scenarios, and not rely on a single predictable volume limit.\n\nShort (i.e.\n\nburst) and long time periods should be considered, as well as high request volume and instances where one IP address, likely in concert with _many_ other IP addresses, generates low but consistent volumes of traffic.\n\nAdditionally, mitigation decisions should consider factors such as IP address classification (ex: residential vs hosting) and geolocation.\n\nThese factors may be leveraged to raise or lower mitigation thresholds in order to reduce potential impact on legitimate users or more aggressively mitigate abuse originating from abnormal sources.\n\nMitigations, especially blocking an IP address, should be temporary and processes should be in place to remove an IP address from a mitigated state as abuse declines or stops.\n\nMany credential stuffing toolkits, such as [Sentry MBA](https://federalnewsnetwork.com/wp-content/uploads/2020/06/Shape-Threat-Research-Automating-Cybercrime-with-SentryMBA.pdf), offer built-in use of proxy networks to distribute requests across a large volume of unique IP addresses.\n\nThis may defeat both IP block-lists and rate limiting, as per IP request volume may remain relatively low, even on high volume attacks.\n\nCorrelating authentication traffic with proxy and similar IP address intelligence, as well as hosting provider IP address ranges can help identify highly distributed credential stuffing attacks, as well as serve as a mitigation trigger.\n\nFor example, every request originating from a hosting provider could be required to solve CAPTCHA.\n\nThere are both public and commercial sources of IP address intelligence and classification that may be leveraged as data sources for this purpose.\n\nAdditionally, some hosting providers publish their own IP address space, such as [AWS](https://docs.aws.amazon.com/vpc/latest/userguide/aws-ip-ranges.html).\n\nSeparate from blocking network connections, consider storing an account's IP address authentication history.\n\nIn case a recent IP address is added to a block or mitigation list, it may be appropriate to lock the account and notify the user.",
+      "token_count": 484,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Credential Stuffing Prevention Cheat Sheet",
@@ -237,14 +237,14 @@
       "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
       "version_id": "ver_d3ad6e7fce8b",
       "chunk_idx": 16,
-      "chunk_type": "paragraph",
-      "text_content": "Separate from blocking network connections, consider storing an account's IP address authentication history.\n\nIn case a recent IP address is added to a block or mitigation list, it may be appropriate to lock the account and notify the user.",
-      "token_count": 45,
+      "chunk_type": "heading",
+      "text_content": "### Device Fingerprinting",
+      "token_count": 5,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Credential Stuffing Prevention Cheat Sheet",
         "Defense in Depth & Metrics",
-        "IP Mitigation and Intelligence"
+        "Device Fingerprinting"
       ]
     },
     {
@@ -252,9 +252,9 @@
       "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
       "version_id": "ver_d3ad6e7fce8b",
       "chunk_idx": 17,
-      "chunk_type": "heading",
-      "text_content": "### Device Fingerprinting",
-      "token_count": 5,
+      "chunk_type": "mixed",
+      "text_content": "Aside from the IP address, there are a number of different factors that can be used to attempt to fingerprint a device.\n\nSome of these can be obtained passively by the server from the HTTP headers (particularly the \"User-Agent\" header), including:\n\n- Operating system & version\n- Browser & version\n- Language\n\nUsing JavaScript it is possible to access far more information, such as:\n\n- Screen resolution\n- Installed fonts\n- Installed browser plugins\n\nUsing these various attributes, it is possible to create a fingerprint of the device.\n\nThis fingerprint can then be matched against any browser attempting to login to the account, and if it doesn't match then the user can be prompted for additional authentication.\n\nMany users will have multiple devices or browsers that they use, so it is not practical to simply block attempts that do not match the existing fingerprints, however it is common to define a process for users or customers to view their device history and manage their remembered devices.\n\nAlso these attributes can be used to detect anomalous activity such as a device appearing to be running an older version of OS or Browser.\n\nThe [fingerprintjs2](https://github.com/Valve/fingerprintjs2) JavaScript library can be used to carry out client-side fingerprinting.\n\nIt should be noted that as all this information is provided by the client, it can potentially be spoofed by an attacker.\n\nIn some cases spoofing these attributes is trivial (such as the \"User-Agent\") header, but in other cases it may be more difficult to modify these attributes.",
+      "token_count": 301,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Credential Stuffing Prevention Cheat Sheet",
@@ -267,14 +267,14 @@
       "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
       "version_id": "ver_d3ad6e7fce8b",
       "chunk_idx": 18,
-      "chunk_type": "mixed",
-      "text_content": "Aside from the IP address, there are a number of different factors that can be used to attempt to fingerprint a device.\n\nSome of these can be obtained passively by the server from the HTTP headers (particularly the \"User-Agent\" header), including:\n\n- Operating system & version\n- Browser & version\n- Language\n\nUsing JavaScript it is possible to access far more information, such as:\n\n- Screen resolution\n- Installed fonts\n- Installed browser plugins\n\nUsing these various attributes, it is possible to create a fingerprint of the device.\n\nThis fingerprint can then be matched against any browser attempting to login to the account, and if it doesn't match then the user can be prompted for additional authentication.\n\nMany users will have multiple devices or browsers that they use, so it is not practical to simply block attempts that do not match the existing fingerprints, however it is common to define a process for users or customers to view their device history and manage their remembered devices.\n\nAlso these attributes can be used to detect anomalous activity such as a device appearing to be running an older version of OS or Browser.\n\nThe [fingerprintjs2](https://github.com/Valve/fingerprintjs2) JavaScript library can be used to carry out client-side fingerprinting.\n\nIt should be noted that as all this information is provided by the client, it can potentially be spoofed by an attacker.\n\nIn some cases spoofing these attributes is trivial (such as the \"User-Agent\") header, but in other cases it may be more difficult to modify these attributes.",
-      "token_count": 301,
+      "chunk_type": "heading",
+      "text_content": "### Connection Fingerprinting",
+      "token_count": 5,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Credential Stuffing Prevention Cheat Sheet",
         "Defense in Depth & Metrics",
-        "Device Fingerprinting"
+        "Connection Fingerprinting"
       ]
     },
     {
@@ -282,9 +282,9 @@
       "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
       "version_id": "ver_d3ad6e7fce8b",
       "chunk_idx": 19,
-      "chunk_type": "heading",
-      "text_content": "### Connection Fingerprinting",
-      "token_count": 5,
+      "chunk_type": "paragraph",
+      "text_content": "Similar to device fingerprinting, there are numerous fingerprinting techniques available for network connections.\n\nSome examples include [JA3](https://github.com/salesforce/ja3), HTTP/2 fingerprinting and HTTP header order.\n\nAs these techniques typically focus on how a connection is made, connection fingerprinting may provide more accurate results than other defenses that rely on an indicator, such as an IP address, or request data, such as user agent string.\n\nConnection fingerprinting may also be used in conjunction with other defenses to ascertain the truthfulness of an authentication request.\n\nFor example, if the user agent header and device fingerprint indicates a mobile device, but the connection fingerprint indicates a Python script, the request is likely suspect.",
+      "token_count": 139,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Credential Stuffing Prevention Cheat Sheet",
@@ -297,14 +297,14 @@
       "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
       "version_id": "ver_d3ad6e7fce8b",
       "chunk_idx": 20,
-      "chunk_type": "paragraph",
-      "text_content": "Similar to device fingerprinting, there are numerous fingerprinting techniques available for network connections.\n\nSome examples include [JA3](https://github.com/salesforce/ja3), HTTP/2 fingerprinting and HTTP header order.\n\nAs these techniques typically focus on how a connection is made, connection fingerprinting may provide more accurate results than other defenses that rely on an indicator, such as an IP address, or request data, such as user agent string.\n\nConnection fingerprinting may also be used in conjunction with other defenses to ascertain the truthfulness of an authentication request.\n\nFor example, if the user agent header and device fingerprint indicates a mobile device, but the connection fingerprint indicates a Python script, the request is likely suspect.",
-      "token_count": 139,
+      "chunk_type": "heading",
+      "text_content": "### Require Unpredictable Usernames",
+      "token_count": 6,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Credential Stuffing Prevention Cheat Sheet",
         "Defense in Depth & Metrics",
-        "Connection Fingerprinting"
+        "Require Unpredictable Usernames"
       ]
     },
     {
@@ -312,9 +312,9 @@
       "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
       "version_id": "ver_d3ad6e7fce8b",
       "chunk_idx": 21,
-      "chunk_type": "heading",
-      "text_content": "### Require Unpredictable Usernames",
-      "token_count": 6,
+      "chunk_type": "paragraph",
+      "text_content": "Credential stuffing attacks rely on not just the re-use of passwords between multiple sites, but also the re-use of usernames.\n\nA significant number of websites use the email address as the username, and as most users will have a single email address they use for all their accounts, this makes the combination of an email address and password very effective for credential stuffing attacks.\n\nRequiring users to create their own username when registering on the website makes it harder for an attacker to obtain valid username and password pairs for credential stuffing, as many of the available credential lists only include email addresses.\n\nProviding the user with a generated username can provide a higher degree of protection (as users are likely to choose the same username on most websites), but is user unfriendly.\n\nAdditionally, care needs to be taken to ensure that the generated username is not predictable (such as being based on the user's full name, or sequential numeric IDs), as this could make enumerating valid usernames for a password spraying attack easier.",
+      "token_count": 197,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Credential Stuffing Prevention Cheat Sheet",
@@ -327,14 +327,14 @@
       "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
       "version_id": "ver_d3ad6e7fce8b",
       "chunk_idx": 22,
-      "chunk_type": "paragraph",
-      "text_content": "Credential stuffing attacks rely on not just the re-use of passwords between multiple sites, but also the re-use of usernames.\n\nA significant number of websites use the email address as the username, and as most users will have a single email address they use for all their accounts, this makes the combination of an email address and password very effective for credential stuffing attacks.\n\nRequiring users to create their own username when registering on the website makes it harder for an attacker to obtain valid username and password pairs for credential stuffing, as many of the available credential lists only include email addresses.\n\nProviding the user with a generated username can provide a higher degree of protection (as users are likely to choose the same username on most websites), but is user unfriendly.\n\nAdditionally, care needs to be taken to ensure that the generated username is not predictable (such as being based on the user's full name, or sequential numeric IDs), as this could make enumerating valid usernames for a password spraying attack easier.",
-      "token_count": 197,
+      "chunk_type": "heading",
+      "text_content": "### Multi-Step Login Processes",
+      "token_count": 8,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Credential Stuffing Prevention Cheat Sheet",
         "Defense in Depth & Metrics",
-        "Require Unpredictable Usernames"
+        "Multi-Step Login Processes"
       ]
     },
     {
@@ -342,9 +342,9 @@
       "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
       "version_id": "ver_d3ad6e7fce8b",
       "chunk_idx": 23,
-      "chunk_type": "heading",
-      "text_content": "### Multi-Step Login Processes",
-      "token_count": 8,
+      "chunk_type": "paragraph",
+      "text_content": "The majority of off-the-shelf tools are designed for a single step login process, where the credentials are POSTed to the server, and the response indicates whether or not the login attempt was successful.\n\nBy adding additional steps to this process, such as requiring the username and password to be entered sequentially, or requiring that the user first obtains a random [CSRF Token](Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.md) before they can login, this makes the attack slightly more difficult to perform, and doubles the number of requests that the attacker must make.\n\nMulti-step login processes, however, should be mindful that they do not facilitate [user enumeration](Authentication_Cheat_Sheet.md).\n\nEnumerating users prior to a credential stuffing attack may result in a harder to identify, lower request volume attack.",
+      "token_count": 154,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Credential Stuffing Prevention Cheat Sheet",
@@ -357,14 +357,14 @@
       "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
       "version_id": "ver_d3ad6e7fce8b",
       "chunk_idx": 24,
-      "chunk_type": "paragraph",
-      "text_content": "The majority of off-the-shelf tools are designed for a single step login process, where the credentials are POSTed to the server, and the response indicates whether or not the login attempt was successful.\n\nBy adding additional steps to this process, such as requiring the username and password to be entered sequentially, or requiring that the user first obtains a random [CSRF Token](Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.md) before they can login, this makes the attack slightly more difficult to perform, and doubles the number of requests that the attacker must make.\n\nMulti-step login processes, however, should be mindful that they do not facilitate [user enumeration](Authentication_Cheat_Sheet.md).\n\nEnumerating users prior to a credential stuffing attack may result in a harder to identify, lower request volume attack.",
-      "token_count": 154,
+      "chunk_type": "heading",
+      "text_content": "### Require JavaScript and Block Headless Browsers",
+      "token_count": 9,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Credential Stuffing Prevention Cheat Sheet",
         "Defense in Depth & Metrics",
-        "Multi-Step Login Processes"
+        "Require JavaScript and Block Headless Browsers"
       ]
     },
     {
@@ -372,9 +372,9 @@
       "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
       "version_id": "ver_d3ad6e7fce8b",
       "chunk_idx": 25,
-      "chunk_type": "heading",
-      "text_content": "### Require JavaScript and Block Headless Browsers",
-      "token_count": 9,
+      "chunk_type": "paragraph",
+      "text_content": "Most tools used for these types of attacks will make direct POST requests to the server and read the responses, but will not download or execute JavaScript that was contained in them.\n\nBy requiring the attacker to evaluate JavaScript in the response (for example to generate a valid token that must be submitted with the request), this forces the attacker to either use a real browser with an automation framework like Selenium or Headless Chrome, or to implement JavaScript parsing with another tool such as PhantomJS.\n\nAdditionally, there are a number of techniques that can be used to identify [Headless Chrome](https://antoinevastel.com/bot%20detection/2018/01/17/detect-chrome-headless-v2.html) or [PhantomJS](https://blog.shapesecurity.com/2015/01/22/detecting-phantomjs-based-visitors/).\n\nPlease note that blocking visitors who have JavaScript disabled will reduce the accessibility of the website, especially to visitors who use screen readers.\n\nIn certain jurisdictions this may be in breach of equalities legislation.",
+      "token_count": 208,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Credential Stuffing Prevention Cheat Sheet",
@@ -387,14 +387,14 @@
       "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
       "version_id": "ver_d3ad6e7fce8b",
       "chunk_idx": 26,
-      "chunk_type": "paragraph",
-      "text_content": "Most tools used for these types of attacks will make direct POST requests to the server and read the responses, but will not download or execute JavaScript that was contained in them.\n\nBy requiring the attacker to evaluate JavaScript in the response (for example to generate a valid token that must be submitted with the request), this forces the attacker to either use a real browser with an automation framework like Selenium or Headless Chrome, or to implement JavaScript parsing with another tool such as PhantomJS.\n\nAdditionally, there are a number of techniques that can be used to identify [Headless Chrome](https://antoinevastel.com/bot%20detection/2018/01/17/detect-chrome-headless-v2.html) or [PhantomJS](https://blog.shapesecurity.com/2015/01/22/detecting-phantomjs-based-visitors/).\n\nPlease note that blocking visitors who have JavaScript disabled will reduce the accessibility of the website, especially to visitors who use screen readers.\n\nIn certain jurisdictions this may be in breach of equalities legislation.",
-      "token_count": 208,
+      "chunk_type": "heading",
+      "text_content": "### Degradation",
+      "token_count": 4,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Credential Stuffing Prevention Cheat Sheet",
         "Defense in Depth & Metrics",
-        "Require JavaScript and Block Headless Browsers"
+        "Degradation"
       ]
     },
     {
@@ -402,9 +402,9 @@
       "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
       "version_id": "ver_d3ad6e7fce8b",
       "chunk_idx": 27,
-      "chunk_type": "heading",
-      "text_content": "### Degradation",
-      "token_count": 4,
+      "chunk_type": "paragraph",
+      "text_content": "A more aggressive defense against credential stuffing is to implement measures that increase the amount of time the attack takes to complete.\n\nThis may include incrementally increasing the complexity of the JavaScript that must be evaluated, requiring users to solve a cryptographic or Proof-of-Work computational puzzle, introducing long wait periods before responding to requests, returning overly large HTML assets or returning randomized error messages.\n\nThese techniques provide some level of security without resorting to user tracking or profiling.\n\nThey typically do not require a human in the loop, but rather constrain the minimum latency and/or the maximum request rate of a particular client implementation and the attacker's budget and sophistication, and requires a context-dependent risk assessment to gauge their efficacy, resistance to countermeasures and user experience impact.",
+      "token_count": 147,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Credential Stuffing Prevention Cheat Sheet",
@@ -417,14 +417,14 @@
       "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
       "version_id": "ver_d3ad6e7fce8b",
       "chunk_idx": 28,
-      "chunk_type": "paragraph",
-      "text_content": "A more aggressive defense against credential stuffing is to implement measures that increase the amount of time the attack takes to complete.\n\nThis may include incrementally increasing the complexity of the JavaScript that must be evaluated, requiring users to solve a cryptographic or Proof-of-Work computational puzzle, introducing long wait periods before responding to requests, returning overly large HTML assets or returning randomized error messages.\n\nThese techniques provide some level of security without resorting to user tracking or profiling.\n\nThey typically do not require a human in the loop, but rather constrain the minimum latency and/or the maximum request rate of a particular client implementation and the attacker's budget and sophistication, and requires a context-dependent risk assessment to gauge their efficacy, resistance to countermeasures and user experience impact.",
-      "token_count": 147,
+      "chunk_type": "heading",
+      "text_content": "### Identifying Leaked Passwords",
+      "token_count": 6,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Credential Stuffing Prevention Cheat Sheet",
         "Defense in Depth & Metrics",
-        "Degradation"
+        "Identifying Leaked Passwords"
       ]
     },
     {
@@ -432,9 +432,9 @@
       "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
       "version_id": "ver_d3ad6e7fce8b",
       "chunk_idx": 29,
-      "chunk_type": "heading",
-      "text_content": "### Identifying Leaked Passwords",
-      "token_count": 6,
+      "chunk_type": "paragraph",
+      "text_content": "[ASVS v4.0 Password Security Requirements](https://github.com/OWASP/ASVS/blob/master/4.0/en/0x11-V2-Authentication.md#v21-password-security-requirements) provision (2.1.7) on verifying new passwords presence in breached password datasets should be implemented.\n\nThere are both commercial and free services that may be of use for validating passwords presence in prior breaches.\n\nA well known free service for this is [Pwned Passwords](https://haveibeenpwned.com/Passwords).\n\nYou can host a copy of the application yourself, or use the [API](https://haveibeenpwned.com/API/v3#PwnedPasswords).",
+      "token_count": 145,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Credential Stuffing Prevention Cheat Sheet",
@@ -447,14 +447,14 @@
       "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
       "version_id": "ver_d3ad6e7fce8b",
       "chunk_idx": 30,
-      "chunk_type": "paragraph",
-      "text_content": "[ASVS v4.0 Password Security Requirements](https://github.com/OWASP/ASVS/blob/master/4.0/en/0x11-V2-Authentication.md#v21-password-security-requirements) provision (2.1.7) on verifying new passwords presence in breached password datasets should be implemented.\n\nThere are both commercial and free services that may be of use for validating passwords presence in prior breaches.\n\nA well known free service for this is [Pwned Passwords](https://haveibeenpwned.com/Passwords).\n\nYou can host a copy of the application yourself, or use the [API](https://haveibeenpwned.com/API/v3#PwnedPasswords).",
-      "token_count": 145,
+      "chunk_type": "heading",
+      "text_content": "### Notify users about unusual security events",
+      "token_count": 9,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Credential Stuffing Prevention Cheat Sheet",
         "Defense in Depth & Metrics",
-        "Identifying Leaked Passwords"
+        "Notify users about unusual security events"
       ]
     },
     {
@@ -462,9 +462,9 @@
       "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
       "version_id": "ver_d3ad6e7fce8b",
       "chunk_idx": 31,
-      "chunk_type": "heading",
-      "text_content": "### Notify users about unusual security events",
-      "token_count": 9,
+      "chunk_type": "paragraph",
+      "text_content": "When suspicious or unusual activity is detected, it may be appropriate to notify or warn the user.\n\nHowever, care should be taken that the user does not get overwhelmed with a large number of notifications that are not important to them, or they will just start to ignore or delete them.\n\nAdditionally, due to frequent reuse of passwords across multiple sites, the possibility that the users email account has also been compromised should be considered.\n\nFor example, it would generally not be appropriate to notify a user that there had been an attempt to login to their account with an incorrect password.\n\nHowever, if there had been a login with the correct password, but which had then failed the subsequent MFA check, the user should be notified so that they can change their password.\n\nSubsequently, should the user request multiple password resets from different devices or IP addresses, it may be appropriate to prevent further access to the account pending further user verification processes.\n\nDetails related to current or recent logins should also be made visible to the user.\n\nFor example, when they login to the application, the date, time and location of their previous login attempt could be displayed to them.\n\nAdditionally, if the application supports concurrent sessions, the user should be able to view a list of all active sessions, and to terminate any other sessions that are not legitimate.",
+      "token_count": 258,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Credential Stuffing Prevention Cheat Sheet",
@@ -477,21 +477,6 @@
       "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
       "version_id": "ver_d3ad6e7fce8b",
       "chunk_idx": 32,
-      "chunk_type": "paragraph",
-      "text_content": "When suspicious or unusual activity is detected, it may be appropriate to notify or warn the user.\n\nHowever, care should be taken that the user does not get overwhelmed with a large number of notifications that are not important to them, or they will just start to ignore or delete them.\n\nAdditionally, due to frequent reuse of passwords across multiple sites, the possibility that the users email account has also been compromised should be considered.\n\nFor example, it would generally not be appropriate to notify a user that there had been an attempt to login to their account with an incorrect password.\n\nHowever, if there had been a login with the correct password, but which had then failed the subsequent MFA check, the user should be notified so that they can change their password.\n\nSubsequently, should the user request multiple password resets from different devices or IP addresses, it may be appropriate to prevent further access to the account pending further user verification processes.\n\nDetails related to current or recent logins should also be made visible to the user.\n\nFor example, when they login to the application, the date, time and location of their previous login attempt could be displayed to them.\n\nAdditionally, if the application supports concurrent sessions, the user should be able to view a list of all active sessions, and to terminate any other sessions that are not legitimate.",
-      "token_count": 258,
-      "chunk_strategy": "structure_aware",
-      "heading_path": [
-        "Credential Stuffing Prevention Cheat Sheet",
-        "Defense in Depth & Metrics",
-        "Notify users about unusual security events"
-      ]
-    },
-    {
-      "chunk_id": "ver_d3ad6e7fce8b_c00033",
-      "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
-      "version_id": "ver_d3ad6e7fce8b",
-      "chunk_idx": 33,
       "chunk_type": "heading",
       "text_content": "## References",
       "token_count": 3,
@@ -502,10 +487,10 @@
       ]
     },
     {
-      "chunk_id": "ver_d3ad6e7fce8b_c00034",
+      "chunk_id": "ver_d3ad6e7fce8b_c00033",
       "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
       "version_id": "ver_d3ad6e7fce8b",
-      "chunk_idx": 34,
+      "chunk_idx": 33,
       "chunk_type": "list",
       "text_content": "- [OWASP: Credential Stuffing](https://community.owasp.org/attacks/Credential_stuffing)\n- [NIST SP 800-63B-4: Password Verifiers](https://pages.nist.gov/800-63-4/sp800-63b.html#passwordver)",
       "token_count": 60,
@@ -998,480 +983,480 @@
       "end_offset": 303
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00016_s000",
-      "chunk_id": "ver_d3ad6e7fce8b_c00016",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00015_s014",
+      "chunk_id": "ver_d3ad6e7fce8b_c00015",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00029",
-      "source_order": 0,
+      "source_order": 14,
       "start_offset": 0,
       "end_offset": 108
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00016_s001",
-      "chunk_id": "ver_d3ad6e7fce8b_c00016",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00015_s015",
+      "chunk_id": "ver_d3ad6e7fce8b_c00015",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00029",
-      "source_order": 1,
+      "source_order": 15,
       "start_offset": 109,
       "end_offset": 239
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00017_s000",
-      "chunk_id": "ver_d3ad6e7fce8b_c00017",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00016_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00016",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00030",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 25
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00018_s000",
-      "chunk_id": "ver_d3ad6e7fce8b_c00018",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00017_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00017",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00031",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 119
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00018_s001",
-      "chunk_id": "ver_d3ad6e7fce8b_c00018",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00017_s001",
+      "chunk_id": "ver_d3ad6e7fce8b_c00017",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00031",
       "source_order": 1,
       "start_offset": 120,
       "end_offset": 246
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00018_s002",
-      "chunk_id": "ver_d3ad6e7fce8b_c00018",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00017_s002",
+      "chunk_id": "ver_d3ad6e7fce8b_c00017",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00032",
       "source_order": 2,
       "start_offset": 0,
       "end_offset": 59
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00018_s003",
-      "chunk_id": "ver_d3ad6e7fce8b_c00018",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00017_s003",
+      "chunk_id": "ver_d3ad6e7fce8b_c00017",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00033",
       "source_order": 3,
       "start_offset": 0,
       "end_offset": 72
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00018_s004",
-      "chunk_id": "ver_d3ad6e7fce8b_c00018",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00017_s004",
+      "chunk_id": "ver_d3ad6e7fce8b_c00017",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00034",
       "source_order": 4,
       "start_offset": 0,
       "end_offset": 65
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00018_s005",
-      "chunk_id": "ver_d3ad6e7fce8b_c00018",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00017_s005",
+      "chunk_id": "ver_d3ad6e7fce8b_c00017",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00035",
       "source_order": 5,
       "start_offset": 0,
       "end_offset": 85
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00018_s006",
-      "chunk_id": "ver_d3ad6e7fce8b_c00018",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00017_s006",
+      "chunk_id": "ver_d3ad6e7fce8b_c00017",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00035",
       "source_order": 6,
       "start_offset": 86,
       "end_offset": 263
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00018_s007",
-      "chunk_id": "ver_d3ad6e7fce8b_c00018",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00017_s007",
+      "chunk_id": "ver_d3ad6e7fce8b_c00017",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00035",
       "source_order": 7,
       "start_offset": 264,
       "end_offset": 551
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00018_s008",
-      "chunk_id": "ver_d3ad6e7fce8b_c00018",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00017_s008",
+      "chunk_id": "ver_d3ad6e7fce8b_c00017",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00035",
       "source_order": 8,
       "start_offset": 552,
       "end_offset": 690
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00018_s009",
-      "chunk_id": "ver_d3ad6e7fce8b_c00018",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00017_s009",
+      "chunk_id": "ver_d3ad6e7fce8b_c00017",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00036",
       "source_order": 9,
       "start_offset": 0,
       "end_offset": 133
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00018_s010",
-      "chunk_id": "ver_d3ad6e7fce8b_c00018",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00017_s010",
+      "chunk_id": "ver_d3ad6e7fce8b_c00017",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00037",
       "source_order": 10,
       "start_offset": 0,
       "end_offset": 120
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00018_s011",
-      "chunk_id": "ver_d3ad6e7fce8b_c00018",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00017_s011",
+      "chunk_id": "ver_d3ad6e7fce8b_c00017",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00037",
       "source_order": 11,
       "start_offset": 121,
       "end_offset": 278
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00019_s000",
-      "chunk_id": "ver_d3ad6e7fce8b_c00019",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00018_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00018",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00038",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 29
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00020_s000",
-      "chunk_id": "ver_d3ad6e7fce8b_c00020",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00019_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00019",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00039",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 113
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00020_s001",
-      "chunk_id": "ver_d3ad6e7fce8b_c00020",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00019_s001",
+      "chunk_id": "ver_d3ad6e7fce8b_c00019",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00039",
       "source_order": 1,
       "start_offset": 114,
       "end_offset": 222
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00020_s002",
-      "chunk_id": "ver_d3ad6e7fce8b_c00020",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00019_s002",
+      "chunk_id": "ver_d3ad6e7fce8b_c00019",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00039",
       "source_order": 2,
       "start_offset": 223,
       "end_offset": 461
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00020_s003",
-      "chunk_id": "ver_d3ad6e7fce8b_c00020",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00019_s003",
+      "chunk_id": "ver_d3ad6e7fce8b_c00019",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00040",
       "source_order": 3,
       "start_offset": 0,
       "end_offset": 137
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00020_s004",
-      "chunk_id": "ver_d3ad6e7fce8b_c00020",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00019_s004",
+      "chunk_id": "ver_d3ad6e7fce8b_c00019",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00040",
       "source_order": 4,
       "start_offset": 138,
       "end_offset": 314
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00021_s000",
-      "chunk_id": "ver_d3ad6e7fce8b_c00021",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00020_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00020",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00041",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 35
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00022_s000",
-      "chunk_id": "ver_d3ad6e7fce8b_c00022",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00021_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00021",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00042",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 126
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00022_s001",
-      "chunk_id": "ver_d3ad6e7fce8b_c00022",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00021_s001",
+      "chunk_id": "ver_d3ad6e7fce8b_c00021",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00042",
       "source_order": 1,
       "start_offset": 127,
       "end_offset": 390
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00022_s002",
-      "chunk_id": "ver_d3ad6e7fce8b_c00022",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00021_s002",
+      "chunk_id": "ver_d3ad6e7fce8b_c00021",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00043",
       "source_order": 2,
       "start_offset": 0,
       "end_offset": 249
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00022_s003",
-      "chunk_id": "ver_d3ad6e7fce8b_c00022",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00021_s003",
+      "chunk_id": "ver_d3ad6e7fce8b_c00021",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00043",
       "source_order": 3,
       "start_offset": 250,
       "end_offset": 428
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00022_s004",
-      "chunk_id": "ver_d3ad6e7fce8b_c00022",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00021_s004",
+      "chunk_id": "ver_d3ad6e7fce8b_c00021",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00043",
       "source_order": 4,
       "start_offset": 429,
       "end_offset": 682
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00023_s000",
-      "chunk_id": "ver_d3ad6e7fce8b_c00023",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00022_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00022",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00044",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 30
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00024_s000",
-      "chunk_id": "ver_d3ad6e7fce8b_c00024",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00023_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00023",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00045",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 205
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00024_s001",
-      "chunk_id": "ver_d3ad6e7fce8b_c00024",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00023_s001",
+      "chunk_id": "ver_d3ad6e7fce8b_c00023",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00045",
       "source_order": 1,
       "start_offset": 206,
       "end_offset": 583
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00024_s002",
-      "chunk_id": "ver_d3ad6e7fce8b_c00024",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00023_s002",
+      "chunk_id": "ver_d3ad6e7fce8b_c00023",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00046",
       "source_order": 2,
       "start_offset": 0,
       "end_offset": 133
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00024_s003",
-      "chunk_id": "ver_d3ad6e7fce8b_c00024",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00023_s003",
+      "chunk_id": "ver_d3ad6e7fce8b_c00023",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00046",
       "source_order": 3,
       "start_offset": 134,
       "end_offset": 254
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00025_s000",
-      "chunk_id": "ver_d3ad6e7fce8b_c00025",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00024_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00024",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00047",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 50
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00026_s000",
-      "chunk_id": "ver_d3ad6e7fce8b_c00026",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00025_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00025",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00048",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 183
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00026_s001",
-      "chunk_id": "ver_d3ad6e7fce8b_c00026",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00025_s001",
+      "chunk_id": "ver_d3ad6e7fce8b_c00025",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00048",
       "source_order": 1,
       "start_offset": 184,
       "end_offset": 518
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00026_s002",
-      "chunk_id": "ver_d3ad6e7fce8b_c00026",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00025_s002",
+      "chunk_id": "ver_d3ad6e7fce8b_c00025",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00048",
       "source_order": 2,
       "start_offset": 519,
       "end_offset": 792
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00026_s003",
-      "chunk_id": "ver_d3ad6e7fce8b_c00026",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00025_s003",
+      "chunk_id": "ver_d3ad6e7fce8b_c00025",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00049",
       "source_order": 3,
       "start_offset": 0,
       "end_offset": 156
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00026_s004",
-      "chunk_id": "ver_d3ad6e7fce8b_c00026",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00025_s004",
+      "chunk_id": "ver_d3ad6e7fce8b_c00025",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00049",
       "source_order": 4,
       "start_offset": 157,
       "end_offset": 230
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00027_s000",
-      "chunk_id": "ver_d3ad6e7fce8b_c00027",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00026_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00026",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00050",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 15
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00028_s000",
-      "chunk_id": "ver_d3ad6e7fce8b_c00028",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00027_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00027",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00051",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 141
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00028_s001",
-      "chunk_id": "ver_d3ad6e7fce8b_c00028",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00027_s001",
+      "chunk_id": "ver_d3ad6e7fce8b_c00027",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00051",
       "source_order": 1,
       "start_offset": 142,
       "end_offset": 456
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00028_s002",
-      "chunk_id": "ver_d3ad6e7fce8b_c00028",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00027_s002",
+      "chunk_id": "ver_d3ad6e7fce8b_c00027",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00052",
       "source_order": 2,
       "start_offset": 0,
       "end_offset": 96
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00028_s003",
-      "chunk_id": "ver_d3ad6e7fce8b_c00028",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00027_s003",
+      "chunk_id": "ver_d3ad6e7fce8b_c00027",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00052",
       "source_order": 3,
       "start_offset": 97,
       "end_offset": 436
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00029_s000",
-      "chunk_id": "ver_d3ad6e7fce8b_c00029",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00028_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00028",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00053",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 32
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00030_s000",
-      "chunk_id": "ver_d3ad6e7fce8b_c00030",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00029_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00029",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00054",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 260
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00030_s001",
-      "chunk_id": "ver_d3ad6e7fce8b_c00030",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00029_s001",
+      "chunk_id": "ver_d3ad6e7fce8b_c00029",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00055",
       "source_order": 1,
       "start_offset": 0,
       "end_offset": 115
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00030_s002",
-      "chunk_id": "ver_d3ad6e7fce8b_c00030",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00029_s002",
+      "chunk_id": "ver_d3ad6e7fce8b_c00029",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00055",
       "source_order": 2,
       "start_offset": 116,
       "end_offset": 210
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00030_s003",
-      "chunk_id": "ver_d3ad6e7fce8b_c00030",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00029_s003",
+      "chunk_id": "ver_d3ad6e7fce8b_c00029",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00055",
       "source_order": 3,
       "start_offset": 211,
       "end_offset": 327
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00031_s000",
-      "chunk_id": "ver_d3ad6e7fce8b_c00031",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00030_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00030",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00056",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 46
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00032_s000",
-      "chunk_id": "ver_d3ad6e7fce8b_c00032",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00031_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00031",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00057",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 98
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00032_s001",
-      "chunk_id": "ver_d3ad6e7fce8b_c00032",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00031_s001",
+      "chunk_id": "ver_d3ad6e7fce8b_c00031",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00057",
       "source_order": 1,
       "start_offset": 99,
       "end_offset": 286
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00032_s002",
-      "chunk_id": "ver_d3ad6e7fce8b_c00032",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00031_s002",
+      "chunk_id": "ver_d3ad6e7fce8b_c00031",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00057",
       "source_order": 2,
       "start_offset": 287,
       "end_offset": 451
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00032_s003",
-      "chunk_id": "ver_d3ad6e7fce8b_c00032",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00031_s003",
+      "chunk_id": "ver_d3ad6e7fce8b_c00031",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00058",
       "source_order": 3,
       "start_offset": 0,
       "end_offset": 152
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00032_s004",
-      "chunk_id": "ver_d3ad6e7fce8b_c00032",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00031_s004",
+      "chunk_id": "ver_d3ad6e7fce8b_c00031",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00058",
       "source_order": 4,
       "start_offset": 153,
       "end_offset": 334
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00032_s005",
-      "chunk_id": "ver_d3ad6e7fce8b_c00032",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00031_s005",
+      "chunk_id": "ver_d3ad6e7fce8b_c00031",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00058",
       "source_order": 5,
       "start_offset": 335,
       "end_offset": 545
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00032_s006",
-      "chunk_id": "ver_d3ad6e7fce8b_c00032",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00031_s006",
+      "chunk_id": "ver_d3ad6e7fce8b_c00031",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00059",
       "source_order": 6,
       "start_offset": 0,
       "end_offset": 84
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00032_s007",
-      "chunk_id": "ver_d3ad6e7fce8b_c00032",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00031_s007",
+      "chunk_id": "ver_d3ad6e7fce8b_c00031",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00059",
       "source_order": 7,
       "start_offset": 85,
       "end_offset": 221
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00032_s008",
-      "chunk_id": "ver_d3ad6e7fce8b_c00032",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00031_s008",
+      "chunk_id": "ver_d3ad6e7fce8b_c00031",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00059",
       "source_order": 8,
       "start_offset": 222,
       "end_offset": 408
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00033_s000",
-      "chunk_id": "ver_d3ad6e7fce8b_c00033",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00032_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00032",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00060",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 13
     },
     {
-      "chunk_source_id": "ver_d3ad6e7fce8b_c00034_s000",
-      "chunk_id": "ver_d3ad6e7fce8b_c00034",
+      "chunk_source_id": "ver_d3ad6e7fce8b_c00033_s000",
+      "chunk_id": "ver_d3ad6e7fce8b_c00033",
       "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00061",
       "source_order": 0,
       "start_offset": 0,

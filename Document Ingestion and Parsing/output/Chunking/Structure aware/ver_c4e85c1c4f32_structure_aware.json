@@ -204,22 +204,8 @@
       "version_id": "ver_c4e85c1c4f32",
       "chunk_idx": 14,
       "chunk_type": "paragraph",
-      "text_content": "[CWE-255 Credentials Management Errors](https://cwe.mitre.org/data/definitions/255.html)\n\n[CWE-259 Use of Hard-coded Password](https://cwe.mitre.org/data/definitions/259.html)\n\n[CWE-287 Improper Authentication](https://cwe.mitre.org/data/definitions/287.html)\n\n[CWE-288 Authentication Bypass Using an Alternate Path or Channel](https://cwe.mitre.org/data/definitions/288.html)\n\n[CWE-290 Authentication Bypass by Spoofing](https://cwe.mitre.org/data/definitions/290.html)\n\n[CWE-294 Authentication Bypass by Capture-replay](https://cwe.mitre.org/data/definitions/294.html)\n\n[CWE-295 Improper Certificate Validation](https://cwe.mitre.org/data/definitions/295.html)\n\n[CWE-297 Improper Validation of Certificate with Host Mismatch](https://cwe.mitre.org/data/definitions/297.html)\n\n[CWE-300 Channel Accessible by Non-Endpoint](https://cwe.mitre.org/data/definitions/300.html)\n\n[CWE-302 Authentication Bypass by Assumed-Immutable Data](https://cwe.mitre.org/data/definitions/302.html)\n\n[CWE-304 Missing Critical Step in Authentication](https://cwe.mitre.org/data/definitions/304.html)\n\n[CWE-306 Missing Authentication for Critical Function](https://cwe.mitre.org/data/definitions/306.html)\n\n[CWE-307 Improper Restriction of Excessive Authentication Attempts](https://cwe.mitre.org/data/definitions/307.html)\n\n[CWE-346 Origin Validation Error](https://cwe.mitre.org/data/definitions/346.html)\n\n[CWE-384 Session Fixation](https://cwe.mitre.org/data/definitions/384.html)",
-      "token_count": 433,
-      "chunk_strategy": "structure_aware",
-      "heading_path": [
-        "A07:2021 – Identification and Authentication Failures",
-        "List of Mapped CWEs"
-      ]
-    },
-    {
-      "chunk_id": "ver_c4e85c1c4f32_c00015",
-      "document_id": "doc_owasp_top10_a07_identification_and_authentication_failures",
-      "version_id": "ver_c4e85c1c4f32",
-      "chunk_idx": 15,
-      "chunk_type": "paragraph",
-      "text_content": "[CWE-521 Weak Password Requirements](https://cwe.mitre.org/data/definitions/521.html)\n\n[CWE-613 Insufficient Session Expiration](https://cwe.mitre.org/data/definitions/613.html)\n\n[CWE-620 Unverified Password Change](https://cwe.mitre.org/data/definitions/620.html)\n\n[CWE-640 Weak Password Recovery Mechanism for Forgotten Password](https://cwe.mitre.org/data/definitions/640.html)\n\n[CWE-798 Use of Hard-coded Credentials](https://cwe.mitre.org/data/definitions/798.html)\n\n[CWE-940 Improper Verification of Source of a Communication Channel](https://cwe.mitre.org/data/definitions/940.html)\n\n[CWE-1216 Lockout Mechanism Errors](https://cwe.mitre.org/data/definitions/1216.html)",
-      "token_count": 201,
+      "text_content": "[CWE-255 Credentials Management Errors](https://cwe.mitre.org/data/definitions/255.html)\n\n[CWE-259 Use of Hard-coded Password](https://cwe.mitre.org/data/definitions/259.html)\n\n[CWE-287 Improper Authentication](https://cwe.mitre.org/data/definitions/287.html)\n\n[CWE-288 Authentication Bypass Using an Alternate Path or Channel](https://cwe.mitre.org/data/definitions/288.html)\n\n[CWE-290 Authentication Bypass by Spoofing](https://cwe.mitre.org/data/definitions/290.html)\n\n[CWE-294 Authentication Bypass by Capture-replay](https://cwe.mitre.org/data/definitions/294.html)\n\n[CWE-295 Improper Certificate Validation](https://cwe.mitre.org/data/definitions/295.html)\n\n[CWE-297 Improper Validation of Certificate with Host Mismatch](https://cwe.mitre.org/data/definitions/297.html)\n\n[CWE-300 Channel Accessible by Non-Endpoint](https://cwe.mitre.org/data/definitions/300.html)\n\n[CWE-302 Authentication Bypass by Assumed-Immutable Data](https://cwe.mitre.org/data/definitions/302.html)\n\n[CWE-304 Missing Critical Step in Authentication](https://cwe.mitre.org/data/definitions/304.html)\n\n[CWE-306 Missing Authentication for Critical Function](https://cwe.mitre.org/data/definitions/306.html)\n\n[CWE-307 Improper Restriction of Excessive Authentication Attempts](https://cwe.mitre.org/data/definitions/307.html)\n\n[CWE-346 Origin Validation Error](https://cwe.mitre.org/data/definitions/346.html)\n\n[CWE-384 Session Fixation](https://cwe.mitre.org/data/definitions/384.html)\n\n[CWE-521 Weak Password Requirements](https://cwe.mitre.org/data/definitions/521.html)\n\n[CWE-613 Insufficient Session Expiration](https://cwe.mitre.org/data/definitions/613.html)\n\n[CWE-620 Unverified Password Change](https://cwe.mitre.org/data/definitions/620.html)\n\n[CWE-640 Weak Password Recovery Mechanism for Forgotten Password](https://cwe.mitre.org/data/definitions/640.html)\n\n[CWE-798 Use of Hard-coded Credentials](https://cwe.mitre.org/data/definitions/798.html)\n\n[CWE-940 Improper Verification of Source of a Communication Channel](https://cwe.mitre.org/data/definitions/940.html)\n\n[CWE-1216 Lockout Mechanism Errors](https://cwe.mitre.org/data/definitions/1216.html)",
+      "token_count": 634,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "A07:2021 – Identification and Authentication Failures",
@@ -765,58 +751,58 @@
       "end_offset": 75
     },
     {
-      "chunk_source_id": "ver_c4e85c1c4f32_c00015_s000",
-      "chunk_id": "ver_c4e85c1c4f32_c00015",
+      "chunk_source_id": "ver_c4e85c1c4f32_c00014_s015",
+      "chunk_id": "ver_c4e85c1c4f32_c00014",
       "normalized_block_id": "nrm_ver_c4e85c1c4f32_b00032",
-      "source_order": 0,
+      "source_order": 15,
       "start_offset": 0,
       "end_offset": 85
     },
     {
-      "chunk_source_id": "ver_c4e85c1c4f32_c00015_s001",
-      "chunk_id": "ver_c4e85c1c4f32_c00015",
+      "chunk_source_id": "ver_c4e85c1c4f32_c00014_s016",
+      "chunk_id": "ver_c4e85c1c4f32_c00014",
       "normalized_block_id": "nrm_ver_c4e85c1c4f32_b00033",
-      "source_order": 1,
+      "source_order": 16,
       "start_offset": 0,
       "end_offset": 90
     },
     {
-      "chunk_source_id": "ver_c4e85c1c4f32_c00015_s002",
-      "chunk_id": "ver_c4e85c1c4f32_c00015",
+      "chunk_source_id": "ver_c4e85c1c4f32_c00014_s017",
+      "chunk_id": "ver_c4e85c1c4f32_c00014",
       "normalized_block_id": "nrm_ver_c4e85c1c4f32_b00034",
-      "source_order": 2,
+      "source_order": 17,
       "start_offset": 0,
       "end_offset": 85
     },
     {
-      "chunk_source_id": "ver_c4e85c1c4f32_c00015_s003",
-      "chunk_id": "ver_c4e85c1c4f32_c00015",
+      "chunk_source_id": "ver_c4e85c1c4f32_c00014_s018",
+      "chunk_id": "ver_c4e85c1c4f32_c00014",
       "normalized_block_id": "nrm_ver_c4e85c1c4f32_b00035",
-      "source_order": 3,
+      "source_order": 18,
       "start_offset": 0,
       "end_offset": 114
     },
     {
-      "chunk_source_id": "ver_c4e85c1c4f32_c00015_s004",
-      "chunk_id": "ver_c4e85c1c4f32_c00015",
+      "chunk_source_id": "ver_c4e85c1c4f32_c00014_s019",
+      "chunk_id": "ver_c4e85c1c4f32_c00014",
       "normalized_block_id": "nrm_ver_c4e85c1c4f32_b00036",
-      "source_order": 4,
+      "source_order": 19,
       "start_offset": 0,
       "end_offset": 88
     },
     {
-      "chunk_source_id": "ver_c4e85c1c4f32_c00015_s005",
-      "chunk_id": "ver_c4e85c1c4f32_c00015",
+      "chunk_source_id": "ver_c4e85c1c4f32_c00014_s020",
+      "chunk_id": "ver_c4e85c1c4f32_c00014",
       "normalized_block_id": "nrm_ver_c4e85c1c4f32_b00037",
-      "source_order": 5,
+      "source_order": 20,
       "start_offset": 0,
       "end_offset": 117
     },
     {
-      "chunk_source_id": "ver_c4e85c1c4f32_c00015_s006",
-      "chunk_id": "ver_c4e85c1c4f32_c00015",
+      "chunk_source_id": "ver_c4e85c1c4f32_c00014_s021",
+      "chunk_id": "ver_c4e85c1c4f32_c00014",
       "normalized_block_id": "nrm_ver_c4e85c1c4f32_b00038",
-      "source_order": 6,
+      "source_order": 21,
       "start_offset": 0,
       "end_offset": 85
     }
