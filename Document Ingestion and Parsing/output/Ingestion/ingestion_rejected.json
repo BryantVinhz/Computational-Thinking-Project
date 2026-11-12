@@ -12,7 +12,7 @@
     "current_stage": "INGESTION",
     "is_duplicate": true,
     "error_message": "Duplicate content with 'OWASP_A01-Authorization-Cheat-Sheet_2021-2025.md' (version_id: 'ver_fb8b6e5c60ed').",
-    "updated_at": "2026-11-04T02:42:19.693919+00:00"
+    "updated_at": "2026-11-12T12:15:05.684401+00:00"
   },
   {
     "version_id": "ver_failed_84e87fb6",
@@ -27,6 +27,6 @@
     "current_stage": "INGESTION",
     "is_duplicate": false,
     "error_message": "File is empty (0 bytes).",
-    "updated_at": "2026-11-04T02:42:19.693919+00:00"
+    "updated_at": "2026-11-12T12:15:05.684401+00:00"
   }
 ]

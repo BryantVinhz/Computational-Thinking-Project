@@ -3,276 +3,270 @@
     "document_id": "doc_first_cvss_specification",
     "canonical_title": "First - CVSS-Specification",
     "publisher": "First",
-    "created_at": "2026-11-04T02:42:19.659358+00:00"
+    "created_at": "2026-11-12T12:15:05.558342+00:00"
   },
   {
     "document_id": "doc_first_cvss",
     "canonical_title": "First - CVSS",
     "publisher": "First",
-    "created_at": "2026-11-04T02:42:19.661970+00:00"
-  },
-  {
-    "document_id": "doc_mitre_cwe_list",
-    "canonical_title": "MITRE - CWE-List",
-    "publisher": "MITRE",
-    "created_at": "2026-11-04T02:42:19.674410+00:00"
+    "created_at": "2026-11-12T12:15:05.558951+00:00"
   },
   {
     "document_id": "doc_owasp_a01_authorization_cheat_sheet",
     "canonical_title": "OWASP - A01-Authorization-Cheat-Sheet",
     "publisher": "OWASP",
-    "created_at": "2026-11-04T02:42:19.674410+00:00"
+    "created_at": "2026-11-12T12:15:05.559286+00:00"
   },
   {
     "document_id": "doc_owasp_a01_cross_site_request_forgery_prevention_cheat_sheet",
     "canonical_title": "OWASP - A01-Cross-Site-Request-Forgery-Prevention-Cheat-Sheet",
     "publisher": "OWASP",
-    "created_at": "2026-11-04T02:42:19.674410+00:00"
+    "created_at": "2026-11-12T12:15:05.560064+00:00"
   },
   {
     "document_id": "doc_owasp_a01_insecure_direct_object_reference_prevention_cheat_sheet",
     "canonical_title": "OWASP - A01-Insecure-Direct-Object-Reference-Prevention-Cheat-Sheet",
     "publisher": "OWASP",
-    "created_at": "2026-11-04T02:42:19.674410+00:00"
+    "created_at": "2026-11-12T12:15:05.560663+00:00"
   },
   {
     "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
     "canonical_title": "OWASP - A01-Transaction-Authorization-Cheat-Sheet",
     "publisher": "OWASP",
-    "created_at": "2026-11-04T02:42:19.674410+00:00"
+    "created_at": "2026-11-12T12:15:05.560663+00:00"
   },
   {
     "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
     "canonical_title": "OWASP - A03-Content-Security-Policy-Cheat-Sheet",
     "publisher": "OWASP",
-    "created_at": "2026-11-04T02:42:19.674410+00:00"
+    "created_at": "2026-11-12T12:15:05.648249+00:00"
   },
   {
     "document_id": "doc_owasp_a03_cross_site_scripting_prevention_cheat_sheet",
     "canonical_title": "OWASP - A03-Cross-Site-Scripting-Prevention-Cheat-Sheet",
     "publisher": "OWASP",
-    "created_at": "2026-11-04T02:42:19.674410+00:00"
+    "created_at": "2026-11-12T12:15:05.649264+00:00"
   },
   {
     "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
     "canonical_title": "OWASP - A03-DOM-based-XSS-Prevention-Cheat-Sheet",
     "publisher": "OWASP",
-    "created_at": "2026-11-04T02:42:19.674410+00:00"
+    "created_at": "2026-11-12T12:15:05.650086+00:00"
   },
   {
     "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
     "canonical_title": "OWASP - A03-Injection-Prevention-Cheat-Sheet",
     "publisher": "OWASP",
-    "created_at": "2026-11-04T02:42:19.674410+00:00"
+    "created_at": "2026-11-12T12:15:05.650565+00:00"
   },
   {
     "document_id": "doc_owasp_a03_ldap_injection_prevention_cheat_sheet",
     "canonical_title": "OWASP - A03-LDAP-Injection-Prevention-Cheat-Sheet",
     "publisher": "OWASP",
-    "created_at": "2026-11-04T02:42:19.680327+00:00"
+    "created_at": "2026-11-12T12:15:05.650565+00:00"
   },
   {
     "document_id": "doc_owasp_a03_os_command_injection_defense_cheat_sheet",
     "canonical_title": "OWASP - A03-OS-Command-Injection-Defense-Cheat-Sheet",
     "publisher": "OWASP",
-    "created_at": "2026-11-04T02:42:19.680327+00:00"
+    "created_at": "2026-11-12T12:15:05.650565+00:00"
   },
   {
     "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
     "canonical_title": "OWASP - A03-Query-Parameterization-Cheat-Sheet",
     "publisher": "OWASP",
-    "created_at": "2026-11-04T02:42:19.682114+00:00"
+    "created_at": "2026-11-12T12:15:05.650565+00:00"
   },
   {
     "document_id": "doc_owasp_a03_sql_injection_prevention_cheat_sheet",
     "canonical_title": "OWASP - A03-SQL-Injection-Prevention-Cheat-Sheet",
     "publisher": "OWASP",
-    "created_at": "2026-11-04T02:42:19.682114+00:00"
+    "created_at": "2026-11-12T12:15:05.650565+00:00"
   },
   {
     "document_id": "doc_owasp_a03_xss_filter_evasion_cheat_sheet",
     "canonical_title": "OWASP - A03-XSS-Filter-Evasion-Cheat-Sheet",
     "publisher": "OWASP",
-    "created_at": "2026-11-04T02:42:19.682114+00:00"
+    "created_at": "2026-11-12T12:15:05.650565+00:00"
   },
   {
     "document_id": "doc_owasp_a05_docker_security_cheat_sheet",
     "canonical_title": "OWASP - A05-Docker-Security-Cheat-Sheet",
     "publisher": "OWASP",
-    "created_at": "2026-11-04T02:42:19.683178+00:00"
+    "created_at": "2026-11-12T12:15:05.650565+00:00"
   },
   {
     "document_id": "doc_owasp_a05_infrastructure_as_code_security_cheat_sheet",
     "canonical_title": "OWASP - A05-Infrastructure-as-Code-Security-Cheat-Sheet",
     "publisher": "OWASP",
-    "created_at": "2026-11-04T02:42:19.683178+00:00"
+    "created_at": "2026-11-12T12:15:05.650565+00:00"
   },
   {
     "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
     "canonical_title": "OWASP - A05-PHP-Configuration-Cheat-Sheet",
     "publisher": "OWASP",
-    "created_at": "2026-11-04T02:42:19.684179+00:00"
+    "created_at": "2026-11-12T12:15:05.650565+00:00"
   },
   {
     "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
     "canonical_title": "OWASP - A05-XML-External-Entity-Prevention-Cheat-Sheet",
     "publisher": "OWASP",
-    "created_at": "2026-11-04T02:42:19.684179+00:00"
+    "created_at": "2026-11-12T12:15:05.659256+00:00"
   },
   {
     "document_id": "doc_owasp_a07_authentication_cheat_sheet",
     "canonical_title": "OWASP - A07-Authentication-Cheat-Sheet",
     "publisher": "OWASP",
-    "created_at": "2026-11-04T02:42:19.685232+00:00"
+    "created_at": "2026-11-12T12:15:05.659256+00:00"
   },
   {
     "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
     "canonical_title": "OWASP - A07-Choosing-and-Using-Security-Questions-Cheat-Sheet",
     "publisher": "OWASP",
-    "created_at": "2026-11-04T02:42:19.685232+00:00"
+    "created_at": "2026-11-12T12:15:05.664563+00:00"
   },
   {
     "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
     "canonical_title": "OWASP - A07-Credential-Stuffing-Prevention-Cheat-Sheet",
     "publisher": "OWASP",
-    "created_at": "2026-11-04T02:42:19.685232+00:00"
+    "created_at": "2026-11-12T12:15:05.668165+00:00"
   },
   {
     "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
     "canonical_title": "OWASP - A07-Denial-of-Service-Cheat-Sheet",
     "publisher": "OWASP",
-    "created_at": "2026-11-04T02:42:19.686177+00:00"
+    "created_at": "2026-11-12T12:15:05.668733+00:00"
   },
   {
     "document_id": "doc_owasp_a07_forgot_password_cheat_sheet",
     "canonical_title": "OWASP - A07-Forgot-Password-Cheat-Sheet",
     "publisher": "OWASP",
-    "created_at": "2026-11-04T02:42:19.686177+00:00"
+    "created_at": "2026-11-12T12:15:05.672604+00:00"
   },
   {
     "document_id": "doc_owasp_a07_json_web_token_cheat_sheet",
     "canonical_title": "OWASP - A07-JSON-Web-Token-Cheat-Sheet",
     "publisher": "OWASP",
-    "created_at": "2026-11-04T02:42:19.687095+00:00"
+    "created_at": "2026-11-12T12:15:05.673625+00:00"
   },
   {
     "document_id": "doc_owasp_a07_multifactor_authentication_cheat_sheet",
     "canonical_title": "OWASP - A07-Multifactor-Authentication-Cheat-Sheet",
     "publisher": "OWASP",
-    "created_at": "2026-11-04T02:42:19.688269+00:00"
+    "created_at": "2026-11-12T12:15:05.675821+00:00"
   },
   {
     "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
     "canonical_title": "OWASP - A07-Password-Storage-Cheat-Sheet",
     "publisher": "OWASP",
-    "created_at": "2026-11-04T02:42:19.689500+00:00"
+    "created_at": "2026-11-12T12:15:05.675821+00:00"
   },
   {
     "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
     "canonical_title": "OWASP - A07-SAML-Security-Cheat-Sheet",
     "publisher": "OWASP",
-    "created_at": "2026-11-04T02:42:19.689500+00:00"
+    "created_at": "2026-11-12T12:15:05.676679+00:00"
   },
   {
     "document_id": "doc_owasp_a07_session_management_cheat_sheet",
     "canonical_title": "OWASP - A07-Session-Management-Cheat-Sheet",
     "publisher": "OWASP",
-    "created_at": "2026-11-04T02:42:19.689500+00:00"
+    "created_at": "2026-11-12T12:15:05.676679+00:00"
   },
   {
     "document_id": "doc_owasp_application_security_verification_standard",
     "canonical_title": "OWASP - Application-Security-Verification-Standard",
     "publisher": "OWASP",
-    "created_at": "2026-11-04T02:42:19.690553+00:00"
+    "created_at": "2026-11-12T12:15:05.677653+00:00"
   },
   {
     "document_id": "doc_owasp_avss_access_control",
     "canonical_title": "OWASP - AVSS-Access-Control",
     "publisher": "OWASP",
-    "created_at": "2026-11-04T02:42:19.690553+00:00"
+    "created_at": "2026-11-12T12:15:05.680050+00:00"
   },
   {
     "document_id": "doc_owasp_avss_authentication",
     "canonical_title": "OWASP - AVSS-Authentication",
     "publisher": "OWASP",
-    "created_at": "2026-11-04T02:42:19.690553+00:00"
+    "created_at": "2026-11-12T12:15:05.680050+00:00"
   },
   {
     "document_id": "doc_owasp_avss_config",
     "canonical_title": "OWASP - AVSS-Config",
     "publisher": "OWASP",
-    "created_at": "2026-11-04T02:42:19.692131+00:00"
+    "created_at": "2026-11-12T12:15:05.682064+00:00"
   },
   {
     "document_id": "doc_owasp_avss_session_management",
     "canonical_title": "OWASP - AVSS-Session-management",
     "publisher": "OWASP",
-    "created_at": "2026-11-04T02:42:19.692131+00:00"
+    "created_at": "2026-11-12T12:15:05.682064+00:00"
   },
   {
     "document_id": "doc_owasp_avss_validation_sanitization_encoding",
     "canonical_title": "OWASP - AVSS-Validation-Sanitization-Encoding",
     "publisher": "OWASP",
-    "created_at": "2026-11-04T02:42:19.693919+00:00"
+    "created_at": "2026-11-12T12:15:05.683325+00:00"
   },
   {
     "document_id": "doc_owasp_top10_a01_broken_access_control",
     "canonical_title": "OWASP - Top10-A01-Broken-Access-Control",
     "publisher": "OWASP",
-    "created_at": "2026-11-04T02:42:19.693919+00:00"
+    "created_at": "2026-11-12T12:15:05.685244+00:00"
   },
   {
     "document_id": "doc_owasp_top10_a02_security_misconfiguration",
     "canonical_title": "OWASP - Top10-A02-Security-Misconfiguration",
     "publisher": "OWASP",
-    "created_at": "2026-11-04T02:42:19.696593+00:00"
+    "created_at": "2026-11-12T12:15:05.687803+00:00"
   },
   {
     "document_id": "doc_owasp_top10_a03_injection",
     "canonical_title": "OWASP - Top10-A03-Injection",
     "publisher": "OWASP",
-    "created_at": "2026-11-04T02:42:19.696593+00:00"
+    "created_at": "2026-11-12T12:15:05.687803+00:00"
   },
   {
     "document_id": "doc_owasp_top10_a05_injection",
     "canonical_title": "OWASP - Top10-A05-Injection",
     "publisher": "OWASP",
-    "created_at": "2026-11-04T02:42:19.696593+00:00"
+    "created_at": "2026-11-12T12:15:05.688345+00:00"
   },
   {
     "document_id": "doc_owasp_top10_a05_security_misconfiguration",
     "canonical_title": "OWASP - Top10-A05-Security-Misconfiguration",
     "publisher": "OWASP",
-    "created_at": "2026-11-04T02:42:19.696593+00:00"
+    "created_at": "2026-11-12T12:15:05.689110+00:00"
   },
   {
     "document_id": "doc_owasp_top10_a07_authentication_failures",
     "canonical_title": "OWASP - Top10-A07-Authentication-Failures",
     "publisher": "OWASP",
-    "created_at": "2026-11-04T02:42:19.698598+00:00"
+    "created_at": "2026-11-12T12:15:05.689110+00:00"
   },
   {
     "document_id": "doc_owasp_top10_a07_identification_and_authentication_failures",
     "canonical_title": "OWASP - Top10-A07-Identification-and-Authentication-Failures",
     "publisher": "OWASP",
-    "created_at": "2026-11-04T02:42:19.698598+00:00"
+    "created_at": "2026-11-12T12:15:05.690058+00:00"
   },
   {
     "document_id": "doc_owasp_top10_introduction",
     "canonical_title": "OWASP - Top10-Introduction",
     "publisher": "OWASP",
-    "created_at": "2026-11-04T02:42:19.698598+00:00"
+    "created_at": "2026-11-12T12:15:05.690058+00:00"
   },
   {
     "document_id": "doc_owasp_top10_what_are_application_security_risks",
     "canonical_title": "OWASP - Top10-What-are-Application-Security-Risks",
     "publisher": "OWASP",
-    "created_at": "2026-11-04T02:42:19.698598+00:00"
+    "created_at": "2026-11-12T12:15:05.690058+00:00"
   },
   {
     "document_id": "doc_owasp_wstg_testing_methods",
     "canonical_title": "OWASP - WSTG-testing-methods",
     "publisher": "OWASP",
-    "created_at": "2026-11-04T02:42:19.698598+00:00"
+    "created_at": "2026-11-12T12:15:05.691623+00:00"
   }
 ]

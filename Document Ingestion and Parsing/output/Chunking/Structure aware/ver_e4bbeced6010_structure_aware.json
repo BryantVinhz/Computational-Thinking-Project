@@ -786,8 +786,8 @@
       "version_id": "ver_e4bbeced6010",
       "chunk_idx": 53,
       "chunk_type": "paragraph",
-      "text_content": "These snippets of HTML demonstrate how to render untrusted data safely in a variety of different contexts.\n\nData Type: String\nContext: HTML Body\nCode: `<span>UNTRUSTED DATA </span>`\nSample Defense: HTML Entity Encoding (rule \\#1)\n\nData Type: String\nContext: Safe HTML Attributes\nCode: `<input type=\"text\" name=\"fname\" value=\"UNTRUSTED DATA \">`\nSample Defense: Quote the value and use HTML attribute encoding.\n\nKeep attribute names fixed and use ordinary text attributes; apply additional controls for URL, CSS, HTML, or JavaScript values.\n\nData Type: String\nContext: GET Parameter\nCode: `<a href=\"/site/search?value=UNTRUSTED DATA \">clickme</a>`\nSample Defense: URL Encoding (rule \\#5).\n\nData Type: String\nContext: Untrusted URL in a SRC or HREF attribute\nCode: `<a href=\"UNTRUSTED URL \">clickme</a> <iframe src=\"UNTRUSTED URL \" />`\nSample Defense: Canonicalize input, URL Validation, Safe URL verification, Allow-list http and HTTPS URLs only (Avoid the JavaScript Protocol to Open a new Window), Attribute encoder.\n\nData Type: String\nContext: CSS Value\nCode: `HTML <div style=\"width: UNTRUSTED DATA ;\">Selection</div>`\nSample Defense: Strict structural validation (rule \\#4), CSS hex encoding, Good design of CSS features.\n\nData Type: String\nContext: JavaScript Variable\nCode: `<script>var currentValue='UNTRUSTED DATA ';</script> <script>someFunction('UNTRUSTED DATA ');</script>`\nSample Defense: Insert string data only inside a quoted string, using an encoder that also protects the enclosing HTML script context.\n\nDo not rely on quote escaping alone.\n\nData Type: HTML\nContext: HTML Body\nCode: `<div>UNTRUSTED HTML</div>`\nSample Defense: HTML validation (JSoup, AntiSamy, HTML Sanitizer...).",
-      "token_count": 407,
+      "text_content": "These snippets of HTML demonstrate how to render untrusted data safely in a variety of different contexts.\n\nData Type: String\nContext: HTML Body\nCode: `<span>UNTRUSTED DATA </span>`\nSample Defense: HTML Entity Encoding (rule \\#1)\n\nData Type: String\nContext: Safe HTML Attributes\nCode: `<input type=\"text\" name=\"fname\" value=\"UNTRUSTED DATA \">`\nSample Defense: Quote the value and use HTML attribute encoding.\n\nKeep attribute names fixed and use ordinary text attributes; apply additional controls for URL, CSS, HTML, or JavaScript values.\n\nData Type: String\nContext: GET Parameter\nCode: `<a href=\"/site/search?value=UNTRUSTED DATA \">clickme</a>`\nSample Defense: URL Encoding (rule \\#5).\n\nData Type: String\nContext: Untrusted URL in a SRC or HREF attribute\nCode: `<a href=\"UNTRUSTED URL \">clickme</a> <iframe src=\"UNTRUSTED URL \" />`\nSample Defense: Canonicalize input, URL Validation, Safe URL verification, Allow-list http and HTTPS URLs only (Avoid the JavaScript Protocol to Open a new Window), Attribute encoder.\n\nData Type: String\nContext: CSS Value\nCode: `HTML <div style=\"width: UNTRUSTED DATA ;\">Selection</div>`\nSample Defense: Strict structural validation (rule \\#4), CSS hex encoding, Good design of CSS features.\n\nData Type: String\nContext: JavaScript Variable\nCode: `<script>var currentValue='UNTRUSTED DATA ';</script> <script>someFunction('UNTRUSTED DATA ');</script>`\nSample Defense: Insert string data only inside a quoted string, using an encoder that also protects the enclosing HTML script context.\n\nDo not rely on quote escaping alone.\n\nData Type: HTML\nContext: HTML Body\nCode: `<div>UNTRUSTED HTML</div>`\nSample Defense: HTML validation (JSoup, AntiSamy, HTML Sanitizer...).\n\nData Type: String\nContext: DOM XSS\nCode: `<script>document.write(\"UNTRUSTED INPUT: \" + document.location.hash );<script/>`\nSample Defense: [DOM based XSS Prevention Cheat Sheet](DOM_based_XSS_Prevention_Cheat_Sheet.md) |",
+      "token_count": 460,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Cross Site Scripting Prevention Cheat Sheet",
@@ -800,14 +800,14 @@
       "document_id": "doc_owasp_a03_cross_site_scripting_prevention_cheat_sheet",
       "version_id": "ver_e4bbeced6010",
       "chunk_idx": 54,
-      "chunk_type": "paragraph",
-      "text_content": "Data Type: String\nContext: DOM XSS\nCode: `<script>document.write(\"UNTRUSTED INPUT: \" + document.location.hash );<script/>`\nSample Defense: [DOM based XSS Prevention Cheat Sheet](DOM_based_XSS_Prevention_Cheat_Sheet.md) |",
-      "token_count": 53,
+      "chunk_type": "heading",
+      "text_content": "### Output Encoding Rules Summary",
+      "token_count": 7,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Cross Site Scripting Prevention Cheat Sheet",
         "Other Controls",
-        "XSS Prevention Rules Summary"
+        "Output Encoding Rules Summary"
       ]
     },
     {
@@ -815,9 +815,9 @@
       "document_id": "doc_owasp_a03_cross_site_scripting_prevention_cheat_sheet",
       "version_id": "ver_e4bbeced6010",
       "chunk_idx": 55,
-      "chunk_type": "heading",
-      "text_content": "### Output Encoding Rules Summary",
-      "token_count": 7,
+      "chunk_type": "paragraph",
+      "text_content": "The purpose of output encoding (as it relates to Cross Site Scripting) is to convert untrusted input into a safe form where the input is displayed as **data** to the user without executing as **code** in the browser.\n\nThe following charts provides a list of critical output encoding methods needed to stop Cross Site Scripting.\n\nEncoding Type: HTML Entity\nEncoding Mechanism: Convert `&` to `&amp;`, Convert `<` to `&lt;`, Convert `>` to `&gt;`, Convert `\"` to `&quot;`, Convert `'` to `&#x27`\n\nEncoding Type: HTML Attribute Encoding\nEncoding Mechanism: Use a framework or library encoder for quoted HTML text attributes and surround the value with `\"` or `'`.\n\nEncoding every space or non-alphanumeric character is unnecessary.\n\nThis does not validate URLs or encode JavaScript, CSS, or HTML contained in an attribute.\n\nEncoding Type: URL Encoding\nEncoding Mechanism: Use standard percent encoding, as specified in the [W3C specification](http://www.w3.org/TR/html401/interact/forms.html#h-17.13.4.1), to encode parameter values.\n\nBe cautious and only encode parameter values, not the entire URL or path fragments of a URL.\n\nEncoding Type: JavaScript Encoding\nEncoding Mechanism: Use a library encoder for JavaScript string data in the actual surrounding context.\n\nIt must protect the string delimiters and, when embedded in HTML, the enclosing script or attribute.\n\nFollow the library's supported contexts; hex or Unicode escapes alone are not a substitute for that contract.\n\nEncoding Type: CSS Hex Encoding\nEncoding Mechanism: CSS encoding supports both `\\XX` and `\\XXXXXX` formats.\n\nTo ensure proper encoding, consider these options: (a) Add a space after the CSS encode (which will be ignored by the CSS parser), or (b) use the full six-character CSS encoding format by zero-padding the value.\n\nFor example, `A` becomes `\\41` (short format) or `\\000041` (full format).\n\nAlphanumeric characters (letters A to Z, a to z, and digits 0 to 9) remain unencoded.",
+      "token_count": 450,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Cross Site Scripting Prevention Cheat Sheet",
@@ -830,14 +830,13 @@
       "document_id": "doc_owasp_a03_cross_site_scripting_prevention_cheat_sheet",
       "version_id": "ver_e4bbeced6010",
       "chunk_idx": 56,
-      "chunk_type": "paragraph",
-      "text_content": "The purpose of output encoding (as it relates to Cross Site Scripting) is to convert untrusted input into a safe form where the input is displayed as **data** to the user without executing as **code** in the browser.\n\nThe following charts provides a list of critical output encoding methods needed to stop Cross Site Scripting.\n\nEncoding Type: HTML Entity\nEncoding Mechanism: Convert `&` to `&amp;`, Convert `<` to `&lt;`, Convert `>` to `&gt;`, Convert `\"` to `&quot;`, Convert `'` to `&#x27`\n\nEncoding Type: HTML Attribute Encoding\nEncoding Mechanism: Use a framework or library encoder for quoted HTML text attributes and surround the value with `\"` or `'`.\n\nEncoding every space or non-alphanumeric character is unnecessary.\n\nThis does not validate URLs or encode JavaScript, CSS, or HTML contained in an attribute.\n\nEncoding Type: URL Encoding\nEncoding Mechanism: Use standard percent encoding, as specified in the [W3C specification](http://www.w3.org/TR/html401/interact/forms.html#h-17.13.4.1), to encode parameter values.\n\nBe cautious and only encode parameter values, not the entire URL or path fragments of a URL.\n\nEncoding Type: JavaScript Encoding\nEncoding Mechanism: Use a library encoder for JavaScript string data in the actual surrounding context.\n\nIt must protect the string delimiters and, when embedded in HTML, the enclosing script or attribute.\n\nFollow the library's supported contexts; hex or Unicode escapes alone are not a substitute for that contract.\n\nEncoding Type: CSS Hex Encoding\nEncoding Mechanism: CSS encoding supports both `\\XX` and `\\XXXXXX` formats.\n\nTo ensure proper encoding, consider these options: (a) Add a space after the CSS encode (which will be ignored by the CSS parser), or (b) use the full six-character CSS encoding format by zero-padding the value.\n\nFor example, `A` becomes `\\41` (short format) or `\\000041` (full format).\n\nAlphanumeric characters (letters A to Z, a to z, and digits 0 to 9) remain unencoded.",
-      "token_count": 450,
+      "chunk_type": "heading",
+      "text_content": "## Common Anti-patterns: Ineffective Approaches to Avoid",
+      "token_count": 11,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Cross Site Scripting Prevention Cheat Sheet",
-        "Other Controls",
-        "Output Encoding Rules Summary"
+        "Common Anti-patterns: Ineffective Approaches to Avoid"
       ]
     },
     {
@@ -845,9 +844,9 @@
       "document_id": "doc_owasp_a03_cross_site_scripting_prevention_cheat_sheet",
       "version_id": "ver_e4bbeced6010",
       "chunk_idx": 57,
-      "chunk_type": "heading",
-      "text_content": "## Common Anti-patterns: Ineffective Approaches to Avoid",
-      "token_count": 11,
+      "chunk_type": "paragraph",
+      "text_content": "Defending against XSS is hard.\n\nFor that reason, some have sought shortcuts to preventing XSS.\n\nWe're going to examine two common [anti-patterns](https://en.wikipedia.org/wiki/Anti-pattern) that frequently show up in ancient posts, but are still commonly cited as solutions in modern posts about XSS defense on programmer forums such as Stack Overflow and other developer hangouts.",
+      "token_count": 81,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Cross Site Scripting Prevention Cheat Sheet",
@@ -859,13 +858,14 @@
       "document_id": "doc_owasp_a03_cross_site_scripting_prevention_cheat_sheet",
       "version_id": "ver_e4bbeced6010",
       "chunk_idx": 58,
-      "chunk_type": "paragraph",
-      "text_content": "Defending against XSS is hard.\n\nFor that reason, some have sought shortcuts to preventing XSS.\n\nWe're going to examine two common [anti-patterns](https://en.wikipedia.org/wiki/Anti-pattern) that frequently show up in ancient posts, but are still commonly cited as solutions in modern posts about XSS defense on programmer forums such as Stack Overflow and other developer hangouts.",
-      "token_count": 81,
+      "chunk_type": "heading",
+      "text_content": "### Sole Reliance on Content-Security-Policy (CSP) Headers",
+      "token_count": 15,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Cross Site Scripting Prevention Cheat Sheet",
-        "Common Anti-patterns: Ineffective Approaches to Avoid"
+        "Common Anti-patterns: Ineffective Approaches to Avoid",
+        "Sole Reliance on Content-Security-Policy (CSP) Headers"
       ]
     },
     {
@@ -873,9 +873,9 @@
       "document_id": "doc_owasp_a03_cross_site_scripting_prevention_cheat_sheet",
       "version_id": "ver_e4bbeced6010",
       "chunk_idx": 59,
-      "chunk_type": "heading",
-      "text_content": "### Sole Reliance on Content-Security-Policy (CSP) Headers",
-      "token_count": 15,
+      "chunk_type": "mixed",
+      "text_content": "First, let us be clear, we are a strong proponent of CSP when it is used properly.\n\nIn the context of XSS defense, CSP works best when it it is:\n\n- Used as a defense-in-depth technique.\n\n- Customized for each individual application rather than being deployed as a one-size-fits-all enterprise solution.\n\nWhat we are against is a blanket CSP policy for the entire enterprise.\n\nProblems with that approach are:",
+      "token_count": 88,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Cross Site Scripting Prevention Cheat Sheet",
@@ -888,14 +888,15 @@
       "document_id": "doc_owasp_a03_cross_site_scripting_prevention_cheat_sheet",
       "version_id": "ver_e4bbeced6010",
       "chunk_idx": 60,
-      "chunk_type": "mixed",
-      "text_content": "First, let us be clear, we are a strong proponent of CSP when it is used properly.\n\nIn the context of XSS defense, CSP works best when it it is:\n\n- Used as a defense-in-depth technique.\n\n- Customized for each individual application rather than being deployed as a one-size-fits-all enterprise solution.\n\nWhat we are against is a blanket CSP policy for the entire enterprise.\n\nProblems with that approach are:",
-      "token_count": 88,
+      "chunk_type": "heading",
+      "text_content": "#### Problem 1 - Assumption Browser Versions Support CSP Equally",
+      "token_count": 13,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Cross Site Scripting Prevention Cheat Sheet",
         "Common Anti-patterns: Ineffective Approaches to Avoid",
-        "Sole Reliance on Content-Security-Policy (CSP) Headers"
+        "Sole Reliance on Content-Security-Policy (CSP) Headers",
+        "Problem 1 - Assumption Browser Versions Support CSP Equally"
       ]
     },
     {
@@ -903,9 +904,9 @@
       "document_id": "doc_owasp_a03_cross_site_scripting_prevention_cheat_sheet",
       "version_id": "ver_e4bbeced6010",
       "chunk_idx": 61,
-      "chunk_type": "heading",
-      "text_content": "#### Problem 1 - Assumption Browser Versions Support CSP Equally",
-      "token_count": 13,
+      "chunk_type": "paragraph",
+      "text_content": "There usually is an implicit assumption that all the customer browsers support all the CSP constructs that your blanket CSP policy is using.\n\nFurthermore, this assumption often is done without testing the explicitly the `User-Agent` request header to see if it indeed is a supported browser type and rejecting the use of the site if it is not.\n\nWhy?\n\nBecause most businesses don't want to turn away customers if they are using an outdated browser that doesn't support some CSP Level 2 or Level 3 construct that they are relying on for XSS prevention.\n\n(Statistically, almost all browsers support CSP Level 1 directives, so unless you are worried about Grandpa pulling out his old Windows 98 laptop and using some ancient version of Internet Explorer to access your site, CSP Level 1 support can probably be assumed.)",
+      "token_count": 156,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Cross Site Scripting Prevention Cheat Sheet",
@@ -919,15 +920,15 @@
       "document_id": "doc_owasp_a03_cross_site_scripting_prevention_cheat_sheet",
       "version_id": "ver_e4bbeced6010",
       "chunk_idx": 62,
-      "chunk_type": "paragraph",
-      "text_content": "There usually is an implicit assumption that all the customer browsers support all the CSP constructs that your blanket CSP policy is using.\n\nFurthermore, this assumption often is done without testing the explicitly the `User-Agent` request header to see if it indeed is a supported browser type and rejecting the use of the site if it is not.\n\nWhy?\n\nBecause most businesses don't want to turn away customers if they are using an outdated browser that doesn't support some CSP Level 2 or Level 3 construct that they are relying on for XSS prevention.\n\n(Statistically, almost all browsers support CSP Level 1 directives, so unless you are worried about Grandpa pulling out his old Windows 98 laptop and using some ancient version of Internet Explorer to access your site, CSP Level 1 support can probably be assumed.)",
-      "token_count": 156,
+      "chunk_type": "heading",
+      "text_content": "#### Problem 2 - Issues Supporting Legacy Applications",
+      "token_count": 11,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Cross Site Scripting Prevention Cheat Sheet",
         "Common Anti-patterns: Ineffective Approaches to Avoid",
         "Sole Reliance on Content-Security-Policy (CSP) Headers",
-        "Problem 1 - Assumption Browser Versions Support CSP Equally"
+        "Problem 2 - Issues Supporting Legacy Applications"
       ]
     },
     {
@@ -935,9 +936,9 @@
       "document_id": "doc_owasp_a03_cross_site_scripting_prevention_cheat_sheet",
       "version_id": "ver_e4bbeced6010",
       "chunk_idx": 63,
-      "chunk_type": "heading",
-      "text_content": "#### Problem 2 - Issues Supporting Legacy Applications",
-      "token_count": 11,
+      "chunk_type": "paragraph",
+      "text_content": "Mandatory universal enterprise-wide CSP response headers are inevitably going to break some web applications, especially legacy ones.\n\nThis causes the business to push-back against AppSec guidelines and inevitably results in AppSec issuing waivers and/or security exceptions until the application code can be patched up.\n\nBut these security exceptions allow cracks in your XSS armor, and even if the cracks are temporary they still can impact your business, at least on a reputational basis.",
+      "token_count": 85,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Cross Site Scripting Prevention Cheat Sheet",
@@ -951,15 +952,14 @@
       "document_id": "doc_owasp_a03_cross_site_scripting_prevention_cheat_sheet",
       "version_id": "ver_e4bbeced6010",
       "chunk_idx": 64,
-      "chunk_type": "paragraph",
-      "text_content": "Mandatory universal enterprise-wide CSP response headers are inevitably going to break some web applications, especially legacy ones.\n\nThis causes the business to push-back against AppSec guidelines and inevitably results in AppSec issuing waivers and/or security exceptions until the application code can be patched up.\n\nBut these security exceptions allow cracks in your XSS armor, and even if the cracks are temporary they still can impact your business, at least on a reputational basis.",
-      "token_count": 85,
+      "chunk_type": "heading",
+      "text_content": "### Reliance on HTTP Interceptors",
+      "token_count": 7,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Cross Site Scripting Prevention Cheat Sheet",
         "Common Anti-patterns: Ineffective Approaches to Avoid",
-        "Sole Reliance on Content-Security-Policy (CSP) Headers",
-        "Problem 2 - Issues Supporting Legacy Applications"
+        "Reliance on HTTP Interceptors"
       ]
     },
     {
@@ -967,9 +967,9 @@
       "document_id": "doc_owasp_a03_cross_site_scripting_prevention_cheat_sheet",
       "version_id": "ver_e4bbeced6010",
       "chunk_idx": 65,
-      "chunk_type": "heading",
-      "text_content": "### Reliance on HTTP Interceptors",
-      "token_count": 7,
+      "chunk_type": "paragraph",
+      "text_content": "The other common anti-pattern that we have observed is the attempt to deal with validation and/or output encoding in some sort of interceptor such as a Spring Interceptor that generally implements `org.springframework.web.servlet.HandlerInterceptor` or as a JavaEE servlet filter that implements `javax.servlet.Filter`.\n\nWhile this can be successful for very specific applications (for instance, if you validate that all the input requests that are ever rendered are only alphanumeric data), it violates the major tenet of XSS defense where perform output encoding as close to where the data is rendered is possible.\n\nGenerally, the HTTP request is examined for query and POST parameters but other things HTTP request headers that might be rendered such as cookie data, are not examined.\n\nThe common approach that we've seen is someone will call either `ESAPI.validator().getValidSafeHTML()` or `ESAPI.encoder.canonicalize()` and depending on the results will redirect to an error page or call something like `ESAPI.encoder().encodeForHTML()`.\n\nAside from the fact that this approach often misses tainted input such as request headers or \"extra path information\" in a URI, the approach completely ignores the fact that the output encoding is completely non-contextual.\n\nFor example, how does a servlet filter know that an input query parameter is going to be rendered in an HTML context (i.e., between HTML tags) rather than in a JavaScript context such as within a `<script>` tag or used with a JavaScript event handler attribute?\n\nIt doesn't.\n\nAnd because JavaScript and HTML encoding are not interchangeable, you leave yourself still open to XSS attacks.\n\nUnless your filter or interceptor has full knowledge of your application and specifically an awareness of how your application uses each parameter for a given request, it can't succeed for all the possible edge cases.\n\nAnd we would contend that it never will be able to using this approach because providing that additional required context is way too complex of a design and accidentally introducing some other vulnerability (possibly one whose impact is far worse than XSS) is almost inevitable if you attempt it.\n\nThis naive approach usually has at least one of these four problems.",
+      "token_count": 435,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Cross Site Scripting Prevention Cheat Sheet",
@@ -982,14 +982,15 @@
       "document_id": "doc_owasp_a03_cross_site_scripting_prevention_cheat_sheet",
       "version_id": "ver_e4bbeced6010",
       "chunk_idx": 66,
-      "chunk_type": "paragraph",
-      "text_content": "The other common anti-pattern that we have observed is the attempt to deal with validation and/or output encoding in some sort of interceptor such as a Spring Interceptor that generally implements `org.springframework.web.servlet.HandlerInterceptor` or as a JavaEE servlet filter that implements `javax.servlet.Filter`.\n\nWhile this can be successful for very specific applications (for instance, if you validate that all the input requests that are ever rendered are only alphanumeric data), it violates the major tenet of XSS defense where perform output encoding as close to where the data is rendered is possible.\n\nGenerally, the HTTP request is examined for query and POST parameters but other things HTTP request headers that might be rendered such as cookie data, are not examined.\n\nThe common approach that we've seen is someone will call either `ESAPI.validator().getValidSafeHTML()` or `ESAPI.encoder.canonicalize()` and depending on the results will redirect to an error page or call something like `ESAPI.encoder().encodeForHTML()`.\n\nAside from the fact that this approach often misses tainted input such as request headers or \"extra path information\" in a URI, the approach completely ignores the fact that the output encoding is completely non-contextual.\n\nFor example, how does a servlet filter know that an input query parameter is going to be rendered in an HTML context (i.e., between HTML tags) rather than in a JavaScript context such as within a `<script>` tag or used with a JavaScript event handler attribute?\n\nIt doesn't.\n\nAnd because JavaScript and HTML encoding are not interchangeable, you leave yourself still open to XSS attacks.\n\nUnless your filter or interceptor has full knowledge of your application and specifically an awareness of how your application uses each parameter for a given request, it can't succeed for all the possible edge cases.\n\nAnd we would contend that it never will be able to using this approach because providing that additional required context is way too complex of a design and accidentally introducing some other vulnerability (possibly one whose impact is far worse than XSS) is almost inevitable if you attempt it.\n\nThis naive approach usually has at least one of these four problems.",
-      "token_count": 435,
+      "chunk_type": "heading",
+      "text_content": "#### Problem 1 - Encoding for specific context not satisfactory for all URI paths",
+      "token_count": 17,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Cross Site Scripting Prevention Cheat Sheet",
         "Common Anti-patterns: Ineffective Approaches to Avoid",
-        "Reliance on HTTP Interceptors"
+        "Reliance on HTTP Interceptors",
+        "Problem 1 - Encoding for specific context not satisfactory for all URI paths"
       ]
     },
     {
@@ -997,9 +998,9 @@
       "document_id": "doc_owasp_a03_cross_site_scripting_prevention_cheat_sheet",
       "version_id": "ver_e4bbeced6010",
       "chunk_idx": 67,
-      "chunk_type": "heading",
-      "text_content": "#### Problem 1 - Encoding for specific context not satisfactory for all URI paths",
-      "token_count": 17,
+      "chunk_type": "paragraph",
+      "text_content": "One problem is the improper encoding that can still allow exploitable XSS in some URI paths of your application.\n\nAn example might be a 'lastname' form parameter from a POST that normally is displayed between HTML tags so that HTML encoding is sufficient, but there may be an edge case or two where lastname is actually rendered as part of a JavaScript block where the HTML encoding is not sufficient and thus it is vulnerable to XSS attacks.",
+      "token_count": 83,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Cross Site Scripting Prevention Cheat Sheet",
@@ -1013,15 +1014,15 @@
       "document_id": "doc_owasp_a03_cross_site_scripting_prevention_cheat_sheet",
       "version_id": "ver_e4bbeced6010",
       "chunk_idx": 68,
-      "chunk_type": "paragraph",
-      "text_content": "One problem is the improper encoding that can still allow exploitable XSS in some URI paths of your application.\n\nAn example might be a 'lastname' form parameter from a POST that normally is displayed between HTML tags so that HTML encoding is sufficient, but there may be an edge case or two where lastname is actually rendered as part of a JavaScript block where the HTML encoding is not sufficient and thus it is vulnerable to XSS attacks.",
-      "token_count": 83,
+      "chunk_type": "heading",
+      "text_content": "#### Problem 2 - Interceptor approach can lead to broken rendering caused by improper or double encoding",
+      "token_count": 20,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Cross Site Scripting Prevention Cheat Sheet",
         "Common Anti-patterns: Ineffective Approaches to Avoid",
         "Reliance on HTTP Interceptors",
-        "Problem 1 - Encoding for specific context not satisfactory for all URI paths"
+        "Problem 2 - Interceptor approach can lead to broken rendering caused by improper or double encoding"
       ]
     },
     {
@@ -1029,9 +1030,9 @@
       "document_id": "doc_owasp_a03_cross_site_scripting_prevention_cheat_sheet",
       "version_id": "ver_e4bbeced6010",
       "chunk_idx": 69,
-      "chunk_type": "heading",
-      "text_content": "#### Problem 2 - Interceptor approach can lead to broken rendering caused by improper or double encoding",
-      "token_count": 20,
+      "chunk_type": "paragraph",
+      "text_content": "A second problem with this approach can be the application can result in incorrect or double encoding.\n\nE.g., suppose in the previous example, a developer has done proper output encoding for the JavaScript rendering of lastname.\n\nBut if it is already been HTML output encoded too, when it is rendered, a legitimate last name like \"O'Hara\" might come out rendered like \"O\\&#39;Hara\".\n\nWhile this second case is not strictly a security problem, if it happens often enough, it can result in business push-back against the use of the filter and thus the business may decide on disabling the filter or a way to specify exceptions for certain pages or parameters being filtered, which in turn will weaken any XSS defense that it was providing.",
+      "token_count": 152,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Cross Site Scripting Prevention Cheat Sheet",
@@ -1045,15 +1046,15 @@
       "document_id": "doc_owasp_a03_cross_site_scripting_prevention_cheat_sheet",
       "version_id": "ver_e4bbeced6010",
       "chunk_idx": 70,
-      "chunk_type": "paragraph",
-      "text_content": "A second problem with this approach can be the application can result in incorrect or double encoding.\n\nE.g., suppose in the previous example, a developer has done proper output encoding for the JavaScript rendering of lastname.\n\nBut if it is already been HTML output encoded too, when it is rendered, a legitimate last name like \"O'Hara\" might come out rendered like \"O\\&#39;Hara\".\n\nWhile this second case is not strictly a security problem, if it happens often enough, it can result in business push-back against the use of the filter and thus the business may decide on disabling the filter or a way to specify exceptions for certain pages or parameters being filtered, which in turn will weaken any XSS defense that it was providing.",
-      "token_count": 152,
+      "chunk_type": "heading",
+      "text_content": "#### Problem 3 - Interceptors not effective against DOM-based XSS",
+      "token_count": 15,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Cross Site Scripting Prevention Cheat Sheet",
         "Common Anti-patterns: Ineffective Approaches to Avoid",
         "Reliance on HTTP Interceptors",
-        "Problem 2 - Interceptor approach can lead to broken rendering caused by improper or double encoding"
+        "Problem 3 - Interceptors not effective against DOM-based XSS"
       ]
     },
     {
@@ -1061,9 +1062,9 @@
       "document_id": "doc_owasp_a03_cross_site_scripting_prevention_cheat_sheet",
       "version_id": "ver_e4bbeced6010",
       "chunk_idx": 71,
-      "chunk_type": "heading",
-      "text_content": "#### Problem 3 - Interceptors not effective against DOM-based XSS",
-      "token_count": 15,
+      "chunk_type": "paragraph",
+      "text_content": "The third problem with this is that it is not effective against DOM-based XSS.\n\nTo do that, one would have to have an interceptor or filter scan all the JavaScript content going as part of an HTTP response, try to figure out the tainted output and see if it it is susceptible to DOM-based XSS.\n\nThat simply is not practical.",
+      "token_count": 69,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Cross Site Scripting Prevention Cheat Sheet",
@@ -1077,15 +1078,15 @@
       "document_id": "doc_owasp_a03_cross_site_scripting_prevention_cheat_sheet",
       "version_id": "ver_e4bbeced6010",
       "chunk_idx": 72,
-      "chunk_type": "paragraph",
-      "text_content": "The third problem with this is that it is not effective against DOM-based XSS.\n\nTo do that, one would have to have an interceptor or filter scan all the JavaScript content going as part of an HTTP response, try to figure out the tainted output and see if it it is susceptible to DOM-based XSS.\n\nThat simply is not practical.",
-      "token_count": 69,
+      "chunk_type": "heading",
+      "text_content": "#### Problem 4 - Interceptors not effective where data from responses originates outside your application",
+      "token_count": 18,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Cross Site Scripting Prevention Cheat Sheet",
         "Common Anti-patterns: Ineffective Approaches to Avoid",
         "Reliance on HTTP Interceptors",
-        "Problem 3 - Interceptors not effective against DOM-based XSS"
+        "Problem 4 - Interceptors not effective where data from responses originates outside your application"
       ]
     },
     {
@@ -1093,9 +1094,9 @@
       "document_id": "doc_owasp_a03_cross_site_scripting_prevention_cheat_sheet",
       "version_id": "ver_e4bbeced6010",
       "chunk_idx": 73,
-      "chunk_type": "heading",
-      "text_content": "#### Problem 4 - Interceptors not effective where data from responses originates outside your application",
-      "token_count": 18,
+      "chunk_type": "paragraph",
+      "text_content": "The last problem with interceptors is that they generally are oblivious to data in your application's responses that originate from other internal sources such as an internal REST-based web service or even an internal database.\n\nThe problem is that unless your application is strictly validating that data _at the point that it is retrieved_ (which generally is the only point your application has enough context to do a strict data validation using an allow-list approach), that data should always be considered tainted.\n\nBut if you are attempting to do output encoding or strict data validation all of tainted data on the HTTP response side of an interceptor (such as a Java servlet filter), at that point, your application's interceptor will have no idea of there is tainted data present from those REST web services or other databases that you used.\n\nThe approach that generally is used on response-side interceptors attempting to provide XSS defense has been to only consider the matching \"input parameters\" as tainted and do output encoding or HTML sanitization on them and everything else is considered safe.\n\nBut sometimes it's not?\n\nWhile it frequently is assumed that all internal web services and all internal databases can be \"trusted\" and used as it, this is a very bad assumption to make unless you have included that in some deep threat modeling for your application.\n\nFor example, suppose you are working on an application to show a customer their detailed monthly bill.\n\nLet's assume that your application is either querying a foreign (as in not part of your specific application) internal database or REST web service that your application uses to obtain the user's full name, address, etc.\n\nBut that data originates from another application which you are assuming is \"trusted\" but actually has an unreported persistent XSS vulnerability on the various customer address-related fields.\n\nFurthermore, let's assume that you company's customer support staff can examine a customer's detailed bill to assist them when customers have questions about their bills.\n\nSo nefarious customer decides to plant an XSS bomb in the address field and then calls customer service for assistance with the bill.\n\nShould a scenario like that ever play out, an interceptor attempting to prevent XSS is going to miss that completely and the result is going to be something much worse than just popping an alert box to display \"1\" or \"XSS\" or \"pwn'd\".",
+      "token_count": 462,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Cross Site Scripting Prevention Cheat Sheet",
@@ -1109,38 +1110,6 @@
       "document_id": "doc_owasp_a03_cross_site_scripting_prevention_cheat_sheet",
       "version_id": "ver_e4bbeced6010",
       "chunk_idx": 74,
-      "chunk_type": "paragraph",
-      "text_content": "The last problem with interceptors is that they generally are oblivious to data in your application's responses that originate from other internal sources such as an internal REST-based web service or even an internal database.\n\nThe problem is that unless your application is strictly validating that data _at the point that it is retrieved_ (which generally is the only point your application has enough context to do a strict data validation using an allow-list approach), that data should always be considered tainted.\n\nBut if you are attempting to do output encoding or strict data validation all of tainted data on the HTTP response side of an interceptor (such as a Java servlet filter), at that point, your application's interceptor will have no idea of there is tainted data present from those REST web services or other databases that you used.\n\nThe approach that generally is used on response-side interceptors attempting to provide XSS defense has been to only consider the matching \"input parameters\" as tainted and do output encoding or HTML sanitization on them and everything else is considered safe.\n\nBut sometimes it's not?\n\nWhile it frequently is assumed that all internal web services and all internal databases can be \"trusted\" and used as it, this is a very bad assumption to make unless you have included that in some deep threat modeling for your application.\n\nFor example, suppose you are working on an application to show a customer their detailed monthly bill.\n\nLet's assume that your application is either querying a foreign (as in not part of your specific application) internal database or REST web service that your application uses to obtain the user's full name, address, etc.\n\nBut that data originates from another application which you are assuming is \"trusted\" but actually has an unreported persistent XSS vulnerability on the various customer address-related fields.\n\nFurthermore, let's assume that you company's customer support staff can examine a customer's detailed bill to assist them when customers have questions about their bills.\n\nSo nefarious customer decides to plant an XSS bomb in the address field and then calls customer service for assistance with the bill.",
-      "token_count": 409,
-      "chunk_strategy": "structure_aware",
-      "heading_path": [
-        "Cross Site Scripting Prevention Cheat Sheet",
-        "Common Anti-patterns: Ineffective Approaches to Avoid",
-        "Reliance on HTTP Interceptors",
-        "Problem 4 - Interceptors not effective where data from responses originates outside your application"
-      ]
-    },
-    {
-      "chunk_id": "ver_e4bbeced6010_c00075",
-      "document_id": "doc_owasp_a03_cross_site_scripting_prevention_cheat_sheet",
-      "version_id": "ver_e4bbeced6010",
-      "chunk_idx": 75,
-      "chunk_type": "paragraph",
-      "text_content": "Should a scenario like that ever play out, an interceptor attempting to prevent XSS is going to miss that completely and the result is going to be something much worse than just popping an alert box to display \"1\" or \"XSS\" or \"pwn'd\".",
-      "token_count": 53,
-      "chunk_strategy": "structure_aware",
-      "heading_path": [
-        "Cross Site Scripting Prevention Cheat Sheet",
-        "Common Anti-patterns: Ineffective Approaches to Avoid",
-        "Reliance on HTTP Interceptors",
-        "Problem 4 - Interceptors not effective where data from responses originates outside your application"
-      ]
-    },
-    {
-      "chunk_id": "ver_e4bbeced6010_c00076",
-      "document_id": "doc_owasp_a03_cross_site_scripting_prevention_cheat_sheet",
-      "version_id": "ver_e4bbeced6010",
-      "chunk_idx": 76,
       "chunk_type": "heading",
       "text_content": "### Summary",
       "token_count": 4,
@@ -1152,10 +1121,10 @@
       ]
     },
     {
-      "chunk_id": "ver_e4bbeced6010_c00077",
+      "chunk_id": "ver_e4bbeced6010_c00075",
       "document_id": "doc_owasp_a03_cross_site_scripting_prevention_cheat_sheet",
       "version_id": "ver_e4bbeced6010",
-      "chunk_idx": 77,
+      "chunk_idx": 75,
       "chunk_type": "paragraph",
       "text_content": "One final note: If deploying interceptors / filters as an XSS defense was a useful approach against XSS attacks, don't you think that it would be incorporated into all commercial Web Application Firewalls (WAFs) and be an approach that OWASP recommends in this cheat sheet?",
       "token_count": 52,
@@ -1167,10 +1136,10 @@
       ]
     },
     {
-      "chunk_id": "ver_e4bbeced6010_c00078",
+      "chunk_id": "ver_e4bbeced6010_c00076",
       "document_id": "doc_owasp_a03_cross_site_scripting_prevention_cheat_sheet",
       "version_id": "ver_e4bbeced6010",
-      "chunk_idx": 78,
+      "chunk_idx": 76,
       "chunk_type": "heading",
       "text_content": "## Related Articles",
       "token_count": 4,
@@ -1181,10 +1150,10 @@
       ]
     },
     {
-      "chunk_id": "ver_e4bbeced6010_c00079",
+      "chunk_id": "ver_e4bbeced6010_c00077",
       "document_id": "doc_owasp_a03_cross_site_scripting_prevention_cheat_sheet",
       "version_id": "ver_e4bbeced6010",
-      "chunk_idx": 79,
+      "chunk_idx": 77,
       "chunk_type": "paragraph",
       "text_content": "See the [XSS Filter Evasion Cheat Sheet](XSS_Filter_Evasion_Cheat_Sheet.md) for examples that illustrate why filtering alone is insufficient.",
       "token_count": 24,
@@ -1195,10 +1164,10 @@
       ]
     },
     {
-      "chunk_id": "ver_e4bbeced6010_c00080",
+      "chunk_id": "ver_e4bbeced6010_c00078",
       "document_id": "doc_owasp_a03_cross_site_scripting_prevention_cheat_sheet",
       "version_id": "ver_e4bbeced6010",
-      "chunk_idx": 80,
+      "chunk_idx": 78,
       "chunk_type": "heading",
       "text_content": "## References",
       "token_count": 3,
@@ -1209,10 +1178,10 @@
       ]
     },
     {
-      "chunk_id": "ver_e4bbeced6010_c00081",
+      "chunk_id": "ver_e4bbeced6010_c00079",
       "document_id": "doc_owasp_a03_cross_site_scripting_prevention_cheat_sheet",
       "version_id": "ver_e4bbeced6010",
-      "chunk_idx": 81,
+      "chunk_idx": 79,
       "chunk_type": "list",
       "text_content": "- [OWASP Java Encoder: Output Contexts and Boundaries](https://github.com/OWASP/owasp-java-encoder/blob/main/docs/contexts.md#encode-for-the-parser-that-receives-the-value)\n- [DOMPurify Documentation](https://github.com/cure53/DOMPurify)\n- [CSSStyleDeclaration: setProperty() method](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration/setProperty)\n- [Trusted Types API](https://developer.mozilla.org/en-US/docs/Web/API/Trusted_Types_API)",
       "token_count": 135,
@@ -2721,648 +2690,648 @@
       "end_offset": 138
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00054_s000",
-      "chunk_id": "ver_e4bbeced6010_c00054",
+      "chunk_source_id": "ver_e4bbeced6010_c00053_s010",
+      "chunk_id": "ver_e4bbeced6010_c00053",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00088",
-      "source_order": 0,
+      "source_order": 10,
       "start_offset": 0,
       "end_offset": 220
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00055_s000",
-      "chunk_id": "ver_e4bbeced6010_c00055",
+      "chunk_source_id": "ver_e4bbeced6010_c00054_s000",
+      "chunk_id": "ver_e4bbeced6010_c00054",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00089",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 33
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00056_s000",
-      "chunk_id": "ver_e4bbeced6010_c00056",
+      "chunk_source_id": "ver_e4bbeced6010_c00055_s000",
+      "chunk_id": "ver_e4bbeced6010_c00055",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00090",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 216
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00056_s001",
-      "chunk_id": "ver_e4bbeced6010_c00056",
+      "chunk_source_id": "ver_e4bbeced6010_c00055_s001",
+      "chunk_id": "ver_e4bbeced6010_c00055",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00090",
       "source_order": 1,
       "start_offset": 217,
       "end_offset": 326
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00056_s002",
-      "chunk_id": "ver_e4bbeced6010_c00056",
+      "chunk_source_id": "ver_e4bbeced6010_c00055_s002",
+      "chunk_id": "ver_e4bbeced6010_c00055",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00091",
       "source_order": 2,
       "start_offset": 0,
       "end_offset": 164
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00056_s003",
-      "chunk_id": "ver_e4bbeced6010_c00056",
+      "chunk_source_id": "ver_e4bbeced6010_c00055_s003",
+      "chunk_id": "ver_e4bbeced6010_c00055",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00092",
       "source_order": 3,
       "start_offset": 0,
       "end_offset": 165
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00056_s004",
-      "chunk_id": "ver_e4bbeced6010_c00056",
+      "chunk_source_id": "ver_e4bbeced6010_c00055_s004",
+      "chunk_id": "ver_e4bbeced6010_c00055",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00092",
       "source_order": 4,
       "start_offset": 166,
       "end_offset": 232
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00056_s005",
-      "chunk_id": "ver_e4bbeced6010_c00056",
+      "chunk_source_id": "ver_e4bbeced6010_c00055_s005",
+      "chunk_id": "ver_e4bbeced6010_c00055",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00092",
       "source_order": 5,
       "start_offset": 233,
       "end_offset": 322
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00056_s006",
-      "chunk_id": "ver_e4bbeced6010_c00056",
+      "chunk_source_id": "ver_e4bbeced6010_c00055_s006",
+      "chunk_id": "ver_e4bbeced6010_c00055",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00093",
       "source_order": 6,
       "start_offset": 0,
       "end_offset": 209
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00056_s007",
-      "chunk_id": "ver_e4bbeced6010_c00056",
+      "chunk_source_id": "ver_e4bbeced6010_c00055_s007",
+      "chunk_id": "ver_e4bbeced6010_c00055",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00093",
       "source_order": 7,
       "start_offset": 210,
       "end_offset": 302
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00056_s008",
-      "chunk_id": "ver_e4bbeced6010_c00056",
+      "chunk_source_id": "ver_e4bbeced6010_c00055_s008",
+      "chunk_id": "ver_e4bbeced6010_c00055",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00094",
       "source_order": 8,
       "start_offset": 0,
       "end_offset": 138
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00056_s009",
-      "chunk_id": "ver_e4bbeced6010_c00056",
+      "chunk_source_id": "ver_e4bbeced6010_c00055_s009",
+      "chunk_id": "ver_e4bbeced6010_c00055",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00094",
       "source_order": 9,
       "start_offset": 139,
       "end_offset": 239
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00056_s010",
-      "chunk_id": "ver_e4bbeced6010_c00056",
+      "chunk_source_id": "ver_e4bbeced6010_c00055_s010",
+      "chunk_id": "ver_e4bbeced6010_c00055",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00094",
       "source_order": 10,
       "start_offset": 240,
       "end_offset": 349
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00056_s011",
-      "chunk_id": "ver_e4bbeced6010_c00056",
+      "chunk_source_id": "ver_e4bbeced6010_c00055_s011",
+      "chunk_id": "ver_e4bbeced6010_c00055",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00095",
       "source_order": 11,
       "start_offset": 0,
       "end_offset": 107
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00056_s012",
-      "chunk_id": "ver_e4bbeced6010_c00056",
+      "chunk_source_id": "ver_e4bbeced6010_c00055_s012",
+      "chunk_id": "ver_e4bbeced6010_c00055",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00095",
       "source_order": 12,
       "start_offset": 108,
       "end_offset": 319
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00056_s013",
-      "chunk_id": "ver_e4bbeced6010_c00056",
+      "chunk_source_id": "ver_e4bbeced6010_c00055_s013",
+      "chunk_id": "ver_e4bbeced6010_c00055",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00095",
       "source_order": 13,
       "start_offset": 320,
       "end_offset": 393
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00056_s014",
-      "chunk_id": "ver_e4bbeced6010_c00056",
+      "chunk_source_id": "ver_e4bbeced6010_c00055_s014",
+      "chunk_id": "ver_e4bbeced6010_c00055",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00095",
       "source_order": 14,
       "start_offset": 394,
       "end_offset": 479
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00057_s000",
-      "chunk_id": "ver_e4bbeced6010_c00057",
+      "chunk_source_id": "ver_e4bbeced6010_c00056_s000",
+      "chunk_id": "ver_e4bbeced6010_c00056",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00096",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 56
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00058_s000",
-      "chunk_id": "ver_e4bbeced6010_c00058",
+      "chunk_source_id": "ver_e4bbeced6010_c00057_s000",
+      "chunk_id": "ver_e4bbeced6010_c00057",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00097",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 30
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00058_s001",
-      "chunk_id": "ver_e4bbeced6010_c00058",
+      "chunk_source_id": "ver_e4bbeced6010_c00057_s001",
+      "chunk_id": "ver_e4bbeced6010_c00057",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00097",
       "source_order": 1,
       "start_offset": 31,
       "end_offset": 93
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00058_s002",
-      "chunk_id": "ver_e4bbeced6010_c00058",
+      "chunk_source_id": "ver_e4bbeced6010_c00057_s002",
+      "chunk_id": "ver_e4bbeced6010_c00057",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00098",
       "source_order": 2,
       "start_offset": 0,
       "end_offset": 285
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00059_s000",
-      "chunk_id": "ver_e4bbeced6010_c00059",
+      "chunk_source_id": "ver_e4bbeced6010_c00058_s000",
+      "chunk_id": "ver_e4bbeced6010_c00058",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00099",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 58
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00060_s000",
-      "chunk_id": "ver_e4bbeced6010_c00060",
+      "chunk_source_id": "ver_e4bbeced6010_c00059_s000",
+      "chunk_id": "ver_e4bbeced6010_c00059",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00100",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 82
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00060_s001",
-      "chunk_id": "ver_e4bbeced6010_c00060",
+      "chunk_source_id": "ver_e4bbeced6010_c00059_s001",
+      "chunk_id": "ver_e4bbeced6010_c00059",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00100",
       "source_order": 1,
       "start_offset": 83,
       "end_offset": 143
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00060_s002",
-      "chunk_id": "ver_e4bbeced6010_c00060",
+      "chunk_source_id": "ver_e4bbeced6010_c00059_s002",
+      "chunk_id": "ver_e4bbeced6010_c00059",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00101",
       "source_order": 2,
       "start_offset": 0,
       "end_offset": 39
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00060_s003",
-      "chunk_id": "ver_e4bbeced6010_c00060",
+      "chunk_source_id": "ver_e4bbeced6010_c00059_s003",
+      "chunk_id": "ver_e4bbeced6010_c00059",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00101",
       "source_order": 3,
       "start_offset": 40,
       "end_offset": 155
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00060_s004",
-      "chunk_id": "ver_e4bbeced6010_c00060",
+      "chunk_source_id": "ver_e4bbeced6010_c00059_s004",
+      "chunk_id": "ver_e4bbeced6010_c00059",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00102",
       "source_order": 4,
       "start_offset": 0,
       "end_offset": 70
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00060_s005",
-      "chunk_id": "ver_e4bbeced6010_c00060",
+      "chunk_source_id": "ver_e4bbeced6010_c00059_s005",
+      "chunk_id": "ver_e4bbeced6010_c00059",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00102",
       "source_order": 5,
       "start_offset": 71,
       "end_offset": 103
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00061_s000",
-      "chunk_id": "ver_e4bbeced6010_c00061",
+      "chunk_source_id": "ver_e4bbeced6010_c00060_s000",
+      "chunk_id": "ver_e4bbeced6010_c00060",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00103",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 64
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00062_s000",
-      "chunk_id": "ver_e4bbeced6010_c00062",
+      "chunk_source_id": "ver_e4bbeced6010_c00061_s000",
+      "chunk_id": "ver_e4bbeced6010_c00061",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00104",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 140
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00062_s001",
-      "chunk_id": "ver_e4bbeced6010_c00062",
+      "chunk_source_id": "ver_e4bbeced6010_c00061_s001",
+      "chunk_id": "ver_e4bbeced6010_c00061",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00104",
       "source_order": 1,
       "start_offset": 141,
       "end_offset": 342
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00062_s002",
-      "chunk_id": "ver_e4bbeced6010_c00062",
+      "chunk_source_id": "ver_e4bbeced6010_c00061_s002",
+      "chunk_id": "ver_e4bbeced6010_c00061",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00104",
       "source_order": 2,
       "start_offset": 343,
       "end_offset": 347
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00062_s003",
-      "chunk_id": "ver_e4bbeced6010_c00062",
+      "chunk_source_id": "ver_e4bbeced6010_c00061_s003",
+      "chunk_id": "ver_e4bbeced6010_c00061",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00104",
       "source_order": 3,
       "start_offset": 348,
       "end_offset": 547
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00062_s004",
-      "chunk_id": "ver_e4bbeced6010_c00062",
+      "chunk_source_id": "ver_e4bbeced6010_c00061_s004",
+      "chunk_id": "ver_e4bbeced6010_c00061",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00104",
       "source_order": 4,
       "start_offset": 548,
       "end_offset": 812
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00063_s000",
-      "chunk_id": "ver_e4bbeced6010_c00063",
+      "chunk_source_id": "ver_e4bbeced6010_c00062_s000",
+      "chunk_id": "ver_e4bbeced6010_c00062",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00105",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 54
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00064_s000",
-      "chunk_id": "ver_e4bbeced6010_c00064",
+      "chunk_source_id": "ver_e4bbeced6010_c00063_s000",
+      "chunk_id": "ver_e4bbeced6010_c00063",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00106",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 133
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00064_s001",
-      "chunk_id": "ver_e4bbeced6010_c00064",
+      "chunk_source_id": "ver_e4bbeced6010_c00063_s001",
+      "chunk_id": "ver_e4bbeced6010_c00063",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00106",
       "source_order": 1,
       "start_offset": 134,
       "end_offset": 319
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00064_s002",
-      "chunk_id": "ver_e4bbeced6010_c00064",
+      "chunk_source_id": "ver_e4bbeced6010_c00063_s002",
+      "chunk_id": "ver_e4bbeced6010_c00063",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00106",
       "source_order": 2,
       "start_offset": 320,
       "end_offset": 489
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00065_s000",
-      "chunk_id": "ver_e4bbeced6010_c00065",
+      "chunk_source_id": "ver_e4bbeced6010_c00064_s000",
+      "chunk_id": "ver_e4bbeced6010_c00064",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00107",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 33
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00066_s000",
-      "chunk_id": "ver_e4bbeced6010_c00066",
+      "chunk_source_id": "ver_e4bbeced6010_c00065_s000",
+      "chunk_id": "ver_e4bbeced6010_c00065",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00108",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 319
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00066_s001",
-      "chunk_id": "ver_e4bbeced6010_c00066",
+      "chunk_source_id": "ver_e4bbeced6010_c00065_s001",
+      "chunk_id": "ver_e4bbeced6010_c00065",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00108",
       "source_order": 1,
       "start_offset": 320,
       "end_offset": 615
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00066_s002",
-      "chunk_id": "ver_e4bbeced6010_c00066",
+      "chunk_source_id": "ver_e4bbeced6010_c00065_s002",
+      "chunk_id": "ver_e4bbeced6010_c00065",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00108",
       "source_order": 2,
       "start_offset": 616,
       "end_offset": 785
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00066_s003",
-      "chunk_id": "ver_e4bbeced6010_c00066",
+      "chunk_source_id": "ver_e4bbeced6010_c00065_s003",
+      "chunk_id": "ver_e4bbeced6010_c00065",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00108",
       "source_order": 3,
       "start_offset": 786,
       "end_offset": 1040
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00066_s004",
-      "chunk_id": "ver_e4bbeced6010_c00066",
+      "chunk_source_id": "ver_e4bbeced6010_c00065_s004",
+      "chunk_id": "ver_e4bbeced6010_c00065",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00108",
       "source_order": 4,
       "start_offset": 1041,
       "end_offset": 1264
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00066_s005",
-      "chunk_id": "ver_e4bbeced6010_c00066",
+      "chunk_source_id": "ver_e4bbeced6010_c00065_s005",
+      "chunk_id": "ver_e4bbeced6010_c00065",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00108",
       "source_order": 5,
       "start_offset": 1265,
       "end_offset": 1526
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00066_s006",
-      "chunk_id": "ver_e4bbeced6010_c00066",
+      "chunk_source_id": "ver_e4bbeced6010_c00065_s006",
+      "chunk_id": "ver_e4bbeced6010_c00065",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00108",
       "source_order": 6,
       "start_offset": 1527,
       "end_offset": 1538
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00066_s007",
-      "chunk_id": "ver_e4bbeced6010_c00066",
+      "chunk_source_id": "ver_e4bbeced6010_c00065_s007",
+      "chunk_id": "ver_e4bbeced6010_c00065",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00108",
       "source_order": 7,
       "start_offset": 1539,
       "end_offset": 1650
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00066_s008",
-      "chunk_id": "ver_e4bbeced6010_c00066",
+      "chunk_source_id": "ver_e4bbeced6010_c00065_s008",
+      "chunk_id": "ver_e4bbeced6010_c00065",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00109",
       "source_order": 8,
       "start_offset": 0,
       "end_offset": 217
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00066_s009",
-      "chunk_id": "ver_e4bbeced6010_c00066",
+      "chunk_source_id": "ver_e4bbeced6010_c00065_s009",
+      "chunk_id": "ver_e4bbeced6010_c00065",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00109",
       "source_order": 9,
       "start_offset": 218,
       "end_offset": 514
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00066_s010",
-      "chunk_id": "ver_e4bbeced6010_c00066",
+      "chunk_source_id": "ver_e4bbeced6010_c00065_s010",
+      "chunk_id": "ver_e4bbeced6010_c00065",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00110",
       "source_order": 10,
       "start_offset": 0,
       "end_offset": 68
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00067_s000",
-      "chunk_id": "ver_e4bbeced6010_c00067",
+      "chunk_source_id": "ver_e4bbeced6010_c00066_s000",
+      "chunk_id": "ver_e4bbeced6010_c00066",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00111",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 81
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00068_s000",
-      "chunk_id": "ver_e4bbeced6010_c00068",
+      "chunk_source_id": "ver_e4bbeced6010_c00067_s000",
+      "chunk_id": "ver_e4bbeced6010_c00067",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00112",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 112
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00068_s001",
-      "chunk_id": "ver_e4bbeced6010_c00068",
+      "chunk_source_id": "ver_e4bbeced6010_c00067_s001",
+      "chunk_id": "ver_e4bbeced6010_c00067",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00112",
       "source_order": 1,
       "start_offset": 113,
       "end_offset": 441
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00069_s000",
-      "chunk_id": "ver_e4bbeced6010_c00069",
+      "chunk_source_id": "ver_e4bbeced6010_c00068_s000",
+      "chunk_id": "ver_e4bbeced6010_c00068",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00113",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 104
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00070_s000",
-      "chunk_id": "ver_e4bbeced6010_c00070",
+      "chunk_source_id": "ver_e4bbeced6010_c00069_s000",
+      "chunk_id": "ver_e4bbeced6010_c00069",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00114",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 102
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00070_s001",
-      "chunk_id": "ver_e4bbeced6010_c00070",
+      "chunk_source_id": "ver_e4bbeced6010_c00069_s001",
+      "chunk_id": "ver_e4bbeced6010_c00069",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00114",
       "source_order": 1,
       "start_offset": 103,
       "end_offset": 227
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00070_s002",
-      "chunk_id": "ver_e4bbeced6010_c00070",
+      "chunk_source_id": "ver_e4bbeced6010_c00069_s002",
+      "chunk_id": "ver_e4bbeced6010_c00069",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00114",
       "source_order": 2,
       "start_offset": 228,
       "end_offset": 380
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00070_s003",
-      "chunk_id": "ver_e4bbeced6010_c00070",
+      "chunk_source_id": "ver_e4bbeced6010_c00069_s003",
+      "chunk_id": "ver_e4bbeced6010_c00069",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00115",
       "source_order": 3,
       "start_offset": 0,
       "end_offset": 353
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00071_s000",
-      "chunk_id": "ver_e4bbeced6010_c00071",
+      "chunk_source_id": "ver_e4bbeced6010_c00070_s000",
+      "chunk_id": "ver_e4bbeced6010_c00070",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00116",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 65
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00072_s000",
-      "chunk_id": "ver_e4bbeced6010_c00072",
+      "chunk_source_id": "ver_e4bbeced6010_c00071_s000",
+      "chunk_id": "ver_e4bbeced6010_c00071",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00117",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 78
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00072_s001",
-      "chunk_id": "ver_e4bbeced6010_c00072",
+      "chunk_source_id": "ver_e4bbeced6010_c00071_s001",
+      "chunk_id": "ver_e4bbeced6010_c00071",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00117",
       "source_order": 1,
       "start_offset": 79,
       "end_offset": 292
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00072_s002",
-      "chunk_id": "ver_e4bbeced6010_c00072",
+      "chunk_source_id": "ver_e4bbeced6010_c00071_s002",
+      "chunk_id": "ver_e4bbeced6010_c00071",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00117",
       "source_order": 2,
       "start_offset": 293,
       "end_offset": 322
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00073_s000",
-      "chunk_id": "ver_e4bbeced6010_c00073",
+      "chunk_source_id": "ver_e4bbeced6010_c00072_s000",
+      "chunk_id": "ver_e4bbeced6010_c00072",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00118",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 105
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00074_s000",
-      "chunk_id": "ver_e4bbeced6010_c00074",
+      "chunk_source_id": "ver_e4bbeced6010_c00073_s000",
+      "chunk_id": "ver_e4bbeced6010_c00073",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00119",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 227
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00074_s001",
-      "chunk_id": "ver_e4bbeced6010_c00074",
+      "chunk_source_id": "ver_e4bbeced6010_c00073_s001",
+      "chunk_id": "ver_e4bbeced6010_c00073",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00119",
       "source_order": 1,
       "start_offset": 228,
       "end_offset": 520
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00074_s002",
-      "chunk_id": "ver_e4bbeced6010_c00074",
+      "chunk_source_id": "ver_e4bbeced6010_c00073_s002",
+      "chunk_id": "ver_e4bbeced6010_c00073",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00119",
       "source_order": 2,
       "start_offset": 521,
       "end_offset": 851
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00074_s003",
-      "chunk_id": "ver_e4bbeced6010_c00074",
+      "chunk_source_id": "ver_e4bbeced6010_c00073_s003",
+      "chunk_id": "ver_e4bbeced6010_c00073",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00119",
       "source_order": 3,
       "start_offset": 852,
       "end_offset": 1112
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00074_s004",
-      "chunk_id": "ver_e4bbeced6010_c00074",
+      "chunk_source_id": "ver_e4bbeced6010_c00073_s004",
+      "chunk_id": "ver_e4bbeced6010_c00073",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00119",
       "source_order": 4,
       "start_offset": 1113,
       "end_offset": 1136
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00074_s005",
-      "chunk_id": "ver_e4bbeced6010_c00074",
+      "chunk_source_id": "ver_e4bbeced6010_c00073_s005",
+      "chunk_id": "ver_e4bbeced6010_c00073",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00119",
       "source_order": 5,
       "start_offset": 1137,
       "end_offset": 1377
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00074_s006",
-      "chunk_id": "ver_e4bbeced6010_c00074",
+      "chunk_source_id": "ver_e4bbeced6010_c00073_s006",
+      "chunk_id": "ver_e4bbeced6010_c00073",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00120",
       "source_order": 6,
       "start_offset": 0,
       "end_offset": 102
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00074_s007",
-      "chunk_id": "ver_e4bbeced6010_c00074",
+      "chunk_source_id": "ver_e4bbeced6010_c00073_s007",
+      "chunk_id": "ver_e4bbeced6010_c00073",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00120",
       "source_order": 7,
       "start_offset": 103,
       "end_offset": 323
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00074_s008",
-      "chunk_id": "ver_e4bbeced6010_c00074",
+      "chunk_source_id": "ver_e4bbeced6010_c00073_s008",
+      "chunk_id": "ver_e4bbeced6010_c00073",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00120",
       "source_order": 8,
       "start_offset": 324,
       "end_offset": 517
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00074_s009",
-      "chunk_id": "ver_e4bbeced6010_c00074",
+      "chunk_source_id": "ver_e4bbeced6010_c00073_s009",
+      "chunk_id": "ver_e4bbeced6010_c00073",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00120",
       "source_order": 9,
       "start_offset": 518,
       "end_offset": 688
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00074_s010",
-      "chunk_id": "ver_e4bbeced6010_c00074",
+      "chunk_source_id": "ver_e4bbeced6010_c00073_s010",
+      "chunk_id": "ver_e4bbeced6010_c00073",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00120",
       "source_order": 10,
       "start_offset": 689,
       "end_offset": 822
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00075_s000",
-      "chunk_id": "ver_e4bbeced6010_c00075",
+      "chunk_source_id": "ver_e4bbeced6010_c00073_s011",
+      "chunk_id": "ver_e4bbeced6010_c00073",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00120",
-      "source_order": 0,
+      "source_order": 11,
       "start_offset": 823,
       "end_offset": 1057
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00076_s000",
-      "chunk_id": "ver_e4bbeced6010_c00076",
+      "chunk_source_id": "ver_e4bbeced6010_c00074_s000",
+      "chunk_id": "ver_e4bbeced6010_c00074",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00121",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 11
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00077_s000",
-      "chunk_id": "ver_e4bbeced6010_c00077",
+      "chunk_source_id": "ver_e4bbeced6010_c00075_s000",
+      "chunk_id": "ver_e4bbeced6010_c00075",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00122",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 273
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00078_s000",
-      "chunk_id": "ver_e4bbeced6010_c00078",
+      "chunk_source_id": "ver_e4bbeced6010_c00076_s000",
+      "chunk_id": "ver_e4bbeced6010_c00076",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00123",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 19
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00079_s000",
-      "chunk_id": "ver_e4bbeced6010_c00079",
+      "chunk_source_id": "ver_e4bbeced6010_c00077_s000",
+      "chunk_id": "ver_e4bbeced6010_c00077",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00124",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 141
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00080_s000",
-      "chunk_id": "ver_e4bbeced6010_c00080",
+      "chunk_source_id": "ver_e4bbeced6010_c00078_s000",
+      "chunk_id": "ver_e4bbeced6010_c00078",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00125",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 13
     },
     {
-      "chunk_source_id": "ver_e4bbeced6010_c00081_s000",
-      "chunk_id": "ver_e4bbeced6010_c00081",
+      "chunk_source_id": "ver_e4bbeced6010_c00079_s000",
+      "chunk_id": "ver_e4bbeced6010_c00079",
       "normalized_block_id": "nrm_ver_e4bbeced6010_b00126",
       "source_order": 0,
       "start_offset": 0,

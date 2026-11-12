@@ -204,8 +204,8 @@
       "version_id": "ver_9f98e0c8f055",
       "chunk_idx": 14,
       "chunk_type": "list",
-      "text_content": "* [CWE-258 Empty Password in Configuration File](https://cwe.mitre.org/data/definitions/258.html)\n\n* [CWE-259 Use of Hard-coded Password](https://cwe.mitre.org/data/definitions/259.html)\n\n* [CWE-287 Improper Authentication](https://cwe.mitre.org/data/definitions/287.html)\n\n* [CWE-288 Authentication Bypass Using an Alternate Path or Channel](https://cwe.mitre.org/data/definitions/288.html)\n\n* [CWE-289 Authentication Bypass by Alternate Name](https://cwe.mitre.org/data/definitions/289.html)\n\n* [CWE-290 Authentication Bypass by Spoofing](https://cwe.mitre.org/data/definitions/290.html)\n\n* [CWE-291 Reliance on IP Address for Authentication](https://cwe.mitre.org/data/definitions/291.html)\n\n* [CWE-293 Using Referer Field for Authentication](https://cwe.mitre.org/data/definitions/293.html)\n\n* [CWE-294 Authentication Bypass by Capture-replay](https://cwe.mitre.org/data/definitions/294.html)\n\n* [CWE-295 Improper Certificate Validation](https://cwe.mitre.org/data/definitions/295.html)\n\n* [CWE-297 Improper Validation of Certificate with Host Mismatch](https://cwe.mitre.org/data/definitions/297.html)\n\n* [CWE-298 Improper Validation of Certificate with Host Mismatch](https://cwe.mitre.org/data/definitions/298.html)\n\n* [CWE-299 Improper Validation of Certificate with Host Mismatch](https://cwe.mitre.org/data/definitions/299.html)\n\n* [CWE-300 Channel Accessible by Non-Endpoint](https://cwe.mitre.org/data/definitions/300.html)",
-      "token_count": 427,
+      "text_content": "* [CWE-258 Empty Password in Configuration File](https://cwe.mitre.org/data/definitions/258.html)\n\n* [CWE-259 Use of Hard-coded Password](https://cwe.mitre.org/data/definitions/259.html)\n\n* [CWE-287 Improper Authentication](https://cwe.mitre.org/data/definitions/287.html)\n\n* [CWE-288 Authentication Bypass Using an Alternate Path or Channel](https://cwe.mitre.org/data/definitions/288.html)\n\n* [CWE-289 Authentication Bypass by Alternate Name](https://cwe.mitre.org/data/definitions/289.html)\n\n* [CWE-290 Authentication Bypass by Spoofing](https://cwe.mitre.org/data/definitions/290.html)\n\n* [CWE-291 Reliance on IP Address for Authentication](https://cwe.mitre.org/data/definitions/291.html)\n\n* [CWE-293 Using Referer Field for Authentication](https://cwe.mitre.org/data/definitions/293.html)\n\n* [CWE-294 Authentication Bypass by Capture-replay](https://cwe.mitre.org/data/definitions/294.html)\n\n* [CWE-295 Improper Certificate Validation](https://cwe.mitre.org/data/definitions/295.html)\n\n* [CWE-297 Improper Validation of Certificate with Host Mismatch](https://cwe.mitre.org/data/definitions/297.html)\n\n* [CWE-298 Improper Validation of Certificate with Host Mismatch](https://cwe.mitre.org/data/definitions/298.html)\n\n* [CWE-299 Improper Validation of Certificate with Host Mismatch](https://cwe.mitre.org/data/definitions/299.html)\n\n* [CWE-300 Channel Accessible by Non-Endpoint](https://cwe.mitre.org/data/definitions/300.html)\n\n* [CWE-302 Authentication Bypass by Assumed-Immutable Data](https://cwe.mitre.org/data/definitions/302.html)\n\n* [CWE-303 Incorrect Implementation of Authentication Algorithm](https://cwe.mitre.org/data/definitions/303.html)\n\n* [CWE-304 Missing Critical Step in Authentication](https://cwe.mitre.org/data/definitions/304.html)\n\n* [CWE-305 Authentication Bypass by Primary Weakness](https://cwe.mitre.org/data/definitions/305.html)\n\n* [CWE-306 Missing Authentication for Critical Function](https://cwe.mitre.org/data/definitions/306.html)\n\n* [CWE-307 Improper Restriction of Excessive Authentication Attempts](https://cwe.mitre.org/data/definitions/307.html)\n\n* [CWE-308 Use of Single-factor Authentication](https://cwe.mitre.org/data/definitions/308.html)",
+      "token_count": 641,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "A07:2025 Authentication Failures",
@@ -218,22 +218,8 @@
       "version_id": "ver_9f98e0c8f055",
       "chunk_idx": 15,
       "chunk_type": "list",
-      "text_content": "* [CWE-302 Authentication Bypass by Assumed-Immutable Data](https://cwe.mitre.org/data/definitions/302.html)\n\n* [CWE-303 Incorrect Implementation of Authentication Algorithm](https://cwe.mitre.org/data/definitions/303.html)\n\n* [CWE-304 Missing Critical Step in Authentication](https://cwe.mitre.org/data/definitions/304.html)\n\n* [CWE-305 Authentication Bypass by Primary Weakness](https://cwe.mitre.org/data/definitions/305.html)\n\n* [CWE-306 Missing Authentication for Critical Function](https://cwe.mitre.org/data/definitions/306.html)\n\n* [CWE-307 Improper Restriction of Excessive Authentication Attempts](https://cwe.mitre.org/data/definitions/307.html)\n\n* [CWE-308 Use of Single-factor Authentication](https://cwe.mitre.org/data/definitions/308.html)\n\n* [CWE-309 Use of Password System for Primary Authentication](https://cwe.mitre.org/data/definitions/309.html)\n\n* [CWE-346 Origin Validation Error](https://cwe.mitre.org/data/definitions/346.html)\n\n* [CWE-350 Reliance on Reverse DNS Resolution for a Security-Critical Action](https://cwe.mitre.org/data/definitions/350.html)\n\n* [CWE-384 Session Fixation](https://cwe.mitre.org/data/definitions/384.html)\n\n* [CWE-521 Weak Password Requirements](https://cwe.mitre.org/data/definitions/521.html)\n\n* [CWE-613 Insufficient Session Expiration](https://cwe.mitre.org/data/definitions/613.html)\n\n* [CWE-620 Unverified Password Change](https://cwe.mitre.org/data/definitions/620.html)",
-      "token_count": 421,
-      "chunk_strategy": "structure_aware",
-      "heading_path": [
-        "A07:2025 Authentication Failures",
-        "List of Mapped CWEs"
-      ]
-    },
-    {
-      "chunk_id": "ver_9f98e0c8f055_c00016",
-      "document_id": "doc_owasp_top10_a07_authentication_failures",
-      "version_id": "ver_9f98e0c8f055",
-      "chunk_idx": 16,
-      "chunk_type": "list",
-      "text_content": "* [CWE-640 Weak Password Recovery Mechanism for Forgotten Password](https://cwe.mitre.org/data/definitions/640.html)\n\n* [CWE-798 Use of Hard-coded Credentials](https://cwe.mitre.org/data/definitions/798.html)\n\n* [CWE-940 Improper Verification of Source of a Communication Channel](https://cwe.mitre.org/data/definitions/940.html)\n\n* [CWE-941 Incorrectly Specified Destination in a Communication Channel](https://cwe.mitre.org/data/definitions/941.html)\n\n* [CWE-1390 Weak Authentication](https://cwe.mitre.org/data/definitions/1390.html)\n\n* [CWE-1391 Use of Weak Credentials](https://cwe.mitre.org/data/definitions/1391.html)\n\n* [CWE-1392 Use of Default Credentials](https://cwe.mitre.org/data/definitions/1392.html)\n\n* [CWE-1393 Use of Default Password](https://cwe.mitre.org/data/definitions/1393.html)",
-      "token_count": 242,
+      "text_content": "* [CWE-309 Use of Password System for Primary Authentication](https://cwe.mitre.org/data/definitions/309.html)\n\n* [CWE-346 Origin Validation Error](https://cwe.mitre.org/data/definitions/346.html)\n\n* [CWE-350 Reliance on Reverse DNS Resolution for a Security-Critical Action](https://cwe.mitre.org/data/definitions/350.html)\n\n* [CWE-384 Session Fixation](https://cwe.mitre.org/data/definitions/384.html)\n\n* [CWE-521 Weak Password Requirements](https://cwe.mitre.org/data/definitions/521.html)\n\n* [CWE-613 Insufficient Session Expiration](https://cwe.mitre.org/data/definitions/613.html)\n\n* [CWE-620 Unverified Password Change](https://cwe.mitre.org/data/definitions/620.html)\n\n* [CWE-640 Weak Password Recovery Mechanism for Forgotten Password](https://cwe.mitre.org/data/definitions/640.html)\n\n* [CWE-798 Use of Hard-coded Credentials](https://cwe.mitre.org/data/definitions/798.html)\n\n* [CWE-940 Improper Verification of Source of a Communication Channel](https://cwe.mitre.org/data/definitions/940.html)\n\n* [CWE-941 Incorrectly Specified Destination in a Communication Channel](https://cwe.mitre.org/data/definitions/941.html)\n\n* [CWE-1390 Weak Authentication](https://cwe.mitre.org/data/definitions/1390.html)\n\n* [CWE-1391 Use of Weak Credentials](https://cwe.mitre.org/data/definitions/1391.html)\n\n* [CWE-1392 Use of Default Credentials](https://cwe.mitre.org/data/definitions/1392.html)\n\n* [CWE-1393 Use of Default Password](https://cwe.mitre.org/data/definitions/1393.html)",
+      "token_count": 449,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "A07:2025 Authentication Failures",
@@ -851,178 +837,178 @@
       "end_offset": 1435
     },
     {
+      "chunk_source_id": "ver_9f98e0c8f055_c00014_s014",
+      "chunk_id": "ver_9f98e0c8f055_c00014",
+      "normalized_block_id": "nrm_ver_9f98e0c8f055_b00017",
+      "source_order": 14,
+      "start_offset": 1437,
+      "end_offset": 1545
+    },
+    {
+      "chunk_source_id": "ver_9f98e0c8f055_c00014_s015",
+      "chunk_id": "ver_9f98e0c8f055_c00014",
+      "normalized_block_id": "nrm_ver_9f98e0c8f055_b00017",
+      "source_order": 15,
+      "start_offset": 1547,
+      "end_offset": 1660
+    },
+    {
+      "chunk_source_id": "ver_9f98e0c8f055_c00014_s016",
+      "chunk_id": "ver_9f98e0c8f055_c00014",
+      "normalized_block_id": "nrm_ver_9f98e0c8f055_b00017",
+      "source_order": 16,
+      "start_offset": 1662,
+      "end_offset": 1762
+    },
+    {
+      "chunk_source_id": "ver_9f98e0c8f055_c00014_s017",
+      "chunk_id": "ver_9f98e0c8f055_c00014",
+      "normalized_block_id": "nrm_ver_9f98e0c8f055_b00017",
+      "source_order": 17,
+      "start_offset": 1764,
+      "end_offset": 1866
+    },
+    {
+      "chunk_source_id": "ver_9f98e0c8f055_c00014_s018",
+      "chunk_id": "ver_9f98e0c8f055_c00014",
+      "normalized_block_id": "nrm_ver_9f98e0c8f055_b00017",
+      "source_order": 18,
+      "start_offset": 1868,
+      "end_offset": 1973
+    },
+    {
+      "chunk_source_id": "ver_9f98e0c8f055_c00014_s019",
+      "chunk_id": "ver_9f98e0c8f055_c00014",
+      "normalized_block_id": "nrm_ver_9f98e0c8f055_b00017",
+      "source_order": 19,
+      "start_offset": 1975,
+      "end_offset": 2093
+    },
+    {
+      "chunk_source_id": "ver_9f98e0c8f055_c00014_s020",
+      "chunk_id": "ver_9f98e0c8f055_c00014",
+      "normalized_block_id": "nrm_ver_9f98e0c8f055_b00017",
+      "source_order": 20,
+      "start_offset": 2095,
+      "end_offset": 2191
+    },
+    {
       "chunk_source_id": "ver_9f98e0c8f055_c00015_s000",
       "chunk_id": "ver_9f98e0c8f055_c00015",
       "normalized_block_id": "nrm_ver_9f98e0c8f055_b00017",
       "source_order": 0,
-      "start_offset": 1437,
-      "end_offset": 1545
+      "start_offset": 2193,
+      "end_offset": 2303
     },
     {
       "chunk_source_id": "ver_9f98e0c8f055_c00015_s001",
       "chunk_id": "ver_9f98e0c8f055_c00015",
       "normalized_block_id": "nrm_ver_9f98e0c8f055_b00017",
       "source_order": 1,
-      "start_offset": 1547,
-      "end_offset": 1660
+      "start_offset": 2305,
+      "end_offset": 2389
     },
     {
       "chunk_source_id": "ver_9f98e0c8f055_c00015_s002",
       "chunk_id": "ver_9f98e0c8f055_c00015",
       "normalized_block_id": "nrm_ver_9f98e0c8f055_b00017",
       "source_order": 2,
-      "start_offset": 1662,
-      "end_offset": 1762
+      "start_offset": 2391,
+      "end_offset": 2517
     },
     {
       "chunk_source_id": "ver_9f98e0c8f055_c00015_s003",
       "chunk_id": "ver_9f98e0c8f055_c00015",
       "normalized_block_id": "nrm_ver_9f98e0c8f055_b00017",
       "source_order": 3,
-      "start_offset": 1764,
-      "end_offset": 1866
+      "start_offset": 2519,
+      "end_offset": 2596
     },
     {
       "chunk_source_id": "ver_9f98e0c8f055_c00015_s004",
       "chunk_id": "ver_9f98e0c8f055_c00015",
       "normalized_block_id": "nrm_ver_9f98e0c8f055_b00017",
       "source_order": 4,
-      "start_offset": 1868,
-      "end_offset": 1973
+      "start_offset": 2598,
+      "end_offset": 2685
     },
     {
       "chunk_source_id": "ver_9f98e0c8f055_c00015_s005",
       "chunk_id": "ver_9f98e0c8f055_c00015",
       "normalized_block_id": "nrm_ver_9f98e0c8f055_b00017",
       "source_order": 5,
-      "start_offset": 1975,
-      "end_offset": 2093
+      "start_offset": 2687,
+      "end_offset": 2779
     },
     {
       "chunk_source_id": "ver_9f98e0c8f055_c00015_s006",
       "chunk_id": "ver_9f98e0c8f055_c00015",
       "normalized_block_id": "nrm_ver_9f98e0c8f055_b00017",
       "source_order": 6,
-      "start_offset": 2095,
-      "end_offset": 2191
+      "start_offset": 2781,
+      "end_offset": 2868
     },
     {
       "chunk_source_id": "ver_9f98e0c8f055_c00015_s007",
       "chunk_id": "ver_9f98e0c8f055_c00015",
       "normalized_block_id": "nrm_ver_9f98e0c8f055_b00017",
       "source_order": 7,
-      "start_offset": 2193,
-      "end_offset": 2303
+      "start_offset": 2870,
+      "end_offset": 2986
     },
     {
       "chunk_source_id": "ver_9f98e0c8f055_c00015_s008",
       "chunk_id": "ver_9f98e0c8f055_c00015",
       "normalized_block_id": "nrm_ver_9f98e0c8f055_b00017",
       "source_order": 8,
-      "start_offset": 2305,
-      "end_offset": 2389
+      "start_offset": 2988,
+      "end_offset": 3078
     },
     {
       "chunk_source_id": "ver_9f98e0c8f055_c00015_s009",
       "chunk_id": "ver_9f98e0c8f055_c00015",
       "normalized_block_id": "nrm_ver_9f98e0c8f055_b00017",
       "source_order": 9,
-      "start_offset": 2391,
-      "end_offset": 2517
+      "start_offset": 3080,
+      "end_offset": 3199
     },
     {
       "chunk_source_id": "ver_9f98e0c8f055_c00015_s010",
       "chunk_id": "ver_9f98e0c8f055_c00015",
       "normalized_block_id": "nrm_ver_9f98e0c8f055_b00017",
       "source_order": 10,
-      "start_offset": 2519,
-      "end_offset": 2596
+      "start_offset": 3201,
+      "end_offset": 3322
     },
     {
       "chunk_source_id": "ver_9f98e0c8f055_c00015_s011",
       "chunk_id": "ver_9f98e0c8f055_c00015",
       "normalized_block_id": "nrm_ver_9f98e0c8f055_b00017",
       "source_order": 11,
-      "start_offset": 2598,
-      "end_offset": 2685
+      "start_offset": 3324,
+      "end_offset": 3406
     },
     {
       "chunk_source_id": "ver_9f98e0c8f055_c00015_s012",
       "chunk_id": "ver_9f98e0c8f055_c00015",
       "normalized_block_id": "nrm_ver_9f98e0c8f055_b00017",
       "source_order": 12,
-      "start_offset": 2687,
-      "end_offset": 2779
+      "start_offset": 3408,
+      "end_offset": 3494
     },
     {
       "chunk_source_id": "ver_9f98e0c8f055_c00015_s013",
       "chunk_id": "ver_9f98e0c8f055_c00015",
       "normalized_block_id": "nrm_ver_9f98e0c8f055_b00017",
       "source_order": 13,
-      "start_offset": 2781,
-      "end_offset": 2868
-    },
-    {
-      "chunk_source_id": "ver_9f98e0c8f055_c00016_s000",
-      "chunk_id": "ver_9f98e0c8f055_c00016",
-      "normalized_block_id": "nrm_ver_9f98e0c8f055_b00017",
-      "source_order": 0,
-      "start_offset": 2870,
-      "end_offset": 2986
-    },
-    {
-      "chunk_source_id": "ver_9f98e0c8f055_c00016_s001",
-      "chunk_id": "ver_9f98e0c8f055_c00016",
-      "normalized_block_id": "nrm_ver_9f98e0c8f055_b00017",
-      "source_order": 1,
-      "start_offset": 2988,
-      "end_offset": 3078
-    },
-    {
-      "chunk_source_id": "ver_9f98e0c8f055_c00016_s002",
-      "chunk_id": "ver_9f98e0c8f055_c00016",
-      "normalized_block_id": "nrm_ver_9f98e0c8f055_b00017",
-      "source_order": 2,
-      "start_offset": 3080,
-      "end_offset": 3199
-    },
-    {
-      "chunk_source_id": "ver_9f98e0c8f055_c00016_s003",
-      "chunk_id": "ver_9f98e0c8f055_c00016",
-      "normalized_block_id": "nrm_ver_9f98e0c8f055_b00017",
-      "source_order": 3,
-      "start_offset": 3201,
-      "end_offset": 3322
-    },
-    {
-      "chunk_source_id": "ver_9f98e0c8f055_c00016_s004",
-      "chunk_id": "ver_9f98e0c8f055_c00016",
-      "normalized_block_id": "nrm_ver_9f98e0c8f055_b00017",
-      "source_order": 4,
-      "start_offset": 3324,
-      "end_offset": 3406
-    },
-    {
-      "chunk_source_id": "ver_9f98e0c8f055_c00016_s005",
-      "chunk_id": "ver_9f98e0c8f055_c00016",
-      "normalized_block_id": "nrm_ver_9f98e0c8f055_b00017",
-      "source_order": 5,
-      "start_offset": 3408,
-      "end_offset": 3494
-    },
-    {
-      "chunk_source_id": "ver_9f98e0c8f055_c00016_s006",
-      "chunk_id": "ver_9f98e0c8f055_c00016",
-      "normalized_block_id": "nrm_ver_9f98e0c8f055_b00017",
-      "source_order": 6,
       "start_offset": 3496,
       "end_offset": 3585
     },
     {
-      "chunk_source_id": "ver_9f98e0c8f055_c00016_s007",
-      "chunk_id": "ver_9f98e0c8f055_c00016",
+      "chunk_source_id": "ver_9f98e0c8f055_c00015_s014",
+      "chunk_id": "ver_9f98e0c8f055_c00015",
       "normalized_block_id": "nrm_ver_9f98e0c8f055_b00017",
-      "source_order": 7,
+      "source_order": 14,
       "start_offset": 3587,
       "end_offset": 3673
     }

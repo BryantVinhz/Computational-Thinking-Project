@@ -108,8 +108,8 @@
       "version_id": "ver_d1b9bedd6c92",
       "chunk_idx": 7,
       "chunk_type": "list",
-      "text_content": "- IDE plugins - Leverage standard security plug-ins in the integrated development environment (IDE) which helps in the early detection of potential risks and drastically reduces the time to address any issues later in the development cycle.\n\nPlugins such as TFLint, Checkov, Docker Linter, docker-vulnerability-extension, Security Scan, Contrast Security, etc., help in the security assessment of the IaC.\n\n- Threat modeling - Build the threat modeling landscape earlier in the development cycle to ensure there is enough visibility of the high-risk, high-volume aspects of the code and flexibility to include security throughout to ensure the assets are safely managed.\n\n- Managing secrets - Secrets are confidential data and information such as application tokens required for authentication, passwords, and SSH (Secure Shell) keys.\n\nThe problem is not the secrets, but where you store them.\n\nIf you are using a simple text file or SCMs like Git, then the secrets can be easily exposed.\n\nOpen-source tools such as truffleHog, git-secrets, GitGuardian and similar can be utilized to detect such vulnerable management of secrets.\n\nSee the [Secrets Management Cheat Sheet](Secrets_Management_Cheat_Sheet.md) for more information.\n\n- Version control - Version control is the practice of tracking and managing changes to software code.\n\nEnsure all the changes to the IaC are tracked with the right set of information that helps in any revert operation.\n\nThe important part is that you’re checking in those changes alongside the features they support and not separately.\n\nA feature’s infrastructure requirements should be a part of a feature’s branch or merge request.\n\nGit is generally used as the source code version control system.\n\n- Principle of least privilege - define the access management policies based on the principle of least privilege with the following priority items:\n\n- Defining who is and is not authorized to create/update/run/delete the scripts and inventory.\n\n- Limiting the permissions of authorized IaC users to what is necessary to perform their tasks.\n\nThe IaC scripts should ensure that the permissions granted to the various resources it creates are limited to what is required for them to perform their work.\n\n- Static analysis - Analyzes code in isolation, identifying risks, misconfigurations, and compliance faults only relevant to the IaC itself.",
-      "token_count": 435,
+      "text_content": "- IDE plugins - Leverage standard security plug-ins in the integrated development environment (IDE) which helps in the early detection of potential risks and drastically reduces the time to address any issues later in the development cycle.\n\nPlugins such as TFLint, Checkov, Docker Linter, docker-vulnerability-extension, Security Scan, Contrast Security, etc., help in the security assessment of the IaC.\n\n- Threat modeling - Build the threat modeling landscape earlier in the development cycle to ensure there is enough visibility of the high-risk, high-volume aspects of the code and flexibility to include security throughout to ensure the assets are safely managed.\n\n- Managing secrets - Secrets are confidential data and information such as application tokens required for authentication, passwords, and SSH (Secure Shell) keys.\n\nThe problem is not the secrets, but where you store them.\n\nIf you are using a simple text file or SCMs like Git, then the secrets can be easily exposed.\n\nOpen-source tools such as truffleHog, git-secrets, GitGuardian and similar can be utilized to detect such vulnerable management of secrets.\n\nSee the [Secrets Management Cheat Sheet](Secrets_Management_Cheat_Sheet.md) for more information.\n\n- Version control - Version control is the practice of tracking and managing changes to software code.\n\nEnsure all the changes to the IaC are tracked with the right set of information that helps in any revert operation.\n\nThe important part is that you’re checking in those changes alongside the features they support and not separately.\n\nA feature’s infrastructure requirements should be a part of a feature’s branch or merge request.\n\nGit is generally used as the source code version control system.\n\n- Principle of least privilege - define the access management policies based on the principle of least privilege with the following priority items:\n\n- Defining who is and is not authorized to create/update/run/delete the scripts and inventory.\n\n- Limiting the permissions of authorized IaC users to what is necessary to perform their tasks.\n\nThe IaC scripts should ensure that the permissions granted to the various resources it creates are limited to what is required for them to perform their work.\n\n- Static analysis - Analyzes code in isolation, identifying risks, misconfigurations, and compliance faults only relevant to the IaC itself.\n\nTools such as kubescan, Snyk, Coverity etc, can be leveraged for static analysis of IaC.\n\n- Open Source dependency check - Analyzes the open source dependencies such as OS packages, libraries, etc., to identify potential risks.\n\nTools such as BlackDuck, Snyk, WhiteSource Bolt for GitHub, and similar can be leveraged for open source dependency analysis of IaC.\n\n- Container image scan - Image scanning refers to the process of analyzing the contents and the build process of a container image in order to detect security issues, vulnerabilities or potential risks.\n\nOpen-source tools such as Dagda, Clair, Trivy, Anchore, etc., can be leveraged for container image analysis.\n\nCI/CD pipeline and Consolidated reporting - enabling the security checks to be made available in the CI/CD pipeline enables the analysis of each of the code changes, excludes the need for manual intervention, and enables maintaining the history of compliance.\n\nAlong with consolidated reporting, these integrations enhance the speed of development of a secure IaC codebase.",
+      "token_count": 630,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Infrastructure as Code Security Cheatsheet",
@@ -123,8 +123,8 @@
       "version_id": "ver_d1b9bedd6c92",
       "chunk_idx": 8,
       "chunk_type": "list",
-      "text_content": "Tools such as kubescan, Snyk, Coverity etc, can be leveraged for static analysis of IaC.\n\n- Open Source dependency check - Analyzes the open source dependencies such as OS packages, libraries, etc., to identify potential risks.\n\nTools such as BlackDuck, Snyk, WhiteSource Bolt for GitHub, and similar can be leveraged for open source dependency analysis of IaC.\n\n- Container image scan - Image scanning refers to the process of analyzing the contents and the build process of a container image in order to detect security issues, vulnerabilities or potential risks.\n\nOpen-source tools such as Dagda, Clair, Trivy, Anchore, etc., can be leveraged for container image analysis.\n\nCI/CD pipeline and Consolidated reporting - enabling the security checks to be made available in the CI/CD pipeline enables the analysis of each of the code changes, excludes the need for manual intervention, and enables maintaining the history of compliance.\n\nAlong with consolidated reporting, these integrations enhance the speed of development of a secure IaC codebase.\n\nOpen-source tools such as Jenkins, etc., can be leveraged to build the CI/CD pipelines, and DefectDojo and OWASP Glue can help in tying the checks together and visualizing the check results in a single dashboard.\n\n- Artifact signing - Digital signing of artifacts at build time and validation of the signed data before use protects artifacts from tampering between build and runtime, thus ensuring the integrity and provenance of an artifact.\n\nOpen-source tools such as TUF helps in the digital signing of artifacts.",
-      "token_count": 292,
+      "text_content": "Open-source tools such as Jenkins, etc., can be leveraged to build the CI/CD pipelines, and DefectDojo and OWASP Glue can help in tying the checks together and visualizing the check results in a single dashboard.\n\n- Artifact signing - Digital signing of artifacts at build time and validation of the signed data before use protects artifacts from tampering between build and runtime, thus ensuring the integrity and provenance of an artifact.\n\nOpen-source tools such as TUF helps in the digital signing of artifacts.",
+      "token_count": 97,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Infrastructure as Code Security Cheatsheet",
@@ -423,82 +423,82 @@
       "end_offset": 2367
     },
     {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00007_s018",
+      "chunk_id": "ver_d1b9bedd6c92_c00007",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00007",
+      "source_order": 18,
+      "start_offset": 2368,
+      "end_offset": 2456
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00007_s019",
+      "chunk_id": "ver_d1b9bedd6c92_c00007",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00007",
+      "source_order": 19,
+      "start_offset": 2457,
+      "end_offset": 2594
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00007_s020",
+      "chunk_id": "ver_d1b9bedd6c92_c00007",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00007",
+      "source_order": 20,
+      "start_offset": 2595,
+      "end_offset": 2727
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00007_s021",
+      "chunk_id": "ver_d1b9bedd6c92_c00007",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00007",
+      "source_order": 21,
+      "start_offset": 2728,
+      "end_offset": 2930
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00007_s022",
+      "chunk_id": "ver_d1b9bedd6c92_c00007",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00007",
+      "source_order": 22,
+      "start_offset": 2931,
+      "end_offset": 3039
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00007_s023",
+      "chunk_id": "ver_d1b9bedd6c92_c00007",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00007",
+      "source_order": 23,
+      "start_offset": 3040,
+      "end_offset": 3299
+    },
+    {
+      "chunk_source_id": "ver_d1b9bedd6c92_c00007_s024",
+      "chunk_id": "ver_d1b9bedd6c92_c00007",
+      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00007",
+      "source_order": 24,
+      "start_offset": 3300,
+      "end_offset": 3412
+    },
+    {
       "chunk_source_id": "ver_d1b9bedd6c92_c00008_s000",
       "chunk_id": "ver_d1b9bedd6c92_c00008",
       "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00007",
       "source_order": 0,
-      "start_offset": 2368,
-      "end_offset": 2456
+      "start_offset": 3413,
+      "end_offset": 3625
     },
     {
       "chunk_source_id": "ver_d1b9bedd6c92_c00008_s001",
       "chunk_id": "ver_d1b9bedd6c92_c00008",
       "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00007",
       "source_order": 1,
-      "start_offset": 2457,
-      "end_offset": 2594
+      "start_offset": 3626,
+      "end_offset": 3854
     },
     {
       "chunk_source_id": "ver_d1b9bedd6c92_c00008_s002",
       "chunk_id": "ver_d1b9bedd6c92_c00008",
       "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00007",
       "source_order": 2,
-      "start_offset": 2595,
-      "end_offset": 2727
-    },
-    {
-      "chunk_source_id": "ver_d1b9bedd6c92_c00008_s003",
-      "chunk_id": "ver_d1b9bedd6c92_c00008",
-      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00007",
-      "source_order": 3,
-      "start_offset": 2728,
-      "end_offset": 2930
-    },
-    {
-      "chunk_source_id": "ver_d1b9bedd6c92_c00008_s004",
-      "chunk_id": "ver_d1b9bedd6c92_c00008",
-      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00007",
-      "source_order": 4,
-      "start_offset": 2931,
-      "end_offset": 3039
-    },
-    {
-      "chunk_source_id": "ver_d1b9bedd6c92_c00008_s005",
-      "chunk_id": "ver_d1b9bedd6c92_c00008",
-      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00007",
-      "source_order": 5,
-      "start_offset": 3040,
-      "end_offset": 3299
-    },
-    {
-      "chunk_source_id": "ver_d1b9bedd6c92_c00008_s006",
-      "chunk_id": "ver_d1b9bedd6c92_c00008",
-      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00007",
-      "source_order": 6,
-      "start_offset": 3300,
-      "end_offset": 3412
-    },
-    {
-      "chunk_source_id": "ver_d1b9bedd6c92_c00008_s007",
-      "chunk_id": "ver_d1b9bedd6c92_c00008",
-      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00007",
-      "source_order": 7,
-      "start_offset": 3413,
-      "end_offset": 3625
-    },
-    {
-      "chunk_source_id": "ver_d1b9bedd6c92_c00008_s008",
-      "chunk_id": "ver_d1b9bedd6c92_c00008",
-      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00007",
-      "source_order": 8,
-      "start_offset": 3626,
-      "end_offset": 3854
-    },
-    {
-      "chunk_source_id": "ver_d1b9bedd6c92_c00008_s009",
-      "chunk_id": "ver_d1b9bedd6c92_c00008",
-      "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00007",
-      "source_order": 9,
       "start_offset": 3855,
       "end_offset": 3927
     },

@@ -316,8 +316,8 @@
       "version_id": "ver_d6ebc4e65422",
       "chunk_idx": 22,
       "chunk_type": "list",
-      "text_content": "* [CWE-22 Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')](https://cwe.mitre.org/data/definitions/22.html)\n\n* [CWE-23 Relative Path Traversal](https://cwe.mitre.org/data/definitions/23.html)\n\n* [CWE-36 Absolute Path Traversal](https://cwe.mitre.org/data/definitions/36.html)\n\n* [CWE-59 Improper Link Resolution Before File Access ('Link Following')](https://cwe.mitre.org/data/definitions/59.html)\n\n* [CWE-61 UNIX Symbolic Link (Symlink) Following](https://cwe.mitre.org/data/definitions/61.html)\n\n* [CWE-65 Windows Hard Link](https://cwe.mitre.org/data/definitions/65.html)\n\n* [CWE-200 Exposure of Sensitive Information to an Unauthorized Actor](https://cwe.mitre.org/data/definitions/200.html)\n\n* [CWE-201 Exposure of Sensitive Information Through Sent Data](https://cwe.mitre.org/data/definitions/201.html)\n\n* [CWE-219 Storage of File with Sensitive Data Under Web Root](https://cwe.mitre.org/data/definitions/219.html)\n\n* [CWE-276 Incorrect Default Permissions](https://cwe.mitre.org/data/definitions/276.html)\n\n* [CWE-281 Improper Preservation of Permissions](https://cwe.mitre.org/data/definitions/281.html)\n\n* [CWE-282 Improper Ownership Management](https://cwe.mitre.org/data/definitions/282.html)\n\n* [CWE-283 Unverified Ownership](https://cwe.mitre.org/data/definitions/283.html)\n\n* [CWE-284 Improper Access Control](https://cwe.mitre.org/data/definitions/284.html)",
-      "token_count": 432,
+      "text_content": "* [CWE-22 Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')](https://cwe.mitre.org/data/definitions/22.html)\n\n* [CWE-23 Relative Path Traversal](https://cwe.mitre.org/data/definitions/23.html)\n\n* [CWE-36 Absolute Path Traversal](https://cwe.mitre.org/data/definitions/36.html)\n\n* [CWE-59 Improper Link Resolution Before File Access ('Link Following')](https://cwe.mitre.org/data/definitions/59.html)\n\n* [CWE-61 UNIX Symbolic Link (Symlink) Following](https://cwe.mitre.org/data/definitions/61.html)\n\n* [CWE-65 Windows Hard Link](https://cwe.mitre.org/data/definitions/65.html)\n\n* [CWE-200 Exposure of Sensitive Information to an Unauthorized Actor](https://cwe.mitre.org/data/definitions/200.html)\n\n* [CWE-201 Exposure of Sensitive Information Through Sent Data](https://cwe.mitre.org/data/definitions/201.html)\n\n* [CWE-219 Storage of File with Sensitive Data Under Web Root](https://cwe.mitre.org/data/definitions/219.html)\n\n* [CWE-276 Incorrect Default Permissions](https://cwe.mitre.org/data/definitions/276.html)\n\n* [CWE-281 Improper Preservation of Permissions](https://cwe.mitre.org/data/definitions/281.html)\n\n* [CWE-282 Improper Ownership Management](https://cwe.mitre.org/data/definitions/282.html)\n\n* [CWE-283 Unverified Ownership](https://cwe.mitre.org/data/definitions/283.html)\n\n* [CWE-284 Improper Access Control](https://cwe.mitre.org/data/definitions/284.html)\n\n* [CWE-285 Improper Authorization](https://cwe.mitre.org/data/definitions/285.html)\n\n* [CWE-352 Cross-Site Request Forgery (CSRF)](https://cwe.mitre.org/data/definitions/352.html)\n\n* [CWE-359 Exposure of Private Personal Information to an Unauthorized Actor](https://cwe.mitre.org/data/definitions/359.html)\n\n* [CWE-377 Insecure Temporary File](https://cwe.mitre.org/data/definitions/377.html)\n\n* [CWE-379 Creation of Temporary File in Directory with Insecure Permissions](https://cwe.mitre.org/data/definitions/379.html)\n\n* [CWE-402 Transmission of Private Resources into a New Sphere ('Resource Leak')](https://cwe.mitre.org/data/definitions/402.html)",
+      "token_count": 627,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "A01:2025 Broken Access Control",
@@ -330,22 +330,8 @@
       "version_id": "ver_d6ebc4e65422",
       "chunk_idx": 23,
       "chunk_type": "list",
-      "text_content": "* [CWE-285 Improper Authorization](https://cwe.mitre.org/data/definitions/285.html)\n\n* [CWE-352 Cross-Site Request Forgery (CSRF)](https://cwe.mitre.org/data/definitions/352.html)\n\n* [CWE-359 Exposure of Private Personal Information to an Unauthorized Actor](https://cwe.mitre.org/data/definitions/359.html)\n\n* [CWE-377 Insecure Temporary File](https://cwe.mitre.org/data/definitions/377.html)\n\n* [CWE-379 Creation of Temporary File in Directory with Insecure Permissions](https://cwe.mitre.org/data/definitions/379.html)\n\n* [CWE-402 Transmission of Private Resources into a New Sphere ('Resource Leak')](https://cwe.mitre.org/data/definitions/402.html)\n\n* [CWE-424 Improper Protection of Alternate Path](https://cwe.mitre.org/data/definitions/424.html)\n\n* [CWE-425 Direct Request ('Forced Browsing')](https://cwe.mitre.org/data/definitions/425.html)\n\n* [CWE-441 Unintended Proxy or Intermediary ('Confused Deputy')](https://cwe.mitre.org/data/definitions/441.html)\n\n* [CWE-497 Exposure of Sensitive System Information to an Unauthorized Control Sphere](https://cwe.mitre.org/data/definitions/497.html)\n\n* [CWE-538 Insertion of Sensitive Information into Externally-Accessible File or Directory](https://cwe.mitre.org/data/definitions/538.html)\n\n* [CWE-540 Inclusion of Sensitive Information in Source Code](https://cwe.mitre.org/data/definitions/540.html)\n\n* [CWE-548 Exposure of Information Through Directory Listing](https://cwe.mitre.org/data/definitions/548.html)",
-      "token_count": 427,
-      "chunk_strategy": "structure_aware",
-      "heading_path": [
-        "A01:2025 Broken Access Control",
-        "List of Mapped CWEs"
-      ]
-    },
-    {
-      "chunk_id": "ver_d6ebc4e65422_c00024",
-      "document_id": "doc_owasp_top10_a01_broken_access_control",
-      "version_id": "ver_d6ebc4e65422",
-      "chunk_idx": 24,
-      "chunk_type": "list",
-      "text_content": "* [CWE-552 Files or Directories Accessible to External Parties](https://cwe.mitre.org/data/definitions/552.html)\n\n* [CWE-566 Authorization Bypass Through User-Controlled SQL Primary Key](https://cwe.mitre.org/data/definitions/566.html)\n\n* [CWE-601 URL Redirection to Untrusted Site ('Open Redirect')](https://cwe.mitre.org/data/definitions/601.html)\n\n* [CWE-615 Inclusion of Sensitive Information in Source Code Comments](https://cwe.mitre.org/data/definitions/615.html)\n\n* [CWE-639 Authorization Bypass Through User-Controlled Key](https://cwe.mitre.org/data/definitions/639.html)\n\n* [CWE-668 Exposure of Resource to Wrong Sphere](https://cwe.mitre.org/data/definitions/668.html)\n\n* [CWE-732 Incorrect Permission Assignment for Critical Resource](https://cwe.mitre.org/data/definitions/732.html)\n\n* [CWE-749 Exposed Dangerous Method or Function](https://cwe.mitre.org/data/definitions/749.html)\n\n* [CWE-862 Missing Authorization](https://cwe.mitre.org/data/definitions/862.html)\n\n* [CWE-863 Incorrect Authorization](https://cwe.mitre.org/data/definitions/863.html)\n\n* [CWE-918 Server-Side Request Forgery (SSRF)](https://cwe.mitre.org/data/definitions/918.html)\n\n* [CWE-922 Insecure Storage of Sensitive Information](https://cwe.mitre.org/data/definitions/922.html)\n\n* [CWE-1275 Sensitive Cookie with Improper SameSite Attribute](https://cwe.mitre.org/data/definitions/1275.html)",
-      "token_count": 407,
+      "text_content": "* [CWE-424 Improper Protection of Alternate Path](https://cwe.mitre.org/data/definitions/424.html)\n\n* [CWE-425 Direct Request ('Forced Browsing')](https://cwe.mitre.org/data/definitions/425.html)\n\n* [CWE-441 Unintended Proxy or Intermediary ('Confused Deputy')](https://cwe.mitre.org/data/definitions/441.html)\n\n* [CWE-497 Exposure of Sensitive System Information to an Unauthorized Control Sphere](https://cwe.mitre.org/data/definitions/497.html)\n\n* [CWE-538 Insertion of Sensitive Information into Externally-Accessible File or Directory](https://cwe.mitre.org/data/definitions/538.html)\n\n* [CWE-540 Inclusion of Sensitive Information in Source Code](https://cwe.mitre.org/data/definitions/540.html)\n\n* [CWE-548 Exposure of Information Through Directory Listing](https://cwe.mitre.org/data/definitions/548.html)\n\n* [CWE-552 Files or Directories Accessible to External Parties](https://cwe.mitre.org/data/definitions/552.html)\n\n* [CWE-566 Authorization Bypass Through User-Controlled SQL Primary Key](https://cwe.mitre.org/data/definitions/566.html)\n\n* [CWE-601 URL Redirection to Untrusted Site ('Open Redirect')](https://cwe.mitre.org/data/definitions/601.html)\n\n* [CWE-615 Inclusion of Sensitive Information in Source Code Comments](https://cwe.mitre.org/data/definitions/615.html)\n\n* [CWE-639 Authorization Bypass Through User-Controlled Key](https://cwe.mitre.org/data/definitions/639.html)\n\n* [CWE-668 Exposure of Resource to Wrong Sphere](https://cwe.mitre.org/data/definitions/668.html)\n\n* [CWE-732 Incorrect Permission Assignment for Critical Resource](https://cwe.mitre.org/data/definitions/732.html)\n\n* [CWE-749 Exposed Dangerous Method or Function](https://cwe.mitre.org/data/definitions/749.html)\n\n* [CWE-862 Missing Authorization](https://cwe.mitre.org/data/definitions/862.html)\n\n* [CWE-863 Incorrect Authorization](https://cwe.mitre.org/data/definitions/863.html)\n\n* [CWE-918 Server-Side Request Forgery (SSRF)](https://cwe.mitre.org/data/definitions/918.html)\n\n* [CWE-922 Insecure Storage of Sensitive Information](https://cwe.mitre.org/data/definitions/922.html)\n\n* [CWE-1275 Sensitive Cookie with Improper SameSite Attribute](https://cwe.mitre.org/data/definitions/1275.html)",
+      "token_count": 639,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "A01:2025 Broken Access Control",
@@ -883,210 +869,210 @@
       "end_offset": 1405
     },
     {
+      "chunk_source_id": "ver_d6ebc4e65422_c00022_s014",
+      "chunk_id": "ver_d6ebc4e65422_c00022",
+      "normalized_block_id": "nrm_ver_d6ebc4e65422_b00026",
+      "source_order": 14,
+      "start_offset": 1407,
+      "end_offset": 1490
+    },
+    {
+      "chunk_source_id": "ver_d6ebc4e65422_c00022_s015",
+      "chunk_id": "ver_d6ebc4e65422_c00022",
+      "normalized_block_id": "nrm_ver_d6ebc4e65422_b00026",
+      "source_order": 15,
+      "start_offset": 1492,
+      "end_offset": 1586
+    },
+    {
+      "chunk_source_id": "ver_d6ebc4e65422_c00022_s016",
+      "chunk_id": "ver_d6ebc4e65422_c00022",
+      "normalized_block_id": "nrm_ver_d6ebc4e65422_b00026",
+      "source_order": 16,
+      "start_offset": 1588,
+      "end_offset": 1714
+    },
+    {
+      "chunk_source_id": "ver_d6ebc4e65422_c00022_s017",
+      "chunk_id": "ver_d6ebc4e65422_c00022",
+      "normalized_block_id": "nrm_ver_d6ebc4e65422_b00026",
+      "source_order": 17,
+      "start_offset": 1716,
+      "end_offset": 1800
+    },
+    {
+      "chunk_source_id": "ver_d6ebc4e65422_c00022_s018",
+      "chunk_id": "ver_d6ebc4e65422_c00022",
+      "normalized_block_id": "nrm_ver_d6ebc4e65422_b00026",
+      "source_order": 18,
+      "start_offset": 1802,
+      "end_offset": 1928
+    },
+    {
+      "chunk_source_id": "ver_d6ebc4e65422_c00022_s019",
+      "chunk_id": "ver_d6ebc4e65422_c00022",
+      "normalized_block_id": "nrm_ver_d6ebc4e65422_b00026",
+      "source_order": 19,
+      "start_offset": 1930,
+      "end_offset": 2060
+    },
+    {
       "chunk_source_id": "ver_d6ebc4e65422_c00023_s000",
       "chunk_id": "ver_d6ebc4e65422_c00023",
       "normalized_block_id": "nrm_ver_d6ebc4e65422_b00026",
       "source_order": 0,
-      "start_offset": 1407,
-      "end_offset": 1490
+      "start_offset": 2062,
+      "end_offset": 2160
     },
     {
       "chunk_source_id": "ver_d6ebc4e65422_c00023_s001",
       "chunk_id": "ver_d6ebc4e65422_c00023",
       "normalized_block_id": "nrm_ver_d6ebc4e65422_b00026",
       "source_order": 1,
-      "start_offset": 1492,
-      "end_offset": 1586
+      "start_offset": 2162,
+      "end_offset": 2257
     },
     {
       "chunk_source_id": "ver_d6ebc4e65422_c00023_s002",
       "chunk_id": "ver_d6ebc4e65422_c00023",
       "normalized_block_id": "nrm_ver_d6ebc4e65422_b00026",
       "source_order": 2,
-      "start_offset": 1588,
-      "end_offset": 1714
+      "start_offset": 2259,
+      "end_offset": 2372
     },
     {
       "chunk_source_id": "ver_d6ebc4e65422_c00023_s003",
       "chunk_id": "ver_d6ebc4e65422_c00023",
       "normalized_block_id": "nrm_ver_d6ebc4e65422_b00026",
       "source_order": 3,
-      "start_offset": 1716,
-      "end_offset": 1800
+      "start_offset": 2374,
+      "end_offset": 2509
     },
     {
       "chunk_source_id": "ver_d6ebc4e65422_c00023_s004",
       "chunk_id": "ver_d6ebc4e65422_c00023",
       "normalized_block_id": "nrm_ver_d6ebc4e65422_b00026",
       "source_order": 4,
-      "start_offset": 1802,
-      "end_offset": 1928
+      "start_offset": 2511,
+      "end_offset": 2651
     },
     {
       "chunk_source_id": "ver_d6ebc4e65422_c00023_s005",
       "chunk_id": "ver_d6ebc4e65422_c00023",
       "normalized_block_id": "nrm_ver_d6ebc4e65422_b00026",
       "source_order": 5,
-      "start_offset": 1930,
-      "end_offset": 2060
+      "start_offset": 2653,
+      "end_offset": 2763
     },
     {
       "chunk_source_id": "ver_d6ebc4e65422_c00023_s006",
       "chunk_id": "ver_d6ebc4e65422_c00023",
       "normalized_block_id": "nrm_ver_d6ebc4e65422_b00026",
       "source_order": 6,
-      "start_offset": 2062,
-      "end_offset": 2160
+      "start_offset": 2765,
+      "end_offset": 2875
     },
     {
       "chunk_source_id": "ver_d6ebc4e65422_c00023_s007",
       "chunk_id": "ver_d6ebc4e65422_c00023",
       "normalized_block_id": "nrm_ver_d6ebc4e65422_b00026",
       "source_order": 7,
-      "start_offset": 2162,
-      "end_offset": 2257
+      "start_offset": 2877,
+      "end_offset": 2989
     },
     {
       "chunk_source_id": "ver_d6ebc4e65422_c00023_s008",
       "chunk_id": "ver_d6ebc4e65422_c00023",
       "normalized_block_id": "nrm_ver_d6ebc4e65422_b00026",
       "source_order": 8,
-      "start_offset": 2259,
-      "end_offset": 2372
+      "start_offset": 2991,
+      "end_offset": 3112
     },
     {
       "chunk_source_id": "ver_d6ebc4e65422_c00023_s009",
       "chunk_id": "ver_d6ebc4e65422_c00023",
       "normalized_block_id": "nrm_ver_d6ebc4e65422_b00026",
       "source_order": 9,
-      "start_offset": 2374,
-      "end_offset": 2509
+      "start_offset": 3114,
+      "end_offset": 3226
     },
     {
       "chunk_source_id": "ver_d6ebc4e65422_c00023_s010",
       "chunk_id": "ver_d6ebc4e65422_c00023",
       "normalized_block_id": "nrm_ver_d6ebc4e65422_b00026",
       "source_order": 10,
-      "start_offset": 2511,
-      "end_offset": 2651
+      "start_offset": 3228,
+      "end_offset": 3347
     },
     {
       "chunk_source_id": "ver_d6ebc4e65422_c00023_s011",
       "chunk_id": "ver_d6ebc4e65422_c00023",
       "normalized_block_id": "nrm_ver_d6ebc4e65422_b00026",
       "source_order": 11,
-      "start_offset": 2653,
-      "end_offset": 2763
+      "start_offset": 3349,
+      "end_offset": 3458
     },
     {
       "chunk_source_id": "ver_d6ebc4e65422_c00023_s012",
       "chunk_id": "ver_d6ebc4e65422_c00023",
       "normalized_block_id": "nrm_ver_d6ebc4e65422_b00026",
       "source_order": 12,
-      "start_offset": 2765,
-      "end_offset": 2875
-    },
-    {
-      "chunk_source_id": "ver_d6ebc4e65422_c00024_s000",
-      "chunk_id": "ver_d6ebc4e65422_c00024",
-      "normalized_block_id": "nrm_ver_d6ebc4e65422_b00026",
-      "source_order": 0,
-      "start_offset": 2877,
-      "end_offset": 2989
-    },
-    {
-      "chunk_source_id": "ver_d6ebc4e65422_c00024_s001",
-      "chunk_id": "ver_d6ebc4e65422_c00024",
-      "normalized_block_id": "nrm_ver_d6ebc4e65422_b00026",
-      "source_order": 1,
-      "start_offset": 2991,
-      "end_offset": 3112
-    },
-    {
-      "chunk_source_id": "ver_d6ebc4e65422_c00024_s002",
-      "chunk_id": "ver_d6ebc4e65422_c00024",
-      "normalized_block_id": "nrm_ver_d6ebc4e65422_b00026",
-      "source_order": 2,
-      "start_offset": 3114,
-      "end_offset": 3226
-    },
-    {
-      "chunk_source_id": "ver_d6ebc4e65422_c00024_s003",
-      "chunk_id": "ver_d6ebc4e65422_c00024",
-      "normalized_block_id": "nrm_ver_d6ebc4e65422_b00026",
-      "source_order": 3,
-      "start_offset": 3228,
-      "end_offset": 3347
-    },
-    {
-      "chunk_source_id": "ver_d6ebc4e65422_c00024_s004",
-      "chunk_id": "ver_d6ebc4e65422_c00024",
-      "normalized_block_id": "nrm_ver_d6ebc4e65422_b00026",
-      "source_order": 4,
-      "start_offset": 3349,
-      "end_offset": 3458
-    },
-    {
-      "chunk_source_id": "ver_d6ebc4e65422_c00024_s005",
-      "chunk_id": "ver_d6ebc4e65422_c00024",
-      "normalized_block_id": "nrm_ver_d6ebc4e65422_b00026",
-      "source_order": 5,
       "start_offset": 3460,
       "end_offset": 3557
     },
     {
-      "chunk_source_id": "ver_d6ebc4e65422_c00024_s006",
-      "chunk_id": "ver_d6ebc4e65422_c00024",
+      "chunk_source_id": "ver_d6ebc4e65422_c00023_s013",
+      "chunk_id": "ver_d6ebc4e65422_c00023",
       "normalized_block_id": "nrm_ver_d6ebc4e65422_b00026",
-      "source_order": 6,
+      "source_order": 13,
       "start_offset": 3559,
       "end_offset": 3673
     },
     {
-      "chunk_source_id": "ver_d6ebc4e65422_c00024_s007",
-      "chunk_id": "ver_d6ebc4e65422_c00024",
+      "chunk_source_id": "ver_d6ebc4e65422_c00023_s014",
+      "chunk_id": "ver_d6ebc4e65422_c00023",
       "normalized_block_id": "nrm_ver_d6ebc4e65422_b00026",
-      "source_order": 7,
+      "source_order": 14,
       "start_offset": 3675,
       "end_offset": 3772
     },
     {
-      "chunk_source_id": "ver_d6ebc4e65422_c00024_s008",
-      "chunk_id": "ver_d6ebc4e65422_c00024",
+      "chunk_source_id": "ver_d6ebc4e65422_c00023_s015",
+      "chunk_id": "ver_d6ebc4e65422_c00023",
       "normalized_block_id": "nrm_ver_d6ebc4e65422_b00026",
-      "source_order": 8,
+      "source_order": 15,
       "start_offset": 3774,
       "end_offset": 3856
     },
     {
-      "chunk_source_id": "ver_d6ebc4e65422_c00024_s009",
-      "chunk_id": "ver_d6ebc4e65422_c00024",
+      "chunk_source_id": "ver_d6ebc4e65422_c00023_s016",
+      "chunk_id": "ver_d6ebc4e65422_c00023",
       "normalized_block_id": "nrm_ver_d6ebc4e65422_b00026",
-      "source_order": 9,
+      "source_order": 16,
       "start_offset": 3858,
       "end_offset": 3942
     },
     {
-      "chunk_source_id": "ver_d6ebc4e65422_c00024_s010",
-      "chunk_id": "ver_d6ebc4e65422_c00024",
+      "chunk_source_id": "ver_d6ebc4e65422_c00023_s017",
+      "chunk_id": "ver_d6ebc4e65422_c00023",
       "normalized_block_id": "nrm_ver_d6ebc4e65422_b00026",
-      "source_order": 10,
+      "source_order": 17,
       "start_offset": 3944,
       "end_offset": 4039
     },
     {
-      "chunk_source_id": "ver_d6ebc4e65422_c00024_s011",
-      "chunk_id": "ver_d6ebc4e65422_c00024",
+      "chunk_source_id": "ver_d6ebc4e65422_c00023_s018",
+      "chunk_id": "ver_d6ebc4e65422_c00023",
       "normalized_block_id": "nrm_ver_d6ebc4e65422_b00026",
-      "source_order": 11,
+      "source_order": 18,
       "start_offset": 4041,
       "end_offset": 4143
     },
     {
-      "chunk_source_id": "ver_d6ebc4e65422_c00024_s012",
-      "chunk_id": "ver_d6ebc4e65422_c00024",
+      "chunk_source_id": "ver_d6ebc4e65422_c00023_s019",
+      "chunk_id": "ver_d6ebc4e65422_c00023",
       "normalized_block_id": "nrm_ver_d6ebc4e65422_b00026",
-      "source_order": 12,
+      "source_order": 19,
       "start_offset": 4145,
       "end_offset": 4257
     }

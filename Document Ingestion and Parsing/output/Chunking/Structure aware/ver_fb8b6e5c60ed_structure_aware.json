@@ -36,8 +36,8 @@
       "version_id": "ver_fb8b6e5c60ed",
       "chunk_idx": 2,
       "chunk_type": "paragraph",
-      "text_content": "Authorization may be defined as \"the process of verifying that a requested action or service is approved for a specific entity\" ([NIST](https://csrc.nist.gov/glossary/term/authorization)).\n\nAuthorization is distinct from authentication which is the process of verifying an entity's identity.\n\nWhen designing and developing a software solution, it is important to keep these distinctions in mind.\n\nA user who has been authenticated (perhaps by providing a username and password) is often not authorized to access every resource and perform every action that is technically possible through a system.\n\nFor example, a web app may have both regular users and admins, with the admins being able to perform actions the average user is not privileged to perform, even though they have been authenticated.\n\nAdditionally, authentication is not always required for accessing resources; an unauthenticated user may be authorized to access certain public resources, such as an image or login page, or even an entire web app.\n\nThe objective of this cheat sheet is to assist developers in implementing authorization logic that is robust, appropriate to the app's business context, maintainable, and scalable.\n\nThe guidance provided in this cheat sheet should be applicable to all phases of the development lifecycle and flexible enough to meet the needs of diverse development environments.\n\nFlaws related to authorization logic are a notable concern for web apps.\n\nBroken Access Control was ranked as the most concerning web security vulnerability in [OWASP's 2021 Top 10](https://owasp.org/Top10/A01_2021-Broken_Access_Control/) and asserted to have a \"High\" likelihood of exploit by [MITRE's CWE program](https://cwe.mitre.org/data/definitions/285.html).\n\nFurthermore, according to [Veracode's State of Software Vol.\n\n10](https://www.veracode.com/sites/default/files/pdf/resources/sossreports/state-of-software-security-volume-10-veracode-report.pdf), Access Control was among the more common of OWASP's Top 10 risks to be involved in exploits and security incidents despite being among the least prevalent of those examined.\n\nThe potential impact resulting from exploitation of authorization flaws is highly variable, both in form and severity.",
-      "token_count": 450,
+      "text_content": "Authorization may be defined as \"the process of verifying that a requested action or service is approved for a specific entity\" ([NIST](https://csrc.nist.gov/glossary/term/authorization)).\n\nAuthorization is distinct from authentication which is the process of verifying an entity's identity.\n\nWhen designing and developing a software solution, it is important to keep these distinctions in mind.\n\nA user who has been authenticated (perhaps by providing a username and password) is often not authorized to access every resource and perform every action that is technically possible through a system.\n\nFor example, a web app may have both regular users and admins, with the admins being able to perform actions the average user is not privileged to perform, even though they have been authenticated.\n\nAdditionally, authentication is not always required for accessing resources; an unauthenticated user may be authorized to access certain public resources, such as an image or login page, or even an entire web app.\n\nThe objective of this cheat sheet is to assist developers in implementing authorization logic that is robust, appropriate to the app's business context, maintainable, and scalable.\n\nThe guidance provided in this cheat sheet should be applicable to all phases of the development lifecycle and flexible enough to meet the needs of diverse development environments.\n\nFlaws related to authorization logic are a notable concern for web apps.\n\nBroken Access Control was ranked as the most concerning web security vulnerability in [OWASP's 2021 Top 10](https://owasp.org/Top10/A01_2021-Broken_Access_Control/) and asserted to have a \"High\" likelihood of exploit by [MITRE's CWE program](https://cwe.mitre.org/data/definitions/285.html).\n\nFurthermore, according to [Veracode's State of Software Vol.\n\n10](https://www.veracode.com/sites/default/files/pdf/resources/sossreports/state-of-software-security-volume-10-veracode-report.pdf), Access Control was among the more common of OWASP's Top 10 risks to be involved in exploits and security incidents despite being among the least prevalent of those examined.\n\nThe potential impact resulting from exploitation of authorization flaws is highly variable, both in form and severity.\n\nAttackers may be able to read, create, modify, or delete resources that were meant to be protected (thus jeopardizing their confidentiality, integrity, and/or availability); however, the actual impact of such actions is necessarily linked to the criticality and sensitivity of the compromised resources.\n\nThus, the business cost of a successfully exploited authorization flaw can range from very low to extremely high.\n\nBoth entirely unauthenticated outsiders and authenticated (but not necessarily authorized) users can take advantage of authorization weaknesses.\n\nAlthough honest mistakes or carelessness on the part of non-malicious entities may enable authorization bypasses, malicious intent is typically required for access control threats to be fully realized.\n\nHorizontal privilege escalation (i.e.\n\nbeing able to access another user's resources) is an especially common weakness that an authenticated user may be able to take advantage of.",
+      "token_count": 612,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Authorization Cheat Sheet",
@@ -50,8 +50,8 @@
       "version_id": "ver_fb8b6e5c60ed",
       "chunk_idx": 3,
       "chunk_type": "paragraph",
-      "text_content": "Attackers may be able to read, create, modify, or delete resources that were meant to be protected (thus jeopardizing their confidentiality, integrity, and/or availability); however, the actual impact of such actions is necessarily linked to the criticality and sensitivity of the compromised resources.\n\nThus, the business cost of a successfully exploited authorization flaw can range from very low to extremely high.\n\nBoth entirely unauthenticated outsiders and authenticated (but not necessarily authorized) users can take advantage of authorization weaknesses.\n\nAlthough honest mistakes or carelessness on the part of non-malicious entities may enable authorization bypasses, malicious intent is typically required for access control threats to be fully realized.\n\nHorizontal privilege escalation (i.e.\n\nbeing able to access another user's resources) is an especially common weakness that an authenticated user may be able to take advantage of.\n\nFaults related to authorization control can allow malicious insiders and outsiders alike to view, modify, or delete sensitive resources of all forms (database records, static files, personally identifiable information (PII), etc.) or perform actions, such as creating a new account or initiating a costly order, that they should not be privileged to do.\n\nFurthermore, if logging related to access control is not properly set-up, such authorization violations may go undetected or at least remain unattributable to a particular individual or group.",
-      "token_count": 261,
+      "text_content": "Faults related to authorization control can allow malicious insiders and outsiders alike to view, modify, or delete sensitive resources of all forms (database records, static files, personally identifiable information (PII), etc.) or perform actions, such as creating a new account or initiating a costly order, that they should not be privileged to do.\n\nFurthermore, if logging related to access control is not properly set-up, such authorization violations may go undetected or at least remain unattributable to a particular individual or group.",
+      "token_count": 99,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Authorization Cheat Sheet",
@@ -93,8 +93,8 @@
       "version_id": "ver_fb8b6e5c60ed",
       "chunk_idx": 6,
       "chunk_type": "mixed",
-      "text_content": "As a security concept, Least Privileges refers to the principle of assigning users only the minimum privileges necessary to complete their job.\n\nAlthough perhaps most commonly applied in system administration, this principle has relevance to the software developer as well.\n\nLeast Privileges must be applied both horizontally and vertically.\n\nFor example, even though both an accountant and sales representative may occupy the same level in an organization's hierarchy, both require access to different resources to perform their jobs.\n\nThe accountant should likely not be granted access to a customer database and the sales representative should not be able to access payroll data.\n\nSimilarly, the head of the sales department is likely to need more privileged access than their subordinates.\n\nFailure to enforce least privileges in an application can jeopardize the confidentiality of sensitive resources.\n\nMitigation strategies are applied primarily during the Architecture and Design phase (see [CWE-272](https://cwe.mitre.org/data/definitions/272.html)); however, the principle must be addressed throughout the SDLC.\n\nConsider the following points and best practices:\n\n- During the design phase, ensure trust boundaries are defined.\n\nEnumerate the types of users that will be accessing the system, the resources exposed and the operations (such as read, write, update, etc) that might be performed on those resources.\n\nFor every combination of user type and resource, determine what operations, if any, the user (based on role and/or other attributes) must be able to perform on that resource.\n\nFor an ABAC system ensure all categories of attributes are considered.\n\nFor example, a Sales Representative may need to access a customer database from the internal network during working hours, but not from home at midnight.\n\n- Create tests that validate that the permissions mapped out in the design phase are being correctly enforced.\n\n- After the app has been deployed, periodically review permissions in the system for \"privilege creep\"; that is, ensure the privileges of users in the current environment do not exceed those defined during the design phase (plus or minus any formally approved changes).\n\n- Remember, it is easier to grant users additional permissions rather than to take away some they previously enjoyed.",
-      "token_count": 423,
+      "text_content": "As a security concept, Least Privileges refers to the principle of assigning users only the minimum privileges necessary to complete their job.\n\nAlthough perhaps most commonly applied in system administration, this principle has relevance to the software developer as well.\n\nLeast Privileges must be applied both horizontally and vertically.\n\nFor example, even though both an accountant and sales representative may occupy the same level in an organization's hierarchy, both require access to different resources to perform their jobs.\n\nThe accountant should likely not be granted access to a customer database and the sales representative should not be able to access payroll data.\n\nSimilarly, the head of the sales department is likely to need more privileged access than their subordinates.\n\nFailure to enforce least privileges in an application can jeopardize the confidentiality of sensitive resources.\n\nMitigation strategies are applied primarily during the Architecture and Design phase (see [CWE-272](https://cwe.mitre.org/data/definitions/272.html)); however, the principle must be addressed throughout the SDLC.\n\nConsider the following points and best practices:\n\n- During the design phase, ensure trust boundaries are defined.\n\nEnumerate the types of users that will be accessing the system, the resources exposed and the operations (such as read, write, update, etc) that might be performed on those resources.\n\nFor every combination of user type and resource, determine what operations, if any, the user (based on role and/or other attributes) must be able to perform on that resource.\n\nFor an ABAC system ensure all categories of attributes are considered.\n\nFor example, a Sales Representative may need to access a customer database from the internal network during working hours, but not from home at midnight.\n\n- Create tests that validate that the permissions mapped out in the design phase are being correctly enforced.\n\n- After the app has been deployed, periodically review permissions in the system for \"privilege creep\"; that is, ensure the privileges of users in the current environment do not exceed those defined during the design phase (plus or minus any formally approved changes).\n\n- Remember, it is easier to grant users additional permissions rather than to take away some they previously enjoyed.\n\nCareful planning and implementation of Least Privileges early in the SDLC can help reduce the risk of needing to revoke permissions that are later deemed overly broad.",
+      "token_count": 451,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Authorization Cheat Sheet",
@@ -107,14 +107,14 @@
       "document_id": "doc_owasp_a01_authorization_cheat_sheet",
       "version_id": "ver_fb8b6e5c60ed",
       "chunk_idx": 7,
-      "chunk_type": "list",
-      "text_content": "Careful planning and implementation of Least Privileges early in the SDLC can help reduce the risk of needing to revoke permissions that are later deemed overly broad.",
-      "token_count": 28,
+      "chunk_type": "heading",
+      "text_content": "### Deny by Default",
+      "token_count": 6,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Authorization Cheat Sheet",
         "Recommendations",
-        "Enforce Least Privileges"
+        "Deny by Default"
       ]
     },
     {
@@ -122,9 +122,9 @@
       "document_id": "doc_owasp_a01_authorization_cheat_sheet",
       "version_id": "ver_fb8b6e5c60ed",
       "chunk_idx": 8,
-      "chunk_type": "heading",
-      "text_content": "### Deny by Default",
-      "token_count": 6,
+      "chunk_type": "mixed",
+      "text_content": "Even when no access control rules are explicitly matched, the application cannot remain neutral when an entity is requesting access to a particular resource.\n\nThe application must always make a decision, whether implicitly or explicitly, to either deny or permit the requested access.\n\nLogic errors and other mistakes relating to access control may happen, especially when access requirements are complex; consequently, one should not rely entirely on explicitly defined rules for matching all possible requests.\n\nFor security purposes an application should be configured to deny access by default.\n\nConsider the following points and best practices:\n\n- Adopt a \"deny-by-default\" mentality both during initial development and whenever new functionality or resources are exposed by the app.\n\nOne should be able to explicitly justify why a specific permission was granted to a particular user or group rather than assuming access to be the default position.\n\n- Although some frameworks or libraries may themselves adopt a deny-by-default strategy, explicit configuration should be preferred over relying on framework or library defaults.\n\nThe logic and defaults of third-party code may evolve over time, without the developer's full knowledge or understanding of the change's implications for a particular project.",
+      "token_count": 226,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Authorization Cheat Sheet",
@@ -137,14 +137,14 @@
       "document_id": "doc_owasp_a01_authorization_cheat_sheet",
       "version_id": "ver_fb8b6e5c60ed",
       "chunk_idx": 9,
-      "chunk_type": "mixed",
-      "text_content": "Even when no access control rules are explicitly matched, the application cannot remain neutral when an entity is requesting access to a particular resource.\n\nThe application must always make a decision, whether implicitly or explicitly, to either deny or permit the requested access.\n\nLogic errors and other mistakes relating to access control may happen, especially when access requirements are complex; consequently, one should not rely entirely on explicitly defined rules for matching all possible requests.\n\nFor security purposes an application should be configured to deny access by default.\n\nConsider the following points and best practices:\n\n- Adopt a \"deny-by-default\" mentality both during initial development and whenever new functionality or resources are exposed by the app.\n\nOne should be able to explicitly justify why a specific permission was granted to a particular user or group rather than assuming access to be the default position.\n\n- Although some frameworks or libraries may themselves adopt a deny-by-default strategy, explicit configuration should be preferred over relying on framework or library defaults.\n\nThe logic and defaults of third-party code may evolve over time, without the developer's full knowledge or understanding of the change's implications for a particular project.",
-      "token_count": 226,
+      "chunk_type": "heading",
+      "text_content": "### Validate the Permissions on Every Request",
+      "token_count": 9,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Authorization Cheat Sheet",
         "Recommendations",
-        "Deny by Default"
+        "Validate the Permissions on Every Request"
       ]
     },
     {
@@ -152,9 +152,9 @@
       "document_id": "doc_owasp_a01_authorization_cheat_sheet",
       "version_id": "ver_fb8b6e5c60ed",
       "chunk_idx": 10,
-      "chunk_type": "heading",
-      "text_content": "### Validate the Permissions on Every Request",
-      "token_count": 9,
+      "chunk_type": "mixed",
+      "text_content": "Permission should be validated correctly on every request, regardless of whether the request was initiated by an AJAX script, server-side, or any other source.\n\nThe technology used to perform such checks should allow for global, application-wide configuration rather than needing to be applied individually to every method or class.\n\nRemember an attacker only needs to find one way in.\n\nEven if just a single access control check is \"missed\", the confidentiality and/or integrity of a resource can be jeopardized.\n\nValidating permissions correctly on just the majority of requests is insufficient.\n\nSpecific technologies that can help developers in performing such consistent permission checks include the following:\n\n- [Java/Jakarta EE Filters](https://jakarta.ee/specifications/platform/8/apidocs/javax/servlet/Filter.html) including implementations in [Spring Security](https://docs.spring.io/spring-security/site/docs/5.4.0/reference/html5/#servlet-security-filters)\n- [Middleware in the Django Framework](https://docs.djangoproject.com/en/4.0/ref/middleware/)\n- [.NET Core Filters](https://docs.microsoft.com/en-us/aspnet/core/mvc/controllers/filters?view=aspnetcore-3.1#authorization-filters)\n- [Middleware in the Laravel PHP Framework](https://laravel.com/docs/8.x/middleware)",
+      "token_count": 300,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Authorization Cheat Sheet",
@@ -167,14 +167,14 @@
       "document_id": "doc_owasp_a01_authorization_cheat_sheet",
       "version_id": "ver_fb8b6e5c60ed",
       "chunk_idx": 11,
-      "chunk_type": "mixed",
-      "text_content": "Permission should be validated correctly on every request, regardless of whether the request was initiated by an AJAX script, server-side, or any other source.\n\nThe technology used to perform such checks should allow for global, application-wide configuration rather than needing to be applied individually to every method or class.\n\nRemember an attacker only needs to find one way in.\n\nEven if just a single access control check is \"missed\", the confidentiality and/or integrity of a resource can be jeopardized.\n\nValidating permissions correctly on just the majority of requests is insufficient.\n\nSpecific technologies that can help developers in performing such consistent permission checks include the following:\n\n- [Java/Jakarta EE Filters](https://jakarta.ee/specifications/platform/8/apidocs/javax/servlet/Filter.html) including implementations in [Spring Security](https://docs.spring.io/spring-security/site/docs/5.4.0/reference/html5/#servlet-security-filters)\n- [Middleware in the Django Framework](https://docs.djangoproject.com/en/4.0/ref/middleware/)\n- [.NET Core Filters](https://docs.microsoft.com/en-us/aspnet/core/mvc/controllers/filters?view=aspnetcore-3.1#authorization-filters)\n- [Middleware in the Laravel PHP Framework](https://laravel.com/docs/8.x/middleware)",
-      "token_count": 300,
+      "chunk_type": "heading",
+      "text_content": "### Thoroughly Review the Authorization Logic of Chosen Tools and Technologies, Implementing Custom Logic if Necessary",
+      "token_count": 19,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Authorization Cheat Sheet",
         "Recommendations",
-        "Validate the Permissions on Every Request"
+        "Thoroughly Review the Authorization Logic of Chosen Tools and Technologies, Implementing Custom Logic if Necessary"
       ]
     },
     {
@@ -182,9 +182,9 @@
       "document_id": "doc_owasp_a01_authorization_cheat_sheet",
       "version_id": "ver_fb8b6e5c60ed",
       "chunk_idx": 12,
-      "chunk_type": "heading",
-      "text_content": "### Thoroughly Review the Authorization Logic of Chosen Tools and Technologies, Implementing Custom Logic if Necessary",
-      "token_count": 19,
+      "chunk_type": "mixed",
+      "text_content": "Today's developers have access to vast amounts of libraries, platforms, and frameworks that allow them to incorporate robust, complex logic into their apps with minimal effort.\n\nHowever, these frameworks and libraries must not be viewed as a quick panacea for all development problems; developers have a duty to use such frameworks responsibly and wisely.\n\nTwo general concerns relevant to framework/library selection as relevant to proper access control are misconfiguration/lack of configuration on the part of the developer and vulnerabilities within the components themselves (see [A6](https://owasp.org/www-project-top-ten/OWASP_Top_Ten_2017/Top_10-2017_A6-Security_Misconfiguration) and [A9](https://owasp.org/www-project-top-ten/2017/A9_2017-Using_Components_with_Known_Vulnerabilities.html) for general guidance on these topics).\n\nEven in an otherwise securely developed application, vulnerabilities in third-party components can allow an attacker to bypass normal authorization controls.\n\nSuch concerns need not be restricted to unproven or poorly maintained projects, but affect even the most robust and popular libraries and frameworks.\n\nWriting complex, secure software is hard.\n\nEven the most competent developers, working on high-quality libraries and frameworks, will make mistakes.\n\nAssume any third-party component you incorporate into an application *could* be or become subject to an authorization vulnerability.\n\nImportant considerations include:\n\n- Create, maintain, and follow processes for detecting and responding to vulnerable components.\n\n- Incorporate tools such as [Dependency Check](https://owasp.org/www-project-dependency-check/) into the SDLC and consider subscribing to data feeds from vendors, [the NVD](https://nvd.nist.gov/vuln/data-feeds), or other relevant sources.\n\n- Implement defense in depth.\n\nDo not depend on any single framework, library, technology, or control to be the sole thing enforcing proper access control.\n\nMisconfiguration (or complete lack of configuration) is another major area in which the components developers build upon can lead to broken authorization.\n\nThese components are typically intended to be relatively general purpose tools made to appeal to a wide audience.\n\nFor all but the simplest use cases, these frameworks and libraries must be customized or supplemented with additional logic in order to meet the unique requirements of a particular app or environment.\n\nThis consideration is especially important when security requirements, including authorization, are concerned.\n\nNotable configuration considerations for authorization include the following:\n\n- Take time to thoroughly understand any technology you build authorization logic upon.\n\nAnalyze the technology's capabilities with an understanding that *the authorization logic provided by the component may be insufficient for your application's specific security requirements*.\n\nRelying on prebuilt logic may be convenient, but this does not mean it is sufficient.\n\nUnderstand that custom authorization logic may well be necessary to meet an app's security requirements.\n\n- Do not let the capabilities of any library, platform, or framework guide your authorization requirements.\n\nRather, authorization requirements should be decided first and then the third-party components may be analyzed in light of these requirements.\n\n- Do not rely on default configurations.\n\n- Test configuration.\n\nDo not just assume any configuration performed on a third-party component will work exactly as intended in your particular environment.",
+      "token_count": 638,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Authorization Cheat Sheet",
@@ -197,9 +197,9 @@
       "document_id": "doc_owasp_a01_authorization_cheat_sheet",
       "version_id": "ver_fb8b6e5c60ed",
       "chunk_idx": 13,
-      "chunk_type": "mixed",
-      "text_content": "Today's developers have access to vast amounts of libraries, platforms, and frameworks that allow them to incorporate robust, complex logic into their apps with minimal effort.\n\nHowever, these frameworks and libraries must not be viewed as a quick panacea for all development problems; developers have a duty to use such frameworks responsibly and wisely.\n\nTwo general concerns relevant to framework/library selection as relevant to proper access control are misconfiguration/lack of configuration on the part of the developer and vulnerabilities within the components themselves (see [A6](https://owasp.org/www-project-top-ten/OWASP_Top_Ten_2017/Top_10-2017_A6-Security_Misconfiguration) and [A9](https://owasp.org/www-project-top-ten/2017/A9_2017-Using_Components_with_Known_Vulnerabilities.html) for general guidance on these topics).\n\nEven in an otherwise securely developed application, vulnerabilities in third-party components can allow an attacker to bypass normal authorization controls.\n\nSuch concerns need not be restricted to unproven or poorly maintained projects, but affect even the most robust and popular libraries and frameworks.\n\nWriting complex, secure software is hard.\n\nEven the most competent developers, working on high-quality libraries and frameworks, will make mistakes.\n\nAssume any third-party component you incorporate into an application *could* be or become subject to an authorization vulnerability.\n\nImportant considerations include:\n\n- Create, maintain, and follow processes for detecting and responding to vulnerable components.\n\n- Incorporate tools such as [Dependency Check](https://owasp.org/www-project-dependency-check/) into the SDLC and consider subscribing to data feeds from vendors, [the NVD](https://nvd.nist.gov/vuln/data-feeds), or other relevant sources.\n\n- Implement defense in depth.\n\nDo not depend on any single framework, library, technology, or control to be the sole thing enforcing proper access control.\n\nMisconfiguration (or complete lack of configuration) is another major area in which the components developers build upon can lead to broken authorization.\n\nThese components are typically intended to be relatively general purpose tools made to appeal to a wide audience.",
-      "token_count": 422,
+      "chunk_type": "list",
+      "text_content": "Documentation can be misunderstood, vague, outdated, or simply inaccurate.",
+      "token_count": 13,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Authorization Cheat Sheet",
@@ -212,14 +212,14 @@
       "document_id": "doc_owasp_a01_authorization_cheat_sheet",
       "version_id": "ver_fb8b6e5c60ed",
       "chunk_idx": 14,
-      "chunk_type": "mixed",
-      "text_content": "For all but the simplest use cases, these frameworks and libraries must be customized or supplemented with additional logic in order to meet the unique requirements of a particular app or environment.\n\nThis consideration is especially important when security requirements, including authorization, are concerned.\n\nNotable configuration considerations for authorization include the following:\n\n- Take time to thoroughly understand any technology you build authorization logic upon.\n\nAnalyze the technology's capabilities with an understanding that *the authorization logic provided by the component may be insufficient for your application's specific security requirements*.\n\nRelying on prebuilt logic may be convenient, but this does not mean it is sufficient.\n\nUnderstand that custom authorization logic may well be necessary to meet an app's security requirements.\n\n- Do not let the capabilities of any library, platform, or framework guide your authorization requirements.\n\nRather, authorization requirements should be decided first and then the third-party components may be analyzed in light of these requirements.\n\n- Do not rely on default configurations.\n\n- Test configuration.\n\nDo not just assume any configuration performed on a third-party component will work exactly as intended in your particular environment.\n\nDocumentation can be misunderstood, vague, outdated, or simply inaccurate.",
-      "token_count": 229,
+      "chunk_type": "heading",
+      "text_content": "### Prefer Attribute and Relationship Based Access Control over RBAC",
+      "token_count": 12,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Authorization Cheat Sheet",
         "Recommendations",
-        "Thoroughly Review the Authorization Logic of Chosen Tools and Technologies, Implementing Custom Logic if Necessary"
+        "Prefer Attribute and Relationship Based Access Control over RBAC"
       ]
     },
     {
@@ -227,9 +227,9 @@
       "document_id": "doc_owasp_a01_authorization_cheat_sheet",
       "version_id": "ver_fb8b6e5c60ed",
       "chunk_idx": 15,
-      "chunk_type": "heading",
-      "text_content": "### Prefer Attribute and Relationship Based Access Control over RBAC",
-      "token_count": 12,
+      "chunk_type": "mixed",
+      "text_content": "In software engineering, two basic forms of access control are widely utilized: Role-Based Access Control (RBAC) and Attribute-Based Access Control (ABAC).\n\nThere is a third, more recent, model which has gained popularity: Relationship-Based Access Control (ReBAC).\n\nThe decision between the models has significant implications for the entire SDLC and should be made as early as possible.\n\n- RBAC is a model of access control in which access is granted or denied based upon the roles assigned to a user.\n\nPermissions are not directly assigned to an entity; rather, permissions are associated with a role and the entity inherits the permissions of any roles assigned to it.\n\nGenerally, the relationship between roles and users can be many-to-many, and roles may be hierarchical in nature.\n\n- ABAC may be defined as an access control model where \"subject requests to perform operations on objects are granted or denied based on assigned attributes of the subject, assigned attributes of the object, environment conditions, and a set of policies that are specified in terms of those attributes and conditions\" ([NIST SP 800-162](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-162.pdf), pg.\n\n7).\n\nAs defined in NIST SP 800-162, attributes are simply characteristics that can be represented as name-value pairs and assigned to a subject, object, or the environment.\n\nJob role, time of day, project name, MAC address, and creation date are but a very small sampling of possible attributes that highlight the flexibility of ABAC implementations.\n\n- ReBAC is an access control model that grants access based on the relationships between resources.\n\nFor instance, allowing only the user who created a post to edit it.\n\nThis is especially necessary in social network applications, like Twitter or Facebook, where users want to limit access to their data (tweets or posts) to people they choose (friends, family, followers).\n\nAlthough RBAC has a long history and remains popular among software developers today, ABAC and ReBAC should typically be preferred for application development.\n\nTheir advantages over RBAC include:\n\n- **Support fine-grained, complex Boolean logic**.\n\nIn RBAC, access decisions are made on the presence or absence of roles; that is, the main characteristic of a requesting entity considered is the role(s) assigned to it.\n\nSuch simplistic logic does a poor job of supporting object-level or horizontal access control decisions and those that require multiple factors.\n\n- ABAC greatly expands both the number and type of characteristics that can be considered.\n\nIn ABAC, a \"role\" or job function can certainly be one attribute assigned to a subject, but it need not be considered in isolation (or at all if this characteristic is not relevant to the particular access requested).\n\nFurthermore, ABAC can incorporate environmental and other dynamic attributes, such as time of day, type of device used, and geographic location.\n\nDenying access to a sensitive resource outside of normal business hours or if a user has not recently completed mandatory training are just a couple of examples where ABAC could meet access control requirements that RBAC would struggle to fulfill.\n\nThus, ABAC is more effective than RBAC in addressing the principle of least privileges.",
+      "token_count": 637,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Authorization Cheat Sheet",
@@ -242,9 +242,9 @@
       "document_id": "doc_owasp_a01_authorization_cheat_sheet",
       "version_id": "ver_fb8b6e5c60ed",
       "chunk_idx": 16,
-      "chunk_type": "mixed",
-      "text_content": "In software engineering, two basic forms of access control are widely utilized: Role-Based Access Control (RBAC) and Attribute-Based Access Control (ABAC).\n\nThere is a third, more recent, model which has gained popularity: Relationship-Based Access Control (ReBAC).\n\nThe decision between the models has significant implications for the entire SDLC and should be made as early as possible.\n\n- RBAC is a model of access control in which access is granted or denied based upon the roles assigned to a user.\n\nPermissions are not directly assigned to an entity; rather, permissions are associated with a role and the entity inherits the permissions of any roles assigned to it.\n\nGenerally, the relationship between roles and users can be many-to-many, and roles may be hierarchical in nature.\n\n- ABAC may be defined as an access control model where \"subject requests to perform operations on objects are granted or denied based on assigned attributes of the subject, assigned attributes of the object, environment conditions, and a set of policies that are specified in terms of those attributes and conditions\" ([NIST SP 800-162](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-162.pdf), pg.\n\n7).\n\nAs defined in NIST SP 800-162, attributes are simply characteristics that can be represented as name-value pairs and assigned to a subject, object, or the environment.\n\nJob role, time of day, project name, MAC address, and creation date are but a very small sampling of possible attributes that highlight the flexibility of ABAC implementations.\n\n- ReBAC is an access control model that grants access based on the relationships between resources.\n\nFor instance, allowing only the user who created a post to edit it.\n\nThis is especially necessary in social network applications, like Twitter or Facebook, where users want to limit access to their data (tweets or posts) to people they choose (friends, family, followers).\n\nAlthough RBAC has a long history and remains popular among software developers today, ABAC and ReBAC should typically be preferred for application development.\n\nTheir advantages over RBAC include:\n\n- **Support fine-grained, complex Boolean logic**.",
-      "token_count": 433,
+      "chunk_type": "list",
+      "text_content": "- ReBAC, since it supports assigning relationships between direct objects and direct users (and not just a role), allows for fine-grained permissions.\n\nSome systems also support algebraic operators like AND and NOT to express policies like \"if this user has relationship X but not relationship Y with the object, then grant access\".\n\n- **Robustness**.\n\nIn large projects or when numerous roles are present, it is easy to miss or improperly perform role checks ([OWASP C7: Enforce Access Controls](https://owasp.org/www-project-proactive-controls/v3/en/c7-enforce-access-controls)).\n\nThis can result in both too much and too little access.\n\nThis is especially true in RBAC implementations where a role hierarchy is not present and multiple role checks must be chained to have the desired impact (i.e., `if(user.hasAnyRole(\"SUPERUSER\", \"ADMIN\", \"ACCT_MANAGER\"))` ).\n\n- **Speed**.\n\nIn RBAC, \"role explosion\" can occur when a system defines too many roles.\n\nIf users send their credential and roles through means like HTTP headers, which have size limits, there may not be enough space to include all of the user's roles.\n\nA viable workaround to this problem is to only send the user ID, and then the application retrieves the user's roles, but this will increase the latency of every request.\n\n- **Supports Multi-Tenancy and Cross-Organizational Requests**.\n\nRBAC is poorly suited for use cases where distinct organizations or customers will need access to the same set of protected resources.\n\nMeeting such requirements with RBAC would require highly cumbersome methods such as configuring rule sets for each customer in a multi-tenant environment or requiring pre-provisioning of identities for cross-organizational requests ([OWASP C7](https://owasp.org/www-project-proactive-controls/v3/en/c7-enforce-access-controls); [NIST SP 800-162](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-162.pdf)).\n\nBy contrast, as long as attributes are consistently defined, ABAC implementations allow access control decisions to be \"executed and administered in the same or separate infrastructures, while maintaining appropriate levels of security\" ([NIST SP 800-162](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-162.pdf), pg.\n\n6).\n\n- **Ease of Management**.\n\nAlthough the initial setup for RBAC is often simpler than ABAC, this short-term benefit quickly vanishes as the scale and complexity of a system grows.\n\nIn the beginning, a couple of simple roles, such as User and Admin, may suffice for some apps, but this is very unlikely to hold true for any length of time in production applications.\n\nAs roles become more numerous, both testing and auditing, critical processes for establishing trust in one's codebase and logic, become more difficult ([OWASP C7](https://owasp.org/www-project-proactive-controls/v3/en/c7-enforce-access-controls)).",
+      "token_count": 649,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Authorization Cheat Sheet",
@@ -258,8 +258,8 @@
       "version_id": "ver_fb8b6e5c60ed",
       "chunk_idx": 17,
       "chunk_type": "list",
-      "text_content": "In RBAC, access decisions are made on the presence or absence of roles; that is, the main characteristic of a requesting entity considered is the role(s) assigned to it.\n\nSuch simplistic logic does a poor job of supporting object-level or horizontal access control decisions and those that require multiple factors.\n\n- ABAC greatly expands both the number and type of characteristics that can be considered.\n\nIn ABAC, a \"role\" or job function can certainly be one attribute assigned to a subject, but it need not be considered in isolation (or at all if this characteristic is not relevant to the particular access requested).\n\nFurthermore, ABAC can incorporate environmental and other dynamic attributes, such as time of day, type of device used, and geographic location.\n\nDenying access to a sensitive resource outside of normal business hours or if a user has not recently completed mandatory training are just a couple of examples where ABAC could meet access control requirements that RBAC would struggle to fulfill.\n\nThus, ABAC is more effective than RBAC in addressing the principle of least privileges.\n\n- ReBAC, since it supports assigning relationships between direct objects and direct users (and not just a role), allows for fine-grained permissions.\n\nSome systems also support algebraic operators like AND and NOT to express policies like \"if this user has relationship X but not relationship Y with the object, then grant access\".\n\n- **Robustness**.\n\nIn large projects or when numerous roles are present, it is easy to miss or improperly perform role checks ([OWASP C7: Enforce Access Controls](https://owasp.org/www-project-proactive-controls/v3/en/c7-enforce-access-controls)).\n\nThis can result in both too much and too little access.\n\nThis is especially true in RBAC implementations where a role hierarchy is not present and multiple role checks must be chained to have the desired impact (i.e., `if(user.hasAnyRole(\"SUPERUSER\", \"ADMIN\", \"ACCT_MANAGER\"))` ).\n\n- **Speed**.\n\nIn RBAC, \"role explosion\" can occur when a system defines too many roles.",
-      "token_count": 425,
+      "text_content": "By contrast, ABAC and ReBAC are far more expressive, incorporate attributes and Boolean logic that better reflects real-world concerns, are easier to update when access-control needs change, and encourages the separation of policy management from enforcement and provisioning of identities ([NIST SP 800-162](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-162.pdf); see also [XACML-V3.0](https://docs.oasis-open.org/xacml/3.0/xacml-3.0-core-spec-os-en.html) for a standard that highlights these benefits)",
+      "token_count": 134,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Authorization Cheat Sheet",
@@ -272,14 +272,14 @@
       "document_id": "doc_owasp_a01_authorization_cheat_sheet",
       "version_id": "ver_fb8b6e5c60ed",
       "chunk_idx": 18,
-      "chunk_type": "list",
-      "text_content": "If users send their credential and roles through means like HTTP headers, which have size limits, there may not be enough space to include all of the user's roles.\n\nA viable workaround to this problem is to only send the user ID, and then the application retrieves the user's roles, but this will increase the latency of every request.\n\n- **Supports Multi-Tenancy and Cross-Organizational Requests**.\n\nRBAC is poorly suited for use cases where distinct organizations or customers will need access to the same set of protected resources.\n\nMeeting such requirements with RBAC would require highly cumbersome methods such as configuring rule sets for each customer in a multi-tenant environment or requiring pre-provisioning of identities for cross-organizational requests ([OWASP C7](https://owasp.org/www-project-proactive-controls/v3/en/c7-enforce-access-controls); [NIST SP 800-162](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-162.pdf)).\n\nBy contrast, as long as attributes are consistently defined, ABAC implementations allow access control decisions to be \"executed and administered in the same or separate infrastructures, while maintaining appropriate levels of security\" ([NIST SP 800-162](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-162.pdf), pg.\n\n6).\n\n- **Ease of Management**.\n\nAlthough the initial setup for RBAC is often simpler than ABAC, this short-term benefit quickly vanishes as the scale and complexity of a system grows.\n\nIn the beginning, a couple of simple roles, such as User and Admin, may suffice for some apps, but this is very unlikely to hold true for any length of time in production applications.\n\nAs roles become more numerous, both testing and auditing, critical processes for establishing trust in one's codebase and logic, become more difficult ([OWASP C7](https://owasp.org/www-project-proactive-controls/v3/en/c7-enforce-access-controls)).",
-      "token_count": 428,
+      "chunk_type": "heading",
+      "text_content": "### Ensure Lookup IDs are Not Accessible Even When Guessed or Cannot Be Tampered With",
+      "token_count": 17,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Authorization Cheat Sheet",
         "Recommendations",
-        "Prefer Attribute and Relationship Based Access Control over RBAC"
+        "Ensure Lookup IDs are Not Accessible Even When Guessed or Cannot Be Tampered With"
       ]
     },
     {
@@ -287,14 +287,14 @@
       "document_id": "doc_owasp_a01_authorization_cheat_sheet",
       "version_id": "ver_fb8b6e5c60ed",
       "chunk_idx": 19,
-      "chunk_type": "list",
-      "text_content": "By contrast, ABAC and ReBAC are far more expressive, incorporate attributes and Boolean logic that better reflects real-world concerns, are easier to update when access-control needs change, and encourages the separation of policy management from enforcement and provisioning of identities ([NIST SP 800-162](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-162.pdf); see also [XACML-V3.0](https://docs.oasis-open.org/xacml/3.0/xacml-3.0-core-spec-os-en.html) for a standard that highlights these benefits)",
-      "token_count": 134,
+      "chunk_type": "mixed",
+      "text_content": "Applications often expose the internal object identifiers (such as an account number or Primary Key in a database) that are used to locate and reference an object.\n\nThis ID may be exposed as a query parameter, path variable, \"hidden\" form field or elsewhere.\n\nFor example:\n\n```https://mybank.com/accountTransactions?acct_id=901```\n\nBased on this URL, one could reasonably assume that the application will return a listing of transactions and that the transactions returned will be restricted to a particular account - the account indicated in the `acct_id` param.\n\nBut what would happen if the user changed the value of the `acct_id` param to another value such as `523`.\n\nWill the user be able to view transactions associated with another account even if it does not belong to them?\n\nIf not, will the failure simply be the result of the account \"523\" not existing/not being found or will it be due to a failed access control check?\n\nAlthough this example may be an oversimplification, it illustrates a very common security flaw in application development - [CWE 639: Authorization Bypass Through User-Controlled Key](https://cwe.mitre.org/data/definitions/639.html).\n\nWhen exploited, this weakness can result in authorization bypasses, horizontal privilege escalation and, less commonly, vertical privilege escalation (see [CWE-639](https://cwe.mitre.org/data/definitions/639.html)).\n\nThis type of vulnerability also represents a form of Insecure Direct Object Reference (IDOR).\n\nThe following paragraphs will describe the weakness and possible mitigations.\n\nIn the example above, the lookup ID was not only exposed to the user and readily tampered with, but also appears to have been a fairly predictable, perhaps sequential, value.\n\nWhile one can use various techniques to mask or randomize these IDs and make them hard to guess, such an approach is generally not sufficient by itself.\n\nA user should not be able to access a resource they do not have permissions simply because they are able to guess and manipulate that object's identifier in a query param or elsewhere.\n\nRather than relying on some form of security through obscurity, the focus should be on controlling access to the underlying objects and/or the identifiers themselves.\n\nRecommended mitigations for this weakness include the following:\n\n- Avoid exposing identifiers to the user when possible.\n\nFor example it should be possible to retrieve some objects, such as account details, based solely on currently authenticated user's identity and attributes (e.g.\n\nthrough information contained in a securely implemented JSON Web Token (JWT) or server-side session).\n\n- Implement user/session specific indirect references using a tool such as [OWASP ESAPI](https://owasp.org/www-project-enterprise-security-api/) (see [OWASP Top 10:2025 A01 Broken Access Control](https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/) and the [Insecure Direct Object Reference Prevention Cheat Sheet](Insecure_Direct_Object_Reference_Prevention_Cheat_Sheet.md))\n- Perform access control checks on *every* request for the *specific* object or functionality being accessed.",
+      "token_count": 629,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Authorization Cheat Sheet",
         "Recommendations",
-        "Prefer Attribute and Relationship Based Access Control over RBAC"
+        "Ensure Lookup IDs are Not Accessible Even When Guessed or Cannot Be Tampered With"
       ]
     },
     {
@@ -302,9 +302,9 @@
       "document_id": "doc_owasp_a01_authorization_cheat_sheet",
       "version_id": "ver_fb8b6e5c60ed",
       "chunk_idx": 20,
-      "chunk_type": "heading",
-      "text_content": "### Ensure Lookup IDs are Not Accessible Even When Guessed or Cannot Be Tampered With",
-      "token_count": 17,
+      "chunk_type": "list",
+      "text_content": "Just because a user has access to an object of a particular type does not mean they should have access to every object of that particular type.",
+      "token_count": 28,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Authorization Cheat Sheet",
@@ -317,36 +317,6 @@
       "document_id": "doc_owasp_a01_authorization_cheat_sheet",
       "version_id": "ver_fb8b6e5c60ed",
       "chunk_idx": 21,
-      "chunk_type": "paragraph",
-      "text_content": "Applications often expose the internal object identifiers (such as an account number or Primary Key in a database) that are used to locate and reference an object.\n\nThis ID may be exposed as a query parameter, path variable, \"hidden\" form field or elsewhere.\n\nFor example:\n\n```https://mybank.com/accountTransactions?acct_id=901```\n\nBased on this URL, one could reasonably assume that the application will return a listing of transactions and that the transactions returned will be restricted to a particular account - the account indicated in the `acct_id` param.\n\nBut what would happen if the user changed the value of the `acct_id` param to another value such as `523`.\n\nWill the user be able to view transactions associated with another account even if it does not belong to them?\n\nIf not, will the failure simply be the result of the account \"523\" not existing/not being found or will it be due to a failed access control check?\n\nAlthough this example may be an oversimplification, it illustrates a very common security flaw in application development - [CWE 639: Authorization Bypass Through User-Controlled Key](https://cwe.mitre.org/data/definitions/639.html).\n\nWhen exploited, this weakness can result in authorization bypasses, horizontal privilege escalation and, less commonly, vertical privilege escalation (see [CWE-639](https://cwe.mitre.org/data/definitions/639.html)).\n\nThis type of vulnerability also represents a form of Insecure Direct Object Reference (IDOR).\n\nThe following paragraphs will describe the weakness and possible mitigations.\n\nIn the example above, the lookup ID was not only exposed to the user and readily tampered with, but also appears to have been a fairly predictable, perhaps sequential, value.\n\nWhile one can use various techniques to mask or randomize these IDs and make them hard to guess, such an approach is generally not sufficient by itself.\n\nA user should not be able to access a resource they do not have permissions simply because they are able to guess and manipulate that object's identifier in a query param or elsewhere.",
-      "token_count": 423,
-      "chunk_strategy": "structure_aware",
-      "heading_path": [
-        "Authorization Cheat Sheet",
-        "Recommendations",
-        "Ensure Lookup IDs are Not Accessible Even When Guessed or Cannot Be Tampered With"
-      ]
-    },
-    {
-      "chunk_id": "ver_fb8b6e5c60ed_c00022",
-      "document_id": "doc_owasp_a01_authorization_cheat_sheet",
-      "version_id": "ver_fb8b6e5c60ed",
-      "chunk_idx": 22,
-      "chunk_type": "mixed",
-      "text_content": "Rather than relying on some form of security through obscurity, the focus should be on controlling access to the underlying objects and/or the identifiers themselves.\n\nRecommended mitigations for this weakness include the following:\n\n- Avoid exposing identifiers to the user when possible.\n\nFor example it should be possible to retrieve some objects, such as account details, based solely on currently authenticated user's identity and attributes (e.g.\n\nthrough information contained in a securely implemented JSON Web Token (JWT) or server-side session).\n\n- Implement user/session specific indirect references using a tool such as [OWASP ESAPI](https://owasp.org/www-project-enterprise-security-api/) (see [OWASP Top 10:2025 A01 Broken Access Control](https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/) and the [Insecure Direct Object Reference Prevention Cheat Sheet](Insecure_Direct_Object_Reference_Prevention_Cheat_Sheet.md))\n- Perform access control checks on *every* request for the *specific* object or functionality being accessed.\n\nJust because a user has access to an object of a particular type does not mean they should have access to every object of that particular type.",
-      "token_count": 234,
-      "chunk_strategy": "structure_aware",
-      "heading_path": [
-        "Authorization Cheat Sheet",
-        "Recommendations",
-        "Ensure Lookup IDs are Not Accessible Even When Guessed or Cannot Be Tampered With"
-      ]
-    },
-    {
-      "chunk_id": "ver_fb8b6e5c60ed_c00023",
-      "document_id": "doc_owasp_a01_authorization_cheat_sheet",
-      "version_id": "ver_fb8b6e5c60ed",
-      "chunk_idx": 23,
       "chunk_type": "heading",
       "text_content": "### Enforce Authorization Checks on Static Resources",
       "token_count": 9,
@@ -358,10 +328,10 @@
       ]
     },
     {
-      "chunk_id": "ver_fb8b6e5c60ed_c00024",
+      "chunk_id": "ver_fb8b6e5c60ed_c00022",
       "document_id": "doc_owasp_a01_authorization_cheat_sheet",
       "version_id": "ver_fb8b6e5c60ed",
-      "chunk_idx": 24,
+      "chunk_idx": 22,
       "chunk_type": "mixed",
       "text_content": "The importance of securing static resources is often overlooked or at least overshadowed by other security concerns.\n\nAlthough securing databases and similar data stores often justly receive significant attention from security conscious teams, static resources must also be appropriately secured.\n\nAlthough unprotected static resources are certainly a problem for websites and web applications of all forms, in recent years, poorly secured resources in cloud storage offerings (such as Amazon S3 Buckets) have risen to prominence.\n\nWhen securing static resources, consider the following:\n\n- Ensure that static resources are incorporated into access control policies.\n\nThe type of protection required for static resources will necessarily be highly contextual.\n\nIt may be perfectly acceptable for some static resources to be publicly accessible, while others should only be accessible when a highly restrictive set of user and environmental attributes are present.\n\nUnderstanding the type of data exposed in the specific resources under consideration is thus critical.\n\nConsider whether a formal Data Classification scheme should be established and incorporated into the application's access control logic (see [here](https://resources.infosecinstitute.com/information-and-asset-classification/) for an overview of data classification).\n\n- Ensure any cloud-based services used to store static resources are secured using the configuration options and tools provided by the vendor.\n\nReview the cloud provider's documentation (see guidance from [AWS](https://aws.amazon.com/premiumsupport/knowledge-center/secure-s3-resources/), [Google Cloud](https://cloud.google.com/storage/docs/best-practices#security) and [Azure](https://docs.microsoft.com/en-us/azure/storage/blobs/security-recommendations) for specific implementation details).\n\n- When possible, protect static resources using the same access control logic and mechanisms that are used to secure other application resources and functionality.",
       "token_count": 370,
@@ -373,10 +343,10 @@
       ]
     },
     {
-      "chunk_id": "ver_fb8b6e5c60ed_c00025",
+      "chunk_id": "ver_fb8b6e5c60ed_c00023",
       "document_id": "doc_owasp_a01_authorization_cheat_sheet",
       "version_id": "ver_fb8b6e5c60ed",
-      "chunk_idx": 25,
+      "chunk_idx": 23,
       "chunk_type": "heading",
       "text_content": "### Verify that Authorization Checks are Performed in the Right Location",
       "token_count": 13,
@@ -388,10 +358,10 @@
       ]
     },
     {
-      "chunk_id": "ver_fb8b6e5c60ed_c00026",
+      "chunk_id": "ver_fb8b6e5c60ed_c00024",
       "document_id": "doc_owasp_a01_authorization_cheat_sheet",
       "version_id": "ver_fb8b6e5c60ed",
-      "chunk_idx": 26,
+      "chunk_idx": 24,
       "chunk_type": "paragraph",
       "text_content": "Developers must never rely on client-side access control checks.\n\nWhile such checks may be permissible for improving the user experience, they should never be the decisive factor in granting or denying access to a resource; client-side logic is often easy to bypass.\n\nAccess control checks must be performed server-side, at the gateway, or using serverless functions (see [OWASP ASVS 4.0.3, V1.4.1 and V4.1.1](https://raw.githubusercontent.com/OWASP/ASVS/v4.0.3/4.0/OWASP%20Application%20Security%20Verification%20Standard%204.0.3-en.pdf))",
       "token_count": 137,
@@ -403,10 +373,10 @@
       ]
     },
     {
-      "chunk_id": "ver_fb8b6e5c60ed_c00027",
+      "chunk_id": "ver_fb8b6e5c60ed_c00025",
       "document_id": "doc_owasp_a01_authorization_cheat_sheet",
       "version_id": "ver_fb8b6e5c60ed",
-      "chunk_idx": 27,
+      "chunk_idx": 25,
       "chunk_type": "heading",
       "text_content": "### Exit Safely when Authorization Checks Fail",
       "token_count": 9,
@@ -418,10 +388,10 @@
       ]
     },
     {
-      "chunk_id": "ver_fb8b6e5c60ed_c00028",
+      "chunk_id": "ver_fb8b6e5c60ed_c00026",
       "document_id": "doc_owasp_a01_authorization_cheat_sheet",
       "version_id": "ver_fb8b6e5c60ed",
-      "chunk_idx": 28,
+      "chunk_idx": 26,
       "chunk_type": "mixed",
       "text_content": "Failed access control checks are a normal occurrence in a secured application; consequently, developers must plan for such failures and handle them securely.\n\nImproper handling of such failures can lead to the application being left in an unpredictable state ([CWE-280: Improper Handling of Insufficient Permissions or Privileges](https://cwe.mitre.org/data/definitions/280.html)).\n\nSpecific recommendations include the following:\n\n- Ensure all exception and failed access control checks are handled no matter how unlikely they seem ([OWASP Top Ten Proactive Controls C10: Handle all errors and exceptions](https://owasp.org/www-project-proactive-controls/v3/en/c10-errors-exceptions)).\n\nThis does not mean that an application should always try to \"correct\" for a failed check; oftentimes a simple message or HTTP status code is all that is required.\n\n- Centralize the logic for handling failed access control checks.\n\n- Verify the handling of exceptions and authorization failures.\n\nEnsure that such failures, no matter how unlikely, do not put the software into an unstable state that could lead to authorization bypass.\n\n- Ensure sensitive information, such as system logs or debugging output, is not exposed in error messages.\n\nMisconfigured error messages can increase the attack surface of your application.\n\n([CWE-209: Generation of Error Message Containing Sensitive Information](https://cwe.mitre.org/data/definitions/209.html))",
       "token_count": 290,
@@ -433,10 +403,10 @@
       ]
     },
     {
-      "chunk_id": "ver_fb8b6e5c60ed_c00029",
+      "chunk_id": "ver_fb8b6e5c60ed_c00027",
       "document_id": "doc_owasp_a01_authorization_cheat_sheet",
       "version_id": "ver_fb8b6e5c60ed",
-      "chunk_idx": 29,
+      "chunk_idx": 27,
       "chunk_type": "heading",
       "text_content": "### Implement Appropriate Logging",
       "token_count": 6,
@@ -448,10 +418,10 @@
       ]
     },
     {
-      "chunk_id": "ver_fb8b6e5c60ed_c00030",
+      "chunk_id": "ver_fb8b6e5c60ed_c00028",
       "document_id": "doc_owasp_a01_authorization_cheat_sheet",
       "version_id": "ver_fb8b6e5c60ed",
-      "chunk_idx": 30,
+      "chunk_idx": 28,
       "chunk_type": "mixed",
       "text_content": "Logging is one of the most important detective controls in application security; insufficient logging and monitoring is recognized as among the most critical security risks in [OWASP's Top Ten 2021](https://owasp.org/Top10/A09_2021-Security_Logging_and_Monitoring_Failures/).\n\nAppropriate logs can not only detect malicious activity, but are also invaluable resources in post-incident investigations, can be used to troubleshoot access control and other security related problems, and are useful in security auditing.\n\nThough easy to overlook during the initial design and requirements phase, logging is an important component of holistic application security and must be incorporated into all phases of the SDLC.\n\nRecommendations for logging include the following:\n\n- Log using consistent, well-defined formats that can be readily parsed for analysis.\n\nAccording to [OWASP Top Ten Proactive Controls C9](https://owasp.org/www-project-proactive-controls/v3/en/c9-security-logging), [Apache Logging Services](https://logging.apache.org/) is one example of a project that provides support for numerous languages and platforms\n- Carefully determine the amount of information to log.\n\nThis should be determined according to the specific application environment and requirements.\n\nBoth too much and too little logging may be considered security weaknesses (see [CWE-778](https://cwe.mitre.org/data/definitions/778.html) and [CWE-779](https://cwe.mitre.org/data/definitions/779.html)).\n\nToo little logging can result in malicious activity going undetected and greatly reduce the effectiveness of post-incident analysis.\n\nToo much logging not only can strain resources and lead to excessive false positives, but may also result in sensitive data being needlessly logged.\n\n- Ensure clocks and timezones are synchronized across systems.\n\nAccuracy is crucial in piecing together the sequence of an attack during and after incident response.\n\n- Consider incorporating application logs into a centralized log server or SIEM.",
       "token_count": 392,
@@ -463,10 +433,10 @@
       ]
     },
     {
-      "chunk_id": "ver_fb8b6e5c60ed_c00031",
+      "chunk_id": "ver_fb8b6e5c60ed_c00029",
       "document_id": "doc_owasp_a01_authorization_cheat_sheet",
       "version_id": "ver_fb8b6e5c60ed",
-      "chunk_idx": 31,
+      "chunk_idx": 29,
       "chunk_type": "heading",
       "text_content": "### Create Unit and Integration Test Cases for Authorization Logic",
       "token_count": 12,
@@ -478,10 +448,10 @@
       ]
     },
     {
-      "chunk_id": "ver_fb8b6e5c60ed_c00032",
+      "chunk_id": "ver_fb8b6e5c60ed_c00030",
       "document_id": "doc_owasp_a01_authorization_cheat_sheet",
       "version_id": "ver_fb8b6e5c60ed",
-      "chunk_idx": 32,
+      "chunk_idx": 30,
       "chunk_type": "paragraph",
       "text_content": "Unit and integration testing are essential for verifying that an application performs as expected and consistently across changes.\n\nFlaws in access control logic can be subtle, particularly when requirements are complex; however, even a small logical or configuration error in access control can result in severe consequences.\n\nAlthough not a substitution for a dedicated security test or penetration test (see [OWASP WSTG 4.5](https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/05-Authorization_Testing/README) for an excellent guide on this topic as it relates to access control), automated unit and integration testing of access control logic can help reduce the number of security flaws that make it into production.\n\nThese tests are good at catching the \"low-hanging fruit\" of security issues but not more sophisticated attack vectors ([OWASP SAMM: Security Testing](https://owaspsamm.org/model/verification/security-testing/)).\n\nUnit and integration testing should aim to incorporate many of the concepts explored in this document.\n\nFor example, is access being denied by default?\n\nDoes the application terminate safely when an access control check fails, even under abnormal conditions?\n\nAre ABAC policies being properly enforced?\n\nWhile simple unit and integration tests can never replace manual testing performed by a skilled hacker, they are an important tool for detecting and correcting security issues quickly and with far less resources than manual testing.",
       "token_count": 283,
@@ -493,10 +463,10 @@
       ]
     },
     {
-      "chunk_id": "ver_fb8b6e5c60ed_c00033",
+      "chunk_id": "ver_fb8b6e5c60ed_c00031",
       "document_id": "doc_owasp_a01_authorization_cheat_sheet",
       "version_id": "ver_fb8b6e5c60ed",
-      "chunk_idx": 33,
+      "chunk_idx": 31,
       "chunk_type": "heading",
       "text_content": "## References",
       "token_count": 3,
@@ -507,10 +477,10 @@
       ]
     },
     {
-      "chunk_id": "ver_fb8b6e5c60ed_c00034",
+      "chunk_id": "ver_fb8b6e5c60ed_c00032",
       "document_id": "doc_owasp_a01_authorization_cheat_sheet",
       "version_id": "ver_fb8b6e5c60ed",
-      "chunk_idx": 34,
+      "chunk_idx": 32,
       "chunk_type": "list",
       "text_content": "- [NIST SP 800-162: Guide to Attribute Based Access Control (ABAC) Definition and Considerations](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-162.pdf)\n- [OWASP Proactive Controls 2018: Enforce Access Controls](https://top10proactive.owasp.org/archive/2018/c7-enforce-access-controls/)\n- [Ferraiolo and Kuhn: Role-Based Access Controls (1992)](https://csrc.nist.gov/files/pubs/conference/1992/10/13/rolebased-access-controls/final/docs/ferraiolo-kuhn-92.pdf)",
       "token_count": 137,
@@ -643,66 +613,66 @@
       "end_offset": 118
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00003_s000",
-      "chunk_id": "ver_fb8b6e5c60ed_c00003",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00002_s013",
+      "chunk_id": "ver_fb8b6e5c60ed_c00002",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00005",
-      "source_order": 0,
+      "source_order": 13,
       "start_offset": 119,
       "end_offset": 422
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00003_s001",
-      "chunk_id": "ver_fb8b6e5c60ed_c00003",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00002_s014",
+      "chunk_id": "ver_fb8b6e5c60ed_c00002",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00005",
-      "source_order": 1,
+      "source_order": 14,
       "start_offset": 423,
       "end_offset": 536
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00003_s002",
-      "chunk_id": "ver_fb8b6e5c60ed_c00003",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00002_s015",
+      "chunk_id": "ver_fb8b6e5c60ed_c00002",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00006",
-      "source_order": 2,
+      "source_order": 15,
       "start_offset": 0,
       "end_offset": 144
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00003_s003",
-      "chunk_id": "ver_fb8b6e5c60ed_c00003",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00002_s016",
+      "chunk_id": "ver_fb8b6e5c60ed_c00002",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00006",
-      "source_order": 3,
+      "source_order": 16,
       "start_offset": 145,
       "end_offset": 346
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00003_s004",
-      "chunk_id": "ver_fb8b6e5c60ed_c00003",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00002_s017",
+      "chunk_id": "ver_fb8b6e5c60ed_c00002",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00006",
-      "source_order": 4,
+      "source_order": 17,
       "start_offset": 347,
       "end_offset": 384
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00003_s005",
-      "chunk_id": "ver_fb8b6e5c60ed_c00003",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00002_s018",
+      "chunk_id": "ver_fb8b6e5c60ed_c00002",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00006",
-      "source_order": 5,
+      "source_order": 18,
       "start_offset": 385,
       "end_offset": 525
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00003_s006",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00003_s000",
       "chunk_id": "ver_fb8b6e5c60ed_c00003",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00006",
-      "source_order": 6,
+      "source_order": 0,
       "start_offset": 526,
       "end_offset": 879
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00003_s007",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00003_s001",
       "chunk_id": "ver_fb8b6e5c60ed_c00003",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00006",
-      "source_order": 7,
+      "source_order": 1,
       "start_offset": 880,
       "end_offset": 1072
     },
@@ -859,1360 +829,1360 @@
       "end_offset": 1146
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00007_s000",
-      "chunk_id": "ver_fb8b6e5c60ed_c00007",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00006_s017",
+      "chunk_id": "ver_fb8b6e5c60ed_c00006",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00012",
-      "source_order": 0,
+      "source_order": 17,
       "start_offset": 1147,
       "end_offset": 1314
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00008_s000",
-      "chunk_id": "ver_fb8b6e5c60ed_c00008",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00007_s000",
+      "chunk_id": "ver_fb8b6e5c60ed_c00007",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00013",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 19
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00009_s000",
-      "chunk_id": "ver_fb8b6e5c60ed_c00009",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00008_s000",
+      "chunk_id": "ver_fb8b6e5c60ed_c00008",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00014",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 157
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00009_s001",
-      "chunk_id": "ver_fb8b6e5c60ed_c00009",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00008_s001",
+      "chunk_id": "ver_fb8b6e5c60ed_c00008",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00014",
       "source_order": 1,
       "start_offset": 158,
       "end_offset": 283
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00009_s002",
-      "chunk_id": "ver_fb8b6e5c60ed_c00009",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00008_s002",
+      "chunk_id": "ver_fb8b6e5c60ed_c00008",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00014",
       "source_order": 2,
       "start_offset": 284,
       "end_offset": 510
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00009_s003",
-      "chunk_id": "ver_fb8b6e5c60ed_c00009",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00008_s003",
+      "chunk_id": "ver_fb8b6e5c60ed_c00008",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00014",
       "source_order": 3,
       "start_offset": 511,
       "end_offset": 595
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00009_s004",
-      "chunk_id": "ver_fb8b6e5c60ed_c00009",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00008_s004",
+      "chunk_id": "ver_fb8b6e5c60ed_c00008",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00015",
       "source_order": 4,
       "start_offset": 0,
       "end_offset": 49
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00009_s005",
-      "chunk_id": "ver_fb8b6e5c60ed_c00009",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00008_s005",
+      "chunk_id": "ver_fb8b6e5c60ed_c00008",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00016",
       "source_order": 5,
       "start_offset": 0,
       "end_offset": 137
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00009_s006",
-      "chunk_id": "ver_fb8b6e5c60ed_c00009",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00008_s006",
+      "chunk_id": "ver_fb8b6e5c60ed_c00008",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00016",
       "source_order": 6,
       "start_offset": 138,
       "end_offset": 302
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00009_s007",
-      "chunk_id": "ver_fb8b6e5c60ed_c00009",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00008_s007",
+      "chunk_id": "ver_fb8b6e5c60ed_c00008",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00016",
       "source_order": 7,
       "start_offset": 303,
       "end_offset": 481
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00009_s008",
-      "chunk_id": "ver_fb8b6e5c60ed_c00009",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00008_s008",
+      "chunk_id": "ver_fb8b6e5c60ed_c00008",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00016",
       "source_order": 8,
       "start_offset": 482,
       "end_offset": 657
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00010_s000",
-      "chunk_id": "ver_fb8b6e5c60ed_c00010",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00009_s000",
+      "chunk_id": "ver_fb8b6e5c60ed_c00009",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00017",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 45
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00011_s000",
-      "chunk_id": "ver_fb8b6e5c60ed_c00011",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00010_s000",
+      "chunk_id": "ver_fb8b6e5c60ed_c00010",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00018",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 159
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00011_s001",
-      "chunk_id": "ver_fb8b6e5c60ed_c00011",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00010_s001",
+      "chunk_id": "ver_fb8b6e5c60ed_c00010",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00018",
       "source_order": 1,
       "start_offset": 160,
       "end_offset": 331
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00011_s002",
-      "chunk_id": "ver_fb8b6e5c60ed_c00011",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00010_s002",
+      "chunk_id": "ver_fb8b6e5c60ed_c00010",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00018",
       "source_order": 2,
       "start_offset": 332,
       "end_offset": 383
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00011_s003",
-      "chunk_id": "ver_fb8b6e5c60ed_c00011",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00010_s003",
+      "chunk_id": "ver_fb8b6e5c60ed_c00010",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00018",
       "source_order": 3,
       "start_offset": 384,
       "end_offset": 510
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00011_s004",
-      "chunk_id": "ver_fb8b6e5c60ed_c00011",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00010_s004",
+      "chunk_id": "ver_fb8b6e5c60ed_c00010",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00018",
       "source_order": 4,
       "start_offset": 511,
       "end_offset": 593
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00011_s005",
-      "chunk_id": "ver_fb8b6e5c60ed_c00011",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00010_s005",
+      "chunk_id": "ver_fb8b6e5c60ed_c00010",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00018",
       "source_order": 5,
       "start_offset": 594,
       "end_offset": 711
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00011_s006",
-      "chunk_id": "ver_fb8b6e5c60ed_c00011",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00010_s006",
+      "chunk_id": "ver_fb8b6e5c60ed_c00010",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00019",
       "source_order": 6,
       "start_offset": 0,
       "end_offset": 565
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00012_s000",
-      "chunk_id": "ver_fb8b6e5c60ed_c00012",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00011_s000",
+      "chunk_id": "ver_fb8b6e5c60ed_c00011",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00020",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 118
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00013_s000",
-      "chunk_id": "ver_fb8b6e5c60ed_c00013",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00012_s000",
+      "chunk_id": "ver_fb8b6e5c60ed_c00012",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00021",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 176
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00013_s001",
-      "chunk_id": "ver_fb8b6e5c60ed_c00013",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00012_s001",
+      "chunk_id": "ver_fb8b6e5c60ed_c00012",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00021",
       "source_order": 1,
       "start_offset": 177,
       "end_offset": 354
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00013_s002",
-      "chunk_id": "ver_fb8b6e5c60ed_c00013",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00012_s002",
+      "chunk_id": "ver_fb8b6e5c60ed_c00012",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00021",
       "source_order": 2,
       "start_offset": 355,
       "end_offset": 835
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00013_s003",
-      "chunk_id": "ver_fb8b6e5c60ed_c00013",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00012_s003",
+      "chunk_id": "ver_fb8b6e5c60ed_c00012",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00022",
       "source_order": 3,
       "start_offset": 0,
       "end_offset": 157
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00013_s004",
-      "chunk_id": "ver_fb8b6e5c60ed_c00013",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00012_s004",
+      "chunk_id": "ver_fb8b6e5c60ed_c00012",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00022",
       "source_order": 4,
       "start_offset": 158,
       "end_offset": 307
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00013_s005",
-      "chunk_id": "ver_fb8b6e5c60ed_c00013",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00012_s005",
+      "chunk_id": "ver_fb8b6e5c60ed_c00012",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00022",
       "source_order": 5,
       "start_offset": 308,
       "end_offset": 349
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00013_s006",
-      "chunk_id": "ver_fb8b6e5c60ed_c00013",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00012_s006",
+      "chunk_id": "ver_fb8b6e5c60ed_c00012",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00022",
       "source_order": 6,
       "start_offset": 350,
       "end_offset": 455
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00013_s007",
-      "chunk_id": "ver_fb8b6e5c60ed_c00013",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00012_s007",
+      "chunk_id": "ver_fb8b6e5c60ed_c00012",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00022",
       "source_order": 7,
       "start_offset": 456,
       "end_offset": 588
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00013_s008",
-      "chunk_id": "ver_fb8b6e5c60ed_c00013",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00012_s008",
+      "chunk_id": "ver_fb8b6e5c60ed_c00012",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00022",
       "source_order": 8,
       "start_offset": 589,
       "end_offset": 622
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00013_s009",
-      "chunk_id": "ver_fb8b6e5c60ed_c00013",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00012_s009",
+      "chunk_id": "ver_fb8b6e5c60ed_c00012",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00023",
       "source_order": 9,
       "start_offset": 0,
       "end_offset": 95
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00013_s010",
-      "chunk_id": "ver_fb8b6e5c60ed_c00013",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00012_s010",
+      "chunk_id": "ver_fb8b6e5c60ed_c00012",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00023",
       "source_order": 10,
       "start_offset": 96,
       "end_offset": 334
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00013_s011",
-      "chunk_id": "ver_fb8b6e5c60ed_c00013",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00012_s011",
+      "chunk_id": "ver_fb8b6e5c60ed_c00012",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00023",
       "source_order": 11,
       "start_offset": 335,
       "end_offset": 364
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00013_s012",
-      "chunk_id": "ver_fb8b6e5c60ed_c00013",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00012_s012",
+      "chunk_id": "ver_fb8b6e5c60ed_c00012",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00023",
       "source_order": 12,
       "start_offset": 365,
       "end_offset": 489
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00013_s013",
-      "chunk_id": "ver_fb8b6e5c60ed_c00013",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00012_s013",
+      "chunk_id": "ver_fb8b6e5c60ed_c00012",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00024",
       "source_order": 13,
       "start_offset": 0,
       "end_offset": 154
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00013_s014",
-      "chunk_id": "ver_fb8b6e5c60ed_c00013",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00012_s014",
+      "chunk_id": "ver_fb8b6e5c60ed_c00012",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00024",
       "source_order": 14,
       "start_offset": 155,
       "end_offset": 268
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00014_s000",
-      "chunk_id": "ver_fb8b6e5c60ed_c00014",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00012_s015",
+      "chunk_id": "ver_fb8b6e5c60ed_c00012",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00024",
-      "source_order": 0,
+      "source_order": 15,
       "start_offset": 269,
       "end_offset": 469
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00014_s001",
-      "chunk_id": "ver_fb8b6e5c60ed_c00014",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00012_s016",
+      "chunk_id": "ver_fb8b6e5c60ed_c00012",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00024",
-      "source_order": 1,
+      "source_order": 16,
       "start_offset": 470,
       "end_offset": 580
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00014_s002",
-      "chunk_id": "ver_fb8b6e5c60ed_c00014",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00012_s017",
+      "chunk_id": "ver_fb8b6e5c60ed_c00012",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00024",
-      "source_order": 2,
+      "source_order": 17,
       "start_offset": 581,
       "end_offset": 658
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00014_s003",
-      "chunk_id": "ver_fb8b6e5c60ed_c00014",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00012_s018",
+      "chunk_id": "ver_fb8b6e5c60ed_c00012",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00025",
-      "source_order": 3,
+      "source_order": 18,
       "start_offset": 0,
       "end_offset": 87
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00014_s004",
-      "chunk_id": "ver_fb8b6e5c60ed_c00014",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00012_s019",
+      "chunk_id": "ver_fb8b6e5c60ed_c00012",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00025",
-      "source_order": 4,
+      "source_order": 19,
       "start_offset": 88,
       "end_offset": 279
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00014_s005",
-      "chunk_id": "ver_fb8b6e5c60ed_c00014",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00012_s020",
+      "chunk_id": "ver_fb8b6e5c60ed_c00012",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00025",
-      "source_order": 5,
+      "source_order": 20,
       "start_offset": 280,
       "end_offset": 365
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00014_s006",
-      "chunk_id": "ver_fb8b6e5c60ed_c00014",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00012_s021",
+      "chunk_id": "ver_fb8b6e5c60ed_c00012",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00025",
-      "source_order": 6,
+      "source_order": 21,
       "start_offset": 366,
       "end_offset": 470
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00014_s007",
-      "chunk_id": "ver_fb8b6e5c60ed_c00014",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00012_s022",
+      "chunk_id": "ver_fb8b6e5c60ed_c00012",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00025",
-      "source_order": 7,
+      "source_order": 22,
       "start_offset": 471,
       "end_offset": 578
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00014_s008",
-      "chunk_id": "ver_fb8b6e5c60ed_c00014",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00012_s023",
+      "chunk_id": "ver_fb8b6e5c60ed_c00012",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00025",
-      "source_order": 8,
+      "source_order": 23,
       "start_offset": 579,
       "end_offset": 721
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00014_s009",
-      "chunk_id": "ver_fb8b6e5c60ed_c00014",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00012_s024",
+      "chunk_id": "ver_fb8b6e5c60ed_c00012",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00025",
-      "source_order": 9,
+      "source_order": 24,
       "start_offset": 722,
       "end_offset": 762
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00014_s010",
-      "chunk_id": "ver_fb8b6e5c60ed_c00014",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00012_s025",
+      "chunk_id": "ver_fb8b6e5c60ed_c00012",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00025",
-      "source_order": 10,
+      "source_order": 25,
       "start_offset": 763,
       "end_offset": 784
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00014_s011",
-      "chunk_id": "ver_fb8b6e5c60ed_c00014",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00012_s026",
+      "chunk_id": "ver_fb8b6e5c60ed_c00012",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00025",
-      "source_order": 11,
+      "source_order": 26,
       "start_offset": 785,
       "end_offset": 920
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00014_s012",
-      "chunk_id": "ver_fb8b6e5c60ed_c00014",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00013_s000",
+      "chunk_id": "ver_fb8b6e5c60ed_c00013",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00025",
-      "source_order": 12,
+      "source_order": 0,
       "start_offset": 921,
       "end_offset": 995
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00015_s000",
-      "chunk_id": "ver_fb8b6e5c60ed_c00015",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00014_s000",
+      "chunk_id": "ver_fb8b6e5c60ed_c00014",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00026",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 68
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00016_s000",
-      "chunk_id": "ver_fb8b6e5c60ed_c00016",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00015_s000",
+      "chunk_id": "ver_fb8b6e5c60ed_c00015",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00027",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 155
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00016_s001",
-      "chunk_id": "ver_fb8b6e5c60ed_c00016",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00015_s001",
+      "chunk_id": "ver_fb8b6e5c60ed_c00015",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00027",
       "source_order": 1,
       "start_offset": 156,
       "end_offset": 264
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00016_s002",
-      "chunk_id": "ver_fb8b6e5c60ed_c00016",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00015_s002",
+      "chunk_id": "ver_fb8b6e5c60ed_c00015",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00027",
       "source_order": 2,
       "start_offset": 265,
       "end_offset": 386
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00016_s003",
-      "chunk_id": "ver_fb8b6e5c60ed_c00016",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00015_s003",
+      "chunk_id": "ver_fb8b6e5c60ed_c00015",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00028",
       "source_order": 3,
       "start_offset": 0,
       "end_offset": 113
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00016_s004",
-      "chunk_id": "ver_fb8b6e5c60ed_c00016",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00015_s004",
+      "chunk_id": "ver_fb8b6e5c60ed_c00015",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00028",
       "source_order": 4,
       "start_offset": 114,
       "end_offset": 281
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00016_s005",
-      "chunk_id": "ver_fb8b6e5c60ed_c00016",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00015_s005",
+      "chunk_id": "ver_fb8b6e5c60ed_c00015",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00028",
       "source_order": 5,
       "start_offset": 282,
       "end_offset": 395
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00016_s006",
-      "chunk_id": "ver_fb8b6e5c60ed_c00016",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00015_s006",
+      "chunk_id": "ver_fb8b6e5c60ed_c00015",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00028",
       "source_order": 6,
       "start_offset": 397,
       "end_offset": 813
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00016_s007",
-      "chunk_id": "ver_fb8b6e5c60ed_c00016",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00015_s007",
+      "chunk_id": "ver_fb8b6e5c60ed_c00015",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00028",
       "source_order": 7,
       "start_offset": 814,
       "end_offset": 817
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00016_s008",
-      "chunk_id": "ver_fb8b6e5c60ed_c00016",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00015_s008",
+      "chunk_id": "ver_fb8b6e5c60ed_c00015",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00028",
       "source_order": 8,
       "start_offset": 818,
       "end_offset": 985
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00016_s009",
-      "chunk_id": "ver_fb8b6e5c60ed_c00016",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00015_s009",
+      "chunk_id": "ver_fb8b6e5c60ed_c00015",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00028",
       "source_order": 9,
       "start_offset": 986,
       "end_offset": 1162
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00016_s010",
-      "chunk_id": "ver_fb8b6e5c60ed_c00016",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00015_s010",
+      "chunk_id": "ver_fb8b6e5c60ed_c00015",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00028",
       "source_order": 10,
       "start_offset": 1164,
       "end_offset": 1263
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00016_s011",
-      "chunk_id": "ver_fb8b6e5c60ed_c00016",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00015_s011",
+      "chunk_id": "ver_fb8b6e5c60ed_c00015",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00028",
       "source_order": 11,
       "start_offset": 1264,
       "end_offset": 1331
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00016_s012",
-      "chunk_id": "ver_fb8b6e5c60ed_c00016",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00015_s012",
+      "chunk_id": "ver_fb8b6e5c60ed_c00015",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00028",
       "source_order": 12,
       "start_offset": 1332,
       "end_offset": 1535
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00016_s013",
-      "chunk_id": "ver_fb8b6e5c60ed_c00016",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00015_s013",
+      "chunk_id": "ver_fb8b6e5c60ed_c00015",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00029",
       "source_order": 13,
       "start_offset": 0,
       "end_offset": 159
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00016_s014",
-      "chunk_id": "ver_fb8b6e5c60ed_c00016",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00015_s014",
+      "chunk_id": "ver_fb8b6e5c60ed_c00015",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00029",
       "source_order": 14,
       "start_offset": 160,
       "end_offset": 195
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00016_s015",
-      "chunk_id": "ver_fb8b6e5c60ed_c00016",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00015_s015",
+      "chunk_id": "ver_fb8b6e5c60ed_c00015",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00030",
       "source_order": 15,
       "start_offset": 0,
       "end_offset": 50
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00017_s000",
-      "chunk_id": "ver_fb8b6e5c60ed_c00017",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00015_s016",
+      "chunk_id": "ver_fb8b6e5c60ed_c00015",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00030",
-      "source_order": 0,
+      "source_order": 16,
       "start_offset": 51,
       "end_offset": 220
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00017_s001",
-      "chunk_id": "ver_fb8b6e5c60ed_c00017",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00015_s017",
+      "chunk_id": "ver_fb8b6e5c60ed_c00015",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00030",
-      "source_order": 1,
+      "source_order": 17,
       "start_offset": 221,
       "end_offset": 365
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00017_s002",
-      "chunk_id": "ver_fb8b6e5c60ed_c00017",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00015_s018",
+      "chunk_id": "ver_fb8b6e5c60ed_c00015",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00030",
-      "source_order": 2,
+      "source_order": 18,
       "start_offset": 371,
       "end_offset": 461
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00017_s003",
-      "chunk_id": "ver_fb8b6e5c60ed_c00017",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00015_s019",
+      "chunk_id": "ver_fb8b6e5c60ed_c00015",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00030",
-      "source_order": 3,
+      "source_order": 19,
       "start_offset": 462,
       "end_offset": 679
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00017_s004",
-      "chunk_id": "ver_fb8b6e5c60ed_c00017",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00015_s020",
+      "chunk_id": "ver_fb8b6e5c60ed_c00015",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00030",
-      "source_order": 4,
+      "source_order": 20,
       "start_offset": 680,
       "end_offset": 824
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00017_s005",
-      "chunk_id": "ver_fb8b6e5c60ed_c00017",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00015_s021",
+      "chunk_id": "ver_fb8b6e5c60ed_c00015",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00030",
-      "source_order": 5,
+      "source_order": 21,
       "start_offset": 825,
       "end_offset": 1072
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00017_s006",
-      "chunk_id": "ver_fb8b6e5c60ed_c00017",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00015_s022",
+      "chunk_id": "ver_fb8b6e5c60ed_c00015",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00030",
-      "source_order": 6,
+      "source_order": 22,
       "start_offset": 1073,
       "end_offset": 1160
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00017_s007",
-      "chunk_id": "ver_fb8b6e5c60ed_c00017",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00016_s000",
+      "chunk_id": "ver_fb8b6e5c60ed_c00016",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00030",
-      "source_order": 7,
+      "source_order": 0,
       "start_offset": 1165,
       "end_offset": 1315
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00017_s008",
-      "chunk_id": "ver_fb8b6e5c60ed_c00017",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00016_s001",
+      "chunk_id": "ver_fb8b6e5c60ed_c00016",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00030",
-      "source_order": 8,
+      "source_order": 1,
       "start_offset": 1316,
       "end_offset": 1496
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00017_s009",
-      "chunk_id": "ver_fb8b6e5c60ed_c00017",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00016_s002",
+      "chunk_id": "ver_fb8b6e5c60ed_c00016",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00030",
-      "source_order": 9,
+      "source_order": 2,
       "start_offset": 1498,
       "end_offset": 1515
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00017_s010",
-      "chunk_id": "ver_fb8b6e5c60ed_c00017",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00016_s003",
+      "chunk_id": "ver_fb8b6e5c60ed_c00016",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00030",
-      "source_order": 10,
+      "source_order": 3,
       "start_offset": 1516,
       "end_offset": 1744
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00017_s011",
-      "chunk_id": "ver_fb8b6e5c60ed_c00017",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00016_s004",
+      "chunk_id": "ver_fb8b6e5c60ed_c00016",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00030",
-      "source_order": 11,
+      "source_order": 4,
       "start_offset": 1745,
       "end_offset": 1800
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00017_s012",
-      "chunk_id": "ver_fb8b6e5c60ed_c00017",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00016_s005",
+      "chunk_id": "ver_fb8b6e5c60ed_c00016",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00030",
-      "source_order": 12,
+      "source_order": 5,
       "start_offset": 1801,
       "end_offset": 2024
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00017_s013",
-      "chunk_id": "ver_fb8b6e5c60ed_c00017",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00016_s006",
+      "chunk_id": "ver_fb8b6e5c60ed_c00016",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00030",
-      "source_order": 13,
+      "source_order": 6,
       "start_offset": 2025,
       "end_offset": 2037
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00017_s014",
-      "chunk_id": "ver_fb8b6e5c60ed_c00017",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00016_s007",
+      "chunk_id": "ver_fb8b6e5c60ed_c00016",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00030",
-      "source_order": 14,
+      "source_order": 7,
       "start_offset": 2038,
       "end_offset": 2111
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00018_s000",
-      "chunk_id": "ver_fb8b6e5c60ed_c00018",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00016_s008",
+      "chunk_id": "ver_fb8b6e5c60ed_c00016",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00030",
-      "source_order": 0,
+      "source_order": 8,
       "start_offset": 2112,
       "end_offset": 2275
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00018_s001",
-      "chunk_id": "ver_fb8b6e5c60ed_c00018",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00016_s009",
+      "chunk_id": "ver_fb8b6e5c60ed_c00016",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00030",
-      "source_order": 1,
+      "source_order": 9,
       "start_offset": 2276,
       "end_offset": 2446
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00018_s002",
-      "chunk_id": "ver_fb8b6e5c60ed_c00018",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00016_s010",
+      "chunk_id": "ver_fb8b6e5c60ed_c00016",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00030",
-      "source_order": 2,
+      "source_order": 10,
       "start_offset": 2447,
       "end_offset": 2510
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00018_s003",
-      "chunk_id": "ver_fb8b6e5c60ed_c00018",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00016_s011",
+      "chunk_id": "ver_fb8b6e5c60ed_c00016",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00030",
-      "source_order": 3,
+      "source_order": 11,
       "start_offset": 2511,
       "end_offset": 2645
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00018_s004",
-      "chunk_id": "ver_fb8b6e5c60ed_c00018",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00016_s012",
+      "chunk_id": "ver_fb8b6e5c60ed_c00016",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00030",
-      "source_order": 4,
+      "source_order": 12,
       "start_offset": 2646,
       "end_offset": 3068
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00018_s005",
-      "chunk_id": "ver_fb8b6e5c60ed_c00018",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00016_s013",
+      "chunk_id": "ver_fb8b6e5c60ed_c00016",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00030",
-      "source_order": 5,
+      "source_order": 13,
       "start_offset": 3069,
       "end_offset": 3404
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00018_s006",
-      "chunk_id": "ver_fb8b6e5c60ed_c00018",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00016_s014",
+      "chunk_id": "ver_fb8b6e5c60ed_c00016",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00030",
-      "source_order": 6,
+      "source_order": 14,
       "start_offset": 3405,
       "end_offset": 3408
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00018_s007",
-      "chunk_id": "ver_fb8b6e5c60ed_c00018",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00016_s015",
+      "chunk_id": "ver_fb8b6e5c60ed_c00016",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00030",
-      "source_order": 7,
+      "source_order": 15,
       "start_offset": 3409,
       "end_offset": 3434
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00018_s008",
-      "chunk_id": "ver_fb8b6e5c60ed_c00018",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00016_s016",
+      "chunk_id": "ver_fb8b6e5c60ed_c00016",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00030",
-      "source_order": 8,
+      "source_order": 16,
       "start_offset": 3435,
       "end_offset": 3586
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00018_s009",
-      "chunk_id": "ver_fb8b6e5c60ed_c00018",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00016_s017",
+      "chunk_id": "ver_fb8b6e5c60ed_c00016",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00030",
-      "source_order": 9,
+      "source_order": 17,
       "start_offset": 3587,
       "end_offset": 3771
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00018_s010",
-      "chunk_id": "ver_fb8b6e5c60ed_c00018",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00016_s018",
+      "chunk_id": "ver_fb8b6e5c60ed_c00016",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00030",
-      "source_order": 10,
+      "source_order": 18,
       "start_offset": 3772,
       "end_offset": 4019
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00019_s000",
-      "chunk_id": "ver_fb8b6e5c60ed_c00019",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00017_s000",
+      "chunk_id": "ver_fb8b6e5c60ed_c00017",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00030",
       "source_order": 0,
       "start_offset": 4020,
       "end_offset": 4543
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00020_s000",
-      "chunk_id": "ver_fb8b6e5c60ed_c00020",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00018_s000",
+      "chunk_id": "ver_fb8b6e5c60ed_c00018",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00031",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 85
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00021_s000",
-      "chunk_id": "ver_fb8b6e5c60ed_c00021",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00019_s000",
+      "chunk_id": "ver_fb8b6e5c60ed_c00019",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00032",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 163
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00021_s001",
-      "chunk_id": "ver_fb8b6e5c60ed_c00021",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00019_s001",
+      "chunk_id": "ver_fb8b6e5c60ed_c00019",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00032",
       "source_order": 1,
       "start_offset": 164,
       "end_offset": 257
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00021_s002",
-      "chunk_id": "ver_fb8b6e5c60ed_c00021",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00019_s002",
+      "chunk_id": "ver_fb8b6e5c60ed_c00019",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00032",
       "source_order": 2,
       "start_offset": 258,
       "end_offset": 270
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00021_s003",
-      "chunk_id": "ver_fb8b6e5c60ed_c00021",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00019_s003",
+      "chunk_id": "ver_fb8b6e5c60ed_c00019",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00033",
       "source_order": 3,
       "start_offset": 0,
       "end_offset": 56
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00021_s004",
-      "chunk_id": "ver_fb8b6e5c60ed_c00021",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00019_s004",
+      "chunk_id": "ver_fb8b6e5c60ed_c00019",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00034",
       "source_order": 4,
       "start_offset": 0,
       "end_offset": 231
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00021_s005",
-      "chunk_id": "ver_fb8b6e5c60ed_c00021",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00019_s005",
+      "chunk_id": "ver_fb8b6e5c60ed_c00019",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00034",
       "source_order": 5,
       "start_offset": 232,
       "end_offset": 338
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00021_s006",
-      "chunk_id": "ver_fb8b6e5c60ed_c00021",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00019_s006",
+      "chunk_id": "ver_fb8b6e5c60ed_c00019",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00034",
       "source_order": 6,
       "start_offset": 339,
       "end_offset": 449
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00021_s007",
-      "chunk_id": "ver_fb8b6e5c60ed_c00021",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00019_s007",
+      "chunk_id": "ver_fb8b6e5c60ed_c00019",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00034",
       "source_order": 7,
       "start_offset": 450,
       "end_offset": 597
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00021_s008",
-      "chunk_id": "ver_fb8b6e5c60ed_c00021",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00019_s008",
+      "chunk_id": "ver_fb8b6e5c60ed_c00019",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00034",
       "source_order": 8,
       "start_offset": 598,
       "end_offset": 831
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00021_s009",
-      "chunk_id": "ver_fb8b6e5c60ed_c00021",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00019_s009",
+      "chunk_id": "ver_fb8b6e5c60ed_c00019",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00034",
       "source_order": 9,
       "start_offset": 832,
       "end_offset": 1047
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00021_s010",
-      "chunk_id": "ver_fb8b6e5c60ed_c00021",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00019_s010",
+      "chunk_id": "ver_fb8b6e5c60ed_c00019",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00034",
       "source_order": 10,
       "start_offset": 1048,
       "end_offset": 1141
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00021_s011",
-      "chunk_id": "ver_fb8b6e5c60ed_c00021",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00019_s011",
+      "chunk_id": "ver_fb8b6e5c60ed_c00019",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00034",
       "source_order": 11,
       "start_offset": 1142,
       "end_offset": 1219
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00021_s012",
-      "chunk_id": "ver_fb8b6e5c60ed_c00021",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00019_s012",
+      "chunk_id": "ver_fb8b6e5c60ed_c00019",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00035",
       "source_order": 12,
       "start_offset": 1,
       "end_offset": 175
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00021_s013",
-      "chunk_id": "ver_fb8b6e5c60ed_c00021",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00019_s013",
+      "chunk_id": "ver_fb8b6e5c60ed_c00019",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00035",
       "source_order": 13,
       "start_offset": 176,
       "end_offset": 328
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00021_s014",
-      "chunk_id": "ver_fb8b6e5c60ed_c00021",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00019_s014",
+      "chunk_id": "ver_fb8b6e5c60ed_c00019",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00035",
       "source_order": 14,
       "start_offset": 329,
       "end_offset": 513
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00022_s000",
-      "chunk_id": "ver_fb8b6e5c60ed_c00022",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00019_s015",
+      "chunk_id": "ver_fb8b6e5c60ed_c00019",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00035",
-      "source_order": 0,
+      "source_order": 15,
       "start_offset": 514,
       "end_offset": 680
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00022_s001",
-      "chunk_id": "ver_fb8b6e5c60ed_c00022",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00019_s016",
+      "chunk_id": "ver_fb8b6e5c60ed_c00019",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00035",
-      "source_order": 1,
+      "source_order": 16,
       "start_offset": 681,
       "end_offset": 745
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00022_s002",
-      "chunk_id": "ver_fb8b6e5c60ed_c00022",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00019_s017",
+      "chunk_id": "ver_fb8b6e5c60ed_c00019",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00036",
-      "source_order": 2,
+      "source_order": 17,
       "start_offset": 0,
       "end_offset": 55
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00022_s003",
-      "chunk_id": "ver_fb8b6e5c60ed_c00022",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00019_s018",
+      "chunk_id": "ver_fb8b6e5c60ed_c00019",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00036",
-      "source_order": 3,
+      "source_order": 18,
       "start_offset": 56,
       "end_offset": 217
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00022_s004",
-      "chunk_id": "ver_fb8b6e5c60ed_c00022",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00019_s019",
+      "chunk_id": "ver_fb8b6e5c60ed_c00019",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00036",
-      "source_order": 4,
+      "source_order": 19,
       "start_offset": 218,
       "end_offset": 319
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00022_s005",
-      "chunk_id": "ver_fb8b6e5c60ed_c00022",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00019_s020",
+      "chunk_id": "ver_fb8b6e5c60ed_c00019",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00036",
-      "source_order": 5,
+      "source_order": 20,
       "start_offset": 320,
       "end_offset": 814
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00022_s006",
-      "chunk_id": "ver_fb8b6e5c60ed_c00022",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00020_s000",
+      "chunk_id": "ver_fb8b6e5c60ed_c00020",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00036",
-      "source_order": 6,
+      "source_order": 0,
       "start_offset": 815,
       "end_offset": 958
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00023_s000",
-      "chunk_id": "ver_fb8b6e5c60ed_c00023",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00021_s000",
+      "chunk_id": "ver_fb8b6e5c60ed_c00021",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00037",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 52
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00024_s000",
-      "chunk_id": "ver_fb8b6e5c60ed_c00024",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00022_s000",
+      "chunk_id": "ver_fb8b6e5c60ed_c00022",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00038",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 116
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00024_s001",
-      "chunk_id": "ver_fb8b6e5c60ed_c00024",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00022_s001",
+      "chunk_id": "ver_fb8b6e5c60ed_c00022",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00038",
       "source_order": 1,
       "start_offset": 117,
       "end_offset": 295
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00024_s002",
-      "chunk_id": "ver_fb8b6e5c60ed_c00024",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00022_s002",
+      "chunk_id": "ver_fb8b6e5c60ed_c00022",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00038",
       "source_order": 2,
       "start_offset": 296,
       "end_offset": 528
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00024_s003",
-      "chunk_id": "ver_fb8b6e5c60ed_c00024",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00022_s003",
+      "chunk_id": "ver_fb8b6e5c60ed_c00022",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00038",
       "source_order": 3,
       "start_offset": 529,
       "end_offset": 584
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00024_s004",
-      "chunk_id": "ver_fb8b6e5c60ed_c00024",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00022_s004",
+      "chunk_id": "ver_fb8b6e5c60ed_c00022",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00039",
       "source_order": 4,
       "start_offset": 0,
       "end_offset": 77
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00024_s005",
-      "chunk_id": "ver_fb8b6e5c60ed_c00024",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00022_s005",
+      "chunk_id": "ver_fb8b6e5c60ed_c00022",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00039",
       "source_order": 5,
       "start_offset": 78,
       "end_offset": 169
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00024_s006",
-      "chunk_id": "ver_fb8b6e5c60ed_c00024",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00022_s006",
+      "chunk_id": "ver_fb8b6e5c60ed_c00022",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00039",
       "source_order": 6,
       "start_offset": 170,
       "end_offset": 372
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00024_s007",
-      "chunk_id": "ver_fb8b6e5c60ed_c00024",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00022_s007",
+      "chunk_id": "ver_fb8b6e5c60ed_c00022",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00039",
       "source_order": 7,
       "start_offset": 373,
       "end_offset": 475
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00024_s008",
-      "chunk_id": "ver_fb8b6e5c60ed_c00024",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00022_s008",
+      "chunk_id": "ver_fb8b6e5c60ed_c00022",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00039",
       "source_order": 8,
       "start_offset": 476,
       "end_offset": 742
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00024_s009",
-      "chunk_id": "ver_fb8b6e5c60ed_c00024",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00022_s009",
+      "chunk_id": "ver_fb8b6e5c60ed_c00022",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00039",
       "source_order": 9,
       "start_offset": 743,
       "end_offset": 885
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00024_s010",
-      "chunk_id": "ver_fb8b6e5c60ed_c00024",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00022_s010",
+      "chunk_id": "ver_fb8b6e5c60ed_c00022",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00039",
       "source_order": 10,
       "start_offset": 886,
       "end_offset": 1237
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00024_s011",
-      "chunk_id": "ver_fb8b6e5c60ed_c00024",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00022_s011",
+      "chunk_id": "ver_fb8b6e5c60ed_c00022",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00039",
       "source_order": 11,
       "start_offset": 1238,
       "end_offset": 1401
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00025_s000",
-      "chunk_id": "ver_fb8b6e5c60ed_c00025",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00023_s000",
+      "chunk_id": "ver_fb8b6e5c60ed_c00023",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00040",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 72
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00026_s000",
-      "chunk_id": "ver_fb8b6e5c60ed_c00026",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00024_s000",
+      "chunk_id": "ver_fb8b6e5c60ed_c00024",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00041",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 64
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00026_s001",
-      "chunk_id": "ver_fb8b6e5c60ed_c00026",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00024_s001",
+      "chunk_id": "ver_fb8b6e5c60ed_c00024",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00041",
       "source_order": 1,
       "start_offset": 65,
       "end_offset": 265
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00026_s002",
-      "chunk_id": "ver_fb8b6e5c60ed_c00026",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00024_s002",
+      "chunk_id": "ver_fb8b6e5c60ed_c00024",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00041",
       "source_order": 2,
       "start_offset": 266,
       "end_offset": 537
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00027_s000",
-      "chunk_id": "ver_fb8b6e5c60ed_c00027",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00025_s000",
+      "chunk_id": "ver_fb8b6e5c60ed_c00025",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00042",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 46
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00028_s000",
-      "chunk_id": "ver_fb8b6e5c60ed_c00028",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00026_s000",
+      "chunk_id": "ver_fb8b6e5c60ed_c00026",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00043",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 157
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00028_s001",
-      "chunk_id": "ver_fb8b6e5c60ed_c00028",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00026_s001",
+      "chunk_id": "ver_fb8b6e5c60ed_c00026",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00043",
       "source_order": 1,
       "start_offset": 158,
       "end_offset": 380
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00028_s002",
-      "chunk_id": "ver_fb8b6e5c60ed_c00028",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00026_s002",
+      "chunk_id": "ver_fb8b6e5c60ed_c00026",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00043",
       "source_order": 2,
       "start_offset": 381,
       "end_offset": 428
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00028_s003",
-      "chunk_id": "ver_fb8b6e5c60ed_c00028",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00026_s003",
+      "chunk_id": "ver_fb8b6e5c60ed_c00026",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00044",
       "source_order": 3,
       "start_offset": 0,
       "end_offset": 254
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00028_s004",
-      "chunk_id": "ver_fb8b6e5c60ed_c00028",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00026_s004",
+      "chunk_id": "ver_fb8b6e5c60ed_c00026",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00044",
       "source_order": 4,
       "start_offset": 255,
       "end_offset": 417
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00028_s005",
-      "chunk_id": "ver_fb8b6e5c60ed_c00028",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00026_s005",
+      "chunk_id": "ver_fb8b6e5c60ed_c00026",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00044",
       "source_order": 5,
       "start_offset": 418,
       "end_offset": 483
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00028_s006",
-      "chunk_id": "ver_fb8b6e5c60ed_c00028",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00026_s006",
+      "chunk_id": "ver_fb8b6e5c60ed_c00026",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00044",
       "source_order": 6,
       "start_offset": 484,
       "end_offset": 547
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00028_s007",
-      "chunk_id": "ver_fb8b6e5c60ed_c00028",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00026_s007",
+      "chunk_id": "ver_fb8b6e5c60ed_c00026",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00044",
       "source_order": 7,
       "start_offset": 548,
       "end_offset": 686
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00028_s008",
-      "chunk_id": "ver_fb8b6e5c60ed_c00028",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00026_s008",
+      "chunk_id": "ver_fb8b6e5c60ed_c00026",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00044",
       "source_order": 8,
       "start_offset": 687,
       "end_offset": 793
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00028_s009",
-      "chunk_id": "ver_fb8b6e5c60ed_c00028",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00026_s009",
+      "chunk_id": "ver_fb8b6e5c60ed_c00026",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00044",
       "source_order": 9,
       "start_offset": 794,
       "end_offset": 875
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00028_s010",
-      "chunk_id": "ver_fb8b6e5c60ed_c00028",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00026_s010",
+      "chunk_id": "ver_fb8b6e5c60ed_c00026",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00044",
       "source_order": 10,
       "start_offset": 876,
       "end_offset": 998
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00029_s000",
-      "chunk_id": "ver_fb8b6e5c60ed_c00029",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00027_s000",
+      "chunk_id": "ver_fb8b6e5c60ed_c00027",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00045",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 33
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00030_s000",
-      "chunk_id": "ver_fb8b6e5c60ed_c00030",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00028_s000",
+      "chunk_id": "ver_fb8b6e5c60ed_c00028",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00046",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 275
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00030_s001",
-      "chunk_id": "ver_fb8b6e5c60ed_c00030",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00028_s001",
+      "chunk_id": "ver_fb8b6e5c60ed_c00028",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00046",
       "source_order": 1,
       "start_offset": 276,
       "end_offset": 516
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00030_s002",
-      "chunk_id": "ver_fb8b6e5c60ed_c00030",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00028_s002",
+      "chunk_id": "ver_fb8b6e5c60ed_c00028",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00046",
       "source_order": 2,
       "start_offset": 517,
       "end_offset": 711
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00030_s003",
-      "chunk_id": "ver_fb8b6e5c60ed_c00030",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00028_s003",
+      "chunk_id": "ver_fb8b6e5c60ed_c00028",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00046",
       "source_order": 3,
       "start_offset": 712,
       "end_offset": 762
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00030_s004",
-      "chunk_id": "ver_fb8b6e5c60ed_c00030",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00028_s004",
+      "chunk_id": "ver_fb8b6e5c60ed_c00028",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00047",
       "source_order": 4,
       "start_offset": 0,
       "end_offset": 85
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00030_s005",
-      "chunk_id": "ver_fb8b6e5c60ed_c00030",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00028_s005",
+      "chunk_id": "ver_fb8b6e5c60ed_c00028",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00047",
       "source_order": 5,
       "start_offset": 86,
       "end_offset": 411
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00030_s006",
-      "chunk_id": "ver_fb8b6e5c60ed_c00030",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00028_s006",
+      "chunk_id": "ver_fb8b6e5c60ed_c00028",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00047",
       "source_order": 6,
       "start_offset": 412,
       "end_offset": 505
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00030_s007",
-      "chunk_id": "ver_fb8b6e5c60ed_c00030",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00028_s007",
+      "chunk_id": "ver_fb8b6e5c60ed_c00028",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00047",
       "source_order": 7,
       "start_offset": 506,
       "end_offset": 709
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00030_s008",
-      "chunk_id": "ver_fb8b6e5c60ed_c00030",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00028_s008",
+      "chunk_id": "ver_fb8b6e5c60ed_c00028",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00047",
       "source_order": 8,
       "start_offset": 710,
       "end_offset": 842
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00030_s009",
-      "chunk_id": "ver_fb8b6e5c60ed_c00030",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00028_s009",
+      "chunk_id": "ver_fb8b6e5c60ed_c00028",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00047",
       "source_order": 9,
       "start_offset": 843,
       "end_offset": 991
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00030_s010",
-      "chunk_id": "ver_fb8b6e5c60ed_c00030",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00028_s010",
+      "chunk_id": "ver_fb8b6e5c60ed_c00028",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00047",
       "source_order": 10,
       "start_offset": 992,
       "end_offset": 1054
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00030_s011",
-      "chunk_id": "ver_fb8b6e5c60ed_c00030",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00028_s011",
+      "chunk_id": "ver_fb8b6e5c60ed_c00028",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00047",
       "source_order": 11,
       "start_offset": 1055,
       "end_offset": 1156
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00030_s012",
-      "chunk_id": "ver_fb8b6e5c60ed_c00030",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00028_s012",
+      "chunk_id": "ver_fb8b6e5c60ed_c00028",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00047",
       "source_order": 12,
       "start_offset": 1157,
       "end_offset": 1237
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00031_s000",
-      "chunk_id": "ver_fb8b6e5c60ed_c00031",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00029_s000",
+      "chunk_id": "ver_fb8b6e5c60ed_c00029",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00048",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 66
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00032_s000",
-      "chunk_id": "ver_fb8b6e5c60ed_c00032",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00030_s000",
+      "chunk_id": "ver_fb8b6e5c60ed_c00030",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00049",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 130
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00032_s001",
-      "chunk_id": "ver_fb8b6e5c60ed_c00032",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00030_s001",
+      "chunk_id": "ver_fb8b6e5c60ed_c00030",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00049",
       "source_order": 1,
       "start_offset": 131,
       "end_offset": 325
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00032_s002",
-      "chunk_id": "ver_fb8b6e5c60ed_c00032",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00030_s002",
+      "chunk_id": "ver_fb8b6e5c60ed_c00030",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00049",
       "source_order": 2,
       "start_offset": 326,
       "end_offset": 763
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00032_s003",
-      "chunk_id": "ver_fb8b6e5c60ed_c00032",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00030_s003",
+      "chunk_id": "ver_fb8b6e5c60ed_c00030",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00049",
       "source_order": 3,
       "start_offset": 764,
       "end_offset": 975
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00032_s004",
-      "chunk_id": "ver_fb8b6e5c60ed_c00032",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00030_s004",
+      "chunk_id": "ver_fb8b6e5c60ed_c00030",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00050",
       "source_order": 4,
       "start_offset": 0,
       "end_offset": 102
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00032_s005",
-      "chunk_id": "ver_fb8b6e5c60ed_c00032",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00030_s005",
+      "chunk_id": "ver_fb8b6e5c60ed_c00030",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00050",
       "source_order": 5,
       "start_offset": 103,
       "end_offset": 150
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00032_s006",
-      "chunk_id": "ver_fb8b6e5c60ed_c00032",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00030_s006",
+      "chunk_id": "ver_fb8b6e5c60ed_c00030",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00050",
       "source_order": 6,
       "start_offset": 151,
       "end_offset": 256
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00032_s007",
-      "chunk_id": "ver_fb8b6e5c60ed_c00032",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00030_s007",
+      "chunk_id": "ver_fb8b6e5c60ed_c00030",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00050",
       "source_order": 7,
       "start_offset": 257,
       "end_offset": 299
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00032_s008",
-      "chunk_id": "ver_fb8b6e5c60ed_c00032",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00030_s008",
+      "chunk_id": "ver_fb8b6e5c60ed_c00030",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00050",
       "source_order": 8,
       "start_offset": 300,
       "end_offset": 532
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00033_s000",
-      "chunk_id": "ver_fb8b6e5c60ed_c00033",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00031_s000",
+      "chunk_id": "ver_fb8b6e5c60ed_c00031",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00051",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 13
     },
     {
-      "chunk_source_id": "ver_fb8b6e5c60ed_c00034_s000",
-      "chunk_id": "ver_fb8b6e5c60ed_c00034",
+      "chunk_source_id": "ver_fb8b6e5c60ed_c00032_s000",
+      "chunk_id": "ver_fb8b6e5c60ed_c00032",
       "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00052",
       "source_order": 0,
       "start_offset": 0,

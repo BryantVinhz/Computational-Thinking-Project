@@ -1093,8 +1093,8 @@
       "version_id": "ver_3653eed28e7f",
       "chunk_idx": 68,
       "chunk_type": "list",
-      "text_content": "- Validating session state for user\n- Level of granularity in setting authorization context when consuming SAML token (do you use groups, roles, attributes)\n- Ensure each Assertion or the entire Response element is signed\n- [Validate Signatures](#validate-signatures)\n- Validate if signed by an authorized IdP\n- Validate IDP certificates for revocation against CRL/OCSP if they are present\n- Validate the `Destination` attribute on `<samlp:Response>` exactly matches the SP's expected Assertion Consumer Service (ACS) URL ([SAML Core 2.0 §3.2.2.1](https://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf)).\n\nReject responses that are missing `Destination` or where it does not match — this prevents cross-SP assertion replay.\n\n- Validate `<saml:Audience>` matches the SP's EntityID\n- Validate NotBefore and NotOnorAfter\n- Validate Recipient attribute, `InResponseTo`, and `<saml:SubjectConfirmationData>` (`Recipient`, `NotOnOrAfter`, `InResponseTo`)\n- Explicitly verify the signature algorithm is at least RSA-SHA-256 (or stronger).\n\nReject SHA-1-based algorithms (`http://www.w3.org/2000/09/xmldsig#rsa-sha1`, `...#hmac-sha1`) and `<ds:DigestMethod Algorithm=\"...sha1\">`.\n\nNIST SP 800-131A Rev.\n\n2 disallows SHA-1 in digital signatures.\n\n- Verify that the XML signature's `<ds:Reference URI>` resolves to the signed Assertion or Response, and that the exact assertion used for authentication is protected by that validated signature.",
-      "token_count": 356,
+      "text_content": "- Validating session state for user\n- Level of granularity in setting authorization context when consuming SAML token (do you use groups, roles, attributes)\n- Ensure each Assertion or the entire Response element is signed\n- [Validate Signatures](#validate-signatures)\n- Validate if signed by an authorized IdP\n- Validate IDP certificates for revocation against CRL/OCSP if they are present\n- Validate the `Destination` attribute on `<samlp:Response>` exactly matches the SP's expected Assertion Consumer Service (ACS) URL ([SAML Core 2.0 §3.2.2.1](https://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf)).\n\nReject responses that are missing `Destination` or where it does not match — this prevents cross-SP assertion replay.\n\n- Validate `<saml:Audience>` matches the SP's EntityID\n- Validate NotBefore and NotOnorAfter\n- Validate Recipient attribute, `InResponseTo`, and `<saml:SubjectConfirmationData>` (`Recipient`, `NotOnOrAfter`, `InResponseTo`)\n- Explicitly verify the signature algorithm is at least RSA-SHA-256 (or stronger).\n\nReject SHA-1-based algorithms (`http://www.w3.org/2000/09/xmldsig#rsa-sha1`, `...#hmac-sha1`) and `<ds:DigestMethod Algorithm=\"...sha1\">`.\n\nNIST SP 800-131A Rev.\n\n2 disallows SHA-1 in digital signatures.\n\n- Verify that the XML signature's `<ds:Reference URI>` resolves to the signed Assertion or Response, and that the exact assertion used for authentication is protected by that validated signature.\n\n[SAML Core sections 5.3 and 5.4](https://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf) define signature inheritance and references; [approved errata E93](https://docs.oasis-open.org/security/saml/v2.0/errata05/os/saml-v2.0-errata05-os.html#__RefHeading__10669_188893729) permits Response signatures in the browser SSO profile.\n\nReject assertions outside the validated signed content and follow the [signature-wrapping defenses](#validate-signatures).\n\n- Define criteria for SAML logout\n- Exchange assertions only over secure transports like TLS\n- Define criteria for session management\n- Verify user identities obtained from SAML ticket assertions whenever possible.",
+      "token_count": 516,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "SAML Security Cheat Sheet",
@@ -1107,14 +1107,13 @@
       "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
       "version_id": "ver_3653eed28e7f",
       "chunk_idx": 69,
-      "chunk_type": "list",
-      "text_content": "[SAML Core sections 5.3 and 5.4](https://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf) define signature inheritance and references; [approved errata E93](https://docs.oasis-open.org/security/saml/v2.0/errata05/os/saml-v2.0-errata05-os.html#__RefHeading__10669_188893729) permits Response signatures in the browser SSO profile.\n\nReject assertions outside the validated signed content and follow the [signature-wrapping defenses](#validate-signatures).\n\n- Define criteria for SAML logout\n- Exchange assertions only over secure transports like TLS\n- Define criteria for session management\n- Verify user identities obtained from SAML ticket assertions whenever possible.",
-      "token_count": 160,
+      "chunk_type": "heading",
+      "text_content": "## Input Validation",
+      "token_count": 4,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "SAML Security Cheat Sheet",
-        "Identity Provider and Service Provider Considerations",
-        "Service Provider (SP) Considerations"
+        "Input Validation"
       ]
     },
     {
@@ -1122,9 +1121,9 @@
       "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
       "version_id": "ver_3653eed28e7f",
       "chunk_idx": 70,
-      "chunk_type": "heading",
-      "text_content": "## Input Validation",
-      "token_count": 4,
+      "chunk_type": "mixed",
+      "text_content": "Just because SAML is a security protocol does not mean that input validation goes away.\n\n- Ensure that all SAML providers/consumers do proper [input validation](Input_Validation_Cheat_Sheet.md).",
+      "token_count": 36,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "SAML Security Cheat Sheet",
@@ -1136,13 +1135,13 @@
       "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
       "version_id": "ver_3653eed28e7f",
       "chunk_idx": 71,
-      "chunk_type": "mixed",
-      "text_content": "Just because SAML is a security protocol does not mean that input validation goes away.\n\n- Ensure that all SAML providers/consumers do proper [input validation](Input_Validation_Cheat_Sheet.md).",
-      "token_count": 36,
+      "chunk_type": "heading",
+      "text_content": "## Cryptography",
+      "token_count": 3,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "SAML Security Cheat Sheet",
-        "Input Validation"
+        "Cryptography"
       ]
     },
     {
@@ -1150,9 +1149,9 @@
       "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
       "version_id": "ver_3653eed28e7f",
       "chunk_idx": 72,
-      "chunk_type": "heading",
-      "text_content": "## Cryptography",
-      "token_count": 3,
+      "chunk_type": "mixed",
+      "text_content": "Solutions relying cryptographic algorithms need to follow the latest developments in cryptoanalysis.\n\n- Ensure all SAML elements in the chain use [strong encryption](Cryptographic_Storage_Cheat_Sheet.md#algorithms)\n- Consider deprecating support for [insecure XMLEnc algorithms](https://www.w3.org/TR/xmlenc-core1/#sec-RSA-1_5)",
+      "token_count": 67,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "SAML Security Cheat Sheet",
@@ -1164,20 +1163,6 @@
       "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
       "version_id": "ver_3653eed28e7f",
       "chunk_idx": 73,
-      "chunk_type": "mixed",
-      "text_content": "Solutions relying cryptographic algorithms need to follow the latest developments in cryptoanalysis.\n\n- Ensure all SAML elements in the chain use [strong encryption](Cryptographic_Storage_Cheat_Sheet.md#algorithms)\n- Consider deprecating support for [insecure XMLEnc algorithms](https://www.w3.org/TR/xmlenc-core1/#sec-RSA-1_5)",
-      "token_count": 67,
-      "chunk_strategy": "structure_aware",
-      "heading_path": [
-        "SAML Security Cheat Sheet",
-        "Cryptography"
-      ]
-    },
-    {
-      "chunk_id": "ver_3653eed28e7f_c00074",
-      "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
-      "version_id": "ver_3653eed28e7f",
-      "chunk_idx": 74,
       "chunk_type": "heading",
       "text_content": "## References",
       "token_count": 3,
@@ -1188,10 +1173,10 @@
       ]
     },
     {
-      "chunk_id": "ver_3653eed28e7f_c00075",
+      "chunk_id": "ver_3653eed28e7f_c00074",
       "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
       "version_id": "ver_3653eed28e7f",
-      "chunk_idx": 75,
+      "chunk_idx": 74,
       "chunk_type": "list",
       "text_content": "- [OASIS: Security and Privacy Considerations for SAML 2.0](https://docs.oasis-open.org/security/saml/v2.0/saml-sec-consider-2.0-os.pdf)\n- [OASIS: Assertions and Protocols for SAML 2.0](https://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf)\n- [OASIS: Profiles for SAML 2.0](https://docs.oasis-open.org/security/saml/v2.0/saml-profiles-2.0-os.pdf)",
       "token_count": 139,
@@ -3396,88 +3381,88 @@
       "end_offset": 1441
     },
     {
-      "chunk_source_id": "ver_3653eed28e7f_c00069_s000",
-      "chunk_id": "ver_3653eed28e7f_c00069",
+      "chunk_source_id": "ver_3653eed28e7f_c00068_s007",
+      "chunk_id": "ver_3653eed28e7f_c00068",
       "normalized_block_id": "nrm_ver_3653eed28e7f_b00105",
-      "source_order": 0,
+      "source_order": 7,
       "start_offset": 1442,
       "end_offset": 1783
     },
     {
-      "chunk_source_id": "ver_3653eed28e7f_c00069_s001",
-      "chunk_id": "ver_3653eed28e7f_c00069",
+      "chunk_source_id": "ver_3653eed28e7f_c00068_s008",
+      "chunk_id": "ver_3653eed28e7f_c00068",
       "normalized_block_id": "nrm_ver_3653eed28e7f_b00105",
-      "source_order": 1,
+      "source_order": 8,
       "start_offset": 1784,
       "end_offset": 1906
     },
     {
-      "chunk_source_id": "ver_3653eed28e7f_c00069_s002",
-      "chunk_id": "ver_3653eed28e7f_c00069",
+      "chunk_source_id": "ver_3653eed28e7f_c00068_s009",
+      "chunk_id": "ver_3653eed28e7f_c00068",
       "normalized_block_id": "nrm_ver_3653eed28e7f_b00105",
-      "source_order": 2,
+      "source_order": 9,
       "start_offset": 1907,
       "end_offset": 2121
     },
     {
-      "chunk_source_id": "ver_3653eed28e7f_c00070_s000",
-      "chunk_id": "ver_3653eed28e7f_c00070",
+      "chunk_source_id": "ver_3653eed28e7f_c00069_s000",
+      "chunk_id": "ver_3653eed28e7f_c00069",
       "normalized_block_id": "nrm_ver_3653eed28e7f_b00106",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 19
     },
     {
-      "chunk_source_id": "ver_3653eed28e7f_c00071_s000",
-      "chunk_id": "ver_3653eed28e7f_c00071",
+      "chunk_source_id": "ver_3653eed28e7f_c00070_s000",
+      "chunk_id": "ver_3653eed28e7f_c00070",
       "normalized_block_id": "nrm_ver_3653eed28e7f_b00107",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 87
     },
     {
-      "chunk_source_id": "ver_3653eed28e7f_c00071_s001",
-      "chunk_id": "ver_3653eed28e7f_c00071",
+      "chunk_source_id": "ver_3653eed28e7f_c00070_s001",
+      "chunk_id": "ver_3653eed28e7f_c00070",
       "normalized_block_id": "nrm_ver_3653eed28e7f_b00108",
       "source_order": 1,
       "start_offset": 0,
       "end_offset": 105
     },
     {
-      "chunk_source_id": "ver_3653eed28e7f_c00072_s000",
-      "chunk_id": "ver_3653eed28e7f_c00072",
+      "chunk_source_id": "ver_3653eed28e7f_c00071_s000",
+      "chunk_id": "ver_3653eed28e7f_c00071",
       "normalized_block_id": "nrm_ver_3653eed28e7f_b00109",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 15
     },
     {
-      "chunk_source_id": "ver_3653eed28e7f_c00073_s000",
-      "chunk_id": "ver_3653eed28e7f_c00073",
+      "chunk_source_id": "ver_3653eed28e7f_c00072_s000",
+      "chunk_id": "ver_3653eed28e7f_c00072",
       "normalized_block_id": "nrm_ver_3653eed28e7f_b00110",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 100
     },
     {
-      "chunk_source_id": "ver_3653eed28e7f_c00073_s001",
-      "chunk_id": "ver_3653eed28e7f_c00073",
+      "chunk_source_id": "ver_3653eed28e7f_c00072_s001",
+      "chunk_id": "ver_3653eed28e7f_c00072",
       "normalized_block_id": "nrm_ver_3653eed28e7f_b00111",
       "source_order": 1,
       "start_offset": 0,
       "end_offset": 225
     },
     {
-      "chunk_source_id": "ver_3653eed28e7f_c00074_s000",
-      "chunk_id": "ver_3653eed28e7f_c00074",
+      "chunk_source_id": "ver_3653eed28e7f_c00073_s000",
+      "chunk_id": "ver_3653eed28e7f_c00073",
       "normalized_block_id": "nrm_ver_3653eed28e7f_b00112",
       "source_order": 0,
       "start_offset": 0,
       "end_offset": 13
     },
     {
-      "chunk_source_id": "ver_3653eed28e7f_c00075_s000",
-      "chunk_id": "ver_3653eed28e7f_c00075",
+      "chunk_source_id": "ver_3653eed28e7f_c00074_s000",
+      "chunk_id": "ver_3653eed28e7f_c00074",
       "normalized_block_id": "nrm_ver_3653eed28e7f_b00113",
       "source_order": 0,
       "start_offset": 0,
