@@ -70,11 +70,11 @@ class RetrievalSystem:
 
         target_intent = (task_intent or intent).upper()
         if target_intent == "COMPARE":
-            return 3, 0.60
+            return 5, 0.70
         elif target_intent == "SYNTHESIS":
-            return 9, 0.50  
+            return 10, 0.60  
         else:
-            return 3, 0.65  # SEARCH 
+            return 5, 0.70  # SEARCH 
 
     def _execute_search_pipeline(self, payload: ScopedRetrievalPayload, target_k: int, lambda_val: float) -> tuple[list[dict[str, Any]], bool, str | None]:
         """Execute search pipeline (Sparse + Dense -> RRF -> Rerank -> MMR)"""

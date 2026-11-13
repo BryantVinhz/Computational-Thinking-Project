@@ -20,8 +20,8 @@ class ColabLLMClient:
             
         payload = {
             "prompt": prompt,
-            "system_instruction": system_instruction,
-            "max_tokens": kwargs.get("max_tokens", 798),
+            "system_instruction": sys_inst,
+            "max_tokens": kwargs.get("max_tokens", 1200),
             "temperature": kwargs.get("temperature", 0.2),
         }
         try:
@@ -62,7 +62,8 @@ class OllamaLLMClient:
             "stream": False,
             "options": {
                 "temperature": kwargs.get("temperature", 0.2),
-                "num_predict": kwargs.get("max_tokens", 798),
+                "repeat_penalty": 1.15,
+                "num_predict": kwargs.get("max_tokens", 1200),
                 "num_ctx": 4096,
             },
         }

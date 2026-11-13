@@ -470,6 +470,7 @@ class QueryUnderstandingEngine:
                     query,
                     flags=re.IGNORECASE
                 )
+            return False, resolved, current_slugs
         
         # RESOLVE CROSS-TURN REFERENCES
         # Example: "What is the CWE of it?" -> No in-turn entity; must retrieve from conversation history.
@@ -793,7 +794,17 @@ def understand_query(
 
             # Validate schema
             if validate_understanding_schema(parsed, STANDARD_VULNERABILITY_SLUGS):
-                parsed.pop("original_query", None)
+                engine = get_engine()
+                orig_slugs = engine.extract_vulnerabilities(normalized_query)
+                if orig_slugs:
+                    _, safe_resolved, _ = engine.resolve_coreference_from_history(normalized_query, None)
+                    parsed["resolved_query"] = safe_resolved
+                    parsed["context_used"] = False
+                    parsed["entities"]["vulnerabilities"] = orig_slugs
+                    for t in parsed.get("task", []):
+                        t["query"] = safe_resolved
+                        if t.get("objective", {}).get("type") == "vulnerabilities":
+                            t["objective"]["ids"] = orig_slugs
                 return parsed
 
             if attempt < LLM_MAX_RETRIES:
