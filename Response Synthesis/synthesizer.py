@@ -224,6 +224,13 @@ class ResponseSynthesizer:
             )
 
         draft_answer = re.sub(r"\[i\]", "", draft_answer)
+        def _filter_invalid_citations(match: re.Match) -> str:
+            tag_num = int(match.group(1))
+            if 1 <= tag_num <= total_evidence:
+                return f"[{tag_num}]"
+            return ""
+
+        draft_answer = re.sub(r"\[(\d+)\]", _filter_invalid_citations, draft_answer).strip()
         
         # Extract all citation tags [1], [2] from Markdown text
         cited_tags = extract_citation_tags(draft_answer)

@@ -1,4 +1,4 @@
-import sys
+import sys, time
 from pathlib import Path
 
 CURRENT_DIR = Path(__file__).resolve().parent
@@ -24,7 +24,8 @@ from llm import OllamaLLMClient, ColabLLMClient
 class PipelineConnector:
     """Orchestrating end-to-end RAG pipeline across Stage 2 -> Stage 3 -> Stage 4"""
 
-    def __init__(self, llm_client=None):
+    def __init__(self, llm_client=None, warm_up_models=True):
+        t0 = time.perf_counter()
         print("Initializing RetrievalSystem")
         self.retrieval_system = RetrievalSystem()
 
@@ -35,8 +36,9 @@ class PipelineConnector:
         print("Initializing Response Synthesis, Verifier & Formatter with Remote LLM")
         self.synthesizer = ResponseSynthesizer(llm_client=self.llm_client)
 
+        similarity_scorer = self._create_shared_similarity_scorer()
         self.verifier = EvidenceVerifier(
-            similarity_fn=MultilingualSemanticSimilarity(),
+            similarity_fn=similarity_scorer,
             support_threshold=SEMANTIC_SUPPORT_THRESHOLD,
         )
 
@@ -51,6 +53,45 @@ class PipelineConnector:
         )
 
         self.conversation_history: list[dict[str, str]] = []
+        
+        if warm_up_models:
+            self.warm_up()
+
+        print(f"Pipeline ready in {time.perf_counter() - t0:.2f}s.")
+        
+    def _create_shared_similarity_scorer(self) -> MultilingualSemanticSimilarity:
+        """Share the loaded BGE-M3 SentenceTransformer instance between Retrieval and Verifier."""
+        scorer = MultilingualSemanticSimilarity()
+        vectorizer = getattr(self.retrieval_system, "vectorizer", None)
+        if vectorizer is not None:
+            shared_model = (
+                vectorizer._get_model()
+                if hasattr(vectorizer, "_get_model")
+                else getattr(vectorizer, "model", None)
+            )
+            if shared_model is not None:
+                if hasattr(scorer, "_model"):
+                    scorer._model = shared_model
+                elif hasattr(scorer, "model"):
+                    scorer.model = shared_model
+        return scorer
+    
+    def warm_up(self) -> None:
+        """Pre-load Reranker and warm up Ollama model in RAM/VRAM to avoid cold-start delay."""
+        try:
+            reranker = getattr(self.retrieval_system, "reranker", None)
+            if reranker is not None and hasattr(reranker, "_get_model"):
+                reranker._get_model()
+        except Exception:
+            pass
+
+        try:
+            if isinstance(self.llm_client, OllamaLLMClient):
+                self.llm_client.generate(prompt="Hi", max_tokens=1)
+        except Exception:
+            pass
+        
+        
     def ask(self, query: str) -> FinalResponseEnvelope:
         print(f"\n>>> Processing query: '{query}'...")
         
