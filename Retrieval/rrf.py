@@ -102,12 +102,16 @@ def reciprocal_rank_fusion(
                 "dense_score": item.get("dense_score", item.get("score")),
                 "source": "dense",
             }
+            if item.get("embedding") is not None:
+                fused_records[chunk_id]["embedding"] = item["embedding"]
         else:
             # If the chunk appears in both BM25 and Dense Retrieval, merge metadata and mark as hybrid
             rec = fused_records[chunk_id]
             rec["dense_rank"] = rank
             rec["dense_score"] = item.get("dense_score", item.get("score"))
             rec["source"] = "hybrid (bm25 + dense)"
+            if item.get("embedding") is not None:
+                rec["embedding"] = item["embedding"]
             if not rec["text"]:
                 rec["text"] = item.get("text") or item.get("text_content") or ""
             # Backfill missing metadata fields from ChromaDB

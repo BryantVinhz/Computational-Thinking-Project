@@ -21,6 +21,8 @@ for _dir in (CURRENT_DIR, METADATA_DIR, PIPELINE_DIR):
         sys.path.insert(0, str(_dir))
 
 from schema import RetrievalScope, RetrievedChunk, ScopedRetrievalPayload
+from bm25_retrieval import is_non_substantive_chunk
+from query_vectorizer import QueryVectorizer
 from vector_store import (
     CHROMA_DB_DIR,
     COLLECTION_NAME,
@@ -51,18 +53,28 @@ class DenseRetriever:
         self.model_name = model_name
         self.device = device
         self._collection = collection
+        self._vectorizer: QueryVectorizer | None = None
 
     @property
     def collection(self):
-        """Initialize or retrieve a ChromaDB collection (lazy-loaded once)"""
+        """Initialize or retrieve a ChromaDB collection (lazy-loaded once without duplicating the encoder)"""
         if self._collection is None:
-            self._collection = get_chroma_collection(
-                db_path=self.db_path,
-                collection_name=self.collection_name,
-                model_name=self.model_name,
-                device=self.device,
-            )
+            try:
+                client = chromadb.PersistentClient(path=str(self.db_path))
+                self._collection = client.get_collection(name=self.collection_name)
+            except Exception:
+                self._collection = get_chroma_collection(
+                    db_path=self.db_path,
+                    collection_name=self.collection_name,
+                    model_name=self.model_name,
+                    device=self.device,
+                )
         return self._collection
+
+    def _get_vectorizer(self) -> QueryVectorizer:
+        if self._vectorizer is None:
+            self._vectorizer = QueryVectorizer(model_name=self.model_name, device=self.device)
+        return self._vectorizer
 
     @staticmethod
     def _normalize_metadata(raw_meta: dict[str, Any] | None) -> dict[str, Any]:
@@ -95,6 +107,7 @@ class DenseRetriever:
         chroma_filter: dict[str, Any] | None = None,
         top_k: int = 10,
         fallback_unfiltered: bool = True,
+        allow_references: bool = False,
     ) -> list[dict[str, Any]]:
         """Retrieve the top_k semantically closest chunks from ChromaDB.
 
@@ -108,6 +121,7 @@ class DenseRetriever:
             top_k: Maximum number of results to retrieve.
             fallback_unfiltered: Whether to automatically fall back to querying the
                 entire database if the filter is too restrictive and returns 0 results.
+            allow_references: Whether to retain pure Reference/Bibliography sections.
 
         Returns:
             List of ranked chunks (rank = 1, 2, ...) along with their Cosine similarity
@@ -116,10 +130,14 @@ class DenseRetriever:
         if not query_vector and (not query_text or not query_text.strip()):
             raise ValueError("Cần cung cấp 'query_text' hoặc 'query_vector' để thực hiện Dense Retrieval.")
 
+        fetch_k = max(top_k * 2, top_k + 10)
         query_kwargs: dict[str, Any] = {
-            "n_results": top_k,
-            "include": ["documents", "metadatas", "distances"],
+            "n_results": fetch_k,
+            "include": ["documents", "metadatas", "distances", "embeddings"],
         }
+
+        if not query_vector and self._collection is None and query_text:
+            query_vector = self._get_vectorizer().vectorize(query_text.strip())
 
         if query_vector:
             query_kwargs["query_embeddings"] = [query_vector]
@@ -129,7 +147,12 @@ class DenseRetriever:
         if chroma_filter:
             query_kwargs["where"] = chroma_filter
 
-        raw_results = self.collection.query(**query_kwargs)
+        try:
+            raw_results = self.collection.query(**query_kwargs)
+        except Exception:
+            query_kwargs["include"] = ["documents", "metadatas", "distances"]
+            raw_results = self.collection.query(**query_kwargs)
+
         ids_list = (raw_results.get("ids") or [[]])[0]
 
         # Fall back to unfiltered search if scoped query returns no results
@@ -145,29 +168,36 @@ class DenseRetriever:
         docs_list = (raw_results.get("documents") or [[]])[0]
         metas_list = (raw_results.get("metadatas") or [[]])[0]
         dists_list = (raw_results.get("distances") or [[]])[0]
+        raw_embs = raw_results.get("embeddings")
+        embs_list = raw_embs[0] if (raw_embs is not None and len(raw_embs) > 0 and raw_embs[0] is not None) else [None] * len(ids_list)
 
         results: list[dict[str, Any]] = []
-        for rank, (c_id, text, meta, dist) in enumerate(
-            zip(ids_list, docs_list, metas_list, dists_list), start=1
-        ):
+        for c_id, text, meta, dist, emb in zip(ids_list, docs_list, metas_list, dists_list, embs_list):
+            normalized_meta = self._normalize_metadata(meta)
+            if is_non_substantive_chunk(text, normalized_meta, allow_references=allow_references):
+                continue
+
             # ChromaDB dùng "hnsw:space": "cosine" => distance = 1 - cosine_similarity
             cosine_similarity = round(max(0.0, 1.0 - float(dist)), 6)
-            normalized_meta = self._normalize_metadata(meta)
+            rank = len(results) + 1
 
-            results.append(
-                {
-                    "id": c_id,
-                    "chunk_id": c_id,
-                    "text": text,
-                    "metadata": normalized_meta,
-                    "score": cosine_similarity,
-                    "dense_score": cosine_similarity,
-                    "distance": round(float(dist), 6),
-                    "rank": rank,
-                    "dense_rank": rank,
-                    "source": "dense",
-                }
-            )
+            item: dict[str, Any] = {
+                "id": c_id,
+                "chunk_id": c_id,
+                "text": text,
+                "metadata": normalized_meta,
+                "score": cosine_similarity,
+                "dense_score": cosine_similarity,
+                "distance": round(float(dist), 6),
+                "rank": rank,
+                "dense_rank": rank,
+                "source": "dense",
+            }
+            if emb is not None:
+                item["embedding"] = emb.tolist() if hasattr(emb, "tolist") else list(emb)
+            results.append(item)
+            if len(results) >= top_k:
+                break
 
         return results
 
@@ -181,6 +211,11 @@ class DenseRetriever:
         Directly receives ScopedRetrievalPayload from the Scope Building step and performs Dense Retrieval
         """
         chroma_filter = payload.scope.chroma_filter if payload.scope else None
+        allow_references = bool(
+            payload.scope
+            and payload.scope.preferred_headings
+            and any("reference" in str(h).lower() for h in payload.scope.preferred_headings)
+        )
         # Scope filters are hard constraints: never widen to the whole corpus behind the caller's back.
         if fallback_unfiltered is None:
             fallback_unfiltered = False
@@ -190,6 +225,7 @@ class DenseRetriever:
             chroma_filter=chroma_filter,
             top_k=top_k,
             fallback_unfiltered=fallback_unfiltered,
+            allow_references=allow_references,
         )
 
 

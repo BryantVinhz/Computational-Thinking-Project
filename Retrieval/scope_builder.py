@@ -185,7 +185,7 @@ class ScopeBuilder:
                     r"\b(khái niệm|là gì|định nghĩa|tổng quan|giới thiệu|bản chất|thế nào là|ý nghĩa)\b",
                     r"\b(what is|what are|definition|define|concept|overview|introduction|background|describe|description|meaning)\b",
                 ],
-                "types": ["paragraph", "mixed", "heading"],
+                "types": ["paragraph", "mixed"],
                 "headings": [
                     "Description",
                     "Background",
@@ -193,6 +193,9 @@ class ScopeBuilder:
                     "What is",
                     "Introduction",
                     "About",
+                    "Defense Philosophy",
+                    "Test Objectives",
+                    "Summary",
                 ],
             },
             # GROUP 2: PREVENTION / MITIGATION / PROTECTION

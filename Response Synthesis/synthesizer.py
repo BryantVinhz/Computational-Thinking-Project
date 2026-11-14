@@ -35,6 +35,33 @@ except ImportError:
 logger = logging.getLogger(__name__)
 
 
+def _sanitize_draft_answer(draft_answer: str, max_evidence_idx: int) -> str:
+    """
+    Clean up common small-LLM formatting artifacts:
+    1. Strip literal '[i]' placeholders.
+    2. Remove any LLM-generated trailing 'References' / 'Tham khảo' section (since TraceableFormatter appends the official one).
+    3. Remove out-of-range numeric citation tags [n] when n < 1 or n > max_evidence_idx.
+    """
+    cleaned = re.sub(r"\[i\]", "", draft_answer or "")
+
+    # Strip trailing LLM-generated References / Tham khảo section
+    cleaned = re.sub(
+        r"\n+(?:#{1,4}|\*\*)\s*(?:Danh mục tài liệu tham chiếu|Tài liệu tham khảo|Tham khảo|References(?:\s*&\s*Citations)?)\b[\s\S]*$",
+        "",
+        cleaned,
+        flags=re.IGNORECASE,
+    )
+
+    if max_evidence_idx > 0:
+        cleaned = re.sub(
+            r"\s*\[(\d+)\]",
+            lambda m: f" [{m.group(1)}]" if 1 <= int(m.group(1)) <= max_evidence_idx else "",
+            cleaned,
+        )
+
+    return cleaned.strip()
+
+
 @runtime_checkable
 class GenerativeLLM(Protocol):
     """Standard protocol for LLM Client in the synthesis layer."""
@@ -85,7 +112,7 @@ class DefaultDeterministicLLM:
                 "### Phân tích dựa trên tài liệu đã tìm thấy\n\n"
                 "Dựa trên các tài liệu thu thập được trong hệ thống, cơ chế an ninh và giải pháp được xác định như sau [1]. "
                 "Cấu hình bảo mật được kiểm soát và kiểm chứng thông qua các quy chuẩn kỹ thuật tương ứng [2].\n\n"
-                "### 💡 Khuyến nghị & Bổ sung từ kiến thức chung (General Knowledge Advisory)\n\n"
+                "###  Khuyến nghị & Bổ sung từ kiến thức chung (General Knowledge Advisory)\n\n"
                 "(Lưu ý: Phần này được bổ sung từ tri thức chuyên gia do tài liệu nội bộ chỉ tìm thấy một phần chứng cứ)\n"
                 "- Cần triển khai nguyên tắc phòng thủ theo chiều sâu (Defense-in-Depth) kết hợp kiểm thử định kỳ.\n"
                 "- Thiết lập cơ chế giám sát và ghi log tập trung để phát hiện sớm các hành vi bất thường."
@@ -229,8 +256,6 @@ class ResponseSynthesizer:
             if 1 <= tag_num <= total_evidence:
                 return f"[{tag_num}]"
             return ""
-
-        draft_answer = re.sub(r"\[(\d+)\]", _filter_invalid_citations, draft_answer).strip()
         
         # Extract all citation tags [1], [2] from Markdown text
         cited_tags = extract_citation_tags(draft_answer)

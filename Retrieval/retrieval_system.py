@@ -63,7 +63,7 @@ class RetrievalSystem:
     def _get_intent_params(intent: str, task_intent: str | None = None) -> tuple[int, float]:
         """
         Configure MMR k and lambda parameters according to task classification:
-        - SEARCH: k = 3, lambda = 0.65
+        - SEARCH: k = 5, lambda = 0.70
         - COMPARE: k = 3 (per target branch), lambda = 0.60
         - SYNTHESIS: k = 8 - 10, lambda = 0.50 (increase diversity/coverage)
         """
@@ -74,7 +74,62 @@ class RetrievalSystem:
         elif target_intent == "SYNTHESIS":
             return 10, 0.60  
         else:
-            return 5, 0.70  # SEARCH 
+            return 5, 0.70  # SEARCH
+
+    @staticmethod
+    def _with_canonical_acronyms(query_text: str) -> str:
+        """Retain standard acronyms (e.g., XSS, SQLi) alongside canonical names for dense & rerank matching."""
+        q = query_text or ""
+        q_lower = q.lower()
+        if "cross-site scripting" in q_lower and "xss" not in q_lower:
+            return f"{q.rstrip('?.! ')} (XSS)?" if q.strip().endswith("?") else f"{q} (XSS)"
+        if "sql injection" in q_lower and "sqli" not in q_lower:
+            return f"{q.rstrip('?.! ')} (SQLi)?" if q.strip().endswith("?") else f"{q} (SQLi)"
+        return q
+
+    @staticmethod
+    def _apply_scope_boost_and_prune(
+        chunks: list[dict[str, Any]],
+        scope: Any,
+        target_k: int,
+    ) -> list[dict[str, Any]]:
+        """Boost chunks matching ScopeBuilder semantic preferences and prune weak-tail outliers before MMR."""
+        if not chunks:
+            return []
+
+        cand_docs = set(getattr(scope, "candidate_doc_ids", None) or [])
+        pref_headings = [str(h).lower() for h in (getattr(scope, "preferred_headings", None) or []) if str(h).strip()]
+        pref_types = set(getattr(scope, "preferred_chunk_types", None) or [])
+
+        boosted: list[dict[str, Any]] = []
+        for ch in chunks:
+            c_copy = dict(ch)
+            base_score = float(c_copy.get("rerank_score", c_copy.get("score", 0.0)))
+            meta = c_copy.get("metadata") or {}
+            boost = 0.0
+
+            if cand_docs and meta.get("document_id") in cand_docs:
+                boost += 0.04
+            if pref_headings:
+                hp_text = " ".join(str(h).lower() for h in (meta.get("heading_path") or []))
+                if any(ph in hp_text for ph in pref_headings):
+                    boost += 0.04
+            if pref_types and meta.get("chunk_type") in pref_types:
+                boost += 0.02
+
+            new_score = round(min(1.0, base_score + boost), 6)
+            c_copy["rerank_score"] = new_score
+            c_copy["score"] = new_score
+            boosted.append(c_copy)
+
+        boosted.sort(key=lambda x: x["rerank_score"], reverse=True)
+
+        best_score = boosted[0]["rerank_score"]
+        min_acceptable = max(0.35, best_score * 0.50)
+        strong = [c for c in boosted if c["rerank_score"] >= min_acceptable]
+        if len(strong) >= target_k:
+            return strong[: max(target_k, target_k * 2)]
+        return boosted[: max(target_k, len(strong))]
 
     def _execute_search_pipeline(self, payload: ScopedRetrievalPayload, target_k: int, lambda_val: float) -> tuple[list[dict[str, Any]], bool, str | None]:
         """Execute search pipeline (Sparse + Dense -> RRF -> Rerank -> MMR)"""
@@ -101,7 +156,7 @@ class RetrievalSystem:
         if self.reranker is None or not hasattr(self.reranker, "rerank"):
             logger.error("Task '%s': reranker unavailable, abstaining", payload.task_id)
             return [], True, RERANKER_UNAVAILABLE_MESSAGE
-        rerank_query = payload.query_bm25 if payload.query_bm25 else payload.original_query
+        rerank_query = self._with_canonical_acronyms(payload.original_query or payload.query_bm25)
         try:
             rerank_result = self.reranker.rerank(
                 query=rerank_query,
@@ -119,9 +174,15 @@ class RetrievalSystem:
             )
             return [], True, rerank_result.abstention_message
 
+        mmr_candidates = self._apply_scope_boost_and_prune(
+            rerank_result.chunks,
+            payload.scope,
+            target_k=target_k,
+        )
+
         # Diversify and deduplicate through MMR
         selected = self.mmr.select(
-            candidates=rerank_result.chunks,
+            candidates=mmr_candidates,
             query_vector=payload.query_vector,
             original_query=payload.original_query,
             top_k=target_k,
@@ -242,7 +303,7 @@ class RetrievalSystem:
                 intent_task=task_intent,
                 original_query=enriched_query,
                 query_bm25=query_bm25,
-                query_vector=self.vectorizer.vectorize(enriched_query),
+                query_vector=self.vectorizer.vectorize(self._with_canonical_acronyms(enriched_query)),
                 scope=scope,
             )
 

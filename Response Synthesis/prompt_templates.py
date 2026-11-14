@@ -44,7 +44,7 @@ SYSTEM_INSTRUCTION_SYNTHESIS: dict[str, str] = {
                 - ĐÚNG: "SQL Injection xảy ra do dữ liệu đầu vào không được lọc trước khi ghép chuỗi truy vấn [1]."
                 - SAI: Gắn thẻ ở tiêu đề Markdown như "### 1. Khái niệm SQL Injection [1]". Tuyệt đối không gắn thẻ ở tiêu đề.
             4. CẤM TUYỆT ĐỐI KÝ HIỆU THAY THẾ: KHÔNG ĐƯỢC viết chuỗi "[i]" nguyên văn trong câu trả lời. Phải dùng số thực tế tương ứng với tài liệu như [1], [2], [3].
-            5. Chỉ trích dẫn các số hiệu thực sự tồn tại trong danh sách bằng chứng được cung cấp (ví dụ: Context chỉ có [1] và [2] thì thì TUYỆT ĐỐI KHÔNG ĐƯỢC xuất hiện, không tự bịa thêm [3], [4], [99], ...).
+            5. Chỉ trích dẫn các số hiệu thực sự tồn tại trong danh sách bằng chứng được cung cấp (ví dụ: nếu Context chỉ có [1] và [2] thì TUYỆT ĐỐI KHÔNG ĐƯỢC tự bịa thêm [3], [4], [99], ...).
             6. Trình bày câu trả lời mạch lạc, chuẩn Markdown (dùng tiêu đề ##, ###, bullet points, code blocks cho mã nguồn hoặc lệnh).
             7. CHỈ gắn thẻ trích dẫn số (ví dụ: [1], [2]) vào đoạn mã nguồn NẾU đoạn mã đó thực sự xuất hiện trong Evidence tương ứng.
             8. Nếu trong tài liệu KHÔNG CÓ mã nguồn minh họa, TUYỆT ĐỐI KHÔNG tự tạo mã nguồn giả định. Hãy giải thích nguyên lý và cấu hình an toàn bằng lời văn kỹ thuật.
@@ -73,9 +73,9 @@ SYSTEM_INSTRUCTION_SYNTHESIS: dict[str, str] = {
             5. Only cite indices that actually exist in the provided list of evidence. Do not invent non-existent citation tags (e.g., citing [99] when only [1] and [2] are provided).
             6. Format the output cleanly in standard Markdown (use ##, ### headings, bullet points, and code blocks for source code or terminal commands).
             7. ONLY attach citation tags (like [1], [2]) to a code block IF that exact code snippet is explicitly present in that specific Evidence chunk.
-            8. If the retrieved documents DO NOT contain code snippets, DO NOT fabricate hypothetical code. Explain the defense principles conceptually in plain technical prose
-            9. 2. DO NOT manually create a '### References' section at the end of the post, as the system will generate it automatically.
-            10. If an item of information is not present in the Context, explicitly state that the document does not mention it; DO NOT fabricate citation numbers
+            8. If the retrieved documents DO NOT contain code snippets, DO NOT fabricate hypothetical code. Explain the defense principles conceptually in plain technical prose.
+            9. DO NOT manually create a '### References' or '### Tham khảo' section at the end of the response, as the system will generate it automatically.
+            10. If an item of information is not present in the Context, explicitly state that the document does not mention it; DO NOT fabricate citation numbers.
         """
     )  
 }
@@ -156,6 +156,10 @@ def build_search_prompt(
     """Prompt template for SEARCH intent (Search & Explain)."""
     resolved_lang = lang or detect_language(query)
     guideline = PROMPT_GUIDELINES[resolved_lang]["HYBRID" if mode == "HYBRID" else "STRICT"]
+    evidence_headers = re.findall(r"---\s*Evidence\s*\[(\d+)\]", llm_context or "")
+    max_ev = max((int(x) for x in evidence_headers), default=0)
+    valid_tags_en = f" (ONLY use tags [1] through [{max_ev}]; NEVER cite [{max_ev + 1}] or higher)" if max_ev > 0 else ""
+    valid_tags_vi = f" (CHỈ dùng thẻ từ [1] đến [{max_ev}]; TUYỆT ĐỐI KHÔNG trích dẫn [{max_ev + 1}] trở lên)" if max_ev > 0 else ""
     
     if resolved_lang == "en":
         return f"""{guideline}
@@ -163,11 +167,12 @@ def build_search_prompt(
 {llm_context}
 ================================ 
 REQUIREMENTS FOR THE 'SEARCH' INTENT:
-- Answer directly and accurately based on the provided Context.
-- Recommended Structure (Adapt flexibly according to the actual information available in the Context):
+- Answer directly and accurately based on the provided Context{valid_tags_en}.
+- Recommended Structure (ONLY include sections that are actually supported by the provided Context; omit any section not covered by the Context rather than guessing):
   1. Core Concept / Definition: Definition and technical impact level (cite actual numbers like [1], [2])
   2. Mechanism & Attack Vectors / Risks: How the vulnerability forms or the prerequisite conditions for occurrence (cite actual numbers like [1], [2])
   3. Mitigation & Remediation: Defensive measures, configurations, or security best practices recommended by the documents (cite actual numbers like [1], [2])
+- Do NOT generate a 'References' section at the end.
 
 USER QUESTION:
 {query}
@@ -179,12 +184,12 @@ Markdown Response:"""
 ===================================================
 
 YÊU CẦU CHO INTENT 'SEARCH':
-- Trả lời trực tiếp, chính xác dựa trên Context được cung cấp.
-- Cấu trúc đề xuất (Linh hoạt theo thông tin thực tế có trong Context):
+- Trả lời trực tiếp, chính xác dựa trên Context được cung cấp{valid_tags_vi}.
+- Cấu trúc đề xuất (CHỈ trình bày các mục thực sự có thông tin trong Context; nếu Context không đề cập mục nào thì BỎ QUA mục đó, tuyệt đối không tự suy diễn):
   1. Khái niệm / Định nghĩa cốt lõi: Định nghĩa và mức độ tác động kỹ thuật (gắn số trích dẫn thực tế như [1], [2])
   2. Cơ chế hoạt động & Vector tấn công / Rủi ro: Cách thức lỗ hổng hình thành hoặc điều kiện phát sinh (gắn số trích dẫn thực tế như [1], [2])
   3. Biện pháp phòng chống & Khắc phục: Các biện pháp bảo vệ, cấu hình hoặc thực hành an toàn được tài liệu khuyến nghị (gắn số trích dẫn thực tế như [1], [2])
-
+- TUYỆT ĐỐI KHÔNG tự tạo mục 'Tham khảo' hay 'References' ở cuối bài.
   
 CÂU HỎI CỦA NGƯỜI DÙNG:
 {query}

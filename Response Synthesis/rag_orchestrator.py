@@ -263,10 +263,18 @@ class RAGOrchestrator:
             citations = []
         elif not draft.is_abstained and verification_report.status == VerificationStatus.WARNING:
             verification_gate = "warning"
-            final_markdown = (
-                ">>> Some claims are not fully substantiated by source documents "
-                f"(faithfulness {verification_report.faithfulness_score:.0%}).\n\n{final_markdown}"
-            )
+            from prompt_templates import detect_language
+            if detect_language(active_query) == "vi":
+                warning_banner = (
+                    ">>> Lưu ý: Một số luận điểm chưa được chứng thực đầy đủ bởi tài liệu nguồn "
+                    f"(faithfulness {verification_report.faithfulness_score:.0%})."
+                )
+            else:
+                warning_banner = (
+                    ">>> Some claims are not fully substantiated by source documents "
+                    f"(faithfulness {verification_report.faithfulness_score:.0%})."
+                )
+            final_markdown = f"{warning_banner}\n\n{final_markdown}"
             
         total_latency = time.perf_counter() - start_time
 

@@ -100,6 +100,21 @@ class CrossEncoderReranker:
             )
         return self._model
 
+    @staticmethod
+    def _format_passage_for_rerank(chunk: dict[str, Any]) -> str:
+        """Prepend document title and section heading path so Cross-Encoder sees full context."""
+        body = str(chunk.get("text") or chunk.get("content") or chunk.get("text_content") or "").strip()
+        meta = chunk.get("metadata") or {}
+        title = str(meta.get("title") or "").strip()
+        hp = [str(h).strip() for h in (meta.get("heading_path") or []) if str(h).strip()]
+        header_parts: list[str] = []
+        if title and (not hp or hp[0].lower() != title.lower()):
+            header_parts.append(title)
+        header_parts.extend(hp)
+        if header_parts:
+            return f"[{' > '.join(header_parts)}]\n{body}"
+        return body
+
     def score_pairs(self, query: str, candidate_chunks: list[dict[str, Any] | Any]) -> list[dict[str, Any]]:
         """
         Rescore each (query, chunk_text) pair using a Cross-Encoder and 
@@ -110,7 +125,7 @@ class CrossEncoderReranker:
 
         normalized_chunks = [_to_chunk_dict(c) for c in candidate_chunks]
         pairs = [
-            [query.strip(), str(c.get("text") or c.get("content") or c.get("text_content") or "")]
+            [query.strip(), self._format_passage_for_rerank(c)]
             for c in normalized_chunks
         ]
 
