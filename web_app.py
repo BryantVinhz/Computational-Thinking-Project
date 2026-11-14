@@ -72,23 +72,21 @@ def _render_assistant_metadata(msg: dict[str, Any]) -> None:
     citations = msg.get("citations") or []
     if citations:
         with st.expander(f"📚 Referenced Sources & Provenance ({len(citations)} sources)"):
-            for item in citations:
+            for idx, item in enumerate(citations, start=1):
                 c = _to_dict(item)
-                tag = c.get("citation_tag", "")
-                source = c.get("source", "")
+                tag = c.get("tag") or c.get("citation_tag") or f"[{idx}]"
                 doc_title = (
-                    c.get("document_title")
-                    or c.get("doc_title")
+                    c.get("canonical_title")
+                    or c.get("document_title")
                     or c.get("title")
                     or "Security Document"
                 )
-                full_title = f"{source} - {doc_title}" if source and source not in doc_title else doc_title
                 file_name = c.get("file_name", "")
-                locator = c.get("locator_display") or c.get("lines") or ""
+                locator = c.get("location_summary") or c.get("locator_display") or c.get("lines") or ""
                 heading = c.get("heading_path")
                 heading_str = f" › {' > '.join(heading)}" if isinstance(heading, list) and heading else ""
 
-                st.markdown(f"**{tag} {full_title}**{heading_str}")
+                st.markdown(f"**{tag} {doc_title}**{heading_str}")
                 details = " · ".join(part for part in [f"`{file_name}`" if file_name else "", str(locator)] if part)
                 if details:
                     st.caption(details)
@@ -230,7 +228,8 @@ if query is not None:
 
                     envelope = pipeline.ask(clean_query)
                     status = str(getattr(envelope, "status", "ok")).lower()
-
+                    warning_banner: str | None = None
+                    
                     if status == "ok":
                         raw_md = getattr(envelope, "final_answer_markdown", "") or "No answer generated."
                         body_md = re.split(r"\n---\s*\n###\s*Danh mục tài liệu tham chiếu", raw_md, maxsplit=1)[0].strip()

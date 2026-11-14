@@ -224,8 +224,6 @@ def extract_claims(draft_answer: str, min_tokens: int = MIN_CLAIM_TOKENS) -> lis
 
     return claims
 
-SEMANTIC_SUPPORT_THRESHOLD = 0.60
-
 
 class MultilingualSemanticSimilarity:
     """
@@ -379,6 +377,17 @@ class EvidenceVerifier:
             if best_tag is None or score > best_score:
                 best_tag, best_score, best_snippet = tag, score, snippet
 
+        # Secondary Evidence Fallback: If the assigned tag lacks sufficient evidence,
+        # check the remaining evidence in the pool to avoid false penalties when the LLM misassigns an index.
+        if valid_tags and best_score < self.support_threshold and len(evidence_by_tag) > 1:
+            other_tags = [t for t in evidence_by_tag if t not in valid_tags]
+            for tag in other_tags:
+                score, snippet = self._best_match(claim.text, evidence_by_tag[tag])
+                if score > best_score:
+                    best_tag, best_score, best_snippet = tag, score, snippet
+                    if score >= self.support_threshold:
+                        warnings.append(f"{claim_id}: Citation for {valid_tags} does not match, but evidence was found in {tag}.")
+                        
         score = round(max(0.0, min(1.0, best_score)), 4)
         snippet = _truncate(best_snippet) if best_snippet else None
 

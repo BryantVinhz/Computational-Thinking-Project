@@ -54,7 +54,7 @@ def _sanitize_draft_answer(draft_answer: str, max_evidence_idx: int) -> str:
 
     if max_evidence_idx > 0:
         cleaned = re.sub(
-            r"\s*\[(\d+)\]",
+            r"[ \t]*\[(\d+)\]",
             lambda m: f" [{m.group(1)}]" if 1 <= int(m.group(1)) <= max_evidence_idx else "",
             cleaned,
         )
@@ -250,12 +250,7 @@ class ResponseSynthesizer:
                                     "error": str(e)},
             )
 
-        draft_answer = re.sub(r"\[i\]", "", draft_answer)
-        def _filter_invalid_citations(match: re.Match) -> str:
-            tag_num = int(match.group(1))
-            if 1 <= tag_num <= total_evidence:
-                return f"[{tag_num}]"
-            return ""
+        draft_answer = _sanitize_draft_answer(draft_answer, total_evidence)
         
         # Extract all citation tags [1], [2] from Markdown text
         cited_tags = extract_citation_tags(draft_answer)

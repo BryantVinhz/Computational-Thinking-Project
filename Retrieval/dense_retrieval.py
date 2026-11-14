@@ -136,8 +136,13 @@ class DenseRetriever:
             "include": ["documents", "metadatas", "distances", "embeddings"],
         }
 
-        if not query_vector and self._collection is None and query_text:
-            query_vector = self._get_vectorizer().vectorize(query_text.strip())
+        if not query_vector and query_text:
+            has_custom_ef = (
+                self._collection is not None
+                and getattr(self._collection, "_embedding_function", None) is not None
+            )
+            if not has_custom_ef:
+                query_vector = self._get_vectorizer().vectorize(query_text.strip())
 
         if query_vector:
             query_kwargs["query_embeddings"] = [query_vector]
