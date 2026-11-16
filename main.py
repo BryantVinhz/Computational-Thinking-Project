@@ -24,10 +24,10 @@ from llm import OllamaLLMClient, ColabLLMClient
 class PipelineConnector:
     """Orchestrating end-to-end RAG pipeline across Stage 2 -> Stage 3 -> Stage 4"""
 
-    def __init__(self, llm_client=None, warm_up_models=True):
+    def __init__(self, llm_client=None, warm_up_models=True, chunking_strategy: str = "semantic"):
         t0 = time.perf_counter()
         print("Initializing RetrievalSystem")
-        self.retrieval_system = RetrievalSystem()
+        self.retrieval_system = RetrievalSystem(chunking_strategy=chunking_strategy)
 
         if llm_client is None:
             llm_client =  OllamaLLMClient(model_name="qwen2.5:3b") # ColabLLMClient() 
@@ -134,7 +134,7 @@ if __name__ == "__main__":
                 break
             
             if user_query.lower() in {"reset", "clear", "refresh"}:
-                pipeline.orchestrator.reset_conversation()
+                pipeline.reset_conversation()
                 print("Session context refreshed")
                 continue
 

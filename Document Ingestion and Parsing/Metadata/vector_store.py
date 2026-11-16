@@ -6,6 +6,7 @@ if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
 
 import chromadb
+import torch
 from chromadb.utils.embedding_functions import SentenceTransformerEmbeddingFunction
 
 # Ensure path.py and sibling modules can be imported when running this file directly
@@ -36,18 +37,32 @@ def get_chroma_collection(
     db_path: Path | str = CHROMA_DB_DIR,
     collection_name: str = COLLECTION_NAME,
     model_name: str = MODEL_NAME,
-    device: str = "cpu",
+    device: str | None = None,
 ):
     """Initialize ChromaDB PersistentClient and return the collection with its embedding function."""
     db_path = Path(db_path)
     db_path.parent.mkdir(parents=True, exist_ok=True)
 
+    resolved_device = device or ("cuda" if torch.cuda.is_available() else "cpu")
+
     embedding_fn = SentenceTransformerEmbeddingFunction(
         model_name=model_name,
-        device=device,              # Change to "cuda" if running on a machine/Colab with GPU
+        device=resolved_device,              # Change to "cuda" if running on a machine/Colab with GPU
         normalize_embeddings=True,  # Normalize vectors for accurate cosine similarity computation
     )
 
+    models_pool = list(getattr(embedding_fn, "models", {}).values())
+    for attr in ("_model", "model"):
+        obj = getattr(embedding_fn, attr, None)
+        if obj is not None:
+            models_pool.append(obj)
+
+    for m in models_pool:
+        if hasattr(m, "max_seq_length"):
+            m.max_seq_length = 1024
+        if resolved_device == "cuda" and hasattr(m, "half"):
+            m.half()
+        
     chroma_client = chromadb.PersistentClient(path=str(db_path))
     collection = chroma_client.get_or_create_collection(
         name=collection_name,
@@ -128,6 +143,7 @@ def prepare_and_ingest_to_chroma(
     chunk_meta_records_from_diep: list[dict | ChunkMetadataSchema] | None = None,
     collection=None,
     version_record: dict | None = None,
+    return_exported: bool = False,
 ) -> list[dict]:
     
     if collection is None:
@@ -219,46 +235,55 @@ def prepare_and_ingest_to_chroma(
     collection.delete(where={"version_id": curr_ver_id})
     
     if ids:
-        collection.upsert(
-            ids=ids,
-            documents=documents,
-            metadatas=metadatas,
-        )
-    exported_records = export_records_from_chroma(
-        collection=collection,
-    )
-    print(
-        f"Đã lưu {len(ids)} chunks vào ChromaDB ('{CHROMA_DB_DIR}')!"
-    )
-    return exported_records
+        batch_size = 64 if torch.cuda.is_available() else 32
+        for start in range(0, len(ids), batch_size):
+            end = start + batch_size
+            collection.upsert(
+                ids=ids[start:end],
+                documents=documents[start:end],
+                metadatas=metadatas[start:end],
+            )
 
+    print(f"Đã lưu {len(ids)} chunks vào collection '{collection.name}'!")
+    if return_exported:
+        return export_records_from_chroma(collection=collection)
+    return []
 
-def main() -> None:
-    # 1. Read Document & Version data from Step 1 (Ingestion)
-    documents_data = json.loads((INGESTION_OUT_DIR / "documents.json").read_text(encoding="utf-8"))
-    versions_data = json.loads((INGESTION_OUT_DIR / "documents_version.json").read_text(encoding="utf-8"))
+STRATEGY_FOLDER_MAP = {
+    "fixed_size": "Fixed size",
+    "structure_aware": "Structure aware",
+    "semantic": "Semantic",
+}
 
-    doc_by_id = {d["document_id"]: d for d in documents_data}
-    ver_by_id = {v["version_id"]: v for v in versions_data}
+def build_vector_store_for_strategy(strategy: str, doc_by_id: dict, ver_by_id: dict) -> None:
+    norm_strategy = strategy.strip().lower().replace("-", "_").replace(" ", "_")
+    folder_name = STRATEGY_FOLDER_MAP.get(norm_strategy, norm_strategy.replace("_", " ").capitalize())
 
-    # 2. Initialize Store, Extractor, and Chroma Collection once
-    # (Avoids reloading the embedding model multiple times)
-    meta_store = MetadataStore()
-    extractor = MetadataExtractor(meta_store)
-    collection = get_chroma_collection()
-
-    # 3. Locate chunking output files (prefer root directory, or Structure aware)
-    chunk_files = sorted(CHUNKING_OUT_DIR.glob("*.json"))
-    if not chunk_files and (CHUNKING_OUT_DIR / "Structure aware").exists():
-        chunk_files = sorted((CHUNKING_OUT_DIR / "Structure aware").glob("*.json"))
-    if not chunk_files and (CHUNKING_OUT_DIR / "Fixed size").exists():
-        chunk_files = sorted((CHUNKING_OUT_DIR / "Fixed size").glob("*.json"))
-
-    if not chunk_files:
-        print(f"Không tìm thấy file chunking JSON nào trong '{CHUNKING_OUT_DIR}'!")
+    target_chunk_dir = CHUNKING_OUT_DIR / folder_name
+    if not target_chunk_dir.is_dir():
+        print(f"[BỎ QUA] Không tìm thấy thư mục chunking: '{target_chunk_dir}'")
         return
 
-    # 4. Iterate over all chunking files in the folder and store them in Vector DB
+    chunk_files = sorted(target_chunk_dir.glob("*.json"))
+    if not chunk_files:
+        print(f"[BỎ QUA] Thư mục '{target_chunk_dir}' không có file JSON nào!")
+        return
+
+    # Tách riêng thư mục lưu trữ Metadata SQLite và ChromaDB cho từng chiến lược
+    strategy_vdb_dir = VECTOR_DB_DIR / norm_strategy
+    strategy_meta_db = strategy_vdb_dir / "metadata.db"
+    strategy_chroma_dir = strategy_vdb_dir / "chroma_security_db"
+
+    meta_store = MetadataStore(db_path=strategy_meta_db)
+    extractor = MetadataExtractor(meta_store)
+    collection = get_chroma_collection(db_path=strategy_chroma_dir)
+
+    print("\n" + "=" * 60)
+    print(f"ĐANG NẠP VECTOR DB CHO CHIẾN LƯỢC: {norm_strategy}")
+    print(f"- Nguồn Chunking : {target_chunk_dir}")
+    print(f"- Đích ChromaDB  : {strategy_chroma_dir}")
+    print("=" * 60)
+
     total_chunks = 0
     for chunk_file in chunk_files:
         chunking_output = json.loads(chunk_file.read_text(encoding="utf-8"))
@@ -267,14 +292,10 @@ def main() -> None:
 
         ver = ver_by_id.get(ver_id)
         doc = doc_by_id.get(doc_id) if doc_id else (doc_by_id.get(ver["document_id"]) if ver else None)
-
         if not doc or not ver:
-            print(f"[BỎ QUA] Không tìm thấy metadata Ingestion cho file '{chunk_file.name}'")
             continue
 
-        print(f"Đang xử lý: {chunk_file.name} ({len(chunking_output.get('chunks', []))} chunks)...")
         meta_output = extractor.run(doc, ver, chunking_output)
-
         prepare_and_ingest_to_chroma(
             chunks_from_chunking=chunking_output["chunks"],
             doc_meta_from_diep=meta_output.document,
@@ -284,11 +305,18 @@ def main() -> None:
         )
         total_chunks += len(chunking_output.get("chunks", []))
 
-    print(
-        f"\nHoàn tất xử lý {len(chunk_files)} file ({total_chunks} chunks). "
-        f"Toàn bộ output đã được lưu tại '{VECTOR_DB_DIR}'!"
-    )
+    print(f"Hoàn tất [{norm_strategy}]: {len(chunk_files)} files ({total_chunks} chunks).")
+    
+def main() -> None:
+    # 1. Read Document & Version data from Step 1 (Ingestion)
+    documents_data = json.loads((INGESTION_OUT_DIR / "documents.json").read_text(encoding="utf-8"))
+    versions_data = json.loads((INGESTION_OUT_DIR / "documents_version.json").read_text(encoding="utf-8"))
 
+    doc_by_id = {d["document_id"]: d for d in documents_data}
+    ver_by_id = {v["version_id"]: v for v in versions_data}
+
+    for strat in ["fixed_size", "structure_aware", "semantic"]:
+        build_vector_store_for_strategy(strat, doc_by_id, ver_by_id)
 
 if __name__ == "__main__":
     main()

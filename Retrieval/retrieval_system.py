@@ -49,15 +49,28 @@ class RetrievalSystem:
         reranker: CrossEncoderReranker | None = None,
         mmr_selector: LangChainMMRSelector | None = None,
         evidence_assembler: EvidenceAssembler | None = None,
+        chunking_strategy: str | None = None,
     ):
         terms, self.ontology_labels = load_ontology_terms()
         self.scope_builder = scope_builder or ScopeBuilder(ontology_dict=terms)
         self.vectorizer = query_vectorizer or QueryVectorizer()
-        self.dense = dense_retriever or DenseRetriever()
-        self.bm25 = bm25_retriever or BM25Retriever()
+
+        if chunking_strategy:
+            norm_strategy = chunking_strategy.strip().lower().replace("-", "_").replace(" ", "_")
+            base_output = PROJECT_ROOT / "Document Ingestion and Parsing" / "output"
+            chroma_dir = base_output / "Vector DB" / norm_strategy / "chroma_security_db"
+            prov_db = base_output / "Provenance" / norm_strategy / "workspace_data.db"
+
+            self.dense = dense_retriever or DenseRetriever(db_path=chroma_dir)
+            self.bm25 = bm25_retriever or BM25Retriever(db_path=chroma_dir)
+            self.assembler = evidence_assembler or EvidenceAssembler(db_path=prov_db)
+        else:
+            self.dense = dense_retriever or DenseRetriever()
+            self.bm25 = bm25_retriever or BM25Retriever()
+            self.assembler = evidence_assembler or EvidenceAssembler()
+
         self.reranker = reranker or CrossEncoderReranker(threshold=0.25, top_k=None)
         self.mmr = mmr_selector or LangChainMMRSelector(vectorizer=self.vectorizer)
-        self.assembler = evidence_assembler or EvidenceAssembler()
 
     @staticmethod
     def _get_intent_params(intent: str, task_intent: str | None = None) -> tuple[int, float]:

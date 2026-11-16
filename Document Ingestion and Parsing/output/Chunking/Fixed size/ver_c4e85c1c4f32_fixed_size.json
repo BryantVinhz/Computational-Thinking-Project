@@ -1,0 +1,408 @@
+{
+  "document_id": "doc_owasp_top10_a07_identification_and_authentication_failures",
+  "version_id": "ver_c4e85c1c4f32",
+  "chunking_strategy": "fixed_size",
+  "chunks": [
+    {
+      "chunk_id": "ver_c4e85c1c4f32_c00000",
+      "document_id": "doc_owasp_top10_a07_identification_and_authentication_failures",
+      "version_id": "ver_c4e85c1c4f32",
+      "chunk_idx": 0,
+      "chunk_type": "text",
+      "text_content": "# A07:2021 – Identification and Authentication Failures ![icon](assets/TOP_10_Icons_Final_Identification_and_Authentication_Failures.png){: style=\"height:80px;width:80px\" align=\"right\"}\n\n## Factors\n\n| CWEs Mapped | Max Incidence Rate | Avg Incidence Rate | Avg Weighted Exploit | Avg Weighted Impact | Max Coverage | Avg Coverage | Total Occurrences | Total CVEs |\n|:-------------:|:--------------------:|:--------------------:|:--------------:|:--------------:|:----------------------:|:---------------------:|:-------------------:|:------------:|\n| 22 | 14.84% | 2.55% | 7.40 | 6.50 | 79.51% | 45.72% | 132,195 | 3,897 |\n\n## Overview\n\nPreviously known as *Broken Authentication*, this category slid down\nfrom the second position and now includes Common Weakness\nEnumerations (CWEs) related to identification\nfailures. Notable CWEs included are *CWE-297: Improper Validation of\nCertificate with Host Mismatch*, *CWE-287: Improper Authentication*, and\n*CWE-384: Session Fixation*.\n\n## Description\n\nConfirmation of the user's identity, authentication, and session\nmanagement is critical to protect against authentication-related\nattacks. There may be authentication weaknesses if the application:\n\n- Permits automated attacks such as credential stuffing, where the\n    attacker has a list of valid usernames and passwords.\n\n- Permits brute force or other automated attacks.\n\n- Permits default, weak, or well-known passwords, such as \"Password1\"\n    or \"admin/admin\".\n\n- Uses weak or ineffective credential recovery and forgot-password\n    processes, such as \"knowledge-based answers,\" which cannot be made\n    safe.\n\n- Uses plain text, encrypted, or weakly hashed passwords data stores (see\n    [A02:2021-Cryptographic Failures](A02_2021-Cryptographic_Failures.md)).\n\n- Has missing or ineffective multi-factor authentication.\n\n- Exposes session identifier in the URL.\n\n- Reuse session identifier after successful login.\n\n- Does not correctly invalidate Session IDs. User sessions or\n    authentication tokens (mainly single sign-on (SSO) tokens) aren't\n    properly invalidated during logout or a period of inactivity.\n\n## How to Prevent\n\n- Where possible, implement multi-factor authentication to prevent\n    automated credential stuffing, brute force, and stolen credential\n    reuse attacks.\n\n- Do not ship or deploy with any default credentials, particularly for\n    admin users.\n\n- Implement weak password checks, such as testing new or changed\n    passwords against the top 10,000 worst passwords list.\n\n- Align password",
+      "token_count": 649,
+      "chunk_strategy": "fixed_size",
+      "heading_path": [
+        "A07:2021 – Identification and Authentication Failures"
+      ]
+    },
+    {
+      "chunk_id": "ver_c4e85c1c4f32_c00001",
+      "document_id": "doc_owasp_top10_a07_identification_and_authentication_failures",
+      "version_id": "ver_c4e85c1c4f32",
+      "chunk_idx": 1,
+      "chunk_type": "text",
+      "text_content": "and stolen credential\n    reuse attacks.\n\n- Do not ship or deploy with any default credentials, particularly for\n    admin users.\n\n- Implement weak password checks, such as testing new or changed\n    passwords against the top 10,000 worst passwords list.\n\n- Align password length, complexity, and rotation policies with\n    National Institute of Standards and Technology (NIST)\n    800-63b's guidelines in section 5.1.1 for Memorized Secrets or other\n    modern, evidence-based password policies.\n\n- Ensure registration, credential recovery, and API pathways are\n    hardened against account enumeration attacks by using the same\n    messages for all outcomes.\n\n- Limit or increasingly delay failed login attempts, but be careful not to create a denial of service scenario. Log all failures\n    and alert administrators when credential stuffing, brute force, or\n    other attacks are detected.\n\n- Use a server-side, secure, built-in session manager that generates a\n    new random session ID with high entropy after login. Session identifier\n    should not be in the URL, be securely stored, and invalidated after\n    logout, idle, and absolute timeouts.\n\n## Example Attack Scenarios\n\n**Scenario #1:** Credential stuffing, the use of lists of known\npasswords, is a common attack. Suppose an application does not implement\nautomated threat or credential stuffing protection. In that case, the\napplication can be used as a password oracle to determine if the\ncredentials are valid.\n\n**Scenario #2:** Most authentication attacks occur due to the continued\nuse of passwords as a sole factor. Once considered best practices,\npassword rotation and complexity requirements encourage users to use\nand reuse weak passwords. Organizations are recommended to stop these\npractices per NIST 800-63 and use multi-factor authentication.\n\n**Scenario #3:** Application session timeouts aren't set correctly. A\nuser uses a public computer to access an application. Instead of\nselecting \"logout,\" the user simply closes the browser tab and walks\naway. An attacker uses the same browser an hour later, and the user is\nstill authenticated.\n\n## References\n\n- [OWASP Proactive Controls: Implement Digital Identity](https://owasp.org/www-project-proactive-controls/v3/en/c6-digital-identity)\n\n- [OWASP Application Security Verification Standard: V2 authentication](https://owasp.org/www-project-application-security-verification-standard)\n\n- [OWASP Application Security Verification Standard: V3 Session Management](https://owasp.org/www-project-application-security-verification-standard)\n\n- [OWASP Testing Guide: Identity](https://owasp.org/www-project-web-security-testing-guide/stable/4-Web_Application_Security_Testing/03-Identity_Management_Testing/README), [Authentication](https://owasp.org/www-project-web-security-testing-guide/stable/4-Web_Application_Security_Testing/04-Authentication_Testing/README)\n\n- [OWASP Cheat Sheet: Authentication](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html)\n\n- [OWASP Cheat Sheet: Credential Stuffing](https://cheatsheetseries.owasp.org/cheatsheets/Credential_Stuffing_Prevention_Cheat_Sheet.html)\n\n- [OWASP Cheat Sheet: Forgot",
+      "token_count": 636,
+      "chunk_strategy": "fixed_size",
+      "heading_path": [
+        "A07:2021 – Identification and Authentication Failures",
+        "How to Prevent"
+      ]
+    },
+    {
+      "chunk_id": "ver_c4e85c1c4f32_c00002",
+      "document_id": "doc_owasp_top10_a07_identification_and_authentication_failures",
+      "version_id": "ver_c4e85c1c4f32",
+      "chunk_idx": 2,
+      "chunk_type": "text",
+      "text_content": "[OWASP Cheat Sheet: Credential Stuffing](https://cheatsheetseries.owasp.org/cheatsheets/Credential_Stuffing_Prevention_Cheat_Sheet.html)\n\n- [OWASP Cheat Sheet: Forgot Password](https://cheatsheetseries.owasp.org/cheatsheets/Forgot_Password_Cheat_Sheet.html)\n\n- [OWASP Cheat Sheet: Session Management](https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html)\n\n- [OWASP Automated Threats Handbook](https://owasp.org/www-project-automated-threats-to-web-applications/)\n\n- [NIST 800-63b: 5.1.1 Memorized Secrets](https://pages.nist.gov/800-63-3/sp800-63b.html#memsecret)\n\n## List of Mapped CWEs\n\n[CWE-255 Credentials Management Errors](https://cwe.mitre.org/data/definitions/255.html)\n\n[CWE-259 Use of Hard-coded Password](https://cwe.mitre.org/data/definitions/259.html)\n\n[CWE-287 Improper Authentication](https://cwe.mitre.org/data/definitions/287.html)\n\n[CWE-288 Authentication Bypass Using an Alternate Path or Channel](https://cwe.mitre.org/data/definitions/288.html)\n\n[CWE-290 Authentication Bypass by Spoofing](https://cwe.mitre.org/data/definitions/290.html)\n\n[CWE-294 Authentication Bypass by Capture-replay](https://cwe.mitre.org/data/definitions/294.html)\n\n[CWE-295 Improper Certificate Validation](https://cwe.mitre.org/data/definitions/295.html)\n\n[CWE-297 Improper Validation of Certificate with Host Mismatch](https://cwe.mitre.org/data/definitions/297.html)\n\n[CWE-300 Channel Accessible by Non-Endpoint](https://cwe.mitre.org/data/definitions/300.html)\n\n[CWE-302 Authentication Bypass by Assumed-Immutable Data](https://cwe.mitre.org/data/definitions/302.html)\n\n[CWE-304 Missing Critical Step in Authentication](https://cwe.mitre.org/data/definitions/304.html)\n\n[CWE-306 Missing Authentication for Critical Function](https://cwe.mitre.org/data/definitions/306.html)\n\n[CWE-307 Improper Restriction of Excessive Authentication Attempts](https://cwe.mitre.org/data/definitions/307.html)\n\n[CWE-346 Origin Validation Error](https://cwe.mitre.org/data/definitions/346.html)\n\n[CWE-384 Session Fixation](https://cwe.mitre.org/data/definitions/384.html)\n\n[CWE-521 Weak Password Requirements](https://cwe.mitre.org/data/definitions/521.html)\n\n[CWE-613 Insufficient Session Expiration](https://cwe.mitre.org/data/definitions/613.html)\n\n[CWE-620 Unverified Password",
+      "token_count": 647,
+      "chunk_strategy": "fixed_size",
+      "heading_path": [
+        "A07:2021 – Identification and Authentication Failures",
+        "References"
+      ]
+    },
+    {
+      "chunk_id": "ver_c4e85c1c4f32_c00003",
+      "document_id": "doc_owasp_top10_a07_identification_and_authentication_failures",
+      "version_id": "ver_c4e85c1c4f32",
+      "chunk_idx": 3,
+      "chunk_type": "text",
+      "text_content": "Insufficient Session Expiration](https://cwe.mitre.org/data/definitions/613.html)\n\n[CWE-620 Unverified Password Change](https://cwe.mitre.org/data/definitions/620.html)\n\n[CWE-640 Weak Password Recovery Mechanism for Forgotten Password](https://cwe.mitre.org/data/definitions/640.html)\n\n[CWE-798 Use of Hard-coded Credentials](https://cwe.mitre.org/data/definitions/798.html)\n\n[CWE-940 Improper Verification of Source of a Communication Channel](https://cwe.mitre.org/data/definitions/940.html)\n\n[CWE-1216 Lockout Mechanism",
+      "token_count": 149,
+      "chunk_strategy": "fixed_size",
+      "heading_path": [
+        "A07:2021 – Identification and Authentication Failures",
+        "List of Mapped CWEs"
+      ]
+    }
+  ],
+  "chunk_sources": [
+    {
+      "chunk_source_id": "ver_c4e85c1c4f32_c00000_s000",
+      "chunk_id": "ver_c4e85c1c4f32_c00000",
+      "normalized_block_id": "nrm_ver_c4e85c1c4f32_b00000",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 185
+    },
+    {
+      "chunk_source_id": "ver_c4e85c1c4f32_c00000_s001",
+      "chunk_id": "ver_c4e85c1c4f32_c00000",
+      "normalized_block_id": "nrm_ver_c4e85c1c4f32_b00001",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 10
+    },
+    {
+      "chunk_source_id": "ver_c4e85c1c4f32_c00000_s002",
+      "chunk_id": "ver_c4e85c1c4f32_c00000",
+      "normalized_block_id": "nrm_ver_c4e85c1c4f32_b00002",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 423
+    },
+    {
+      "chunk_source_id": "ver_c4e85c1c4f32_c00000_s003",
+      "chunk_id": "ver_c4e85c1c4f32_c00000",
+      "normalized_block_id": "nrm_ver_c4e85c1c4f32_b00003",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 11
+    },
+    {
+      "chunk_source_id": "ver_c4e85c1c4f32_c00000_s004",
+      "chunk_id": "ver_c4e85c1c4f32_c00000",
+      "normalized_block_id": "nrm_ver_c4e85c1c4f32_b00004",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 343
+    },
+    {
+      "chunk_source_id": "ver_c4e85c1c4f32_c00000_s005",
+      "chunk_id": "ver_c4e85c1c4f32_c00000",
+      "normalized_block_id": "nrm_ver_c4e85c1c4f32_b00005",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 14
+    },
+    {
+      "chunk_source_id": "ver_c4e85c1c4f32_c00000_s006",
+      "chunk_id": "ver_c4e85c1c4f32_c00000",
+      "normalized_block_id": "nrm_ver_c4e85c1c4f32_b00006",
+      "source_order": 6,
+      "start_offset": 0,
+      "end_offset": 197
+    },
+    {
+      "chunk_source_id": "ver_c4e85c1c4f32_c00000_s007",
+      "chunk_id": "ver_c4e85c1c4f32_c00000",
+      "normalized_block_id": "nrm_ver_c4e85c1c4f32_b00007",
+      "source_order": 7,
+      "start_offset": 0,
+      "end_offset": 920
+    },
+    {
+      "chunk_source_id": "ver_c4e85c1c4f32_c00000_s008",
+      "chunk_id": "ver_c4e85c1c4f32_c00000",
+      "normalized_block_id": "nrm_ver_c4e85c1c4f32_b00008",
+      "source_order": 8,
+      "start_offset": 0,
+      "end_offset": 17
+    },
+    {
+      "chunk_source_id": "ver_c4e85c1c4f32_c00000_s009",
+      "chunk_id": "ver_c4e85c1c4f32_c00000",
+      "normalized_block_id": "nrm_ver_c4e85c1c4f32_b00009",
+      "source_order": 9,
+      "start_offset": 0,
+      "end_offset": 387
+    },
+    {
+      "chunk_source_id": "ver_c4e85c1c4f32_c00001_s000",
+      "chunk_id": "ver_c4e85c1c4f32_c00001",
+      "normalized_block_id": "nrm_ver_c4e85c1c4f32_b00009",
+      "source_order": 0,
+      "start_offset": 115,
+      "end_offset": 1269
+    },
+    {
+      "chunk_source_id": "ver_c4e85c1c4f32_c00001_s001",
+      "chunk_id": "ver_c4e85c1c4f32_c00001",
+      "normalized_block_id": "nrm_ver_c4e85c1c4f32_b00010",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 27
+    },
+    {
+      "chunk_source_id": "ver_c4e85c1c4f32_c00001_s002",
+      "chunk_id": "ver_c4e85c1c4f32_c00001",
+      "normalized_block_id": "nrm_ver_c4e85c1c4f32_b00011",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 294
+    },
+    {
+      "chunk_source_id": "ver_c4e85c1c4f32_c00001_s003",
+      "chunk_id": "ver_c4e85c1c4f32_c00001",
+      "normalized_block_id": "nrm_ver_c4e85c1c4f32_b00012",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 340
+    },
+    {
+      "chunk_source_id": "ver_c4e85c1c4f32_c00001_s004",
+      "chunk_id": "ver_c4e85c1c4f32_c00001",
+      "normalized_block_id": "nrm_ver_c4e85c1c4f32_b00013",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 295
+    },
+    {
+      "chunk_source_id": "ver_c4e85c1c4f32_c00001_s005",
+      "chunk_id": "ver_c4e85c1c4f32_c00001",
+      "normalized_block_id": "nrm_ver_c4e85c1c4f32_b00014",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 13
+    },
+    {
+      "chunk_source_id": "ver_c4e85c1c4f32_c00001_s006",
+      "chunk_id": "ver_c4e85c1c4f32_c00001",
+      "normalized_block_id": "nrm_ver_c4e85c1c4f32_b00015",
+      "source_order": 6,
+      "start_offset": 0,
+      "end_offset": 1043
+    },
+    {
+      "chunk_source_id": "ver_c4e85c1c4f32_c00002_s000",
+      "chunk_id": "ver_c4e85c1c4f32_c00002",
+      "normalized_block_id": "nrm_ver_c4e85c1c4f32_b00015",
+      "source_order": 0,
+      "start_offset": 877,
+      "end_offset": 1470
+    },
+    {
+      "chunk_source_id": "ver_c4e85c1c4f32_c00002_s001",
+      "chunk_id": "ver_c4e85c1c4f32_c00002",
+      "normalized_block_id": "nrm_ver_c4e85c1c4f32_b00016",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 22
+    },
+    {
+      "chunk_source_id": "ver_c4e85c1c4f32_c00002_s002",
+      "chunk_id": "ver_c4e85c1c4f32_c00002",
+      "normalized_block_id": "nrm_ver_c4e85c1c4f32_b00017",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 88
+    },
+    {
+      "chunk_source_id": "ver_c4e85c1c4f32_c00002_s003",
+      "chunk_id": "ver_c4e85c1c4f32_c00002",
+      "normalized_block_id": "nrm_ver_c4e85c1c4f32_b00018",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 85
+    },
+    {
+      "chunk_source_id": "ver_c4e85c1c4f32_c00002_s004",
+      "chunk_id": "ver_c4e85c1c4f32_c00002",
+      "normalized_block_id": "nrm_ver_c4e85c1c4f32_b00019",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 82
+    },
+    {
+      "chunk_source_id": "ver_c4e85c1c4f32_c00002_s005",
+      "chunk_id": "ver_c4e85c1c4f32_c00002",
+      "normalized_block_id": "nrm_ver_c4e85c1c4f32_b00020",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 115
+    },
+    {
+      "chunk_source_id": "ver_c4e85c1c4f32_c00002_s006",
+      "chunk_id": "ver_c4e85c1c4f32_c00002",
+      "normalized_block_id": "nrm_ver_c4e85c1c4f32_b00021",
+      "source_order": 6,
+      "start_offset": 0,
+      "end_offset": 92
+    },
+    {
+      "chunk_source_id": "ver_c4e85c1c4f32_c00002_s007",
+      "chunk_id": "ver_c4e85c1c4f32_c00002",
+      "normalized_block_id": "nrm_ver_c4e85c1c4f32_b00022",
+      "source_order": 7,
+      "start_offset": 0,
+      "end_offset": 98
+    },
+    {
+      "chunk_source_id": "ver_c4e85c1c4f32_c00002_s008",
+      "chunk_id": "ver_c4e85c1c4f32_c00002",
+      "normalized_block_id": "nrm_ver_c4e85c1c4f32_b00023",
+      "source_order": 8,
+      "start_offset": 0,
+      "end_offset": 90
+    },
+    {
+      "chunk_source_id": "ver_c4e85c1c4f32_c00002_s009",
+      "chunk_id": "ver_c4e85c1c4f32_c00002",
+      "normalized_block_id": "nrm_ver_c4e85c1c4f32_b00024",
+      "source_order": 9,
+      "start_offset": 0,
+      "end_offset": 112
+    },
+    {
+      "chunk_source_id": "ver_c4e85c1c4f32_c00002_s010",
+      "chunk_id": "ver_c4e85c1c4f32_c00002",
+      "normalized_block_id": "nrm_ver_c4e85c1c4f32_b00025",
+      "source_order": 10,
+      "start_offset": 0,
+      "end_offset": 93
+    },
+    {
+      "chunk_source_id": "ver_c4e85c1c4f32_c00002_s011",
+      "chunk_id": "ver_c4e85c1c4f32_c00002",
+      "normalized_block_id": "nrm_ver_c4e85c1c4f32_b00026",
+      "source_order": 11,
+      "start_offset": 0,
+      "end_offset": 106
+    },
+    {
+      "chunk_source_id": "ver_c4e85c1c4f32_c00002_s012",
+      "chunk_id": "ver_c4e85c1c4f32_c00002",
+      "normalized_block_id": "nrm_ver_c4e85c1c4f32_b00027",
+      "source_order": 12,
+      "start_offset": 0,
+      "end_offset": 98
+    },
+    {
+      "chunk_source_id": "ver_c4e85c1c4f32_c00002_s013",
+      "chunk_id": "ver_c4e85c1c4f32_c00002",
+      "normalized_block_id": "nrm_ver_c4e85c1c4f32_b00028",
+      "source_order": 13,
+      "start_offset": 0,
+      "end_offset": 103
+    },
+    {
+      "chunk_source_id": "ver_c4e85c1c4f32_c00002_s014",
+      "chunk_id": "ver_c4e85c1c4f32_c00002",
+      "normalized_block_id": "nrm_ver_c4e85c1c4f32_b00029",
+      "source_order": 14,
+      "start_offset": 0,
+      "end_offset": 116
+    },
+    {
+      "chunk_source_id": "ver_c4e85c1c4f32_c00002_s015",
+      "chunk_id": "ver_c4e85c1c4f32_c00002",
+      "normalized_block_id": "nrm_ver_c4e85c1c4f32_b00030",
+      "source_order": 15,
+      "start_offset": 0,
+      "end_offset": 82
+    },
+    {
+      "chunk_source_id": "ver_c4e85c1c4f32_c00002_s016",
+      "chunk_id": "ver_c4e85c1c4f32_c00002",
+      "normalized_block_id": "nrm_ver_c4e85c1c4f32_b00031",
+      "source_order": 16,
+      "start_offset": 0,
+      "end_offset": 75
+    },
+    {
+      "chunk_source_id": "ver_c4e85c1c4f32_c00002_s017",
+      "chunk_id": "ver_c4e85c1c4f32_c00002",
+      "normalized_block_id": "nrm_ver_c4e85c1c4f32_b00032",
+      "source_order": 17,
+      "start_offset": 0,
+      "end_offset": 85
+    },
+    {
+      "chunk_source_id": "ver_c4e85c1c4f32_c00002_s018",
+      "chunk_id": "ver_c4e85c1c4f32_c00002",
+      "normalized_block_id": "nrm_ver_c4e85c1c4f32_b00033",
+      "source_order": 18,
+      "start_offset": 0,
+      "end_offset": 90
+    },
+    {
+      "chunk_source_id": "ver_c4e85c1c4f32_c00002_s019",
+      "chunk_id": "ver_c4e85c1c4f32_c00002",
+      "normalized_block_id": "nrm_ver_c4e85c1c4f32_b00034",
+      "source_order": 19,
+      "start_offset": 0,
+      "end_offset": 28
+    },
+    {
+      "chunk_source_id": "ver_c4e85c1c4f32_c00003_s000",
+      "chunk_id": "ver_c4e85c1c4f32_c00003",
+      "normalized_block_id": "nrm_ver_c4e85c1c4f32_b00033",
+      "source_order": 0,
+      "start_offset": 9,
+      "end_offset": 90
+    },
+    {
+      "chunk_source_id": "ver_c4e85c1c4f32_c00003_s001",
+      "chunk_id": "ver_c4e85c1c4f32_c00003",
+      "normalized_block_id": "nrm_ver_c4e85c1c4f32_b00034",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 85
+    },
+    {
+      "chunk_source_id": "ver_c4e85c1c4f32_c00003_s002",
+      "chunk_id": "ver_c4e85c1c4f32_c00003",
+      "normalized_block_id": "nrm_ver_c4e85c1c4f32_b00035",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 114
+    },
+    {
+      "chunk_source_id": "ver_c4e85c1c4f32_c00003_s003",
+      "chunk_id": "ver_c4e85c1c4f32_c00003",
+      "normalized_block_id": "nrm_ver_c4e85c1c4f32_b00036",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 88
+    },
+    {
+      "chunk_source_id": "ver_c4e85c1c4f32_c00003_s004",
+      "chunk_id": "ver_c4e85c1c4f32_c00003",
+      "normalized_block_id": "nrm_ver_c4e85c1c4f32_b00037",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 117
+    },
+    {
+      "chunk_source_id": "ver_c4e85c1c4f32_c00003_s005",
+      "chunk_id": "ver_c4e85c1c4f32_c00003",
+      "normalized_block_id": "nrm_ver_c4e85c1c4f32_b00038",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 27
+    }
+  ]
+}

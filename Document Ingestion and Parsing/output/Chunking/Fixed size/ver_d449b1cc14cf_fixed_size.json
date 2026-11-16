@@ -1,0 +1,502 @@
+{
+  "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+  "version_id": "ver_d449b1cc14cf",
+  "chunking_strategy": "fixed_size",
+  "chunks": [
+    {
+      "chunk_id": "ver_d449b1cc14cf_c00000",
+      "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+      "version_id": "ver_d449b1cc14cf",
+      "chunk_idx": 0,
+      "chunk_type": "text",
+      "text_content": "# Query Parameterization Cheat Sheet\n\n## Introduction\n\n[SQL Injection](https://owasp.org/www-community/attacks/SQL_Injection) is one of the most dangerous web vulnerabilities. As of the [OWASP Top 10:2025](https://owasp.org/Top10/2025/A05_2025-Injection/), it is categorized under A05:2025-Injection.\n\nIt represents a serious threat because SQL Injection allows evil attacker code to change the structure of a web application's SQL statement in a way that can steal data, modify data, or potentially facilitate command injection to the underlying OS.\n\nThis cheat sheet is a derivative work of the [SQL Injection Prevention Cheat Sheet](SQL_Injection_Prevention_Cheat_Sheet.md).\n\n## Parameterized Query Examples\n\nSQL Injection is best prevented through the use of [*parameterized queries*](SQL_Injection_Prevention_Cheat_Sheet.md). The following chart demonstrates, with real-world code samples, how to build parameterized queries in most of the common web languages. The purpose of these code samples is to demonstrate to the web developer how to avoid SQL Injection when building database queries within a web application.\n\nPlease note, many client side frameworks and libraries offer client side query parameterization. These libraries often just build queries with string concatenation before sending raw queries to a server. Please ensure that query parameterization is done server-side!\n\n### Prepared Statement Examples\n\n#### Using Java built-in feature\n\n```java\nString custname = request.getParameter(\"customerName\");\nString query = \"SELECT account_balance FROM user_data WHERE user_name = ? \";  \nPreparedStatement pstmt = connection.prepareStatement( query );\npstmt.setString( 1, custname);\nResultSet results = pstmt.executeQuery( );\n```\n\n#### Using Java with JPA/Hibernate\n\n```java\n// HQL\n@Entity // declare as entity;\n@NamedQuery(\n name=\"findByDescription\",\n query=\"FROM Inventory i WHERE i.productDescription = :productDescription\"\n)\npublic class Inventory implements Serializable {\n @Id\n private long id;\n private String productDescription;\n}\n\n// Use case\n// This should REALLY be validated too\nString userSuppliedParameter = request.getParameter(\"Product-Description\");\n// Perform input validation to detect attacks\nList<Inventory> list =\n session.getNamedQuery(\"findByDescription\")\n .setParameter(\"productDescription\", userSuppliedParameter).list();\n\n// Criteria API\n// This should REALLY be validated too\nString userSuppliedParameter = request.getParameter(\"Product-Description\");\n// Perform input validation to detect attacks\nInventory inv = (Inventory) session.createCriteria(Inventory.class).add\n(Restrictions.eq(\"productDescription\", userSuppliedParameter)).uniqueResult();\n```\n\n#### Using .NET built-in feature\n\n```csharp\nString query = \"SELECT account_balance FROM user_data WHERE user_name = ?\";\ntry {\n   OleDbCommand command = new OleDbCommand(query, connection);\n   command.Parameters.Add(new OleDbParameter(\"customerName\", CustomerName.Text));\n   OleDbDataReader reader = command.ExecuteReader();\n   // …\n} catch (OleDbException se) {\n   // error handling\n}\n```\n\n#### Using ASP .NET built-in feature\n\n```csharp\nstring sql = \"SELECT *",
+      "token_count": 650,
+      "chunk_strategy": "fixed_size",
+      "heading_path": [
+        "Query Parameterization Cheat Sheet"
+      ]
+    },
+    {
+      "chunk_id": "ver_d449b1cc14cf_c00001",
+      "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+      "version_id": "ver_d449b1cc14cf",
+      "chunk_idx": 1,
+      "chunk_type": "text",
+      "text_content": "OleDbDataReader reader = command.ExecuteReader();\n   // …\n} catch (OleDbException se) {\n   // error handling\n}\n```\n\n#### Using ASP .NET built-in feature\n\n```csharp\nstring sql = \"SELECT * FROM Customers WHERE CustomerId = @CustomerId\";\nSqlCommand command = new SqlCommand(sql);\ncommand.Parameters.Add(new SqlParameter(\"@CustomerId\", System.Data.SqlDbType.Int));\ncommand.Parameters[\"@CustomerId\"].Value = 1;\n```\n\n#### Using Ruby with ActiveRecord\n\n```ruby\n## Create\nProject.create!(:name => 'owasp')\n## Read\nProject.all(:conditions => \"name = ?\", name)\nProject.all(:conditions => { :name => name })\nProject.where(\"name = :name\", :name => name)\n## Update\nproject.update_attributes(:name => 'owasp')\n## Delete\nProject.delete(:name => 'name')\n```\n\n#### Using Ruby built-in feature\n\n```ruby\ninsert_new_user = db.prepare \"INSERT INTO users (name, age, gender) VALUES (?, ? ,?)\"\ninsert_new_user.execute 'aizatto', '20', 'male'\n```\n\n#### Using PHP with PHP Data Objects\n\n```php\n$stmt = $dbh->prepare(\"INSERT INTO REGISTRY (name, value) VALUES (:name, :value)\");\n$stmt->bindParam(':name', $name);\n$stmt->bindParam(':value', $value);\n```\n\n#### Using Cold Fusion built-in feature\n\n```coldfusion\n<cfquery name = \"getFirst\" dataSource = \"cfsnippets\">\n    SELECT * FROM #strDatabasePrefix#_courses WHERE intCourseID =\n    <cfqueryparam value = #intCourseID# CFSQLType = \"CF_SQL_INTEGER\">\n</cfquery>\n```\n\n#### Using PERL with Database Independent Interface\n\n```perl\nmy $sql = \"INSERT INTO foo (bar, baz) VALUES ( ?, ? )\";\nmy $sth = $dbh->prepare( $sql );\n$sth->execute( $bar, $baz );\n```\n\n#### Using Rust with SQLx\n\n<!-- contributed by GeekMasher -->\n\n```rust\n// Input from CLI args but could be anything\nlet username = std::env::args().last().unwrap();\n\n// Using build-in macros (compile time checks)\nlet users = sqlx::query_as!(\n        User,\n        \"SELECT * FROM users WHERE name = ?\",\n        username\n    )\n    .fetch_all(&pool)\n    .await \n    .unwrap();\n\n// Using built-in functions\nlet users: Vec<User> = sqlx::query_as::<_, User>(\n        \"SELECT * FROM users WHERE name = ?\"\n    )\n    .bind(&username)\n    .fetch_all(&pool)\n    .await\n    .unwrap();\n```\n\n### Stored Procedure Examples\n\nThe SQL you write in your",
+      "token_count": 650,
+      "chunk_strategy": "fixed_size",
+      "heading_path": [
+        "Query Parameterization Cheat Sheet",
+        "Parameterized Query Examples",
+        "Prepared Statement Examples",
+        "Using .NET built-in feature"
+      ]
+    },
+    {
+      "chunk_id": "ver_d449b1cc14cf_c00002",
+      "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+      "version_id": "ver_d449b1cc14cf",
+      "chunk_idx": 2,
+      "chunk_type": "text",
+      "text_content": "User>(\n        \"SELECT * FROM users WHERE name = ?\"\n    )\n    .bind(&username)\n    .fetch_all(&pool)\n    .await\n    .unwrap();\n```\n\n### Stored Procedure Examples\n\nThe SQL you write in your web application isn't the only place that SQL injection vulnerabilities can be introduced. If you are using Stored Procedures, and you are dynamically constructing SQL inside them, you can also introduce SQL injection vulnerabilities.\n\nDynamic SQL can be parameterized using bind variables, to ensure the dynamically constructed SQL is secure.\n\nHere are some examples of using bind variables in stored procedures in different databases.\n\n#### Oracle using PL/SQL\n\n##### Normal Stored Procedure\n\nNo dynamic SQL being created. Parameters passed in to stored procedures are naturally bound to their location within the query without anything special being required:\n\n```sql\nPROCEDURE SafeGetBalanceQuery(UserID varchar, Dept varchar) AS BEGIN\n   SELECT balance FROM accounts_table WHERE user_ID = UserID AND department = Dept;\nEND;\n```\n\n##### Stored Procedure Using Bind Variables in SQL Run with EXECUTE\n\nBind variables are used to tell the database that the inputs to this dynamic SQL are 'data' and not possibly code:\n\n```sql\nPROCEDURE AnotherSafeGetBalanceQuery(UserID varchar, Dept varchar)\n          AS stmt VARCHAR(400); result NUMBER;\nBEGIN\n   stmt := 'SELECT balance FROM accounts_table WHERE user_ID = :1\n            AND department = :2';\n   EXECUTE IMMEDIATE stmt INTO result USING UserID, Dept;\n   RETURN result;\nEND;\n```\n\n#### SQL Server using Transact-SQL\n\n##### Normal Stored Procedure\n\nNo dynamic SQL being created. Parameters passed in to stored procedures are naturally bound to their location within the query without anything special being required:\n\n```sql\nPROCEDURE SafeGetBalanceQuery(@UserID varchar(20), @Dept varchar(10)) AS BEGIN\n   SELECT balance FROM accounts_table WHERE user_ID = @UserID AND department = @Dept\nEND\n```\n\n##### Stored Procedure Using Bind Variables in SQL Run with EXEC\n\nBind variables are used to tell the database that the inputs to this dynamic SQL are 'data' and not possibly code:\n\n```sql\nPROCEDURE SafeGetBalanceQuery(@UserID varchar(20), @Dept varchar(10)) AS BEGIN\n   DECLARE @sql VARCHAR(200)\n   SELECT @sql = 'SELECT balance FROM accounts_table WHERE '\n                 + 'user_ID = @UID AND department = @DPT'\n   EXEC sp_executesql @sql,\n                      '@UID VARCHAR(20), @DPT VARCHAR(10)',\n                      @UID=@UserID, @DPT=@Dept\nEND\n```\n\n## References\n\n- [Oracle JDBC: Using Prepared Statements](https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html)\n- [PHP PDO: Prepared Statements and Stored",
+      "token_count": 557,
+      "chunk_strategy": "fixed_size",
+      "heading_path": [
+        "Query Parameterization Cheat Sheet",
+        "Parameterized Query Examples",
+        "Prepared Statement Examples",
+        "Using Rust with SQLx"
+      ]
+    }
+  ],
+  "chunk_sources": [
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00000_s000",
+      "chunk_id": "ver_d449b1cc14cf_c00000",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00000",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 36
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00000_s001",
+      "chunk_id": "ver_d449b1cc14cf_c00000",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00001",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 15
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00000_s002",
+      "chunk_id": "ver_d449b1cc14cf_c00000",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00002",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 245
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00000_s003",
+      "chunk_id": "ver_d449b1cc14cf_c00000",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00003",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 248
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00000_s004",
+      "chunk_id": "ver_d449b1cc14cf_c00000",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00004",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 125
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00000_s005",
+      "chunk_id": "ver_d449b1cc14cf_c00000",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00005",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 31
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00000_s006",
+      "chunk_id": "ver_d449b1cc14cf_c00000",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00006",
+      "source_order": 6,
+      "start_offset": 0,
+      "end_offset": 411
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00000_s007",
+      "chunk_id": "ver_d449b1cc14cf_c00000",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00007",
+      "source_order": 7,
+      "start_offset": 0,
+      "end_offset": 266
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00000_s008",
+      "chunk_id": "ver_d449b1cc14cf_c00000",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00008",
+      "source_order": 8,
+      "start_offset": 0,
+      "end_offset": 31
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00000_s009",
+      "chunk_id": "ver_d449b1cc14cf_c00000",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00009",
+      "source_order": 9,
+      "start_offset": 0,
+      "end_offset": 32
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00000_s010",
+      "chunk_id": "ver_d449b1cc14cf_c00000",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00010",
+      "source_order": 10,
+      "start_offset": 0,
+      "end_offset": 284
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00000_s011",
+      "chunk_id": "ver_d449b1cc14cf_c00000",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00011",
+      "source_order": 11,
+      "start_offset": 0,
+      "end_offset": 34
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00000_s012",
+      "chunk_id": "ver_d449b1cc14cf_c00000",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00012",
+      "source_order": 12,
+      "start_offset": 0,
+      "end_offset": 913
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00000_s013",
+      "chunk_id": "ver_d449b1cc14cf_c00000",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00013",
+      "source_order": 13,
+      "start_offset": 0,
+      "end_offset": 32
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00000_s014",
+      "chunk_id": "ver_d449b1cc14cf_c00000",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00014",
+      "source_order": 14,
+      "start_offset": 0,
+      "end_offset": 354
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00000_s015",
+      "chunk_id": "ver_d449b1cc14cf_c00000",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00015",
+      "source_order": 15,
+      "start_offset": 0,
+      "end_offset": 36
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00000_s016",
+      "chunk_id": "ver_d449b1cc14cf_c00000",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00016",
+      "source_order": 16,
+      "start_offset": 0,
+      "end_offset": 32
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00001_s000",
+      "chunk_id": "ver_d449b1cc14cf_c00001",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00014",
+      "source_order": 0,
+      "start_offset": 240,
+      "end_offset": 354
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00001_s001",
+      "chunk_id": "ver_d449b1cc14cf_c00001",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00015",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 36
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00001_s002",
+      "chunk_id": "ver_d449b1cc14cf_c00001",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00016",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 255
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00001_s003",
+      "chunk_id": "ver_d449b1cc14cf_c00001",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00017",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 33
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00001_s004",
+      "chunk_id": "ver_d449b1cc14cf_c00001",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00018",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 295
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00001_s005",
+      "chunk_id": "ver_d449b1cc14cf_c00001",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00019",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 32
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00001_s006",
+      "chunk_id": "ver_d449b1cc14cf_c00001",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00020",
+      "source_order": 6,
+      "start_offset": 0,
+      "end_offset": 145
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00001_s007",
+      "chunk_id": "ver_d449b1cc14cf_c00001",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00021",
+      "source_order": 7,
+      "start_offset": 0,
+      "end_offset": 36
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00001_s008",
+      "chunk_id": "ver_d449b1cc14cf_c00001",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00022",
+      "source_order": 8,
+      "start_offset": 0,
+      "end_offset": 164
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00001_s009",
+      "chunk_id": "ver_d449b1cc14cf_c00001",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00023",
+      "source_order": 9,
+      "start_offset": 0,
+      "end_offset": 39
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00001_s010",
+      "chunk_id": "ver_d449b1cc14cf_c00001",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00024",
+      "source_order": 10,
+      "start_offset": 0,
+      "end_offset": 218
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00001_s011",
+      "chunk_id": "ver_d449b1cc14cf_c00001",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00025",
+      "source_order": 11,
+      "start_offset": 0,
+      "end_offset": 51
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00001_s012",
+      "chunk_id": "ver_d449b1cc14cf_c00001",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00026",
+      "source_order": 12,
+      "start_offset": 0,
+      "end_offset": 129
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00001_s013",
+      "chunk_id": "ver_d449b1cc14cf_c00001",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00027",
+      "source_order": 13,
+      "start_offset": 0,
+      "end_offset": 25
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00001_s014",
+      "chunk_id": "ver_d449b1cc14cf_c00001",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00028",
+      "source_order": 14,
+      "start_offset": 0,
+      "end_offset": 34
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00001_s015",
+      "chunk_id": "ver_d449b1cc14cf_c00001",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00029",
+      "source_order": 15,
+      "start_offset": 0,
+      "end_offset": 513
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00001_s016",
+      "chunk_id": "ver_d449b1cc14cf_c00001",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00030",
+      "source_order": 16,
+      "start_offset": 0,
+      "end_offset": 29
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00001_s017",
+      "chunk_id": "ver_d449b1cc14cf_c00001",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00031",
+      "source_order": 17,
+      "start_offset": 0,
+      "end_offset": 25
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00002_s000",
+      "chunk_id": "ver_d449b1cc14cf_c00002",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00029",
+      "source_order": 0,
+      "start_offset": 383,
+      "end_offset": 513
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00002_s001",
+      "chunk_id": "ver_d449b1cc14cf_c00002",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00030",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 29
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00002_s002",
+      "chunk_id": "ver_d449b1cc14cf_c00002",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00031",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 260
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00002_s003",
+      "chunk_id": "ver_d449b1cc14cf_c00002",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00032",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 107
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00002_s004",
+      "chunk_id": "ver_d449b1cc14cf_c00002",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00033",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 91
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00002_s005",
+      "chunk_id": "ver_d449b1cc14cf_c00002",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00034",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 24
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00002_s006",
+      "chunk_id": "ver_d449b1cc14cf_c00002",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00035",
+      "source_order": 6,
+      "start_offset": 0,
+      "end_offset": 29
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00002_s007",
+      "chunk_id": "ver_d449b1cc14cf_c00002",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00036",
+      "source_order": 7,
+      "start_offset": 0,
+      "end_offset": 167
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00002_s008",
+      "chunk_id": "ver_d449b1cc14cf_c00002",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00037",
+      "source_order": 8,
+      "start_offset": 0,
+      "end_offset": 168
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00002_s009",
+      "chunk_id": "ver_d449b1cc14cf_c00002",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00038",
+      "source_order": 9,
+      "start_offset": 0,
+      "end_offset": 67
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00002_s010",
+      "chunk_id": "ver_d449b1cc14cf_c00002",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00039",
+      "source_order": 10,
+      "start_offset": 0,
+      "end_offset": 114
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00002_s011",
+      "chunk_id": "ver_d449b1cc14cf_c00002",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00040",
+      "source_order": 11,
+      "start_offset": 0,
+      "end_offset": 311
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00002_s012",
+      "chunk_id": "ver_d449b1cc14cf_c00002",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00041",
+      "source_order": 12,
+      "start_offset": 0,
+      "end_offset": 34
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00002_s013",
+      "chunk_id": "ver_d449b1cc14cf_c00002",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00042",
+      "source_order": 13,
+      "start_offset": 0,
+      "end_offset": 29
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00002_s014",
+      "chunk_id": "ver_d449b1cc14cf_c00002",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00043",
+      "source_order": 14,
+      "start_offset": 0,
+      "end_offset": 167
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00002_s015",
+      "chunk_id": "ver_d449b1cc14cf_c00002",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00044",
+      "source_order": 15,
+      "start_offset": 0,
+      "end_offset": 178
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00002_s016",
+      "chunk_id": "ver_d449b1cc14cf_c00002",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00045",
+      "source_order": 16,
+      "start_offset": 0,
+      "end_offset": 64
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00002_s017",
+      "chunk_id": "ver_d449b1cc14cf_c00002",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00046",
+      "source_order": 17,
+      "start_offset": 0,
+      "end_offset": 114
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00002_s018",
+      "chunk_id": "ver_d449b1cc14cf_c00002",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00047",
+      "source_order": 18,
+      "start_offset": 0,
+      "end_offset": 376
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00002_s019",
+      "chunk_id": "ver_d449b1cc14cf_c00002",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00048",
+      "source_order": 19,
+      "start_offset": 0,
+      "end_offset": 13
+    },
+    {
+      "chunk_source_id": "ver_d449b1cc14cf_c00002_s020",
+      "chunk_id": "ver_d449b1cc14cf_c00002",
+      "normalized_block_id": "nrm_ver_d449b1cc14cf_b00049",
+      "source_order": 20,
+      "start_offset": 0,
+      "end_offset": 152
+    }
+  ]
+}

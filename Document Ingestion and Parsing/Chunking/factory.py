@@ -1,6 +1,7 @@
 import inspect
 from fixed_size import FixedSizeChunker
 from structure_aware import StructureAwareChunker
+from semantic import SemanticChunker
 
 
 class ChunkingStrategyFactory:
@@ -11,6 +12,7 @@ class ChunkingStrategyFactory:
         strategies = {
             "fixed_size": FixedSizeChunker,
             "structure_aware": StructureAwareChunker,
+            "semantic": SemanticChunker,
         }
         if normalized not in strategies:
             raise ValueError(f"Unknown strategy {name!r}; choose from {', '.join(strategies)}")
