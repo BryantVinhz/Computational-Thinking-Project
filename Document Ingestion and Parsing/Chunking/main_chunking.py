@@ -7,20 +7,14 @@ from chunking import ChunkingService
 
 CURRENT_DIR = Path(__file__).resolve().parent
 PARENT_DIR = CURRENT_DIR.parent
-for p in (CURRENT_DIR, PARENT_DIR):
+for p in (CURRENT_DIR, PARENT_DIR, PARENT_DIR.parent):
     if str(p) not in sys.path:
         sys.path.insert(0, str(p))
 
-from path import NORMALIZATION_OUT_DIR, CHUNKING_OUT_DIR
+from path import NORMALIZATION_OUT_DIR, CHUNKING_OUT_DIR, STRATEGY_FOLDER_MAP
 
 logging.basicConfig(level=logging.INFO, format="%(message)s")
 logger = logging.getLogger(__name__)
-
-STRATEGY_FOLDER_MAP = {
-    "fixed_size": "Fixed size",
-    "structure_aware": "Structure aware",
-    "semantic": "Semantic",
-}
 
 def normalize_strategy_name(strategy_name: str) -> str:
     return strategy_name.strip().lower().replace("-", "_")

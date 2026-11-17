@@ -9,15 +9,20 @@ import chromadb
 import torch
 from chromadb.utils.embedding_functions import SentenceTransformerEmbeddingFunction
 
-# Ensure path.py and sibling modules can be imported when running this file directly
+# Ensure path.py (project root) and sibling modules can be imported when running this file directly
 CURRENT_DIR = Path(__file__).resolve().parent
 PARENT_DIR = CURRENT_DIR.parent
-for _dir in (CURRENT_DIR, PARENT_DIR):
+for _dir in (CURRENT_DIR, PARENT_DIR, PARENT_DIR.parent):
     if str(_dir) not in sys.path:
         sys.path.insert(0, str(_dir))
 
 from extractor_sqlite import MetadataExtractor, MetadataStore
-from path import CHUNKING_OUT_DIR, INGESTION_OUT_DIR, VECTOR_DB_DIR
+from path import (
+    CHUNKING_OUT_DIR,
+    INGESTION_OUT_DIR,
+    VECTOR_DB_DIR,
+    STRATEGY_FOLDER_MAP,
+)
 from schema_metadata import (
     ChunkMetadataSchema,
     DocumentMetadataSchema,
@@ -248,12 +253,6 @@ def prepare_and_ingest_to_chroma(
     if return_exported:
         return export_records_from_chroma(collection=collection)
     return []
-
-STRATEGY_FOLDER_MAP = {
-    "fixed_size": "Fixed size",
-    "structure_aware": "Structure aware",
-    "semantic": "Semantic",
-}
 
 def build_vector_store_for_strategy(strategy: str, doc_by_id: dict, ver_by_id: dict) -> None:
     norm_strategy = strategy.strip().lower().replace("-", "_").replace(" ", "_")

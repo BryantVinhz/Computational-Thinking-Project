@@ -15,10 +15,13 @@ from typing import Any
 # Resolve paths
 CURRENT_DIR = Path(__file__).resolve().parent
 PARENT_DIR = CURRENT_DIR.parent
+PROJECT_ROOT = PARENT_DIR.parent
 if str(CURRENT_DIR) not in sys.path:
     sys.path.insert(0, str(CURRENT_DIR))
 if str(PARENT_DIR) not in sys.path:
     sys.path.insert(0, str(PARENT_DIR))
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
 
 try:
     from path import NORMALIZATION_IN_DIR, NORMALIZATION_OUT_DIR, PARSING_OUT_DIR

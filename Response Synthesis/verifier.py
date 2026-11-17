@@ -25,7 +25,12 @@ from dataclasses import dataclass
 from typing import Any, Callable
 from pathlib import Path
 
-QUR_DIR = Path(__file__).resolve().parent.parent / "Query Understanding and Routing" / "query_understanding_routing"
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
+from path import QUR_PACKAGE_DIR as QUR_DIR
+
 if str(QUR_DIR) not in sys.path:
     sys.path.insert(0, str(QUR_DIR))
 try:

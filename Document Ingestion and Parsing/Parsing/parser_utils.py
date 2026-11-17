@@ -5,10 +5,10 @@ import json
 import sys
 from pathlib import Path
 
-# Ensure path.py and Ingestion/ package are importable when running parser directly
+# Ensure path.py (project root) and Ingestion/ package are importable when running parser directly
 CURRENT_DIR = Path(__file__).resolve().parent
 PARENT_DIR = CURRENT_DIR.parent
-for _p in (CURRENT_DIR, PARENT_DIR):
+for _p in (CURRENT_DIR, PARENT_DIR, PARENT_DIR.parent):
     if str(_p) not in sys.path:
         sys.path.insert(0, str(_p))
 

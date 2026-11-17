@@ -13,10 +13,10 @@ from chromadb.utils.embedding_functions import SentenceTransformerEmbeddingFunct
 
 CURRENT_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = CURRENT_DIR.parent
-METADATA_DIR = PROJECT_ROOT / "Document Ingestion and Parsing" / "Metadata"
 PIPELINE_DIR = PROJECT_ROOT / "Document Ingestion and Parsing"
+METADATA_DIR = PIPELINE_DIR / "Metadata"
 
-for _dir in (CURRENT_DIR, METADATA_DIR, PIPELINE_DIR):
+for _dir in (PROJECT_ROOT, CURRENT_DIR, METADATA_DIR, PIPELINE_DIR):
     if str(_dir) not in sys.path:
         sys.path.insert(0, str(_dir))
 

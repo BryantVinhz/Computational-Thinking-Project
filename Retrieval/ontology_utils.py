@@ -1,9 +1,12 @@
+import sys
 from pathlib import Path
 import yaml
 
-ONTOLOGY_PATH = (Path(__file__).resolve().parent.parent
-                 / "Query Understanding and Routing"
-                 / "query_understanding_routing" / "ontology.yaml")
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
+from path import DEFAULT_ONTOLOGY_PATH as ONTOLOGY_PATH
 
 def load_ontology_terms(path: Path = ONTOLOGY_PATH):
     data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}

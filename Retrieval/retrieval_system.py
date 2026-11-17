@@ -8,9 +8,11 @@ if hasattr(sys.stdout, "reconfigure"):
 
 CURRENT_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = CURRENT_DIR.parent
-if str(CURRENT_DIR) not in sys.path:
-    sys.path.insert(0, str(CURRENT_DIR))
+for _dir in (PROJECT_ROOT, CURRENT_DIR):
+    if str(_dir) not in sys.path:
+        sys.path.insert(0, str(_dir))
 
+from path import PROVENANCE_OUT_DIR, VECTOR_DB_DIR
 from schema import ScopedRetrievalPayload
 from query_vectorizer import QueryVectorizer
 from scope_builder import ScopeBuilder
@@ -57,9 +59,8 @@ class RetrievalSystem:
 
         if chunking_strategy:
             norm_strategy = chunking_strategy.strip().lower().replace("-", "_").replace(" ", "_")
-            base_output = PROJECT_ROOT / "Document Ingestion and Parsing" / "output"
-            chroma_dir = base_output / "Vector DB" / norm_strategy / "chroma_security_db"
-            prov_db = base_output / "Provenance" / norm_strategy / "workspace_data.db"
+            chroma_dir = VECTOR_DB_DIR / norm_strategy / "chroma_security_db"
+            prov_db = PROVENANCE_OUT_DIR / norm_strategy / "workspace_data.db"
 
             self.dense = dense_retriever or DenseRetriever(db_path=chroma_dir)
             self.bm25 = bm25_retriever or BM25Retriever(db_path=chroma_dir)

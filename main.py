@@ -4,9 +4,9 @@ from pathlib import Path
 CURRENT_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = CURRENT_DIR
 
-RETRIEVAL_DIR = PROJECT_ROOT / "Retrieval"
-SYNTHESIS_DIR = PROJECT_ROOT / "Response Synthesis"
-STAGE_2_DIR = PROJECT_ROOT / "Query Understanding and Routing"
+from path import QUR_DIR, RETRIEVAL_DIR, SYNTHESIS_DIR
+
+STAGE_2_DIR = QUR_DIR
 
 for p in (PROJECT_ROOT, RETRIEVAL_DIR, SYNTHESIS_DIR, STAGE_2_DIR):
     if p.exists() and str(p) not in sys.path:

@@ -8,18 +8,19 @@ from provenance import Provenance
 
 CURRENT_DIR = Path(__file__).resolve().parent
 PIPELINE_DIR = CURRENT_DIR.parent
+PROJECT_ROOT = PIPELINE_DIR.parent
 
-if str(PIPELINE_DIR) not in sys.path:
-    sys.path.insert(0, str(PIPELINE_DIR))
+for _p in (PROJECT_ROOT, PIPELINE_DIR):
+    if str(_p) not in sys.path:
+        sys.path.insert(0, str(_p))
 
-from path import INGESTION_OUT_DIR, NORMALIZATION_OUT_DIR, CHUNKING_OUT_DIR, PROVENANCE_OUT_DIR
-
-STRATEGY_FOLDER_MAP = {
-    "fixed_size": "Fixed size",
-    "structure_aware": "Structure aware",
-    "semantic": "Semantic",
-}
-
+from path import (
+    INGESTION_OUT_DIR,
+    NORMALIZATION_OUT_DIR,
+    CHUNKING_OUT_DIR,
+    PROVENANCE_OUT_DIR,
+    STRATEGY_FOLDER_MAP,
+)
 
 def resolve_strategy_paths(strategy: str) -> tuple[str, Path, Path]:
     norm_strategy = strategy.strip().lower().replace("-", "_").replace(" ", "_")
