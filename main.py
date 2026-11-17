@@ -30,7 +30,8 @@ class PipelineConnector:
         self.retrieval_system = RetrievalSystem(chunking_strategy=chunking_strategy)
 
         if llm_client is None:
-            llm_client =  OllamaLLMClient(model_name="qwen3:4b") # ColabLLMClient() 
+            # llm_client =  OllamaLLMClient(model_name="qwen3:4b") 
+            llm_client = ColabLLMClient()
         self.llm_client = llm_client
 
         print("Initializing Response Synthesis, Verifier & Formatter with Remote LLM")
@@ -111,7 +112,7 @@ if __name__ == "__main__":
     try:
         local_llm = OllamaLLMClient(model_name="qwen3:4b")
         remote_llm = ColabLLMClient()
-        pipeline = PipelineConnector(llm_client=local_llm)
+        pipeline = PipelineConnector(llm_client=remote_llm)
     except Exception as e:
         print(f"System initialization error: {e}")
         sys.exit(1)
@@ -157,6 +158,16 @@ if __name__ == "__main__":
                 print(f"[Faithfulness] Status: {v.status} | Faithfulness: {v.faithfulness_score * 100:.1f}%")
             if envelope.citations:
                 print(f"[Citations] Referenced {len(envelope.citations)} sources")
+
+            meta = envelope.metadata or {}
+            if "total_latency_s" in meta:
+                print(
+                    f"[Latency] Total: {meta['total_latency_s']:.2f}s "
+                    f"(Stage 2 Routing: {meta.get('understanding_latency_s', 0.0):.2f}s | "
+                    f"Stage 3 Retrieval: {meta.get('retrieval_latency_s', 0.0):.2f}s | "
+                    f"Stage 4 LLM: {meta.get('synthesis_latency_s', 0.0):.2f}s | "
+                    f"Verifier: {meta.get('verification_latency_s', 0.0):.2f}s)"
+                )
 
         except KeyboardInterrupt:
             print("\nProgram terminated")

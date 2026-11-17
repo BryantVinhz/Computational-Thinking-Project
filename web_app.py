@@ -27,7 +27,7 @@ st.set_page_config(
 def init_rag_pipeline(backend_mode: str, model_name: str, colab_url: str) -> PipelineConnector:
     """Initialize and cache the end-to-end RAG pipeline once per server session."""
     if backend_mode == "Local Ollama":
-        llm_client = OllamaLLMClient(model_name=model_name.strip() or "qwen2.5:3b")
+        llm_client = OllamaLLMClient(model_name=model_name.strip() or "qwen3:4b")
     else:
         llm_client = ColabLLMClient(endpoint_url=colab_url.strip())
 
@@ -61,7 +61,17 @@ def _render_assistant_metadata(msg: dict[str, Any]) -> None:
         meta_badges.append(f"**Faithfulness:** `{pct:.1f}%`{status_label}")
 
     if msg.get("latency") is not None:
-        meta_badges.append(f"**Latency:** `{msg['latency']:.2f}s`")
+        breakdown = msg.get("latency_breakdown") or {}
+        if "retrieval_latency_s" in breakdown:
+            detail_str = (
+                f"Routing: {breakdown.get('understanding_latency_s', 0.0):.2f}s | "
+                f"Retrieval: {breakdown.get('retrieval_latency_s', 0.0):.2f}s | "
+                f"LLM: {breakdown.get('synthesis_latency_s', 0.0):.2f}s | "
+                f"Verifier: {breakdown.get('verification_latency_s', 0.0):.2f}s)"
+            )
+            meta_badges.append(f"**Latency:** `{msg['latency']:.2f}s`{detail_str}")
+        else:
+            meta_badges.append(f"**Latency:** `{msg['latency']:.2f}s`")
 
     if meta_badges:
         st.caption(" • ".join(meta_badges))
@@ -148,18 +158,18 @@ with st.sidebar:
     backend_mode = st.selectbox(
         "LLM Inference Backend",
         ["Local Ollama", "Remote Colab GPU (FastAPI)"],
-        index=0,
+        index=1, # 0 = Local Ollama, 1 = Remote Colab GPU (FastAPI)
     )
 
     if backend_mode == "Local Ollama":
         model_name = st.text_input(
             "Local Ollama Model",
-            value="qwen2.5:3b",
-            help="Ensure the model is pulled locally via 'ollama pull qwen2.5:3b'.",
+            value="qwen3:4b",
+            help="Ensure the model is pulled locally via 'ollama pull qwen3:4b'.",
         )
         colab_url = ""
     else:
-        model_name = "Qwen2.5-3B-Instruct-colab-remote"
+        model_name = "Qwen3-4B"
         colab_url = st.text_input(
             "Colab Tunnel URL",
             value=os.getenv("COLAB_API_URL", ""),
@@ -270,10 +280,12 @@ if query is not None:
                     assistant_record = {
                         "role": "assistant",
                         "content": answer_text,
+                        "warning_banner": warning_banner,
                         "intent": q_plan.get("intent") or getattr(envelope, "intent", None),
                         "faithfulness": verif.get("faithfulness_score"),
                         "verif_status": raw_verif_status if raw_verif_status else None,
                         "latency": meta.get("total_latency_s"),
+                        "latency_breakdown": meta,
                         "rewritten_query": rewritten_q,
                         "citations": getattr(envelope, "citations", []) or [],
                     }
