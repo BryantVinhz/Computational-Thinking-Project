@@ -1,12 +1,13 @@
 import os
+import re
 import requests
 from typing import Any
 
 OLLAMA_HOST = os.getenv("OLLAMA_HOST", "http://localhost:11434")
-COLAB_URL = "https://frequency-operational-modify-receivers.trycloudflare.com"
+COLAB_URL = os.getenv("COLAB_API_URL")
 class ColabLLMClient:
     """client calls the LLM running on Google Colab via FastAPI"""
-    model_name: str = "Qwen2.5-3B-Instruct-colab-remote"
+    model_name: str = "Qwen3-4B-colab-remote"
 
     def __init__(self, endpoint_url: str = COLAB_URL):
         self.api_url = f"{endpoint_url.rstrip('/')}/generate"
@@ -41,7 +42,7 @@ class ColabLLMClient:
 class OllamaLLMClient:
     """Client calls the local model via Ollama API (localhost)"""
     
-    def __init__(self, model_name: str = "qwen2.5:3b", host: str = OLLAMA_HOST):
+    def __init__(self, model_name: str = "qwen3:4b", host: str = OLLAMA_HOST):
         self.model_name = model_name
         self.api_url = f"{host.rstrip('/')}/api/chat"
 
@@ -64,17 +65,21 @@ class OllamaLLMClient:
                 "temperature": kwargs.get("temperature", 0.2),
                 "repeat_penalty": 1.15,
                 "num_predict": kwargs.get("max_tokens", 1200),
-                "num_ctx": 4096,
+                "num_ctx": 6144,
             },
         }
 
+        if "qwen3" in self.model_name.lower():
+            payload["think"] = False
+            
         try:
             resp = requests.post(self.api_url, json=payload, timeout=900)
             resp.raise_for_status()
             data = resp.json()
-            
+
             response_text = data.get("message", {}).get("content", "")
-            if not response_text.strip():
+            response_text = re.sub(r"<think>.*?</think>", "", response_text, flags=re.DOTALL).strip()
+            if not response_text:
                 raise RuntimeError("Ollama returned an empty response")
             return response_text
         except requests.exceptions.ConnectionError:

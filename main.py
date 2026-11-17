@@ -30,7 +30,7 @@ class PipelineConnector:
         self.retrieval_system = RetrievalSystem(chunking_strategy=chunking_strategy)
 
         if llm_client is None:
-            llm_client =  OllamaLLMClient(model_name="qwen2.5:3b") # ColabLLMClient() 
+            llm_client =  OllamaLLMClient(model_name="qwen3:4b") # ColabLLMClient() 
         self.llm_client = llm_client
 
         print("Initializing Response Synthesis, Verifier & Formatter with Remote LLM")
@@ -109,7 +109,7 @@ class PipelineConnector:
         
 if __name__ == "__main__":
     try:
-        local_llm = OllamaLLMClient(model_name="qwen2.5:3b")
+        local_llm = OllamaLLMClient(model_name="qwen3:4b")
         remote_llm = ColabLLMClient()
         pipeline = PipelineConnector(llm_client=local_llm)
     except Exception as e:
