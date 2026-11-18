@@ -97,17 +97,51 @@ STOPWORDS = frozenset({
 
 DISCLAIMER_PATTERNS = [
     r"do chuyên gia minh họa",
-    r"không nằm trong tài liệu",
+    r"không nằm trong (?:các )?tài liệu(?: được trích dẫn)?",
+    r"chỉ (?:nhằm mục đích |mang tính |có tính |để )?minh họa(?: mà thôi)?",
+    r"mang tính minh họa",
     r"not part of the cited documents",
     r"illustrative code provided by",
     r"hypothetical vulnerable code",
+    r"for (?:illustration|illustrative purposes) only",
+    r"\bcode is illustrative\b",
+]
+
+# Anchored openers are structural filler only when nothing substantive follows them.
+_SUMMARY_OPENER_PATTERNS = [
     r"^(dưới đây là|sau đây là|như đã nêu|tóm lại|nhìn chung)",
     r"^(below are|as mentioned|in summary|the following are)",
 ]
+_SUMMARY_OPENER_RE = re.compile("|".join(f"(?:{p})" for p in _SUMMARY_OPENER_PATTERNS))
 
-def _is_disclaimer_or_filler(text: str) -> bool:
+# Words that carry no assertion on their own: a residue made only of these is filler.
+_GENERIC_FILLER_TOKENS = frozenset({
+    "above", "below", "following", "main", "point", "note", "hold", "state", "mention",
+    "nội", "dung", "trên", "dưới", "điểm", "chính", "cần", "lưu", "ý", "đúng", "nêu", "sau", "đây",
+})
+
+
+def _is_generic_filler_token(token: str) -> bool:
+    """Generic discourse words, tolerating English plurals and third-person endings."""
+    return token in _GENERIC_FILLER_TOKENS or token.rstrip("s") in _GENERIC_FILLER_TOKENS
+
+_DISCLAIMER_STRIP_RE = re.compile("|".join(f"(?:{p})" for p in DISCLAIMER_PATTERNS))
+
+
+def _is_disclaimer_or_filler(text: str, min_tokens: int = MIN_CLAIM_TOKENS) -> bool:
     t = text.lower().strip()
-    return any(re.search(p, t) for p in DISCLAIMER_PATTERNS)
+    if _SUMMARY_OPENER_RE.search(t):
+        # The opener itself is structural; only the residue decides filler vs. claim.
+        residue = _content_tokens(_SUMMARY_OPENER_RE.sub(" ", t, count=1))
+        if len(residue) < min_tokens or all(_is_generic_filler_token(tok) for tok in residue):
+            return True
+    if not any(re.search(p, t) for p in DISCLAIMER_PATTERNS):
+        return False
+    # A disclaimer phrase must not exempt a sentence that still asserts something
+    # technical, so judge what remains after removing the phrasing: either nothing
+    # substantial, or a residue the disclaimer text dominates.
+    remaining = _content_tokens(_DISCLAIMER_STRIP_RE.sub(" ", t))
+    return len(remaining) < min_tokens or len(remaining) * 2 < len(_content_tokens(t))
 
 @dataclass
 class ExtractedClaim:
@@ -155,6 +189,80 @@ def lexical_support_score(claim: str, passage: str) -> float:
 
 def _has_negation(text: str) -> bool:
     return any(t in NEGATION_TOKENS for t in _tokens(text))
+
+
+POLARITY_POSITIVE = "positive"
+POLARITY_NEGATIVE = "negative"
+POLARITY_UNCERTAIN = "uncertain"
+
+# Contrastive constructions where a negation token does not negate the assertion.
+_NON_NEGATING_RE = re.compile(
+    r"\bnot\s+(?:only|just|merely|solely|simply)\b"
+    r"|\bkhông\s+(?:chỉ|những|phải\s+chỉ)\b"
+    r"|\bchẳng\s+(?:những|phải)\b",
+    re.UNICODE,
+)
+
+# English verb phrases that negate on their own; counted as one marker each.
+_IMPLICIT_NEGATION_RE = re.compile(r"\b(?:fail|fails|failed|unable)\s+to\b", re.UNICODE)
+
+# Clause and sentence borders used to keep negation scope local to the relevant assertion.
+_CLAUSE_BOUNDARY_RE = re.compile(
+    r"(?<=[.!?;])\s+"
+    r"|[,:]\s+"
+    r"|\s+(?:but|however|whereas|although|though|while|"
+    r"nhưng|tuy nhiên|trong khi|mặc dù)\s+",
+    re.UNICODE,
+)
+
+
+def _negation_count(text: str) -> int:
+    """Count negation markers, ignoring non-negating contrastive phrases."""
+    stripped = _NON_NEGATING_RE.sub(" ", text)
+    # Implicit markers (e.g. "fail to") are absent from NEGATION_TOKENS, so guard
+    # each source separately; either alone must still be counted.
+    implicit = len(_IMPLICIT_NEGATION_RE.findall(stripped))
+    explicit = sum(1 for t in _tokens(stripped) if t in NEGATION_TOKENS)
+    return implicit + explicit
+
+
+def _scoped_clause(text: str, reference: str) -> str | None:
+    """Return the clause of `text` most related to `reference`, or None when none relates."""
+    clauses = [c.strip() for c in _CLAUSE_BOUNDARY_RE.split(text) if c.strip()]
+    if len(clauses) <= 1:
+        return text
+    ref = set(_content_tokens(reference))
+    if not ref:
+        return None
+    best_clause, best_overlap = None, 0.0
+    for clause in clauses:
+        overlap = len(ref & set(_content_tokens(clause))) / len(ref)
+        if overlap > best_overlap:
+            best_clause, best_overlap = clause, overlap
+    return best_clause
+
+
+def _polarity(text: str, reference: str | None = None) -> str:
+    """Polarity of `text`: one side negation is decidable, multiple markers are not."""
+    target = _scoped_clause(text, reference) if reference else text
+    if target is None:
+        return POLARITY_UNCERTAIN
+    count = _negation_count(target)
+    if count == 0:
+        return POLARITY_POSITIVE
+    if count == 1:
+        return POLARITY_NEGATIVE
+    # Two or more markers may cancel, stack, or cover different clauses; no deterministic call.
+    return POLARITY_UNCERTAIN
+
+
+def _has_opposing_polarity(claim_text: str, evidence_text: str) -> bool:
+    """True only when one side is clearly negated and the other clearly is not."""
+    claim_polarity = _polarity(claim_text)
+    evidence_polarity = _polarity(evidence_text, reference=claim_text)
+    if POLARITY_UNCERTAIN in (claim_polarity, evidence_polarity):
+        return False
+    return claim_polarity != evidence_polarity
 
 
 def _split_sentences(text: str) -> list[str]:
@@ -220,7 +328,7 @@ def extract_claims(draft_answer: str, min_tokens: int = MIN_CLAIM_TOKENS) -> lis
         for segment in segments:
             tags = list(dict.fromkeys(f"[{n}]" for n in _TAG_RE.findall(segment)))
             text = " ".join(_TAG_RE.sub(" ", segment).split()).strip(" .,;:")
-            if _is_disclaimer_or_filler(text):
+            if _is_disclaimer_or_filler(text, min_tokens):
                 continue
             
             if len(_content_tokens(text)) < min_tokens:
@@ -285,6 +393,23 @@ class MultilingualSemanticSimilarity:
             self._cache[key] = vector
         return vector
 
+    def _embed_batch(self, texts: list[str]) -> None:
+        """Pre-populate cache for all uncached texts in one encode() call."""
+        if not texts:
+            return
+        keys = [t[: self.max_chars] for t in texts]
+        # Deduplicate while preserving order; skip already-cached keys.
+        uncached = list(dict.fromkeys(k for k in keys if k not in self._cache))
+        # A batch that cannot fit entirely would evict vectors before _best_match
+        # reads them, re-encoding them and costing more than lazy per-text encoding.
+        if not uncached or len(uncached) > self.cache_size:
+            return
+        vectors = self._get_model().encode(uncached, normalize_embeddings=True, show_progress_bar=False)
+        for key, vec in zip(uncached, vectors):
+            if len(self._cache) >= self.cache_size:
+                self._cache.pop(next(iter(self._cache)))
+            self._cache[key] = vec
+
     def __call__(self, claim: str, passage: str) -> float:
         if not claim.strip() or not passage.strip():
             return 0.0
@@ -318,23 +443,24 @@ class EvidenceVerifier:
         text = evidence.get("text_content") or ""
         if not text.strip():
             return 0.0, ""
-        
-        # Detecting the language of the claim
+
         c_lang = detect_language(claim_text)
-        
-        # If the claim is in Vietnamese and the evidence is in English -> semantic embedding is required
-        if c_lang == "vi" and hasattr(self, "semantic_fn") and self.semantic_fn:
-            chunk_score = self.semantic_fn(claim_text, text)
-        else:
-            chunk_score = self.similarity_fn(claim_text, text)
-            
+        sentences = _split_sentences(text)
+        use_semantic = c_lang == "vi" and hasattr(self, "semantic_fn") and self.semantic_fn
+        score_fn = self.semantic_fn if use_semantic else self.similarity_fn
+
+        # Pre-warm the embedding cache in a single batch when the chosen scorer
+        # exposes batch embedding, so each _best_match costs one encode() call
+        # instead of one per uncached text.
+        prefetch = getattr(score_fn, "_embed_batch", None)
+        if prefetch is not None:
+            prefetch([claim_text, text, *sentences])
+
+        chunk_score = score_fn(claim_text, text)
 
         best_sentence, best_sentence_score = "", -1.0
-        for sentence in _split_sentences(text):
-            if c_lang == "vi" and hasattr(self, "semantic_fn") and self.semantic_fn:
-                score = self.semantic_fn(claim_text, sentence)
-            else:
-                score = self.similarity_fn(claim_text, sentence)
+        for sentence in sentences:
+            score = score_fn(claim_text, sentence)
             if score > best_sentence_score:
                 best_sentence, best_sentence_score = sentence, score
         return max(chunk_score, best_sentence_score), best_sentence or text
@@ -399,7 +525,7 @@ class EvidenceVerifier:
                 explanation=f"Insufficient grounding found in {source_desc} (score {score:.2f} < {self.support_threshold}).",
             )
 
-        if _has_negation(claim.text) != _has_negation(best_snippet):
+        if _has_opposing_polarity(claim.text, best_snippet):
             return ClaimVerificationResult(
                 claim_id=claim_id,
                 claim_text=claim.text,

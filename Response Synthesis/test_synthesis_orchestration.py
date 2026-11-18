@@ -31,7 +31,7 @@ from prompt_templates import (
     build_synthesis_prompt,
     extract_citation_tags,
 )
-from synthesizer import DefaultDeterministicLLM, ResponseSynthesizer
+from synthesizer import DefaultDeterministicLLM, ResponseSynthesizer, _sanitize_draft_answer
 from rag_orchestrator import DefaultTraceableFormatter, RAGOrchestrator
 
 
@@ -558,6 +558,328 @@ class TestPhase3APromptEngineering(unittest.TestCase):
         p = build_compare_prompt("So sánh A và B", ctx, mode="STRICT_RAG", lang="vi")
         self.assertIn("không có bằng chứng", p)
         self.assertNotIn("Chỉ đưa vào các chiều thực sự được hỗ trợ", p)
+
+
+class TestR4GroupedCitationNormalization(unittest.TestCase):
+
+    # ---- A. Basic grouped citations ----
+
+    def test_a_comma_separated(self):
+        self.assertEqual(_sanitize_draft_answer("claim [1, 2] end", 5), "claim [1] [2] end")
+
+    def test_a_comma_no_spaces(self):
+        self.assertEqual(_sanitize_draft_answer("claim [1,2,3] end", 5), "claim [1] [2] [3] end")
+
+    def test_a_numeric_range_hyphen(self):
+        self.assertEqual(_sanitize_draft_answer("claim [1-3] end", 5), "claim [1] [2] [3] end")
+
+    def test_a_en_dash_range(self):
+        self.assertEqual(_sanitize_draft_answer("claim [1–3] end", 5), "claim [1] [2] [3] end")
+
+    def test_a_mixed_comma_and_range(self):
+        self.assertEqual(_sanitize_draft_answer("claim [1, 3-4] end", 5), "claim [1] [3] [4] end")
+
+    def test_a_mixed_en_dash_and_comma(self):
+        self.assertEqual(_sanitize_draft_answer("claim [2–4, 6] end", 6), "claim [2] [3] [4] [6] end")
+
+    def test_a_already_canonical_unchanged(self):
+        self.assertEqual(_sanitize_draft_answer("claim [1] [2] end", 5), "claim [1] [2] end")
+
+    def test_a_single_tag_unchanged(self):
+        self.assertEqual(_sanitize_draft_answer("claim [1] end", 5), "claim [1] end")
+
+    # ---- B. Correctness ----
+
+    def test_b_duplicates_preserve_first_order(self):
+        # [2, 2, 1] -> [2] [1] (dedup, first-occurrence order preserved)
+        self.assertEqual(_sanitize_draft_answer("claim [2, 2, 1] end", 5), "claim [2] [1] end")
+
+    def test_b_out_of_order_ids(self):
+        self.assertEqual(_sanitize_draft_answer("claim [3, 1] end", 5), "claim [3] [1] end")
+
+    def test_b_noncontiguous_allowed_ids(self):
+        # max_evidence_idx only caps the upper bound; gaps are fine.
+        self.assertEqual(_sanitize_draft_answer("claim [1, 3] end", 3), "claim [1] [3] end")
+
+    def test_b_invalid_id_removed_by_existing_policy(self):
+        # After R4 expansion, [9] exceeds max=3 and is removed by the existing filter.
+        self.assertEqual(_sanitize_draft_answer("claim [9] end", 3), "claim end")
+
+    def test_b_mixed_valid_and_invalid_in_group(self):
+        # [1, 9] expands to [1] [9]; [9] then stripped by the out-of-range filter.
+        self.assertEqual(_sanitize_draft_answer("claim [1, 9] end", 3), "claim [1] end")
+
+    def test_b_excessively_large_range_left_unchanged(self):
+        # Range larger than the cap is not expanded; left as-is to avoid unbounded growth.
+        big = _sanitize_draft_answer("claim [1-100] end", 100)
+        self.assertIn("[1-100]", big)
+
+    def test_b_inverted_range_left_unchanged(self):
+        self.assertEqual(_sanitize_draft_answer("claim [3-1] end", 5), "claim [3-1] end")
+
+    # ---- C. Safety ----
+
+    def test_c_unrelated_bracketed_text(self):
+        # Non-numeric bracketed content is not a citation group; left unchanged.
+        self.assertEqual(_sanitize_draft_answer("see [note] and [appendix A]", 5), "see [note] and [appendix A]")
+
+    def test_c_markdown_link_not_touched(self):
+        # The negative lookahead (?!\() prevents links like [text](url) from matching.
+        src = "Read [OWASP](https://owasp.org) for [1, 2] details."
+        out = _sanitize_draft_answer(src, 5)
+        self.assertIn("[OWASP](https://owasp.org)", out)
+        self.assertIn("[1] [2]", out)
+
+    def test_c_fenced_code_block_not_touched(self):
+        src = "Intro [1, 2].\n\n```python\nx = [1, 2]\ny = [3-1]\n```\n\nEnd [3]."
+        out = _sanitize_draft_answer(src, 5)
+        # Citation groups in prose are normalized; code content is preserved verbatim.
+        self.assertIn("[1] [2]", out)
+        self.assertIn("x = [1, 2]", out)
+        self.assertIn("y = [3-1]", out)
+
+    def test_c_inline_code_not_touched(self):
+        src = "Use `arr[1, 2]` and `range[1-3]` then cite [1, 2]."
+        out = _sanitize_draft_answer(src, 5)
+        self.assertIn("`arr[1, 2]`", out)
+        self.assertIn("`range[1-3]`", out)
+        self.assertIn("[1] [2]", out)
+
+    def test_c_surrounding_text_preserved(self):
+        src = "### Tieu de\n\nKhai niem A [1, 2]. Va khai niem B [3-4].\n\nKet luan."
+        out = _sanitize_draft_answer(src, 5)
+        self.assertTrue(out.startswith("### Tieu de"))
+        self.assertTrue(out.endswith("Ket luan."))
+        self.assertIn("[1] [2]", out)
+        self.assertIn("[3] [4]", out)
+
+    def test_c_idempotent(self):
+        src = "claim [1, 2] and [3-4] plus [2, 2, 1] end"
+        once = _sanitize_draft_answer(src, 5)
+        twice = _sanitize_draft_answer(once, 5)
+        self.assertEqual(once, twice)
+
+    def test_c_empty_input(self):
+        self.assertEqual(_sanitize_draft_answer("", 5), "")
+
+    def test_c_none_input(self):
+        self.assertEqual(_sanitize_draft_answer(None, 5), "")
+
+    # ---- D. Pipeline compatibility ----
+
+    def test_d_synthesize_normalizes_draft_and_cited_ids(self):
+        # A stub LLM that emits a grouped citation; verify the public synthesize()
+        # path produces a normalized draft_answer and agreeing cited_evidence_ids.
+        class GroupedLLM:
+            model_name = "stub-grouped"
+            def generate(self, prompt, system_instruction=None, **kwargs):
+                return "Claim one [1, 2]. Claim two [3-4]."
+
+        synth = ResponseSynthesizer(llm_client=GroupedLLM())
+        retrieval_output = {
+            "status": "ok",
+            "evidence_status": "FULL",
+            "intent": "SEARCH",
+            "total_evidence": 4,
+            "evidence_list": [{"chunk_id": f"c{i}"} for i in range(1, 5)],
+            "llm_context": "--- Evidence [1] ---\nA\n\n--- Evidence [2] ---\nB\n\n--- Evidence [3] ---\nC\n\n--- Evidence [4] ---\nD",
+        }
+        draft = synth.synthesize(query="q", retrieval_output=retrieval_output)
+
+        self.assertFalse(draft.is_abstained)
+        self.assertEqual(draft.generation_mode, "STRICT_RAG")
+        # draft_answer carries the normalized individual tags
+        self.assertIn("[1] [2]", draft.draft_answer)
+        self.assertIn("[3] [4]", draft.draft_answer)
+        self.assertNotIn("[1, 2]", draft.draft_answer)
+        self.assertNotIn("[3-4]", draft.draft_answer)
+        # cited_evidence_ids agrees with the normalized draft
+        self.assertEqual(draft.cited_evidence_ids, ["[1]", "[2]", "[3]", "[4]"])
+
+    def test_d_abstention_path_not_affected(self):
+        # Abstention returns llm_context verbatim and never enters the sanitizer.
+        synth = ResponseSynthesizer(llm_client=DefaultDeterministicLLM())
+        retrieval_output = {
+            "status": "ok", "evidence_status": "NONE", "intent": "SEARCH",
+            "total_evidence": 0, "evidence_list": [], "llm_context": "No evidence [1, 2]",
+        }
+        draft = synth.synthesize(query="q", retrieval_output=retrieval_output)
+        self.assertTrue(draft.is_abstained)
+        self.assertEqual(draft.abstention_reason, "insufficient_evidence")
+        # Abstention text is passed through unmodified (no normalization).
+        self.assertEqual(draft.draft_answer, "No evidence [1, 2]")
+
+    def test_d_clarification_path_not_affected(self):
+        synth = ResponseSynthesizer(llm_client=DefaultDeterministicLLM())
+        retrieval_output = {
+            "status": "clarification_needed", "evidence_status": "NONE", "intent": "UNKNOWN",
+            "total_evidence": 0, "evidence_list": [], "llm_context": "Clarify [1, 2] please",
+        }
+        draft = synth.synthesize(query="q", retrieval_output=retrieval_output)
+        self.assertTrue(draft.is_abstained)
+        self.assertEqual(draft.abstention_reason, "clarification_needed")
+        self.assertEqual(draft.draft_answer, "Clarify [1, 2] please")
+
+
+
+class TestR4SafetyRegression(unittest.TestCase):
+    """Phase 3B.1 regression tests: Issue 1 (code protection), Issue 2 (non-contiguous IDs), Issue 3 (unexpanded ranges)."""
+
+    # ------------------------------------------------------------------ #
+    # Issue 1 — out-of-range filter must not corrupt code content         #
+    # ------------------------------------------------------------------ #
+
+    def test_i1_fenced_code_out_of_range_tag_preserved(self):
+        # arr[9] inside a fenced block must survive even when max=3.
+        src = "Prose [1].\n\n```python\narr[9] = arr[9] + 1\n```\n\nEnd."
+        out = _sanitize_draft_answer(src, 3)
+        self.assertIn("arr[9] = arr[9] + 1", out)
+        self.assertIn("[1]", out)
+
+    def test_i1_inline_code_out_of_range_tag_preserved(self):
+        # `arr[9]` inline must survive even when max=3.
+        src = "Use `arr[9]` to index. See [1] for details."
+        out = _sanitize_draft_answer(src, 3)
+        self.assertIn("`arr[9]`", out)
+        self.assertIn("[1]", out)
+
+    def test_i1_prose_out_of_range_still_removed(self):
+        # Out-of-range tags in prose (not in code) are still removed.
+        out = _sanitize_draft_answer("Claim [9] is invalid.", 3)
+        self.assertNotIn("[9]", out)
+
+    def test_i1_fenced_code_grouped_citation_not_expanded(self):
+        # Grouped cite inside fenced code must not be expanded.
+        src = "See [1].\n\n```\nx = [1, 2, 3]\n```"
+        out = _sanitize_draft_answer(src, 5)
+        self.assertIn("x = [1, 2, 3]", out)
+
+    def test_i1_inline_code_grouped_citation_not_expanded(self):
+        src = "Result `fn([1, 2])` and cite [1, 2]."
+        out = _sanitize_draft_answer(src, 5)
+        self.assertIn("`fn([1, 2])`", out)
+        self.assertIn("[1] [2]", out)
+
+    def test_i1_idempotent_with_code_spans(self):
+        src = "Claim [1, 2].\n\n```python\narr[9] = 0\n```\n\nEnd [3]."
+        once = _sanitize_draft_answer(src, 3)
+        twice = _sanitize_draft_answer(once, 3)
+        self.assertEqual(once, twice)
+
+    # ------------------------------------------------------------------ #
+    # Issue 2 — non-contiguous evidence IDs via allowed_ids parameter     #
+    # ------------------------------------------------------------------ #
+
+    def test_i2_gap_id_rejected_with_allowed_ids(self):
+        # allowed_ids={1,3}: [2] is a gap and must be removed; [3] must be kept.
+        allowed = frozenset({1, 3})
+        out = _sanitize_draft_answer("Claim [1] and [2] and [3].", 3, allowed_ids=allowed)
+        self.assertIn("[1]", out)
+        self.assertNotIn("[2]", out)
+        self.assertIn("[3]", out)
+
+    def test_i2_valid_noncontiguous_id_kept(self):
+        allowed = frozenset({1, 3})
+        out = _sanitize_draft_answer("Claim [3].", 3, allowed_ids=allowed)
+        self.assertIn("[3]", out)
+
+    def test_i2_allowed_ids_empty_removes_all_tags(self):
+        out = _sanitize_draft_answer("Claim [1] and [2].", 2, allowed_ids=frozenset())
+        self.assertNotIn("[1]", out)
+        self.assertNotIn("[2]", out)
+
+    def test_i2_synthesize_noncontiguous_context_rejects_gap(self):
+        # llm_context has headers [1] and [3] only; draft cites [2] (a gap) and [3].
+        # synthesize() must derive allowed={1,3} from context headers and strip [2].
+        class GapLLM:
+            model_name = "stub-gap"
+            def generate(self, prompt, system_instruction=None, **kwargs):
+                return "Claim A [1]. Claim B [2]. Claim C [3]."
+
+        synth = ResponseSynthesizer(llm_client=GapLLM())
+        retrieval_output = {
+            "status": "ok",
+            "evidence_status": "FULL",
+            "intent": "SEARCH",
+            "total_evidence": 2,  # count is 2 but IDs are non-contiguous
+            "evidence_list": [{"chunk_id": "c1"}, {"chunk_id": "c3"}],
+            "llm_context": "--- Evidence [1] ---\nA\n\n--- Evidence [3] ---\nC",
+        }
+        draft = synth.synthesize(query="q", retrieval_output=retrieval_output)
+        self.assertFalse(draft.is_abstained)
+        self.assertIn("[1]", draft.draft_answer)
+        self.assertNotIn("[2]", draft.draft_answer)   # gap ID must be removed
+        self.assertIn("[3]", draft.draft_answer)
+        self.assertIn("[1]", draft.cited_evidence_ids)
+        self.assertNotIn("[2]", draft.cited_evidence_ids)
+        self.assertIn("[3]", draft.cited_evidence_ids)
+
+    def test_i2_fallback_max_idx_when_no_headers(self):
+        # When llm_context has no Evidence headers, falls back to max_evidence_idx.
+        # allowed_ids=None → keep [n] where 1 <= n <= max_evidence_idx.
+        out = _sanitize_draft_answer("Claim [1] and [5].", 3, allowed_ids=None)
+        self.assertIn("[1]", out)
+        self.assertNotIn("[5]", out)
+
+    def test_i2_code_protected_under_allowed_ids(self):
+        # out-of-range code content still protected when allowed_ids is supplied.
+        allowed = frozenset({1, 3})
+        src = "See [1].\n\n```\narr[2] = 0\n```\n\nAnd [3]."
+        out = _sanitize_draft_answer(src, 3, allowed_ids=allowed)
+        self.assertIn("arr[2] = 0", out)
+        self.assertIn("[1]", out)
+        self.assertIn("[3]", out)
+
+    # ------------------------------------------------------------------ #
+    # Issue 3 — unexpanded ranges must not enter cited_evidence_ids       #
+    # ------------------------------------------------------------------ #
+
+    def test_i3_oversized_range_not_in_cited_ids(self):
+        # [1-100] stays in draft_answer as literal text but must not appear in
+        # cited_evidence_ids, since extract_citation_tags only matches [N].
+        class OversizeLLM:
+            model_name = "stub-oversize"
+            def generate(self, prompt, system_instruction=None, **kwargs):
+                return "Coverage [1-100]."
+
+        synth = ResponseSynthesizer(llm_client=OversizeLLM())
+        retrieval_output = {
+            "status": "ok", "evidence_status": "FULL", "intent": "SEARCH",
+            "total_evidence": 100,
+            "evidence_list": [{"chunk_id": f"c{i}"} for i in range(1, 101)],
+            "llm_context": "\n\n".join(f"--- Evidence [{i}] ---\nContent" for i in range(1, 101)),
+        }
+        draft = synth.synthesize(query="q", retrieval_output=retrieval_output)
+        self.assertFalse(draft.is_abstained)
+        # Unexpanded range survives in draft text
+        self.assertIn("[1-100]", draft.draft_answer)
+        # But it must not be treated as a verified citation ID
+        self.assertEqual(draft.cited_evidence_ids, [])
+
+    def test_i3_inverted_range_not_in_cited_ids(self):
+        class InvertedLLM:
+            model_name = "stub-inverted"
+            def generate(self, prompt, system_instruction=None, **kwargs):
+                return "Data [3-1]."
+
+        synth = ResponseSynthesizer(llm_client=InvertedLLM())
+        retrieval_output = {
+            "status": "ok", "evidence_status": "FULL", "intent": "SEARCH",
+            "total_evidence": 3,
+            "evidence_list": [{"chunk_id": f"c{i}"} for i in range(1, 4)],
+            "llm_context": "--- Evidence [1] ---\nA\n\n--- Evidence [2] ---\nB\n\n--- Evidence [3] ---\nC",
+        }
+        draft = synth.synthesize(query="q", retrieval_output=retrieval_output)
+        self.assertIn("[3-1]", draft.draft_answer)
+        self.assertEqual(draft.cited_evidence_ids, [])
+
+    def test_i3_valid_range_fully_expanded_and_cited(self):
+        # Confirm valid bounded range IS expanded and enters cited_evidence_ids.
+        out = _sanitize_draft_answer("Claim [1-3].", 5)
+        self.assertIn("[1]", out)
+        self.assertIn("[2]", out)
+        self.assertIn("[3]", out)
+        self.assertNotIn("[1-3]", out)
 
 
 if __name__ == "__main__":
