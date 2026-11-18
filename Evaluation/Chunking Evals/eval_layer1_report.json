@@ -1,0 +1,29 @@
+{
+  "fixed_size": {
+    "total_chunks": 486,
+    "avg_tokens": 612.5,
+    "eligible_atomic_blocks": 624,
+    "intact_atomic_blocks": 500,
+    "boundary_integrity": 80.13,
+    "heading_purity": 24.07,
+    "boundary_continuity": 0.5352
+  },
+  "structure_aware": {
+    "total_chunks": 3074,
+    "avg_tokens": 91.0,
+    "eligible_atomic_blocks": 624,
+    "intact_atomic_blocks": 624,
+    "boundary_integrity": 100.0,
+    "heading_purity": 100.0,
+    "boundary_continuity": 0.499
+  },
+  "semantic": {
+    "total_chunks": 2554,
+    "avg_tokens": 122.4,
+    "eligible_atomic_blocks": 624,
+    "intact_atomic_blocks": 624,
+    "boundary_integrity": 100.0,
+    "heading_purity": 96.4,
+    "boundary_continuity": 0.448
+  }
+}
