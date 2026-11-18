@@ -7,6 +7,7 @@ import json
 import sys
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 STAGE_4_DIR = Path(__file__).resolve().parent
 if str(STAGE_4_DIR) not in sys.path:
@@ -20,7 +21,7 @@ from traceable_formatter import (
     index_evidence_by_tag,
     summarize_location,
 )
-from verifier import EvidenceVerifier, extract_claims, lexical_support_score
+from verifier import EvidenceVerifier, MultilingualSemanticSimilarity, extract_claims, lexical_support_score
 
 
 def make_evidence(tag, chunk_id, text, sources=None, **meta):
@@ -274,16 +275,24 @@ class TestOrchestratorIntegration(unittest.TestCase):
         json.loads(envelope.to_json())
 
     def test_default_verifier_fails_closed_without_model(self):
-        orchestrator = RAGOrchestrator(
-            synthesizer=ResponseSynthesizer(llm_client=DefaultDeterministicLLM()),
-        )
-        retrieval_output = {
-            "status": "ok", "evidence_status": "FULL", "intent": "SEARCH", "total_evidence": 2,
-            "evidence_list": SQLI_EVIDENCE, "llm_context": "--- Evidence [1] ---\nA",
-        }
-        envelope = orchestrator.run_from_retrieval("q", retrieval_output)
-        self.assertEqual(envelope.verification.status, VerificationStatus.FAILED)
-        self.assertEqual(envelope.status, "abstained")
+        # Force the default verifier's embedding model to be unavailable so the
+        # fail-closed path in run_from_retrieval is exercised deterministically,
+        # regardless of whether a real model is cached or downloadable.
+        with patch.object(
+            MultilingualSemanticSimilarity,
+            "_get_model",
+            side_effect=RuntimeError("Semantic verifier model unavailable for test"),
+        ):
+            orchestrator = RAGOrchestrator(
+                synthesizer=ResponseSynthesizer(llm_client=DefaultDeterministicLLM()),
+            )
+            retrieval_output = {
+                "status": "ok", "evidence_status": "FULL", "intent": "SEARCH", "total_evidence": 2,
+                "evidence_list": SQLI_EVIDENCE, "llm_context": "--- Evidence [1] ---\nA",
+            }
+            envelope = orchestrator.run_from_retrieval("q", retrieval_output)
+            self.assertEqual(envelope.verification.status, VerificationStatus.FAILED)
+            self.assertEqual(envelope.status, "abstained")
 
     def test_semantic_similarity_is_cached_and_cross_lingual(self):
         import numpy as np
