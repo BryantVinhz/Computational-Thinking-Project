@@ -17,6 +17,11 @@ skip_output_dirs = {"Chunking", "Provenance", "Vector DB"}
 
 file_count = 0
 with zipfile.ZipFile(out_zip, "w", zipfile.ZIP_DEFLATED) as zf:
+    root_path_py = src_dir.parent / "path.py"
+    if root_path_py.is_file():
+        zf.write(root_path_py, "path.py")
+        file_count += 1
+
     for f in src_dir.rglob("*"):
         rel_parts = f.relative_to(src_dir).parts
         if not f.is_file() or f.suffix == ".pyc" or "__pycache__" in rel_parts:

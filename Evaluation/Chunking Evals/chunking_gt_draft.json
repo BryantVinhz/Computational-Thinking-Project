@@ -1,0 +1,642 @@
+[
+  {
+    "evidence_id": "EV_001",
+    "category": "prose_topic",
+    "file_format": "MARKDOWN",
+    "doc_title": "OWASP - AVSS-Session-management",
+    "document_id": "doc_owasp_avss_session_management",
+    "version_id": "ver_d5ac6829b294",
+    "spans": [
+      {
+        "normalized_block_id": "nrm_ver_d5ac6829b294_b00028",
+        "text": "Attackers start a half-open attack by attempting to lock, reset, or recover a credential. A popular session management design pattern re-uses user profile session objects/models between unauthenticated, half-authenticated (password resets, forgot username), and fully authenticated code. This design pattern populates a valid session object or token containing the victim's profile, including password hashes and roles. If access control checks in controllers or routers does not correctly verify that the user is fully logged in, the attacker will be able to act as the user. Attacks could include changing the user's password to a known value, update the email address to perform a valid password reset, disable multi-factor authentication or enroll a new MFA device, reveal or change API keys, and so on."
+      }
+    ]
+  },
+  {
+    "evidence_id": "EV_002",
+    "category": "prose_topic",
+    "file_format": "MARKDOWN",
+    "doc_title": "OWASP - A07-Session-Management-Cheat-Sheet",
+    "document_id": "doc_owasp_a07_session_management_cheat_sheet",
+    "version_id": "ver_3c38656e2be6",
+    "spans": [
+      {
+        "normalized_block_id": "nrm_ver_3c38656e2be6_b00123",
+        "text": "Session IDs must be considered untrusted, as any other user input processed by the web application, and they must be thoroughly validated and verified. Depending on the session management mechanism used, the session ID will be received in a GET or POST parameter, in the URL or in an HTTP header (e.g. cookies). If web applications do not validate and filter out invalid session ID values before processing them, they can potentially be used to exploit other web vulnerabilities, such as SQL injection if the session IDs are stored on a relational database, or persistent XSS if the session IDs are stored and reflected back afterwards by the web application."
+      }
+    ]
+  },
+  {
+    "evidence_id": "EV_004",
+    "category": "prose_topic",
+    "file_format": "MARKDOWN",
+    "doc_title": "OWASP - AVSS-Authentication",
+    "document_id": "doc_owasp_avss_authentication",
+    "version_id": "ver_ea47056e8e8f",
+    "spans": [
+      {
+        "normalized_block_id": "nrm_ver_ea47056e8e8f_b00041",
+        "text": "Secure out of band authenticators are physical devices that can communicate with the verifier over a secure secondary channel. Examples include push notifications to mobile devices. This type of authenticator is considered \"something you have\". When a user wishes to authenticate, the verifying application sends a message to the out of band authenticator via a connection to the authenticator directly or indirectly through a third party service. The message contains an authentication code (typically a random six digit number or a modal approval dialog). The verifying application waits to receive the authentication code through the primary channel and compares the hash of the received value to the hash of the original authentication code. If they match, the out of band verifier can assume that the user has authenticated."
+      }
+    ]
+  },
+  {
+    "evidence_id": "EV_005",
+    "category": "prose_topic",
+    "file_format": "PDF",
+    "doc_title": "First - CVSS-Specification",
+    "document_id": "doc_first_cvss_specification",
+    "version_id": "ver_77afde9ea09f",
+    "spans": [
+      {
+        "normalized_block_id": "nrm_ver_77afde9ea09f_b00129",
+        "text": "This metric measures the impact to the availability of the impacted system resulting from a\nsuccessfully exploited vulnerability. While the Confidentiality and Integrity impact metrics\napply to the loss of confidentiality or integrity of data (e.g., information, files) used by the\nsystem, this metric refers to the loss of availability of the impacted system itself, such as a\nnetworked service (e.g., web, database, email). Since availability refers to the accessibility of\ninformation resources, attacks that consume network bandwidth, processor cycles, or disk\nspace all impact the availability of a system. The resulting score is greatest when the\nconsequence to the system is highest. The list of possible values is presented in Table 10 (for\nthe Vulnerable System) and Table 11 (when there is a Subsequent System impacted)."
+      }
+    ]
+  },
+  {
+    "evidence_id": "EV_010",
+    "category": "prose_topic",
+    "file_format": "MARKDOWN",
+    "doc_title": "OWASP - A03-Cross-Site-Scripting-Prevention-Cheat-Sheet",
+    "document_id": "doc_owasp_a03_cross_site_scripting_prevention_cheat_sheet",
+    "version_id": "ver_e4bbeced6010",
+    "spans": [
+      {
+        "normalized_block_id": "nrm_ver_e4bbeced6010_b00104",
+        "text": "There usually is an implicit assumption that all the customer browsers support all the CSP constructs that your blanket CSP policy is using. Furthermore, this assumption often is done without testing the explicitly the `User-Agent` request header to see if it indeed is a supported browser type and rejecting the use of the site if it is not. Why? Because most businesses don't want to turn away customers if they are using an outdated browser that doesn't support some CSP Level 2 or Level 3 construct that they are relying on for XSS prevention. (Statistically, almost all browsers support CSP Level 1 directives, so unless you are worried about Grandpa pulling out his old Windows 98 laptop and using some ancient version of Internet Explorer to access your site, CSP Level 1 support can probably be assumed.)"
+      }
+    ]
+  },
+  {
+    "evidence_id": "EV_011",
+    "category": "prose_topic",
+    "file_format": "MARKDOWN",
+    "doc_title": "OWASP - A03-LDAP-Injection-Prevention-Cheat-Sheet",
+    "document_id": "doc_owasp_a03_ldap_injection_prevention_cheat_sheet",
+    "version_id": "ver_b3aaa8d67fbf",
+    "spans": [
+      {
+        "normalized_block_id": "nrm_ver_b3aaa8d67fbf_b00035",
+        "text": "When a database field must include special characters, it is critical to ensure that the authentic data is stored in sanitized form in the\ndatabase and also that any user input is normalized before the validation or comparison takes place. Using characters that have special meanings in JNDI\nand LDAP in the absence of a comprehensive normalization and allowlisting-based routine is discouraged. Special characters must be transformed to\nsanitized, safe values before they are added to the allowlist expression against which input will be validated. Likewise, normalization of user input should\noccur before the validation step (source: [Prevent LDAP injection](https://wiki.sei.cmu.edu/confluence/spaces/flyingpdf/pdfpageexport.action?pageId=88487534))."
+      }
+    ]
+  },
+  {
+    "evidence_id": "EV_012",
+    "category": "prose_topic",
+    "file_format": "MARKDOWN",
+    "doc_title": "OWASP - A07-Session-Management-Cheat-Sheet",
+    "document_id": "doc_owasp_a07_session_management_cheat_sheet",
+    "version_id": "ver_3c38656e2be6",
+    "spans": [
+      {
+        "normalized_block_id": "nrm_ver_3c38656e2be6_b00078",
+        "text": "The [`Domain` cookie attribute](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#Directives) instructs web browsers to only send the cookie to the specified domain and all subdomains. If the attribute is not set, by default the cookie will only be sent to the origin server. The [`Path` cookie attribute](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#Directives) instructs web browsers to only send the cookie to the specified directory or subdirectories (or paths or resources) within the web application. If the attribute is not set, by default the cookie will only be sent for the directory (or path) of the resource requested and setting the cookie."
+      }
+    ]
+  },
+  {
+    "evidence_id": "EV_013",
+    "category": "prose_topic",
+    "file_format": "MARKDOWN",
+    "doc_title": "OWASP - A07-Credential-Stuffing-Prevention-Cheat-Sheet",
+    "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+    "version_id": "ver_d3ad6e7fce8b",
+    "spans": [
+      {
+        "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00043",
+        "text": "Requiring users to create their own username when registering on the website makes it harder for an attacker to obtain valid username and password pairs for credential stuffing, as many of the available credential lists only include email addresses. Providing the user with a generated username can provide a higher degree of protection (as users are likely to choose the same username on most websites), but is user unfriendly. Additionally, care needs to be taken to ensure that the generated username is not predictable (such as being based on the user's full name, or sequential numeric IDs), as this could make enumerating valid usernames for a password spraying attack easier."
+      }
+    ]
+  },
+  {
+    "evidence_id": "EV_014",
+    "category": "prose_topic",
+    "file_format": "MARKDOWN",
+    "doc_title": "OWASP - A07-Authentication-Cheat-Sheet",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "spans": [
+      {
+        "normalized_block_id": "nrm_ver_92f7483b2854_b00114",
+        "text": "While authentication through a combination of username, password, and multi-factor authentication is considered generally secure, there are use cases where it isn't considered the best option or even safe. Examples of this are third-party applications that desire to connect to the web application, either from a mobile device, another website, desktop, or other situations. When this happens, it is NOT considered safe to allow the third-party application to store the user/password combo, since then it extends the attack surface into their hands, where it isn't in your control. For this and other use cases, there are several authentication protocols that can protect you from exposing your users' data to attackers."
+      }
+    ]
+  },
+  {
+    "evidence_id": "EV_015",
+    "category": "prose_topic",
+    "file_format": "MARKDOWN",
+    "doc_title": "OWASP - A07-SAML-Security-Cheat-Sheet",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "spans": [
+      {
+        "normalized_block_id": "nrm_ver_3653eed28e7f_b00073",
+        "text": "[OCSP](https://datatracker.ietf.org/doc/html/rfc6960) is another way of checking to see if a certificate is revoked. The OCSP URL is embedded in the certificate , like a CRL, and should be reachable over HTTP. The response is signed, so MITM attacks are not an integrity concern. OCSP is becoming less favored, as the exchange creates privacy concerns. The caller's IP address can be seen and the certificate that is being used is disclosed. This is less of a concern for SAML, as this does not disclose a destination website, use overall has declined. If an OCSP URL is present on any certificate in the chain, it should be used to check if the certificate is revoked."
+      }
+    ]
+  },
+  {
+    "evidence_id": "EV_016",
+    "category": "atomic_structure",
+    "file_format": "MARKDOWN",
+    "doc_title": "OWASP - A03-DOM-based-XSS-Prevention-Cheat-Sheet",
+    "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+    "version_id": "ver_421639d8a75f",
+    "spans": [
+      {
+        "normalized_block_id": "nrm_ver_421639d8a75f_b00147",
+        "text": "```html\n<!-- server side URL encoding has been removed.  Now only JavaScript encoding on server side. -->\n<a href=\"javascript:myFunction('<%=ESAPI.encoder().encodeForJavascript(untrustedData)%>', 'test');\">Click Me</a>\n ...\n<script>\nFunction myFunction (url,name) {\n    var encodedURL = ESAPI.encoder().encodeForURL(url);  //URL encoding using client-side scripts\n    window.location = encodedURL;\n}\n</script>\n```"
+      }
+    ]
+  },
+  {
+    "evidence_id": "EV_017",
+    "category": "atomic_structure",
+    "file_format": "PDF",
+    "doc_title": "First - CVSS-Specification",
+    "document_id": "doc_first_cvss_specification",
+    "version_id": "ver_77afde9ea09f",
+    "spans": [
+      {
+        "normalized_block_id": "nrm_ver_77afde9ea09f_b00090",
+        "text": "col_1 | Table 4: Privileges Required\nNone(N) | Theattackerisunauthenticatedpriortoattack andthereforedoesnot , i requireanyaccesstosettingsorflesofthevulnerablesystemtocarry outanattack .\nLow(L) | Theattackerrequiresprivilegesthatprovidebasiccapabilitiesthatare typicallylimitedtosettingsandresourcesownedbyasingle low-privileged user Alternatively an attacker with Low privileges has the . , ability to access only non-sensitive resources ."
+      }
+    ]
+  },
+  {
+    "evidence_id": "EV_018",
+    "category": "atomic_structure",
+    "file_format": "MARKDOWN",
+    "doc_title": "OWASP - AVSS-Access-Control",
+    "document_id": "doc_owasp_avss_access_control",
+    "version_id": "ver_97ee690ad2d4",
+    "spans": [
+      {
+        "normalized_block_id": "nrm_ver_97ee690ad2d4_b00008",
+        "text": "| # | Description | L1 | L2 | L3 | CWE |\n| :---: | :--- | :---: | :---:| :---: | :---: |\n| **4.2.1** | Verify that sensitive data and APIs are protected against Insecure Direct Object Reference (IDOR) attacks targeting creation, reading, updating and deletion of records, such as creating or updating someone else's record, viewing everyone's records, or deleting all records. | ✓ | ✓ | ✓ | 639 |\n| **4.2.2** | Verify that the application or framework enforces a strong anti-CSRF mechanism to protect authenticated functionality, and effective anti-automation or anti-CSRF protects unauthenticated functionality. | ✓ | ✓ | ✓ | 352 |"
+      }
+    ]
+  },
+  {
+    "evidence_id": "EV_020",
+    "category": "atomic_structure",
+    "file_format": "PDF",
+    "doc_title": "OWASP - Application-Security-Verification-Standard",
+    "document_id": "doc_owasp_application_security_verification_standard",
+    "version_id": "ver_a2fa1bbe38f1",
+    "spans": [
+      {
+        "normalized_block_id": "nrm_ver_a2fa1bbe38f1_b00696",
+        "text": "# | Description | Level\n | |\n11 1 1 . . | Verifythatthereisadocumentedpolicyformanagementofcryptographic | 2\n | keysandacryptographickeylifecyclethatfollowsakeymanagement |\n | standard such as NIST SP 800 ‑57 This should include ensuring that keys are . |\n | notovershared(forexample withmorethantwoentitiesforsharedsecrets , |\n | andmorethanoneentityforprivatekeys) . |\n11 1 2 . . | Verifythatacryptographicinventoryisperformed maintained regularly , , i updated andincludesallcryptographickeys algorithms andcertifcates , , , | 2\n | usedbytheapplication Itmustalsodocumentwherekeyscanandcannot . |\n | beusedinthesystem andthetypesofdatathatcanandcannotbeprotected , |\n | usingthekeys . |\n11 1 3 . . | Verifythatcryptographicdiscoverymechanismsareemployedtoidentifyall | 3\n | instancesofcryptographyinthesystem includingencryption hashing and , , , |\n | signingoperations . |\n11 1 4 . . | Verifythatacryptographicinventoryismaintained Thismustincludea . | 3\n | documentedplanthatoutlinesthemigrationpathtonewcryptographic |\n | standards such as post ‑quantum cryptography in order to react to future , , |\n | threats . |"
+      }
+    ]
+  },
+  {
+    "evidence_id": "EV_021",
+    "category": "atomic_structure",
+    "file_format": "PDF",
+    "doc_title": "OWASP - Application-Security-Verification-Standard",
+    "document_id": "doc_owasp_application_security_verification_standard",
+    "version_id": "ver_a2fa1bbe38f1",
+    "spans": [
+      {
+        "normalized_block_id": "nrm_ver_a2fa1bbe38f1_b00872",
+        "text": "# | Description | Level\n | |\n16 3 1 . . | Verifythatallauthenticationoperationsarelogged includingsuccessfuland , | 2\n | unsuccessfulattempts Additionalmetadata suchasthetypeof . , |\n | authenticationorfactorsused shouldalsobecollected , . |\n16 3 2 . . | Verifythatfailedauthorizationattemptsarelogged ForL3 thismust . , | 2\n | includeloggingallauthorizationdecisions includingloggingwhensensitive , |\n | dataisaccessed(withoutloggingthesensitivedataitself) . |\n16 3 3 . . | i Verifythattheapplicationlogsthesecurityeventsthataredefnedinthe | 2\n | documentationandalsologsattemptstobypassthesecuritycontrols such , |\n | as input validation business logic and anti ‑automation , , . |\n16 3 4 . . | Verifythattheapplicationlogsunexpectederrorsandsecuritycontrol | 2\n | failuressuchasbackendTLSfailures . |"
+      }
+    ]
+  },
+  {
+    "evidence_id": "EV_022",
+    "category": "atomic_structure",
+    "file_format": "MARKDOWN",
+    "doc_title": "OWASP - A03-DOM-based-XSS-Prevention-Cheat-Sheet",
+    "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+    "version_id": "ver_421639d8a75f",
+    "spans": [
+      {
+        "normalized_block_id": "nrm_ver_421639d8a75f_b00120",
+        "text": "```javascript\nfunction escapeHTML(str) {\n     str = str + \"''\";\n     var out = \"''\";\n     for(var i=0; i<str.length; i++) {\n         if(str[i] === '<') {\n             out += '&lt;';\n         } else if(str[i] === '>') {\n             out += '&gt;';\n         } else if(str[i] === \"'\") {\n             out += '&#39;';\n         } else if(str[i] === '\"') {\n             out += '&quot;';\n         } else {\n             out += str[i];\n         }\n     }\n     return out;\n}\n```"
+      }
+    ]
+  },
+  {
+    "evidence_id": "EV_024",
+    "category": "atomic_structure",
+    "file_format": "MARKDOWN",
+    "doc_title": "OWASP - A07-Authentication-Cheat-Sheet",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "spans": [
+      {
+        "normalized_block_id": "nrm_ver_92f7483b2854_b00089",
+        "text": "| Attack Type | Description |\n|---------------------|--------------------------------------------------------------------------------------------------|\n| Brute Force | Testing multiple passwords from a dictionary or other source against a single account. |\n| Credential Stuffing | Testing username/password pairs obtained from the breach of another site. |\n| Password Spraying | Testing a single weak password against a large number of different accounts. |"
+      }
+    ]
+  },
+  {
+    "evidence_id": "EV_025",
+    "category": "atomic_structure",
+    "file_format": "MARKDOWN",
+    "doc_title": "OWASP - A07-JSON-Web-Token-Cheat-Sheet",
+    "document_id": "doc_owasp_a07_json_web_token_cheat_sheet",
+    "version_id": "ver_a604ef065640",
+    "spans": [
+      {
+        "normalized_block_id": "nrm_ver_a604ef065640_b00049",
+        "text": "```python\nimport random\nimport secrets\n\n# Using a password/passphrase is not OK:\nbad_secret = b\"MyProject2026\"\n\n# Using a hardcoded secret is not OK:\nbad_secret = urlsafe_b64decode(b'KYkbbclxtjJMiHzoPvuahOfarej0VV-nQZPFxK0hyro=')\n\n# Not a secure randomness source:\nbad_secret = random.randbytes(256//8)\n\n# Not enough entropy:\nbad_secret = secrets.token_bytes(128//8)\n\n# Not enough entropy for HS512\nmeh_secret_for_hs512 = secrets.token_bytes(256//8)\n```"
+      }
+    ]
+  },
+  {
+    "evidence_id": "EV_026",
+    "category": "atomic_structure",
+    "file_format": "PDF",
+    "doc_title": "OWASP - Application-Security-Verification-Standard",
+    "document_id": "doc_owasp_application_security_verification_standard",
+    "version_id": "ver_a2fa1bbe38f1",
+    "spans": [
+      {
+        "normalized_block_id": "nrm_ver_a2fa1bbe38f1_b01018",
+        "text": "AEADmechanism | Reference | Status\n | |\nAES GCM ‑ | SP800 38D ‑ | A\nAES CCM ‑ | SP800 38C ‑ | A\nChaCha‑Poly1305 | RFC7539 | A\nAEGIS 256 ‑ | AEGIS:AFastAuthenticatedEncryptionAlgorithm(v1 1) . | A\nAEGIS 128 ‑ | AEGIS:AFastAuthenticatedEncryptionAlgorithm(v1 1) . | A\nAEGIS 128L ‑ | AEGIS:AFastAuthenticatedEncryptionAlgorithm(v1 1) . | A\nEncrypt ‑then‑MAC | | A\nMAC ‑then‑encrypt | | L"
+      }
+    ]
+  },
+  {
+    "evidence_id": "EV_030",
+    "category": "atomic_structure",
+    "file_format": "MARKDOWN",
+    "doc_title": "OWASP - AVSS-Access-Control",
+    "document_id": "doc_owasp_avss_access_control",
+    "version_id": "ver_97ee690ad2d4",
+    "spans": [
+      {
+        "normalized_block_id": "nrm_ver_97ee690ad2d4_b00010",
+        "text": "| # | Description | L1 | L2 | L3 | CWE |\n| :---: | :--- | :---: | :---:| :---: | :---: |\n| **4.3.1** | Verify administrative interfaces use appropriate multi-factor authentication to prevent unauthorized use. | ✓ | ✓ | ✓ | 419 |\n| **4.3.2** | Verify that directory browsing is disabled unless deliberately desired. Additionally, applications should not allow discovery or disclosure of file or directory metadata, such as Thumbs.db, .DS_Store, .git or .svn folders. | ✓ | ✓ | ✓ | 548 |\n| **4.3.3** | Verify the application has additional authorization (such as step up or adaptive authentication) for lower value systems, and / or segregation of duties for high value applications to enforce anti-fraud controls as per the risk of application and past fraud. | | ✓ | ✓ | 732 |"
+      }
+    ]
+  },
+  {
+    "evidence_id": "EV_031",
+    "category": "heading_plus_body",
+    "file_format": "MARKDOWN",
+    "doc_title": "OWASP - A07-Multifactor-Authentication-Cheat-Sheet",
+    "document_id": "doc_owasp_a07_multifactor_authentication_cheat_sheet",
+    "version_id": "ver_aa0c03c9d10c",
+    "spans": [
+      {
+        "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00076",
+        "text": "## Something You Have"
+      },
+      {
+        "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00077",
+        "text": "Possession-based authentication is based on the user having a physical or digital item that is required to authenticate. This is the most common form of MFA, and is often used in conjunction with passwords. The most common types of possession-based authentication are hardware and software tokens, and digital certificates. If properly implemented then this can be significantly more difficult for a remote attacker to compromise; however it also creates an additional administrative burden on the user, as they must keep the authentication factor with them whenever they wish to use it."
+      }
+    ]
+  },
+  {
+    "evidence_id": "EV_033",
+    "category": "heading_plus_body",
+    "file_format": "PDF",
+    "doc_title": "First - CVSS-Specification",
+    "document_id": "doc_first_cvss_specification",
+    "version_id": "ver_77afde9ea09f",
+    "spans": [
+      {
+        "normalized_block_id": "nrm_ver_77afde9ea09f_b00272",
+        "text": "8.2.\nCVSS v4.0 Scoring using MacroVectors and Interpolation"
+      },
+      {
+        "normalized_block_id": "nrm_ver_77afde9ea09f_b00273",
+        "text": "The CVSS v4.0 formula provides a mathematical approximation of all possible metric\ncombinations ranked in order of severity where vectors are clustered in sets called\nMacroVectors. A MacroVector is one of the sets of CVSS vectors that the expert evaluation\nprocess described in section 8.1 (steps 1-3) determined to be of comparable qualitative"
+      }
+    ]
+  },
+  {
+    "evidence_id": "EV_034",
+    "category": "heading_plus_body",
+    "file_format": "MARKDOWN",
+    "doc_title": "OWASP - A01-Authorization-Cheat-Sheet",
+    "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+    "version_id": "ver_fb8b6e5c60ed",
+    "spans": [
+      {
+        "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00042",
+        "text": "### Exit Safely when Authorization Checks Fail"
+      },
+      {
+        "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00043",
+        "text": "Failed access control checks are a normal occurrence in a secured application; consequently, developers must plan for such failures and handle them securely. Improper handling of such failures can lead to the application being left in an unpredictable state ([CWE-280: Improper Handling of Insufficient Permissions or Privileges](https://cwe.mitre.org/data/definitions/280.html)). Specific recommendations include the following:"
+      }
+    ]
+  },
+  {
+    "evidence_id": "EV_035",
+    "category": "heading_plus_body",
+    "file_format": "MARKDOWN",
+    "doc_title": "OWASP - A01-Transaction-Authorization-Cheat-Sheet",
+    "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+    "version_id": "ver_27d189554452",
+    "spans": [
+      {
+        "normalized_block_id": "nrm_ver_27d189554452_b00017",
+        "text": "### 1.2 Change of authorization token should be authorized using the current authorization token"
+      },
+      {
+        "normalized_block_id": "nrm_ver_27d189554452_b00018",
+        "text": "If a user can use the application interface to change the authorization token, they should be able to authorize the operation with their current authorization credentials (as is the case with [password change procedure](https://owasp.org/www-project-web-security-testing-guide/stable/4-Web_Application_Security_Testing/04-Authentication_Testing/09-Testing_for_Weak_Password_Change_or_Reset_Functionalities.html)). For example: when a user changes a phone number for SMS codes, an authorization SMS code should be sent to the current phone number."
+      }
+    ]
+  },
+  {
+    "evidence_id": "EV_036",
+    "category": "heading_plus_body",
+    "file_format": "MARKDOWN",
+    "doc_title": "OWASP - A01-Cross-Site-Request-Forgery-Prevention-Cheat-Sheet",
+    "document_id": "doc_owasp_a01_cross_site_request_forgery_prevention_cheat_sheet",
+    "version_id": "ver_fb6fb6a43e11",
+    "spans": [
+      {
+        "normalized_block_id": "nrm_ver_fb6fb6a43e11_b00038",
+        "text": "### Naive Double-Submit Cookie Pattern (DISCOURAGED)"
+      },
+      {
+        "normalized_block_id": "nrm_ver_fb6fb6a43e11_b00039",
+        "text": "> [!WARNING]\n> The Naive Double-Submit Cookie pattern is bypassable by an attacker who can write cookies on the target domain (e.g., via a vulnerable sibling subdomain, DNS takeover, or plaintext-HTTP cookie injection on a non-`__Host-` cookie). For new code, use the [Signed Double-Submit Cookie](#signed-double-submit-cookie-recommended) pattern above. The naive pattern is documented for reference only."
+      }
+    ]
+  },
+  {
+    "evidence_id": "EV_038",
+    "category": "heading_plus_body",
+    "file_format": "MARKDOWN",
+    "doc_title": "OWASP - A07-Session-Management-Cheat-Sheet",
+    "document_id": "doc_owasp_a07_session_management_cheat_sheet",
+    "version_id": "ver_3c38656e2be6",
+    "spans": [
+      {
+        "normalized_block_id": "nrm_ver_3c38656e2be6_b00192",
+        "text": "### Detecting Session ID Anomalies"
+      },
+      {
+        "normalized_block_id": "nrm_ver_3c38656e2be6_b00193",
+        "text": "Web applications should focus on detecting anomalies associated to the session ID, such as its manipulation. The OWASP [AppSensor Project](https://owasp.org/www-project-appsensor/) provides a framework and methodology to implement built-in intrusion detection capabilities within web applications focused on the detection of anomalies and unexpected behaviors, in the form of detection points and response actions. Instead of using external protection layers, sometimes the business logic details and advanced intelligence are only available from inside the web application, where it is possible to establish multiple session related detection points, such as when an existing cookie is modified or deleted, a new cookie is added, the session ID from another user is reused, or when the user location or User-Agent changes in the middle of a session."
+      }
+    ]
+  },
+  {
+    "evidence_id": "EV_039",
+    "category": "heading_plus_body",
+    "file_format": "MARKDOWN",
+    "doc_title": "OWASP - A03-Cross-Site-Scripting-Prevention-Cheat-Sheet",
+    "document_id": "doc_owasp_a03_cross_site_scripting_prevention_cheat_sheet",
+    "version_id": "ver_e4bbeced6010",
+    "spans": [
+      {
+        "normalized_block_id": "nrm_ver_e4bbeced6010_b00111",
+        "text": "#### Problem 1 - Encoding for specific context not satisfactory for all URI paths"
+      },
+      {
+        "normalized_block_id": "nrm_ver_e4bbeced6010_b00112",
+        "text": "One problem is the improper encoding that can still allow exploitable XSS in some URI paths of your application. An example might be a 'lastname' form parameter from a POST that normally is displayed between HTML tags so that HTML encoding is sufficient, but there may be an edge case or two where lastname is actually rendered as part of a JavaScript block where the HTML encoding is not sufficient and thus it is vulnerable to XSS attacks."
+      }
+    ]
+  },
+  {
+    "evidence_id": "EV_041",
+    "category": "heading_plus_body",
+    "file_format": "MARKDOWN",
+    "doc_title": "OWASP - A07-Authentication-Cheat-Sheet",
+    "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+    "version_id": "ver_92f7483b2854",
+    "spans": [
+      {
+        "normalized_block_id": "nrm_ver_92f7483b2854_b00023",
+        "text": "### Compare Password Hashes Using Safe Functions"
+      },
+      {
+        "normalized_block_id": "nrm_ver_92f7483b2854_b00024",
+        "text": "Where possible, the user-supplied password should be compared to the stored password hash using a secure password comparison function provided by the language or framework, such as the [password_verify()](https://www.php.net/manual/en/function.password-verify.php) function in PHP. Where this is not possible, ensure that the comparison function:"
+      }
+    ]
+  },
+  {
+    "evidence_id": "EV_043",
+    "category": "heading_plus_body",
+    "file_format": "MARKDOWN",
+    "doc_title": "OWASP - A07-Password-Storage-Cheat-Sheet",
+    "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+    "version_id": "ver_5004d1ead2df",
+    "spans": [
+      {
+        "normalized_block_id": "nrm_ver_5004d1ead2df_b00031",
+        "text": "#### Post-hashing peppers"
+      },
+      {
+        "normalized_block_id": "nrm_ver_5004d1ead2df_b00032",
+        "text": "In this strategy, a password is hashed as usual using a password hashing algorithm. The resulting password hash is then hashed again using an HMAC (e.g., HMAC-SHA256, HMAC-SHA512, depending on the desired output length) before storing the resulting hash in the database. In this case the pepper is acting as the HMAC key and should be generated as per requirements of the HMAC algorithm."
+      }
+    ]
+  },
+  {
+    "evidence_id": "EV_044",
+    "category": "heading_plus_body",
+    "file_format": "MARKDOWN",
+    "doc_title": "OWASP - A01-Cross-Site-Request-Forgery-Prevention-Cheat-Sheet",
+    "document_id": "doc_owasp_a01_cross_site_request_forgery_prevention_cheat_sheet",
+    "version_id": "ver_fb6fb6a43e11",
+    "spans": [
+      {
+        "normalized_block_id": "nrm_ver_fb6fb6a43e11_b00052",
+        "text": "### Ease of use"
+      },
+      {
+        "normalized_block_id": "nrm_ver_fb6fb6a43e11_b00053",
+        "text": "Unlike [synchronizer tokens](#synchronizer-token-pattern) or [double-submit patterns](#alternative-using-a-double-submit-cookie-pattern) — which require additional client/server coordination and are difficult to implement correctly — Fetch Metadata checks are much more straightforward. They typically require only a small amount of server-side logic (inspect Sec-Fetch-Site, optionally refine with Sec-Fetch-Mode/Sec-Fetch-Dest) and no client changes. That simplicity reduces complexity, making the approach attractive for many applications."
+      }
+    ]
+  },
+  {
+    "evidence_id": "EV_046",
+    "category": "multi_block_rule",
+    "file_format": "MARKDOWN",
+    "doc_title": "OWASP - A07-Session-Management-Cheat-Sheet",
+    "document_id": "doc_owasp_a07_session_management_cheat_sheet",
+    "version_id": "ver_3c38656e2be6",
+    "spans": [
+      {
+        "normalized_block_id": "nrm_ver_3c38656e2be6_b00080",
+        "text": "Setting the `Domain` attribute to a too permissive value, such as `example.com` allows an attacker to launch attacks on the session IDs between different hosts and web applications belonging to the same domain, known as cross-subdomain cookies. For example, vulnerabilities in `www.example.com` might allow an attacker to get access to the session IDs from `secure.example.com`."
+      },
+      {
+        "normalized_block_id": "nrm_ver_3c38656e2be6_b00081",
+        "text": "Additionally, it is recommended not to mix web applications of different security levels on the same domain. Vulnerabilities in one of the web applications would allow an attacker to set the session ID for a different web application on the same domain by using a permissive `Domain` attribute (such as `example.com`) which is a technique that can be used in [session fixation attacks](https://www.acrossecurity.com/papers/session_fixation.pdf)."
+      }
+    ]
+  },
+  {
+    "evidence_id": "EV_047",
+    "category": "multi_block_rule",
+    "file_format": "MARKDOWN",
+    "doc_title": "OWASP - A07-Session-Management-Cheat-Sheet",
+    "document_id": "doc_owasp_a07_session_management_cheat_sheet",
+    "version_id": "ver_3c38656e2be6",
+    "spans": [
+      {
+        "normalized_block_id": "nrm_ver_3c38656e2be6_b00054",
+        "text": "Additionally, the `Secure` [cookie attribute](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#Secure_and_HttpOnly_cookies) must be used to ensure the session ID is only exchanged through an encrypted channel. The usage of an encrypted communication channel also protects the session against some session fixation attacks where the attacker is able to intercept and manipulate the web traffic to inject (or fix) the session ID on the victim's web browser."
+      },
+      {
+        "normalized_block_id": "nrm_ver_3c38656e2be6_b00055",
+        "text": "The following set of best practices are focused on protecting the session ID (specifically when cookies are used) and helping with the integration of HTTPS within the web application:"
+      }
+    ]
+  },
+  {
+    "evidence_id": "EV_050",
+    "category": "multi_block_rule",
+    "file_format": "MARKDOWN",
+    "doc_title": "OWASP - WSTG-testing-methods",
+    "document_id": "doc_owasp_wstg_testing_methods",
+    "version_id": "ver_799c3e5bf1bc",
+    "spans": [
+      {
+        "normalized_block_id": "nrm_ver_799c3e5bf1bc_b00036",
+        "text": "**DOM-based (CLNT-01):** Because the flow is controlled client-side, server-side filtering/detection is often \"impotent.\""
+      },
+      {
+        "normalized_block_id": "nrm_ver_799c3e5bf1bc_b00037",
+        "text": "- Crawl the site to find every JavaScript execution instance and where user input is accepted; prefer **top-down** testing for very large libraries. (p. 379)\n- Distinguish two input forms: data written by the server into JS vs. input taken from client-side JS objects (`window.location`, `window.referrer`). Exploitability depends on server filtering vs. browser encoding respectively. (p. 379)\n- Note JS executed **outside** `<script>` blocks (event handlers, CSS `expression`), and off-site CSS/script objects. (p. 379)\n- **Automated testing has \"only very limited success\"** (it looks for payload reflection in the server response); **manual testing** of source is required — examine where code is dynamically written to the page, where the DOM is modified, or where scripts execute directly. (pp. 379–380)"
+      }
+    ]
+  },
+  {
+    "evidence_id": "EV_051",
+    "category": "multi_block_rule",
+    "file_format": "MARKDOWN",
+    "doc_title": "OWASP - A03-Cross-Site-Scripting-Prevention-Cheat-Sheet",
+    "document_id": "doc_owasp_a03_cross_site_scripting_prevention_cheat_sheet",
+    "version_id": "ver_e4bbeced6010",
+    "spans": [
+      {
+        "normalized_block_id": "nrm_ver_e4bbeced6010_b00011",
+        "text": "To prevent XSS, every place where untrusted data is added to the page needs protection. Coverage is what matters: an application that protects 99 places and misses one is still vulnerable. Many frameworks escape every value they render by default, whether it is trusted or not. We recommend this approach, because it does not depend on deciding correctly which data is untrusted."
+      },
+      {
+        "normalized_block_id": "nrm_ver_e4bbeced6010_b00012",
+        "text": "The appropriate protection depends on how the data is used. Prefer safe APIs that treat data as text. When inserting data into a context that interprets syntax, use the appropriate context-specific output encoding. When an application needs to accept user-authored HTML, use a maintained HTML sanitizer. Input validation can enforce expected formats, but it does not replace these protections. Framework security features help prevent XSS, but unsafe APIs and framework bypasses can reintroduce vulnerabilities."
+      }
+    ]
+  },
+  {
+    "evidence_id": "EV_054",
+    "category": "multi_block_rule",
+    "file_format": "PDF",
+    "doc_title": "First - CVSS-Specification",
+    "document_id": "doc_first_cvss_specification",
+    "version_id": "ver_77afde9ea09f",
+    "spans": [
+      {
+        "normalized_block_id": "nrm_ver_77afde9ea09f_b00011",
+        "text": "The Common Vulnerability Scoring System (CVSS) captures the principal technical\ncharacteristics of software, hardware and firmware vulnerabilities. Its outputs include\nnumerical scores indicating the severity of a vulnerability relative to other vulnerabilities."
+      },
+      {
+        "normalized_block_id": "nrm_ver_77afde9ea09f_b00012",
+        "text": "CVSS is composed of four metric groups: Base, Threat, Environmental, and Supplemental. The\nBase Score reflects the severity of a vulnerability according to its intrinsic characteristics which\nare constant over time and assumes the reasonable worst-case impact across different\ndeployed environments. The Threat Metrics adjust the severity of a vulnerability based on\nfactors, such as the availability of proof-of-concept code or active exploitation. The\nEnvironmental Metrics further refine the resulting severity score to a specific computing\nenvironment. They consider factors such as the presence of mitigations in that environment\nand the criticality attributes of the vulnerable system. Finally, the Supplemental Metrics\ndescribe and measure additional extrinsic attributes of a vulnerability, intended to add\ncontext."
+      }
+    ]
+  },
+  {
+    "evidence_id": "EV_055",
+    "category": "multi_block_rule",
+    "file_format": "MARKDOWN",
+    "doc_title": "OWASP - Top10-A05-Injection",
+    "document_id": "doc_owasp_top10_a05_injection",
+    "version_id": "ver_d617676bd8d0",
+    "spans": [
+      {
+        "normalized_block_id": "nrm_ver_d617676bd8d0_b00013",
+        "text": "* The preferred option is to use a safe API, which avoids using the interpreter entirely, provides a parameterized interface, or migrates to Object Relational Mapping Tools (ORMs).\n**Note:** Even when parameterized, stored procedures can still introduce SQL injection if PL/SQL or T-SQL concatenates queries and data or executes hostile data with EXECUTE IMMEDIATE or exec()."
+      },
+      {
+        "normalized_block_id": "nrm_ver_d617676bd8d0_b00014",
+        "text": "When it is not possible to separate the data from commands, you can reduce threats using the following techniques."
+      }
+    ]
+  },
+  {
+    "evidence_id": "EV_056",
+    "category": "multi_block_rule",
+    "file_format": "MARKDOWN",
+    "doc_title": "OWASP - A07-SAML-Security-Cheat-Sheet",
+    "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+    "version_id": "ver_3653eed28e7f",
+    "spans": [
+      {
+        "normalized_block_id": "nrm_ver_3653eed28e7f_b00038",
+        "text": "Typically the security association between the Identity Provider (IdP) and Service Provider (SP) is created when the SP explicitly chooses to trust the IdP's X.509 signing certificate. Exactly how this occurs can have a strong bearing on overall security posture. How the certificate is generated, what the contents of the certificate are, and how the certificate's corresponding private key is protected all have strong bearing on security posture. e.g., if an attacker has access to use the IdP’s signing key, they can mint SAML responses containing any assertion they wish."
+      },
+      {
+        "normalized_block_id": "nrm_ver_3653eed28e7f_b00039",
+        "text": "In many cases, the method of manually setting the association is akin to [Certificate Pinning](https://cheatsheetseries.owasp.org/cheatsheets/Pinning_Cheat_Sheet.html), which is not ideal. Depending on the IdP and SP software, or various design considerations, this may be unavoidable."
+      }
+    ]
+  },
+  {
+    "evidence_id": "EV_058",
+    "category": "multi_block_rule",
+    "file_format": "PDF",
+    "doc_title": "OWASP - Application-Security-Verification-Standard",
+    "document_id": "doc_owasp_application_security_verification_standard",
+    "version_id": "ver_a2fa1bbe38f1",
+    "spans": [
+      {
+        "normalized_block_id": "nrm_ver_a2fa1bbe38f1_b00049",
+        "text": "This major revision has been developed with several key principles in mind:"
+      },
+      {
+        "normalized_block_id": "nrm_ver_a2fa1bbe38f1_b00050",
+        "text": "• Refined Scope and Focus: This version of the standard has been designed to align more di‑\nrectly with the foundational pillars in its name: Application, Security, Verification, and Stan‑\ndard. Requirements have been rewritten to emphasize the prevention of security flaws rather\nthan mandating specific technical implementations. Requirement texts are intended to be self‑\nexplanatory, explaining why they exist."
+      }
+    ]
+  },
+  {
+    "evidence_id": "EV_059",
+    "category": "multi_block_rule",
+    "file_format": "PDF",
+    "doc_title": "OWASP - Application-Security-Verification-Standard",
+    "document_id": "doc_owasp_application_security_verification_standard",
+    "version_id": "ver_a2fa1bbe38f1",
+    "spans": [
+      {
+        "normalized_block_id": "nrm_ver_a2fa1bbe38f1_b00256",
+        "text": "The use of prescriptive, risk‑based levels that mandate a specific level for certain applications has\nproven to be overly rigid. In practice, the prioritization and implementation of security controls\ndepend on multiple factors, including both risk reduction and the effort required for implementa‑\ntion."
+      },
+      {
+        "normalized_block_id": "nrm_ver_a2fa1bbe38f1_b00257",
+        "text": "Therefore, organizations are encouraged to achieve the level that they feel like they should be achiev‑\ning based on their maturity and the message they want to send to their users."
+      }
+    ]
+  },
+  {
+    "evidence_id": "EV_060",
+    "category": "multi_block_rule",
+    "file_format": "MARKDOWN",
+    "doc_title": "OWASP - A07-Session-Management-Cheat-Sheet",
+    "document_id": "doc_owasp_a07_session_management_cheat_sheet",
+    "version_id": "ver_3c38656e2be6",
+    "spans": [
+      {
+        "normalized_block_id": "nrm_ver_3c38656e2be6_b00156",
+        "text": "After a specific amount of time since the session was initially created, the web application can regenerate a new ID for the user session and try to set it, or renew it, on the client. The previous session ID value would still be valid for some time, accommodating a safety interval, before the client is aware of the new ID and starts using it. At that time, when the client switches to the new ID inside the current session, the application invalidates the previous ID."
+      },
+      {
+        "normalized_block_id": "nrm_ver_3c38656e2be6_b00157",
+        "text": "This scenario minimizes the amount of time a given session ID value, potentially obtained by an attacker, can be reused to hijack the user session, even when the victim user session is still active. The user session remains alive and open on the legitimate client, although its associated session ID value is transparently renewed periodically during the session duration, every time the renewal timeout expires. Therefore, the renewal timeout complements the idle and absolute timeouts, specially when the absolute timeout value extends significantly over time (e.g. it is an application requirement to keep the user sessions open for long periods of time)."
+      }
+    ]
+  }
+]

@@ -42,7 +42,7 @@ PARSER_REGISTRY = {
 }
 
 
-def run_all_parsers(force_reparse: bool = False) -> dict:
+def run_all_parsers(force_reparse: bool = True) -> dict:
     versions_path = INGESTION_OUT_DIR / "documents_version.json"
     if not versions_path.exists():
         raise FileNotFoundError(f"Step 1 manifest not found at {versions_path}")
