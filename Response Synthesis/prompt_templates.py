@@ -152,6 +152,56 @@ def extract_citation_tags(text: str) -> list[str]:
     return [f"[{i}]" for i in unique_ids]
 
 
+def _evidence_tag_bounds(llm_context: str, lang: str) -> str:
+    """
+    Return an evidence-aware citation-tag constraint clause derived from the
+    evidence headers actually present in `llm_context`.
+
+    Restricts the model to citation indices that exist in the provided evidence,
+    mirroring the existing SEARCH behaviour so COMPARE and SYNTHESIS stay
+    consistent. Returns an empty string when no evidence headers are found, so
+    callers can interpolate safely without emitting a contradictory instruction
+    when evidence is absent (the abstention policy handles that case upstream).
+    """
+    evidence_headers = re.findall(r"---\s*Evidence\s*\[(\d+)\]", llm_context or "")
+    indices = sorted({int(x) for x in evidence_headers})
+    if not indices:
+        return ""
+    max_ev = indices[-1]
+    # For a contiguous run [1..N] keep the compact "through [N]" form so existing
+    # behaviour is preserved; for non-contiguous sets enumerate the allowed tags
+    # explicitly to avoid implicitly permitting gaps (e.g. [2] when only [1],[3] exist).
+    is_contiguous = indices == list(range(1, max_ev + 1))
+    if is_contiguous:
+        if lang == "en":
+            return f"(ONLY use tags [1] through [{max_ev}]; NEVER cite [{max_ev + 1}] or higher)"
+        return f"(CHỈ dùng thẻ từ [1] đến [{max_ev}]; TUYỆT ĐỐI KHÔNG trích dẫn [{max_ev + 1}] trở lên)"
+    allowed = ", ".join(f"[{i}]" for i in indices)
+    if lang == "en":
+        return f"(ONLY use the following citation tags: {allowed}; NEVER cite any index not in this list)"
+    return f"(CHỈ dùng các thẻ trích dẫn sau: {allowed}; TUYỆT ĐỐI KHÔNG dùng chỉ số nào không có trong danh sách này)"
+
+
+EVIDENCE_PREMISE_RULES: dict[str, str] = {
+    "vi": (
+        "[XỬ LÝ TIỀN ĐỀ & NGUỒN BẰNG CHỨNG]\n"
+        "- Nếu câu hỏi dựa trên một tiền đề mà bằng chứng được cung cấp không xác lập được, KHÔNG chấp nhận tiền đề đó là đúng. Trình bày rõ rằng bằng chứng hiện có không xác lập tiền đề, và từ chối mọi kết luận dựa trên tiền đề chưa được hỗ trợ.\n"
+        "- Với nội dung có bằng chứng hỗ trợ: chỉ sử dụng thông tin đó và trích dẫn bằng chứng tương ứng (ví dụ: [1], [2]).\n"
+        "- Với nội dung không có bằng chứng hỗ trợ: trong STRICT RAG MODE, không được đề cập đến thông tin đó. Trong HYBRID MODE, nội dung bổ sung được phép đặt trong mục 'General Knowledge Advisory' theo đúng hướng dẫn chế độ HYBRID — tuyệt đối không gắn thẻ trích dẫn vào nội dung bổ sung đó.\n"
+        "- Khi chỉ một phần câu hỏi có thể trả lời từ bằng chứng, hãy trả lời phần được hỗ trợ, sau đó chỉ rõ những phần không thể xác lập từ bằng chứng được cung cấp.\n"
+        "- KHÔNG bịa ra sự thật, nguồn tài liệu, hoặc số trích dẫn thiếu vắng không có trong bằng chứng."
+    ),
+    "en": (
+        "[EVIDENCE GROUNDING & PREMISE HANDLING]\n"
+        "- If the question rests on a premise the provided evidence does not establish, do NOT accept that premise as true. State that the available evidence does not establish the premise, and abstain from any conclusion that depends on the unsupported premise.\n"
+        "- For content that is supported by evidence: answer only using that information, and cite the supporting evidence (e.g., [1], [2]).\n"
+        "- For content not covered by evidence: in STRICT RAG MODE, do not mention it at all. In HYBRID MODE, supplementary content is permitted only when placed in the explicitly labeled 'General Knowledge Advisory' section as the HYBRID guidelines require — do NOT attach any citation tags to that supplementary content.\n"
+        "- When only part of the question can be answered from the evidence, answer that supported portion, then explicitly identify the parts that cannot be established from the provided evidence.\n"
+        "- Do NOT fabricate missing facts, missing sources, or citation indices that are not present in the evidence."
+    ),
+}
+
+
 def build_search_prompt(
     query: str,
     llm_context: str,
@@ -161,18 +211,18 @@ def build_search_prompt(
     """Prompt template for SEARCH intent (Search & Explain)."""
     resolved_lang = lang or detect_language(query)
     guideline = PROMPT_GUIDELINES[resolved_lang]["HYBRID" if mode == "HYBRID" else "STRICT"]
-    evidence_headers = re.findall(r"---\s*Evidence\s*\[(\d+)\]", llm_context or "")
-    max_ev = max((int(x) for x in evidence_headers), default=0)
-    valid_tags_en = f" (ONLY use tags [1] through [{max_ev}]; NEVER cite [{max_ev + 1}] or higher)" if max_ev > 0 else ""
-    valid_tags_vi = f" (CHỈ dùng thẻ từ [1] đến [{max_ev}]; TUYỆT ĐỐI KHÔNG trích dẫn [{max_ev + 1}] trở lên)" if max_ev > 0 else ""
+    bounds = _evidence_tag_bounds(llm_context, resolved_lang)
+    valid_tags = f" {bounds}" if bounds else ""
+    premise_rules = EVIDENCE_PREMISE_RULES[resolved_lang]
     
     if resolved_lang == "en":
         return f"""{guideline}
+{premise_rules}
 === PROVIDED EVIDENCE CONTEXT ===
 {llm_context}
-================================ 
+================================
 REQUIREMENTS FOR THE 'SEARCH' INTENT:
-- Answer directly and accurately based on the provided Context{valid_tags_en}.
+- Answer directly and accurately based on the provided Context{valid_tags}.
 - Recommended Structure (ONLY include sections that are actually supported by the provided Context; omit any section not covered by the Context rather than guessing):
   1. Core Concept / Definition: Definition and technical impact level (cite actual numbers like [1], [2])
   2. Mechanism & Attack Vectors / Risks: How the vulnerability forms or the prerequisite conditions for occurrence (cite actual numbers like [1], [2])
@@ -184,18 +234,19 @@ USER QUESTION:
 Markdown Response:"""
 
     return f"""{guideline}
+{premise_rules}
 === BẰNG CHỨNG TÀI LIỆU ĐƯỢC CUNG CẤP (CONTEXT) ===
 {llm_context}
 ===================================================
 
 YÊU CẦU CHO INTENT 'SEARCH':
-- Trả lời trực tiếp, chính xác dựa trên Context được cung cấp{valid_tags_vi}.
+- Trả lời trực tiếp, chính xác dựa trên Context được cung cấp{valid_tags}.
 - Cấu trúc đề xuất (CHỈ trình bày các mục thực sự có thông tin trong Context; nếu Context không đề cập mục nào thì BỎ QUA mục đó, tuyệt đối không tự suy diễn):
   1. Khái niệm / Định nghĩa cốt lõi: Định nghĩa và mức độ tác động kỹ thuật (gắn số trích dẫn thực tế như [1], [2])
   2. Cơ chế hoạt động & Vector tấn công / Rủi ro: Cách thức lỗ hổng hình thành hoặc điều kiện phát sinh (gắn số trích dẫn thực tế như [1], [2])
   3. Biện pháp phòng chống & Khắc phục: Các biện pháp bảo vệ, cấu hình hoặc thực hành an toàn được tài liệu khuyến nghị (gắn số trích dẫn thực tế như [1], [2])
 - TUYỆT ĐỐI KHÔNG tự tạo mục 'Tham khảo' hay 'References' ở cuối bài.
-  
+
 CÂU HỎI CỦA NGƯỜI DÙNG:
 {query}
 
@@ -211,36 +262,39 @@ def build_compare_prompt(
     """Prompt template for COMPARE intent (Comparative analysis)."""
     resolved_lang = lang or detect_language(query)
     guideline = PROMPT_GUIDELINES[resolved_lang]["HYBRID" if mode == "HYBRID" else "STRICT"]
+    bounds = _evidence_tag_bounds(llm_context, resolved_lang)
+    valid_tags = f" {bounds}" if bounds else ""
+    premise_rules = EVIDENCE_PREMISE_RULES[resolved_lang]
     
         
     if resolved_lang == "en":
         return f"""{guideline}
+{premise_rules}
 === PROVIDED DOCUMENT EVIDENCE (CONTEXT) ===
 {llm_context}
 ============================================
 
-REQUIREMENTS FOR THE 'COMPARE' INTENT:
+REQUIREMENTS FOR THE 'COMPARE' INTENT{valid_tags}:
 - Conduct a multi-dimensional comparative analysis between the requested entities, vulnerabilities, or security mechanisms.
-- Required Structure:
-  1. Summary Comparison Table (Markdown Table): Contrast key criteria (Definition, Affected Layer / Scope of Impact, Risk Severity, Primary Defense Method). Each technical detail cell must include an number citation tag like [1], [2],...
-  2. Detailed Analysis of Core Similarities and Differences: Present in coherent paragraphs (cite actual numbers like [1], [2]).
-  3. Practical Takeaways: Highlight common misconceptions or easily confused points grounded in the documentation.
+- Table structure: Use a Markdown table whose columns reflect the actual comparison criteria relevant to the query — do NOT force a fixed four-column layout. For each dimension, cite evidence-based cells with the corresponding tag (e.g. [1], [2]). If a comparison dimension lacks evidence, keep the row/column and state explicitly in the cell that no evidence is available for it — do NOT fabricate a value. Do NOT invent numerical figures.
+- Detailed Analysis: Present similarities and differences as coherent paragraphs; place each citation tag immediately after the claim it supports (e.g., [1], [2]).
+- Practical Takeaways: Highlight common misconceptions or easily confused points grounded in the documentation.
 
 COMPARISON QUERY:
 {query}
 Markdown Response:"""
 
     return f"""{guideline}
+{premise_rules}
 === BẰNG CHỨNG TÀI LIỆU ĐƯỢC CUNG CẤP (CONTEXT) ===
 {llm_context}
 ===================================================
 
-YÊU CẦU CHO INTENT 'COMPARE':
+YÊU CẦU CHO INTENT 'COMPARE'{valid_tags}:
 - Thực hiện so sánh đối chiếu đa chiều giữa các thực thể, lỗ hổng hoặc cơ chế an ninh được hỏi.
-- Cấu trúc yêu cầu:
-  1. Bảng so sánh tổng hợp (Markdown Table): Đối chiếu các tiêu chí then chốt (Định nghĩa, Vị trí tác động, Mức độ rủi ro, Phương pháp phòng thủ chính). Mỗi ô thông tin kỹ thuật cần có thẻ gắn số trích dẫn thực tế như [1], [2]
-  2. Phân tích chi tiết điểm tương đồng và khác biệt cốt lõi: Trình bày thành các đoạn văn mạch lạc (gắn số trích dẫn thực tế như [1], [2])
-  3. Lưu ý thực tế: Nhấn mạnh các điểm dễ gây nhầm lẫn dựa trên tài liệu
+- Bảng so sánh (Markdown Table): Cột và hàng của bảng phản ánh đúng các tiêu chí so sánh liên quan đến câu hỏi — KHÔNG ép cứng bốn cột cố định. Với mỗi chiều, ô có bằng chứng cần gắn thẻ trích dẫn thực tế như [1], [2]. Nếu một chiều so sánh thiếu bằng chứng, vẫn giữ hàng/cột đó và ghi rõ trong ô là không có bằng chứng — KHÔNG tự bịa giá trị. KHÔNG tự bịa số liệu định lượng.
+- Phân tích chi tiết: Trình bày thành đoạn văn mạch lạc; gắn thẻ trích dẫn NGAY SAU câu chứa luận điểm (ví dụ: [1], [2]).
+- Lưu ý thực tế: Nhấn mạnh các điểm dễ gây nhầm lẫn dựa trên tài liệu.
 
 CÂU HỎI SO SÁNH:
 {query}
@@ -257,21 +311,28 @@ def build_synthesis_prompt(
     """Prompt template for SYNTHESIS intent (Comprehensive multi-perspective synthesis)."""
     resolved_lang = lang or detect_language(query)
     guideline = PROMPT_GUIDELINES[resolved_lang]["HYBRID" if mode == "HYBRID" else "STRICT"]
+    bounds = _evidence_tag_bounds(llm_context, resolved_lang)
+    valid_tags = f" {bounds}" if bounds else ""
+    premise_rules = EVIDENCE_PREMISE_RULES[resolved_lang]
             
     if resolved_lang == "en":
         return f"""{guideline}
+{premise_rules}
 === PROVIDED DOCUMENT EVIDENCE (CONTEXT) ===
 {llm_context}
 ============================================
 
-REQUIREMENTS FOR THE 'SYNTHESIS' INTENT:
+REQUIREMENTS FOR THE 'SYNTHESIS' INTENT{valid_tags}:
 - Synthesize findings across multiple document sources into a comprehensive, coherently structured information security advisory.
+- Organize the answer into coherent sections; each section must only cover topics supported by the evidence.
+- Citation placement: Place each citation tag IMMEDIATELY AFTER the specific claim or sentence it supports — do NOT group all citations at the end of a paragraph. Example: "Parameterized queries prevent injection attacks [1]. Input validation adds a secondary defense layer [2]."
+- Do NOT synthesize relationships between sources that are not established in the evidence. If a conclusion is not supported by the evidence, mark it explicitly as unverified or unknown.
 - Recommended Structure:
   1. Executive Summary
-  2. In-Depth Technical Vulnerability & Threat Analysis (cite actual numbers like [1], [2])
-  3. Remediation Recommendations & Defense-in-Depth Strategy (cite actual numbers like [1], [2])
-  4. Standards / Reference Mapping Table (if relevant references are present)
-- Ensure seamless coherence and logical flow across the diverse context sources.
+  2. In-Depth Technical Vulnerability & Threat Analysis (place citations beside each claim, e.g. [1], [2])
+  3. Remediation Recommendations & Defense-in-Depth Strategy (place citations beside each claim, e.g. [1], [2])
+  4. Standards / Reference Mapping Table (only if relevant references are present in the evidence)
+- Ensure coherence and logical flow across the diverse context sources.
 
 SYNTHESIS QUERY:
 {query}
@@ -279,18 +340,22 @@ SYNTHESIS QUERY:
 Markdown Response:"""
 
     return f"""{guideline}
+{premise_rules}
 === BẰNG CHỨNG TÀI LIỆU ĐƯỢC CUNG CẤP (CONTEXT) ===
 {llm_context}
 ===================================================
 
-YÊU CẦU CHO INTENT 'SYNTHESIS':
+YÊU CẦU CHO INTENT 'SYNTHESIS'{valid_tags}:
 - Tổng hợp kiến thức từ nhiều nguồn tài liệu thành một tài liệu tham vấn an toàn thông tin toàn diện và có cấu trúc mạch lạc.
+- Tổ chức câu trả lời thành các mục mạch lạc; mỗi mục chỉ đề cập nội dung được bằng chứng hỗ trợ.
+- Vị trí trích dẫn: Gắn thẻ trích dẫn NGAY SAU câu chứa luận điểm được hỗ trợ — KHÔNG tập hợp tất cả trích dẫn ở cuối đoạn văn. Ví dụ: "Prepared statement ngăn chặn SQL Injection [1]. Kiểm tra đầu vào là lớp phòng thủ bổ sung [2]."
+- KHÔNG tổng hợp mối quan hệ giữa các nguồn tài liệu nếu điều đó không được thiết lập trong bằng chứng. Nếu một kết luận không có cơ sở từ bằng chứng, ghi rõ là chưa được xác minh hoặc không rõ.
 - Cấu trúc đề xuất:
   1. Tóm tắt điều hành (Executive Summary)
-  2. Phân tích chi tiết các nguy cơ / lỗ hổng kỹ thuật (gắn số trích dẫn thực tế như [1], [2])
-  3. Khuyến nghị giải pháp & Chiến lược phòng thủ chiều sâu (gắn số trích dẫn thực tế như [1], [2])
-  4. Bảng ánh xạ tiêu chuẩn / tài liệu (nếu có tài liệu liên quan) 
-- Đảm bảo tính liên kết xuyên suốt giữa các nguồn tài liệu khác nhau trong Context
+  2. Phân tích chi tiết các nguy cơ / lỗ hổng kỹ thuật (gắn trích dẫn ngay sau từng luận điểm, ví dụ: [1], [2])
+  3. Khuyến nghị giải pháp & Chiến lược phòng thủ chiều sâu (gắn trích dẫn ngay sau từng luận điểm, ví dụ: [1], [2])
+  4. Bảng ánh xạ tiêu chuẩn / tài liệu (chỉ khi có tài liệu liên quan trong bằng chứng)
+- Đảm bảo tính liên kết xuyên suốt giữa các nguồn tài liệu khác nhau trong Context.
 
 YÊU CẦU TỔNG HỢP:
 {query}
