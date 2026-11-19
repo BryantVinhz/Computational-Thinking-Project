@@ -1,0 +1,344 @@
+{
+  "document_id": "doc_owasp_avss_session_management",
+  "version_id": "ver_4aec329f2642",
+  "chunking_strategy": "fixed_size",
+  "chunks": [
+    {
+      "chunk_id": "ver_4aec329f2642_c00000",
+      "document_id": "doc_owasp_avss_session_management",
+      "version_id": "ver_4aec329f2642",
+      "chunk_idx": 0,
+      "chunk_type": "text",
+      "text_content": "# V7 Session Management\n\n## Control Objective\n\nSession management mechanisms allow applications to correlate user and device interactions over time, even when using stateless communication protocols (such as HTTP). Modern applications may use multiple session tokens with distinct characteristics and purposes. A secure session management system is one that prevents attackers from obtaining, utilizing, or otherwise abusing a victim's session. Applications maintaining sessions must ensure that the following high-level session management requirements are met:\n\n* Sessions are unique to each individual and cannot be guessed or shared.\n* Sessions are invalidated when no longer required and are timed out during periods of inactivity.\n\nMany of the requirements in this chapter relate to selected [NIST SP 800-63 Digital Identity Guidelines](https://pages.nist.gov/800-63-4/) controls, focusing on common threats and commonly exploited authentication weaknesses.\n\nNote that requirements for specific implementation details of certain session management mechanisms can be found elsewhere:\n\n* HTTP Cookies are a common mechanism for securing session tokens. Specific security requirements for cookies can be found in the \"Web Frontend Security\" chapter.\n* Self-contained tokens are frequently used as a way of maintaining sessions. Specific security requirements can be found in the \"Self-contained Tokens\" chapter.\n\n## V7.1 Session Management Documentation\n\nThere is no single pattern that suits all applications. Therefore, it is not feasible to define universal boundaries and limits that suit all cases. A risk analysis with documented security decisions related to session handling must be conducted as a prerequisite to implementation and testing. This ensures that the session management system is tailored to the specific requirements of the application.\n\nRegardless of whether a stateful or \"stateless\" session mechanism is chosen, the analysis must be complete and documented to demonstrate that the selected solution is capable of satisfying all relevant security requirements. Interaction with any Single Sign-on (SSO) mechanisms in use should also be considered.\n\n| # | Description | Level |\n| :---: | :--- | :---: |\n| **7.1.1** | Verify that the user's session inactivity timeout and absolute maximum session lifetime are documented, are appropriate in combination with other controls, and that the documentation includes justification for any deviations from NIST SP 800-63B re-authentication requirements. | 2 |\n| **7.1.2** | Verify that the documentation defines how many concurrent (parallel) sessions are allowed for one account as well as the intended behaviors and actions to be taken when the maximum number of active sessions is reached. | 2 |\n| **7.1.3** | Verify that all systems that create and manage user sessions as part of a federated identity management ecosystem (such as SSO systems) are documented along with controls to coordinate session lifetimes, termination, and any other conditions that require re-authentication. | 2 |\n\n## V7.2 Fundamental Session Management Security\n\nThis section satisfies the essential requirements of secure sessions by verifying that session tokens are securely generated and validated.\n\n| # | Description | Level |\n| :---: | :--- | :---: |\n| **7.2.1** | Verify that the application performs all session token verification using a trusted, backend",
+      "token_count": 649,
+      "chunk_strategy": "fixed_size",
+      "heading_path": [
+        "V7 Session Management"
+      ]
+    },
+    {
+      "chunk_id": "ver_4aec329f2642_c00001",
+      "document_id": "doc_owasp_avss_session_management",
+      "version_id": "ver_4aec329f2642",
+      "chunk_idx": 1,
+      "chunk_type": "text",
+      "text_content": "# | Description | Level |\n| :---: | :--- | :---: |\n| **7.2.1** | Verify that the application performs all session token verification using a trusted, backend service. | 1 |\n| **7.2.2** | Verify that the application uses either self-contained or reference tokens that are dynamically generated for session management, i.e. not using static API secrets and keys. | 1 |\n| **7.2.3** | Verify that if reference tokens are used to represent user sessions, they are unique and generated using a cryptographically secure pseudo-random number generator (CSPRNG) and possess at least 128 bits of entropy. | 1 |\n| **7.2.4** | Verify that the application generates a new session token on user authentication, including re-authentication, and terminates the current session token. | 1 |\n\n## V7.3 Session Timeout\n\nSession timeout mechanisms serve to minimize the window of opportunity for session hijacking and other forms of session abuse. Timeouts must satisfy documented security decisions.\n\n| # | Description | Level |\n| :---: | :--- | :---: |\n| **7.3.1** | Verify that there is an inactivity timeout such that re-authentication is enforced according to risk analysis and documented security decisions. | 2 |\n| **7.3.2** | Verify that there is an absolute maximum session lifetime such that re-authentication is enforced according to risk analysis and documented security decisions. | 2 |\n\n## V7.4 Session Termination\n\nSession termination may be handled either by the application itself or by the SSO provider if the SSO provider is handling session management instead of the application. It may be necessary to decide whether the SSO provider is in scope when considering the requirements in this section as some may be controlled by the provider.\n\nSession termination should result in requiring re-authentication and be effective across the application, federated login (if present), and any relying parties.\n\nFor stateful session mechanisms, termination typically involves invalidating the session on the backend. In the case of self-contained tokens, additional measures are required to revoke or block these tokens, as they may otherwise remain valid until expiration.\n\n| # | Description | Level |\n| :---: | :--- | :---: |\n| **7.4.1** | Verify that when session termination is triggered (such as logout or expiration), the application disallows any further use of the session. For reference tokens or stateful sessions, this means invalidating the session data at the application backend. Applications using self-contained tokens will need a solution such as maintaining a list of terminated tokens, disallowing tokens produced before a per-user date and time or rotating a per-user signing key. | 1 |\n| **7.4.2** | Verify that the application terminates all active sessions when a user account is disabled or deleted (such as an employee leaving the company). | 1 |\n| **7.4.3** | Verify that the application gives the option to terminate all other active sessions after a successful",
+      "token_count": 650,
+      "chunk_strategy": "fixed_size",
+      "heading_path": [
+        "V7 Session Management",
+        "V7.2 Fundamental Session Management Security"
+      ]
+    },
+    {
+      "chunk_id": "ver_4aec329f2642_c00002",
+      "document_id": "doc_owasp_avss_session_management",
+      "version_id": "ver_4aec329f2642",
+      "chunk_idx": 2,
+      "chunk_type": "text",
+      "text_content": "active sessions when a user account is disabled or deleted (such as an employee leaving the company). | 1 |\n| **7.4.3** | Verify that the application gives the option to terminate all other active sessions after a successful change or removal of any authentication factor (including password change via reset or recovery and, if present, an MFA settings update). | 2 |\n| **7.4.4** | Verify that all pages that require authentication have easy and visible access to logout functionality. | 2 |\n| **7.4.5** | Verify that application administrators are able to terminate active sessions for an individual user or for all users. | 2 |\n\n## V7.5 Defenses Against Session Abuse\n\nThis section provides requirements to mitigate the risk posed by active sessions that are either hijacked or abused through vectors that rely on the existence and capabilities of active user sessions. For example, using malicious content execution to force an authenticated victim browser to perform an action using the victim's session.\n\nNote that the level-specific guidance in the \"Authentication\" chapter should be taken into account when considering requirements in this section.\n\n| # | Description | Level |\n| :---: | :--- | :---: |\n| **7.5.1** | Verify that the application requires full re-authentication before allowing modifications to sensitive account attributes which may affect authentication such as email address, phone number, MFA configuration, or other information used in account recovery. | 2 |\n| **7.5.2** | Verify that users are able to view and (having authenticated again with at least one factor) terminate any or all currently active sessions. | 2 |\n| **7.5.3** | Verify that the application requires further authentication with at least one factor or secondary verification before performing highly sensitive transactions or operations. | 3 |\n\n## V7.6 Federated Re-authentication\n\nThis section relates to those writing Relying Party (RP) or Identity Provider (IdP) code. These requirements are derived from the [NIST SP 800-63C](https://pages.nist.gov/800-63-4/sp800-63c.html) for Federation & Assertions.\n\n| # | Description | Level |\n| :---: | :--- | :---: |\n| **7.6.1** | Verify that session lifetime and termination between Relying Parties (RPs) and Identity Providers (IdPs) behave as documented, requiring re-authentication as necessary such as when the maximum time between IdP authentication events is reached. | 2 |\n| **7.6.2** | Verify that creation of a session requires either the user's consent or an explicit action, preventing the creation of new application sessions without user interaction. | 2 |\n\n## References\n\nFor more information, see also:\n\n* [OWASP Web Security Testing Guide: Session Management Testing](https://owasp.org/www-project-web-security-testing-guide/stable/4-Web_Application_Security_Testing/06-Session_Management_Testing)\n* [OWASP Session Management Cheat",
+      "token_count": 638,
+      "chunk_strategy": "fixed_size",
+      "heading_path": [
+        "V7 Session Management",
+        "V7.4 Session Termination"
+      ]
+    },
+    {
+      "chunk_id": "ver_4aec329f2642_c00003",
+      "document_id": "doc_owasp_avss_session_management",
+      "version_id": "ver_4aec329f2642",
+      "chunk_idx": 3,
+      "chunk_type": "text",
+      "text_content": "[OWASP Session Management Cheat",
+      "token_count": 5,
+      "chunk_strategy": "fixed_size",
+      "heading_path": [
+        "V7 Session Management",
+        "References"
+      ]
+    }
+  ],
+  "chunk_sources": [
+    {
+      "chunk_source_id": "ver_4aec329f2642_c00000_s000",
+      "chunk_id": "ver_4aec329f2642_c00000",
+      "normalized_block_id": "nrm_ver_4aec329f2642_b00000",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 23
+    },
+    {
+      "chunk_source_id": "ver_4aec329f2642_c00000_s001",
+      "chunk_id": "ver_4aec329f2642_c00000",
+      "normalized_block_id": "nrm_ver_4aec329f2642_b00001",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 20
+    },
+    {
+      "chunk_source_id": "ver_4aec329f2642_c00000_s002",
+      "chunk_id": "ver_4aec329f2642_c00000",
+      "normalized_block_id": "nrm_ver_4aec329f2642_b00002",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 514
+    },
+    {
+      "chunk_source_id": "ver_4aec329f2642_c00000_s003",
+      "chunk_id": "ver_4aec329f2642_c00000",
+      "normalized_block_id": "nrm_ver_4aec329f2642_b00003",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 172
+    },
+    {
+      "chunk_source_id": "ver_4aec329f2642_c00000_s004",
+      "chunk_id": "ver_4aec329f2642_c00000",
+      "normalized_block_id": "nrm_ver_4aec329f2642_b00004",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 225
+    },
+    {
+      "chunk_source_id": "ver_4aec329f2642_c00000_s005",
+      "chunk_id": "ver_4aec329f2642_c00000",
+      "normalized_block_id": "nrm_ver_4aec329f2642_b00005",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 123
+    },
+    {
+      "chunk_source_id": "ver_4aec329f2642_c00000_s006",
+      "chunk_id": "ver_4aec329f2642_c00000",
+      "normalized_block_id": "nrm_ver_4aec329f2642_b00006",
+      "source_order": 6,
+      "start_offset": 0,
+      "end_offset": 324
+    },
+    {
+      "chunk_source_id": "ver_4aec329f2642_c00000_s007",
+      "chunk_id": "ver_4aec329f2642_c00000",
+      "normalized_block_id": "nrm_ver_4aec329f2642_b00007",
+      "source_order": 7,
+      "start_offset": 0,
+      "end_offset": 40
+    },
+    {
+      "chunk_source_id": "ver_4aec329f2642_c00000_s008",
+      "chunk_id": "ver_4aec329f2642_c00000",
+      "normalized_block_id": "nrm_ver_4aec329f2642_b00008",
+      "source_order": 8,
+      "start_offset": 0,
+      "end_offset": 403
+    },
+    {
+      "chunk_source_id": "ver_4aec329f2642_c00000_s009",
+      "chunk_id": "ver_4aec329f2642_c00000",
+      "normalized_block_id": "nrm_ver_4aec329f2642_b00009",
+      "source_order": 9,
+      "start_offset": 0,
+      "end_offset": 311
+    },
+    {
+      "chunk_source_id": "ver_4aec329f2642_c00000_s010",
+      "chunk_id": "ver_4aec329f2642_c00000",
+      "normalized_block_id": "nrm_ver_4aec329f2642_b00010",
+      "source_order": 10,
+      "start_offset": 0,
+      "end_offset": 883
+    },
+    {
+      "chunk_source_id": "ver_4aec329f2642_c00000_s011",
+      "chunk_id": "ver_4aec329f2642_c00000",
+      "normalized_block_id": "nrm_ver_4aec329f2642_b00011",
+      "source_order": 11,
+      "start_offset": 0,
+      "end_offset": 47
+    },
+    {
+      "chunk_source_id": "ver_4aec329f2642_c00000_s012",
+      "chunk_id": "ver_4aec329f2642_c00000",
+      "normalized_block_id": "nrm_ver_4aec329f2642_b00012",
+      "source_order": 12,
+      "start_offset": 0,
+      "end_offset": 139
+    },
+    {
+      "chunk_source_id": "ver_4aec329f2642_c00000_s013",
+      "chunk_id": "ver_4aec329f2642_c00000",
+      "normalized_block_id": "nrm_ver_4aec329f2642_b00013",
+      "source_order": 13,
+      "start_offset": 0,
+      "end_offset": 159
+    },
+    {
+      "chunk_source_id": "ver_4aec329f2642_c00001_s000",
+      "chunk_id": "ver_4aec329f2642_c00001",
+      "normalized_block_id": "nrm_ver_4aec329f2642_b00013",
+      "source_order": 0,
+      "start_offset": 2,
+      "end_offset": 775
+    },
+    {
+      "chunk_source_id": "ver_4aec329f2642_c00001_s001",
+      "chunk_id": "ver_4aec329f2642_c00001",
+      "normalized_block_id": "nrm_ver_4aec329f2642_b00014",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 23
+    },
+    {
+      "chunk_source_id": "ver_4aec329f2642_c00001_s002",
+      "chunk_id": "ver_4aec329f2642_c00001",
+      "normalized_block_id": "nrm_ver_4aec329f2642_b00015",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 179
+    },
+    {
+      "chunk_source_id": "ver_4aec329f2642_c00001_s003",
+      "chunk_id": "ver_4aec329f2642_c00001",
+      "normalized_block_id": "nrm_ver_4aec329f2642_b00016",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 397
+    },
+    {
+      "chunk_source_id": "ver_4aec329f2642_c00001_s004",
+      "chunk_id": "ver_4aec329f2642_c00001",
+      "normalized_block_id": "nrm_ver_4aec329f2642_b00017",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 27
+    },
+    {
+      "chunk_source_id": "ver_4aec329f2642_c00001_s005",
+      "chunk_id": "ver_4aec329f2642_c00001",
+      "normalized_block_id": "nrm_ver_4aec329f2642_b00018",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 329
+    },
+    {
+      "chunk_source_id": "ver_4aec329f2642_c00001_s006",
+      "chunk_id": "ver_4aec329f2642_c00001",
+      "normalized_block_id": "nrm_ver_4aec329f2642_b00019",
+      "source_order": 6,
+      "start_offset": 0,
+      "end_offset": 160
+    },
+    {
+      "chunk_source_id": "ver_4aec329f2642_c00001_s007",
+      "chunk_id": "ver_4aec329f2642_c00001",
+      "normalized_block_id": "nrm_ver_4aec329f2642_b00020",
+      "source_order": 7,
+      "start_offset": 0,
+      "end_offset": 261
+    },
+    {
+      "chunk_source_id": "ver_4aec329f2642_c00001_s008",
+      "chunk_id": "ver_4aec329f2642_c00001",
+      "normalized_block_id": "nrm_ver_4aec329f2642_b00021",
+      "source_order": 8,
+      "start_offset": 0,
+      "end_offset": 813
+    },
+    {
+      "chunk_source_id": "ver_4aec329f2642_c00002_s000",
+      "chunk_id": "ver_4aec329f2642_c00002",
+      "normalized_block_id": "nrm_ver_4aec329f2642_b00021",
+      "source_order": 0,
+      "start_offset": 589,
+      "end_offset": 1219
+    },
+    {
+      "chunk_source_id": "ver_4aec329f2642_c00002_s001",
+      "chunk_id": "ver_4aec329f2642_c00002",
+      "normalized_block_id": "nrm_ver_4aec329f2642_b00022",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 38
+    },
+    {
+      "chunk_source_id": "ver_4aec329f2642_c00002_s002",
+      "chunk_id": "ver_4aec329f2642_c00002",
+      "normalized_block_id": "nrm_ver_4aec329f2642_b00023",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 337
+    },
+    {
+      "chunk_source_id": "ver_4aec329f2642_c00002_s003",
+      "chunk_id": "ver_4aec329f2642_c00002",
+      "normalized_block_id": "nrm_ver_4aec329f2642_b00024",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 145
+    },
+    {
+      "chunk_source_id": "ver_4aec329f2642_c00002_s004",
+      "chunk_id": "ver_4aec329f2642_c00002",
+      "normalized_block_id": "nrm_ver_4aec329f2642_b00025",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 684
+    },
+    {
+      "chunk_source_id": "ver_4aec329f2642_c00002_s005",
+      "chunk_id": "ver_4aec329f2642_c00002",
+      "normalized_block_id": "nrm_ver_4aec329f2642_b00026",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 35
+    },
+    {
+      "chunk_source_id": "ver_4aec329f2642_c00002_s006",
+      "chunk_id": "ver_4aec329f2642_c00002",
+      "normalized_block_id": "nrm_ver_4aec329f2642_b00027",
+      "source_order": 6,
+      "start_offset": 0,
+      "end_offset": 224
+    },
+    {
+      "chunk_source_id": "ver_4aec329f2642_c00002_s007",
+      "chunk_id": "ver_4aec329f2642_c00002",
+      "normalized_block_id": "nrm_ver_4aec329f2642_b00028",
+      "source_order": 7,
+      "start_offset": 0,
+      "end_offset": 506
+    },
+    {
+      "chunk_source_id": "ver_4aec329f2642_c00002_s008",
+      "chunk_id": "ver_4aec329f2642_c00002",
+      "normalized_block_id": "nrm_ver_4aec329f2642_b00029",
+      "source_order": 8,
+      "start_offset": 0,
+      "end_offset": 13
+    },
+    {
+      "chunk_source_id": "ver_4aec329f2642_c00002_s009",
+      "chunk_id": "ver_4aec329f2642_c00002",
+      "normalized_block_id": "nrm_ver_4aec329f2642_b00030",
+      "source_order": 9,
+      "start_offset": 0,
+      "end_offset": 31
+    },
+    {
+      "chunk_source_id": "ver_4aec329f2642_c00002_s010",
+      "chunk_id": "ver_4aec329f2642_c00002",
+      "normalized_block_id": "nrm_ver_4aec329f2642_b00031",
+      "source_order": 10,
+      "start_offset": 0,
+      "end_offset": 228
+    },
+    {
+      "chunk_source_id": "ver_4aec329f2642_c00003_s000",
+      "chunk_id": "ver_4aec329f2642_c00003",
+      "normalized_block_id": "nrm_ver_4aec329f2642_b00031",
+      "source_order": 0,
+      "start_offset": 197,
+      "end_offset": 228
+    }
+  ]
+}

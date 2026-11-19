@@ -13,7 +13,7 @@ supporting flexible branching between:
 
 from __future__ import annotations
 
-import logging
+import logging, re
 import time
 from typing import Any, Protocol, runtime_checkable
 
@@ -33,6 +33,118 @@ except ImportError:
     from schema_response import SynthesizedDraftSchema
 
 logger = logging.getLogger(__name__)
+
+
+# ---- R4: grouped citation normalization ----
+_MAX_RANGE_EXPAND = 20  # hard cap: refuse to expand ranges larger than this
+
+# Matches bracketed expressions whose interior is entirely digits, commas,
+# spaces, hyphens, and en-dashes.  Guard (?!\() excludes Markdown links.
+_GROUPED_CITE_RE = re.compile(
+    r"\[(\d+(?:\s*[-–]\s*\d+)?(?:\s*,\s*\d+(?:\s*[-–]\s*\d+)?)*)\](?!\()"
+)
+# Splits on fenced (``` … ```) and inline (` … `) code — never alter code content.
+_CODE_SPLIT_RE = re.compile(r"(```[\s\S]*?```|`[^`\n]+`)")
+
+
+def _expand_group_match(m: "re.Match[str]") -> str:
+    """Expand one grouped citation bracket into individual canonical tags.
+
+    Deduplication policy: preserve first-occurrence order within the group so
+    claim meaning is not changed.  E.g. [2, 2, 1] -> [2] [1].
+    Returns the original match string unchanged when the range is inverted,
+    exceeds _MAX_RANGE_EXPAND, or contains a non-numeric component.
+    """
+    ids: list[int] = []
+    seen: set[int] = set()
+    for part in m.group(1).split(","):
+        part = part.strip()
+        if not part:
+            continue
+        range_m = re.match(r"^(\d+)\s*[-–]\s*(\d+)$", part)
+        if range_m:
+            lo, hi = int(range_m.group(1)), int(range_m.group(2))
+            if lo > hi or (hi - lo) > _MAX_RANGE_EXPAND:
+                return m.group(0)  # inverted or unbounded — leave unchanged
+            for n in range(lo, hi + 1):
+                if n not in seen:
+                    ids.append(n)
+                    seen.add(n)
+        elif re.match(r"^\d+$", part):
+            n = int(part)
+            if n not in seen:
+                ids.append(n)
+                seen.add(n)
+        else:
+            return m.group(0)  # non-numeric component — not a citation group
+    return " ".join(f"[{n}]" for n in ids) if ids else m.group(0)
+
+
+def _sanitize_draft_answer(
+    draft_answer: str,
+    max_evidence_idx: int,
+    allowed_ids: frozenset[int] | None = None,
+) -> str:
+    """
+    Clean up common small-LLM formatting artifacts:
+    0. (R4) Normalize grouped citations like [1,2], [1-3] into individual [1] [2] [3].
+    1. Strip literal '[i]' placeholders.
+    2. Remove any LLM-generated trailing 'References' / 'Tham khảo' section.
+    3. Remove out-of-range / disallowed numeric citation tags [n].
+
+    Steps 0 and 3 are applied segment-by-segment using _CODE_SPLIT_RE so that
+    fenced (``` … ```) and inline (` … `) code spans are never modified by any
+    citation transformation.
+
+    allowed_ids: when provided (non-None), a tag [n] is kept only if n is in this
+    set.  When None, the existing behaviour applies: keep [n] iff 1 <= n <=
+    max_evidence_idx.  Passing an empty frozenset removes all numeric tags.
+    """
+    raw = draft_answer or ""
+
+    # Steps 0 + 1 (R4 expansion and [i] removal): operate on non-code segments only.
+    segments = _CODE_SPLIT_RE.split(raw)
+    step01_parts: list[str] = []
+    for seg in segments:
+        if _CODE_SPLIT_RE.match(seg):
+            step01_parts.append(seg)   # code span — leave untouched
+        else:
+            expanded = _GROUPED_CITE_RE.sub(_expand_group_match, seg)
+            expanded = re.sub(r"\[i\]", "", expanded)
+            step01_parts.append(expanded)
+    cleaned = "".join(step01_parts)
+
+    # Step 2: strip trailing LLM-generated References section (not code-sensitive).
+    cleaned = re.sub(
+        r"\n+(?:#{1,4}|\*\*)\s*(?:Danh mục tài liệu tham chiếu|Tài liệu tham khảo|Tham khảo|References(?:\s*&\s*Citations)?)\b[\s\S]*$",
+        "",
+        cleaned,
+        flags=re.IGNORECASE,
+    )
+
+    # Step 3: remove disallowed numeric citation tags — code spans protected.
+    if allowed_ids is not None:
+        def _keep_allowed(m: re.Match) -> str:  # type: ignore[type-arg]
+            return f" [{m.group(1)}]" if int(m.group(1)) in allowed_ids else ""
+        step3_parts: list[str] = []
+        for seg in _CODE_SPLIT_RE.split(cleaned):
+            if _CODE_SPLIT_RE.match(seg):
+                step3_parts.append(seg)
+            else:
+                step3_parts.append(re.sub(r"[ \t]*\[(\d+)\]", _keep_allowed, seg))
+        cleaned = "".join(step3_parts)
+    elif max_evidence_idx > 0:
+        def _keep_range(m: re.Match) -> str:  # type: ignore[type-arg]
+            return f" [{m.group(1)}]" if 1 <= int(m.group(1)) <= max_evidence_idx else ""
+        step3_parts = []
+        for seg in _CODE_SPLIT_RE.split(cleaned):
+            if _CODE_SPLIT_RE.match(seg):
+                step3_parts.append(seg)
+            else:
+                step3_parts.append(re.sub(r"[ \t]*\[(\d+)\]", _keep_range, seg))
+        cleaned = "".join(step3_parts)
+
+    return cleaned.strip()
 
 
 @runtime_checkable
@@ -85,7 +197,7 @@ class DefaultDeterministicLLM:
                 "### Phân tích dựa trên tài liệu đã tìm thấy\n\n"
                 "Dựa trên các tài liệu thu thập được trong hệ thống, cơ chế an ninh và giải pháp được xác định như sau [1]. "
                 "Cấu hình bảo mật được kiểm soát và kiểm chứng thông qua các quy chuẩn kỹ thuật tương ứng [2].\n\n"
-                "### 💡 Khuyến nghị & Bổ sung từ kiến thức chung (General Knowledge Advisory)\n\n"
+                "###  Khuyến nghị & Bổ sung từ kiến thức chung (General Knowledge Advisory)\n\n"
                 "(Lưu ý: Phần này được bổ sung từ tri thức chuyên gia do tài liệu nội bộ chỉ tìm thấy một phần chứng cứ)\n"
                 "- Cần triển khai nguyên tắc phòng thủ theo chiều sâu (Defense-in-Depth) kết hợp kiểm thử định kỳ.\n"
                 "- Thiết lập cơ chế giám sát và ghi log tập trung để phát hiện sớm các hành vi bất thường."
@@ -209,7 +321,7 @@ class ResponseSynthesizer:
             # Call LLM
             draft_answer = self.llm_client.generate(
                 prompt=messages,
-                system_instruction=SYSTEM_INSTRUCTION_SYNTHESIS,
+                system_instruction=None,
             )
         except Exception as e:
             logger.error("LLM generate failed: %s", e)
@@ -222,6 +334,17 @@ class ResponseSynthesizer:
                                     "latency_s": round(time.perf_counter() - start_time, 4),
                                     "error": str(e)},
             )
+
+        # Derive exact allowed evidence IDs from the context headers that were
+        # sent to the LLM.  This is more precise than max_evidence_idx alone:
+        # it correctly rejects gap IDs (e.g. [2] when only [1] and [3] exist)
+        # and correctly keeps non-contiguous IDs like [3] when total_evidence=2.
+        # Falls back to None (max-index behaviour) when no headers are found.
+        _ev_header_matches = re.findall(r"---\s*Evidence\s*\[(\d+)\]", llm_context)
+        allowed_ids: frozenset[int] | None = (
+            frozenset(int(x) for x in _ev_header_matches) if _ev_header_matches else None
+        )
+        draft_answer = _sanitize_draft_answer(draft_answer, total_evidence, allowed_ids=allowed_ids)
 
         # Extract all citation tags [1], [2] from Markdown text
         cited_tags = extract_citation_tags(draft_answer)

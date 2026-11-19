@@ -18,10 +18,10 @@ if hasattr(sys.stdout, "reconfigure"):
     except Exception:
         pass
 
-# Ensure path.py and Ingestion/ package are importable when running directly
+# Ensure path.py (project root) and Ingestion/ package are importable when running directly
 CURRENT_DIR = Path(__file__).resolve().parent
 PARENT_DIR = CURRENT_DIR.parent
-for _p in (CURRENT_DIR, PARENT_DIR):
+for _p in (CURRENT_DIR, PARENT_DIR, PARENT_DIR.parent):
     if str(_p) not in sys.path:
         sys.path.insert(0, str(_p))
 
@@ -42,7 +42,7 @@ PARSER_REGISTRY = {
 }
 
 
-def run_all_parsers(force_reparse: bool = False) -> dict:
+def run_all_parsers(force_reparse: bool = True) -> dict:
     versions_path = INGESTION_OUT_DIR / "documents_version.json"
     if not versions_path.exists():
         raise FileNotFoundError(f"Step 1 manifest not found at {versions_path}")

@@ -1,13 +1,16 @@
 import sys
 from pathlib import Path
 
-# Ensure path.py in the parent directory can be imported when running this file directly
+# Ensure path.py in the project root can be imported when running this file directly
 CURRENT_DIR = Path(__file__).resolve().parent
 PARENT_DIR = CURRENT_DIR.parent
+PROJECT_ROOT = PARENT_DIR.parent
 if str(CURRENT_DIR) not in sys.path:
     sys.path.insert(0, str(CURRENT_DIR))
 if str(PARENT_DIR) not in sys.path:
     sys.path.insert(0, str(PARENT_DIR))
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
 
 from path import DATA_DIR, INGESTION_OUT_DIR
 from service import IngestionService

@@ -198,7 +198,7 @@ class OllamaLLMClient(BaseLLMClient):
 
     def __init__(
         self,
-        model_name: str = "qwen2.5:7b",
+        model_name: str = "qwen3.5:4b",
         host: str = OLLAMA_HOST,
         temperature: float = LLM_TEMPERATURE,
         default_timeout: float = LLM_TIMEOUT_S,

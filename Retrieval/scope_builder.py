@@ -1,16 +1,10 @@
 import logging, json
 import re
-from pathlib import Path
 from typing import Any
 from schema import RetrievalScope
+from path import DOCUMENTS_CATALOG_PATH, VERSIONS_CATALOG_PATH
 
 logger = logging.getLogger(__name__)
-
-CURRENT_DIR = Path(__file__).resolve().parent
-PROJECT_ROOT = CURRENT_DIR.parent
-INGESTION_OUTPUT_DIR = PROJECT_ROOT / "Document Ingestion and Parsing" / "output" / "Ingestion"
-DOCUMENTS_CATALOG_PATH = INGESTION_OUTPUT_DIR / "documents.json"
-VERSIONS_CATALOG_PATH = INGESTION_OUTPUT_DIR / "documents_version.json"
 
 FORMAT_MAPPING = {
     "MD": "MARKDOWN",
@@ -185,7 +179,7 @@ class ScopeBuilder:
                     r"\b(khái niệm|là gì|định nghĩa|tổng quan|giới thiệu|bản chất|thế nào là|ý nghĩa)\b",
                     r"\b(what is|what are|definition|define|concept|overview|introduction|background|describe|description|meaning)\b",
                 ],
-                "types": ["paragraph", "mixed", "heading"],
+                "types": ["paragraph", "mixed"],
                 "headings": [
                     "Description",
                     "Background",
@@ -193,6 +187,9 @@ class ScopeBuilder:
                     "What is",
                     "Introduction",
                     "About",
+                    "Defense Philosophy",
+                    "Test Objectives",
+                    "Summary",
                 ],
             },
             # GROUP 2: PREVENTION / MITIGATION / PROTECTION

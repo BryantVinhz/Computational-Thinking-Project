@@ -1,9 +1,28 @@
 import logging
+import sys
 from typing import Any
 
 logger = logging.getLogger(__name__)
 
 BGE_QUERY_INSTRUCTION = "Represent this sentence for searching relevant passages: "
+
+
+def get_shared_sentence_transformer(model_name: str, device: str = "cpu") -> Any:
+    """Load and cache SentenceTransformer models once per process across all pipeline stages."""
+    cache: dict[tuple[str, str], Any] = getattr(sys, "_agy_shared_sentence_transformers", None)
+    if cache is None:
+        cache = {}
+        setattr(sys, "_agy_shared_sentence_transformers", cache)
+
+    key = (model_name, device)
+    if key not in cache:
+        try:
+            from sentence_transformers import SentenceTransformer
+        except ImportError as e:
+            raise ImportError("sentence-transformers is not installed. Please install it") from e
+        logger.info("Loading embedding model %s on %s...", model_name, device)
+        cache[key] = SentenceTransformer(model_name, device=device)
+    return cache[key]
 
 
 class QueryVectorizer:
@@ -29,12 +48,7 @@ class QueryVectorizer:
 
     def _get_model(self) -> Any:
         if self._model is None:
-            try:
-                from sentence_transformers import SentenceTransformer
-            except ImportError as e:
-                raise ImportError("sentence-transformers is not installed. Please install it") from e
-            logger.info("Loading embedding model %s on %s...", self.model_name, self.device)
-            self._model = SentenceTransformer(self.model_name, device=self.device)
+            self._model = get_shared_sentence_transformer(self.model_name, self.device)
         return self._model
 
     def _encode(self, texts: list[str]) -> list[list[float]]:

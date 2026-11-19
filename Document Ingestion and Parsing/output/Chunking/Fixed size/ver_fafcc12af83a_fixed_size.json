@@ -1,0 +1,676 @@
+{
+  "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+  "version_id": "ver_fafcc12af83a",
+  "chunking_strategy": "fixed_size",
+  "chunks": [
+    {
+      "chunk_id": "ver_fafcc12af83a_c00000",
+      "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+      "version_id": "ver_fafcc12af83a",
+      "chunk_idx": 0,
+      "chunk_type": "text",
+      "text_content": "# Injection Prevention Cheat Sheet\n\n## Introduction\n\nThis article is focused on providing clear, simple, actionable guidance for preventing injection flaws in your applications. Injection attacks, for example [SQL Injection](https://owasp.org/www-community/attacks/SQL_Injection), are unfortunately very common.\n\nApplication accessibility is a very important factor in protection and prevention of injection flaws. Only the minority of all applications within a company/enterprise are developed in house, where as most applications are from external sources. Open source applications give at least the opportunity to fix problems, but closed source applications need a different approach to injection flaws.\n\nInjection flaws occur when an application sends untrusted data to an interpreter. Injection flaws are very prevalent, particularly in legacy code, often found in SQL queries, LDAP queries, XPath queries, OS commands, program arguments, etc. Injection flaws are easy to discover when examining code, but more difficult via testing. Scanners and fuzzers can help attackers find them.\n\nDepending on the accessibility different actions must be taken in order to fix them. It is always the best way to fix the problem in source code itself, or even redesign some parts of the applications. But if the source code is not available or it is simply uneconomical to fix legacy software only virtual patching makes sense.\n\n## Application Types\n\nThree classes of applications can usually be seen within a company. Those 3 types are needed to identify the actions which need to take place in order to prevent/fix injection flaws.\n\n### A1: New Application\n\nA new web application in the design phase, or in early stage development.\n\n### A2: Productive Open Source Application\n\nAn already productive application, which can be easily adapted. A Model-View-Controller (MVC) type application is just one example of having a easily accessible application architecture.\n\n### A3: Productive Closed Source Application\n\nA productive application which cannot or only with difficulty be modified.\n\n## Forms of Injection\n\nUse the guidance for the query language or interpreter your application uses:\n\n| Type | When | Reference |\n|------|------|-----------|\n| SQL injection | Builds SQL queries | [SQL Injection Prevention](SQL_Injection_Prevention_Cheat_Sheet.md) and [Query Parameterization](Query_Parameterization_Cheat_Sheet.md) |\n| Object-relational mapper query injection | Builds query strings with tools such as Hibernate | [SQL Injection Prevention](SQL_Injection_Prevention_Cheat_Sheet.md) and [Query Parameterization](Query_Parameterization_Cheat_Sheet.md) |\n| NoSQL injection | Builds queries for a NoSQL database | [NoSQL Security](NoSQL_Security_Cheat_Sheet.md) |\n| Cross-site scripting (XSS) | Places untrusted data into browser content | [Cross Site Scripting Prevention](Cross_Site_Scripting_Prevention_Cheat_Sheet.md) and [DOM based XSS Prevention](DOM_based_XSS_Prevention_Cheat_Sheet.md) |\n| LDAP injection | Builds LDAP queries | [LDAP Injection Prevention](LDAP_Injection_Prevention_Cheat_Sheet.md) |\n| XPath injection | Builds XPath queries | [XPath Injection Prevention](XPath_Injection_Prevention_Cheat_Sheet.md) |\n| OS command injection | Invokes operating system commands | [OS Command Injection Defense](OS_Command_Injection_Defense_Cheat_Sheet.md) |\n| Argument injection | Passes untrusted input as command arguments | [Argument Injection](OS_Command_Injection_Defense_Cheat_Sheet.md#argument-injection) |\n\nFor Java-specific",
+      "token_count": 649,
+      "chunk_strategy": "fixed_size",
+      "heading_path": [
+        "Injection Prevention Cheat Sheet"
+      ]
+    },
+    {
+      "chunk_id": "ver_fafcc12af83a_c00001",
+      "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+      "version_id": "ver_fafcc12af83a",
+      "chunk_idx": 1,
+      "chunk_type": "text",
+      "text_content": "command injection | Invokes operating system commands | [OS Command Injection Defense](OS_Command_Injection_Defense_Cheat_Sheet.md) |\n| Argument injection | Passes untrusted input as command arguments | [Argument Injection](OS_Command_Injection_Defense_Cheat_Sheet.md#argument-injection) |\n\nFor Java-specific guidance, see [Injection Prevention in Java](Injection_Prevention_in_Java_Cheat_Sheet.md).\n\n### Query languages\n\n#### LDAP Injection\n\nLDAP Injection is an attack used to exploit web based applications that construct LDAP statements based on user input. When an application fails to properly sanitize user input, it's possible to modify LDAP statements through techniques similar to [SQL Injection](https://owasp.org/www-community/attacks/SQL_Injection). LDAP injection attacks could result in the granting of permissions to unauthorized queries, and content modification inside the LDAP tree. For more information on LDAP Injection attacks, visit [LDAP injection](https://owasp.org/www-community/attacks/LDAP_Injection).\n\n[LDAP injection](https://owasp.org/www-community/attacks/LDAP_Injection) attacks are common due to two factors:\n\n1. The lack of safer, parameterized LDAP query interfaces\n2. The widespread use of LDAP to authenticate users to systems.\n\n##### How to test for the issue\n\n###### During code review\n\nPlease check for any queries to the LDAP escape special characters, see [here](LDAP_Injection_Prevention_Cheat_Sheet.md#defense-option-1-escape-all-variables-using-the-right-ldap-encoding-function).\n\n###### Automated Exploitation\n\nScanner module of tool like OWASP [ZAP](https://www.zaproxy.org/) have module to detect LDAP injection issue.\n\n##### Remediation\n\n###### Use the right LDAP encoding function\n\nLDAP distinguished names and LDAP search filters require different escaping rules, defined by [RFC 4514](https://datatracker.ietf.org/doc/html/rfc4514) and [RFC 4515](https://datatracker.ietf.org/doc/html/rfc4515), respectively. Avoid custom escaping code and use a library encoder for the correct context. See the [LDAP Injection Prevention Cheat Sheet](LDAP_Injection_Prevention_Cheat_Sheet.md) for current defenses and examples.\n\n#### XPath Injection\n\nSee the [XPath Injection Prevention Cheat Sheet](XPath_Injection_Prevention_Cheat_Sheet.md) for defenses and a parameterized query example.\n\n### Scripting languages\n\nAll scripting languages used in web applications have a form of an `eval` call which receives code at runtime and executes it. If code is crafted using unvalidated and unescaped user input code injection can occur which allows an attacker to subvert application logic and eventually to gain local access.\n\nEvery time a scripting language is used, the actual implementation of the 'higher' scripting language is done using a 'lower' language like C. If the scripting language has a flaw in the data handling code '[Null Byte Injection](http://projects.webappsec.org/w/page/13246949/Null%20Byte%20Injection)' attack vectors can be deployed to gain access to other areas in memory, which results in a successful attack.\n\n### Operating System Commands\n\nOS command injection is a",
+      "token_count": 650,
+      "chunk_strategy": "fixed_size",
+      "heading_path": [
+        "Injection Prevention Cheat Sheet",
+        "Forms of Injection"
+      ]
+    },
+    {
+      "chunk_id": "ver_fafcc12af83a_c00002",
+      "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+      "version_id": "ver_fafcc12af83a",
+      "chunk_idx": 2,
+      "chunk_type": "text",
+      "text_content": "attack vectors can be deployed to gain access to other areas in memory, which results in a successful attack.\n\n### Operating System Commands\n\nOS command injection is a technique used via a web interface in order to execute OS commands on a web server. The user supplies operating system commands through a web interface in order to execute OS commands.\n\nAny web interface that is not properly sanitized is subject to this exploit. With the ability to execute OS commands, the user can upload malicious programs or even obtain passwords. OS command injection is preventable when security is emphasized during the design and development of applications.\n\n#### How to test for the issue\n\n##### During code review\n\nCheck if any command execute methods are called and in unvalidated user input are taken as data for that command.\n\nOut side of that, appending a semicolon to the end of a URL query parameter followed by an operating system command, will execute the command. `%3B` is URL encoded and decodes to semicolon. This is because the `;` is interpreted as a command separator.\n\nExample: `http://sensitive/something.php?dir=%3Bcat%20/etc/passwd`\n\nIf the application responds with the output of the `/etc/passwd` file then you know the attack has been successful. Many web application scanners can be used to test for this attack as they inject variations of command injections and test the response.\n\nEqually Static Code Analysis tools check the data flow of untrusted user input into a web application and check if the data is then entered into a dangerous method which executes the user input as a command.\n\n#### Remediation\n\nIf it is considered unavoidable the call to a system command incorporated with user-supplied, the following two layers of defense should be used within software in order to prevent attacks\n\n1. **Parameterization** - If available, use structured mechanisms that automatically enforce the separation between data and command. These mechanisms can help to provide the relevant quoting, encoding.\n2. **Input validation** - the values for commands and the relevant arguments should be both validated. There are different degrees of validation for the actual command and its arguments:\n    - When it comes to the **commands** used, these must be validated against a list of allowed commands.\n    - In regards to the **arguments** used for these commands, they should be validated using the following options:\n        - Positive or allowlist input validation - where are the arguments allowed explicitly defined\n        - Allow-list Regular Expression - where is explicitly defined a list of good characters allowed and the maximum length of the string. Ensure that metacharacters like `& | ; $ > < \\` \\ !` and whitespaces are not part of the Regular Expression. For example, the following regular expression only allows lowercase letters and numbers, and does not contain metacharacters. The length is also being limited to 3-10 characters:\n\n`^[a-z0-9]{3,10}$`\n\n#### Example code - Java\n\n##### Incorrect Usage\n\n```java\nProcessBuilder b = new ProcessBuilder(\"C:\\\\DoStuff.exe -arg1 -arg2\");\n```\n\nThis creates a builder with one command-list element, not a program followed by",
+      "token_count": 650,
+      "chunk_strategy": "fixed_size",
+      "heading_path": [
+        "Injection Prevention Cheat Sheet",
+        "Forms of Injection",
+        "Scripting languages"
+      ]
+    },
+    {
+      "chunk_id": "ver_fafcc12af83a_c00003",
+      "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+      "version_id": "ver_fafcc12af83a",
+      "chunk_idx": 3,
+      "chunk_type": "text",
+      "text_content": "Incorrect Usage\n\n```java\nProcessBuilder b = new ProcessBuilder(\"C:\\\\DoStuff.exe -arg1 -arg2\");\n```\n\nThis creates a builder with one command-list element, not a program followed by two arguments. [`ProcessBuilder`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/ProcessBuilder.html) represents the executable and its arguments as a list. The snippet does not start a process or demonstrate shell-command injection.\n\n##### Correct Usage\n\nThis illustrative example starts a process with a modified working directory and passes the executable and each argument separately. Keep the executable and working directory trusted, and validate any untrusted arguments for the invoked program. Argument separation does not replace [argument validation](OS_Command_Injection_Defense_Cheat_Sheet.md#layer-2).\n\n```java\nProcessBuilder pb = new ProcessBuilder(\"TrustedCmd\", \"TrustedArg1\", \"TrustedArg2\");\nMap<String, String> env = pb.environment();\npb.directory(new File(\"TrustedDir\"));\nProcess p = pb.start();\n```\n\n### Network Protocols\n\nWeb applications often communicate with network daemons (like SMTP, IMAP, FTP) where user input becomes part of the communication stream. Here it is possible to inject command sequences to abuse an established session.\n\n## Injection Prevention Rules\n\n### Rule \\#1 (Perform proper input validation)\n\nPerform proper input validation. Positive or allowlist input validation with appropriate canonicalization is also recommended, but **is not a complete defense** as many applications require special characters in their input.\n\n### Rule \\#2 (Use a safe API)\n\nThe preferred option is to use a safe API which avoids the use of the interpreter entirely or provides a parameterized interface. Be careful of APIs, such as stored procedures, that are parameterized, but can still introduce injection under the hood.\n\n### Rule \\#3 (Contextually escape user data)\n\nIf a parameterized API is not available, you should carefully escape special characters using the specific escape syntax for that interpreter.\n\n## References\n\n- [RFC 4514: LDAP Distinguished Names](https://datatracker.ietf.org/doc/html/rfc4514)\n- [RFC 4515: LDAP Search Filters](https://datatracker.ietf.org/doc/html/rfc4515)\n- [Oracle JDBC: Using Prepared",
+      "token_count": 495,
+      "chunk_strategy": "fixed_size",
+      "heading_path": [
+        "Injection Prevention Cheat Sheet",
+        "Forms of Injection",
+        "Operating System Commands",
+        "Example code - Java",
+        "Incorrect Usage"
+      ]
+    }
+  ],
+  "chunk_sources": [
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00000_s000",
+      "chunk_id": "ver_fafcc12af83a_c00000",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00000",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 34
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00000_s001",
+      "chunk_id": "ver_fafcc12af83a_c00000",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00001",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 15
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00000_s002",
+      "chunk_id": "ver_fafcc12af83a_c00000",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00002",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 258
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00000_s003",
+      "chunk_id": "ver_fafcc12af83a_c00000",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00003",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 394
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00000_s004",
+      "chunk_id": "ver_fafcc12af83a_c00000",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00004",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 381
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00000_s005",
+      "chunk_id": "ver_fafcc12af83a_c00000",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00005",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 328
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00000_s006",
+      "chunk_id": "ver_fafcc12af83a_c00000",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00006",
+      "source_order": 6,
+      "start_offset": 0,
+      "end_offset": 20
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00000_s007",
+      "chunk_id": "ver_fafcc12af83a_c00000",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00007",
+      "source_order": 7,
+      "start_offset": 0,
+      "end_offset": 182
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00000_s008",
+      "chunk_id": "ver_fafcc12af83a_c00000",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00008",
+      "source_order": 8,
+      "start_offset": 0,
+      "end_offset": 23
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00000_s009",
+      "chunk_id": "ver_fafcc12af83a_c00000",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00009",
+      "source_order": 9,
+      "start_offset": 0,
+      "end_offset": 73
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00000_s010",
+      "chunk_id": "ver_fafcc12af83a_c00000",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00010",
+      "source_order": 10,
+      "start_offset": 0,
+      "end_offset": 42
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00000_s011",
+      "chunk_id": "ver_fafcc12af83a_c00000",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00011",
+      "source_order": 11,
+      "start_offset": 0,
+      "end_offset": 186
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00000_s012",
+      "chunk_id": "ver_fafcc12af83a_c00000",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00012",
+      "source_order": 12,
+      "start_offset": 0,
+      "end_offset": 44
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00000_s013",
+      "chunk_id": "ver_fafcc12af83a_c00000",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00013",
+      "source_order": 13,
+      "start_offset": 0,
+      "end_offset": 74
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00000_s014",
+      "chunk_id": "ver_fafcc12af83a_c00000",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00014",
+      "source_order": 14,
+      "start_offset": 0,
+      "end_offset": 21
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00000_s015",
+      "chunk_id": "ver_fafcc12af83a_c00000",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00015",
+      "source_order": 15,
+      "start_offset": 0,
+      "end_offset": 77
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00000_s016",
+      "chunk_id": "ver_fafcc12af83a_c00000",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00016",
+      "source_order": 16,
+      "start_offset": 0,
+      "end_offset": 1332
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00000_s017",
+      "chunk_id": "ver_fafcc12af83a_c00000",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00017",
+      "source_order": 17,
+      "start_offset": 0,
+      "end_offset": 17
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00001_s000",
+      "chunk_id": "ver_fafcc12af83a_c00001",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00016",
+      "source_order": 0,
+      "start_offset": 1043,
+      "end_offset": 1332
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00001_s001",
+      "chunk_id": "ver_fafcc12af83a_c00001",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00017",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 108
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00001_s002",
+      "chunk_id": "ver_fafcc12af83a_c00001",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00018",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 19
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00001_s003",
+      "chunk_id": "ver_fafcc12af83a_c00001",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00019",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 19
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00001_s004",
+      "chunk_id": "ver_fafcc12af83a_c00001",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00020",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 586
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00001_s005",
+      "chunk_id": "ver_fafcc12af83a_c00001",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00021",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 111
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00001_s006",
+      "chunk_id": "ver_fafcc12af83a_c00001",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00022",
+      "source_order": 6,
+      "start_offset": 0,
+      "end_offset": 121
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00001_s007",
+      "chunk_id": "ver_fafcc12af83a_c00001",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00023",
+      "source_order": 7,
+      "start_offset": 0,
+      "end_offset": 31
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00001_s008",
+      "chunk_id": "ver_fafcc12af83a_c00001",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00024",
+      "source_order": 8,
+      "start_offset": 0,
+      "end_offset": 25
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00001_s009",
+      "chunk_id": "ver_fafcc12af83a_c00001",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00025",
+      "source_order": 9,
+      "start_offset": 0,
+      "end_offset": 198
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00001_s010",
+      "chunk_id": "ver_fafcc12af83a_c00001",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00026",
+      "source_order": 10,
+      "start_offset": 0,
+      "end_offset": 29
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00001_s011",
+      "chunk_id": "ver_fafcc12af83a_c00001",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00027",
+      "source_order": 11,
+      "start_offset": 0,
+      "end_offset": 109
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00001_s012",
+      "chunk_id": "ver_fafcc12af83a_c00001",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00028",
+      "source_order": 12,
+      "start_offset": 0,
+      "end_offset": 17
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00001_s013",
+      "chunk_id": "ver_fafcc12af83a_c00001",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00029",
+      "source_order": 13,
+      "start_offset": 0,
+      "end_offset": 43
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00001_s014",
+      "chunk_id": "ver_fafcc12af83a_c00001",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00030",
+      "source_order": 14,
+      "start_offset": 0,
+      "end_offset": 431
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00001_s015",
+      "chunk_id": "ver_fafcc12af83a_c00001",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00031",
+      "source_order": 15,
+      "start_offset": 0,
+      "end_offset": 20
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00001_s016",
+      "chunk_id": "ver_fafcc12af83a_c00001",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00032",
+      "source_order": 16,
+      "start_offset": 0,
+      "end_offset": 139
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00001_s017",
+      "chunk_id": "ver_fafcc12af83a_c00001",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00033",
+      "source_order": 17,
+      "start_offset": 0,
+      "end_offset": 23
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00001_s018",
+      "chunk_id": "ver_fafcc12af83a_c00001",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00034",
+      "source_order": 18,
+      "start_offset": 0,
+      "end_offset": 304
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00001_s019",
+      "chunk_id": "ver_fafcc12af83a_c00001",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00035",
+      "source_order": 19,
+      "start_offset": 0,
+      "end_offset": 410
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00001_s020",
+      "chunk_id": "ver_fafcc12af83a_c00001",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00036",
+      "source_order": 20,
+      "start_offset": 0,
+      "end_offset": 29
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00001_s021",
+      "chunk_id": "ver_fafcc12af83a_c00001",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00037",
+      "source_order": 21,
+      "start_offset": 0,
+      "end_offset": 25
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00002_s000",
+      "chunk_id": "ver_fafcc12af83a_c00002",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00035",
+      "source_order": 0,
+      "start_offset": 301,
+      "end_offset": 410
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00002_s001",
+      "chunk_id": "ver_fafcc12af83a_c00002",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00036",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 29
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00002_s002",
+      "chunk_id": "ver_fafcc12af83a_c00002",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00037",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 210
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00002_s003",
+      "chunk_id": "ver_fafcc12af83a_c00002",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00038",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 297
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00002_s004",
+      "chunk_id": "ver_fafcc12af83a_c00002",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00039",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 30
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00002_s005",
+      "chunk_id": "ver_fafcc12af83a_c00002",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00040",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 24
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00002_s006",
+      "chunk_id": "ver_fafcc12af83a_c00002",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00041",
+      "source_order": 6,
+      "start_offset": 0,
+      "end_offset": 113
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00002_s007",
+      "chunk_id": "ver_fafcc12af83a_c00002",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00042",
+      "source_order": 7,
+      "start_offset": 0,
+      "end_offset": 252
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00002_s008",
+      "chunk_id": "ver_fafcc12af83a_c00002",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00043",
+      "source_order": 8,
+      "start_offset": 0,
+      "end_offset": 66
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00002_s009",
+      "chunk_id": "ver_fafcc12af83a_c00002",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00044",
+      "source_order": 9,
+      "start_offset": 0,
+      "end_offset": 252
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00002_s010",
+      "chunk_id": "ver_fafcc12af83a_c00002",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00045",
+      "source_order": 10,
+      "start_offset": 0,
+      "end_offset": 207
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00002_s011",
+      "chunk_id": "ver_fafcc12af83a_c00002",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00046",
+      "source_order": 11,
+      "start_offset": 0,
+      "end_offset": 16
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00002_s012",
+      "chunk_id": "ver_fafcc12af83a_c00002",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00047",
+      "source_order": 12,
+      "start_offset": 0,
+      "end_offset": 188
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00002_s013",
+      "chunk_id": "ver_fafcc12af83a_c00002",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00048",
+      "source_order": 13,
+      "start_offset": 0,
+      "end_offset": 1144
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00002_s014",
+      "chunk_id": "ver_fafcc12af83a_c00002",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00049",
+      "source_order": 14,
+      "start_offset": 0,
+      "end_offset": 18
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00002_s015",
+      "chunk_id": "ver_fafcc12af83a_c00002",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00050",
+      "source_order": 15,
+      "start_offset": 0,
+      "end_offset": 24
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00002_s016",
+      "chunk_id": "ver_fafcc12af83a_c00002",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00051",
+      "source_order": 16,
+      "start_offset": 0,
+      "end_offset": 21
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00002_s017",
+      "chunk_id": "ver_fafcc12af83a_c00002",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00052",
+      "source_order": 17,
+      "start_offset": 0,
+      "end_offset": 81
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00002_s018",
+      "chunk_id": "ver_fafcc12af83a_c00002",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00053",
+      "source_order": 18,
+      "start_offset": 0,
+      "end_offset": 79
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00003_s000",
+      "chunk_id": "ver_fafcc12af83a_c00003",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00051",
+      "source_order": 0,
+      "start_offset": 6,
+      "end_offset": 21
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00003_s001",
+      "chunk_id": "ver_fafcc12af83a_c00003",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00052",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 81
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00003_s002",
+      "chunk_id": "ver_fafcc12af83a_c00003",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00053",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 337
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00003_s003",
+      "chunk_id": "ver_fafcc12af83a_c00003",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00054",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 19
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00003_s004",
+      "chunk_id": "ver_fafcc12af83a_c00003",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00055",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 358
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00003_s005",
+      "chunk_id": "ver_fafcc12af83a_c00003",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00056",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 201
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00003_s006",
+      "chunk_id": "ver_fafcc12af83a_c00003",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00057",
+      "source_order": 6,
+      "start_offset": 0,
+      "end_offset": 21
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00003_s007",
+      "chunk_id": "ver_fafcc12af83a_c00003",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00058",
+      "source_order": 7,
+      "start_offset": 0,
+      "end_offset": 218
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00003_s008",
+      "chunk_id": "ver_fafcc12af83a_c00003",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00059",
+      "source_order": 8,
+      "start_offset": 0,
+      "end_offset": 29
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00003_s009",
+      "chunk_id": "ver_fafcc12af83a_c00003",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00060",
+      "source_order": 9,
+      "start_offset": 0,
+      "end_offset": 46
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00003_s010",
+      "chunk_id": "ver_fafcc12af83a_c00003",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00061",
+      "source_order": 10,
+      "start_offset": 0,
+      "end_offset": 224
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00003_s011",
+      "chunk_id": "ver_fafcc12af83a_c00003",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00062",
+      "source_order": 11,
+      "start_offset": 0,
+      "end_offset": 29
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00003_s012",
+      "chunk_id": "ver_fafcc12af83a_c00003",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00063",
+      "source_order": 12,
+      "start_offset": 0,
+      "end_offset": 250
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00003_s013",
+      "chunk_id": "ver_fafcc12af83a_c00003",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00064",
+      "source_order": 13,
+      "start_offset": 0,
+      "end_offset": 44
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00003_s014",
+      "chunk_id": "ver_fafcc12af83a_c00003",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00065",
+      "source_order": 14,
+      "start_offset": 0,
+      "end_offset": 142
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00003_s015",
+      "chunk_id": "ver_fafcc12af83a_c00003",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00066",
+      "source_order": 15,
+      "start_offset": 0,
+      "end_offset": 13
+    },
+    {
+      "chunk_source_id": "ver_fafcc12af83a_c00003_s016",
+      "chunk_id": "ver_fafcc12af83a_c00003",
+      "normalized_block_id": "nrm_ver_fafcc12af83a_b00067",
+      "source_order": 16,
+      "start_offset": 0,
+      "end_offset": 197
+    }
+  ]
+}

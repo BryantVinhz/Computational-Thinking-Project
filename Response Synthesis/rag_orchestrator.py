@@ -161,6 +161,7 @@ class RAGOrchestrator:
         synthesizer: ResponseSynthesizer | None = None,
         verifier: Any | None = None,
         traceable_formatter: Any | None = None,
+        max_history_turns: int = 5,
     ):
         self.synthesizer = synthesizer or ResponseSynthesizer()
         # Vietnamese answers are verified against an English corpus, so the default verifier must be
@@ -171,7 +172,15 @@ class RAGOrchestrator:
         )
         self.traceable_formatter = traceable_formatter or TraceableFormatter()
         self.retrieval_system = retrieval_system
+        # Internal Conservation memory
+        self.conversation_memory: list[dict[str, str]] = []
+        self.max_history_turns = max_history_turns
 
+    def reset_conversation(self) -> None:
+        """Clear conversational context when starting a new session"""
+        self.conversation_memory.clear()
+        logger.info("Đã làm mới bộ nhớ hội thoại nội bộ.")
+        
     def _get_retrieval_system(self) -> Any:
         """Lazy initialization of RetrievalSystem if not injected."""
         if self.retrieval_system is not None:
@@ -212,13 +221,17 @@ class RAGOrchestrator:
         resolved_query: str | None = None,
         intent: str | None = None,
         conversation_history: list[dict[str, Any]] | None = None,
+        pipeline_start: float | None = None,
+        understanding_latency_s: float = 0.0,
+        retrieval_latency_s: float = 0.0,
     ) -> FinalResponseEnvelope:
         """
         Run Stage 4 on an existing Retrieval output.
         A draft whose verification FAILED is never returned as an "ok" answer: it is withheld
         (status "abstained") and kept in raw_draft for audit.
         """
-        start_time = time.perf_counter()
+        stage4_start = time.perf_counter()
+        overall_start = pipeline_start if pipeline_start is not None else stage4_start
         active_query = resolved_query or query
         resolved_intent = intent or retrieval_output.get("intent", "SEARCH")
 
@@ -229,8 +242,11 @@ class RAGOrchestrator:
             conversation_history=conversation_history,
         )
 
+        synthesis_latency = float(draft.generation_metadata.get("latency_s", 0.0))
         evidence_list = retrieval_output.get("evidence_list", [])
 
+        verify_start = time.perf_counter()
+        
         try:
             verification_report = self.verifier.verify(draft, evidence_list)
         except Exception as e:
@@ -240,7 +256,8 @@ class RAGOrchestrator:
                 status=VerificationStatus.FAILED,
                 warnings=[f"Verifier error: {e}"],
             )
-
+        verify_latency = time.perf_counter() - verify_start
+        
         final_markdown, citations = self.traceable_formatter.format_citations(draft, evidence_list)
 
         verification_gate = "skipped" if draft.is_abstained else "passed"
@@ -254,12 +271,20 @@ class RAGOrchestrator:
             citations = []
         elif not draft.is_abstained and verification_report.status == VerificationStatus.WARNING:
             verification_gate = "warning"
-            final_markdown = (
-                ">>> Some claims are not fully substantiated by source documents "
-                f"(faithfulness {verification_report.faithfulness_score:.0%}).\n\n{final_markdown}"
-            )
+            from prompt_templates import detect_language
+            if detect_language(active_query) == "vi":
+                warning_banner = (
+                    ">>> Lưu ý: Một số luận điểm chưa được chứng thực đầy đủ bởi tài liệu nguồn "
+                    f"(faithfulness {verification_report.faithfulness_score:.0%})."
+                )
+            else:
+                warning_banner = (
+                    ">>> Some claims are not fully substantiated by source documents "
+                    f"(faithfulness {verification_report.faithfulness_score:.0%})."
+                )
+            final_markdown = f"{warning_banner}\n\n{final_markdown}"
             
-        total_latency = time.perf_counter() - start_time
+        total_latency = time.perf_counter() - overall_start
 
         # 4. Determine response status
         status = "ok"
@@ -280,7 +305,10 @@ class RAGOrchestrator:
             raw_draft=draft,
             metadata={
                 "total_latency_s": round(total_latency, 4),
-                "synthesis_latency_s": draft.generation_metadata.get("latency_s", 0.0),
+                "understanding_latency_s": round(understanding_latency_s, 4),
+                "retrieval_latency_s": round(retrieval_latency_s, 4),
+                "synthesis_latency_s": round(synthesis_latency, 4),
+                "verification_latency_s": round(verify_latency, 4),
                 "generation_mode": draft.generation_mode,
                 "evidence_status": draft.evidence_status,
                 "total_evidence": retrieval_output.get("total_evidence", len(evidence_list)),
@@ -289,7 +317,16 @@ class RAGOrchestrator:
             },
         )
 
-    def _early_exit(self, status, query, s2, message, reason=None):
+    def _early_exit(
+        self,
+        status,
+        query,
+        s2,
+        message,
+        reason=None,
+        total_latency_s: float = 0.0,
+        understanding_latency_s: float = 0.0,
+    ):
         return FinalResponseEnvelope(
             status=status,
             original_query=query,
@@ -302,10 +339,14 @@ class RAGOrchestrator:
                 warnings=[f"Stage 2 returned: {s2.get('status')}"],
             ),
             citations=[],
-            metadata={"rejected_at_stage": 2,
-                    "reason": reason or message,
-                    "reject_reason": s2.get("reject_reason"),
-                    "error_code": s2.get("error_code")},
+            metadata={
+                "rejected_at_stage": 2,
+                "reason": reason or message,
+                "reject_reason": s2.get("reject_reason"),
+                "error_code": s2.get("error_code"),
+                "total_latency_s": round(total_latency_s, 4),
+                "understanding_latency_s": round(understanding_latency_s, 4),
+            },
         )
     
     def run(
@@ -317,27 +358,44 @@ class RAGOrchestrator:
         Run end-to-end RAG orchestration pipeline.
         Query -> Stage 2 (Understanding & Routing) -> Stage 3 (Retrieval) -> Stage 4 (Synthesis).
         """
+        pipeline_start = time.perf_counter()
+        active_history = conversation_history if conversation_history is not None else self.conversation_memory
         # Step 1: Stage 2 - Query Understanding & Routing
-        s2 = self.execute_stage2(query, conversation_history)
+        t_s2_start = time.perf_counter()
+        s2 = self.execute_stage2(query, active_history)
+        understanding_latency = time.perf_counter() - t_s2_start
         status = s2.get("status", "error")
 
         # Handle rejection cases from Stage 2 (Safety, Out of Scope, Invalid)
         if status in {"rejected", "out_of_scope", "error"}:
             reason = s2.get("reason") or "Request is out of processing scope."
-            return self._early_exit(status, query, s2, f"**Cannot process ({status})**: {reason}")
+            return self._early_exit(
+                status, query, s2, f"Cannot process ({status}): {reason}",
+                total_latency_s=time.perf_counter() - pipeline_start,
+                understanding_latency_s=understanding_latency,
+            )
 
         if status == "clarification":
             msg = s2.get("clarification_message") or "Please clarify your question."
-            return self._early_exit("clarification_needed", query, s2, msg)
+            return self._early_exit(
+                "clarification_needed", query, s2, msg,
+                total_latency_s=time.perf_counter() - pipeline_start,
+                understanding_latency_s=understanding_latency,
+            )
 
         if status != "ok" or "query_plan" not in s2:
-            return self._early_exit("error", query, s2, "Invalid Stage 2 response.")
+            return self._early_exit(
+                "error", query, s2, "Invalid Stage 2 response.",
+                total_latency_s=time.perf_counter() - pipeline_start,
+                understanding_latency_s=understanding_latency,
+            )
 
         query_plan = s2["query_plan"]
         resolved_query = query_plan.get("resolved_query") or query
         intent = query_plan.get("intent", "SEARCH")
 
         # Step 2: Stage 3 - Retrieval System
+        t_s3_start = time.perf_counter()
         retrieval_sys = self._get_retrieval_system()
         if retrieval_sys is None:
             # Fallback if no RetrievalSystem available
@@ -352,12 +410,30 @@ class RAGOrchestrator:
         else:
             # Call retrieve matching commit e858eca
             retrieval_output = retrieval_sys.retrieve(query_plan)
+        retrieval_latency = time.perf_counter() - t_s3_start
 
+        context_needed = query_plan.get("context_used", False)
+        history_for_synthesis = active_history if context_needed else None
+        
         # Step 3 & 4: Stage 4 - Synthesis & Final Packaging
-        return self.run_from_retrieval(
+        envelope = self.run_from_retrieval(
             query=query,
             retrieval_output=retrieval_output,
             resolved_query=resolved_query,
             intent=intent,
-            conversation_history=conversation_history,
+            conversation_history=history_for_synthesis,
+            pipeline_start=pipeline_start,
+            understanding_latency_s=understanding_latency,
+            retrieval_latency_s=retrieval_latency,
         )
+        
+        if envelope.status in {"ok", "abstained"} and conversation_history is None:
+            self.conversation_memory.append({"role": "user", "content": query})
+            # Store summary in history (keep concise to prevent token overflow)
+            snippet = envelope.final_answer_markdown[:300].replace("\n", " ")
+            self.conversation_memory.append({"role": "assistant", "content": snippet})
+            # Prune history to max turns allowed
+            max_messages = self.max_history_turns * 2
+            if len(self.conversation_memory) > max_messages:
+                self.conversation_memory = self.conversation_memory[-max_messages:]
+        return envelope

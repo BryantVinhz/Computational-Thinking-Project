@@ -37,6 +37,42 @@ def simple_tokenize(text: str) -> list[str]:
     return tokens
 
 
+_REFERENCE_HEADINGS = {"references", "reference", "additional references", "related links"}
+
+
+def is_non_substantive_chunk(
+    text: str,
+    meta: dict[str, Any] | None,
+    allow_references: bool = False,
+) -> bool:
+    """Return True for standalone heading chunks or external-link reference lists with no prose."""
+    meta = meta or {}
+    if str(meta.get("chunk_type") or "").strip().lower() == "heading":
+        return True
+
+    stripped = (text or "").strip()
+    if not stripped:
+        return True
+    if stripped.startswith("#") and "\n" not in stripped:
+        return True
+
+    if not allow_references:
+        headings = [str(h).strip().lower() for h in (meta.get("heading_path") or [])]
+        if any(h in _REFERENCE_HEADINGS for h in headings):
+            return True
+
+    return False
+
+
+def _searchable_bm25_text(chunk: dict[str, Any]) -> str:
+    """Combine document title, section heading path, and chunk text for BM25 indexing."""
+    meta = chunk.get("metadata") or {}
+    title = str(meta.get("title") or "")
+    headings = " ".join(str(h) for h in (meta.get("heading_path") or []))
+    body = str(chunk.get("text") or chunk.get("text_content") or "")
+    return f"{title} {headings} {body}".strip()
+
+
 class BM25Retriever:
     """
     BM25 Techniques
@@ -71,7 +107,7 @@ class BM25Retriever:
 
         logger.info("Building BM25Okapi index for %d chunks", len(self.chunks))
         self.tokenized_corpus = [
-            simple_tokenize(c.get("text") or c.get("text_content") or "")
+            simple_tokenize(_searchable_bm25_text(c))
             for c in self.chunks
         ]
         self.bm25 = BM25Okapi(self.tokenized_corpus)
@@ -95,6 +131,11 @@ class BM25Retriever:
         target_doc_ids = set(scope.document_ids) if scope and scope.document_ids else None
         target_ver_ids = set(scope.version_ids) if scope and scope.version_ids else None
         target_formats = set(scope.file_formats) if scope and scope.file_formats else None
+        allow_references = bool(
+            scope
+            and scope.preferred_headings
+            and any("reference" in str(h).lower() for h in scope.preferred_headings)
+        )
 
         candidates: list[tuple[float, dict[str, Any]]] = []
         for idx, score in enumerate(doc_scores):
@@ -103,6 +144,10 @@ class BM25Retriever:
 
             chunk = self.chunks[idx]
             meta = chunk.get("metadata", {})
+            text_val = chunk.get("text") or chunk.get("text_content") or ""
+
+            if is_non_substantive_chunk(text_val, meta, allow_references=allow_references):
+                continue
 
             # Hard Filter: document_id
             if target_doc_ids and meta.get("document_id") not in target_doc_ids:

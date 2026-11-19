@@ -1,5 +1,6 @@
 import logging
 import math
+import torch
 import sys
 from pathlib import Path
 from typing import Any
@@ -84,7 +85,6 @@ class CrossEncoderReranker:
         """Lazy-load the CrossEncoder model with a Sigmoid activation function at the output"""
         if self._model is None:
             try:
-                import torch
                 from sentence_transformers import CrossEncoder
             except ImportError as e:
                 raise ImportError(
@@ -100,6 +100,21 @@ class CrossEncoderReranker:
             )
         return self._model
 
+    @staticmethod
+    def _format_passage_for_rerank(chunk: dict[str, Any]) -> str:
+        """Prepend document title and section heading path so Cross-Encoder sees full context."""
+        body = str(chunk.get("text") or chunk.get("content") or chunk.get("text_content") or "").strip()
+        meta = chunk.get("metadata") or {}
+        title = str(meta.get("title") or "").strip()
+        hp = [str(h).strip() for h in (meta.get("heading_path") or []) if str(h).strip()]
+        header_parts: list[str] = []
+        if title and (not hp or hp[0].lower() != title.lower()):
+            header_parts.append(title)
+        header_parts.extend(hp)
+        if header_parts:
+            return f"[{' > '.join(header_parts)}]\n{body}"
+        return body
+
     def score_pairs(self, query: str, candidate_chunks: list[dict[str, Any] | Any]) -> list[dict[str, Any]]:
         """
         Rescore each (query, chunk_text) pair using a Cross-Encoder and 
@@ -110,14 +125,29 @@ class CrossEncoderReranker:
 
         normalized_chunks = [_to_chunk_dict(c) for c in candidate_chunks]
         pairs = [
-            [query.strip(), str(c.get("text") or c.get("content") or c.get("text_content") or "")]
+            [query.strip(), self._format_passage_for_rerank(c)]
             for c in normalized_chunks
         ]
 
         model = self._get_model()
-        raw_scores = model.predict(pairs, show_progress_bar=False)
-        if hasattr(raw_scores, "tolist"):
-            raw_scores = raw_scores.tolist()
+        dev = next(model.model.parameters()).device
+        max_len = getattr(model, "max_length", None) or 512
+        raw_scores: list[float] = []
+        model.model.eval()
+        with torch.inference_mode():
+            for i in range(0, len(pairs), 32):
+                batch = pairs[i : i + 32]
+                enc = model.tokenizer(
+                    [p[0] for p in batch],
+                    [p[1] for p in batch],
+                    padding=True,
+                    truncation=True,
+                    max_length=max_len,
+                    return_tensors="pt",
+                )
+                enc = {k: v.to(dev) for k, v in enc.items()}
+                logits = model.model(**enc).logits.view(-1)
+                raw_scores.extend(torch.sigmoid(logits).float().cpu().tolist())
 
         scored_chunks: list[dict[str, Any]] = []
         for idx, (chunk, score_val) in enumerate(zip(normalized_chunks, raw_scores), start=1):

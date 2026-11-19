@@ -1,0 +1,2051 @@
+{
+  "document_id": "doc_owasp_a07_multifactor_authentication_cheat_sheet",
+  "version_id": "ver_aa0c03c9d10c",
+  "chunking_strategy": "fixed_size",
+  "chunks": [
+    {
+      "chunk_id": "ver_aa0c03c9d10c_c00000",
+      "document_id": "doc_owasp_a07_multifactor_authentication_cheat_sheet",
+      "version_id": "ver_aa0c03c9d10c",
+      "chunk_idx": 0,
+      "chunk_type": "text",
+      "text_content": "# Multifactor Authentication Cheat Sheet\n\n## Introduction\n\nMultifactor Authentication (MFA) requires evidence from at least two distinct authentication factors: something you know, something you have, and something you are. Location and other risk signals can inform authentication decisions, but do not substitute for an authentication factor, as explained in [NIST SP 800-63B-4](https://pages.nist.gov/800-63-4/sp800-63b/aal/).\n\n| Factor | Examples |\n|--------|----------|\n| [Something You Know](#something-you-know) | [Passwords and PINs](#passwords-and-pins) |\n| [Something You Have](#something-you-have) | [OTP Tokens](#one-time-password-tokens), [U2F Tokens](#universal-second-factor), [Certificates](#certificates), [Smart Cards](#smart-cards), [SMS and Phone Calls (restricted)](#sms-messages-and-phone-calls) |\n| [Something You Are](#something-you-are) | [Fingerprints, Facial Recognition, Iris Scans](#biometrics), [Behavioral Biometrics](#something-you-do) |\n\nIt should be noted that requiring multiple instances of the same authentication factor (such as needing both a password and a PIN) **does not constitute MFA** and offers minimal additional security. The factors used should be independent of each other and should not be able to be compromised by the same attack. While the following sections discuss the disadvantage and weaknesses of various different types of MFA, in many cases these are only relevant against targeted attacks. **Any MFA is better than no MFA**.\n\n## Advantages\n\nThe most common way that user accounts get compromised on applications is through weak, re-used or stolen passwords. Despite any technical security controls implemented on the application, users are liable to choose weak passwords, or to use the same password on different applications. As developers or system administrators, it should be assumed that users' passwords will be compromised at some point, and the system should be designed in order to defend against this.\n\nMFA is by far the best defense against the majority of password-related attacks, including brute-force, [credential stuffing](Credential_Stuffing_Prevention_Cheat_Sheet.md) and password spraying, with analysis by Microsoft suggesting that it would have stopped [99.9% of account compromises](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Your-Pa-word-doesn-t-matter/ba-p/731984).\n\n## Disadvantages\n\nThe biggest disadvantage of MFA is the increase in management complexity for both administrators and end users. Many less technical users may find it difficult to configure and use MFA. Additionally, there are a number of other common issues encountered:\n\n- Types of MFA that require users to have specific hardware can introduce significant costs and administrative overheads.\n- Users may become locked out of their accounts if they lose or are unable to use their other factors.\n- MFA introduces additional complexity into the application.\n- Many",
+      "token_count": 650,
+      "chunk_strategy": "fixed_size",
+      "heading_path": [
+        "Multifactor Authentication Cheat Sheet"
+      ]
+    },
+    {
+      "chunk_id": "ver_aa0c03c9d10c_c00001",
+      "document_id": "doc_owasp_a07_multifactor_authentication_cheat_sheet",
+      "version_id": "ver_aa0c03c9d10c",
+      "chunk_idx": 1,
+      "chunk_type": "text",
+      "text_content": "Types of MFA that require users to have specific hardware can introduce significant costs and administrative overheads.\n- Users may become locked out of their accounts if they lose or are unable to use their other factors.\n- MFA introduces additional complexity into the application.\n- Many MFA solutions add external dependencies to systems, which can introduce security vulnerabilities or single points of failure.\n- Processes implemented to allow users to bypass or reset MFA may be exploitable by attackers.\n- Requiring MFA may prevent some users from accessing the application.\n\n## Quick Recommendations\n\nExactly when and how MFA is implemented in an application will vary on a number of different factors, including the threat model of the application, the technical level of the users, and the level of administrative control over the users. These need to be considered on a per-application basis.\n\nHowever, the following recommendations are generally appropriate for most applications, and provide an initial starting point to consider.\n\n- Require some form of MFA for all users.\n- Provide the option for users to enable MFA on their accounts using [TOTP](#software-otp-tokens).\n- Require MFA for administrative or other high privileged users.\n- Implement a secure procedure to allow users to reset their MFA.\n- Consider [MFA as a service](#consider-using-a-third-party-service).\n\n## Implementing MFA\n\nMFA is a critical security control, and is recommended for all applications. The following sections provide guidance on how to implement MFA, and the considerations that should be taken into account.\n\n### Regulatory and Compliance Requirements\n\nMany industries and countries have regulations that require the use of MFA. This is particularly common in the finance and healthcare sectors, and is often required in order to comply with the General Data Protection Regulation (GDPR) in the European Union. It is important to consider these requirements when implementing MFA.\n\n### When to Require MFA\n\nThe most important place to require MFA on an application is when the user logs in. However, depending on the functionality available, it may also be appropriate to require MFA for performing sensitive actions, such as:\n\n- Changing passwords or security questions.\n- Changing the email address associated with the account.\n- Disabling MFA.\n- Elevating a user session to an administrative session.\n\nIf the application provides multiple ways for a user to authenticate these should all require MFA, or have other protections implemented. A common area that is missed is if the application provides a separate API that can be used to login, or has an associated mobile application.\n\n### One-Time Password (OTP) Handling and Storage\n\nOTPs are authentication secrets and should be handled with password-like hygiene. While their security traits differ from long-lived passwords, improper handling can still lead to user account compromise.\n\nAt a minimum, OTP implementations SHOULD:\n\n- Enforce a short time-to-live (TTL)\n- Ensure OTPs are single use\n- Apply strict attempt limits\n- Invalidate the OTP on successful verification\n\nOTP implementations SHOULD NOT:\n\n- Log OTP values\n- Store OTPs in long-term plaintext form\n\nTo further reduce risk and limit exposure, it is RECOMMENDED to:\n\n- Generate OTPs using a cryptographically secure random number generator\n- Consider 8-digit or longer codes where usability allows\n- On \"resend\", generate a new OTP and overwrite the old record",
+      "token_count": 647,
+      "chunk_strategy": "fixed_size",
+      "heading_path": [
+        "Multifactor Authentication Cheat Sheet",
+        "Disadvantages"
+      ]
+    },
+    {
+      "chunk_id": "ver_aa0c03c9d10c_c00002",
+      "document_id": "doc_owasp_a07_multifactor_authentication_cheat_sheet",
+      "version_id": "ver_aa0c03c9d10c",
+      "chunk_idx": 2,
+      "chunk_type": "text",
+      "text_content": "reduce risk and limit exposure, it is RECOMMENDED to:\n\n- Generate OTPs using a cryptographically secure random number generator\n- Consider 8-digit or longer codes where usability allows\n- On \"resend\", generate a new OTP and overwrite the old record\n\n#### Hashing OTPs\n\nHashing OTPs is still recommended, but for different reasons than password hashing. OTPs typically have a very small keyspace (for example, ~1 million possibilities for a 6-digit code), which means a database attacker can brute-force any OTP hash quickly.\n\nAs a result, hashing OTPs does not provide strong offline attack resistance in the way password hashing does.\n\nHowever, hashing remains useful to:\n\n- Prevent accidental disclosure via logs, metrics, or debugging tools\n- Reduce blast radius if the database is briefly exposed during the OTP’s validity window\n- Enforce good secret-handling discipline and avoid plaintext storage by default\n\nThe goal is short-term exposure protection, not long-term cryptographic secrecy.\n\n### Improving User Experience\n\n#### Risk Based Authentication\n\nHaving to frequently login with MFA creates an additional burden for users, and may cause them to disable MFA on the application. Risk based authentication can be used to reduce the frequency of MFA prompts, by only requiring MFA when the user is performing an action that is considered to be high risk. Some examples of this include:\n\n- Requiring MFA when the user logs in from a new device or location.\n- Requiring MFA when the user logs in from a location that is considered to be high risk.\n- Using corporate IP ranges or [geolocation](#geolocation) as risk signals when deciding whether to require additional authentication.\n\n#### Passkeys\n\nPasskeys can provide phishing-resistant MFA by combining possession of the credential private key with local [PIN](#passwords-and-pins) or [biometric](#biometrics) verification. When using passkeys as MFA, require user verification and [validate the returned user-verification flag on the server](https://www.w3.org/TR/webauthn-3/#sctn-verifying-assertion); a touch confirming user presence alone is not a second factor. The credential key pair is created during [registration](https://www.w3.org/TR/webauthn-3/#sctn-registering-a-new-credential); authentication uses the existing private key to sign a challenge. For registration, verification, and recovery guidance, see the [Passkey Security Cheat Sheet](Passkey_Security_Cheat_Sheet.md).\n\n### Failed Login Attempts\n\nWhen a user enters their password, but fails to authenticate using a second factor, this could mean one of two things:\n\n- The user has lost their second factor, or doesn't have it available (for example, they don't have their mobile phone, or have no signal).\n- The user's password has been compromised.\n\nThere are a number of steps that should be taken when this occurs:\n\n- Prompt the user to try another form of MFA.\n- Allow the user to attempt to [reset their MFA](#resetting-mfa).\n- Notify the user of the failed login attempt, and encourage them to change their password if they don't recognize it.\n    - The notification should include the time,",
+      "token_count": 650,
+      "chunk_strategy": "fixed_size",
+      "heading_path": [
+        "Multifactor Authentication Cheat Sheet",
+        "Implementing MFA",
+        "One-Time Password (OTP) Handling and Storage"
+      ]
+    },
+    {
+      "chunk_id": "ver_aa0c03c9d10c_c00003",
+      "document_id": "doc_owasp_a07_multifactor_authentication_cheat_sheet",
+      "version_id": "ver_aa0c03c9d10c",
+      "chunk_idx": 3,
+      "chunk_type": "text",
+      "text_content": "the user to attempt to [reset their MFA](#resetting-mfa).\n- Notify the user of the failed login attempt, and encourage them to change their password if they don't recognize it.\n    - The notification should include the time, browser and geographic location of the login attempt.\n    - This should be displayed next time they login, and optionally emailed to them as well.\n\n### Resetting MFA\n\nOne of the biggest challenges with implementing MFA is handling users who forget or lose their additional factors. There are many ways this could happen, such as:\n\n- Re-installing a workstation without backing up digital certificates.\n- Wiping or losing a phone without backing up OTP codes.\n- Changing mobile numbers.\n\nIn order to prevent users from being locked out of the application, there needs to be a mechanism for them to regain access to their account if they can't use their existing MFA; however it is also crucial that this doesn't provide an attacker with a way to bypass MFA and hijack their account.\n\nThere is no definitive \"best way\" to do this, and what is appropriate will vary hugely based on the security of the application, and also the level of control over the users. Solutions that work for a corporate application where all the staff know each other are unlikely to be feasible for a publicly available application with thousands of users all over the world. Every recovery method has its own advantages and disadvantages, and these need to be evaluated in the context of the application.\n\nSome suggestions of possible methods include:\n\n- Providing the user with a number of single-use recovery codes when they first setup MFA.\n- Requiring the user to setup multiple types of MFA (such as a digital certificate, OTP core and phone number for SMS), so that they are unlikely to lose access to all of them at once.\n- Mailing a one-use recovery code (or new hardware token) to the user's registered address.\n- Requiring the user contact the support team and having a rigorous process in place to verify their identity.\n- Requiring another trusted user to vouch for them.\n\n### Changing MFA Factors\n\nUsers may need to update their authentication factors, such as changing a phone number, migrating to a new authenticator app, or replacing a lost hardware token. Because attackers can exploit this process to take over accounts, it must be strictly secured.\n\nBest practices include:\n\n- Require reauthentication with an existing enrolled factor before allowing changes.\n- Do not rely solely on the active session, as it may be hijacked.\n- Treat factor replacement as a high-risk action and apply risk-based checks (e.g., new device, unusual location).\n- Notify the user through out-of-band channels (such as email or push notification) whenever an MFA factor is changed.\n- Consider applying delays or step-up verification for high-value accounts.\n\nThis ensures that even if a session is compromised, attackers cannot silently replace the user’s MFA factors and lock the legitimate user out.\n\n### Consider Using a Third Party Service\n\nThere are a number of third party services that provide MFA as a service. These can be a good option for applications that don't have the resources to implement MFA themselves, or for applications that require a high level of assurance",
+      "token_count": 650,
+      "chunk_strategy": "fixed_size",
+      "heading_path": [
+        "Multifactor Authentication Cheat Sheet",
+        "Implementing MFA",
+        "Failed Login Attempts"
+      ]
+    },
+    {
+      "chunk_id": "ver_aa0c03c9d10c_c00004",
+      "document_id": "doc_owasp_a07_multifactor_authentication_cheat_sheet",
+      "version_id": "ver_aa0c03c9d10c",
+      "chunk_idx": 4,
+      "chunk_type": "text",
+      "text_content": "Using a Third Party Service\n\nThere are a number of third party services that provide MFA as a service. These can be a good option for applications that don't have the resources to implement MFA themselves, or for applications that require a high level of assurance in their MFA. However, it is important to consider the security of the third party service, and the implications of using it. For example, if the third party service is compromised, it could allow an attacker to bypass MFA on all of the applications that use it.\n\n## Something You Know\n\nKnowledge-based, the most common type of authentication is based on something the users knows - typically a password. The biggest advantage of this factor is that it has very low requirements for both the developers and the end user, as it does not require any special hardware, or integration with other services.\n\n### Passwords and PINs\n\nPasswords and PINs are the most common form of authentication due to the simplicity of implementing them. The [Authentication Cheat Sheet](Authentication_Cheat_Sheet.md#implement-proper-password-strength-controls) has guidance on how to implement a strong password policy, and the [Password Storage Cheat Sheet](Password_Storage_Cheat_Sheet.md) has guidance on how to securely store passwords. Most multifactor authentication systems make use of a password, as well as at least one other factor.\n\n#### Pros\n\n- Simple and well understood.\n- Native support in every authentication framework.\n- Easy to implement.\n\n#### Cons\n\n- Users are prone to choosing weak passwords.\n- Passwords are commonly re-used between systems.\n- Susceptible to phishing.\n\n### Security Questions\n\n**Security questions are no longer recognized as an acceptable authentication factor** per [NIST SP 800-63](https://pages.nist.gov/800-63-3/sp800-63b.html). Account recovery is just an alternate way to authenticate so it should be no weaker than regular authentication.\n\n#### Pros\n\n- None that are not also present in passwords.\n\n#### Cons\n\n- No longer recognized as an acceptable authentication factor.\n- Questions often have easily guessable answers.\n- Answers to questions can often be obtained from social media or other sources.\n- Questions must be carefully chosen so that users will remember answers years later.\n- Susceptible to phishing.\n\n## Something You Have\n\nPossession-based authentication is based on the user having a physical or digital item that is required to authenticate. This is the most common form of MFA, and is often used in conjunction with passwords. The most common types of possession-based authentication are hardware and software tokens, and digital certificates. If properly implemented then this can be significantly more difficult for a remote attacker to compromise; however it also creates an additional administrative burden on the user, as they must keep the authentication factor with them whenever they wish to use it.\n\n### One-Time Password Tokens\n\nOne-Time Password (OTP) tokens are a form of possession-based authentication, where the user is required to submit a constantly changing numeric code in order to authenticate. The most common of which is Time-based One-Time Password (TOTP) tokens, which can be both hardware and software based.\n\n#### Hardware OTP Tokens\n\nHardware OTP Tokens generate",
+      "token_count": 650,
+      "chunk_strategy": "fixed_size",
+      "heading_path": [
+        "Multifactor Authentication Cheat Sheet",
+        "Implementing MFA",
+        "Consider Using a Third Party Service"
+      ]
+    },
+    {
+      "chunk_id": "ver_aa0c03c9d10c_c00005",
+      "document_id": "doc_owasp_a07_multifactor_authentication_cheat_sheet",
+      "version_id": "ver_aa0c03c9d10c",
+      "chunk_idx": 5,
+      "chunk_type": "text",
+      "text_content": "to submit a constantly changing numeric code in order to authenticate. The most common of which is Time-based One-Time Password (TOTP) tokens, which can be both hardware and software based.\n\n#### Hardware OTP Tokens\n\nHardware OTP Tokens generate a constantly changing numeric codes, which must be submitted when authenticating. Most well-known of these is the [RSA SecureID](https://en.wikipedia.org/wiki/RSA_SecurID), which generates a six digit number that changes every 60 seconds.\n\n##### Pros\n\n- As the tokens are separate physical devices, they are almost impossible for an attacker to compromise remotely.\n- Tokens can be used without requiring the user to have a mobile phone or other device.\n\n##### Cons\n\n- Deploying physical tokens to users is expensive and complicated.\n- If a user loses their token it could take a significant amount of time to purchase and ship them a new one.\n- Some implementations require a backend server, which can introduce new vulnerabilities as well as a single point of failure.\n- Stolen tokens can be used without a PIN or device unlock code.\n- Susceptible to phishing (although short-lived).\n\n#### Software OTP Tokens\n\nA cheaper and easier alternative to hardware tokens is using software to generate Time-based One-Time Password (TOTP) codes. This would typically involve the user installing a TOTP application on their mobile phone, and then scanning a QR code provided by the web application which provides the initial seed. The authenticator app generates a numeric code using a configured time step; [RFC 6238 recommends a default of 30 seconds](https://www.rfc-editor.org/rfc/rfc6238.html#section-5.2). The app and server must use the same time-step value.\n\nMost websites use standardized TOTP tokens, allowing the user to install any authenticator app that supports TOTP. However, a small number of applications use their own variants of this (such as Symantec), which requires the users to install a specific app in order to use the service. This should be avoided in favor of a standards-based approach.\n\n##### Pros\n\n- The absence of physical tokens greatly reduces the cost and administrative overhead of implementing the system.\n- When users lose access to their TOTP app, a new one can be configured without needing to ship a physical token to them.\n- TOTP is widely used, and many users will already have at least one TOTP app installed.\n- A screen lock reduces theft risk but does not guarantee protection if the phone is stolen while unlocked. Enable authenticator-app access protection where available; for example, [Google Authenticator’s Privacy Screen](https://support.google.com/accounts/answer/1066447?hl=en-rd) requires device verification before app use.\n\n##### Cons\n\n- TOTP apps are usually installed on mobile devices, which are vulnerable to compromise.\n- The TOTP app may be installed on the same mobile device (or workstation) that is used to authenticate.\n- Users may store the backup seeds insecurely.\n- Not all users have mobile devices to use with TOTP.\n- If the user's mobile device is lost, stolen or out of battery, they",
+      "token_count": 650,
+      "chunk_strategy": "fixed_size",
+      "heading_path": [
+        "Multifactor Authentication Cheat Sheet",
+        "Something You Have",
+        "One-Time Password Tokens"
+      ]
+    },
+    {
+      "chunk_id": "ver_aa0c03c9d10c_c00006",
+      "document_id": "doc_owasp_a07_multifactor_authentication_cheat_sheet",
+      "version_id": "ver_aa0c03c9d10c",
+      "chunk_idx": 6,
+      "chunk_type": "text",
+      "text_content": "device (or workstation) that is used to authenticate.\n- Users may store the backup seeds insecurely.\n- Not all users have mobile devices to use with TOTP.\n- If the user's mobile device is lost, stolen or out of battery, they will be unable to authenticate.\n- Susceptible to phishing (although short-lived).\n\n### Universal Second Factor\n\nHardware U2F tokens\n\nUniversal Second Factor (U2F) is a standard for USB/NFC hardware tokens that implement challenge-response based authentication, rather than requiring the user to manually enter the code. This would typically be done by the user pressing a button on the token, or tapping it against their NFC reader. The most common U2F token is the [YubiKey](https://www.yubico.com/products/yubikey-hardware/).\n\n#### Pros\n\n- U2F tokens are resistant to phishing since the private key never leaves the token.\n- Users can simply press a button rather than typing in a code.\n- As the tokens are separate physical devices, they are almost impossible for an attacker to compromise remotely.\n- U2F is natively supported by a number of major web browsers.\n- U2F tokens can be used without requiring the user to have a mobile phone or other device.\n\n#### Cons\n\n- As with hardware OTP tokens, the use of physical tokens introduces significant costs and administrative overheads.\n- Stolen tokens can be used without a PIN or device unlock code.\n- As the tokens are usually connected to the workstation via USB, users are more likely to forget them.\n\n### Certificates\n\nDigital certificates are files that are stored on the user's device which are automatically provided alongside the user's password when authenticating. The most common type is X.509 certificates more commonly known as [client certificates](Transport_Layer_Security_Cheat_Sheet.md#client-certificates-and-mutual-tls). Certificates are supported by all major web browsers, and once installed require no further interaction from the user. The certificates should be linked to an individual's user account in order to prevent users from trying to authenticate against other accounts.\n\n#### Pros\n\n- There is no need to purchase and manage hardware tokens.\n- Once installed, certificates are very simple for users.\n- Certificates can be centrally managed and revoked.\n- Resistant to phishing.\n\n#### Cons\n\n- Using digital certificates requires a backend Private Key Infrastructure (PKI).\n- Installing certificates can be difficult for users, particularly in a highly restricted environment.\n- Enterprise proxy servers which perform SSL decryption will prevent the use of certificates.\n- The certificates are stored on the user's workstation, and as such can be stolen if their system is compromised.\n\n### Smart Cards\n\nSmartcards are credit-card size cards with a chip containing a digital certificate for the user, which is unlocked with a PIN. They are commonly used for operating system authentication, but are rarely used in web applications.\n\n#### Pros\n\n- Stolen smartcards cannot be used without the PIN.\n- Smartcards can be used across multiple applications and systems.\n- Resistant to phishing.\n\n#### Cons\n\n- Managing and distributing smartcards has the same costs and overheads as hardware tokens.\n- Smartcards are not natively supported by modern browsers, so require third party software.\n- Although most",
+      "token_count": 649,
+      "chunk_strategy": "fixed_size",
+      "heading_path": [
+        "Multifactor Authentication Cheat Sheet",
+        "Something You Have",
+        "One-Time Password Tokens",
+        "Software OTP Tokens",
+        "Cons"
+      ]
+    },
+    {
+      "chunk_id": "ver_aa0c03c9d10c_c00007",
+      "document_id": "doc_owasp_a07_multifactor_authentication_cheat_sheet",
+      "version_id": "ver_aa0c03c9d10c",
+      "chunk_idx": 7,
+      "chunk_type": "text",
+      "text_content": "multiple applications and systems.\n- Resistant to phishing.\n\n#### Cons\n\n- Managing and distributing smartcards has the same costs and overheads as hardware tokens.\n- Smartcards are not natively supported by modern browsers, so require third party software.\n- Although most business-class laptops have smartcard readers built-in, home systems often do not.\n- The use of smartcards requires backend PKIs.\n\n### SMS Messages and Phone Calls\n\n> [!WARNING]\n> NIST SP 800-63B-4 designates SMS and PSTN-delivered codes as a *restricted* authenticator because of SS7 interception, SIM-swap, and number-porting attacks. Do not use SMS for high-value or PII-handling applications. Where it is the only available factor, document the risk acceptance, enforce per-account rate limits, monitor for SIM-swap signals, and plan migration to TOTP, push notifications, or WebAuthn/FIDO2.\n\nSMS messages or phone calls can be used to provide users with a single-use code that they must submit as an additional factor. Due to the risks posed by these methods, they should not be used to protect applications that hold Personally Identifiable Information (PII) or where there is financial risk. e.g. healthcare and banking. [NIST SP 800-63B](https://pages.nist.gov/800-63-3/sp800-63b.html) classifies these as restricted authenticators and discourages their use for applications containing PII.\n\n#### Pros\n\n- Relatively simple to implement.\n- Requires user to link their account to a mobile number.\n\n#### Cons\n\n- Requires the user to have a mobile device or landline.\n- Require user to have signal or internet access to receive the call or message.\n- Calls and SMS messages may cost money to send need to protect against attackers requesting a large number of messages to exhaust funds.\n- Susceptible to SIM swapping attacks.\n- SMS messages may be received on the same device the user is authenticating from.\n- Susceptible to phishing.\n- SMS may be previewed when the device is locked.\n- SMS may be read by malicious or insecure applications.\n\n### Email\n\nEmail verification requires that the user enters a code or clicks a link sent to their email address. There is some debate as to whether email constitutes a form of MFA, because if the user does not have MFA configured on their email account, it simply requires knowledge of the user's email password (which is often the same as their application password). However, it is included here for completeness.\n\n#### Pros\n\n- Very easy to implement.\n- No requirements for separate hardware or a mobile device.\n\n#### Cons\n\n- Relies entirely on the security of the email account, which often lacks MFA.\n- Email passwords are commonly the same as application passwords.\n- Provides no protection if the user's email is compromised first.\n- Email may be received by the same device the user is authenticating from.\n- Susceptible to phishing.\n\n## Something You Are\n\nInherence-based authentication is based on the physical attributes of the user. This is less common for web applications as it requires the user to have specific hardware, and is often considered to be the most invasive in terms of privacy. However, it is commonly used for operating system",
+      "token_count": 650,
+      "chunk_strategy": "fixed_size",
+      "heading_path": [
+        "Multifactor Authentication Cheat Sheet",
+        "Something You Have",
+        "Smart Cards",
+        "Pros"
+      ]
+    },
+    {
+      "chunk_id": "ver_aa0c03c9d10c_c00008",
+      "document_id": "doc_owasp_a07_multifactor_authentication_cheat_sheet",
+      "version_id": "ver_aa0c03c9d10c",
+      "chunk_idx": 8,
+      "chunk_type": "text",
+      "text_content": "is based on the physical attributes of the user. This is less common for web applications as it requires the user to have specific hardware, and is often considered to be the most invasive in terms of privacy. However, it is commonly used for operating system authentication, and is also used in some mobile applications.\n\n### Biometrics\n\nThe are a number of common types of biometrics that are used, including:\n\n- Fingerprint scans\n- Facial recognition\n- Iris scans\n- Voice recognition\n\n#### Pros\n\n- Well-implemented biometrics are hard to spoof, and require a targeted attack.\n- Fast and convenient for users.\n\n#### Cons\n\n- Manual enrollment is required for the user.\n- Custom (sometimes expensive) hardware is often required to read biometrics.\n- Privacy concerns: Sensitive physical information must be stored about users.\n- If compromised, biometric data can be difficult to change.\n- Hardware may be vulnerable to additional attack vectors.\n\n## Somewhere You Are\n\nLocation can inform access restrictions and risk-based authentication decisions. It is not an independent authentication factor: a password combined with a trusted IP address or location does not constitute MFA. [NIST SP 800-63B-4](https://pages.nist.gov/800-63-4/sp800-63b/aal/) explicitly distinguishes these risk signals from authentication factors.\n\n### Source IP Address\n\nThe source IP address the user is connecting from can be used as a risk signal or access restriction, typically in an allow-list based approach. This could either be based on a static list (such as corporate office ranges) or a dynamic list (such as previous IP addresses the user has authenticated from).\n\n#### Pros\n\n- Very easy for users.\n- Requires minimal configuration and management from administrative staff.\n\n#### Cons\n\n- Doesn't provide any protection if the user's system is compromised.\n- Doesn't provide any protection against rogue insiders.\n- Trusted IP addresses must be carefully restricted (for example, if the open guest Wi-Fi uses the main corporate IP range).\n\n### Geolocation\n\nRather than using the exact IP address of the user, the geographic location that the IP address is registered to can be used. This is less precise, but may be more feasible to implement in environments where IP addresses are not static. A common usage would be to require additional authentication factors when an authentication attempt is made from outside of the user's normal country.\n\n#### Pros\n\n- Very easy for users.\n\n#### Cons\n\n- Doesn't provide any protection if the user's system is compromised.\n- Doesn't provide any protection against rogue insiders.\n- Easy for an attacker to bypass by obtaining IP addresses in the trusted country or location.\n- Privacy features such as Apple's [iCloud Private Relay](https://support.apple.com/en-us/102602) and VPNs can make this less accurate.\n\n### Geofencing\n\nGeofencing is a more precise version of geolocation, which allows the user to define a specific area in which they are allowed to authenticate. This is often used in mobile applications, where the user's location can be determined with a high degree of accuracy using geopositioning hardware like GPS.",
+      "token_count": 647,
+      "chunk_strategy": "fixed_size",
+      "heading_path": [
+        "Multifactor Authentication Cheat Sheet",
+        "Something You Are"
+      ]
+    },
+    {
+      "chunk_id": "ver_aa0c03c9d10c_c00009",
+      "document_id": "doc_owasp_a07_multifactor_authentication_cheat_sheet",
+      "version_id": "ver_aa0c03c9d10c",
+      "chunk_idx": 9,
+      "chunk_type": "text",
+      "text_content": "which allows the user to define a specific area in which they are allowed to authenticate. This is often used in mobile applications, where the user's location can be determined with a high degree of accuracy using geopositioning hardware like GPS.\n\n#### Pros\n\n- Very easy for users.\n- Provides a high level of protection against remote attackers.\n\n#### Cons\n\n- Doesn't provide any protection if the user's system is compromised.\n- Doesn't provide any protection against rogue insiders.\n- Doesn't provide any protection against attackers who are physically close to the trusted location.\n\n## Something You Do\n\nBehavioral biometrics, such as keystroke patterns or gait, are a form of \"something you are,\" not a separate authentication factor. Under [NIST's biometric requirements](https://pages.nist.gov/800-63-4/sp800-63b.html#biometric_use), biometric comparison must be combined with an authenticated physical authenticator. General activity signals, such as login times or navigation patterns, can inform risk decisions but do not by themselves constitute MFA.\n\n### Behavioral Profiling\n\nBehavioral profiling is based on the way the user interacts with the application, such as the time of day they log in, the devices they use, and the way they navigate the application. This is rapidly becoming more common in web applications when combined with [Risk Based Authentication](#risk-based-authentication) and [User and Entity Behavior Analytics](https://learn.microsoft.com/en-us/azure/sentinel/identify-threats-with-entity-behavior-analytics) (UEBA) systems.\n\n#### Pros\n\n- Doesn't require user interaction.\n- Can be used to continuously authenticate the user.\n- Combines well with other factors to increase the level of assurance in the user's identity.\n\n#### Cons\n\n- Early implementations of behavioral profiling were often inaccurate and caused a significant number of false positives.\n- Requires large amounts of data and processing power to analyze the user's behavior.\n- May be difficult to implement in environments where the user's behavior is likely to change frequently.\n\n### Keystroke & Mouse Dynamics\n\nKeystroke and mouse dynamics are based on the way the user types and moves their mouse. For example, the time between key presses, the time between key presses and releases, and the speed and acceleration of the mouse. Largely theoretical, and not widely used in practice.\n\n#### Pros\n\n- Can be used without requiring any additional hardware.\n- Can be used without requiring any additional interaction from the user.\n- Can be used to continuously authenticate the user.\n- Can be used to detect when the user is not the one using the system.\n- Can be used to detect when the user is under duress.\n- Can be used to detect when the user is not in a fit state to use the system.\n\n#### Cons\n\n- Unlikely to be accurate enough to be used as a standalone factor.\n- May be spoofed by AI or other advanced attacks.\n\n### Gait Analysis\n\nGait analysis is based on the way the user walks using cameras and sensors. They are often used in physical security systems, but are not widely used in web applications. Mobile device applications",
+      "token_count": 650,
+      "chunk_strategy": "fixed_size",
+      "heading_path": [
+        "Multifactor Authentication Cheat Sheet",
+        "Somewhere You Are",
+        "Geofencing"
+      ]
+    },
+    {
+      "chunk_id": "ver_aa0c03c9d10c_c00010",
+      "document_id": "doc_owasp_a07_multifactor_authentication_cheat_sheet",
+      "version_id": "ver_aa0c03c9d10c",
+      "chunk_idx": 10,
+      "chunk_type": "text",
+      "text_content": "be spoofed by AI or other advanced attacks.\n\n### Gait Analysis\n\nGait analysis is based on the way the user walks using cameras and sensors. They are often used in physical security systems, but are not widely used in web applications. Mobile device applications may be able to use the accelerometer to detect the user's gait and use this as an additional factor, however this is still largely theoretical.\n\n#### Pros\n\n- Very difficult to spoof.\n- May be used without requiring any additional interaction from the user.\n\n#### Cons\n\n- Requires specific hardware to implement.\n- Use outside of physical security systems is not widely tested.\n\n## Adaptive or Risk-Based Authentication\n\nAdaptive (or Risk-Based) Authentication adjusts authentication requirements dynamically based on the context of the login attempt. This technique helps improve user experience while strengthening security by applying additional verification steps only when risk is elevated.\n\nCommon signals used to determine risk include:\n\n- Geolocation and IP reputation\n- Device fingerprinting\n- Time of access (e.g., 3 AM login)\n- Behavioral biometrics (e.g., typing speed or mouse movements)\n- Known compromised credentials\n\nIf risk is detected, the system may:\n\n- Prompt for an additional factor (e.g., OTP)\n- Enforce re-authentication\n- Deny access and trigger alerting or account protection flows\n\nFor more details on when to trigger reauthentication after high-risk events—such as account recovery or suspicious activity—see the [Reauthentication After Risk Events](Authentication_Cheat_Sheet.md#re-authentication-after-risk-events) section in the Authentication Cheat Sheet\n\nThis method is widely used in modern authentication systems to balance usability and security. However, developers must ensure that risk signals cannot be spoofed and that fallback mechanisms are not weaker than the primary MFA methods.\n\n**Example Use Case**: A user logs in from a trusted device in a usual location — no additional prompt is needed. But if they log in from a new country using a Tor exit node, the system requires SMS verification or triggers an account lock until further verification.\n\n## MFA Attack Patterns and Mitigations\n\nAttackers increasingly target weaknesses in MFA deployments and authentication workflows rather than attempting to defeat MFA itself. The following sections describe common attack patterns and recommended mitigations based on guidance from [NIST SP 800-63B](https://pages.nist.gov/800-63-4/sp800-63b.html), [CISA's Implementing Phishing-Resistant MFA](https://www.cisa.gov/sites/default/files/publications/fact-sheet-implementing-phishing-resistant-mfa-508c.pdf), the [FIDO Alliance Specifications](https://fidoalliance.org/specifications/), and [OAuth 2.0 Security Best Current Practice (RFC 9700)](https://datatracker.ietf.org/doc/rfc9700/).\n\n### General Mitigation: Primary Phishing-Resistant Control\n\nPrefer phishing-resistant authenticators (FIDO2/WebAuthn), which bind authentication to the legitimate origin and resist credential theft, MFA fatigue, and reverse-proxy phishing. See the Passkeys section for additional guidance.\n\n### MFA Fatigue (Push Notification Bombing)\n\nAttackers repeatedly send MFA push notifications, often combined with social engineering,",
+      "token_count": 650,
+      "chunk_strategy": "fixed_size",
+      "heading_path": [
+        "Multifactor Authentication Cheat Sheet",
+        "Something You Do",
+        "Keystroke & Mouse Dynamics",
+        "Cons"
+      ]
+    },
+    {
+      "chunk_id": "ver_aa0c03c9d10c_c00011",
+      "document_id": "doc_owasp_a07_multifactor_authentication_cheat_sheet",
+      "version_id": "ver_aa0c03c9d10c",
+      "chunk_idx": 11,
+      "chunk_type": "text",
+      "text_content": "authentication to the legitimate origin and resist credential theft, MFA fatigue, and reverse-proxy phishing. See the Passkeys section for additional guidance.\n\n### MFA Fatigue (Push Notification Bombing)\n\nAttackers repeatedly send MFA push notifications, often combined with social engineering, hoping the user eventually approves one.\n\n#### Mitigations\n\n- Require challenge-response push authentication (for example, number matching) to prevent blind approval of authentication requests.\n- Rate-limit or cap push notifications to prevent repeated prompt abuse.\n- Monitor for anomalous authentication activity, such as multiple push prompts in a short period or new-device token reuse.\n\n### Real-Time Phishing Using Reverse Proxies\n\nAttackers use reverse-proxy phishing frameworks (such as Evilginx, Modlishka, and Muraena) to present convincing copies of legitimate login pages. These frameworks relay authentication traffic between the user and the legitimate service, allowing attackers to capture credentials and session tokens in real-time.\n\n#### Mitigations\n\n- Monitor for anomalous authentication and session activity that may indicate credential or session compromise (for example, impossible travel, new ASN, or sudden MFA method changes).\n- Use phishing-resistant authenticators (see Passkeys section), which bind authentication to the legitimate origin and are resistant to real-time phishing attacks.\n\n### SIM Swap and Phone Number Takeover\n\nAttackers convince a telecommunications provider to transfer a victim's phone number, allowing interception of SMS or voice-based one-time passwords.\n\n#### Mitigations\n\n- Encourage carrier account PINs or port-out protection where available to reduce unauthorized number transfers.\n- Monitor for unexpected phone-number changes or SIM replacement events.\n- Prefer phishing-resistant authenticators or TOTP instead of SMS/voice OTP.\n- See also: [SMS Messages and Phone Calls](#sms-messages-and-phone-calls).\n\n### Device Binding Bypass\n\nAttackers attempt to bypass device-based authentication by extracting exportable cryptographic keys or replaying cloned device attributes when authenticators are not hardware-protected.\n\n#### Mitigations\n\n- Prefer hardware-backed, non-exportable cryptographic keys (for example, platform authenticators backed by TPM, Secure Enclave, or Android StrongBox).\n- Validate authenticator attestation where required by organizational policy.\n\n### MFA Downgrade Attacks\n\nAttackers attempt to force authentication through legacy protocols or authentication flows that do not enforce the same MFA requirements as modern authentication methods. Weak fallback mechanisms or legacy authentication endpoints can allow users to authenticate with lower-assurance factors than intended.\n\n#### Mitigations\n\n- Disable legacy authentication protocols and endpoints that cannot enforce MFA consistently.\n- Prevent fallback from phishing-resistant authenticators to lower-assurance authentication methods unless required by a documented security policy.\n- Follow OAuth 2.0 Security Best Current Practice (RFC 9700) to prevent OAuth protocol-level downgrade and mix-up attacks.\n\n## References\n\n- [NIST SP 800-63B-4: Authentication and Authenticator Management](https://pages.nist.gov/800-63-4/sp800-63b.html)\n- [W3C Web Authentication Level 3](https://www.w3.org/TR/webauthn-3/)\n- [RFC 6238: Time-Based One-Time Password",
+      "token_count": 632,
+      "chunk_strategy": "fixed_size",
+      "heading_path": [
+        "Multifactor Authentication Cheat Sheet",
+        "MFA Attack Patterns and Mitigations",
+        "General Mitigation: Primary Phishing-Resistant Control"
+      ]
+    },
+    {
+      "chunk_id": "ver_aa0c03c9d10c_c00012",
+      "document_id": "doc_owasp_a07_multifactor_authentication_cheat_sheet",
+      "version_id": "ver_aa0c03c9d10c",
+      "chunk_idx": 12,
+      "chunk_type": "text",
+      "text_content": "3](https://www.w3.org/TR/webauthn-3/)\n- [RFC 6238: Time-Based One-Time Password",
+      "token_count": 32,
+      "chunk_strategy": "fixed_size",
+      "heading_path": [
+        "Multifactor Authentication Cheat Sheet",
+        "References"
+      ]
+    }
+  ],
+  "chunk_sources": [
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00000_s000",
+      "chunk_id": "ver_aa0c03c9d10c_c00000",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00000",
+      "source_order": 0,
+      "start_offset": 0,
+      "end_offset": 40
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00000_s001",
+      "chunk_id": "ver_aa0c03c9d10c_c00000",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00001",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 15
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00000_s002",
+      "chunk_id": "ver_aa0c03c9d10c_c00000",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00002",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 370
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00000_s003",
+      "chunk_id": "ver_aa0c03c9d10c_c00000",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00003",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 538
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00000_s004",
+      "chunk_id": "ver_aa0c03c9d10c_c00000",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00004",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 515
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00000_s005",
+      "chunk_id": "ver_aa0c03c9d10c_c00000",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00005",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 13
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00000_s006",
+      "chunk_id": "ver_aa0c03c9d10c_c00000",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00006",
+      "source_order": 6,
+      "start_offset": 0,
+      "end_offset": 471
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00000_s007",
+      "chunk_id": "ver_aa0c03c9d10c_c00000",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00007",
+      "source_order": 7,
+      "start_offset": 0,
+      "end_offset": 404
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00000_s008",
+      "chunk_id": "ver_aa0c03c9d10c_c00000",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00008",
+      "source_order": 8,
+      "start_offset": 0,
+      "end_offset": 16
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00000_s009",
+      "chunk_id": "ver_aa0c03c9d10c_c00000",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00009",
+      "source_order": 9,
+      "start_offset": 0,
+      "end_offset": 254
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00000_s010",
+      "chunk_id": "ver_aa0c03c9d10c_c00000",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00010",
+      "source_order": 10,
+      "start_offset": 0,
+      "end_offset": 292
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00001_s000",
+      "chunk_id": "ver_aa0c03c9d10c_c00001",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00010",
+      "source_order": 0,
+      "start_offset": 2,
+      "end_offset": 584
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00001_s001",
+      "chunk_id": "ver_aa0c03c9d10c_c00001",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00011",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 24
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00001_s002",
+      "chunk_id": "ver_aa0c03c9d10c_c00001",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00012",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 294
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00001_s003",
+      "chunk_id": "ver_aa0c03c9d10c_c00001",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00013",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 138
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00001_s004",
+      "chunk_id": "ver_aa0c03c9d10c_c00001",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00014",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 341
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00001_s005",
+      "chunk_id": "ver_aa0c03c9d10c_c00001",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00015",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 19
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00001_s006",
+      "chunk_id": "ver_aa0c03c9d10c_c00001",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00016",
+      "source_order": 6,
+      "start_offset": 0,
+      "end_offset": 199
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00001_s007",
+      "chunk_id": "ver_aa0c03c9d10c_c00001",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00017",
+      "source_order": 7,
+      "start_offset": 0,
+      "end_offset": 42
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00001_s008",
+      "chunk_id": "ver_aa0c03c9d10c_c00001",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00018",
+      "source_order": 8,
+      "start_offset": 0,
+      "end_offset": 327
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00001_s009",
+      "chunk_id": "ver_aa0c03c9d10c_c00001",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00019",
+      "source_order": 9,
+      "start_offset": 0,
+      "end_offset": 23
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00001_s010",
+      "chunk_id": "ver_aa0c03c9d10c_c00001",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00020",
+      "source_order": 10,
+      "start_offset": 0,
+      "end_offset": 219
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00001_s011",
+      "chunk_id": "ver_aa0c03c9d10c_c00001",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00021",
+      "source_order": 11,
+      "start_offset": 0,
+      "end_offset": 175
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00001_s012",
+      "chunk_id": "ver_aa0c03c9d10c_c00001",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00022",
+      "source_order": 12,
+      "start_offset": 0,
+      "end_offset": 280
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00001_s013",
+      "chunk_id": "ver_aa0c03c9d10c_c00001",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00023",
+      "source_order": 13,
+      "start_offset": 0,
+      "end_offset": 48
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00001_s014",
+      "chunk_id": "ver_aa0c03c9d10c_c00001",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00024",
+      "source_order": 14,
+      "start_offset": 0,
+      "end_offset": 204
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00001_s015",
+      "chunk_id": "ver_aa0c03c9d10c_c00001",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00025",
+      "source_order": 15,
+      "start_offset": 0,
+      "end_offset": 41
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00001_s016",
+      "chunk_id": "ver_aa0c03c9d10c_c00001",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00026",
+      "source_order": 16,
+      "start_offset": 0,
+      "end_offset": 143
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00001_s017",
+      "chunk_id": "ver_aa0c03c9d10c_c00001",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00027",
+      "source_order": 17,
+      "start_offset": 0,
+      "end_offset": 31
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00001_s018",
+      "chunk_id": "ver_aa0c03c9d10c_c00001",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00028",
+      "source_order": 18,
+      "start_offset": 0,
+      "end_offset": 57
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00001_s019",
+      "chunk_id": "ver_aa0c03c9d10c_c00001",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00029",
+      "source_order": 19,
+      "start_offset": 0,
+      "end_offset": 64
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00001_s020",
+      "chunk_id": "ver_aa0c03c9d10c_c00001",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00030",
+      "source_order": 20,
+      "start_offset": 0,
+      "end_offset": 193
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00002_s000",
+      "chunk_id": "ver_aa0c03c9d10c_c00002",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00029",
+      "source_order": 0,
+      "start_offset": 11,
+      "end_offset": 64
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00002_s001",
+      "chunk_id": "ver_aa0c03c9d10c_c00002",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00030",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 193
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00002_s002",
+      "chunk_id": "ver_aa0c03c9d10c_c00002",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00031",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 17
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00002_s003",
+      "chunk_id": "ver_aa0c03c9d10c_c00002",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00032",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 255
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00002_s004",
+      "chunk_id": "ver_aa0c03c9d10c_c00002",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00033",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 109
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00002_s005",
+      "chunk_id": "ver_aa0c03c9d10c_c00002",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00034",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 35
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00002_s006",
+      "chunk_id": "ver_aa0c03c9d10c_c00002",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00035",
+      "source_order": 6,
+      "start_offset": 0,
+      "end_offset": 240
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00002_s007",
+      "chunk_id": "ver_aa0c03c9d10c_c00002",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00036",
+      "source_order": 7,
+      "start_offset": 0,
+      "end_offset": 80
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00002_s008",
+      "chunk_id": "ver_aa0c03c9d10c_c00002",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00037",
+      "source_order": 8,
+      "start_offset": 0,
+      "end_offset": 29
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00002_s009",
+      "chunk_id": "ver_aa0c03c9d10c_c00002",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00038",
+      "source_order": 9,
+      "start_offset": 0,
+      "end_offset": 30
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00002_s010",
+      "chunk_id": "ver_aa0c03c9d10c_c00002",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00039",
+      "source_order": 10,
+      "start_offset": 0,
+      "end_offset": 334
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00002_s011",
+      "chunk_id": "ver_aa0c03c9d10c_c00002",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00040",
+      "source_order": 11,
+      "start_offset": 0,
+      "end_offset": 293
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00002_s012",
+      "chunk_id": "ver_aa0c03c9d10c_c00002",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00041",
+      "source_order": 12,
+      "start_offset": 0,
+      "end_offset": 13
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00002_s013",
+      "chunk_id": "ver_aa0c03c9d10c_c00002",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00042",
+      "source_order": 13,
+      "start_offset": 0,
+      "end_offset": 741
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00002_s014",
+      "chunk_id": "ver_aa0c03c9d10c_c00002",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00043",
+      "source_order": 14,
+      "start_offset": 0,
+      "end_offset": 25
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00002_s015",
+      "chunk_id": "ver_aa0c03c9d10c_c00002",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00044",
+      "source_order": 15,
+      "start_offset": 0,
+      "end_offset": 118
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00002_s016",
+      "chunk_id": "ver_aa0c03c9d10c_c00002",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00045",
+      "source_order": 16,
+      "start_offset": 0,
+      "end_offset": 183
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00002_s017",
+      "chunk_id": "ver_aa0c03c9d10c_c00002",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00046",
+      "source_order": 17,
+      "start_offset": 0,
+      "end_offset": 66
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00002_s018",
+      "chunk_id": "ver_aa0c03c9d10c_c00002",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00047",
+      "source_order": 18,
+      "start_offset": 0,
+      "end_offset": 278
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00003_s000",
+      "chunk_id": "ver_aa0c03c9d10c_c00003",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00047",
+      "source_order": 0,
+      "start_offset": 54,
+      "end_offset": 425
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00003_s001",
+      "chunk_id": "ver_aa0c03c9d10c_c00003",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00048",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 17
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00003_s002",
+      "chunk_id": "ver_aa0c03c9d10c_c00003",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00049",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 162
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00003_s003",
+      "chunk_id": "ver_aa0c03c9d10c_c00003",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00050",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 154
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00003_s004",
+      "chunk_id": "ver_aa0c03c9d10c_c00003",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00051",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 294
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00003_s005",
+      "chunk_id": "ver_aa0c03c9d10c_c00003",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00052",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 497
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00003_s006",
+      "chunk_id": "ver_aa0c03c9d10c_c00003",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00053",
+      "source_order": 6,
+      "start_offset": 0,
+      "end_offset": 45
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00003_s007",
+      "chunk_id": "ver_aa0c03c9d10c_c00003",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00054",
+      "source_order": 7,
+      "start_offset": 0,
+      "end_offset": 530
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00003_s008",
+      "chunk_id": "ver_aa0c03c9d10c_c00003",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00055",
+      "source_order": 8,
+      "start_offset": 0,
+      "end_offset": 24
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00003_s009",
+      "chunk_id": "ver_aa0c03c9d10c_c00003",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00056",
+      "source_order": 9,
+      "start_offset": 0,
+      "end_offset": 256
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00003_s010",
+      "chunk_id": "ver_aa0c03c9d10c_c00003",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00057",
+      "source_order": 10,
+      "start_offset": 0,
+      "end_offset": 23
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00003_s011",
+      "chunk_id": "ver_aa0c03c9d10c_c00003",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00058",
+      "source_order": 11,
+      "start_offset": 0,
+      "end_offset": 461
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00003_s012",
+      "chunk_id": "ver_aa0c03c9d10c_c00003",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00059",
+      "source_order": 12,
+      "start_offset": 0,
+      "end_offset": 142
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00003_s013",
+      "chunk_id": "ver_aa0c03c9d10c_c00003",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00060",
+      "source_order": 13,
+      "start_offset": 0,
+      "end_offset": 40
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00003_s014",
+      "chunk_id": "ver_aa0c03c9d10c_c00003",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00061",
+      "source_order": 14,
+      "start_offset": 0,
+      "end_offset": 235
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00004_s000",
+      "chunk_id": "ver_aa0c03c9d10c_c00004",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00060",
+      "source_order": 0,
+      "start_offset": 13,
+      "end_offset": 40
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00004_s001",
+      "chunk_id": "ver_aa0c03c9d10c_c00004",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00061",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 498
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00004_s002",
+      "chunk_id": "ver_aa0c03c9d10c_c00004",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00062",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 21
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00004_s003",
+      "chunk_id": "ver_aa0c03c9d10c_c00004",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00063",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 314
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00004_s004",
+      "chunk_id": "ver_aa0c03c9d10c_c00004",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00064",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 22
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00004_s005",
+      "chunk_id": "ver_aa0c03c9d10c_c00004",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00065",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 495
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00004_s006",
+      "chunk_id": "ver_aa0c03c9d10c_c00004",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00066",
+      "source_order": 6,
+      "start_offset": 0,
+      "end_offset": 9
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00004_s007",
+      "chunk_id": "ver_aa0c03c9d10c_c00004",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00067",
+      "source_order": 7,
+      "start_offset": 0,
+      "end_offset": 102
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00004_s008",
+      "chunk_id": "ver_aa0c03c9d10c_c00004",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00068",
+      "source_order": 8,
+      "start_offset": 0,
+      "end_offset": 9
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00004_s009",
+      "chunk_id": "ver_aa0c03c9d10c_c00004",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00069",
+      "source_order": 9,
+      "start_offset": 0,
+      "end_offset": 122
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00004_s010",
+      "chunk_id": "ver_aa0c03c9d10c_c00004",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00070",
+      "source_order": 10,
+      "start_offset": 0,
+      "end_offset": 22
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00004_s011",
+      "chunk_id": "ver_aa0c03c9d10c_c00004",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00071",
+      "source_order": 11,
+      "start_offset": 0,
+      "end_offset": 269
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00004_s012",
+      "chunk_id": "ver_aa0c03c9d10c_c00004",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00072",
+      "source_order": 12,
+      "start_offset": 0,
+      "end_offset": 9
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00004_s013",
+      "chunk_id": "ver_aa0c03c9d10c_c00004",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00073",
+      "source_order": 13,
+      "start_offset": 0,
+      "end_offset": 46
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00004_s014",
+      "chunk_id": "ver_aa0c03c9d10c_c00004",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00074",
+      "source_order": 14,
+      "start_offset": 0,
+      "end_offset": 9
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00004_s015",
+      "chunk_id": "ver_aa0c03c9d10c_c00004",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00075",
+      "source_order": 15,
+      "start_offset": 0,
+      "end_offset": 305
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00004_s016",
+      "chunk_id": "ver_aa0c03c9d10c_c00004",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00076",
+      "source_order": 16,
+      "start_offset": 0,
+      "end_offset": 21
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00004_s017",
+      "chunk_id": "ver_aa0c03c9d10c_c00004",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00077",
+      "source_order": 17,
+      "start_offset": 0,
+      "end_offset": 587
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00004_s018",
+      "chunk_id": "ver_aa0c03c9d10c_c00004",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00078",
+      "source_order": 18,
+      "start_offset": 0,
+      "end_offset": 28
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00004_s019",
+      "chunk_id": "ver_aa0c03c9d10c_c00004",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00079",
+      "source_order": 19,
+      "start_offset": 0,
+      "end_offset": 294
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00004_s020",
+      "chunk_id": "ver_aa0c03c9d10c_c00004",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00080",
+      "source_order": 20,
+      "start_offset": 0,
+      "end_offset": 24
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00004_s021",
+      "chunk_id": "ver_aa0c03c9d10c_c00004",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00081",
+      "source_order": 21,
+      "start_offset": 0,
+      "end_offset": 28
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00005_s000",
+      "chunk_id": "ver_aa0c03c9d10c_c00005",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00079",
+      "source_order": 0,
+      "start_offset": 105,
+      "end_offset": 294
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00005_s001",
+      "chunk_id": "ver_aa0c03c9d10c_c00005",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00080",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 24
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00005_s002",
+      "chunk_id": "ver_aa0c03c9d10c_c00005",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00081",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 267
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00005_s003",
+      "chunk_id": "ver_aa0c03c9d10c_c00005",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00082",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 10
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00005_s004",
+      "chunk_id": "ver_aa0c03c9d10c_c00005",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00083",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 201
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00005_s005",
+      "chunk_id": "ver_aa0c03c9d10c_c00005",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00084",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 10
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00005_s006",
+      "chunk_id": "ver_aa0c03c9d10c_c00005",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00085",
+      "source_order": 6,
+      "start_offset": 0,
+      "end_offset": 418
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00005_s007",
+      "chunk_id": "ver_aa0c03c9d10c_c00005",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00086",
+      "source_order": 7,
+      "start_offset": 0,
+      "end_offset": 24
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00005_s008",
+      "chunk_id": "ver_aa0c03c9d10c_c00005",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00087",
+      "source_order": 8,
+      "start_offset": 0,
+      "end_offset": 543
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00005_s009",
+      "chunk_id": "ver_aa0c03c9d10c_c00005",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00088",
+      "source_order": 9,
+      "start_offset": 0,
+      "end_offset": 348
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00005_s010",
+      "chunk_id": "ver_aa0c03c9d10c_c00005",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00089",
+      "source_order": 10,
+      "start_offset": 0,
+      "end_offset": 10
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00005_s011",
+      "chunk_id": "ver_aa0c03c9d10c_c00005",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00090",
+      "source_order": 11,
+      "start_offset": 0,
+      "end_offset": 651
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00005_s012",
+      "chunk_id": "ver_aa0c03c9d10c_c00005",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00091",
+      "source_order": 12,
+      "start_offset": 0,
+      "end_offset": 10
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00005_s013",
+      "chunk_id": "ver_aa0c03c9d10c_c00005",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00092",
+      "source_order": 13,
+      "start_offset": 0,
+      "end_offset": 364
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00006_s000",
+      "chunk_id": "ver_aa0c03c9d10c_c00006",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00092",
+      "source_order": 0,
+      "start_offset": 140,
+      "end_offset": 446
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00006_s001",
+      "chunk_id": "ver_aa0c03c9d10c_c00006",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00093",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 27
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00006_s002",
+      "chunk_id": "ver_aa0c03c9d10c_c00006",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00094",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 19
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00006_s003",
+      "chunk_id": "ver_aa0c03c9d10c_c00006",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00095",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 394
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00006_s004",
+      "chunk_id": "ver_aa0c03c9d10c_c00006",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00096",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 9
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00006_s005",
+      "chunk_id": "ver_aa0c03c9d10c_c00006",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00097",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 417
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00006_s006",
+      "chunk_id": "ver_aa0c03c9d10c_c00006",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00098",
+      "source_order": 6,
+      "start_offset": 0,
+      "end_offset": 9
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00006_s007",
+      "chunk_id": "ver_aa0c03c9d10c_c00006",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00099",
+      "source_order": 7,
+      "start_offset": 0,
+      "end_offset": 285
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00006_s008",
+      "chunk_id": "ver_aa0c03c9d10c_c00006",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00100",
+      "source_order": 8,
+      "start_offset": 0,
+      "end_offset": 16
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00006_s009",
+      "chunk_id": "ver_aa0c03c9d10c_c00006",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00101",
+      "source_order": 9,
+      "start_offset": 0,
+      "end_offset": 579
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00006_s010",
+      "chunk_id": "ver_aa0c03c9d10c_c00006",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00102",
+      "source_order": 10,
+      "start_offset": 0,
+      "end_offset": 9
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00006_s011",
+      "chunk_id": "ver_aa0c03c9d10c_c00006",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00103",
+      "source_order": 11,
+      "start_offset": 0,
+      "end_offset": 194
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00006_s012",
+      "chunk_id": "ver_aa0c03c9d10c_c00006",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00104",
+      "source_order": 12,
+      "start_offset": 0,
+      "end_offset": 9
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00006_s013",
+      "chunk_id": "ver_aa0c03c9d10c_c00006",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00105",
+      "source_order": 13,
+      "start_offset": 0,
+      "end_offset": 393
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00006_s014",
+      "chunk_id": "ver_aa0c03c9d10c_c00006",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00106",
+      "source_order": 14,
+      "start_offset": 0,
+      "end_offset": 15
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00006_s015",
+      "chunk_id": "ver_aa0c03c9d10c_c00006",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00107",
+      "source_order": 15,
+      "start_offset": 0,
+      "end_offset": 227
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00006_s016",
+      "chunk_id": "ver_aa0c03c9d10c_c00006",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00108",
+      "source_order": 16,
+      "start_offset": 0,
+      "end_offset": 9
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00006_s017",
+      "chunk_id": "ver_aa0c03c9d10c_c00006",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00109",
+      "source_order": 17,
+      "start_offset": 0,
+      "end_offset": 143
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00006_s018",
+      "chunk_id": "ver_aa0c03c9d10c_c00006",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00110",
+      "source_order": 18,
+      "start_offset": 0,
+      "end_offset": 9
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00006_s019",
+      "chunk_id": "ver_aa0c03c9d10c_c00006",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00111",
+      "source_order": 19,
+      "start_offset": 0,
+      "end_offset": 200
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00007_s000",
+      "chunk_id": "ver_aa0c03c9d10c_c00007",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00109",
+      "source_order": 0,
+      "start_offset": 84,
+      "end_offset": 143
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00007_s001",
+      "chunk_id": "ver_aa0c03c9d10c_c00007",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00110",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 9
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00007_s002",
+      "chunk_id": "ver_aa0c03c9d10c_c00007",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00111",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 330
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00007_s003",
+      "chunk_id": "ver_aa0c03c9d10c_c00007",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00112",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 32
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00007_s004",
+      "chunk_id": "ver_aa0c03c9d10c_c00007",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00113",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 430
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00007_s005",
+      "chunk_id": "ver_aa0c03c9d10c_c00007",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00114",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 501
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00007_s006",
+      "chunk_id": "ver_aa0c03c9d10c_c00007",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00115",
+      "source_order": 6,
+      "start_offset": 0,
+      "end_offset": 9
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00007_s007",
+      "chunk_id": "ver_aa0c03c9d10c_c00007",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00116",
+      "source_order": 7,
+      "start_offset": 0,
+      "end_offset": 91
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00007_s008",
+      "chunk_id": "ver_aa0c03c9d10c_c00007",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00117",
+      "source_order": 8,
+      "start_offset": 0,
+      "end_offset": 9
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00007_s009",
+      "chunk_id": "ver_aa0c03c9d10c_c00007",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00118",
+      "source_order": 9,
+      "start_offset": 0,
+      "end_offset": 531
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00007_s010",
+      "chunk_id": "ver_aa0c03c9d10c_c00007",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00119",
+      "source_order": 10,
+      "start_offset": 0,
+      "end_offset": 9
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00007_s011",
+      "chunk_id": "ver_aa0c03c9d10c_c00007",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00120",
+      "source_order": 11,
+      "start_offset": 0,
+      "end_offset": 404
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00007_s012",
+      "chunk_id": "ver_aa0c03c9d10c_c00007",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00121",
+      "source_order": 12,
+      "start_offset": 0,
+      "end_offset": 9
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00007_s013",
+      "chunk_id": "ver_aa0c03c9d10c_c00007",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00122",
+      "source_order": 13,
+      "start_offset": 0,
+      "end_offset": 85
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00007_s014",
+      "chunk_id": "ver_aa0c03c9d10c_c00007",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00123",
+      "source_order": 14,
+      "start_offset": 0,
+      "end_offset": 9
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00007_s015",
+      "chunk_id": "ver_aa0c03c9d10c_c00007",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00124",
+      "source_order": 15,
+      "start_offset": 0,
+      "end_offset": 314
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00007_s016",
+      "chunk_id": "ver_aa0c03c9d10c_c00007",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00125",
+      "source_order": 16,
+      "start_offset": 0,
+      "end_offset": 20
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00007_s017",
+      "chunk_id": "ver_aa0c03c9d10c_c00007",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00126",
+      "source_order": 17,
+      "start_offset": 0,
+      "end_offset": 290
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00008_s000",
+      "chunk_id": "ver_aa0c03c9d10c_c00008",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00126",
+      "source_order": 0,
+      "start_offset": 31,
+      "end_offset": 352
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00008_s001",
+      "chunk_id": "ver_aa0c03c9d10c_c00008",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00127",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 14
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00008_s002",
+      "chunk_id": "ver_aa0c03c9d10c_c00008",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00128",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 72
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00008_s003",
+      "chunk_id": "ver_aa0c03c9d10c_c00008",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00129",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 73
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00008_s004",
+      "chunk_id": "ver_aa0c03c9d10c_c00008",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00130",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 9
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00008_s005",
+      "chunk_id": "ver_aa0c03c9d10c_c00008",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00131",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 112
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00008_s006",
+      "chunk_id": "ver_aa0c03c9d10c_c00008",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00132",
+      "source_order": 6,
+      "start_offset": 0,
+      "end_offset": 9
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00008_s007",
+      "chunk_id": "ver_aa0c03c9d10c_c00008",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00133",
+      "source_order": 7,
+      "start_offset": 0,
+      "end_offset": 322
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00008_s008",
+      "chunk_id": "ver_aa0c03c9d10c_c00008",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00134",
+      "source_order": 8,
+      "start_offset": 0,
+      "end_offset": 20
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00008_s009",
+      "chunk_id": "ver_aa0c03c9d10c_c00008",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00135",
+      "source_order": 9,
+      "start_offset": 0,
+      "end_offset": 352
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00008_s010",
+      "chunk_id": "ver_aa0c03c9d10c_c00008",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00136",
+      "source_order": 10,
+      "start_offset": 0,
+      "end_offset": 21
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00008_s011",
+      "chunk_id": "ver_aa0c03c9d10c_c00008",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00137",
+      "source_order": 11,
+      "start_offset": 0,
+      "end_offset": 305
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00008_s012",
+      "chunk_id": "ver_aa0c03c9d10c_c00008",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00138",
+      "source_order": 12,
+      "start_offset": 0,
+      "end_offset": 9
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00008_s013",
+      "chunk_id": "ver_aa0c03c9d10c_c00008",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00139",
+      "source_order": 13,
+      "start_offset": 0,
+      "end_offset": 97
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00008_s014",
+      "chunk_id": "ver_aa0c03c9d10c_c00008",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00140",
+      "source_order": 14,
+      "start_offset": 0,
+      "end_offset": 9
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00008_s015",
+      "chunk_id": "ver_aa0c03c9d10c_c00008",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00141",
+      "source_order": 15,
+      "start_offset": 0,
+      "end_offset": 251
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00008_s016",
+      "chunk_id": "ver_aa0c03c9d10c_c00008",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00142",
+      "source_order": 16,
+      "start_offset": 0,
+      "end_offset": 15
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00008_s017",
+      "chunk_id": "ver_aa0c03c9d10c_c00008",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00143",
+      "source_order": 17,
+      "start_offset": 0,
+      "end_offset": 387
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00008_s018",
+      "chunk_id": "ver_aa0c03c9d10c_c00008",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00144",
+      "source_order": 18,
+      "start_offset": 0,
+      "end_offset": 9
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00008_s019",
+      "chunk_id": "ver_aa0c03c9d10c_c00008",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00145",
+      "source_order": 19,
+      "start_offset": 0,
+      "end_offset": 22
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00008_s020",
+      "chunk_id": "ver_aa0c03c9d10c_c00008",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00146",
+      "source_order": 20,
+      "start_offset": 0,
+      "end_offset": 9
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00008_s021",
+      "chunk_id": "ver_aa0c03c9d10c_c00008",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00147",
+      "source_order": 21,
+      "start_offset": 0,
+      "end_offset": 357
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00008_s022",
+      "chunk_id": "ver_aa0c03c9d10c_c00008",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00148",
+      "source_order": 22,
+      "start_offset": 0,
+      "end_offset": 14
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00008_s023",
+      "chunk_id": "ver_aa0c03c9d10c_c00008",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00149",
+      "source_order": 23,
+      "start_offset": 0,
+      "end_offset": 301
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00009_s000",
+      "chunk_id": "ver_aa0c03c9d10c_c00009",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00149",
+      "source_order": 0,
+      "start_offset": 53,
+      "end_offset": 301
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00009_s001",
+      "chunk_id": "ver_aa0c03c9d10c_c00009",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00150",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 9
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00009_s002",
+      "chunk_id": "ver_aa0c03c9d10c_c00009",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00151",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 86
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00009_s003",
+      "chunk_id": "ver_aa0c03c9d10c_c00009",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00152",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 9
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00009_s004",
+      "chunk_id": "ver_aa0c03c9d10c_c00009",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00153",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 227
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00009_s005",
+      "chunk_id": "ver_aa0c03c9d10c_c00009",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00154",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 19
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00009_s006",
+      "chunk_id": "ver_aa0c03c9d10c_c00009",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00155",
+      "source_order": 6,
+      "start_offset": 0,
+      "end_offset": 453
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00009_s007",
+      "chunk_id": "ver_aa0c03c9d10c_c00009",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00156",
+      "source_order": 7,
+      "start_offset": 0,
+      "end_offset": 24
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00009_s008",
+      "chunk_id": "ver_aa0c03c9d10c_c00009",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00157",
+      "source_order": 8,
+      "start_offset": 0,
+      "end_offset": 470
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00009_s009",
+      "chunk_id": "ver_aa0c03c9d10c_c00009",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00158",
+      "source_order": 9,
+      "start_offset": 0,
+      "end_offset": 9
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00009_s010",
+      "chunk_id": "ver_aa0c03c9d10c_c00009",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00159",
+      "source_order": 10,
+      "start_offset": 0,
+      "end_offset": 182
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00009_s011",
+      "chunk_id": "ver_aa0c03c9d10c_c00009",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00160",
+      "source_order": 11,
+      "start_offset": 0,
+      "end_offset": 9
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00009_s012",
+      "chunk_id": "ver_aa0c03c9d10c_c00009",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00161",
+      "source_order": 12,
+      "start_offset": 0,
+      "end_offset": 313
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00009_s013",
+      "chunk_id": "ver_aa0c03c9d10c_c00009",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00162",
+      "source_order": 13,
+      "start_offset": 0,
+      "end_offset": 30
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00009_s014",
+      "chunk_id": "ver_aa0c03c9d10c_c00009",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00163",
+      "source_order": 14,
+      "start_offset": 0,
+      "end_offset": 272
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00009_s015",
+      "chunk_id": "ver_aa0c03c9d10c_c00009",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00164",
+      "source_order": 15,
+      "start_offset": 0,
+      "end_offset": 9
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00009_s016",
+      "chunk_id": "ver_aa0c03c9d10c_c00009",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00165",
+      "source_order": 16,
+      "start_offset": 0,
+      "end_offset": 388
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00009_s017",
+      "chunk_id": "ver_aa0c03c9d10c_c00009",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00166",
+      "source_order": 17,
+      "start_offset": 0,
+      "end_offset": 9
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00009_s018",
+      "chunk_id": "ver_aa0c03c9d10c_c00009",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00167",
+      "source_order": 18,
+      "start_offset": 0,
+      "end_offset": 117
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00009_s019",
+      "chunk_id": "ver_aa0c03c9d10c_c00009",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00168",
+      "source_order": 19,
+      "start_offset": 0,
+      "end_offset": 17
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00009_s020",
+      "chunk_id": "ver_aa0c03c9d10c_c00009",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00169",
+      "source_order": 20,
+      "start_offset": 0,
+      "end_offset": 197
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00010_s000",
+      "chunk_id": "ver_aa0c03c9d10c_c00010",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00167",
+      "source_order": 0,
+      "start_offset": 74,
+      "end_offset": 117
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00010_s001",
+      "chunk_id": "ver_aa0c03c9d10c_c00010",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00168",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 17
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00010_s002",
+      "chunk_id": "ver_aa0c03c9d10c_c00010",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00169",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 341
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00010_s003",
+      "chunk_id": "ver_aa0c03c9d10c_c00010",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00170",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 9
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00010_s004",
+      "chunk_id": "ver_aa0c03c9d10c_c00010",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00171",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 100
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00010_s005",
+      "chunk_id": "ver_aa0c03c9d10c_c00010",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00172",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 9
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00010_s006",
+      "chunk_id": "ver_aa0c03c9d10c_c00010",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00173",
+      "source_order": 6,
+      "start_offset": 0,
+      "end_offset": 107
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00010_s007",
+      "chunk_id": "ver_aa0c03c9d10c_c00010",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00174",
+      "source_order": 7,
+      "start_offset": 0,
+      "end_offset": 40
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00010_s008",
+      "chunk_id": "ver_aa0c03c9d10c_c00010",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00175",
+      "source_order": 8,
+      "start_offset": 0,
+      "end_offset": 274
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00010_s009",
+      "chunk_id": "ver_aa0c03c9d10c_c00010",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00176",
+      "source_order": 9,
+      "start_offset": 0,
+      "end_offset": 46
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00010_s010",
+      "chunk_id": "ver_aa0c03c9d10c_c00010",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00177",
+      "source_order": 10,
+      "start_offset": 0,
+      "end_offset": 187
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00010_s011",
+      "chunk_id": "ver_aa0c03c9d10c_c00010",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00178",
+      "source_order": 11,
+      "start_offset": 0,
+      "end_offset": 36
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00010_s012",
+      "chunk_id": "ver_aa0c03c9d10c_c00010",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00179",
+      "source_order": 12,
+      "start_offset": 0,
+      "end_offset": 136
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00010_s013",
+      "chunk_id": "ver_aa0c03c9d10c_c00010",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00180",
+      "source_order": 13,
+      "start_offset": 0,
+      "end_offset": 277
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00010_s014",
+      "chunk_id": "ver_aa0c03c9d10c_c00010",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00181",
+      "source_order": 14,
+      "start_offset": 0,
+      "end_offset": 236
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00010_s015",
+      "chunk_id": "ver_aa0c03c9d10c_c00010",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00182",
+      "source_order": 15,
+      "start_offset": 0,
+      "end_offset": 266
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00010_s016",
+      "chunk_id": "ver_aa0c03c9d10c_c00010",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00183",
+      "source_order": 16,
+      "start_offset": 0,
+      "end_offset": 38
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00010_s017",
+      "chunk_id": "ver_aa0c03c9d10c_c00010",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00184",
+      "source_order": 17,
+      "start_offset": 0,
+      "end_offset": 643
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00010_s018",
+      "chunk_id": "ver_aa0c03c9d10c_c00010",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00185",
+      "source_order": 18,
+      "start_offset": 0,
+      "end_offset": 58
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00010_s019",
+      "chunk_id": "ver_aa0c03c9d10c_c00010",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00186",
+      "source_order": 19,
+      "start_offset": 0,
+      "end_offset": 229
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00010_s020",
+      "chunk_id": "ver_aa0c03c9d10c_c00010",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00187",
+      "source_order": 20,
+      "start_offset": 0,
+      "end_offset": 43
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00010_s021",
+      "chunk_id": "ver_aa0c03c9d10c_c00010",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00188",
+      "source_order": 21,
+      "start_offset": 0,
+      "end_offset": 89
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00011_s000",
+      "chunk_id": "ver_aa0c03c9d10c_c00011",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00186",
+      "source_order": 0,
+      "start_offset": 70,
+      "end_offset": 229
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00011_s001",
+      "chunk_id": "ver_aa0c03c9d10c_c00011",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00187",
+      "source_order": 1,
+      "start_offset": 0,
+      "end_offset": 43
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00011_s002",
+      "chunk_id": "ver_aa0c03c9d10c_c00011",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00188",
+      "source_order": 2,
+      "start_offset": 0,
+      "end_offset": 130
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00011_s003",
+      "chunk_id": "ver_aa0c03c9d10c_c00011",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00189",
+      "source_order": 3,
+      "start_offset": 0,
+      "end_offset": 16
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00011_s004",
+      "chunk_id": "ver_aa0c03c9d10c_c00011",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00190",
+      "source_order": 4,
+      "start_offset": 0,
+      "end_offset": 330
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00011_s005",
+      "chunk_id": "ver_aa0c03c9d10c_c00011",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00191",
+      "source_order": 5,
+      "start_offset": 0,
+      "end_offset": 44
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00011_s006",
+      "chunk_id": "ver_aa0c03c9d10c_c00011",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00192",
+      "source_order": 6,
+      "start_offset": 0,
+      "end_offset": 312
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00011_s007",
+      "chunk_id": "ver_aa0c03c9d10c_c00011",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00193",
+      "source_order": 7,
+      "start_offset": 0,
+      "end_offset": 16
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00011_s008",
+      "chunk_id": "ver_aa0c03c9d10c_c00011",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00194",
+      "source_order": 8,
+      "start_offset": 0,
+      "end_offset": 347
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00011_s009",
+      "chunk_id": "ver_aa0c03c9d10c_c00011",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00195",
+      "source_order": 9,
+      "start_offset": 0,
+      "end_offset": 38
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00011_s010",
+      "chunk_id": "ver_aa0c03c9d10c_c00011",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00196",
+      "source_order": 10,
+      "start_offset": 0,
+      "end_offset": 149
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00011_s011",
+      "chunk_id": "ver_aa0c03c9d10c_c00011",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00197",
+      "source_order": 11,
+      "start_offset": 0,
+      "end_offset": 16
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00011_s012",
+      "chunk_id": "ver_aa0c03c9d10c_c00011",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00198",
+      "source_order": 12,
+      "start_offset": 0,
+      "end_offset": 337
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00011_s013",
+      "chunk_id": "ver_aa0c03c9d10c_c00011",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00199",
+      "source_order": 13,
+      "start_offset": 0,
+      "end_offset": 25
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00011_s014",
+      "chunk_id": "ver_aa0c03c9d10c_c00011",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00200",
+      "source_order": 14,
+      "start_offset": 0,
+      "end_offset": 185
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00011_s015",
+      "chunk_id": "ver_aa0c03c9d10c_c00011",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00201",
+      "source_order": 15,
+      "start_offset": 0,
+      "end_offset": 16
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00011_s016",
+      "chunk_id": "ver_aa0c03c9d10c_c00011",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00202",
+      "source_order": 16,
+      "start_offset": 0,
+      "end_offset": 229
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00011_s017",
+      "chunk_id": "ver_aa0c03c9d10c_c00011",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00203",
+      "source_order": 17,
+      "start_offset": 0,
+      "end_offset": 25
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00011_s018",
+      "chunk_id": "ver_aa0c03c9d10c_c00011",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00204",
+      "source_order": 18,
+      "start_offset": 0,
+      "end_offset": 306
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00011_s019",
+      "chunk_id": "ver_aa0c03c9d10c_c00011",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00205",
+      "source_order": 19,
+      "start_offset": 0,
+      "end_offset": 16
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00011_s020",
+      "chunk_id": "ver_aa0c03c9d10c_c00011",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00206",
+      "source_order": 20,
+      "start_offset": 0,
+      "end_offset": 365
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00011_s021",
+      "chunk_id": "ver_aa0c03c9d10c_c00011",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00207",
+      "source_order": 21,
+      "start_offset": 0,
+      "end_offset": 13
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00011_s022",
+      "chunk_id": "ver_aa0c03c9d10c_c00011",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00208",
+      "source_order": 22,
+      "start_offset": 0,
+      "end_offset": 226
+    },
+    {
+      "chunk_source_id": "ver_aa0c03c9d10c_c00012_s000",
+      "chunk_id": "ver_aa0c03c9d10c_c00012",
+      "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00208",
+      "source_order": 0,
+      "start_offset": 147,
+      "end_offset": 226
+    }
+  ]
+}

@@ -7,10 +7,10 @@ from pathlib import Path
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
 
-# Make path.py (parent folder) and schema_metadata.py importable when running this file directly
+# Make path.py (project root) and schema_metadata.py importable when running this file directly
 CURRENT_DIR = Path(__file__).resolve().parent
 PARENT_DIR = CURRENT_DIR.parent
-for _dir in (CURRENT_DIR, PARENT_DIR):
+for _dir in (CURRENT_DIR, PARENT_DIR, PARENT_DIR.parent):
     if str(_dir) not in sys.path:
         sys.path.insert(0, str(_dir))
 

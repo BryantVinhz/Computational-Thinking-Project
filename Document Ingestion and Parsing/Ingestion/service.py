@@ -4,13 +4,17 @@ import re
 import sys
 from pathlib import Path
 
-# Ensure both the current directory (Ingestion/) and parent directory (containing path.py) are in sys.path
+# Ensure the current directory (Ingestion/), the pipeline directory, and the
+# project root (containing path.py) are in sys.path
 CURRENT_DIR = Path(__file__).resolve().parent
 PARENT_DIR = CURRENT_DIR.parent
+PROJECT_ROOT = PARENT_DIR.parent
 if str(CURRENT_DIR) not in sys.path:
     sys.path.insert(0, str(CURRENT_DIR))
 if str(PARENT_DIR) not in sys.path:
     sys.path.insert(0, str(PARENT_DIR))
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
 
 from path import to_relative_posix, to_actual_path
 from schema_ingestion import DocumentSchema, DocumentVersionSchema, ProcessingStatus

@@ -54,8 +54,8 @@ cover/
 
 
 # Translations
-long_nguyen/
-/Document Ingestion and Parsing/output/Normalization/
+# long_nguyen/
+# /Document Ingestion and Parsing/output/Normalization/
 *.mo
 *.pot
 
@@ -225,13 +225,22 @@ __marimo__/
 .streamlit/secrets.toml
 
 
-#Generated SQLite metadata
+# SQLite & Vector Database files
 *.db
-!workspace_data.db
-!metadata.db
 *.db-journal
 *.db-wal
 *.db-shm
+*.sqlite
+*.sqlite3
+*.sqlite3-journal
+*.sqlite3-wal
+*.sqlite3-shm
+# ChromaDB & Generated Database folders
+**/chroma_security_db/
+/Document Ingestion and Parsing/output/Provenance/
+/Document Ingestion and Parsing/output/Vector DB/
+
+*.zip
 
 
 
