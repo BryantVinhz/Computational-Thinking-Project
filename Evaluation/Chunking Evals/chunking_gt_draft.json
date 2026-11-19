@@ -185,7 +185,7 @@
     "evidence_id": "EV_020",
     "category": "atomic_structure",
     "file_format": "MARKDOWN",
-    "doc_title": "OWASP - AVSS-Session-management",
+    "doc_title": "OWASP - ASVS-Session-management",
     "document_id": "doc_owasp_avss_session_management",
     "version_id": "ver_4aec329f2642",
     "spans": [
@@ -227,7 +227,7 @@
     "evidence_id": "EV_024",
     "category": "atomic_structure",
     "file_format": "MARKDOWN",
-    "doc_title": "OWASP - AVSS-Session-management",
+    "doc_title": "OWASP - ASVS-Session-management",
     "document_id": "doc_owasp_avss_session_management",
     "version_id": "ver_d5ac6829b294",
     "spans": [
@@ -427,7 +427,7 @@
     "evidence_id": "EV_044",
     "category": "heading_plus_body",
     "file_format": "MARKDOWN",
-    "doc_title": "OWASP - AVSS-Authentication",
+    "doc_title": "OWASP - ASVS-Authentication",
     "document_id": "doc_owasp_avss_authentication",
     "version_id": "ver_ea47056e8e8f",
     "spans": [
@@ -589,7 +589,7 @@
     "evidence_id": "EV_057",
     "category": "multi_block_rule",
     "file_format": "MARKDOWN",
-    "doc_title": "OWASP - AVSS-Authentication",
+    "doc_title": "OWASP - ASVS-Authentication",
     "document_id": "doc_owasp_avss_authentication",
     "version_id": "ver_ea47056e8e8f",
     "spans": [

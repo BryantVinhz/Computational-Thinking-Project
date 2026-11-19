@@ -1,7 +1,7 @@
 [
   {
     "block_id": "ver_d5ac6829b294_b00000",
-    "document_id": "doc_owasp_avss_session_management",
+    "document_id": "doc_owasp_asvs_session_management",
     "version_id": "ver_d5ac6829b294",
     "block_idx": 0,
     "file_format": "MARKDOWN",
@@ -27,7 +27,7 @@
   },
   {
     "block_id": "ver_d5ac6829b294_b00001",
-    "document_id": "doc_owasp_avss_session_management",
+    "document_id": "doc_owasp_asvs_session_management",
     "version_id": "ver_d5ac6829b294",
     "block_idx": 1,
     "file_format": "MARKDOWN",
@@ -54,7 +54,7 @@
   },
   {
     "block_id": "ver_d5ac6829b294_b00002",
-    "document_id": "doc_owasp_avss_session_management",
+    "document_id": "doc_owasp_asvs_session_management",
     "version_id": "ver_d5ac6829b294",
     "block_idx": 2,
     "file_format": "MARKDOWN",
@@ -81,7 +81,7 @@
   },
   {
     "block_id": "ver_d5ac6829b294_b00003",
-    "document_id": "doc_owasp_avss_session_management",
+    "document_id": "doc_owasp_asvs_session_management",
     "version_id": "ver_d5ac6829b294",
     "block_idx": 3,
     "file_format": "MARKDOWN",
@@ -108,7 +108,7 @@
   },
   {
     "block_id": "ver_d5ac6829b294_b00004",
-    "document_id": "doc_owasp_avss_session_management",
+    "document_id": "doc_owasp_asvs_session_management",
     "version_id": "ver_d5ac6829b294",
     "block_idx": 4,
     "file_format": "MARKDOWN",
@@ -135,7 +135,7 @@
   },
   {
     "block_id": "ver_d5ac6829b294_b00005",
-    "document_id": "doc_owasp_avss_session_management",
+    "document_id": "doc_owasp_asvs_session_management",
     "version_id": "ver_d5ac6829b294",
     "block_idx": 5,
     "file_format": "MARKDOWN",
@@ -162,7 +162,7 @@
   },
   {
     "block_id": "ver_d5ac6829b294_b00006",
-    "document_id": "doc_owasp_avss_session_management",
+    "document_id": "doc_owasp_asvs_session_management",
     "version_id": "ver_d5ac6829b294",
     "block_idx": 6,
     "file_format": "MARKDOWN",
@@ -189,7 +189,7 @@
   },
   {
     "block_id": "ver_d5ac6829b294_b00007",
-    "document_id": "doc_owasp_avss_session_management",
+    "document_id": "doc_owasp_asvs_session_management",
     "version_id": "ver_d5ac6829b294",
     "block_idx": 7,
     "file_format": "MARKDOWN",
@@ -216,7 +216,7 @@
   },
   {
     "block_id": "ver_d5ac6829b294_b00008",
-    "document_id": "doc_owasp_avss_session_management",
+    "document_id": "doc_owasp_asvs_session_management",
     "version_id": "ver_d5ac6829b294",
     "block_idx": 8,
     "file_format": "MARKDOWN",
@@ -261,7 +261,7 @@
   },
   {
     "block_id": "ver_d5ac6829b294_b00009",
-    "document_id": "doc_owasp_avss_session_management",
+    "document_id": "doc_owasp_asvs_session_management",
     "version_id": "ver_d5ac6829b294",
     "block_idx": 9,
     "file_format": "MARKDOWN",
@@ -288,7 +288,7 @@
   },
   {
     "block_id": "ver_d5ac6829b294_b00010",
-    "document_id": "doc_owasp_avss_session_management",
+    "document_id": "doc_owasp_asvs_session_management",
     "version_id": "ver_d5ac6829b294",
     "block_idx": 10,
     "file_format": "MARKDOWN",
@@ -360,7 +360,7 @@
   },
   {
     "block_id": "ver_d5ac6829b294_b00011",
-    "document_id": "doc_owasp_avss_session_management",
+    "document_id": "doc_owasp_asvs_session_management",
     "version_id": "ver_d5ac6829b294",
     "block_idx": 11,
     "file_format": "MARKDOWN",
@@ -387,7 +387,7 @@
   },
   {
     "block_id": "ver_d5ac6829b294_b00012",
-    "document_id": "doc_owasp_avss_session_management",
+    "document_id": "doc_owasp_asvs_session_management",
     "version_id": "ver_d5ac6829b294",
     "block_idx": 12,
     "file_format": "MARKDOWN",
@@ -414,7 +414,7 @@
   },
   {
     "block_id": "ver_d5ac6829b294_b00013",
-    "document_id": "doc_owasp_avss_session_management",
+    "document_id": "doc_owasp_asvs_session_management",
     "version_id": "ver_d5ac6829b294",
     "block_idx": 13,
     "file_format": "MARKDOWN",
@@ -441,7 +441,7 @@
   },
   {
     "block_id": "ver_d5ac6829b294_b00014",
-    "document_id": "doc_owasp_avss_session_management",
+    "document_id": "doc_owasp_asvs_session_management",
     "version_id": "ver_d5ac6829b294",
     "block_idx": 14,
     "file_format": "MARKDOWN",
@@ -468,7 +468,7 @@
   },
   {
     "block_id": "ver_d5ac6829b294_b00015",
-    "document_id": "doc_owasp_avss_session_management",
+    "document_id": "doc_owasp_asvs_session_management",
     "version_id": "ver_d5ac6829b294",
     "block_idx": 15,
     "file_format": "MARKDOWN",
@@ -540,7 +540,7 @@
   },
   {
     "block_id": "ver_d5ac6829b294_b00016",
-    "document_id": "doc_owasp_avss_session_management",
+    "document_id": "doc_owasp_asvs_session_management",
     "version_id": "ver_d5ac6829b294",
     "block_idx": 16,
     "file_format": "MARKDOWN",
@@ -567,7 +567,7 @@
   },
   {
     "block_id": "ver_d5ac6829b294_b00017",
-    "document_id": "doc_owasp_avss_session_management",
+    "document_id": "doc_owasp_asvs_session_management",
     "version_id": "ver_d5ac6829b294",
     "block_idx": 17,
     "file_format": "MARKDOWN",
@@ -648,7 +648,7 @@
   },
   {
     "block_id": "ver_d5ac6829b294_b00018",
-    "document_id": "doc_owasp_avss_session_management",
+    "document_id": "doc_owasp_asvs_session_management",
     "version_id": "ver_d5ac6829b294",
     "block_idx": 18,
     "file_format": "MARKDOWN",
@@ -675,7 +675,7 @@
   },
   {
     "block_id": "ver_d5ac6829b294_b00019",
-    "document_id": "doc_owasp_avss_session_management",
+    "document_id": "doc_owasp_asvs_session_management",
     "version_id": "ver_d5ac6829b294",
     "block_idx": 19,
     "file_format": "MARKDOWN",
@@ -702,7 +702,7 @@
   },
   {
     "block_id": "ver_d5ac6829b294_b00020",
-    "document_id": "doc_owasp_avss_session_management",
+    "document_id": "doc_owasp_asvs_session_management",
     "version_id": "ver_d5ac6829b294",
     "block_idx": 20,
     "file_format": "MARKDOWN",
@@ -765,7 +765,7 @@
   },
   {
     "block_id": "ver_d5ac6829b294_b00021",
-    "document_id": "doc_owasp_avss_session_management",
+    "document_id": "doc_owasp_asvs_session_management",
     "version_id": "ver_d5ac6829b294",
     "block_idx": 21,
     "file_format": "MARKDOWN",
@@ -792,7 +792,7 @@
   },
   {
     "block_id": "ver_d5ac6829b294_b00022",
-    "document_id": "doc_owasp_avss_session_management",
+    "document_id": "doc_owasp_asvs_session_management",
     "version_id": "ver_d5ac6829b294",
     "block_idx": 22,
     "file_format": "MARKDOWN",
@@ -819,7 +819,7 @@
   },
   {
     "block_id": "ver_d5ac6829b294_b00023",
-    "document_id": "doc_owasp_avss_session_management",
+    "document_id": "doc_owasp_asvs_session_management",
     "version_id": "ver_d5ac6829b294",
     "block_idx": 23,
     "file_format": "MARKDOWN",
@@ -873,7 +873,7 @@
   },
   {
     "block_id": "ver_d5ac6829b294_b00024",
-    "document_id": "doc_owasp_avss_session_management",
+    "document_id": "doc_owasp_asvs_session_management",
     "version_id": "ver_d5ac6829b294",
     "block_idx": 24,
     "file_format": "MARKDOWN",
@@ -900,7 +900,7 @@
   },
   {
     "block_id": "ver_d5ac6829b294_b00025",
-    "document_id": "doc_owasp_avss_session_management",
+    "document_id": "doc_owasp_asvs_session_management",
     "version_id": "ver_d5ac6829b294",
     "block_idx": 25,
     "file_format": "MARKDOWN",
@@ -927,7 +927,7 @@
   },
   {
     "block_id": "ver_d5ac6829b294_b00026",
-    "document_id": "doc_owasp_avss_session_management",
+    "document_id": "doc_owasp_asvs_session_management",
     "version_id": "ver_d5ac6829b294",
     "block_idx": 26,
     "file_format": "MARKDOWN",
@@ -955,7 +955,7 @@
   },
   {
     "block_id": "ver_d5ac6829b294_b00027",
-    "document_id": "doc_owasp_avss_session_management",
+    "document_id": "doc_owasp_asvs_session_management",
     "version_id": "ver_d5ac6829b294",
     "block_idx": 27,
     "file_format": "MARKDOWN",
@@ -983,7 +983,7 @@
   },
   {
     "block_id": "ver_d5ac6829b294_b00028",
-    "document_id": "doc_owasp_avss_session_management",
+    "document_id": "doc_owasp_asvs_session_management",
     "version_id": "ver_d5ac6829b294",
     "block_idx": 28,
     "file_format": "MARKDOWN",
@@ -1011,7 +1011,7 @@
   },
   {
     "block_id": "ver_d5ac6829b294_b00029",
-    "document_id": "doc_owasp_avss_session_management",
+    "document_id": "doc_owasp_asvs_session_management",
     "version_id": "ver_d5ac6829b294",
     "block_idx": 29,
     "file_format": "MARKDOWN",
@@ -1057,7 +1057,7 @@
   },
   {
     "block_id": "ver_d5ac6829b294_b00030",
-    "document_id": "doc_owasp_avss_session_management",
+    "document_id": "doc_owasp_asvs_session_management",
     "version_id": "ver_d5ac6829b294",
     "block_idx": 30,
     "file_format": "MARKDOWN",
@@ -1084,7 +1084,7 @@
   },
   {
     "block_id": "ver_d5ac6829b294_b00031",
-    "document_id": "doc_owasp_avss_session_management",
+    "document_id": "doc_owasp_asvs_session_management",
     "version_id": "ver_d5ac6829b294",
     "block_idx": 31,
     "file_format": "MARKDOWN",
@@ -1111,7 +1111,7 @@
   },
   {
     "block_id": "ver_d5ac6829b294_b00032",
-    "document_id": "doc_owasp_avss_session_management",
+    "document_id": "doc_owasp_asvs_session_management",
     "version_id": "ver_d5ac6829b294",
     "block_idx": 32,
     "file_format": "MARKDOWN",

@@ -1,6 +1,6 @@
 {
   "meta": {
-    "timestamp": "2026-11-19T02:53:03.116491+00:00",
+    "timestamp": "2026-11-19T17:58:36.955486+00:00",
     "embed_model": "BAAI/bge-m3",
     "tokenizer": "token_counter.ApproximateTokenCounter",
     "parameters": {
@@ -176,7 +176,7 @@
           "n_windows": 5
         },
         "ver_4aec329f2642": {
-          "doc_id": "doc_owasp_avss_session_management",
+          "doc_id": "doc_owasp_asvs_session_management",
           "version_id": "ver_4aec329f2642",
           "n_chunks": 4,
           "avg_tokens": 485.5,
@@ -188,20 +188,6 @@
           "icc_valid_chunk_ratio": 0.75,
           "DCC": 0.831406,
           "n_windows": 3
-        },
-        "ver_4d5e2f4d1c42": {
-          "doc_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
-          "version_id": "ver_4d5e2f4d1c42",
-          "n_chunks": 8,
-          "avg_tokens": 605.5,
-          "BI_atomic": {
-            "num": 18,
-            "den": 20
-          },
-          "ICC": 0.605776,
-          "icc_valid_chunk_ratio": 1.0,
-          "DCC": 0.898173,
-          "n_windows": 7
         },
         "ver_5004d1ead2df": {
           "doc_id": "doc_owasp_a07_password_storage_cheat_sheet",
@@ -316,7 +302,7 @@
           "n_windows": 10
         },
         "ver_8d5b8e494a0c": {
-          "doc_id": "doc_owasp_avss_validation_sanitization_encoding",
+          "doc_id": "doc_owasp_asvs_validation_sanitization_encoding",
           "version_id": "ver_8d5b8e494a0c",
           "n_chunks": 6,
           "avg_tokens": 588.83,
@@ -358,7 +344,7 @@
           "n_windows": 12
         },
         "ver_97ee690ad2d4": {
-          "doc_id": "doc_owasp_avss_access_control",
+          "doc_id": "doc_owasp_asvs_access_control",
           "version_id": "ver_97ee690ad2d4",
           "n_chunks": 2,
           "avg_tokens": 485.0,
@@ -498,7 +484,7 @@
           "n_windows": 4
         },
         "ver_cc8eeb30af79": {
-          "doc_id": "doc_owasp_avss_config",
+          "doc_id": "doc_owasp_asvs_config",
           "version_id": "ver_cc8eeb30af79",
           "n_chunks": 4,
           "avg_tokens": 636.0,
@@ -510,6 +496,20 @@
           "icc_valid_chunk_ratio": 1.0,
           "DCC": 0.896409,
           "n_windows": 3
+        },
+        "ver_ce5ddd72c7e5": {
+          "doc_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+          "version_id": "ver_ce5ddd72c7e5",
+          "n_chunks": 8,
+          "avg_tokens": 605.5,
+          "BI_atomic": {
+            "num": 18,
+            "den": 20
+          },
+          "ICC": 0.605779,
+          "icc_valid_chunk_ratio": 1.0,
+          "DCC": 0.898173,
+          "n_windows": 7
         },
         "ver_d1b9bedd6c92": {
           "doc_id": "doc_owasp_a05_infrastructure_as_code_security_cheat_sheet",
@@ -568,7 +568,7 @@
           "n_windows": 2
         },
         "ver_d5ac6829b294": {
-          "doc_id": "doc_owasp_avss_session_management",
+          "doc_id": "doc_owasp_asvs_session_management",
           "version_id": "ver_d5ac6829b294",
           "n_chunks": 5,
           "avg_tokens": 585.6,
@@ -624,7 +624,7 @@
           "n_windows": 4
         },
         "ver_e1e0aaa15e48": {
-          "doc_id": "doc_owasp_avss_authentication",
+          "doc_id": "doc_owasp_asvs_authentication",
           "version_id": "ver_e1e0aaa15e48",
           "n_chunks": 9,
           "avg_tokens": 621.0,
@@ -666,7 +666,7 @@
           "n_windows": 1
         },
         "ver_ea47056e8e8f": {
-          "doc_id": "doc_owasp_avss_authentication",
+          "doc_id": "doc_owasp_asvs_authentication",
           "version_id": "ver_ea47056e8e8f",
           "n_chunks": 13,
           "avg_tokens": 629.92,
@@ -878,7 +878,7 @@
           "n_windows": 31
         },
         "ver_4aec329f2642": {
-          "doc_id": "doc_owasp_avss_session_management",
+          "doc_id": "doc_owasp_asvs_session_management",
           "version_id": "ver_4aec329f2642",
           "n_chunks": 23,
           "avg_tokens": 80.74,
@@ -890,20 +890,6 @@
           "icc_valid_chunk_ratio": 0.217391,
           "DCC": 0.682522,
           "n_windows": 22
-        },
-        "ver_4d5e2f4d1c42": {
-          "doc_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
-          "version_id": "ver_4d5e2f4d1c42",
-          "n_chunks": 104,
-          "avg_tokens": 43.86,
-          "BI_atomic": {
-            "num": 20,
-            "den": 20
-          },
-          "ICC": 0.804317,
-          "icc_valid_chunk_ratio": 0.153846,
-          "DCC": 0.593543,
-          "n_windows": 103
         },
         "ver_5004d1ead2df": {
           "doc_id": "doc_owasp_a07_password_storage_cheat_sheet",
@@ -984,7 +970,7 @@
             "num": 42,
             "den": 42
           },
-          "ICC": 0.739052,
+          "ICC": 0.739051,
           "icc_valid_chunk_ratio": 0.338129,
           "DCC": 0.670017,
           "n_windows": 138
@@ -1012,13 +998,13 @@
             "num": 19,
             "den": 19
           },
-          "ICC": 0.837323,
+          "ICC": 0.837324,
           "icc_valid_chunk_ratio": 0.246753,
-          "DCC": 0.626856,
+          "DCC": 0.626857,
           "n_windows": 76
         },
         "ver_8d5b8e494a0c": {
-          "doc_id": "doc_owasp_avss_validation_sanitization_encoding",
+          "doc_id": "doc_owasp_asvs_validation_sanitization_encoding",
           "version_id": "ver_8d5b8e494a0c",
           "n_chunks": 20,
           "avg_tokens": 166.1,
@@ -1026,7 +1012,7 @@
             "num": 4,
             "den": 4
           },
-          "ICC": 0.747156,
+          "ICC": 0.747152,
           "icc_valid_chunk_ratio": 0.15,
           "DCC": 0.687746,
           "n_windows": 19
@@ -1040,7 +1026,7 @@
             "num": 3,
             "den": 3
           },
-          "ICC": 0.815855,
+          "ICC": 0.815854,
           "icc_valid_chunk_ratio": 0.284314,
           "DCC": 0.632034,
           "n_windows": 101
@@ -1054,13 +1040,13 @@
             "num": 20,
             "den": 20
           },
-          "ICC": 0.812005,
+          "ICC": 0.812001,
           "icc_valid_chunk_ratio": 0.151515,
           "DCC": 0.627205,
           "n_windows": 131
         },
         "ver_97ee690ad2d4": {
-          "doc_id": "doc_owasp_avss_access_control",
+          "doc_id": "doc_owasp_asvs_access_control",
           "version_id": "ver_97ee690ad2d4",
           "n_chunks": 12,
           "avg_tokens": 78.33,
@@ -1096,7 +1082,7 @@
             "num": 140,
             "den": 140
           },
-          "ICC": 0.681061,
+          "ICC": 0.681062,
           "icc_valid_chunk_ratio": 0.486413,
           "DCC": 0.683836,
           "n_windows": 367
@@ -1152,7 +1138,7 @@
             "num": 13,
             "den": 13
           },
-          "ICC": 0.774158,
+          "ICC": 0.774155,
           "icc_valid_chunk_ratio": 0.294118,
           "DCC": 0.615647,
           "n_windows": 50
@@ -1166,7 +1152,7 @@
             "num": 0,
             "den": 0
           },
-          "ICC": 0.830784,
+          "ICC": 0.830786,
           "icc_valid_chunk_ratio": 0.333333,
           "DCC": 0.64931,
           "n_windows": 26
@@ -1180,9 +1166,9 @@
             "num": 1,
             "den": 1
           },
-          "ICC": 0.824582,
+          "ICC": 0.824569,
           "icc_valid_chunk_ratio": 0.2,
-          "DCC": 0.617309,
+          "DCC": 0.617307,
           "n_windows": 14
         },
         "ver_c660dd06c1d6": {
@@ -1200,7 +1186,7 @@
           "n_windows": 21
         },
         "ver_cc8eeb30af79": {
-          "doc_id": "doc_owasp_avss_config",
+          "doc_id": "doc_owasp_asvs_config",
           "version_id": "ver_cc8eeb30af79",
           "n_chunks": 18,
           "avg_tokens": 134.56,
@@ -1212,6 +1198,20 @@
           "icc_valid_chunk_ratio": 0.222222,
           "DCC": 0.688819,
           "n_windows": 17
+        },
+        "ver_ce5ddd72c7e5": {
+          "doc_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+          "version_id": "ver_ce5ddd72c7e5",
+          "n_chunks": 104,
+          "avg_tokens": 43.86,
+          "BI_atomic": {
+            "num": 20,
+            "den": 20
+          },
+          "ICC": 0.804325,
+          "icc_valid_chunk_ratio": 0.153846,
+          "DCC": 0.593545,
+          "n_windows": 103
         },
         "ver_d1b9bedd6c92": {
           "doc_id": "doc_owasp_a05_infrastructure_as_code_security_cheat_sheet",
@@ -1270,7 +1270,7 @@
           "n_windows": 44
         },
         "ver_d5ac6829b294": {
-          "doc_id": "doc_owasp_avss_session_management",
+          "doc_id": "doc_owasp_asvs_session_management",
           "version_id": "ver_d5ac6829b294",
           "n_chunks": 27,
           "avg_tokens": 102.48,
@@ -1326,7 +1326,7 @@
           "n_windows": 41
         },
         "ver_e1e0aaa15e48": {
-          "doc_id": "doc_owasp_avss_authentication",
+          "doc_id": "doc_owasp_asvs_authentication",
           "version_id": "ver_e1e0aaa15e48",
           "n_chunks": 29,
           "avg_tokens": 182.17,
@@ -1368,7 +1368,7 @@
           "n_windows": 26
         },
         "ver_ea47056e8e8f": {
-          "doc_id": "doc_owasp_avss_authentication",
+          "doc_id": "doc_owasp_asvs_authentication",
           "version_id": "ver_ea47056e8e8f",
           "n_chunks": 48,
           "avg_tokens": 159.4,
@@ -1580,7 +1580,7 @@
           "n_windows": 22
         },
         "ver_4aec329f2642": {
-          "doc_id": "doc_owasp_avss_session_management",
+          "doc_id": "doc_owasp_asvs_session_management",
           "version_id": "ver_4aec329f2642",
           "n_chunks": 16,
           "avg_tokens": 123.56,
@@ -1592,20 +1592,6 @@
           "icc_valid_chunk_ratio": 0.5625,
           "DCC": 0.735362,
           "n_windows": 15
-        },
-        "ver_4d5e2f4d1c42": {
-          "doc_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
-          "version_id": "ver_4d5e2f4d1c42",
-          "n_chunks": 74,
-          "avg_tokens": 74.01,
-          "BI_atomic": {
-            "num": 20,
-            "den": 20
-          },
-          "ICC": 0.780889,
-          "icc_valid_chunk_ratio": 0.540541,
-          "DCC": 0.636628,
-          "n_windows": 73
         },
         "ver_5004d1ead2df": {
           "doc_id": "doc_owasp_a07_password_storage_cheat_sheet",
@@ -1720,7 +1706,7 @@
           "n_windows": 65
         },
         "ver_8d5b8e494a0c": {
-          "doc_id": "doc_owasp_avss_validation_sanitization_encoding",
+          "doc_id": "doc_owasp_asvs_validation_sanitization_encoding",
           "version_id": "ver_8d5b8e494a0c",
           "n_chunks": 13,
           "avg_tokens": 266.15,
@@ -1728,7 +1714,7 @@
             "num": 4,
             "den": 4
           },
-          "ICC": 0.792948,
+          "ICC": 0.792947,
           "icc_valid_chunk_ratio": 0.692308,
           "DCC": 0.770409,
           "n_windows": 12
@@ -1742,9 +1728,9 @@
             "num": 3,
             "den": 3
           },
-          "ICC": 0.797069,
+          "ICC": 0.797071,
           "icc_valid_chunk_ratio": 0.6875,
-          "DCC": 0.673104,
+          "DCC": 0.673105,
           "n_windows": 79
         },
         "ver_9363b0048b47": {
@@ -1762,7 +1748,7 @@
           "n_windows": 96
         },
         "ver_97ee690ad2d4": {
-          "doc_id": "doc_owasp_avss_access_control",
+          "doc_id": "doc_owasp_asvs_access_control",
           "version_id": "ver_97ee690ad2d4",
           "n_chunks": 5,
           "avg_tokens": 190.2,
@@ -1770,9 +1756,9 @@
             "num": 3,
             "den": 3
           },
-          "ICC": 0.755734,
+          "ICC": 0.755745,
           "icc_valid_chunk_ratio": 1.0,
-          "DCC": 0.816678,
+          "DCC": 0.816673,
           "n_windows": 4
         },
         "ver_9f98e0c8f055": {
@@ -1784,9 +1770,9 @@
             "num": 1,
             "den": 1
           },
-          "ICC": 0.760798,
+          "ICC": 0.760785,
           "icc_valid_chunk_ratio": 0.466667,
-          "DCC": 0.739665,
+          "DCC": 0.739662,
           "n_windows": 14
         },
         "ver_a2fa1bbe38f1": {
@@ -1854,7 +1840,7 @@
             "num": 13,
             "den": 13
           },
-          "ICC": 0.760175,
+          "ICC": 0.760174,
           "icc_valid_chunk_ratio": 0.488372,
           "DCC": 0.650196,
           "n_windows": 42
@@ -1902,7 +1888,7 @@
           "n_windows": 19
         },
         "ver_cc8eeb30af79": {
-          "doc_id": "doc_owasp_avss_config",
+          "doc_id": "doc_owasp_asvs_config",
           "version_id": "ver_cc8eeb30af79",
           "n_chunks": 12,
           "avg_tokens": 207.58,
@@ -1914,6 +1900,20 @@
           "icc_valid_chunk_ratio": 0.666667,
           "DCC": 0.751857,
           "n_windows": 11
+        },
+        "ver_ce5ddd72c7e5": {
+          "doc_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+          "version_id": "ver_ce5ddd72c7e5",
+          "n_chunks": 74,
+          "avg_tokens": 74.01,
+          "BI_atomic": {
+            "num": 20,
+            "den": 20
+          },
+          "ICC": 0.78089,
+          "icc_valid_chunk_ratio": 0.540541,
+          "DCC": 0.636623,
+          "n_windows": 73
         },
         "ver_d1b9bedd6c92": {
           "doc_id": "doc_owasp_a05_infrastructure_as_code_security_cheat_sheet",
@@ -1952,7 +1952,7 @@
             "num": 112,
             "den": 112
           },
-          "ICC": 0.795674,
+          "ICC": 0.795677,
           "icc_valid_chunk_ratio": 0.443515,
           "DCC": 0.619884,
           "n_windows": 238
@@ -1966,13 +1966,13 @@
             "num": 14,
             "den": 14
           },
-          "ICC": 0.78489,
+          "ICC": 0.784893,
           "icc_valid_chunk_ratio": 0.782609,
-          "DCC": 0.682029,
+          "DCC": 0.682025,
           "n_windows": 22
         },
         "ver_d5ac6829b294": {
-          "doc_id": "doc_owasp_avss_session_management",
+          "doc_id": "doc_owasp_asvs_session_management",
           "version_id": "ver_d5ac6829b294",
           "n_chunks": 16,
           "avg_tokens": 180.31,
@@ -2028,7 +2028,7 @@
           "n_windows": 23
         },
         "ver_e1e0aaa15e48": {
-          "doc_id": "doc_owasp_avss_authentication",
+          "doc_id": "doc_owasp_asvs_authentication",
           "version_id": "ver_e1e0aaa15e48",
           "n_chunks": 25,
           "avg_tokens": 219.68,
@@ -2070,7 +2070,7 @@
           "n_windows": 14
         },
         "ver_ea47056e8e8f": {
-          "doc_id": "doc_owasp_avss_authentication",
+          "doc_id": "doc_owasp_asvs_authentication",
           "version_id": "ver_ea47056e8e8f",
           "n_chunks": 36,
           "avg_tokens": 220.08,
@@ -2129,9 +2129,9 @@
     }
   },
   "runtime_seconds": {
-    "BI_atomic": 0.0113,
-    "ICC": 174.2833,
-    "DCC": 623.3856,
-    "total": 912.5933
+    "BI_atomic": 0.0084,
+    "ICC": 168.1852,
+    "DCC": 648.4182,
+    "total": 880.1458
   }
 }

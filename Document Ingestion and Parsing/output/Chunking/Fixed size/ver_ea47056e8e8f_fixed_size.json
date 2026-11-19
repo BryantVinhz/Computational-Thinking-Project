@@ -1,11 +1,11 @@
 {
-  "document_id": "doc_owasp_avss_authentication",
+  "document_id": "doc_owasp_asvs_authentication",
   "version_id": "ver_ea47056e8e8f",
   "chunking_strategy": "fixed_size",
   "chunks": [
     {
       "chunk_id": "ver_ea47056e8e8f_c00000",
-      "document_id": "doc_owasp_avss_authentication",
+      "document_id": "doc_owasp_asvs_authentication",
       "version_id": "ver_ea47056e8e8f",
       "chunk_idx": 0,
       "chunk_type": "text",
@@ -18,7 +18,7 @@
     },
     {
       "chunk_id": "ver_ea47056e8e8f_c00001",
-      "document_id": "doc_owasp_avss_authentication",
+      "document_id": "doc_owasp_asvs_authentication",
       "version_id": "ver_ea47056e8e8f",
       "chunk_idx": 1,
       "chunk_type": "text",
@@ -33,7 +33,7 @@
     },
     {
       "chunk_id": "ver_ea47056e8e8f_c00002",
-      "document_id": "doc_owasp_avss_authentication",
+      "document_id": "doc_owasp_asvs_authentication",
       "version_id": "ver_ea47056e8e8f",
       "chunk_idx": 2,
       "chunk_type": "text",
@@ -47,7 +47,7 @@
     },
     {
       "chunk_id": "ver_ea47056e8e8f_c00003",
-      "document_id": "doc_owasp_avss_authentication",
+      "document_id": "doc_owasp_asvs_authentication",
       "version_id": "ver_ea47056e8e8f",
       "chunk_idx": 3,
       "chunk_type": "text",
@@ -61,7 +61,7 @@
     },
     {
       "chunk_id": "ver_ea47056e8e8f_c00004",
-      "document_id": "doc_owasp_avss_authentication",
+      "document_id": "doc_owasp_asvs_authentication",
       "version_id": "ver_ea47056e8e8f",
       "chunk_idx": 4,
       "chunk_type": "text",
@@ -75,7 +75,7 @@
     },
     {
       "chunk_id": "ver_ea47056e8e8f_c00005",
-      "document_id": "doc_owasp_avss_authentication",
+      "document_id": "doc_owasp_asvs_authentication",
       "version_id": "ver_ea47056e8e8f",
       "chunk_idx": 5,
       "chunk_type": "text",
@@ -89,7 +89,7 @@
     },
     {
       "chunk_id": "ver_ea47056e8e8f_c00006",
-      "document_id": "doc_owasp_avss_authentication",
+      "document_id": "doc_owasp_asvs_authentication",
       "version_id": "ver_ea47056e8e8f",
       "chunk_idx": 6,
       "chunk_type": "text",
@@ -103,7 +103,7 @@
     },
     {
       "chunk_id": "ver_ea47056e8e8f_c00007",
-      "document_id": "doc_owasp_avss_authentication",
+      "document_id": "doc_owasp_asvs_authentication",
       "version_id": "ver_ea47056e8e8f",
       "chunk_idx": 7,
       "chunk_type": "text",
@@ -117,7 +117,7 @@
     },
     {
       "chunk_id": "ver_ea47056e8e8f_c00008",
-      "document_id": "doc_owasp_avss_authentication",
+      "document_id": "doc_owasp_asvs_authentication",
       "version_id": "ver_ea47056e8e8f",
       "chunk_idx": 8,
       "chunk_type": "text",
@@ -131,7 +131,7 @@
     },
     {
       "chunk_id": "ver_ea47056e8e8f_c00009",
-      "document_id": "doc_owasp_avss_authentication",
+      "document_id": "doc_owasp_asvs_authentication",
       "version_id": "ver_ea47056e8e8f",
       "chunk_idx": 9,
       "chunk_type": "text",
@@ -145,7 +145,7 @@
     },
     {
       "chunk_id": "ver_ea47056e8e8f_c00010",
-      "document_id": "doc_owasp_avss_authentication",
+      "document_id": "doc_owasp_asvs_authentication",
       "version_id": "ver_ea47056e8e8f",
       "chunk_idx": 10,
       "chunk_type": "text",
@@ -159,7 +159,7 @@
     },
     {
       "chunk_id": "ver_ea47056e8e8f_c00011",
-      "document_id": "doc_owasp_avss_authentication",
+      "document_id": "doc_owasp_asvs_authentication",
       "version_id": "ver_ea47056e8e8f",
       "chunk_idx": 11,
       "chunk_type": "text",
@@ -173,7 +173,7 @@
     },
     {
       "chunk_id": "ver_ea47056e8e8f_c00012",
-      "document_id": "doc_owasp_avss_authentication",
+      "document_id": "doc_owasp_asvs_authentication",
       "version_id": "ver_ea47056e8e8f",
       "chunk_idx": 12,
       "chunk_type": "text",

@@ -225,19 +225,19 @@ __marimo__/
 
 
 # SQLite & Vector Database files
-*.db
-*.db-journal
-*.db-wal
-*.db-shm
-*.sqlite
-*.sqlite3
-*.sqlite3-journal
-*.sqlite3-wal
-*.sqlite3-shm
-# ChromaDB & Generated Database folders
-**/chroma_security_db/
-/Document Ingestion and Parsing/output/Provenance/
-/Document Ingestion and Parsing/output/Vector DB/
+# *.db
+# *.db-journal
+# *.db-wal
+# *.db-shm
+# *.sqlite
+# *.sqlite3
+# *.sqlite3-journal
+# *.sqlite3-wal
+# *.sqlite3-shm
+# # ChromaDB & Generated Database folders
+# **/chroma_security_db/
+# /Document Ingestion and Parsing/output/Provenance/
+# /Document Ingestion and Parsing/output/Vector DB/
 
 *.zip
 

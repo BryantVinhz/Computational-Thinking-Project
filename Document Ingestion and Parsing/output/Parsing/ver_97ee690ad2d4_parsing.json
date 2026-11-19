@@ -1,7 +1,7 @@
 [
   {
     "block_id": "ver_97ee690ad2d4_b00000",
-    "document_id": "doc_owasp_avss_access_control",
+    "document_id": "doc_owasp_asvs_access_control",
     "version_id": "ver_97ee690ad2d4",
     "block_idx": 0,
     "file_format": "MARKDOWN",
@@ -27,7 +27,7 @@
   },
   {
     "block_id": "ver_97ee690ad2d4_b00001",
-    "document_id": "doc_owasp_avss_access_control",
+    "document_id": "doc_owasp_asvs_access_control",
     "version_id": "ver_97ee690ad2d4",
     "block_idx": 1,
     "file_format": "MARKDOWN",
@@ -54,7 +54,7 @@
   },
   {
     "block_id": "ver_97ee690ad2d4_b00002",
-    "document_id": "doc_owasp_avss_access_control",
+    "document_id": "doc_owasp_asvs_access_control",
     "version_id": "ver_97ee690ad2d4",
     "block_idx": 2,
     "file_format": "MARKDOWN",
@@ -81,7 +81,7 @@
   },
   {
     "block_id": "ver_97ee690ad2d4_b00003",
-    "document_id": "doc_owasp_avss_access_control",
+    "document_id": "doc_owasp_asvs_access_control",
     "version_id": "ver_97ee690ad2d4",
     "block_idx": 3,
     "file_format": "MARKDOWN",
@@ -108,7 +108,7 @@
   },
   {
     "block_id": "ver_97ee690ad2d4_b00004",
-    "document_id": "doc_owasp_avss_access_control",
+    "document_id": "doc_owasp_asvs_access_control",
     "version_id": "ver_97ee690ad2d4",
     "block_idx": 4,
     "file_format": "MARKDOWN",
@@ -135,7 +135,7 @@
   },
   {
     "block_id": "ver_97ee690ad2d4_b00005",
-    "document_id": "doc_owasp_avss_access_control",
+    "document_id": "doc_owasp_asvs_access_control",
     "version_id": "ver_97ee690ad2d4",
     "block_idx": 5,
     "file_format": "MARKDOWN",
@@ -162,7 +162,7 @@
   },
   {
     "block_id": "ver_97ee690ad2d4_b00006",
-    "document_id": "doc_owasp_avss_access_control",
+    "document_id": "doc_owasp_asvs_access_control",
     "version_id": "ver_97ee690ad2d4",
     "block_idx": 6,
     "file_format": "MARKDOWN",
@@ -237,7 +237,7 @@
   },
   {
     "block_id": "ver_97ee690ad2d4_b00007",
-    "document_id": "doc_owasp_avss_access_control",
+    "document_id": "doc_owasp_asvs_access_control",
     "version_id": "ver_97ee690ad2d4",
     "block_idx": 7,
     "file_format": "MARKDOWN",
@@ -264,7 +264,7 @@
   },
   {
     "block_id": "ver_97ee690ad2d4_b00008",
-    "document_id": "doc_owasp_avss_access_control",
+    "document_id": "doc_owasp_asvs_access_control",
     "version_id": "ver_97ee690ad2d4",
     "block_idx": 8,
     "file_format": "MARKDOWN",
@@ -315,7 +315,7 @@
   },
   {
     "block_id": "ver_97ee690ad2d4_b00009",
-    "document_id": "doc_owasp_avss_access_control",
+    "document_id": "doc_owasp_asvs_access_control",
     "version_id": "ver_97ee690ad2d4",
     "block_idx": 9,
     "file_format": "MARKDOWN",
@@ -342,7 +342,7 @@
   },
   {
     "block_id": "ver_97ee690ad2d4_b00010",
-    "document_id": "doc_owasp_avss_access_control",
+    "document_id": "doc_owasp_asvs_access_control",
     "version_id": "ver_97ee690ad2d4",
     "block_idx": 10,
     "file_format": "MARKDOWN",
@@ -401,7 +401,7 @@
   },
   {
     "block_id": "ver_97ee690ad2d4_b00011",
-    "document_id": "doc_owasp_avss_access_control",
+    "document_id": "doc_owasp_asvs_access_control",
     "version_id": "ver_97ee690ad2d4",
     "block_idx": 11,
     "file_format": "MARKDOWN",
@@ -428,7 +428,7 @@
   },
   {
     "block_id": "ver_97ee690ad2d4_b00012",
-    "document_id": "doc_owasp_avss_access_control",
+    "document_id": "doc_owasp_asvs_access_control",
     "version_id": "ver_97ee690ad2d4",
     "block_idx": 12,
     "file_format": "MARKDOWN",
@@ -455,7 +455,7 @@
   },
   {
     "block_id": "ver_97ee690ad2d4_b00013",
-    "document_id": "doc_owasp_avss_access_control",
+    "document_id": "doc_owasp_asvs_access_control",
     "version_id": "ver_97ee690ad2d4",
     "block_idx": 13,
     "file_format": "MARKDOWN",
