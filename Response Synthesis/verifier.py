@@ -37,7 +37,7 @@ try:
     from normalization_module import detect_language
 except ImportError:
     from query_understanding_routing.normalization_module import detect_language
-    
+
 try:
     from .schema_response import (
         ClaimStatus,
@@ -215,6 +215,16 @@ _CLAUSE_BOUNDARY_RE = re.compile(
     re.UNICODE,
 )
 
+# Numeric attribution splits on coordination as well as punctuation, because one
+# sentence can list several entities with their own measurements
+# ("XSS ... 30k CVEs and SQL Injection ... 14k CVEs").
+_MEASURE_CLAUSE_RE = re.compile(
+    r"(?<=[.!?;])\s+"
+    r"|[,:]\s*"
+    r"|\s+(?:and|but|while|whereas|however|và|nhưng|trong khi)\s+",
+    re.IGNORECASE | re.UNICODE,
+)
+
 
 def _negation_count(text: str) -> int:
     """Count negation markers, ignoring non-negating contrastive phrases."""
@@ -242,9 +252,17 @@ def _scoped_clause(text: str, reference: str) -> str | None:
     return best_clause
 
 
-def _polarity(text: str, reference: str | None = None) -> str:
-    """Polarity of `text`: one side negation is decidable, multiple markers are not."""
-    target = _scoped_clause(text, reference) if reference else text
+def _polarity(text: str, reference: str | None = None, clause: str | None = None) -> str:
+    """
+    Polarity of the assertion in `text`.
+
+    `reference` narrows to the most related clause; `clause` applies to a clause that
+    has already been selected (e.g. the sentence matched in the evidence) so unrelated
+    negations elsewhere in a long passage cannot decide the verdict.
+    """
+    target = clause if clause is not None else (
+        _scoped_clause(text, reference) if reference else text
+    )
     if target is None:
         return POLARITY_UNCERTAIN
     count = _negation_count(target)
@@ -257,8 +275,14 @@ def _polarity(text: str, reference: str | None = None) -> str:
 
 
 def _has_opposing_polarity(claim_text: str, evidence_text: str) -> bool:
-    """True only when one side is clearly negated and the other clearly is not."""
-    claim_polarity = _polarity(claim_text)
+    """
+    True only when one side is clearly negated and the other clearly is not.
+
+    Both sides are scoped to the clause that shares substance with the other side: a
+    negation attached to a different assertion ("... while data is not validated") is
+    not a negation of the claim, and neither is one in an unrelated evidence sentence.
+    """
+    claim_polarity = _polarity(claim_text, reference=evidence_text)
     evidence_polarity = _polarity(evidence_text, reference=claim_text)
     if POLARITY_UNCERTAIN in (claim_polarity, evidence_polarity):
         return False
@@ -267,6 +291,273 @@ def _has_opposing_polarity(claim_text: str, evidence_text: str) -> bool:
 
 def _split_sentences(text: str) -> list[str]:
     return [s.strip() for s in _SENTENCE_SPLIT_RE.split(text) if s.strip()]
+
+
+# --- Numeric assertions (same entity / metric / version only) -------------
+# A numeric assertion is (metric, value, version, raw_unit). Identifiers
+# (CWE-79, #3, Top 10) and bare years are excluded so they are never compared.
+_NUMBER_RE = re.compile(r"(?<![\w\-#/.])(\d[\d,]*(?:\.\d+)?)\s*([kKmMbB])?(%)?")
+_UNIT_AFTER_RE = re.compile(r"\s*([A-Za-z][A-Za-z\-]*)")
+_NUMBER_SKIP_BEFORE_RE = re.compile(
+    r"(?:top|no\.?|number|version|#|cwe-|cve-)\s*$", re.IGNORECASE
+)
+# A number sitting inside a citation tag is a source label, never a measurement.
+_TAG_NUMBER_RE = re.compile(r"\[\d+(?:\s*,\s*\d+)*\]")
+_VERSION_TOKEN_RE = re.compile(r"\bversion\s*[:#]?\s*(\d+(?:\.\d+)*)", re.IGNORECASE)
+_YEAR_RE = re.compile(r"\b(?:19|20)\d{2}\b")
+
+# Known measurement units. A metric is only assigned when one of these appears, so an
+# arbitrary following word ("unique", "in", "vs") is never read as the unit.
+_MAGNITUDE_MULTIPLIER = {"k": 1_000.0, "m": 1_000_000.0, "b": 1_000_000_000.0}
+_COUNT_UNITS = frozenset({
+    "cwe", "cve", "character", "account", "application", "occurrence", "record", "point",
+})
+_UNIT_WINDOW = 3  # words searched after the number for a known unit
+
+
+def _count_unit(after: str) -> str | None:
+    """Nearest known count unit within a short window after a number, else None."""
+    for word in re.findall(r"[A-Za-z][A-Za-z\-]*", after)[:_UNIT_WINDOW]:
+        singular = word.lower().rstrip("s")
+        if singular in _COUNT_UNITS:
+            return singular
+    return None
+
+
+def _sentence_metrics(sentence: str) -> list[str]:
+    """Count-noun units named anywhere in the sentence, in reading order."""
+    metrics: list[str] = []
+    for word in re.findall(r"[A-Za-z][A-Za-z\-]*", sentence):
+        singular = word.lower().rstrip("s")
+        if singular in _COUNT_UNITS and singular not in metrics:
+            metrics.append(singular)
+    return metrics
+
+
+def _sentence_version(sentence: str) -> str | None:
+    """Edition/version a sentence is scoped to, or None when it names no version."""
+    match = _VERSION_TOKEN_RE.search(sentence)
+    if match:
+        return match.group(1)
+    match = _YEAR_RE.search(sentence)
+    return match.group(0) if match else None
+
+
+def _numeric_assertions(text: str) -> list[tuple[str, float, str | None, str]]:
+    """
+    Numeric assertions in `text` as (metric, value, version, source_sentence).
+
+    Several independent measurements often share one sentence ("XSS ... 30k CVEs and
+    SQL Injection ... 14k CVEs"), so each assertion is attributed to the enclosing
+    clause. Reading the whole sentence would credit every entity with every number.
+    """
+    assertions: list[tuple[str, float, str | None, str]] = []
+    # A version named once governs the following sentences until another version appears,
+    # so "(up from 241 in 2021)" stays bound to the 2021 edition it belongs to.
+    active_version: str | None = None
+    for sentence in _split_sentences(text) or [text]:
+        sentence_version = _sentence_version(sentence)
+        if sentence_version is not None:
+            active_version = sentence_version
+        version = active_version
+        # Citation tags are stripped before scanning so [1] is never read as a count.
+        scannable = _TAG_NUMBER_RE.sub(" ", sentence)
+        numbers = list(_NUMBER_RE.finditer(scannable))
+        found: list[tuple[str, float, str]] = []
+        for index, match in enumerate(numbers):
+            before = scannable[max(0, match.start() - 12):match.start()]
+            if _NUMBER_SKIP_BEFORE_RE.search(before):
+                continue
+            value = float(match.group(1).replace(",", ""))
+            magnitude = match.group(2)
+            if magnitude:
+                value *= _MAGNITUDE_MULTIPLIER[magnitude.lower()]
+            after = scannable[match.end():]
+            unit_word = _UNIT_AFTER_RE.match(scannable, match.end())
+            word = unit_word.group(1).lower() if unit_word else ""
+            if match.group(3) or word in {"percent", "pct"}:
+                metric = "%"
+            else:
+                if 1900 <= value <= 2099 and value == int(value) and not magnitude:
+                    continue  # a bare year, never a measurement
+                metric = _count_unit(after)
+                if metric is None:
+                    # "(643 vs 241 in 2021)": the count noun appears later in the
+                    # parenthetical, so a following count word still identifies the metric.
+                    metric = next((m for m in _sentence_metrics(scannable)), None)
+                if metric is None:
+                    continue  # no identifiable unit: not a measurement
+            found.append((metric, value, _measurement_span(scannable, numbers, index)))
+        for metric, value, span in found:
+            assertions.append((metric, value, version, span))
+    return assertions
+
+
+def _measurement_span(sentence: str, numbers: list["re.Match[str]"], index: int) -> str:
+    """
+    Context that attributes one measurement to its own entity.
+
+    The entity is named in the same clause as its measurement, so the clause is the
+    right unit: in "XSS ... 30k CVEs and SQL Injection ... 14k CVEs" the 14k clause
+    names only SQL Injection, and the 30k clause only XSS. When the sentence puts
+    several measurements in one clause, the whole clause describes them together.
+    """
+    position = numbers[index].start()
+    start = 0
+    end = len(sentence)
+    for boundary in _MEASURE_CLAUSE_RE.finditer(sentence):
+        if boundary.end() <= position:
+            start = boundary.end()
+        elif boundary.start() < position < boundary.end():
+            # The number sits inside the separator's match; treat it as its own clause.
+            start = boundary.start()
+            end = boundary.end()
+            break
+        else:
+            end = boundary.start()
+            break
+    clause = sentence[start:end].strip()
+    if index and not _content_tokens(clause.replace(str(numbers[index].group(0)), " ")):
+        # The clause carries no words of its own; fall back to the sentence so a
+        # bare measurement list is not stripped of its subject.
+        return sentence.strip()
+    return clause
+
+
+
+
+# Generic measurement vocabulary: sharing only these does not identify the same entity.
+_MEASURE_GENERIC_TOKENS = frozenset({
+    "version", "edition", "cover", "covers", "covered", "application", "applications",
+    "test", "tests", "tested", "category", "categories", "number", "greatest", "affect",
+    "affects", "affected", "there", "mean", "value", "total", "which", "vs",
+    "has", "have", "had", "more", "less", "than", "over", "about", "around",
+    "approximately", "nearly", "almost", "upto", "one", "two", "three", "most",
+})
+
+
+def _entity_tokens(sentence: str, metric: str) -> set[str]:
+    """
+    Content words that can identify the entity a measurement belongs to.
+
+    Numbers are excluded (a count is not an entity, and the magnitudes would differ
+    between claim and evidence), as are years and generic measurement vocabulary.
+    """
+    excluded = _MEASURE_GENERIC_TOKENS | {"%", "percent", "pct"}
+    tokens: set[str] = set()
+    for word in _content_tokens(sentence):
+        stem = word.rstrip("s")
+        if _YEAR_RE.fullmatch(word) or _NUMBER_RE.fullmatch(word):
+            continue
+        if word in excluded or stem in excluded or len(stem) < 2:
+            continue
+        tokens.add(stem)
+    return tokens
+
+
+def _same_entity(claim_entities: set[str], sentence: str, metric: str) -> bool:
+    """
+    True when `sentence` measures the same entity as the claim.
+
+    The claim's identifying words must all be present: a clause that also names a
+    different entity ("SQL Injection" when the claim is about XSS) describes another
+    measurement and cannot speak for this claim.
+    """
+    claim_side = claim_entities - {metric}
+    if not claim_side:
+        return True
+    return claim_side.issubset(_entity_tokens(sentence, metric) - {metric})
+
+
+def _numeric_relation(claim_text: str, evidence_text: str) -> str | None:
+    """
+    Compare numeric assertions only when entity, metric and version align.
+
+    Returns "contradicted" for a confirmed mismatched value, "unaligned" when
+    identity cannot be established reliably, or None when nothing applies. Metric
+    words alone never identify an entity, and internally inconsistent evidence is
+    ambiguous rather than proven wrong.
+    """
+    claim_assertions = _numeric_assertions(claim_text)
+    if not claim_assertions:
+        return None
+    evidence_assertions = _numeric_assertions(evidence_text)
+    # Keyed by metric *and* version: pooling by metric alone lets one edition's count
+    # satisfy another edition's assertion, hiding swapped measurements.
+    claim_values: dict[tuple[str, str | None], set[float]] = {}
+    for metric, value, version, _sentence in claim_assertions:
+        claim_values.setdefault((metric, version), set()).add(value)
+
+    unaligned = False
+    for metric, value, version, claim_sentence in claim_assertions:
+        claim_entities = _entity_tokens(claim_sentence, metric) - {metric}
+        # Same metric and version only: a year, a ranking or another unit never compares.
+        comparable = [
+            (e_value, e_sentence)
+            for e_metric, e_value, e_version, e_sentence in evidence_assertions
+            if e_metric == metric and e_version == version
+        ]
+        if not comparable:
+            unaligned = True
+            continue
+        # Attribute to the closest entity match: a sentence that also measures another
+        # entity ("SQL Injection ... 14k") must not answer for XSS, so only the
+        # best-overlapping measurements speak for this claim.
+        overlaps = [
+            (len(claim_entities & (_entity_tokens(e_sentence, metric) - {metric})), e_value)
+            for e_value, e_sentence in comparable
+        ]
+        best = max(overlap for overlap, _ in overlaps)
+        aligned = {e_value for overlap, e_value in overlaps if overlap == best}
+        if not aligned or (best == 0 and claim_entities):
+            unaligned = True  # no measurement of this entity is present
+            continue
+        if aligned.issubset(claim_values[(metric, version)]):
+            # The claim accounts for every value the evidence gives for this metric and
+            # version ("643 vs 241"), so the evidence is consistent with it.
+            continue
+        if value in aligned:
+            unaligned = True  # evidence carries more values than the claim states
+        elif len(aligned) > 1:
+            unaligned = True  # evidence is internally inconsistent: cannot decide
+        else:
+            return "contradicted"
+    return "unaligned" if unaligned else None
+
+
+
+# --- Explicit causal relationships ---------------------------------------
+# Narrow markers only: broad connectives would turn ordinary prose into claims
+# of causation. Vietnamese "ngăn chặn"/"prevent" are deliberately excluded.
+_CAUSAL_RE = re.compile(
+    r"\b(?:caus(?:e|es|ed)|driven\s+by|due\s+to|attributed\s+to|because(?:\s+of)?"
+    r"|led\s+to|leads?\s+to|result(?:s|ed)?\s+in)\b"
+    r"|\bgây\s+ra\b|\bdẫn\s+(?:đến|tới)\b|\bkhiến\b",
+    re.IGNORECASE | re.UNICODE,
+)
+
+
+def _has_unsupported_causality(claim_text: str, evidence_text: str) -> bool:
+    """True when the claim asserts causation its evidence never expresses."""
+    return bool(_CAUSAL_RE.search(claim_text)) and not _CAUSAL_RE.search(evidence_text)
+
+
+def _table_cells(line: str) -> list[str]:
+    """Non-empty cells of one Markdown table line, in column order."""
+    return [cell.strip() for cell in line.strip().strip("|").split("|") if cell.strip()]
+
+
+# Column headers that make each cell an independent statement about a different
+# version/entity. Descriptive tables ("| Mục tiêu | trình duyệt | phiên |") are not
+# comparison tables and must keep their existing single-claim treatment.
+_VERSION_HEADER_RE = re.compile(
+    r"\b(?:version|edition|năm|phiên bản|20\d{2})\b", re.IGNORECASE
+)
+
+
+def _is_comparison_header(header: list[str]) -> bool:
+    """True when data-column headers name a version/edition (so cells are separate)."""
+    return sum(bool(_VERSION_HEADER_RE.search(h)) for h in header[1:]) >= 2
 
 
 def _clean_markdown(line: str) -> str:
@@ -295,6 +586,7 @@ def extract_claims(draft_answer: str, min_tokens: int = MIN_CLAIM_TOKENS) -> lis
     claims: list[ExtractedClaim] = []
     in_code_block = False
     in_advisory = False
+    table_header: list[str] | None = None
 
     for idx, raw_line in enumerate(lines):
         line = raw_line.strip()
@@ -305,21 +597,41 @@ def extract_claims(draft_answer: str, min_tokens: int = MIN_CLAIM_TOKENS) -> lis
             continue
         if line.startswith("#"):
             in_advisory = ADVISORY_MARKER in line.lower()
+            table_header = None
             continue
         if re.fullmatch(r"[-*_]{3,}", line) or _TABLE_SEPARATOR_RE.match(line):
             continue
+        split_cells = False
+        cells: list[str] = []
         if line.startswith("|"):
             next_line = lines[idx + 1].strip() if idx + 1 < len(lines) else ""
             if _TABLE_SEPARATOR_RE.match(next_line):
+                # A comparison header names each data column so a cell can be attributed
+                # to the version/entity it belongs to.
+                table_header = _table_cells(line)
                 continue  # table header
-            # Join with comma (not ';') so sentence splitter preserves row as one claim.
-            line = ", ".join(cell.strip() for cell in line.strip("|").split("|") if cell.strip())
-        line = _clean_markdown(line)
+            # A comparison row must not become one claim asserting every cell: each data
+            # column is a separate assertion about a different version or entity.
+            header, cells = table_header, _table_cells(line)
+            split_cells = bool(
+                header and len(cells) >= 2 and len(cells) == len(header)
+                and _is_comparison_header(header)
+            )
+            if not split_cells:
+                # Join with comma (not ';') so sentence splitter preserves row as one claim.
+                line = ", ".join(cells)
+        elif table_header is not None:
+            table_header = None  # a non-table line ends the table
         if line.startswith("(") and line.endswith(")"):
             continue  # note line, e.g.: "(Note: ...)"
 
         segments: list[str] = []
-        for sentence in _split_sentences(line):
+        if split_cells:
+            # One assertion per data column, labelled with its row and column header.
+            # The separator is not a full stop: each cell stays one atomic claim.
+            for column in range(1, len(cells)):
+                segments.append(f"{cells[0]}: {header[column]} — {cells[column]}")
+        for sentence in _split_sentences("" if split_cells else line):
             if segments and _ONLY_TAGS_RE.match(sentence):
                 segments[-1] = f"{segments[-1]} {sentence}"
             else:
@@ -330,7 +642,7 @@ def extract_claims(draft_answer: str, min_tokens: int = MIN_CLAIM_TOKENS) -> lis
             text = " ".join(_TAG_RE.sub(" ", segment).split()).strip(" .,;:")
             if _is_disclaimer_or_filler(text, min_tokens):
                 continue
-            
+
             if len(_content_tokens(text)) < min_tokens:
                 continue
             claims.append(ExtractedClaim(text=text, tags=tags, is_advisory=in_advisory))
@@ -510,6 +822,7 @@ class EvidenceVerifier:
 
         score = round(max(0.0, min(1.0, best_score)), 4)
         snippet = _truncate(best_snippet) if best_snippet else None
+        evidence_text = evidence_by_tag[best_tag].get("text_content") or "" if best_tag else ""
 
         if score < self.support_threshold:
             source_desc = f"source {', '.join(valid_tags)}" if valid_tags else "any evidence"
@@ -525,7 +838,49 @@ class EvidenceVerifier:
                 explanation=f"Insufficient grounding found in {source_desc} (score {score:.2f} < {self.support_threshold}).",
             )
 
-        if _has_opposing_polarity(claim.text, best_snippet):
+        # A sufficiently similar claim may still assert a different number for the same
+        # entity/metric/version, or introduce a causal link its source never states.
+        # The matched sentence grounds the claim, so it carries the verdict. The whole
+        # chunk is consulted only when the sentence leaves a measurement unproven —
+        # never to the claim's benefit: a chunk-level agreement cannot rescue it.
+        support_text = best_snippet or evidence_text
+        numeric_relation = _numeric_relation(claim.text, support_text)
+        if support_text != evidence_text:
+            chunk_relation = _numeric_relation(claim.text, evidence_text)
+            if chunk_relation is None:
+                # The chunk accounts for every asserted value, so a single sentence
+                # simply not mentioning one is not a defect in the claim.
+                numeric_relation = None
+            elif chunk_relation == "contradicted" and numeric_relation is None:
+                # The chunk states a conflicting value for the same entity, but the
+                # matched sentence does not: two sources disagree, so stay unproven.
+                numeric_relation = "unaligned"
+            elif chunk_relation == "unaligned":
+                numeric_relation = "unaligned"
+        if numeric_relation == "contradicted":
+            return ClaimVerificationResult(
+                claim_id=claim_id,
+                claim_text=claim.text,
+                cited_tag=cited_tag,
+                status=ClaimStatus.CONTRADICTED,
+                confidence_score=score,
+                matched_snippet=snippet,
+                explanation=f"Content matches {best_tag} but states a conflicting value for the same metric.",
+            )
+        if numeric_relation == "unaligned" or _has_unsupported_causality(claim.text, support_text):
+            return ClaimVerificationResult(
+                claim_id=claim_id,
+                claim_text=claim.text,
+                cited_tag=cited_tag,
+                status=ClaimStatus.UNVERIFIED,
+                confidence_score=score,
+                matched_snippet=snippet,
+                explanation=f"Content matches {best_tag} but an assertion in it is not established by that source.",
+            )
+
+        # Negation is judged on the supporting sentence only: a negation elsewhere in the
+        # chunk describes something else and cannot contradict this claim.
+        if _has_opposing_polarity(claim.text, support_text):
             return ClaimVerificationResult(
                 claim_id=claim_id,
                 claim_text=claim.text,
@@ -604,6 +959,18 @@ class EvidenceVerifier:
             score = 0.0
             status = VerificationStatus.FAILED
             warnings.append("No grounded claims found to verify.")
+
+        # A confirmed contradiction is a veto: a supported majority cannot dilute it.
+        if contradicted:
+            status = VerificationStatus.FAILED
+            warnings.append(
+                f"{contradicted} grounded claim(s) contradict the cited evidence; answer not passed."
+            )
+        # Missing citations are a compliance cap, never a veto and never a rescue.
+        elif status == VerificationStatus.PASSED and any(
+            not c.tags for c, r in zip(claims, results) if not c.is_advisory
+        ):
+            status = VerificationStatus.WARNING
 
         return VerificationReportSchema(
             faithfulness_score=score,

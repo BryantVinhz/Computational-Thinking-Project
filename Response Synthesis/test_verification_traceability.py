@@ -29,6 +29,7 @@ from verifier import (
     MultilingualSemanticSimilarity,
     _has_opposing_polarity,
     _negation_count,
+    _numeric_relation,
     _polarity,
     extract_claims,
     lexical_support_score,
@@ -105,6 +106,64 @@ class TestClaimExtraction(unittest.TestCase):
         self.assertEqual(lexical_support_score("", "anything"), 0.0)
         self.assertAlmostEqual(lexical_support_score("bảo mật dữ liệu", "bảo mật dữ liệu"), 1.0)
         self.assertEqual(lexical_support_score("bảo mật dữ liệu", "hoàn toàn khác biệt"), 0.0)
+
+
+class TestComparisonTableClaimExtraction(unittest.TestCase):
+    """
+    R9C.2: a comparison table must not become one claim asserting every cell.
+
+    A row holding separate 2021 and 2025 values is two assertions; merging them lets
+    one version's number refute the other. Each data column becomes its own claim,
+    carrying the row label and its column header for context.
+    """
+
+    TABLE = (
+        "| Aspect | Version 2021 | Version 2025 |\n"
+        "| --- | --- | --- |\n"
+        "| Ranking Position | #3 | #5 (moved down) |\n"
+        "| New Categories | No new categories introduced. | "
+        "Two new categories added: A01 and A02. |\n"
+    )
+
+    def test_comparison_row_splits_per_version_column(self):
+        claims = extract_claims(self.TABLE)
+        ranking = [c for c in claims if "Ranking Position" in c.text]
+        self.assertEqual(len(ranking), 2)
+        self.assertTrue(any("#3" in c.text and "2021" in c.text for c in ranking))
+        self.assertTrue(any("#5" in c.text and "2025" in c.text for c in ranking))
+        # The two editions never share a claim.
+        for claim in ranking:
+            self.assertFalse("#3" in claim.text and "#5" in claim.text)
+
+    def test_split_claims_keep_row_and_column_context(self):
+        claims = extract_claims(self.TABLE)
+        first = [c for c in claims if "#3" in c.text][0]
+        self.assertIn("Ranking Position", first.text)
+        self.assertIn("Version 2021", first.text)
+
+    def test_negation_in_one_cell_does_not_merge_with_other_cell(self):
+        # "No new categories" must not be fused with "Two new categories added".
+        claims = extract_claims(self.TABLE)
+        cells = [c for c in claims if "categories" in c.text.lower()]
+        self.assertEqual(len(cells), 2)
+        self.assertTrue(any(c.text.lower().startswith("new categories: version 2021") for c in cells))
+
+    def test_citation_tags_survive_cell_split(self):
+        table = (
+            "| Aspect | Version 2021 | Version 2025 |\n"
+            "| --- | --- | --- |\n"
+            "| Ranking Position | #3 [1] | #5 [2] |\n"
+        )
+        claims = extract_claims(table)
+        by_tag = {c.tags[0]: c for c in claims if c.tags}
+        self.assertEqual(by_tag["[1]"].tags, ["[1]"])
+        self.assertIn("#3", by_tag["[1]"].text)
+        self.assertNotIn("#5", by_tag["[1]"].text)
+        self.assertIn("#5", by_tag["[2]"].text)
+
+    def test_header_only_row_is_still_skipped(self):
+        claims = extract_claims(self.TABLE)
+        self.assertFalse(any(c.text.startswith("Aspect") for c in claims))
 
 
 class TestEvidenceVerifier(unittest.TestCase):
@@ -878,6 +937,450 @@ class TestR8AEvaluation(unittest.TestCase):
         self.assertLess(model.encode_calls, model.encoded_texts)
         # Cold cache: every distinct text encoded exactly once.
         self.assertEqual(model.encoded_texts, len(set(model.encoded)))
+
+
+def _one_evidence(text, tag="[1]"):
+    return [make_evidence(tag, "c1", text, title="OWASP Top 10")]
+
+
+class TestR9AVerificationFailures(unittest.TestCase):
+    """
+    R9A reproductions of the TEST_02 verification defects, fixed in R9B.
+
+    Every test is offline and uses the default lexical scorer, so scores are exact.
+    Policy under test: support, contradiction and citation compliance are separate
+    dimensions. Only a CONTRADICTED claim vetoes the gate; missing citations cap it
+    at WARNING. Unmarked tests guard the boundaries so a fix cannot over-correct.
+    """
+
+    # --- Numeric contradictions -------------------------------------------
+
+    def test_numeric_contradiction_same_metric_and_version(self):
+        # TEST_02 case 1: claim says 37 CWEs, cited evidence says 38 CWEs for the same category.
+        evidence = _one_evidence(
+            "The 2025 edition of Injection has the greatest number of CVEs for any category, "
+            "with 38 CWEs in this category."
+        )
+        draft = make_draft(
+            "The 2025 edition of Injection has the greatest number of CVEs for any category, "
+            "with 37 CWEs in this category [1]."
+        )
+        report = EvidenceVerifier().verify(draft, evidence)
+        self.assertEqual(report.claims_detail[0].status, ClaimStatus.CONTRADICTED)
+
+    def test_numeric_contradiction_survives_high_lexical_overlap(self):
+        # The mismatched count is masked by a neighbouring metric that does match (TEST_02 case 2).
+        evidence = _one_evidence(
+            "In version 2025, Injection affects 38 CWEs. Injection covers 100% of applications tested."
+        )
+        draft = make_draft(
+            "In version 2025, Injection affects 37 CWEs and covers 100% of applications tested [1]."
+        )
+        report = EvidenceVerifier().verify(draft, evidence)
+        self.assertEqual(report.claims_detail[0].status, ClaimStatus.CONTRADICTED)
+
+    def test_same_numbers_different_version_is_not_a_contradiction(self):
+        # Guard: numbers tied to different versions must stay supported.
+        evidence = _one_evidence(
+            "In version 2021, Injection affected 37 CWEs. In version 2025, Injection affects 38 CWEs."
+        )
+        draft = make_draft("In version 2021, Injection affected 37 CWEs [1].")
+        report = EvidenceVerifier().verify(draft, evidence)
+        self.assertEqual(report.claims_detail[0].status, ClaimStatus.SUPPORTED)
+
+    def test_same_numbers_different_metric_is_not_a_contradiction(self):
+        # Guard: unrelated metrics sharing a value must not be forced into a contradiction.
+        evidence = _one_evidence(
+            "Injection covers 100% of applications tested. There are 38 CWEs in this category."
+        )
+        draft = make_draft(
+            "Injection covers 100% of applications tested and there are 38 CWEs in this category [1]."
+        )
+        report = EvidenceVerifier().verify(draft, evidence)
+        self.assertEqual(report.claims_detail[0].status, ClaimStatus.SUPPORTED)
+
+    def test_unrelated_measurement_in_same_chunk_is_not_a_contradiction(self):
+        # R9B.1: the 38-CWE measurement belongs to XSS, so the Injection claim stands.
+        evidence = _one_evidence(
+            "In 2025, Injection affects 37 CWEs. In 2025, XSS affects 38 CWEs."
+        )
+        draft = make_draft("In 2025, Injection affects 37 CWEs [1].")
+        report = EvidenceVerifier().verify(draft, evidence)
+        self.assertEqual(report.claims_detail[0].status, ClaimStatus.SUPPORTED)
+
+    def test_conflicting_measurement_only_for_another_entity_is_unverified(self):
+        # Guard: a differing value owned by a different entity must not be a contradiction.
+        evidence = _one_evidence("In 2025, XSS affects 38 CWEs.")
+        draft = make_draft("In 2025, Injection affects 37 CWEs [1].")
+        report = EvidenceVerifier().verify(draft, evidence)
+        self.assertNotEqual(report.claims_detail[0].status, ClaimStatus.CONTRADICTED)
+
+    def test_internally_inconsistent_evidence_is_not_a_hard_contradiction(self):
+        # Guard: the same entity carrying two values is ambiguous, not proven wrong.
+        evidence = _one_evidence(
+            "In 2025, Injection affects 37 CWEs. In 2025, Injection affects 38 CWEs."
+        )
+        draft = make_draft("In 2025, Injection affects 37 CWEs [1].")
+        report = EvidenceVerifier().verify(draft, evidence)
+        self.assertEqual(report.claims_detail[0].status, ClaimStatus.UNVERIFIED)
+
+    def test_unverifiable_number_is_not_forced_to_contradiction(self):
+        # Guard: an unmatched value with no comparable evidence stays UNVERIFIED.
+        evidence = _one_evidence(
+            "Injection is the most serious category in the 2025 ranking."
+        )
+        draft = make_draft("Injection affects 37 CWEs in the 2025 ranking [1].")
+        report = EvidenceVerifier().verify(draft, evidence)
+        self.assertEqual(report.claims_detail[0].status, ClaimStatus.UNVERIFIED)
+
+    # --- Unsupported entity relationships ---------------------------------
+
+    def test_unsupported_entity_relation_is_not_supported(self):
+        # TEST_02 case 3: both entities appear in the source, but their causal link does not.
+        evidence = _one_evidence(
+            "Software Supply Chain Failures is an expansion of Vulnerable and Outdated Components. "
+            "Injection falls two spots from #3 to #5 in the ranking, maintaining its position "
+            "relative to Cryptographic Failures and Insecure Design."
+        )
+        draft = make_draft(
+            "Software Supply Chain Failures caused Injection to fall two spots from #3 to #5 "
+            "in the 2025 ranking [1]."
+        )
+        report = EvidenceVerifier().verify(draft, evidence)
+        detail = report.claims_detail[0]
+        # High lexical overlap (0.68) currently reads as support; the relation is unproven.
+        self.assertEqual(detail.status, ClaimStatus.UNVERIFIED)
+
+    def test_explicit_causal_link_present_in_evidence_stays_supported(self):
+        # Guard: causality needs a narrow marker on both sides; ordinary prose is unaffected.
+        evidence = _one_evidence(
+            "Parameterized queries prevent SQL Injection because user input is never concatenated."
+        )
+        draft = make_draft(
+            "Parameterized queries prevent SQL Injection because user input is never concatenated [1]."
+        )
+        report = EvidenceVerifier().verify(draft, evidence)
+        self.assertEqual(report.claims_detail[0].status, ClaimStatus.SUPPORTED)
+
+    def test_unrelated_entity_claim_stays_unverified(self):
+        # Guard: a claim about entities absent from the evidence must not be rescued by relation logic.
+        evidence = _one_evidence(
+            "Injection includes Cross-site Scripting and SQL Injection vulnerabilities. "
+            "Injection falls two spots from #3 to #5 in the ranking."
+        )
+        draft = make_draft(
+            "Software Supply Chain Failures caused Injection to fall two spots in the 2025 ranking [1]."
+        )
+        report = EvidenceVerifier().verify(draft, evidence)
+        self.assertEqual(report.claims_detail[0].status, ClaimStatus.UNVERIFIED)
+
+    # --- Citation compliance vs evidence support --------------------------
+
+    def test_missing_citation_caps_status_at_warning(self):
+        # TEST_02 case 4: support and citation are separate dimensions. A grounded but
+        # uncited claim stays SUPPORTED and keeps its score, while the gate caps at WARNING.
+        evidence = _one_evidence(
+            "Injection includes a range of issues from Cross-site Scripting to SQL Injection vulnerabilities."
+        )
+        draft = make_draft(
+            "Injection includes a range of issues from Cross-site Scripting to SQL Injection vulnerabilities."
+        )
+        report = EvidenceVerifier().verify(draft, evidence)
+        self.assertIsNone(report.claims_detail[0].cited_tag)
+        self.assertEqual(report.claims_detail[0].status, ClaimStatus.SUPPORTED)
+        self.assertEqual(report.faithfulness_score, 1.0)
+        self.assertTrue(any("thiếu thẻ trích dẫn" in w for w in report.warnings))
+        self.assertEqual(report.status, VerificationStatus.WARNING)
+
+    def test_uncited_claim_never_fails_the_gate(self):
+        # Guard: citation non-compliance is a cap, never a veto. Missing tags must not
+        # drag a fully grounded answer below WARNING.
+        evidence = _one_evidence(
+            "Injection includes a range of issues from Cross-site Scripting to SQL Injection vulnerabilities."
+        )
+        draft = make_draft(
+            "Injection includes a range of issues from Cross-site Scripting to SQL Injection vulnerabilities."
+        )
+        report = EvidenceVerifier().verify(draft, evidence)
+        self.assertEqual(report.faithfulness_score, 1.0)
+        self.assertNotEqual(report.status, VerificationStatus.FAILED)
+
+    # --- Overall gate vs contradicted claims ------------------------------
+
+    def test_contradicted_claim_blocks_passed_gate(self):
+        # TEST_02 case 5: a contradicted claim is a veto, not diluted by supported ones.
+        evidence = [
+            make_evidence("[1]", "c1", "Parameterized queries prevent SQL Injection."),
+            make_evidence("[2]", "c2", "Input validation is a secondary defense."),
+        ]
+        draft = make_draft(
+            "Parameterized queries prevent SQL Injection [1]. "
+            "Input validation is a secondary defense [2]. "
+            "Logging is a secondary defense [2]. "
+            "Patching is a secondary defense [2]. "
+            "Parameterized queries do not prevent SQL Injection [1]."
+        )
+        report = EvidenceVerifier().verify(draft, evidence)
+        self.assertEqual(report.contradicted_claims, 1)
+        self.assertEqual(report.faithfulness_score, 0.8)
+        self.assertEqual(report.status, VerificationStatus.FAILED)
+
+    def test_dimensions_are_reported_separately(self):
+        # Guard: support / contradiction / citation counters stay independent and exact.
+        # No contradiction here, so the citation cap is what holds this at WARNING.
+        evidence = [
+            make_evidence("[1]", "c1", "Parameterized queries prevent SQL Injection."),
+            make_evidence("[2]", "c2", "Input validation is a secondary defense."),
+        ]
+        draft = make_draft(
+            "Parameterized queries prevent SQL Injection [1]. "
+            "Input validation is a secondary defense. "
+            "Web application firewalls patch every zero-day flaw [2]."
+        )
+        report = EvidenceVerifier().verify(draft, evidence)
+        self.assertEqual(report.total_claims, 3)
+        self.assertEqual(report.supported_claims, 2)
+        self.assertEqual(report.contradicted_claims, 0)
+        self.assertEqual(report.unverified_claims, 1)
+        self.assertEqual(report.faithfulness_score, 2 / 3)
+        self.assertEqual(report.status, VerificationStatus.WARNING)
+
+    def test_uncertain_claim_is_not_a_hard_veto(self):
+        # Guard: an unverified (heuristic miss) claim must not be escalated to a veto.
+        # Only CONTRADICTED caps the gate at FAILED; UNVERIFIED keeps the score-based status.
+        evidence = [
+            make_evidence("[1]", "c1", "Parameterized queries prevent SQL Injection."),
+            make_evidence("[2]", "c2", "Input validation is a secondary defense."),
+        ]
+        draft = make_draft(
+            "Parameterized queries prevent SQL Injection [1]. "
+            "Web application firewalls patch every zero-day flaw [2]."
+        )
+        report = EvidenceVerifier().verify(draft, evidence)
+        self.assertEqual(report.contradicted_claims, 0)
+        self.assertEqual(report.unverified_claims, 1)
+        self.assertNotEqual(report.status, VerificationStatus.FAILED)
+
+    def test_uncited_claim_is_not_a_contradiction(self):
+        # Guard: a missing citation is a compliance defect, never a semantic contradiction.
+        evidence = _one_evidence("Parameterized queries prevent SQL Injection.")
+        draft = make_draft("Parameterized queries prevent SQL Injection.")
+        report = EvidenceVerifier().verify(draft, evidence)
+        self.assertIsNone(report.claims_detail[0].cited_tag)
+        self.assertEqual(report.claims_detail[0].status, ClaimStatus.SUPPORTED)
+        self.assertEqual(report.contradicted_claims, 0)
+
+    def test_clean_grounded_draft_still_passes(self):
+        # Guard: the strictest plausible R9B rule must not break the happy path.
+        draft = make_draft(
+            "Parameterized queries prevent SQL Injection [1]. "
+            "Input validation is a secondary defense [2]."
+        )
+        evidence = [
+            make_evidence("[1]", "c1", "Parameterized queries prevent SQL Injection."),
+            make_evidence("[2]", "c2", "Input validation is a secondary defense."),
+        ]
+        report = EvidenceVerifier().verify(draft, evidence)
+        self.assertEqual(report.supported_claims, 2)
+        self.assertEqual(report.contradicted_claims, 0)
+        self.assertEqual(report.faithfulness_score, 1.0)
+        self.assertEqual(report.status, VerificationStatus.PASSED)
+
+
+class TestR9C2NumericAlignment(unittest.TestCase):
+    """
+    R9C.2: numeric unit extraction, multi-value evidence and evidence attribution.
+
+    Defects reproduced from evaluations/r9c/retry_TEST_02/TEST_02.envelope.json:
+    claim_006 (30k CVEs) and claim_013 (643 vs 241 CWEs) were UNVERIFIED although
+    the evidence states their values exactly, because the word after the number was
+    read as its unit ('30k' -> metric 'k', '643 unique' -> metric 'unique').
+    """
+
+    def _status(self, draft_text, evidence_text):
+        return EvidenceVerifier().verify(
+            make_draft(draft_text), _one_evidence(evidence_text)
+        ).claims_detail[0].status
+
+    # --- claim_006: magnitude suffixes ------------------------------------
+
+    def test_magnitude_suffix_matches_same_entity(self):
+        # TEST_02 claim_006: XSS count is stated verbatim in the evidence.
+        evidence = (
+            "Injection includes Cross-site Scripting (high frequency/low impact) with more than 30k CVEs "
+            "and SQL Injection (low frequency/high impact) with more than 14k CVEs."
+        )
+        status = self._status("Cross-site Scripting has more than 30k CVEs [1].", evidence)
+        self.assertEqual(status, ClaimStatus.SUPPORTED)
+
+    def test_two_entities_with_different_counts_do_not_collide(self):
+        # Two independent measurements in one passage must stay attributable.
+        evidence = (
+            "Injection includes Cross-site Scripting with more than 30k CVEs "
+            "and SQL Injection with more than 14k CVEs."
+        )
+        self.assertEqual(
+            self._status("SQL Injection has more than 14k CVEs [1].", evidence),
+            ClaimStatus.SUPPORTED,
+        )
+        self.assertEqual(
+            self._status("Cross-site Scripting has more than 30k CVEs [1].", evidence),
+            ClaimStatus.SUPPORTED,
+        )
+
+    def test_magnitude_suffix_still_contradicts_a_different_count(self):
+        # Guard: fixing the suffix must not blunt genuine contradiction.
+        evidence = "Cross-site Scripting has more than 30k CVEs."
+        status = self._status("Cross-site Scripting has more than 40k CVEs [1].", evidence)
+        self.assertEqual(status, ClaimStatus.CONTRADICTED)
+
+    # --- claim_013: counts and version-qualified assertions ---------------
+
+    def test_count_noun_identifies_metric(self):
+        # TEST_02 claim_013: '643 unique CWEs' / '241 in 2021' were misread as units
+        # 'unique' and 'in', so neither assertion aligned. Constant similarity isolates
+        # numeric alignment from lexical scoring, which this test does not cover.
+        evidence = "Additionally, there are 643 unique CWEs mapped to CVEs (up from 241 in 2021)."
+        verifier = EvidenceVerifier(similarity_fn=lambda c, p: 0.9, support_threshold=0.5)
+        report = verifier.verify(
+            make_draft("The total number of unique CWEs increased significantly (643 vs 241 in 2021) [1]."),
+            _one_evidence(evidence),
+        )
+        self.assertEqual(report.claims_detail[0].status, ClaimStatus.SUPPORTED)
+
+    def test_version_qualified_assertions_compare_per_version(self):
+        # A historical value stays bound to its year rather than to the document edition.
+        evidence = "In version 2021, Injection affected 33 CWEs. In version 2025, Injection affects 37 CWEs."
+        self.assertEqual(
+            self._status("In version 2021, Injection affected 33 CWEs [1].", evidence),
+            ClaimStatus.SUPPORTED,
+        )
+        self.assertEqual(
+            self._status("In version 2021, Injection affected 38 CWEs [1].", evidence),
+            ClaimStatus.CONTRADICTED,
+        )
+
+    def test_arbitrary_word_after_number_is_not_a_unit(self):
+        # Guard: 'vs', 'in', 'unique' and similar nouns must not define a metric.
+        evidence = "The report lists 643 unique CWEs."
+        self.assertNotEqual(
+            self._status("The report lists 241 distinct CWEs [1].", evidence),
+            ClaimStatus.SUPPORTED,
+        )
+
+    # --- evidence attribution ---------------------------------------------
+
+    def test_unrelated_sentence_in_chunk_cannot_contradict(self):
+        # Guard: a measurement in a *different* sentence about another entity must not
+        # refute this claim (the 45.2% figure in TEST_02's chunk is unrelated).
+        evidence = (
+            "Injection falls two spots from #3 to #5 in the ranking. "
+            "Authentication Failures covers 38 CWEs in a separate category."
+        )
+        status = self._status("Injection falls two spots from #3 to #5 in the ranking [1].", evidence)
+        self.assertEqual(status, ClaimStatus.SUPPORTED)
+
+    def test_multi_sentence_evidence_still_supports(self):
+        # Guard: narrowing attribution must not discard legitimate multi-sentence support.
+        evidence = (
+            "Injection is one of the most tested categories. "
+            "It covers 100% of applications tested."
+        )
+        status = self._status(
+            "Injection is one of the most tested categories and covers 100% of applications tested [1].",
+            evidence,
+        )
+        self.assertEqual(status, ClaimStatus.SUPPORTED)
+
+    # --- preserved genuine contradictions ---------------------------------
+
+    def test_true_contradiction_same_entity_metric_version(self):
+        evidence = "In 2025, Injection affects 37 CWEs."
+        self.assertEqual(
+            self._status("In 2025, Injection affects 38 CWEs [1].", evidence),
+            ClaimStatus.CONTRADICTED,
+        )
+
+    def test_inconsistent_evidence_stays_unverified(self):
+        evidence = "In 2025, Injection affects 37 CWEs. In 2025, Injection affects 38 CWEs."
+        status = self._status("In 2025, Injection affects 37 CWEs [1].", evidence)
+        self.assertEqual(status, ClaimStatus.UNVERIFIED)
+
+    # --- cross-version value accounting (R9C.2.1) -------------------------
+
+    def test_cross_version_swap_is_contradicted(self):
+        # R9C.2.1: the editions have their counts swapped. Each version must be
+        # compared with its own measurement. Pooling claim values by metric alone
+        # lets the 2025 figure vouch for the 2021 assertion, and vice versa.
+        claim = (
+            "In version 2021, Injection affects 33 CWEs. "
+            "In version 2025, Injection affects 37 CWEs"
+        )
+        evidence = (
+            "In version 2021, Injection affects 37 CWEs. "
+            "In version 2025, Injection affects 33 CWEs."
+        )
+        self.assertEqual(_numeric_relation(claim, evidence), "contradicted")
+
+    def test_identical_values_across_editions_are_not_a_contradiction(self):
+        # Guard: the same correct count in both editions is consistent, so the fix
+        # must not require editions to hold different values.
+        claim = (
+            "In version 2021, Injection affects 37 CWEs. "
+            "In version 2025, Injection affects 37 CWEs"
+        )
+        evidence = (
+            "In version 2021, Injection affects 37 CWEs. "
+            "In version 2025, Injection affects 37 CWEs."
+        )
+        self.assertIsNone(_numeric_relation(claim, evidence))
+
+    def test_cross_version_swap_blocks_the_gate(self):
+        # End-to-end guard: the swapped 2021 count is contradicted and never passes.
+        evidence = (
+            "In version 2021, Injection affects 37 CWEs. "
+            "In version 2025, Injection affects 33 CWEs."
+        )
+        self.assertEqual(
+            self._status("In version 2021, Injection affects 33 CWEs [1].", evidence),
+            ClaimStatus.CONTRADICTED,
+        )
+
+
+class TestR9C2PolarityScope(unittest.TestCase):
+    """R9C.2: negation is scoped to the clause that shares substance with the claim."""
+
+    def _status(self, claim_text, evidence_text):
+        verifier = EvidenceVerifier(similarity_fn=lambda c, p: 0.9, support_threshold=0.5)
+        return verifier.verify(
+            make_draft(claim_text), [make_evidence("[1]", "c1", evidence_text)]
+        ).claims_detail[0].status
+
+    def test_negation_in_unrelated_clause_is_not_a_contradiction(self):
+        # TEST_02 claim_016: 'not validated' negates the data, not the assertion.
+        evidence = "Server-Side Request Forgery (SSRF) has been rolled into this category."
+        status = self._status(
+            "New considerations such as SSRF, which is now rolled into A01, while data is not validated [1].",
+            evidence,
+        )
+        self.assertNotEqual(status, ClaimStatus.CONTRADICTED)
+
+    def test_true_polarity_contradiction_is_preserved(self):
+        evidence = "Parameterized queries prevent SQL Injection."
+        self.assertEqual(
+            self._status("Parameterized queries do not prevent SQL Injection [1].", evidence),
+            ClaimStatus.CONTRADICTED,
+        )
+
+    def test_unrelated_negation_inside_chunk_is_ignored(self):
+        evidence = (
+            "Parameterized queries prevent SQL Injection. "
+            "Legacy drivers do not support this feature."
+        )
+        self.assertEqual(
+            self._status("Parameterized queries prevent SQL Injection [1].", evidence),
+            ClaimStatus.SUPPORTED,
+        )
 
 
 if __name__ == "__main__":
