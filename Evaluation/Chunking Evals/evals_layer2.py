@@ -35,7 +35,7 @@ STRATEGIES = ["fixed_size", "structure_aware", "semantic"]
 
 
 def merge_intervals(intervals: list[tuple[int, int]]) -> list[tuple[int, int]]:
-    """Gộp các khoảng ký tự [start, end) giao nhau hoặc liền kề trong cùng một tài liệu."""
+    """Merge overlapping or adjacent character intervals [start, end) within the same document."""
     valid = sorted((s, e) for s, e in intervals if e > s)
     if not valid:
         return []
@@ -54,7 +54,7 @@ def intervals_to_token_set(
     doc_token_spans: list[tuple[int, int]],
     merged_intervals: list[tuple[int, int]],
 ) -> set[tuple[str, int]]:
-    """Ánh xạ tập khoảng ký tự tuyệt đối sang tập chỉ số token của version_id."""
+    """Map a set of absolute character intervals to a set of token indices for version_id."""
     tokens: set[tuple[str, int]] = set()
     if not merged_intervals or not doc_token_spans:
         return tokens
@@ -75,8 +75,8 @@ def build_document_coordinate_index(
     strategy_slug: str,
 ) -> tuple[dict[str, int], dict[str, list[tuple[int, int]]], dict[str, set[tuple[str, int]]]]:
     """
-    Xây dựng hệ tọa độ ký tự tuyệt đối cho từng version_id (các block nối bằng '\\n\\n')
-    và ánh xạ mọi chunk đầu ra về tập token tương ứng trên trục tọa độ tài liệu.
+    Build an absolute character coordinate system for each version_id (blocks joined by '\\n\\n')
+    and map all output chunks to their corresponding token sets along the document coordinate axis.
     """
     db_path = PROVENANCE_OUT_DIR / strategy_slug / "workspace_data.db"
     if not db_path.exists():
@@ -149,7 +149,7 @@ def build_document_coordinate_index(
 
 
 def build_search_plan(query: str) -> dict[str, Any]:
-    """Tạo QueryPlan chuẩn hóa để cô lập biến số Retrieval giữa 3 chiến lược Chunking."""
+    """Create a standardized QueryPlan to isolate the Retrieval variable across the 3 Chunking strategies."""
     return {
         "resolved_query": query,
         "original_query": query,
@@ -202,6 +202,7 @@ def evaluate_strategy_retrieval(
         lang = unit.get("lang", "unknown")
         ver_id = unit["version_id"]
 
+        # Convert all Gold Spans to absolute character interval sets & merge overlaps
         raw_gold_intervals: list[tuple[int, int]] = []
         for sp in spans:
             if "doc_char_start" in sp and "doc_char_end" in sp:
@@ -214,11 +215,13 @@ def evaluate_strategy_retrieval(
         t_gold = intervals_to_token_set(ver_id, doc_token_spans.get(ver_id, []), merged_gold)
         if not t_gold:
             continue
-
+        
+        # Execute RetrievalSystem and retrieve Top-K chunks
         plan = build_search_plan(query)
         retrieval_out = rs.retrieve(plan)
         retrieved_cids = [ev["chunk_id"] for ev in retrieval_out.get("evidence_list", [])[:top_k]]
 
+        # Calculate union (T_ret) and intersection (T_ret & T_gold) using the Chroma method
         t_ret: set[tuple[str, int]] = set()
         for cid in retrieved_cids:
             t_ret |= chunk_tokens.get(cid, set())
@@ -261,16 +264,17 @@ def evaluate_strategy_retrieval(
 
 def main() -> None:
     if not GT_PATH.exists():
-        raise FileNotFoundError(f"Không tìm thấy tệp Ground Truth: {GT_PATH}")
+        raise FileNotFoundError(f"Not found Ground Truth: {GT_PATH}")
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
-    print(f">>> Khởi tạo Vectorizer & Reranker trên thiết bị: {device}")
+    print(f">>> Initialize Vectorizer & Reranker on device: {device}")
 
     gt_units = json.loads(GT_PATH.read_text(encoding="utf-8"))
 
     vec_kwargs = {"device": device} if "device" in inspect.signature(QueryVectorizer.__init__).parameters else {}
     vectorizer = QueryVectorizer(**vec_kwargs)
-
+    
+    # Disable the Abstention blocking threshold (threshold=0.0) and share 1 reranker across all 3 strategies
     rerank_kwargs: dict[str, Any] = {"threshold": 0.0, "top_k": None}
     if "device" in inspect.signature(CrossEncoderReranker.__init__).parameters:
         rerank_kwargs["device"] = device
@@ -278,7 +282,7 @@ def main() -> None:
 
     report: dict[str, Any] = {}
     for slug in STRATEGIES:
-        print(f"\n>>> [Layer 2 - Retrieval] Đang đánh giá chiến lược: {slug} ...")
+        print(f"\n>>> [Layer 2 - Retrieval] Evaluating strategy: {slug} ...")
         report[slug] = evaluate_strategy_retrieval(
             slug, gt_units, vectorizer, reranker=shared_reranker, top_k=5
         )
@@ -294,7 +298,7 @@ def main() -> None:
             f"| **{slug}** | {m['token_recall@5']}% | {m['token_precision@5']}% | **{m['token_iou@5']}%** |"
         )
 
-    print("\n=== LAYER 2 · PHÂN RÃ THEO NGÔN NGỮ TRUY VẤN (Recall@5 / Precision@5 / IoU@5) ===")
+    print("\n=== LAYER 2 · BREAKDOWN BY QUERY LANGUAGE (Recall@5 / Precision@5 / IoU@5) ===")
     print("| Language | Fixed-size | Structure-aware | Semantic |")
     print("| :--- | :---: | :---: | :---: |")
     for lang in ("en", "vi"):
@@ -306,7 +310,7 @@ def main() -> None:
             )
         print(f"| **{lang.upper()}** | {cells[0]} | {cells[1]} | {cells[2]} |")
 
-    print("\n=== LAYER 2 · PHÂN RÃ THEO 4 NHÓM KỊCH BẢN (Recall@5 / Precision@5 / IoU@5) ===")
+    print("\n=== LAYER 2 · BREAKDOWN BY 4 SCENARIO GROUPS (Recall@5 / Precision@5 / IoU@5) ===")
     categories = ["prose_topic", "atomic_structure", "heading_plus_body", "multi_block_rule"]
     print("| Category | Fixed-size | Structure-aware | Semantic |")
     print("| :--- | :---: | :---: | :---: |")
@@ -319,7 +323,7 @@ def main() -> None:
             )
         print(f"| **{cat}** | {cells[0]} | {cells[1]} | {cells[2]} |")
 
-    print(f"\nĐã lưu kết quả Layer 2 tại: {REPORT_PATH}")
+    print(f"\nSaved Layer 2 results at: {REPORT_PATH}")
 
 
 if __name__ == "__main__":

@@ -10,68 +10,61 @@ PROJECT_ROOT = next(
 
 OUT_ZIP = BASE_DIR / "eval_for_colab.zip"
 
-CODE_DIRS = [
+LAYER1_FILES = [
+    "path.py",
+    "Evaluation/Chunking Evals/evals_layer1.py",
+    "Document Ingestion and Parsing/Chunking/token_counter.py",
+    "Retrieval/query_vectorizer.py",
+]
+
+LAYER1_DIRS = [
+    "Document Ingestion and Parsing/output/Chunking",
+    "Document Ingestion and Parsing/output/Provenance",
+]
+
+FULL_EXTRA_DIRS = [
     "Evaluation/Chunking Evals",
     "Retrieval",
     "Query Understanding and Routing",
     "Document Ingestion and Parsing/Metadata",
     "Document Ingestion and Parsing/Provenance and Traceability",
-]
-
-OUTPUT_DIRS = [
     "Document Ingestion and Parsing/output/Ingestion",
-    "Document Ingestion and Parsing/output/Chunking",
-    "Document Ingestion and Parsing/output/Provenance",
     "Document Ingestion and Parsing/output/Vector DB",
 ]
 
 
-def pack(include_output: bool = True) -> None:
-    targets = list(CODE_DIRS)
-    if include_output:
-        targets.extend(OUTPUT_DIRS)
-
-    file_count = 0
-    output_file_count = 0
-
+def pack(full: bool = False) -> None:
+    seen: set[str] = set()
     with zipfile.ZipFile(OUT_ZIP, "w", zipfile.ZIP_DEFLATED) as zf:
-        zf.write(PROJECT_ROOT / "path.py", "path.py")
-        file_count += 1
+        def add_file(path: Path) -> None:
+            arcname = path.relative_to(PROJECT_ROOT).as_posix()
+            if arcname not in seen and path.is_file():
+                zf.write(path, arcname)
+                seen.add(arcname)
 
-        for rel_dir in targets:
+        for rel_file in LAYER1_FILES:
+            fp = PROJECT_ROOT / rel_file
+            if not fp.is_file():
+                raise FileNotFoundError(f"Missing required file: {fp}")
+            add_file(fp)
+
+        target_dirs = list(LAYER1_DIRS) + (FULL_EXTRA_DIRS if full else [])
+        for rel_dir in target_dirs:
             src_dir = PROJECT_ROOT / rel_dir
             if not src_dir.is_dir():
-                raise FileNotFoundError(f"Not found folder: {src_dir}")
-
-            is_output_dir = rel_dir.startswith("Document Ingestion and Parsing/output/")
+                raise FileNotFoundError(f"Missing required directory: {src_dir}")
             for f in src_dir.rglob("*"):
-                rel_parts = f.relative_to(PROJECT_ROOT).parts
-                if (
-                    not f.is_file()
-                    or f.suffix == ".pyc"
-                    or "__pycache__" in rel_parts
-                    or "tests" in rel_parts
-                ):
-                    continue
-
-                arcname = f.relative_to(PROJECT_ROOT).as_posix()
-                if rel_parts[:2] == ("Evaluation", "Chunking Evals") and f.suffix == ".py":
-                    code = f.read_text(encoding="utf-8").replace("CURRENT_DIR.parents[2]", "CURRENT_DIR.parents[1]")
-                    zf.writestr(arcname, code)
-                else:
-                    zf.write(f, arcname)
-
-                file_count += 1
-                if is_output_dir:
-                    output_file_count += 1
+                parts = f.relative_to(PROJECT_ROOT).parts
+                if f.is_file() and f.suffix != ".pyc" and "__pycache__" not in parts and "tests" not in parts:
+                    add_file(f)
 
     size_mb = OUT_ZIP.stat().st_size / (1024 * 1024)
-    print(f"Done '{OUT_ZIP}' ({file_count} files, {size_mb:.2f} MB)")
-    print(f"  - Folder output/ (Ingestion, Chunking, Provenance, Vector DB): {output_file_count} files")
+    mode = "Full (Layer 1 + Layer 2)" if full else "Layer 1 Only"
+    print(f"Done '{OUT_ZIP}' [{mode}] ({len(seen)} files, {size_mb:.2f} MB)")
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--no-output", action="store_true", help="Chỉ nén mã nguồn, bỏ qua output/.")
+    parser.add_argument("--full", action="store_true", help="Bundle with Vector DB and Layer 2 source code.")
     args = parser.parse_args()
-    pack(include_output=not args.no_output)
+    pack(full=args.full)
