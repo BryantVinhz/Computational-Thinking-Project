@@ -1,0 +1,119 @@
+{
+  "fixed_size": {
+    "token_recall@5": 91.04,
+    "token_precision@5": 4.09,
+    "token_iou@5": 4.09,
+    "by_category": {
+      "prose_topic": {
+        "token_recall@5": 100.0,
+        "token_precision@5": 5.15,
+        "token_iou@5": 5.15
+      },
+      "atomic_structure": {
+        "token_recall@5": 86.16,
+        "token_precision@5": 4.18,
+        "token_iou@5": 4.17
+      },
+      "heading_plus_body": {
+        "token_recall@5": 92.85,
+        "token_precision@5": 2.73,
+        "token_iou@5": 2.73
+      },
+      "multi_block_rule": {
+        "token_recall@5": 85.15,
+        "token_precision@5": 4.29,
+        "token_iou@5": 4.29
+      }
+    },
+    "by_lang": {
+      "vi": {
+        "token_recall@5": 85.65,
+        "token_precision@5": 3.87,
+        "token_iou@5": 3.86
+      },
+      "en": {
+        "token_recall@5": 96.42,
+        "token_precision@5": 4.31,
+        "token_iou@5": 4.31
+      }
+    }
+  },
+  "structure_aware": {
+    "token_recall@5": 93.15,
+    "token_precision@5": 10.61,
+    "token_iou@5": 10.6,
+    "by_category": {
+      "prose_topic": {
+        "token_recall@5": 100.0,
+        "token_precision@5": 11.34,
+        "token_iou@5": 11.34
+      },
+      "atomic_structure": {
+        "token_recall@5": 90.0,
+        "token_precision@5": 13.52,
+        "token_iou@5": 13.52
+      },
+      "heading_plus_body": {
+        "token_recall@5": 92.59,
+        "token_precision@5": 6.77,
+        "token_iou@5": 6.72
+      },
+      "multi_block_rule": {
+        "token_recall@5": 90.0,
+        "token_precision@5": 10.81,
+        "token_iou@5": 10.81
+      }
+    },
+    "by_lang": {
+      "vi": {
+        "token_recall@5": 93.01,
+        "token_precision@5": 11.71,
+        "token_iou@5": 11.7
+      },
+      "en": {
+        "token_recall@5": 93.29,
+        "token_precision@5": 9.51,
+        "token_iou@5": 9.5
+      }
+    }
+  },
+  "semantic": {
+    "token_recall@5": 96.64,
+    "token_precision@5": 16.98,
+    "token_iou@5": 16.97,
+    "by_category": {
+      "prose_topic": {
+        "token_recall@5": 97.24,
+        "token_precision@5": 17.6,
+        "token_iou@5": 17.56
+      },
+      "atomic_structure": {
+        "token_recall@5": 90.0,
+        "token_precision@5": 17.07,
+        "token_iou@5": 17.07
+      },
+      "heading_plus_body": {
+        "token_recall@5": 99.3,
+        "token_precision@5": 12.79,
+        "token_iou@5": 12.78
+      },
+      "multi_block_rule": {
+        "token_recall@5": 100.0,
+        "token_precision@5": 20.48,
+        "token_iou@5": 20.48
+      }
+    },
+    "by_lang": {
+      "vi": {
+        "token_recall@5": 100.0,
+        "token_precision@5": 18.16,
+        "token_iou@5": 18.16
+      },
+      "en": {
+        "token_recall@5": 93.27,
+        "token_precision@5": 15.8,
+        "token_iou@5": 15.78
+      }
+    }
+  }
+}

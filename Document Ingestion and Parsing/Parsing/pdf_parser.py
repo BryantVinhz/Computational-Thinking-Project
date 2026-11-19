@@ -1,10 +1,10 @@
 """
 PDF Parser: extracts .pdf documents into HEADING, PARAGRAPH, LIST, TABLE, CODE, HEADER_FOOTER blocks.
-Uses PyMuPDF (fitz) to detect layout, bbox coordinates, font sizes, and tables.
+Uses PyMuPDF (fitz) with word-level geometric cell reconstruction and span-gap spacing to prevent
+merged-word artifacts in dense tables and text streams.
 Complies with schema_parsing.py standards and uses helpers from parser_utils.py.
 """
 import re
-from pathlib import Path
 import pymupdf
 
 from parser_utils import build_block, run_cli
@@ -17,6 +17,19 @@ PARSER_VERSION = pymupdf.__version__
 
 _BULLET_RE = re.compile(r"^\s*([•\-*–—+]|\d+[.)]|[a-zA-Z][.)])\s+")
 _PAGE_NUM_RE = re.compile(r"^(page\s+\d+(\s+of\s+\d+)?|\d+(\s*/\s*\d+)?)$", re.IGNORECASE)
+_HYPHENS_RE = re.compile(r"[\u2010\u2011\u00ad]")
+_BROKEN_LIGATURE_RE = re.compile(r"(?:^|\s)[if](?=\s+[A-Z])")
+_MULTI_SPACE_RE = re.compile(r"[ \t]{2,}")
+
+
+def _clean_extracted_pdf_text(text: str) -> str:
+    """Normalize non-breaking hyphens and stray broken-ligature glyphs from PDF text layers."""
+    if not text:
+        return ""
+    cleaned = _HYPHENS_RE.sub("-", text)
+    cleaned = _BROKEN_LIGATURE_RE.sub(" ", cleaned)
+    cleaned = _MULTI_SPACE_RE.sub(" ", cleaned)
+    return cleaned.strip()
 
 
 def _bbox_overlap(b1: list[float], b2: list[float], threshold: float = 0.5) -> bool:
@@ -30,6 +43,72 @@ def _bbox_overlap(b1: list[float], b2: list[float], threshold: float = 0.5) -> b
     inter_area = (x1 - x0) * (y1 - y0)
     b1_area = (b1[2] - b1[0]) * (b1[3] - b1[1])
     return (inter_area / b1_area) >= threshold if b1_area > 0 else False
+
+
+def _extract_cell_text_from_words(
+    page_words: list[tuple],
+    cell_bbox: tuple[float, float, float, float] | list[float] | None,
+    fallback_text: str,
+) -> str:
+    """
+    Reconstruct table cell text using physical word bounding boxes from `page.get_text('words')`.
+    Prevents merged-word artifacts caused by tight kerning in PDF table cells.
+    """
+    if not cell_bbox or not page_words:
+        return _clean_extracted_pdf_text(fallback_text.replace("\n", " "))
+
+    cx0, cy0, cx1, cy1 = cell_bbox
+    matched = [
+        w for w in page_words
+        if (cx0 - 1.0) <= ((w[0] + w[2]) * 0.5) <= (cx1 + 1.0)
+        and (cy0 - 1.0) <= ((w[1] + w[3]) * 0.5) <= (cy1 + 1.0)
+    ]
+    if not matched:
+        return _clean_extracted_pdf_text(fallback_text.replace("\n", " "))
+
+    # Sort top-to-bottom (bucketed by 3pt line height), then left-to-right
+    matched.sort(key=lambda w: (round(w[1] / 3.0), w[0]))
+    joined = " ".join(str(w[4]) for w in matched if str(w[4]).strip())
+    return _clean_extracted_pdf_text(joined)
+
+
+def _join_line_spans(spans: list[dict]) -> str:
+    """
+    Join spans on the same line, inserting a space when horizontal bbox gap exceeds
+    ~0.22 * font_size to avoid merged words across adjacent PDF text spans.
+    """
+    if not spans:
+        return ""
+
+    parts: list[str] = []
+    prev_x1: float | None = None
+
+    for span in spans:
+        raw = span.get("text") or ""
+        if not raw:
+            continue
+
+        bbox = span.get("bbox")
+        font_size = float(span.get("size") or 10.0)
+        curr_x0 = float(bbox[0]) if bbox and len(bbox) >= 4 else None
+        curr_x1 = float(bbox[2]) if bbox and len(bbox) >= 4 else None
+
+        if (
+            parts
+            and prev_x1 is not None
+            and curr_x0 is not None
+            and not parts[-1][-1].isspace()
+            and not raw[0].isspace()
+        ):
+            gap = curr_x0 - prev_x1
+            if gap > max(1.5, font_size * 0.22):
+                parts.append(" ")
+
+        parts.append(raw)
+        if curr_x1 is not None:
+            prev_x1 = curr_x1
+
+    return _clean_extracted_pdf_text("".join(parts))
 
 
 class PdfParser:
@@ -52,11 +131,12 @@ class PdfParser:
         for page_idx, page in enumerate(doc):
             page_num = page_idx + 1
             page_height = page.rect.height
+            page_words = page.get_text("words")
 
-            # 1. Extract tables first
+            # 1. Extract tables first using word-level cell reconstruction
             tab_finder = page.find_tables()
-            table_bboxes = []
-            tables_on_page = []
+            table_bboxes: list[list[float]] = []
+            tables_on_page: list[dict] = []
 
             for t in tab_finder.tables:
                 raw_extract = t.extract()
@@ -64,15 +144,31 @@ class PdfParser:
                     continue
                 table_bboxes.append(list(t.bbox))
 
-                raw_headers = [str(c or "").strip() for c in (t.header.names or raw_extract[0])]
-                if not any(raw_headers):
+                # Reconstruct every row's cells via cell bounding boxes + page_words
+                reconstructed_rows: list[list[str]] = []
+                t_rows = getattr(t, "rows", None) or []
+                for r_idx, raw_row in enumerate(raw_extract):
+                    row_cells_bbox = (
+                        t_rows[r_idx].cells
+                        if r_idx < len(t_rows) and getattr(t_rows[r_idx], "cells", None)
+                        else []
+                    )
+                    clean_row: list[str] = []
+                    for c_idx, raw_cell in enumerate(raw_row):
+                        c_bbox = row_cells_bbox[c_idx] if c_idx < len(row_cells_bbox) else None
+                        fallback = str(raw_cell or "")
+                        clean_row.append(_extract_cell_text_from_words(page_words, c_bbox, fallback))
+                    reconstructed_rows.append(clean_row)
+
+                header_candidates = reconstructed_rows[0] if reconstructed_rows else []
+                if not any(header_candidates):
                     num_cols = len(raw_extract[0])
                     headers = [f"col_{i+1}" for i in range(num_cols)]
                 else:
-                    seen = {}
+                    seen: dict[str, int] = {}
                     headers = []
-                    for idx, h in enumerate(raw_headers, start=1):
-                        name = h.replace("\n", " ").strip() or f"col_{idx}"
+                    for idx, h in enumerate(header_candidates, start=1):
+                        name = h.strip() or f"col_{idx}"
                         if name in seen:
                             seen[name] += 1
                             name = f"{name}_{seen[name]}"
@@ -82,13 +178,14 @@ class PdfParser:
 
                 num_cols = len(headers)
                 data_rows: list[list[str]] = []
-                for row in raw_extract[1:]:
-                    padded = [str(c or "").replace("\n", " ").strip() for c in row]
+                for row in reconstructed_rows[1:]:
+                    padded = list(row)
                     if len(padded) < num_cols:
                         padded.extend([""] * (num_cols - len(padded)))
                     else:
                         padded = padded[:num_cols]
-                    data_rows.append(padded)
+                    if any(cell.strip() for cell in padded):
+                        data_rows.append(padded)
 
                 # Check continuation of table from previous page
                 continues = False
@@ -111,9 +208,9 @@ class PdfParser:
                     "y0": bbox_clean[1],
                 })
 
-            # 2. Extract text blocks from layout dict
-            page_dict = page.get_text("dict")
-            text_blocks_on_page = []
+            # 2. Extract text blocks from layout dict with span-gap spacing
+            page_dict = page.get_text("dict", flags=pymupdf.TEXTFLAGS_DICT)
+            text_blocks_on_page: list[dict] = []
 
             for b in page_dict.get("blocks", []):
                 if "lines" not in b:
@@ -124,16 +221,16 @@ class PdfParser:
                 if any(_bbox_overlap(b_bbox, t_bbox) for t_bbox in table_bboxes):
                     continue
 
-                full_lines = []
+                full_lines: list[str] = []
                 max_size = 0.0
                 is_bold = False
                 is_mono = False
 
                 for line in b["lines"]:
-                    line_text = "".join(s["text"] for s in line["spans"])
+                    line_text = _join_line_spans(line.get("spans", []))
                     if line_text:
                         full_lines.append(line_text)
-                    for span in line["spans"]:
+                    for span in line.get("spans", []):
                         if span["size"] > max_size:
                             max_size = span["size"]
                         if span["flags"] & 4 or "bold" in span.get("font", "").lower():

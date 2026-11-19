@@ -63,8 +63,8 @@
       "version_id": "ver_77afde9ea09f",
       "chunk_idx": 4,
       "chunk_type": "table",
-      "text_content": "C ontents | col_2\n1 Introduction . | 3\n11 Metrics . . | 4\n12 Assessment . . |\n13 Nomenclature . . | 6\n2 BaseMetrics . | 7\n21 ExploitabilityMetrics . . | 7\n211 AttackVector(AV) . . . | 7\n212 AttackComplexity(AC) . . . | 8\n213 AttackRequirements(AT) . . . | 9\n214 PrivilegesRequired(PR) . . . | 11\n215 UserInteraction(UI) . . . | 11\n22 ImpactMetrics . . | 13\n221 Confidentiality(VC/SC) . . . | 14\nTable6:ConfidentialityImpacttotheVulnerableSystem(VC) | 14\nTable7:ConfidentialityImpacttotheSubsequentSystem(SC) | 14\n222 Integrity(VI/SI) . . . | 15\nTable8:IntegrityImpacttotheVulnerableSystem(VI) | 16\nTable9:IntegrityImpacttotheSubsequentSystem(SI) | 16\n223 Availability(VA/SA) . . . | 16\nTable 10: Availability Impact to the Vulnerable System (VA) | 17\nTable 11: Availability Impact to the Subsequent System (SA) | 17\n3 ThreatMetrics . | 18\n31 ExploitMaturity(E) . . | 18\n4 EnvironmentalMetrics . | 20\ni 41 Confdentiality Integrity andAvailabilityRequirements(CR IR AR) . . , , , , | 20\ni 42 ModifedBaseMetrics . . | 21\n5 SupplementalMetrics . | 23\n51 Safety(S) . . | 23\n52 Automatable(AU) . . | 24\n53 ProviderUrgency(U) . . | 25\n54 Recovery(R) . . | 25\n55 ValueDensity(V) . . | 26\nf 56 VulnerabilityResponseEfort(RE) . . | 28\n6 QualitativeSeverityRatingScale . | 29\n7 VectorString . | 30",
-      "token_count": 303,
+      "text_content": "Contents | col_2\n1. Introduction | 3\n1.1. Metrics | 4\n1.2. Assessment |\n1.3. Nomenclature | 6\n2. Base Metrics | 7\n2.1. Exploitability Metrics | 7\n2.1.1. Attack Vector (AV) | 7\n2.1.2. Attack Complexity (AC) | 8\n2.1.3. Attack Requirements (AT) | 9\n2.1.4. Privileges Required (PR) | 11\n2.1.5. User Interaction (UI) | 11\n2.2. Impact Metrics | 13\n2.2.1. Confidentiality (VC/SC) | 14\nTable 6: Confidentiality Impact to the Vulnerable System (VC) | 14\nTable 7: Confidentiality Impact to the Subsequent System (SC) | 14\n2.2.2. Integrity (VI/SI) | 15\nTable 8: Integrity Impact to the Vulnerable System (VI) | 16\nTable 9: Integrity Impact to the Subsequent System (SI) | 16\n2.2.3. Availability (VA/SA) | 16\nTable 10: Availability Impact to the Vulnerable System (VA) | 17\nTable 11: Availability Impact to the Subsequent System (SA) | 17\n3. Threat Metrics | 18\n3.1. Exploit Maturity (E) | 18\n4. Environmental Metrics | 20\n4.1. Confidentiality, Integrity, and Availability Requirements (CR, IR, AR) | 20\n4.2. Modified Base Metrics | 21\n5. Supplemental Metrics | 23\n5.1. Safety (S) | 23\n5.2. Automatable (AU) | 24\n5.3. Provider Urgency (U) | 25\n5.4. Recovery (R) | 25\n5.5. Value Density (V) | 26\n5.6. Vulnerability Response Effort (RE) | 28\n6. Qualitative Severity Rating Scale | 29\n7. Vector String | 30",
+      "token_count": 377,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Specification Document",
@@ -91,8 +91,8 @@
       "version_id": "ver_77afde9ea09f",
       "chunk_idx": 6,
       "chunk_type": "table",
-      "text_content": "8 CVSSv4 0Equations . . | 33\n81 NewScoringSystemDevelopment . . | 33\n8 2 CVSS v4 0 Scoring using MacroVectors and Interpolation . . . | 33\n8 3 Scores of all MacroVectors . . | 38\nAppendixB -On-LineResources | 41",
-      "token_count": 45,
+      "text_content": "8. CVSS v4.0 Equations | 33\n8.1. New Scoring System Development | 33\n8.2. CVSS v4.0 Scoring using MacroVectors and Interpolation | 33\n8.3. Scores of all MacroVectors | 38\nAppendix B - On-Line Resources | 41",
+      "token_count": 53,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Specification Document",
@@ -237,8 +237,8 @@
       "version_id": "ver_77afde9ea09f",
       "chunk_idx": 16,
       "chunk_type": "table",
-      "text_content": "CVSS Nomenclature | CVSSMetricsUsed\nCVSS B - | Basemetrics\nCVSS BE - | BaseandEnvironmentalmetrics\nCVSS BT - | BaseandThreatmetrics\nCVSS BTE - | Base Threat Environmentalmetrics , ,",
-      "token_count": 28,
+      "text_content": "CVSS Nomenclature | CVSS Metrics Used\nCVSS-B | Base metrics\nCVSS-BE | Base and Environmental metrics\nCVSS-BT | Base and Threat metrics\nCVSS-BTE | Base, Threat, Environmental metrics",
+      "token_count": 38,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Specification Document",
@@ -252,7 +252,7 @@
       "version_id": "ver_77afde9ea09f",
       "chunk_idx": 17,
       "chunk_type": "paragraph",
-      "text_content": "Additional Notes:\n\n●\n This nomenclature should be used wherever a numerical CVSS value is displayed or\n\ncommunicated.\n\n●\nThe application of Environmental and Threat metrics is the responsibility of the CVSS\n\nconsumer.\n\nAssessment providers such as product maintainers and other public/private\n\nentities such as the National Vulnerability Database (NVD) typically provide only the\n\nBase Scores enumerated as CVSS-B.\n\n●\nThe inclusion of the “E” in the nomenclature is appropriate if any Environmental metrics\n\nare used to generate the resulting score.\n\n●\nThe inclusion of the “T” in the nomenclature is appropriate if any Threat metrics are\n\nused to generate the resulting score.\n\n●\nIn CVSS v4.0, Base, Threat, and Environmental metric values are always considered in\n\nthe calculation of the final score.\n\nThe absence of explicit Threat and/or Environmental\n\nmetric selections will still result in a complete score using default (“Not Defined”) values.\n\nThis nomenclature makes it explicit and clear about which metric groups were\n\nconsidered in the numerical CVSS score provided.\n\nCVSS v4.0 Specification Document\nhttps://www.first.org/cvss/\n7 of 40",
+      "text_content": "Additional Notes:\n\n●\nThis nomenclature should be used wherever a numerical CVSS value is displayed or\n\ncommunicated.\n\n●\nThe application of Environmental and Threat metrics is the responsibility of the CVSS\n\nconsumer.\n\nAssessment providers such as product maintainers and other public/private\n\nentities such as the National Vulnerability Database (NVD) typically provide only the\n\nBase Scores enumerated as CVSS-B.\n\n●\nThe inclusion of the “E” in the nomenclature is appropriate if any Environmental metrics\n\nare used to generate the resulting score.\n\n●\nThe inclusion of the “T” in the nomenclature is appropriate if any Threat metrics are\n\nused to generate the resulting score.\n\n●\nIn CVSS v4.0, Base, Threat, and Environmental metric values are always considered in\n\nthe calculation of the final score.\n\nThe absence of explicit Threat and/or Environmental\n\nmetric selections will still result in a complete score using default (“Not Defined”) values.\n\nThis nomenclature makes it explicit and clear about which metric groups were\n\nconsidered in the numerical CVSS score provided.\n\nCVSS v4.0 Specification Document\nhttps://www.first.org/cvss/\n7 of 40",
       "token_count": 213,
       "chunk_strategy": "structure_aware",
       "heading_path": [
@@ -311,8 +311,8 @@
       "version_id": "ver_77afde9ea09f",
       "chunk_idx": 21,
       "chunk_type": "table",
-      "text_content": "col_1 | Table 1: Attack Vector\nNetwork(N) | Thevulnerablesystemisboundtothenetworkstackandthesetofpossible attackersextendsbeyondtheotheroptionslistedbelow uptoandincluding , theentireInternet Suchavulnerabilityisoftentermed“remotely . exploitable”andcanbethoughtofasanattackbeingexploitableatthe protocolleveloneormorenetworkhopsaway(eg acrossoneormore . ., routers) Anexampleofanetworkattackisanattackercausingadenialof . service(DoS)bysendingaspeciallycraftedTCPpacketacrossawidearea network (e .g CVE -2004 -0230) ., .",
-      "token_count": 54,
+      "text_content": "Metric Value | Description\nNetwork (N) | The vulnerable system is bound to the network stack and the set of possible attackers extends beyond the other options listed below, up to and including the entire Internet. Such a vulnerability is often termed “remotely exploitable” and can be thought of as an attack being exploitable at the protocol level one or more network hops away (e.g., across one or more routers). An example of a network attack is an attacker causing a denial of service (DoS) by sending a specially crafted TCP packet across a wide area network (e.g., CVE-2004-0230).",
+      "token_count": 125,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Specification Document",
@@ -341,8 +341,8 @@
       "version_id": "ver_77afde9ea09f",
       "chunk_idx": 23,
       "chunk_type": "table",
-      "text_content": "Adjacent(A) | Thevulnerablesystemisboundtoaprotocolstack buttheattackislimited , attheprotocolleveltoalogicallyadjacenttopology Thiscanmeananattack . mustbelaunchedfromthesamesharedproximity(eg Bluetooth NFC or . ., , , IEEE80211)orlogicalnetwork(eg localIPsubnet) orfromwithinasecure . . ., , orotherwiselimitedadministrativedomain(eg MPLS secureVPNwithin . ., , anadministrativenetworkzone) OneexampleofanAdjacentattackwould . l beanARP(IPv4)orneighbordiscovery(IPv6)foodleadingtoadenialof service on the local LAN segment (e .g CVE -2013 -6014) ., .\nLocal(L) | Thevulnerablesystemisnotboundtothenetworkstackandtheattacker’s pathisviaread/write/executecapabilities Either: . ● theattackerexploitsthevulnerabilitybyaccessingthetargetsystem locally(eg keyboard console) orthroughterminalemulation(eg . ., , , . ., SSH);or ● theattackerreliesonUserInteractionbyanotherpersontoperform actionsrequiredtoexploitthevulnerability(eg usingsocial . ., engineeringtechniquestotrickalegitimateuserintoopeninga maliciousdocument) .\nPhysical(P) | Theattackrequirestheattackertophysicallytouchormanipulatethe vulnerablesystem Physicalinteractionmaybebrief(eg evilmaidattack1) . . ., orpersistent Anexampleofsuchanattackisacoldbootattackinwhichan . attackergainsaccesstodiskencryptionkeysafterphysicallyaccessingthe targetsystem OtherexamplesincludeperipheralattacksviaFireWire/USB . DirectMemoryAccess(DMA) .",
-      "token_count": 159,
+      "text_content": "Adjacent (A) | The vulnerable system is bound to a protocol stack, but the attack is limited at the protocol level to a logically adjacent topology. This can mean an attack must be launched from the same shared proximity (e.g., Bluetooth, NFC, or IEEE 802.11) or logical network (e.g., local IP subnet), or from within a secure or otherwise limited administrative domain (e.g., MPLS, secure VPN within an administrative network zone). One example of an Adjacent attack would be an ARP (IPv4) or neighbor discovery (IPv6) flood leading to a denial of service on the local LAN segment (e.g., CVE-2013-6014).\nLocal (L) | The vulnerable system is not bound to the network stack and the attacker’s path is via read/write/execute capabilities. Either: the attacker exploits the vulnerability by accessing the target system ● locally (e.g., keyboard, console), or through terminal emulation (e.g., SSH); or the attacker relies on User Interaction by another person to perform ● actions required to exploit the vulnerability (e.g., using social engineering techniques to trick a legitimate user into opening a malicious document).\nPhysical (P) | The attack requires the attacker to physically touch or manipulate the vulnerable system. Physical interaction may be brief (e.g., evil maid attack1) or persistent. An example of such an attack is a cold boot attack in which an attacker gains access to disk encryption keys after physically accessing the target system. Other examples include peripheral attacks via FireWire/USB Direct Memory Access (DMA).",
+      "token_count": 334,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Specification Document",
@@ -371,8 +371,8 @@
       "version_id": "ver_77afde9ea09f",
       "chunk_idx": 25,
       "chunk_type": "table",
-      "text_content": "col_1 | Table 2: Attack Complexity\nLow(L) | Theattackermusttakenomeasurableactiontoexploitthevulnerability . i Theattackrequiresnotarget -specifccircumventiontoexploitthe vulnerability Anattackercanexpectrepeatablesuccessagainstthe . vulnerablesystem .\nHigh(H) | Thesuccessfulattackdependsontheevasionorcircumventionof security-enhancingtechniquesinplacethatwouldotherwisehinderthe attack Theseinclude: . ● Evasionofexploitmitigationtechniques Theattackermusthave . additionalmethodsavailabletobypasssecuritymeasuresinplace . Forexample circumventionofaddressspacerandomization , (ASLR)ordataexecutionprevention(DEP)mustbeperformed fortheattacktobesuccessful . i ● Obtaining target -specifc secrets The attacker must gather some . i target -specifc secret before the attack can be successful A . secretisanypieceofinformationthatcannotbeobtainedthrough anyamountofreconnaissance Toobtainthesecrettheattacker . mustperformadditionalattacksorbreakotherwisesecure measures(eg knowledgeofasecretkeymaybeneededtobreak . . acryptochannel) Thisoperationmustbeperformedforeach . attackedtarget .",
-      "token_count": 98,
+      "text_content": "Metric Value | Description\nLow (L) | The attacker must take no measurable action to exploit the vulnerability. The attack requires no target-specific circumvention to exploit the vulnerability. An attacker can expect repeatable success against the vulnerable system.\nHigh (H) | The successful attack depends on the evasion or circumvention of security-enhancing techniques in place that would otherwise hinder the attack. These include: ● Evasion of exploit mitigation techniques. The attacker must have additional methods available to bypass security measures in place. For example, circumvention of address space randomization (ASLR) or data execution prevention (DEP) must be performed for the attack to be successful. ● Obtaining target-specific secrets. The attacker must gather some target-specific secret before the attack can be successful. A secret is any piece of information that cannot be obtained through any amount of reconnaissance. To obtain the secret the attacker must perform additional attacks or break otherwise secure measures (e.g. knowledge of a secret key may be needed to break a crypto channel). This operation must be performed for each attacked target.",
+      "token_count": 210,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Specification Document",
@@ -401,8 +401,8 @@
       "version_id": "ver_77afde9ea09f",
       "chunk_idx": 27,
       "chunk_type": "table",
-      "text_content": "col_1 | Table 3: Attack Requirements\nNone(N) | Thesuccessfulattackdoesnotdependonthedeploymentandexecution conditionsofthevulnerablesystem Theattackercanexpecttobeable . toreachthevulnerabilityandexecutetheexploitunderallormost instancesofthevulnerability .\nPresent(P) | i Thesuccessfulattackdependsonthepresenceofspecifcdeployment andexecutionconditionsofthevulnerablesystemthatenabletheattack . Theseinclude: ● Araceconditionmustbewontosuccessfullyexploitthe vulnerability Thesuccessfulnessoftheattackisconditionedon . executionconditionsthatarenotunderfullcontrolofthe attacker Theattackmayneedtobelaunchedmultipletimes . againstasingletargetbeforebeingsuccessful . ● Networkinjection Theattackermustinjectthemselvesintothe . logicalnetworkpathbetweenthetargetandtheresource requested by the victim (e .g vulnerabilities requiring an on-path . attacker) .",
-      "token_count": 64,
+      "text_content": "Metric Value | Description\nNone (N) | The successful attack does not depend on the deployment and execution conditions of the vulnerable system. The attacker can expect to be able to reach the vulnerability and execute the exploit under all or most instances of the vulnerability.\nPresent (P) | The successful attack depends on the presence of specific deployment and execution conditions of the vulnerable system that enable the attack. These include: ● A race condition must be won to successfully exploit the vulnerability. The successfulness of the attack is conditioned on execution conditions that are not under full control of the attacker. The attack may need to be launched multiple times against a single target before being successful. ● Network injection. The attacker must inject themselves into the logical network path between the target and the resource requested by the victim (e.g. vulnerabilities requiring an on-path attacker).",
+      "token_count": 168,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Specification Document",
@@ -431,8 +431,8 @@
       "version_id": "ver_77afde9ea09f",
       "chunk_idx": 29,
       "chunk_type": "table",
-      "text_content": "col_1 | Table 4: Privileges Required\nNone(N) | Theattackerisunauthenticatedpriortoattack andthereforedoesnot , i requireanyaccesstosettingsorflesofthevulnerablesystemtocarry outanattack .\nLow(L) | Theattackerrequiresprivilegesthatprovidebasiccapabilitiesthatare typicallylimitedtosettingsandresourcesownedbyasingle low-privileged user Alternatively an attacker with Low privileges has the . , ability to access only non-sensitive resources .",
-      "token_count": 49,
+      "text_content": "Metric Value | Description\nNone (N) | The attacker is unauthenticated prior to attack, and therefore does not require any access to settings or files of the vulnerable system to carry out an attack.\nLow (L) | The attacker requires privileges that provide basic capabilities that are typically limited to settings and resources owned by a single low-privileged user. Alternatively, an attacker with Low privileges has the ability to access only non-sensitive resources.",
+      "token_count": 86,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Specification Document",
@@ -461,8 +461,8 @@
       "version_id": "ver_77afde9ea09f",
       "chunk_idx": 31,
       "chunk_type": "table",
-      "text_content": "col_1 | Table 5: User Interaction\nNone(N) | Thevulnerablesystemcanbeexploitedwithoutinteractionfromany humanuser otherthantheattacker Examplesinclude: , . ● aremoteattackerisabletosendpacketstoatargetsystem ● alocallyauthenticatedattackerexecutescodetoelevateprivileges\nPassive(P) | Successfulexploitationofthisvulnerabilityrequireslimitedinteractionby thetargeteduserwiththevulnerablesystemandtheattacker’spayload . Theseinteractionswouldbeconsideredinvoluntaryanddonotrequire thattheuseractivelysubvertprotectionsbuiltintothevulnerable system Examplesinclude: . i ● utilizingawebsitethathasbeenmodifedtodisplaymalicious contentwhenthepageisrendered(moststoredXSSorCSRF) ● runninganapplicationthatcallsamaliciousbinarythathasbeen plantedonthesystem fi ● usinganapplicationwhichgeneratestrafcoveranuntrustedor compromisednetwork(vulnerabilitiesrequiringanon-path attacker)\nActive(A) | Successfulexploitationofthisvulnerabilityrequiresatargeteduserto i performspecifc consciousinteractionswiththevulnerablesystemand , theattacker’spayload ortheuser’sinteractionswouldactivelysubvert , protectionmechanismswhichwouldleadtoexploitationofthe vulnerability Examplesinclude: . i i ● importingafleintoavulnerablesysteminaspecifcmanner",
-      "token_count": 85,
+      "text_content": "Metric Value | Description\nNone (N) | The vulnerable system can be exploited without interaction from any human user, other than the attacker. Examples include: a remote attacker is able to send packets to a target system ● a locally authenticated attacker executes code to elevate privileges ●\nPassive (P) | Successful exploitation of this vulnerability requires limited interaction by the targeted user with the vulnerable system and the attacker’s payload. These interactions would be considered involuntary and do not require that the user actively subvert protections built into the vulnerable system. Examples include: ● utilizing a website that has been modified to display malicious content when the page is rendered (most stored XSS or CSRF) ● running an application that calls a malicious binary that has been planted on the system ● using an application which generates traffic over an untrusted or compromised network (vulnerabilities requiring an on-path attacker)\nActive (A) | Successful exploitation of this vulnerability requires a targeted user to perform specific, conscious interactions with the vulnerable system and the attacker’s payload, or the user’s interactions would actively subvert protection mechanisms which would lead to exploitation of the vulnerability. Examples include: ● importing a file into a vulnerable system in a specific manner",
+      "token_count": 234,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Specification Document",
@@ -536,8 +536,8 @@
       "version_id": "ver_77afde9ea09f",
       "chunk_idx": 36,
       "chunk_type": "table",
-      "text_content": "Metri c Value | Descri pti on\nHigh(H) | i Thereisatotallossofconfdentiality resultinginallinformationwithin , theVulnerableSystembeingdivulgedtotheattacker Alternatively . , accesstoonlysomerestrictedinformationisobtained butthedisclosed , informationpresentsadirect seriousimpact Forexample anattacker , . , stealstheadministrator'spassword orprivateencryptionkeysofaweb , server .\nLow(L) | i Thereissomelossofconfdentiality Accesstosomerestricted . informationisobtained buttheattackerdoesnothavecontroloverwhat , informationisobtained ortheamountorkindoflossislimited The , . informationdisclosuredoesnotcauseadirect seriouslosstothe , VulnerableSystem .\nNone(N) | i ThereisnolossofconfdentialitywithintheVulnerableSystem .",
-      "token_count": 67,
+      "text_content": "Metric Value | Description\nHigh (H) | There is a total loss of confidentiality, resulting in all information within the Vulnerable System being divulged to the attacker. Alternatively, access to only some restricted information is obtained, but the disclosed information presents a direct, serious impact. For example, an attacker steals the administrator's password, or private encryption keys of a web server.\nLow (L) | There is some loss of confidentiality. Access to some restricted information is obtained, but the attacker does not have control over what information is obtained, or the amount or kind of loss is limited. The information disclosure does not cause a direct, serious loss to the Vulnerable System.\nNone (N) | There is no loss of confidentiality within the Vulnerable System.",
+      "token_count": 149,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Specification Document",
@@ -566,8 +566,8 @@
       "version_id": "ver_77afde9ea09f",
       "chunk_idx": 38,
       "chunk_type": "table",
-      "text_content": "Metri c Value | Descri pti on\nHigh(H) | i Thereisatotallossofconfdentiality resultinginallresourceswithinthe , SubsequentSystembeingdivulgedtotheattacker Alternatively access . , toonlysomerestrictedinformationisobtained butthedisclosed , informationpresentsadirect seriousimpact Forexample anattacker , . , stealstheadministrator'spassword orprivateencryptionkeysofaweb , server .",
-      "token_count": 38,
+      "text_content": "Metric Value | Description\nHigh (H) | There is a total loss of confidentiality, resulting in all resources within the Subsequent System being divulged to the attacker. Alternatively, access to only some restricted information is obtained, but the disclosed information presents a direct, serious impact. For example, an attacker steals the administrator's password, or private encryption keys of a web server.",
+      "token_count": 74,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Specification Document",
@@ -596,8 +596,8 @@
       "version_id": "ver_77afde9ea09f",
       "chunk_idx": 40,
       "chunk_type": "table",
-      "text_content": "Low(L) | i Thereissomelossofconfdentiality Accesstosomerestricted . informationisobtained buttheattackerdoesnothavecontroloverwhat , informationisobtained ortheamountorkindoflossislimited The , . informationdisclosuredoesnotcauseadirect seriouslosstothe , SubsequentSystem .\nNone(N) | i ThereisnolossofconfdentialitywithintheSubsequentSystemorall i confdentialityimpactisconstrainedtotheVulnerableSystem .",
-      "token_count": 32,
+      "text_content": "Low (L) | There is some loss of confidentiality. Access to some restricted information is obtained, but the attacker does not have control over what information is obtained, or the amount or kind of loss is limited. The information disclosure does not cause a direct, serious loss to the Subsequent System.\nNone (N) | There is no loss of confidentiality within the Subsequent System or all confidentiality impact is constrained to the Vulnerable System.",
+      "token_count": 85,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Specification Document",
@@ -626,8 +626,8 @@
       "version_id": "ver_77afde9ea09f",
       "chunk_idx": 42,
       "chunk_type": "table",
-      "text_content": "Metri c Value | Descri pti on\nHigh(H) | Thereisatotallossofintegrity oracompletelossofprotection For , . i example theattackerisabletomodifyany/allflesprotectedbythe , i i VulnerableSystem Alternatively onlysomeflescanbemodifed but . , , i maliciousmodifcationwouldpresentadirect seriousconsequenceto , theVulnerableSystem .\nLow(L) | i Modifcationofdataispossible buttheattackerdoesnothavecontrol , i i overtheconsequenceofamodifcation ortheamountofmodifcationis , i limited Thedatamodifcationdoesnothaveadirect seriousimpactto . , theVulnerableSystem .\nNone(N) | ThereisnolossofintegritywithintheVulnerableSystem .",
-      "token_count": 67,
+      "text_content": "Metric Value | Description\nHigh (H) | There is a total loss of integrity, or a complete loss of protection. For example, the attacker is able to modify any/all files protected by the Vulnerable System. Alternatively, only some files can be modified, but malicious modification would present a direct, serious consequence to the Vulnerable System.\nLow (L) | Modification of data is possible, but the attacker does not have control over the consequence of a modification, or the amount of modification is limited. The data modification does not have a direct, serious impact to the Vulnerable System.\nNone (N) | There is no loss of integrity within the Vulnerable System.",
+      "token_count": 132,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Specification Document",
@@ -656,8 +656,8 @@
       "version_id": "ver_77afde9ea09f",
       "chunk_idx": 44,
       "chunk_type": "table",
-      "text_content": "Metri c Value | Descri pti on\nHigh(H) | Thereisatotallossofintegrity oracompletelossofprotection For , . i example theattackerisabletomodifyany/allflesprotectedbythe , i i SubsequentSystem Alternatively onlysomeflescanbemodifed but . , , i maliciousmodifcationwouldpresentadirect seriousconsequenceto , theSubsequentSystem .",
-      "token_count": 38,
+      "text_content": "Metric Value | Description\nHigh (H) | There is a total loss of integrity, or a complete loss of protection. For example, the attacker is able to modify any/all files protected by the Subsequent System. Alternatively, only some files can be modified, but malicious modification would present a direct, serious consequence to the Subsequent System.",
+      "token_count": 67,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Specification Document",
@@ -686,8 +686,8 @@
       "version_id": "ver_77afde9ea09f",
       "chunk_idx": 46,
       "chunk_type": "table",
-      "text_content": "Low(L) | i Modifcationofdataispossible buttheattackerdoesnothavecontrol , i i overtheconsequenceofamodifcation ortheamountofmodifcationis , i limited Thedatamodifcationdoesnothaveadirect seriousimpactto . , theSubsequentSystem .\nNone(N) | ThereisnolossofintegritywithintheSubsequentSystemorallintegrity impactisconstrainedtotheVulnerableSystem .",
-      "token_count": 30,
+      "text_content": "Low (L) | Modification of data is possible, but the attacker does not have control over the consequence of a modification, or the amount of modification is limited. The data modification does not have a direct, serious impact to the Subsequent System.\nNone (N) | There is no loss of integrity within the Subsequent System or all integrity impact is constrained to the Vulnerable System.",
+      "token_count": 75,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Specification Document",
@@ -716,8 +716,8 @@
       "version_id": "ver_77afde9ea09f",
       "chunk_idx": 48,
       "chunk_type": "table",
-      "text_content": "Metri c Value | Descri pti on\nHigh(H) | Thereisatotallossofavailability resultingintheattackerbeingableto , fullydenyaccesstoresourcesintheVulnerableSystem;thislossiseither sustained(whiletheattackercontinuestodelivertheattack)orpersistent (theconditionpersistsevenaftertheattackhascompleted) Alternatively . , theattackerhastheabilitytodenysomeavailability butthelossof , availabilitypresentsadirect seriousconsequencetotheVulnerable , System(eg theattackercannotdisruptexistingconnections butcan . ., , preventnewconnections;theattackercanrepeatedlyexploita vulnerabilitythat ineachinstanceofasuccessfulattack leaksaonly , , smallamountofmemory butafterrepeatedexploitationcausesa , servicetobecomecompletelyunavailable) .\nLow(L) | Performanceisreducedorthereareinterruptionsinresource availability Evenifrepeatedexploitationofthevulnerabilityispossible . , theattackerdoesnothavetheabilitytocompletelydenyserviceto legitimateusers TheresourcesintheVulnerableSystemareeither . partiallyavailableallofthetime orfullyavailableonlysomeofthetime , , butoverallthereisnodirect seriousconsequencetotheVulnerable , System .\nNone(N) | ThereisnoimpacttoavailabilitywithintheVulnerableSystem .",
-      "token_count": 88,
+      "text_content": "Metric Value | Description\nHigh (H) | There is a total loss of availability, resulting in the attacker being able to fully deny access to resources in the Vulnerable System; this loss is either sustained (while the attacker continues to deliver the attack) or persistent (the condition persists even after the attack has completed). Alternatively, the attacker has the ability to deny some availability, but the loss of availability presents a direct, serious consequence to the Vulnerable System (e.g., the attacker cannot disrupt existing connections, but can prevent new connections; the attacker can repeatedly exploit a vulnerability that, in each instance of a successful attack, leaks a only small amount of memory, but after repeated exploitation causes a service to become completely unavailable).\nLow (L) | Performance is reduced or there are interruptions in resource availability. Even if repeated exploitation of the vulnerability is possible, the attacker does not have the ability to completely deny service to legitimate users. The resources in the Vulnerable System are either partially available all of the time, or fully available only some of the time, but overall there is no direct, serious consequence to the Vulnerable System.\nNone (N) | There is no impact to availability within the Vulnerable System.",
+      "token_count": 242,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Specification Document",
@@ -746,8 +746,8 @@
       "version_id": "ver_77afde9ea09f",
       "chunk_idx": 50,
       "chunk_type": "table",
-      "text_content": "Metri c Value | Descri pti on\nHigh(H) | Thereisatotallossofavailability resultingintheattackerbeingableto , fullydenyaccesstoresourcesintheSubsequentSystem;thislossis eithersustained(whiletheattackercontinuestodelivertheattack)or persistent(theconditionpersistsevenaftertheattackhascompleted) . Alternatively theattackerhastheabilitytodenysomeavailability but , , thelossofavailabilitypresentsadirect seriousconsequencetothe , SubsequentSystem(eg theattackercannotdisruptexisting . ., connections butcanpreventnewconnections;theattackercan , repeatedlyexploitavulnerabilitythat ineachinstanceofasuccessful , attack leaksaonlysmallamountofmemory butafterrepeated , , exploitationcausesaservicetobecomecompletelyunavailable) .\nLow(L) | Performanceisreducedorthereareinterruptionsinresource availability Evenifrepeatedexploitationofthevulnerabilityispossible . , theattackerdoesnothavetheabilitytocompletelydenyserviceto legitimateusers TheresourcesintheSubsequentSystemareeither . partiallyavailableallofthetime orfullyavailableonlysomeofthetime , , butoverallthereisnodirect seriousconsequencetotheSubsequent , System .\nNone(N) | ThereisnoimpacttoavailabilitywithintheSubsequentSystemorall availabilityimpactisconstrainedtotheVulnerableSystem .",
-      "token_count": 90,
+      "text_content": "Metric Value | Description\nHigh (H) | There is a total loss of availability, resulting in the attacker being able to fully deny access to resources in the Subsequent System; this loss is either sustained (while the attacker continues to deliver the attack) or persistent (the condition persists even after the attack has completed). Alternatively, the attacker has the ability to deny some availability, but the loss of availability presents a direct, serious consequence to the Subsequent System (e.g., the attacker cannot disrupt existing connections, but can prevent new connections; the attacker can repeatedly exploit a vulnerability that, in each instance of a successful attack, leaks a only small amount of memory, but after repeated exploitation causes a service to become completely unavailable).\nLow (L) | Performance is reduced or there are interruptions in resource availability. Even if repeated exploitation of the vulnerability is possible, the attacker does not have the ability to completely deny service to legitimate users. The resources in the Subsequent System are either partially available all of the time, or fully available only some of the time, but overall there is no direct, serious consequence to the Subsequent System.\nNone (N) | There is no impact to availability within the Subsequent System or all availability impact is constrained to the Vulnerable System.",
+      "token_count": 252,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Specification Document",
@@ -819,8 +819,8 @@
       "version_id": "ver_77afde9ea09f",
       "chunk_idx": 55,
       "chunk_type": "table",
-      "text_content": "col_1 | Table 12: Exploit Maturity\ni NotDefned(X) | ReliablethreatintelligenceisnotavailabletodetermineExploit Maturitycharacteristics Thisisthedefaultvalueandisequivalent . toAttacked(A)forthepurposesofthecalculationofthescoreby assumingtheworstcase .\nAttacked(A) | Basedonavailablethreatintelligenceeitherofthefollowingmust apply: ● Attackstargetingthisvulnerability(attemptedorsuccessful) havebeenreported ● Solutionstosimplifyattemptstoexploitthevulnerabilityare publiclyorprivatelyavailable(suchasexploittoolkits)\nProof -of -Concept(P) | Basedonavailablethreatintelligenceeachofthefollowingmust apply: ● Proof -of -conceptexploitcodeispubliclyavailable ● Noknowledgeofreportedattemptstoexploitthis vulnerability ● Noknowledgeofpubliclyavailablesolutionsusedtosimplify attemptstoexploitthevulnerability (ie the“Attacked”valuedoesnotapply) . .,",
-      "token_count": 79,
+      "text_content": "Metric Value | Description\nNot Defined (X) | Reliable threat intelligence is not available to determine Exploit Maturity characteristics. This is the default value and is equivalent to Attacked (A) for the purposes of the calculation of the score by assuming the worst case.\nAttacked (A) | Based on available threat intelligence either of the following must apply: Attacks targeting this vulnerability (attempted or successful) ● have been reported Solutions to simplify attempts to exploit the vulnerability are ● publicly or privately available (such as exploit toolkits)\nProof-of-Concept (P) | Based on available threat intelligence each of the following must apply: Proof-of-concept exploit code is publicly available ● No knowledge of reported attempts to exploit this ● vulnerability No knowledge of publicly available solutions used to simplify ● attempts to exploit the vulnerability (i.e., the “Attacked” value does not apply)",
+      "token_count": 172,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Specification Document",
@@ -849,8 +849,8 @@
       "version_id": "ver_77afde9ea09f",
       "chunk_idx": 57,
       "chunk_type": "table",
-      "text_content": "Unreported(U) | Basedonavailablethreatintelligenceeachofthefollowingmust apply: ● Noknowledgeofpubliclyavailableproof -of -conceptexploit code ● Noknowledgeofreportedattemptstoexploitthis vulnerability ● Noknowledgeofpubliclyavailablesolutionsusedtosimplify attemptstoexploitthevulnerability (ie neitherthe“POC”nor“Attacked”valuesapply) . .,",
-      "token_count": 36,
+      "text_content": "Unreported (U) | Based on available threat intelligence each of the following must apply: No knowledge of publicly available proof-of-concept exploit ● code No knowledge of reported attempts to exploit this ● vulnerability No knowledge of publicly available solutions used to simplify ● attempts to exploit the vulnerability (i.e., neither the “POC” nor “Attacked” values apply)",
+      "token_count": 73,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Specification Document",
@@ -922,8 +922,8 @@
       "version_id": "ver_77afde9ea09f",
       "chunk_idx": 62,
       "chunk_type": "table",
-      "text_content": "col_1 | Table 13: Security Requirements\ni NotDefned(X) | Thisisthedefaultvalue Assigningthisvalueindicatesthereis . fi insufcientinformationtochooseoneoftheothervalues Thishasthe . f sameefectasassigningHighastheworstcase .",
-      "token_count": 23,
+      "text_content": "Metric Value | Description\nNot Defined (X) | This is the default value. Assigning this value indicates there is insufficient information to choose one of the other values. This has the same effect as assigning High as the worst case.",
+      "token_count": 45,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Specification Document",
@@ -952,8 +952,8 @@
       "version_id": "ver_77afde9ea09f",
       "chunk_idx": 64,
       "chunk_type": "table",
-      "text_content": "High(H) | i Lossof[Confdentiality|Integrity|Availability]islikelytohavea f catastrophicadverseefectontheorganizationorindividuals associatedwiththeorganization(eg employees customers) . ., , .\nMedium(M) | i Lossof[Confdentiality|Integrity|Availability]islikelytohavea f seriousadverseefectontheorganizationorindividualsassociated withtheorganization(eg employees customers) . ., , .\nLow(L) | i Lossof[Confdentiality|Integrity|Availability]islikelytohaveonlya f limitedadverseefectontheorganizationorindividualsassociated withtheorganization(eg employees customers) . ., , .",
-      "token_count": 84,
+      "text_content": "High (H) | Loss of [Confidentiality | Integrity | Availability] is likely to have a catastrophic adverse effect on the organization or individuals associated with the organization (e.g., employees, customers).\nMedium (M) | Loss of [Confidentiality | Integrity | Availability] is likely to have a serious adverse effect on the organization or individuals associated with the organization (e.g., employees, customers).\nLow (L) | Loss of [Confidentiality | Integrity | Availability] is likely to have only a limited adverse effect on the organization or individuals associated with the organization (e.g., employees, customers).",
+      "token_count": 127,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Specification Document",
@@ -1012,8 +1012,8 @@
       "version_id": "ver_77afde9ea09f",
       "chunk_idx": 68,
       "chunk_type": "table",
-      "text_content": "Category | col_2 | i Defnition\nCatastrophic | | Multiplelossoflife",
-      "token_count": 10,
+      "text_content": "Category | col_2 | Definition\nCatastrophic | | Multiple loss of life",
+      "token_count": 12,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Specification Document",
@@ -1042,8 +1042,8 @@
       "version_id": "ver_77afde9ea09f",
       "chunk_idx": 70,
       "chunk_type": "table",
-      "text_content": "Critical | Lossofasinglelife\nMarginal | Majorinjuriestooneormore persons\nNegligible | Minorinjuriesatworst",
-      "token_count": 10,
+      "text_content": "Critical | Loss of a single life\nMarginal | Major injuries to one or more persons\nNegligible | Minor injuries at worst",
+      "token_count": 22,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Specification Document",
@@ -1072,8 +1072,8 @@
       "version_id": "ver_77afde9ea09f",
       "chunk_idx": 72,
       "chunk_type": "table",
-      "text_content": "Modifei d Base Metri c | Correspondi ng Values\ni ModifedAttackVector(MAV) | Thesamevaluesasthecorresponding BaseMetric(seeBaseMetrics above)as , i wellasNotDefned(thedefault) . Note:ForMSC MSI andMSA the , , , lowestmetricvalueis“Negligible”(N) , not“None”(N) .\ni ModifedAttackComplexity(MAC) |\ni ModifedAttackRequirements(MAT) |\ni ModifedPrivilegesRequired(MPR) |\ni ModifedUserInteraction(MUI) |\ni i ModifedVulnerableSystemConfdentiality(MVC) |\ni ModifedVulnerableSystemIntegrity(MVI) |\ni ModifedVulnerableSystemAvailability(MVA) |\ni i ModifedSubsequentSystemConfdentiality(MSC) |\ni ModifedSubsequentSystemIntegrity(MSI) | Thereisalsoahighestseveritylevel , Safety(S) inadditiontothesamevalues , asthecorrespondingBaseMetric(High , i Medium Low) ThevalueNotDefned(X) , . isthedefaultvalue .\ni ModifedSubsequentSystemAvailability(MSA) |",
-      "token_count": 140,
+      "text_content": "Modified Base Metric | Corresponding Values\nModified Attack Vector (MAV) | The same values as the corresponding Base Metric (see Base Metrics, above) as well as Not Defined (the default). Note: For MSC, MSI, and MSA, the lowest metric value is “Negligible” (N), not “None” (N).\nModified Attack Complexity (MAC) |\nModified Attack Requirements (MAT) |\nModified Privileges Required (MPR) |\nModified User Interaction (MUI) |\nModified Vulnerable System Confidentiality (MVC) |\nModified Vulnerable System Integrity (MVI) |\nModified Vulnerable System Availability (MVA) |\nModified Subsequent System Confidentiality (MSC) |\nModified Subsequent System Integrity (MSI) | There is also a highest severity level, Safety (S), in addition to the same values as the corresponding Base Metric (High, Medium, Low). The value Not Defined (X) is the default value.\nModified Subsequent System Availability (MSA) |",
+      "token_count": 188,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Specification Document",
@@ -1145,8 +1145,8 @@
       "version_id": "ver_77afde9ea09f",
       "chunk_idx": 77,
       "chunk_type": "table",
-      "text_content": "col_1 | Table 16: Safety\ni NotDefned(X) | Themetrichasnotbeenevaluated .\nPresent(P) | i ConsequencesofthevulnerabilitymeetdefnitionofIEC61508 consequencecategoriesof\"marginal\"\"critical\"or\"catastrophic\" , , .\nNegligible(N) | i ConsequencesofthevulnerabilitymeetdefnitionofIEC61508 consequencecategory\"negligible\" .",
-      "token_count": 47,
+      "text_content": "Metric Value | Description\nNot Defined (X) | The metric has not been evaluated.\nPresent (P) | Consequences of the vulnerability meet definition of IEC 61508 consequence categories of \"marginal,\" \"critical,\" or \"catastrophic.\"\nNegligible (N) | Consequences of the vulnerability meet definition of IEC 61508 consequence category \"negligible.\"",
+      "token_count": 67,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Specification Document",
@@ -1205,8 +1205,8 @@
       "version_id": "ver_77afde9ea09f",
       "chunk_idx": 81,
       "chunk_type": "table",
-      "text_content": "col_1 | Table 17: Automatable\ni NotDefned(X) | Themetrichasnotbeenevaluated .\nNo(N) | Attackerscannotreliablyautomateall4stepsofthekillchainforthis vulnerabilityforsomereason Thesestepsarereconnaissance . , weaponization delivery andexploitation , , .\nYes(Y) | Attackerscanreliablyautomateall4stepsofthekillchain Thesesteps . arereconnaissance weaponization delivery andexploitation(eg the , , , . ., vulnerabilityis“wormable”) .",
-      "token_count": 57,
+      "text_content": "Metric Value | Description\nNot Defined (X) | The metric has not been evaluated.\nNo (N) | Attackers cannot reliably automate all 4 steps of the kill chain for this vulnerability for some reason. These steps are reconnaissance, weaponization, delivery, and exploitation.\nYes (Y) | Attackers can reliably automate all 4 steps of the kill chain. These steps are reconnaissance, weaponization, delivery, and exploitation (e.g., the vulnerability is “wormable”).",
+      "token_count": 94,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Specification Document",
@@ -1250,8 +1250,8 @@
       "version_id": "ver_77afde9ea09f",
       "chunk_idx": 84,
       "chunk_type": "table",
-      "text_content": "col_1 | Table 18: Provider Urgency\ni NotDefned(X) | Themetrichasnotbeenevaluated .\nRed | Providerhasassessedtheimpactofthisvulnerabilityashavingthe highesturgency .\nAmber | Providerhasassessedtheimpactofthisvulnerabilityashavinga moderateurgency .",
-      "token_count": 25,
+      "text_content": "Metric Value | Description\nNot Defined (X) | The metric has not been evaluated.\nRed | Provider has assessed the impact of this vulnerability as having the highest urgency.\nAmber | Provider has assessed the impact of this vulnerability as having a moderate urgency.",
+      "token_count": 49,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Specification Document",
@@ -1310,8 +1310,8 @@
       "version_id": "ver_77afde9ea09f",
       "chunk_idx": 88,
       "chunk_type": "table",
-      "text_content": "Metri c Value | Descri pti on\ni NotDefned(X) | Themetrichasnotbeenevaluated .\nAutomatic(A) | Thesystemrecoversservicesautomaticallyafteranattackhas beenperformed .\nUser(U) | Thesystemrequiresmanualinterventionbytheusertorecover services afteranattackhasbeenperformed , .\nIrrecoverable(I) | Thesystemservicesareirrecoverablebytheuser afteran , attackhasbeenperformed .",
-      "token_count": 43,
+      "text_content": "Metric Value | Description\nNot Defined (X) | The metric has not been evaluated.\nAutomatic (A) | The system recovers services automatically after an attack has been performed.\nUser (U) | The system requires manual intervention by the user to recover services, after an attack has been performed.\nIrrecoverable (I) | The system services are irrecoverable by the user, after an attack has been performed.",
+      "token_count": 79,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Specification Document",
@@ -1355,8 +1355,8 @@
       "version_id": "ver_77afde9ea09f",
       "chunk_idx": 91,
       "chunk_type": "table",
-      "text_content": "Metri c Value | Descri pti on\ni NotDefned(X) | Themetrichasnotbeenevaluated .\nf Difuse(D) | Thevulnerablesystemhaslimitedresources Thatis the . , resourcesthattheattackerwillgaincontroloverwithasingle exploitationeventarerelativelysmall . f AnexampleofDifuse(think:limited)ValueDensitywouldbean attackonasingleemailclientvulnerability .",
-      "token_count": 39,
+      "text_content": "Metric Value | Description\nNot Defined (X) | The metric has not been evaluated.\nDiffuse (D) | The vulnerable system has limited resources. That is, the resources that the attacker will gain control over with a single exploitation event are relatively small. An example of Diffuse (think: limited) Value Density would be an attack on a single email client vulnerability.",
+      "token_count": 72,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Specification Document",
@@ -1415,8 +1415,8 @@
       "version_id": "ver_77afde9ea09f",
       "chunk_idx": 95,
       "chunk_type": "table",
-      "text_content": "col_1 | Table 21: Vulnerability Response Effort\ni NotDefned(X) | Themetrichasnotbeenevaluated .\nLow(L) | f Theefortrequiredtorespondtoavulnerabilityislow/trivial . Examplesinclude:communicationonbetterdocumentation , i confgurationworkarounds orguidancefromthevendorthat , doesnotrequireanimmediateupdate upgrade or , , i i replacementbytheconsumingentity suchasfrewallflter , i confguration .\nModerate(M) | Theactionsrequiredtorespondtoavulnerabilityrequiresome f efortonbehalfoftheconsumerandcouldcauseminimal serviceimpacttoimplement . Examplesinclude:simpleremoteupdate disablingofa , subsystem or a low-touch software upgrade such as a driver , update .",
-      "token_count": 77,
+      "text_content": "Metric Value | Description\nNot Defined (X) | The metric has not been evaluated.\nLow (L) | The effort required to respond to a vulnerability is low/trivial. Examples include: communication on better documentation, configuration workarounds, or guidance from the vendor that does not require an immediate update, upgrade, or replacement by the consuming entity, such as firewall filter configuration.\nModerate (M) | The actions required to respond to a vulnerability require some effort on behalf of the consumer and could cause minimal service impact to implement. Examples include: simple remote update, disabling of a subsystem, or a low-touch software upgrade such as a driver update.",
+      "token_count": 129,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Specification Document",
@@ -1473,8 +1473,8 @@
       "version_id": "ver_77afde9ea09f",
       "chunk_idx": 99,
       "chunk_type": "table",
-      "text_content": "Rati ng | CVSS Score\nNone | 00 .\nLow | 01 39 . - .\nMedium | 40 69 . - .\nHigh | 70 89 . - .\nCritical | 90 100 . - .",
-      "token_count": 37,
+      "text_content": "Rating | CVSS Score\nNone | 0.0\nLow | 0.1 - 3.9\nMedium | 4.0 - 6.9\nHigh | 7.0 - 8.9\nCritical | 9.0 - 10.0",
+      "token_count": 45,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Specification Document",
@@ -1529,8 +1529,8 @@
       "version_id": "ver_77afde9ea09f",
       "chunk_idx": 103,
       "chunk_type": "table",
-      "text_content": "Metri c Group | Metri c Name ( and Abbrevi ated Form) | Possible Values | Mandatory?\nBase | AttackVector(AV) | [NALP] , , , | Yes\n- | AttackComplexity(AC) | [LH] , | Yes\n- | AttackRequirements(AT) | [NP] , | Yes\n- | PrivilegesRequired(PR) | [NLH] , , | Yes\n- | UserInteraction(UI) | [NPA] , , | Yes\n- | i VulnerableSystemConfdentiality Impact(VC) | [HLN] , , | Yes\n- | VulnerableSystemIntegrityImpact (VI) | [HLN] , , | Yes\n- | VulnerableSystemAvailability Impact(VA) | [HLN] , , | Yes\n- | i SubsequentSystemConfdentiality | [HLN] , , | Yes",
-      "token_count": 145,
+      "text_content": "Metric Group | Metric Name (and Abbreviated Form) | Possible Values | Mandatory?\nBase | Attack Vector (AV) | [N,A,L,P] | Yes\n- | Attack Complexity (AC) | [L,H] | Yes\n- | Attack Requirements (AT) | [N,P] | Yes\n- | Privileges Required (PR) | [N,L,H] | Yes\n- | User Interaction (UI) | [N,P,A] | Yes\n- | Vulnerable System Confidentiality Impact (VC) | [H,L,N] | Yes\n- | Vulnerable System Integrity Impact (VI) | [H,L,N] | Yes\n- | Vulnerable System Availability Impact (VA) | [H,L,N] | Yes\n- | Subsequent System Confidentiality | [H,L,N] | Yes",
+      "token_count": 171,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Specification Document",
@@ -1557,8 +1557,8 @@
       "version_id": "ver_77afde9ea09f",
       "chunk_idx": 105,
       "chunk_type": "table",
-      "text_content": "col_1 | Impact(SC) | col_3 | col_4\n- | SubsequentSystemIntegrityImpact (SI) | [HLN] , , | Yes\n- | SubsequentSystemAvailability Impact(SA) | [HLN] , , | Yes\nThreat | ExploitMaturity(E) | [XAPU] , , , | No\nEnvironmental | i ConfdentialityRequirement(CR) | [XHML] , , , | No\n- | IntegrityRequirement(IR) | [XHML] , , , | No\n- | AvailabilityRequirement(AR) | [XHML] , , , | No\n- | i ModifedAttackVector(MAV) | [XNALP] , , , , | No\n- | i ModifedAttackComplexity(MAC) | [XLH] , , | No\n- | i ModifedAttackRequirements(MAT) | [XNP] , , | No\n- | i ModifedPrivilegesRequired(MPR) | [XNLH] , , , | No\n- | i ModifedUserInteraction(MUI) | [XNPA] , , , | No\n- | i ModifedVulnerableSystem i Confdentiality(MVC) | [XNLH] , , , | No\n- | i ModifedVulnerableSystem Integrity(MVI) | [XNLH] , , , | No\n- | i ModifedVulnerableSystem Availability(MVA) | [XNLH] , , , | No\n- | i ModifedSubsequentSystem i Confdentiality(MSC) | [XNLH] , , , | No\n- | i ModifedSubsequentSystem Integrity(MSI) | [XNLHS] , , , , | No\n- | i ModifedSubsequentSystem Availability(MSA) | [XNLHS] , , , , | No\nSupplemental | Safety(S) | [XNP] , , | No\n- | Automatable(AU) | [XNY] , , | No\n- | Recovery(R) | [XAUI] , , , | No\n- | ValueDensity(V) | [XDC] , , | No\n- | f VulnerabilityResponseEfort(RE) | [XLMH] , , , | No\n- | ProviderUrgency(U) | [XClearGreen , , AmberRed] , , | No",
-      "token_count": 375,
+      "text_content": "col_1 | Impact (SC) | col_3 | col_4\n- | Subsequent System Integrity Impact (SI) | [H,L,N] | Yes\n- | Subsequent System Availability Impact (SA) | [H,L,N] | Yes\nThreat | Exploit Maturity (E) | [X,A,P,U] | No\nEnvironmental | Confidentiality Requirement (CR) | [X,H,M,L] | No\n- | Integrity Requirement (IR) | [X,H,M,L] | No\n- | Availability Requirement (AR) | [X,H,M,L] | No\n- | Modified Attack Vector (MAV) | [X,N,A,L,P] | No\n- | Modified Attack Complexity (MAC) | [X,L,H] | No\n- | Modified Attack Requirements (MAT) | [X,N,P] | No\n- | Modified Privileges Required (MPR) | [X,N,L,H] | No\n- | Modified User Interaction (MUI) | [X,N,P,A] | No\n- | Modified Vulnerable System Confidentiality (MVC) | [X,N,L,H] | No\n- | Modified Vulnerable System Integrity (MVI) | [X,N,L,H] | No\n- | Modified Vulnerable System Availability (MVA) | [X,N,L,H] | No\n- | Modified Subsequent System Confidentiality (MSC) | [X,N,L,H] | No\n- | Modified Subsequent System Integrity (MSI) | [X,N,L,H,S] | No\n- | Modified Subsequent System Availability (MSA) | [X,N,L,H,S] | No\nSupplemental | Safety (S) | [X,N,P] | No\n- | Automatable (AU) | [X,N,Y] | No\n- | Recovery (R) | [X,A,U,I] | No\n- | Value Density (V) | [X,D,C] | No\n- | Vulnerability Response Effort (RE) | [X,L,M,H] | No\n- | Provider Urgency (U) | [X,Clear,Green ,Amber,Red] | No",
+      "token_count": 460,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Specification Document",
@@ -1672,7 +1672,7 @@
       "version_id": "ver_77afde9ea09f",
       "chunk_idx": 113,
       "chunk_type": "paragraph",
-      "text_content": "The CVSS v4.0 formula provides a mathematical approximation of all possible metric\ncombinations ranked in order of severity where vectors are clustered in sets called\nMacroVectors.\n\nA MacroVector is one of the sets of CVSS vectors that the expert evaluation\nprocess described in section 8.1 (steps 1-3) determined to be of comparable qualitative\n\nCVSS v4.0 Specification Document\nhttps://www.first.org/cvss/\n31 of 40\n\nseverity.\n\nEach MacroVector constitutes an equivalence class4 from such a qualitative\nperspective.\n\nThe score of a MacroVector is defined by a lookup table as defined by the subject matter\nexpert process mentioned above and is specified in Section 8.3.\n\nThe score of a vector within\neach MacroVector is defined by interpolation.\n\nTo determine a preliminary set of relevant MacroVectors, The SIG determined the following\npreliminary metrics subgroups.\n\nAdditional EQs or levels can be determined for a finer\nresolution.\n\n●\nEQ1 → AV/PR/UI with 3 levels specified in Table 24\n●\nEQ2 → AC/AT with 2 levels specified in Table 25\n●\nEQ3 → VC/VI/VA with 3 levels specified in Table 26\n●\nEQ4 → SC/SI/SA with 3 levels specified in Table 27\n●\nEQ5 → E with 3 levels specified in Table 28\n●\nEQ6 → VC/VI/VA+CR/CI/CA with 2 levels specified in Table 29\n\nIntuitively, each level of a metric subgroup corresponds to a different severity level with zero\nbeing the most severe and one or two being the least severe.\n\nSince EQ3 and EQ6 are not independent they must be considered together\n\n●\nEQ3+EQ6 → determines 5 levels specified in Table 30\n\nA highest severity vector of a MacroVector is a vector that\n\n●\nSatisfies the boolean conditions for membership into a MacroVector\n●\nNo other vector in the MacroVector has a higher severity in at least a metric\n\nThe lowest severity vector of a MacroVector is determined in a similar way.\n\nOne MacroVector might have more than one highest severity vector and more than one\nlowest severity vector.\n\nFor example the MacroVectors which satisfy EQ1 at level 1 shown in\nTable 24 have as highest severity vectors all vectors with\n\n●\nAV:A/PR:N/UI:N or AV:N/PR:L/UI:N or AV:N/PR:N:/UI:P\n\nas they all satisfy the constraints specified in Table 24.\n\n●\n(AV:N or PR:N or UI:N) and\n○\n as we have AV:A/PR:N/UI:N, AV:N/PR:L/UI:N, AV:N/PR:N:/UI:P\n\n●\nnot (AV:N and PR:N and UI:N) and\n○\nas we have AV:A/PR:N/UI:N, AV:N/PR:L/UI:N, AV:N/PR:N:/UI:P\n\n●\nnot AV:P\n○\nas we have AV:A/PR:N/UI:N, AV:N/PR:L/UI:N, AV:N/PR:N:/UI:P\n\n4 https://en.wikipedia.org/wiki/Equivalence_class\n\nCVSS v4.0 Specification Document\nhttps://www.first.org/cvss/\n32 of 40\n\nTable 24: EQ1 - MacroVectors",
+      "text_content": "The CVSS v4.0 formula provides a mathematical approximation of all possible metric\ncombinations ranked in order of severity where vectors are clustered in sets called\nMacroVectors.\n\nA MacroVector is one of the sets of CVSS vectors that the expert evaluation\nprocess described in section 8.1 (steps 1-3) determined to be of comparable qualitative\n\nCVSS v4.0 Specification Document\nhttps://www.first.org/cvss/\n31 of 40\n\nseverity.\n\nEach MacroVector constitutes an equivalence class4 from such a qualitative\nperspective.\n\nThe score of a MacroVector is defined by a lookup table as defined by the subject matter\nexpert process mentioned above and is specified in Section 8.3.\n\nThe score of a vector within\neach MacroVector is defined by interpolation.\n\nTo determine a preliminary set of relevant MacroVectors, The SIG determined the following\npreliminary metrics subgroups.\n\nAdditional EQs or levels can be determined for a finer\nresolution.\n\n●\nEQ1 → AV/PR/UI with 3 levels specified in Table 24\n●\nEQ2 → AC/AT with 2 levels specified in Table 25\n●\nEQ3 → VC/VI/VA with 3 levels specified in Table 26\n●\nEQ4 → SC/SI/SA with 3 levels specified in Table 27\n●\nEQ5 → E with 3 levels specified in Table 28\n●\nEQ6 → VC/VI/VA+CR/CI/CA with 2 levels specified in Table 29\n\nIntuitively, each level of a metric subgroup corresponds to a different severity level with zero\nbeing the most severe and one or two being the least severe.\n\nSince EQ3 and EQ6 are not independent they must be considered together\n\n●\nEQ3+EQ6 → determines 5 levels specified in Table 30\n\nA highest severity vector of a MacroVector is a vector that\n\n●\nSatisfies the boolean conditions for membership into a MacroVector\n●\nNo other vector in the MacroVector has a higher severity in at least a metric\n\nThe lowest severity vector of a MacroVector is determined in a similar way.\n\nOne MacroVector might have more than one highest severity vector and more than one\nlowest severity vector.\n\nFor example the MacroVectors which satisfy EQ1 at level 1 shown in\nTable 24 have as highest severity vectors all vectors with\n\n●\nAV:A/PR:N/UI:N or AV:N/PR:L/UI:N or AV:N/PR:N:/UI:P\n\nas they all satisfy the constraints specified in Table 24.\n\n●\n(AV:N or PR:N or UI:N) and\n○\nas we have AV:A/PR:N/UI:N, AV:N/PR:L/UI:N, AV:N/PR:N:/UI:P\n\n●\nnot (AV:N and PR:N and UI:N) and\n○\nas we have AV:A/PR:N/UI:N, AV:N/PR:L/UI:N, AV:N/PR:N:/UI:P\n\n●\nnot AV:P\n○\nas we have AV:A/PR:N/UI:N, AV:N/PR:L/UI:N, AV:N/PR:N:/UI:P\n\n4 https://en.wikipedia.org/wiki/Equivalence_class\n\nCVSS v4.0 Specification Document\nhttps://www.first.org/cvss/\n32 of 40\n\nTable 24: EQ1 - MacroVectors",
       "token_count": 649,
       "chunk_strategy": "structure_aware",
       "heading_path": [
@@ -1687,8 +1687,8 @@
       "version_id": "ver_77afde9ea09f",
       "chunk_idx": 114,
       "chunk_type": "table",
-      "text_content": "Levels | Constrai nts | Highest Severity Vector( s)\n0 | AV:NandPR:NandUI:N | AV:N/PR:N/UI:N\n1 | (AV:NorPR:NorUI:N)andnot(AV:N andPR:NandUI:N)andnotAV:P | AV:A/PR:N/UI:N or AV:N/PR:L/UI:Nor AV:N/PR:N:/UI:P\n2 | AV:Pornot(AV:NorPR:NorUI:N) | AV:P/PR:N/UI:Nor AV:A/PR:L/UI:P",
-      "token_count": 130,
+      "text_content": "Levels | Constraints | Highest Severity Vector(s)\n0 | AV:N and PR:N and UI:N | AV:N/PR:N/UI:N\n1 | (AV:N or PR:N or UI:N) and not (AV:N and PR:N and UI:N) and not AV:P | AV:A/PR:N/UI:N or AV:N/PR:L/UI:N or AV:N/PR:N:/UI:P\n2 | AV:P or not(AV:N or PR:N or UI:N) | AV:P/PR:N/UI:N or AV:A/PR:L/UI:P",
+      "token_count": 151,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Specification Document",
@@ -1717,8 +1717,8 @@
       "version_id": "ver_77afde9ea09f",
       "chunk_idx": 116,
       "chunk_type": "table",
-      "text_content": "Levels | Constrai nts | Highest Severity Vector( s)\n0 | AC:LandAT:N | AC:L/AT:N\n1 | not(AC:LandAT:N) | AC:L/AT:Por AC:H/AT:N",
-      "token_count": 51,
+      "text_content": "Levels | Constraints | Highest Severity Vector(s)\n0 | AC:L and AT:N | AC:L/AT:N\n1 | not (AC:L and AT:N) | AC:L/AT:P or AC:H/AT:N",
+      "token_count": 55,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Specification Document",
@@ -1747,8 +1747,8 @@
       "version_id": "ver_77afde9ea09f",
       "chunk_idx": 118,
       "chunk_type": "table",
-      "text_content": "Levels | Constrai nts | Highest Severity Vector( s)\n0 | VC:HandVI:H | VC:H/VI:H/VA:H\n1 | not(VC:HandVI:H)and (VC:HorVI:HorVA:H) | VC:L/VI:H/VA:Hor VC:H/VI:L/VA:H\n2 | not(VC:HorVI:HorVA:H) | VC:L/VI:L/VA:L",
-      "token_count": 97,
+      "text_content": "Levels | Constraints | Highest Severity Vector(s)\n0 | VC:H and VI:H | VC:H/VI:H/VA:H\n1 | not (VC:H and VI:H) and (VC:H or VI:H or VA:H) | VC:L/VI:H/VA:H or VC:H/VI:L/VA:H\n2 | not (VC:H or VI:H or VA:H) | VC:L/VI:L/VA:L",
+      "token_count": 109,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Specification Document",
@@ -1777,8 +1777,8 @@
       "version_id": "ver_77afde9ea09f",
       "chunk_idx": 120,
       "chunk_type": "table",
-      "text_content": "Levels | Constrai nts | Highest Severity Vector( s)\n0 | MSI:SorMSA:S | SC:H/SI:S/SA:S\n1 | not(MSI:SorMSA:S)and (SC:HorSI:HorSA:H) | SC:H/SI:H/SA:H\n2 | not(MSI:SorMSA:S)and not(SC:HorSI:HorSA:H) | SC:L/SI:L/SA:L",
-      "token_count": 95,
+      "text_content": "Levels | Constraints | Highest Severity Vector(s)\n0 | MSI:S or MSA:S | SC:H/SI:S/SA:S\n1 | not (MSI:S or MSA:S) and (SC:H or SI:H or SA:H) | SC:H/SI:H/SA:H\n2 | not (MSI:S or MSA:S) and not (SC:H or SI:H or SA:H) | SC:L/SI:L/SA:L",
+      "token_count": 108,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Specification Document",
@@ -1807,8 +1807,8 @@
       "version_id": "ver_77afde9ea09f",
       "chunk_idx": 122,
       "chunk_type": "table",
-      "text_content": "Levels | Constrai nts | Highest Severity Vector( s)\n0 | E:A | E:A\n1 | E:P | E:P\n2 | E:U | E:U",
-      "token_count": 38,
+      "text_content": "Levels | Constraints | Highest Severity Vector(s)\n0 | E:A | E:A\n1 | E:P | E:P\n2 | E:U | E:U",
+      "token_count": 37,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Specification Document",
@@ -1837,8 +1837,8 @@
       "version_id": "ver_77afde9ea09f",
       "chunk_idx": 124,
       "chunk_type": "table",
-      "text_content": "Levels | Constrai nts | Highest Severity Vector( s)\n0 | (CR:HandVC:H)or (IR:HandVI:H)or (AR:HandVA:H) | VC:H/VI:H/VA:H/CR:H/IR:H/AR:H\n1 | not(CR:HandVC:H)and not(IR:HandVI:H)and not(AR:HandVA:H) | VC:H/VI:H/VA:H/CR:M/IR:M/AR:Mor VC:H/VI:H/VA:L/CR:M/IR:M/AR:Hor VC:H/VI:L/VA:H/CR:M/IR:H/AR:Mor VC:H/VI:L/VA:L/CR:M/IR:H/AR:Hor VC:L/VI:H/VA:H/CR:H/IR:M/AR:Mor VC:L/VI:H/VA:L/CR:H/IR:M/AR:Hor VC:L/VI:L/VA:H/CR:H/IR:H/AR:Mor VC:L/VI:L/VA:L/CR:H/IR:H/AR:H",
-      "token_count": 273,
+      "text_content": "Levels | Constraints | Highest Severity Vector(s)\n0 | (CR:H and VC:H) or (IR:H and VI:H) or (AR:H and VA:H) | VC:H/VI:H/VA:H/CR:H/IR:H/AR:H\n1 | not (CR:H and VC:H) and not (IR:H and VI:H) and not (AR:H and VA:H) | VC:H/VI:H/VA:H/CR:M/IR:M/AR:M or VC:H/VI:H/VA:L/CR:M/IR:M/AR:H or VC:H/VI:L/VA:H/CR:M/IR:H/AR:M or VC:H/VI:L/VA:L/CR:M/IR:H/AR:H or VC:L/VI:H/VA:H/CR:H/IR:M/AR:M or VC:L/VI:H/VA:L/CR:H/IR:M/AR:H or VC:L/VI:L/VA:H/CR:H/IR:H/AR:M or VC:L/VI:L/VA:L/CR:H/IR:H/AR:H",
+      "token_count": 291,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Specification Document",
@@ -1867,8 +1867,8 @@
       "version_id": "ver_77afde9ea09f",
       "chunk_idx": 126,
       "chunk_type": "table",
-      "text_content": "Levels | Constrai nts | Highest Severity Vector( s)\n00 | VC:HandVI:Hand [CR:HorIR:Hor (AR:HandVA:H)] | VC:H/VI:H/VA:H/CR:H/IR:H/AR:H\n01 | VC:HandVI:Hand not(CR:HorIR:H)and not(AR:HandVA:H) | VC:H/VI:H/VA:H/CR:M/IR:M/AR:Mor VC:H/VI:H/VA:L/CR:M/IR:M/AR:H\n10 | not(VC:HandVI:H)and (VC:HorVI:HorVA:H)and [(CR:HandVC:H)or (IR:HandVI:H)or | VC:L/VI:H/VA:H/CR:H/IR:H/AR:Hor VC:H/VI:L/VA:H/CR:H/IR:H/AR:H",
-      "token_count": 212,
+      "text_content": "Levels | Constraints | Highest Severity Vector(s)\n00 | VC:H and VI:H and [CR:H or IR:H or (AR:H and VA:H)] | VC:H/VI:H/VA:H/CR:H/IR:H/AR:H\n01 | VC:H and VI:H and not (CR:H or IR:H) and not (AR:H and VA:H) | VC:H/VI:H/VA:H/CR:M/IR:M/AR:M or VC:H/VI:H/VA:L/CR:M/IR:M/AR:H\n10 | not (VC:H and VI:H) and (VC:H or VI:H or VA:H) and [(CR:H and VC:H) or (IR:H and VI:H) or | VC:L/VI:H/VA:H/CR:H/IR:H/AR:H or VC:H/VI:L/VA:H/CR:H/IR:H/AR:H",
+      "token_count": 238,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Specification Document",
@@ -1897,8 +1897,8 @@
       "version_id": "ver_77afde9ea09f",
       "chunk_idx": 128,
       "chunk_type": "table",
-      "text_content": "col_1 | (AR:HandVA:H)] | col_3\n11 | not(VC:HandVI:H)and (VC:HorVI:HorVA:H)and [not(CR:HandVC:H)and not(IR:HandVI:H)and not(AR:HandVA:H)] | VC:H/VI:L/VA:H/CR:M/IR:H/AR:Mor VC:H/VI:L/VA:L/CR:M/IR:H/AR:Hor VC:L/VI:H/VA:H/CR:H/IR:M/AR:Mor VC:L/VI:H/VA:L/CR:H/IR:M/AR:Hor VC:L/VI:L/VA:H/CR:H/IR:H/AR:M\n20 | not(VC:HorVI:HorVA:H)and [(CR:HandVC:H)or (IR:HandVI:H)or (AR:HandVA:H)] | Cannotexist\n21 | not(VC:HorVI:HorVA:H)and not(CR:HandVC:H)and not(IR:HandVI:H)and not(AR:HandVA:H) | VC:L/VI:L/VA:L/CR:H/IR:H/AR:H",
-      "token_count": 280,
+      "text_content": "col_1 | (AR:H and VA:H)] | col_3\n11 | not (VC:H and VI:H) and (VC:H or VI:H or VA:H) and [not (CR:H and VC:H) and not (IR:H and VI:H) and not (AR:H and VA:H)] | VC:H/VI:L/VA:H/CR:M/IR:H/AR:M or VC:H/VI:L/VA:L/CR:M/IR:H/AR:H or VC:L/VI:H/VA:H/CR:H/IR:M/AR:M or VC:L/VI:H/VA:L/CR:H/IR:M/AR:H or VC:L/VI:L/VA:H/CR:H/IR:H/AR:M\n20 | not (VC:H or VI:H or VA:H) and [(CR:H and VC:H) or (IR:H and VI:H) or (AR:H and VA:H)] | Cannot exist\n21 | not (VC:H or VI:H or VA:H) and not (CR:H and VC:H) and not (IR:H and VI:H) and not (AR:H and VA:H) | VC:L/VI:L/VA:L/CR:H/IR:H/AR:H",
+      "token_count": 319,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Specification Document",
@@ -1971,7 +1971,7 @@
       "version_id": "ver_77afde9ea09f",
       "chunk_idx": 133,
       "chunk_type": "paragraph",
-      "text_content": "FIRST sincerely recognizes the contributions of the following CVSS Special Interest Group (SIG)\nmembers, listed in alphabetical order by last name:\n\n★Abdulhamid Adebayo, IBM\n★Srividya Ananth, National Institute of Standards and Technology (NIST)\n★Chandan BN, Palo Alto Networks\n★Feng Cao, Oracle\n★Francesco Casotto, Cisco\n★Matthew Coles, Dell Technologies\n★Khushali Dalal, Juniper Networks\n★Giorgio Di Tizio, University of Trento\n★Dave Dugal, Juniper Networks\n★Karan Dwivedi, Google\n★Ben Edwards, Cyentia\n★Troy Fridley, Acuity Brands\n★Jeff Heller, Sandia National Laboratories\n★Adrian Henrick\n★Allen Householder, CERT/CC\n★Miguel Hummel, Citi\n★Fabrice Kah, Schneider Electric\n★Stav Kaufman, Skybox Security\n★Austin Kimbrell, Red Hat\n★Toby Kohlenberg, Intel\n★Jim Kohli, GE Healthcare\n★Stanislav Kontar, Red Hat\n★Milind Kulkarni, Ericsson\n★Arkadeep Kundu, Cisco\n★Nick Leali, Cisco\n★Fábio Olivé Leite, Red Hat\n★Angela Lindberg, SAP\n★Kumar Mangipudi\n★Art Manion, ANALYGENCE Labs\n★Fabio Massacci, University of Trento and Vrije Universiteit Amsterdam\n★Peter Mell, National Institute of Standards and Technology (NIST)\n★Bruce Monroe, Intel\n★Vivek Nair, Microsoft\n★Phillip Nordwall, Dell Technologies\n★Margaux Pagano, Citi\n★Wilfried Pascault, CERT Orange Cyberdefense\n★Francisco Luis de Andres Perez, IriusRisk\n★Diana Prusova, Accenture Security\n\nCVSS v4.0 Specification Document\nhttps://www.first.org/cvss/\n37 of 40\n\n★Marián Rehák, Red Hat\n★Dale Rich, Black & Veatch\n★Melinda Rosario\n★Zach Shue, Kiewit\n★Daniel Sommerfeld, Microsoft\n★Jonathan Spring, Cybersecurity and Infrastructure Security Agency (CISA)\n★Janane Suresh, Oracle\n★Masato Tereada\n★Matt Tesauro\n★Lucas Tesson\n★Christopher Turner, National Institute of Standards and Technology (NIST)\n★Laurie Tyzenhaus, CERT/CC\n★Akshat Vaid, Juniper Networks\n★Richard Wilkins, Phoenix Technologies, Inc.\n\nFIRST would also like to thank Grace Staley from CAPS, LLC.\n\nfor her tireless work facilitating\nthe CVSS SIG meetings.\n\nCVSS v4.0 Specification Document\nhttps://www.first.org/cvss/\n38 of 40",
+      "text_content": "FIRST sincerely recognizes the contributions of the following CVSS Special Interest Group (SIG)\nmembers, listed in alphabetical order by last name:\n\n★ Abdulhamid Adebayo, IBM\n★ Srividya Ananth, National Institute of Standards and Technology (NIST)\n★ Chandan BN, Palo Alto Networks\n★ Feng Cao, Oracle\n★ Francesco Casotto, Cisco\n★ Matthew Coles, Dell Technologies\n★ Khushali Dalal, Juniper Networks\n★ Giorgio Di Tizio, University of Trento\n★ Dave Dugal, Juniper Networks\n★ Karan Dwivedi, Google\n★ Ben Edwards, Cyentia\n★ Troy Fridley, Acuity Brands\n★ Jeff Heller, Sandia National Laboratories\n★ Adrian Henrick\n★ Allen Householder, CERT/CC\n★ Miguel Hummel, Citi\n★ Fabrice Kah, Schneider Electric\n★ Stav Kaufman, Skybox Security\n★ Austin Kimbrell, Red Hat\n★ Toby Kohlenberg, Intel\n★ Jim Kohli, GE Healthcare\n★ Stanislav Kontar, Red Hat\n★ Milind Kulkarni, Ericsson\n★ Arkadeep Kundu, Cisco\n★ Nick Leali, Cisco\n★ Fábio Olivé Leite, Red Hat\n★ Angela Lindberg, SAP\n★ Kumar Mangipudi\n★ Art Manion, ANALYGENCE Labs\n★ Fabio Massacci, University of Trento and Vrije Universiteit Amsterdam\n★ Peter Mell, National Institute of Standards and Technology (NIST)\n★ Bruce Monroe, Intel\n★ Vivek Nair, Microsoft\n★ Phillip Nordwall, Dell Technologies\n★ Margaux Pagano, Citi\n★ Wilfried Pascault, CERT Orange Cyberdefense\n★ Francisco Luis de Andres Perez, IriusRisk\n★ Diana Prusova, Accenture Security\n\nCVSS v4.0 Specification Document\nhttps://www.first.org/cvss/\n37 of 40\n\n★ Marián Rehák, Red Hat\n★ Dale Rich, Black & Veatch\n★ Melinda Rosario\n★ Zach Shue, Kiewit\n★ Daniel Sommerfeld, Microsoft\n★ Jonathan Spring, Cybersecurity and Infrastructure Security Agency (CISA)\n★ Janane Suresh, Oracle\n★ Masato Tereada\n★ Matt Tesauro\n★ Lucas Tesson\n★ Christopher Turner, National Institute of Standards and Technology (NIST)\n★ Laurie Tyzenhaus, CERT/CC\n★ Akshat Vaid, Juniper Networks\n★ Richard Wilkins, Phoenix Technologies, Inc.\n\nFIRST would also like to thank Grace Staley from CAPS, LLC.\n\nfor her tireless work facilitating\nthe CVSS SIG meetings.\n\nCVSS v4.0 Specification Document\nhttps://www.first.org/cvss/\n38 of 40",
       "token_count": 413,
       "chunk_strategy": "structure_aware",
       "heading_path": [
@@ -2027,8 +2027,8 @@
       "version_id": "ver_77afde9ea09f",
       "chunk_idx": 137,
       "chunk_type": "table",
-      "text_content": "Date | Ver | Descri pti on\n2023 11 01 - - | v10 . | InitialPublication\n2023 11 09 - - | v11 . | Correctimpactmetricorder CorrectedreferencetoSection25oftheUserGuide .\n2024 06 18 - - | v12 . | CorrectedNonemetricinSection223Table7 . .",
-      "token_count": 41,
+      "text_content": "Date | Ver | Description\n2023-11-01 | v1.0 | Initial Publication\n2023-11-09 | v1.1 | Correct impact metric order Corrected reference to Section 2.5 of the User Guide\n2024-06-18 | v1.2 | Corrected None metric in Section 2.2.3 Table 7",
+      "token_count": 64,
       "chunk_strategy": "structure_aware",
       "heading_path": [
         "Specification Document",
@@ -2209,7 +2209,7 @@
       "normalized_block_id": "nrm_ver_77afde9ea09f_b00006",
       "source_order": 0,
       "start_offset": 0,
-      "end_offset": 1286
+      "end_offset": 1291
     },
     {
       "chunk_source_id": "ver_77afde9ea09f_c00005_s000",
@@ -2225,7 +2225,7 @@
       "normalized_block_id": "nrm_ver_77afde9ea09f_b00008",
       "source_order": 0,
       "start_offset": 0,
-      "end_offset": 211
+      "end_offset": 206
     },
     {
       "chunk_source_id": "ver_77afde9ea09f_c00007_s000",
@@ -2785,7 +2785,7 @@
       "normalized_block_id": "nrm_ver_77afde9ea09f_b00044",
       "source_order": 1,
       "start_offset": 0,
-      "end_offset": 83
+      "end_offset": 82
     },
     {
       "chunk_source_id": "ver_77afde9ea09f_c00017_s002",
@@ -3049,7 +3049,7 @@
       "normalized_block_id": "nrm_ver_77afde9ea09f_b00068",
       "source_order": 0,
       "start_offset": 0,
-      "end_offset": 522
+      "end_offset": 587
     },
     {
       "chunk_source_id": "ver_77afde9ea09f_c00022_s000",
@@ -3065,7 +3065,7 @@
       "normalized_block_id": "nrm_ver_77afde9ea09f_b00070",
       "source_order": 0,
       "start_offset": 0,
-      "end_offset": 1395
+      "end_offset": 1544
     },
     {
       "chunk_source_id": "ver_77afde9ea09f_c00024_s000",
@@ -3185,7 +3185,7 @@
       "normalized_block_id": "nrm_ver_77afde9ea09f_b00079",
       "source_order": 0,
       "start_offset": 0,
-      "end_offset": 1087
+      "end_offset": 1181
     },
     {
       "chunk_source_id": "ver_77afde9ea09f_c00026_s000",
@@ -3265,7 +3265,7 @@
       "normalized_block_id": "nrm_ver_77afde9ea09f_b00085",
       "source_order": 0,
       "start_offset": 0,
-      "end_offset": 858
+      "end_offset": 947
     },
     {
       "chunk_source_id": "ver_77afde9ea09f_c00028_s000",
@@ -3337,7 +3337,7 @@
       "normalized_block_id": "nrm_ver_77afde9ea09f_b00090",
       "source_order": 0,
       "start_offset": 0,
-      "end_offset": 441
+      "end_offset": 468
     },
     {
       "chunk_source_id": "ver_77afde9ea09f_c00030_s000",
@@ -3433,7 +3433,7 @@
       "normalized_block_id": "nrm_ver_77afde9ea09f_b00097",
       "source_order": 0,
       "start_offset": 0,
-      "end_offset": 1227
+      "end_offset": 1370
     },
     {
       "chunk_source_id": "ver_77afde9ea09f_c00032_s000",
@@ -3721,7 +3721,7 @@
       "normalized_block_id": "nrm_ver_77afde9ea09f_b00113",
       "source_order": 0,
       "start_offset": 0,
-      "end_offset": 726
+      "end_offset": 795
     },
     {
       "chunk_source_id": "ver_77afde9ea09f_c00037_s000",
@@ -3737,7 +3737,7 @@
       "normalized_block_id": "nrm_ver_77afde9ea09f_b00115",
       "source_order": 0,
       "start_offset": 0,
-      "end_offset": 381
+      "end_offset": 409
     },
     {
       "chunk_source_id": "ver_77afde9ea09f_c00039_s000",
@@ -3753,7 +3753,7 @@
       "normalized_block_id": "nrm_ver_77afde9ea09f_b00117",
       "source_order": 0,
       "start_offset": 0,
-      "end_offset": 405
+      "end_offset": 453
     },
     {
       "chunk_source_id": "ver_77afde9ea09f_c00041_s000",
@@ -3841,7 +3841,7 @@
       "normalized_block_id": "nrm_ver_77afde9ea09f_b00122",
       "source_order": 0,
       "start_offset": 0,
-      "end_offset": 615
+      "end_offset": 669
     },
     {
       "chunk_source_id": "ver_77afde9ea09f_c00043_s000",
@@ -3857,7 +3857,7 @@
       "normalized_block_id": "nrm_ver_77afde9ea09f_b00124",
       "source_order": 0,
       "start_offset": 0,
-      "end_offset": 324
+      "end_offset": 346
     },
     {
       "chunk_source_id": "ver_77afde9ea09f_c00045_s000",
@@ -3873,7 +3873,7 @@
       "normalized_block_id": "nrm_ver_77afde9ea09f_b00126",
       "source_order": 0,
       "start_offset": 0,
-      "end_offset": 345
+      "end_offset": 386
     },
     {
       "chunk_source_id": "ver_77afde9ea09f_c00047_s000",
@@ -3945,7 +3945,7 @@
       "normalized_block_id": "nrm_ver_77afde9ea09f_b00131",
       "source_order": 0,
       "start_offset": 0,
-      "end_offset": 1185
+      "end_offset": 1326
     },
     {
       "chunk_source_id": "ver_77afde9ea09f_c00049_s000",
@@ -3969,7 +3969,7 @@
       "normalized_block_id": "nrm_ver_77afde9ea09f_b00134",
       "source_order": 0,
       "start_offset": 0,
-      "end_offset": 1243
+      "end_offset": 1393
     },
     {
       "chunk_source_id": "ver_77afde9ea09f_c00051_s000",
@@ -4129,7 +4129,7 @@
       "normalized_block_id": "nrm_ver_77afde9ea09f_b00145",
       "source_order": 0,
       "start_offset": 0,
-      "end_offset": 847
+      "end_offset": 935
     },
     {
       "chunk_source_id": "ver_77afde9ea09f_c00056_s000",
@@ -4145,7 +4145,7 @@
       "normalized_block_id": "nrm_ver_77afde9ea09f_b00147",
       "source_order": 0,
       "start_offset": 0,
-      "end_offset": 341
+      "end_offset": 378
     },
     {
       "chunk_source_id": "ver_77afde9ea09f_c00058_s000",
@@ -4257,7 +4257,7 @@
       "normalized_block_id": "nrm_ver_77afde9ea09f_b00155",
       "source_order": 0,
       "start_offset": 0,
-      "end_offset": 223
+      "end_offset": 233
     },
     {
       "chunk_source_id": "ver_77afde9ea09f_c00063_s000",
@@ -4273,7 +4273,7 @@
       "normalized_block_id": "nrm_ver_77afde9ea09f_b00157",
       "source_order": 0,
       "start_offset": 0,
-      "end_offset": 573
+      "end_offset": 625
     },
     {
       "chunk_source_id": "ver_77afde9ea09f_c00065_s000",
@@ -4537,7 +4537,7 @@
       "normalized_block_id": "nrm_ver_77afde9ea09f_b00178",
       "source_order": 0,
       "start_offset": 0,
-      "end_offset": 66
+      "end_offset": 68
     },
     {
       "chunk_source_id": "ver_77afde9ea09f_c00069_s000",
@@ -4553,7 +4553,7 @@
       "normalized_block_id": "nrm_ver_77afde9ea09f_b00180",
       "source_order": 0,
       "start_offset": 0,
-      "end_offset": 106
+      "end_offset": 118
     },
     {
       "chunk_source_id": "ver_77afde9ea09f_c00071_s000",
@@ -4585,7 +4585,7 @@
       "normalized_block_id": "nrm_ver_77afde9ea09f_b00183",
       "source_order": 0,
       "start_offset": 0,
-      "end_offset": 836
+      "end_offset": 893
     },
     {
       "chunk_source_id": "ver_77afde9ea09f_c00073_s000",
@@ -4729,7 +4729,7 @@
       "normalized_block_id": "nrm_ver_77afde9ea09f_b00192",
       "source_order": 0,
       "start_offset": 0,
-      "end_offset": 313
+      "end_offset": 340
     },
     {
       "chunk_source_id": "ver_77afde9ea09f_c00078_s000",
@@ -4825,7 +4825,7 @@
       "normalized_block_id": "nrm_ver_77afde9ea09f_b00201",
       "source_order": 0,
       "start_offset": 0,
-      "end_offset": 429
+      "end_offset": 456
     },
     {
       "chunk_source_id": "ver_77afde9ea09f_c00082_s000",
@@ -4897,7 +4897,7 @@
       "normalized_block_id": "nrm_ver_77afde9ea09f_b00209",
       "source_order": 0,
       "start_offset": 0,
-      "end_offset": 247
+      "end_offset": 264
     },
     {
       "chunk_source_id": "ver_77afde9ea09f_c00085_s000",
@@ -4985,7 +4985,7 @@
       "normalized_block_id": "nrm_ver_77afde9ea09f_b00217",
       "source_order": 0,
       "start_offset": 0,
-      "end_offset": 367
+      "end_offset": 401
     },
     {
       "chunk_source_id": "ver_77afde9ea09f_c00089_s000",
@@ -5025,7 +5025,7 @@
       "normalized_block_id": "nrm_ver_77afde9ea09f_b00221",
       "source_order": 0,
       "start_offset": 0,
-      "end_offset": 336
+      "end_offset": 369
     },
     {
       "chunk_source_id": "ver_77afde9ea09f_c00092_s000",
@@ -5113,7 +5113,7 @@
       "normalized_block_id": "nrm_ver_77afde9ea09f_b00229",
       "source_order": 0,
       "start_offset": 0,
-      "end_offset": 658
+      "end_offset": 686
     },
     {
       "chunk_source_id": "ver_77afde9ea09f_c00096_s000",
@@ -5233,7 +5233,7 @@
       "normalized_block_id": "nrm_ver_77afde9ea09f_b00236",
       "source_order": 0,
       "start_offset": 0,
-      "end_offset": 114
+      "end_offset": 104
     },
     {
       "chunk_source_id": "ver_77afde9ea09f_c00100_s000",
@@ -5393,7 +5393,7 @@
       "normalized_block_id": "nrm_ver_77afde9ea09f_b00245",
       "source_order": 0,
       "start_offset": 0,
-      "end_offset": 540
+      "end_offset": 538
     },
     {
       "chunk_source_id": "ver_77afde9ea09f_c00104_s000",
@@ -5409,7 +5409,7 @@
       "normalized_block_id": "nrm_ver_77afde9ea09f_b00247",
       "source_order": 0,
       "start_offset": 0,
-      "end_offset": 1329
+      "end_offset": 1306
     },
     {
       "chunk_source_id": "ver_77afde9ea09f_c00106_s000",
@@ -5841,7 +5841,7 @@
       "normalized_block_id": "nrm_ver_77afde9ea09f_b00288",
       "source_order": 20,
       "start_offset": 0,
-      "end_offset": 90
+      "end_offset": 89
     },
     {
       "chunk_source_id": "ver_77afde9ea09f_c00113_s021",
@@ -5889,7 +5889,7 @@
       "normalized_block_id": "nrm_ver_77afde9ea09f_b00294",
       "source_order": 0,
       "start_offset": 0,
-      "end_offset": 270
+      "end_offset": 293
     },
     {
       "chunk_source_id": "ver_77afde9ea09f_c00115_s000",
@@ -5905,7 +5905,7 @@
       "normalized_block_id": "nrm_ver_77afde9ea09f_b00296",
       "source_order": 0,
       "start_offset": 0,
-      "end_offset": 124
+      "end_offset": 128
     },
     {
       "chunk_source_id": "ver_77afde9ea09f_c00117_s000",
@@ -5921,7 +5921,7 @@
       "normalized_block_id": "nrm_ver_77afde9ea09f_b00298",
       "source_order": 0,
       "start_offset": 0,
-      "end_offset": 204
+      "end_offset": 218
     },
     {
       "chunk_source_id": "ver_77afde9ea09f_c00119_s000",
@@ -5937,7 +5937,7 @@
       "normalized_block_id": "nrm_ver_77afde9ea09f_b00300",
       "source_order": 0,
       "start_offset": 0,
-      "end_offset": 210
+      "end_offset": 227
     },
     {
       "chunk_source_id": "ver_77afde9ea09f_c00121_s000",
@@ -5977,7 +5977,7 @@
       "normalized_block_id": "nrm_ver_77afde9ea09f_b00304",
       "source_order": 0,
       "start_offset": 0,
-      "end_offset": 93
+      "end_offset": 91
     },
     {
       "chunk_source_id": "ver_77afde9ea09f_c00123_s000",
@@ -6001,7 +6001,7 @@
       "normalized_block_id": "nrm_ver_77afde9ea09f_b00307",
       "source_order": 0,
       "start_offset": 0,
-      "end_offset": 450
+      "end_offset": 474
     },
     {
       "chunk_source_id": "ver_77afde9ea09f_c00125_s000",
@@ -6025,7 +6025,7 @@
       "normalized_block_id": "nrm_ver_77afde9ea09f_b00310",
       "source_order": 0,
       "start_offset": 0,
-      "end_offset": 396
+      "end_offset": 429
     },
     {
       "chunk_source_id": "ver_77afde9ea09f_c00127_s000",
@@ -6041,7 +6041,7 @@
       "normalized_block_id": "nrm_ver_77afde9ea09f_b00312",
       "source_order": 0,
       "start_offset": 0,
-      "end_offset": 507
+      "end_offset": 565
     },
     {
       "chunk_source_id": "ver_77afde9ea09f_c00129_s000",
@@ -6321,7 +6321,7 @@
       "normalized_block_id": "nrm_ver_77afde9ea09f_b00335",
       "source_order": 1,
       "start_offset": 0,
-      "end_offset": 1188
+      "end_offset": 1226
     },
     {
       "chunk_source_id": "ver_77afde9ea09f_c00133_s002",
@@ -6337,7 +6337,7 @@
       "normalized_block_id": "nrm_ver_77afde9ea09f_b00337",
       "source_order": 3,
       "start_offset": 0,
-      "end_offset": 434
+      "end_offset": 448
     },
     {
       "chunk_source_id": "ver_77afde9ea09f_c00133_s004",
@@ -6505,7 +6505,7 @@
       "normalized_block_id": "nrm_ver_77afde9ea09f_b00355",
       "source_order": 0,
       "start_offset": 0,
-      "end_offset": 233
+      "end_offset": 232
     },
     {
       "chunk_source_id": "ver_77afde9ea09f_c00138_s000",

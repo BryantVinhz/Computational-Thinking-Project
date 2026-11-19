@@ -54,8 +54,8 @@ cover/
 
 
 # Translations
-long_nguyen/
-/Document Ingestion and Parsing/output/Normalization/
+# long_nguyen/
+# /Document Ingestion and Parsing/output/Normalization/
 *.mo
 *.pot
 
@@ -238,6 +238,8 @@ __marimo__/
 **/chroma_security_db/
 /Document Ingestion and Parsing/output/Provenance/
 /Document Ingestion and Parsing/output/Vector DB/
+
+*.zip
 
 
 

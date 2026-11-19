@@ -1,5 +1,6 @@
 import logging
 import math
+import torch
 import sys
 from pathlib import Path
 from typing import Any
@@ -84,7 +85,6 @@ class CrossEncoderReranker:
         """Lazy-load the CrossEncoder model with a Sigmoid activation function at the output"""
         if self._model is None:
             try:
-                import torch
                 from sentence_transformers import CrossEncoder
             except ImportError as e:
                 raise ImportError(
@@ -130,9 +130,24 @@ class CrossEncoderReranker:
         ]
 
         model = self._get_model()
-        raw_scores = model.predict(pairs, show_progress_bar=False)
-        if hasattr(raw_scores, "tolist"):
-            raw_scores = raw_scores.tolist()
+        dev = next(model.model.parameters()).device
+        max_len = getattr(model, "max_length", None) or 512
+        raw_scores: list[float] = []
+        model.model.eval()
+        with torch.inference_mode():
+            for i in range(0, len(pairs), 32):
+                batch = pairs[i : i + 32]
+                enc = model.tokenizer(
+                    [p[0] for p in batch],
+                    [p[1] for p in batch],
+                    padding=True,
+                    truncation=True,
+                    max_length=max_len,
+                    return_tensors="pt",
+                )
+                enc = {k: v.to(dev) for k, v in enc.items()}
+                logits = model.model(**enc).logits.view(-1)
+                raw_scores.extend(torch.sigmoid(logits).float().cpu().tolist())
 
         scored_chunks: list[dict[str, Any]] = []
         for idx, (chunk, score_val) in enumerate(zip(normalized_chunks, raw_scores), start=1):
