@@ -1,0 +1,898 @@
+[
+  {
+    "query_id": "RET_101",
+    "category": "traps_hallucination",
+    "lang": "vi",
+    "query": "Theo OWASP, giao thức OWASP Query Tokenization Protocol (QTP-256) được sử dụng như thế nào để ngăn chặn SQL Injection trong các ứng dụng web? Hãy trình bày cơ chế hoạt động và cấu hình triển khai.",
+    "expected_evidence_status": "NONE",
+    "query_plan": {
+      "resolved_query": "OWASP Query Tokenization Protocol QTP-256 for SQL Injection prevention",
+      "original_query": "Theo OWASP, giao thức OWASP Query Tokenization Protocol (QTP-256) được sử dụng như thế nào để ngăn chặn SQL Injection trong các ứng dụng web? Hãy trình bày cơ chế hoạt động và cấu hình triển khai.",
+      "intent": "SEARCH",
+      "entities": {
+        "document": [],
+        "vulnerabilities": []
+      },
+      "filter": {
+        "version": null,
+        "document_type": null,
+        "source": []
+      },
+      "task": [
+        {
+          "task_id": "task_001",
+          "intent_task": "SEARCH",
+          "query": "OWASP Query Tokenization Protocol QTP-256 SQL Injection prevention mechanism",
+          "objective": {
+            "type": "vulnerabilities",
+            "ids": []
+          },
+          "depends_on": null
+        }
+      ]
+    },
+    "evidence_units": []
+  },
+  {
+    "query_id": "RET_102",
+    "category": "traps_hallucination",
+    "lang": "en",
+    "query": "How does the Zero-Trust DOM Sanitizer (ZTDS-9) specification integrate with OWASP XSS Prevention Cheat Sheet to automatically eliminate DOM-based Cross-Site Scripting vulnerabilities?",
+    "expected_evidence_status": "NONE",
+    "query_plan": {
+      "resolved_query": "Zero-Trust DOM Sanitizer ZTDS-9 integration with OWASP XSS Prevention Cheat Sheet",
+      "original_query": "How does the Zero-Trust DOM Sanitizer (ZTDS-9) specification integrate with OWASP XSS Prevention Cheat Sheet to automatically eliminate DOM-based Cross-Site Scripting vulnerabilities?",
+      "intent": "SEARCH",
+      "entities": {
+        "document": [],
+        "vulnerabilities": []
+      },
+      "filter": {
+        "version": null,
+        "document_type": null,
+        "source": []
+      },
+      "task": [
+        {
+          "task_id": "task_001",
+          "intent_task": "SEARCH",
+          "query": "ZTDS-9 Zero-Trust DOM Sanitizer DOM-based XSS integration",
+          "objective": {
+            "type": "vulnerabilities",
+            "ids": []
+          },
+          "depends_on": null
+        }
+      ]
+    },
+    "evidence_units": []
+  },
+  {
+    "query_id": "RET_103",
+    "category": "traps_hallucination",
+    "lang": "vi",
+    "query": "MITRE CWE-99999 mô tả loại lỗ hổng nào liên quan đến việc vượt qua cơ chế xác thực JWT và khai thác Broken Access Control? Hãy cung cấp nguyên nhân gốc rễ và biện pháp khắc phục theo tài liệu CWE.",
+    "expected_evidence_status": "NONE",
+    "query_plan": {
+      "resolved_query": "MITRE CWE-99999 JWT authentication bypass and Broken Access Control",
+      "original_query": "MITRE CWE-99999 mô tả loại lỗ hổng nào liên quan đến việc vượt qua cơ chế xác thực JWT và khai thác Broken Access Control? Hãy cung cấp nguyên nhân gốc rễ và biện pháp khắc phục theo tài liệu CWE.",
+      "intent": "SEARCH",
+      "entities": {
+        "document": [],
+        "vulnerabilities": []
+      },
+      "filter": {
+        "version": null,
+        "document_type": null,
+        "source": []
+      },
+      "task": [
+        {
+          "task_id": "task_001",
+          "intent_task": "SEARCH",
+          "query": "CWE-99999 JWT authentication bypass Broken Access Control",
+          "objective": {
+            "type": "vulnerabilities",
+            "ids": []
+          },
+          "depends_on": null
+        }
+      ]
+    },
+    "evidence_units": []
+  },
+  {
+    "query_id": "RET_104",
+    "category": "traps_hallucination",
+    "lang": "en",
+    "query": "According to OWASP, what security guarantees does the Adaptive Session Integrity Protocol (ASIP-512) provide against session fixation, session hijacking, and authentication failures?",
+    "expected_evidence_status": "NONE",
+    "query_plan": {
+      "resolved_query": "Adaptive Session Integrity Protocol ASIP-512 session fixation and hijacking",
+      "original_query": "According to OWASP, what security guarantees does the Adaptive Session Integrity Protocol (ASIP-512) provide against session fixation, session hijacking, and authentication failures?",
+      "intent": "SEARCH",
+      "entities": {
+        "document": [],
+        "vulnerabilities": []
+      },
+      "filter": {
+        "version": null,
+        "document_type": null,
+        "source": []
+      },
+      "task": [
+        {
+          "task_id": "task_001",
+          "intent_task": "SEARCH",
+          "query": "ASIP-512 Adaptive Session Integrity Protocol session fixation hijacking",
+          "objective": {
+            "type": "vulnerabilities",
+            "ids": []
+          },
+          "depends_on": null
+        }
+      ]
+    },
+    "evidence_units": []
+  },
+  {
+    "query_id": "RET_105",
+    "category": "traps_hallucination",
+    "lang": "vi",
+    "query": "Cơ chế chống giả mạo yêu cầu HTTP của giao thức OWASP Request Origin Attestation Protocol (ROAP-2048) hoạt động như thế nào để ngăn chặn CSRF? Hãy đối chiếu với OWASP CSRF Prevention Cheat Sheet.",
+    "expected_evidence_status": "NONE",
+    "query_plan": {
+      "resolved_query": "OWASP Request Origin Attestation Protocol ROAP-2048 CSRF prevention",
+      "original_query": "Cơ chế chống giả mạo yêu cầu HTTP của giao thức OWASP Request Origin Attestation Protocol (ROAP-2048) hoạt động như thế nào để ngăn chặn CSRF? Hãy đối chiếu với OWASP CSRF Prevention Cheat Sheet.",
+      "intent": "SEARCH",
+      "entities": {
+        "document": [],
+        "vulnerabilities": []
+      },
+      "filter": {
+        "version": null,
+        "document_type": null,
+        "source": []
+      },
+      "task": [
+        {
+          "task_id": "task_001",
+          "intent_task": "SEARCH",
+          "query": "ROAP-2048 Request Origin Attestation Protocol CSRF Prevention",
+          "objective": {
+            "type": "vulnerabilities",
+            "ids": []
+          },
+          "depends_on": null
+        }
+      ]
+    },
+    "evidence_units": []
+  },
+  {
+    "query_id": "RET_106",
+    "category": "traps_hallucination",
+    "lang": "en",
+    "query": "What is the official MITRE CWE definition of CWE-88888, particularly its relationship with insecure deserialization, remote code execution, and OWASP A08 Software and Data Integrity Failures?",
+    "expected_evidence_status": "NONE",
+    "query_plan": {
+      "resolved_query": "MITRE CWE-88888 insecure deserialization and software integrity failures",
+      "original_query": "What is the official MITRE CWE definition of CWE-88888, particularly its relationship with insecure deserialization, remote code execution, and OWASP A08 Software and Data Integrity Failures?",
+      "intent": "SEARCH",
+      "entities": {
+        "document": [],
+        "vulnerabilities": []
+      },
+      "filter": {
+        "version": null,
+        "document_type": null,
+        "source": []
+      },
+      "task": [
+        {
+          "task_id": "task_001",
+          "intent_task": "SEARCH",
+          "query": "CWE-88888 insecure deserialization remote code execution OWASP A08",
+          "objective": {
+            "type": "vulnerabilities",
+            "ids": []
+          },
+          "depends_on": null
+        }
+      ]
+    },
+    "evidence_units": []
+  },
+  {
+    "query_id": "RET_107",
+    "category": "traps_hallucination",
+    "lang": "vi",
+    "query": "OWASP có định nghĩa thuật toán Secure Header Normalization Algorithm (SHNA-7) để chuẩn hóa HTTP security headers nhằm phòng chống HTTP Request Smuggling không? Hãy mô tả các bước xử lý và các header được hỗ trợ.",
+    "expected_evidence_status": "NONE",
+    "query_plan": {
+      "resolved_query": "Secure Header Normalization Algorithm SHNA-7 HTTP Request Smuggling",
+      "original_query": "OWASP có định nghĩa thuật toán Secure Header Normalization Algorithm (SHNA-7) để chuẩn hóa HTTP security headers nhằm phòng chống HTTP Request Smuggling không? Hãy mô tả các bước xử lý và các header được hỗ trợ.",
+      "intent": "SEARCH",
+      "entities": {
+        "document": [],
+        "vulnerabilities": []
+      },
+      "filter": {
+        "version": null,
+        "document_type": null,
+        "source": []
+      },
+      "task": [
+        {
+          "task_id": "task_001",
+          "intent_task": "SEARCH",
+          "query": "SHNA-7 Secure Header Normalization Algorithm HTTP Request Smuggling",
+          "objective": {
+            "type": "vulnerabilities",
+            "ids": []
+          },
+          "depends_on": null
+        }
+      ]
+    },
+    "evidence_units": []
+  },
+  {
+    "query_id": "RET_108",
+    "category": "traps_hallucination",
+    "lang": "en",
+    "query": "Explain how the OWASP Context-Aware Parameter Binding Standard (CAPBS-3.1) prevents second-order SQL Injection and whether it is mandatory for applications seeking ASVS compliance.",
+    "expected_evidence_status": "NONE",
+    "query_plan": {
+      "resolved_query": "OWASP Context-Aware Parameter Binding Standard CAPBS-3.1 second-order SQL Injection",
+      "original_query": "Explain how the OWASP Context-Aware Parameter Binding Standard (CAPBS-3.1) prevents second-order SQL Injection and whether it is mandatory for applications seeking ASVS compliance.",
+      "intent": "SEARCH",
+      "entities": {
+        "document": [],
+        "vulnerabilities": []
+      },
+      "filter": {
+        "version": null,
+        "document_type": null,
+        "source": []
+      },
+      "task": [
+        {
+          "task_id": "task_001",
+          "intent_task": "SEARCH",
+          "query": "CAPBS-3.1 Context-Aware Parameter Binding Standard second-order SQL Injection ASVS",
+          "objective": {
+            "type": "vulnerabilities",
+            "ids": []
+          },
+          "depends_on": null
+        }
+      ]
+    },
+    "evidence_units": []
+  },
+  {
+    "query_id": "RET_109",
+    "category": "traps_hallucination",
+    "lang": "vi",
+    "query": "Theo MITRE, CWE-77777 là mã định danh cho lỗ hổng nào trong quá trình kiểm tra quyền truy cập đối tượng trực tiếp (IDOR)? Hãy cho biết CWE cha, CWE con và các ví dụ khai thác tương ứng.",
+    "expected_evidence_status": "NONE",
+    "query_plan": {
+      "resolved_query": "MITRE CWE-77777 IDOR insecure direct object references",
+      "original_query": "Theo MITRE, CWE-77777 là mã định danh cho lỗ hổng nào trong quá trình kiểm tra quyền truy cập đối tượng trực tiếp (IDOR)? Hãy cho biết CWE cha, CWE con và các ví dụ khai thác tương ứng.",
+      "intent": "SEARCH",
+      "entities": {
+        "document": [],
+        "vulnerabilities": []
+      },
+      "filter": {
+        "version": null,
+        "document_type": null,
+        "source": []
+      },
+      "task": [
+        {
+          "task_id": "task_001",
+          "intent_task": "SEARCH",
+          "query": "CWE-77777 IDOR direct object reference parent child weaknesses",
+          "objective": {
+            "type": "vulnerabilities",
+            "ids": []
+          },
+          "depends_on": null
+        }
+      ]
+    },
+    "evidence_units": []
+  },
+  {
+    "query_id": "RET_110",
+    "category": "traps_hallucination",
+    "lang": "en",
+    "query": "Does the OWASP Cryptographic Key Rotation Attestation Protocol (CKRAP-4096) define a standardized procedure for rotating encryption keys and validating certificate chains to prevent TLS misconfiguration?",
+    "expected_evidence_status": "NONE",
+    "query_plan": {
+      "resolved_query": "OWASP Cryptographic Key Rotation Attestation Protocol CKRAP-4096 TLS misconfiguration",
+      "original_query": "Does the OWASP Cryptographic Key Rotation Attestation Protocol (CKRAP-4096) define a standardized procedure for rotating encryption keys and validating certificate chains to prevent TLS misconfiguration?",
+      "intent": "SEARCH",
+      "entities": {
+        "document": [],
+        "vulnerabilities": []
+      },
+      "filter": {
+        "version": null,
+        "document_type": null,
+        "source": []
+      },
+      "task": [
+        {
+          "task_id": "task_001",
+          "intent_task": "SEARCH",
+          "query": "CKRAP-4096 Cryptographic Key Rotation Attestation Protocol TLS certificate validation",
+          "objective": {
+            "type": "vulnerabilities",
+            "ids": []
+          },
+          "depends_on": null
+        }
+      ]
+    },
+    "evidence_units": []
+  },
+  {
+    "query_id": "RET_111",
+    "category": "traps_hallucination",
+    "lang": "vi",
+    "query": "Hãy giải thích cách MITRE CWE-66666 định nghĩa lỗ hổng Server-Side Request Forgery (SSRF) kết hợp với DNS Rebinding. Mã CWE này có phân loại SSRF thành các mức độ nghiêm trọng riêng biệt không?",
+    "expected_evidence_status": "NONE",
+    "query_plan": {
+      "resolved_query": "MITRE CWE-66666 SSRF DNS Rebinding classification",
+      "original_query": "Hãy giải thích cách MITRE CWE-66666 định nghĩa lỗ hổng Server-Side Request Forgery (SSRF) kết hợp với DNS Rebinding. Mã CWE này có phân loại SSRF thành các mức độ nghiêm trọng riêng biệt không?",
+      "intent": "SEARCH",
+      "entities": {
+        "document": [],
+        "vulnerabilities": []
+      },
+      "filter": {
+        "version": null,
+        "document_type": null,
+        "source": []
+      },
+      "task": [
+        {
+          "task_id": "task_001",
+          "intent_task": "SEARCH",
+          "query": "CWE-66666 SSRF DNS Rebinding severity classification",
+          "objective": {
+            "type": "vulnerabilities",
+            "ids": []
+          },
+          "depends_on": null
+        }
+      ]
+    },
+    "evidence_units": []
+  },
+  {
+    "query_id": "RET_112",
+    "category": "traps_hallucination",
+    "lang": "en",
+    "query": "How does the OWASP Behavioral API Trust Framework (BATF-2.0) detect malicious API requests and distinguish legitimate automation from API abuse, credential stuffing, and broken authentication?",
+    "expected_evidence_status": "NONE",
+    "query_plan": {
+      "resolved_query": "OWASP Behavioral API Trust Framework BATF-2.0 API abuse detection",
+      "original_query": "How does the OWASP Behavioral API Trust Framework (BATF-2.0) detect malicious API requests and distinguish legitimate automation from API abuse, credential stuffing, and broken authentication?",
+      "intent": "SEARCH",
+      "entities": {
+        "document": [],
+        "vulnerabilities": []
+      },
+      "filter": {
+        "version": null,
+        "document_type": null,
+        "source": []
+      },
+      "task": [
+        {
+          "task_id": "task_001",
+          "intent_task": "SEARCH",
+          "query": "BATF-2.0 Behavioral API Trust Framework API abuse credential stuffing",
+          "objective": {
+            "type": "vulnerabilities",
+            "ids": []
+          },
+          "depends_on": null
+        }
+      ]
+    },
+    "evidence_units": []
+  },
+  {
+    "query_id": "RET_113",
+    "category": "traps_hallucination",
+    "lang": "vi",
+    "query": "Theo OWASP, giao thức Content Security Policy Evolution Protocol (CSE-2040) mở rộng CSP như thế nào để chống lại XSS, inline script injection và JavaScript prototype pollution?",
+    "expected_evidence_status": "NONE",
+    "query_plan": {
+      "resolved_query": "Content Security Policy Evolution Protocol CSE-2040 CSP XSS",
+      "original_query": "Theo OWASP, giao thức Content Security Policy Evolution Protocol (CSE-2040) mở rộng CSP như thế nào để chống lại XSS, inline script injection và JavaScript prototype pollution?",
+      "intent": "SEARCH",
+      "entities": {
+        "document": [],
+        "vulnerabilities": []
+      },
+      "filter": {
+        "version": null,
+        "document_type": null,
+        "source": []
+      },
+      "task": [
+        {
+          "task_id": "task_001",
+          "intent_task": "SEARCH",
+          "query": "CSE-2040 Content Security Policy Evolution Protocol CSP XSS prototype pollution",
+          "objective": {
+            "type": "vulnerabilities",
+            "ids": []
+          },
+          "depends_on": null
+        }
+      ]
+    },
+    "evidence_units": []
+  },
+  {
+    "query_id": "RET_114",
+    "category": "traps_hallucination",
+    "lang": "en",
+    "query": "What is the official MITRE CWE-55555 classification for race-condition vulnerabilities in web application authentication workflows, and how does it relate to time-of-check-to-time-of-use (TOCTOU) flaws?",
+    "expected_evidence_status": "NONE",
+    "query_plan": {
+      "resolved_query": "MITRE CWE-55555 race condition authentication TOCTOU",
+      "original_query": "What is the official MITRE CWE-55555 classification for race-condition vulnerabilities in web application authentication workflows, and how does it relate to time-of-check-to-time-of-use (TOCTOU) flaws?",
+      "intent": "SEARCH",
+      "entities": {
+        "document": [],
+        "vulnerabilities": []
+      },
+      "filter": {
+        "version": null,
+        "document_type": null,
+        "source": []
+      },
+      "task": [
+        {
+          "task_id": "task_001",
+          "intent_task": "SEARCH",
+          "query": "CWE-55555 race condition TOCTOU authentication workflows",
+          "objective": {
+            "type": "vulnerabilities",
+            "ids": []
+          },
+          "depends_on": null
+        }
+      ]
+    },
+    "evidence_units": []
+  },
+  {
+    "query_id": "RET_115",
+    "category": "traps_hallucination",
+    "lang": "vi",
+    "query": "Trong OWASP Top 10 phiên bản 2099, hạng mục A11 có tên gọi là gì và được sử dụng để phân loại các lỗ hổng bảo mật ứng dụng web nào? Hãy cung cấp mô tả chính thức và ví dụ.",
+    "expected_evidence_status": "NONE",
+    "query_plan": {
+      "resolved_query": "OWASP Top 10 version 2099 category A11",
+      "original_query": "Trong OWASP Top 10 phiên bản 2099, hạng mục A11 có tên gọi là gì và được sử dụng để phân loại các lỗ hổng bảo mật ứng dụng web nào? Hãy cung cấp mô tả chính thức và ví dụ.",
+      "intent": "SEARCH",
+      "entities": {
+        "document": [
+          "OWASP Top 10 version 2099"
+        ],
+        "vulnerabilities": []
+      },
+      "filter": {
+        "version": "2099",
+        "document_type": "OWASP Top 10",
+        "source": [
+          "OWASP"
+        ]
+      },
+      "task": [
+        {
+          "task_id": "task_001",
+          "intent_task": "SEARCH",
+          "query": "OWASP Top 10 2099 A11 category",
+          "objective": {
+            "type": "vulnerabilities",
+            "ids": []
+          },
+          "depends_on": null
+        }
+      ]
+    },
+    "evidence_units": []
+  },
+  {
+    "query_id": "RET_116",
+    "category": "traps_hallucination",
+    "lang": "en",
+    "query": "According to OWASP Top 10 version 2099, what is the official definition of category A12, and which attack patterns are included in this category?",
+    "expected_evidence_status": "NONE",
+    "query_plan": {
+      "resolved_query": "OWASP Top 10 version 2099 category A12",
+      "original_query": "According to OWASP Top 10 version 2099, what is the official definition of category A12, and which attack patterns are included in this category?",
+      "intent": "SEARCH",
+      "entities": {
+        "document": [
+          "OWASP Top 10 version 2099"
+        ],
+        "vulnerabilities": []
+      },
+      "filter": {
+        "version": "2099",
+        "document_type": "OWASP Top 10",
+        "source": [
+          "OWASP"
+        ]
+      },
+      "task": [
+        {
+          "task_id": "task_001",
+          "intent_task": "SEARCH",
+          "query": "OWASP Top 10 version 2099 A12",
+          "objective": {
+            "type": "vulnerabilities",
+            "ids": []
+          },
+          "depends_on": null
+        }
+      ]
+    },
+    "evidence_units": []
+  },
+  {
+    "query_id": "RET_117",
+    "category": "traps_hallucination",
+    "lang": "vi",
+    "query": "FIRST CVSS v9.5 có những thay đổi nào trong cách tính Attack Vector (AV), Attack Complexity (AC) và Privileges Required (PR) so với CVSS v4.0? Hãy trình bày công thức tính Base Score của phiên bản này.",
+    "expected_evidence_status": "NONE",
+    "query_plan": {
+      "resolved_query": "FIRST CVSS version 9.5 Attack Vector Attack Complexity Privileges Required Base Score",
+      "original_query": "FIRST CVSS v9.5 có những thay đổi nào trong cách tính Attack Vector (AV), Attack Complexity (AC) và Privileges Required (PR) so với CVSS v4.0? Hãy trình bày công thức tính Base Score của phiên bản này.",
+      "intent": "SEARCH",
+      "entities": {
+        "document": [
+          "FIRST CVSS v9.5"
+        ],
+        "vulnerabilities": []
+      },
+      "filter": {
+        "version": "9.5",
+        "document_type": "CVSS",
+        "source": [
+          "FIRST"
+        ]
+      },
+      "task": [
+        {
+          "task_id": "task_001",
+          "intent_task": "SEARCH",
+          "query": "FIRST CVSS v9.5 metrics and Base Score calculation",
+          "objective": {
+            "type": "vulnerabilities",
+            "ids": []
+          },
+          "depends_on": null
+        }
+      ]
+    },
+    "evidence_units": []
+  },
+  {
+    "query_id": "RET_118",
+    "category": "traps_hallucination",
+    "lang": "en",
+    "query": "What are the new security verification levels introduced in OWASP ASVS v12.0, and how do their requirements differ from the verification levels defined in earlier ASVS releases?",
+    "expected_evidence_status": "NONE",
+    "query_plan": {
+      "resolved_query": "OWASP ASVS version 12.0 verification levels",
+      "original_query": "What are the new security verification levels introduced in OWASP ASVS v12.0, and how do their requirements differ from the verification levels defined in earlier ASVS releases?",
+      "intent": "SEARCH",
+      "entities": {
+        "document": [
+          "OWASP ASVS v12.0"
+        ],
+        "vulnerabilities": []
+      },
+      "filter": {
+        "version": "12.0",
+        "document_type": "ASVS",
+        "source": [
+          "OWASP"
+        ]
+      },
+      "task": [
+        {
+          "task_id": "task_001",
+          "intent_task": "SEARCH",
+          "query": "OWASP ASVS v12.0 verification levels requirements",
+          "objective": {
+            "type": "vulnerabilities",
+            "ids": []
+          },
+          "depends_on": null
+        }
+      ]
+    },
+    "evidence_units": []
+  },
+  {
+    "query_id": "RET_119",
+    "category": "traps_hallucination",
+    "lang": "vi",
+    "query": "OWASP Cheat Sheets phiên bản 15.0 quy định những biện pháp mới nào để phòng chống Cross-Site Scripting (XSS) và Content Security Policy bypass? Hãy liệt kê các yêu cầu bắt buộc trong phiên bản này.",
+    "expected_evidence_status": "NONE",
+    "query_plan": {
+      "resolved_query": "OWASP Cheat Sheets version 15.0 XSS prevention and CSP bypass",
+      "original_query": "OWASP Cheat Sheets phiên bản 15.0 quy định những biện pháp mới nào để phòng chống Cross-Site Scripting (XSS) và Content Security Policy bypass? Hãy liệt kê các yêu cầu bắt buộc trong phiên bản này.",
+      "intent": "SEARCH",
+      "entities": {
+        "document": [
+          "OWASP Cheat Sheets version 15.0"
+        ],
+        "vulnerabilities": []
+      },
+      "filter": {
+        "version": "15.0",
+        "document_type": "OWASP Cheat Sheets",
+        "source": [
+          "OWASP"
+        ]
+      },
+      "task": [
+        {
+          "task_id": "task_001",
+          "intent_task": "SEARCH",
+          "query": "OWASP Cheat Sheets version 15.0 XSS CSP bypass",
+          "objective": {
+            "type": "vulnerabilities",
+            "ids": []
+          },
+          "depends_on": null
+        }
+      ]
+    },
+    "evidence_units": []
+  },
+  {
+    "query_id": "RET_120",
+    "category": "traps_hallucination",
+    "lang": "en",
+    "query": "How does MITRE CWE release 99.0 classify weaknesses related to improper input validation, path traversal, and command injection, and what new relationships were introduced in this release?",
+    "expected_evidence_status": "NONE",
+    "query_plan": {
+      "resolved_query": "MITRE CWE version 99.0 input validation path traversal command injection",
+      "original_query": "How does MITRE CWE release 99.0 classify weaknesses related to improper input validation, path traversal, and command injection, and what new relationships were introduced in this release?",
+      "intent": "SEARCH",
+      "entities": {
+        "document": [
+          "MITRE CWE version 99.0"
+        ],
+        "vulnerabilities": []
+      },
+      "filter": {
+        "version": "99.0",
+        "document_type": "CWE",
+        "source": [
+          "MITRE"
+        ]
+      },
+      "task": [
+        {
+          "task_id": "task_001",
+          "intent_task": "SEARCH",
+          "query": "MITRE CWE version 99.0 input validation path traversal command injection",
+          "objective": {
+            "type": "vulnerabilities",
+            "ids": []
+          },
+          "depends_on": null
+        }
+      ]
+    },
+    "evidence_units": []
+  },
+  {
+    "query_id": "RET_121",
+    "category": "traps_hallucination",
+    "lang": "vi",
+    "query": "Trong OWASP Top 10 phiên bản 2028, nhóm A04 có tên gọi chính thức là gì? Hãy phân tích sự khác biệt về phạm vi và tiêu chí phân loại so với A04 của OWASP Top 10 2021 và 2025.",
+    "expected_evidence_status": "NONE",
+    "query_plan": {
+      "resolved_query": "OWASP Top 10 version 2028 A04 comparison with 2021 and 2025",
+      "original_query": "Trong OWASP Top 10 phiên bản 2028, nhóm A04 có tên gọi chính thức là gì? Hãy phân tích sự khác biệt về phạm vi và tiêu chí phân loại so với A04 của OWASP Top 10 2021 và 2025.",
+      "intent": "SEARCH",
+      "entities": {
+        "document": [
+          "OWASP Top 10 version 2028",
+          "OWASP Top 10 2021",
+          "OWASP Top 10 2025"
+        ],
+        "vulnerabilities": []
+      },
+      "filter": {
+        "version": "2028",
+        "document_type": "OWASP Top 10",
+        "source": [
+          "OWASP"
+        ]
+      },
+      "task": [
+        {
+          "task_id": "task_001",
+          "intent_task": "SEARCH",
+          "query": "OWASP Top 10 2028 A04 official category",
+          "objective": {
+            "type": "vulnerabilities",
+            "ids": []
+          },
+          "depends_on": null
+        }
+      ]
+    },
+    "evidence_units": []
+  },
+  {
+    "query_id": "RET_122",
+    "category": "traps_hallucination",
+    "lang": "en",
+    "query": "What changes to the Environmental and Supplemental metric groups were introduced in FIRST CVSS v8.0, and how do these changes affect vulnerability scoring compared with CVSS v4.0?",
+    "expected_evidence_status": "NONE",
+    "query_plan": {
+      "resolved_query": "FIRST CVSS version 8.0 Environmental and Supplemental metrics",
+      "original_query": "What changes to the Environmental and Supplemental metric groups were introduced in FIRST CVSS v8.0, and how do these changes affect vulnerability scoring compared with CVSS v4.0?",
+      "intent": "SEARCH",
+      "entities": {
+        "document": [
+          "FIRST CVSS v8.0"
+        ],
+        "vulnerabilities": []
+      },
+      "filter": {
+        "version": "8.0",
+        "document_type": "CVSS",
+        "source": [
+          "FIRST"
+        ]
+      },
+      "task": [
+        {
+          "task_id": "task_001",
+          "intent_task": "SEARCH",
+          "query": "FIRST CVSS v8.0 Environmental Supplemental metrics",
+          "objective": {
+            "type": "vulnerabilities",
+            "ids": []
+          },
+          "depends_on": null
+        }
+      ]
+    },
+    "evidence_units": []
+  },
+  {
+    "query_id": "RET_123",
+    "category": "traps_hallucination",
+    "lang": "vi",
+    "query": "Theo OWASP ASVS v11.0, yêu cầu xác minh V99.99 bắt buộc sử dụng thuật toán mã hóa lượng tử hậu lượng tử nào để bảo vệ dữ liệu xác thực? Hãy cung cấp nội dung yêu cầu và mức độ xác minh.",
+    "expected_evidence_status": "NONE",
+    "query_plan": {
+      "resolved_query": "OWASP ASVS version 11.0 requirement V99.99 post-quantum cryptography",
+      "original_query": "Theo OWASP ASVS v11.0, yêu cầu xác minh V99.99 bắt buộc sử dụng thuật toán mã hóa lượng tử hậu lượng tử nào để bảo vệ dữ liệu xác thực? Hãy cung cấp nội dung yêu cầu và mức độ xác minh.",
+      "intent": "SEARCH",
+      "entities": {
+        "document": [
+          "OWASP ASVS v11.0"
+        ],
+        "vulnerabilities": []
+      },
+      "filter": {
+        "version": "11.0",
+        "document_type": "ASVS",
+        "source": [
+          "OWASP"
+        ]
+      },
+      "task": [
+        {
+          "task_id": "task_001",
+          "intent_task": "SEARCH",
+          "query": "OWASP ASVS v11.0 V99.99 post-quantum cryptography requirement",
+          "objective": {
+            "type": "vulnerabilities",
+            "ids": []
+          },
+          "depends_on": null
+        }
+      ]
+    },
+    "evidence_units": []
+  },
+  {
+    "query_id": "RET_124",
+    "category": "traps_hallucination",
+    "lang": "en",
+    "query": "Does OWASP Top 10 version 2035 introduce category A15 specifically for vulnerabilities caused by blockchain smart contract reentrancy, and what mitigation requirements does it prescribe?",
+    "expected_evidence_status": "NONE",
+    "query_plan": {
+      "resolved_query": "OWASP Top 10 version 2035 category A15 blockchain smart contract reentrancy",
+      "original_query": "Does OWASP Top 10 version 2035 introduce category A15 specifically for vulnerabilities caused by blockchain smart contract reentrancy, and what mitigation requirements does it prescribe?",
+      "intent": "SEARCH",
+      "entities": {
+        "document": [
+          "OWASP Top 10 version 2035"
+        ],
+        "vulnerabilities": []
+      },
+      "filter": {
+        "version": "2035",
+        "document_type": "OWASP Top 10",
+        "source": [
+          "OWASP"
+        ]
+      },
+      "task": [
+        {
+          "task_id": "task_001",
+          "intent_task": "SEARCH",
+          "query": "OWASP Top 10 2035 A15 blockchain smart contract reentrancy",
+          "objective": {
+            "type": "vulnerabilities",
+            "ids": []
+          },
+          "depends_on": null
+        }
+      ]
+    },
+    "evidence_units": []
+  },
+  {
+    "query_id": "RET_125",
+    "category": "traps_hallucination",
+    "lang": "vi",
+    "query": "FIRST CVSS v10.0 bổ sung những chỉ số mới nào để đánh giá tác động của lỗ hổng đối với hệ thống AI tự hành và mô hình ngôn ngữ lớn? Hãy trình bày công thức Base Score và cách ánh xạ sang mức độ nghiêm trọng.",
+    "expected_evidence_status": "NONE",
+    "query_plan": {
+      "resolved_query": "FIRST CVSS version 10.0 AI autonomous systems and large language model impact metrics",
+      "original_query": "FIRST CVSS v10.0 bổ sung những chỉ số mới nào để đánh giá tác động của lỗ hổng đối với hệ thống AI tự hành và mô hình ngôn ngữ lớn? Hãy trình bày công thức Base Score và cách ánh xạ sang mức độ nghiêm trọng.",
+      "intent": "SEARCH",
+      "entities": {
+        "document": [
+          "FIRST CVSS v10.0"
+        ],
+        "vulnerabilities": []
+      },
+      "filter": {
+        "version": "10.0",
+        "document_type": "CVSS",
+        "source": [
+          "FIRST"
+        ]
+      },
+      "task": [
+        {
+          "task_id": "task_001",
+          "intent_task": "SEARCH",
+          "query": "FIRST CVSS v10.0 AI autonomous systems LLM impact metrics",
+          "objective": {
+            "type": "vulnerabilities",
+            "ids": []
+          },
+          "depends_on": null
+        }
+      ]
+    },
+    "evidence_units": []
+  }
+]

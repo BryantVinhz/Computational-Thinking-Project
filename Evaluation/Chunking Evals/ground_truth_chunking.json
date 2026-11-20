@@ -196,10 +196,10 @@
     "query": "Trong chính sách CSP, các giá trị nguồn 'none', 'self', 'unsafe-inline' và 'unsafe-eval' lần lượt có nghĩa là gì?",
     "file_format": "MARKDOWN",
     "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
-    "version_id": "ver_4d5e2f4d1c42",
+    "version_id": "ver_ce5ddd72c7e5",
     "spans": [
       {
-        "normalized_block_id": "nrm_ver_4d5e2f4d1c42_b00097",
+        "normalized_block_id": "nrm_ver_ce5ddd72c7e5_b00097",
         "start_offset": 0,
         "end_offset": 352,
         "text": "| Value | Description |\n|------------------|-----------------------------------------------------------------------------|\n| 'none' | No URLs match. |\n| 'self' | Refers to the origin site with the same scheme and port number. |\n| 'unsafe-inline' | Allows the usage of inline scripts or styles. |\n| 'unsafe-eval' | Allows the usage of eval in scripts. |",
@@ -252,7 +252,7 @@
     "lang": "en",
     "query": "Which ASVS requirements call for re-authentication before sensitive account attributes are changed or before users terminate their active sessions, and at what verification level does each apply?",
     "file_format": "MARKDOWN",
-    "document_id": "doc_owasp_avss_session_management",
+    "document_id": "doc_owasp_asvs_session_management",
     "version_id": "ver_4aec329f2642",
     "spans": [
       {
@@ -309,7 +309,7 @@
     "lang": "vi",
     "query": "Yêu cầu 3.7.1 của ASVS quy định điều gì về phiên đăng nhập trước các giao dịch nhạy cảm, áp dụng cho những cấp độ nào và gắn với CWE nào?",
     "file_format": "MARKDOWN",
-    "document_id": "doc_owasp_avss_session_management",
+    "document_id": "doc_owasp_asvs_session_management",
     "version_id": "ver_d5ac6829b294",
     "spans": [
       {
@@ -601,7 +601,7 @@
     "lang": "vi",
     "query": "ASVS có quan hệ thế nào với NIST 800-63, đặc biệt ở các cấp IAL/AAL khác nhau?",
     "file_format": "MARKDOWN",
-    "document_id": "doc_owasp_avss_authentication",
+    "document_id": "doc_owasp_asvs_authentication",
     "version_id": "ver_ea47056e8e8f",
     "spans": [
       {
@@ -844,7 +844,7 @@
     "lang": "en",
     "query": "How do cryptographic security keys such as FIDO keys authenticate a user, and do the requirements differ between single-factor and multi-factor cryptographic authenticators?",
     "file_format": "MARKDOWN",
-    "document_id": "doc_owasp_avss_authentication",
+    "document_id": "doc_owasp_asvs_authentication",
     "version_id": "ver_ea47056e8e8f",
     "spans": [
       {

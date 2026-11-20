@@ -56,7 +56,12 @@ class ScopeBuilder:
             for d in self.doc_catalog
             if isinstance(d, dict) and "document_id" in d
         }
-        
+    
+    @staticmethod
+    def _tokenize_alnum_parts(text: str) -> set[str]:
+        """Split tokens along letter and digit boundaries (e.g., 'top10' -> {'top', '10'})."""
+        return set(re.findall(r"[a-z]+|\d+", (text or "").lower()))
+       
     def _resolve_canonical_doc_ids(self, raw_sources: list[str]) -> list[str]:
         """
         Resolve Any alias, publisher name, or document group into an exact list of document_ids
@@ -93,9 +98,7 @@ class ScopeBuilder:
 
                 # 3. Token Subset Match
                 # Build a token set representing all document metadata/information
-                doc_tokens = set(re.findall(r"[a-z0-9]+", f"{d_id} {title} {publisher}"))
-
-                
+                doc_tokens = self._tokenize_alnum_parts(f"{d_id} {title} {publisher}")
                 if src_tokens.issubset(doc_tokens):
                     resolved_ids.add(doc["document_id"])
                     matched = True
@@ -335,6 +338,19 @@ class ScopeBuilder:
             if narrowed:
                 doc_ids = narrowed
 
+        if doc_ids and version_ids:
+            docs_covered = {
+                ver.get("document_id")
+                for ver in self.ver_catalog
+                if ver.get("version_id") in version_ids
+            }
+            uncovered_docs = set(doc_ids) - docs_covered
+            if uncovered_docs:
+                for ver in self.ver_catalog:
+                    if ver.get("document_id") in uncovered_docs and ver.get("version_id"):
+                        version_ids.append(ver["version_id"])
+                version_ids = sorted(set(version_ids))
+                
         # is_relaxed now means "a version was requested but the catalog has none": the caller abstains.
         is_relaxed = bool(requested) and not version_ids
         if is_relaxed:

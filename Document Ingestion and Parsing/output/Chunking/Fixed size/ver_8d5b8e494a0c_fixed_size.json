@@ -1,11 +1,11 @@
 {
-  "document_id": "doc_owasp_avss_validation_sanitization_encoding",
+  "document_id": "doc_owasp_asvs_validation_sanitization_encoding",
   "version_id": "ver_8d5b8e494a0c",
   "chunking_strategy": "fixed_size",
   "chunks": [
     {
       "chunk_id": "ver_8d5b8e494a0c_c00000",
-      "document_id": "doc_owasp_avss_validation_sanitization_encoding",
+      "document_id": "doc_owasp_asvs_validation_sanitization_encoding",
       "version_id": "ver_8d5b8e494a0c",
       "chunk_idx": 0,
       "chunk_type": "text",
@@ -18,7 +18,7 @@
     },
     {
       "chunk_id": "ver_8d5b8e494a0c_c00001",
-      "document_id": "doc_owasp_avss_validation_sanitization_encoding",
+      "document_id": "doc_owasp_asvs_validation_sanitization_encoding",
       "version_id": "ver_8d5b8e494a0c",
       "chunk_idx": 1,
       "chunk_type": "text",
@@ -32,7 +32,7 @@
     },
     {
       "chunk_id": "ver_8d5b8e494a0c_c00002",
-      "document_id": "doc_owasp_avss_validation_sanitization_encoding",
+      "document_id": "doc_owasp_asvs_validation_sanitization_encoding",
       "version_id": "ver_8d5b8e494a0c",
       "chunk_idx": 2,
       "chunk_type": "text",
@@ -46,7 +46,7 @@
     },
     {
       "chunk_id": "ver_8d5b8e494a0c_c00003",
-      "document_id": "doc_owasp_avss_validation_sanitization_encoding",
+      "document_id": "doc_owasp_asvs_validation_sanitization_encoding",
       "version_id": "ver_8d5b8e494a0c",
       "chunk_idx": 3,
       "chunk_type": "text",
@@ -60,7 +60,7 @@
     },
     {
       "chunk_id": "ver_8d5b8e494a0c_c00004",
-      "document_id": "doc_owasp_avss_validation_sanitization_encoding",
+      "document_id": "doc_owasp_asvs_validation_sanitization_encoding",
       "version_id": "ver_8d5b8e494a0c",
       "chunk_idx": 4,
       "chunk_type": "text",
@@ -74,7 +74,7 @@
     },
     {
       "chunk_id": "ver_8d5b8e494a0c_c00005",
-      "document_id": "doc_owasp_avss_validation_sanitization_encoding",
+      "document_id": "doc_owasp_asvs_validation_sanitization_encoding",
       "version_id": "ver_8d5b8e494a0c",
       "chunk_idx": 5,
       "chunk_type": "text",

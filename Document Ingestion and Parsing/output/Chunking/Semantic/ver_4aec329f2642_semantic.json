@@ -1,11 +1,11 @@
 {
-  "document_id": "doc_owasp_avss_session_management",
+  "document_id": "doc_owasp_asvs_session_management",
   "version_id": "ver_4aec329f2642",
   "chunking_strategy": "semantic",
   "chunks": [
     {
       "chunk_id": "ver_4aec329f2642_c00000",
-      "document_id": "doc_owasp_avss_session_management",
+      "document_id": "doc_owasp_asvs_session_management",
       "version_id": "ver_4aec329f2642",
       "chunk_idx": 0,
       "chunk_type": "paragraph",
@@ -19,7 +19,7 @@
     },
     {
       "chunk_id": "ver_4aec329f2642_c00001",
-      "document_id": "doc_owasp_avss_session_management",
+      "document_id": "doc_owasp_asvs_session_management",
       "version_id": "ver_4aec329f2642",
       "chunk_idx": 1,
       "chunk_type": "mixed",
@@ -33,7 +33,7 @@
     },
     {
       "chunk_id": "ver_4aec329f2642_c00002",
-      "document_id": "doc_owasp_avss_session_management",
+      "document_id": "doc_owasp_asvs_session_management",
       "version_id": "ver_4aec329f2642",
       "chunk_idx": 2,
       "chunk_type": "paragraph",
@@ -47,7 +47,7 @@
     },
     {
       "chunk_id": "ver_4aec329f2642_c00003",
-      "document_id": "doc_owasp_avss_session_management",
+      "document_id": "doc_owasp_asvs_session_management",
       "version_id": "ver_4aec329f2642",
       "chunk_idx": 3,
       "chunk_type": "table",
@@ -61,7 +61,7 @@
     },
     {
       "chunk_id": "ver_4aec329f2642_c00004",
-      "document_id": "doc_owasp_avss_session_management",
+      "document_id": "doc_owasp_asvs_session_management",
       "version_id": "ver_4aec329f2642",
       "chunk_idx": 4,
       "chunk_type": "paragraph",
@@ -75,7 +75,7 @@
     },
     {
       "chunk_id": "ver_4aec329f2642_c00005",
-      "document_id": "doc_owasp_avss_session_management",
+      "document_id": "doc_owasp_asvs_session_management",
       "version_id": "ver_4aec329f2642",
       "chunk_idx": 5,
       "chunk_type": "table",
@@ -89,7 +89,7 @@
     },
     {
       "chunk_id": "ver_4aec329f2642_c00006",
-      "document_id": "doc_owasp_avss_session_management",
+      "document_id": "doc_owasp_asvs_session_management",
       "version_id": "ver_4aec329f2642",
       "chunk_idx": 6,
       "chunk_type": "paragraph",
@@ -103,7 +103,7 @@
     },
     {
       "chunk_id": "ver_4aec329f2642_c00007",
-      "document_id": "doc_owasp_avss_session_management",
+      "document_id": "doc_owasp_asvs_session_management",
       "version_id": "ver_4aec329f2642",
       "chunk_idx": 7,
       "chunk_type": "table",
@@ -117,7 +117,7 @@
     },
     {
       "chunk_id": "ver_4aec329f2642_c00008",
-      "document_id": "doc_owasp_avss_session_management",
+      "document_id": "doc_owasp_asvs_session_management",
       "version_id": "ver_4aec329f2642",
       "chunk_idx": 8,
       "chunk_type": "paragraph",
@@ -131,7 +131,7 @@
     },
     {
       "chunk_id": "ver_4aec329f2642_c00009",
-      "document_id": "doc_owasp_avss_session_management",
+      "document_id": "doc_owasp_asvs_session_management",
       "version_id": "ver_4aec329f2642",
       "chunk_idx": 9,
       "chunk_type": "paragraph",
@@ -145,7 +145,7 @@
     },
     {
       "chunk_id": "ver_4aec329f2642_c00010",
-      "document_id": "doc_owasp_avss_session_management",
+      "document_id": "doc_owasp_asvs_session_management",
       "version_id": "ver_4aec329f2642",
       "chunk_idx": 10,
       "chunk_type": "table",
@@ -159,7 +159,7 @@
     },
     {
       "chunk_id": "ver_4aec329f2642_c00011",
-      "document_id": "doc_owasp_avss_session_management",
+      "document_id": "doc_owasp_asvs_session_management",
       "version_id": "ver_4aec329f2642",
       "chunk_idx": 11,
       "chunk_type": "paragraph",
@@ -173,7 +173,7 @@
     },
     {
       "chunk_id": "ver_4aec329f2642_c00012",
-      "document_id": "doc_owasp_avss_session_management",
+      "document_id": "doc_owasp_asvs_session_management",
       "version_id": "ver_4aec329f2642",
       "chunk_idx": 12,
       "chunk_type": "table",
@@ -187,7 +187,7 @@
     },
     {
       "chunk_id": "ver_4aec329f2642_c00013",
-      "document_id": "doc_owasp_avss_session_management",
+      "document_id": "doc_owasp_asvs_session_management",
       "version_id": "ver_4aec329f2642",
       "chunk_idx": 13,
       "chunk_type": "paragraph",
@@ -201,7 +201,7 @@
     },
     {
       "chunk_id": "ver_4aec329f2642_c00014",
-      "document_id": "doc_owasp_avss_session_management",
+      "document_id": "doc_owasp_asvs_session_management",
       "version_id": "ver_4aec329f2642",
       "chunk_idx": 14,
       "chunk_type": "table",
@@ -215,7 +215,7 @@
     },
     {
       "chunk_id": "ver_4aec329f2642_c00015",
-      "document_id": "doc_owasp_avss_session_management",
+      "document_id": "doc_owasp_asvs_session_management",
       "version_id": "ver_4aec329f2642",
       "chunk_idx": 15,
       "chunk_type": "mixed",
