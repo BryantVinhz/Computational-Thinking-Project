@@ -5,6 +5,20 @@ import logging
 
 from .config import ERROR_MSG, OUT_OF_SCOPE_MSG
 
+try:
+    from .ontology_loader import STANDARD_VULNERABILITY_SLUGS
+except Exception:
+    STANDARD_VULNERABILITY_SLUGS = {
+        "xss",
+        "sqli",
+        "bac",
+        "auth_failures",
+        "misconfig",
+        "tokens_and_federation",
+        "applied_cryptography",
+        "risk_scoring_and_verification",
+    }
+
 logger = logging.getLogger(__name__)
 
 SCHEMA_VERSION = "1.0"
@@ -34,7 +48,7 @@ UNDERSTANDING_KEYS = (
     "need_clarify",
     "clarification_message",
 )
-STANDARD_SLUGS = {"xss", "sqli", "bac", "auth_failures", "misconfig"}
+STANDARD_SLUGS = set(STANDARD_VULNERABILITY_SLUGS)
 TASK_INTENTS = {"SEARCH", "COMPARE", "SYNTHESIS"}
 INTENTS = TASK_INTENTS | {"CLARIFICATION", "OUT_OF_SCOPE"}
 OBJECTIVE_TYPES = {"vulnerabilities", "documents"}
@@ -42,7 +56,6 @@ LLM_ERROR_CODES = {"llm_unavailable", "llm_invalid_json", "llm_schema_violation"
 
 
 def _is_one_of(value, allowed: set[str]) -> bool:
-    # Checking str first keeps unhashable values from raising inside "in".
     return isinstance(value, str) and value in allowed
 
 
@@ -85,7 +98,6 @@ def _is_valid_validation(result) -> bool:
         return action == "ALLOW" and message is None
     if message is not None or not _is_text(reason) or not _is_one_of(reject_reason, REJECT_REASONS):
         return False
-    # Safety reasons pair with REFUSE; structural failures carry no safety_action.
     if action == "REFUSE":
         return reject_reason in SAFETY_REASONS
     return action is None and reject_reason not in SAFETY_REASONS
@@ -114,7 +126,6 @@ def _is_valid_task(task, seen_ids: set[str], slugs: set[str], document_ids) -> b
 
     if "depends_on" not in task:
         return False
-    # seen_ids holds only earlier tasks, so self, forward and dangling references all fail.
     depends_on = task["depends_on"]
     return depends_on is None or _is_one_of(depends_on, seen_ids)
 
@@ -130,7 +141,6 @@ def _is_valid_understanding(result: dict, slugs: set[str], document_ids) -> bool
         return False
     if isinstance(confidence, bool) or not isinstance(confidence, (int, float)):
         return False
-    # The range check also rejects NaN and inf without math.isfinite overflowing on huge ints.
     if not 0 <= confidence <= 1:
         return False
     if not isinstance(result["context_used"], bool) or not isinstance(result["need_clarify"], bool):
@@ -180,7 +190,6 @@ def _build_task(task: dict) -> dict:
         "task_id": task["task_id"],
         "intent_task": task["intent_task"],
         "query": task["query"],
-        # Dedupe preserving order; duplicates are tolerated, not a contract violation.
         "objective": {"type": objective["type"], "ids": list(dict.fromkeys(objective["ids"]))},
         "depends_on": task["depends_on"],
     }
@@ -190,7 +199,6 @@ def _build_query_plan(raw_query, result: dict) -> dict:
     entities = result["entities"]
     flt = result["filter"]
     plan = {
-        # Never trust an original_query coming from Understanding.
         "original_query": raw_query if isinstance(raw_query, str) else None,
         "resolved_query": result["resolved_query"],
         "intent": result["intent"],
@@ -257,6 +265,5 @@ def route(
     try:
         return _route(raw_query, validation_result, understanding_result, ontology, document_ids)
     except Exception:
-        # Details go to the log only; callers get a generic error envelope.
         logger.exception("Routing failed unexpectedly")
         return _error(raw_query, "internal_error")

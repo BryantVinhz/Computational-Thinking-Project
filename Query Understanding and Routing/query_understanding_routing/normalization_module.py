@@ -1,6 +1,7 @@
 """Query normalization between validation and LLM understanding.
 
-Phase A cleans whitespace and Unicode. Phase B maps ontology aliases to canonical names.
+Phase A cleans whitespace and Unicode. Phase B maps core vulnerability aliases to canonical names
+while preserving specific technical standards, protocols, and version identifiers intact.
 """
 
 import functools
@@ -8,15 +9,19 @@ import logging
 import re
 import unicodedata
 
+try:
+    from .ontology_loader import CORE_VULNERABILITY_SLUGS
+except Exception:
+    CORE_VULNERABILITY_SLUGS = {"bac", "misconfig", "sqli", "xss", "auth_failures"}
+
 logger = logging.getLogger(__name__)
 
 # Chars and sequences that make a query look like code or an attack payload.
-# Percent and hex escapes need exactly two hex digits so "100%" and "50% off" do not match.
 PAYLOAD_LIKE_PATTERN = re.compile(r"[<>'\"=;()`]|--|/\*|%[0-9A-Fa-f]{2}|\\x[0-9A-Fa-f]{2}")
 
 ZERO_WIDTH_PATTERN = re.compile(r"[\u200b\u200c\u200d\u2060\ufeff]")
 
-# Any whitespace except "\n" (spaces, tabs, NBSP, ideographic space, ...)
+# Any whitespace except "\n"
 HORIZONTAL_WHITESPACE_PATTERN = re.compile(r"[^\S\n]+")
 
 EXCESS_NEWLINES_PATTERN = re.compile(r"\n{3,}")
@@ -29,29 +34,29 @@ def _normalize_newlines(text: str) -> str:
 def _normalize_conservative(text: str) -> str:
     return _normalize_newlines(text).strip()
 
-import re
 
 def detect_language(text: str) -> str:
-    """
-    Detecting Query Language (Language Identification)
-    """
+    """Detect query language ('vi' vs 'en')."""
     if not text or not text.strip():
         return "en"
 
     vietnamese_accent_pattern = re.compile(
         r"[àáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]",
-        re.IGNORECASE
+        re.IGNORECASE,
     )
     if vietnamese_accent_pattern.search(text):
         return "vi"
 
-    # Detecting Additional Common Stopwords and Connectives in Unaccented Vietnamese Queries
-    vi_stopwords = {"la", "gi", "sao", "nao", "cho", "toi", "cach", "khac", "phuc", "phong", "chong", "va", "nhu", "the"}
+    vi_stopwords = {
+        "la", "gi", "sao", "nao", "cho", "toi", "cach",
+        "khac", "phuc", "phong", "chong", "va", "nhu", "the",
+    }
     tokens = set(re.findall(r"\b\w+\b", text.lower()))
     if len(tokens & vi_stopwords) >= 2:
         return "vi"
 
     return "en"
+
 
 def _normalize_regular(text: str) -> str:
     text = _normalize_newlines(text)
@@ -60,7 +65,6 @@ def _normalize_regular(text: str) -> str:
     text = HORIZONTAL_WHITESPACE_PATTERN.sub(" ", text)
     text = "\n".join(line.strip(" ") for line in text.split("\n"))
     text = EXCESS_NEWLINES_PATTERN.sub("\n\n", text)
-    # Zero-width-only input yields ""; the pipeline must handle an empty normalized_query.
     return text.strip()
 
 
@@ -70,7 +74,6 @@ def _alias_key(text: str) -> str:
 
 
 def _alternation(keys) -> str:
-    # Longest first so longer aliases and protected phrases win over their parts.
     ordered = sorted(set(keys), key=lambda k: (-len(k), k))
     body = "|".join(r"[^\S\n]+".join(map(re.escape, k.split(" "))) for k in ordered)
     return rf"(?<![\w-])(?:{body})(?![\w-])"
@@ -99,7 +102,10 @@ def _ontology_entries(ontology: dict) -> tuple:
             logger.warning("Ontology slug %r has no valid canonical, ignored", slug)
             continue
         terms = _str_list(entry, "subtypes", slug) + _str_list(entry, "related_terms", slug)
-        entries.append((slug, canonical, _str_list(entry, "aliases", slug), tuple(sorted(terms))))
+        # Only replace aliases for core vulnerability pillars; preserve specific technical
+        # terms (e.g., JWT, OAuth, SAML 2.0, CVSS v4.0, ASVS, TLS) for cross-cutting domains.
+        aliases = _str_list(entry, "aliases", slug) if slug in CORE_VULNERABILITY_SLUGS else ()
+        entries.append((slug, canonical, aliases, tuple(sorted(terms))))
     return tuple(sorted(entries))
 
 
@@ -109,6 +115,8 @@ def _build_matcher(entries: tuple) -> tuple[re.Pattern | None, dict[str, str | N
     owners: dict[str, set[str]] = {}
     canonicals: dict[str, str] = {}
     for slug, canonical, aliases, _ in entries:
+        if slug not in CORE_VULNERABILITY_SLUGS:
+            continue
         canonicals[slug] = " ".join(unicodedata.normalize("NFC", canonical).split())
         for alias in (canonical, *aliases):
             key = _alias_key(alias)
@@ -122,7 +130,6 @@ def _build_matcher(entries: tuple) -> tuple[re.Pattern | None, dict[str, str | N
             continue
         table[key] = canonicals[next(iter(slugs))]
 
-    # Subtypes/related terms that contain another slug's alias map to themselves.
     for slug, _, _, terms in entries:
         foreign = [key for key, slugs in owners.items() if slug not in slugs]
         if not foreign:
@@ -148,24 +155,16 @@ def _apply_aliases(text: str, ontology: dict) -> str:
 def normalize_query(raw_query: str, ontology: dict | None = None) -> dict:
     """
     Normalize a validated query without changing its meaning.
-
-    Returns a dict with exactly 3 keys:
-    - original_query: raw_query unchanged
-    - normalized_query: conservatively trimmed if payload-like, otherwise fully
-      normalized with ontology aliases replaced by their canonical names
-    - payload_like: True if raw_query contains code or payload-like characters
     """
     if not isinstance(raw_query, str):
         raise TypeError(f"raw_query must be str, got {type(raw_query).__name__}")
 
-    # Detect payload patterns after removing zero-width chars so they cannot split multi-char patterns.
     payload_like = bool(PAYLOAD_LIKE_PATTERN.search(ZERO_WIDTH_PATTERN.sub("", raw_query)))
     if payload_like:
         normalized = _normalize_conservative(raw_query)
     else:
         normalized = _normalize_regular(raw_query)
 
-    # Phase B is skipped for payload-like queries, so their aliases stay as typed.
     if not payload_like and normalized and isinstance(ontology, dict) and ontology:
         normalized = _apply_aliases(normalized, ontology)
     elif ontology is not None and not isinstance(ontology, dict):

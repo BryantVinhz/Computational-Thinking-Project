@@ -1,23 +1,12 @@
 """
 Query Understanding Module (Contract).
 Part of Stage 2: Query Understanding & Routing.
-
-Responsibilities:
-- 2.1: Utilize ontology.yaml (5 standard slugs: xss, sqli, bac, auth_failures, misconfig).
-- 2.2: Intent classification (SEARCH, COMPARE, SYNTHESIS, CLARIFICATION, OUT_OF_SCOPE),
-       entity & filter extraction, multi-task decomposition into task[].
-- 2.3: Strict context_used evaluation (true ONLY when history actually resolves pronouns/ellipses; false for independent queries).
-       History truncation algorithm (Section 7.1).
-- 2.4: Clarification logic with confidence thresholding (CLARIFY_THRESHOLD = 0.6)
-       and two-way equivalence: intent == CLARIFICATION <=> need_clarify == true.
-- Contract: Output adheres strictly to Section 4 & 7.2 (returns understanding_result or error_code; routing attaches original_query).
 """
 
 from __future__ import annotations
 
 import json
 import math
-import os
 import re
 import sys
 from pathlib import Path
@@ -36,47 +25,49 @@ try:
     from query_understanding_routing.config import (
         CLARIFY_THRESHOLD,
         HISTORY_MAX_CHARS,
-        HISTORY_MAX_MESSAGES,
         HISTORY_MAX_TURNS,
         LLM_MAX_RETRIES,
         LLM_TIMEOUT_S,
-        STANDARD_VULNERABILITY_SLUGS,
         VALID_INTENTS,
-        VALID_LLM_ERROR_CODES,
         VALID_TASK_INTENTS,
     )
-    from query_understanding_routing.ontology_loader import DEFAULT_ONTOLOGY_PATH, load_ontology
+    from query_understanding_routing.ontology_loader import (
+        DEFAULT_ONTOLOGY_PATH,
+        STANDARD_VULNERABILITY_SLUGS,
+        load_ontology,
+    )
 except ImportError:
     try:
         from .config import (
             CLARIFY_THRESHOLD,
             HISTORY_MAX_CHARS,
-            HISTORY_MAX_MESSAGES,
             HISTORY_MAX_TURNS,
             LLM_MAX_RETRIES,
             LLM_TIMEOUT_S,
-            STANDARD_VULNERABILITY_SLUGS,
             VALID_INTENTS,
-            VALID_LLM_ERROR_CODES,
             VALID_TASK_INTENTS,
         )
-        from .ontology_loader import DEFAULT_ONTOLOGY_PATH, load_ontology
+        from .ontology_loader import (
+            DEFAULT_ONTOLOGY_PATH,
+            STANDARD_VULNERABILITY_SLUGS,
+            load_ontology,
+        )
     except ImportError:
         from config import (
             CLARIFY_THRESHOLD,
             HISTORY_MAX_CHARS,
-            HISTORY_MAX_MESSAGES,
             HISTORY_MAX_TURNS,
             LLM_MAX_RETRIES,
             LLM_TIMEOUT_S,
-            STANDARD_VULNERABILITY_SLUGS,
             VALID_INTENTS,
-            VALID_LLM_ERROR_CODES,
             VALID_TASK_INTENTS,
         )
-        from ontology_loader import DEFAULT_ONTOLOGY_PATH, load_ontology
+        from ontology_loader import (
+            DEFAULT_ONTOLOGY_PATH,
+            STANDARD_VULNERABILITY_SLUGS,
+            load_ontology,
+        )
 
-# Regex patterns for co-reference and pronouns requiring context (Section 2.3)
 PRONOUN_PATTERNS = [
     r"\bnó\b",
     r"\bchúng\b",
@@ -113,7 +104,6 @@ ELLIPSIS_STARTERS = [
     r"^and then\b",
 ]
 
-# Patterns for obvious out-of-scope requests
 OUT_OF_SCOPE_PATTERNS = [
     r"\bthời tiết\b",
     r"\bhôm nay ăn gì\b",
@@ -129,7 +119,6 @@ OUT_OF_SCOPE_PATTERNS = [
     r"\bmovie\b",
 ]
 
-# Ambiguity / clarification patterns when query is too generic without specifics
 VAGUE_QUERY_PATTERNS = [
     r"^các lỗ hổng nguy hiểm\??$",
     r"^lỗ hổng nguy hiểm\??$",
@@ -142,6 +131,92 @@ VAGUE_QUERY_PATTERNS = [
     r"^web security\??$",
     r"^bảo mật trang web\??$",
 ]
+
+# Unambiguous 3-char domain acronyms allowed during indexing
+ALLOWED_SHORT_TERMS: set[str] = {
+    "xss", "csp", "dom", "svg", "orm", "pdo", "sri",
+    "mfa", "2fa", "otp", "jwt", "jws", "jwe", "idp", "sso",
+    "tls", "hsm", "tpm", "tee", "ecb", "aes", "sha", "cwe", "cve",
+}
+
+# Overly generic words in related_terms that should not trigger domain matching alone
+GENERIC_STOP_TERMS: set[str] = {
+    "key", "nonce", "code", "table", "coverage", "availability",
+    "integrity", "confidentiality", "authentication", "authorization",
+    "access control", "hardening", "mapping", "appendix", "references",
+    "claims", "assertion", "consent", "major release", "minor release",
+}
+
+# ASVS/standard chapter-section markers (e.g., V2.8, V6.8, V7.1, V5.3.1) -> NOT document versions
+ASVS_SECTION_RE = re.compile(r"\bV\d+(?:\.\d+)+\b")
+
+# Explicit structural section references (e.g., "section 4.2.1", "mục 2.8", "chương 5.1")
+EXPLICIT_SECTION_RE = re.compile(
+    r"\b(?:section|sec\.?|chapter|clause|requirement|mục|chương|điều|khoản)\s+v?\d+(?:\.\d+)+\b",
+    flags=re.IGNORECASE,
+)
+
+# Protocol / runtime / RFC / NIST specification numbers -> NOT document catalog versions
+PROTOCOL_OR_TECH_VER_RE = re.compile(
+    r"\b(?:oauth|saml|tls|ssl|dtls|http|https|oidc|openid\s+connect|rfc|iso|fips|nist|sp|pkcs|php|python|java|\.net|go|react|angular|jwt|xml)\s*[/\-]?\s*v?\d+(?:[\.\-]\d+)*\b",
+    flags=re.IGNORECASE,
+)
+
+
+def normalize_document_version(raw_ver: str) -> str:
+    """
+    Canonicalize document version strings to match catalog conventions:
+    - Preserve year or year-range strings: '2021', '2025', '2021-2025'
+    - Strip 'v'/'ver'/'version'/'phiên bản' prefixes and collapse trailing '.0' in 3-part SemVer:
+      '5.0.0' -> 'v5.0', 'V5.0' -> 'v5.0', '4.0.0' -> 'v4.0', '4.2' -> 'v4.2'
+    """
+    s = (raw_ver or "").strip()
+    if not s:
+        return ""
+    if re.fullmatch(r"(?:19|20)\d{2}(?:-(?:19|20)\d{2})?", s):
+        return s
+
+    num = re.sub(r"^(?:v(?:er(?:sion)?)?\.?\s*|phiên\s*bản\s*)", "", s, flags=re.IGNORECASE).strip()
+    num = re.sub(r"^(\d+\.\d+)\.0$", r"\1", num)
+    if re.fullmatch(r"\d+(?:\.\d+)+", num):
+        return f"v{num}"
+    return s
+
+
+def extract_document_versions(text: str) -> list[str]:
+    """
+    Extract document-level version constraints while ignoring section numbers and protocol versions:
+    1. Mask uppercase ASVS chapter/section markers (V2.8, V6.8, V7.1...).
+    2. Mask explicit section/clause numbers and protocol/runtime versions (SAML 2.0, OAuth 2.0, TLS 1.2...).
+    3. Extract remaining year ranges, years, or document version tags and normalize them.
+    """
+    if not text:
+        return []
+
+    # Operate on case-preserved text first so uppercase 'V6.8' is not confused with lowercase 'v5.0'
+    cleaned = ASVS_SECTION_RE.sub(" ", text)
+    cleaned = EXPLICIT_SECTION_RE.sub(" ", cleaned)
+    cleaned = PROTOCOL_OR_TECH_VER_RE.sub(" ", cleaned)
+
+    versions: list[str] = []
+
+    # 1. Year ranges (e.g., 2021-2025) and standalone 4-digit years (e.g., 2021, 2025)
+    for yr in re.findall(r"\b(?:19|20)\d{2}(?:-(?:19|20)\d{2})?\b", cleaned):
+        norm = normalize_document_version(yr)
+        if norm and norm not in versions:
+            versions.append(norm)
+
+    # 2. Explicit version tags or version numbers following document/standard names
+    doc_ver_re = re.compile(
+        r"(?:\b(?:asvs|cvss|wstg|top\s*10|version|ver\.?|phiên\s*bản)\s*v?|\bv)(\d+\.\d+(?:\.\d+)?)\b",
+        flags=re.IGNORECASE,
+    )
+    for num in doc_ver_re.findall(cleaned):
+        norm = normalize_document_version(num)
+        if norm and norm not in versions:
+            versions.append(norm)
+
+    return versions
 
 
 def clean_json_codeblock(raw: str) -> str:
@@ -168,14 +243,7 @@ def truncate_conversation_history(
     max_turns: int = HISTORY_MAX_TURNS,
     max_chars: int = HISTORY_MAX_CHARS,
 ) -> list[dict[str, str]]:
-    """
-    Truncate conversation history according to Contract Section 7.1:
-    - Format: [{"role": "user" | "assistant", "content": str}, ...]
-    - Take at most max_turns pairs of recent turns (2 * max_turns messages).
-    - If a single message > max_chars, cut the head and keep the tail (last max_chars).
-    - If total characters across messages > max_chars, drop oldest messages until total <= max_chars.
-    - Non-list or malformed items are safely discarded.
-    """
+    """Truncate conversation history according to Contract Section 7.1."""
     if not isinstance(conversation_history, list):
         return []
 
@@ -184,16 +252,13 @@ def truncate_conversation_history(
         if isinstance(turn, dict) and "role" in turn and "content" in turn:
             role = str(turn.get("role", "user"))
             content = str(turn.get("content", ""))
-            # Truncate head of individual message if > max_chars
             if len(content) > max_chars:
                 content = content[-max_chars:]
             valid_messages.append({"role": role, "content": content})
 
-    # Keep at most last 2 * max_turns messages
     max_msgs = max_turns * 2
     truncated = valid_messages[-max_msgs:]
 
-    # Drop oldest messages until total length <= max_chars
     while truncated and sum(len(m["content"]) for m in truncated) > max_chars:
         truncated.pop(0)
 
@@ -205,10 +270,7 @@ def validate_understanding_schema(
     allowed_slugs: set[str] = STANDARD_VULNERABILITY_SLUGS,
     document_ids: set[str] | None = None,
 ) -> bool:
-    """
-    Validate output against Section 7.2 of Contract.
-    Returns True if fully compliant, False otherwise.
-    """
+    """Validate output against Section 7.2 of Contract."""
     if not isinstance(result, dict):
         return False
 
@@ -226,27 +288,22 @@ def validate_understanding_schema(
     if not required_keys.issubset(result.keys()):
         return False
 
-    # Check resolved_query
     if not isinstance(result["resolved_query"], str) or not result["resolved_query"].strip():
         return False
 
-    # Check intent
     intent = result["intent"]
     if intent not in VALID_INTENTS:
         return False
 
-    # Check confidence (must be finite float in [0, 1], not bool)
     confidence = result["confidence"]
     if isinstance(confidence, bool) or not isinstance(confidence, (int, float)):
         return False
     if math.isnan(confidence) or math.isinf(confidence) or not (0.0 <= confidence <= 1.0):
         return False
 
-    # Check context_used
     if not isinstance(result["context_used"], bool):
         return False
 
-    # Check entities
     entities = result["entities"]
     if not isinstance(entities, dict):
         return False
@@ -258,7 +315,6 @@ def validate_understanding_schema(
         if v not in allowed_slugs:
             return False
 
-    # Check filter
     flt = result["filter"]
     if not isinstance(flt, dict):
         return False
@@ -269,7 +325,6 @@ def validate_understanding_schema(
     if not isinstance(flt.get("source"), list):
         return False
 
-    # Check two-way equivalence: intent == CLARIFICATION <=> need_clarify == true
     need_clarify = result["need_clarify"]
     if not isinstance(need_clarify, bool):
         return False
@@ -286,7 +341,6 @@ def validate_understanding_schema(
         if clar_msg is not None:
             return False
 
-    # Check task
     tasks = result["task"]
     if not isinstance(tasks, list):
         return False
@@ -339,10 +393,10 @@ class QueryUnderstandingEngine:
     def __init__(self, ontology_path: (Path | str) | None = None):
         self.ontology_path = Path(ontology_path or DEFAULT_ONTOLOGY_PATH)
         self.ontology = self._init_ontology()
+        self.valid_slugs: set[str] = set(self.ontology.keys())
         self._build_alias_index()
 
     def _init_ontology(self) -> dict[str, dict[str, Any]]:
-        """Load and validate ontology via load_ontology."""
         try:
             return load_ontology(self.ontology_path)
         except Exception:
@@ -350,33 +404,47 @@ class QueryUnderstandingEngine:
                 return load_ontology(DEFAULT_ONTOLOGY_PATH)
             raise
 
+    @staticmethod
+    def _is_indexable_term(term: str, is_primary: bool) -> bool:
+        if not term:
+            return False
+        if len(term) >= 4:
+            return is_primary or (term not in GENERIC_STOP_TERMS)
+        return term in ALLOWED_SHORT_TERMS
+
     def _build_alias_index(self) -> None:
-        """Map aliases and canonical names to standard slugs."""
+        """Map primary terms (canonical, aliases, subtypes, CWEs) and specific related_terms to slugs."""
         self.term_to_slug: dict[str, str] = {}
         self.related_to_slug: dict[str, str] = {}
 
         for slug, details in self.ontology.items():
             canonical = details.get("canonical", "").strip().lower()
-            if canonical:
+            if self._is_indexable_term(canonical, is_primary=True):
                 self.term_to_slug[canonical] = slug
 
             for alias in details.get("aliases", []):
                 cleaned = str(alias).strip().lower()
-                if cleaned:
+                if self._is_indexable_term(cleaned, is_primary=True):
+                    self.term_to_slug[cleaned] = slug
+
+            for cwe_id in details.get("cwe", []):
+                cleaned = str(cwe_id).strip().lower()
+                if cleaned and cleaned not in self.term_to_slug:
                     self.term_to_slug[cleaned] = slug
 
             for subtype in details.get("subtypes", []):
                 cleaned = str(subtype).strip().lower()
-                if cleaned:
+                if self._is_indexable_term(cleaned, is_primary=True):
                     self.term_to_slug[cleaned] = slug
 
             for related in details.get("related_terms", []):
                 cleaned = str(related).strip().lower()
-                if cleaned:
-                    self.related_to_slug[cleaned] = slug
+                if self._is_indexable_term(cleaned, is_primary=False):
+                    if cleaned not in self.related_to_slug:
+                        self.related_to_slug[cleaned] = slug
 
     def extract_vulnerabilities(self, text: str) -> list[str]:
-        """Extract ontology vulnerability slugs from text."""
+        """Extract ontology domain slugs from text (primary terms first, then specific related terms)."""
         lowered = text.lower()
         matched_slugs = set()
 
@@ -391,44 +459,50 @@ class QueryUnderstandingEngine:
                 if re.search(pattern, lowered):
                     matched_slugs.add(slug)
 
-        return sorted(list(matched_slugs))
+        return sorted(matched_slugs)
 
     def extract_documents_and_filters(self, text: str) -> tuple[list[str], dict[str, Any]]:
-        """Extract referenced documents and filter constraints."""
+        """Extract referenced documents and filter constraints using case-aware version parsing."""
         lowered = text.lower()
-        documents = []
+        documents: list[str] = []
         filter_dict: dict[str, Any] = {
             "version": None,
             "document_type": None,
-            "source": []
+            "source": [],
         }
 
         if "cvss" in lowered:
             documents.append("CVSS Specification")
-            if "first" not in filter_dict["source"]:
+            if "FIRST" not in filter_dict["source"]:
                 filter_dict["source"].append("FIRST")
             filter_dict["document_type"] = "specification"
 
         if "owasp" in lowered or "top 10" in lowered or "top10" in lowered:
             if "top 10" in lowered or "top10" in lowered:
                 documents.append("OWASP Top 10")
-            if "owasp" not in filter_dict["source"]:
+            if "OWASP" not in filter_dict["source"]:
                 filter_dict["source"].append("OWASP")
 
         if "asvs" in lowered or "application security verification standard" in lowered:
             documents.append("OWASP ASVS")
             filter_dict["document_type"] = "standard"
-            if "owasp" not in filter_dict["source"]:
+            if "OWASP" not in filter_dict["source"]:
                 filter_dict["source"].append("OWASP")
 
-        if "cheatsheet" in lowered or "cheat sheet" in lowered or "remediation" in lowered:
+        if "wstg" in lowered or "web security testing guide" in lowered:
+            documents.append("OWASP WSTG")
+            if "OWASP" not in filter_dict["source"]:
+                filter_dict["source"].append("OWASP")
+
+        if "cheatsheet" in lowered or "cheat sheet" in lowered:
             filter_dict["document_type"] = "cheatsheet"
-            if "owasp" not in filter_dict["source"]:
+            if "OWASP" not in filter_dict["source"]:
                 filter_dict["source"].append("OWASP")
 
-        version_match = re.search(r"\b(v?\d+(?:\.\d+)+|202\d)\b", lowered)
-        if version_match:
-            filter_dict["version"] = version_match.group(1)
+        # Extract document versions on case-preserved text (ignoring ASVS V2.8/V6.8 and protocol versions)
+        versions = extract_document_versions(text)
+        if len(versions) == 1:
+            filter_dict["version"] = versions[0]
 
         return documents, filter_dict
 
@@ -450,16 +524,11 @@ class QueryUnderstandingEngine:
         self, query: str, conversation_history: list[dict[str, str]] | None
     ) -> tuple[bool, str, list[str]]:
         has_ref, ref_text = self.detect_coreference(query)
-
-        # Scan entities directly within the current sentence
         current_slugs = self.extract_vulnerabilities(query)
-        
+
         if not has_ref:
             return False, query, current_slugs
 
-        # RESOLVE INTRA-SENTENCE REFERENCES
-        # Example: "What is SQL Injection? How can I prevent it?"
-        # 'it' refers back to 'SQL Injection' in the same input; DO NOT pull from history.
         if current_slugs:
             canonical = self.ontology.get(current_slugs[0], {}).get("canonical", current_slugs[0])
             resolved = query
@@ -468,12 +537,10 @@ class QueryUnderstandingEngine:
                     r"\b" + re.escape(ref_text) + r"\b",
                     canonical,
                     query,
-                    flags=re.IGNORECASE
+                    flags=re.IGNORECASE,
                 )
             return False, resolved, current_slugs
-        
-        # RESOLVE CROSS-TURN REFERENCES
-        # Example: "What is the CWE of it?" -> No in-turn entity; must retrieve from conversation history.
+
         safe_history = truncate_conversation_history(conversation_history)
         if not safe_history:
             return False, query, []
@@ -496,13 +563,13 @@ class QueryUnderstandingEngine:
         resolved = query
         if ref_text and ref_text in [
             "nó", "lỗi này", "lỗ hổng này", "cái đó", "lỗi trên",
-            "it", "its", "of it", "this", "that", "this vulnerability", "this flaw"
+            "it", "its", "of it", "this", "that", "this vulnerability", "this flaw",
         ]:
             resolved = re.sub(
                 r"\b" + re.escape(ref_text) + r"\b",
                 antecedent_canonical,
                 query,
-                flags=re.IGNORECASE
+                flags=re.IGNORECASE,
             )
         elif re.search(r"^(còn|thế còn|vậy còn)\b", query.strip(), flags=re.IGNORECASE):
             clean_sub = re.sub(r"^(còn|thế còn|vậy còn)\s*", "", query.strip(), flags=re.IGNORECASE)
@@ -517,7 +584,7 @@ class QueryUnderstandingEngine:
         query: str,
         overall_intent: str,
         vulnerabilities: list[str],
-        documents: list[str]
+        documents: list[str],
     ) -> list[dict[str, Any]]:
         if overall_intent in {"CLARIFICATION", "OUT_OF_SCOPE"}:
             return []
@@ -526,7 +593,7 @@ class QueryUnderstandingEngine:
         multi_task_split = re.split(
             r",\s*(?:đồng thời|rồi|sau đó|và đồng thời|và tóm tắt|and also|then)\s*|\s+(?:đồng thời|rồi|sau đó)\s+",
             query,
-            flags=re.IGNORECASE
+            flags=re.IGNORECASE,
         )
 
         if len(multi_task_split) >= 2 and (len(vulnerabilities) >= 2 or "so sánh" in lowered or "compare" in lowered):
@@ -549,9 +616,9 @@ class QueryUnderstandingEngine:
                     "query": part_clean,
                     "objective": {
                         "type": "vulnerabilities" if part_slugs else ("documents" if documents else "vulnerabilities"),
-                        "ids": part_slugs if part_slugs else (documents if documents else [])
+                        "ids": part_slugs if part_slugs else (documents if documents else []),
                     },
-                    "depends_on": f"task_{idx-1:03d}" if idx > 1 and part_intent != "COMPARE" else None
+                    "depends_on": f"task_{idx-1:03d}" if idx > 1 and part_intent != "COMPARE" else None,
                 }
                 tasks.append(task_obj)
             return tasks
@@ -566,9 +633,9 @@ class QueryUnderstandingEngine:
                 "query": query,
                 "objective": {
                     "type": objective_type,
-                    "ids": objective_ids
+                    "ids": objective_ids,
                 },
-                "depends_on": None
+                "depends_on": None,
             }
         ]
 
@@ -577,7 +644,7 @@ class QueryUnderstandingEngine:
         query: str,
         vulnerabilities: list[str],
         documents: list[str],
-        has_unresolved_ref: bool
+        has_unresolved_ref: bool,
     ) -> tuple[str, float, bool, str | None]:
         lowered = query.lower().strip()
 
@@ -590,8 +657,8 @@ class QueryUnderstandingEngine:
         if has_unresolved_ref:
             msg = (
                 "Bạn đang đề cập đến lỗ hổng hoặc chủ đề bảo mật cụ thể nào? "
-                "Hệ thống hiện hỗ trợ: Cross-Site Scripting (XSS), SQL Injection (SQLi), "
-                "Broken Access Control (BAC), Authentication Failures, và Security Misconfiguration."
+                "Hệ thống hỗ trợ tra cứu về Broken Access Control, Security Misconfiguration, "
+                "Injection (SQLi, XSS), Authentication & Session Management, Cryptography và các chuẩn OWASP/CVSS."
             )
             return "CLARIFICATION", 0.40, True, msg
 
@@ -600,13 +667,26 @@ class QueryUnderstandingEngine:
             if re.search(vague_pattern, lowered):
                 msg = (
                     "Bạn đang quan tâm đến nhóm lỗ hổng bảo mật cụ thể nào "
-                    "(ví dụ: XSS, SQL Injection, Broken Access Control, Authentication Failures, hay Security Misconfiguration) "
-                    "hoặc tiêu chuẩn nào (OWASP Top 10, ASVS, CVSS v4.0)?"
+                    "(ví dụ: XSS, SQL Injection, Broken Access Control, Authentication Failures, Security Misconfiguration) "
+                    "hoặc tiêu chuẩn nào (OWASP Top 10, ASVS, WSTG, CVSS v4.0)?"
                 )
                 return "CLARIFICATION", 0.45, True, msg
 
-        # 4. Compare Intent
-        if any(w in lowered for w in ["so sánh", "compare", "khác nhau giữa", "sự khác biệt", "phân biệt", "vs", "versus"]):
+        # 4. Compare Intent (explicit comparison / contrast markers)
+        if any(
+            w in lowered
+            for w in [
+                "so sánh",
+                "compare",
+                "contrast",
+                "đối chiếu",
+                "khác nhau giữa",
+                "sự khác biệt giữa",
+                "phân biệt",
+                "vs",
+                "versus",
+            ]
+        ):
             return "COMPARE", 0.94, False, None
         if len(vulnerabilities) >= 2 and any(w in lowered for w in ["và", "với", "and", "or", "giữa"]):
             if any(w in lowered for w in ["điểm giống", "khác", "ưu nhược", "nguy cơ"]):
@@ -616,20 +696,19 @@ class QueryUnderstandingEngine:
         if any(w in lowered for w in ["tổng hợp", "tóm tắt toàn bộ", "liệt kê tất cả", "overview", "synthesis", "summary of"]):
             return "SYNTHESIS", 0.90, False, None
 
-        # 6. Specific Search Intent
+        # 6. Specific Search Intent (matched any core or cross-cutting security domain or document)
         if vulnerabilities or documents:
             return "SEARCH", 0.95, False, None
 
-        # 7. Fallback: Security keywords without specific slug
+        # 7. Fallback: Generic security keywords without any identifiable concept or standard
         security_keywords = [
             "lỗ hổng", "bảo mật", "tấn công", "vulnerability", "security",
-            "exploit", "cwe", "cve", "owasp", "injection", "prompt injection", "tiêm mã"
+            "exploit", "cwe", "cve", "owasp", "injection", "prompt injection", "tiêm mã",
         ]
         if any(kw in lowered for kw in security_keywords):
             msg = (
                 "Câu hỏi của bạn có liên quan đến bảo mật nhưng chưa rõ mục tiêu tra cứu. "
-                "Bạn muốn tìm hiểu định nghĩa, cách khai thác thử nghiệm hay biện pháp phòng chống "
-                "cho lỗ hổng nào (XSS, SQLi, BAC, Auth Failures, Misconfiguration)?"
+                "Bạn muốn tìm hiểu khái niệm, cơ chế hay biện pháp phòng chống cho chủ đề bảo mật nào?"
             )
             return "CLARIFICATION", 0.50, True, msg
 
@@ -641,7 +720,7 @@ class QueryUnderstandingEngine:
         normalized_query: str,
         conversation_history: list[dict[str, str]] | None = None,
         confidence_threshold: float = CLARIFY_THRESHOLD,
-        llm_client: Any = None
+        llm_client: Any = None,
     ) -> dict[str, Any]:
         clean_query = str(normalized_query).strip()
 
@@ -655,7 +734,7 @@ class QueryUnderstandingEngine:
                 "filter": {"version": None, "document_type": None, "source": []},
                 "task": [],
                 "need_clarify": True,
-                "clarification_message": "Vui lòng nhập câu hỏi hoặc yêu cầu cần tra cứu về an toàn thông tin."
+                "clarification_message": "Vui lòng nhập câu hỏi hoặc yêu cầu cần tra cứu về an toàn thông tin.",
             }
 
         has_ref, _ = self.detect_coreference(clean_query)
@@ -703,27 +782,25 @@ class QueryUnderstandingEngine:
             "context_used": bool(context_used),
             "entities": {
                 "document": documents,
-                "vulnerabilities": entities_vulns
+                "vulnerabilities": entities_vulns,
             },
             "filter": filter_info,
             "task": tasks,
             "need_clarify": bool(need_clarify),
-            "clarification_message": clar_msg
+            "clarification_message": clar_msg,
         }
 
-        if not validate_understanding_schema(result, STANDARD_VULNERABILITY_SLUGS):
+        if not validate_understanding_schema(result, self.valid_slugs):
             return {"error_code": "llm_schema_violation"}
 
         return result
 
 
-# Singleton instance
 _default_engine: QueryUnderstandingEngine | None = None
 _default_llm_client: Any = None
 
 
 def get_engine() -> QueryUnderstandingEngine:
-    """Get or create singleton QueryUnderstandingEngine."""
     global _default_engine
     if _default_engine is None:
         _default_engine = QueryUnderstandingEngine()
@@ -731,13 +808,11 @@ def get_engine() -> QueryUnderstandingEngine:
 
 
 def set_default_llm_client(client: Any) -> None:
-    """set global default LLM client for understanding and pipeline orchestration."""
     global _default_llm_client
     _default_llm_client = client
 
 
 def get_default_llm_client() -> Any:
-    """Get global default LLM client if configured."""
     global _default_llm_client
     return _default_llm_client
 
@@ -747,38 +822,24 @@ def understand_query(
     conversation_history: list[dict[str, Any]] | None = None,
     *,
     confidence_threshold: float = CLARIFY_THRESHOLD,
-    llm_client: Any = None
+    llm_client: Any = None,
 ) -> dict[str, Any]:
-    """
-    Standard interface function as agreed in Contract Section 4:
-    understand_query(normalized_query: str,
-                     conversation_history: list[dict] | None = None) -> dict
-
-    Supports pluggable LLM with automated retries (Section 7.3)
-    and deterministic semantic engine.
-
-    Returns:
-        understanding_result dict (WITHOUT original_query) OR {"error_code": "..."}
-    """
     active_client = llm_client if llm_client is not None else get_default_llm_client()
+    engine = get_engine()
 
-    # If an LLM client is supplied or configured:
     if active_client is not None:
         for attempt in range(1 + LLM_MAX_RETRIES):
             try:
                 raw_response = active_client.call(
                     normalized_query=normalized_query,
                     conversation_history=conversation_history,
-                    timeout=LLM_TIMEOUT_S
+                    timeout=LLM_TIMEOUT_S,
                 )
-            except TimeoutError:
-                return {"error_code": "llm_unavailable"}
-            except ConnectionError:
+            except (TimeoutError, ConnectionError):
                 return {"error_code": "llm_unavailable"}
             except Exception:
                 return {"error_code": "llm_unavailable"}
 
-            # Parse JSON (cleaning markdown ```json codeblock fences)
             try:
                 if isinstance(raw_response, str):
                     cleaned_text = clean_json_codeblock(raw_response)
@@ -792,9 +853,7 @@ def understand_query(
                     continue
                 return {"error_code": "llm_invalid_json"}
 
-            # Validate schema
-            if validate_understanding_schema(parsed, STANDARD_VULNERABILITY_SLUGS):
-                engine = get_engine()
+            if validate_understanding_schema(parsed, engine.valid_slugs):
                 orig_slugs = engine.extract_vulnerabilities(normalized_query)
                 if orig_slugs:
                     _, safe_resolved, _ = engine.resolve_coreference_from_history(normalized_query, None)
@@ -811,11 +870,9 @@ def understand_query(
                 continue
             return {"error_code": "llm_schema_violation"}
 
-    # Default robust deterministic engine path
-    engine = get_engine()
     return engine.execute_understanding(
         normalized_query=normalized_query,
         conversation_history=conversation_history,
         confidence_threshold=confidence_threshold,
-        llm_client=active_client
+        llm_client=active_client,
     )

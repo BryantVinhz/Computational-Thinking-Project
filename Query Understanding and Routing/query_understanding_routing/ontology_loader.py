@@ -5,7 +5,7 @@ from __future__ import annotations
 import os
 import sys
 from pathlib import Path
-from typing import Any, Dict, Set
+from typing import Any, dict, set
 
 import yaml
 
@@ -18,36 +18,38 @@ for p in [PROJECT_ROOT, STAGE_DIR, MODULE_DIR]:
     if p_str not in sys.path:
         sys.path.insert(0, p_str)
 
-try:
-    from query_understanding_routing.config import STANDARD_VULNERABILITY_SLUGS
-except ImportError:
-    try:
-        from .config import STANDARD_VULNERABILITY_SLUGS
-    except ImportError:
-        from config import STANDARD_VULNERABILITY_SLUGS
+DEFAULT_ONTOLOGY_PATH = Path(
+    os.getenv("ONTOLOGY_PATH", str((MODULE_DIR / "ontology.yaml").resolve()))
+).resolve()
 
-DEFAULT_ONTOLOGY_PATH = Path(os.getenv("ONTOLOGY_PATH", str((MODULE_DIR / "ontology.yaml").resolve()))).resolve()
 REQUIRED_FIELDS = ["canonical", "aliases", "cwe", "subtypes", "related_terms"]
 
+# 5 core web vulnerability pillars (used for alias-to-canonical text replacement)
+CORE_VULNERABILITY_SLUGS: set[str] = {
+    "bac",
+    "misconfig",
+    "sqli",
+    "xss",
+    "auth_failures",
+}
 
-def load_ontology(path: str | Path = DEFAULT_ONTOLOGY_PATH) -> Dict[str, Dict[str, Any]]:
+# Overly short/ambiguous tokens disallowed as standalone aliases (Contract L7)
+FORBIDDEN_ALIASES: set[str] = {"bac", "csp", "dos", "key", "mac", "tls"}
+
+
+def load_ontology(path: str | Path = DEFAULT_ONTOLOGY_PATH) -> dict[str, dict[str, Any]]:
     """
-    Load and rigorously validate ontology YAML according to Contract Section 3.1.
+    Load and validate the application security ontology YAML.
 
     Validations performed:
-    1. File exists and is valid YAML.
-    2. Exactly 5 standard slugs: xss, sqli, bac, auth_failures, misconfig.
+    1. File exists and is a valid YAML dictionary.
+    2. Preserves all 5 core vulnerability domains plus any generalized supporting domains.
     3. Each entry contains all required fields (canonical, aliases, cwe, subtypes, related_terms).
     4. Aliases do not collide across different slugs (case-insensitive).
-    5. Disallows overly short or ambiguous aliases like 'bac'.
-
-    Raises:
-        FileNotFoundError: If the specified file does not exist.
-        ValueError: If ontology schema or alias consistency checks fail.
+    5. Disallows overly short or ambiguous aliases (e.g., 'bac').
     """
     file_path = Path(path).resolve()
     if not file_path.is_file():
-        # Fallback check relative to module or stage directory
         for candidate in [MODULE_DIR / path, STAGE_DIR / path]:
             if candidate.is_file():
                 file_path = candidate.resolve()
@@ -58,26 +60,22 @@ def load_ontology(path: str | Path = DEFAULT_ONTOLOGY_PATH) -> Dict[str, Dict[st
     with open(file_path, "r", encoding="utf-8") as f:
         data = yaml.safe_load(f)
 
-    if not isinstance(data, dict):
-        raise ValueError("Ontology root must be a mapping/dict.")
+    if not isinstance(data, dict) or not data:
+        raise ValueError("Ontology root must be a non-empty mapping/dict.")
 
     loaded_slugs = set(data.keys())
-    if loaded_slugs != STANDARD_VULNERABILITY_SLUGS:
-        missing = STANDARD_VULNERABILITY_SLUGS - loaded_slugs
-        extra = loaded_slugs - STANDARD_VULNERABILITY_SLUGS
-        raise ValueError(
-            f"Invalid ontology slugs! Expected exactly {STANDARD_VULNERABILITY_SLUGS}. "
-            f"Missing: {missing}, Extra: {extra}"
-        )
+    if not CORE_VULNERABILITY_SLUGS.issubset(loaded_slugs):
+        missing_core = CORE_VULNERABILITY_SLUGS - loaded_slugs
+        raise ValueError(f"Ontology is missing required core vulnerability slugs: {missing_core}")
 
-    # Track aliases across all entries to prevent cross-slug collisions
-    alias_to_slug: Dict[str, str] = {}
+    alias_to_slug: dict[str, str] = {}
 
     for slug, entry in data.items():
+        if not isinstance(slug, str) or not slug.strip():
+            raise ValueError(f"Invalid ontology slug: {slug!r}")
         if not isinstance(entry, dict):
             raise ValueError(f"Entry for slug '{slug}' must be a dictionary.")
 
-        # Check required fields
         for field in REQUIRED_FIELDS:
             if field not in entry:
                 raise ValueError(f"Slug '{slug}' is missing required field: '{field}'")
@@ -89,15 +87,15 @@ def load_ontology(path: str | Path = DEFAULT_ONTOLOGY_PATH) -> Dict[str, Dict[st
             if not isinstance(entry[list_field], list):
                 raise ValueError(f"Slug '{slug}' field '{list_field}' must be a list.")
 
-        # Validate aliases
         for alias in entry["aliases"]:
-            cleaned_alias = str(alias).strip().lower()
+            cleaned_alias = " ".join(str(alias).strip().lower().split())
             if not cleaned_alias:
                 continue
 
-            # Check L7 rule: do not use overly short/ambiguous alias like "bac"
-            if cleaned_alias == "bac":
-                raise ValueError("Alias 'bac' is forbidden due to ambiguity (Contract L7).")
+            if cleaned_alias in FORBIDDEN_ALIASES:
+                raise ValueError(
+                    f"Alias '{alias}' in slug '{slug}' is forbidden due to ambiguity (Contract L7)."
+                )
 
             if cleaned_alias in alias_to_slug:
                 existing_slug = alias_to_slug[cleaned_alias]
@@ -108,3 +106,14 @@ def load_ontology(path: str | Path = DEFAULT_ONTOLOGY_PATH) -> Dict[str, Dict[st
             alias_to_slug[cleaned_alias] = slug
 
     return data
+
+
+def get_valid_slugs(path: str | Path = DEFAULT_ONTOLOGY_PATH) -> set[str]:
+    """Return all valid domain slugs defined in ontology.yaml."""
+    return set(load_ontology(path).keys())
+
+
+try:
+    STANDARD_VULNERABILITY_SLUGS: set[str] = get_valid_slugs()
+except Exception:
+    STANDARD_VULNERABILITY_SLUGS = set(CORE_VULNERABILITY_SLUGS)

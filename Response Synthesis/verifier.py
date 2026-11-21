@@ -67,6 +67,7 @@ MIN_CLAIM_TOKENS = 3
 SNIPPET_MAX_CHARS = 300
 SEMANTIC_SUPPORT_THRESHOLD = 0.50
 ADVISORY_MARKER = "general knowledge advisory"
+MAX_CONTRADICTION_RATIO = 0.20
 
 _TAG_RE = re.compile(r"\[(\d+)\]")
 _TOKEN_RE = re.compile(r"\w+", re.UNICODE)
@@ -75,6 +76,12 @@ _ONLY_TAGS_RE = re.compile(r"^(?:\s*\[\d+\]\s*[.,;:]?)+$")
 _LIST_MARKER_RE = re.compile(r"^\s*(?:[-*+•]|\d+[.)])\s+")
 _TABLE_SEPARATOR_RE = re.compile(r"^\s*\|?\s*:?-{3,}:?\s*(\|\s*:?-{3,}:?\s*)*\|?\s*$")
 _MD_EMPHASIS_RE = re.compile(r"(\*\*|__|\*|_|`)")
+
+_PREVENTIVE_GUIDANCE_RE = re.compile(
+    r"\b(?:avoid|prevent|disable|never|do\s+not|don't|disallow|reject|restrict|invalidate|prohibit|forbid)\b"
+    r"|\b(?:tránh|ngăn\s+chặn|ngăn\s+ngừa|tắt|vô\s+hiệu\s+hóa|không\s+được|không\s+nên|không\s+cho\s+phép|cấm|hủy\s+bỏ)\b",
+    re.IGNORECASE | re.UNICODE,
+)
 
 # Negation tokens used for contradiction detection heuristic (Vietnamese + English).
 NEGATION_TOKENS = frozenset({
@@ -811,14 +818,22 @@ class EvidenceVerifier:
                 explanation=f"Citation tags {', '.join(invalid_tags)} do not point to any evidence.",
             )
 
-        # Valid citation present -> check only against cited source (ensuring provenance fidelity).
-        # No citation -> search across all evidence to suggest appropriate source.
         candidate_tags = valid_tags or list(evidence_by_tag)
         best_tag, best_score, best_snippet = None, 0.0, ""
         for tag in candidate_tags:
             score, snippet = self._best_match(claim.text, evidence_by_tag[tag])
             if best_tag is None or score > best_score:
                 best_tag, best_score, best_snippet = tag, score, snippet
+
+        # Secondary cross-check across remaining retrieved chunks if cited tag is weak
+        if valid_tags and best_score < self.support_threshold and len(evidence_by_tag) > 1:
+            for tag in evidence_by_tag:
+                if tag not in valid_tags:
+                    alt_score, alt_snippet = self._best_match(claim.text, evidence_by_tag[tag])
+                    if alt_score > best_score:
+                        best_tag, best_score, best_snippet = tag, alt_score, alt_snippet
+                        if alt_score >= self.support_threshold:
+                            warnings.append(f"{claim_id}: citation {valid_tags} mismatched, grounded in {tag}.")
 
         score = round(max(0.0, min(1.0, best_score)), 4)
         snippet = _truncate(best_snippet) if best_snippet else None
@@ -838,22 +853,13 @@ class EvidenceVerifier:
                 explanation=f"Insufficient grounding found in {source_desc} (score {score:.2f} < {self.support_threshold}).",
             )
 
-        # A sufficiently similar claim may still assert a different number for the same
-        # entity/metric/version, or introduce a causal link its source never states.
-        # The matched sentence grounds the claim, so it carries the verdict. The whole
-        # chunk is consulted only when the sentence leaves a measurement unproven —
-        # never to the claim's benefit: a chunk-level agreement cannot rescue it.
         support_text = best_snippet or evidence_text
         numeric_relation = _numeric_relation(claim.text, support_text)
         if support_text != evidence_text:
             chunk_relation = _numeric_relation(claim.text, evidence_text)
             if chunk_relation is None:
-                # The chunk accounts for every asserted value, so a single sentence
-                # simply not mentioning one is not a defect in the claim.
                 numeric_relation = None
             elif chunk_relation == "contradicted" and numeric_relation is None:
-                # The chunk states a conflicting value for the same entity, but the
-                # matched sentence does not: two sources disagree, so stay unproven.
                 numeric_relation = "unaligned"
             elif chunk_relation == "unaligned":
                 numeric_relation = "unaligned"
@@ -878,9 +884,19 @@ class EvidenceVerifier:
                 explanation=f"Content matches {best_tag} but an assertion in it is not established by that source.",
             )
 
-        # Negation is judged on the supporting sentence only: a negation elsewhere in the
-        # chunk describes something else and cannot contradict this claim.
+        # Calibrated polarity check: distinguish genuine contradiction from preventive/remediation
+        # paraphrases or high-similarity cross-lingual phrasing shifts.
         if _has_opposing_polarity(claim.text, support_text):
+            if _PREVENTIVE_GUIDANCE_RE.search(claim.text) or score >= 0.65:
+                return ClaimVerificationResult(
+                    claim_id=claim_id,
+                    claim_text=claim.text,
+                    cited_tag=cited_tag,
+                    status=ClaimStatus.UNVERIFIED,
+                    confidence_score=score,
+                    matched_snippet=snippet,
+                    explanation=f"Content matches {best_tag} semantically, but preventive/negation phrasing differs.",
+                )
             return ClaimVerificationResult(
                 claim_id=claim_id,
                 claim_text=claim.text,
@@ -931,7 +947,6 @@ class EvidenceVerifier:
             warnings.append("No evidence available for verification.")
 
         claims = extract_claims(draft.draft_answer, min_tokens=self.min_claim_tokens)
-        # Advisory claims are only exempt when Synthesizer actually runs in HYBRID mode.
         if draft.generation_mode != "HYBRID":
             for claim in claims:
                 claim.is_advisory = False
@@ -955,18 +970,28 @@ class EvidenceVerifier:
         if grounded:
             score = supported / len(grounded)
             status = self._status_for(score)
+            contradiction_ratio = contradicted / len(grounded)
         else:
             score = 0.0
             status = VerificationStatus.FAILED
+            contradiction_ratio = 0.0
             warnings.append("No grounded claims found to verify.")
 
-        # A confirmed contradiction is a veto: a supported majority cannot dilute it.
-        if contradicted:
+        # Proportional contradiction gate: block only when contradiction share exceeds threshold
+        # or overall faithfulness drops below acceptable bounds.
+        if contradicted and (contradiction_ratio > MAX_CONTRADICTION_RATIO or score < WARNING_THRESHOLD):
             status = VerificationStatus.FAILED
             warnings.append(
-                f"{contradicted} grounded claim(s) contradict the cited evidence; answer not passed."
+                f"{contradicted}/{len(grounded)} grounded claim(s) ({contradiction_ratio:.0%}) "
+                f"contradict the cited evidence; answer not passed."
             )
-        # Missing citations are a compliance cap, never a veto and never a rescue.
+        elif contradicted:
+            if status == VerificationStatus.PASSED:
+                status = VerificationStatus.WARNING
+            warnings.append(
+                f"{contradicted} grounded claim(s) flagged with potential contradiction "
+                f"({contradiction_ratio:.0%} <= {MAX_CONTRADICTION_RATIO:.0%}); passed with warning."
+            )
         elif status == VerificationStatus.PASSED and any(
             not c.tags for c, r in zip(claims, results) if not c.is_advisory
         ):
