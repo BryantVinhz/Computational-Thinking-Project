@@ -1,0 +1,290 @@
+{
+  "system_config": {
+    "chunking_strategy": "semantic (L_max=650)",
+    "retrieval_pipeline": "Hybrid (BM25 + bge-m3) -> RRF(k=60) -> bge-reranker-v2-m3(tau=0.25) -> MMR",
+    "generator_model": "Qwen/Qwen3-4B",
+    "verifier_model": "BAAI/bge-m3 (tau=0.50)",
+    "total_samples": 150
+  },
+  "performance_by_group": {
+    "overall": {
+      "n": 150,
+      "latency_ms": {
+        "mean": 12576.2,
+        "p95": 49352.6,
+        "stage_breakdown": {
+          "stage2_understanding_ms": {
+            "mean": 5.4,
+            "p95": 11.0
+          },
+          "stage3_retrieval_ms": {
+            "mean": 1563.6,
+            "p95": 6527.3
+          },
+          "stage4_synthesis_ms": {
+            "mean": 10512.1,
+            "p95": 41147.9
+          },
+          "stage4_verification_ms": {
+            "mean": 495.0,
+            "p95": 2303.2
+          }
+        }
+      },
+      "tokens_per_query": {
+        "mean_llm_calls": 0.35,
+        "mean_input_tokens": 930.2,
+        "mean_output_tokens": 168.0,
+        "mean_total_tokens": 1098.2
+      }
+    },
+    "cat:single_document_qa": {
+      "n": 30,
+      "latency_ms": {
+        "mean": 8176.8,
+        "p95": 42208.3,
+        "stage_breakdown": {
+          "stage2_understanding_ms": {
+            "mean": 9.1,
+            "p95": 13.9
+          },
+          "stage3_retrieval_ms": {
+            "mean": 971.5,
+            "p95": 4534.9
+          },
+          "stage4_synthesis_ms": {
+            "mean": 6765.8,
+            "p95": 37122.3
+          },
+          "stage4_verification_ms": {
+            "mean": 430.1,
+            "p95": 1923.2
+          }
+        }
+      },
+      "tokens_per_query": {
+        "mean_llm_calls": 0.23,
+        "mean_input_tokens": 577.9,
+        "mean_output_tokens": 109.6,
+        "mean_total_tokens": 687.4
+      }
+    },
+    "mode:STRICT_RAG": {
+      "n": 39,
+      "latency_ms": {
+        "mean": 34301.2,
+        "p95": 52490.6,
+        "stage_breakdown": {
+          "stage2_understanding_ms": {
+            "mean": 4.8,
+            "p95": 8.9
+          },
+          "stage3_retrieval_ms": {
+            "mean": 4175.1,
+            "p95": 7147.5
+          },
+          "stage4_synthesis_ms": {
+            "mean": 28684.5,
+            "p95": 42108.2
+          },
+          "stage4_verification_ms": {
+            "mean": 1436.4,
+            "p95": 3603.1
+          }
+        }
+      },
+      "tokens_per_query": {
+        "mean_llm_calls": 1.0,
+        "mean_input_tokens": 2593.8,
+        "mean_output_tokens": 460.1,
+        "mean_total_tokens": 3053.8
+      }
+    },
+    "mode:ABSTENTION": {
+      "n": 97,
+      "latency_ms": {
+        "mean": 132.2,
+        "p95": 13.5,
+        "stage_breakdown": {
+          "stage2_understanding_ms": {
+            "mean": 5.7,
+            "p95": 11.1
+          },
+          "stage3_retrieval_ms": {
+            "mean": 126.5,
+            "p95": 2.6
+          },
+          "stage4_synthesis_ms": {
+            "mean": 0.0,
+            "p95": 0.0
+          },
+          "stage4_verification_ms": {
+            "mean": 0.0,
+            "p95": 0.0
+          }
+        }
+      },
+      "tokens_per_query": {
+        "mean_llm_calls": 0.0,
+        "mean_input_tokens": 0.0,
+        "mean_output_tokens": 0.0,
+        "mean_total_tokens": 0.0
+      }
+    },
+    "cat:multi_document": {
+      "n": 30,
+      "latency_ms": {
+        "mean": 36974.4,
+        "p95": 54870.8,
+        "stage_breakdown": {
+          "stage2_understanding_ms": {
+            "mean": 4.6,
+            "p95": 9.2
+          },
+          "stage3_retrieval_ms": {
+            "mean": 4622.6,
+            "p95": 7816.5
+          },
+          "stage4_synthesis_ms": {
+            "mean": 31012.5,
+            "p95": 43740.5
+          },
+          "stage4_verification_ms": {
+            "mean": 1334.3,
+            "p95": 3940.9
+          }
+        }
+      },
+      "tokens_per_query": {
+        "mean_llm_calls": 0.87,
+        "mean_input_tokens": 2538.4,
+        "mean_output_tokens": 491.7,
+        "mean_total_tokens": 3030.1
+      }
+    },
+    "mode:HYBRID": {
+      "n": 14,
+      "latency_ms": {
+        "mean": 38276.2,
+        "p95": 55599.6,
+        "stage_breakdown": {
+          "stage2_understanding_ms": {
+            "mean": 5.5,
+            "p95": 11.3
+          },
+          "stage3_retrieval_ms": {
+            "mean": 4246.1,
+            "p95": 7068.2
+          },
+          "stage4_synthesis_ms": {
+            "mean": 32722.3,
+            "p95": 44960.0
+          },
+          "stage4_verification_ms": {
+            "mean": 1302.0,
+            "p95": 3526.3
+          }
+        }
+      },
+      "tokens_per_query": {
+        "mean_llm_calls": 1.0,
+        "mean_input_tokens": 2740.6,
+        "mean_output_tokens": 518.4,
+        "mean_total_tokens": 3259.0
+      }
+    },
+    "cat:multi_turn_coreference": {
+      "n": 30,
+      "latency_ms": {
+        "mean": 10094.9,
+        "p95": 36029.0,
+        "stage_breakdown": {
+          "stage2_understanding_ms": {
+            "mean": 6.5,
+            "p95": 11.6
+          },
+          "stage3_retrieval_ms": {
+            "mean": 1459.3,
+            "p95": 3793.7
+          },
+          "stage4_synthesis_ms": {
+            "mean": 8230.7,
+            "p95": 30596.3
+          },
+          "stage4_verification_ms": {
+            "mean": 398.3,
+            "p95": 2029.3
+          }
+        }
+      },
+      "tokens_per_query": {
+        "mean_llm_calls": 0.4,
+        "mean_input_tokens": 861.8,
+        "mean_output_tokens": 134.9,
+        "mean_total_tokens": 996.8
+      }
+    },
+    "cat:traps_hallucination": {
+      "n": 30,
+      "latency_ms": {
+        "mean": 7632.9,
+        "p95": 38072.7,
+        "stage_breakdown": {
+          "stage2_understanding_ms": {
+            "mean": 4.7,
+            "p95": 6.4
+          },
+          "stage3_retrieval_ms": {
+            "mean": 764.5,
+            "p95": 3197.5
+          },
+          "stage4_synthesis_ms": {
+            "mean": 6551.3,
+            "p95": 34092.9
+          },
+          "stage4_verification_ms": {
+            "mean": 312.2,
+            "p95": 1502.4
+          }
+        }
+      },
+      "tokens_per_query": {
+        "mean_llm_calls": 0.27,
+        "mean_input_tokens": 672.7,
+        "mean_output_tokens": 103.8,
+        "mean_total_tokens": 776.5
+      }
+    },
+    "cat:oos_and_safety": {
+      "n": 30,
+      "latency_ms": {
+        "mean": 2.2,
+        "p95": 4.8,
+        "stage_breakdown": {
+          "stage2_understanding_ms": {
+            "mean": 2.2,
+            "p95": 4.8
+          },
+          "stage3_retrieval_ms": {
+            "mean": 0.0,
+            "p95": 0.0
+          },
+          "stage4_synthesis_ms": {
+            "mean": 0.0,
+            "p95": 0.0
+          },
+          "stage4_verification_ms": {
+            "mean": 0.0,
+            "p95": 0.0
+          }
+        }
+      },
+      "tokens_per_query": {
+        "mean_llm_calls": 0.0,
+        "mean_input_tokens": 0.0,
+        "mean_output_tokens": 0.0,
+        "mean_total_tokens": 0.0
+      }
+    }
+  }
+}

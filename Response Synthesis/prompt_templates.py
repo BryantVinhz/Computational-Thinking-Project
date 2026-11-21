@@ -98,7 +98,7 @@ PROMPT_GUIDELINES: dict[str, dict[str, str]] = {
                     - NGUYÊN TẮC KẾT HỢP HYBRID:
                     1. Với các nội dung có tài liệu chứng minh: Bạn PHẢI ưu tiên sử dụng và chèn thẻ trích dẫn số cụ thể như [1], [2] chính xác như bình thường.
                     2. Với nội dung còn thiếu: Được phép dùng tri thức chuyên môn bổ sung, nhưng BẮT BUỘC phải đặt trong mục riêng có tiêu đề:
-                        " !Khuyến nghị & Bổ sung từ kiến thức chung (General Knowledge Advisory)"
+                        " ### Khuyến nghị & Bổ sung từ kiến thức chung (General Knowledge Advisory)"
                         hoặc chú thích: "(Lưu ý: Đoạn sau được bổ sung từ tri thức chung do tài liệu nội bộ chưa đề cập)."
                     4. KHÔNG ĐƯỢC gắn bất kỳ thẻ trích dẫn nào (kể cả [1], [2] hay '[i]') vào các thông tin do bạn tự bổ sung ngoài tài liệu nội bộ.
                   """)
@@ -115,7 +115,7 @@ PROMPT_GUIDELINES: dict[str, dict[str, str]] = {
                     - HYBRID INTEGRATION PRINCIPLES:
                     1. Document-backed content: You MUST prioritize using it and insert accurate numeric citation tags like [1], [2] as usual.
                     2. Missing content: You are permitted to supplement using your general domain expertise, but it MUST be placed under a dedicated section titled:
-                        " !Recommendations & General Knowledge Advisory"
+                        " ### Recommendations & General Knowledge Advisory"
                         or explicitly prefaced with: "(Note: The following section is supplemented by general domain knowledge as it is not covered in the internal documents)."
                     3. DO NOT attach any citation tags (such as [1], [2] or '[i]') to any external information or claims you supplement beyond the retrieved documents
                   """)

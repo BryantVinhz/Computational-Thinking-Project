@@ -1,0 +1,104 @@
+{
+  "system_config": {
+    "chunking_strategy": "semantic (L_max=650)",
+    "retrieval_pipeline": "Hybrid (BM25 + bge-m3) -> RRF(k=60) -> bge-reranker-v2-m3(tau=0.25) -> MMR",
+    "generator_model": "Qwen/Qwen3-4B",
+    "verifier_model": "BAAI/bge-m3 (tau=0.50)",
+    "total_samples": 150
+  },
+  "task_and_routing": {
+    "overall": {
+      "routing_accuracy": 44.0,
+      "routing_accuracy_n": 150,
+      "tsr_binary": 39.33,
+      "tsr_binary_n": 150,
+      "tsr_full_only": 26.0,
+      "tsr_full_only_n": 150,
+      "version_accuracy": 12.0,
+      "version_accuracy_n": 25
+    },
+    "cat:single_document_qa": {
+      "routing_accuracy": 20.0,
+      "routing_accuracy_n": 30,
+      "tsr_binary": 10.0,
+      "tsr_binary_n": 30,
+      "tsr_full_only": 3.33,
+      "tsr_full_only_n": 30,
+      "version_accuracy": 20.0,
+      "version_accuracy_n": 10
+    },
+    "lang:vi": {
+      "routing_accuracy": 42.67,
+      "routing_accuracy_n": 75,
+      "tsr_binary": 34.67,
+      "tsr_binary_n": 75,
+      "tsr_full_only": 26.67,
+      "tsr_full_only_n": 75,
+      "version_accuracy": 15.38,
+      "version_accuracy_n": 13
+    },
+    "lang:en": {
+      "routing_accuracy": 45.33,
+      "routing_accuracy_n": 75,
+      "tsr_binary": 44.0,
+      "tsr_binary_n": 75,
+      "tsr_full_only": 25.33,
+      "tsr_full_only_n": 75,
+      "version_accuracy": 8.33,
+      "version_accuracy_n": 12
+    },
+    "cat:multi_document": {
+      "routing_accuracy": 50.0,
+      "routing_accuracy_n": 30,
+      "tsr_binary": 10.0,
+      "tsr_binary_n": 30,
+      "tsr_full_only": 3.33,
+      "tsr_full_only_n": 30,
+      "version_accuracy": 6.67,
+      "version_accuracy_n": 15
+    },
+    "cat:multi_turn_coreference": {
+      "routing_accuracy": 36.67,
+      "routing_accuracy_n": 30,
+      "tsr_binary": 16.67,
+      "tsr_binary_n": 30,
+      "tsr_full_only": 6.67,
+      "tsr_full_only_n": 30
+    },
+    "cat:traps_hallucination": {
+      "routing_accuracy": 30.0,
+      "routing_accuracy_n": 30,
+      "tsr_binary": 60.0,
+      "tsr_binary_n": 30,
+      "tsr_full_only": 33.33,
+      "tsr_full_only_n": 30
+    },
+    "cat:oos_and_safety": {
+      "routing_accuracy": 83.33,
+      "routing_accuracy_n": 30,
+      "tsr_binary": 100.0,
+      "tsr_binary_n": 30,
+      "tsr_full_only": 83.33,
+      "tsr_full_only_n": 30
+    }
+  },
+  "abstention_performance": {
+    "confusion_matrix": {
+      "TP_answered": 16,
+      "FP_false_answer": 3,
+      "TN_abstained": 47,
+      "FN_false_abstain": 84
+    },
+    "precision_abstain_pct": 35.88,
+    "recall_abstain_pct": 94.0,
+    "f1_abstain_pct": 51.93,
+    "false_answer_rate_pct": 6.0,
+    "answer_rate_pct": 12.67,
+    "answerable_query_accuracy_pct": 12.0
+  },
+  "error_taxonomy_summary": {
+    "E3_Stage4_Synthesis_Citation_Verification": 12,
+    "E1_Stage2_Routing_and_Safety": 77,
+    "E2_Stage3_Retrieval": 22
+  }
+}

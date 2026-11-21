@@ -25,6 +25,17 @@ try:
     )
     from .schema_response import SynthesizedDraftSchema
 except ImportError:
+    import sys as _sys
+    from pathlib import Path as _Path
+    _SYNTH_DIR = str(_Path(__file__).resolve().parent)
+    if _SYNTH_DIR in _sys.path:
+        _sys.path.remove(_SYNTH_DIR)
+    _sys.path.insert(0, _SYNTH_DIR)
+    if "prompt_templates" in _sys.modules and _SYNTH_DIR not in str(
+        getattr(_sys.modules["prompt_templates"], "__file__", "")
+    ):
+        del _sys.modules["prompt_templates"]
+
     from prompt_templates import (
         SYSTEM_INSTRUCTION_SYNTHESIS,
         build_synthesis_messages,
