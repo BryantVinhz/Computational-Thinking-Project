@@ -39,23 +39,21 @@ from synthesizer import ResponseSynthesizer
 from traceable_formatter import TraceableFormatter
 from verifier import SEMANTIC_SUPPORT_THRESHOLD, EvidenceVerifier, MultilingualSemanticSimilarity
 
-DATASET_PATH = CURRENT_DIR / "e2e_eval_dataset.json"
-REPORTS_DIR = CURRENT_DIR / "reports"
-GEN_REPORT_PATH = REPORTS_DIR / "generation_report.json"
-TASK_REPORT_PATH = REPORTS_DIR / "task_report.json"
-PERF_REPORT_PATH = REPORTS_DIR / "performance_report.json"
-FINAL_REPORT_PATH = REPORTS_DIR / "final_evaluation_report.json"
+import argparse
+
+DEFAULT_DATASET_PATH = CURRENT_DIR / "e2e_eval_dataset.json"
+DEFAULT_REPORTS_DIR = CURRENT_DIR / "reports" / "v2_regression_150"
 
 
 class LocalColabQwenClient:
-    """Chạy trực tiếp Qwen3-4B trên GPU T4 (tắt thinking mode thừa) và đếm token chính xác."""
+    """Run Qwen3-4B directly on T4 GPU (with redundant thinking mode disabled) and count tokens accurately."""
 
     def __init__(self, model_name: str = "Qwen/Qwen3-4B", device: str = "cuda"):
         from transformers import AutoModelForCausalLM, AutoTokenizer
 
         self.model_name = model_name
         self.device = device
-        print(f">>> Đang nạp mô hình sinh văn bản '{model_name}' lên {device}...")
+        print(f">>> Loading text generation model '{model_name}' onto {device}...")
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
         self.model = AutoModelForCausalLM.from_pretrained(
             model_name,
@@ -134,7 +132,7 @@ class LocalColabQwenClient:
         return response_text
 
     def generate_reverse_questions(self, answer_text: str, lang: str, n: int = 3) -> list[str]:
-        """Sinh n câu hỏi giả định từ câu trả lời (Reverse Question Generation - RAGAS)."""
+        """Generate n hypothetical questions from the answer (Reverse Question Generation - RAGAS)."""
         clean_body = strip_footnotes(answer_text)[:2500]
         if not clean_body.strip():
             return []
@@ -168,16 +166,25 @@ class LocalColabQwenClient:
         return [ln for ln in lines if len(ln) > 8][:n]
 
 
-def run_e2e_evaluation() -> None:
-    if not DATASET_PATH.exists():
-        raise FileNotFoundError(f"Không tìm thấy bộ dữ liệu đánh giá: {DATASET_PATH}")
+def run_e2e_evaluation(
+    dataset_path: Path = DEFAULT_DATASET_PATH,
+    reports_dir: Path = DEFAULT_REPORTS_DIR,
+    run_tag: str = "v2_regression_150",
+) -> None:
+    if not dataset_path.exists():
+        raise FileNotFoundError(f"Evaluation dataset not found: {dataset_path}")
 
-    REPORTS_DIR.mkdir(parents=True, exist_ok=True)
-    dataset: list[dict[str, Any]] = json.loads(DATASET_PATH.read_text(encoding="utf-8"))
+    reports_dir.mkdir(parents=True, exist_ok=True)
+    gen_report_path = reports_dir / "generation_report.json"
+    task_report_path = reports_dir / "task_report.json"
+    perf_report_path = reports_dir / "performance_report.json"
+    final_report_path = reports_dir / "final_evaluation_report.json"
+
+    dataset: list[dict[str, Any]] = json.loads(dataset_path.read_text(encoding="utf-8"))
     device = "cuda" if torch.cuda.is_available() else "cpu"
-    print(f">>> Bắt đầu End-to-End & System Performance Evaluation ({len(dataset)} mẫu) trên: {device.upper()}")
+    print(f">>> Starting End-to-End & System Performance Evaluation ({len(dataset)} samples) on: {device.upper()}")
 
-    # 1. Khởi tạo các thành phần hệ thống
+    # Initialize system components
     vec_kwargs = {"device": device} if "device" in inspect.signature(QueryVectorizer.__init__).parameters else {}
     vectorizer = QueryVectorizer(**vec_kwargs)
 
@@ -204,16 +211,14 @@ def run_e2e_evaluation() -> None:
     )
     matcher = SemanticClaimMatcher(device=device)
 
-    print(">>> Đang chạy 1 lượt Warm-up mô hình...")
+    print(">>> Running 1 model Warm-up pass...")
     _ = orchestrator.run("What is Cross-Site Scripting (XSS)?", conversation_history=[])
     llm_client.reset_call_history()
     if device == "cuda":
         torch.cuda.synchronize()
 
-    # =========================================================================
-    # PHA 1: SYSTEM EXECUTION & SYSTEM PERFORMANCE PROFILING
-    # =========================================================================
-    print("\n>>> [PHA 1] Thực thi toàn trình 150 mẫu và ghi nhận System Performance...")
+    # SYSTEM EXECUTION & SYSTEM PERFORMANCE PROFILING
+    print("\n>>> [PHASE 1] Executing end-to-end pipeline across 150 samples and recording System Performance...")
     raw_runs: list[dict[str, Any]] = []
     t_pha1_start = time.perf_counter()
 
@@ -278,12 +283,10 @@ def run_e2e_evaluation() -> None:
         raw_runs.append({"sample": sample, "s2_out": s2_out, "envelope": env_dict, "perf": perf})
 
         if idx % 10 == 0 or idx == len(dataset):
-            print(f"  ... Đã thực thi {idx}/{len(dataset)} mẫu ({time.perf_counter() - t_pha1_start:.1f}s)")
+            print(f"  ... Executed {idx}/{len(dataset)} samples ({time.perf_counter() - t_pha1_start:.1f}s)")
 
-    # =========================================================================
-    # PHA 2: MODULAR METRIC SCORING (Generation + End-to-End Task + System Perf)
-    # =========================================================================
-    print("\n>>> [PHA 2] Chấm điểm bằng các evaluators chuyên biệt...")
+    # MODULAR METRIC SCORING (Generation + End-to-End Task + System Perf)
+    print("\n>>> [PHASE 2] Scoring with specialized evaluators...")
     gen_buckets: dict[str, dict[str, list[float]]] = defaultdict(lambda: defaultdict(list))
     e2e_buckets: dict[str, dict[str, list[float]]] = defaultdict(lambda: defaultdict(list))
     perf_buckets: dict[str, dict[str, list[float]]] = defaultdict(lambda: defaultdict(list))
@@ -359,6 +362,8 @@ def run_e2e_evaluation() -> None:
         "generator_model": llm_client.model_name,
         "verifier_model": "BAAI/bge-m3 (tau=0.50)",
         "total_samples": len(dataset),
+        "run_tag": run_tag, 
+        "dataset_file": dataset_path.name,
     }
 
     generation_report = {
@@ -390,10 +395,10 @@ def run_e2e_evaluation() -> None:
         "sample_logs": sample_logs,
     }
 
-    GEN_REPORT_PATH.write_text(json.dumps(generation_report, ensure_ascii=False, indent=2), encoding="utf-8")
-    TASK_REPORT_PATH.write_text(json.dumps(task_report, ensure_ascii=False, indent=2), encoding="utf-8")
-    PERF_REPORT_PATH.write_text(json.dumps(performance_report, ensure_ascii=False, indent=2), encoding="utf-8")
-    FINAL_REPORT_PATH.write_text(json.dumps(final_report, ensure_ascii=False, indent=2), encoding="utf-8")
+    gen_report_path.write_text(json.dumps(generation_report, ensure_ascii=False, indent=2), encoding="utf-8")
+    task_report_path.write_text(json.dumps(task_report, ensure_ascii=False, indent=2), encoding="utf-8")
+    perf_report_path.write_text(json.dumps(performance_report, ensure_ascii=False, indent=2), encoding="utf-8")
+    final_report_path.write_text(json.dumps(final_report, ensure_ascii=False, indent=2), encoding="utf-8")
 
     ov_gen = generation_report["metrics_by_group"]["overall"]
     ov_e2e = task_report["task_and_routing"]["overall"]
@@ -401,7 +406,7 @@ def run_e2e_evaluation() -> None:
     ov_perf = performance_report["performance_by_group"]["overall"]
 
     print("\n" + "=" * 92)
-    print("TỔNG HỢP KẾT QUẢ GENERATION, END-TO-END & SYSTEM PERFORMANCE (N = 150)")
+    print("GENERATION, END-TO-END & SYSTEM PERFORMANCE EVALUATION SUMMARY (N = 150)")
     print("=" * 92)
     print("[1] Generation Evaluation (reports/generation_report.json):")
     print(f"    - Answer Quality   : Faithfulness={ov_gen.get('faithfulness', 0)}% | Claim P/R/F1={ov_gen.get('claim_precision', 0)}% / {ov_gen.get('claim_recall', 0)}% / {ov_gen.get('claim_f1', 0)}% | AR={ov_gen.get('answer_relevancy', 0)}%")
@@ -414,8 +419,17 @@ def run_e2e_evaluation() -> None:
     print(f"    - Latency          : Mean={ov_perf['latency_ms']['mean']} ms | P95={ov_perf['latency_ms']['p95']} ms")
     print(f"    - Tokens / Query   : Input={ov_perf['tokens_per_query']['mean_input_tokens']} | Output={ov_perf['tokens_per_query']['mean_output_tokens']} | Total={ov_perf['tokens_per_query']['mean_total_tokens']}")
     print("=" * 92)
-    print(f"=> Đã xuất đầy đủ 4 tệp báo cáo tại: {REPORTS_DIR}")
+
 
 
 if __name__ == "__main__":
-    run_e2e_evaluation()
+    parser = argparse.ArgumentParser(description="End-to-End RAG & System Performance Evaluator")
+    parser.add_argument("--dataset", type=str, default=str(DEFAULT_DATASET_PATH), help="Đường dẫn tệp dataset JSON")
+    parser.add_argument("--out-dir", type=str, default=str(DEFAULT_REPORTS_DIR), help="Thư mục xuất 4 tệp báo cáo")
+    parser.add_argument("--run-tag", type=str, default="v2_regression_150", help="Nhãn phiên chạy")
+    args = parser.parse_args()
+    run_e2e_evaluation(
+        dataset_path=Path(args.dataset).resolve(),
+        reports_dir=Path(args.out_dir).resolve(),
+        run_tag=args.run_tag,
+    )

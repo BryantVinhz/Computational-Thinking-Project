@@ -1,0 +1,2164 @@
+[
+  {
+    "slot_id": "HO100_001",
+    "category": "single_document_qa",
+    "sub_type": "unscoped_natural_qa",
+    "lang": "vi",
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_799c3e5bf1bc_b00061",
+        "document_id": "doc_owasp_wstg_testing_methods",
+        "canonical_title": "OWASP - WSTG-testing-methods",
+        "version_id": "ver_799c3e5bf1bc",
+        "version_tag": "v4.2",
+        "block_type": "list",
+        "heading_path": [
+          "3. Broken Access Control",
+          "4. Tools Mentioned"
+        ],
+        "text": "- **DotDotPwn** — directory-traversal fuzzer (p. 173).\n- **Path Traversal Fuzz Strings (WFuzz)** (p. 173).\n- **OWASP ZAP** — incl. ZAP add-on **Access Control Testing** (pp. 173, 178, 181).\n- **Burp Suite** — incl. extensions **AuthMatrix** and **Autorize** (pp. 173, 178).\n- **Encoding/Decoding tools**, **grep**, **DirBuster** (p. 173)."
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_002",
+    "category": "single_document_qa",
+    "sub_type": "unscoped_natural_qa",
+    "lang": "vi",
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_92f7483b2854_b00010",
+        "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+        "canonical_title": "OWASP - A07-Authentication-Cheat-Sheet",
+        "version_id": "ver_92f7483b2854",
+        "version_tag": "2021-2025",
+        "block_type": "paragraph",
+        "heading_path": [
+          "Authentication Cheat Sheet",
+          "Authentication General Guidelines",
+          "Usernames"
+        ],
+        "text": "Usernames are easy-to-remember identifiers chosen by the user and used for identifying themselves when logging into a system or service. The terms User ID and username might be used interchangeably if the username chosen by the user also serves as their unique identifier within the system."
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_003",
+    "category": "single_document_qa",
+    "sub_type": "unscoped_natural_qa",
+    "lang": "vi",
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_5004d1ead2df_b00080",
+        "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+        "canonical_title": "OWASP - A07-Password-Storage-Cheat-Sheet",
+        "version_id": "ver_5004d1ead2df",
+        "version_tag": "2021-2025",
+        "block_type": "paragraph",
+        "heading_path": [
+          "Password Storage Cheat Sheet",
+          "Upgrading Legacy Hashes"
+        ],
+        "text": "Upgrade Method One: Expire and delete the password hashes of users who have been inactive for an extended period and require them to reset their passwords to login again. Although secure, this approach is not particularly user-friendly. Expiring the passwords of many users may cause issues for support staff or may be interpreted by users as an indication of a breach."
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_004",
+    "category": "single_document_qa",
+    "sub_type": "unscoped_natural_qa",
+    "lang": "vi",
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_a2fa1bbe38f1_b00081",
+        "document_id": "doc_owasp_application_security_verification_standard",
+        "canonical_title": "OWASP - Application-Security-Verification-Standard",
+        "version_id": "ver_a2fa1bbe38f1",
+        "version_tag": "5.0.0",
+        "block_type": "paragraph",
+        "heading_path": [
+          "Application Security Verification",
+          "Version 5.0.0",
+          "What is the ASVS?"
+        ],
+        "text": "Specifically, OWASP has many projects, and the ASVS deliberately avoids overlapping with the content in other projects. For example, developers may have a question, “how do I implement a particular requirement in my particular technology or environment,”and this should be covered by the\nCheat Sheet Series project. Verifiers may have a question “how do I test this requirement in this\nenvironment,”and this should be covered by the Web Security Testing Guide project."
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_005",
+    "category": "single_document_qa",
+    "sub_type": "unscoped_natural_qa",
+    "lang": "vi",
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_fb6fb6a43e11_b00151",
+        "document_id": "doc_owasp_a01_cross_site_request_forgery_prevention_cheat_sheet",
+        "canonical_title": "OWASP - A01-Cross-Site-Request-Forgery-Prevention-Cheat-Sheet",
+        "version_id": "ver_fb6fb6a43e11",
+        "version_tag": "2021-2025",
+        "block_type": "paragraph",
+        "heading_path": [
+          "Cross-Site Request Forgery Prevention Cheat Sheet",
+          "Possible CSRF Vulnerabilities in Login Forms"
+        ],
+        "text": "Login CSRF can be mitigated by creating pre-sessions (sessions before a user is authenticated) and including tokens in login form. You can use any of the techniques mentioned above to generate tokens. Remember that pre-sessions cannot be transitioned to real sessions once the user is authenticated - the session should be destroyed and a new one should be made to avoid [session fixation attacks](http://www.acrossecurity.com/papers/session_fixation.pdf). This technique is described in [Robust Defenses for Cross-Site Request Forgery section 4.1](https://seclab.stanford.edu/websec/csrf/csrf.pdf). Login CSRF can also be mitigated by including a custom request headers in AJAX request as described [above](#employing-custom-request-headers-for-ajaxapi)."
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_006",
+    "category": "single_document_qa",
+    "sub_type": "unscoped_natural_qa",
+    "lang": "vi",
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_3c38656e2be6_b00193",
+        "document_id": "doc_owasp_a07_session_management_cheat_sheet",
+        "canonical_title": "OWASP - A07-Session-Management-Cheat-Sheet",
+        "version_id": "ver_3c38656e2be6",
+        "version_tag": "2021-2025",
+        "block_type": "paragraph",
+        "heading_path": [
+          "Session Management Cheat Sheet",
+          "Session Attacks Detection",
+          "Detecting Session ID Anomalies"
+        ],
+        "text": "Web applications should focus on detecting anomalies associated to the session ID, such as its manipulation. The OWASP [AppSensor Project](https://owasp.org/www-project-appsensor/) provides a framework and methodology to implement built-in intrusion detection capabilities within web applications focused on the detection of anomalies and unexpected behaviors, in the form of detection points and response actions. Instead of using external protection layers, sometimes the business logic details and advanced intelligence are only available from inside the web application, where it is possible to establish multiple session related detection points, such as when an existing cookie is modified or deleted, a new cookie is added, the session ID from another user is reused, or when the user location or User-Agent changes in the middle of a session."
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_007",
+    "category": "single_document_qa",
+    "sub_type": "scoped_version_qa",
+    "lang": "vi",
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_fb6fb6a43e11_b00101",
+        "document_id": "doc_owasp_a01_cross_site_request_forgery_prevention_cheat_sheet",
+        "canonical_title": "OWASP - A01-Cross-Site-Request-Forgery-Prevention-Cheat-Sheet",
+        "version_id": "ver_fb6fb6a43e11",
+        "version_tag": "2021-2025",
+        "block_type": "paragraph",
+        "heading_path": [
+          "Cross-Site Request Forgery Prevention Cheat Sheet",
+          "Dealing with Client-Side CSRF Attacks (IMPORTANT)",
+          "Client-side CSRF Mitigation Techniques"
+        ],
+        "text": "**Input Validation:** Achieving complete isolation between inputs and request parameters may not always be possible depending on the context and functionality. In these cases, input validation checks has to be implemented. These checks should strictly assess the format and choice of the values of the request parameters and decide whether they can only be used in non-state-changing operations (e.g., only allow GET requests and endpoints starting with a predefined prefix)."
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_008",
+    "category": "single_document_qa",
+    "sub_type": "scoped_version_qa",
+    "lang": "vi",
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_77afde9ea09f_b00026",
+        "document_id": "doc_first_cvss_specification",
+        "canonical_title": "First - CVSS-Specification",
+        "version_id": "ver_77afde9ea09f",
+        "version_tag": "v4.0",
+        "block_type": "paragraph",
+        "heading_path": [
+          "Specification Document",
+          "1.",
+          "1.1."
+        ],
+        "text": "the Supplemental metric group is to be determined by the CVSS consumer, allowing the usage\nof an end-user risk analysis system to apply locally significant severity to the metrics and\nvalues. No metric will, within its specification, have any impact on the final CVSS score (e.g.\nCVSS-BTE). Consumer organizations may then assign importance and/or effective impact of\neach metric, or set/combination of metrics, giving them more, less, or absolutely no effect on\nthe categorization, prioritization, and assessment of the vulnerability. Metrics and values will\nsimply convey additional extrinsic characteristics of the vulnerability itself."
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_009",
+    "category": "single_document_qa",
+    "sub_type": "scoped_version_qa",
+    "lang": "vi",
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_92f7483b2854_b00093",
+        "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+        "canonical_title": "OWASP - A07-Authentication-Cheat-Sheet",
+        "version_id": "ver_92f7483b2854",
+        "version_tag": "2021-2025",
+        "block_type": "paragraph",
+        "heading_path": [
+          "Authentication Cheat Sheet",
+          "Authentication General Guidelines",
+          "Protect Against Automated Attacks",
+          "Multi-Factor Authentication"
+        ],
+        "text": "Multi-factor authentication (MFA) is by far the best defense against the majority of password-related attacks, including brute-force attacks, with analysis by Microsoft suggesting that it would have stopped [99.9% of account compromises](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Your-Pa-word-doesn-t-matter/ba-p/731984). As such, it should be implemented wherever possible; however, depending on the audience of the application, it may not be practical or feasible to enforce the use of MFA."
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_010",
+    "category": "single_document_qa",
+    "sub_type": "scoped_version_qa",
+    "lang": "vi",
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_81e50e16cbc6_b00107",
+        "document_id": "doc_owasp_a05_docker_security_cheat_sheet",
+        "canonical_title": "OWASP - A05-Docker-Security-Cheat-Sheet",
+        "version_id": "ver_81e50e16cbc6",
+        "version_tag": "2021-2025",
+        "block_type": "paragraph",
+        "heading_path": [
+          "Docker Security Cheat Sheet",
+          "Rules",
+          "RULE \\#12 - Utilize Docker Secrets for Sensitive Data Management"
+        ],
+        "text": "While Docker Secrets generally provide a secure way to manage sensitive data in Docker environments, this approach is not recommended for Kubernetes, where secrets are stored in plaintext by default. In Kubernetes, consider using additional security measures such as etcd encryption, or third-party tools. Refer to the [Secrets Management Cheat Sheet](Secrets_Management_Cheat_Sheet.md) and [Kubernetes Security Cheat Sheet](Kubernetes_Security_Cheat_Sheet.md) for more information."
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_011",
+    "category": "single_document_qa",
+    "sub_type": "unscoped_natural_qa",
+    "lang": "en",
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_a2fa1bbe38f1_b00239",
+        "document_id": "doc_owasp_application_security_verification_standard",
+        "canonical_title": "OWASP - Application-Security-Verification-Standard",
+        "version_id": "ver_a2fa1bbe38f1",
+        "version_tag": "5.0.0",
+        "block_type": "paragraph",
+        "heading_path": [
+          "Application Security Verification",
+          "Version 5.0.0",
+          "Changes Compared to v4.x"
+        ],
+        "text": "The Common Weakness Enumeration (CWE) provides a useful taxonomy of software security weaknesses. However, challenges such as category-only CWEs, difficulties in mapping requirements to\na single CWE, and the presence of imprecise mappings in version 4.x have led to the decision to\ndiscontinue direct CWE mappings in version 5.0."
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_012",
+    "category": "single_document_qa",
+    "sub_type": "unscoped_natural_qa",
+    "lang": "en",
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_a2fa1bbe38f1_b00117",
+        "document_id": "doc_owasp_application_security_verification_standard",
+        "canonical_title": "OWASP - Application-Security-Verification-Standard",
+        "version_id": "ver_a2fa1bbe38f1",
+        "version_tag": "5.0.0",
+        "block_type": "paragraph",
+        "heading_path": [
+          "Application Security Verification",
+          "Version 5.0.0",
+          "What is the ASVS?"
+        ],
+        "text": "Most applications should be striving to achieve this level of security. Around 50% of the requirements\nin the ASVS are L2 meaning that an application needs to implement around 70% of the requirements\nin the ASVS (all of the L1 and L2 requirements) in order to comply with L2."
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_013",
+    "category": "single_document_qa",
+    "sub_type": "unscoped_natural_qa",
+    "lang": "en",
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_9363b0048b47_b00161",
+        "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+        "canonical_title": "OWASP - A05-XML-External-Entity-Prevention-Cheat-Sheet",
+        "version_id": "ver_9363b0048b47",
+        "version_tag": "2021-2025",
+        "block_type": "paragraph",
+        "heading_path": [
+          "XML External Entity Prevention Cheat Sheet",
+          "Python"
+        ],
+        "text": "Follow Python's current [XML security guidance](https://docs.python.org/3/library/xml.html#xml-security). The built-in parsers rely on Expat, which may be bundled with Python or supplied by the operating system. Check `pyexpat.EXPAT_VERSION` in the deployed interpreter and keep both Python and Expat updated. Expat versions below 2.7.2 may be affected by entity-expansion, large-token, or dynamic-memory denial-of-service vulnerabilities; a Python version alone does not establish the linked Expat version."
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_014",
+    "category": "single_document_qa",
+    "sub_type": "unscoped_natural_qa",
+    "lang": "en",
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_9363b0048b47_b00038",
+        "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+        "canonical_title": "OWASP - A05-XML-External-Entity-Prevention-Cheat-Sheet",
+        "version_id": "ver_9363b0048b47",
+        "version_tag": "2021-2025",
+        "block_type": "table",
+        "heading_path": [
+          "XML External Entity Prevention Cheat Sheet",
+          "Java",
+          "Secure configuration by API"
+        ],
+        "text": "| API | Recommended approach |\n| --- | --- |\n| [`DocumentBuilderFactory`](#documentbuilderfactory-dom) | Reject DOCTYPE declarations before building a document tree |\n| [`SAXParserFactory` / `XMLReader`](#saxparserfactory-and-xmlreader) | Reject DOCTYPE declarations; parse through the configured reader |\n| [`XMLInputFactory`](#xmlinputfactory-stax) | Disable DTD processing and external entities |\n| [`TransformerFactory`](#transformerfactory-xslt) | Deny external access before compiling the style sheet |\n| [`SchemaFactory` / `Validator`](#schemafactory-and-validator) | Deny external access during compilation and validation |\n| [`XPath`](#xpath) | Evaluate against a document parsed with a hardened builder |\n| [`Unmarshaller`](#jaxb-unmarshaller) | Supply a hardened StAX reader |"
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_015",
+    "category": "single_document_qa",
+    "sub_type": "unscoped_natural_qa",
+    "lang": "en",
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_a2fa1bbe38f1_b00281",
+        "document_id": "doc_owasp_application_security_verification_standard",
+        "canonical_title": "OWASP - Application-Security-Verification-Standard",
+        "version_id": "ver_a2fa1bbe38f1",
+        "version_tag": "5.0.0",
+        "block_type": "paragraph",
+        "heading_path": [
+          "Application Security Verification",
+          "Version 5.0.0",
+          "V1 Encoding and Sanitization"
+        ],
+        "text": "The ideal protection against using untrusted content in an unsafe context is to use context-specific\nencoding or escaping, which maintains the same semantic meaning of the unsafe content but renders\nit safe for use in that particular context, as discussed in more detail in the previous section."
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_016",
+    "category": "single_document_qa",
+    "sub_type": "unscoped_natural_qa",
+    "lang": "en",
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_a2fa1bbe38f1_b00541",
+        "document_id": "doc_owasp_application_security_verification_standard",
+        "canonical_title": "OWASP - Application-Security-Verification-Standard",
+        "version_id": "ver_a2fa1bbe38f1",
+        "version_tag": "5.0.0",
+        "block_type": "table",
+        "heading_path": [
+          "Application Security Verification",
+          "Version 5.0.0",
+          "V7 Session Management"
+        ],
+        "text": "# | Description | Level\n7.4.1 | Verify that when session termination is triggered (such as logout or | 1\n | expiration), the application disallows any further use of the session. For |\n | reference tokens or stateful sessions, this means invalidating the session |\n | data at the application backend. Applications using self-contained tokens |\n | will need a solution such as maintaining a list of terminated tokens, |\n | disallowing tokens produced before a per-user date and time or rotating a |\n | per-user signing key. |\n7.4.2 | Verify that the application terminates all active sessions when a user account | 1\n | is disabled or deleted (such as an employee leaving the company). |\n7.4.3 | Verify that the application gives the option to terminate all other active sessions after a successful change or removal of any authentication factor | 2\n | (including password change via reset or recovery and, if present, an MFA |\n | settings update). |\n7.4.4 | Verify that all pages that require authentication have easy and visible access | 2\n | to logout functionality. |\n7.4.5 | Verify that application administrators are able to terminate active sessions | 2\n | for an individual user or for all users. |"
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_017",
+    "category": "single_document_qa",
+    "sub_type": "scoped_version_qa",
+    "lang": "en",
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_a2fa1bbe38f1_b00147",
+        "document_id": "doc_owasp_application_security_verification_standard",
+        "canonical_title": "OWASP - Application-Security-Verification-Standard",
+        "version_id": "ver_a2fa1bbe38f1",
+        "version_tag": "5.0.0",
+        "block_type": "code",
+        "heading_path": [
+          "Application Security Verification",
+          "Version 5.0.0",
+          "What is the ASVS?"
+        ],
+        "text": "Since the identifiers may change between versions of the standard, it is preferable for other docu-\nments, reports, or tools to use the following format: v<version>-<chapter>.<section>.<requirement>,\nwhere: ‘version’is the ASVS version tag. For example: v5.0.0-1.2.5 would be understood to mean\nspecifically the 5th requirement in the ‘Injection Prevention’section of the ‘Encoding and Sanitiza-\ntion’chapter from version 5.0.0. (This could be summarized as v<version>-<requirement_identifier>.)"
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_018",
+    "category": "single_document_qa",
+    "sub_type": "scoped_version_qa",
+    "lang": "en",
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_a2fa1bbe38f1_b00078",
+        "document_id": "doc_owasp_application_security_verification_standard",
+        "canonical_title": "OWASP - Application-Security-Verification-Standard",
+        "version_id": "ver_a2fa1bbe38f1",
+        "version_tag": "5.0.0",
+        "block_type": "paragraph",
+        "heading_path": [
+          "Application Security Verification",
+          "Version 5.0.0",
+          "What is the ASVS?"
+        ],
+        "text": "The ASVS is designed to be a collection of security requirements to be implemented to comply with\nthe standard. This means that requirements are limited to defining the security goal to achieve that.\nOther related information can be built on top of ASVS or linked via mappings."
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_019",
+    "category": "single_document_qa",
+    "sub_type": "scoped_version_qa",
+    "lang": "en",
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_421639d8a75f_b00042",
+        "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+        "canonical_title": "OWASP - A03-DOM-based-XSS-Prevention-Cheat-Sheet",
+        "version_id": "ver_421639d8a75f",
+        "version_tag": "2021-2025",
+        "block_type": "paragraph",
+        "heading_path": [
+          "DOM based XSS Prevention Cheat Sheet",
+          "RULE \\#3 - Be Careful when Inserting Untrusted Data into the Event Handler and JavaScript code Subcontexts within an Execution Context"
+        ],
+        "text": "Other JavaScript methods that interpret strings as code, such as `setTimeout`, `setInterval`, and `Function`, have the same risk. HTML event-handler attributes also contain [JavaScript function bodies](https://html.spec.whatwg.org/multipage/webappapis.html#event-handler-content-attributes). Escaping every character in one payload may produce a syntax error, but JavaScript encoding is not a defense for this context: escaped identifiers remain executable when the surrounding syntax is valid."
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_020",
+    "category": "single_document_qa",
+    "sub_type": "scoped_version_qa",
+    "lang": "en",
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00052",
+        "document_id": "doc_owasp_a07_multifactor_authentication_cheat_sheet",
+        "canonical_title": "OWASP - A07-Multifactor-Authentication-Cheat-Sheet",
+        "version_id": "ver_aa0c03c9d10c",
+        "version_tag": "2021-2025",
+        "block_type": "paragraph",
+        "heading_path": [
+          "Multifactor Authentication Cheat Sheet",
+          "Implementing MFA",
+          "Resetting MFA"
+        ],
+        "text": "There is no definitive \"best way\" to do this, and what is appropriate will vary hugely based on the security of the application, and also the level of control over the users. Solutions that work for a corporate application where all the staff know each other are unlikely to be feasible for a publicly available application with thousands of users all over the world. Every recovery method has its own advantages and disadvantages, and these need to be evaluated in the context of the application."
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_021",
+    "category": "multi_document",
+    "sub_type": "cross_version_compare",
+    "lang": "vi",
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_4aec329f2642_b00006",
+        "document_id": "doc_owasp_asvs_session_management",
+        "canonical_title": "OWASP - ASVS-Session-management",
+        "version_id": "ver_4aec329f2642",
+        "version_tag": "v5.0",
+        "block_type": "list",
+        "heading_path": [
+          "V7 Session Management",
+          "Control Objective"
+        ],
+        "text": "* HTTP Cookies are a common mechanism for securing session tokens. Specific security requirements for cookies can be found in the \"Web Frontend Security\" chapter.\n* Self-contained tokens are frequently used as a way of maintaining sessions. Specific security requirements can be found in the \"Self-contained Tokens\" chapter."
+      },
+      {
+        "normalized_block_id": "nrm_ver_d5ac6829b294_b00015",
+        "document_id": "doc_owasp_asvs_session_management",
+        "canonical_title": "OWASP - ASVS-Session-management",
+        "version_id": "ver_d5ac6829b294",
+        "version_tag": "v4.0",
+        "block_type": "table",
+        "heading_path": [
+          "V3 Session Management",
+          "V3.3 Session Termination"
+        ],
+        "text": "| # | Description | L1 | L2 | L3 | CWE | [NIST &sect;](https://pages.nist.gov/800-63-3/sp800-63b.html) |\n| :---: | :--- | :---: | :---:| :---: | :---: | :---: |\n| **3.3.1** | Verify that logout and expiration invalidate the session token, such that the back button or a downstream relying party does not resume an authenticated session, including across relying parties. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering)) | ✓ | ✓ | ✓ | 613 | 7.1 |\n| **3.3.2** | If authenticators permit users to remain logged in, verify that re-authentication occurs periodically both when actively used or after an idle period. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering)) | 30 days | 12 hours or 30 minutes of inactivity, 2FA optional | 12 hours or 15 minutes of inactivity, with 2FA | 613 | 7.2 |\n| **3.3.3** | Verify that the application gives the option to terminate all other active sessions after a successful password change (including change via password reset/recovery), and that this is effective across the application, federated login (if present), and any relying parties. | | ✓ | ✓ | 613 | |\n| **3.3.4** | Verify that users are able to view and (having re-entered login credentials) log out of any or all currently active sessions and devices. | | ✓ | ✓ | 613 | 7.1 |"
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_022",
+    "category": "multi_document",
+    "sub_type": "cross_version_compare",
+    "lang": "vi",
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00014",
+        "document_id": "doc_owasp_asvs_authentication",
+        "canonical_title": "OWASP - ASVS-Authentication",
+        "version_id": "ver_e1e0aaa15e48",
+        "version_tag": "v5.0",
+        "block_type": "table",
+        "heading_path": [
+          "V6 Authentication",
+          "V6.2 Password Security"
+        ],
+        "text": "| # | Description | Level |\n| :---: | :--- | :---: |\n| **6.2.1** | Verify that user set passwords are at least 8 characters in length although a minimum of 15 characters is strongly recommended. | 1 |\n| **6.2.2** | Verify that users can change their password. | 1 |\n| **6.2.3** | Verify that password change functionality requires the user's current and new password. | 1 |\n| **6.2.4** | Verify that passwords submitted during account registration or password change are checked against an available set of, at least, the top 3000 passwords which match the application's password policy, e.g. minimum length. | 1 |\n| **6.2.5** | Verify that passwords of any composition can be used, without rules limiting the type of characters permitted. There must be no requirement for a minimum number of upper or lower case characters, numbers, or special characters. | 1 |\n| **6.2.6** | Verify that password input fields use type=password to mask the entry. Applications may allow the user to temporarily view the entire masked password, or the last typed character of the password. | 1 |\n| **6.2.7** | Verify that \"paste\" functionality, browser password helpers, and external password managers are permitted. | 1 |\n| **6.2.8** | Verify that the application verifies the user's password exactly as received from the user, without any modifications such as truncation or case transformation. | 1 |\n| **6.2.9** | Verify that passwords of at least 64 characters are permitted. | 2 |\n| **6.2.10** | Verify that a user's password stays valid until it is discovered to be compromised or the user rotates it. The application must not require periodic credential rotation. | 2 |\n| **6.2.11** | Verify that the documented list of context specific words is used to prevent easy to guess passwords being created. | 2 |\n| **6.2.12** | Verify that passwords submitted during account registration or password changes are checked against a set of breached passwords. | 2 |"
+      },
+      {
+        "normalized_block_id": "nrm_ver_ea47056e8e8f_b00035",
+        "document_id": "doc_owasp_asvs_authentication",
+        "canonical_title": "OWASP - ASVS-Authentication",
+        "version_id": "ver_ea47056e8e8f",
+        "version_tag": "v4.0",
+        "block_type": "table",
+        "heading_path": [
+          "V2 Authentication",
+          "V2.5 Credential Recovery"
+        ],
+        "text": "| # | Description | L1 | L2 | L3 | CWE | [NIST &sect;](https://pages.nist.gov/800-63-3/sp800-63b.html) |\n| :---: | :--- | :---: | :---:| :---: | :---: | :---: |\n| **2.5.1** | Verify that a system generated initial activation or recovery secret is not sent in clear text to the user. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering)) | ✓ | ✓ | ✓ | 640 | 5.1.1.2 |\n| **2.5.2** | Verify password hints or knowledge-based authentication (so-called \"secret questions\") are not present. | ✓ | ✓ | ✓ | 640 | 5.1.1.2 |\n| **2.5.3** | Verify password credential recovery does not reveal the current password in any way. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering)) | ✓ | ✓ | ✓ | 640 | 5.1.1.2 |\n| **2.5.4** | Verify shared or default accounts are not present (e.g. \"root\", \"admin\", or \"sa\"). | ✓ | ✓ | ✓ | 16 | 5.1.1.2 / A.3 |\n| **2.5.5** | Verify that if an authentication factor is changed or replaced, that the user is notified of this event. | ✓ | ✓ | ✓ | 304 | 6.1.2.3 |\n| **2.5.6** | Verify forgotten password, and other recovery paths use a secure recovery mechanism, such as time-based OTP (TOTP) or other soft token, mobile push, or another offline recovery mechanism. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering)) | ✓ | ✓ | ✓ | 640 | 5.1.1.2 |\n| **2.5.7** | Verify that if OTP or multi-factor authentication factors are lost, that evidence of identity proofing is performed at the same level as during enrollment. | | ✓ | ✓ | 308 | 6.1.2.3 |"
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_023",
+    "category": "multi_document",
+    "sub_type": "cross_version_compare",
+    "lang": "vi",
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_ea47056e8e8f_b00003",
+        "document_id": "doc_owasp_asvs_authentication",
+        "canonical_title": "OWASP - ASVS-Authentication",
+        "version_id": "ver_ea47056e8e8f",
+        "version_tag": "v4.0",
+        "block_type": "paragraph",
+        "heading_path": [
+          "V2 Authentication",
+          "Control Objective"
+        ],
+        "text": "When the ASVS was first released, username + password was the most common form of authentication outside of high security systems. Multi-factor Authentication (MFA) was commonly accepted in security circles but rarely required elsewhere. As the number of password breaches increased, the idea that usernames are somehow confidential and passwords unknown, rendered many security controls untenable. For example, NIST 800-63 considers usernames and Knowledge Based Authentication (KBA) as public information, SMS and email notifications as [\"restricted\" authenticator types](https://pages.nist.gov/800-63-FAQ/#q-b1) , and passwords as pre-breached. This reality renders knowledge based authenticators, SMS and email recovery, password history, complexity, and rotation controls useless. These controls always have been less than helpful, often forcing users to come up with weak passwords every few months, but with the release of over 5 billion username and password breaches, it's time to move on."
+      },
+      {
+        "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00017",
+        "document_id": "doc_owasp_asvs_authentication",
+        "canonical_title": "OWASP - ASVS-Authentication",
+        "version_id": "ver_e1e0aaa15e48",
+        "version_tag": "v5.0",
+        "block_type": "paragraph",
+        "heading_path": [
+          "V6 Authentication",
+          "V6.3 General Authentication Security"
+        ],
+        "text": "While this is a relatively aggressive stance on MFA, it is critical to raise the bar around this to protect users, and any attempt to relax these requirements should be accompanied by a clear plan on how the risks around authentication will be mitigated, taking into account NIST's guidance and research on the topic."
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_024",
+    "category": "multi_document",
+    "sub_type": "cross_version_compare",
+    "lang": "vi",
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_e1e0aaa15e48_b00024",
+        "document_id": "doc_owasp_asvs_authentication",
+        "canonical_title": "OWASP - ASVS-Authentication",
+        "version_id": "ver_e1e0aaa15e48",
+        "version_tag": "v5.0",
+        "block_type": "table",
+        "heading_path": [
+          "V6 Authentication",
+          "V6.4 Authentication Factor Lifecycle and Recovery"
+        ],
+        "text": "| # | Description | Level |\n| :---: | :--- | :---: |\n| **6.4.1** | Verify that system generated initial passwords or activation codes are securely randomly generated, follow the existing password policy, and expire after a short period of time or after they are initially used. These initial secrets must not be permitted to become the long term password. | 1 |\n| **6.4.2** | Verify that password hints or knowledge-based authentication (so-called \"secret questions\") are not present. | 1 |\n| **6.4.3** | Verify that a secure process for resetting a forgotten password is implemented, that does not bypass any enabled multi-factor authentication mechanisms. | 2 |\n| **6.4.4** | Verify that if a multi-factor authentication factor is lost, evidence of identity proofing is performed at the same level as during enrollment. | 2 |\n| **6.4.5** | Verify that renewal instructions for authentication mechanisms which expire are sent with enough time to be carried out before the old authentication mechanism expires, configuring automated reminders if necessary. | 3 |\n| **6.4.6** | Verify that administrative users can initiate the password reset process for the user, but that this does not allow them to change or choose the user's password. This prevents a situation where they know the user's password. | 3 |"
+      },
+      {
+        "normalized_block_id": "nrm_ver_ea47056e8e8f_b00038",
+        "document_id": "doc_owasp_asvs_authentication",
+        "canonical_title": "OWASP - ASVS-Authentication",
+        "version_id": "ver_ea47056e8e8f",
+        "version_tag": "v4.0",
+        "block_type": "table",
+        "heading_path": [
+          "V2 Authentication",
+          "V2.6 Look-up Secret Verifier"
+        ],
+        "text": "| # | Description | L1 | L2 | L3 | CWE | [NIST &sect;](https://pages.nist.gov/800-63-3/sp800-63b.html) |\n| :---: | :--- | :---: | :---:| :---: | :---: | :---: |\n| **2.6.1** | Verify that lookup secrets can be used only once. | | ✓ | ✓ | 308 | 5.1.2.2 |\n| **2.6.2** | Verify that lookup secrets have sufficient randomness (112 bits of entropy), or if less than 112 bits of entropy, salted with a unique and random 32-bit salt and hashed with an approved one-way hash. | | ✓ | ✓ | 330 | 5.1.2.2 |\n| **2.6.3** | Verify that lookup secrets are resistant to offline attacks, such as predictable values. | | ✓ | ✓ | 310 | 5.1.2.2 |"
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_025",
+    "category": "multi_document",
+    "sub_type": "cross_version_compare",
+    "lang": "vi",
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_d5ac6829b294_b00029",
+        "document_id": "doc_owasp_asvs_session_management",
+        "canonical_title": "OWASP - ASVS-Session-management",
+        "version_id": "ver_d5ac6829b294",
+        "version_tag": "v4.0",
+        "block_type": "table",
+        "heading_path": [
+          "V3 Session Management",
+          "V3.7 Defenses Against Session Management Exploits",
+          "Description of the half-open Attack"
+        ],
+        "text": "| # | Description | L1 | L2 | L3 | CWE | [NIST &sect;](https://pages.nist.gov/800-63-3/sp800-63b.html) |\n| :---: | :--- | :---: | :---:| :---: | :---: | :---: |\n| **3.7.1** | Verify the application ensures a full, valid login session or requires re-authentication or secondary verification before allowing any sensitive transactions or account modifications. | ✓ | ✓ | ✓ | 306 | |"
+      },
+      {
+        "normalized_block_id": "nrm_ver_4aec329f2642_b00021",
+        "document_id": "doc_owasp_asvs_session_management",
+        "canonical_title": "OWASP - ASVS-Session-management",
+        "version_id": "ver_4aec329f2642",
+        "version_tag": "v5.0",
+        "block_type": "table",
+        "heading_path": [
+          "V7 Session Management",
+          "V7.4 Session Termination"
+        ],
+        "text": "| # | Description | Level |\n| :---: | :--- | :---: |\n| **7.4.1** | Verify that when session termination is triggered (such as logout or expiration), the application disallows any further use of the session. For reference tokens or stateful sessions, this means invalidating the session data at the application backend. Applications using self-contained tokens will need a solution such as maintaining a list of terminated tokens, disallowing tokens produced before a per-user date and time or rotating a per-user signing key. | 1 |\n| **7.4.2** | Verify that the application terminates all active sessions when a user account is disabled or deleted (such as an employee leaving the company). | 1 |\n| **7.4.3** | Verify that the application gives the option to terminate all other active sessions after a successful change or removal of any authentication factor (including password change via reset or recovery and, if present, an MFA settings update). | 2 |\n| **7.4.4** | Verify that all pages that require authentication have easy and visible access to logout functionality. | 2 |\n| **7.4.5** | Verify that application administrators are able to terminate active sessions for an individual user or for all users. | 2 |"
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_026",
+    "category": "multi_document",
+    "sub_type": "cross_version_compare",
+    "lang": "en",
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_d5ac6829b294_b00002",
+        "document_id": "doc_owasp_asvs_session_management",
+        "canonical_title": "OWASP - ASVS-Session-management",
+        "version_id": "ver_d5ac6829b294",
+        "version_tag": "v4.0",
+        "block_type": "paragraph",
+        "heading_path": [
+          "V3 Session Management",
+          "Control Objective"
+        ],
+        "text": "One of the core components of any web-based application or stateful API is the mechanism by which it controls and maintains the state for a user or device interacting with it. Session management changes a stateless protocol to stateful, which is critical for differentiating different users or devices."
+      },
+      {
+        "normalized_block_id": "nrm_ver_4aec329f2642_b00009",
+        "document_id": "doc_owasp_asvs_session_management",
+        "canonical_title": "OWASP - ASVS-Session-management",
+        "version_id": "ver_4aec329f2642",
+        "version_tag": "v5.0",
+        "block_type": "paragraph",
+        "heading_path": [
+          "V7 Session Management",
+          "V7.1 Session Management Documentation"
+        ],
+        "text": "Regardless of whether a stateful or \"stateless\" session mechanism is chosen, the analysis must be complete and documented to demonstrate that the selected solution is capable of satisfying all relevant security requirements. Interaction with any Single Sign-on (SSO) mechanisms in use should also be considered."
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_027",
+    "category": "multi_document",
+    "sub_type": "cross_version_compare",
+    "lang": "en",
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_52d3cef100ba_b00002",
+        "document_id": "doc_owasp_top10_a01_broken_access_control",
+        "canonical_title": "OWASP - Top10-A01-Broken-Access-Control",
+        "version_id": "ver_52d3cef100ba",
+        "version_tag": "2021",
+        "block_type": "table",
+        "heading_path": [
+          "A01:2021 – Broken Access Control",
+          "Factors"
+        ],
+        "text": "| CWEs Mapped | Max Incidence Rate | Avg Incidence Rate | Avg Weighted Exploit | Avg Weighted Impact | Max Coverage | Avg Coverage | Total Occurrences | Total CVEs |\n|:-------------:|:--------------------:|:--------------------:|:--------------:|:--------------:|:----------------------:|:---------------------:|:-------------------:|:------------:|\n| 34 | 55.97% | 3.81% | 6.92 | 5.93 | 94.55% | 47.72% | 318,487 | 19,013 |"
+      },
+      {
+        "normalized_block_id": "nrm_ver_d6ebc4e65422_b00026",
+        "document_id": "doc_owasp_top10_a01_broken_access_control",
+        "canonical_title": "OWASP - Top10-A01-Broken-Access-Control",
+        "version_id": "ver_d6ebc4e65422",
+        "version_tag": "2025",
+        "block_type": "list",
+        "heading_path": [
+          "A01:2025 Broken Access Control",
+          "List of Mapped CWEs"
+        ],
+        "text": "* [CWE-22 Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')](https://cwe.mitre.org/data/definitions/22.html)\n\n* [CWE-23 Relative Path Traversal](https://cwe.mitre.org/data/definitions/23.html)\n\n* [CWE-36 Absolute Path Traversal](https://cwe.mitre.org/data/definitions/36.html)\n\n* [CWE-59 Improper Link Resolution Before File Access ('Link Following')](https://cwe.mitre.org/data/definitions/59.html)\n\n* [CWE-61 UNIX Symbolic Link (Symlink) Following](https://cwe.mitre.org/data/definitions/61.html)\n\n* [CWE-65 Windows Hard Link](https://cwe.mitre.org/data/definitions/65.html)\n\n* [CWE-200 Exposure of Sensitive Information to an Unauthorized Actor](https://cwe.mitre.org/data/definitions/200.html)\n\n* [CWE-201 Exposure of Sensitive Information Through Sent Data](https://cwe.mitre.org/data/definitions/201.html)\n\n* [CWE-219 Storage of File with Sensitive Data Under Web Root](https://cwe.mitre.org/data/definitions/219.html)\n\n* [CWE-276 Incorrect Default Permissions](https://cwe.mitre.org/data/definitions/276.html)\n\n* [CWE-281 Improper Preservation of Permissions](https://cwe.mitre.org/data/definitions/281.html)\n\n* [CWE-282 Improper Ownership Management](https://cwe.mitre.org/data/definitions/282.html)\n\n* [CWE-283 Unverified Ownership](https://cwe.mitre.org/data/definitions/283.html)\n\n* [CWE-284 Improper Access Control](https://cwe.mitre.org/data/definitions/284.html)\n\n* [CWE-285 Improper Authorization](https://cwe.mitre.org/data/definitions/285.html)\n\n* [CWE-352 Cross-Site Request Forgery (CSRF)](https://cwe.mitre.org/data/definitions/352.html)\n\n* [CWE-359 Exposure of Private Personal Information to an Unauthorized Actor](https://cwe.mitre.org/data/definitions/359.html)\n\n* [CWE-377 Insecure Temporary File](https://cwe.mitre.org/data/definitions/377.html)\n\n* [CWE-379 Creation of Temporary File in Directory with Insecure Permissions](https://cwe.mitre.org/data/definitions/379.html)\n\n* [CWE-402 Transmission of Private Resources into a New Sphere ('Resource Leak')](https://cwe.mitre.org/data/definitions/402.html)\n\n* [CWE-424 Improper Protection of Alternate Path](https://cwe.mitre.org/data/definitions/424.html)\n\n* [CWE-425 Direct Request ('Forced Browsing')](https://cwe.mitre.org/data/definitions/425.html)\n\n* [CWE-441 Unintended Proxy or Intermediary ('Confused Deputy')](https://cwe.mitre.org/data/definitions/441.html)\n\n* [CWE-497 Exposure of Sensitive System Information to an Unauthorized Control Sphere](https://cwe.mitre.org/data/definitions/497.html)\n\n* [CWE-538 Insertion of Sensitive Information into Externally-Accessible File or Directory](https://cwe.mitre.org/data/definitions/538.html)\n\n* [CWE-540 Inclusion of Sensitive Information in Source Code](https://cwe.mitre.org/data/definitions/540.html)\n\n* [CWE-548 Exposure of Information Through Directory Listing](https://cwe.mitre.org/data/definitions/548.html)\n\n* [CWE-552 Files or Directories Accessible to External Parties](https://cwe.mitre.org/data/definitions/552.html)\n\n* [CWE-566 Authorization Bypass Through User-Controlled SQL Primary Key](https://cwe.mitre.org/data/definitions/566.html)\n\n* [CWE-601 URL Redirection to Untrusted Site ('Open Redirect')](https://cwe.mitre.org/data/definitions/601.html)\n\n* [CWE-615 Inclusion of Sensitive Information in Source Code Comments](https://cwe.mitre.org/data/definitions/615.html)\n\n* [CWE-639 Authorization Bypass Through User-Controlled Key](https://cwe.mitre.org/data/definitions/639.html)\n\n* [CWE-668 Exposure of Resource to Wrong Sphere](https://cwe.mitre.org/data/definitions/668.html)\n\n* [CWE-732 Incorrect Permission Assignment for Critical Resource](https://cwe.mitre.org/data/definitions/732.html)\n\n* [CWE-749 Exposed Dangerous Method or Function](https://cwe.mitre.org/data/definitions/749.html)\n\n* [CWE-862 Missing Authorization](https://cwe.mitre.org/data/definitions/862.html)\n\n* [CWE-863 Incorrect Authorization](https://cwe.mitre.org/data/definitions/863.html)\n\n* [CWE-918 Server-Side Request Forgery (SSRF)](https://cwe.mitre.org/data/definitions/918.html)\n\n* [CWE-922 Insecure Storage of Sensitive Information](https://cwe.mitre.org/data/definitions/922.html)\n\n* [CWE-1275 Sensitive Cookie with Improper SameSite Attribute](https://cwe.mitre.org/data/definitions/1275.html)"
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_028",
+    "category": "multi_document",
+    "sub_type": "cross_version_compare",
+    "lang": "en",
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_d5ac6829b294_b00020",
+        "document_id": "doc_owasp_asvs_session_management",
+        "canonical_title": "OWASP - ASVS-Session-management",
+        "version_id": "ver_d5ac6829b294",
+        "version_tag": "v4.0",
+        "block_type": "table",
+        "heading_path": [
+          "V3 Session Management",
+          "V3.5 Token-based Session Management"
+        ],
+        "text": "| # | Description | L1 | L2 | L3 | CWE | [NIST &sect;](https://pages.nist.gov/800-63-3/sp800-63b.html) |\n| :---: | :--- | :---: | :---:| :---: | :---: | :---: |\n| **3.5.1** | Verify the application allows users to revoke OAuth tokens that form trust relationships with linked applications. | | ✓ | ✓ | 290 | 7.1.2 |\n| **3.5.2** | Verify the application uses session tokens rather than static API secrets and keys, except with legacy implementations. | | ✓ | ✓ | 798 | |\n| **3.5.3** | Verify that stateless session tokens use digital signatures, encryption, and other countermeasures to protect against tampering, enveloping, replay, null cipher, and key substitution attacks. | | ✓ | ✓ | 345 | |"
+      },
+      {
+        "normalized_block_id": "nrm_ver_4aec329f2642_b00018",
+        "document_id": "doc_owasp_asvs_session_management",
+        "canonical_title": "OWASP - ASVS-Session-management",
+        "version_id": "ver_4aec329f2642",
+        "version_tag": "v5.0",
+        "block_type": "paragraph",
+        "heading_path": [
+          "V7 Session Management",
+          "V7.4 Session Termination"
+        ],
+        "text": "Session termination may be handled either by the application itself or by the SSO provider if the SSO provider is handling session management instead of the application. It may be necessary to decide whether the SSO provider is in scope when considering the requirements in this section as some may be controlled by the provider."
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_029",
+    "category": "multi_document",
+    "sub_type": "cross_version_compare",
+    "lang": "en",
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_d6ebc4e65422_b00026",
+        "document_id": "doc_owasp_top10_a01_broken_access_control",
+        "canonical_title": "OWASP - Top10-A01-Broken-Access-Control",
+        "version_id": "ver_d6ebc4e65422",
+        "version_tag": "2025",
+        "block_type": "list",
+        "heading_path": [
+          "A01:2025 Broken Access Control",
+          "List of Mapped CWEs"
+        ],
+        "text": "* [CWE-22 Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')](https://cwe.mitre.org/data/definitions/22.html)\n\n* [CWE-23 Relative Path Traversal](https://cwe.mitre.org/data/definitions/23.html)\n\n* [CWE-36 Absolute Path Traversal](https://cwe.mitre.org/data/definitions/36.html)\n\n* [CWE-59 Improper Link Resolution Before File Access ('Link Following')](https://cwe.mitre.org/data/definitions/59.html)\n\n* [CWE-61 UNIX Symbolic Link (Symlink) Following](https://cwe.mitre.org/data/definitions/61.html)\n\n* [CWE-65 Windows Hard Link](https://cwe.mitre.org/data/definitions/65.html)\n\n* [CWE-200 Exposure of Sensitive Information to an Unauthorized Actor](https://cwe.mitre.org/data/definitions/200.html)\n\n* [CWE-201 Exposure of Sensitive Information Through Sent Data](https://cwe.mitre.org/data/definitions/201.html)\n\n* [CWE-219 Storage of File with Sensitive Data Under Web Root](https://cwe.mitre.org/data/definitions/219.html)\n\n* [CWE-276 Incorrect Default Permissions](https://cwe.mitre.org/data/definitions/276.html)\n\n* [CWE-281 Improper Preservation of Permissions](https://cwe.mitre.org/data/definitions/281.html)\n\n* [CWE-282 Improper Ownership Management](https://cwe.mitre.org/data/definitions/282.html)\n\n* [CWE-283 Unverified Ownership](https://cwe.mitre.org/data/definitions/283.html)\n\n* [CWE-284 Improper Access Control](https://cwe.mitre.org/data/definitions/284.html)\n\n* [CWE-285 Improper Authorization](https://cwe.mitre.org/data/definitions/285.html)\n\n* [CWE-352 Cross-Site Request Forgery (CSRF)](https://cwe.mitre.org/data/definitions/352.html)\n\n* [CWE-359 Exposure of Private Personal Information to an Unauthorized Actor](https://cwe.mitre.org/data/definitions/359.html)\n\n* [CWE-377 Insecure Temporary File](https://cwe.mitre.org/data/definitions/377.html)\n\n* [CWE-379 Creation of Temporary File in Directory with Insecure Permissions](https://cwe.mitre.org/data/definitions/379.html)\n\n* [CWE-402 Transmission of Private Resources into a New Sphere ('Resource Leak')](https://cwe.mitre.org/data/definitions/402.html)\n\n* [CWE-424 Improper Protection of Alternate Path](https://cwe.mitre.org/data/definitions/424.html)\n\n* [CWE-425 Direct Request ('Forced Browsing')](https://cwe.mitre.org/data/definitions/425.html)\n\n* [CWE-441 Unintended Proxy or Intermediary ('Confused Deputy')](https://cwe.mitre.org/data/definitions/441.html)\n\n* [CWE-497 Exposure of Sensitive System Information to an Unauthorized Control Sphere](https://cwe.mitre.org/data/definitions/497.html)\n\n* [CWE-538 Insertion of Sensitive Information into Externally-Accessible File or Directory](https://cwe.mitre.org/data/definitions/538.html)\n\n* [CWE-540 Inclusion of Sensitive Information in Source Code](https://cwe.mitre.org/data/definitions/540.html)\n\n* [CWE-548 Exposure of Information Through Directory Listing](https://cwe.mitre.org/data/definitions/548.html)\n\n* [CWE-552 Files or Directories Accessible to External Parties](https://cwe.mitre.org/data/definitions/552.html)\n\n* [CWE-566 Authorization Bypass Through User-Controlled SQL Primary Key](https://cwe.mitre.org/data/definitions/566.html)\n\n* [CWE-601 URL Redirection to Untrusted Site ('Open Redirect')](https://cwe.mitre.org/data/definitions/601.html)\n\n* [CWE-615 Inclusion of Sensitive Information in Source Code Comments](https://cwe.mitre.org/data/definitions/615.html)\n\n* [CWE-639 Authorization Bypass Through User-Controlled Key](https://cwe.mitre.org/data/definitions/639.html)\n\n* [CWE-668 Exposure of Resource to Wrong Sphere](https://cwe.mitre.org/data/definitions/668.html)\n\n* [CWE-732 Incorrect Permission Assignment for Critical Resource](https://cwe.mitre.org/data/definitions/732.html)\n\n* [CWE-749 Exposed Dangerous Method or Function](https://cwe.mitre.org/data/definitions/749.html)\n\n* [CWE-862 Missing Authorization](https://cwe.mitre.org/data/definitions/862.html)\n\n* [CWE-863 Incorrect Authorization](https://cwe.mitre.org/data/definitions/863.html)\n\n* [CWE-918 Server-Side Request Forgery (SSRF)](https://cwe.mitre.org/data/definitions/918.html)\n\n* [CWE-922 Insecure Storage of Sensitive Information](https://cwe.mitre.org/data/definitions/922.html)\n\n* [CWE-1275 Sensitive Cookie with Improper SameSite Attribute](https://cwe.mitre.org/data/definitions/1275.html)"
+      },
+      {
+        "normalized_block_id": "nrm_ver_52d3cef100ba_b00002",
+        "document_id": "doc_owasp_top10_a01_broken_access_control",
+        "canonical_title": "OWASP - Top10-A01-Broken-Access-Control",
+        "version_id": "ver_52d3cef100ba",
+        "version_tag": "2021",
+        "block_type": "table",
+        "heading_path": [
+          "A01:2021 – Broken Access Control",
+          "Factors"
+        ],
+        "text": "| CWEs Mapped | Max Incidence Rate | Avg Incidence Rate | Avg Weighted Exploit | Avg Weighted Impact | Max Coverage | Avg Coverage | Total Occurrences | Total CVEs |\n|:-------------:|:--------------------:|:--------------------:|:--------------:|:--------------:|:----------------------:|:---------------------:|:-------------------:|:------------:|\n| 34 | 55.97% | 3.81% | 6.92 | 5.93 | 94.55% | 47.72% | 318,487 | 19,013 |"
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_030",
+    "category": "multi_document",
+    "sub_type": "cross_version_compare",
+    "lang": "en",
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_d5ac6829b294_b00005",
+        "document_id": "doc_owasp_asvs_session_management",
+        "canonical_title": "OWASP - ASVS-Session-management",
+        "version_id": "ver_d5ac6829b294",
+        "version_tag": "v4.0",
+        "block_type": "paragraph",
+        "heading_path": [
+          "V3 Session Management",
+          "Control Objective"
+        ],
+        "text": "As previously noted, these requirements have been adapted to be a compliant subset of selected NIST 800-63b controls, focused around common threats and commonly exploited authentication weaknesses. Previous verification requirements have been retired, de-duped, or in most cases adapted to be strongly aligned with the intent of mandatory [NIST 800-63b](https://pages.nist.gov/800-63-3/sp800-63b.html) requirements."
+      },
+      {
+        "normalized_block_id": "nrm_ver_4aec329f2642_b00013",
+        "document_id": "doc_owasp_asvs_session_management",
+        "canonical_title": "OWASP - ASVS-Session-management",
+        "version_id": "ver_4aec329f2642",
+        "version_tag": "v5.0",
+        "block_type": "table",
+        "heading_path": [
+          "V7 Session Management",
+          "V7.2 Fundamental Session Management Security"
+        ],
+        "text": "| # | Description | Level |\n| :---: | :--- | :---: |\n| **7.2.1** | Verify that the application performs all session token verification using a trusted, backend service. | 1 |\n| **7.2.2** | Verify that the application uses either self-contained or reference tokens that are dynamically generated for session management, i.e. not using static API secrets and keys. | 1 |\n| **7.2.3** | Verify that if reference tokens are used to represent user sessions, they are unique and generated using a cryptographically secure pseudo-random number generator (CSPRNG) and possess at least 128 bits of entropy. | 1 |\n| **7.2.4** | Verify that the application generates a new session token on user authentication, including re-authentication, and terminates the current session token. | 1 |"
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_031",
+    "category": "multi_document",
+    "sub_type": "multi_source_synthesis",
+    "lang": "vi",
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00051",
+        "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+        "canonical_title": "OWASP - A07-Credential-Stuffing-Prevention-Cheat-Sheet",
+        "version_id": "ver_d3ad6e7fce8b",
+        "version_tag": "2021-2025",
+        "block_type": "paragraph",
+        "heading_path": [
+          "Credential Stuffing Prevention Cheat Sheet",
+          "Defense in Depth & Metrics",
+          "Degradation"
+        ],
+        "text": "A more aggressive defense against credential stuffing is to implement measures that increase the amount of time the attack takes to complete. This may include incrementally increasing the complexity of the JavaScript that must be evaluated, requiring users to solve a cryptographic or Proof-of-Work computational puzzle, introducing long wait periods before responding to requests, returning overly large HTML assets or returning randomized error messages."
+      },
+      {
+        "normalized_block_id": "nrm_ver_d44134e3d0a1_b00089",
+        "document_id": "doc_owasp_a03_xss_filter_evasion_cheat_sheet",
+        "canonical_title": "OWASP - A03-XSS-Filter-Evasion-Cheat-Sheet",
+        "version_id": "ver_d44134e3d0a1",
+        "version_tag": "2021-2025",
+        "block_type": "paragraph",
+        "heading_path": [
+          "XSS Filter Evasion Cheat Sheet",
+          "Tests",
+          "Escaping JavaScript Escapes"
+        ],
+        "text": "If an application is written to output some user information inside of a JavaScript (like the following: `<SCRIPT>var a=\"$ENV{QUERY\\_STRING}\";</SCRIPT>`) and you want to inject your own JavaScript into it but the server side application escapes certain quotes, you can circumvent that by escaping their escape character. When this gets injected it will read `<SCRIPT>var a=\"\\\\\\\\\";alert('XSS');//\";</SCRIPT>` which ends up un-escaping the double quote and causing the XSS vector to fire. The XSS locator uses this method:"
+      },
+      {
+        "normalized_block_id": "nrm_ver_9363b0048b47_b00116",
+        "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+        "canonical_title": "OWASP - A05-XML-External-Entity-Prevention-Cheat-Sheet",
+        "version_id": "ver_9363b0048b47",
+        "version_tag": "2021-2025",
+        "block_type": "paragraph",
+        "heading_path": [
+          "XML External Entity Prevention Cheat Sheet",
+          ".NET",
+          "XmlReader"
+        ],
+        "text": "Therefore, `XmlReader` objects will only become unsafe in version 4.5.2 and up if both the `DtdProcessing` property is set to Parse and the `XmlReaderSetting`'s `XmlResolver` is set to a nonnull XmlResolver with default or unsafe settings. If you need to enable DTD processing, instructions on how to do so safely are described in detail in the [referenced MSDN article](https://learn.microsoft.com/en-us/archive/msdn-magazine/2009/november/xml-denial-of-service-attacks-and-defenses)."
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_032",
+    "category": "multi_document",
+    "sub_type": "multi_source_synthesis",
+    "lang": "vi",
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00059",
+        "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+        "canonical_title": "OWASP - A07-Credential-Stuffing-Prevention-Cheat-Sheet",
+        "version_id": "ver_d3ad6e7fce8b",
+        "version_tag": "2021-2025",
+        "block_type": "paragraph",
+        "heading_path": [
+          "Credential Stuffing Prevention Cheat Sheet",
+          "Defense in Depth & Metrics",
+          "Notify users about unusual security events"
+        ],
+        "text": "Details related to current or recent logins should also be made visible to the user. For example, when they login to the application, the date, time and location of their previous login attempt could be displayed to them. Additionally, if the application supports concurrent sessions, the user should be able to view a list of all active sessions, and to terminate any other sessions that are not legitimate."
+      },
+      {
+        "normalized_block_id": "nrm_ver_429d4f36078a_b00030",
+        "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+        "canonical_title": "OWASP - A07-Denial-of-Service-Cheat-Sheet",
+        "version_id": "ver_429d4f36078a",
+        "version_tag": "2021-2025",
+        "block_type": "list",
+        "heading_path": [
+          "Denial of Service Cheat Sheet",
+          "Application attacks",
+          "Software Design Concepts"
+        ],
+        "text": "- **Using validation that is cheap in resources first**: We want to reduce impact on these resources as soon as possible. More (CPU, memory and bandwidth) expensive validation should be performed afterward.\n- **Employing graceful degradation**: This is a core concept to follow during application design phase, in order to limit impact of DoS. You need to continue some level of functionality when portions of a system or application break. One of the main problems with DoS is that it causes sudden and abrupt application terminations throughout the system. A fault tolerant design enables a system or application to continue its intended operation, possibly at a reduced level, rather than failing completely if parts of the system fails.\n- **Prevent single point of failure**: Detecting and preventing single points of failure (SPOF) is key to resisting DoS attacks. Most DoS attacks assume that a system has SPOFs that will fail due to overwhelmed systems. We suggest that you employ stateless components, use redundant systems, create bulkheads to stop failures from spreading across the infrastructure, and make sure that systems can survive when external services fail. [Prevention](https://www.baeldung.com/cs/distributed-systems-prevent-single-point-failure)\n- **Avoid highly CPU consuming operations**: When a DoS attack occurs, operations that tend to use a lot of CPU resources can become serious drags on system performance and can become a point of failure. We strongly suggest that you review performance issues with your code, including problems that are inherent in the languages that you are using. See [Java](https://www.theserverside.com/answer/How-to-fix-high-Java-CPU-usage-problems) [JVM-IBM](https://www.ibm.com/docs/en/baw/23.x?topic=issues-best-practices-high-jvm-cpu-utilization) and [Microsoft-IIS](https://learn.microsoft.com/en-us/troubleshoot/developer/webapps/iis/health-diagnostic-performance/troubleshoot-high-cpu-in-iis-app-pool)\n- **Handle exceptions**: When a DoS attack occurs, it is likely that applications will throw exceptions and it is vital that your systems can handle them gracefully. Again, a DoS attack assumes that an overwhelmed system will not be able to throw exceptions in a way that the system can continue operating. We suggest that you go through your code and make sure that exceptions are handled properly. See [Large-Scale-Systems](https://raygun.com/blog/errors-and-exceptions/) [Java](https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/Java-Exception-handling-best-practices) and [Java](https://www.digitalocean.com/community/tutorials/exception-handling-in-java)\n- **Protect overflow and underflow** Since buffer overflow and underflow often lead to vulnerabilities, learning how to prevent them is key. [OWASP](https://owasp.org/www-community/vulnerabilities/Buffer_Overflow) [Overflow-Underflow-C](https://developer.apple.com/library/archive/documentation/Security/Conceptual/SecureCodingGuide/Articles/BufferOverflows.html) [Overflow](https://www.freecodecamp.org/news/buffer-overflow-attacks/)\n- **Threading**: Avoid operations which must wait for completion of large tasks to proceed. Asynchronous operations are useful in these situations.\n- Identify resource intensive pages and plan ahead."
+      },
+      {
+        "normalized_block_id": "nrm_ver_fb8b6e5c60ed_b00032",
+        "document_id": "doc_owasp_a01_authorization_cheat_sheet",
+        "canonical_title": "OWASP - A01-Authorization-Cheat-Sheet",
+        "version_id": "ver_fb8b6e5c60ed",
+        "version_tag": "2021-2025",
+        "block_type": "paragraph",
+        "heading_path": [
+          "Authorization Cheat Sheet",
+          "Recommendations",
+          "Ensure Lookup IDs are Not Accessible Even When Guessed or Cannot Be Tampered With"
+        ],
+        "text": "Applications often expose the internal object identifiers (such as an account number or Primary Key in a database) that are used to locate and reference an object. This ID may be exposed as a query parameter, path variable, \"hidden\" form field or elsewhere. For example:"
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_033",
+    "category": "multi_document",
+    "sub_type": "multi_source_synthesis",
+    "lang": "vi",
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_799c3e5bf1bc_b00041",
+        "document_id": "doc_owasp_wstg_testing_methods",
+        "canonical_title": "OWASP - WSTG-testing-methods",
+        "version_id": "ver_799c3e5bf1bc",
+        "version_tag": "v4.2",
+        "block_type": "list",
+        "heading_path": [
+          "2. Cross-Site Scripting (XSS)",
+          "4. Tools Mentioned"
+        ],
+        "text": "- **PHP Charset Encoder (PCE)** — encode payloads across 65 charsets (pp. 221, 228).\n- **Hackvertor** — online JS encoding/obfuscation (pp. 221, 228).\n- **XSS-Proxy** — advanced XSS attack tool (pp. 222, 228).\n- **ratproxy** — semi-automated passive web-app audit (p. 222).\n- **Burp Proxy / Burp Suite** — intercepting HTTP(S) proxy (pp. 222, 228).\n- **OWASP ZAP** — intercepting proxy with built-in scanner (pp. 222, 229).\n- **BeEF** — browser exploitation framework (stored XSS impact) (pp. 224, 228).\n- **XSS Assistant** — Greasemonkey script to test for XSS (p. 228).\n- Web application fuzzer / automated attack-string list (p. 217)."
+      },
+      {
+        "normalized_block_id": "nrm_ver_0df66f6c3e23_b00002",
+        "document_id": "doc_owasp_top10_a02_security_misconfiguration",
+        "canonical_title": "OWASP - Top10-A02-Security-Misconfiguration",
+        "version_id": "ver_0df66f6c3e23",
+        "version_tag": "2025",
+        "block_type": "paragraph",
+        "heading_path": [
+          "A02:2025 Security Misconfiguration",
+          "Background."
+        ],
+        "text": "Moving up from #5 in the previous edition, 100% of the applications tested were found to have some form of misconfiguration, with an average incidence rate of 3.00%, and over 719k occurrences of a Common Weakness Enumeration (CWE) in this risk category. With more shifts into highly configurable software, it's not surprising to see this category moving up. Notable CWEs included are *CWE-16 Configuration* and *CWE-611 Improper Restriction of XML External Entity Reference (XXE)*."
+      },
+      {
+        "normalized_block_id": "nrm_ver_8d5b8e494a0c_b00005",
+        "document_id": "doc_owasp_asvs_validation_sanitization_encoding",
+        "canonical_title": "OWASP - ASVS-Validation-Sanitization-Encoding",
+        "version_id": "ver_8d5b8e494a0c",
+        "version_tag": "v4.0",
+        "block_type": "paragraph",
+        "heading_path": [
+          "V5 Validation, Sanitization and Encoding",
+          "Control Objective"
+        ],
+        "text": "With modern web application architecture, output encoding is more important than ever. It is difficult to provide robust input validation in certain scenarios, so the use of safer API such as parameterized queries, auto-escaping templating frameworks, or carefully chosen output encoding is critical to the security of the application."
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_034",
+    "category": "multi_document",
+    "sub_type": "multi_source_synthesis",
+    "lang": "vi",
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_5004d1ead2df_b00062",
+        "document_id": "doc_owasp_a07_password_storage_cheat_sheet",
+        "canonical_title": "OWASP - A07-Password-Storage-Cheat-Sheet",
+        "version_id": "ver_5004d1ead2df",
+        "version_tag": "2021-2025",
+        "block_type": "paragraph",
+        "heading_path": [
+          "Password Storage Cheat Sheet",
+          "Password Hashing Algorithms",
+          "bcrypt",
+          "Pre-Hashing Passwords with bcrypt"
+        ],
+        "text": "An alternative approach is to pre-hash the user-supplied password with a fast algorithm such as SHA-2, HMAC, or BLAKE3 and then to hash the resulting hash value with bcrypt (i.e., `bcrypt(H($password)), $salt, $cost)`)..\nThis can be **dangerous** because of null bytes in the hash output value and because of [password shucking](https://www.youtube.com/watch?v=OQD3qDYMyYQ)."
+      },
+      {
+        "normalized_block_id": "nrm_ver_d3ad6e7fce8b_b00003",
+        "document_id": "doc_owasp_a07_credential_stuffing_prevention_cheat_sheet",
+        "canonical_title": "OWASP - A07-Credential-Stuffing-Prevention-Cheat-Sheet",
+        "version_id": "ver_d3ad6e7fce8b",
+        "version_tag": "2021-2025",
+        "block_type": "table",
+        "heading_path": [
+          "Credential Stuffing Prevention Cheat Sheet",
+          "Introduction"
+        ],
+        "text": "| Attack Type | Description |\n|-------------|-------------|\n| Brute Force | Testing multiple passwords from dictionary or other source against a single account. |\n| Credential Stuffing | Testing username/password pairs obtained from the breach of another site. |\n| Password Spraying | Testing a single weak password against a large number of different accounts.|"
+      },
+      {
+        "normalized_block_id": "nrm_ver_e880e38449f2_b00009",
+        "document_id": "doc_owasp_a05_php_configuration_cheat_sheet",
+        "canonical_title": "OWASP - A05-PHP-Configuration-Cheat-Sheet",
+        "version_id": "ver_e880e38449f2",
+        "version_tag": "2021-2025",
+        "block_type": "paragraph",
+        "heading_path": [
+          "PHP Configuration Cheat Sheet",
+          "PHP Configuration and Deployment",
+          "php.ini"
+        ],
+        "text": "Run a PHP branch that is listed on the official [Supported Versions](https://www.php.net/supported-versions.php) page and plan upgrades before its security-support end date. Distribution vendors may provide separate extended support, but that does not make the upstream PHP branch supported. Review the [core `php.ini` directives](https://www.php.net/manual/ini.core.php) in the PHP Manual for a complete reference on every value in the `php.ini` configuration file."
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_035",
+    "category": "multi_document",
+    "sub_type": "multi_source_synthesis",
+    "lang": "vi",
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_71e4b9124e76_b00021",
+        "document_id": "doc_owasp_top10_introduction",
+        "canonical_title": "OWASP - Top10-Introduction",
+        "version_id": "ver_71e4b9124e76",
+        "version_tag": "2025",
+        "block_type": "paragraph",
+        "heading_path": [
+          "Introduction",
+          "How the data is used for selecting categories"
+        ],
+        "text": "There are approximately 175k records (up from 125k in 2021) of CVEs mapped to CWEs in the National Vulnerability Database (NVD), extracted from OWASP Dependency Check. Additionally, there are 643 unique CWEs mapped to CVEs (up from 241 in 2021). Within the nearly 220k CVEs that were extracted, 160k had CVSS v2 scores, 156k had CVSS v3 scores, and 6k had CVSS v4 scores. Many CVEs have multiple scores, which is why they total more than 220k."
+      },
+      {
+        "normalized_block_id": "nrm_ver_c4e85c1c4f32_b00012",
+        "document_id": "doc_owasp_top10_a07_identification_and_authentication_failures",
+        "canonical_title": "OWASP - Top10-A07-Identification-and-Authentication-Failures",
+        "version_id": "ver_c4e85c1c4f32",
+        "version_tag": "2021",
+        "block_type": "paragraph",
+        "heading_path": [
+          "A07:2021 – Identification and Authentication Failures",
+          "Example Attack Scenarios"
+        ],
+        "text": "**Scenario #2:** Most authentication attacks occur due to the continued\nuse of passwords as a sole factor. Once considered best practices,\npassword rotation and complexity requirements encourage users to use\nand reuse weak passwords. Organizations are recommended to stop these\npractices per NIST 800-63 and use multi-factor authentication."
+      },
+      {
+        "normalized_block_id": "nrm_ver_ea47056e8e8f_b00032",
+        "document_id": "doc_owasp_asvs_authentication",
+        "canonical_title": "OWASP - ASVS-Authentication",
+        "version_id": "ver_ea47056e8e8f",
+        "version_tag": "v4.0",
+        "block_type": "table",
+        "heading_path": [
+          "V2 Authentication",
+          "V2.4 Credential Storage"
+        ],
+        "text": "| # | Description | L1 | L2 | L3 | CWE | [NIST &sect;](https://pages.nist.gov/800-63-3/sp800-63b.html) |\n| :---: | :--- | :---: | :---:| :---: | :---: | :---: |\n| **2.4.1** | Verify that passwords are stored in a form that is resistant to offline attacks. Passwords SHALL be salted and hashed using an approved one-way key derivation or password hashing function. Key derivation and password hashing functions take a password, a salt, and a cost factor as inputs when generating a password hash. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering)) | | ✓ | ✓ | 916 | 5.1.1.2 |\n| **2.4.2** | Verify that the salt is at least 32 bits in length and be chosen arbitrarily to minimize salt value collisions among stored hashes. For each credential, a unique salt value and the resulting hash SHALL be stored. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering)) | | ✓ | ✓ | 916 | 5.1.1.2 |\n| **2.4.3** | Verify that if PBKDF2 is used, the iteration count SHOULD be as large as verification server performance will allow, typically at least 100,000 iterations. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering)) | | ✓ | ✓ | 916 | 5.1.1.2 |\n| **2.4.4** | Verify that if bcrypt is used, the work factor SHOULD be as large as verification server performance will allow, with a minimum of 10. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering)) | | ✓ | ✓ | 916 | 5.1.1.2 |\n| **2.4.5** | Verify that an additional iteration of a key derivation function is performed, using a salt value that is secret and known only to the verifier. Generate the salt value using an approved random bit generator [SP 800-90Ar1] and provide at least the minimum security strength specified in the latest revision of SP 800-131A. The secret salt value SHALL be stored separately from the hashed passwords (e.g., in a specialized device like a hardware security module). | | ✓ | ✓ | 916 | 5.1.1.2 |"
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_036",
+    "category": "multi_document",
+    "sub_type": "multi_source_synthesis",
+    "lang": "en",
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_27d189554452_b00016",
+        "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+        "canonical_title": "OWASP - A01-Transaction-Authorization-Cheat-Sheet",
+        "version_id": "ver_27d189554452",
+        "version_tag": "2021-2025",
+        "block_type": "paragraph",
+        "heading_path": [
+          "Transaction Authorization Cheat Sheet",
+          "1. Functional Guidelines",
+          "1.1 Transaction authorization method has to allow a user to identify and acknowledge significant transaction data"
+        ],
+        "text": "In general, the user must verify all significant transaction data as a part of the transaction authorization process. If a transaction process requires a user to enter transaction data into an external device, the user should be prompted to confirm a specific value in the transaction (e.g. a target account number). The absence of a meaningful prompt could be easily abused by social engineering techniques and malware as described below in Section 1.4. Also, for more detailed discussion of input overloading problems, see [here](https://www.cl.cam.ac.uk/~sjm217/papers/fc09optimised.pdf)."
+      },
+      {
+        "normalized_block_id": "nrm_ver_6bc3550cc066_b00013",
+        "document_id": "doc_owasp_top10_what_are_application_security_risks",
+        "canonical_title": "OWASP - Top10-What-are-Application-Security-Risks",
+        "version_id": "ver_6bc3550cc066",
+        "version_tag": "2025",
+        "block_type": "paragraph",
+        "heading_path": [
+          "What are Application Security Risks?",
+          "How the data is used for selecting categories and ranking them"
+        ],
+        "text": "There are approximately 175k records (up from 125k in 2021) of CVEs mapped to CWEs in the National Vulnerability Database (NVD), extracted from OWASP Dependency Check. Additionally, there are 643 unique CWEs mapped to CVEs (up from 241 in 2021). Within the nearly 220k CVEs that were extracted, 160k had CVSS v2 scores, 156k had CVSS v3 scores, and 6k had CVSS v4 scores. Many CVEs have multiple scores, which is why they total more than 220k."
+      },
+      {
+        "normalized_block_id": "nrm_ver_9363b0048b47_b00107",
+        "document_id": "doc_owasp_a05_xml_external_entity_prevention_cheat_sheet",
+        "canonical_title": "OWASP - A05-XML-External-Entity-Prevention-Cheat-Sheet",
+        "version_id": "ver_9363b0048b47",
+        "version_tag": "2021-2025",
+        "block_type": "code",
+        "heading_path": [
+          "XML External Entity Prevention Cheat Sheet",
+          ".NET",
+          "XmlDocument"
+        ],
+        "text": "``` csharp\n static void LoadXML()\n {\n   string xxePayload = \"<!DOCTYPE doc [<!ENTITY win SYSTEM 'file:///C:/Users/testdata2.txt'>]>\"\n                     + \"<doc>&win;</doc>\";\n   string xml = \"<?xml version='1.0' ?>\" + xxePayload;\n\n   XmlDocument xmlDoc = new XmlDocument();\n   // Setting this to NULL disables DTDs - Its NOT null by default.\n   xmlDoc.XmlResolver = null;\n   xmlDoc.LoadXml(xml);\n   Console.WriteLine(xmlDoc.InnerText);\n   Console.ReadLine();\n }\n```"
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_037",
+    "category": "multi_document",
+    "sub_type": "multi_source_synthesis",
+    "lang": "en",
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_d44134e3d0a1_b00020",
+        "document_id": "doc_owasp_a03_xss_filter_evasion_cheat_sheet",
+        "canonical_title": "OWASP - A03-XSS-Filter-Evasion-Cheat-Sheet",
+        "version_id": "ver_d44134e3d0a1",
+        "version_tag": "2021-2025",
+        "block_type": "paragraph",
+        "heading_path": [
+          "XSS Filter Evasion Cheat Sheet",
+          "Tests",
+          "Malformed IMG Tags"
+        ],
+        "text": "This XSS method uses the relaxed rendering engine to create an XSS vector within an IMG tag (which needs to be encapsulated within quotes). We believe this approach was originally meant to correct sloppy coding and it would also make it significantly more difficult to correctly parse HTML tags:"
+      },
+      {
+        "normalized_block_id": "nrm_ver_27d189554452_b00020",
+        "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+        "canonical_title": "OWASP - A01-Transaction-Authorization-Cheat-Sheet",
+        "version_id": "ver_27d189554452",
+        "version_tag": "2021-2025",
+        "block_type": "paragraph",
+        "heading_path": [
+          "Transaction Authorization Cheat Sheet",
+          "1. Functional Guidelines",
+          "1.3 Change of authorization method should be authorized using the current authorization method"
+        ],
+        "text": "Some applications allow a user to chose how their transactions will be authorized. In such cases, the developer should make sure that the application can confirm the user's method of authorization to prevent any malware from changing the user's authorization method to the most vulnerable method. Additionally, the application should inform the user about any potential dangers associated with their authorization method."
+      },
+      {
+        "normalized_block_id": "nrm_ver_c4e85c1c4f32_b00007",
+        "document_id": "doc_owasp_top10_a07_identification_and_authentication_failures",
+        "canonical_title": "OWASP - Top10-A07-Identification-and-Authentication-Failures",
+        "version_id": "ver_c4e85c1c4f32",
+        "version_tag": "2021",
+        "block_type": "list",
+        "heading_path": [
+          "A07:2021 – Identification and Authentication Failures",
+          "Description"
+        ],
+        "text": "- Permits automated attacks such as credential stuffing, where the\n    attacker has a list of valid usernames and passwords.\n\n- Permits brute force or other automated attacks.\n\n- Permits default, weak, or well-known passwords, such as \"Password1\"\n    or \"admin/admin\".\n\n- Uses weak or ineffective credential recovery and forgot-password\n    processes, such as \"knowledge-based answers,\" which cannot be made\n    safe.\n\n- Uses plain text, encrypted, or weakly hashed passwords data stores (see\n    [A02:2021-Cryptographic Failures](A02_2021-Cryptographic_Failures.md)).\n\n- Has missing or ineffective multi-factor authentication.\n\n- Exposes session identifier in the URL.\n\n- Reuse session identifier after successful login.\n\n- Does not correctly invalidate Session IDs. User sessions or\n    authentication tokens (mainly single sign-on (SSO) tokens) aren't\n    properly invalidated during logout or a period of inactivity."
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_038",
+    "category": "multi_document",
+    "sub_type": "multi_source_synthesis",
+    "lang": "en",
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_81e50e16cbc6_b00094",
+        "document_id": "doc_owasp_a05_docker_security_cheat_sheet",
+        "canonical_title": "OWASP - A05-Docker-Security-Cheat-Sheet",
+        "version_id": "ver_81e50e16cbc6",
+        "version_tag": "2021-2025",
+        "block_type": "paragraph",
+        "heading_path": [
+          "Docker Security Cheat Sheet",
+          "Rules",
+          "RULE \\#10 - Keep the Docker daemon logging level at `info`"
+        ],
+        "text": "By default, the Docker daemon is configured to have a base logging level of `info`. This can be verified by checking the daemon configuration file `/etc/docker/daemon.json` for the`log-level` key. If the key is not present, the default logging level is `info`. Additionally, if the docker daemon is started with the `--log-level` option, the value of the `log-level` key in the configuration file will be overridden. To check if the Docker daemon is running with a different log level, you can use the following command:"
+      },
+      {
+        "normalized_block_id": "nrm_ver_d449b1cc14cf_b00012",
+        "document_id": "doc_owasp_a03_query_parameterization_cheat_sheet",
+        "canonical_title": "OWASP - A03-Query-Parameterization-Cheat-Sheet",
+        "version_id": "ver_d449b1cc14cf",
+        "version_tag": "2021-2025",
+        "block_type": "code",
+        "heading_path": [
+          "Query Parameterization Cheat Sheet",
+          "Parameterized Query Examples",
+          "Prepared Statement Examples",
+          "Using Java with JPA/Hibernate"
+        ],
+        "text": "```java\n// HQL\n@Entity // declare as entity;\n@NamedQuery(\n name=\"findByDescription\",\n query=\"FROM Inventory i WHERE i.productDescription = :productDescription\"\n)\npublic class Inventory implements Serializable {\n @Id\n private long id;\n private String productDescription;\n}\n\n// Use case\n// This should REALLY be validated too\nString userSuppliedParameter = request.getParameter(\"Product-Description\");\n// Perform input validation to detect attacks\nList<Inventory> list =\n session.getNamedQuery(\"findByDescription\")\n .setParameter(\"productDescription\", userSuppliedParameter).list();\n\n// Criteria API\n// This should REALLY be validated too\nString userSuppliedParameter = request.getParameter(\"Product-Description\");\n// Perform input validation to detect attacks\nInventory inv = (Inventory) session.createCriteria(Inventory.class).add\n(Restrictions.eq(\"productDescription\", userSuppliedParameter)).uniqueResult();\n```"
+      },
+      {
+        "normalized_block_id": "nrm_ver_6bc3550cc066_b00008",
+        "document_id": "doc_owasp_top10_what_are_application_security_risks",
+        "canonical_title": "OWASP - Top10-What-are-Application-Security-Risks",
+        "version_id": "ver_6bc3550cc066",
+        "version_tag": "2025",
+        "block_type": "paragraph",
+        "heading_path": [
+          "What are Application Security Risks?"
+        ],
+        "text": "Each organization is unique, and so are the threat actors for that organization, their goals, and the impact of any breach. If a public interest organization uses a content management system (CMS) for public information and a health system uses that same exact CMS for sensitive health records, the threat actors and business impacts can be very different for the same software. It is critical to understand the risk to your organization based on the exposure of the application, the applicable threat agents by situation picture (for targeted and undirected attacks by business and location) and the individual business impacts."
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_039",
+    "category": "multi_document",
+    "sub_type": "multi_source_synthesis",
+    "lang": "en",
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_8d5b8e494a0c_b00020",
+        "document_id": "doc_owasp_asvs_validation_sanitization_encoding",
+        "canonical_title": "OWASP - ASVS-Validation-Sanitization-Encoding",
+        "version_id": "ver_8d5b8e494a0c",
+        "version_tag": "v4.0",
+        "block_type": "table",
+        "heading_path": [
+          "V5 Validation, Sanitization and Encoding",
+          "V5.5 Deserialization Prevention"
+        ],
+        "text": "| # | Description | L1 | L2 | L3 | CWE |\n| :---: | :--- | :---: | :---:| :---: | :---: |\n| **5.5.1** | Verify that serialized objects use integrity checks or are encrypted to prevent hostile object creation or data tampering. ([C5](https://owasp.org/www-project-proactive-controls/#div-numbering)) | ✓ | ✓ | ✓ | 502 |\n| **5.5.2** | Verify that the application correctly restricts XML parsers to only use the most restrictive configuration possible and to ensure that unsafe features such as resolving external entities are disabled to prevent XML eXternal Entity (XXE) attacks. | ✓ | ✓ | ✓ | 611 |\n| **5.5.3** | Verify that deserialization of untrusted data is avoided or is protected in both custom code and third-party libraries (such as JSON, XML and YAML parsers). | ✓ | ✓ | ✓ | 502 |\n| **5.5.4** | Verify that when parsing JSON in browsers or JavaScript-based backends, JSON.parse is used to parse the JSON document. Do not use eval() to parse JSON. | ✓ | ✓ | ✓ | 95 |"
+      },
+      {
+        "normalized_block_id": "nrm_ver_fafcc12af83a_b00034",
+        "document_id": "doc_owasp_a03_injection_prevention_cheat_sheet",
+        "canonical_title": "OWASP - A03-Injection-Prevention-Cheat-Sheet",
+        "version_id": "ver_fafcc12af83a",
+        "version_tag": "2021-2025",
+        "block_type": "paragraph",
+        "heading_path": [
+          "Injection Prevention Cheat Sheet",
+          "Forms of Injection",
+          "Scripting languages"
+        ],
+        "text": "All scripting languages used in web applications have a form of an `eval` call which receives code at runtime and executes it. If code is crafted using unvalidated and unescaped user input code injection can occur which allows an attacker to subvert application logic and eventually to gain local access."
+      },
+      {
+        "normalized_block_id": "nrm_ver_c660dd06c1d6_b00011",
+        "document_id": "doc_owasp_top10_a03_injection",
+        "canonical_title": "OWASP - Top10-A03-Injection",
+        "version_id": "ver_c660dd06c1d6",
+        "version_tag": "2021",
+        "block_type": "list",
+        "heading_path": [
+          "A03:2021 – Injection",
+          "How to Prevent"
+        ],
+        "text": "- The preferred option is to use a safe API, which avoids using the\n    interpreter entirely, provides a parameterized interface, or\n    migrates to Object Relational Mapping Tools (ORMs).<br/>\n    **Note:** Even when parameterized, stored procedures can still introduce\n    SQL injection if PL/SQL or T-SQL concatenates queries and data or\n    executes hostile data with EXECUTE IMMEDIATE or exec().\n\n- Use positive server-side input validation. This is\n    not a complete defense as many applications require special\n    characters, such as text areas or APIs for mobile applications.\n\n- For any residual dynamic queries, escape special characters using\n    the specific escape syntax for that interpreter.<br/>\n    **Note:** SQL structures such as table names, column names, and so on\n    cannot be escaped, and thus user-supplied structure names are\n    dangerous. This is a common issue in report-writing software."
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_040",
+    "category": "multi_document",
+    "sub_type": "multi_source_synthesis",
+    "lang": "en",
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_d6ebc4e65422_b00026",
+        "document_id": "doc_owasp_top10_a01_broken_access_control",
+        "canonical_title": "OWASP - Top10-A01-Broken-Access-Control",
+        "version_id": "ver_d6ebc4e65422",
+        "version_tag": "2025",
+        "block_type": "list",
+        "heading_path": [
+          "A01:2025 Broken Access Control",
+          "List of Mapped CWEs"
+        ],
+        "text": "* [CWE-22 Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')](https://cwe.mitre.org/data/definitions/22.html)\n\n* [CWE-23 Relative Path Traversal](https://cwe.mitre.org/data/definitions/23.html)\n\n* [CWE-36 Absolute Path Traversal](https://cwe.mitre.org/data/definitions/36.html)\n\n* [CWE-59 Improper Link Resolution Before File Access ('Link Following')](https://cwe.mitre.org/data/definitions/59.html)\n\n* [CWE-61 UNIX Symbolic Link (Symlink) Following](https://cwe.mitre.org/data/definitions/61.html)\n\n* [CWE-65 Windows Hard Link](https://cwe.mitre.org/data/definitions/65.html)\n\n* [CWE-200 Exposure of Sensitive Information to an Unauthorized Actor](https://cwe.mitre.org/data/definitions/200.html)\n\n* [CWE-201 Exposure of Sensitive Information Through Sent Data](https://cwe.mitre.org/data/definitions/201.html)\n\n* [CWE-219 Storage of File with Sensitive Data Under Web Root](https://cwe.mitre.org/data/definitions/219.html)\n\n* [CWE-276 Incorrect Default Permissions](https://cwe.mitre.org/data/definitions/276.html)\n\n* [CWE-281 Improper Preservation of Permissions](https://cwe.mitre.org/data/definitions/281.html)\n\n* [CWE-282 Improper Ownership Management](https://cwe.mitre.org/data/definitions/282.html)\n\n* [CWE-283 Unverified Ownership](https://cwe.mitre.org/data/definitions/283.html)\n\n* [CWE-284 Improper Access Control](https://cwe.mitre.org/data/definitions/284.html)\n\n* [CWE-285 Improper Authorization](https://cwe.mitre.org/data/definitions/285.html)\n\n* [CWE-352 Cross-Site Request Forgery (CSRF)](https://cwe.mitre.org/data/definitions/352.html)\n\n* [CWE-359 Exposure of Private Personal Information to an Unauthorized Actor](https://cwe.mitre.org/data/definitions/359.html)\n\n* [CWE-377 Insecure Temporary File](https://cwe.mitre.org/data/definitions/377.html)\n\n* [CWE-379 Creation of Temporary File in Directory with Insecure Permissions](https://cwe.mitre.org/data/definitions/379.html)\n\n* [CWE-402 Transmission of Private Resources into a New Sphere ('Resource Leak')](https://cwe.mitre.org/data/definitions/402.html)\n\n* [CWE-424 Improper Protection of Alternate Path](https://cwe.mitre.org/data/definitions/424.html)\n\n* [CWE-425 Direct Request ('Forced Browsing')](https://cwe.mitre.org/data/definitions/425.html)\n\n* [CWE-441 Unintended Proxy or Intermediary ('Confused Deputy')](https://cwe.mitre.org/data/definitions/441.html)\n\n* [CWE-497 Exposure of Sensitive System Information to an Unauthorized Control Sphere](https://cwe.mitre.org/data/definitions/497.html)\n\n* [CWE-538 Insertion of Sensitive Information into Externally-Accessible File or Directory](https://cwe.mitre.org/data/definitions/538.html)\n\n* [CWE-540 Inclusion of Sensitive Information in Source Code](https://cwe.mitre.org/data/definitions/540.html)\n\n* [CWE-548 Exposure of Information Through Directory Listing](https://cwe.mitre.org/data/definitions/548.html)\n\n* [CWE-552 Files or Directories Accessible to External Parties](https://cwe.mitre.org/data/definitions/552.html)\n\n* [CWE-566 Authorization Bypass Through User-Controlled SQL Primary Key](https://cwe.mitre.org/data/definitions/566.html)\n\n* [CWE-601 URL Redirection to Untrusted Site ('Open Redirect')](https://cwe.mitre.org/data/definitions/601.html)\n\n* [CWE-615 Inclusion of Sensitive Information in Source Code Comments](https://cwe.mitre.org/data/definitions/615.html)\n\n* [CWE-639 Authorization Bypass Through User-Controlled Key](https://cwe.mitre.org/data/definitions/639.html)\n\n* [CWE-668 Exposure of Resource to Wrong Sphere](https://cwe.mitre.org/data/definitions/668.html)\n\n* [CWE-732 Incorrect Permission Assignment for Critical Resource](https://cwe.mitre.org/data/definitions/732.html)\n\n* [CWE-749 Exposed Dangerous Method or Function](https://cwe.mitre.org/data/definitions/749.html)\n\n* [CWE-862 Missing Authorization](https://cwe.mitre.org/data/definitions/862.html)\n\n* [CWE-863 Incorrect Authorization](https://cwe.mitre.org/data/definitions/863.html)\n\n* [CWE-918 Server-Side Request Forgery (SSRF)](https://cwe.mitre.org/data/definitions/918.html)\n\n* [CWE-922 Insecure Storage of Sensitive Information](https://cwe.mitre.org/data/definitions/922.html)\n\n* [CWE-1275 Sensitive Cookie with Improper SameSite Attribute](https://cwe.mitre.org/data/definitions/1275.html)"
+      },
+      {
+        "normalized_block_id": "nrm_ver_d1b9bedd6c92_b00009",
+        "document_id": "doc_owasp_a05_infrastructure_as_code_security_cheat_sheet",
+        "canonical_title": "OWASP - A05-Infrastructure-as-Code-Security-Cheat-Sheet",
+        "version_id": "ver_d1b9bedd6c92",
+        "version_tag": "2021-2025",
+        "block_type": "list",
+        "heading_path": [
+          "Infrastructure as Code Security Cheatsheet",
+          "Introduction",
+          "Deploy"
+        ],
+        "text": "- Inventory management:\n    - Commissioning - whenever a resource is deployed, ensure the resource is labeled, tracked and logged as part of the inventory management.\n    - Decommissioning - whenever a resource deletion is initiated, ensure the underlying configurations are erased, data is securely deleted and the resource is completely removed from the runtime as well as from the inventory management.\n    - Tagging - It is essential to tag cloud assets properly. During IaC operations, untagged assets are most likely to result in ghost resources that make it difficult to detect, visualize, and gain observability within the cloud environment and can affect the posture causing a drift. These ghost resources can add to billing costs, make maintenance difficult, and affect the reliability. The only solution to this is careful tagging and monitoring for untagged resources.\n- Dynamic analysis - Dynamic analysis helps in evaluating any existing environments and services that it will interoperate with or run on. This helps in uncovering potential risks due to the interoperability. Open-source tools such as ZAP, Burp, GVM, etc., can be leveraged for dynamic analysis."
+      },
+      {
+        "normalized_block_id": "nrm_ver_d44134e3d0a1_b00233",
+        "document_id": "doc_owasp_a03_xss_filter_evasion_cheat_sheet",
+        "canonical_title": "OWASP - A03-XSS-Filter-Evasion-Cheat-Sheet",
+        "version_id": "ver_d44134e3d0a1",
+        "version_tag": "2021-2025",
+        "block_type": "paragraph",
+        "heading_path": [
+          "XSS Filter Evasion Cheat Sheet",
+          "Tests",
+          "IMG Embedded Commands",
+          "IMG Embedded Commands part II"
+        ],
+        "text": "This is more scary because there are absolutely no identifiers that make it look suspicious other than it is not hosted on your own domain. The vector uses a 302 or 304 (others work too) to redirect the image back to a command. So a normal `<IMG SRC=\"httx://badguy.com/a.jpg\">` could actually be an attack vector to run commands as the user who views the image link. Here is the `.htaccess` (under Apache) line to accomplish the vector:"
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_041",
+    "category": "multi_turn_coreference",
+    "sub_type": "dependent_coreference",
+    "lang": "vi",
+    "context_block": {
+      "normalized_block_id": "nrm_ver_92f7483b2854_b00066",
+      "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+      "canonical_title": "OWASP - A07-Authentication-Cheat-Sheet",
+      "version_id": "ver_92f7483b2854",
+      "version_tag": "2021-2025",
+      "block_type": "paragraph",
+      "heading_path": [
+        "Authentication Cheat Sheet",
+        "Authentication General Guidelines",
+        "Authentication and Error Messages",
+        "Authentication Responses"
+      ],
+      "text": "The problem with returning a generic error message for the user is a User Experience (UX) matter. A legitimate user might feel confused with the generic messages, thus making it hard for them to use the application, and might after several retries, leave the application because of its complexity. The decision to return a *generic error message* can be determined based on the criticality of the application and its data. For example, for critical applications, the team can decide that under the failure scenario, a user will always be redirected to the support page and a *generic error message* will be returned."
+    },
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_92f7483b2854_b00127",
+        "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+        "canonical_title": "OWASP - A07-Authentication-Cheat-Sheet",
+        "version_id": "ver_92f7483b2854",
+        "version_tag": "2021-2025",
+        "block_type": "paragraph",
+        "heading_path": [
+          "Authentication Cheat Sheet",
+          "Use of authentication protocols that require no password",
+          "SAML"
+        ],
+        "text": "Security Assertion Markup Language (SAML) is often considered to compete with OpenId. The most recommended version is 2.0 since it is very feature-complete and provides strong security. Like OpenId, SAML uses identity providers, but unlike OpenId, it is XML-based and provides more flexibility. SAML is based on browser redirects which send XML data. Furthermore, SAML isn't only initiated by a service provider; it can also be initiated from the identity provider. This allows the user to navigate through different portals while still being authenticated without having to do anything, making the process transparent."
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_042",
+    "category": "multi_turn_coreference",
+    "sub_type": "dependent_coreference",
+    "lang": "vi",
+    "context_block": {
+      "normalized_block_id": "nrm_ver_3c38656e2be6_b00062",
+      "document_id": "doc_owasp_a07_session_management_cheat_sheet",
+      "canonical_title": "OWASP - A07-Session-Management-Cheat-Sheet",
+      "version_id": "ver_3c38656e2be6",
+      "version_tag": "2021-2025",
+      "block_type": "paragraph",
+      "heading_path": [
+        "Session Management Cheat Sheet",
+        "Cookies",
+        "Secure Attribute"
+      ],
+      "text": "The `Secure` cookie attribute instructs web browsers to only send the cookie through an encrypted HTTPS (SSL/TLS) connection. This session protection mechanism is mandatory to prevent the disclosure of the session ID through MitM (Man-in-the-Middle) attacks. It ensures that an attacker cannot simply capture the session ID from web browser traffic."
+    },
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_3c38656e2be6_b00043",
+        "document_id": "doc_owasp_a07_session_management_cheat_sheet",
+        "canonical_title": "OWASP - A07-Session-Management-Cheat-Sheet",
+        "version_id": "ver_3c38656e2be6",
+        "version_tag": "2021-2025",
+        "block_type": "paragraph",
+        "heading_path": [
+          "Session Management Cheat Sheet",
+          "Session Management Implementation",
+          "Server-Side Session Token Storage"
+        ],
+        "text": "Storing random session tokens verbatim can be acceptable in a tightly controlled session store, but anyone who can read it can reuse unexpired tokens. High entropy protects against guessing; it does not protect exposed tokens. If read-only disclosure of the store is in your threat model, store a one-way verifier instead. [RFC 6819 recommends token hashes](https://www.rfc-editor.org/rfc/rfc6819.html#section-4.3.2) for the corresponding OAuth access-token database threat."
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_043",
+    "category": "multi_turn_coreference",
+    "sub_type": "dependent_coreference",
+    "lang": "vi",
+    "context_block": {
+      "normalized_block_id": "nrm_ver_3c38656e2be6_b00079",
+      "document_id": "doc_owasp_a07_session_management_cheat_sheet",
+      "canonical_title": "OWASP - A07-Session-Management-Cheat-Sheet",
+      "version_id": "ver_3c38656e2be6",
+      "version_tag": "2021-2025",
+      "block_type": "paragraph",
+      "heading_path": [
+        "Session Management Cheat Sheet",
+        "Cookies",
+        "Domain and Path Attributes"
+      ],
+      "text": "It is recommended to use a narrow or restricted scope for these two attributes. In this way, the `Domain` attribute should not be set (restricting the cookie just to the origin server) and the `Path` attribute should be set as restrictive as possible to the web application path that makes use of the session ID."
+    },
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_3c38656e2be6_b00190",
+        "document_id": "doc_owasp_a07_session_management_cheat_sheet",
+        "canonical_title": "OWASP - A07-Session-Management-Cheat-Sheet",
+        "version_id": "ver_3c38656e2be6",
+        "version_tag": "2021-2025",
+        "block_type": "paragraph",
+        "heading_path": [
+          "Session Management Cheat Sheet",
+          "Session Attacks Detection",
+          "Session ID Guessing and Brute Force Detection"
+        ],
+        "text": "If an attacker tries to guess or brute force a valid session ID, they need to launch multiple sequential requests against the target web application using different session IDs from a single (or set of) IP address(es). Additionally, if an attacker tries to analyze the predictability of the session ID (e.g. using statistical analysis), they need to launch multiple sequential requests from a single (or set of) IP address(es) against the target web application to gather new valid session IDs."
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_044",
+    "category": "multi_turn_coreference",
+    "sub_type": "dependent_coreference",
+    "lang": "vi",
+    "context_block": {
+      "normalized_block_id": "nrm_ver_429d4f36078a_b00045",
+      "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+      "canonical_title": "OWASP - A07-Denial-of-Service-Cheat-Sheet",
+      "version_id": "ver_429d4f36078a",
+      "version_tag": "2021-2025",
+      "block_type": "list",
+      "heading_path": [
+        "Denial of Service Cheat Sheet",
+        "Network attacks",
+        "Rate limiting"
+      ],
+      "text": "- **Define a minimum ingress data rate** with request-read timeouts to mitigate slow HTTP attacks; see [Apache's minimum-rate and timeout controls](https://httpd.apache.org/docs/current/mod/mod_reqtimeout.html#requestreadtimeout) for an example. A minimum rate set too high can reject legitimate slow clients; setting it too low weakens protection against slow senders. Inspect the logs to establish a baseline of genuine traffic rates.\n- **Define an absolute connection timeout**\n- **Define a maximum ingress data rate limit** then drop all connections above that rate.\n- **Define a total bandwidth size limit** to prevent bandwidth exhaustion\n- **Define a load limit**, which specifies the number of users allowed to access any given resource at any given time."
+    },
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_429d4f36078a_b00026",
+        "document_id": "doc_owasp_a07_denial_of_service_cheat_sheet",
+        "canonical_title": "OWASP - A07-Denial-of-Service-Cheat-Sheet",
+        "version_id": "ver_429d4f36078a",
+        "version_tag": "2021-2025",
+        "block_type": "paragraph",
+        "heading_path": [
+          "Denial of Service Cheat Sheet",
+          "Application attacks"
+        ],
+        "text": "**Application layer attacks usually make applications unavailable by exhausting system resources or by making it unusable in a functional way.** These attacks do not have to consume the network bandwidth to be effective. Rather they place an operational strain on the application server in such a way that the server becomes unavailable, unusable or non-functional. All attacks exploiting weaknesses on OSI layer 7 protocol stack are generally categorised as application attacks. They are the most challenging to identify/mitigate."
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_045",
+    "category": "multi_turn_coreference",
+    "sub_type": "dependent_coreference",
+    "lang": "vi",
+    "context_block": {
+      "normalized_block_id": "nrm_ver_a2fa1bbe38f1_b01047",
+      "document_id": "doc_owasp_application_security_verification_standard",
+      "canonical_title": "OWASP - Application-Security-Verification-Standard",
+      "version_id": "ver_a2fa1bbe38f1",
+      "version_tag": "5.0.0",
+      "block_type": "table",
+      "heading_path": [
+        "Application Security Verification",
+        "Version 5.0.0",
+        "Appendix C: Cryptography Standards"
+      ],
+      "text": "Scheme | Domain Parameters | Forward Secrecy | Status\nFinite Field Diffie-Hellman (FFDH) | L >= 3072 & N >= 256 | Yes | A\nElliptic Curve Diffie-Hellman (ECDH) | f >= 256-383 | Yes | A\nEncrypted key transport with RSA-PKCS#1 v1.5 | | No | D"
+    },
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_a2fa1bbe38f1_b00567",
+        "document_id": "doc_owasp_application_security_verification_standard",
+        "canonical_title": "OWASP - Application-Security-Verification-Standard",
+        "version_id": "ver_a2fa1bbe38f1",
+        "version_tag": "5.0.0",
+        "block_type": "table",
+        "heading_path": [
+          "Application Security Verification",
+          "Version 5.0.0",
+          "V8 Authorization"
+        ],
+        "text": "# | Description | Level\n8.2.1 | Verify that the application ensures that function-level access is restricted to | 1\n | consumers with explicit permissions. |\n8.2.2 | Verify that the application ensures that data-specific access is restricted to consumers with explicit permissions to specific data items to mitigate | 1\n | insecure direct object reference (IDOR) and broken object level |\n | authorization (BOLA). |"
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_046",
+    "category": "multi_turn_coreference",
+    "sub_type": "dependent_coreference",
+    "lang": "vi",
+    "context_block": {
+      "normalized_block_id": "nrm_ver_a2fa1bbe38f1_b00099",
+      "document_id": "doc_owasp_application_security_verification_standard",
+      "canonical_title": "OWASP - Application-Security-Verification-Standard",
+      "version_id": "ver_a2fa1bbe38f1",
+      "version_tag": "5.0.0",
+      "block_type": "paragraph",
+      "heading_path": [
+        "Application Security Verification",
+        "Version 5.0.0",
+        "What is the ASVS?"
+      ],
+      "text": "There is also flexibility around how to achieve this. Security decisions might be documented in a\nliteral document, which developers are expected to refer to. Alternatively, security decisions could\nbe documented and implemented in a common code library that all developers are mandated to use.\nIn both cases, the desired result is achieved."
+    },
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_a2fa1bbe38f1_b00475",
+        "document_id": "doc_owasp_application_security_verification_standard",
+        "canonical_title": "OWASP - Application-Security-Verification-Standard",
+        "version_id": "ver_a2fa1bbe38f1",
+        "version_tag": "5.0.0",
+        "block_type": "table",
+        "heading_path": [
+          "Application Security Verification",
+          "Version 5.0.0",
+          "V6 Authentication"
+        ],
+        "text": "# | Description | Level\n6.4.1 | Verify that system generated initial passwords or activation codes are | 1\n | securely randomly generated, follow the existing password policy, and expire after a short period of time or after they are initially used. These |\n | initial secrets must not be permitted to become the long term password. |\n6.4.2 | Verify that password hints or knowledge-based authentication (so-called | 1\n | “secret questions”) are not present. |\n6.4.3 | Verify that a secure process for resetting a forgotten password is | 2\n | implemented, that does not bypass any enabled multi-factor authentication |\n | mechanisms. |\n6.4.4 | Verify that if a multi-factor authentication factor is lost, evidence of identity proofing is performed at the same level as during enrollment. | 2\n6.4.5 | Verify that renewal instructions for authentication mechanisms which expire | 3\n | are sent with enough time to be carried out before the old authentication mechanism expires, configuring automated reminders if necessary. |\n6.4.6 | Verify that administrative users can initiate the password reset process for | 3\n | the user, but that this does not allow them to change or choose the user’s |\n | password. This prevents a situation where they know the user’s password. |"
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_047",
+    "category": "multi_turn_coreference",
+    "sub_type": "dependent_coreference",
+    "lang": "vi",
+    "context_block": {
+      "normalized_block_id": "nrm_ver_77afde9ea09f_b00070",
+      "document_id": "doc_first_cvss_specification",
+      "canonical_title": "First - CVSS-Specification",
+      "version_id": "ver_77afde9ea09f",
+      "version_tag": "v4.0",
+      "block_type": "table",
+      "heading_path": [
+        "Specification Document",
+        "2.",
+        "2.1."
+      ],
+      "text": "Adjacent (A) | The vulnerable system is bound to a protocol stack, but the attack is limited at the protocol level to a logically adjacent topology. This can mean an attack must be launched from the same shared proximity (e.g., Bluetooth, NFC, or IEEE 802.11) or logical network (e.g., local IP subnet), or from within a secure or otherwise limited administrative domain (e.g., MPLS, secure VPN within an administrative network zone). One example of an Adjacent attack would be an ARP (IPv4) or neighbor discovery (IPv6) flood leading to a denial of service on the local LAN segment (e.g., CVE-2013-6014).\nLocal (L) | The vulnerable system is not bound to the network stack and the attacker’s path is via read/write/execute capabilities. Either: the attacker exploits the vulnerability by accessing the target system ● locally (e.g., keyboard, console), or through terminal emulation (e.g., SSH); or the attacker relies on User Interaction by another person to perform ● actions required to exploit the vulnerability (e.g., using social engineering techniques to trick a legitimate user into opening a malicious document).\nPhysical (P) | The attack requires the attacker to physically touch or manipulate the vulnerable system. Physical interaction may be brief (e.g., evil maid attack1) or persistent. An example of such an attack is a cold boot attack in which an attacker gains access to disk encryption keys after physically accessing the target system. Other examples include peripheral attacks via FireWire/USB Direct Memory Access (DMA)."
+    },
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_77afde9ea09f_b00190",
+        "document_id": "doc_first_cvss_specification",
+        "canonical_title": "First - CVSS-Specification",
+        "version_id": "ver_77afde9ea09f",
+        "version_tag": "v4.0",
+        "block_type": "paragraph",
+        "heading_path": [
+          "Specification Document",
+          "5.",
+          "5.1."
+        ],
+        "text": "When a system does have an intended use or fitness of purpose aligned to safety, it is possible\nthat exploiting a vulnerability within that system may have Safety impact which can be\nrepresented in the Supplemental Metrics group. Lack of a Safety metric value being supplied\ndoes NOT mean that there may not be any Safety-related impacts. The possible values for the\nSafety Supplemental Metric are as follows:"
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_048",
+    "category": "multi_turn_coreference",
+    "sub_type": "independent_topic_shift",
+    "lang": "vi",
+    "context_block": {
+      "normalized_block_id": "nrm_ver_a2fa1bbe38f1_b01087",
+      "document_id": "doc_owasp_application_security_verification_standard",
+      "canonical_title": "OWASP - Application-Security-Verification-Standard",
+      "version_id": "ver_a2fa1bbe38f1",
+      "version_tag": "5.0.0",
+      "block_type": "list",
+      "heading_path": [
+        "Application Security Verification",
+        "Version 5.0.0",
+        "Appendix D: Recommendations"
+      ],
+      "text": "• Verify the use of a secure software development lifecycle that addresses security in all stages\nof development.\n• Verify the use of threat modeling for every design change or sprint planning to identify threats,\nplan for countermeasures, facilitate appropriate risk responses, and guide security testing.\n• Verify that all user stories and features contain functional security constraints, such as “As a\nuser, I should be able to view and edit my profile. I should not be able to view or edit anyone\nelse’s profile”\n• Verify availability of a secure coding checklist, security requirements, guideline, or policy to\nall developers and testers.\n• Verify that an ongoing process exists to ensure that the application source code is free from\nbackdoors, malicious code (e.g., salami attacks, logic bombs, time bombs), and undocumented\nor hidden features (e.g., Easter eggs, insecure debugging tools). Complying with this section\nis not possible without complete access to source code, including third-party libraries, and is\ntherefore probably only suitable for applications requiring the very highest levels of security.\n• Verify that mechanisms are in place to detect and respond to configuration drift in deployed\nenvironments. This may include using immutable infrastructure, automated redeployment\nfrom a secure baseline, or drift detection tools that compare current state against approved\nconfigurations.\n• Verify that configuration hardening is performed on all third-party products, libraries, frameworks, and services as per their individual recommendations."
+    },
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00087",
+        "document_id": "doc_owasp_a07_multifactor_authentication_cheat_sheet",
+        "canonical_title": "OWASP - A07-Multifactor-Authentication-Cheat-Sheet",
+        "version_id": "ver_aa0c03c9d10c",
+        "version_tag": "2021-2025",
+        "block_type": "paragraph",
+        "heading_path": [
+          "Multifactor Authentication Cheat Sheet",
+          "Something You Have",
+          "One-Time Password Tokens",
+          "Software OTP Tokens"
+        ],
+        "text": "A cheaper and easier alternative to hardware tokens is using software to generate Time-based One-Time Password (TOTP) codes. This would typically involve the user installing a TOTP application on their mobile phone, and then scanning a QR code provided by the web application which provides the initial seed. The authenticator app generates a numeric code using a configured time step; [RFC 6238 recommends a default of 30 seconds](https://www.rfc-editor.org/rfc/rfc6238.html#section-5.2). The app and server must use the same time-step value."
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_049",
+    "category": "multi_turn_coreference",
+    "sub_type": "independent_topic_shift",
+    "lang": "vi",
+    "context_block": {
+      "normalized_block_id": "nrm_ver_3c38656e2be6_b00150",
+      "document_id": "doc_owasp_a07_session_management_cheat_sheet",
+      "canonical_title": "OWASP - A07-Session-Management-Cheat-Sheet",
+      "version_id": "ver_3c38656e2be6",
+      "version_tag": "2021-2025",
+      "block_type": "paragraph",
+      "heading_path": [
+        "Session Management Cheat Sheet",
+        "Session Expiration",
+        "Automatic Session Expiration",
+        "Idle Timeout"
+      ],
+      "text": "Session timeout management and expiration must be enforced server-side. If the client is used to enforce the session timeout, for example using the session token or other client parameters to track time references (e.g. number of minutes since login time), an attacker could manipulate these to extend the session duration."
+    },
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_a2fa1bbe38f1_b00462",
+        "document_id": "doc_owasp_application_security_verification_standard",
+        "canonical_title": "OWASP - Application-Security-Verification-Standard",
+        "version_id": "ver_a2fa1bbe38f1",
+        "version_tag": "5.0.0",
+        "block_type": "paragraph",
+        "heading_path": [
+          "Application Security Verification",
+          "Version 5.0.0",
+          "V6 Authentication"
+        ],
+        "text": "This section contains general requirements for the security of authentication mechanisms as well as\nsetting out the different expectations for levels. L2 applications must force the use of multi-factor\nauthentication (MFA). L3 applications must use hardware-based authentication, performed in an attested and trusted execution environment (TEE). This could include device-bound passkeys, eIDAS\nLevel of Assurance (LoA) High enforced authenticators, authenticators with NIST Authenticator Assurance Level 3 (AAL3) assurance, or an equivalent mechanism."
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_050",
+    "category": "multi_turn_coreference",
+    "sub_type": "independent_topic_shift",
+    "lang": "vi",
+    "context_block": {
+      "normalized_block_id": "nrm_ver_a2fa1bbe38f1_b00545",
+      "document_id": "doc_owasp_application_security_verification_standard",
+      "canonical_title": "OWASP - Application-Security-Verification-Standard",
+      "version_id": "ver_a2fa1bbe38f1",
+      "version_tag": "5.0.0",
+      "block_type": "table",
+      "heading_path": [
+        "Application Security Verification",
+        "Version 5.0.0",
+        "V7 Session Management"
+      ],
+      "text": "# | Description | Level\n7.5.1 | Verify that the application requires full re-authentication before allowing modifications to sensitive account attributes which may affect authentication such as email address, phone number, MFA configuration, or | 2\n | other information used in account recovery. |\n7.5.2 | Verify that users are able to view and (having authenticated again with at | 2\n | least one factor) terminate any or all currently active sessions. |"
+    },
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_3653eed28e7f_b00081",
+        "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+        "canonical_title": "OWASP - A07-SAML-Security-Cheat-Sheet",
+        "version_id": "ver_3653eed28e7f",
+        "version_tag": "2021-2025",
+        "block_type": "paragraph",
+        "heading_path": [
+          "SAML Security Cheat Sheet",
+          "Identity Provider and Service Provider Considerations",
+          "X.509 Certificate Considerations",
+          "Certificate Hierarchy",
+          "Public Certificate Authority (CA) Signed"
+        ],
+        "text": "It is worth noting that the CABF does not have governance around the use or acquisition of SAML certificates, certificates from their member CAs are what are widely considered Public CAs. That is, they are widely trusted by browsers, operating systems, and various development frameworks."
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_051",
+    "category": "multi_turn_coreference",
+    "sub_type": "dependent_coreference",
+    "lang": "en",
+    "context_block": {
+      "normalized_block_id": "nrm_ver_fb6fb6a43e11_b00091",
+      "document_id": "doc_owasp_a01_cross_site_request_forgery_prevention_cheat_sheet",
+      "canonical_title": "OWASP - A01-Cross-Site-Request-Forgery-Prevention-Cheat-Sheet",
+      "version_id": "ver_fb6fb6a43e11",
+      "version_tag": "2021-2025",
+      "block_type": "paragraph",
+      "heading_path": [
+        "Cross-Site Request Forgery Prevention Cheat Sheet",
+        "Dealing with Client-Side CSRF Attacks (IMPORTANT)"
+      ],
+      "text": "**Client-Side vs. Classical CSRF:** In the classical CSRF model, the server-side program is the most vulnerable component, because it cannot distinguish whether the incoming authenticated request was performed **intentionally**, also known as the confused deputy problem. In the client-side CSR model, the most vulnerable component is the client-side JavaScript program because an attacker can use it to generate arbitrary asynchronous requests by manipulating the request endpoint and/or its parameters. Client-side CSRF is due to an input validation problem and it reintroduces the confused deputy flaw, that is, the server-side won't, again, be able to distinguish if the request was performed intentionally or not."
+    },
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_fb6fb6a43e11_b00097",
+        "document_id": "doc_owasp_a01_cross_site_request_forgery_prevention_cheat_sheet",
+        "canonical_title": "OWASP - A01-Cross-Site-Request-Forgery-Prevention-Cheat-Sheet",
+        "version_id": "ver_fb6fb6a43e11",
+        "version_tag": "2021-2025",
+        "block_type": "paragraph",
+        "heading_path": [
+          "Cross-Site Request Forgery Prevention Cheat Sheet",
+          "Dealing with Client-Side CSRF Attacks (IMPORTANT)",
+          "Client-side CSRF Example"
+        ],
+        "text": "**Attack:** Usually, attackers share a malicious URL with the victim (through elements such as spear-phishing emails) and because the malicious URL appears to be from an honest, reputable (but vulnerable) website, the user often clicks on it. Alternatively, the attackers can create an attack page to abuse browser APIs (e.g., the [`window.open()`](https://developer.mozilla.org/en-US/docs/Web/API/Window/open) API) and trick the vulnerable JavaScript of the target page to send the HTTP request, which closely resembles the attack model of the classical CSRF attacks."
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_052",
+    "category": "multi_turn_coreference",
+    "sub_type": "dependent_coreference",
+    "lang": "en",
+    "context_block": {
+      "normalized_block_id": "nrm_ver_a2fa1bbe38f1_b00299",
+      "document_id": "doc_owasp_application_security_verification_standard",
+      "canonical_title": "OWASP - Application-Security-Verification-Standard",
+      "version_id": "ver_a2fa1bbe38f1",
+      "version_tag": "5.0.0",
+      "block_type": "list",
+      "heading_path": [
+        "Application Security Verification",
+        "Version 5.0.0",
+        "V1 Encoding and Sanitization"
+      ],
+      "text": "• OWASP LDAP Injection Prevention Cheat Sheet\n• OWASP Cross Site Scripting Prevention Cheat Sheet\n• OWASP DOM Based Cross Site Scripting Prevention Cheat Sheet\n• OWASP XML External Entity Prevention Cheat Sheet\n• OWASP Web Security Testing Guide: Client-Side Testing\n• OWASP Java Encoding Project\n• DOMPurify - Client-side HTML Sanitization Library\n• RFC4180 - Common Format and MIME Type for Comma-Separated Values (CSV) Files"
+    },
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_a2fa1bbe38f1_b00319",
+        "document_id": "doc_owasp_application_security_verification_standard",
+        "canonical_title": "OWASP - Application-Security-Verification-Standard",
+        "version_id": "ver_a2fa1bbe38f1",
+        "version_tag": "5.0.0",
+        "block_type": "list",
+        "heading_path": [
+          "Application Security Verification",
+          "Version 5.0.0",
+          "V2 Validation and Business Logic"
+        ],
+        "text": "• The “published version”of the JSON Schema validation specification is considered productionready, but not strictly speaking “stable.”When using JSON Schema validation, ensure there are\nno gaps with the guidance in the requirements below.\n• Any JSON Schema validation libraries in use should also be monitored and updated if necessary\nonce the standard is formalized.\n• DTD validation should not be used, and framework DTD evaluation should be disabled, to avoid\nissues with XXE attacks against DTDs."
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_053",
+    "category": "multi_turn_coreference",
+    "sub_type": "dependent_coreference",
+    "lang": "en",
+    "context_block": {
+      "normalized_block_id": "nrm_ver_3c38656e2be6_b00070",
+      "document_id": "doc_owasp_a07_session_management_cheat_sheet",
+      "canonical_title": "OWASP - A07-Session-Management-Cheat-Sheet",
+      "version_id": "ver_3c38656e2be6",
+      "version_tag": "2021-2025",
+      "block_type": "paragraph",
+      "heading_path": [
+        "Session Management Cheat Sheet",
+        "Cookies",
+        "SameSite Attribute"
+      ],
+      "text": "The `SameSite` attribute controls whether browsers send a cookie with cross-site requests. `SameSite=Strict` excludes cross-site requests, while `SameSite=Lax` permits top-level cross-site navigations that use safe HTTP methods. Treat `SameSite` as [defense in depth against CSRF](Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.md#samesite-cookie-attribute), not as a replacement for a CSRF token. Session cookies must explicitly set `SameSite=Strict` (preferred) or `SameSite=Lax`. Never use `SameSite=None` without `Secure`, and do not rely on the browser-default value, which varies across browsers and versions."
+    },
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_3c38656e2be6_b00165",
+        "document_id": "doc_owasp_a07_session_management_cheat_sheet",
+        "canonical_title": "OWASP - A07-Session-Management-Cheat-Sheet",
+        "version_id": "ver_3c38656e2be6",
+        "version_tag": "2021-2025",
+        "block_type": "paragraph",
+        "heading_path": [
+          "Session Management Cheat Sheet",
+          "Session Expiration",
+          "Web Content Caching and Clear-Site-Data"
+        ],
+        "text": "Even after the session has ended, private or sensitive data exchanged during the session may still be accessible through the web browser's cache. Set the cache policy in HTTP response headers on sensitive pages. Do not treat HTML `<meta http-equiv>` tags as an equivalent cache-control mechanism: [browsers support only specific processing instructions](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/meta/http-equiv#value), and unsupported values can be ignored."
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_054",
+    "category": "multi_turn_coreference",
+    "sub_type": "dependent_coreference",
+    "lang": "en",
+    "context_block": {
+      "normalized_block_id": "nrm_ver_3c38656e2be6_b00011",
+      "document_id": "doc_owasp_a07_session_management_cheat_sheet",
+      "canonical_title": "OWASP - A07-Session-Management-Cheat-Sheet",
+      "version_id": "ver_3c38656e2be6",
+      "version_tag": "2021-2025",
+      "block_type": "paragraph",
+      "heading_path": [
+        "Session Management Cheat Sheet",
+        "Session ID Properties"
+      ],
+      "text": "In order to keep the authenticated state and track the users progress within the web application, applications provide users with a **session identifier** (session ID or token) that is assigned at session creation time, and is shared and exchanged by the user and the web application for the duration of the session (it is sent on every HTTP request). The session ID is a `name=value` pair."
+    },
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_3c38656e2be6_b00056",
+        "document_id": "doc_owasp_a07_session_management_cheat_sheet",
+        "canonical_title": "OWASP - A07-Session-Management-Cheat-Sheet",
+        "version_id": "ver_3c38656e2be6",
+        "version_tag": "2021-2025",
+        "block_type": "list",
+        "heading_path": [
+          "Session Management Cheat Sheet",
+          "Session Management Implementation",
+          "Transport Layer Security"
+        ],
+        "text": "- Do not switch a given session from HTTP to HTTPS, or vice-versa, as this will disclose the session ID in the clear through the network.\n    - When redirecting to HTTPS, ensure that the cookie is set or regenerated **after** the redirect has occurred.\n- Do not mix encrypted and unencrypted contents (HTML pages, images, CSS, JavaScript files, etc) in the same page, or from the same domain.\n- Where possible, avoid offering public unencrypted contents and private encrypted contents from the same host. Where insecure content is required, consider hosting this on a separate insecure domain.\n- Implement [HTTP Strict Transport Security (HSTS)](HTTP_Strict_Transport_Security_Cheat_Sheet.md) to enforce HTTPS connections."
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_055",
+    "category": "multi_turn_coreference",
+    "sub_type": "dependent_coreference",
+    "lang": "en",
+    "context_block": {
+      "normalized_block_id": "nrm_ver_27d189554452_b00044",
+      "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+      "canonical_title": "OWASP - A01-Transaction-Authorization-Cheat-Sheet",
+      "version_id": "ver_27d189554452",
+      "version_tag": "2021-2025",
+      "block_type": "paragraph",
+      "heading_path": [
+        "Transaction Authorization Cheat Sheet",
+        "2. Non-functional guidelines",
+        "2.4 Application should prevent authorization credentials brute-forcing"
+      ],
+      "text": "**Developers must make sure that their application can't allow attackers to brute-force a transaction at the point where transaction authorization credentials are submitted to the server for verification. After a set number of failed authorization attempts, the entire transaction authorization process should be restarted.** Also, there are other methods to prevent brute-forcing and stop other automation-related techniques, see [OWASP Authentication Cheat Sheet](Authentication_Cheat_Sheet.md#protect-against-automated-attacks)."
+    },
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_27d189554452_b00015",
+        "document_id": "doc_owasp_a01_transaction_authorization_cheat_sheet",
+        "canonical_title": "OWASP - A01-Transaction-Authorization-Cheat-Sheet",
+        "version_id": "ver_27d189554452",
+        "version_tag": "2021-2025",
+        "block_type": "paragraph",
+        "heading_path": [
+          "Transaction Authorization Cheat Sheet",
+          "1. Functional Guidelines",
+          "1.1 Transaction authorization method has to allow a user to identify and acknowledge significant transaction data"
+        ],
+        "text": "For example, if an SMS message confirms significant transaction data, the developer could respond by returning the target account, amount and type of transfer to the user. However, it is inconvenient for an unconnected [CAP reader](https://en.wikipedia.org/wiki/Chip_Authentication_Program) to require users to enter that data. In such cases, the developer should probably return the minimum amount of significant transaction data (e.g. partial target account number and amount) for confirmation."
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_056",
+    "category": "multi_turn_coreference",
+    "sub_type": "dependent_coreference",
+    "lang": "en",
+    "context_block": {
+      "normalized_block_id": "nrm_ver_cc8eeb30af79_b00016",
+      "document_id": "doc_owasp_asvs_config",
+      "canonical_title": "OWASP - ASVS-Config",
+      "version_id": "ver_cc8eeb30af79",
+      "version_tag": "v4.0",
+      "block_type": "paragraph",
+      "heading_path": [
+        "V14 Configuration",
+        "V14.3 Unintended Security Disclosure"
+      ],
+      "text": "Configurations for production should be hardened to protect against common attacks, such as debug consoles, raise the bar for Cross-site Scripting (XSS) and Remote File Inclusion (RFI) attacks, and to eliminate trivial information discovery \"vulnerabilities\" that are the unwelcome hallmark of many penetration testing reports. Many of these issues are rarely rated as a significant risk, but they are chained together with other vulnerabilities. If these issues are not present by default, it raises the bar before most attacks can succeed."
+    },
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_cc8eeb30af79_b00006",
+        "document_id": "doc_owasp_asvs_config",
+        "canonical_title": "OWASP - ASVS-Config",
+        "version_id": "ver_cc8eeb30af79",
+        "version_tag": "v4.0",
+        "block_type": "paragraph",
+        "heading_path": [
+          "V14 Configuration",
+          "V14.1 Build and Deploy"
+        ],
+        "text": "Build pipelines are the basis for repeatable security - every time something insecure is discovered, it can be resolved in the source code, build or deployment scripts, and tested automatically. We are strongly encouraging the use of build pipelines with automatic security and dependency checks that warn or break the build to prevent known security issues being deployed into production. Manual steps performed irregularly directly leads to avoidable security mistakes."
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_057",
+    "category": "multi_turn_coreference",
+    "sub_type": "dependent_coreference",
+    "lang": "en",
+    "context_block": {
+      "normalized_block_id": "nrm_ver_a2fa1bbe38f1_b00573",
+      "document_id": "doc_owasp_application_security_verification_standard",
+      "canonical_title": "OWASP - Application-Security-Verification-Standard",
+      "version_id": "ver_a2fa1bbe38f1",
+      "version_tag": "5.0.0",
+      "block_type": "table",
+      "heading_path": [
+        "Application Security Verification",
+        "Version 5.0.0",
+        "V8 Authorization"
+      ],
+      "text": "# | Description | Level\n8.3.1 | Verify that the application enforces authorization rules at a trusted service | 1\n | layer and doesn’t rely on controls that an untrusted consumer could |\n | manipulate, such as client-side JavaScript. |\n8.3.2 | Verify that changes to values on which authorization decisions are made are | 3\n | applied immediately. Where changes cannot be applied immediately, (such |\n | as when relying on data in self-contained tokens), there must be mitigating |\n | controls to alert when a consumer performs an action when they are no |\n | longer authorized to do so and revert the change. Note that this alternative |\n | would not mitigate information leakage. |\n8.3.3 | Verify that access to an object is based on the originating subject’s | 3\n | (e.g. consumer’s) permissions, not on the permissions of any intermediary |\n | or service acting on their behalf. For example, if a consumer calls a web |\n | service using a self-contained token for authentication, and the service then requests data from a different service, the second service will use the consumer’s token, rather than a machine-to-machine token from the first |\n | service, to make permission decisions. |"
+    },
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_a2fa1bbe38f1_b00233",
+        "document_id": "doc_owasp_application_security_verification_standard",
+        "canonical_title": "OWASP - Application-Security-Verification-Standard",
+        "version_id": "ver_a2fa1bbe38f1",
+        "version_tag": "5.0.0",
+        "block_type": "paragraph",
+        "heading_path": [
+          "Application Security Verification",
+          "Version 5.0.0",
+          "Changes Compared to v4.x"
+        ],
+        "text": "Direct mappings to other standards have been removed from the main body of the standard. The aim\nis to prepare a mapping with the OWASP Common Requirement Enumeration (CRE) project, which\nin turn will link ASVS to a range of OWASP projects and external standards."
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_058",
+    "category": "multi_turn_coreference",
+    "sub_type": "independent_topic_shift",
+    "lang": "en",
+    "context_block": {
+      "normalized_block_id": "nrm_ver_92f7483b2854_b00025",
+      "document_id": "doc_owasp_a07_authentication_cheat_sheet",
+      "canonical_title": "OWASP - A07-Authentication-Cheat-Sheet",
+      "version_id": "ver_92f7483b2854",
+      "version_tag": "2021-2025",
+      "block_type": "list",
+      "heading_path": [
+        "Authentication Cheat Sheet",
+        "Authentication General Guidelines",
+        "Compare Password Hashes Using Safe Functions"
+      ],
+      "text": "- Has a maximum input length, to protect against denial of service attacks with very long inputs.\n- Explicitly sets the type of both variables, to protect against type confusion attacks such as Magic Hashes in PHP.\n- Returns in constant time, to protect against timing attacks."
+    },
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_77afde9ea09f_b00111",
+        "document_id": "doc_first_cvss_specification",
+        "canonical_title": "First - CVSS-Specification",
+        "version_id": "ver_77afde9ea09f",
+        "version_tag": "v4.0",
+        "block_type": "paragraph",
+        "heading_path": [
+          "Specification Document",
+          "2.",
+          "2.2."
+        ],
+        "text": "This metric measures the impact to the confidentiality of the information managed by the\nsystem due to a successfully exploited vulnerability. Confidentiality refers to limiting\ninformation access and disclosure to only authorized users, as well as preventing access by, or\ndisclosure to, unauthorized ones. The resulting score is greatest when the loss to the system is\nhighest. The list of possible values is presented in Table 6 (for the Vulnerable System) and\nTable 7 (when there is a Subsequent System impacted)."
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_059",
+    "category": "multi_turn_coreference",
+    "sub_type": "independent_topic_shift",
+    "lang": "en",
+    "context_block": {
+      "normalized_block_id": "nrm_ver_3c38656e2be6_b00209",
+      "document_id": "doc_owasp_a07_session_management_cheat_sheet",
+      "canonical_title": "OWASP - A07-Session-Management-Cheat-Sheet",
+      "version_id": "ver_3c38656e2be6",
+      "version_tag": "2021-2025",
+      "block_type": "paragraph",
+      "heading_path": [
+        "Session Management Cheat Sheet",
+        "Session Management WAF Protections"
+      ],
+      "text": "Web Application Firewalls offer detection and protection capabilities against session based attacks. On the one hand, it is trivial for WAFs to enforce the usage of security attributes on cookies, such as the `Secure` and `HttpOnly` flags, applying basic rewriting rules on the `Set-Cookie` header for all the web application responses that set a new cookie."
+    },
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_aa0c03c9d10c_b00040",
+        "document_id": "doc_owasp_a07_multifactor_authentication_cheat_sheet",
+        "canonical_title": "OWASP - A07-Multifactor-Authentication-Cheat-Sheet",
+        "version_id": "ver_aa0c03c9d10c",
+        "version_tag": "2021-2025",
+        "block_type": "list",
+        "heading_path": [
+          "Multifactor Authentication Cheat Sheet",
+          "Implementing MFA",
+          "Improving User Experience",
+          "Risk Based Authentication"
+        ],
+        "text": "- Requiring MFA when the user logs in from a new device or location.\n- Requiring MFA when the user logs in from a location that is considered to be high risk.\n- Using corporate IP ranges or [geolocation](#geolocation) as risk signals when deciding whether to require additional authentication."
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_060",
+    "category": "multi_turn_coreference",
+    "sub_type": "independent_topic_shift",
+    "lang": "en",
+    "context_block": {
+      "normalized_block_id": "nrm_ver_421639d8a75f_b00153",
+      "document_id": "doc_owasp_a03_dom_based_xss_prevention_cheat_sheet",
+      "canonical_title": "OWASP - A03-DOM-based-XSS-Prevention-Cheat-Sheet",
+      "version_id": "ver_421639d8a75f",
+      "version_tag": "2021-2025",
+      "block_type": "paragraph",
+      "heading_path": [
+        "DOM based XSS Prevention Cheat Sheet",
+        "Common Problems Associated with Mitigating DOM Based XSS",
+        "Inconsistencies of Encoding Libraries"
+      ],
+      "text": "ESAPI is one of the few which works on an allowlist and encodes all non-alphanumeric characters. It is important to use an encoding library that understands which characters can be used to exploit vulnerabilities in their respective contexts. Misconceptions abound related to the proper encoding that is required."
+    },
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_a604ef065640_b00025",
+        "document_id": "doc_owasp_a07_json_web_token_cheat_sheet",
+        "canonical_title": "OWASP - A07-JSON-Web-Token-Cheat-Sheet",
+        "version_id": "ver_a604ef065640",
+        "version_tag": "2021-2025",
+        "block_type": "paragraph",
+        "heading_path": [
+          "JSON Web Token Cheat Sheet",
+          "Considerations about using JWTs",
+          "Not using JWTs"
+        ],
+        "text": "JWTs are often suggested for “stateless” user sessions. However, if you use JWTs for user sessions, you will need a solution for managing session invalidation. This can be achieved using a deny list of revoked sessions/tokens. If your application implements such a deny list, user sessions won't be completely stateless anymore which might defeat the benefits of stateless sessions. You might want to consider using a plain session system and follow the advices from the dedicated [session management cheat sheet](Session_Management_Cheat_Sheet.md)."
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_061",
+    "category": "traps_hallucination",
+    "sub_type": "false_premise_contradiction",
+    "lang": "vi",
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_77afde9ea09f_b00307",
+        "document_id": "doc_first_cvss_specification",
+        "canonical_title": "First - CVSS-Specification",
+        "version_id": "ver_77afde9ea09f",
+        "version_tag": "v4.0",
+        "block_type": "table",
+        "heading_path": [
+          "Specification Document",
+          "8.",
+          "8.2."
+        ],
+        "text": "Levels | Constraints | Highest Severity Vector(s)\n0 | (CR:H and VC:H) or (IR:H and VI:H) or (AR:H and VA:H) | VC:H/VI:H/VA:H/CR:H/IR:H/AR:H\n1 | not (CR:H and VC:H) and not (IR:H and VI:H) and not (AR:H and VA:H) | VC:H/VI:H/VA:H/CR:M/IR:M/AR:M or VC:H/VI:H/VA:L/CR:M/IR:M/AR:H or VC:H/VI:L/VA:H/CR:M/IR:H/AR:M or VC:H/VI:L/VA:L/CR:M/IR:H/AR:H or VC:L/VI:H/VA:H/CR:H/IR:M/AR:M or VC:L/VI:H/VA:L/CR:H/IR:M/AR:H or VC:L/VI:L/VA:H/CR:H/IR:H/AR:M or VC:L/VI:L/VA:L/CR:H/IR:H/AR:H"
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_062",
+    "category": "traps_hallucination",
+    "sub_type": "false_premise_contradiction",
+    "lang": "vi",
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_e191eadd3a0c_b00035",
+        "document_id": "doc_owasp_a07_choosing_and_using_security_questions_cheat_sheet",
+        "canonical_title": "OWASP - A07-Choosing-and-Using-Security-Questions-Cheat-Sheet",
+        "version_id": "ver_e191eadd3a0c",
+        "version_tag": "2021-2025",
+        "block_type": "paragraph",
+        "heading_path": [
+          "Choosing and Using Security Questions Cheat Sheet",
+          "Choosing Security Questions",
+          "System Defined Security Questions"
+        ],
+        "text": "System defined security questions are based on information that is already known about the user. The users' personal details are often used, including the full name, address and date of birth. However these can easily be obtained by an attacker from social media, and as such provide a very weak form of authentication."
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_063",
+    "category": "traps_hallucination",
+    "sub_type": "false_premise_contradiction",
+    "lang": "vi",
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_ce5ddd72c7e5_b00028",
+        "document_id": "doc_owasp_a03_content_security_policy_cheat_sheet",
+        "canonical_title": "OWASP - A03-Content-Security-Policy-Cheat-Sheet",
+        "version_id": "ver_ce5ddd72c7e5",
+        "version_tag": "2021-2025",
+        "block_type": "paragraph",
+        "heading_path": [
+          "Content Security Policy Cheat Sheet",
+          "Context",
+          "Defense in Depth"
+        ],
+        "text": "Even on a fully static website, which does not accept any user input, a CSP can be used to enforce the use of [Subresource Integrity (SRI)](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity). This can help prevent malicious code from being loaded on the website if one of the third-party sites hosting JavaScript files (such as analytics scripts) is compromised."
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_064",
+    "category": "traps_hallucination",
+    "sub_type": "false_premise_contradiction",
+    "lang": "vi",
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_fb6fb6a43e11_b00053",
+        "document_id": "doc_owasp_a01_cross_site_request_forgery_prevention_cheat_sheet",
+        "canonical_title": "OWASP - A01-Cross-Site-Request-Forgery-Prevention-Cheat-Sheet",
+        "version_id": "ver_fb6fb6a43e11",
+        "version_tag": "2021-2025",
+        "block_type": "paragraph",
+        "heading_path": [
+          "Cross-Site Request Forgery Prevention Cheat Sheet",
+          "Fetch Metadata headers",
+          "Ease of use"
+        ],
+        "text": "Unlike [synchronizer tokens](#synchronizer-token-pattern) or [double-submit patterns](#alternative-using-a-double-submit-cookie-pattern) — which require additional client/server coordination and are difficult to implement correctly — Fetch Metadata checks are much more straightforward. They typically require only a small amount of server-side logic (inspect Sec-Fetch-Site, optionally refine with Sec-Fetch-Mode/Sec-Fetch-Dest) and no client changes. That simplicity reduces complexity, making the approach attractive for many applications."
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_065",
+    "category": "traps_hallucination",
+    "sub_type": "false_premise_contradiction",
+    "lang": "en",
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_3653eed28e7f_b00024",
+        "document_id": "doc_owasp_a07_saml_security_cheat_sheet",
+        "canonical_title": "OWASP - A07-SAML-Security-Cheat-Sheet",
+        "version_id": "ver_3653eed28e7f",
+        "version_tag": "2021-2025",
+        "block_type": "list",
+        "heading_path": [
+          "SAML Security Cheat Sheet",
+          "Validate Binding Implementation"
+        ],
+        "text": "- For an HTTP Redirect Binding refer to [SAML Binding](https://docs.oasis-open.org/security/saml/v2.0/saml-bindings-2.0-os.pdf) (3.4). To view an encoding example, you may want to reference RequestUtil.java found within [Google's reference implementation](https://developers.google.com/google-apps/sso/saml_reference_implementation_web).\n- For an HTTP POST Binding refer to [SAML Binding](https://docs.oasis-open.org/security/saml/v2.0/saml-bindings-2.0-os.pdf) (3.5). The caching considerations are also very important. If a SAML protocol message gets cached, it can subsequently be used as a Stolen Assertion (6.4.1) or Replay (6.4.5) attack."
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_066",
+    "category": "traps_hallucination",
+    "sub_type": "false_premise_contradiction",
+    "lang": "en",
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_3c38656e2be6_b00148",
+        "document_id": "doc_owasp_a07_session_management_cheat_sheet",
+        "canonical_title": "OWASP - A07-Session-Management-Cheat-Sheet",
+        "version_id": "ver_3c38656e2be6",
+        "version_tag": "2021-2025",
+        "block_type": "paragraph",
+        "heading_path": [
+          "Session Management Cheat Sheet",
+          "Session Expiration",
+          "Automatic Session Expiration",
+          "Idle Timeout"
+        ],
+        "text": "All sessions should implement an idle or inactivity timeout. This timeout defines the amount of time a session will remain active in case there is no activity in the session, closing and invalidating the session upon the defined idle period since the last HTTP request received by the web application for a given session ID."
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_067",
+    "category": "traps_hallucination",
+    "sub_type": "false_premise_contradiction",
+    "lang": "en",
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_a2fa1bbe38f1_b00054",
+        "document_id": "doc_owasp_application_security_verification_standard",
+        "canonical_title": "OWASP - Application-Security-Verification-Standard",
+        "version_id": "ver_a2fa1bbe38f1",
+        "version_tag": "5.0.0",
+        "block_type": "list",
+        "heading_path": [
+          "Application Security Verification",
+          "Version 5.0.0",
+          "Preface"
+        ],
+        "text": "• Updated Levels: While ASVS retains its three-tier model, the level definitions have evolved to\nmake the ASVS easier to adopt. Level 1 is designed as the initial step to adopting the ASVS, providing the first layer of defense. Level 2 represents a comprehensive view of standard security\npractices, and Level 3 addresses advanced, high-assurance requirements."
+      }
+    ]
+  },
+  {
+    "slot_id": "HO100_068",
+    "category": "traps_hallucination",
+    "sub_type": "false_premise_contradiction",
+    "lang": "en",
+    "source_blocks": [
+      {
+        "normalized_block_id": "nrm_ver_a2fa1bbe38f1_b00872",
+        "document_id": "doc_owasp_application_security_verification_standard",
+        "canonical_title": "OWASP - Application-Security-Verification-Standard",
+        "version_id": "ver_a2fa1bbe38f1",
+        "version_tag": "5.0.0",
+        "block_type": "table",
+        "heading_path": [
+          "Application Security Verification",
+          "Version 5.0.0",
+          "V16 Security Logging and Error Handling"
+        ],
+        "text": "# | Description | Level\n16.3.1 | Verify that all authentication operations are logged, including successful and | 2\n | unsuccessful attempts. Additional metadata, such as the type of |\n | authentication or factors used, should also be collected. |\n16.3.2 | Verify that failed authorization attempts are logged. For L3, this must | 2\n | include logging all authorization decisions, including logging when sensitive |\n | data is accessed (without logging the sensitive data itself). |\n16.3.3 | Verify that the application logs the security events that are defined in the | 2\n | documentation and also logs attempts to bypass the security controls, such |\n | as input validation, business logic, and anti-automation. |\n16.3.4 | Verify that the application logs unexpected errors and security control | 2\n | failures such as backend TLS failures. |"
+      }
+    ]
+  }
+]

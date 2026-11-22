@@ -9,7 +9,7 @@ from verifier import extract_claims
 
 
 def strip_footnotes(markdown_text: str) -> str:
-    """Tách bỏ phần danh mục tham chiếu tự động ở cuối bài để trích xuất đúng nội dung trả lời."""
+    """Strip the automated reference list at the end of the text to extract the core answer content."""
     if not markdown_text:
         return ""
     cleaned = re.sub(
@@ -23,7 +23,7 @@ def strip_footnotes(markdown_text: str) -> str:
 
 
 class SemanticClaimMatcher:
-    """Đối chiếu ngữ nghĩa đa ngữ (BAAI/bge-m3) phục vụ Answer Correctness & Answer Relevancy."""
+    """Multilingual semantic matching (BAAI/bge-m3) for Answer Correctness & Answer Relevancy."""
 
     def __init__(self, model_name: str = "BAAI/bge-m3", device: str = "cuda"):
         self.model = get_shared_sentence_transformer(model_name, device=device)
@@ -51,7 +51,7 @@ class SemanticClaimMatcher:
         reference_claims: list[str],
         threshold: float = 0.62,
     ) -> tuple[float, float, float]:
-        """Tính Claim Precision, Claim Recall và Claim F1 (RAGChecker)."""
+        """Compute Claim Precision, Claim Recall và Claim F1 (RAGChecker)."""
         if not reference_claims and not generated_claims:
             return 1.0, 1.0, 1.0
         if not reference_claims or not generated_claims:
@@ -75,9 +75,9 @@ def compute_citation_metrics(
     generation_mode: str,
 ) -> tuple[float | None, float | None, float | None]:
     """
-    Tính Citation Precision, Citation Coverage và Citation F1 (ALCE):
-    - Citation-worthy claims: các mệnh đề sự thật không thuộc General Knowledge Advisory.
-    - Valid citation: thẻ trích dẫn [n] trỏ tới bằng chứng hỗ trợ (SUPPORTED) mệnh đề đó.
+    Compute Citation Precision, Citation Coverage, and Citation F1 (ALCE):
+    - Citation-worthy claims: factual statements not belonging to General Knowledge Advisory.
+    - Valid citation: citation tag [n] pointing to evidence that supports (SUPPORTED) that claim.
     """
     if not verification_dict:
         return None, None, None
@@ -117,7 +117,7 @@ def evaluate_generation_sample(
     matcher: SemanticClaimMatcher,
     llm_client: Any,
 ) -> dict[str, float | None]:
-    """Đánh giá toàn bộ chỉ số Answer Quality và Evidence & Citation Quality cho 1 mẫu."""
+    """Evaluate all Answer Quality and Evidence & Citation Quality metrics for 1 sample."""
     actual_status = envelope_dict.get("status", "error")
     if actual_status != "ok":
         return {
@@ -135,12 +135,12 @@ def evaluate_generation_sample(
     gen_mode = (envelope_dict.get("metadata") or {}).get("generation_mode", "ABSTENTION")
     ref_claims = (sample.get("answer_ground_truth") or {}).get("reference_claims") or []
 
-    # 1. Faithfulness (RAGAS)
+    # Faithfulness (RAGAS)
     faithfulness: float | None = None
     if ver_report.get("status") != VerificationStatus.SKIPPED.value:
         faithfulness = float(ver_report.get("faithfulness_score", 0.0))
 
-    # 2. Answer Correctness: Claim Precision / Recall / F1 (RAGChecker)
+    # Answer Correctness: Claim Precision / Recall / F1 (RAGChecker)
     clean_answer = strip_footnotes(envelope_dict.get("final_answer_markdown") or "")
     extracted = extract_claims(clean_answer)
     gen_claim_texts = [
@@ -154,13 +154,13 @@ def evaluate_generation_sample(
     if ref_claims:
         p_c, r_c, f1_c = matcher.claim_prf1(gen_claim_texts, ref_claims)
 
-    # 3. Answer Relevancy: Reverse Question Generation (RAGAS)
+    # Answer Relevancy: Reverse Question Generation (RAGAS)
     ar_score: float | None = None
     rev_questions = llm_client.generate_reverse_questions(clean_answer, lang=sample["lang"], n=3)
     if rev_questions:
         ar_score = round(float(np.mean([matcher.sim(sample["query"], rq) for rq in rev_questions])), 4)
 
-    # 4. Evidence & Citation Quality: Precision, Coverage, F1 (ALCE)
+    # Evidence & Citation Quality: Precision, Coverage, F1 (ALCE)
     cp, cr, cf1 = compute_citation_metrics(
         verification_dict=ver_report,
         generation_mode=gen_mode,

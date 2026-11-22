@@ -3,7 +3,7 @@ from typing import Any
 
 
 class AbstentionTracker:
-    """Theo dõi ma trận nhầm lẫn và các chỉ số bổ trợ của Abstention Performance."""
+    """Track the confusion matrix and supplementary metrics of Abstention Performance."""
 
     def __init__(self) -> None:
         self.tp_answered = 0
@@ -70,7 +70,7 @@ def check_version_consistency(
     sample: dict[str, Any],
     citations: list[dict[str, Any]],
 ) -> bool | None:
-    """Kiểm tra mức độ nhất quán phiên bản cho các mẫu có enforce_version_isolation."""
+    """Verify version consistency for samples with enforce_version_isolation."""
     ev_gt = sample.get("evidence_ground_truth") or {}
     if not ev_gt.get("enforce_version_isolation"):
         return None
@@ -101,8 +101,8 @@ def evaluate_task_success_and_error(
     version_ok: bool | None,
 ) -> tuple[int, float, str | None]:
     """
-    Chấm Task Success Score (thang 0..2: 0=Fail, 1=Partial, 2=Full Success),
-    quy đổi nhị phân TSR và gán nhãn Error Taxonomy (E1, E2, E3).
+    Score Task Success Score (scale 0..2: 0=Fail, 1=Partial, 2=Full Success),
+    convert to binary TSR, and assign Error Taxonomy labels (E1, E2, E3).
     """
     exp_routing = sample.get("expected_routing") or {}
     exp_status = exp_routing.get("status", "ok")
@@ -118,7 +118,7 @@ def evaluate_task_success_and_error(
     ver_gate = meta.get("verification_gate", "skipped")
     ev_status = meta.get("evidence_status", "NONE")
 
-    # 1. Nhóm câu hỏi kỳ vọng từ chối / ngoài phạm vi / hỏi lại (traps & oos_and_safety)
+    # Question group expected to abstain / out-of-scope / clarify (traps & oos_and_safety)
     if exp_status in {"abstained", "rejected", "out_of_scope", "clarification_needed"}:
         if actual_status == exp_status:
             return 2, 1.0, None
@@ -130,7 +130,7 @@ def evaluate_task_success_and_error(
             return 0, 0.0, "E1_Stage2_Routing_and_Safety"
         return 0, 0.0, "E2_Stage3_Retrieval"
 
-    # 2. Nhóm câu hỏi hợp lệ kỳ vọng status == "ok"
+    # Valid question group expected to return status == "ok"
     if s2_out.get("status") != "ok" or actual_intent != exp_intent or actual_ctx != exp_ctx:
         if actual_status == "ok" and (claim_recall or 0.0) >= 0.5:
             return 1, 1.0, "E1_Stage2_Routing_and_Safety"
@@ -165,7 +165,7 @@ def evaluate_e2e_task_sample(
     abstention_tracker: AbstentionTracker,
     error_counter: Counter,
 ) -> dict[str, Any]:
-    """Đánh giá Routing Accuracy, TSR, Abstention và Error Taxonomy cho 1 mẫu."""
+    """Evaluate Routing Accuracy, TSR, Abstention, and Error Taxonomy for 1 sample."""
     exp_routing = sample.get("expected_routing") or {}
     exp_status = exp_routing.get("status", "ok")
     exp_intent = exp_routing.get("intent", "SEARCH")

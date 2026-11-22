@@ -1,0 +1,23 @@
+{
+  "frozen_at_utc": "2026-11-21T13:58:43.119719+00:00",
+  "system_version": "v1_baseline",
+  "dataset": "e2e_eval_dataset.json (150 samples)",
+  "reports": {
+    "generation_report.json": {
+      "size_bytes": 3868,
+      "sha256": "73831b457a7fe19973839d8adce8c07a1896b665cd366e87256929a7ee828ec9"
+    },
+    "task_report.json": {
+      "size_bytes": 2843,
+      "sha256": "78804060e7c449caa030807c3b5cb384c3f0f79ceffdc068efae76e0a9dd0e83"
+    },
+    "performance_report.json": {
+      "size_bytes": 7048,
+      "sha256": "85a5a558f7f5372bf3d81f02be0ba5643cea8a8c686491dd9bf9f7a08fa12058"
+    },
+    "final_evaluation_report.json": {
+      "size_bytes": 964889,
+      "sha256": "d6d6bde6f444186fe3419cec2a8dca0640e6b1ae0bf5e5b6b698249aa0a072b2"
+    }
+  }
+}

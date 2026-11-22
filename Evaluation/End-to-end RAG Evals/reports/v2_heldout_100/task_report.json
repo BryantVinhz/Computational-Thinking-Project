@@ -1,0 +1,106 @@
+{
+  "system_config": {
+    "chunking_strategy": "semantic (L_max=650)",
+    "retrieval_pipeline": "Hybrid (BM25 + bge-m3) -> RRF(k=60) -> bge-reranker-v2-m3(tau=0.25) -> MMR",
+    "generator_model": "Qwen/Qwen3-4B",
+    "verifier_model": "BAAI/bge-m3 (tau=0.50)",
+    "total_samples": 100,
+    "run_tag": "v2_heldout_100",
+    "dataset_file": "e2e_heldout_100.json"
+  },
+  "task_and_routing": {
+    "overall": {
+      "routing_accuracy": 43.0,
+      "routing_accuracy_n": 100,
+      "tsr_binary": 54.0,
+      "tsr_binary_n": 100,
+      "tsr_full_only": 29.0,
+      "tsr_full_only_n": 100,
+      "version_accuracy": 55.56,
+      "version_accuracy_n": 18
+    },
+    "cat:single_document_qa": {
+      "routing_accuracy": 45.0,
+      "routing_accuracy_n": 20,
+      "tsr_binary": 50.0,
+      "tsr_binary_n": 20,
+      "tsr_full_only": 15.0,
+      "tsr_full_only_n": 20,
+      "version_accuracy": 75.0,
+      "version_accuracy_n": 8
+    },
+    "lang:vi": {
+      "routing_accuracy": 54.0,
+      "routing_accuracy_n": 50,
+      "tsr_binary": 58.0,
+      "tsr_binary_n": 50,
+      "tsr_full_only": 38.0,
+      "tsr_full_only_n": 50,
+      "version_accuracy": 66.67,
+      "version_accuracy_n": 9
+    },
+    "lang:en": {
+      "routing_accuracy": 32.0,
+      "routing_accuracy_n": 50,
+      "tsr_binary": 50.0,
+      "tsr_binary_n": 50,
+      "tsr_full_only": 20.0,
+      "tsr_full_only_n": 50,
+      "version_accuracy": 44.44,
+      "version_accuracy_n": 9
+    },
+    "cat:multi_document": {
+      "routing_accuracy": 40.0,
+      "routing_accuracy_n": 20,
+      "tsr_binary": 15.0,
+      "tsr_binary_n": 20,
+      "tsr_full_only": 10.0,
+      "tsr_full_only_n": 20,
+      "version_accuracy": 40.0,
+      "version_accuracy_n": 10
+    },
+    "cat:multi_turn_coreference": {
+      "routing_accuracy": 30.0,
+      "routing_accuracy_n": 20,
+      "tsr_binary": 25.0,
+      "tsr_binary_n": 20,
+      "tsr_full_only": 10.0,
+      "tsr_full_only_n": 20
+    },
+    "cat:traps_hallucination": {
+      "routing_accuracy": 40.0,
+      "routing_accuracy_n": 20,
+      "tsr_binary": 90.0,
+      "tsr_binary_n": 20,
+      "tsr_full_only": 50.0,
+      "tsr_full_only_n": 20
+    },
+    "cat:oos_and_safety": {
+      "routing_accuracy": 60.0,
+      "routing_accuracy_n": 20,
+      "tsr_binary": 90.0,
+      "tsr_binary_n": 20,
+      "tsr_full_only": 60.0,
+      "tsr_full_only_n": 20
+    }
+  },
+  "abstention_performance": {
+    "confusion_matrix": {
+      "TP_answered": 37,
+      "FP_false_answer": 0,
+      "TN_abstained": 32,
+      "FN_false_abstain": 31
+    },
+    "precision_abstain_pct": 50.79,
+    "recall_abstain_pct": 100.0,
+    "f1_abstain_pct": 67.37,
+    "false_answer_rate_pct": 0.0,
+    "answer_rate_pct": 37.0,
+    "answerable_query_accuracy_pct": 35.29
+  },
+  "error_taxonomy_summary": {
+    "E1_Stage2_Routing_and_Safety": 54,
+    "E2_Stage3_Retrieval": 6,
+    "E3_Stage4_Synthesis_Citation_Verification": 11
+  }
+}

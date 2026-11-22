@@ -1,0 +1,325 @@
+150 - V1
+ GPU sẵn sàng: Tesla T4
+>>> Bắt đầu End-to-End & System Performance Evaluation (150 mẫu) trên: CUDA
+>>> Đang nạp mô hình sinh văn bản 'Qwen/Qwen3-4B' lên cuda...
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+>>> [PHA 1] Thực thi toàn trình 150 mẫu và ghi nhận System Performance...
+  ... Đã thực thi 10/150 mẫu (41.8s)
+Requested version(s) ['5.0.0'] not found in catalog
+Task 'task_001': requested version not in knowledge base, abstaining
+Requested version(s) ['5.0.0'] not found in catalog
+Task 'task_001': requested version not in knowledge base, abstaining
+Abstention triggered cho query='In application security verification standards, what is the difference between a major release and a minor release regarding requirement numbering and compliance reevaluation?': 0/20 chunks đạt ngưỡng tin cậy tau=0.25.
+Task 'task_001' triggered Abstention Policy: 0 chunks met confidence threshold
+Requested version(s) ['2.0'] not found in catalog
+Task 'task_001': requested version not in knowledge base, abstaining
+  ... Đã thực thi 20/150 mẫu (201.8s)
+Requested version(s) ['5.0.0'] not found in catalog
+Task 'task_001': requested version not in knowledge base, abstaining
+  ... Đã thực thi 30/150 mẫu (245.3s)
+Abstention triggered cho query='Đối chiếu sự khác biệt giữa cơ chế xác thực dùng một lần (OTP) trong ASVS v4.0 và xác thực liên kết qua Identity Provider (IdP) trong ASVS v5.0.': 0/20 chunks đạt ngưỡng tin cậy tau=0.25.
+Task 'task_001_branch_4.0' triggered Abstention Policy: 0 chunks met confidence threshold
+Abstention triggered cho query='Đối chiếu bài học từ các cuộc tấn công half-open trong ASVS v4.0 với yêu cầu phân tích rủi ro quản lý phiên trong ASVS v5.0.': 0/20 chunks đạt ngưỡng tin cậy tau=0.25.
+Task 'task_001_branch_5.0' triggered Abstention Policy: 0 chunks met confidence threshold
+Requested version(s) ['3.3'] not found in catalog
+Task 'task_001_branch_3.3': requested version not in knowledge base, abstaining
+Requested version(s) ['7.1'] not found in catalog
+Task 'task_001_branch_7.1': requested version not in knowledge base, abstaining
+  ... Đã thực thi 40/150 mẫu (709.5s)
+Requested version(s) ['2.8'] not found in catalog
+Task 'task_001_branch_2.8': requested version not in knowledge base, abstaining
+Requested version(s) ['6.8'] not found in catalog
+Task 'task_001_branch_6.8': requested version not in knowledge base, abstaining
+Requested version(s) ['2.7'] not found in catalog
+Task 'task_001_branch_2.7': requested version not in knowledge base, abstaining
+Requested version(s) ['6.8'] not found in catalog
+Task 'task_001_branch_6.8': requested version not in knowledge base, abstaining
+Requested version(s) ['6.6'] not found in catalog
+Task 'task_001_branch_6.6': requested version not in knowledge base, abstaining
+Requested version(s) ['2.10'] not found in catalog
+Task 'task_001_branch_2.10': requested version not in knowledge base, abstaining
+[W1121 07:15:53.108881314 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 467664896 bytes (free: 182255616, total: 15637086208).
+  ... Đã thực thi 50/150 mẫu (1081.2s)
+Abstention triggered cho query='Synthesize how OS command separator behavior in Java, CVSS exploitability/impact weighting shifts, and compile-time parameterized queries in Rust SQLx address injection and risk scoring.': 0/20 chunks đạt ngưỡng tin cậy tau=0.25.
+Task 'task_001' triggered Abstention Policy: 0 chunks met confidence threshold
+  ... Đã thực thi 60/150 mẫu (1354.5s)
+Abstention triggered cho query='For strong transaction authentication in such cases, which certificate-based option does the guide mention and under what conditions is Broken Access Control a good fit?': 0/20 chunks đạt ngưỡng tin cậy tau=0.25.
+Task 'task_001' triggered Abstention Policy: 0 chunks met confidence threshold
+  ... Đã thực thi 70/150 mẫu (1395.7s)
+  ... Đã thực thi 80/150 mẫu (1547.8s)
+Abstention triggered cho query='Separately from MFA factors, what logging format, volume, and clock synchronization practices are recommended for authorization auditing?': 0/20 chunks đạt ngưỡng tin cậy tau=0.25.
+Task 'task_001' triggered Abstention Policy: 0 chunks met confidence threshold
+  ... Đã thực thi 90/150 mẫu (1657.4s)
+Requested version(s) ['5.0.0'] not found in catalog
+Task 'task_001': requested version not in knowledge base, abstaining
+Requested version(s) ['5.0.0'] not found in catalog
+Task 'task_001': requested version not in knowledge base, abstaining
+  ... Đã thực thi 100/150 mẫu (1736.0s)
+Requested version(s) ['4.7'] not found in catalog
+Task 'task_001': requested version not in knowledge base, abstaining
+Requested version(s) ['2099'] not found in catalog
+Task 'task_001_branch_2099': requested version not in knowledge base, abstaining
+Requested version(s) ['9.5'] not found in catalog
+Task 'task_001_branch_9.5': requested version not in knowledge base, abstaining
+Requested version(s) ['12.0'] not found in catalog
+Task 'task_001': requested version not in knowledge base, abstaining
+Requested version(s) ['99.0'] not found in catalog
+Task 'task_001': requested version not in knowledge base, abstaining
+Requested version(s) ['99.0'] not found in catalog
+Task 'task_001': requested version not in knowledge base, abstaining
+  ... Đã thực thi 110/150 mẫu (1886.3s)
+Requested version(s) ['2048'] not found in catalog
+Task 'task_001': requested version not in knowledge base, abstaining
+Requested version(s) ['12.0'] not found in catalog
+Task 'task_001': requested version not in knowledge base, abstaining
+Requested version(s) ['15.0'] not found in catalog
+Task 'task_001': requested version not in knowledge base, abstaining
+Requested version(s) ['5.0'] not found in catalog
+Task 'task_001': requested version not in knowledge base, abstaining
+  ... Đã thực thi 120/150 mẫu (1886.4s)
+  ... Đã thực thi 130/150 mẫu (1886.4s)
+  ... Đã thực thi 140/150 mẫu (1886.4s)
+  ... Đã thực thi 150/150 mẫu (1886.5s)
+
+>>> [PHA 2] Chấm điểm bằng các evaluators chuyên biệt...
+
+============================================================================================
+TỔNG HỢP KẾT QUẢ GENERATION, END-TO-END & SYSTEM PERFORMANCE (N = 150)
+============================================================================================
+[1] Generation Evaluation (reports/generation_report.json):
+- Answer Quality   : Faithfulness=93.84% | Claim P/R/F1=64.85% / 81.88% / 70.66% | AR=66.39%
+- Citation Quality : Precision=87.88% | Coverage=59.1% | F1=68.27%
+[2] End-to-End Evaluation (reports/task_report.json):
+- Task Completion  : TSR=39.33% (Full=26.0%) | Routing Acc=44.0%
+- Abstention       : F1=51.93% (P=35.88%, R=94.0%) | FAR=6.0% | Answerable Acc=12.0%
+- Error Taxonomy   : {'E3_Stage4_Synthesis_Citation_Verification': 12, 'E1_Stage2_Routing_and_Safety': 77, 'E2_Stage3_Retrieval': 22}
+[3] System Performance (reports/performance_report.json):
+- Latency          : Mean=12576.2 ms | P95=49352.6 ms
+- Tokens / Query   : Input=930.2 | Output=168.0 | Total=1098.2
+============================================================================================
+=> Đã xuất đầy đủ 4 tệp báo cáo tại: /content/Evaluation/End-to-end RAG Evals/reports
+07:31:37 query returned open=false
+
+
+150 - V2
+>>> Đã tối ưu hóa VRAM cho eval_e2e.py thành công!
+>>> Bắt đầu End-to-End & System Performance Evaluation (150 mẫu) trên: CUDA
+>>> Đang nạp mô hình sinh văn bản 'Qwen/Qwen3-4B' lên cuda...
+>>> Đang chạy 1 lượt Warm-up mô hình...
+
+>>> [PHA 1] Thực thi toàn trình 150 mẫu và ghi nhận System Performance...
+Abstention triggered cho query='Khi sử dụng mật khẩu để xác thực người dùng, mối quan tâm bảo mật chính là gì và một chính sách mật khẩu mạnh giúp đạt được mục tiêu gì?': 0/20 chunks đạt ngưỡng tin cậy tau=0.25.
+Task 'task_001' triggered Abstention Policy: 0 chunks met confidence threshold
+Requested version(s) ['2048'] not found in catalog
+Task 'task_001': requested version not in knowledge base, abstaining
+  ... Đã thực thi 10/150 mẫu (133.3s)
+Abstention triggered cho query='Trong Phụ lục C của tiêu chuẩn OWASP ASVS 5.0.0, các bộ sinh số ngẫu nhiên AES-CTR-DRBG, HMAC-DRBG, Hash-DRBG và getentropy() có trạng thái và tham chiếu gì?': 0/20 chunks đạt ngưỡng tin cậy tau=0.25.
+Task 'task_001' triggered Abstention Policy: 0 chunks met confidence threshold
+Abstention triggered cho query='In application security verification standards, what is the difference between a major release and a minor release regarding requirement numbering and compliance reevaluation?': 0/20 chunks đạt ngưỡng tin cậy tau=0.25.
+Task 'task_001' triggered Abstention Policy: 0 chunks met confidence threshold
+  ... Đã thực thi 20/150 mẫu (330.1s)
+  ... Đã thực thi 30/150 mẫu (519.2s)
+Abstention triggered cho query='Đối chiếu sự khác biệt giữa cơ chế xác thực dùng một lần (OTP) trong ASVS v4.0 và xác thực liên kết qua Identity Provider (IdP) trong ASVS v5.0.': 0/20 chunks đạt ngưỡng tin cậy tau=0.25.
+Task 'task_001_branch_4.0' triggered Abstention Policy: 0 chunks met confidence threshold
+Requested version(s) ['3.3'] not found in catalog
+Task 'task_001_branch_3.3': requested version not in knowledge base, abstaining
+Requested version(s) ['7.1'] not found in catalog
+Task 'task_001_branch_7.1': requested version not in knowledge base, abstaining
+  ... Đã thực thi 40/150 mẫu (918.1s)
+Requested version(s) ['2.8'] not found in catalog
+Task 'task_001_branch_2.8': requested version not in knowledge base, abstaining
+Requested version(s) ['6.8'] not found in catalog
+Task 'task_001_branch_6.8': requested version not in knowledge base, abstaining
+Requested version(s) ['2.7'] not found in catalog
+Task 'task_001_branch_2.7': requested version not in knowledge base, abstaining
+Requested version(s) ['6.8'] not found in catalog
+Task 'task_001_branch_6.8': requested version not in knowledge base, abstaining
+Requested version(s) ['6.6'] not found in catalog
+Task 'task_001_branch_6.6': requested version not in knowledge base, abstaining
+Requested version(s) ['2.10'] not found in catalog
+Task 'task_001_branch_2.10': requested version not in knowledge base, abstaining
+  ... Đã thực thi 50/150 mẫu (1275.6s)
+Abstention triggered cho query='How do automated scanning limitations in risk rankings, SQL Injection syntax manipulation, and hardware-backed Identification and Authentication Failures requirements at higher assurance levels intersect in web security (SQLi)?': 0/20 chunks đạt ngưỡng tin cậy tau=0.25.
+Task 'task_001' triggered Abstention Policy: 0 chunks met confidence threshold
+Abstention triggered cho query='Synthesize how OS command separator behavior in Java, CVSS exploitability/impact weighting shifts, and compile-time parameterized queries in Rust SQLx address injection and risk scoring.': 0/20 chunks đạt ngưỡng tin cậy tau=0.25.
+Task 'task_001' triggered Abstention Policy: 0 chunks met confidence threshold
+  ... Đã thực thi 60/150 mẫu (1495.1s)
+  ... Đã thực thi 70/150 mẫu (1625.3s)
+  ... Đã thực thi 80/150 mẫu (1768.8s)
+  ... Đã thực thi 90/150 mẫu (1903.6s)
+  ... Đã thực thi 100/150 mẫu (2074.9s)
+Abstention triggered cho query='OWASP API Security Verification Standard (ASVS-API 4.7) yêu cầu triển khai cơ chế Cryptographic Request Binding (CRB-256) như thế nào để chống giả mạo API request?': 0/20 chunks đạt ngưỡng tin cậy tau=0.25.
+Task 'task_001' triggered Abstention Policy: 0 chunks met confidence threshold
+Requested version(s) ['2099'] not found in catalog
+Task 'task_001_branch_2099': requested version not in knowledge base, abstaining
+Requested version(s) ['9.5'] not found in catalog
+Task 'task_001_branch_9.5': requested version not in knowledge base, abstaining
+Requested version(s) ['v12.0'] not found in catalog
+Task 'task_001': requested version not in knowledge base, abstaining
+Requested version(s) ['v99.0'] not found in catalog
+Task 'task_001': requested version not in knowledge base, abstaining
+Requested version(s) ['v99.0'] not found in catalog
+Task 'task_001': requested version not in knowledge base, abstaining
+  ... Đã thực thi 110/150 mẫu (2186.9s)
+Requested version(s) ['2048'] not found in catalog
+Task 'task_001': requested version not in knowledge base, abstaining
+Requested version(s) ['12.0'] not found in catalog
+Task 'task_001': requested version not in knowledge base, abstaining
+Requested version(s) ['15.0'] not found in catalog
+Task 'task_001': requested version not in knowledge base, abstaining
+Requested version(s) ['5.0'] not found in catalog
+Task 'task_001': requested version not in knowledge base, abstaining
+  ... Đã thực thi 120/150 mẫu (2187.0s)
+  ... Đã thực thi 130/150 mẫu (2187.6s)
+  ... Đã thực thi 140/150 mẫu (2187.8s)
+  ... Đã thực thi 150/150 mẫu (2188.2s)
+
+>>> [PHA 2] Chấm điểm bằng các evaluators chuyên biệt...
+
+============================================================================================
+TỔNG HỢP KẾT QUẢ GENERATION, END-TO-END & SYSTEM PERFORMANCE (N = 150)
+============================================================================================
+[1] Generation Evaluation (reports/generation_report.json):
+    - Answer Quality   : Faithfulness=82.74% | Claim P/R/F1=55.29% / 76.47% / 62.31% | AR=66.07%
+    - Citation Quality : Precision=81.8% | Coverage=54.41% | F1=63.67%
+[2] End-to-End Evaluation (reports/task_report.json):
+    - Task Completion  : TSR=73.33% (Full=37.33%) | Routing Acc=57.33%
+    - Abstention       : F1=73.44% (P=60.26%, R=94.0%) | FAR=6.0% | Answerable Acc=63.0%
+    - Error Taxonomy   : {'E3_Stage4_Synthesis_Citation_Verification': 16, 'E1_Stage2_Routing_and_Safety': 57, 'E2_Stage3_Retrieval': 21}
+[3] System Performance (reports/performance_report.json):
+    - Latency          : Mean=14587.8 ms | P95=41338.4 ms
+    - Tokens / Query   : Input=1320.7 | Output=231.4 | Total=1552.1
+============================================================================================
+
+>>> Đã hoàn tất 'v2_regression_150' và cập nhật e2e_v1_vs_v2_all_reports.zip
+
+
+100 - V1:
+>>> Bắt đầu End-to-End & System Performance Evaluation (100 mẫu) trên: CUDA
+>>> Đang nạp mô hình sinh văn bản 'Qwen/Qwen3-4B' lên cuda...
+>>> Đang chạy 1 lượt Warm-up mô hình...
+
+>>> [PHA 1] Thực thi toàn trình 150 mẫu và ghi nhận System Performance...
+Abstention triggered cho query='Khi cần biết nên tìm hướng dẫn triển khai một yêu cầu bảo mật cụ thể hay hướng dẫn kiểm thử yêu cầu đó, nên phân biệt phạm vi của các loại tài liệu hỗ trợ như thế nào?': 0/20 chunks đạt ngưỡng tin cậy tau=0.25.
+Task 'task_001' triggered Abstention Policy: 0 chunks met confidence threshold
+  ... Đã thực thi 10/100 mẫu (117.5s)
+Requested version(s) ['5.0.0'] not found in catalog
+Task 'task_001': requested version not in knowledge base, abstaining
+Requested version(s) ['5.0.0'] not found in catalog
+Task 'task_001': requested version not in knowledge base, abstaining
+  ... Đã thực thi 20/100 mẫu (152.9s)
+  ... Đã thực thi 30/100 mẫu (477.5s)
+Abstention triggered cho query='Kết nối các khuyến nghị về nâng cấp password hash cũ, phòng credential stuffing và cấu hình PHP: cần cân nhắc đồng thời vòng đời thông tin xác thực, chống tự động hóa và cấu hình nền tảng ra sao?': 0/20 chunks đạt ngưỡng tin cậy tau=0.25.
+Task 'task_001' triggered Abstention Policy: 0 chunks met confidence threshold
+Abstention triggered cho query='Synthesize the Docker security, query parameterization, and application-risk sources: how can deployment secrets, safe database access, and risk prioritization reinforce one another?': 0/20 chunks đạt ngưỡng tin cậy tau=0.25.
+Task 'task_001' triggered Abstention Policy: 0 chunks met confidence threshold
+  ... Đã thực thi 40/100 mẫu (700.4s)
+  ... Đã thực thi 50/100 mẫu (790.6s)
+  ... Đã thực thi 60/100 mẫu (859.2s)
+Requested version(s) ['5.0.0'] not found in catalog
+Task 'task_001': requested version not in knowledge base, abstaining
+Requested version(s) ['5.0.0'] not found in catalog
+Task 'task_001': requested version not in knowledge base, abstaining
+  ... Đã thực thi 70/100 mẫu (974.3s)
+Requested version(s) ['6.4'] not found in catalog
+Task 'task_001': requested version not in knowledge base, abstaining
+Requested version(s) ['5.2'] not found in catalog
+Task 'task_001': requested version not in knowledge base, abstaining
+Requested version(s) ['2028'] not found in catalog
+Task 'task_001': requested version not in knowledge base, abstaining
+Requested version(s) ['5.2'] not found in catalog
+Task 'task_001': requested version not in knowledge base, abstaining
+Requested version(s) ['2028'] not found in catalog
+Task 'task_001': requested version not in knowledge base, abstaining
+  ... Đã thực thi 80/100 mẫu (974.4s)
+  ... Đã thực thi 90/100 mẫu (974.4s)
+  ... Đã thực thi 100/100 mẫu (974.4s)
+
+>>> [PHA 2] Chấm điểm bằng các evaluators chuyên biệt...
+
+============================================================================================
+TỔNG HỢP KẾT QUẢ GENERATION, END-TO-END & SYSTEM PERFORMANCE (N = 150)
+============================================================================================
+[1] Generation Evaluation (reports/generation_report.json):
+    - Answer Quality   : Faithfulness=90.63% | Claim P/R/F1=46.48% / 66.92% / 52.63% | AR=63.82%
+    - Citation Quality : Precision=76.64% | Coverage=50.64% | F1=60.55%
+[2] End-to-End Evaluation (reports/task_report.json):
+    - Task Completion  : TSR=36.0% (Full=23.0%) | Routing Acc=35.0%
+    - Abstention       : F1=52.89% (P=35.96%, R=100.0%) | FAR=0.0% | Answerable Acc=8.82%
+    - Error Taxonomy   : {'E1_Stage2_Routing_and_Safety': 62, 'E3_Stage4_Synthesis_Citation_Verification': 6, 'E2_Stage3_Retrieval': 9}
+[3] System Performance (reports/performance_report.json):
+    - Latency          : Mean=9744.2 ms | P95=40373.4 ms
+    - Tokens / Query   : Input=923.1 | Output=153.3 | Total=1076.4
+============================================================================================
+
+>>> Đã hoàn tất 'v1_heldout_100' và cập nhật e2e_v1_vs_v2_all_reports.zip
+
+100 - V2:
+ >>> Bắt đầu End-to-End & System Performance Evaluation (100 mẫu) trên: CUDA
+>>> Đang nạp mô hình sinh văn bản 'Qwen/Qwen3-4B' lên cuda...
+>>> Đang chạy 1 lượt Warm-up mô hình...
+
+>>> [PHA 1] Thực thi toàn trình 150 mẫu và ghi nhận System Performance...
+Abstention triggered cho query='Khi cần biết nên tìm hướng dẫn triển khai một yêu cầu bảo mật cụ thể hay hướng dẫn kiểm thử yêu cầu đó, nên phân biệt phạm vi của các loại tài liệu hỗ trợ như thế nào?': 0/20 chunks đạt ngưỡng tin cậy tau=0.25.
+Task 'task_001' triggered Abstention Policy: 0 chunks met confidence threshold
+  ... Đã thực thi 10/100 mẫu (227.3s)
+Abstention triggered cho query='According to OWASP ASVS v5.0.0, how should external tools and reports identify a requirement so that references remain tied to the correct standard version?': 0/20 chunks đạt ngưỡng tin cậy tau=0.25.
+Task 'task_001' triggered Abstention Policy: 0 chunks met confidence threshold
+  ... Đã thực thi 20/100 mẫu (306.9s)
+Abstention triggered cho query='How does OWASP ASVS v5.0 reorganize session-management guidance compared with the more granular numbered controls in ASVS v4.0?': 0/20 chunks đạt ngưỡng tin cậy tau=0.25.
+Task 'task_001_branch_5.0' triggered Abstention Policy: 0 chunks met confidence threshold
+  ... Đã thực thi 30/100 mẫu (650.6s)
+Abstention triggered cho query='Kết nối hướng dẫn chống Identification and Authentication Failures, giảm thiểu DoS và kiểm soát authorization: hệ thống có thể làm tăng chi phí của hành vi lạm dụng, bảo vệ tính sẵn sàng và giới hạn quyền truy cập ra sao?': 0/20 chunks đạt ngưỡng tin cậy tau=0.25.
+Task 'task_001' triggered Abstention Policy: 0 chunks met confidence threshold
+Abstention triggered cho query='Kết nối các khuyến nghị về nâng cấp password hash cũ, phòng Identification and Authentication Failures và cấu hình PHP: cần cân nhắc đồng thời vòng đời thông tin xác thực, chống tự động hóa và cấu hình nền tảng ra sao?': 0/20 chunks đạt ngưỡng tin cậy tau=0.25.
+Task 'task_001' triggered Abstention Policy: 0 chunks met confidence threshold
+Abstention triggered cho query='Tổng hợp ba nguồn về giới thiệu OWASP Top 10, lỗi nhận dạng/xác thực và yêu cầu xác thực trong ASVS: làm thế nào để đánh giá một thiết kế đăng nhập từ góc độ rủi ro và mức kiểm chứng?': 0/20 chunks đạt ngưỡng tin cậy tau=0.25.
+Task 'task_001' triggered Abstention Policy: 0 chunks met confidence threshold
+Abstention triggered cho query='Synthesize the Security Misconfiguration, SQL Injection, and application-risk sources: how can deployment secrets, safe database access, and risk prioritization reinforce one another (SQLi)?': 0/20 chunks đạt ngưỡng tin cậy tau=0.25.
+Task 'task_001' triggered Abstention Policy: 0 chunks met confidence threshold
+  ... Đã thực thi 40/100 mẫu (802.4s)
+Abstention triggered cho query='Còn về luồng hoạt động và các thành phần trao đổi của Security Tokens and Federated Identity thì diễn ra như thế nào?': 0/20 chunks đạt ngưỡng tin cậy tau=0.25.
+Task 'task_001' triggered Abstention Policy: 0 chunks met confidence threshold
+  ... Đã thực thi 50/100 mẫu (926.5s)
+  ... Đã thực thi 60/100 mẫu (993.3s)
+Abstention triggered cho query='CWE-77419 mô tả loại lỗi phân quyền nào, điều kiện khai thác và biện pháp khắc phục ra sao?': 0/20 chunks đạt ngưỡng tin cậy tau=0.25.
+Task 'task_001' triggered Abstention Policy: 0 chunks met confidence threshold
+  ... Đã thực thi 70/100 mẫu (1207.7s)
+Requested version(s) ['6.4'] not found in catalog
+Task 'task_001': requested version not in knowledge base, abstaining
+Requested version(s) ['5.2'] not found in catalog
+Task 'task_001': requested version not in knowledge base, abstaining
+Requested version(s) ['2028'] not found in catalog
+Task 'task_001': requested version not in knowledge base, abstaining
+Requested version(s) ['5.2'] not found in catalog
+Task 'task_001': requested version not in knowledge base, abstaining
+Requested version(s) ['2028'] not found in catalog
+Task 'task_001': requested version not in knowledge base, abstaining
+  ... Đã thực thi 80/100 mẫu (1208.1s)
+Abstention triggered cho query='Thiết kế thí nghiệm tấn công kênh kề trên FPGA để suy ra khóa AES từ dao động công suất và thời gian thực thi phần cứng.': 0/20 chunks đạt ngưỡng tin cậy tau=0.25.
+Task 'task_001' triggered Abstention Policy: 0 chunks met confidence threshold
+Abstention triggered cho query='Design an FPGA side-channel experiment that recovers an AES key from power traces and hardware execution timing.': 0/20 chunks đạt ngưỡng tin cậy tau=0.25.
+Task 'task_001' triggered Abstention Policy: 0 chunks met confidence threshold
+  ... Đã thực thi 90/100 mẫu (1209.6s)
+  ... Đã thực thi 100/100 mẫu (1210.0s)
+
+>>> [PHA 2] Chấm điểm bằng các evaluators chuyên biệt...
+
+============================================================================================
+TỔNG HỢP KẾT QUẢ GENERATION, END-TO-END & SYSTEM PERFORMANCE (N = 150)
+============================================================================================
+[1] Generation Evaluation (reports/generation_report.json):
+    - Answer Quality   : Faithfulness=81.82% | Claim P/R/F1=39.85% / 61.29% / 45.47% | AR=67.28%
+    - Citation Quality : Precision=79.31% | Coverage=51.38% | F1=60.66%
+[2] End-to-End Evaluation (reports/task_report.json):
+    - Task Completion  : TSR=54.0% (Full=29.0%) | Routing Acc=43.0%
+    - Abstention       : F1=67.37% (P=50.79%, R=100.0%) | FAR=0.0% | Answerable Acc=35.29%
+    - Error Taxonomy   : {'E1_Stage2_Routing_and_Safety': 54, 'E2_Stage3_Retrieval': 6, 'E3_Stage4_Synthesis_Citation_Verification': 11}
+[3] System Performance (reports/performance_report.json):
+    - Latency          : Mean=12099.9 ms | P95=40807.7 ms
+    - Tokens / Query   : Input=1113.6 | Output=187.5 | Total=1301.1
+============================================================================================
+
+>>> Đã hoàn tất 'v2_heldout_100' và cập nhật e2e_v1_vs_v2_all_reports.zip
+17:29:23 query returned open=false
+

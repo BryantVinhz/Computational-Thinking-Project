@@ -39,7 +39,7 @@ def extract_candidates() -> None:
     conn = sqlite3.connect(str(db_path))
     conn.row_factory = sqlite3.Row
 
-    # Lấy thông tin bảng document_versions nếu có
+    # Retrieve document_versions table information 
     ver_cols = {r[1] for r in conn.execute("PRAGMA table_info(document_versions)").fetchall()}
     if "version_tag" in ver_cols:
         for r in conn.execute("SELECT version_id, version_tag FROM document_versions").fetchall():
@@ -88,7 +88,7 @@ def extract_candidates() -> None:
     candidates: list[dict[str, Any]] = []
     idx = 1
 
-    # 1. Nhóm single_document_qa (30 mẫu: 15 VI, 15 EN)
+    # single_document_qa group (30 samples: 15 VI, 15 EN)
     single_pool = random.sample(all_substantive, min(30, len(all_substantive)))
     for i, blk in enumerate(single_pool):
         candidates.append({
@@ -100,7 +100,7 @@ def extract_candidates() -> None:
         })
         idx += 1
 
-    # 2. Nhóm multi_document (30 mẫu: 15 cross-version COMPARE + 15 multi-source SYNTHESIS)
+    # multi_document group (30 samples: 15 cross-version COMPARE + 15 multi-source SYNTHESIS)
     multi_ver_docs = [d for d, vmap in by_doc.items() if len(vmap) >= 2]
     cross_ver_pairs: list[list[dict[str, Any]]] = []
     for d in multi_ver_docs:
@@ -134,7 +134,7 @@ def extract_candidates() -> None:
         })
         idx += 1
 
-    # 3. Nhóm multi_turn_coreference (30 mẫu: 20 dependent + 10 topic_shift)
+    # multi_turn_coreference group (30 samples: 20 dependent + 10 topic_shift)
     used_bids = {b["normalized_block_id"] for c in candidates for b in c["source_blocks"]}
     remaining = [b for b in all_substantive if b["normalized_block_id"] not in used_bids]
     mt_pool = random.sample(remaining, min(40, len(remaining)))
@@ -143,7 +143,7 @@ def extract_candidates() -> None:
         is_dependent = i < 20
         lang = "vi" if i % 2 == 0 else "en"
         if is_dependent:
-            # Lấy 2 block cùng 1 phiên bản tài liệu (Lượt 1 hỏi block 1, Lượt 2 hỏi nối tiếp block 2 dùng đại từ)
+            # Retrieve 2 blocks from the same document version (Turn 1 asks about block 1, Turn 2 follows up on block 2 using pronouns)
             b_target = mt_pool[i]
             same_ver = [b for b in by_version[b_target["version_id"]] if b["normalized_block_id"] != b_target["normalized_block_id"]]
             b_prev = random.choice(same_ver) if same_ver else b_target
@@ -156,7 +156,7 @@ def extract_candidates() -> None:
                 "source_blocks": [b_target],
             })
         else:
-            # Topic-shift: Lượt 1 nói về tài liệu A, Lượt 2 hỏi độc lập về tài liệu B (context_used=False)
+            # Topic-shift: Turn 1 discusses document A, Turn 2 asks independently about document B (context_used=False)
             b_target = mt_pool[i]
             b_prev = mt_pool[(i + 10) % len(mt_pool)]
             candidates.append({
@@ -169,7 +169,7 @@ def extract_candidates() -> None:
             })
         idx += 1
 
-    # 4. 10 đoạn sự thật gốc cho nhóm con false_premise_contradiction của traps_hallucination
+    # 10 source fact passages for the false_premise_contradiction subgroup of traps_hallucination
     premise_pool = random.sample(remaining[30:] if len(remaining) > 30 else all_substantive, 10)
     for i, blk in enumerate(premise_pool):
         candidates.append({
@@ -182,7 +182,7 @@ def extract_candidates() -> None:
         idx += 1
 
     OUT_CANDIDATES.write_text(json.dumps(candidates, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"Đã xuất {len(candidates)} cụm ngữ liệu gốc tại: {OUT_CANDIDATES}")
+    print(f"Exported {len(candidates)} source corpus clusters at: {OUT_CANDIDATES}")
 
 
 if __name__ == "__main__":

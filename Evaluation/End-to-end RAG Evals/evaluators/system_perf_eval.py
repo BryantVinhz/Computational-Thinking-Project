@@ -8,7 +8,7 @@ def build_sample_perf_record(
     metadata: dict[str, Any],
     calls: list[dict[str, int]],
 ) -> dict[str, Any]:
-    """Tạo bản ghi hiệu năng thời gian và token cho 1 truy vấn."""
+    """Create a performance record of latency and token usage for a single query."""
     in_tok = sum(c["input_tokens"] for c in calls)
     out_tok = sum(c["output_tokens"] for c in calls)
     tot_tok = in_tok + out_tok
@@ -27,7 +27,7 @@ def build_sample_perf_record(
 
 
 def summarize_system_performance(p_dict: dict[str, list[float]]) -> dict[str, Any]:
-    """Tổng hợp Latency (chỉ Mean & P95) và Token Consumption."""
+    """Aggregate Latency (Mean & P95 only) and Token Consumption."""
     wall = p_dict["wall_latency_ms"]
     return {
         "n": len(wall),
