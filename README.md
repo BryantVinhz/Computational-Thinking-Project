@@ -81,13 +81,13 @@ flowchart TD
 ├── path.py                               # Centralized project paths and chunking strategy folder mapping
 ├── FastAPI_Model.ipynb                   # Google Colab notebook serving Qwen/Qwen3-4B via FastAPI + Cloudflare Tunnel
 ├── Evaluation.json                       # 12 end-to-end evaluation test cases
+├── requirements.txt                      # Full runtime Python dependencies
 ├── pyproject.toml                        # Stage 2 package configuration and pytest settings
 ├── .env.example                          # Template for Ollama, Colab, and Firebase environment variables
 ├── 📜 LICENSE                               # MIT License
 ├── 📝 README.md                             # Project documentation
 │
 ├── 📁 Data/                                 # Primary security knowledge corpus (50 files: MD, PDF, JSON, CSV)
-│                     
 │
 ├── 📁 Document Ingestion and Parsing/       # [STAGE 1] Offline document processing and indexing
 │   ├── 📁 Ingestion/                        # File discovery, SHA hashing, document & version registries
@@ -102,6 +102,7 @@ flowchart TD
 │   │   ├── json_parser.py
 │   │   ├── csv_parser.py
 │   │   ├── txt_parser.py
+│   │   ├── parser_utils.py
 │   │   └── schema_parsing.py
 │   ├── 📁 Normalization/                    # Unicode and whitespace cleanup
 │   │   ├── Normalization.py
@@ -110,10 +111,13 @@ flowchart TD
 │   │   ├── main_chunking.py
 │   │   ├── factory.py
 │   │   ├── chunking.py
+│   │   ├── strategy.py
 │   │   ├── fixed_size.py
 │   │   ├── structure_aware.py
 │   │   ├── semantic.py
-│   │   └── token_counter.py
+│   │   ├── token_counter.py
+│   │   ├── schema_chunking.py
+│   │   └── validation.py
 │   ├── 📁 Metadata/                         # 9-field metadata extraction & ChromaDB ingestion (BAAI/bge-m3)
 │   │   ├── extractor_sqlite.py
 │   │   ├── schema_metadata.py
@@ -123,21 +127,27 @@ flowchart TD
 │   │   ├── database.py
 │   │   ├── provenance.py
 │   │   ├── provenance_repo.py
-│   │   └── provenance_resolver.py
+│   │   ├── provenance_resolver.py
+│   │   └── schema_provenance.py
 │   └── 📁 output/                           # Generated outputs (Ingestion, Parsing, Normalization, Chunking, Provenance, Vector DB)
 │
 ├── 📁 Query Understanding and Routing/      # [STAGE 2] Validation, normalization, intent detection & query planning
 │   ├── manual_test.py                    # Manual interactive test script for Stage 2
 │   └── 📁 query_understanding_routing/
+│       ├── config.py                     # Stage 2 runtime configuration
+│       ├── paths.py                      # Stage 2 internal path definitions
 │       ├── ontology.yaml                 # Security vulnerability ontology (canonical names, aliases, CWEs)
 │       ├── ontology_loader.py            # Ontology loader and cache
+│       ├── llm_client.py                 # Stage 2 LLM client adapter
 │       ├── validation_module.py          # Safety check & prompt injection filtering
 │       ├── normalization_module.py       # Query normalization, alias mapping, language detection
 │       ├── understanding_module.py       # Intent classification, entity extraction, coreference resolution
 │       ├── routing_module.py             # Single-hop & multi-hop Query Plan generator
+│       ├── rag_processor.py              # Query processing helper
 │       ├── pipeline.py                   # Stage 2 orchestrator (process_query)
 │       ├── prompt_templates.py           # LLM prompt templates for Stage 2
 │       ├── 📝 PIPELINE.md                   # Stage 2 contract & testing documentation
+│       ├── 📝 DEVELOPMENT.md                # Stage 2 developer notes
 │       └── 📁 tests/                        # Pytest unit & integration test suite
 │
 ├── 📁 Retrieval/                            # [STAGE 3] Hybrid retrieval, reranking, diversity & evidence assembly
@@ -150,7 +160,10 @@ flowchart TD
 │   ├── MMR.py                            # Maximal Marginal Relevance diversity selection
 │   ├── evidence_package.py               # Evidence packaging with [1], [2] tags and provenance locators
 │   ├── ontology_utils.py                 # Ontology alias/CWE expansion for BM25
-│   └── retrieval_system.py               # RetrievalSystem facade (single-hop & multi-hop)
+│   ├── retrieval_preparer.py             # Retrieval payload preparation
+│   ├── retrieval_system.py               # RetrievalSystem facade (single-hop & multi-hop)
+│   ├── schema.py                         # Retrieval data schemas
+│   └── schema_reranking.py               # Reranking output schemas
 │
 ├── 📁 Response Synthesis/                   # [STAGE 4] Grounded generation, verification & citation formatting
 │   ├── prompt_templates.py               # Intent-aware prompts (SEARCH, COMPARE, SYNTHESIS) & mode directives
@@ -165,13 +178,29 @@ flowchart TD
 │   ├── _stage4_evaluation.py             # Stage 4 evaluation harness
 │   └── 📝 README.md                         # Detailed Stage 4 architecture & contract docs
 │
-├── 📁 Evaluation/                           # Chunking evaluation suite (Layer 1 intrinsic & Layer 2 retrieval)
-│   └── 📁 Chunking Evals/
-│       ├── evals_layer1.py
-│       ├── evals_layer2.py
-│       ├── 📋 eval_layer1_report.json
-│       ├── 📋 eval_layer2_report.json
-│       └── Eval-chunking-colab.ipynb
+├── 📁 Evaluation/                           # Evaluation suites (Chunking, Retrieval, and End-to-End RAG)
+│   ├── scripts.py                        # Shared evaluation helper scripts
+│   ├── 📁 Chunking Evals/                   # Layer 1 intrinsic & Layer 2 retrieval chunking benchmarks
+│   │   ├── evals_layer1.py
+│   │   ├── evals_layer2.py
+│   │   ├── build_chunking_gt.py
+│   │   ├── doc_offset.py
+│   │   ├── 📋 eval_layer1_report.json
+│   │   ├── 📋 eval_layer2_report.json
+│   │   ├── Eval-chunking-colab.ipynb
+│   │   └── Eval_E2E.ipynb
+│   ├── 📁 Retrieval Evals/                  # Stage 3 retrieval evaluation dataset, scripts & Colab notebook
+│   │   ├── eval_retrieval.py
+│   │   ├── pack_eval_retrieval.py
+│   │   ├── 📋 retrieval_eval_dataset.json
+│   │   ├── 📋 retrieval_eval_report.json
+│   │   └── Eval_retrieval_colab.ipynb
+│   └── 📁 End-to-end RAG Evals/             # Full-pipeline task, generation & performance evaluation
+│       ├── eval_e2e.py
+│       ├── pack_eval_e2e.py
+│       ├── Eval_E2E_colab.ipynb
+│       ├── 📁 evaluators/
+│       └── 📁 reports/
 │
 ├── 📁 evaluations/                          # Stage 4 evaluation templates (R9C)
 │   └── 📝 r9c/REPORT_TEMPLATE.md
@@ -279,6 +308,21 @@ Prebuilt outputs live under `Document Ingestion and Parsing/output/`. To regener
 
 1. Run Stage 1 steps sequentially (`Ingestion.py` → `Parsing.py` → `Normalization.py` → `main_chunking.py` → `main_provenance.py` → `vector_store.py`), **or**
 2. Use `Utilize Colab/colab.py` + `Utilize Colab/Data_Preprocessing.ipynb` to run semantic chunking and BGE-M3 embedding generation on a Colab GPU.
+
+---
+
+## Deployment
+
+We have tested a deployment, but the deployment configuration and scripts (developed in a separate test environment) have not been committed to `main` yet, and the temporary Vast.ai GPU instance has been torn down after end-to-end verification to avoid ongoing rental costs—so no live public URL is currently hosted.
+
+### Vast.ai GPU Demo Summary
+
+The full pipeline was deployed and verified end-to-end on a single **Vast.ai GPU container** (**NVIDIA Quadro RTX 6000**):
+
+- **Runtime & Environment:** Python 3.12 virtual environment managed via `uv` with CUDA-enabled PyTorch and prefetched `BAAI/bge-m3` and `BAAI/bge-reranker-v2-m3` weights.
+- **LLM Backend:** Local Ollama (`127.0.0.1:11434`) serving `qwen3:4b-instruct` instead of the default `qwen3:4b` tag (whose `Thinking-2507` variant ignored `think=false` and leaked reasoning traces, dropping faithfulness to ~59%). With `qwen3:4b-instruct`, end-to-end responses achieved **75–82% faithfulness** at **~45–84 s** per query (including ~37.7 s for CPU-bound verifier inference).
+- **Web UI, Auth & Exposure:** Streamlit (`web_app.py` on `127.0.0.1:8501`) using local bcrypt-backed accounts (`streamlit-authenticator`) as a lightweight alternative to Firebase Auth, exposed publicly over HTTPS via a **Cloudflare Quick Tunnel** (`cloudflared` → `https://*.trycloudflare.com`).
+- **Automated Lifecycle Scripts (unmerged prototype):** Provisioning and service management were scripted into `setup.sh` (environment, Ollama, `cloudflared`, and model prefetching), `start.sh` (starts Ollama, Streamlit, and the tunnel), and `stop.sh` (PID-based teardown).
 
 ---
 
