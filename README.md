@@ -61,12 +61,11 @@ flowchart TD
 
 ## Knowledge Corpus
 
-- **`Data/` (50 files):**
+- **`Data/` (50 files): 48 valid files, 1 duplicate file, and 1 empty file**
   - **46 Markdown files:** OWASP Top 10 (2021 & 2025), OWASP ASVS (v4.0 & v5.0), OWASP Cheat Sheets (A01, A03, A05, A07), and OWASP WSTG v4.2.
   - **2 PDF files:** `First_CVSS-Specification_v4.0.pdf`, `OWASP_Application-Security-Verification-Standard_5.0.0.pdf`.
   - **1 JSON file:** `First_CVSS_v4.0.json`.
-  - **1 CSV file:** `OWASP_test_v1.0.csv`.
-- **`Data extra/`:** Supplementary reference data and intermediate artifacts (including `MITRE_CWE-List.json`, `cwe_latest.pdf`, and `MITRE-OWASP_CWE-cats_colors.pdf`).
+  - **1 CSV file:** `OWASP_test_v1.0.csv`. -> Check the empty-file filtering mechanism
 
 ---
 
@@ -280,34 +279,6 @@ Prebuilt outputs live under `Document Ingestion and Parsing/output/`. To regener
 
 1. Run Stage 1 steps sequentially (`Ingestion.py` → `Parsing.py` → `Normalization.py` → `main_chunking.py` → `main_provenance.py` → `vector_store.py`), **or**
 2. Use `Utilize Colab/colab.py` + `Utilize Colab/Data_Preprocessing.ipynb` to run semantic chunking and BGE-M3 embedding generation on a Colab GPU.
-
----
-
-## Evaluation & Benchmarks
-
-### Chunking Strategy Comparison (48 Documents, `BAAI/bge-m3`)
-
-Results from `Evaluation/Chunking Evals/eval_layer1_report.json` (intrinsic quality) and `eval_layer2_report.json` (retrieval accuracy):
-
-| Strategy | Chunks | Avg Tokens | Atomic Integrity (`BI_atomic`) | Intra-Chunk Coherence (`ICC`) | Token Recall@5 | Token Precision@5 | Token IoU@5 |
-|---|---:|---:|---:|---:|---:|---:|---:|
-| `fixed_size` | 486 | 612.6 | 80.13% | 0.648 | 91.04% | 4.09% | 4.09% |
-| `structure_aware` | 3,074 | 91.0 | 100.00% | 0.801 | 93.15% | 10.61% | 10.60% |
-| **`semantic` (default)** | **2,554** | **122.4** | **100.00%** | **0.777** | **96.64%** | **16.98%** | **16.97%** |
-
-`semantic` chunking achieves the highest Token Recall@5 (**96.64%**, including **100.0%** on Vietnamese queries) and more than **4x** the Token Precision@5 and IoU@5 of `fixed_size` while preserving 100% atomic block integrity.
-
-### End-to-End & Stage 4 Evaluation
-- **`Evaluation.json`:** 12 end-to-end security test cases covering search, cross-version comparison (e.g., OWASP 2021 vs. 2025), and synthesis.
-- **Stage 4 Latency Benchmark (offline/deterministic):**
-  ```bash
-  python -I "Response Synthesis/_stage4_baseline_benchmark.py"
-  ```
-- **Stage 4 Evaluation Harness:**
-  ```bash
-  python -I "Response Synthesis/_stage4_evaluation.py" --tests TEST_02
-  ```
-  See `evaluations/r9c/REPORT_TEMPLATE.md` for the structured evaluation rubric.
 
 ---
 
