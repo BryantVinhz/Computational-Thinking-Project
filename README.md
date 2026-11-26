@@ -48,7 +48,7 @@ flowchart TD
 
 | Component | Technology / Model |
 |---|---|
-| Language & Runtime | Python `>= 3.10` |
+| Language & Runtime | Python `>= 3.12` |
 | LLM Backends | `Qwen3-4B` via **Local Ollama** (`qwen3:4b`) or **Google Colab GPU** (`FastAPI_Model.ipynb` + `pycloudflared`) |
 | Embedding Model | `BAAI/bge-m3` (multilingual, 1024 max tokens; shared between Retrieval & Verifier) |
 | Cross-Encoder Reranker | `BAAI/bge-reranker-v2-m3` (fallback: `cross-encoder/ms-marco-MiniLM-L-6-v2`) |
@@ -83,6 +83,7 @@ flowchart TD
 ├── Evaluation.json                       # 12 end-to-end evaluation test cases
 ├── requirements.txt                      # Full runtime Python dependencies
 ├── pyproject.toml                        # Stage 2 package configuration and pytest settings
+├── requirements.txt                      # Runtime and test dependencies for Stage 1, 3, 4, and Streamlit UI
 ├── .env.example                          # Template for Ollama, Colab, and Firebase environment variables
 ├── 📜 LICENSE                               # MIT License
 ├── 📝 README.md                             # Project documentation
@@ -216,7 +217,7 @@ flowchart TD
 ## Getting Started
 
 ### 1. Prerequisites
-- **Python 3.10+**
+- **Python 3.12+**
 - At least one LLM backend:
   - **Local Ollama** with `qwen3:4b` pulled, **or**
   - **Google Colab (GPU)** running `FastAPI_Model.ipynb`
@@ -240,11 +241,10 @@ Install the Stage 2 package in editable mode and the core runtime dependencies:
 
 ```bash
 python -m pip install -e .
-python -m pip install torch sentence-transformers chromadb rank-bm25 langchain-community \
-    pymupdf markdown-it-py beautifulsoup4 requests python-dotenv streamlit pytest
+python -m pip install -r requirements.txt
 ```
 
-> **Note:** `pyproject.toml` packages the Stage 2 (`query_understanding_routing`) module and its direct dependency (`PyYAML==6.0.3`); the additional packages above are required for Stage 1, Stage 3, Stage 4, and the Streamlit UI.
+> **Note:** `pyproject.toml` packages the Stage 2 (`query_understanding_routing`) module and its direct dependency (`PyYAML==6.0.3`); `requirements.txt` installs all runtime and test dependencies for Stage 1, Stage 3, Stage 4, and the Streamlit UI.
 
 ### 3. Environment Configuration
 

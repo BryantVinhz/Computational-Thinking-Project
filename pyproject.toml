@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "query-understanding-routing"
 version = "1.0.0"
 description = "Query Understanding and Routing (Stage 2: Validation, Normalization, LLM Understanding, Routing), Contract v1.0"
-requires-python = ">=3.10"
+requires-python = ">=3.12"
 dependencies = ["PyYAML==6.0.3"]
 
 # Package structure under "Query Understanding and Routing/"
