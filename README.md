@@ -87,7 +87,7 @@ flowchart TD
 ├── 📝 README.md                             # Project documentation
 │
 ├── 📁 Data/                                 # Primary security knowledge corpus (50 files: MD, PDF, JSON, CSV)
-├── 📁 Data extra/                           # Supplementary CWE/MITRE datasets and intermediate files
+│                     
 │
 ├── 📁 Document Ingestion and Parsing/       # [STAGE 1] Offline document processing and indexing
 │   ├── 📁 Ingestion/                        # File discovery, SHA hashing, document & version registries
