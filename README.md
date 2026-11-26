@@ -2,8 +2,6 @@
 
 **Intelligent Document Workspace** — A modular, bilingual (English / Vietnamese) Retrieval-Augmented Generation (RAG) system for searching, comparing, and synthesizing information security standards, cheat sheets, and structured records with **verifiable faithfulness** and **traceable source provenance**.
 
-> **Reference Approach:** *Retriever-Free Retrieval: Navigating Documents with Decision Models* — [arXiv:2610.35868](https://arxiv.org/abs/2610.35868)
-
 ---
 
 ## Overview
@@ -75,7 +73,7 @@ flowchart TD
 ## Repository Structure
 
 ```text
-Computational-Thinking-Project/
+📦 Computational-Thinking-Project/
 │
 ├── main.py                               # Interactive CLI entry point (PipelineConnector: Stage 2 -> 3 -> 4)
 ├── web_app.py                            # Streamlit Web UI with Firebase Auth, backend switcher & provenance viewer
@@ -86,19 +84,19 @@ Computational-Thinking-Project/
 ├── Evaluation.json                       # 12 end-to-end evaluation test cases
 ├── pyproject.toml                        # Stage 2 package configuration and pytest settings
 ├── .env.example                          # Template for Ollama, Colab, and Firebase environment variables
-├── LICENSE                               # MIT License
-└── README.md                             # Project documentation
+├── 📜 LICENSE                               # MIT License
+├── 📝 README.md                             # Project documentation
 │
-├── Data/                                 # Primary security knowledge corpus (50 files: MD, PDF, JSON, CSV)
-├── Data extra/                           # Supplementary CWE/MITRE datasets and intermediate files
+├── 📁 Data/                                 # Primary security knowledge corpus (50 files: MD, PDF, JSON, CSV)
+├── 📁 Data extra/                           # Supplementary CWE/MITRE datasets and intermediate files
 │
-├── Document Ingestion and Parsing/       # [STAGE 1] Offline document processing and indexing
-│   ├── Ingestion/                        # File discovery, SHA hashing, document & version registries
+├── 📁 Document Ingestion and Parsing/       # [STAGE 1] Offline document processing and indexing
+│   ├── 📁 Ingestion/                        # File discovery, SHA hashing, document & version registries
 │   │   ├── Ingestion.py
 │   │   ├── service.py
 │   │   ├── schema_ingestion.py
 │   │   └── validation.py
-│   ├── Parsing/                          # Format-specific block extraction (MD, PDF, JSON, CSV, TXT)
+│   ├── 📁 Parsing/                          # Format-specific block extraction (MD, PDF, JSON, CSV, TXT)
 │   │   ├── Parsing.py
 │   │   ├── markdown_parser.py
 │   │   ├── pdf_parser.py
@@ -106,10 +104,10 @@ Computational-Thinking-Project/
 │   │   ├── csv_parser.py
 │   │   ├── txt_parser.py
 │   │   └── schema_parsing.py
-│   ├── Normalization/                    # Unicode and whitespace cleanup
+│   ├── 📁 Normalization/                    # Unicode and whitespace cleanup
 │   │   ├── Normalization.py
 │   │   └── text_cleaner.py
-│   ├── Chunking/                         # Multi-strategy chunking (fixed_size, structure_aware, semantic)
+│   ├── 📁 Chunking/                         # Multi-strategy chunking (fixed_size, structure_aware, semantic)
 │   │   ├── main_chunking.py
 │   │   ├── factory.py
 │   │   ├── chunking.py
@@ -117,21 +115,21 @@ Computational-Thinking-Project/
 │   │   ├── structure_aware.py
 │   │   ├── semantic.py
 │   │   └── token_counter.py
-│   ├── Metadata/                         # 9-field metadata extraction & ChromaDB ingestion (BAAI/bge-m3)
+│   ├── 📁 Metadata/                         # 9-field metadata extraction & ChromaDB ingestion (BAAI/bge-m3)
 │   │   ├── extractor_sqlite.py
 │   │   ├── schema_metadata.py
 │   │   └── vector_store.py
-│   ├── Provenance and Traceability/      # Block-to-chunk lineage stored in SQLite (workspace_data.db)
+│   ├── 📁 Provenance and Traceability/      # Block-to-chunk lineage stored in SQLite (workspace_data.db)
 │   │   ├── main_provenance.py
 │   │   ├── database.py
 │   │   ├── provenance.py
 │   │   ├── provenance_repo.py
 │   │   └── provenance_resolver.py
-│   └── output/                           # Generated outputs (Ingestion, Parsing, Normalization, Chunking, Provenance, Vector DB)
+│   └── 📁 output/                           # Generated outputs (Ingestion, Parsing, Normalization, Chunking, Provenance, Vector DB)
 │
-├── Query Understanding and Routing/      # [STAGE 2] Validation, normalization, intent detection & query planning
+├── 📁 Query Understanding and Routing/      # [STAGE 2] Validation, normalization, intent detection & query planning
 │   ├── manual_test.py                    # Manual interactive test script for Stage 2
-│   └── query_understanding_routing/
+│   └── 📁 query_understanding_routing/
 │       ├── ontology.yaml                 # Security vulnerability ontology (canonical names, aliases, CWEs)
 │       ├── ontology_loader.py            # Ontology loader and cache
 │       ├── validation_module.py          # Safety check & prompt injection filtering
@@ -140,10 +138,10 @@ Computational-Thinking-Project/
 │       ├── routing_module.py             # Single-hop & multi-hop Query Plan generator
 │       ├── pipeline.py                   # Stage 2 orchestrator (process_query)
 │       ├── prompt_templates.py           # LLM prompt templates for Stage 2
-│       ├── PIPELINE.md                   # Stage 2 contract & testing documentation
-│       └── tests/                        # Pytest unit & integration test suite
+│       ├── 📝 PIPELINE.md                   # Stage 2 contract & testing documentation
+│       └── 📁 tests/                        # Pytest unit & integration test suite
 │
-├── Retrieval/                            # [STAGE 3] Hybrid retrieval, reranking, diversity & evidence assembly
+├── 📁 Retrieval/                            # [STAGE 3] Hybrid retrieval, reranking, diversity & evidence assembly
 │   ├── scope_builder.py                  # Metadata filters & semantic scoping
 │   ├── query_vectorizer.py               # Multilingual query embeddings (BAAI/bge-m3)
 │   ├── bm25_retrieval.py                 # Sparse retrieval (BM25Okapi)
@@ -155,7 +153,7 @@ Computational-Thinking-Project/
 │   ├── ontology_utils.py                 # Ontology alias/CWE expansion for BM25
 │   └── retrieval_system.py               # RetrievalSystem facade (single-hop & multi-hop)
 │
-├── Response Synthesis/                   # [STAGE 4] Grounded generation, verification & citation formatting
+├── 📁 Response Synthesis/                   # [STAGE 4] Grounded generation, verification & citation formatting
 │   ├── prompt_templates.py               # Intent-aware prompts (SEARCH, COMPARE, SYNTHESIS) & mode directives
 │   ├── synthesizer.py                    # LLM draft generation (STRICT_RAG, HYBRID, ABSTENTION)
 │   ├── verifier.py                       # Atomic claim verification & faithfulness scoring (EvidenceVerifier)
@@ -166,20 +164,20 @@ Computational-Thinking-Project/
 │   ├── test_verification_traceability.py # Verifier & formatter unit tests
 │   ├── _stage4_baseline_benchmark.py     # Deterministic Stage 4 latency benchmark
 │   ├── _stage4_evaluation.py             # Stage 4 evaluation harness
-│   └── README.md                         # Detailed Stage 4 architecture & contract docs
+│   └── 📝 README.md                         # Detailed Stage 4 architecture & contract docs
 │
-├── Evaluation/                           # Chunking evaluation suite (Layer 1 intrinsic & Layer 2 retrieval)
-│   └── Chunking Evals/
+├── 📁 Evaluation/                           # Chunking evaluation suite (Layer 1 intrinsic & Layer 2 retrieval)
+│   └── 📁 Chunking Evals/
 │       ├── evals_layer1.py
 │       ├── evals_layer2.py
-│       ├── eval_layer1_report.json
-│       ├── eval_layer2_report.json
+│       ├── 📋 eval_layer1_report.json
+│       ├── 📋 eval_layer2_report.json
 │       └── Eval-chunking-colab.ipynb
 │
-├── evaluations/                          # Stage 4 evaluation templates (R9C)
-│   └── r9c/REPORT_TEMPLATE.md
+├── 📁 evaluations/                          # Stage 4 evaluation templates (R9C)
+│   └── 📝 r9c/REPORT_TEMPLATE.md
 │
-└── Utilize Colab/                        # Helper scripts & notebooks to offload preprocessing/evals to Colab GPU
+└── 📁 Utilize Colab/                        # Helper scripts & notebooks to offload preprocessing/evals to Colab GPU
     ├── Data_Preprocessing.ipynb
     ├── colab.py
     └── pack_eval_chunking.py
