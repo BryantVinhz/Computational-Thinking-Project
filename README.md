@@ -180,7 +180,7 @@ flowchart TD
 │   └── 📝 README.md                         # Detailed Stage 4 architecture & contract docs
 │
 ├── 📁 Evaluation/                           # Evaluation suites (Chunking, Retrieval, and End-to-End RAG)
-│   ├── scripts.py                        # Shared evaluation helper scripts
+│   │
 │   ├── 📁 Chunking Evals/                   # Layer 1 intrinsic & Layer 2 retrieval chunking benchmarks
 │   │   ├── evals_layer1.py
 │   │   ├── evals_layer2.py
